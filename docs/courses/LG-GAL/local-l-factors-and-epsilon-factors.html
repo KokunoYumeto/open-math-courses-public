@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Local L-factors and epsilon factors · Galois representations</title>
+<meta name="description" content="A lesson of the course Galois representations. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-GAL/local-l-factors-and-epsilon-factors.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Galois representations</a> <span aria-hidden="true">›</span> <span>Lesson 6 of 15</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="local-l-factors-and-epsilon-factors">Local L-factors and epsilon factors</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A local L-factor uses the Frobenius action on inertia-fixed vectors. An epsilon factor also records ramification, an additive character and a measure. We prove the formal properties of the first, reconstruct the existence and uniqueness of the second, and derive its transformation formulas. The normalization matters: an unnormalized epsilon constant need not have absolute value one.</p>
+<p>We assume <a href="conductors-of-weil-group-representations.html">Conductors of Weil-group representations</a>, with the actual earlier analytic and finite-group proofs identified in the dependency paragraph at the end. Section 2 proves the nonarchimedean character equation in either characteristic; §3 proves the dimension-zero refinement of integer Brauer induction. Representations are smooth and finite-dimensional over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, with geometric reciprocity and <span class="math" data-tex="\(\|\Phi_F\|=q_F^{-1}\)">\(\|\Phi_F\|=q_F^{-1}\)</span>. Write <span class="math" data-tex="\(\omega_s=\|\cdot\|^s\)">\(\omega_s=\|\cdot\|^s\)</span>. For a nontrivial continuous unitary additive character <span class="math" data-tex="\(\psi:F\to\mathbb C^\times\)">\(\psi:F\to\mathbb C^\times\)</span>, put
+<span class="math math-display" data-tex="\[
+n_F(\psi)=\max\{m\in\mathbb Z: \psi\text{ is trivial on }\mathfrak p_F^{-m}\}.
+\tag{1}
+\]">\[
+n_F(\psi)=\max\{m\in\mathbb Z: \psi\text{ is trivial on }\mathfrak p_F^{-m}\}.
+\tag{1}
+\]</span>
+Thus a character trivial on <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span> but not on <span class="math" data-tex="\(\mathfrak p_F^{-1}\)">\(\mathfrak p_F^{-1}\)</span> has <span class="math" data-tex="\(n_F(\psi)=0\)">\(n_F(\psi)=0\)</span>. Haar measures are positive. Fourier transforms use the kernel <span class="math" data-tex="\(\psi(xy)\)">\(\psi(xy)\)</span>. The measure dual to <span class="math" data-tex="\(dx\)">\(dx\)</span>, denoted <span class="math" data-tex="\(dx&#x27;\)">\(dx&#x27;\)</span>, is the one making the second transform send <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span> to <span class="math" data-tex="\(f(-x)\)">\(f(-x)\)</span>. A self-dual measure is denoted <span class="math" data-tex="\(dx_\psi\)">\(dx_\psi\)</span>.</p>
+<h2 id="1-local-l-factors">1. Local L-factors</h2>
+<p>For a nonarchimedean field define
+<span class="math math-display" data-tex="\[
+L_F(s,V)=\det(1-q_F^{-s}\rho(\Phi_F)\mid V^{I_F})^{-1}.
+\tag{2}
+\]">\[
+L_F(s,V)=\det(1-q_F^{-s}\rho(\Phi_F)\mid V^{I_F})^{-1}.
+\tag{2}
+\]</span>
+Frobenius preserves <span class="math" data-tex="\(V^{I_F}\)">\(V^{I_F}\)</span> because it normalizes inertia. Another geometric lift differs by an inertia element and has the same action on that space. Thus the definition is independent of the lift. If the fixed space is zero, the determinant of the zero-dimensional space is one, and so is the L-factor.</p>
+<p><strong>Theorem 1.1.</strong> L-factors are multiplicative in exact sequences. For every finite separable extension <span class="math" data-tex="\(E/F\)">\(E/F\)</span>,
+<span class="math math-display" data-tex="\[
+L_F(s,\operatorname{Ind}_{W_E}^{W_F}V)=L_E(s,V).
+\tag{3}
+\]">\[
+L_F(s,\operatorname{Ind}_{W_E}^{W_F}V)=L_E(s,V).
+\tag{3}
+\]</span></p>
+<p><strong>Proof of multiplicativity.</strong> Inertia has finite image on the representations in an exact sequence. Its invariants are exact by averaging, so the Frobenius matrix on the middle fixed space is block upper triangular with diagonal blocks the two outer Frobenius matrices. The determinant in (2) is their product. Direct-sum multiplicativity follows in particular. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of induction.</strong> Let <span class="math" data-tex="\(f=f(E/F)\)">\(f=f(E/F)\)</span> and <span class="math" data-tex="\(q_E=q_F^f\)">\(q_E=q_F^f\)</span>. In the finite-index tensor model of induction, the left cosets of <span class="math" data-tex="\(W_E\)">\(W_E\)</span> fall into <span class="math" data-tex="\(f\)">\(f\)</span> inertia orbits, represented by
+<span class="math" data-tex="\(1,\Phi_F,\ldots,\Phi_F^{f-1}\)">\(1,\Phi_F,\ldots,\Phi_F^{f-1}\)</span>. This is because their images in the residue-degree quotient are <span class="math" data-tex="\(\mathbb Z/f\mathbb Z\)">\(\mathbb Z/f\mathbb Z\)</span>. Invariants on the orbit of <span class="math" data-tex="\(1\)">\(1\)</span> identify with <span class="math" data-tex="\(V^{I_E}\)">\(V^{I_E}\)</span>: a vector on one coset determines an invariant sum over that orbit, and the stabilizer of the base coset is <span class="math" data-tex="\(I_E=I_F\cap W_E\)">\(I_E=I_F\cap W_E\)</span>. Transport gives the same identification on every orbit. Thus the full inertia-fixed space is a sum of <span class="math" data-tex="\(f\)">\(f\)</span> copies of <span class="math" data-tex="\(V^{I_E}\)">\(V^{I_E}\)</span>.</p>
+<p>Frobenius cycles these copies. Write <span class="math" data-tex="\(\Phi_F^f=i h\)">\(\Phi_F^f=i h\)</span>, with <span class="math" data-tex="\(i\in I_F\)">\(i\in I_F\)</span> and <span class="math" data-tex="\(h\in W_E\)">\(h\in W_E\)</span> of degree one over <span class="math" data-tex="\(E\)">\(E\)</span>; this is possible since <span class="math" data-tex="\(\Phi_F^f\in I_FW_E\)">\(\Phi_F^f\in I_FW_E\)</span>. On returning to the first copy the action is <span class="math" data-tex="\(A=\rho(h)|_{V^{I_E}}\)">\(A=\rho(h)|_{V^{I_E}}\)</span>, the geometric Frobenius action for <span class="math" data-tex="\(E\)">\(E\)</span>. The factor <span class="math" data-tex="\(i\)">\(i\)</span> acts trivially on the induced inertia invariants. With transported identifications the other transition maps are identities.</p>
+<p>A cyclic block operator of this form satisfies
+<span class="math math-display" data-tex="\[
+\det(1-tT)=\det(1-t^f A).
+\tag{4}
+\]">\[
+\det(1-tT)=\det(1-t^f A).
+\tag{4}
+\]</span>
+To verify (4), triangularize <span class="math" data-tex="\(A\)">\(A\)</span>. Its preserved flag gives a flag of cyclic-block spaces; on the successive quotients the cyclic scalar operator has characteristic polynomial <span class="math" data-tex="\(X^f-\alpha\)">\(X^f-\alpha\)</span>, where <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is the corresponding diagonal entry of <span class="math" data-tex="\(A\)">\(A\)</span>. Multiplying their determinants gives (4), even when <span class="math" data-tex="\(A\)">\(A\)</span> has Jordan blocks. Substituting <span class="math" data-tex="\(t=q_F^{-s}\)">\(t=q_F^{-s}\)</span> gives <span class="math" data-tex="\(t^f=q_E^{-s}\)">\(t^f=q_E^{-s}\)</span>, which proves (3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an unramified character with <span class="math" data-tex="\(\chi(\Phi)=c\)">\(\chi(\Phi)=c\)</span>,
+<span class="math math-display" data-tex="\[
+L_F(s,\chi)=(1-cq_F^{-s})^{-1}.
+\]">\[
+L_F(s,\chi)=(1-cq_F^{-s})^{-1}.
+\]</span>
+A ramified character has no inertia-fixed vector and has factor one. These are the one-dimensional factors in Tate's local theory when characters are transported by geometric reciprocity.</p>
+<p>At infinity set
+<span class="math math-display" data-tex="\[
+\Gamma_{\mathbb R}(s)=\pi^{-s/2}\Gamma(s/2),
+\qquad \Gamma_{\mathbb C}(s)=2(2\pi)^{-s}\Gamma(s).
+\]">\[
+\Gamma_{\mathbb R}(s)=\pi^{-s/2}\Gamma(s/2),
+\qquad \Gamma_{\mathbb C}(s)=2(2\pi)^{-s}\Gamma(s).
+\]</span>
+For the real character <span class="math" data-tex="\(\operatorname{sgn}^\epsilon|\cdot|^t\)">\(\operatorname{sgn}^\epsilon|\cdot|^t\)</span>, the factor is <span class="math" data-tex="\(\Gamma_{\mathbb R}(s+t+\epsilon)\)">\(\Gamma_{\mathbb R}(s+t+\epsilon)\)</span>. For
+<span class="math" data-tex="\(\omega_{a,n}(re^{i\theta})=r^a e^{in\theta}\)">\(\omega_{a,n}(re^{i\theta})=r^a e^{in\theta}\)</span> on <span class="math" data-tex="\(W_{\mathbb C}\)">\(W_{\mathbb C}\)</span>, it is
+<span class="math math-display" data-tex="\[
+L_{\mathbb C}(s,\omega_{a,n})
+=\Gamma_{\mathbb C}\!\left(s+\frac{a+|n|}{2}\right).
+\tag{5}
+\]">\[
+L_{\mathbb C}(s,\omega_{a,n})
+=\Gamma_{\mathbb C}\!\left(s+\frac{a+|n|}{2}\right).
+\tag{5}
+\]</span>
+The factor of the irreducible real induction of <span class="math" data-tex="\(\omega_{a,n}\)">\(\omega_{a,n}\)</span>, <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, is the same expression. The character gamma integrals and functional equations are actually proved in the earlier programme lesson <em>Archimedean local factors</em> (NT-ADL-08), Proposition 8.2 and Theorem 8.1, using its Gaussian tests and two-variable Fourier argument. Products define the factor for a semisimple representation; for a general one use its composition factors. Theorem 5.1 of the preceding lesson proves that this covers all constituents.</p>
+<p>The induction identity when <span class="math" data-tex="\(n=0\)">\(n=0\)</span> follows from
+<span class="math math-display" data-tex="\[
+\Gamma_{\mathbb R}(z)\Gamma_{\mathbb R}(z+1)=\Gamma_{\mathbb C}(z),
+\]">\[
+\Gamma_{\mathbb R}(z)\Gamma_{\mathbb R}(z+1)=\Gamma_{\mathbb C}(z),
+\]</span>
+which is proved by the beta-integral computation in NT-ADL-08, Proposition 8.4, equations (30)–(33), after substituting the displayed definitions. Indeed the reducible induction has the two real characters <span class="math" data-tex="\(|\cdot|^{a/2}\)">\(|\cdot|^{a/2}\)</span> and <span class="math" data-tex="\(\operatorname{sgn}|\cdot|^{a/2}\)">\(\operatorname{sgn}|\cdot|^{a/2}\)</span>. No arithmetic/geometric Frobenius choice is involved at infinity; the character parametrization is the one of the preceding lesson.</p>
+<h2 id="2-the-character-functional-equation">2. The character functional equation</h2>
+<p>For a quasi-character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, Tate's functional equation gives a nonzero constant <span class="math" data-tex="\(\epsilon_F(\chi,\psi,dx)\)">\(\epsilon_F(\chi,\psi,dx)\)</span>. We use the convention characterized by
+<span class="math math-display" data-tex="\[
+\frac{Z(\widehat f,\chi^{-1}|\cdot|)}{L_F(1,\chi^{-1})}
+=\epsilon_F(\chi,\psi,dx)
+\frac{Z(f,\chi)}{L_F(0,\chi)},
+\tag{6}
+\]">\[
+\frac{Z(\widehat f,\chi^{-1}|\cdot|)}{L_F(1,\chi^{-1})}
+=\epsilon_F(\chi,\psi,dx)
+\frac{Z(f,\chi)}{L_F(0,\chi)},
+\tag{6}
+\]</span>
+where <span class="math" data-tex="\(Z(f,\chi)=\int_{F^\times}f(x)\chi(x)d^\times x\)">\(Z(f,\chi)=\int_{F^\times}f(x)\chi(x)d^\times x\)</span>; equivalently one may move the <span class="math" data-tex="\(s\)">\(s\)</span>-parameter into <span class="math" data-tex="\(\chi|\cdot|^s\)">\(\chi|\cdot|^s\)</span>. Equation (6) is interpreted by meromorphic continuation where the initial integrals or displayed denominators do not define an ordinary number. We prove it below. The freely readable IAS author text of Deligne, §§3.3–3.4, fixes the same convention.</p>
+<p>For nonarchimedean <span class="math" data-tex="\(F\)">\(F\)</span>, the character formulas needed are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\epsilon_F(\chi,\psi,b\,dx)&amp;=b\epsilon_F(\chi,\psi,dx),\\
+\epsilon_F(\chi,\psi_a,dx)&amp;=\chi(a)|a|_F^{-1}\epsilon_F(\chi,\psi,dx),\\
+\epsilon_F(\chi\omega_s,\psi,dx)&amp;=
+\epsilon_F(\chi,\psi,dx)q_F^{-(a_F(\chi)+n_F(\psi))s},
+\end{aligned}
+\tag{7}
+\]">\[
+\begin{aligned}
+\epsilon_F(\chi,\psi,b\,dx)&amp;=b\epsilon_F(\chi,\psi,dx),\\
+\epsilon_F(\chi,\psi_a,dx)&amp;=\chi(a)|a|_F^{-1}\epsilon_F(\chi,\psi,dx),\\
+\epsilon_F(\chi\omega_s,\psi,dx)&amp;=
+\epsilon_F(\chi,\psi,dx)q_F^{-(a_F(\chi)+n_F(\psi))s},
+\end{aligned}
+\tag{7}
+\]</span>
+with <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, <span class="math" data-tex="\(a\in F^\times\)">\(a\in F^\times\)</span>, and <span class="math" data-tex="\(\psi_a(x)=\psi(ax)\)">\(\psi_a(x)=\psi(ax)\)</span>. Fourier inversion also gives
+<span class="math math-display" data-tex="\[
+\epsilon_F(\chi,\psi,dx)
+\epsilon_F(\chi^{-1}\omega_1,\psi_{-1},dx&#x27;)=1.
+\tag{8}
+\]">\[
+\epsilon_F(\chi,\psi,dx)
+\epsilon_F(\chi^{-1}\omega_1,\psi_{-1},dx&#x27;)=1.
+\tag{8}
+\]</span>
+For an unramified <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, its constant is
+<span class="math math-display" data-tex="\[
+\epsilon_F(\chi,\psi,dx)=
+\chi(\varpi_F)^{n_F(\psi)}q_F^{n_F(\psi)}\operatorname{vol}_{dx}(\mathcal O_F).
+\tag{9}
+\]">\[
+\epsilon_F(\chi,\psi,dx)=
+\chi(\varpi_F)^{n_F(\psi)}q_F^{n_F(\psi)}\operatorname{vol}_{dx}(\mathcal O_F).
+\tag{9}
+\]</span>
+In particular it is one if <span class="math" data-tex="\(n_F(\psi)=0\)">\(n_F(\psi)=0\)</span> and <span class="math" data-tex="\(\operatorname{vol}(\mathcal O_F)=1\)">\(\operatorname{vol}(\mathcal O_F)=1\)</span>.</p>
+<p><strong>Lemma 2.1 (Fourier inversion and the character equation).</strong> Equations (6)–(9) hold for every nonarchimedean local field, in either characteristic. If <span class="math" data-tex="\(c=a_F(\chi)&gt;0\)">\(c=a_F(\chi)&gt;0\)</span>, <span class="math" data-tex="\(m=\operatorname{vol}_{dx}(\mathcal O_F)\)">\(m=\operatorname{vol}_{dx}(\mathcal O_F)\)</span>, <span class="math" data-tex="\(n=n_F(\psi)\)">\(n=n_F(\psi)\)</span>, and <span class="math" data-tex="\(v_F(b)=c+n\)">\(v_F(b)=c+n\)</span>, then
+<span class="math math-display" data-tex="\[
+\epsilon_F(\chi,\psi,dx)
+=m q_F^n\chi(b)
+\sum_{u\in(\mathcal O_F/\mathfrak p_F^c)^\times}
+\chi(u)^{-1}\psi(u/b).
+\tag{9A}
+\]">\[
+\epsilon_F(\chi,\psi,dx)
+=m q_F^n\chi(b)
+\sum_{u\in(\mathcal O_F/\mathfrak p_F^c)^\times}
+\chi(u)^{-1}\psi(u/b).
+\tag{9A}
+\]</span></p>
+<p><strong>Proof.</strong> For a coset of an additive ideal, translation invariance and the sum of a nontrivial finite character give
+<span class="math math-display" data-tex="\[
+\widehat{1_{a+\mathfrak p^r}}(y)
+=m q^{-r}\psi(ay)1_{\mathfrak p^{-r-n}}(y).
+\tag{9B}
+\]">\[
+\widehat{1_{a+\mathfrak p^r}}(y)
+=m q^{-r}\psi(ay)1_{\mathfrak p^{-r-n}}(y).
+\tag{9B}
+\]</span>
+Indeed the integral of a character on the compact group <span class="math" data-tex="\(\mathfrak p^r\)">\(\mathfrak p^r\)</span> is zero unless the character is trivial: translate by an element on which it is nontrivial. Its annihilator is <span class="math" data-tex="\(\mathfrak p^{-r-n}\)">\(\mathfrak p^{-r-n}\)</span>, by the definition of <span class="math" data-tex="\(n\)">\(n\)</span>. Every locally constant compactly supported function is a finite linear combination of these indicators. Applying (9B) twice proves Fourier inversion, with dual integral-ring volume <span class="math" data-tex="\(m&#x27;=q^{-n}/m\)">\(m&#x27;=q^{-n}/m\)</span>; in particular self-duality means <span class="math" data-tex="\(m=q^{-n/2}\)">\(m=q^{-n/2}\)</span>.</p>
+<p>Normalize <span class="math" data-tex="\(d^\times x\)">\(d^\times x\)</span> by unit volume one. Write <span class="math" data-tex="\(\chi=\eta|\cdot|^s\)">\(\chi=\eta|\cdot|^s\)</span> with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> unitary, moving any real growth on a uniformizer into <span class="math" data-tex="\(s\)">\(s\)</span>. Splitting <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> into valuation shells shows that <span class="math" data-tex="\(Z(f,\chi)\)">\(Z(f,\chi)\)</span> is a finite Laurent polynomial in <span class="math" data-tex="\(q^{-s}\)">\(q^{-s}\)</span>, plus a geometric tail near zero when <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is unramified. Dividing by the corresponding L-factor removes that tail. If <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is ramified, the tail is zero by averaging units. Thus the normalized integral is a Laurent polynomial, and a normalized test with value one exists: use <span class="math" data-tex="\(1_{\mathcal O}\)">\(1_{\mathcal O}\)</span> in the unramified case and <span class="math" data-tex="\(\eta^{-1}1_{\mathcal O^\times}\)">\(\eta^{-1}1_{\mathcal O^\times}\)</span> in the ramified case.</p>
+<p>For <span class="math" data-tex="\(0&lt;\operatorname{Re}s&lt;1\)">\(0&lt;\operatorname{Re}s&lt;1\)</span>, the following cross identity proves proportionality of the two normalized integrals:
+<span class="math math-display" data-tex="\[
+Z(f,\chi)Z(\widehat g,\chi^{-1}|\cdot|)
+=Z(g,\chi)Z(\widehat f,\chi^{-1}|\cdot|).
+\tag{9C}
+\]">\[
+Z(f,\chi)Z(\widehat g,\chi^{-1}|\cdot|)
+=Z(g,\chi)Z(\widehat f,\chi^{-1}|\cdot|).
+\tag{9C}
+\]</span>
+To check it, write <span class="math" data-tex="\(d^\times x=\kappa\,dx/|x|\)">\(d^\times x=\kappa\,dx/|x|\)</span>. In the product on the left put <span class="math" data-tex="\(y=xz\)">\(y=xz\)</span>. Apart from <span class="math" data-tex="\(\kappa^2\)">\(\kappa^2\)</span>, the resulting integral is
+<span class="math" data-tex="\(\int \chi(z)^{-1}\int f(x)\widehat g(zx)dx\,dz\)">\(\int \chi(z)^{-1}\int f(x)\widehat g(zx)dx\,dz\)</span>.
+The inner integral equals <span class="math" data-tex="\(\int\widehat f(zt)g(t)dt\)">\(\int\widehat f(zt)g(t)dt\)</span>, by expanding the transform and interchanging the two compact additive integrals. Substitution back gives the right side. The original double integrals converge absolutely in the indicated strip; equivalently the substituted integrals are absolutely integrable by the same change of variables. Rational continuation in <span class="math" data-tex="\(q^{-s}\)">\(q^{-s}\)</span> proves (9C) everywhere. A test with normalized value one now defines (6). Applying Fourier inversion shows that its coefficient is nonzero and gives (8).</p>
+<p>The transform of <span class="math" data-tex="\(1_{\mathcal O}\)">\(1_{\mathcal O}\)</span> in (9B), followed by its geometric shell sum, gives (9). In the ramified case transform <span class="math" data-tex="\(f=\chi^{-1}1_{\mathcal O^\times}\)">\(f=\chi^{-1}1_{\mathcal O^\times}\)</span>. Averaging over unit translates shows that its transform vanishes unless <span class="math" data-tex="\(v(y)=-c-n\)">\(v(y)=-c-n\)</span>. For <span class="math" data-tex="\(v(y)&gt;-c-n\)">\(v(y)&gt;-c-n\)</span>, translate by an element of <span class="math" data-tex="\(U^{c-1}\)">\(U^{c-1}\)</span> on which <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is nontrivial; the additive factor is unchanged. For <span class="math" data-tex="\(v(y)&lt;-c-n\)">\(v(y)&lt;-c-n\)</span>, average over the additive cosets of <span class="math" data-tex="\(\mathfrak p^c\)">\(\mathfrak p^c\)</span> on which <span class="math" data-tex="\(f\)">\(f\)</span> is constant and use (9B). At <span class="math" data-tex="\(y=w/b\)">\(y=w/b\)</span>, <span class="math" data-tex="\(w\)">\(w\)</span> a unit, the transform is
+<span class="math" data-tex="\(m q^{-c}\chi(w)\sum_u\chi(u)^{-1}\psi(u/b)\)">\(m q^{-c}\chi(w)\sum_u\chi(u)^{-1}\psi(u/b)\)</span>.
+Its dual zeta integral therefore equals the right side of (9A), since <span class="math" data-tex="\(|b|^{-1}=q^{c+n}\)">\(|b|^{-1}=q^{c+n}\)</span>, whereas its original zeta integral is one. This proves (9A), including the nonvanishing of its sum.</p>
+<p>Scaling <span class="math" data-tex="\(dx\)">\(dx\)</span> scales the transform. For <span class="math" data-tex="\(\psi_a\)">\(\psi_a\)</span>, the transform is <span class="math" data-tex="\(\widehat f(ay)\)">\(\widehat f(ay)\)</span>, and substitution in its zeta integral supplies <span class="math" data-tex="\(\chi(a)|a|^{-1}\)">\(\chi(a)|a|^{-1}\)</span>. These prove the first two lines of (7). Formula (9A), or (9) when <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, supplies the third, because an unramified twist evaluates on <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(q^{-(c+n)s}\)">\(q^{-(c+n)s}\)</span>. Double Fourier inversion proves (8); the reflection <span class="math" data-tex="\(f(-x)\)">\(f(-x)\)</span> accounts for its negative additive character. No characteristic-zero assumption entered this proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>At infinity the earlier NT-ADL-08 proof has negative trace character. Replacing it by its negative multiplies its real phase by <span class="math" data-tex="\((-1)^\epsilon\)">\((-1)^\epsilon\)</span> and its complex phase by <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>, by the same substitution just used. For the positive characters <span class="math" data-tex="\(e^{2\pi ix}\)">\(e^{2\pi ix}\)</span> on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> and <span class="math" data-tex="\(e^{4\pi i\operatorname{Re}z}\)">\(e^{4\pi i\operatorname{Re}z}\)</span> on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, with self-dual measures, the phases are consequently <span class="math" data-tex="\(i^\epsilon\)">\(i^\epsilon\)</span> and <span class="math" data-tex="\(i^{|n|}\)">\(i^{|n|}\)</span>. Proposition 8.3 there and its Fourier-inversion proof also give (8) at infinity. Arbitrary nontrivial additive characters and positive measures follow by scaling.</p>
+<p><strong>Lemma 2.2 (trace conductor).</strong> For finite separable <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, with different exponent <span class="math" data-tex="\(d_{E/F}\)">\(d_{E/F}\)</span>,
+<span class="math math-display" data-tex="\[
+n_E(\psi\circ\operatorname{Tr}_{E/F})=e(E/F)n_F(\psi)+d_{E/F}.
+\tag{9D}
+\]">\[
+n_E(\psi\circ\operatorname{Tr}_{E/F})=e(E/F)n_F(\psi)+d_{E/F}.
+\tag{9D}
+\]</span>
+Moreover <span class="math" data-tex="\(\operatorname{Tr}_{E/F}(\mathfrak p_E^r)=
+\mathfrak p_F^{\lfloor(r+d_{E/F})/e\rfloor}\)">\(\operatorname{Tr}_{E/F}(\mathfrak p_E^r)=
+\mathfrak p_F^{\lfloor(r+d_{E/F})/e\rfloor}\)</span>.</p>
+<p><strong>Proof.</strong> The trace dual (1D) in the preceding lesson is <span class="math" data-tex="\(\mathfrak p_E^{-d}\)">\(\mathfrak p_E^{-d}\)</span>. Thus <span class="math" data-tex="\(\operatorname{Tr}(\mathfrak p_E^r)\subseteq\mathfrak p_F^t\)">\(\operatorname{Tr}(\mathfrak p_E^r)\subseteq\mathfrak p_F^t\)</span> exactly when <span class="math" data-tex="\(\mathfrak p_E^r\subseteq\mathfrak p_F^t\mathfrak p_E^{-d}\)">\(\mathfrak p_E^r\subseteq\mathfrak p_F^t\mathfrak p_E^{-d}\)</span>, or <span class="math" data-tex="\(r\ge et-d\)">\(r\ge et-d\)</span>. Trace of an ideal is an ideal: it is an <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>-module and a finite lattice. Its largest possible exponent is therefore the displayed floor. The largest fractional ideal on which <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is trivial is <span class="math" data-tex="\(\mathfrak p_F^{-n_F}\)">\(\mathfrak p_F^{-n_F}\)</span>. Applying the trace formula, or the same trace-dual inclusion with <span class="math" data-tex="\(t=-n_F\)">\(t=-n_F\)</span>, proves that the annihilator of <span class="math" data-tex="\(\mathcal O_E\)">\(\mathcal O_E\)</span> under <span class="math" data-tex="\(\psi\operatorname{Tr}(xy)\)">\(\psi\operatorname{Tr}(xy)\)</span> is <span class="math" data-tex="\(\mathfrak p_E^{-e n_F-d}\)">\(\mathfrak p_E^{-e n_F-d}\)</span>. This is (9D). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-existence-and-uniqueness-of-local-constants">3. Existence and uniqueness of local constants</h2>
+<p><strong>Theorem 3.0 (Langlands–Deligne existence).</strong> There is a family of nonzero constants <span class="math" data-tex="\(\epsilon_F(V,\psi,dx)\)">\(\epsilon_F(V,\psi,dx)\)</span>, for all local fields and representations, with the following four properties.</p>
+<ol>
+<li>For <span class="math" data-tex="\(0\to V&#x27;\to V\to V&#x27;&#x27;\to0\)">\(0\to V&#x27;\to V\to V&#x27;&#x27;\to0\)</span>, the constant is <span class="math" data-tex="\(\epsilon(V&#x27;)\epsilon(V&#x27;&#x27;)\)">\(\epsilon(V&#x27;)\epsilon(V&#x27;&#x27;)\)</span>.</li>
+<li>Scaling the Haar measure by <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> multiplies it by <span class="math" data-tex="\(b^{\dim V}\)">\(b^{\dim V}\)</span>.</li>
+<li>If <span class="math" data-tex="\(U\)">\(U\)</span> is a virtual representation of <span class="math" data-tex="\(W_E\)">\(W_E\)</span> of dimension zero, then
+<span class="math" data-tex="\(\epsilon_F(\operatorname{Ind}U,\psi)=\epsilon_E(U,\psi\circ\operatorname{Tr}_{E/F})\)">\(\epsilon_F(\operatorname{Ind}U,\psi)=\epsilon_E(U,\psi\circ\operatorname{Tr}_{E/F})\)</span>.</li>
+<li>In dimension one the constant is the character constant from Tate's theory, using geometric reciprocity.</li>
+</ol>
+<p>Multiplicativity allows virtual representations by taking quotients of constants. Property 2 makes their constants independent of measure when their virtual dimension is zero, so the omitted measure in property 3 is justified. These properties concern a family over extensions of the field, not a function at just one fixed field. The proof below checks every relation between Brauer decompositions; this is the substantive existence step.</p>
+<p>We first prove <strong>dimension-zero Brauer induction</strong>: for a finite group <span class="math" data-tex="\(G\)">\(G\)</span>, every virtual representation <span class="math" data-tex="\(Y\)">\(Y\)</span> of dimension zero over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> is an integer sum
+<span class="math math-display" data-tex="\[
+Y=\sum_j m_j\operatorname{Ind}_{H_j}^G(\chi_j-1),
+\tag{10}
+\]">\[
+Y=\sum_j m_j\operatorname{Ind}_{H_j}^G(\chi_j-1),
+\tag{10}
+\]</span>
+where <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> is one-dimensional.</p>
+<p><strong>Proof of (10).</strong> The actual earlier integer theorem is <em>Brauer's induction theorem</em> (RT-FIN-11), Theorem 5.1, with its local induction proof in §§3–4. In particular <span class="math" data-tex="\(1_G=\sum_E\operatorname{Ind}_E^G z_E\)">\(1_G=\sum_E\operatorname{Ind}_E^G z_E\)</span>, where the <span class="math" data-tex="\(E\)">\(E\)</span> are elementary, hence nilpotent. Its projection formula gives
+<span class="math" data-tex="\(Y=\sum_E\operatorname{Ind}_E^G(\operatorname{Res}_E Y\,z_E)\)">\(Y=\sum_E\operatorname{Ind}_E^G(\operatorname{Res}_E Y\,z_E)\)</span>, and every expression inside parentheses has dimension zero. It remains to prove (10) for a nilpotent group <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>We strengthen the weight-space proof of nilpotent monomiality in RT-FIN-11, Theorem 1.2: if an irreducible <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is induced from a line on <span class="math" data-tex="\(H\)">\(H\)</span>, we may require <span class="math" data-tex="\(Z(N)\subseteq H\)">\(Z(N)\subseteq H\)</span>. Here are the extra details. The construction there can keep any prescribed central scalar subgroup in every inducing subgroup. When passing through the kernel, its image remains central; pulling the inducing subgroup back preserves it. In the faithful nonabelian step, choose the normal abelian subgroup containing the centre in Lemma 1.1 there. The stabilizer of a weight contains that centre, and the weight space carries it by scalars. Induction on the smaller stabilizer therefore preserves the prescribed subgroup. The abelian stopping case is already a line. This proves the strengthened assertion.</p>
+<p>Induct on <span class="math" data-tex="\(|N|\)">\(|N|\)</span>. For an irreducible <span class="math" data-tex="\(\rho=\operatorname{Ind}_H^N\chi\)">\(\rho=\operatorname{Ind}_H^N\chi\)</span>, of dimension <span class="math" data-tex="\(d=[N:H]\)">\(d=[N:H]\)</span>, write
+<span class="math math-display" data-tex="\[
+\rho-d1=\operatorname{Ind}_H^N(\chi-1)
+ +\bigl(\operatorname{Ind}_H^N1-[N:H]1\bigr).
+\tag{10A}
+\]">\[
+\rho-d1=\operatorname{Ind}_H^N(\chi-1)
+ +\bigl(\operatorname{Ind}_H^N1-[N:H]1\bigr).
+\tag{10A}
+\]</span>
+The second term has dimension zero and factors through <span class="math" data-tex="\(N/Z(N)\)">\(N/Z(N)\)</span>, since the centre is contained in <span class="math" data-tex="\(H\)">\(H\)</span>. A nontrivial nilpotent group has nontrivial centre, as proved by the central-series argument in RT-FIN-11 §1, so this quotient has smaller order. Inflate its induction decomposition, using the identical coset models for inverse images of subgroups. If <span class="math" data-tex="\(N\)">\(N\)</span> is abelian, each irreducible is a line and there is nothing to reduce. Finally write an arbitrary virtual dimension-zero character as a sum of the differences <span class="math" data-tex="\(\rho-(\dim\rho)1\)">\(\rho-(\dim\rho)1\)</span>. This proves (10). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="3a-a-finite-relation-criterion">3A. A finite relation criterion</h3>
+<p>Fix a finite Galois extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span>, with group <span class="math" data-tex="\(G\)">\(G\)</span>, and a character <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>. For <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span>, put <span class="math" data-tex="\(E_H=L^H\)">\(E_H=L^H\)</span> and <span class="math" data-tex="\(\alpha_H=\alpha\circ N_{E_H/F}\)">\(\alpha_H=\alpha\circ N_{E_H/F}\)</span>. Let <span class="math" data-tex="\(P_0(G)\)">\(P_0(G)\)</span> be the free abelian group on symbols <span class="math" data-tex="\((H,\chi-1)\)">\((H,\chi-1)\)</span>, for all one-dimensional characters of <span class="math" data-tex="\(H\)">\(H\)</span>. Its map
+<span class="math math-display" data-tex="\[
+b:P_0(G)\longrightarrow R_0(G),\qquad
+(H,\chi-1)\longmapsto\operatorname{Ind}_H^G(\chi-1)
+\tag{10B}
+\]">\[
+b:P_0(G)\longrightarrow R_0(G),\qquad
+(H,\chi-1)\longmapsto\operatorname{Ind}_H^G(\chi-1)
+\tag{10B}
+\]</span>
+is onto by (10). Define its formal character product
+<span class="math math-display" data-tex="\[
+C_\alpha(r)=\prod_j
+\left(\frac{\epsilon_{E_{H_j}}(\chi_j\alpha_{H_j},\psi\operatorname{Tr})}
+{\epsilon_{E_{H_j}}(\alpha_{H_j},\psi\operatorname{Tr})}\right)^{m_j}
+\quad\text{for }r=\sum_jm_j(H_j,\chi_j-1).
+\tag{10C}
+\]">\[
+C_\alpha(r)=\prod_j
+\left(\frac{\epsilon_{E_{H_j}}(\chi_j\alpha_{H_j},\psi\operatorname{Tr})}
+{\epsilon_{E_{H_j}}(\alpha_{H_j},\psi\operatorname{Tr})}\right)^{m_j}
+\quad\text{for }r=\sum_jm_j(H_j,\chi_j-1).
+\tag{10C}
+\]</span>
+Each quotient is independent of measure. An <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-theory on all subgroups of <span class="math" data-tex="\(G\)">\(G\)</span>, with rank-one value <span class="math" data-tex="\(\epsilon(\chi\alpha_H)\)">\(\epsilon(\chi\alpha_H)\)</span>, exists if and only if
+<span class="math math-display" data-tex="\[
+C_\alpha(r)=1\quad(r\in\ker b).
+\tag{10D}
+\]">\[
+C_\alpha(r)=1\quad(r\in\ker b).
+\tag{10D}
+\]</span>
+Necessity follows by induction and multiplicativity. For sufficiency, lift <span class="math" data-tex="\(V-(\dim V)1\)">\(V-(\dim V)1\)</span> through (10B), take (10C), and multiply by <span class="math" data-tex="\(\epsilon(\alpha_H)^{\dim V}\)">\(\epsilon(\alpha_H)^{\dim V}\)</span> when constructing the theory over <span class="math" data-tex="\(E_H\)">\(E_H\)</span>. Two lifts differ by a kernel relation. A kernel relation for <span class="math" data-tex="\(H\)">\(H\)</span> induces to one for <span class="math" data-tex="\(G\)">\(G\)</span>, so (10D) works simultaneously over every subgroup. Induction in stages on the symbols proves the rank-zero induction property. A character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has the lift <span class="math" data-tex="\((H,\chi-1)\)">\((H,\chi-1)\)</span> over its own field, giving exactly its required character value. The resulting homomorphism on each representation group is multiplicative and has measure degree <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span>. This proves the criterion, including all its subgroup compatibilities.</p>
+<p>The criterion is unchanged on replacing <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by an unramified twist <span class="math" data-tex="\(\alpha\beta\)">\(\alpha\beta\)</span>, or on replacing <span class="math" data-tex="\(\psi\)">\(\psi\)</span> by <span class="math" data-tex="\(\psi_a\)">\(\psi_a\)</span>. Indeed the formal quotient for <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is
+<span class="math" data-tex="\(\beta(\varpi_F)^{a_F(b(r)\otimes\alpha)}\)">\(\beta(\varpi_F)^{a_F(b(r)\otimes\alpha)}\)</span>, by (7) and the dimension-zero induction formula in the preceding lesson, Theorem 4.1. It is one when <span class="math" data-tex="\(b(r)=0\)">\(b(r)=0\)</span>. The additive change is <span class="math" data-tex="\(\det(b(r)\otimes\alpha)(a)\)">\(\det(b(r)\otimes\alpha)(a)\)</span>, by the determinant/transfer calculation in the preceding Weil lesson, Theorem 4.1; it too is one. The calculation applies to every smooth character <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, since that conductor formula was proved for arbitrary smooth representations. Thus no finite-order assumption on an unramified twist is hidden here.</p>
+<h3 id="3b-a-local-theory-after-a-sufficiently-ramified-twist">3B. A local theory after a sufficiently ramified twist</h3>
+<p><strong>Lemma 3.0a (a bounded stationary-phase calculation).</strong> Suppose a character <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has conductor <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, and for some <span class="math" data-tex="\(r\geq\lceil c/2\rceil\)">\(r\geq\lceil c/2\rceil\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> of value <span class="math" data-tex="\(-c-n_F(\psi)\)">\(-c-n_F(\psi)\)</span>,
+<span class="math math-display" data-tex="\[
+\alpha(1+z)=\psi(yz)\quad(z\in\mathfrak p_F^r).
+\tag{10E}
+\]">\[
+\alpha(1+z)=\psi(yz)\quad(z\in\mathfrak p_F^r).
+\tag{10E}
+\]</span>
+If <span class="math" data-tex="\(a_F(\eta)\leq c-r\)">\(a_F(\eta)\leq c-r\)</span>, then
+<span class="math math-display" data-tex="\[
+\epsilon(\eta\alpha,\psi,dx)=\eta(y)^{-1}\epsilon(\alpha,\psi,dx).
+\tag{10F}
+\]">\[
+\epsilon(\eta\alpha,\psi,dx)=\eta(y)^{-1}\epsilon(\alpha,\psi,dx).
+\tag{10F}
+\]</span></p>
+<p><strong>Proof.</strong> Its conductor is still <span class="math" data-tex="\(c\)">\(c\)</span>, since <span class="math" data-tex="\(a_F(\eta)&lt;c\)">\(a_F(\eta)&lt;c\)</span>. Formula (9A), converted from a unit sum to an additive integral, is
+<span class="math" data-tex="\(\epsilon(\alpha)=\int_{v(x)=-c-n}\alpha(x)^{-1}\psi(x)dx\)">\(\epsilon(\alpha)=\int_{v(x)=-c-n}\alpha(x)^{-1}\psi(x)dx\)</span>.
+Average this integral under the measure-preserving unit substitutions <span class="math" data-tex="\(x\mapsto x(1+z)\)">\(x\mapsto x(1+z)\)</span>, <span class="math" data-tex="\(z\in\mathfrak p^r\)">\(z\in\mathfrak p^r\)</span>. The factor inserted is <span class="math" data-tex="\(\psi((x-y)z)\)">\(\psi((x-y)z)\)</span>. Finite-character orthogonality therefore kills the integral off
+<span class="math" data-tex="\(v(x-y)\geq-r-n\)">\(v(x-y)\geq-r-n\)</span>, or <span class="math" data-tex="\(x/y\in1+\mathfrak p^{c-r}\)">\(x/y\in1+\mathfrak p^{c-r}\)</span>. On that set <span class="math" data-tex="\(\eta(x)=\eta(y)\)">\(\eta(x)=\eta(y)\)</span>; the same averaging works for <span class="math" data-tex="\(\eta\alpha\)">\(\eta\alpha\)</span>, since <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is trivial on <span class="math" data-tex="\(1+\mathfrak p^r\)">\(1+\mathfrak p^r\)</span>. Taking this constant factor outside proves (10F). All integrals are finite sums on compact shells, so the averaging introduces no convergence issue. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There are characters of arbitrarily high conductor: the quotient <span class="math" data-tex="\(U^{m-1}/U^m\simeq(k_F,+)\)">\(U^{m-1}/U^m\simeq(k_F,+)\)</span> for <span class="math" data-tex="\(m\geq2\)">\(m\geq2\)</span> has a nontrivial character. Extend it to the finite abelian unit quotient, and set a value on a uniformizer. The extension assertion is elementary: a character of a subgroup of a finite abelian group extends on adjoining a generator by choosing a root of its prescribed power; repeat until the group is exhausted.</p>
+<p>Choose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of very large conductor <span class="math" data-tex="\(m\)">\(m\)</span>. On <span class="math" data-tex="\(1+\mathfrak p^{\lceil m/2\rceil}\)">\(1+\mathfrak p^{\lceil m/2\rceil}\)</span>, multiplication reduces to addition modulo <span class="math" data-tex="\(\mathfrak p^m\)">\(\mathfrak p^m\)</span>. The resulting additive character has the form <span class="math" data-tex="\(\psi(yz)\)">\(\psi(yz)\)</span>, with <span class="math" data-tex="\(v_F(y)=-m-n_F\)">\(v_F(y)=-m-n_F\)</span>. To see both existence and this value, the annihilator calculation in (9B) identifies the dual of <span class="math" data-tex="\(\mathfrak p^r/\mathfrak p^m\)">\(\mathfrak p^r/\mathfrak p^m\)</span> with <span class="math" data-tex="\(\mathfrak p^{-m-n}/\mathfrak p^{-r-n}\)">\(\mathfrak p^{-m-n}/\mathfrak p^{-r-n}\)</span>; the two finite groups have the same order and that pairing is nondegenerate. Nontriviality on the last layer forces the asserted valuation.</p>
+<p>For each of the finitely many subfields <span class="math" data-tex="\(E=L^H\)">\(E=L^H\)</span>, write <span class="math" data-tex="\(e=e(E/F)\)">\(e=e(E/F)\)</span>, <span class="math" data-tex="\(d=d_{E/F}\)">\(d=d_{E/F}\)</span>. If <span class="math" data-tex="\(z\in\mathfrak p_E^r\)">\(z\in\mathfrak p_E^r\)</span>, expansion of the norm as a product of conjugates gives
+<span class="math math-display" data-tex="\[
+N_{E/F}(1+z)=1+\operatorname{Tr}_{E/F}z+R,
+\qquad v_F(R)\geq 2r/e.
+\tag{10G}
+\]">\[
+N_{E/F}(1+z)=1+\operatorname{Tr}_{E/F}z+R,
+\qquad v_F(R)\geq 2r/e.
+\tag{10G}
+\]</span>
+Every term in <span class="math" data-tex="\(R\)">\(R\)</span> is a product of at least two conjugates, all of extended base value at least <span class="math" data-tex="\(r/e\)">\(r/e\)</span>. Choose <span class="math" data-tex="\(r_E=\lceil em/2\rceil\)">\(r_E=\lceil em/2\rceil\)</span>. For large <span class="math" data-tex="\(m\)">\(m\)</span> the trace is integral and the error lies in <span class="math" data-tex="\(\mathfrak p_F^m\)">\(\mathfrak p_F^m\)</span>; hence
+<span class="math" data-tex="\(\alpha_E(1+z)=\psi(\operatorname{Tr}(yz))\)">\(\alpha_E(1+z)=\psi(\operatorname{Tr}(yz))\)</span> on <span class="math" data-tex="\(\mathfrak p_E^{r_E}\)">\(\mathfrak p_E^{r_E}\)</span>. Its conductor is exactly <span class="math" data-tex="\(m_E=em-d\)">\(m_E=em-d\)</span>. Indeed apply (10G) also at the deeper exponents <span class="math" data-tex="\(em-d\)">\(em-d\)</span> and <span class="math" data-tex="\(em-d-1\)">\(em-d-1\)</span>; Lemma 2.2 says their traces are respectively <span class="math" data-tex="\(\mathfrak p_F^m\)">\(\mathfrak p_F^m\)</span> and <span class="math" data-tex="\(\mathfrak p_F^{m-1}\)">\(\mathfrak p_F^{m-1}\)</span>. The error is still killed, so the first layer is trivial and the second is not. Also <span class="math" data-tex="\(v_E(y)=-m_E-n_E\)">\(v_E(y)=-m_E-n_E\)</span>, by (9D).</p>
+<p>Take <span class="math" data-tex="\(m\)">\(m\)</span> so large that <span class="math" data-tex="\(m_E-r_E\)">\(m_E-r_E\)</span> exceeds the conductors of every character of every subgroup of <span class="math" data-tex="\(G\)">\(G\)</span>. There are only finitely many such characters. Lemma 3.0a now proves, simultaneously over all <span class="math" data-tex="\(E_H\)">\(E_H\)</span>,
+<span class="math" data-tex="\(\epsilon(\chi\alpha_H)=\chi(y)^{-1}\epsilon(\alpha_H)\)">\(\epsilon(\chi\alpha_H)=\chi(y)^{-1}\epsilon(\alpha_H)\)</span>.
+Consequently
+<span class="math math-display" data-tex="\[
+\epsilon_{\alpha,H}(V)
+=\det V(y)^{-1}\epsilon_{E_H}(\alpha_H)^{\dim V}
+\tag{10H}
+\]">\[
+\epsilon_{\alpha,H}(V)
+=\det V(y)^{-1}\epsilon_{E_H}(\alpha_H)^{\dim V}
+\tag{10H}
+\]</span>
+is an <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-theory: its rank-zero induction property is exactly determinant transfer evaluated on <span class="math" data-tex="\(y\in F^\times\)">\(y\in F^\times\)</span>. This proves (10D) for a sufficiently ramified <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, by an actual local calculation. This qualitative bound is enough for existence; it does not assert the sharp half-break theorem of §7.</p>
+<h3 id="3c-globalization-and-the-relation-check">3C. Globalization and the relation check</h3>
+<p>We need two concrete globalization facts. First, every finite Galois local extension <span class="math" data-tex="\(L/F\)">\(L/F\)</span> occurs as the completion of a finite Galois extension <span class="math" data-tex="\(M/K\)">\(M/K\)</span>, whose whole Galois group is its decomposition group at the specified place, with <span class="math" data-tex="\(K_v=F\)">\(K_v=F\)</span>. Here is a construction. In characteristic zero, approximate the separable primitive polynomial of <span class="math" data-tex="\(F/\mathbb Q_p\)">\(F/\mathbb Q_p\)</span> by a polynomial over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Root approximation and Krasner's inequality, proved in Lemma 1.0b of <a href="frobenius-elements-and-determination-by-traces.html">Frobenius elements and determination by traces</a>, put a root in <span class="math" data-tex="\(F\)">\(F\)</span> that generates <span class="math" data-tex="\(F\)">\(F\)</span> over <span class="math" data-tex="\(\mathbb Q_p\)">\(\mathbb Q_p\)</span>. Its global field <span class="math" data-tex="\(K_0\subset F\)">\(K_0\subset F\)</span> has completion <span class="math" data-tex="\(F\)">\(F\)</span>. In equal characteristic, Hensel lifts the roots of <span class="math" data-tex="\(X^{q}-X\)">\(X^{q}-X\)</span> to a coefficient field <span class="math" data-tex="\(k_F\)">\(k_F\)</span>; successively removing the residue of each uniformizer coefficient proves <span class="math" data-tex="\(F=k_F((\pi))\)">\(F=k_F((\pi))\)</span>. Take <span class="math" data-tex="\(K_0=k_F(t)\)">\(K_0=k_F(t)\)</span>, embedded by <span class="math" data-tex="\(t\mapsto\pi\)">\(t\mapsto\pi\)</span>.</p>
+<p>Approximate the primitive separable polynomial of <span class="math" data-tex="\(L/F\)">\(L/F\)</span> by a polynomial over the dense field <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, sufficiently closely that every root is a perturbation in <span class="math" data-tex="\(L\)">\(L\)</span> of one of the original distinct roots, and each generates <span class="math" data-tex="\(L\)">\(L\)</span>. The Newton and Krasner proofs just cited use only separability, a complete discrete valuation, and the unique valuation on a finite extension, so the identical inequalities apply in equal characteristic too. The normal closure <span class="math" data-tex="\(M/K_0\)">\(M/K_0\)</span> has completion exactly <span class="math" data-tex="\(L\)">\(L\)</span>: all of its polynomial roots lie in <span class="math" data-tex="\(L\)">\(L\)</span>, and any one generates <span class="math" data-tex="\(L/F\)">\(L/F\)</span>. Let <span class="math" data-tex="\(D\)">\(D\)</span> be its decomposition group and replace <span class="math" data-tex="\(K_0\)">\(K_0\)</span> by <span class="math" data-tex="\(K=M^D\)">\(K=M^D\)</span>. The finite completion/decomposition proof in Lemma 1.0a of that earlier lesson gives <span class="math" data-tex="\(K_v=F\)">\(K_v=F\)</span>, <span class="math" data-tex="\(\operatorname{Gal}(M/K)=D=\operatorname{Gal}(L/F)\)">\(\operatorname{Gal}(M/K)=D=\operatorname{Gal}(L/F)\)</span>, and a unique place of <span class="math" data-tex="\(M\)">\(M\)</span> above <span class="math" data-tex="\(v\)">\(v\)</span>. This construction realizes all the intermediate fields and their local subgroup inclusions, not just an abstract copy of the group.</p>
+<p>Second, given a finite set <span class="math" data-tex="\(S\)">\(S\)</span> of finite places disjoint from <span class="math" data-tex="\(v\)">\(v\)</span>, there is a unitary Hecke character <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> unramified at <span class="math" data-tex="\(v\)">\(v\)</span> and outside <span class="math" data-tex="\(S\)">\(S\)</span>, with arbitrarily large conductors at every place of <span class="math" data-tex="\(S\)">\(S\)</span>. We give the character extension detail, since it is needed here. Assign sufficiently ramified characters on the unit factors at <span class="math" data-tex="\(S\)">\(S\)</span>, and the trivial character on all other finite unit factors. In a number field let <span class="math" data-tex="\(U_f=\prod\mathcal O_w^\times\)">\(U_f=\prod\mathcal O_w^\times\)</span>. Corollary 3.4 of NT-ADL-03 actually proves <span class="math" data-tex="\(\mathcal O_K^\times=\mu_K\times\mathbb Z^{r_1+r_2-1}\)">\(\mathcal O_K^\times=\mu_K\times\mathbb Z^{r_1+r_2-1}\)</span> and that its logarithms are a full lattice in the sum-zero hyperplane. Choose an angular character at infinity whose restriction to <span class="math" data-tex="\(\mu_K\)">\(\mu_K\)</span> is the inverse of the assigned finite-unit character: a cyclic group of roots embeds in one complex circle, or is the real sign group. Choose real arguments for its required values on a free unit basis, and solve the linear equations on their independent logarithms. Multiplying the angular character by <span class="math" data-tex="\(\exp(i\ell(\log|x_w|_w))\)">\(\exp(i\ell(\log|x_w|_w))\)</span> for this real linear functional <span class="math" data-tex="\(\ell\)">\(\ell\)</span> makes the product character trivial on every global unit. It descends to
+<span class="math" data-tex="\((K_\infty^\times U_f)/\mathcal O_K^\times\)">\((K_\infty^\times U_f)/\mathcal O_K^\times\)</span>, an open subgroup of finite index in <span class="math" data-tex="\(C_K\)">\(C_K\)</span>, since the same Corollary 3.4 proves class-group finiteness. Extend across that finite quotient by choosing roots, one generator at a time. The extension is continuous because its original subgroup is open, and it is unitary because the roots can be chosen on the unit circle.</p>
+<p>In a function field, choose the high-conductor unit characters trivial on the constant roots of unity; the prime-to-<span class="math" data-tex="\(p\)">\(p\)</span> residue factor splits from principal units by Hensel, so this imposes no restriction on large conductors. The image of <span class="math" data-tex="\(U_f\)">\(U_f\)</span> is open in <span class="math" data-tex="\(C_K\)">\(C_K\)</span>, and its kernel is exactly the finite constant group: an element having neither zeros nor poles is a constant, by the compact-support/unit argument in NT-CFT-14 §2. Its character extends algebraically to <span class="math" data-tex="\(C_K\)">\(C_K\)</span>, because adjoining any new cyclic generator only requires a root in <span class="math" data-tex="\(S^1\)">\(S^1\)</span>; a maximal extension therefore has the whole group as domain. This extension is again continuous because the original subgroup is open. Thus the required unitary character exists in both characteristics.</p>
+<p>The analytic inputs are rank-one global functional equations, already actually proved in NT-ADL-09, Theorem 9.2, and NT-ADL-10, Theorem 10.1 and equations (3), (5)–(8), for number fields; and NT-CFT-21 §6, equations (27)–(34), for function fields. The latter writes a finite-order character, but its proof extends verbatim to unitary characters: the convergence bound uses only absolute value one, the compact-fibre average uses only character orthogonality, and the correction is a geometric series in its value on a generator of the norm image. These are all the steps (28)–(32), so the same normalized equation follows for our unitary extension. For every intermediate global field, a finite Galois character becomes a Hecke character by composing it with <span class="math" data-tex="\(c\mapsto\operatorname{rec}_{\mathrm{arith}}(c)^{-1}\)">\(c\mapsto\operatorname{rec}_{\mathrm{arith}}(c)^{-1}\)</span>, where the arithmetic map is proved in NT-CFT-16, Theorem 16.4, equation (13). Its actually written §6 proves comparison at every completion in both characteristics, so the local characters are precisely our geometric-reciprocity characters. The preceding Weil lesson, Proposition 6.1, also proves the number-field character correspondence; its number-field hypothesis is not needed for the finite-character argument just given. No higher-dimensional local epsilon constant occurs in these rank-one analytic inputs.</p>
+<p>Now let <span class="math" data-tex="\(r\in\ker b\)">\(r\in\ker b\)</span>. Globalize <span class="math" data-tex="\(L/F\)">\(L/F\)</span> as above, identify its finite group with <span class="math" data-tex="\(\operatorname{Gal}(M/K)\)">\(\operatorname{Gal}(M/K)\)</span>, and let <span class="math" data-tex="\(S\)">\(S\)</span> be the finite ramified places other than <span class="math" data-tex="\(v\)">\(v\)</span>. Choose the global <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> so ramified at each <span class="math" data-tex="\(w\in S\)">\(w\in S\)</span> that §3B applies to <span class="math" data-tex="\(M_w/K_w\)">\(M_w/K_w\)</span>. Take a nontrivial global additive character trivial on <span class="math" data-tex="\(K\)">\(K\)</span>, and its trace characters on the intermediate fields; use their local self-dual measures. Multiply the rank-one global functional equations for all the signed pairs in <span class="math" data-tex="\(r\)">\(r\)</span>, twisted by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Their L-products are identical to those of the zero representation: this follows place by place from Theorem 1.1, including the gamma identity at infinity, and from <span class="math" data-tex="\(b(r)\otimes\alpha=0\)">\(b(r)\otimes\alpha=0\)</span>. Their dual products are also one, by the same coset pairing and induction identity. Comparing the two nonzero meromorphic products therefore gives
+<span class="math math-display" data-tex="\[
+\prod_w C_{\alpha_w}(r_w)=1.
+\tag{10I}
+\]">\[
+\prod_w C_{\alpha_w}(r_w)=1.
+\tag{10I}
+\]</span>
+Here <span class="math" data-tex="\(r_w\)">\(r_w\)</span> is the restriction of the formal relation to the local decomposition group. In detail, the cosets of each <span class="math" data-tex="\(H\)">\(H\)</span> break into orbits under that group; choosing orbit representatives identifies each orbit with the induction from its stabilizer and restricts the two character lines. Thus <span class="math" data-tex="\(b(r_w)=\operatorname{Res}_{D_w} b(r)=0\)">\(b(r_w)=\operatorname{Res}_{D_w} b(r)=0\)</span>. This is the required local decomposition of (10I), including places at which an intermediate field splits.</p>
+<p>Every factor of (10I) other than the one at <span class="math" data-tex="\(v\)">\(v\)</span> is one. At <span class="math" data-tex="\(S\)">\(S\)</span>, §3B supplies a theory and the relation criterion applies. At an unramified finite place all subextensions and finite characters are unramified. Normalize <span class="math" data-tex="\(n=0\)">\(n=0\)</span> and unit volume one: their constants are one by (9), so the criterion holds; §3A transports it to the actual additive character and any measure. The archimedean criterion holds by the explicit theory in §3D below. Consequently <span class="math" data-tex="\(C_{\alpha_v}(r)=1\)">\(C_{\alpha_v}(r)=1\)</span>. The character <span class="math" data-tex="\(\alpha_v\)">\(\alpha_v\)</span> is unramified; the invariance in §3A removes it and allows any prescribed local additive character. This proves (10D) for <span class="math" data-tex="\(\alpha=1\)">\(\alpha=1\)</span>, for every <span class="math" data-tex="\(r\in\ker b\)">\(r\in\ker b\)</span>. Section 3A now constructs the finite-image local theory and proves its independence from every Brauer relation.</p>
+<h3 id="3d-arbitrary-smooth-representations-and-infinity">3D. Arbitrary smooth representations and infinity</h3>
+<p>The same criterion supplies a theory for every unramified <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, by §3A. For a finite-image <span class="math" data-tex="\(V_0\)">\(V_0\)</span> and unramified <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, define its value on <span class="math" data-tex="\(V_0\otimes\eta\)">\(V_0\otimes\eta\)</span> using that <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-theory. This definition is independent of the finite quotient: compare the two constructions in a common finite quotient, where the relation criterion and (10) imply uniqueness. It is also independent of the finite-image/unramified presentation. If an irreducible has two such presentations, choose a power <span class="math" data-tex="\(\Phi^N\)">\(\Phi^N\)</span> centralizing both finite images. Its scalar values in those images are roots of unity; hence the ratio of the two unramified characters has root-of-unity Frobenius value, so is a finite-order unramified character. Absorb that finite character in a common finite quotient. The two <span class="math" data-tex="\(\eta\)">\(\eta\)</span>-theories agree on its rank-one generators, and the criterion gives equality on the representation. Theorem 2.2 of the preceding Weil lesson supplies such a presentation for every irreducible. Define the value of a general smooth representation by the product over its composition factors; Jordan–Hölder is proved in Lemma 0A.2 of the first lesson.</p>
+<p>Here is the induction check across different unramified types. Every unramified <span class="math" data-tex="\(\eta_E\)">\(\eta_E\)</span> extends to an unramified <span class="math" data-tex="\(\eta_F\)">\(\eta_F\)</span>, by choosing an <span class="math" data-tex="\(f(E/F)\)">\(f(E/F)\)</span>-th root of its Frobenius value. For a finite-image <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, the <span class="math" data-tex="\(\eta_F\)">\(\eta_F\)</span>-theory gives full induction with the correction
+<span class="math math-display" data-tex="\[
+\lambda_{\eta_F}(E/F)=
+\frac{\epsilon_F((\operatorname{Ind}1)\otimes\eta_F)}
+{\epsilon_E(\eta_F|_{W_E})}.
+\tag{10J}
+\]">\[
+\lambda_{\eta_F}(E/F)=
+\frac{\epsilon_F((\operatorname{Ind}1)\otimes\eta_F)}
+{\epsilon_E(\eta_F|_{W_E})}.
+\tag{10J}
+\]</span>
+The quotient is independent of <span class="math" data-tex="\(\eta_F\)">\(\eta_F\)</span>. To check this without anticipating Theorem 4.1 here, character formula (7), (10), and the preceding conductor induction theorem give the unramified-twist exponent for every finite-image representation by its rank-zero induced-character expression. The exponent in (10J) is zero: with <span class="math" data-tex="\(N=[E:F]=ef\)">\(N=[E:F]=ef\)</span>,
+<span class="math math-display" data-tex="\[
+a_F(\operatorname{Ind}1)+Nn_F-f n_E
+=fd+ef n_F-f(en_F+d)=0.
+\]">\[
+a_F(\operatorname{Ind}1)+Nn_F-f n_E
+=fd+ef n_F-f(en_F+d)=0.
+\]</span>
+The same formula covers all unramified twists, since their values on a uniformizer can be any nonzero complex number. Thus full induction for a constituent has correction <span class="math" data-tex="\(\lambda(E/F)^{\dim U_0}\)">\(\lambda(E/F)^{\dim U_0}\)</span>, independent of its type. Exactness of finite-index induction and multiplication over composition factors prove the same identity for every <span class="math" data-tex="\(U\)">\(U\)</span>. In virtual dimension zero these corrections cancel. This proves property 3 in its full original smooth generality; it does not restrict it to finite image or Frobenius semisimplicity.</p>
+<p>Finally, at infinity take the positive trace characters and self-dual measures of §2. Set the character constants equal to their proved Tate phases, and on an irreducible real induction set
+<span class="math math-display" data-tex="\[
+\epsilon_{\mathbb R}(\operatorname{Ind}\omega_{a,n})=i^{|n|+1}\quad(n\ne0).
+\tag{10K}
+\]">\[
+\epsilon_{\mathbb R}(\operatorname{Ind}\omega_{a,n})=i^{|n|+1}\quad(n\ne0).
+\tag{10K}
+\]</span>
+For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the induction splits into the two real characters of opposite parity, whose product is <span class="math" data-tex="\(i\)">\(i\)</span>, the same formula. The classification in the preceding lesson identifies the inducing characters only by <span class="math" data-tex="\(n\leftrightarrow-n\)">\(n\leftrightarrow-n\)</span>, so (10K) is well defined. The ratio of a real induced character constant to its complex constant is always <span class="math" data-tex="\(i\)">\(i\)</span>; hence it cancels for any virtual dimension-zero induction. Products over composition factors prove multiplicativity and every archimedean induction relation. For arbitrary measures multiply by their scalar to the power of dimension. For an additive change <span class="math" data-tex="\(\psi_a\)">\(\psi_a\)</span>, multiply by <span class="math" data-tex="\(\det V(a)|a|^{-\dim V}\)">\(\det V(a)|a|^{-\dim V}\)</span>. The character substitution in §2 and the rank-zero determinant/transfer identity show that these changes preserve induction; all nontrivial real or complex unitary additive characters are such changes of the chosen trace characters. This proves all four properties at infinity. Together with §§3A–3C and the smooth extension above, it completes the proof of Theorem 3.0. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.1 (the smooth version).</strong> The Grothendieck group of smooth representations of <span class="math" data-tex="\(W_F\)">\(W_F\)</span> is generated by the trivial character and induced virtual differences of two one-dimensional quasi-characters of finite-index Weil subgroups.</p>
+<p><strong>Proof.</strong> It is enough to consider an irreducible <span class="math" data-tex="\(V\)">\(V\)</span>. Write <span class="math" data-tex="\(V=V_0\otimes\eta\)">\(V=V_0\otimes\eta\)</span>, where <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is unramified and <span class="math" data-tex="\(V_0\)">\(V_0\)</span> has finite image, using Theorem 2.2 of <em>Representations of Weil groups</em>. Apply (10) to <span class="math" data-tex="\([V_0]-d[1]\)">\([V_0]-d[1]\)</span>, <span class="math" data-tex="\(d=\dim V\)">\(d=\dim V\)</span>, in a finite Galois quotient through which <span class="math" data-tex="\(V_0\)">\(V_0\)</span> factors. The subgroups correspond to finite extensions <span class="math" data-tex="\(E_j/F\)">\(E_j/F\)</span>, and their inverse images are <span class="math" data-tex="\(W_{E_j}\)">\(W_{E_j}\)</span>. Twisting and commuting the twist with induction gives
+<span class="math math-display" data-tex="\[
+[V]-d[\eta]=\sum_j m_j
+\operatorname{Ind}_{W_{E_j}}^{W_F}
+\bigl([\chi_j\eta|_{W_{E_j}}]-[\eta|_{W_{E_j}}]\bigr).
+\tag{11}
+\]">\[
+[V]-d[\eta]=\sum_j m_j
+\operatorname{Ind}_{W_{E_j}}^{W_F}
+\bigl([\chi_j\eta|_{W_{E_j}}]-[\eta|_{W_{E_j}}]\bigr).
+\tag{11}
+\]</span>
+Each difference on the right has dimension zero. The remaining <span class="math" data-tex="\(d[\eta]\)">\(d[\eta]\)</span> is a one-dimensional term, or <span class="math" data-tex="\(d[1]+d([\eta]-[1])\)">\(d[1]+d([\eta]-[1])\)</span> if a uniform list of generators is wanted. A composition series and additivity handle arbitrary <span class="math" data-tex="\(V\)">\(V\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (uniqueness).</strong> At most one family of local constants satisfies the four properties above.</p>
+<p><strong>Proof.</strong> Suppose two families exist. Their ratio <span class="math" data-tex="\(R_F(V,\psi,dx)\)">\(R_F(V,\psi,dx)\)</span> is multiplicative on virtual representations, equals one on one-dimensional representations, and is independent of measure in dimension zero. Property 3 identifies its value on an induced rank-zero difference with its value on that difference over the extension. Both of its one-dimensional terms have ratio one, so the induced difference does too. Lemma 3.1 now makes the ratio one on every smooth nonarchimedean Weil representation. Over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> all irreducibles are characters; over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, the classification gives characters and inductions from <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>. For an induced character, subtract an induced trivial character to apply degree-zero induction. The latter is the sum of the trivial and sign real characters, already known. This proves uniqueness at infinity as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof explains the correction needed after an unramified twist: the terms in (11) are differences of quasi-characters, not necessarily <span class="math" data-tex="\(\chi_j-1\)">\(\chi_j-1\)</span> with finite-order <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span>.</p>
+<h2 id="4-exponents-measures-and-additive-characters">4. Exponents, measures and additive characters</h2>
+<p>For nonarchimedean <span class="math" data-tex="\(F\)">\(F\)</span>, define <span class="math" data-tex="\(\epsilon_F(s,V,\psi,dx)=\epsilon_F(V\otimes\omega_s,\psi,dx)\)">\(\epsilon_F(s,V,\psi,dx)=\epsilon_F(V\otimes\omega_s,\psi,dx)\)</span>.</p>
+<p><strong>Theorem 4.1 (the exponent).</strong> With <span class="math" data-tex="\(d=\dim V\)">\(d=\dim V\)</span>,
+<span class="math math-display" data-tex="\[
+\epsilon_F(s,V,\psi,dx)
+=\epsilon_F(0,V,\psi,dx)
+q_F^{-(a_F(V)+d n_F(\psi))s}.
+\tag{12}
+\]">\[
+\epsilon_F(s,V,\psi,dx)
+=\epsilon_F(0,V,\psi,dx)
+q_F^{-(a_F(V)+d n_F(\psi))s}.
+\tag{12}
+\]</span></p>
+<p><strong>Proof.</strong> Form the quotient of the left side by the right side. It is multiplicative in <span class="math" data-tex="\(V\)">\(V\)</span>, since conductors and dimensions add, and it equals one on characters by (7). For a virtual <span class="math" data-tex="\(U\)">\(U\)</span> of dimension zero over <span class="math" data-tex="\(E\)">\(E\)</span>, degree-zero induction applies to both numerator constants. Since <span class="math" data-tex="\(\omega_{F,s}|_{W_E}=\omega_{E,s}\)">\(\omega_{F,s}|_{W_E}=\omega_{E,s}\)</span>, it identifies their ratio with the corresponding ratio over <span class="math" data-tex="\(E\)">\(E\)</span>. The induction conductor formula of the preceding lesson gives
+<span class="math" data-tex="\(a_F(\operatorname{Ind}U)=f(E/F)a_E(U)\)">\(a_F(\operatorname{Ind}U)=f(E/F)a_E(U)\)</span>; the discriminant term vanishes in virtual dimension zero. Since <span class="math" data-tex="\(q_E=q_F^f\)">\(q_E=q_F^f\)</span>, the exponential terms agree too. Thus the quotient is one on all induced differences in Lemma 3.1, and on the remaining character term. This proves (12). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The measure-scaling property is already one of the axioms. Additive-character scaling is
+<span class="math math-display" data-tex="\[
+\epsilon_F(V,\psi_a,dx)=
+\det V(\operatorname{Art}_F(a))\,|a|_F^{-d}
+\epsilon_F(V,\psi,dx).
+\tag{13}
+\]">\[
+\epsilon_F(V,\psi_a,dx)=
+\det V(\operatorname{Art}_F(a))\,|a|_F^{-d}
+\epsilon_F(V,\psi,dx).
+\tag{13}
+\]</span>
+Here and below <span class="math" data-tex="\(\det V(a)\)">\(\det V(a)\)</span> abbreviates evaluation after <span class="math" data-tex="\(\operatorname{Art}_F\)">\(\operatorname{Art}_F\)</span>.</p>
+<p><strong>Proof of (13).</strong> Take the ratio of its two sides. It equals one for characters by (7) and is multiplicative. For a dimension-zero representation induced from <span class="math" data-tex="\(E\)">\(E\)</span>, property 3 transports <span class="math" data-tex="\(\psi_a\)">\(\psi_a\)</span> to <span class="math" data-tex="\((\psi\circ\operatorname{Tr})_a\)">\((\psi\circ\operatorname{Tr})_a\)</span>. The determinant formula for induction gives <span class="math" data-tex="\(\det(\operatorname{Ind}U)(a)=\det U(a)\)">\(\det(\operatorname{Ind}U)(a)=\det U(a)\)</span>, since the permutation determinant is raised to virtual dimension zero and transfer corresponds to <span class="math" data-tex="\(F^\times\subset E^\times\)">\(F^\times\subset E^\times\)</span>. The absolute-value powers also vanish in dimension zero. The ratio is therefore compatible with degree-zero induction, and Lemma 3.1 makes it one for every representation. The same argument with the real classification applies at infinity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Self-dual measures satisfy <span class="math" data-tex="\(dx_{\psi_a}=|a|_F^{1/2}dx_\psi\)">\(dx_{\psi_a}=|a|_F^{1/2}dx_\psi\)</span>, by a change of variable in Fourier inversion. Combining this with (13) gives the familiar normalized version
+<span class="math math-display" data-tex="\[
+\epsilon_F(s,V,\psi_a,dx_{\psi_a})
+=\det V(a)|a|_F^{(s-1/2)d}
+\epsilon_F(s,V,\psi,dx_\psi).
+\tag{14}
+\]">\[
+\epsilon_F(s,V,\psi_a,dx_{\psi_a})
+=\det V(a)|a|_F^{(s-1/2)d}
+\epsilon_F(s,V,\psi,dx_\psi).
+\tag{14}
+\]</span>
+Equations (13) and (14) use different measure conventions. In particular the absolute-value factor in (13) must not be copied into a formula that silently changes to a self-dual measure.</p>
+<h2 id="5-duality-and-unitary-normalization">5. Duality and unitary normalization</h2>
+<p><strong>Theorem 5.1.</strong> With <span class="math" data-tex="\(dx&#x27;\)">\(dx&#x27;\)</span> dual to <span class="math" data-tex="\(dx\)">\(dx\)</span>,
+<span class="math math-display" data-tex="\[
+\epsilon_F(V,\psi,dx)
+\epsilon_F(V^\vee\otimes\omega_1,\psi_{-1},dx&#x27;)=1.
+\tag{15}
+\]">\[
+\epsilon_F(V,\psi,dx)
+\epsilon_F(V^\vee\otimes\omega_1,\psi_{-1},dx&#x27;)=1.
+\tag{15}
+\]</span>
+Equivalently, using the same additive character in both factors,
+<span class="math math-display" data-tex="\[
+\epsilon_F(V,\psi,dx)
+\epsilon_F(V^\vee\otimes\omega_1,\psi,dx&#x27;)=\det V(-1).
+\tag{16}
+\]">\[
+\epsilon_F(V,\psi,dx)
+\epsilon_F(V^\vee\otimes\omega_1,\psi,dx&#x27;)=\det V(-1).
+\tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> The product in (15) is multiplicative in <span class="math" data-tex="\(V\)">\(V\)</span> and equals one on characters by Fourier inversion, (8). Duality commutes with finite-index induction, as follows either from the perfect pairing of the coset tensor spaces or from the function model. The norm character restricts as <span class="math" data-tex="\(\omega_{F,1}|_{W_E}=\omega_{E,1}\)">\(\omega_{F,1}|_{W_E}=\omega_{E,1}\)</span>. Thus on a dimension-zero induced difference the two epsilon constants are those of the difference and its dual over <span class="math" data-tex="\(E\)">\(E\)</span>, with additive characters <span class="math" data-tex="\(\psi\circ\operatorname{Tr}\)">\(\psi\circ\operatorname{Tr}\)</span> and its negative. Measures can be omitted in that virtual dimension, so their choices do not interfere with the induction argument. Lemma 3.1 proves (15) nonarchimedeanly. The real induced-character subtraction used in Theorem 3.2 gives the archimedean case.</p>
+<p>Apply (13) with <span class="math" data-tex="\(a=-1\)">\(a=-1\)</span> to the second constant. Its scaling factor is
+<span class="math" data-tex="\(\det(V^\vee\otimes\omega_1)(-1)=\det V(-1)^{-1}\)">\(\det(V^\vee\otimes\omega_1)(-1)=\det V(-1)^{-1}\)</span>, since <span class="math" data-tex="\(|-1|=1\)">\(|-1|=1\)</span>. Rearranging (15) gives (16). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a unitary <span class="math" data-tex="\(V\)">\(V\)</span> put
+<span class="math math-display" data-tex="\[
+W_F(V,\psi)=\epsilon_F(1/2,V,\psi,dx_\psi).
+\tag{17}
+\]">\[
+W_F(V,\psi)=\epsilon_F(1/2,V,\psi,dx_\psi).
+\tag{17}
+\]</span>
+It has absolute value one. Here is the conjugation input that makes the assertion rigorous. Character constants satisfy
+<span class="math" data-tex="\(\overline{\epsilon(\chi,\psi,dx)}=\epsilon(\bar\chi,\psi_{-1},dx)\)">\(\overline{\epsilon(\chi,\psi,dx)}=\epsilon(\bar\chi,\psi_{-1},dx)\)</span>, as follows by conjugating the character integrals; the statement for all representations follows from the uniqueness argument and the same four axioms. A unitary representation has <span class="math" data-tex="\(\bar V\simeq V^\vee\)">\(\bar V\simeq V^\vee\)</span>. Apply (15) to <span class="math" data-tex="\(V\otimes\omega_{1/2}\)">\(V\otimes\omega_{1/2}\)</span> with a self-dual measure. Its second representation is <span class="math" data-tex="\(V^\vee\otimes\omega_{1/2}\)">\(V^\vee\otimes\omega_{1/2}\)</span>, and its second constant is the complex conjugate of the first. Hence their product is <span class="math" data-tex="\(|W_F(V,\psi)|^2=1\)">\(|W_F(V,\psi)|^2=1\)</span>. Self-duality of the representation alone, without this conjugation and measure information, would not justify the absolute-value assertion.</p>
+<h2 id="6-the-induction-constant">6. The induction constant</h2>
+<p>For fixed measures <span class="math" data-tex="\(dx_F,dx_E\)">\(dx_F,dx_E\)</span>, set <span class="math" data-tex="\(\psi_E=\psi\circ\operatorname{Tr}_{E/F}\)">\(\psi_E=\psi\circ\operatorname{Tr}_{E/F}\)</span> and
+<span class="math math-display" data-tex="\[
+\lambda(E/F,\psi;dx_F,dx_E)=
+\frac{\epsilon_F(\operatorname{Ind}1,\psi,dx_F)}
+{\epsilon_E(1,\psi_E,dx_E)}.
+\tag{18}
+\]">\[
+\lambda(E/F,\psi;dx_F,dx_E)=
+\frac{\epsilon_F(\operatorname{Ind}1,\psi,dx_F)}
+{\epsilon_E(1,\psi_E,dx_E)}.
+\tag{18}
+\]</span>
+Subtracting <span class="math" data-tex="\(d[1]\)">\(d[1]\)</span> from <span class="math" data-tex="\(V\)">\(V\)</span> in degree-zero induction gives
+<span class="math math-display" data-tex="\[
+\epsilon_F(\operatorname{Ind}V,\psi,dx_F)
+=\lambda(E/F,\psi;dx_F,dx_E)^d
+\epsilon_E(V,\psi_E,dx_E).
+\tag{19}
+\]">\[
+\epsilon_F(\operatorname{Ind}V,\psi,dx_F)
+=\lambda(E/F,\psi;dx_F,dx_E)^d
+\epsilon_E(V,\psi_E,dx_E).
+\tag{19}
+\]</span>
+This follows by multiplying the equality for <span class="math" data-tex="\(V-d[1]\)">\(V-d[1]\)</span> by the <span class="math" data-tex="\(d\)">\(d\)</span> trivial-character factors on both sides. When both measures are self-dual we abbreviate the constant to <span class="math" data-tex="\(\lambda(E/F,\psi)\)">\(\lambda(E/F,\psi)\)</span>.</p>
+<p><strong>Example 6.1 (unramified quadratic extension).</strong> If <span class="math" data-tex="\(E/F\)">\(E/F\)</span> is unramified quadratic, <span class="math" data-tex="\(\operatorname{Ind}1=1\oplus\omega_{E/F}\)">\(\operatorname{Ind}1=1\oplus\omega_{E/F}\)</span>, where <span class="math" data-tex="\(\omega(\varpi_F)=-1\)">\(\omega(\varpi_F)=-1\)</span>. The different is trivial, so <span class="math" data-tex="\(n_E(\psi_E)=n_F(\psi)=n\)">\(n_E(\psi_E)=n_F(\psi)=n\)</span>. For a self-dual measure, <span class="math" data-tex="\(\operatorname{vol}(\mathcal O_F)=q_F^{-n/2}\)">\(\operatorname{vol}(\mathcal O_F)=q_F^{-n/2}\)</span>: the annihilator of <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span> is <span class="math" data-tex="\(\mathfrak p_F^{-n}\)">\(\mathfrak p_F^{-n}\)</span>, and the product of their volumes is one. Formula (9) then gives
+<span class="math math-display" data-tex="\[
+\epsilon_F(1)=q_F^{n/2},\qquad
+\epsilon_F(\omega)=(-1)^nq_F^{n/2},\qquad
+\epsilon_E(1)=q_E^{n/2}=q_F^n.
+\]">\[
+\epsilon_F(1)=q_F^{n/2},\qquad
+\epsilon_F(\omega)=(-1)^nq_F^{n/2},\qquad
+\epsilon_E(1)=q_E^{n/2}=q_F^n.
+\]</span>
+Their quotient is
+<span class="math math-display" data-tex="\[
+\lambda(E/F,\psi)=(-1)^n.
+\tag{20}
+\]">\[
+\lambda(E/F,\psi)=(-1)^n.
+\tag{20}
+\]</span>
+This computation keeps the measure and additive-character exponents until they cancel.</p>
+<h2 id="7-sharp-twisting-and-orthogonal-root-numbers">7. Sharp twisting and orthogonal root numbers</h2>
+<p>These results require additional ramification and real-representation arguments; they do not follow from the four axioms alone. We prove the sharp twisting identity below, with its endpoint ambiguity made explicit, and then prove the orthogonal root formula by real induction and a two-dimensional Fourier calculation.</p>
+<p>For a virtual Weil representation <span class="math" data-tex="\(A\)">\(A\)</span>, its constituents mean the irreducibles with nonzero signed multiplicity. Let <span class="math" data-tex="\(\alpha(A)\)">\(\alpha(A)\)</span> and <span class="math" data-tex="\(\beta(A)\)">\(\beta(A)\)</span> be respectively their smallest and largest upper breaks, assigning break zero to an unramified or tame constituent. For <span class="math" data-tex="\(t\ge0\)">\(t\ge0\)</span>, write <span class="math" data-tex="\(U_F(t)=\{u\in\mathcal O_F^\times:v_F(u-1)&gt;t\}\)">\(U_F(t)=\{u\in\mathcal O_F^\times:v_F(u-1)&gt;t\}\)</span>.</p>
+<p><strong>Theorem 7.1 (Deligne–Henniart twisting identity).</strong> Suppose <span class="math" data-tex="\(B\)">\(B\)</span> has no tame constituent, so <span class="math" data-tex="\(\alpha(B)&gt;0\)">\(\alpha(B)&gt;0\)</span>. There is an element <span class="math" data-tex="\(\gamma(B,\psi)\in F^\times\)">\(\gamma(B,\psi)\in F^\times\)</span> such that, for every virtual <span class="math" data-tex="\(A\)">\(A\)</span> of dimension zero with <span class="math" data-tex="\(\beta(A)&lt;\alpha(B)/2\)">\(\beta(A)&lt;\alpha(B)/2\)</span>,
+<span class="math math-display" data-tex="\[
+\epsilon_F(A\otimes B,\psi)=\det A(\gamma(B,\psi)).
+\tag{21}
+\]">\[
+\epsilon_F(A\otimes B,\psi)=\det A(\gamma(B,\psi)).
+\tag{21}
+\]</span>
+It has valuation <span class="math" data-tex="\(a_F(B)+\dim(B)n_F(\psi)\)">\(a_F(B)+\dim(B)n_F(\psi)\)</span>. Put <span class="math" data-tex="\(h=\alpha(B)/2\)">\(h=\alpha(B)/2\)</span> and <span class="math" data-tex="\(T_F(h)=1+\mathfrak p_F^{\lceil h\rceil}\)">\(T_F(h)=1+\mathfrak p_F^{\lceil h\rceil}\)</span>. The identities characterize its class modulo <span class="math" data-tex="\(T_F(h)\)">\(T_F(h)\)</span>; any lift of this class to <span class="math" data-tex="\(F^\times/U_F(h)\)">\(F^\times/U_F(h)\)</span> gives the originally displayed identity. When <span class="math" data-tex="\(h\)">\(h\)</span> is not an integer these two unit groups agree. When <span class="math" data-tex="\(h\)">\(h\)</span> is an integer, the strict break inequality determines only the coarser quotient. The freely accessible Deligne–Henniart text, Theorem 4.6 and Lemma 4.7, supplies the sharp identity; its printed uniqueness wording must be read with this endpoint distinction.</p>
+<p><strong>Lemma 7.2 (Herbrand slopes and bounded induction).</strong> For a finite separable <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, let <span class="math" data-tex="\(\Psi_{E/F}\)">\(\Psi_{E/F}\)</span> be its upper-parameter change. It is convex, starts at zero, and has slope <span class="math" data-tex="\(e(E/F)\)">\(e(E/F)\)</span> beyond the last break <span class="math" data-tex="\(b_{E/F}\)">\(b_{E/F}\)</span> of its permutation representation. It satisfies
+<span class="math math-display" data-tex="\[
+G_E^{\Psi_{E/F}(u)}=G_F^u\cap G_E,
+\qquad
+\Psi_{E/F}(u)=e(u+1)-d_{E/F}-1\quad(u&gt;b_{E/F}).
+\tag{21A}
+\]">\[
+G_E^{\Psi_{E/F}(u)}=G_F^u\cap G_E,
+\qquad
+\Psi_{E/F}(u)=e(u+1)-d_{E/F}-1\quad(u&gt;b_{E/F}).
+\tag{21A}
+\]</span>
+If a virtual dimension-zero <span class="math" data-tex="\(A\)">\(A\)</span> has largest break <span class="math" data-tex="\(b&lt;h\)">\(b&lt;h\)</span>, it has a decomposition into <span class="math" data-tex="\(\operatorname{Ind}_{W_E}^{W_F}(\eta-1)\)">\(\operatorname{Ind}_{W_E}^{W_F}(\eta-1)\)</span> with <span class="math" data-tex="\(b_{E/F}&lt;h\)">\(b_{E/F}&lt;h\)</span> and <span class="math" data-tex="\(\beta(\eta)&lt;\Psi_{E/F}(h)\)">\(\beta(\eta)&lt;\Psi_{E/F}(h)\)</span>. If an irreducible <span class="math" data-tex="\(B\)">\(B\)</span> has break <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, it has an integer decomposition into <span class="math" data-tex="\(\operatorname{Ind}_{W_E}^{W_F}\chi\)">\(\operatorname{Ind}_{W_E}^{W_F}\chi\)</span>, where
+<span class="math math-display" data-tex="\[
+b_{E/F}&lt;t,\qquad \beta(\chi)=\Psi_{E/F}(t).
+\tag{21B}
+\]">\[
+b_{E/F}&lt;t,\qquad \beta(\chi)=\Psi_{E/F}(t).
+\tag{21B}
+\]</span></p>
+<p><strong>Proof.</strong> In a finite normal closure <span class="math" data-tex="\(N/F\)">\(N/F\)</span>, put <span class="math" data-tex="\(G=\operatorname{Gal}(N/F)\)">\(G=\operatorname{Gal}(N/F)\)</span>, <span class="math" data-tex="\(H=\operatorname{Gal}(N/E)\)">\(H=\operatorname{Gal}(N/E)\)</span>, and
+<span class="math" data-tex="\(\Psi_{E/F}=\varphi_{N/E}\circ\psi_{N/F}\)">\(\Psi_{E/F}=\varphi_{N/E}\circ\psi_{N/F}\)</span>. The subgroup identity <span class="math" data-tex="\(H_j=H\cap G_j\)">\(H_j=H\cap G_j\)</span> and the upper quotient theorem in the preceding lesson, Lemma 1.6, prove independence of the normal closure and the first equality in (21A). Its slope is
+<span class="math" data-tex="\(e/[G^u:H\cap G^u]\)">\(e/[G^u:H\cap G^u]\)</span>.
+The denominator decreases as <span class="math" data-tex="\(u\)">\(u\)</span> increases: since <span class="math" data-tex="\(G^u\)">\(G^u\)</span> is normal, it is the index of <span class="math" data-tex="\(H\)">\(H\)</span> in <span class="math" data-tex="\(HG^u\)">\(HG^u\)</span>. Thus the slopes increase and do not exceed <span class="math" data-tex="\(e\)">\(e\)</span>. They equal <span class="math" data-tex="\(e\)">\(e\)</span> precisely after the permutation representation has become trivial on the upper group. The tail intercept follows without an additional norm theorem: characters of arbitrarily large conductor <span class="math" data-tex="\(m\)">\(m\)</span> were constructed in §3B, where their norm pullbacks have conductor <span class="math" data-tex="\(em-d\)">\(em-d\)</span>. Above the permutation break the first equality in (21A) preserves their last nontrivial group, so <span class="math" data-tex="\(\Psi(m-1)=em-d-1\)">\(\Psi(m-1)=em-d-1\)</span>. The slope is already <span class="math" data-tex="\(e\)">\(e\)</span>, giving the displayed affine formula.</p>
+<p>For <span class="math" data-tex="\(A\)">\(A\)</span>, choose any <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(b&lt;u&lt;h\)">\(b&lt;u&lt;h\)</span> and apply (10) in a finite quotient killed by <span class="math" data-tex="\(G_F^u\)">\(G_F^u\)</span>; handle unramified twists as in Lemma 3.1. Expand each twisted difference <span class="math" data-tex="\(\chi\eta_E-\eta_E\)">\(\chi\eta_E-\eta_E\)</span> as <span class="math" data-tex="\((\chi\eta_E-1)-(\eta_E-1)\)">\((\chi\eta_E-1)-(\eta_E-1)\)</span>, and include the residual unramified differences over <span class="math" data-tex="\(F\)">\(F\)</span>. Thus the terms really have the asserted form even when constituents have different unramified twists. Its inducing subgroups contain that upper group and its character lines are trivial on it. Hence the permutation break is less than <span class="math" data-tex="\(u\)">\(u\)</span>, and the character breaks are less than <span class="math" data-tex="\(\Psi(u)&lt;\Psi(h)\)">\(\Psi(u)&lt;\Psi(h)\)</span>. This proves the first decomposition.</p>
+<p>For the second, remove an unramified twist from <span class="math" data-tex="\(B\)">\(B\)</span> and take its faithful finite quotient. Its last nontrivial upper group <span class="math" data-tex="\(D=G^t\)">\(D=G^t\)</span> is abelian. Here is the commutator detail. If <span class="math" data-tex="\(\sigma\in G_i\)">\(\sigma\in G_i\)</span>, <span class="math" data-tex="\(i\ge1\)">\(i\ge1\)</span>, expansion in a uniformizer with coefficients in the maximal unramified ring shows
+<span class="math" data-tex="\(v((\sigma-1)x)\ge v(x)+i\)">\(v((\sigma-1)x)\ge v(x)+i\)</span> for integral <span class="math" data-tex="\(x\)">\(x\)</span> of positive value; subtract powers by telescoping and pass to convergent series. The coefficients are fixed by inertia. Consequently <span class="math" data-tex="\((\sigma-1)(\tau-1)-(\tau-1)(\sigma-1)\)">\((\sigma-1)(\tau-1)-(\tau-1)(\sigma-1)\)</span> raises value by at least <span class="math" data-tex="\(i+j\)">\(i+j\)</span> for <span class="math" data-tex="\(\tau\in G_j\)">\(\tau\in G_j\)</span>. Multiplying by the inverse of <span class="math" data-tex="\(\tau\sigma\)">\(\tau\sigma\)</span> gives <span class="math" data-tex="\([G_i,G_j]\subseteq G_{i+j}\)">\([G_i,G_j]\subseteq G_{i+j}\)</span>. The last positive lower group is therefore abelian.</p>
+<p>We prove the required refinement of ordinary Brauer induction. If a normal abelian subgroup <span class="math" data-tex="\(D\)">\(D\)</span> is central, project an ordinary Brauer expression onto a fixed <span class="math" data-tex="\(D\)">\(D\)</span>-character <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. For a term induced from <span class="math" data-tex="\(H\)">\(H\)</span>, induction in stages through <span class="math" data-tex="\(HD\)">\(HD\)</span> shows that its <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-part is zero unless its line agrees with <span class="math" data-tex="\(\theta\)">\(\theta\)</span> on <span class="math" data-tex="\(H\cap D\)">\(H\cap D\)</span>; when they agree it is induced from the unique line on <span class="math" data-tex="\(HD\)">\(HD\)</span> extending both. Uniqueness and existence follow by writing an element as <span class="math" data-tex="\(hd\)">\(hd\)</span> and checking the intersection relation. Thus the inducing subgroups may contain <span class="math" data-tex="\(D\)">\(D\)</span>, and the lines restrict to <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. For normal abelian <span class="math" data-tex="\(D\)">\(D\)</span>, split into its weight orbits. The stabilizer of a weight <span class="math" data-tex="\(\theta\)">\(\theta\)</span> acts on that weight space, and <span class="math" data-tex="\(D/\ker\theta\)">\(D/\ker\theta\)</span> is central in its quotient by <span class="math" data-tex="\(\ker\theta\)">\(\ker\theta\)</span>. The preceding central argument applies there; induction in stages returns to <span class="math" data-tex="\(G\)">\(G\)</span>. The orbit/weight-space isomorphism is explicit: the sum of the translates of a weight space identifies with its induced coset space. If <span class="math" data-tex="\(B^D=0\)">\(B^D=0\)</span>, every occurring weight is nontrivial, so every resulting line is nontrivial on <span class="math" data-tex="\(D\)">\(D\)</span>. In our case the single-break proof in the preceding lesson gives <span class="math" data-tex="\(B^D=0\)">\(B^D=0\)</span>. The inducing subgroup contains <span class="math" data-tex="\(G^t\)">\(G^t\)</span>, so its permutation break is less than <span class="math" data-tex="\(t\)">\(t\)</span>; its line is nontrivial on that group and trivial on every later one, giving (21B). Restore the unramified twist, which changes no break. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 7.3 (the parameter under a norm).</strong> Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be a wild character of break <span class="math" data-tex="\(t=c-1&gt;0\)">\(t=c-1&gt;0\)</span>. With <span class="math" data-tex="\(E_p(z)=\sum_{j=0}^{p-1}z^j/j!\)">\(E_p(z)=\sum_{j=0}^{p-1}z^j/j!\)</span>, choose <span class="math" data-tex="\(a\)">\(a\)</span> by
+<span class="math" data-tex="\(\chi(E_p(z))=\psi(az)\)">\(\chi(E_p(z))=\psi(az)\)</span> for <span class="math" data-tex="\(v_F(z)&gt;t/p\)">\(v_F(z)&gt;t/p\)</span>.
+Its value is <span class="math" data-tex="\(v_F(a)=-c-n_F\)">\(v_F(a)=-c-n_F\)</span>. If <span class="math" data-tex="\(b_{E/F}&lt;t/2\)">\(b_{E/F}&lt;t/2\)</span>, and <span class="math" data-tex="\(a_E\)">\(a_E\)</span> is the corresponding parameter for <span class="math" data-tex="\(\chi\circ N_{E/F}\)">\(\chi\circ N_{E/F}\)</span> and <span class="math" data-tex="\(\psi\operatorname{Tr}\)">\(\psi\operatorname{Tr}\)</span>, then every character <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(\beta(\eta)&lt;\Psi_{E/F}(t/2)\)">\(\beta(\eta)&lt;\Psi_{E/F}(t/2)\)</span> satisfies <span class="math" data-tex="\(\eta(a_E)=\eta(a)\)">\(\eta(a_E)=\eta(a)\)</span>.</p>
+<p><strong>Proof.</strong> In the polynomial identity
+<span class="math" data-tex="\(\prod_j E_p(z_j)-E_p(\sum_jz_j)\)">\(\prod_j E_p(z_j)-E_p(\sum_jz_j)\)</span>, every term has total degree at least <span class="math" data-tex="\(p\)">\(p\)</span>: coefficients in lower degrees agree by the multinomial formula and are integral because the factorials below <span class="math" data-tex="\(p\)">\(p\)</span> are units. Thus <span class="math" data-tex="\(\chi(E_p(z))\)">\(\chi(E_p(z))\)</span> is additive on the ideal <span class="math" data-tex="\(v(z)&gt;t/p\)">\(v(z)&gt;t/p\)</span>. The map <span class="math" data-tex="\(z\mapsto E_p(z)-1=z+O(z^2)\)">\(z\mapsto E_p(z)-1=z+O(z^2)\)</span> bijects that ideal with itself, by unit-derivative Hensel lifting and the least-value calculation for the difference of two arguments. Nondegeneracy of the finite additive pairing in (9B) supplies <span class="math" data-tex="\(a\)">\(a\)</span>, and nontriviality of the last conductor layer forces its value. The same argument works over <span class="math" data-tex="\(E\)">\(E\)</span>, where the character break is <span class="math" data-tex="\(t_E=\Psi(t)\)">\(t_E=\Psi(t)\)</span>, by (21A) and <span class="math" data-tex="\(t&gt;b_{E/F}\)">\(t&gt;b_{E/F}\)</span>.</p>
+<p>Norm expansion of the polynomial identity gives
+<span class="math math-display" data-tex="\[
+N_{E/F}(E_p(z))=E_p(\operatorname{Tr}z)+R,
+\qquad v_F(R)\ge p\,v_E(z)/e.
+\tag{21C}
+\]">\[
+N_{E/F}(E_p(z))=E_p(\operatorname{Tr}z)+R,
+\qquad v_F(R)\ge p\,v_E(z)/e.
+\tag{21C}
+\]</span>
+Take <span class="math" data-tex="\(r=\lfloor et/p\rfloor+1\)">\(r=\lfloor et/p\rfloor+1\)</span>. For <span class="math" data-tex="\(z\in\mathfrak p_E^r\)">\(z\in\mathfrak p_E^r\)</span> the error is killed by <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, since its value is greater than <span class="math" data-tex="\(t\)">\(t\)</span>. The trace has value greater than <span class="math" data-tex="\(t/p\)">\(t/p\)</span>. Indeed <span class="math" data-tex="\(d_{E/F}\ge e-1\)">\(d_{E/F}\ge e-1\)</span>: an Eisenstein uniformizer polynomial over the maximal unramified field has derivative value at least <span class="math" data-tex="\(e-1\)">\(e-1\)</span>, by Lemmas 1.1 and 1.3 of the preceding lesson, and the unramified different is trivial. Lemma 2.2 therefore gives <span class="math" data-tex="\(v_F(\operatorname{Tr}z)\ge\lceil r/e\rceil&gt;t/p\)">\(v_F(\operatorname{Tr}z)\ge\lceil r/e\rceil&gt;t/p\)</span>. Also <span class="math" data-tex="\(r&gt;t_E/p\)">\(r&gt;t_E/p\)</span>, since convexity and the slope bound give <span class="math" data-tex="\(\Psi(t)\le et\)">\(\Psi(t)\le et\)</span>. Hence
+<span class="math" data-tex="\(\psi\operatorname{Tr}((a_E-a)z)=1\)">\(\psi\operatorname{Tr}((a_E-a)z)=1\)</span> on <span class="math" data-tex="\(\mathfrak p_E^r\)">\(\mathfrak p_E^r\)</span>.
+Its annihilator gives
+<span class="math math-display" data-tex="\[
+v_E((a_E-a)/a_E)\ge t_E+1-r
+=\Psi(t)-\lfloor et/p\rfloor.
+\tag{21D}
+\]">\[
+v_E((a_E-a)/a_E)\ge t_E+1-r
+=\Psi(t)-\lfloor et/p\rfloor.
+\tag{21D}
+\]</span>
+The affine tail in (21A), applied beyond <span class="math" data-tex="\(b_{E/F}&lt;t/2\)">\(b_{E/F}&lt;t/2\)</span>, identifies
+<span class="math" data-tex="\(\Psi(t)-et/p=\Psi((1-1/p)t)\ge\Psi(t/2)\)">\(\Psi(t)-et/p=\Psi((1-1/p)t)\ge\Psi(t/2)\)</span>.
+Thus the relative difference has value strictly greater than <span class="math" data-tex="\(\beta(\eta)\)">\(\beta(\eta)\)</span>. By the unit/upper character correspondence actually proved in the preceding lesson, Lemma 2.4, <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is trivial on that difference. This proves the claimed equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of Theorem 7.1.</strong> First take <span class="math" data-tex="\(B=\chi\)">\(B=\chi\)</span>, of break <span class="math" data-tex="\(t\)">\(t\)</span>. The polynomial parameter in Lemma 7.3 also satisfies <span class="math" data-tex="\(\chi(1+z)=\psi(az)\)">\(\chi(1+z)=\psi(az)\)</span> for <span class="math" data-tex="\(v(z)&gt;t/2\)">\(v(z)&gt;t/2\)</span>: the quotient of <span class="math" data-tex="\(E_p(z)\)">\(E_p(z)\)</span> by <span class="math" data-tex="\(1+z\)">\(1+z\)</span> differs from one in value at least <span class="math" data-tex="\(2v(z)&gt;t\)">\(2v(z)&gt;t\)</span>, and is killed by <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Lemma 3.0a therefore gives
+<span class="math" data-tex="\(\epsilon((\eta-1)\chi)=\eta(a)^{-1}\)">\(\epsilon((\eta-1)\chi)=\eta(a)^{-1}\)</span> whenever <span class="math" data-tex="\(\beta(\eta)&lt;t/2\)">\(\beta(\eta)&lt;t/2\)</span>.</p>
+<p>For an arbitrary dimension-zero <span class="math" data-tex="\(A\)">\(A\)</span> with that break bound, use its decomposition from Lemma 7.2. On a term <span class="math" data-tex="\(\operatorname{Ind}(\eta-1)\)">\(\operatorname{Ind}(\eta-1)\)</span>, the projection formula and rank-zero induction reduce the epsilon constant to <span class="math" data-tex="\(\epsilon((\eta-1)(\chi\circ N),\psi\operatorname{Tr})\)">\(\epsilon((\eta-1)(\chi\circ N),\psi\operatorname{Tr})\)</span>. Convexity gives
+<span class="math" data-tex="\(\beta(\eta)&lt;\Psi(t/2)\le\Psi(t)/2\)">\(\beta(\eta)&lt;\Psi(t/2)\le\Psi(t)/2\)</span>,
+so the character calculation applies over <span class="math" data-tex="\(E\)">\(E\)</span> and gives <span class="math" data-tex="\(\eta(a_E)^{-1}\)">\(\eta(a_E)^{-1}\)</span>. Lemma 7.3 replaces this by <span class="math" data-tex="\(\eta(a)^{-1}\)">\(\eta(a)^{-1}\)</span>, and determinant transfer identifies it with <span class="math" data-tex="\(\det\operatorname{Ind}(\eta-1)(a^{-1})\)">\(\det\operatorname{Ind}(\eta-1)(a^{-1})\)</span>. Multiplication over the decomposition proves (21) with <span class="math" data-tex="\(\gamma=a^{-1}\)">\(\gamma=a^{-1}\)</span> for a character <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>For irreducible <span class="math" data-tex="\(B\)">\(B\)</span> of break <span class="math" data-tex="\(t\)">\(t\)</span>, use (21B), writing <span class="math" data-tex="\(B=\sum_i n_i\operatorname{Ind}\chi_i\)">\(B=\sum_i n_i\operatorname{Ind}\chi_i\)</span>. The restriction of <span class="math" data-tex="\(A\)">\(A\)</span> to each inducing field has largest break at most <span class="math" data-tex="\(\Psi_i(\beta(A))\)">\(\Psi_i(\beta(A))\)</span>, by (21A), hence less than <span class="math" data-tex="\(\Psi_i(t/2)\le\Psi_i(t)/2\)">\(\Psi_i(t/2)\le\Psi_i(t)/2\)</span>. Its dimension is still zero. Projection and rank-zero induction, followed by the character case, give (21) with
+<span class="math math-display" data-tex="\[
+\gamma=\prod_i N_{E_i/F}(a_i^{-1})^{n_i}.
+\tag{21E}
+\]">\[
+\gamma=\prod_i N_{E_i/F}(a_i^{-1})^{n_i}.
+\tag{21E}
+\]</span>
+Restriction of a determinant corresponds to the norm, by the reciprocity diagram in the preceding Weil lesson. For virtual <span class="math" data-tex="\(B\)">\(B\)</span>, multiply these elements over its signed constituents. Every constituent break is at least <span class="math" data-tex="\(\alpha(B)\)">\(\alpha(B)\)</span>, so the same strict bound on <span class="math" data-tex="\(A\)">\(A\)</span> works for all of them. Negative multiplicities simply invert the constants and the elements.</p>
+<p>Each factor of (21E) has value <span class="math" data-tex="\(f_i(c_i+n_{E_i})\)">\(f_i(c_i+n_{E_i})\)</span>. Equations (9D) and the preceding conductor induction theorem identify this with
+<span class="math" data-tex="\(a_F(\operatorname{Ind}\chi_i)+[E_i:F]n_F\)">\(a_F(\operatorname{Ind}\chi_i)+[E_i:F]n_F\)</span>.
+Adding signed terms proves the asserted valuation. Finally the determinant of every allowed <span class="math" data-tex="\(A\)">\(A\)</span> has break at most <span class="math" data-tex="\(\beta(A)&lt;h\)">\(\beta(A)&lt;h\)</span>, hence character conductor at most <span class="math" data-tex="\(\lceil h\rceil\)">\(\lceil h\rceil\)</span>, by the same unit/upper correspondence. Its value is therefore unchanged on <span class="math" data-tex="\(T_F(h)\)">\(T_F(h)\)</span>. Conversely all unit characters of conductor at most <span class="math" data-tex="\(\lceil h\rceil\)">\(\lceil h\rceil\)</span>, and all unramified characters, occur as <span class="math" data-tex="\(A=\eta-1\)">\(A=\eta-1\)</span>. Finite abelian character duality separates <span class="math" data-tex="\(F^\times/T_F(h)\)">\(F^\times/T_F(h)\)</span>, so these identities determine exactly that quotient. This proves both existence and the stated ambiguity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The endpoint distinction is substantive. Over <span class="math" data-tex="\(\mathbb Q_2\)">\(\mathbb Q_2\)</span>, take the conductor-three character with values <span class="math" data-tex="\(1,-1,-1,1\)">\(1,-1,-1,1\)</span> on the odd residue classes <span class="math" data-tex="\(1,3,5,7\pmod8\)">\(1,3,5,7\pmod8\)</span>. Its break is two. Every allowed determinant for <span class="math" data-tex="\(\beta(A)&lt;1\)">\(\beta(A)&lt;1\)</span> is unramified, since the residue unit group is trivial and a character of positive break has integral break at least one. Thus <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and <span class="math" data-tex="\(3\gamma\)">\(3\gamma\)</span> give identical identities, although <span class="math" data-tex="\(3\notin U_F(1)=1+4\mathbb Z_2\)">\(3\notin U_F(1)=1+4\mathbb Z_2\)</span>. For the standard conductor-zero additive character, both <span class="math" data-tex="\(a=1/8\)">\(a=1/8\)</span> and <span class="math" data-tex="\(a=3/8\)">\(a=3/8\)</span> satisfy <span class="math" data-tex="\(\chi(1+y)=\psi(ay)\)">\(\chi(1+y)=\psi(ay)\)</span> for <span class="math" data-tex="\(v(y)&gt;1\)">\(v(y)&gt;1\)</span>. Claiming that this condition uniquely determines a class modulo <span class="math" data-tex="\(U_F(1)\)">\(U_F(1)\)</span> would therefore be false.</p>
+<p>In particular take a wildly ramified character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of conductor <span class="math" data-tex="\(c\)">\(c\)</span>, so its break is <span class="math" data-tex="\(c-1&gt;0\)">\(c-1&gt;0\)</span>. If the largest break <span class="math" data-tex="\(b\)">\(b\)</span> of an actual <span class="math" data-tex="\(V\)">\(V\)</span>, with zero allowed for tame constituents, satisfies <span class="math" data-tex="\(2b&lt;c-1\)">\(2b&lt;c-1\)</span>, apply (21) to <span class="math" data-tex="\(A=V-d[1]\)">\(A=V-d[1]\)</span>, <span class="math" data-tex="\(B=\chi\)">\(B=\chi\)</span>. It gives
+<span class="math math-display" data-tex="\[
+\epsilon_F(V\otimes\chi,\psi,dx)
+=\epsilon_F(\chi,\psi,dx)^d\det V(\gamma(\chi,\psi)).
+\tag{22}
+\]">\[
+\epsilon_F(V\otimes\chi,\psi,dx)
+=\epsilon_F(\chi,\psi,dx)^d\det V(\gamma(\chi,\psi)).
+\tag{22}
+\]</span>
+For the explicit sign, the character calculation in the proof chooses <span class="math" data-tex="\(a\in F^\times\)">\(a\in F^\times\)</span> by
+<span class="math math-display" data-tex="\[
+\chi\!\left(\sum_{j=0}^{p-1}\frac{y^j}{j!}\right)=\psi(ay)
+\quad\text{when }v_F(y)&gt;(c-1)/2,
+\qquad\gamma(\chi,\psi)=a^{-1}.
+\tag{23}
+\]">\[
+\chi\!\left(\sum_{j=0}^{p-1}\frac{y^j}{j!}\right)=\psi(ay)
+\quad\text{when }v_F(y)&gt;(c-1)/2,
+\qquad\gamma(\chi,\psi)=a^{-1}.
+\tag{23}
+\]</span>
+Here <span class="math" data-tex="\(p\)">\(p\)</span> is the residue characteristic, and the polynomial is the truncated exponential; its denominators are units. One may choose the stronger parameter from Lemma 7.3. The determinant in (22) is trivial even on the full endpoint ambiguity <span class="math" data-tex="\(T_F((c-1)/2)\)">\(T_F((c-1)/2)\)</span>, by the break hypothesis. Thus the factor is <span class="math" data-tex="\(\det V(a)^{-1}\)">\(\det V(a)^{-1}\)</span>, with this definition of <span class="math" data-tex="\(a\)">\(a\)</span> and our geometric reciprocity. Formula (23) fixes the sign; it does not assert the incorrect endpoint uniqueness just discussed.</p>
+<p><strong>Theorem 7.4 (Deligne's orthogonal formula).</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a virtual finite-image real representation of <span class="math" data-tex="\(G_F\)">\(G_F\)</span> with virtual dimension zero and determinant one. Its second Stiefel–Whitney class gives a class <span class="math" data-tex="\(w_2(A)\in H^2(G_F,\mathbb Z/2)\)">\(w_2(A)\in H^2(G_F,\mathbb Z/2)\)</span>. Inflate from its finite quotient, map <span class="math" data-tex="\(1\in\mathbb Z/2\)">\(1\in\mathbb Z/2\)</span> to <span class="math" data-tex="\(-1\in\bar F^\times\)">\(-1\in\bar F^\times\)</span>, and take the local Brauer invariant <span class="math" data-tex="\(\operatorname{inv}_F\in\mathbb Q/\mathbb Z\)">\(\operatorname{inv}_F\in\mathbb Q/\mathbb Z\)</span>. Then
+<span class="math math-display" data-tex="\[
+\epsilon_F(1/2,A,\psi,dx)
+=\exp\!\left(2\pi i\operatorname{inv}_F(w_2(A))\right).
+\tag{24}
+\]">\[
+\epsilon_F(1/2,A,\psi,dx)
+=\exp\!\left(2\pi i\operatorname{inv}_F(w_2(A))\right).
+\tag{24}
+\]</span>
+The left side is independent of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and <span class="math" data-tex="\(dx\)">\(dx\)</span> by its dimension and determinant hypotheses. In characteristic different from two its values are <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>; in characteristic two the coefficient map to <span class="math" data-tex="\(\bar F^\times\)">\(\bar F^\times\)</span> is trivial and the value is one. For an actual orthogonal representation with nontrivial determinant, first remove that determinant and the excess rank, or keep its one-dimensional root factor. Omitting either qualification changes the assertion.</p>
+<p>The Brauer invariant and its corestriction law are the actually proved earlier NT-CFT-24, Theorem 24.2, including both characteristics and the infinite places. We prove the required real induction and degree-two class identities next. This avoids importing a real induction theorem solely from a citation in the free Deligne paper.</p>
+<p><strong>Lemma 7.5 (odd real induction).</strong> For any finite group <span class="math" data-tex="\(G\)">\(G\)</span>, an odd integer <span class="math" data-tex="\(q\)">\(q\)</span> times <span class="math" data-tex="\(1_G\)">\(1_G\)</span> is a sum of inductions of real virtual representations of groups having a nilpotent subgroup of index at most two.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(R_{\mathbb R}(G)\)">\(R_{\mathbb R}(G)\)</span> for the real representation ring, and let <span class="math" data-tex="\(I\)">\(I\)</span> be the subgroup generated by the indicated inductions. It is an ideal, by the coset projection formula. We prove that <span class="math" data-tex="\(R_{\mathbb R}(G)/I=2(R_{\mathbb R}(G)/I)\)">\(R_{\mathbb R}(G)/I=2(R_{\mathbb R}(G)/I)\)</span>. The same determinant argument as in the earlier integer Brauer proof will then give an odd annihilator.</p>
+<p>Use the cyclotomic local ring <span class="math" data-tex="\(D=\mathbb Z[\zeta]_{\mathfrak m}\)">\(D=\mathbb Z[\zeta]_{\mathfrak m}\)</span> at a maximal ideal above two, as in RT-FIN-11 §3, with residue field <span class="math" data-tex="\(k\)">\(k\)</span>. Complexifying real representations gives an injective character map, also after tensoring with <span class="math" data-tex="\(D\)">\(D\)</span>: Proposition 3.2 of the actually written RT-FIN-04 gives the distinct complexifications, namely an orthogonal irreducible, a conjugate pair, or twice a quaternionic irreducible. Their disjoint character supports are linearly independent. Thus <span class="math" data-tex="\(D\otimes R_{\mathbb R}(G)\)">\(D\otimes R_{\mathbb R}(G)\)</span> is a subring of <span class="math" data-tex="\(D^c\)">\(D^c\)</span>, with diagonal constants, where <span class="math" data-tex="\(c\)">\(c\)</span> is the number of conjugacy classes. The proof of RT-FIN-11, Lemma 3.1, applies unchanged: <span class="math" data-tex="\(D^c\)">\(D^c\)</span> is a finite faithful module; the adjugate contradiction excludes a maximal ideal generating the whole module; a maximal ideal of <span class="math" data-tex="\(D^c\)">\(D^c\)</span> selects one coordinate and reduces it to <span class="math" data-tex="\(k\)">\(k\)</span>. Consequently every maximal ideal is a reduced evaluation. Its value on <span class="math" data-tex="\(g\)">\(g\)</span> equals that on the odd-order part <span class="math" data-tex="\(a\)">\(a\)</span> of <span class="math" data-tex="\(g\)">\(g\)</span>, since every two-power eigenvalue reduces to one. This eigenvalue argument is Lemma 3.2 there and applies to real complexifications as well.</p>
+<p>We must detect every such evaluation by a real induction. For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, induction of the trivial line from a Sylow two-subgroup has odd dimension, so detects it. For <span class="math" data-tex="\(a\ne1\)">\(a\ne1\)</span>, put <span class="math" data-tex="\(C=\langle a\rangle\)">\(C=\langle a\rangle\)</span>, of odd order <span class="math" data-tex="\(d\)">\(d\)</span>, and
+<span class="math" data-tex="\(N^\pm=\{g:gag^{-1}\in\{a,a^{-1}\}\}\)">\(N^\pm=\{g:gag^{-1}\in\{a,a^{-1}\}\}\)</span>.
+Choose a Sylow two-subgroup <span class="math" data-tex="\(P\)">\(P\)</span> of <span class="math" data-tex="\(N^\pm\)">\(N^\pm\)</span>, and set <span class="math" data-tex="\(H=CP\)">\(H=CP\)</span>. It acts on <span class="math" data-tex="\(C\)">\(C\)</span> by identity or inversion. The kernel <span class="math" data-tex="\(P_0\)">\(P_0\)</span> of that action gives the nilpotent subgroup <span class="math" data-tex="\(C\times P_0\)">\(C\times P_0\)</span> of index at most two. The quotient by <span class="math" data-tex="\(P_0\)">\(P_0\)</span> is cyclic or dihedral. Its real plane characters restrict to <span class="math" data-tex="\(C\)">\(C\)</span> as <span class="math" data-tex="\(\zeta_d^{j}\!+\zeta_d^{-j}\)">\(\zeta_d^{j}\!+\zeta_d^{-j}\)</span>; use their inflations to <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Here is the evaluation calculation, including the possible cancellation at two. Write <span class="math" data-tex="\(S=\{s\pmod d:a^s\text{ is conjugate to }a\}\)">\(S=\{s\pmod d:a^s\text{ is conjugate to }a\}\)</span>. If inversion occurs in <span class="math" data-tex="\(N^\pm\)">\(N^\pm\)</span>, then <span class="math" data-tex="\(S=-S\)">\(S=-S\)</span> and <span class="math" data-tex="\(|C_G(a)|/(d|P|)\)">\(|C_G(a)|/(d|P|)\)</span> is an odd integer divided by two. The induction formula for the real plane of exponent <span class="math" data-tex="\(j\)">\(j\)</span> is therefore an odd integer times <span class="math" data-tex="\(\sum_{s\in S}\zeta_d^{js}\)">\(\sum_{s\in S}\zeta_d^{js}\)</span>, because its two character terms give twice that sum. If inversion does not occur, <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(-S\)">\(-S\)</span> are disjoint, the coefficient <span class="math" data-tex="\(|C_G(a)|/(d|P|)\)">\(|C_G(a)|/(d|P|)\)</span> is odd, and the evaluation is that odd integer times <span class="math" data-tex="\(\sum_{s\in S\cup(-S)}\zeta_d^{js}\)">\(\sum_{s\in S\cup(-S)}\zeta_d^{js}\)</span>. In both cases the coefficient vector on this cyclic group is nonzero modulo two. The cyclic Fourier matrix is invertible over <span class="math" data-tex="\(k\)">\(k\)</span>: <span class="math" data-tex="\(d\)">\(d\)</span> is odd and its roots remain distinct. Hence some <span class="math" data-tex="\(j\)">\(j\)</span> gives a nonzero reduced evaluation. The inductions in <span class="math" data-tex="\(I\)">\(I\)</span> therefore escape every maximal ideal, proving <span class="math" data-tex="\(D\otimes I=D\otimes R_{\mathbb R}(G)\)">\(D\otimes I=D\otimes R_{\mathbb R}(G)\)</span>.</p>
+<p>For <span class="math" data-tex="\(M=R_{\mathbb R}(G)/I\)">\(M=R_{\mathbb R}(G)/I\)</span>, reduction to <span class="math" data-tex="\(k\)">\(k\)</span> gives <span class="math" data-tex="\(k\otimes_{\mathbb F_2}(M/2M)=0\)">\(k\otimes_{\mathbb F_2}(M/2M)=0\)</span>, hence <span class="math" data-tex="\(M=2M\)">\(M=2M\)</span>. Choose finitely many abelian-group generators <span class="math" data-tex="\(m_i\)">\(m_i\)</span> and write <span class="math" data-tex="\(m_i=2\sum_j a_{ij}m_j\)">\(m_i=2\sum_j a_{ij}m_j\)</span>, with integers <span class="math" data-tex="\(a_{ij}\)">\(a_{ij}\)</span>. The adjugate of <span class="math" data-tex="\(I-2(a_{ij})\)">\(I-2(a_{ij})\)</span> shows that the odd integer <span class="math" data-tex="\(q=\det(I-2(a_{ij}))\)">\(q=\det(I-2(a_{ij}))\)</span> annihilates <span class="math" data-tex="\(M\)">\(M\)</span>. In particular <span class="math" data-tex="\(q1_G\in I\)">\(q1_G\in I\)</span>. This is the claimed induction statement. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 7.6 (real generators in the required subgroup).</strong> If <span class="math" data-tex="\(G\)">\(G\)</span> has a normal nilpotent subgroup <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span> of index at most two, every real virtual representation of dimension zero and determinant one is a sum of realifications of complex virtual representations of dimension zero and inductions of
+<span class="math math-display" data-tex="\[
+r(\chi)=\operatorname{Ind}_{C}^{D}(\chi-1)
+\tag{24A}
+\]">\[
+r(\chi)=\operatorname{Ind}_{C}^{D}(\chi-1)
+\tag{24A}
+\]</span>
+from dihedral quotients <span class="math" data-tex="\(D=C\rtimes\{1,s\}\)">\(D=C\rtimes\{1,s\}\)</span>, where <span class="math" data-tex="\(s\)">\(s\)</span> inverts the cyclic group <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><strong>Proof.</strong> First prove, by induction on <span class="math" data-tex="\(|G|\)">\(|G|\)</span>, that an arbitrary real representation is a sum of realifications, inductions of (24A), and real lines. An irreducible whose complexification is reducible is already a realification, by RT-FIN-04, Proposition 3.2, whose conjugate-linear proof explicitly includes quaternionic irreducibles. A nonfaithful irreducible reduces to its smaller quotient. A representation induced from a proper real subgroup reduces to that subgroup; induction commutes with realification and with induction of (24A). Induced real lines require the following separate index argument.</p>
+<p>For a line <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>, put <span class="math" data-tex="\(H&#x27;=H\cap G&#x27;\)">\(H&#x27;=H\cap G&#x27;\)</span>. If <span class="math" data-tex="\([G:H]\le2\)">\([G:H]\le2\)</span>, its real dimension is at most two. Every real orthogonal plane has a cyclic rotation subgroup and, if orientation is reversed, a dihedral image; it is thus a realification or a sum of (24A), the trivial line and the determinant line. For a larger index, the ascending central series of <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span> supplies <span class="math" data-tex="\(J\)">\(J\)</span> such that <span class="math" data-tex="\(H&#x27;J/H&#x27;\)">\(H&#x27;J/H&#x27;\)</span> is nontrivial abelian and normalized by <span class="math" data-tex="\(H\)">\(H\)</span>: take the first central-series term not contained in <span class="math" data-tex="\(H&#x27;\)">\(H&#x27;\)</span>. In its prime-torsion part choose a line stable under <span class="math" data-tex="\(H/H&#x27;\)">\(H/H&#x27;\)</span>, whose order is at most two. In odd characteristic an involution has its two eigenspaces; in characteristic two it has a nonzero fixed vector. Let <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> be its inverse image and <span class="math" data-tex="\(I=I&#x27;H\)">\(I=I&#x27;H\)</span>. Then <span class="math" data-tex="\(I&#x27;/H&#x27;\)">\(I&#x27;/H&#x27;\)</span> has prime order <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, <span class="math" data-tex="\(H&#x27;\triangleleft I&#x27;\)">\(H&#x27;\triangleleft I&#x27;\)</span>, and induction in stages reduces the line step to <span class="math" data-tex="\(\operatorname{Ind}_H^I\epsilon\)">\(\operatorname{Ind}_H^I\epsilon\)</span>.</p>
+<p>If <span class="math" data-tex="\(\ell=2\)">\(\ell=2\)</span>, this is a real plane. If <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is odd, <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> normalizes <span class="math" data-tex="\(\epsilon|_{H&#x27;}\)">\(\epsilon|_{H&#x27;}\)</span>. To check this, finite nilpotent groups have commuting Sylow factors. An elementary proof is useful here: every proper subgroup has a larger normalizer, by the first ascending central-series term outside it; if the normalizer of a Sylow subgroup were proper, its own larger normalizer would preserve its unique normal Sylow subgroup and contradict that definition. Thus all Sylow subgroups are normal and distinct ones commute. The odd quotient <span class="math" data-tex="\(I&#x27;/H&#x27;\)">\(I&#x27;/H&#x27;\)</span> consequently cannot act nontrivially on a sign character, which depends only on the two-primary factor. It follows that <span class="math" data-tex="\(I&#x27;/\ker\epsilon\)">\(I&#x27;/\ker\epsilon\)</span> is cyclic of order <span class="math" data-tex="\(\ell\)">\(\ell\)</span> or <span class="math" data-tex="\(2\ell\)">\(2\ell\)</span>. Restriction of <span class="math" data-tex="\(\operatorname{Ind}_H^I\epsilon\)">\(\operatorname{Ind}_H^I\epsilon\)</span> to <span class="math" data-tex="\(I&#x27;\)">\(I&#x27;\)</span> is the sum of its distinct character extensions. The outside involution acts on this cyclic quotient by identity or inversion. Pairing conjugate characters decomposes the representation into real summands of dimension at most two, already handled. The remaining induced real lines in <span class="math" data-tex="\(G\)">\(G\)</span> have index <span class="math" data-tex="\([G:I]&lt;[G:H]\)">\([G:I]&lt;[G:H]\)</span>, completing the index induction.</p>
+<p>It remains to treat a faithful absolutely irreducible real representation not induced from a proper real subgroup. Choose a maximal abelian subgroup <span class="math" data-tex="\(B\triangleleft G\)">\(B\triangleleft G\)</span> contained in <span class="math" data-tex="\(G&#x27;\)">\(G&#x27;\)</span>. Its character weights occur in conjugate pairs; the stabilizer of one pair would induce the representation from a real weight-pair space if proper. Hence that stabilizer is <span class="math" data-tex="\(G\)">\(G\)</span>. Let <span class="math" data-tex="\(G&#x27;&#x27;\)">\(G&#x27;&#x27;\)</span> stabilize one of the two weights. Faithfulness makes that weight faithful on <span class="math" data-tex="\(B\)">\(B\)</span>, so <span class="math" data-tex="\(B\)">\(B\)</span> is central in <span class="math" data-tex="\(G&#x27;&#x27;\)">\(G&#x27;&#x27;\)</span>. Put <span class="math" data-tex="\(T=G&#x27;\cap G&#x27;&#x27;\)">\(T=G&#x27;\cap G&#x27;&#x27;\)</span>. If <span class="math" data-tex="\(B&lt;T\)">\(B&lt;T\)</span>, the centre of <span class="math" data-tex="\(T/B\)">\(T/B\)</span> has a prime-torsion subspace stable under <span class="math" data-tex="\(G/T\)">\(G/T\)</span>, an elementary two-group of rank at most two. It has a stable line: odd-characteristic commuting involutions diagonalize together, and a two-group in characteristic two has a fixed vector, by induction on a central involution. The inverse image <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> of that line is abelian because <span class="math" data-tex="\(B\)">\(B\)</span> is central in <span class="math" data-tex="\(T\)">\(T\)</span>, and is normal in <span class="math" data-tex="\(G\)">\(G\)</span>, contradicting maximality. Thus <span class="math" data-tex="\(B=T\)">\(B=T\)</span>. Now <span class="math" data-tex="\(G&#x27;&#x27;/B\)">\(G&#x27;&#x27;/B\)</span> has order at most two and <span class="math" data-tex="\(B\)">\(B\)</span> is central, so <span class="math" data-tex="\(G&#x27;&#x27;\)">\(G&#x27;&#x27;\)</span> is abelian. Its index in <span class="math" data-tex="\(G\)">\(G\)</span> is at most two. The weight-space argument bounds the irreducible dimension by two, a case already treated. This completes the order induction.</p>
+<p>For a virtual rank-zero determinant-one representation, subtract the ranks from the realification terms; these remain realifications of complex rank-zero terms. Terms (24A) already have rank zero and determinant one. What remains is a signed sum of real lines of rank zero and product character one. Repeated use of
+<span class="math" data-tex="\(\alpha\beta-1=(\alpha-1)+(\beta-1)+(\alpha-1)(\beta-1)\)">\(\alpha\beta-1=(\alpha-1)+(\beta-1)+(\alpha-1)(\beta-1)\)</span>
+expresses it as a sum of <span class="math" data-tex="\((\alpha-1)(\beta-1)\)">\((\alpha-1)(\beta-1)\)</span>, with sign characters <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span>. If they agree the term is <span class="math" data-tex="\(-2(\alpha-1)\)">\(-2(\alpha-1)\)</span>, a realification. If they are distinct and nontrivial, pass to their Klein-four quotient, viewed as a dihedral group: its term <span class="math" data-tex="\(r(\beta|_{\ker\alpha})\)">\(r(\beta|_{\ker\alpha})\)</span> equals <span class="math" data-tex="\(\alpha\beta+\beta-\alpha-1\)">\(\alpha\beta+\beta-\alpha-1\)</span>, and subtracting <span class="math" data-tex="\(2(\beta-1)\)">\(2(\beta-1)\)</span> gives the desired product. Thus it is a dihedral term plus a realification. Trivial characters give zero. This proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 7.7 (the degree-two class calculations).</strong> For real virtual <span class="math" data-tex="\(V\)">\(V\)</span>, put <span class="math" data-tex="\(w_1(V)=\det V\)">\(w_1(V)=\det V\)</span>, viewed as a <span class="math" data-tex="\(\mathbb Z/2\)">\(\mathbb Z/2\)</span>-character. The degree-two class satisfies
+<span class="math math-display" data-tex="\[
+w_2(V+U)=w_2(V)+w_2(U)+w_1(V)\smile w_1(U).
+\tag{24B}
+\]">\[
+w_2(V+U)=w_2(V)+w_2(U)+w_1(V)\smile w_1(U).
+\tag{24B}
+\]</span>
+For virtual dimension zero and determinant one,
+<span class="math math-display" data-tex="\[
+w_2(\operatorname{Ind}_H^G V)=\operatorname{Cor}_H^G w_2(V).
+\tag{24C}
+\]">\[
+w_2(\operatorname{Ind}_H^G V)=\operatorname{Cor}_H^G w_2(V).
+\tag{24C}
+\]</span>
+For a complex virtual <span class="math" data-tex="\(U\)">\(U\)</span>, the class of its realification is the obstruction to taking a square root of its determinant character. For a dihedral plane, the class of (24A) is the obstruction to lifting its rotation character through the double rotation cover, with a reflection lift of order two.</p>
+<p><strong>Proof.</strong> These degree-two assertions can be proved directly by central-extension cocycles. Form the Euclidean Clifford algebra with generators <span class="math" data-tex="\(e_i^2=1\)">\(e_i^2=1\)</span> and <span class="math" data-tex="\(e_ie_j=-e_je_i\)">\(e_ie_j=-e_je_i\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Ordered monomials are a basis: they span by these relations and are independent in the creation-plus-contraction action on the exterior algebra. Products of unit vectors map to orthogonal products of reflections by twisted conjugation. Reflections generate the orthogonal group: a reflection carries one unit vector to another, after which induction applies to their perpendicular space. The kernel of this map is <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>, as is seen by commuting an ordered-monomial expansion with every vector and using the norm-one condition. Its even part is the spin double cover of the special orthogonal group. Choose lifts of the matrices of a finite representation; their multiplication errors are a <span class="math" data-tex="\(\{1,-1\}\)">\(\{1,-1\}\)</span>-valued two-cocycle. This is <span class="math" data-tex="\(w_2\)">\(w_2\)</span>. A real line has zero such cocycle, since its reflection lift has square one. In an orthogonal sum, lifts from the two summands commute with sign <span class="math" data-tex="\((-1)^{\text{parity product}}\)">\((-1)^{\text{parity product}}\)</span>; parity is the determinant character. Multiplying their lifts therefore gives (24B), and inversion extends the identity to virtual representations. This construction is also the usual second Stiefel–Whitney class: for an oriented representation it is exactly the pullback of the spin cover, and the line and sum formulas give its degree-two extension.</p>
+<p>For (24C), first take an oriented actual representation of dimension <span class="math" data-tex="\(n\)">\(n\)</span> divisible by four. The induced matrices are a permutation of the coset blocks followed by the original block matrices. Their spin lifts multiply the block cocycles over the cosets, the cochain definition of corestriction. The block-permutation obstruction is zero: its representation is <span class="math" data-tex="\(n\)">\(n\)</span> copies of the coset permutation representation <span class="math" data-tex="\(Q\)">\(Q\)</span>, and (24B) gives
+<span class="math" data-tex="\(w_2(nQ)=n w_2(Q)+\binom n2 w_1(Q)^2=0\)">\(w_2(nQ)=n w_2(Q)+\binom n2 w_1(Q)^2=0\)</span>, with <span class="math" data-tex="\(w_1(nQ)=0\)">\(w_1(nQ)=0\)</span>, when <span class="math" data-tex="\(4\mid n\)">\(4\mid n\)</span>. Hence its lifts can be chosen multiplicatively. There are no cross terms from the oriented blocks, proving (24C) in this case. For <span class="math" data-tex="\(V=A-B\)">\(V=A-B\)</span> of rank zero and determinant one, the two actual determinants agree. Add their common determinant line to both to orient them, then add the same number of trivial lines to make their equal ranks divisible by four. The actual result applies to both; subtraction and (24B) give (24C) for <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p>For a unitary complex matrix, the spin cover on its underlying real space pulls back as
+<span class="math" data-tex="\(\{(g,z):z^2=\det g\}\)">\(\{(g,z):z^2=\det g\}\)</span>.
+Here is an explicit verification. Diagonalize <span class="math" data-tex="\(g\)">\(g\)</span> by a unitary orthonormal basis. A rotation of angle <span class="math" data-tex="\(\theta_j\)">\(\theta_j\)</span> in its <span class="math" data-tex="\(j\)">\(j\)</span>-th real plane lifts to <span class="math" data-tex="\(\exp(\theta_j e_{2j-1}e_{2j}/2)\)">\(\exp(\theta_j e_{2j-1}e_{2j}/2)\)</span>; changing the sum of the chosen angles by <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> changes the lift by <span class="math" data-tex="\(-1\)">\(-1\)</span>. In the exterior-algebra spin model its operator is <span class="math" data-tex="\(z^{-1}\bigwedge g\)">\(z^{-1}\bigwedge g\)</span>, with <span class="math" data-tex="\(z^2=\prod_j e^{i\theta_j}\)">\(z^2=\prod_j e^{i\theta_j}\)</span>. This conjugates the Clifford vector operators by <span class="math" data-tex="\(g\)">\(g\)</span>, and multiplication of these operators proves the cover identification for products, not just diagonal matrices. Thus its cocycle is the determinant square-root obstruction, and virtual subtraction preserves that assertion. In a real plane the same rotation cover and a unit-vector reflection lift give <span class="math" data-tex="\(O(2)\)">\(O(2)\)</span>'s double cover with reflection square one. The split plane <span class="math" data-tex="\(\operatorname{Ind}1=1+\det\)">\(\operatorname{Ind}1=1+\det\)</span> has <span class="math" data-tex="\(w_2=0\)">\(w_2=0\)</span>; the two planes have the same <span class="math" data-tex="\(w_1\)">\(w_1\)</span>, so (24B) makes <span class="math" data-tex="\(w_2(r(\chi))\)">\(w_2(r(\chi))\)</span> exactly that rotation/reflection lifting obstruction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 7.8 (the dihedral Fourier calculation).</strong> Let <span class="math" data-tex="\(E/F\)">\(E/F\)</span> be separable quadratic, <span class="math" data-tex="\(\chi:E^\times\to\mathbb C^\times\)">\(\chi:E^\times\to\mathbb C^\times\)</span> finite-order and trivial on <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, and <span class="math" data-tex="\(0\ne\Delta\in E\)">\(0\ne\Delta\in E\)</span> have trace zero. Then
+<span class="math math-display" data-tex="\[
+W_F(\operatorname{Ind}(\chi-1))=\chi(\Delta).
+\tag{24D}
+\]">\[
+W_F(\operatorname{Ind}(\chi-1))=\chi(\Delta).
+\tag{24D}
+\]</span></p>
+<p><strong>Proof.</strong> At an infinite place the only quadratic extension is <span class="math" data-tex="\(\mathbb C/\mathbb R\)">\(\mathbb C/\mathbb R\)</span>, and a continuous finite-order character of the connected group <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> is trivial, so the assertion is immediate. Now suppose <span class="math" data-tex="\(F\)">\(F\)</span> is nonarchimedean. Choose <span class="math" data-tex="\(\beta\in E\)">\(\beta\in E\)</span> with trace one; the trace pairing is nondegenerate, so it exists. The line <span class="math" data-tex="\(Fx\Delta\)">\(Fx\Delta\)</span> is perpendicular to <span class="math" data-tex="\(F\bar x\)">\(F\bar x\)</span> for <span class="math" data-tex="\(\operatorname{Tr}(uv)\)">\(\operatorname{Tr}(uv)\)</span>, because <span class="math" data-tex="\(x\bar x=Nx\)">\(x\bar x=Nx\)</span>. In the coordinates <span class="math" data-tex="\(y=x(s\Delta+t\beta)\)">\(y=x(s\Delta+t\beta)\)</span>, additive measure is <span class="math" data-tex="\(J|Nx|_F ds\,dt\)">\(J|Nx|_F ds\,dt\)</span>, for a fixed positive <span class="math" data-tex="\(J\)">\(J\)</span> and the self-dual <span class="math" data-tex="\(F\)">\(F\)</span>-measure. Integration of the Fourier transform along <span class="math" data-tex="\(F\bar x\)">\(F\bar x\)</span> then gives
+<span class="math math-display" data-tex="\[
+\int_F\widehat f(a\bar x)da=J\int_F f(a x\Delta)da.
+\tag{24E}
+\]">\[
+\int_F\widehat f(a\bar x)da=J\int_F f(a x\Delta)da.
+\tag{24E}
+\]</span>
+For complete justification, average the integral in the Fourier variable over growing compact additive ideals. Character orthogonality (9B) restricts <span class="math" data-tex="\(t\)">\(t\)</span> to a shrinking annihilator. A locally constant compactly supported function is constant on that sufficiently small subgroup, so the integrals stabilize at its restriction to <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. The factor <span class="math" data-tex="\(|Nx|\)">\(|Nx|\)</span> cancels the inverse factor from this Fourier substitution. This proves (24E) without a distributional interchange.</p>
+<p>The quotient <span class="math" data-tex="\(E^\times/F^\times\)">\(E^\times/F^\times\)</span> is compact: its valuation quotient is finite and its unit quotient is compact. Unfold the central zeta integral along this quotient. Since <span class="math" data-tex="\(|a|_E^{1/2}=|a|_F\)">\(|a|_E^{1/2}=|a|_F\)</span> for <span class="math" data-tex="\(a\in F^\times\)">\(a\in F^\times\)</span>, its fibre integral is <span class="math" data-tex="\(\int_F f(ax)da\)">\(\int_F f(ax)da\)</span>. For the dual character use <span class="math" data-tex="\(x\mapsto\bar x\)">\(x\mapsto\bar x\)</span>: <span class="math" data-tex="\(\chi(\bar x)=\chi(x)^{-1}\)">\(\chi(\bar x)=\chi(x)^{-1}\)</span>. Equation (24E) and then translation <span class="math" data-tex="\(x\mapsto x\Delta\)">\(x\mapsto x\Delta\)</span> on the compact quotient show that the dual central integral is
+<span class="math" data-tex="\(J|\Delta|_E^{-1/2}\chi(\Delta)^{-1}\)">\(J|\Delta|_E^{-1/2}\chi(\Delta)^{-1}\)</span> times the original. Here <span class="math" data-tex="\(\chi(\Delta)^2=1\)">\(\chi(\Delta)^2=1\)</span>, since <span class="math" data-tex="\(\Delta^2\in F\)">\(\Delta^2\in F\)</span> in characteristic different from two, and <span class="math" data-tex="\(\Delta\in F\)">\(\Delta\in F\)</span> in characteristic two. Thus the inverse equals the value. The two L-factors agree: a ramified character has both factors one, while an unramified character is conjugation-invariant and hence equals its inverse on a uniformizer. Equation (6), with any test whose original integral is nonzero, gives
+<span class="math" data-tex="\(\epsilon_E(1/2,\chi)=J|\Delta|_E^{-1/2}\chi(\Delta)\)">\(\epsilon_E(1/2,\chi)=J|\Delta|_E^{-1/2}\chi(\Delta)\)</span>.
+For <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> the same calculation gives the identical scalar without the character value. Their quotient and rank-zero induction prove (24D). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of Theorem 7.4.</strong> Write <span class="math" data-tex="\(J(G)\)">\(J(G)\)</span> for virtual real representations of rank zero and determinant one. The determinant tensor formula
+<span class="math" data-tex="\(\det(V\otimes U)=(\det V)^{\dim U}(\det U)^{\dim V}\)">\(\det(V\otimes U)=(\det V)^{\dim U}(\det U)^{\dim V}\)</span>
+follows by triangularizing the two matrices; it shows that <span class="math" data-tex="\(J(G)\)">\(J(G)\)</span> is an ideal. Induction preserves it by the determinant/transfer formula. On this ideal, <span class="math" data-tex="\(W\)">\(W\)</span> is multiplicative and <span class="math" data-tex="\(w_2\)">\(w_2\)</span> additive, by (24B). Both are preserved by induction: for <span class="math" data-tex="\(W\)">\(W\)</span> use rank-zero induction at <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span>, and for the right side use (24C) and the proved invariant/corestriction law, NT-CFT-24, Theorem 24.2. Duality also gives <span class="math" data-tex="\(W(A)^2=1\)">\(W(A)^2=1\)</span>, since a real finite-image representation is unitary and self-dual and has determinant one.</p>
+<p>Apply Lemma 7.5 to a finite quotient through which <span class="math" data-tex="\(A\)">\(A\)</span> factors and multiply its odd induction expression for <span class="math" data-tex="\(1\)">\(1\)</span> by <span class="math" data-tex="\(A\)">\(A\)</span>. Each restricted tensor term is in the corresponding ideal. Its subgroup has a normal nilpotent subgroup of index at most two, so Lemma 7.6 reduces it to realifications of complex rank-zero terms and dihedral terms. Because both sides of (24) are signs, proving it for these terms proves it for the odd multiple <span class="math" data-tex="\(qA\)">\(qA\)</span>, and hence for <span class="math" data-tex="\(A\)">\(A\)</span> itself.</p>
+<p>For a realification of complex rank-zero <span class="math" data-tex="\(U\)">\(U\)</span>, put <span class="math" data-tex="\(\xi=\det U\)">\(\xi=\det U\)</span>. Its complexification is <span class="math" data-tex="\(U+U^\vee\)">\(U+U^\vee\)</span>. Equation (16) at the centre gives <span class="math" data-tex="\(W=\xi(-1)\)">\(W=\xi(-1)\)</span>. Lemma 7.7 identifies its degree-two class with the obstruction to a continuous square root of <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Such a root exists precisely when <span class="math" data-tex="\(\xi(-1)=1\)">\(\xi(-1)=1\)</span>. Here is the character-extension check. For a compact abelian unit group <span class="math" data-tex="\(K\)">\(K\)</span>, a character trivial on its two-torsion defines a character on <span class="math" data-tex="\(2K\)">\(2K\)</span> by <span class="math" data-tex="\(2x\mapsto\xi(x)\)">\(2x\mapsto\xi(x)\)</span>. This is continuous since <span class="math" data-tex="\(K/\ker2\to2K\)">\(K/\ker2\to2K\)</span> is a compact-to-Hausdorff isomorphism. Choose an open subgroup of <span class="math" data-tex="\(K\)">\(K\)</span> whose intersection with <span class="math" data-tex="\(2K\)">\(2K\)</span> is killed by that character, descend to the finite quotient and extend by choosing roots. The resulting character squares to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. The uniformizer factor can be treated independently by choosing its square root. The only element of order two in <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, in characteristic different from two, is <span class="math" data-tex="\(-1\)">\(-1\)</span>; the necessity is immediate. Finite image can be retained throughout these extensions, so the resulting character extends to <span class="math" data-tex="\(G_F\)">\(G_F\)</span> by the actual reciprocity and finite-quotient proofs in the preceding Weil lesson.</p>
+<p>In characteristic different from two, the coefficient map <span class="math" data-tex="\(H^2(G_F,\{\pm1\})\to\operatorname{Br}(F)\)">\(H^2(G_F,\{\pm1\})\to\operatorname{Br}(F)\)</span> is injective. To see this directly, if a sign cocycle is a coboundary of a <span class="math" data-tex="\(\bar F^\times\)">\(\bar F^\times\)</span>-cochain <span class="math" data-tex="\(t\)">\(t\)</span>, its square is a one-cocycle. The actually proved Hilbert 90, NT-CFT-03, Theorem 3.1, writes <span class="math" data-tex="\(t(g)^2=g(b)/b\)">\(t(g)^2=g(b)/b\)</span>. Choose a square root of <span class="math" data-tex="\(b\)">\(b\)</span> in the separable closure and divide <span class="math" data-tex="\(t\)">\(t\)</span> by its coboundary; this makes <span class="math" data-tex="\(t\)">\(t\)</span> sign-valued. The original sign cocycle was therefore already a sign coboundary. All these continuous cochains pass through a finite extension. The local invariant theorem now says that the obstruction has invariant zero or one-half according as the root exists or does not exist. Its exponential is exactly <span class="math" data-tex="\(\xi(-1)\)">\(\xi(-1)\)</span>. In characteristic two the coefficient map is trivial and <span class="math" data-tex="\(\xi(-1)=1\)">\(\xi(-1)=1\)</span>, so the formula still holds.</p>
+<p>For a dihedral term, reciprocity and transfer identify it with <span class="math" data-tex="\(\operatorname{Ind}(\chi-1)\)">\(\operatorname{Ind}(\chi-1)\)</span> for a quadratic <span class="math" data-tex="\(E/F\)">\(E/F\)</span>, with <span class="math" data-tex="\(\chi\)">\(\chi\)</span> trivial on <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>. Indeed transfer of an outside element in a cyclic-by-two group is its square; inversion and a reflection square one make that transfer trivial. Lemma 7.8 gives its root number <span class="math" data-tex="\(\chi(\Delta)\)">\(\chi(\Delta)\)</span>. Its obstruction in Lemma 7.7 vanishes exactly when <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has a continuous square root trivial on <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>. To verify this equivalence, a lift through the rotation cover restricts to that square-root character on <span class="math" data-tex="\(G_E\)">\(G_E\)</span>; its reflection square-one relation makes its transfer to <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> trivial. Conversely a square-root character trivial there has conjugation equal to its inverse and outside-square value one; its induced plane supplies the required lift.</p>
+<p>The compact group <span class="math" data-tex="\(E^\times/F^\times\)">\(E^\times/F^\times\)</span> has just one nontrivial element of order two when the characteristic is not two, represented by <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. For if <span class="math" data-tex="\(x^2\in F\)">\(x^2\in F\)</span> and <span class="math" data-tex="\(x\notin F\)">\(x\notin F\)</span>, its two conjugates are <span class="math" data-tex="\(x,-x\)">\(x,-x\)</span>, so its trace is zero and its class is that of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. In characteristic two a separable extension contains no new purely inseparable square root, so this quotient has no two-torsion. The compact character-extension argument above shows that its square-root obstruction is nonzero precisely when <span class="math" data-tex="\(\chi(\Delta)=-1\)">\(\chi(\Delta)=-1\)</span>; in characteristic two it is always zero and <span class="math" data-tex="\(\chi(\Delta)=1\)">\(\chi(\Delta)=1\)</span>. The same coefficient injection and invariant theorem prove (24) for the dihedral terms. At a complex place the Galois group is trivial. At a real place, <span class="math" data-tex="\(A=m(\operatorname{sgn}-1)\)">\(A=m(\operatorname{sgn}-1)\)</span> with even <span class="math" data-tex="\(m\)">\(m\)</span>; its root is <span class="math" data-tex="\(i^m=(-1)^{m/2}\)">\(i^m=(-1)^{m/2}\)</span>, while the Whitney formula gives <span class="math" data-tex="\(w_2(A)=\binom m2 x^2\)">\(w_2(A)=\binom m2 x^2\)</span>, whose coefficient is <span class="math" data-tex="\(m/2\pmod2\)">\(m/2\pmod2\)</span>. The nonzero real Brauer class has invariant one-half by NT-CFT-24, Theorem 24.2, giving the same sign. This covers all local fields and completes the proof. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="8-exercises-with-solutions">8. Exercises with solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> Compute <span class="math" data-tex="\(L_F(s,\operatorname{Ind}_{W_E}^{W_F}1)\)">\(L_F(s,\operatorname{Ind}_{W_E}^{W_F}1)\)</span> for an unramified quadratic extension and compare it with <span class="math" data-tex="\(L_F(s,1)L_F(s,\omega_{E/F})\)">\(L_F(s,1)L_F(s,\omega_{E/F})\)</span>.</p>
+<p><strong>Solution.</strong> The Frobenius matrix exchanges the two cosets and has eigenvalues <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>. Inertia is trivial. Hence its factor is <span class="math" data-tex="\((1-q_F^{-2s})^{-1}\)">\((1-q_F^{-2s})^{-1}\)</span>. The two one-dimensional factors are <span class="math" data-tex="\((1-q_F^{-s})^{-1}\)">\((1-q_F^{-s})^{-1}\)</span> and <span class="math" data-tex="\((1+q_F^{-s})^{-1}\)">\((1+q_F^{-s})^{-1}\)</span>; their product is the same. Since <span class="math" data-tex="\(q_E=q_F^2\)">\(q_E=q_F^2\)</span>, it also equals <span class="math" data-tex="\(L_E(s,1)\)">\(L_E(s,1)\)</span>, checking induction and multiplicativity simultaneously.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Compute the unramified quadratic <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>-constant for a general additive conductor, specifying the measures.</p>
+<p><strong>Solution.</strong> Use self-dual measures on <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span>. Write <span class="math" data-tex="\(n=n_F(\psi)\)">\(n=n_F(\psi)\)</span>. Unramified trace preserves this conductor and <span class="math" data-tex="\(q_E=q_F^2\)">\(q_E=q_F^2\)</span>. Formula (9) and self-dual volumes give <span class="math" data-tex="\(\epsilon_F(1)=q_F^{n/2}\)">\(\epsilon_F(1)=q_F^{n/2}\)</span>, <span class="math" data-tex="\(\epsilon_F(\omega)=(-1)^nq_F^{n/2}\)">\(\epsilon_F(\omega)=(-1)^nq_F^{n/2}\)</span>, and <span class="math" data-tex="\(\epsilon_E(1)=q_F^n\)">\(\epsilon_E(1)=q_F^n\)</span>. Substitution in (18) gives <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>. In particular the answer is one when <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, and minus one when <span class="math" data-tex="\(n=1\)">\(n=1\)</span>. With arbitrary measures one must retain their volume ratio in (18); it is not legitimate to suppress it while asserting the same normalized answer.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Show that <span class="math" data-tex="\(|\epsilon_F(1/2,V,\psi,dx_\psi)|=1\)">\(|\epsilon_F(1/2,V,\psi,dx_\psi)|=1\)</span> for unitary <span class="math" data-tex="\(V\)">\(V\)</span>.</p>
+<p><strong>Solution.</strong> Conjugating the character functional equation gives <span class="math" data-tex="\(\overline{\epsilon(\chi,\psi,dx)}=\epsilon(\bar\chi,\psi_{-1},dx)\)">\(\overline{\epsilon(\chi,\psi,dx)}=\epsilon(\bar\chi,\psi_{-1},dx)\)</span>. Its extension to representations follows from uniqueness, because the conjugated family obeys the same multiplicativity, measure scaling and degree-zero induction. For unitary <span class="math" data-tex="\(V\)">\(V\)</span>, <span class="math" data-tex="\(\bar V\simeq V^\vee\)">\(\bar V\simeq V^\vee\)</span>. Since <span class="math" data-tex="\(\omega_{1/2}\)">\(\omega_{1/2}\)</span> is real-valued, the conjugate of <span class="math" data-tex="\(\epsilon(V\otimes\omega_{1/2},\psi,dx_\psi)\)">\(\epsilon(V\otimes\omega_{1/2},\psi,dx_\psi)\)</span> is <span class="math" data-tex="\(\epsilon(V^\vee\otimes\omega_{1/2},\psi_{-1},dx_\psi)\)">\(\epsilon(V^\vee\otimes\omega_{1/2},\psi_{-1},dx_\psi)\)</span>. Formula (15), applied to <span class="math" data-tex="\(V\otimes\omega_{1/2}\)">\(V\otimes\omega_{1/2}\)</span>, makes the product of these two constants one. That product is the required absolute-value square.</p>
+<p><strong>Exercise 8.4 (hard).</strong> Prove uniqueness of the local constants. Show explicitly how an unramified twist affects the dimension-zero Brauer decomposition.</p>
+<p><strong>Solution.</strong> For an irreducible <span class="math" data-tex="\(V=V_0\otimes\eta\)">\(V=V_0\otimes\eta\)</span> with finite-image <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, decompose <span class="math" data-tex="\([V_0]-d[1]\)">\([V_0]-d[1]\)</span> as in (10). Tensoring gives (11), where each difference is <span class="math" data-tex="\(\chi_j\eta|_{W_{E_j}}-\eta|_{W_{E_j}}\)">\(\chi_j\eta|_{W_{E_j}}-\eta|_{W_{E_j}}\)</span>. The equality of two proposed theories on one-dimensional characters, followed by degree-zero induction, makes their ratio one on each of these terms. Their ratio is also one on <span class="math" data-tex="\(d[\eta]\)">\(d[\eta]\)</span>. Thus it is one on <span class="math" data-tex="\(V\)">\(V\)</span>; multiplicativity through a composition series proves the assertion for every smooth representation. At a real place, subtract the induction of the trivial complex character from an induced character; degree-zero induction treats that difference, while the trivial induction is the sum of the two known real characters. This covers the complete real classification and finishes the uniqueness proof. No choice-independence for a newly defined product is asserted here: that is the existence theorem.</p>
+<h2 id="proof-dependencies-and-free-reading-materials">Proof dependencies and free reading materials</h2>
+<p>The character equation, Fourier inversion, Gauss calculation and trace conductor are proved in Lemmas 2.1–2.2. The earlier archimedean Mellin, Gaussian and gamma proofs are NT-ADL-08, Theorem 8.1 and Propositions 8.2–8.4; their Fourier prerequisites are the actual Gaussian and Euclidean inversion proofs in NT-ADL-05. Integer complex Brauer induction is the actually written RT-FIN-11, Theorem 5.1, with the nilpotent and local induction arguments in §§1–4. Its dimension-zero refinement is proved here in (10A). The smooth, reciprocity, transfer and real-classification inputs have exact proofs in the preceding Weil lesson, Propositions 1.1–1.2, Theorems 1.3, 2.2, 4.1 and 5.1, and Proposition 6.1. Conductors, upper groups and trace duals use the preceding conductor lesson, Lemmas 1.1–1.6 and 2.4, Theorems 2.1, 2.6 and 4.1.</p>
+<p>Sections 3A–3D prove existence, including every Brauer relation and all smooth unramified twists. Their global analytic inputs are solely the rank-one proofs NT-ADL-09, Theorem 9.2; NT-ADL-10, Theorem 10.1, equations (3) and (5)–(8); and NT-CFT-21 §6, equations (27)–(34). The finite-character reciprocity map and its comparison at all completions, in both characteristics, are actually proved in NT-CFT-16 §6 and Theorem 16.4. Number-field unit and class-group structure is proved in NT-ADL-03, Corollary 3.4; the function-field compactness and unit support used in the character extension are actually written in NT-CFT-14 §§1–2. Local field realization uses the earlier Frobenius lesson, Lemmas 1.0a–1.0b, whose complete-valuation hypotheses are available in either characteristic from the first lesson.</p>
+<p>Lemma 7.5 supplies its own real induction proof. The real/complex/quaternionic classification used there is the actual conjugate-linear proof in RT-FIN-04, Theorems 2.1 and 3.1 and Proposition 3.2. Lemmas 7.6–7.8 prove the real generator, Clifford class and dihedral Fourier assertions. Hilbert 90 is NT-CFT-03, Theorem 3.1. The Brauer invariant and corestriction law are NT-CFT-24, Theorem 24.2. Theorem 7.4 then proves the orthogonal formula, including characteristic two. No monodromy operator is included in these L-factors yet.</p>
+<p>These locators refer to actual inspected earlier programme proofs. Their present public editions and transitive free-source provenance remain subject to the programme revision; a locally retained or privately fetched source does not certify public accessibility. The new proof reconstruction also requires the programme's integration review before any claim of complete compliance. This paragraph records those limits rather than treating a bibliography or a future lesson title as a proof provider.</p>
+<p>The following human-authored materials are freely readable. They were used to verify conventions and the original theorem scopes; the arguments and exact earlier proof providers above carry the proof obligations.</p>
+<ul>
+<li><strong>Pierre Deligne</strong>, <a href="https://publications.ias.edu/sites/default/files/Number20.pdf"><em>Les constantes des équations fonctionnelles des fonctions L</em>, free IAS author text</a>, §1.5 for virtual induction, §§3.3–3.4 for character constants, and §§4.2–4.16 for the existence relation argument. The arithmetic and geometric reciprocity conventions are fixed in its §2.3.</li>
+<li><strong>Pierre Deligne and Guy Henniart</strong>, <a href="https://publications.ias.edu/sites/default/files/Number43.pdf"><em>Sur la variation, par torsion, des constantes locales d'équations fonctionnelles de fonctions L</em>, free IAS author text</a>, §§0–1 for truncated exponentials, §2 for induction with an abelian normal subgroup, §§3.2–3.7 for norm parameters, and §§4.6–4.8 for sharp twisting. The endpoint distinction is proved and illustrated here.</li>
+<li><strong>Pierre Deligne</strong>, <a href="https://publications.ias.edu/sites/default/files/Number26.pdf"><em>Les constantes locales de l'équation fonctionnelle de la fonction L d'Artin d'une représentation orthogonale</em>, free IAS author text</a>, §§1.3–1.5 for the class and theorem, §§2.1–2.9 for its real-group reduction, and §§3.1–3.3 for realification and dihedral calculations. Lemma 7.5 independently supplies the needed real induction step.</li>
+<li><strong>Jayce R. Getz and Heekyoung Hahn</strong>, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em>, free author draft of 22 April 2022</a>, §12.2, equations (12.9)–(12.13), for a further presentation of these conventions. All section numbers refer to this free draft.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="conductors-of-weil-group-representations.html">← Conductors of Weil-group representations</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="weil-deligne-representations-and-monodromy.html">Weil–Deligne representations and Grothendieck’s monodromy theorem →</a></span></nav>
+<p class="small source-link"><a href="src/local-l-factors-and-epsilon-factors.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-GAL">Repository</a></nav>
+</footer>
+</body>
+</html>

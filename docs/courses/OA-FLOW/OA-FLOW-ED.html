@@ -1,0 +1,1491 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Conditional measures as ergodic components · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L42.html">Previous lesson</a><a href="OA-FLOW-L41.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-ED.md">Lesson source</a></nav><h1 id="OA-FLOW.ERGDEC.SETTING">Conditional measures as ergodic components</h1>
+<p><em>Self-checked by the writing AI. Original lesson, figure and reproduction code: CC0-1.0; accompanying font terms retained.</em></p>
+<p>An invariant observable separates a measured system into pieces that the group cannot move between. Conditional measures describe the distribution inside those pieces. To call them ergodic components, we must prove that the original transformations preserve each conditional measure class and that no further measurable invariant set splits a component into two positive parts.</p>
+<p>The <a href="OA-FLOW-L75.html#oa-flow.kernel.probability">conditional-measure theorem</a> constructs the measures. The <a href="OA-FLOW-L42.html#oa-flow.centerg.conclusion">central-ergodic decomposition theorem</a> supplies a complementary operator-algebra argument. Here we identify its Hilbert spaces and multiplication algebras with those of the actual conditional probabilities. A compact continuous model then turns countably many covariance identities into identities for the whole group.</p>
+<p><a id="oa-flow.ergdec.setting"></a></p>
+<h2 id="the-measured-component-theorem">The measured-component theorem</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a second-countable locally compact Hausdorff group. Let <span class="math" data-tex="\((X,\mu)\)">\((X,\mu)\)</span> be a standard Borel probability space with a <strong>strict jointly Borel action</strong> <span class="math" data-tex="\(T:G\times X\to X\)">\(T:G\times X\to X\)</span>:
+<span class="math math-display" data-tex="\[
+ T_e x=x,\qquad T_g(T_hx)=T_{gh}x
+ \quad(g,h\in G,\ x\in X).
+ \tag{T1}
+\]">\[
+ T_e x=x,\qquad T_g(T_hx)=T_{gh}x
+ \quad(g,h\in G,\ x\in X).
+ \tag{T1}
+\]</span>
+Assume that every <span class="math" data-tex="\(T_g\)">\(T_g\)</span> is nonsingular, meaning <span class="math" data-tex="\((T_g)_*\mu\sim\mu\)">\((T_g)_*\mu\sim\mu\)</span>. Thus the action preserves the measure class, but it need not preserve <span class="math" data-tex="\(\mu\)">\(\mu\)</span> itself. On the represented multiplication algebra <span class="math" data-tex="\(A=L^\infty(X,\mu)\)">\(A=L^\infty(X,\mu)\)</span>, put
+<span class="math math-display" data-tex="\[
+ \alpha_g f=f\circ T_{g^{-1}},\qquad D=A^G.
+ \tag{T2}
+\]">\[
+ \alpha_g f=f\circ T_{g^{-1}},\qquad D=A^G.
+ \tag{T2}
+\]</span>
+All kernels in this lesson are defined on Borel sets. The completed measure spaces are used for equivalence classes of functions and operators.</p>
+<p><strong>Ergodic-component theorem.</strong> There are an invariant conull Borel set <span class="math" data-tex="\(X_*\subseteq X\)">\(X_*\subseteq X\)</span>, a standard Borel probability space <span class="math" data-tex="\((Y,\nu)\)">\((Y,\nu)\)</span>, a Borel map <span class="math" data-tex="\(p:X_*\to Y\)">\(p:X_*\to Y\)</span>, and a Borel probability kernel <span class="math" data-tex="\(y\mapsto\mu_y\)">\(y\mapsto\mu_y\)</span> on <span class="math" data-tex="\(X_*\)">\(X_*\)</span>, with the following properties.</p>
+<p>The map is exactly invariant, <span class="math" data-tex="\(p(T_gx)=p(x)\)">\(p(T_gx)=p(x)\)</span> for every <span class="math" data-tex="\(g,x\)">\(g,x\)</span>, and <span class="math" data-tex="\(\nu=p_*\mu\)">\(\nu=p_*\mu\)</span>. Pullback identifies <span class="math" data-tex="\(L^\infty(Y,\nu)\)">\(L^\infty(Y,\nu)\)</span> with the whole algebra <span class="math" data-tex="\(D\)">\(D\)</span>. Equivalently, it realizes the completed invariant sigma-algebra: the equivalence classes of Borel sets <span class="math" data-tex="\(E\)">\(E\)</span> such that <span class="math" data-tex="\(\mu(T_gE\mathbin\triangle E)=0\)">\(\mu(T_gE\mathbin\triangle E)=0\)</span> for every <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>The kernel disintegrates the original probability:
+<span class="math math-display" data-tex="\[
+ \mu(E\cap p^{-1}B)=\int_B\mu_y(E)\,d\nu(y)
+ \quad(E\in\mathcal B(X_*),\ B\in\mathcal B(Y)).
+ \tag{T3}
+\]">\[
+ \mu(E\cap p^{-1}B)=\int_B\mu_y(E)\,d\nu(y)
+ \quad(E\in\mathcal B(X_*),\ B\in\mathcal B(Y)).
+ \tag{T3}
+\]</span>
+There is one conull Borel subset <span class="math" data-tex="\(Y_*\subseteq Y\)">\(Y_*\subseteq Y\)</span> such that, for every <span class="math" data-tex="\(y\in Y_*\)">\(y\in Y_*\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \mu_y(p^{-1}\{y\})=1,\qquad
+ (T_g)_*\mu_y\sim\mu_y\quad\text{for every }g\in G,\\
+ \mu_y(E)\in\{0,1\}\quad\text{whenever }E\in\mathcal B(X_*)
+ \text{ and }\mu_y(T_gE\mathbin\triangle E)=0\text{ for every }g.
+ \end{gathered}
+ \tag{T4}
+\]">\[
+ \begin{gathered}
+ \mu_y(p^{-1}\{y\})=1,\qquad
+ (T_g)_*\mu_y\sim\mu_y\quad\text{for every }g\in G,\\
+ \mu_y(E)\in\{0,1\}\quad\text{whenever }E\in\mathcal B(X_*)
+ \text{ and }\mu_y(T_gE\mathbin\triangle E)=0\text{ for every }g.
+ \end{gathered}
+ \tag{T4}
+\]</span>
+Thus the conditional systems are nonsingular and ergodic. The fibre <span class="math" data-tex="\(p^{-1}\{y\}\)">\(p^{-1}\{y\}\)</span> is an invariant Borel space, and restricting <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> to it gives the same measured system. For the specified factor map, any two probability kernels satisfying (T3) agree as whole Borel measures on one common conull base, by the <a href="OA-FLOW-L75.html#oa-flow.kernel.uniqueness">kernel uniqueness theorem</a>.</p>
+<p>The conclusion for every <span class="math" data-tex="\(g\)">\(g\)</span> in (T4) uses the same retained set <span class="math" data-tex="\(Y_*\)">\(Y_*\)</span>. It will be proved by continuous covariance, rather than inferred from a separate almost-everywhere assertion for each <span class="math" data-tex="\(g\)">\(g\)</span>. No invariant probability, amenability, properness or compact stabilizer assumption is made. The <a href="#oa-flow.ergdec.sigmafinite">sigma-finite extension</a> specifies the normalization needed when the starting measure is infinite.</p>
+<p><span id="OA-FLOW.ERGDEC.COMPACT"></span><a id="oa-flow.ergdec.compact"></a></p>
+<h2 id="a-continuous-compact-model-containing-the-whole-invariant-factor">A continuous compact model containing the whole invariant factor</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a second-countable locally compact Hausdorff group acting strictly, jointly Borel and nonsingularly on a standard Borel probability space <span class="math" data-tex="\((X,\mu)\)">\((X,\mu)\)</span>. Write <span class="math" data-tex="\(gx\)">\(gx\)</span> for the action and put
+<span class="math math-display" data-tex="\[
+ A=L^\infty(X,\mu),\qquad
+ \alpha_g f(x)=f(g^{-1}x),\qquad D=A^\alpha.
+ \tag{F1}
+\]">\[
+ A=L^\infty(X,\mu),\qquad
+ \alpha_g f(x)=f(g^{-1}x),\qquad D=A^\alpha.
+ \tag{F1}
+\]</span>
+The algebra and its normal functionals use completed measure classes, while the point maps and probability kernels below use the underlying Borel spaces. A probability space is nonempty. The group acts by normal automorphisms because each point transformation is a nonsingular Borel bijection.</p>
+<p>The <a href="../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#2-why-measurable-unitary-representations-are-continuous">measurable-action continuity proof</a> applies to this action. In its pushforward convention, <span class="math" data-tex="\(r_g=d(g_*\mu)/d\mu\)">\(r_g=d(g_*\mu)/d\mu\)</span>, and
+<span class="math math-display" data-tex="\[
+ (U_g\xi)(x)=r_g(x)^{1/2}\xi(g^{-1}x)
+ \tag{F2}
+\]">\[
+ (U_g\xi)(x)=r_g(x)^{1/2}\xi(g^{-1}x)
+ \tag{F2}
+\]</span>
+gives a strongly continuous representation on the separable Hilbert space <span class="math" data-tex="\(L^2(X,\mu)\)">\(L^2(X,\mu)\)</span>. The derivative proof supplies a jointly Borel function whose slice is a density for every fixed parameter; its fixed-pair chain rule suffices for the operator representation law. The same result proves sigma-strong-star continuity of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<p>The algebra <span class="math" data-tex="\(D\)">\(D\)</span> is a von Neumann subalgebra: it is the intersection of the ultraweakly closed fixed spaces of the normal automorphisms. It acts on a separable Hilbert space. The <span class="unlinked">compact metrizable operator-ball proof</span> therefore supplies a countable family of self-adjoint contractions <span class="math" data-tex="\(d_n\)">\(d_n\)</span> generating <span class="math" data-tex="\(D\)">\(D\)</span>. For example, choose a WOT-dense family in its self-adjoint unit ball. Define
+<span class="math math-display" data-tex="\[
+ D_0=C^*(1,d_1,d_2,\ldots),\qquad D_0''=D.
+ \tag{F3}
+\]">\[
+ D_0=C^*(1,d_1,d_2,\ldots),\qquad D_0''=D.
+ \tag{F3}
+\]</span>
+The action fixes every element of <span class="math" data-tex="\(D_0\)">\(D_0\)</span>, so all of its orbits are norm continuous.</p>
+<p>The <a href="../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#3-building-a-separable-continuous-function-algebra">continuous-core construction</a>, Lemma 3.1, gives a separable unital invariant C*-algebra <span class="math" data-tex="\(B_0\subseteq A\)">\(B_0\subseteq A\)</span>, with norm-continuous orbits and <span class="math" data-tex="\(B_0''=A\)">\(B_0''=A\)</span>. Enlarge it by the invariant coordinates:
+<span class="math math-display" data-tex="\[
+ B=C^*(B_0,D_0).
+ \tag{F4}
+\]">\[
+ B=C^*(B_0,D_0).
+ \tag{F4}
+\]</span>
+This is still separable, unital and invariant, and it still generates <span class="math" data-tex="\(A\)">\(A\)</span>. Finite sums and products of its generators have norm-continuous orbits, by the product estimate and the isometry of each <span class="math" data-tex="\(\alpha_g\)">\(\alpha_g\)</span>. Uniform approximation extends this property to all of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+ \Omega=\operatorname{Spec}(B),\qquad
+ Y=\operatorname{Spec}(D_0),\qquad
+ p_\Omega(\omega)=\omega|_{D_0}.
+ \tag{F5}
+\]">\[
+ \Omega=\operatorname{Spec}(B),\qquad
+ Y=\operatorname{Spec}(D_0),\qquad
+ p_\Omega(\omega)=\omega|_{D_0}.
+ \tag{F5}
+\]</span>
+The <span class="unlinked">unital commutative Gelfand representation</span> makes both spaces compact Hausdorff and identifies <span class="math" data-tex="\(B=C(\Omega)\)">\(B=C(\Omega)\)</span>, <span class="math" data-tex="\(D_0=C(Y)\)">\(D_0=C(Y)\)</span>. Separability makes the spectra metrizable: values on a countable norm-dense subset determine each norm-one character, so the coordinate map embeds the compact spectrum into a countable product of compact metric disks; a continuous injection from a compact space into a Hausdorff space is a homeomorphism onto its image. The map <span class="math" data-tex="\(p_\Omega\)">\(p_\Omega\)</span> is continuous because each coordinate evaluation on <span class="math" data-tex="\(D_0\)">\(D_0\)</span> is continuous. It is onto. Otherwise its compact image would be a proper closed subset of <span class="math" data-tex="\(Y\)">\(Y\)</span>; a nonzero continuous function vanishing on that image would have zero image in <span class="math" data-tex="\(C(\Omega)\)">\(C(\Omega)\)</span>, contradicting the faithful inclusion <span class="math" data-tex="\(D_0\subseteq B\)">\(D_0\subseteq B\)</span>.</p>
+<p>The action on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is
+<span class="math math-display" data-tex="\[
+ (T_g\omega)(b)=\omega(\alpha_{g^{-1}}b).
+ \tag{F6}
+\]">\[
+ (T_g\omega)(b)=\omega(\alpha_{g^{-1}}b).
+ \tag{F6}
+\]</span>
+It is a genuine action by homeomorphisms. To check joint continuity, if <span class="math" data-tex="\(g_i\to g\)">\(g_i\to g\)</span> and <span class="math" data-tex="\(\omega_i\to\omega\)">\(\omega_i\to\omega\)</span>, then for each <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>
+<span class="math math-display" data-tex="\[
+ |(T_{g_i}\omega_i)(b)-(T_g\omega)(b)|
+ \le\|\alpha_{g_i^{-1}}b-\alpha_{g^{-1}}b\|
+    +|\omega_i(\alpha_{g^{-1}}b)-\omega(\alpha_{g^{-1}}b)|
+ \longrightarrow0.
+ \tag{F7}
+\]">\[
+ |(T_{g_i}\omega_i)(b)-(T_g\omega)(b)|
+ \le\|\alpha_{g_i^{-1}}b-\alpha_{g^{-1}}b\|
+    +|\omega_i(\alpha_{g^{-1}}b)-\omega(\alpha_{g^{-1}}b)|
+ \longrightarrow0.
+ \tag{F7}
+\]</span>
+Since <span class="math" data-tex="\(D_0\)">\(D_0\)</span> is fixed pointwise, restriction in (F5) gives the exact point identity
+<span class="math math-display" data-tex="\[
+ p_\Omega(T_g\omega)=p_\Omega(\omega)
+ \qquad(g\in G,\ \omega\in\Omega).
+ \tag{F8}
+\]">\[
+ p_\Omega(T_g\omega)=p_\Omega(\omega)
+ \qquad(g\in G,\ \omega\in\Omega).
+ \tag{F8}
+\]</span></p>
+<p>Use the <strong>original probability state</strong> <span class="math" data-tex="\(\varphi(f)=\int_Xf\,d\mu\)">\(\varphi(f)=\int_Xf\,d\mu\)</span>. Its restriction to <span class="math" data-tex="\(B=C(\Omega)\)">\(B=C(\Omega)\)</span> has a Radon probability representing measure <span class="math" data-tex="\(m\)">\(m\)</span> by the <a href="OA-FLOW-HR.html#hr-02">Radon representation proof</a>. It has full support: a nonempty open set supports a nonzero positive continuous function, whose integral is positive by faithfulness of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<p>Here is the whole-algebra part of the <a href="../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#4-the-compact-space-and-its-nonsingular-measure">compact-model theorem</a>, with this specified state. The map
+<span class="math math-display" data-tex="\[
+ b\in B\subseteq L^2(X,\mu)\longmapsto\widehat b\in L^2(\Omega,m)
+ \tag{F9}
+\]">\[
+ b\in B\subseteq L^2(X,\mu)\longmapsto\widehat b\in L^2(\Omega,m)
+ \tag{F9}
+\]</span>
+is an isometry, since the squared norms are the two values of <span class="math" data-tex="\(\varphi(b^*b)\)">\(\varphi(b^*b)\)</span>. Its domain span is dense. Indeed, a vector orthogonal to <span class="math" data-tex="\(B1\)">\(B1\)</span> gives a normal vector functional vanishing on <span class="math" data-tex="\(B\)">\(B\)</span>; since <span class="math" data-tex="\(B''=A\)">\(B''=A\)</span>, ultraweak density makes it vanish on <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(A1\)">\(A1\)</span> is dense in <span class="math" data-tex="\(L^2(X,\mu)\)">\(L^2(X,\mu)\)</span>. Its target span is dense because continuous functions are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> of a finite Radon measure on a compact metric space. Thus (F9) extends to an onto unitary sending <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Conjugating multiplication by this unitary identifies <span class="math" data-tex="\(A\)">\(A\)</span> with the von Neumann algebra generated by <span class="math" data-tex="\(C(\Omega)\)">\(C(\Omega)\)</span>, which is the whole multiplication algebra <span class="math" data-tex="\(L^\infty(\Omega,m)\)">\(L^\infty(\Omega,m)\)</span>. For an open set <span class="math" data-tex="\(O\)">\(O\)</span>, the continuous functions <span class="math" data-tex="\(\min\{1,n\,d(\omega,\Omega\setminus O)\}\)">\(\min\{1,n\,d(\omega,\Omega\setminus O)\}\)</span> increase to <span class="math" data-tex="\(1_O\)">\(1_O\)</span>; the empty-complement case uses the constant one. Their multiplication operators converge strongly by dominated convergence. The sets whose indicator multiplications belong to the generated von Neumann algebra form a sigma-algebra, by complements, intersections and bounded increasing sums of disjoint projections, and therefore include every Borel set. Uniform simple approximation gives all bounded Borel multiplications, and completed versions give the same operators. We obtain a normal isomorphism
+<span class="math math-display" data-tex="\[
+ \pi:A\longrightarrow L^\infty(\Omega,m),\qquad
+ \int_\Omega\pi(f)\,dm=\int_Xf\,d\mu.
+ \tag{F10}
+\]">\[
+ \pi:A\longrightarrow L^\infty(\Omega,m),\qquad
+ \int_\Omega\pi(f)\,dm=\int_Xf\,d\mu.
+ \tag{F10}
+\]</span>
+Its inverse is normal as well, since it is the restriction of inverse unitary conjugation between the two whole multiplication algebras.</p>
+<p>For each <span class="math" data-tex="\(g\)">\(g\)</span>, the finite Radon measure <span class="math" data-tex="\((T_g)_*m\)">\((T_g)_*m\)</span> agrees on continuous functions with the transported normal state <span class="math" data-tex="\(\varphi\circ\alpha_{g^{-1}}\)">\(\varphi\circ\alpha_{g^{-1}}\)</span>. A normal positive functional <span class="math" data-tex="\(\chi\)">\(\chi\)</span> on the whole <span class="math" data-tex="\(L^\infty(\Omega,m)\)">\(L^\infty(\Omega,m)\)</span> has a finite measure <span class="math" data-tex="\(E\mapsto\chi(1_E)\)">\(E\mapsto\chi(1_E)\)</span>: normality applies to the bounded increasing partial sums of disjoint indicators and proves countable additivity. This measure is absolutely continuous with respect to <span class="math" data-tex="\(m\)">\(m\)</span>, since an <span class="math" data-tex="\(m\)">\(m\)</span>-null indicator is the zero class. The <span class="unlinked">finite Radon–Nikodym proof</span> gives its <span class="math" data-tex="\(L^1(m)\)">\(L^1(m)\)</span> density, and simple approximation represents <span class="math" data-tex="\(\chi\)">\(\chi\)</span> by that density. Faithfulness makes the density positive almost everywhere. Apply this to the transported state. Equality on continuous functions identifies the finite Radon measures, so <span class="math" data-tex="\((T_g)_*m\sim m\)">\((T_g)_*m\sim m\)</span>. The defining action (F6) gives equivariance first on <span class="math" data-tex="\(B\)">\(B\)</span>, and normality and ultraweak generation then give
+<span class="math math-display" data-tex="\[
+ \pi(\alpha_g f)=\pi(f)\circ T_{g^{-1}}
+ \qquad(g\in G,\ f\in A)
+ \tag{F11}
+\]">\[
+ \pi(\alpha_g f)=\pi(f)\circ T_{g^{-1}}
+ \qquad(g\in G,\ f\in A)
+ \tag{F11}
+\]</span>
+as an equality of measured classes. This is the normal-state nonsingularity argument of the cited compact-model proof; no invariant state was assumed.</p>
+<p>Set <span class="math" data-tex="\(\nu=(p_\Omega)_*m\)">\(\nu=(p_\Omega)_*m\)</span>. Pullback defines a faithful unital normal map
+<span class="math math-display" data-tex="\[
+ J:L^\infty(Y,\nu)\longrightarrow L^\infty(\Omega,m),
+ \qquad J(h)=h\circ p_\Omega,
+ \qquad J(L^\infty(Y,\nu))=\pi(D).
+ \tag{F12}
+\]">\[
+ J:L^\infty(Y,\nu)\longrightarrow L^\infty(\Omega,m),
+ \qquad J(h)=h\circ p_\Omega,
+ \qquad J(L^\infty(Y,\nu))=\pi(D).
+ \tag{F12}
+\]</span>
+We justify the normality and the last whole-algebra equality. For <span class="math" data-tex="\(k\in L^1(m)_+\)">\(k\in L^1(m)_+\)</span>, the finite measure <span class="math" data-tex="\((p_\Omega)_*(km)\)">\((p_\Omega)_*(km)\)</span> is absolutely continuous with respect to <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. The <span class="unlinked">finite Radon–Nikodym proof</span> gives its <span class="math" data-tex="\(L^1(\nu)\)">\(L^1(\nu)\)</span> density. Extend by real and imaginary parts. Uniqueness of densities makes the resulting map <span class="math" data-tex="\(J_*:L^1(m)\to L^1(\nu)\)">\(J_*:L^1(m)\to L^1(\nu)\)</span> linear, and testing functions of absolute value at most one gives <span class="math" data-tex="\(\|J_*k\|_1\le\|k\|_1\)">\(\|J_*k\|_1\le\|k\|_1\)</span>. The identity
+<span class="math" data-tex="\(\int J(h)k\,dm=\int hJ_*k\,d\nu\)">\(\int J(h)k\,dm=\int hJ_*k\,d\nu\)</span>
+shows that <span class="math" data-tex="\(J\)">\(J\)</span> is its adjoint and hence ultraweakly continuous. Its faithfulness follows directly from <span class="math" data-tex="\(\nu=(p_\Omega)_*m\)">\(\nu=(p_\Omega)_*m\)</span>. The <span class="unlinked">faithful normal image theorem</span> makes its range a von Neumann algebra. That range contains <span class="math" data-tex="\(J(C(Y))=\pi(D_0)\)">\(J(C(Y))=\pi(D_0)\)</span>, so it contains <span class="math" data-tex="\(\pi(D)\)">\(\pi(D)\)</span>. Conversely every bounded Borel function on <span class="math" data-tex="\(Y\)">\(Y\)</span> has uniformly bounded continuous <span class="math" data-tex="\(L^2(\nu)\)">\(L^2(\nu)\)</span> approximants: use density of continuous functions and clip their real and imaginary parts to the bounds of the target. Their multiplications converge strongly, first on bounded vectors and then on all <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vectors by truncation; the common bound also gives ultraweak convergence by summable vector-series tests. Normality of <span class="math" data-tex="\(J\)">\(J\)</span> therefore puts its entire range in the ultraweak closure of <span class="math" data-tex="\(\pi(D_0)\)">\(\pi(D_0)\)</span>, namely <span class="math" data-tex="\(\pi(D)\)">\(\pi(D)\)</span>. This proves (F12). Thus the continuous map <span class="math" data-tex="\(p_\Omega\)">\(p_\Omega\)</span> represents the <strong>whole</strong> invariant sigma-algebra modulo null sets.</p>
+<p><span id="OA-FLOW.ERGDEC.SPATIAL"></span><a id="oa-flow.ergdec.spatial"></a></p>
+<h2 id="normal-probability-algebra-isomorphisms-have-borel-point-realizations">Normal probability-algebra isomorphisms have Borel point realizations</h2>
+<p>We prove the ordinary spatial-isomorphism assertion needed before making the point map equivariant.</p>
+<p><strong>Spatial lemma.</strong> Let <span class="math" data-tex="\((E,\lambda)\)">\((E,\lambda)\)</span>, <span class="math" data-tex="\((F,\eta)\)">\((F,\eta)\)</span> be standard Borel probability spaces. Suppose
+<span class="math math-display" data-tex="\[
+ \Theta:L^\infty(E,\lambda)\longrightarrow L^\infty(F,\eta)
+ \quad\text{is a normal unital star isomorphism, with normal inverse,}
+ \qquad
+ \int_F\Theta(f)\,d\eta=\int_Ef\,d\lambda.
+ \tag{S1}
+\]">\[
+ \Theta:L^\infty(E,\lambda)\longrightarrow L^\infty(F,\eta)
+ \quad\text{is a normal unital star isomorphism, with normal inverse,}
+ \qquad
+ \int_F\Theta(f)\,d\eta=\int_Ef\,d\lambda.
+ \tag{S1}
+\]</span>
+There are Borel conull subsets <span class="math" data-tex="\(E_0,F_0\)">\(E_0,F_0\)</span> and inverse Borel maps <span class="math" data-tex="\(r:E_0\to F_0\)">\(r:E_0\to F_0\)</span>, <span class="math" data-tex="\(q:F_0\to E_0\)">\(q:F_0\to E_0\)</span>, preserving their probabilities, such that <span class="math" data-tex="\(\Theta(f)=f\circ q\)">\(\Theta(f)=f\circ q\)</span> as a class for every <span class="math" data-tex="\(f\in L^\infty(E,\lambda)\)">\(f\in L^\infty(E,\lambda)\)</span>.</p>
+<p><strong>Proof.</strong> Use the <a href="OA-FLOW-L75.html#oa-flow.kernel.coding">standard-Borel coding in L75</a> to choose Borel isomorphisms
+<span class="math math-display" data-tex="\[
+ c:E\longrightarrow B\subseteq[0,1],\qquad
+ d:F\longrightarrow C\subseteq[0,1],
+ \tag{S2}
+\]">\[
+ c:E\longrightarrow B\subseteq[0,1],\qquad
+ d:F\longrightarrow C\subseteq[0,1],
+ \tag{S2}
+\]</span>
+where <span class="math" data-tex="\(B,C\)">\(B,C\)</span> are Borel. Choose a Borel representative <span class="math" data-tex="\(a:F\to[0,1]\)">\(a:F\to[0,1]\)</span> of <span class="math" data-tex="\(\Theta(c)\)">\(\Theta(c)\)</span>. Such a representative exists by the <a href="OA-FLOW-L75.html#oa-flow.kernel.completion">Borel-version proof</a>; clipping to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> preserves the class, since <span class="math" data-tex="\(0\le\Theta(c)\le1\)">\(0\le\Theta(c)\le1\)</span>.</p>
+<p>Normality gives the exact bounded Borel-calculus identity
+<span class="math math-display" data-tex="\[
+ \Theta(h\circ c)=[h\circ a]
+ \qquad(h:[0,1]\to\mathbb C\text{ bounded Borel}).
+ \tag{S3}
+\]">\[
+ \Theta(h\circ c)=[h\circ a]
+ \qquad(h:[0,1]\to\mathbb C\text{ bounded Borel}).
+ \tag{S3}
+\]</span>
+Here is a direct verification. Polynomial identities and the <span class="unlinked">polynomial-density proof</span> prove the assertion for continuous <span class="math" data-tex="\(h\)">\(h\)</span>, equivalently preservation of continuous functional calculus by a unital star isomorphism. For an open subset <span class="math" data-tex="\(O\subseteq[0,1]\)">\(O\subseteq[0,1]\)</span>, continuous functions <span class="math" data-tex="\(0\le h_n\uparrow1_O\)">\(0\le h_n\uparrow1_O\)</span>, for instance truncated multiples of the distance to the complement, give (S3) for <span class="math" data-tex="\(1_O\)">\(1_O\)</span> by normality. The cases of empty complement and empty set use the constant functions. The sets whose indicators satisfy (S3) are closed under complements and finite intersections, by linearity and multiplicativity, and under countable disjoint unions, by normality applied to increasing partial sums. Disjointifying an arbitrary union makes them a sigma-algebra. They contain the open sets and hence every Borel set. Uniform finite-valued approximation of a bounded Borel function now proves (S3). All assertions are equalities of classes; no common null set for all Borel <span class="math" data-tex="\(h\)">\(h\)</span> was taken.</p>
+<p>Since <span class="math" data-tex="\(1_B(c)=1\)">\(1_B(c)=1\)</span>, (S3) implies <span class="math" data-tex="\(a\in B\)">\(a\in B\)</span> almost everywhere. Fix <span class="math" data-tex="\(e_0\in E\)">\(e_0\in E\)</span>, which exists because <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is a probability, and define the everywhere Borel map
+<span class="math math-display" data-tex="\[
+ q(u)=\begin{cases}c^{-1}(a(u)),&amp;a(u)\in B,\\ e_0,&amp;a(u)\notin B.\end{cases}
+ \tag{S4}
+\]">\[
+ q(u)=\begin{cases}c^{-1}(a(u)),&amp;a(u)\in B,\\ e_0,&amp;a(u)\notin B.\end{cases}
+ \tag{S4}
+\]</span>
+For bounded Borel <span class="math" data-tex="\(f:E\to\mathbb C\)">\(f:E\to\mathbb C\)</span>, extend <span class="math" data-tex="\(f\circ c^{-1}\)">\(f\circ c^{-1}\)</span> by zero from <span class="math" data-tex="\(B\)">\(B\)</span> to <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. Equation (S3) yields
+<span class="math math-display" data-tex="\[
+ \Theta([f])=[f\circ q],\qquad q_*\eta=\lambda.
+ \tag{S5}
+\]">\[
+ \Theta([f])=[f\circ q],\qquad q_*\eta=\lambda.
+ \tag{S5}
+\]</span>
+The second assertion follows by the state identity (S1) on indicators. It also ensures that pullback by <span class="math" data-tex="\(q\)">\(q\)</span> respects null classes. Completed bounded functions have Borel versions, so (S5) covers the whole algebra.</p>
+<p>Apply the same construction to <span class="math" data-tex="\(\Theta^{-1}\)">\(\Theta^{-1}\)</span>, using the code <span class="math" data-tex="\(d\)">\(d\)</span>. It gives an everywhere Borel map <span class="math" data-tex="\(r:E\to F\)">\(r:E\to F\)</span>, with <span class="math" data-tex="\(r_*\lambda=\eta\)">\(r_*\lambda=\eta\)</span>, realizing <span class="math" data-tex="\(\Theta^{-1}\)">\(\Theta^{-1}\)</span>. Apply the two inverse algebra maps to the single coordinate <span class="math" data-tex="\(c\)">\(c\)</span>, respectively <span class="math" data-tex="\(d\)">\(d\)</span>. The pullback identities, which respect null classes, give
+<span class="math math-display" data-tex="\[
+ c(q(r(x)))=c(x)\quad\lambda\text{-a.e.},\qquad
+ d(r(q(u)))=d(u)\quad\eta\text{-a.e.}
+ \tag{S6}
+\]">\[
+ c(q(r(x)))=c(x)\quad\lambda\text{-a.e.},\qquad
+ d(r(q(u)))=d(u)\quad\eta\text{-a.e.}
+ \tag{S6}
+\]</span>
+Injectivity of the codes makes these identities <span class="math" data-tex="\(q(r(x))=x\)">\(q(r(x))=x\)</span> and <span class="math" data-tex="\(r(q(u))=u\)">\(r(q(u))=u\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ E_0=\{x:q(r(x))=x\},\qquad
+ F_0=\{u:r(q(u))=u\}
+ \tag{S7}
+\]">\[
+ E_0=\{x:q(r(x))=x\},\qquad
+ F_0=\{u:r(q(u))=u\}
+ \tag{S7}
+\]</span>
+are Borel and conull. If <span class="math" data-tex="\(x\in E_0\)">\(x\in E_0\)</span>, then <span class="math" data-tex="\(r(q(r(x)))=r(x)\)">\(r(q(r(x)))=r(x)\)</span>, so <span class="math" data-tex="\(r(x)\in F_0\)">\(r(x)\in F_0\)</span>; the reverse argument gives <span class="math" data-tex="\(q(F_0)\subseteq E_0\)">\(q(F_0)\subseteq E_0\)</span>. The restrictions are inverse bijections. They and their inverses are Borel, and their probability preservation was already proved. This proves the lemma.</p>
+<p>Apply the lemma to <span class="math" data-tex="\(\Theta=\pi\)">\(\Theta=\pi\)</span> in (F10). It supplies a Borel point isomorphism from a conull subset of <span class="math" data-tex="\(X\)">\(X\)</span> to a conull subset of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, preserving <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span>. Extend its map in the <span class="math" data-tex="\(X\)">\(X\)</span>-to-<span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> direction to an everywhere Borel map <span class="math" data-tex="\(\psi:X\to\Omega\)">\(\psi:X\to\Omega\)</span> by a fixed value. For every bounded Borel <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>,
+<span class="math math-display" data-tex="\[
+ \pi^{-1}([f])=[f\circ\psi],\qquad \psi_*\mu=m.
+ \tag{S8}
+\]">\[
+ \pi^{-1}([f])=[f\circ\psi],\qquad \psi_*\mu=m.
+ \tag{S8}
+\]</span>
+The extension changes nothing on the probability-one original domain.</p>
+<h2 id="one-point-map-intertwines-every-group-element">One point map intertwines every group element</h2>
+<p>We now apply the simultaneous point-realization mechanism of <a href="../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#4-the-compact-space-and-its-nonsingular-measure">Theorem 4.4</a>. Its ordinary spatial input has just been proved, its source action is the specified strict Borel nonsingular action, its target action is the jointly continuous compact action (F6), and (F11) intertwines their whole normal algebras. The following argument records the conull sets and the exact probability preservation.</p>
+<p>Choose countably many continuous functions <span class="math" data-tex="\(h_j:\Omega\to[0,1]\)">\(h_j:\Omega\to[0,1]\)</span> separating its points. Testing (F11) against this family and using (S8) gives, for every fixed <span class="math" data-tex="\(g\)">\(g\)</span>,
+<span class="math math-display" data-tex="\[
+ \psi(gx)=T_g\psi(x)\quad\text{for }\mu\text{-almost every }x.
+ \tag{S9}
+\]">\[
+ \psi(gx)=T_g\psi(x)\quad\text{for }\mu\text{-almost every }x.
+ \tag{S9}
+\]</span>
+Nonsingularity permits the change from <span class="math" data-tex="\(g^{-1}x\)">\(g^{-1}x\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span> in these class identities. There are only countably many test functions for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>; its exceptional set may still depend on <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>Choose a strictly positive Borel function <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span> with <span class="math" data-tex="\(\int_G k(t)\,dt=1\)">\(\int_G k(t)\,dt=1\)</span>. Such a function exists because lcsc groups are sigma compact and Haar measure is sigma-finite; the <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#1-repairing-an-equivariant-section">positive Haar-probability construction</a> gives it explicitly. Put
+<span class="math math-display" data-tex="\[
+ R_x(t)=T_{t^{-1}}\psi(tx),\qquad
+ b_j(x)=\int_G k(t)h_j(R_x(t))\,dt.
+ \tag{S10}
+\]">\[
+ R_x(t)=T_{t^{-1}}\psi(tx),\qquad
+ b_j(x)=\int_G k(t)h_j(R_x(t))\,dt.
+ \tag{S10}
+\]</span>
+All maps are jointly Borel, and bounded parameter integration makes <span class="math" data-tex="\(b_j\)">\(b_j\)</span> Borel. The coordinate map <span class="math" data-tex="\(H(\omega)=(h_j(\omega))_j\)">\(H(\omega)=(h_j(\omega))_j\)</span> is a homeomorphism of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> onto a compact subset of <span class="math" data-tex="\([0,1]^{\mathbb N}\)">\([0,1]^{\mathbb N}\)</span>. Define
+<span class="math math-display" data-tex="\[
+ Z=\left\{x: b(x)\in H(\Omega),\quad
+       \int_G k(t)|h_j(R_x(t))-b_j(x)|^2\,dt=0
+       \text{ for every }j\right\}.
+ \tag{S11}
+\]">\[
+ Z=\left\{x: b(x)\in H(\Omega),\quad
+       \int_G k(t)|h_j(R_x(t))-b_j(x)|^2\,dt=0
+       \text{ for every }j\right\}.
+ \tag{S11}
+\]</span>
+This set is Borel. For <span class="math" data-tex="\(x\in Z\)">\(x\in Z\)</span>, the variance tests and countable point separation say that <span class="math" data-tex="\(R_x(t)\)">\(R_x(t)\)</span> equals the single point <span class="math" data-tex="\(\Phi(x)=H^{-1}(b(x))\)">\(\Phi(x)=H^{-1}(b(x))\)</span> for Haar-almost every <span class="math" data-tex="\(t\)">\(t\)</span>. Conversely an essentially constant <span class="math" data-tex="\(R_x\)">\(R_x\)</span> passes all these tests. Fubini applied to (S9) gives <span class="math" data-tex="\(\mu(Z)=1\)">\(\mu(Z)=1\)</span> and <span class="math" data-tex="\(\Phi(x)=\psi(x)\)">\(\Phi(x)=\psi(x)\)</span> almost everywhere. The function <span class="math" data-tex="\(\Phi:Z\to\Omega\)">\(\Phi:Z\to\Omega\)</span> is Borel.</p>
+<p>The exact actions, before any deletion of source points, give
+<span class="math math-display" data-tex="\[
+ R_{gx}(t)=T_g R_x(tg).
+ \tag{S12}
+\]">\[
+ R_{gx}(t)=T_g R_x(tg).
+ \tag{S12}
+\]</span>
+Right translation preserves the Haar null class, also for a nonunimodular group. Since <span class="math" data-tex="\(T_g\)">\(T_g\)</span> is a bijection, (S12) makes <span class="math" data-tex="\(Z\)">\(Z\)</span> invariant and gives
+<span class="math math-display" data-tex="\[
+ \Phi(gx)=T_g\Phi(x)\qquad(g\in G,\ x\in Z).
+ \tag{S13}
+\]">\[
+ \Phi(gx)=T_g\Phi(x)\qquad(g\in G,\ x\in Z).
+ \tag{S13}
+\]</span>
+The Haar probability <span class="math" data-tex="\(k(t)dt\)">\(k(t)dt\)</span> need not be invariant; only its equivalence to Haar measure is used. These conclusions arise from essential constancy and the exact action laws, not from an uncountable intersection of fixed-parameter good sets.</p>
+<p>To obtain injectivity on an invariant set, choose a Borel conull <span class="math" data-tex="\(E\subseteq Z\)">\(E\subseteq Z\)</span> where <span class="math" data-tex="\(\Phi=\psi\)">\(\Phi=\psi\)</span> and the original point map <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is injective. Set
+<span class="math math-display" data-tex="\[
+ X_0=Z\cap\left\{x:\int_G k(t)1_E(tx)\,dt=1\right\}.
+ \tag{S14}
+\]">\[
+ X_0=Z\cap\left\{x:\int_G k(t)1_E(tx)\,dt=1\right\}.
+ \tag{S14}
+\]</span>
+It is Borel and conull by Fubini and nonsingularity of each fixed transformation. It is invariant because the condition means <span class="math" data-tex="\(tx\in E\)">\(tx\in E\)</span> for Haar-almost every <span class="math" data-tex="\(t\)">\(t\)</span>, and right translation preserves that null class. If <span class="math" data-tex="\(x,x'\in X_0\)">\(x,x'\in X_0\)</span> satisfy <span class="math" data-tex="\(\Phi(x)=\Phi(x')\)">\(\Phi(x)=\Phi(x')\)</span>, choose a <span class="math" data-tex="\(t\)">\(t\)</span> for which both <span class="math" data-tex="\(tx,tx'\in E\)">\(tx,tx'\in E\)</span>; the intersection of these two Haar-conull sets is nonempty. Equation (S13) yields
+<span class="math" data-tex="\(\psi(tx)=T_t\Phi(x)=T_t\Phi(x')=\psi(tx')\)">\(\psi(tx)=T_t\Phi(x)=T_t\Phi(x')=\psi(tx')\)</span>.
+Injectivity on <span class="math" data-tex="\(E\)">\(E\)</span> gives <span class="math" data-tex="\(tx=tx'\)">\(tx=tx'\)</span>, hence <span class="math" data-tex="\(x=x'\)">\(x=x'\)</span>.</p>
+<p>The <a href="OA-FLOW-L75.html#oa-flow.kernel.coding">Borel image and inverse theorem used in L75</a> makes <span class="math" data-tex="\(\Omega_0=\Phi(X_0)\)">\(\Omega_0=\Phi(X_0)\)</span> Borel and the inverse map Borel. Equation (S13) makes <span class="math" data-tex="\(\Omega_0\)">\(\Omega_0\)</span> invariant. Define <span class="math" data-tex="\(\phi=\Phi|_{X_0}\)">\(\phi=\Phi|_{X_0}\)</span>. Since it equals <span class="math" data-tex="\(\psi\)">\(\psi\)</span> almost everywhere and <span class="math" data-tex="\(\mu(X_0)=1\)">\(\mu(X_0)=1\)</span>, (S8) gives
+<span class="math math-display" data-tex="\[
+ \phi:X_0\longrightarrow\Omega_0
+ \quad\text{a probability-preserving Borel isomorphism},\qquad
+ \phi(gx)=T_g\phi(x)\quad(g\in G,\ x\in X_0),
+ \qquad m(\Omega_0)=1.
+ \tag{S15}
+\]">\[
+ \phi:X_0\longrightarrow\Omega_0
+ \quad\text{a probability-preserving Borel isomorphism},\qquad
+ \phi(gx)=T_g\phi(x)\quad(g\in G,\ x\in X_0),
+ \qquad m(\Omega_0)=1.
+ \tag{S15}
+\]</span>
+In particular this is preservation of the actual probabilities, not only their measure classes.</p>
+<p>Combining (F8), (F12) and (S15) gives the original-space factor
+<span class="math math-display" data-tex="\[
+ p_X=p_\Omega\circ\phi:X_0\to Y,\qquad
+ p_X(gx)=p_X(x),\qquad (p_X)_*(\mu|_{X_0})=\nu,
+ \qquad p_X^*L^\infty(Y,\nu)=D.
+ \tag{F13}
+\]">\[
+ p_X=p_\Omega\circ\phi:X_0\to Y,\qquad
+ p_X(gx)=p_X(x),\qquad (p_X)_*(\mu|_{X_0})=\nu,
+ \qquad p_X^*L^\infty(Y,\nu)=D.
+ \tag{F13}
+\]</span>
+The last equality identifies algebras of completed classes after restriction to <span class="math" data-tex="\(X_0\)">\(X_0\)</span>. Thus a completed invariant set has, modulo <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, a representative pulled back from a completed base set. It does not assert that every chosen point representative was already constant on fibres.</p>
+<p><span id="OA-FLOW.ERGDEC.COORDINATES"></span><a id="oa-flow.ergdec.coordinates"></a></p>
+<h2 id="an-alternative-invariant-coordinates-directly-on-the-original-space">An alternative: invariant coordinates directly on the original space</h2>
+<p>The factor map can also be built before passing to a compact model. Choose Borel versions <span class="math" data-tex="\(\widetilde d_n:X\to[-1,1]\)">\(\widetilde d_n:X\to[-1,1]\)</span> of the self-adjoint generators in (F3), and put
+<span class="math math-display" data-tex="\[
+ q_0(x)=(\widetilde d_n(x))_{n\ge1}\in[-1,1]^{\mathbb N}.
+ \tag{F14}
+\]">\[
+ q_0(x)=(\widetilde d_n(x))_{n\ge1}\in[-1,1]^{\mathbb N}.
+ \tag{F14}
+\]</span>
+For each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, the equalities <span class="math" data-tex="\(\alpha_gd_n=d_n\)">\(\alpha_gd_n=d_n\)</span> imply <span class="math" data-tex="\(q_0(gx)=q_0(x)\)">\(q_0(gx)=q_0(x)\)</span> almost everywhere, by countably many coordinate tests and nonsingularity. Apply the <a href="../OA-ERGODIC/reader/localizing-factor-actions-and-uniform-cocycles.html#1-repairing-an-equivariant-section">strict section theorem, Theorem 1.2</a> to this standard Borel target with the trivial action. Its target bijections are identities and therefore satisfy their strict law everywhere. It gives an invariant conull Borel <span class="math" data-tex="\(X'\)">\(X'\)</span> and a Borel <span class="math" data-tex="\(q:X'\to[-1,1]^{\mathbb N}\)">\(q:X'\to[-1,1]^{\mathbb N}\)</span>, equal to <span class="math" data-tex="\(q_0\)">\(q_0\)</span> almost everywhere, with
+<span class="math math-display" data-tex="\[
+ q(gx)=q(x)\quad(g\in G,\ x\in X').
+ \tag{F15}
+\]">\[
+ q(gx)=q(x)\quad(g\in G,\ x\in X').
+ \tag{F15}
+\]</span>
+The proof uses the essential value of <span class="math" data-tex="\(t\mapsto q_0(tx)\)">\(t\mapsto q_0(tx)\)</span>, detected by Borel scalar-code variance; thus its hypotheses do not presuppose continuous point coordinates.</p>
+<p>Give the cube the pushforward probability <span class="math" data-tex="\(\eta=q_*\mu\)">\(\eta=q_*\mu\)</span>. Pullback is a faithful normal map by the same finite-density preadjoint argument as for (F12). Its image contains the coordinate classes <span class="math" data-tex="\(d_n\)">\(d_n\)</span>, and so contains <span class="math" data-tex="\(D\)">\(D\)</span>. Conversely cylinder polynomials, followed by bounded monotone approximation on the countably generated Borel sigma-algebra of the cube, put every bounded Borel pullback in <span class="math" data-tex="\(D\)">\(D\)</span>. Completion changes no represented class. Hence
+<span class="math math-display" data-tex="\[
+ q^*L^\infty([-1,1]^{\mathbb N},\eta)=D.
+ \tag{F16}
+\]">\[
+ q^*L^\infty([-1,1]^{\mathbb N},\eta)=D.
+ \tag{F16}
+\]</span>
+No claim that the entire image <span class="math" data-tex="\(q(X')\)">\(q(X')\)</span> is Borel is needed; L75's concentration theorem supplies a Borel conull base lying in that image when conditional probabilities are constructed. This gives an alternative exact invariant-factor construction. To prove nonsingularity of all conditional systems for every group element, the later covariance argument still uses the norm-continuous compact core and the whole conditional multiplication algebras. Strictness of the factor coordinates alone does not supply that conclusion.</p>
+<p><span id="OA-FLOW.ERGDEC.HILBERT"></span><a id="oa-flow.ergdec.hilbert"></a></p>
+<h2 id="the-conditional-measures-give-the-exact-hilbert-field">The conditional measures give the exact Hilbert field</h2>
+<p>Let <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> be compact metrizable spaces, let <span class="math" data-tex="\(m\)">\(m\)</span> be a Borel probability on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, and let <span class="math" data-tex="\(p:\Omega\to Y\)">\(p:\Omega\to Y\)</span> be continuous. Write <span class="math" data-tex="\(\nu=p_*m\)">\(\nu=p_*m\)</span>. Suppose <span class="math" data-tex="\(G\)">\(G\)</span> acts continuously and nonsingularly on <span class="math" data-tex="\((\Omega,m)\)">\((\Omega,m)\)</span>, fixes <span class="math" data-tex="\(p\)">\(p\)</span> pointwise in the sense that <span class="math" data-tex="\(p(g\omega)=p(\omega)\)">\(p(g\omega)=p(\omega)\)</span>, and the entire invariant multiplication algebra is</p>
+<p><span class="math math-display" data-tex="\[
+ A=L^\infty(\Omega,m),\qquad
+ D=A^G=\{h\circ p:h\in L^\infty(Y,\nu)\}.
+ \tag{H1}
+\]">\[
+ A=L^\infty(\Omega,m),\qquad
+ D=A^G=\{h\circ p:h\in L^\infty(Y,\nu)\}.
+ \tag{H1}
+\]</span></p>
+<p>We represent these algebras by multiplication on <span class="math" data-tex="\(L^2(\Omega,m)\)">\(L^2(\Omega,m)\)</span>. The construction of the Hilbert and algebra fields below uses only the probability, the factor map and its conditional measures; the group action is used when these fields are made covariant.</p>
+<p>The <a href="OA-FLOW-L75.html#oa-flow.kernel.probability">probability-disintegration theorem</a> supplies a Borel probability kernel <span class="math" data-tex="\(y\mapsto m_y\)">\(y\mapsto m_y\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. There is a single Borel conull set <span class="math" data-tex="\(Y_0\subseteq Y\)">\(Y_0\subseteq Y\)</span> such that</p>
+<p><span class="math math-display" data-tex="\[
+ \begin{aligned}
+ m_y(p^{-1}\{y\})&amp;=1&amp;&amp;(y\in Y_0),\\
+ m(B\cap p^{-1}E)&amp;=\int_E m_y(B)\,d\nu(y)
+     &amp;&amp;(B\in\mathcal B(\Omega),\ E\in\mathcal B(Y)).
+ \end{aligned}
+ \tag{H2}
+\]">\[
+ \begin{aligned}
+ m_y(p^{-1}\{y\})&amp;=1&amp;&amp;(y\in Y_0),\\
+ m(B\cap p^{-1}E)&amp;=\int_E m_y(B)\,d\nu(y)
+     &amp;&amp;(B\in\mathcal B(\Omega),\ E\in\mathcal B(Y)).
+ \end{aligned}
+ \tag{H2}
+\]</span></p>
+<p>Each <span class="math" data-tex="\(m_y\)">\(m_y\)</span> is a probability even outside <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span>; it is only the concentration assertion that requires this restriction. The <a href="OA-FLOW-L75.html#oa-flow.kernel.integration">parameter-integration proof</a> and <a href="OA-FLOW-L75.html#oa-flow.kernel.concentration">concentration argument</a> give</p>
+<p><span class="math math-display" data-tex="\[
+ \int_\Omega F(p(\omega),\omega)\,dm(\omega)
+ =\int_Y\int_\Omega F(y,\omega)\,dm_y(\omega)\,d\nu(y)
+ \quad(F\geq0\text{ jointly Borel}).
+ \tag{H3}
+\]">\[
+ \int_\Omega F(p(\omega),\omega)\,dm(\omega)
+ =\int_Y\int_\Omega F(y,\omega)\,dm_y(\omega)\,d\nu(y)
+ \quad(F\geq0\text{ jointly Borel}).
+ \tag{H3}
+\]</span></p>
+<p>Every inner integral is Borel as a function of its parameters, with the value <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span> allowed. The corresponding assertion for absolutely integrable complex functions follows by real and imaginary parts.</p>
+<h3 id="a-countable-family-that-is-total-in-every-conditional-space">A countable family that is total in every conditional space</h3>
+<p>Choose a countable unital <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span>-algebra <span class="math" data-tex="\(\mathcal C\subseteq C(\Omega)\)">\(\mathcal C\subseteq C(\Omega)\)</span>, closed under complex conjugation and uniformly dense in <span class="math" data-tex="\(C(\Omega)\)">\(C(\Omega)\)</span>, and enumerate it as <span class="math" data-tex="\((f_n)_{n\geq1}\)">\((f_n)_{n\geq1}\)</span>, with <span class="math" data-tex="\(f_1=1\)">\(f_1=1\)</span>.</p>
+<p>Here is an explicit reason such a family exists. Fix a compatible metric on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> and a countable dense sequence of points. For each positive integer <span class="math" data-tex="\(k\)">\(k\)</span>, choose finitely many of these points, denoted <span class="math" data-tex="\(x_{k,j}\)">\(x_{k,j}\)</span>, whose balls of radius <span class="math" data-tex="\(1/(2k)\)">\(1/(2k)\)</span> cover <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. The functions</p>
+<p><span class="math math-display" data-tex="\[
+ t_{k,j}(\omega)=\max\{0,1-kd(\omega,x_{k,j})\},\qquad
+ \theta_{k,j}=\frac{t_{k,j}}{\sum_i t_{k,i}}
+ \tag{H4}
+\]">\[
+ t_{k,j}(\omega)=\max\{0,1-kd(\omega,x_{k,j})\},\qquad
+ \theta_{k,j}=\frac{t_{k,j}}{\sum_i t_{k,i}}
+ \tag{H4}
+\]</span></p>
+<p>are continuous, and the denominator is everywhere positive. Their sum is one, and <span class="math" data-tex="\(\theta_{k,j}\)">\(\theta_{k,j}\)</span> vanishes unless <span class="math" data-tex="\(d(\omega,x_{k,j})&lt;1/k\)">\(d(\omega,x_{k,j})&lt;1/k\)</span>. Rational complex combinations of the finite families <span class="math" data-tex="\((\theta_{k,j})_j\)">\((\theta_{k,j})_j\)</span>, for all <span class="math" data-tex="\(k\)">\(k\)</span>, are uniformly dense in <span class="math" data-tex="\(C(\Omega)\)">\(C(\Omega)\)</span>: uniform continuity approximates a function by the combination with coefficients <span class="math" data-tex="\(f(x_{k,j})\)">\(f(x_{k,j})\)</span>, and rational approximation of those finitely many coefficients gives the assertion. The unital rational algebra generated by these countably many real functions is the required <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>.</p>
+<p>For every <span class="math" data-tex="\(y\)">\(y\)</span> set</p>
+<p><span class="math math-display" data-tex="\[
+ H_y=L^2(\Omega,m_y),\qquad h_n(y)=[f_n]_{m_y}.
+ \tag{H5}
+\]">\[
+ H_y=L^2(\Omega,m_y),\qquad h_n(y)=[f_n]_{m_y}.
+ \tag{H5}
+\]</span></p>
+<p>We take completed <span class="math" data-tex="\(L^2\)">\(L^2\)</span> spaces, identifying each class with any Borel version when integrating against a kernel. The spaces <span class="math" data-tex="\(H_y\)">\(H_y\)</span> are nonzero, because <span class="math" data-tex="\(\|h_1(y)\|=1\)">\(\|h_1(y)\|=1\)</span>.</p>
+<p>The family <span class="math" data-tex="\((h_n(y))\)">\((h_n(y))\)</span> is total for <strong>every</strong> <span class="math" data-tex="\(y\)">\(y\)</span>. Indeed, a finite Borel measure on a compact metric space has closed-inner and open-outer approximation, as proved in the <a href="OA-FLOW-IS.html#is-2">finite metric-measure regularity argument</a>. For a Borel set <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, take closed <span class="math" data-tex="\(K\subseteq B\subseteq O\)">\(K\subseteq B\subseteq O\)</span>, with <span class="math" data-tex="\(O\)">\(O\)</span> open and <span class="math" data-tex="\(m_y(O\setminus K)&lt;\varepsilon\)">\(m_y(O\setminus K)&lt;\varepsilon\)</span>. A continuous <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(0\leq u\leq1\)">\(0\leq u\leq1\)</span>, <span class="math" data-tex="\(u=1\)">\(u=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(u=0\)">\(u=0\)</span> outside <span class="math" data-tex="\(O\)">\(O\)</span>, is obtained from</p>
+<p><span class="math math-display" data-tex="\[
+ u(\omega)=
+ \frac{d(\omega,\Omega\setminus O)}
+      {d(\omega,\Omega\setminus O)+d(\omega,K)}.
+ \tag{H6}
+\]">\[
+ u(\omega)=
+ \frac{d(\omega,\Omega\setminus O)}
+      {d(\omega,\Omega\setminus O)+d(\omega,K)}.
+ \tag{H6}
+\]</span></p>
+<p>When <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, use zero; when <span class="math" data-tex="\(O=\Omega\)">\(O=\Omega\)</span> and <span class="math" data-tex="\(K\ne\varnothing\)">\(K\ne\varnothing\)</span>, use one. In each case <span class="math" data-tex="\(\|u-1_B\|_{L^2(m_y)}^2\leq m_y(O\setminus K)&lt;\varepsilon\)">\(\|u-1_B\|_{L^2(m_y)}^2\leq m_y(O\setminus K)&lt;\varepsilon\)</span>. Thus continuous functions approximate indicators, then simple functions, then all <span class="math" data-tex="\(L^2\)">\(L^2\)</span> functions by truncation. Sets and functions in the completion have Borel versions by <a href="OA-FLOW-L75.html#oa-flow.kernel.completion">L75's completion proof</a>, so the same density holds in the completed space. Uniform density of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> and the fact that <span class="math" data-tex="\(m_y\)">\(m_y\)</span> is a probability finish the totality assertion. Applying the same proof to <span class="math" data-tex="\(m\)">\(m\)</span> also shows that <span class="math" data-tex="\(L^2(\Omega,m)\)">\(L^2(\Omega,m)\)</span> is separable.</p>
+<p>The Gram functions are Borel:</p>
+<p><span class="math math-display" data-tex="\[
+ \langle h_n(y),h_j(y)\rangle
+      =\int_\Omega f_n\overline{f_j}\,dm_y.
+ \tag{H7}
+\]">\[
+ \langle h_n(y),h_j(y)\rangle
+      =\int_\Omega f_n\overline{f_j}\,dm_y.
+ \tag{H7}
+\]</span></p>
+<p>We use the convention that the inner product is linear in its first variable. The <span class="unlinked">DF-1 Gram construction</span> now gives the measurable Hilbert field with these <strong>actual</strong> spaces <span class="math" data-tex="\(H_y\)">\(H_y\)</span>: a section <span class="math" data-tex="\(\xi(y)\in H_y\)">\(\xi(y)\in H_y\)</span> is measurable precisely when all functions <span class="math" data-tex="\(\langle\xi(y),h_n(y)\rangle\)">\(\langle\xi(y),h_n(y)\rangle\)</span> are measurable. One can equivalently start from the Gram matrices, quotient finite sequences by their zero norm and complete; totality identifies that completion isometrically with (H5). In particular, no uniform rank or nondegeneracy assumption on the Gram matrices is needed. The <span class="unlinked">compact-frame construction</span> provides orthonormal frames on all finite- and infinite-dimensional strata. The <span class="unlinked">Hilbert-integral construction</span> therefore defines the whole space</p>
+<p><span class="math math-display" data-tex="\[
+ \mathscr H=\int_Y^\oplus H_y\,d\nu(y).
+ \tag{H8}
+\]">\[
+ \mathscr H=\int_Y^\oplus H_y\,d\nu(y).
+ \tag{H8}
+\]</span></p>
+<p>Its sections can be measured for the Borel base or its completion; taking equivalence classes yields the same Hilbert space. To see the only possible issue, choose Borel versions of the countably many compact-frame coordinates of a completed measurable section. Off the union of their null carriers they are its original coordinates. Set all coordinates to zero where their squared sum is infinite. The frame expansion then gives a Borel section equal to the original one almost everywhere. DF-6 also proves separability of this integral over a standard finite base.</p>
+<h3 id="borel-functions-conditional-norms-and-equivalence-classes">Borel functions, conditional norms and equivalence classes</h3>
+<p>A useful form of measurability allows a function to depend on both variables. Let <span class="math" data-tex="\(F:Y\times\Omega\to\mathbb C\)">\(F:Y\times\Omega\to\mathbb C\)</span> be jointly Borel, and put</p>
+<p><span class="math math-display" data-tex="\[
+ c_F(y)=\int_\Omega|F(y,\omega)|^2\,dm_y(\omega),\qquad
+ E_F=\{y:c_F(y)&lt;\infty\}.
+ \tag{H9}
+\]">\[
+ c_F(y)=\int_\Omega|F(y,\omega)|^2\,dm_y(\omega),\qquad
+ E_F=\{y:c_F(y)&lt;\infty\}.
+ \tag{H9}
+\]</span></p>
+<p>The function <span class="math" data-tex="\(c_F\)">\(c_F\)</span> and the set <span class="math" data-tex="\(E_F\)">\(E_F\)</span> are Borel. Define</p>
+<p><span class="math math-display" data-tex="\[
+ \eta_F(y)=
+ \begin{cases}
+ [F(y,\cdot)]_{m_y},&amp;y\in E_F,\\
+ 0,&amp;y\notin E_F.
+ \end{cases}
+ \tag{H10}
+\]">\[
+ \eta_F(y)=
+ \begin{cases}
+ [F(y,\cdot)]_{m_y},&amp;y\in E_F,\\
+ 0,&amp;y\notin E_F.
+ \end{cases}
+ \tag{H10}
+\]</span></p>
+<p>For <span class="math" data-tex="\(y\in E_F\)">\(y\in E_F\)</span>, Cauchy–Schwarz gives
+<span class="math" data-tex="\(\int|F(y,\omega)\overline{f_n(\omega)}|\,dm_y
+\leq c_F(y)^{1/2}\|f_n\|_\infty\)">\(\int|F(y,\omega)\overline{f_n(\omega)}|\,dm_y
+\leq c_F(y)^{1/2}\|f_n\|_\infty\)</span>.
+The pairings of (H10) with <span class="math" data-tex="\(h_n\)">\(h_n\)</span> are therefore Borel by the complex parameter-integration assertion of L75, with zero chosen outside <span class="math" data-tex="\(E_F\)">\(E_F\)</span>. DF-1 proves that <span class="math" data-tex="\(\eta_F\)">\(\eta_F\)</span> is a measurable section. If <span class="math" data-tex="\(c_F\)">\(c_F\)</span> is finite almost everywhere, then <span class="math" data-tex="\(\eta_F\in\mathscr H\)">\(\eta_F\in\mathscr H\)</span> exactly when <span class="math" data-tex="\(\int c_F\,d\nu&lt;\infty\)">\(\int c_F\,d\nu&lt;\infty\)</span>, and in that case its squared norm is this integral. The same proof gives jointly Borel pairings in any extra standard Borel parameter for a jointly Borel function of all the variables.</p>
+<p>In particular, take a Borel representative <span class="math" data-tex="\(f:\Omega\to\mathbb C\)">\(f:\Omega\to\mathbb C\)</span> of an element of <span class="math" data-tex="\(L^2(\Omega,m)\)">\(L^2(\Omega,m)\)</span>. It can be made finite everywhere by changing it on a Borel <span class="math" data-tex="\(m\)">\(m\)</span>-null set. Equations (H3) and (H9) give</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Y\int_\Omega|f|^2\,dm_y\,d\nu
+       =\int_\Omega|f|^2\,dm&lt;\infty.
+ \tag{H11}
+\]">\[
+ \int_Y\int_\Omega|f|^2\,dm_y\,d\nu
+       =\int_\Omega|f|^2\,dm&lt;\infty.
+ \tag{H11}
+\]</span></p>
+<p>Thus <span class="math" data-tex="\([f]_{m_y}\)">\([f]_{m_y}\)</span> is defined in <span class="math" data-tex="\(H_y\)">\(H_y\)</span> for almost every <span class="math" data-tex="\(y\)">\(y\)</span>, and setting it to zero on the Borel exceptional set gives a measurable square-integrable section. If <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(\widetilde f\)">\(\widetilde f\)</span> are two Borel versions of the same completed <span class="math" data-tex="\(m\)">\(m\)</span>-class, then their disagreement lies in a Borel <span class="math" data-tex="\(m\)">\(m\)</span>-null set <span class="math" data-tex="\(N\)">\(N\)</span>. The mixture identity gives</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Y m_y(N)\,d\nu(y)=0.
+ \tag{H12}
+\]">\[
+ \int_Y m_y(N)\,d\nu(y)=0.
+ \tag{H12}
+\]</span></p>
+<p>Hence their conditional <span class="math" data-tex="\(L^2\)">\(L^2\)</span> classes agree for almost every <span class="math" data-tex="\(y\)">\(y\)</span>. The exceptional set in this assertion may depend on the two specified representatives. No common set for all functions in all completed spaces is being asserted.</p>
+<p>We have consequently defined a linear isometry</p>
+<p><span class="math math-display" data-tex="\[
+ W:L^2(\Omega,m)\longrightarrow\mathscr H,
+ \qquad (W[f]_m)(y)=[f]_{m_y}\text{ almost everywhere},
+ \qquad \|W[f]_m\|=\|[f]_m\|.
+ \tag{H13}
+\]">\[
+ W:L^2(\Omega,m)\longrightarrow\mathscr H,
+ \qquad (W[f]_m)(y)=[f]_{m_y}\text{ almost everywhere},
+ \qquad \|W[f]_m\|=\|[f]_m\|.
+ \tag{H13}
+\]</span></p>
+<p>Linearity holds in the spaces of equivalence classes: for any finite list of functions the finitely many conditional-integrability exceptions can be removed together. The norm identity is (H11), and the class is independent of the Borel version by (H12).</p>
+<h3 id="why-this-is-the-whole-hilbert-integral">Why this is the whole Hilbert integral</h3>
+<p>The map <span class="math" data-tex="\(W\)">\(W\)</span> is onto. For a bounded Borel <span class="math" data-tex="\(h:Y\to\mathbb C\)">\(h:Y\to\mathbb C\)</span>, concentration in (H2) gives</p>
+<p><span class="math math-display" data-tex="\[
+ W\bigl([(h\circ p)f_n]_m\bigr)(y)=h(y)h_n(y)
+ \quad(y\in Y_0).
+ \tag{H14}
+\]">\[
+ W\bigl([(h\circ p)f_n]_m\bigr)(y)=h(y)h_n(y)
+ \quad(y\in Y_0).
+ \tag{H14}
+\]</span></p>
+<p>All functions here are bounded, so there are no conditional-integrability exceptions. These localized fundamental sections have dense linear span in <span class="math" data-tex="\(\mathscr H\)">\(\mathscr H\)</span>. For a direct proof, suppose <span class="math" data-tex="\(\eta\in\mathscr H\)">\(\eta\in\mathscr H\)</span> is orthogonal to all of them. For every <span class="math" data-tex="\(n\)">\(n\)</span>, the measurable scalar function
+<span class="math" data-tex="\(a_n(y)=\langle\eta(y),h_n(y)\rangle\)">\(a_n(y)=\langle\eta(y),h_n(y)\rangle\)</span> is integrable, since
+<span class="math" data-tex="\(|a_n(y)|\leq\|f_n\|_\infty\|\eta(y)\|\)">\(|a_n(y)|\leq\|f_n\|_\infty\|\eta(y)\|\)</span> and <span class="math" data-tex="\(\nu(Y)=1\)">\(\nu(Y)=1\)</span>. Orthogonality says</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Y\overline{h(y)}a_n(y)\,d\nu(y)=0
+ \quad\text{for every bounded Borel }h.
+ \tag{H15}
+\]">\[
+ \int_Y\overline{h(y)}a_n(y)\,d\nu(y)=0
+ \quad\text{for every bounded Borel }h.
+ \tag{H15}
+\]</span></p>
+<p>Choose a Borel version of <span class="math" data-tex="\(a_n\)">\(a_n\)</span> and let <span class="math" data-tex="\(h=a_n/|a_n|\)">\(h=a_n/|a_n|\)</span> where it is nonzero, with value zero elsewhere. Equation (H15) gives <span class="math" data-tex="\(a_n=0\)">\(a_n=0\)</span> almost everywhere. Take the countable union of these exceptional sets over <span class="math" data-tex="\(n\)">\(n\)</span>. Totality of <span class="math" data-tex="\((h_n(y))\)">\((h_n(y))\)</span> gives <span class="math" data-tex="\(\eta(y)=0\)">\(\eta(y)=0\)</span> off that union, so <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>. This proves the claimed density. The range of the isometry <span class="math" data-tex="\(W\)">\(W\)</span> is closed and contains that dense family by (H14); hence it is all of <span class="math" data-tex="\(\mathscr H\)">\(\mathscr H\)</span>.</p>
+<p>The same concentration identity, first on the fundamental vectors and then by density, gives the precise diagonal correspondence</p>
+<p><span class="math math-display" data-tex="\[
+ WM_{h\circ p}W^*=\int_Y^\oplus h(y)I_{H_y}\,d\nu(y),
+ \qquad h\in L^\infty(Y,\nu).
+ \tag{H16}
+\]">\[
+ WM_{h\circ p}W^*=\int_Y^\oplus h(y)I_{H_y}\,d\nu(y),
+ \qquad h\in L^\infty(Y,\nu).
+ \tag{H16}
+\]</span></p>
+<p>Here and below <span class="math" data-tex="\(M_b\)">\(M_b\)</span> means multiplication by <span class="math" data-tex="\(b\)">\(b\)</span> on the indicated <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space. Completed classes of <span class="math" data-tex="\(h\)">\(h\)</span> are handled by bounded Borel versions; the pushforward identity implies that changing such a version changes <span class="math" data-tex="\(h\circ p\)">\(h\circ p\)</span> only on an <span class="math" data-tex="\(m\)">\(m\)</span>-null set. Moreover
+<span class="math" data-tex="\(\|h\circ p\|_{L^\infty(m)}=\|h\|_{L^\infty(\nu)}\)">\(\|h\circ p\|_{L^\infty(m)}=\|h\|_{L^\infty(\nu)}\)</span>.
+Thus (H16) is faithful, and (H1) identifies its entire scalar algebra with the specified <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><span id="OA-FLOW.ERGDEC.MULTIPLICATION"></span><a id="oa-flow.ergdec.multiplication"></a></p>
+<h2 id="the-whole-multiplication-algebra-is-the-conditional-algebra-field">The whole multiplication algebra is the conditional algebra field</h2>
+<p>For every <span class="math" data-tex="\(y\)">\(y\)</span>, let</p>
+<p><span class="math math-display" data-tex="\[
+ A_y=\{M_b^{(y)}:b\in L^\infty(\Omega,m_y)\}
+       \subseteq B(H_y).
+ \tag{H17}
+\]">\[
+ A_y=\{M_b^{(y)}:b\in L^\infty(\Omega,m_y)\}
+       \subseteq B(H_y).
+ \tag{H17}
+\]</span></p>
+<p>We prove both the measurability of this field and the equality with the entire original algebra. A multiplication operator depends on a class modulo <span class="math" data-tex="\(m_y\)">\(m_y\)</span>; we do not choose pointwise representatives of arbitrary elements of all the <span class="math" data-tex="\(A_y\)">\(A_y\)</span> at once.</p>
+<h3 id="a-probability-multiplication-algebra-is-maximal-abelian">A probability multiplication algebra is maximal abelian</h3>
+<p>Let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be any Borel probability on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, with completion understood, and let <span class="math" data-tex="\(\mathcal A_\rho\)">\(\mathcal A_\rho\)</span> be its multiplication algebra on <span class="math" data-tex="\(L^2(\rho)\)">\(L^2(\rho)\)</span>. For a bounded measurable <span class="math" data-tex="\(b\)">\(b\)</span>, the multiplier norm is</p>
+<p><span class="math math-display" data-tex="\[
+ \|M_b\|=\|b\|_{L^\infty(\rho)}.
+ \tag{H18}
+\]">\[
+ \|M_b\|=\|b\|_{L^\infty(\rho)}.
+ \tag{H18}
+\]</span></p>
+<p>The upper bound follows by integration. For the reverse, if <span class="math" data-tex="\(0\leq c&lt;\|b\|_\infty\)">\(0\leq c&lt;\|b\|_\infty\)</span>, the set <span class="math" data-tex="\(E=\{|b|&gt;c\}\)">\(E=\{|b|&gt;c\}\)</span> has positive measure, and testing on <span class="math" data-tex="\(1_E/\rho(E)^{1/2}\)">\(1_E/\rho(E)^{1/2}\)</span> gives <span class="math" data-tex="\(\|M_b\|&gt;c\)">\(\|M_b\|&gt;c\)</span>. The zero case is immediate.</p>
+<p>Suppose <span class="math" data-tex="\(T\in B(L^2(\rho))\)">\(T\in B(L^2(\rho))\)</span> commutes with every multiplier. Put <span class="math" data-tex="\(b=T1\in L^2(\rho)\)">\(b=T1\in L^2(\rho)\)</span>. For every bounded measurable <span class="math" data-tex="\(f\)">\(f\)</span>,</p>
+<p><span class="math math-display" data-tex="\[
+ Tf=T(M_f1)=M_f(T1)=fb,
+ \qquad
+ \|1_Eb\|_2\leq\|T\|\rho(E)^{1/2}
+ \quad(E\text{ measurable}).
+ \tag{H19}
+\]">\[
+ Tf=T(M_f1)=M_f(T1)=fb,
+ \qquad
+ \|1_Eb\|_2\leq\|T\|\rho(E)^{1/2}
+ \quad(E\text{ measurable}).
+ \tag{H19}
+\]</span></p>
+<p>Use <span class="math" data-tex="\(E=\{|b|&gt;\|T\|+1/k\}\)">\(E=\{|b|&gt;\|T\|+1/k\}\)</span> for each positive integer <span class="math" data-tex="\(k\)">\(k\)</span>. The inequality forces <span class="math" data-tex="\(\rho(E)=0\)">\(\rho(E)=0\)</span>, so <span class="math" data-tex="\(|b|\leq\|T\|\)">\(|b|\leq\|T\|\)</span> almost everywhere. Thus <span class="math" data-tex="\(b\in L^\infty(\rho)\)">\(b\in L^\infty(\rho)\)</span>. Bounded functions are dense in <span class="math" data-tex="\(L^2(\rho)\)">\(L^2(\rho)\)</span> by truncation, and (H19) implies <span class="math" data-tex="\(T=M_b\)">\(T=M_b\)</span> on all of <span class="math" data-tex="\(L^2(\rho)\)">\(L^2(\rho)\)</span>. Conversely the multipliers commute with one another. Hence</p>
+<p><span class="math math-display" data-tex="\[
+ \mathcal A_\rho'=\mathcal A_\rho.
+ \tag{H20}
+\]">\[
+ \mathcal A_\rho'=\mathcal A_\rho.
+ \tag{H20}
+\]</span></p>
+<p>In particular it is a maximal abelian von Neumann algebra: a commutant is weak-operator closed, since each commutation equation is closed on matrix coefficients. This argument applies to <span class="math" data-tex="\(\rho=m\)">\(\rho=m\)</span> and separately to every <span class="math" data-tex="\(\rho=m_y\)">\(\rho=m_y\)</span>.</p>
+<p>The vector <span class="math" data-tex="\(1\)">\(1\)</span> is cyclic, because bounded functions are dense, and separating, because <span class="math" data-tex="\(M_b1=b\)">\(M_b1=b\)</span>. Its vector functional is the faithful normal probability state <span class="math" data-tex="\(M_b\mapsto\int b\,d\rho\)">\(M_b\mapsto\int b\,d\rho\)</span>: positivity of a multiplier is exactly nonnegativity of its function, as testing indicators shows; faithfulness follows from the nonnegative integral test, and normality is the normality of a vector functional in the <a href="OA-FLOW-CP.html#oa-flow.cp.6">concrete predual</a>.</p>
+<h3 id="measurable-multipliers-and-countable-generators">Measurable multipliers and countable generators</h3>
+<p>For a bounded jointly Borel function <span class="math" data-tex="\(F:Y\times\Omega\to\mathbb C\)">\(F:Y\times\Omega\to\mathbb C\)</span>, define</p>
+<p><span class="math math-display" data-tex="\[
+ T_F(y)=M_{F(y,\cdot)}^{(y)},\qquad
+ T_F(y)h_n(y)=[F(y,\cdot)f_n]_{m_y}.
+ \tag{H21}
+\]">\[
+ T_F(y)=M_{F(y,\cdot)}^{(y)},\qquad
+ T_F(y)h_n(y)=[F(y,\cdot)f_n]_{m_y}.
+ \tag{H21}
+\]</span></p>
+<p>The sections on the right are measurable by (H9)–(H10). The <span class="unlinked">DF-5 operator-field criterion</span> therefore proves measurability of <span class="math" data-tex="\(T_F\)">\(T_F\)</span>, and
+<span class="math" data-tex="\(\|T_F(y)\|\leq\sup|F|\)">\(\|T_F(y)\|\leq\sup|F|\)</span>.
+This covers fixed bounded Borel multipliers by taking <span class="math" data-tex="\(F(y,\omega)=b(\omega)\)">\(F(y,\omega)=b(\omega)\)</span>. It also covers extra Borel parameters, with jointly Borel matrix coefficients obtained by the same integral tests.</p>
+<p>A more general version is available when <span class="math" data-tex="\(F\)">\(F\)</span> is not bounded on the product but <span class="math" data-tex="\(F(y,\cdot)\)">\(F(y,\cdot)\)</span> is essentially bounded for each retained <span class="math" data-tex="\(y\)">\(y\)</span>. Its multiplier norm has the explicit measurable description</p>
+<p><span class="math math-display" data-tex="\[
+ \|T_F(y)\|
+ =\sup\bigl(\{r\in\mathbb Q_{\geq0}:
+           m_y(\{|F(y,\cdot)|&gt;r\})&gt;0\}\cup\{0\}\bigr).
+ \tag{H22}
+\]">\[
+ \|T_F(y)\|
+ =\sup\bigl(\{r\in\mathbb Q_{\geq0}:
+           m_y(\{|F(y,\cdot)|&gt;r\})&gt;0\}\cup\{0\}\bigr).
+ \tag{H22}
+\]</span></p>
+<p>The right side is Borel by parameter integration. On its finite locus, (H10) still proves measurability of <span class="math" data-tex="\(T_F(y)h_n(y)\)">\(T_F(y)h_n(y)\)</span>. Set the field to zero on any discarded complement. It defines a bounded global decomposable operator exactly when its norm function is essentially bounded, by <span class="unlinked">DF-7</span>. Pointwise finite fiber norms alone do not imply that global boundedness.</p>
+<p>The countable fields <span class="math" data-tex="\(M_{f_n}^{(y)}\)">\(M_{f_n}^{(y)}\)</span> generate the entire <span class="math" data-tex="\(A_y\)">\(A_y\)</span> for every <span class="math" data-tex="\(y\)">\(y\)</span>. Fix <span class="math" data-tex="\(y\)">\(y\)</span> and let <span class="math" data-tex="\(N_y=\{M_{f_n}^{(y)}:n\geq1\}''\)">\(N_y=\{M_{f_n}^{(y)}:n\geq1\}''\)</span>. Uniform density and (H18) place <span class="math" data-tex="\(M_f^{(y)}\)">\(M_f^{(y)}\)</span> in <span class="math" data-tex="\(N_y\)">\(N_y\)</span> for every <span class="math" data-tex="\(f\in C(\Omega)\)">\(f\in C(\Omega)\)</span>. If <span class="math" data-tex="\(O\subseteq\Omega\)">\(O\subseteq\Omega\)</span> is open and <span class="math" data-tex="\(O\ne\Omega\)">\(O\ne\Omega\)</span>, the continuous functions
+<span class="math" data-tex="\(u_k(\omega)=\min\{1,kd(\omega,\Omega\setminus O)\}\)">\(u_k(\omega)=\min\{1,kd(\omega,\Omega\setminus O)\}\)</span> increase to <span class="math" data-tex="\(1_O\)">\(1_O\)</span>. For <span class="math" data-tex="\(O=\Omega\)">\(O=\Omega\)</span>, use the constant one. Dominated convergence against <span class="math" data-tex="\(|\xi|^2m_y\)">\(|\xi|^2m_y\)</span> shows that <span class="math" data-tex="\(M_{u_k}^{(y)}\to M_{1_O}^{(y)}\)">\(M_{u_k}^{(y)}\to M_{1_O}^{(y)}\)</span> strongly on all <span class="math" data-tex="\(H_y\)">\(H_y\)</span>, so the latter projection lies in <span class="math" data-tex="\(N_y\)">\(N_y\)</span>.</p>
+<p>The Borel sets <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(M_{1_B}^{(y)}\in N_y\)">\(M_{1_B}^{(y)}\in N_y\)</span> form a sigma-algebra: complements and finite unions follow from the algebra operations on these commuting projections, and increasing finite unions converge strongly to a countable union, again by dominated convergence. This sigma-algebra contains all open sets, hence all Borel sets. Uniform simple-function approximation gives every bounded Borel multiplier. A completed essentially bounded class has a bounded Borel version by the completion argument already used above. Since <span class="math" data-tex="\(A_y\)">\(A_y\)</span> is a von Neumann algebra by (H20), the reverse inclusion is automatic. We have proved</p>
+<p><span class="math math-display" data-tex="\[
+ A_y=\{M_{f_n}^{(y)}:n\geq1\}'',\qquad
+ A_y'=A_y\quad(y\in Y).
+ \tag{H23}
+\]">\[
+ A_y=\{M_{f_n}^{(y)}:n\geq1\}'',\qquad
+ A_y'=A_y\quad(y\in Y).
+ \tag{H23}
+\]</span></p>
+<p>In particular this is a measurable algebra field with explicit countable generators. Dividing each <span class="math" data-tex="\(f_n\)">\(f_n\)</span> by <span class="math" data-tex="\(\max\{1,\|f_n\|_\infty\}\)">\(\max\{1,\|f_n\|_\infty\}\)</span> gives measurable contraction generators, without changing the generated algebras. The same family generates the commutant fields because of (H23).</p>
+<h3 id="equality-for-all-essentially-bounded-measurable-fields">Equality for all essentially bounded measurable fields</h3>
+<p>If <span class="math" data-tex="\(b\)">\(b\)</span> is bounded Borel on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, (H13) gives, on a dense set of bounded functions and hence on all of the global Hilbert space,</p>
+<p><span class="math math-display" data-tex="\[
+ WM_bW^*=\int_Y^\oplus M_b^{(y)}\,d\nu(y).
+ \tag{H24}
+\]">\[
+ WM_bW^*=\int_Y^\oplus M_b^{(y)}\,d\nu(y).
+ \tag{H24}
+\]</span></p>
+<p>Both sides are bounded operators: the right side is defined by (H21) and DF-7, and the equality on each input is just <span class="math" data-tex="\([bf]_{m_y}=M_b^{(y)}[f]_{m_y}\)">\([bf]_{m_y}=M_b^{(y)}[f]_{m_y}\)</span>. For a general <span class="math" data-tex="\(b\in L^\infty(m)\)">\(b\in L^\infty(m)\)</span>, choose a Borel version and change it on a Borel <span class="math" data-tex="\(m\)">\(m\)</span>-null set so that it is bounded everywhere by its essential bound. Equation (H12) shows that two such choices give the same multiplier field almost everywhere. Thus (H24) holds for every element of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> denote the algebra of <strong>all</strong> essentially bounded measurable fields taking their values in <span class="math" data-tex="\(A_y\)">\(A_y\)</span>:</p>
+<p><span class="math math-display" data-tex="\[
+ \mathcal F=
+ \left\{\int_Y^\oplus T_y\,d\nu(y):
+        T_y\in A_y\text{ a.e.},\ T\text{ measurable},\
+        \operatorname*{ess\,sup}_y\|T_y\|&lt;\infty\right\}.
+ \tag{H25}
+\]">\[
+ \mathcal F=
+ \left\{\int_Y^\oplus T_y\,d\nu(y):
+        T_y\in A_y\text{ a.e.},\ T\text{ measurable},\
+        \operatorname*{ess\,sup}_y\|T_y\|&lt;\infty\right\}.
+ \tag{H25}
+\]</span></p>
+<p>Products and adjoints are legitimate fields and integrate correctly by DF-5 and DF-7. Equation (H24) proves <span class="math" data-tex="\(WAW^*\subseteq\mathcal F\)">\(WAW^*\subseteq\mathcal F\)</span>.</p>
+<p>Conversely, fix any field in (H25). It commutes fiberwise with <span class="math" data-tex="\(M_b^{(y)}\)">\(M_b^{(y)}\)</span> for every bounded Borel <span class="math" data-tex="\(b\)">\(b\)</span>, because both operators belong to the abelian algebra <span class="math" data-tex="\(A_y\)">\(A_y\)</span> almost everywhere. Integrating the products, its global operator commutes with every <span class="math" data-tex="\(WM_bW^*\)">\(WM_bW^*\)</span>. The global multiplication algebra is maximal abelian by (H20), and <span class="math" data-tex="\(W\)">\(W\)</span> is onto. Consequently this global operator belongs to <span class="math" data-tex="\((WAW^*)'=WAW^*\)">\((WAW^*)'=WAW^*\)</span>. This proves</p>
+<p><span class="math math-display" data-tex="\[
+ \boxed{\displaystyle
+ WAW^*=\mathcal F=\int_Y^\oplus A_y\,d\nu(y),\qquad
+ WDW^*=L^\infty(Y,\nu)I_{H_y}.}
+ \tag{H26}
+\]">\[
+ \boxed{\displaystyle
+ WAW^*=\mathcal F=\int_Y^\oplus A_y\,d\nu(y),\qquad
+ WDW^*=L^\infty(Y,\nu)I_{H_y}.}
+ \tag{H26}
+\]</span></p>
+<p>The first equality concerns the entire algebra of bounded measurable operator fields. Its converse required no selection of measurable functions representing arbitrary fiber multipliers. After the equality has been proved, uniqueness of decomposable fields from <span class="unlinked">DF-8</span> also says that, for each specified field <span class="math" data-tex="\(T\)">\(T\)</span> in (H25), there exists a bounded Borel <span class="math" data-tex="\(b\)">\(b\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> with <span class="math" data-tex="\(T_y=M_b^{(y)}\)">\(T_y=M_b^{(y)}\)</span> almost everywhere: take the global multiplier furnished by (H20) and then use (H24). This is a consequence of the operator argument.</p>
+<p>For an explicitly given bounded jointly Borel <span class="math" data-tex="\(F\)">\(F\)</span>, there is an equally explicit global multiplier: set <span class="math" data-tex="\(b(\omega)=F(p(\omega),\omega)\)">\(b(\omega)=F(p(\omega),\omega)\)</span>. Concentration in (H2) gives <span class="math" data-tex="\(T_F(y)=M_b^{(y)}\)">\(T_F(y)=M_b^{(y)}\)</span> for every <span class="math" data-tex="\(y\in Y_0\)">\(y\in Y_0\)</span>, so</p>
+<p><span class="math math-display" data-tex="\[
+ \int_Y^\oplus M_{F(y,\cdot)}^{(y)}\,d\nu(y)
+       =WM_{F(p(\cdot),\cdot)}W^*.
+ \tag{H27}
+\]">\[
+ \int_Y^\oplus M_{F(y,\cdot)}^{(y)}\,d\nu(y)
+       =WM_{F(p(\cdot),\cdot)}W^*.
+ \tag{H27}
+\]</span></p>
+<p>Finally the constant global vector disintegrates into the actual constant conditional vectors:</p>
+<p><span class="math math-display" data-tex="\[
+ W1=(1_y)_y,\qquad \|1_y\|=1,\qquad
+ \langle M_b1,1\rangle
+      =\int_Y\langle M_b^{(y)}1_y,1_y\rangle\,d\nu(y).
+ \tag{H28}
+\]">\[
+ W1=(1_y)_y,\qquad \|1_y\|=1,\qquad
+ \langle M_b1,1\rangle
+      =\int_Y\langle M_b^{(y)}1_y,1_y\rangle\,d\nu(y).
+ \tag{H28}
+\]</span></p>
+<p>Each conditional vector state is faithful and normal by (H19)–(H20). Thus the probability measure, the diagonal, the entire multiplication algebra and its faithful probability vectors are all realized on the specified conditional Hilbert field. This supplies exactly the Hilbert and whole-algebra hypotheses of <a href="OA-FLOW-L42.html#oa-flow.centerg.joint">L42's representation recovery</a> and <a href="OA-FLOW-L42.html#oa-flow.centerg.fixed">fixed-centre argument</a>; covariance with the prescribed point transformations is established on this same field.</p>
+<p><span id="OA-FLOW.ERGDEC.STATE.ROUTE"></span><a id="oa-flow.ergdec.state_route"></a></p>
+<h2 id="a-second-identification-through-fibre-states">A second identification through fibre states</h2>
+<p>The conditional Hilbert-space construction started with the measures from L75. There is a converse identification that starts with an abstract algebra decomposition and recovers those same conditional measures. We give its normalization and onto arguments explicitly.</p>
+<p>Keep the compact model <span class="math" data-tex="\((\Omega,m)\)">\((\Omega,m)\)</span>, the continuous invariant factor <span class="math" data-tex="\(p:\Omega\to Y\)">\(p:\Omega\to Y\)</span>, and <span class="math" data-tex="\(\nu=p_*m\)">\(\nu=p_*m\)</span>. Let <span class="math" data-tex="\(A=L^\infty(\Omega,m)\)">\(A=L^\infty(\Omega,m)\)</span> act on <span class="math" data-tex="\(H=L^2(\Omega,m)\)">\(H=L^2(\Omega,m)\)</span>, with probability vector <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span>. Apply <span class="unlinked">central decomposition over a specified algebra</span> to <span class="math" data-tex="\(D=p^*L^\infty(Y,\nu)\subseteq A\)">\(D=p^*L^\infty(Y,\nu)\subseteq A\)</span>. It gives a whole algebra field
+<span class="math math-display" data-tex="\[
+ H=\int_Z^\oplus K_z\,d\lambda(z),\qquad
+ A=\int_Z^\oplus A_z\,d\lambda(z),
+ \qquad D=L^\infty(Z,\lambda)1_z.
+ \tag{R1}
+\]">\[
+ H=\int_Z^\oplus K_z\,d\lambda(z),\qquad
+ A=\int_Z^\oplus A_z\,d\lambda(z),
+ \qquad D=L^\infty(Z,\lambda)1_z.
+ \tag{R1}
+\]</span>
+Write <span class="math" data-tex="\(\eta_z\)">\(\eta_z\)</span> for a measurable representative of <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span>, and <span class="math" data-tex="\(h(z)=\|\eta_z\|^2\)">\(h(z)=\|\eta_z\|^2\)</span>. The scalar identity <span class="math" data-tex="\(\int h\,d\lambda=1\)">\(\int h\,d\lambda=1\)</span> makes <span class="math" data-tex="\(h\)">\(h\)</span> finite almost everywhere. It is positive almost everywhere as well. If it vanished on a positive-measure set <span class="math" data-tex="\(E\)">\(E\)</span>, the nonzero diagonal projection <span class="math" data-tex="\(1_E\)">\(1_E\)</span> would annihilate <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span>. Its vector functional on <span class="math" data-tex="\(A\)">\(A\)</span>, integration against <span class="math" data-tex="\(m\)">\(m\)</span>, is faithful, so this is impossible. Delete the null exceptional set.</p>
+<p>Replace the base measure by <span class="math" data-tex="\(h\,d\lambda\)">\(h\,d\lambda\)</span> and each vector field by <span class="math" data-tex="\(h^{-1/2}\)">\(h^{-1/2}\)</span> times that field. This is an onto unitary between the two Hilbert integrals, since
+<span class="math math-display" data-tex="\[
+ \int_Z\|h^{-1/2}\xi_z\|^2h(z)\,d\lambda(z)
+ =\int_Z\|\xi_z\|^2\,d\lambda(z),
+ \tag{R2}
+\]">\[
+ \int_Z\|h^{-1/2}\xi_z\|^2h(z)\,d\lambda(z)
+ =\int_Z\|\xi_z\|^2\,d\lambda(z),
+ \tag{R2}
+\]</span>
+and the inverse is multiplication by <span class="math" data-tex="\(h^{1/2}\)">\(h^{1/2}\)</span>. Both maps have their full maximal <span class="math" data-tex="\(L^2\)">\(L^2\)</span> domains. They commute with all operator fields. The new probability vector has norm one in every retained fibre, and its state on the diagonal is exactly the new base probability. This is the square-root density change also proved in <span class="unlinked">change-of-base uniqueness</span>.</p>
+<p>The two identifications of <span class="math" data-tex="\(D\)">\(D\)</span>, on <span class="math" data-tex="\((Z,h\lambda)\)">\((Z,h\lambda)\)</span> and on <span class="math" data-tex="\((Y,\nu)\)">\((Y,\nu)\)</span>, preserve its original vector state. The <a href="#oa-flow.ergdec.spatial">spatial lemma</a> identifies these probability bases by a Borel isomorphism on conull subsets. Transport the measurable fields through that map. We can therefore use the actual <span class="math" data-tex="\((Y,\nu)\)">\((Y,\nu)\)</span> from <span class="math" data-tex="\(p\)">\(p\)</span> in (R1), with a measurable unit vector <span class="math" data-tex="\(\eta_y\)">\(\eta_y\)</span> representing <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span>. This is an explicit identification of bases, not a silent reuse of a variable name.</p>
+<p>Choose the countable generating fields in the central-decomposition proof from a countable unital rational-complex star algebra <span class="math" data-tex="\(\mathcal C\subset C(\Omega)\)">\(\mathcal C\subset C(\Omega)\)</span>, uniformly dense in <span class="math" data-tex="\(C(\Omega)\)">\(C(\Omega)\)</span>. It generates the whole global multiplication algebra: continuous approximation to Borel indicators, proved in the <a href="#oa-flow.ergdec.multiplication">multiplication section</a>, gives the required strong closure. For the countable dense contraction family in central decomposition, use the radial truncations <span class="math" data-tex="\(a/\max(1,|a|)\)">\(a/\max(1,|a|)\)</span> of these continuous functions. Continuous functions bounded by one are strongly dense in the multiplication unit ball by bounded approximation to indicators and simple functions. Uniform density then makes these truncations strongly dense as well. Adjoin them to the countable rational-complex star algebra; the enlarged family remains countable and uniformly dense.</p>
+<p>Localize the countably many rational linear, product, adjoint and identity equations of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and its norm bounds <span class="math" data-tex="\(\|a_y\|\leq\|a\|_\infty\)">\(\|a_y\|\leq\|a\|_\infty\)</span>. The bounds follow by applying the <span class="unlinked">exact decomposable norm formula</span> to each chosen global operator. Outside one null set this gives a unital contractive star representation of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> on <span class="math" data-tex="\(K_y\)">\(K_y\)</span>, extending uniquely by uniform completion to
+<span class="math math-display" data-tex="\[
+ \pi_y:C(\Omega)\longrightarrow A_y,
+ \qquad \pi_y(C(\Omega))''=A_y.
+ \tag{R3}
+\]">\[
+ \pi_y:C(\Omega)\longrightarrow A_y,
+ \qquad \pi_y(C(\Omega))''=A_y.
+ \tag{R3}
+\]</span>
+The equality is the fibre-generator assertion in the central-decomposition construction. Uniform approximation from the countable family makes <span class="math" data-tex="\(\pi_y(f)\)">\(\pi_y(f)\)</span> a measurable operator field for every <span class="math" data-tex="\(f\in C(\Omega)\)">\(f\in C(\Omega)\)</span>. Its integral is the original multiplication by <span class="math" data-tex="\(f\)">\(f\)</span>. The fibres are abelian, since the countable generating fields commute after localization.</p>
+<p>Choose Borel versions of the countably many fundamental-section inner products, the coordinates of <span class="math" data-tex="\(\eta_y\)">\(\eta_y\)</span>, and the matrix coefficients of the countable generating fields. The <a href="OA-FLOW-L75.html#oa-flow.kernel.completion">completion and Borel-version argument</a> permits this on one Borel conull base. Remove one Borel null superset of the countably many failed relations and totality exceptions. All subsequent continuous moments are Borel there by uniform approximation from this countable family. Outside this base use a fixed point mass on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> when defining the probability kernel below.</p>
+<p>The vectors <span class="math" data-tex="\(\pi_y(a)\eta_y\)">\(\pi_y(a)\eta_y\)</span>, <span class="math" data-tex="\(a\in\mathcal C\)">\(a\in\mathcal C\)</span>, are total in <span class="math" data-tex="\(K_y\)">\(K_y\)</span> almost everywhere. Indeed their global vectors are exactly <span class="math" data-tex="\(a\in L^2(\Omega,m)\)">\(a\in L^2(\Omega,m)\)</span>, whose span is dense. Form the measurable projection onto the closed span of the countable fibre vectors, using <span class="unlinked">measurable subfield projections</span>. A nonzero complementary field would, on one frame vector and a bounded finite-measure restriction, give a nonzero global vector orthogonal to every <span class="math" data-tex="\(a\)">\(a\)</span>. This contradicts global density. Thus <span class="math" data-tex="\(\eta_y\)">\(\eta_y\)</span> is cyclic for <span class="math" data-tex="\(A_y\)">\(A_y\)</span>. It is separating too: if <span class="math" data-tex="\(b\eta_y=0\)">\(b\eta_y=0\)</span>, abelianness gives <span class="math" data-tex="\(b\pi_y(a)\eta_y=0\)">\(b\pi_y(a)\eta_y=0\)</span> on a total set, so <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Its vector state is consequently faithful.</p>
+<p>The positive functional
+<span class="math math-display" data-tex="\[
+ f\longmapsto\langle\pi_y(f)\eta_y,\eta_y\rangle
+ \tag{R4}
+\]">\[
+ f\longmapsto\langle\pi_y(f)\eta_y,\eta_y\rangle
+ \tag{R4}
+\]</span>
+has value one at the unit. The <a href="OA-FLOW-HR.html#hr-02">Radon representation theorem</a> therefore gives a probability <span class="math" data-tex="\(m'_y\)">\(m'_y\)</span> on the compact metric space <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Every continuous moment <span class="math" data-tex="\(\int f\,dm'_y\)">\(\int f\,dm'_y\)</span> is measurable in <span class="math" data-tex="\(y\)">\(y\)</span>, by (R3)–(R4). This implies that <span class="math" data-tex="\(m'_y\)">\(m'_y\)</span> is a Borel kernel. For an open set <span class="math" data-tex="\(O\ne\Omega\)">\(O\ne\Omega\)</span>, the continuous functions <span class="math" data-tex="\(\min(1,n\,d(\cdot,\Omega\setminus O))\)">\(\min(1,n\,d(\cdot,\Omega\setminus O))\)</span> increase to <span class="math" data-tex="\(1_O\)">\(1_O\)</span>; for <span class="math" data-tex="\(O=\Omega\)">\(O=\Omega\)</span> use the constant one. Hence <span class="math" data-tex="\(y\mapsto m'_y(O)\)">\(y\mapsto m'_y(O)\)</span> is measurable. The Borel sets having measurable kernel values form a lambda-system, by complements and countable disjoint unions. Open sets form a pi-system generating the Borel sigma-algebra, so the <a href="OA-FLOW-L75.html#oa-flow.kernel.integration">pi–lambda proof</a> gives all Borel sets.</p>
+<p>For a Borel <span class="math" data-tex="\(B\subseteq Y\)">\(B\subseteq Y\)</span> and <span class="math" data-tex="\(f\in C(\Omega)\)">\(f\in C(\Omega)\)</span>, the diagonal identification and the original vector state give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_B\int_\Omega f\,dm'_y\,d\nu(y)
+ &amp;=\langle M_{1_B}\,M_f\mathbf1,\mathbf1\rangle_H\\
+ &amp;=\int_\Omega 1_B(p(\omega))f(\omega)\,dm(\omega).
+ \end{aligned}
+ \tag{R5}
+\]">\[
+ \begin{aligned}
+ \int_B\int_\Omega f\,dm'_y\,d\nu(y)
+ &amp;=\langle M_{1_B}\,M_f\mathbf1,\mathbf1\rangle_H\\
+ &amp;=\int_\Omega 1_B(p(\omega))f(\omega)\,dm(\omega).
+ \end{aligned}
+ \tag{R5}
+\]</span>
+The mixture on the left is a finite Borel measure, by kernel integration. Finite Borel measures on this compact metric space are Radon, by the <a href="OA-FLOW-IS.html#is-2">finite metric regularity proof</a>. Uniqueness in the Radon representation theorem extends (R5) from continuous tests to all Borel indicators. It is exactly the localized disintegration identity for <span class="math" data-tex="\(p\)">\(p\)</span>. L75's <a href="OA-FLOW-L75.html#oa-flow.kernel.uniqueness">whole-measure uniqueness</a> now gives
+<span class="math math-display" data-tex="\[
+ m'_y=m_y\quad\text{as Borel probabilities on one conull base}.
+ \tag{R6}
+\]">\[
+ m'_y=m_y\quad\text{as Borel probabilities on one conull base}.
+ \tag{R6}
+\]</span>
+In particular these measures have the same common-conull concentration on the actual fibres of <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>There is also an explicit unitary identifying the Hilbert fibres. Define it initially by
+<span class="math math-display" data-tex="\[
+ J_y:L^2(\Omega,m_y)\longrightarrow K_y,
+ \qquad [f]_{m_y}\longmapsto\pi_y(f)\eta_y
+ \quad(f\in C(\Omega)).
+ \tag{R7}
+\]">\[
+ J_y:L^2(\Omega,m_y)\longrightarrow K_y,
+ \qquad [f]_{m_y}\longmapsto\pi_y(f)\eta_y
+ \quad(f\in C(\Omega)).
+ \tag{R7}
+\]</span>
+Equations (R4)–(R6) identify its inner products, so it is well defined and isometric on a dense domain. Fibre cyclicity makes its range dense, hence its extension is onto. The countable continuous fundamental family on the left is sent to the measurable total family on the right. The <span class="unlinked">operator-field criterion</span> therefore makes <span class="math" data-tex="\(J_y\)">\(J_y\)</span> and its adjoint measurable. On continuous functions it intertwines multiplication and <span class="math" data-tex="\(\pi_y\)">\(\pi_y\)</span>; taking their entire generated von Neumann algebras yields
+<span class="math math-display" data-tex="\[
+ J_y L^\infty(\Omega,m_y)J_y^*=A_y.
+ \tag{R8}
+\]">\[
+ J_y L^\infty(\Omega,m_y)J_y^*=A_y.
+ \tag{R8}
+\]</span>
+This proves the second identification in full. Starting with an abstract field gives the same conditional measures and whole multiplication algebras after its probability vector and actual base have been matched. The direct construction earlier reaches this conclusion without first choosing an abstract algebra field.</p>
+<p><span id="OA-FLOW.ERGDEC.COVARIANCE"></span><a id="oa-flow.ergdec.covariance"></a></p>
+<h2 id="covariance-on-the-actual-conditional-hilbert-spaces">Covariance on the actual conditional Hilbert spaces</h2>
+<p>We work first in the <a href="#oa-flow.ergdec.compact">compact continuous model</a>. Thus <span class="math" data-tex="\(G\)">\(G\)</span> acts continuously on a compact metric space <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, with <span class="math" data-tex="\(T_gT_h=T_{gh}\)">\(T_gT_h=T_{gh}\)</span>; the Borel probability <span class="math" data-tex="\(m\)">\(m\)</span> is nonsingular under every <span class="math" data-tex="\(T_g\)">\(T_g\)</span>. The continuous map <span class="math" data-tex="\(p:\Omega\to Y\)">\(p:\Omega\to Y\)</span> to a compact metric space is invariant at every point. Write <span class="math" data-tex="\(\nu=p_*m\)">\(\nu=p_*m\)</span>, and let <span class="math" data-tex="\(m_y\)">\(m_y\)</span> be its conditional probabilities. Restrict the base once to the Borel conull concentration set of <a href="OA-FLOW-L75.html#oa-flow.kernel.concentration">L75</a>, so that <span class="math" data-tex="\(m_y(p^{-1}\{y\})=1\)">\(m_y(p^{-1}\{y\})=1\)</span>.</p>
+<p>This compact-model argument works for a <strong>separable locally compact Hausdorff group</strong>, without a countable neighborhood basis. The theorem on the original strictly Borel point action uses the second-countable hypothesis specified there.</p>
+<p>Put <span class="math" data-tex="\(H_y=L^2(\Omega,m_y)\)">\(H_y=L^2(\Omega,m_y)\)</span> and <span class="math" data-tex="\(A_y=L^\infty(\Omega,m_y)\)">\(A_y=L^\infty(\Omega,m_y)\)</span>, represented by multiplication. The <a href="#oa-flow.ergdec.hilbert">conditional Hilbert-space construction</a> gives a specified countable fundamental family and the onto unitary <span class="math" data-tex="\(W\)">\(W\)</span>. The <a href="#oa-flow.ergdec.multiplication">whole multiplication-field identity</a> gives
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ W:L^2(\Omega,m)\longrightarrow
+       \mathscr H=\int_Y^\oplus H_y\,d\nu(y),\qquad
+ Wf(y)=[f]_{m_y},\\
+ \widetilde A=WL^\infty(\Omega,m)W^*
+       =\int_Y^\oplus A_y\,d\nu(y),\\
+ WL^\infty(\Omega,m)^G W^*
+       =L^\infty(Y,\nu)1_y=:D.
+ \end{gathered}
+ \tag{Q1}
+\]">\[
+ \begin{gathered}
+ W:L^2(\Omega,m)\longrightarrow
+       \mathscr H=\int_Y^\oplus H_y\,d\nu(y),\qquad
+ Wf(y)=[f]_{m_y},\\
+ \widetilde A=WL^\infty(\Omega,m)W^*
+       =\int_Y^\oplus A_y\,d\nu(y),\\
+ WL^\infty(\Omega,m)^G W^*
+       =L^\infty(Y,\nu)1_y=:D.
+ \end{gathered}
+ \tag{Q1}
+\]</span>
+The middle equality means every essentially bounded measurable multiplication-operator field, not just the fields coming from a displayed list of continuous functions. The last equality uses the whole invariant factor, which was included when constructing <span class="math" data-tex="\(p\)">\(p\)</span>. The space <span class="math" data-tex="\(\mathscr H\)">\(\mathscr H\)</span> is separable because <span class="math" data-tex="\(W\)">\(W\)</span> is onto and <span class="math" data-tex="\(L^2(\Omega,m)\)">\(L^2(\Omega,m)\)</span> is separable. Each <span class="math" data-tex="\(H_y\)">\(H_y\)</span> is separable and nonzero, since <span class="math" data-tex="\(m_y\)">\(m_y\)</span> is a probability.</p>
+<p>The <a href="../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#2-why-measurable-unitary-representations-are-continuous">nonsingular Koopman construction and continuity proof</a>, including its separable locally compact extension, supply the strongly continuous representation
+<span class="math math-display" data-tex="\[
+ (U_g\xi)(\omega)
+    =r_g(\omega)^{1/2}\xi(T_{g^{-1}}\omega),
+ \qquad
+ r_g=\frac{d(T_g)_*m}{dm}.
+ \tag{Q2}
+\]">\[
+ (U_g\xi)(\omega)
+    =r_g(\omega)^{1/2}\xi(T_{g^{-1}}\omega),
+ \qquad
+ r_g=\frac{d(T_g)_*m}{dm}.
+ \tag{Q2}
+\]</span>
+Here pushforward means <span class="math" data-tex="\((T_g)_*m(E)=m(T_g^{-1}E)\)">\((T_g)_*m(E)=m(T_g^{-1}E)\)</span>. The derivative is positive and finite almost everywhere for each fixed <span class="math" data-tex="\(g\)">\(g\)</span>. The <a href="../OA-ERGODIC/reader/measurable-actions-and-compact-models.html#1-a-jointly-measurable-derivative">joint derivative construction</a> and vector integration prove strong continuity; no invariant probability state is assumed. The derivative's fixed-pair cocycle identity makes <span class="math" data-tex="\(U_gU_h=U_{gh}\)">\(U_gU_h=U_{gh}\)</span> an identity of Hilbert-space operators. These operators satisfy
+<span class="math math-display" data-tex="\[
+ U_gM_fU_g^*=M_{f\circ T_{g^{-1}}}
+ \qquad(f\in L^\infty(\Omega,m)).
+ \tag{Q3}
+\]">\[
+ U_gM_fU_g^*=M_{f\circ T_{g^{-1}}}
+ \qquad(f\in L^\infty(\Omega,m)).
+ \tag{Q3}
+\]</span>
+For a bounded Borel <span class="math" data-tex="\(a\)">\(a\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span>, strict invariance of <span class="math" data-tex="\(p\)">\(p\)</span> gives
+<span class="math" data-tex="\(a\circ p\circ T_{g^{-1}}=a\circ p\)">\(a\circ p\circ T_{g^{-1}}=a\circ p\)</span>. Thus <span class="math" data-tex="\(\widetilde U_g=WU_gW^*\)">\(\widetilde U_g=WU_gW^*\)</span> commutes with the diagonal <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p>All hypotheses of <a href="OA-FLOW-L42.html#oa-flow.centerg.joint">L42's generic Hilbert-field recovery</a> now hold for this particular field: a standard probability base, a countably specified separable Hilbert field, a separable total Hilbert space, and a strongly continuous unitary representation commuting with the diagonal. Its <a href="OA-FLOW-L42.html#oa-flow.centerg.recovery">integrated-vector recovery</a> provides one Borel conull base <span class="math" data-tex="\(Y_0\)">\(Y_0\)</span> and genuine strongly continuous unitary representations <span class="math" data-tex="\(V_y\)">\(V_y\)</span> such that
+<span class="math math-display" data-tex="\[
+ \widetilde U_g=\int_Y^\oplus V_y(g)\,d\nu(y)
+ \quad\text{for every fixed }g,\qquad
+ V_y(g)V_y(h)=V_y(gh)
+ \quad(y\in Y_0,\ g,h\in G).
+ \tag{Q4}
+\]">\[
+ \widetilde U_g=\int_Y^\oplus V_y(g)\,d\nu(y)
+ \quad\text{for every fixed }g,\qquad
+ V_y(g)V_y(h)=V_y(gh)
+ \quad(y\in Y_0,\ g,h\in G).
+ \tag{Q4}
+\]</span>
+For each fixed <span class="math" data-tex="\(g\)">\(g\)</span>, the field is measurable; its frame coefficients can in fact be taken jointly Borel in <span class="math" data-tex="\((g,y)\)">\((g,y)\)</span>. The integral identity is for every <span class="math" data-tex="\(g\)">\(g\)</span>, not just Haar-almost every <span class="math" data-tex="\(g\)">\(g\)</span>. This is precisely the distinction established by the recovery proof. We keep this specified conditional field throughout.</p>
+<p>Choose a countable dense subgroup <span class="math" data-tex="\(Q\subset G\)">\(Q\subset G\)</span>, and enumerate the countable unital rational-complex star algebra <span class="math" data-tex="\(\mathcal C\subset C(\Omega)\)">\(\mathcal C\subset C(\Omega)\)</span> used in constructing the conditional field. Its uniform closure is <span class="math" data-tex="\(C(\Omega)\)">\(C(\Omega)\)</span>. For a bounded Borel <span class="math" data-tex="\(f\)">\(f\)</span>, write <span class="math" data-tex="\(M_f^{(y)}\)">\(M_f^{(y)}\)</span> for multiplication on <span class="math" data-tex="\(H_y\)">\(H_y\)</span>. This is a measurable field: its coefficients against continuous fundamental sections are conditional integrals, which are Borel by <a href="OA-FLOW-L75.html#oa-flow.kernel.integration">L75's parameter integration theorem</a>.</p>
+<p>For each <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span> and <span class="math" data-tex="\(f\in\mathcal C\)">\(f\in\mathcal C\)</span>, (Q1), (Q3) and (Q4) are an equality of two decomposable operators. Their fibre fields are equal almost everywhere. Explicitly, the difference annihilates each localized frame section; its squared norm integrates to zero on every Borel base set, so its countably many frame columns vanish almost everywhere. This is the <span class="unlinked">field integration and uniqueness argument</span>. Countably many <span class="math" data-tex="\(q,f\)">\(q,f\)</span> therefore give one Borel conull set <span class="math" data-tex="\(Y_1\subseteq Y_0\)">\(Y_1\subseteq Y_0\)</span> on which
+<span class="math math-display" data-tex="\[
+ V_y(q)M_f^{(y)}V_y(q)^*
+       =M_{f\circ T_{q^{-1}}}^{(y)}
+ \qquad(q\in Q,\ f\in\mathcal C).
+ \tag{Q5}
+\]">\[
+ V_y(q)M_f^{(y)}V_y(q)^*
+       =M_{f\circ T_{q^{-1}}}^{(y)}
+ \qquad(q\in Q,\ f\in\mathcal C).
+ \tag{Q5}
+\]</span>
+Uniform approximation extends this first to every <span class="math" data-tex="\(f\in C(\Omega)\)">\(f\in C(\Omega)\)</span>, for every <span class="math" data-tex="\(q\in Q\)">\(q\in Q\)</span>, on the same set: both sides are contractions as maps from the uniform norm on functions to the operator norm, and composition by a homeomorphism preserves that norm.</p>
+<p>The compact action supplies the additional continuity needed to reach all of <span class="math" data-tex="\(G\)">\(G\)</span>. For every <span class="math" data-tex="\(f\in C(\Omega)\)">\(f\in C(\Omega)\)</span>,
+<span class="math math-display" data-tex="\[
+ \|f\circ T_{g^{-1}}-f\circ T_{g_0^{-1}}\|_\infty
+       \longrightarrow0\qquad(g\longrightarrow g_0).
+ \tag{Q6}
+\]">\[
+ \|f\circ T_{g^{-1}}-f\circ T_{g_0^{-1}}\|_\infty
+       \longrightarrow0\qquad(g\longrightarrow g_0).
+ \tag{Q6}
+\]</span>
+Indeed the absolute difference is continuous on <span class="math" data-tex="\(G\times\Omega\)">\(G\times\Omega\)</span>, and is zero on <span class="math" data-tex="\(\{g_0\}\times\Omega\)">\(\{g_0\}\times\Omega\)</span>. For each point of that compact slice choose a product neighborhood where it is below a prescribed <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. A finite cover of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, followed by intersection of the corresponding neighborhoods of <span class="math" data-tex="\(g_0\)">\(g_0\)</span>, makes the bound uniform in <span class="math" data-tex="\(\omega\)">\(\omega\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(y\in Y_1\)">\(y\in Y_1\)</span> and <span class="math" data-tex="\(f\in C(\Omega)\)">\(f\in C(\Omega)\)</span>. The left side of (Q5), with <span class="math" data-tex="\(q\)">\(q\)</span> replaced by <span class="math" data-tex="\(g\)">\(g\)</span>, is strongly continuous in <span class="math" data-tex="\(g\)">\(g\)</span>. This follows from strong continuity of <span class="math" data-tex="\(V_y(g)\)">\(V_y(g)\)</span> and <span class="math" data-tex="\(V_y(g)^*=V_y(g^{-1})\)">\(V_y(g)^*=V_y(g^{-1})\)</span>, and a bounded-operator product estimate on each vector. The right side is operator-norm continuous by (Q6). Therefore their equality locus is closed in <span class="math" data-tex="\(G\)">\(G\)</span>: it is the intersection, over vectors <span class="math" data-tex="\(\xi\in H_y\)">\(\xi\in H_y\)</span>, of the zero sets of the norms of their differences applied to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. It contains the dense subgroup <span class="math" data-tex="\(Q\)">\(Q\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ V_y(g)M_f^{(y)}V_y(g)^*
+       =M_{f\circ T_{g^{-1}}}^{(y)}
+ \qquad(y\in Y_1,\ g\in G,\ f\in C(\Omega)).
+ \tag{Q7}
+\]">\[
+ V_y(g)M_f^{(y)}V_y(g)^*
+       =M_{f\circ T_{g^{-1}}}^{(y)}
+ \qquad(y\in Y_1,\ g\in G,\ f\in C(\Omega)).
+ \tag{Q7}
+\]</span>
+This closed-set argument needs no sequence converging to <span class="math" data-tex="\(g\)">\(g\)</span> inside <span class="math" data-tex="\(G\)">\(G\)</span>. More importantly, after selecting <span class="math" data-tex="\(Y_1\)">\(Y_1\)</span>, it is an argument on each retained fibre; it removes no further exceptional set for an uncountable collection of group elements.</p>
+<p>Continuous multiplication functions generate the whole <span class="math" data-tex="\(A_y\)">\(A_y\)</span>, as proved in the multiplication-field construction. Unitary conjugation carries the von Neumann algebra they generate to the algebra generated by their conjugates. Since <span class="math" data-tex="\(f\mapsto f\circ T_{g^{-1}}\)">\(f\mapsto f\circ T_{g^{-1}}\)</span> maps <span class="math" data-tex="\(C(\Omega)\)">\(C(\Omega)\)</span> onto itself, (Q7) implies
+<span class="math math-display" data-tex="\[
+ V_y(g)A_yV_y(g)^*=A_y,\qquad
+ \alpha_{g,y}:=\operatorname{Ad}V_y(g)|_{A_y}.
+ \tag{Q8}
+\]">\[
+ V_y(g)A_yV_y(g)^*=A_y,\qquad
+ \alpha_{g,y}:=\operatorname{Ad}V_y(g)|_{A_y}.
+ \tag{Q8}
+\]</span>
+Thus <span class="math" data-tex="\(\alpha_{g,y}\)">\(\alpha_{g,y}\)</span> is a normal automorphism. Normality follows directly because unitary conjugation preserves ultraweak convergence, or from the vector-functional proof in <a href="OA-FLOW-L42.html#oa-flow.centerg.covariance">L42's covariance theorem</a>. At this stage (Q8) is an automorphism of the multiplication algebra obtained by conjugation. We have not yet defined composition on arbitrary <span class="math" data-tex="\(m_y\)">\(m_y\)</span>-equivalence classes using <span class="math" data-tex="\(T_g\)">\(T_g\)</span>; conditional nonsingularity is proved next.</p>
+<p><span id="OA-FLOW.ERGDEC.QUASI"></span><a id="oa-flow.ergdec.quasi"></a></p>
+<h2 id="the-conditional-probabilities-are-nonsingular-for-every-group-element">The conditional probabilities are nonsingular for every group element</h2>
+<p>Fix any <span class="math" data-tex="\(y\in Y_1\)">\(y\in Y_1\)</span>. Write <span class="math" data-tex="\(1_y\)">\(1_y\)</span> for the constant-one vector of <span class="math" data-tex="\(H_y\)">\(H_y\)</span>. It has norm one, and
+<span class="math math-display" data-tex="\[
+ \varphi_y(M_f^{(y)})
+      =\langle M_f^{(y)}1_y,1_y\rangle
+      =\int_\Omega f\,dm_y
+ \tag{Q9}
+\]">\[
+ \varphi_y(M_f^{(y)})
+      =\langle M_f^{(y)}1_y,1_y\rangle
+      =\int_\Omega f\,dm_y
+ \tag{Q9}
+\]</span>
+is a faithful normal state on the whole <span class="math" data-tex="\(A_y\)">\(A_y\)</span>. For a nonnegative <span class="math" data-tex="\(f\)">\(f\)</span>, zero integral forces <span class="math" data-tex="\(f=0\)">\(f=0\)</span> almost everywhere, which proves faithfulness. Normality is the usual vector-state normality. We use inner products linear in their first entry.</p>
+<p>For any <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, the state <span class="math" data-tex="\(\varphi_y\circ\alpha_{g^{-1},y}\)">\(\varphi_y\circ\alpha_{g^{-1},y}\)</span> is faithful and normal because <span class="math" data-tex="\(\alpha_{g^{-1},y}\)">\(\alpha_{g^{-1},y}\)</span> is an automorphism. Put <span class="math" data-tex="\(\xi_{g,y}=V_y(g)1_y\)">\(\xi_{g,y}=V_y(g)1_y\)</span>. On continuous functions, (Q7) and the adjoint identity give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_\Omega f(T_g\omega)\,dm_y(\omega)
+ &amp;=\varphi_y\!\left(\alpha_{g^{-1},y}(M_f^{(y)})\right)\\
+ &amp;=\langle M_f^{(y)}\xi_{g,y},\xi_{g,y}\rangle\\
+ &amp;=\int_\Omega f\,|\xi_{g,y}|^2\,dm_y
+ \qquad(f\in C(\Omega)).
+ \end{aligned}
+ \tag{Q10}
+\]">\[
+ \begin{aligned}
+ \int_\Omega f(T_g\omega)\,dm_y(\omega)
+ &amp;=\varphi_y\!\left(\alpha_{g^{-1},y}(M_f^{(y)})\right)\\
+ &amp;=\langle M_f^{(y)}\xi_{g,y},\xi_{g,y}\rangle\\
+ &amp;=\int_\Omega f\,|\xi_{g,y}|^2\,dm_y
+ \qquad(f\in C(\Omega)).
+ \end{aligned}
+ \tag{Q10}
+\]</span>
+The sign is fixed by the first line: pushforward by <span class="math" data-tex="\(T_g\)">\(T_g\)</span> tests <span class="math" data-tex="\(f\circ T_g\)">\(f\circ T_g\)</span>, so the automorphism is <span class="math" data-tex="\(\alpha_{g^{-1},y}\)">\(\alpha_{g^{-1},y}\)</span>, and the vector in the last line is <span class="math" data-tex="\(V_y(g)1_y\)">\(V_y(g)1_y\)</span>.</p>
+<p>Both measures in (Q10) are finite Borel probabilities on the compact metric space <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, hence Radon by <a href="OA-FLOW-IS.html#is-2">finite metric-measure regularity</a>. Their equality on continuous functions implies equality on all Borel sets. To see the uniqueness directly, for any nonempty closed <span class="math" data-tex="\(K\subseteq\Omega\)">\(K\subseteq\Omega\)</span>, the continuous functions
+<span class="math" data-tex="\(\max(1-n\,d(\omega,K),0)\)">\(\max(1-n\,d(\omega,K),0)\)</span> decrease to <span class="math" data-tex="\(1_K\)">\(1_K\)</span>. Dominated convergence gives equality on <span class="math" data-tex="\(K\)">\(K\)</span>; the empty set needs no approximation. Equality on every compact set and inner regularity give equality on every Borel set. We have proved
+<span class="math math-display" data-tex="\[
+ \boxed{\displaystyle
+ (T_g)_*m_y=|V_y(g)1_y|^2\,m_y\sim m_y
+ \qquad(y\in Y_1,\ g\in G).}
+ \tag{Q11}
+\]">\[
+ \boxed{\displaystyle
+ (T_g)_*m_y=|V_y(g)1_y|^2\,m_y\sim m_y
+ \qquad(y\in Y_1,\ g\in G).}
+ \tag{Q11}
+\]</span>
+Here is the equivalence assertion in full. Choose a Borel representative of <span class="math" data-tex="\(\xi_{g,y}\)">\(\xi_{g,y}\)</span>, using <a href="OA-FLOW-L75.html#oa-flow.kernel.completion">L75's Borel-version argument</a> if necessary. Its squared absolute value is finite almost everywhere and has integral one. If its zero set <span class="math" data-tex="\(E\)">\(E\)</span> had positive <span class="math" data-tex="\(m_y\)">\(m_y\)</span>-measure, the nonzero projection <span class="math" data-tex="\(M_{1_E}^{(y)}\)">\(M_{1_E}^{(y)}\)</span> would have value zero under the faithful state <span class="math" data-tex="\(\varphi_y\circ\alpha_{g^{-1},y}\)">\(\varphi_y\circ\alpha_{g^{-1},y}\)</span>, by the middle line of (Q10), which is a vector-state identity for every element of <span class="math" data-tex="\(A_y\)">\(A_y\)</span>. That is impossible. Thus
+<span class="math math-display" data-tex="\[
+ 0&lt;|V_y(g)1_y|^2&lt;\infty
+ \quad m_y\text{-almost everywhere},\qquad
+ \int_\Omega |V_y(g)1_y|^2\,dm_y=1.
+ \tag{Q12}
+\]">\[
+ 0&lt;|V_y(g)1_y|^2&lt;\infty
+ \quad m_y\text{-almost everywhere},\qquad
+ \int_\Omega |V_y(g)1_y|^2\,dm_y=1.
+ \tag{Q12}
+\]</span>
+This proves that the two measures in (Q11) have exactly the same null sets. The representative of this density may have a null exceptional set depending on <span class="math" data-tex="\(g,y\)">\(g,y\)</span>. The assertion that the measures are equivalent holds for every <span class="math" data-tex="\(g\)">\(g\)</span> at each <span class="math" data-tex="\(y\in Y_1\)">\(y\in Y_1\)</span>, which is the required all-group assertion.</p>
+<p>We can now define point composition on the entire multiplication algebra:
+<span class="math" data-tex="\(\beta_{g,y}([f])=[f\circ T_{g^{-1}}]\)">\(\beta_{g,y}([f])=[f\circ T_{g^{-1}}]\)</span>. Equivalence in (Q11) proves that it is independent of the representative of <span class="math" data-tex="\(f\)">\(f\)</span>, preserves the essential supremum norm, and has inverse <span class="math" data-tex="\(\beta_{g^{-1},y}\)">\(\beta_{g^{-1},y}\)</span>. It is normal. For an explicit predual verification, let <span class="math" data-tex="\(r_{g,y}=d(T_g)_*m_y/dm_y\)">\(r_{g,y}=d(T_g)_*m_y/dm_y\)</span>. For <span class="math" data-tex="\(h\in L^1(m_y)\)">\(h\in L^1(m_y)\)</span> and bounded <span class="math" data-tex="\(f\)">\(f\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_\Omega f(T_{g^{-1}}\omega)h(\omega)\,dm_y(\omega)
+ &amp;=\int_\Omega f(z)h(T_gz)r_{g^{-1},y}(z)\,dm_y(z),\\
+ \int_\Omega |h(T_gz)|r_{g^{-1},y}(z)\,dm_y(z)
+ &amp;=\int_\Omega |h|\,dm_y.
+ \end{aligned}
+ \tag{Q13}
+\]">\[
+ \begin{aligned}
+ \int_\Omega f(T_{g^{-1}}\omega)h(\omega)\,dm_y(\omega)
+ &amp;=\int_\Omega f(z)h(T_gz)r_{g^{-1},y}(z)\,dm_y(z),\\
+ \int_\Omega |h(T_gz)|r_{g^{-1},y}(z)\,dm_y(z)
+ &amp;=\int_\Omega |h|\,dm_y.
+ \end{aligned}
+ \tag{Q13}
+\]</span>
+These follow from the defining pushforward identity for <span class="math" data-tex="\(T_{g^{-1}}\)">\(T_{g^{-1}}\)</span>, first for nonnegative functions and then for integrable complex functions. They give a bounded predual map, so <span class="math" data-tex="\(\beta_{g,y}\)">\(\beta_{g,y}\)</span> is ultraweakly continuous; its inverse is treated in the same way.</p>
+<p>The normal maps <span class="math" data-tex="\(\beta_{g,y}\)">\(\beta_{g,y}\)</span> and <span class="math" data-tex="\(\alpha_{g,y}\)">\(\alpha_{g,y}\)</span> agree on continuous multiplications by (Q7), and these are ultraweakly dense in <span class="math" data-tex="\(A_y\)">\(A_y\)</span>. Hence
+<span class="math math-display" data-tex="\[
+ \alpha_{g,y}(M_f^{(y)})
+      =M_{f\circ T_{g^{-1}}}^{(y)}
+ \quad(f\in L^\infty(\Omega,m_y),\ y\in Y_1,\ g\in G).
+ \tag{Q14}
+\]">\[
+ \alpha_{g,y}(M_f^{(y)})
+      =M_{f\circ T_{g^{-1}}}^{(y)}
+ \quad(f\in L^\infty(\Omega,m_y),\ y\in Y_1,\ g\in G).
+ \tag{Q14}
+\]</span>
+The point action is therefore the full recovered normal multiplication action. Nonsingularity was established before point composition on arbitrary equivalence classes was used.</p>
+<p><span id="OA-FLOW.ERGDEC.ERGODIC"></span><a id="oa-flow.ergdec.ergodic"></a></p>
+<h2 id="scalar-fixed-algebras-mean-ergodic-conditional-measures">Scalar fixed algebras mean ergodic conditional measures</h2>
+<p>We now apply the <a href="OA-FLOW-L42.html#oa-flow.centerg.fixed">whole fixed-centre identity</a> and <a href="OA-FLOW-L42.html#oa-flow.centerg.scalar">scalar detection</a> to (Q1) and the representations (Q4). Their hypotheses hold on this specified field. The algebras <span class="math" data-tex="\(A_y\)">\(A_y\)</span> are abelian; (Q1) is the whole bounded-section identity; the diagonal is exactly the global fixed algebra; the fibre representations are continuous, normalize <span class="math" data-tex="\(A_y\)">\(A_y\)</span> by (Q8), and integrate to the given global representation for every <span class="math" data-tex="\(g\)">\(g\)</span>. The multiplication-commutant proof above gives <span class="math" data-tex="\(A_y'=A_y\)">\(A_y'=A_y\)</span> and <span class="math" data-tex="\(\widetilde A'=\widetilde A\)">\(\widetilde A'=\widetilde A\)</span>, so (Q1) is also the required whole commutant-field identity. The continuous contraction generators constructed there generate both the algebra and commutant fields.</p>
+<p>For precision, put <span class="math" data-tex="\(F_y=A_y\cap\{V_y(q):q\in Q\}'\)">\(F_y=A_y\cap\{V_y(q):q\in Q\}'\)</span>. Commutation with <span class="math" data-tex="\(Q\)">\(Q\)</span> is the same as commutation with all <span class="math" data-tex="\(G\)">\(G\)</span>, by strong continuity. The compact-equation construction in the cited fixed-centre proof supplies a countable measurable WOT-dense family in each unit ball <span class="math" data-tex="\((F_y)_1\)">\((F_y)_1\)</span>. The whole-section identity shows that every bounded measurable section of <span class="math" data-tex="\(F_y\)">\(F_y\)</span> integrates into <span class="math" data-tex="\(D\)">\(D\)</span>. Subtracting the first frame diagonal coefficient from each selector gives a bounded measurable fixed section with first diagonal coefficient zero. Its integral belongs to <span class="math" data-tex="\(D\)">\(D\)</span>, whose fibre operators are scalar. Uniqueness of decomposable fields makes that section zero almost everywhere. The countable union of these null events excludes every nonscalar fibre: the scalar subspace is WOT closed and the selectors are WOT dense. This is the exact scalar-detection argument of L42, applied to the conditional multiplication field, and yields a further Borel conull subset <span class="math" data-tex="\(Y_2\subseteq Y_1\)">\(Y_2\subseteq Y_1\)</span> on which
+<span class="math math-display" data-tex="\[
+ A_y^{\alpha_y}=F_y=\mathbb C1_y
+ \qquad(y\in Y_2).
+ \tag{Q15}
+\]">\[
+ A_y^{\alpha_y}=F_y=\mathbb C1_y
+ \qquad(y\in Y_2).
+ \tag{Q15}
+\]</span>
+Thus a statement about the whole fixed centre has been applied after identifying the actual conditional Hilbert spaces and their full multiplication action.</p>
+<p>Let <span class="math" data-tex="\(\Omega_y=p^{-1}\{y\}\)">\(\Omega_y=p^{-1}\{y\}\)</span>. It is an invariant closed Borel subset, and <span class="math" data-tex="\(m_y(\Omega_y)=1\)">\(m_y(\Omega_y)=1\)</span>. Restriction identifies <span class="math" data-tex="\(A_y\)">\(A_y\)</span> with <span class="math" data-tex="\(L^\infty(\Omega_y,m_y)\)">\(L^\infty(\Omega_y,m_y)\)</span>. If a Borel set <span class="math" data-tex="\(E\subseteq\Omega_y\)">\(E\subseteq\Omega_y\)</span> is invariant modulo <span class="math" data-tex="\(m_y\)">\(m_y\)</span>-null sets under every group element, then
+<span class="math math-display" data-tex="\[
+ m_y(T_g^{-1}E\mathbin{\triangle}E)=0\ (g\in G)
+ \quad\Longleftrightarrow\quad
+ M_{1_E}^{(y)}\in A_y^{\alpha_y}.
+ \tag{Q16}
+\]">\[
+ m_y(T_g^{-1}E\mathbin{\triangle}E)=0\ (g\in G)
+ \quad\Longleftrightarrow\quad
+ M_{1_E}^{(y)}\in A_y^{\alpha_y}.
+ \tag{Q16}
+\]</span>
+Indeed (Q14) turns the fixedness of this projection into equality of the two indicator classes. Using <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> instead of <span class="math" data-tex="\(g\)">\(g\)</span> changes none of the all-group conditions. By (Q15) the projection is scalar; a scalar projection is either zero or one. Hence <span class="math" data-tex="\(m_y(E)\)">\(m_y(E)\)</span> is either zero or one. This is ergodicity of the measured point action <span class="math" data-tex="\(G\curvearrowright(\Omega_y,m_y)\)">\(G\curvearrowright(\Omega_y,m_y)\)</span>, with invariance interpreted separately modulo null sets for each <span class="math" data-tex="\(g\)">\(g\)</span>.</p>
+<p>The equivalent function formulation can also be seen directly. If a bounded real Borel function <span class="math" data-tex="\(f\)">\(f\)</span> satisfies <span class="math" data-tex="\(f\circ T_{g^{-1}}=f\)">\(f\circ T_{g^{-1}}=f\)</span> almost everywhere for every <span class="math" data-tex="\(g\)">\(g\)</span>, each rational superlevel set <span class="math" data-tex="\(\{f&gt;r\}\)">\(\{f&gt;r\}\)</span> has the same invariance and therefore has probability zero or one. Put <span class="math" data-tex="\(c=\inf\{r\in\mathbb Q:m_y(f&gt;r)=0\}\)">\(c=\inf\{r\in\mathbb Q:m_y(f&gt;r)=0\}\)</span>. Boundedness makes this a finite real number. For every rational <span class="math" data-tex="\(r&lt;c\)">\(r&lt;c\)</span> the superlevel set has probability one; for every rational <span class="math" data-tex="\(r&gt;c\)">\(r&gt;c\)</span> it has probability zero, by monotonicity and the definition of the infimum. Countably many such rational tests imply <span class="math" data-tex="\(f=c\)">\(f=c\)</span> almost everywhere. Real and imaginary parts treat bounded complex functions. Conversely, applying the function assertion to indicators gives the set assertion. We have therefore proved the equivalence
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \text{every all-group invariant Borel set is null or conull}\\
+ \Longleftrightarrow\
+ L^\infty(\Omega_y,m_y)^G=\mathbb C1
+ \Longleftrightarrow\
+ \text{every invariant finite complex measurable function
+ is essentially constant}.
+ \end{gathered}
+ \tag{Q17}
+\]">\[
+ \begin{gathered}
+ \text{every all-group invariant Borel set is null or conull}\\
+ \Longleftrightarrow\
+ L^\infty(\Omega_y,m_y)^G=\mathbb C1
+ \Longleftrightarrow\
+ \text{every invariant finite complex measurable function
+ is essentially constant}.
+ \end{gathered}
+ \tag{Q17}
+\]</span>
+For the last assertion, apply the bounded real result to <span class="math" data-tex="\(\arctan(\operatorname{Re}f)\)">\(\arctan(\operatorname{Re}f)\)</span> and <span class="math" data-tex="\(\arctan(\operatorname{Im}f)\)">\(\arctan(\operatorname{Im}f)\)</span>; their almost-everywhere constant values lie in the range of <span class="math" data-tex="\(\arctan\)">\(\arctan\)</span>, since the original functions are finite almost everywhere. Completed measurable sets and functions have Borel versions. Nonsingularity makes changes on null sets irrelevant to each invariance test, so the same equivalences hold in each completed fibre. This use of completion does not claim a Borel kernel on all subsets added by global completion.</p>
+<p>All conclusions hold on the one Borel conull base <span class="math" data-tex="\(Y_2\)">\(Y_2\)</span>: concentration, genuine continuous representations, covariance on the whole multiplication algebra, nonsingularity for every <span class="math" data-tex="\(g\)">\(g\)</span>, and measured ergodicity. The <a href="#oa-flow.ergdec.spatial">strict point identification</a> and <a href="#oa-flow.ergdec.transport">kernel transport</a> carry them to the original action. If another probability kernel disintegrates the same measure over that specified factor, <a href="OA-FLOW-L75.html#oa-flow.kernel.uniqueness">L75's whole-measure uniqueness</a> identifies it with this kernel as a Borel measure on one common conull base. The conclusions then hold for that kernel as well.</p>
+<p><span id="OA-FLOW.ERGDEC.TRANSPORT"></span><a id="oa-flow.ergdec.transport"></a></p>
+<h2 id="transporting-the-conditional-systems-to-the-prescribed-point-action">Transporting the conditional systems to the prescribed point action</h2>
+<p>Use the Borel probability disintegration <span class="math" data-tex="\(y\mapsto m_y\)">\(y\mapsto m_y\)</span> from the <a href="#oa-flow.ergdec.hilbert">conditional Hilbert-field construction</a>. The <a href="#oa-flow.ergdec.ergodic">conditional ergodicity proof</a> gives a Borel conull set <span class="math" data-tex="\(Y_{\mathrm{good}}\subseteq Y\)">\(Y_{\mathrm{good}}\subseteq Y\)</span> on which every <span class="math" data-tex="\(m_y\)">\(m_y\)</span> is concentrated on <span class="math" data-tex="\(p_\Omega^{-1}\{y\}\)">\(p_\Omega^{-1}\{y\}\)</span>, is quasi-invariant under every <span class="math" data-tex="\(T_g\)">\(T_g\)</span>, and is ergodic for that entire action. The all-group assertions here refer to this common retained base. We show how they give the corresponding actual conditional probabilities on <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>L75's <a href="OA-FLOW-L75.html#oa-flow.kernel.probability">kernel integration and concentration theorem</a>, applied to the Borel conull set <span class="math" data-tex="\(\Omega_0\)">\(\Omega_0\)</span> from (S15), gives
+<span class="math math-display" data-tex="\[
+ \int_Y m_y(\Omega_0)\,d\nu(y)=m(\Omega_0)=1.
+ \tag{F17}
+\]">\[
+ \int_Y m_y(\Omega_0)\,d\nu(y)=m(\Omega_0)=1.
+ \tag{F17}
+\]</span>
+Since the integrand is Borel and lies in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, the set
+<span class="math math-display" data-tex="\[
+ Y_1=Y_{\mathrm{good}}\cap\{y:m_y(\Omega_0)=1\},\qquad
+ \Omega_1=\Omega_0\cap p_\Omega^{-1}(Y_1),\qquad
+ X_1=\phi^{-1}(\Omega_1)
+ \tag{F18}
+\]">\[
+ Y_1=Y_{\mathrm{good}}\cap\{y:m_y(\Omega_0)=1\},\qquad
+ \Omega_1=\Omega_0\cap p_\Omega^{-1}(Y_1),\qquad
+ X_1=\phi^{-1}(\Omega_1)
+ \tag{F18}
+\]</span>
+is a Borel conull base together with invariant Borel conull point sets. Invariance of the last two sets follows from (F8) and (S15). For every <span class="math" data-tex="\(y\in Y_1\)">\(y\in Y_1\)</span>, concentration and (F17)'s retained condition give <span class="math" data-tex="\(m_y(\Omega_1)=1\)">\(m_y(\Omega_1)=1\)</span>. Restrict <span class="math" data-tex="\(\nu\)">\(\nu\)</span> to <span class="math" data-tex="\(Y_1\)">\(Y_1\)</span>, still a probability, and define
+<span class="math math-display" data-tex="\[
+ \mu_y=(\phi^{-1})_*(m_y|_{\Omega_1})\quad(y\in Y_1),\qquad
+ p=p_X|_{X_1}.
+ \tag{F19}
+\]">\[
+ \mu_y=(\phi^{-1})_*(m_y|_{\Omega_1})\quad(y\in Y_1),\qquad
+ p=p_X|_{X_1}.
+ \tag{F19}
+\]</span>
+These are probabilities on <span class="math" data-tex="\(X_1\)">\(X_1\)</span> and are concentrated on <span class="math" data-tex="\(p^{-1}\{y\}\)">\(p^{-1}\{y\}\)</span>. For every Borel <span class="math" data-tex="\(A\subseteq X_1\)">\(A\subseteq X_1\)</span>, its image <span class="math" data-tex="\(\phi(A)\)">\(\phi(A)\)</span> is Borel, since <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is a Borel isomorphism. Thus <span class="math" data-tex="\(\mu_y(A)=m_y(\phi(A))\)">\(\mu_y(A)=m_y(\phi(A))\)</span> is Borel in <span class="math" data-tex="\(y\)">\(y\)</span>. For Borel <span class="math" data-tex="\(D'\subseteq Y_1\)">\(D'\subseteq Y_1\)</span>, L75 and the probability-preserving map give the whole localized identity
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_{D'}\mu_y(A)\,d\nu(y)
+ &amp;=\int_{D'}m_y(\phi(A))\,d\nu(y)\\
+ &amp;=m(\phi(A)\cap p_\Omega^{-1}(D'))\\
+ &amp;=\mu(A\cap p^{-1}(D')).
+ \end{aligned}
+ \tag{F20}
+\]">\[
+ \begin{aligned}
+ \int_{D'}\mu_y(A)\,d\nu(y)
+ &amp;=\int_{D'}m_y(\phi(A))\,d\nu(y)\\
+ &amp;=m(\phi(A)\cap p_\Omega^{-1}(D'))\\
+ &amp;=\mu(A\cap p^{-1}(D')).
+ \end{aligned}
+ \tag{F20}
+\]</span>
+It holds for all Borel <span class="math" data-tex="\(A,D'\)">\(A,D'\)</span>, and nonnegative simple approximation gives the corresponding integral identities for nonnegative Borel functions, including joint parameters by L75's <a href="OA-FLOW-L75.html#oa-flow.kernel.integration">parameter-integration proof</a>.</p>
+<p>For any retained <span class="math" data-tex="\(y\)">\(y\)</span> and any <span class="math" data-tex="\(g\)">\(g\)</span>, restriction to the invariant set <span class="math" data-tex="\(\Omega_1\)">\(\Omega_1\)</span> preserves the equivalence <span class="math" data-tex="\((T_g)_*m_y\sim m_y\)">\((T_g)_*m_y\sim m_y\)</span>. The exact equivariance of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> therefore gives <span class="math" data-tex="\(g_*\mu_y\sim\mu_y\)">\(g_*\mu_y\sim\mu_y\)</span>. If a Borel subset of <span class="math" data-tex="\(X_1\)">\(X_1\)</span> is invariant modulo <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span>-null sets under every <span class="math" data-tex="\(g\)">\(g\)</span>, its Borel image is invariant modulo <span class="math" data-tex="\(m_y\)">\(m_y\)</span>-null sets under every <span class="math" data-tex="\(T_g\)">\(T_g\)</span>; ergodicity of <span class="math" data-tex="\(m_y\)">\(m_y\)</span> makes its measure zero or one. Thus every retained conditional system is nonsingular and ergodic for the whole original group. The representation of the completed invariant algebra in (F13) survives these conull restrictions.</p>
+<p>Finally, <a href="OA-FLOW-L75.html#oa-flow.kernel.uniqueness">whole-kernel uniqueness</a> identifies any two such probability disintegrations over this specified map <span class="math" data-tex="\(p\)">\(p\)</span> and pushforward base on one common conull subset, as equal Borel measures. For a fixed completed set or function on <span class="math" data-tex="\(X\)">\(X\)</span>, choose a Borel version and use the <a href="OA-FLOW-L75.html#oa-flow.kernel.completion">completion argument</a>. Its comparison set of base points may depend on that specified completed class. The kernel in (F19) remains a kernel on Borel sets, with Borel dependence on its base; no simultaneous definition on all subsets introduced by completion is required.</p>
+<p><span id="OA-FLOW.ERGDEC.CONCLUSION"></span><a id="oa-flow.ergdec.conclusion"></a></p>
+<h2 id="assembling-the-measured-decomposition">Assembling the measured decomposition</h2>
+<p>The <a href="#oa-flow.ergdec.compact">compact invariant factor</a> represents the original probability state and the whole invariant algebra <span class="math" data-tex="\(D\)">\(D\)</span>. Apply L75 to its continuous factor map. The <a href="#oa-flow.ergdec.hilbert">conditional Hilbert-space construction</a> identifies the resulting direct integral with the original <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and the <a href="#oa-flow.ergdec.multiplication">multiplication-algebra proof</a> identifies the entire algebra in those same fibres.</p>
+<p>The <a href="#oa-flow.ergdec.covariance">covariance argument</a> recovers continuous fibre representations and identifies their action on every continuous test function. The <a href="#oa-flow.ergdec.quasi">conditional nonsingularity proof</a> then proves equivalence of the conditional measures under every group element on one retained base. It identifies the fibre automorphisms with the original point transformations on the whole multiplication algebras. The <a href="#oa-flow.ergdec.ergodic">fixed-algebra argument</a> proves ergodicity of those actual measured systems.</p>
+<p>Finally, <a href="#oa-flow.ergdec.transport">strict point transport</a> transfers the kernels to an invariant conull Borel subset of the originally specified <span class="math" data-tex="\(X\)">\(X\)</span>. This transfer preserves the original probability, all localized mixture identities, exact invariance of the factor map, and the simultaneous all-group conclusions. Intersecting the finitely many common conull base sets in these steps supplies <span class="math" data-tex="\(Y_*\)">\(Y_*\)</span> in (T4). L75's whole-measure uniqueness applies to the resulting factor map and proves the uniqueness assertion after (T4). This proves the measured-component theorem with the stated quantifiers.</p>
+<p><span id="OA-FLOW.ERGDEC.BASE"></span><a id="oa-flow.ergdec.base"></a></p>
+<h2 id="changing-the-coordinates-on-the-invariant-base">Changing the coordinates on the invariant base</h2>
+<p>The theorem does not choose preferred names for the components. Here is the precise uniqueness under a change of those names. Suppose <span class="math" data-tex="\(p_i:X_i\to Y_i\)">\(p_i:X_i\to Y_i\)</span>, <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>, are two strictly invariant Borel factor maps supplied by the theorem, on invariant conull Borel subsets of the same <span class="math" data-tex="\((X,\mu)\)">\((X,\mu)\)</span>. Suppose both pullback algebras are the whole <span class="math" data-tex="\(D\)">\(D\)</span>, and write <span class="math" data-tex="\(\nu_i=(p_i)_*\mu\)">\(\nu_i=(p_i)_*\mu\)</span>. First restrict to <span class="math" data-tex="\(X_1\cap X_2\)">\(X_1\cap X_2\)</span>, extending Borel functions by zero where necessary. These changes have no effect on the represented algebras or probabilities.</p>
+<p>Each pullback
+<span class="math math-display" data-tex="\[
+ j_i:L^\infty(Y_i,\nu_i)\longrightarrow D,
+ \qquad j_i f=f\circ p_i
+ \tag{B1}
+\]">\[
+ j_i:L^\infty(Y_i,\nu_i)\longrightarrow D,
+ \qquad j_i f=f\circ p_i
+ \tag{B1}
+\]</span>
+is a unital normal isomorphism. Injectivity and equality of essential suprema follow from the pushforward identity, and surjectivity is the whole-factor assertion. The map and its inverse preserve positivity, so they are order isomorphisms. An order isomorphism preserves least upper bounds of bounded increasing nets, by applying the inverse to any proposed upper bound; hence each map is normal. Hence <span class="math" data-tex="\(\Theta=j_1^{-1}j_2\)">\(\Theta=j_1^{-1}j_2\)</span> is a normal isomorphism preserving probability integrals. By the <a href="#oa-flow.ergdec.spatial">spatial isomorphism proof</a>, there are conull Borel subsets <span class="math" data-tex="\(Y_i'\subseteq Y_i\)">\(Y_i'\subseteq Y_i\)</span> and a measure-preserving Borel isomorphism <span class="math" data-tex="\(\theta:Y_1'\to Y_2'\)">\(\theta:Y_1'\to Y_2'\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ \Theta f=f\circ\theta.
+ \tag{B2}
+\]">\[
+ \Theta f=f\circ\theta.
+ \tag{B2}
+\]</span>
+Use a countable Borel family separating points of <span class="math" data-tex="\(Y_2\)">\(Y_2\)</span>. Equations (B1)–(B2) on its indicators, followed by one countable null-set deletion, give
+<span class="math math-display" data-tex="\[
+ p_2(x)=\theta(p_1(x))\quad\text{almost everywhere}.
+ \tag{B3}
+\]">\[
+ p_2(x)=\theta(p_1(x))\quad\text{almost everywhere}.
+ \tag{B3}
+\]</span>
+The set where <span class="math" data-tex="\(p_i(x)\in Y_i'\)">\(p_i(x)\in Y_i'\)</span> and (B3) holds is Borel, invariant and conull: both factor maps are pointwise invariant, so every displayed condition is preserved by every group element. Call it <span class="math" data-tex="\(X_0\)">\(X_0\)</span>.</p>
+<p>For almost every base point, both original conditional kernels give full measure to <span class="math" data-tex="\(X_0\)">\(X_0\)</span>, by integrating its null complement. Restrict those kernels to <span class="math" data-tex="\(X_0\)">\(X_0\)</span> on these conull base sets. For a Borel <span class="math" data-tex="\(E\subseteq X_0\)">\(E\subseteq X_0\)</span> and <span class="math" data-tex="\(B\subseteq Y_1'\)">\(B\subseteq Y_1'\)</span>, measure preservation and (B3) give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_B\mu^{(2)}_{\theta(y)}(E)\,d\nu_1(y)
+ &amp;=\int_{\theta(B)}\mu^{(2)}_z(E)\,d\nu_2(z)\\
+ &amp;=\mu(E\cap p_2^{-1}(\theta(B)))\\
+ &amp;=\mu(E\cap p_1^{-1}(B)).
+ \end{aligned}
+ \tag{B4}
+\]">\[
+ \begin{aligned}
+ \int_B\mu^{(2)}_{\theta(y)}(E)\,d\nu_1(y)
+ &amp;=\int_{\theta(B)}\mu^{(2)}_z(E)\,d\nu_2(z)\\
+ &amp;=\mu(E\cap p_2^{-1}(\theta(B)))\\
+ &amp;=\mu(E\cap p_1^{-1}(B)).
+ \end{aligned}
+ \tag{B4}
+\]</span>
+The transported family is a Borel kernel because <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is Borel. On discarded base sets choose any probability concentrated at one fixed point of the nonempty <span class="math" data-tex="\(X_0\)">\(X_0\)</span>. Applying L75's <a href="OA-FLOW-L75.html#oa-flow.kernel.uniqueness">whole-kernel uniqueness</a> on the standard Borel space <span class="math" data-tex="\(X_0\)">\(X_0\)</span> gives
+<span class="math math-display" data-tex="\[
+ \mu_y^{(1)}=\mu_{\theta(y)}^{(2)}
+ \quad\text{as whole Borel measures on one conull subset of }Y_1'.
+ \tag{B5}
+\]">\[
+ \mu_y^{(1)}=\mu_{\theta(y)}^{(2)}
+ \quad\text{as whole Borel measures on one conull subset of }Y_1'.
+ \tag{B5}
+\]</span>
+Thus changing a compact model or a generating family changes the base only by a measured Borel isomorphism, with the conditional probabilities corresponding as actual measures. This statement compares probability normalizations; the sigma-finite case retains the explicit density convention below.</p>
+<p><span id="OA-FLOW.ERGDEC.SIGMAFINITE"></span><a id="oa-flow.ergdec.sigmafinite"></a></p>
+<h2 id="recovering-a-sigma-finite-measure-and-changing-its-normalization">Recovering a sigma-finite measure and changing its normalization</h2>
+<p>Let now <span class="math" data-tex="\(G\)">\(G\)</span> be a second-countable locally compact Hausdorff group acting strictly, jointly Borel and nonsingularly on a standard Borel space <span class="math" data-tex="\(X\)">\(X\)</span> with a nonzero sigma-finite Borel measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. This is the original-space scope of the probability theorem. Choose a positive finite Borel function <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(\int_Xw\,d\mu=1\)">\(\int_Xw\,d\mu=1\)</span>. Such a choice is always available: for a Borel partition <span class="math" data-tex="\(X=\coprod_{j\ge1}E_j\)">\(X=\coprod_{j\ge1}E_j\)</span> with <span class="math" data-tex="\(\mu(E_j)&lt;\infty\)">\(\mu(E_j)&lt;\infty\)</span>, set
+<span class="math math-display" data-tex="\[
+ \widetilde w(x)=
+    \sum_{j\ge1}\frac{2^{-j}}{1+\mu(E_j)}1_{E_j}(x),
+ \qquad
+ w=\frac{\widetilde w}{\int_X\widetilde w\,d\mu}.
+ \tag{Q18}
+\]">\[
+ \widetilde w(x)=
+    \sum_{j\ge1}\frac{2^{-j}}{1+\mu(E_j)}1_{E_j}(x),
+ \qquad
+ w=\frac{\widetilde w}{\int_X\widetilde w\,d\mu}.
+ \tag{Q18}
+\]</span>
+The denominator lies in <span class="math" data-tex="\((0,1]\)">\((0,1]\)</span>. Thus <span class="math" data-tex="\(w\)">\(w\)</span> is bounded, Borel and positive everywhere. The formulas below also apply to any other positive finite Borel <span class="math" data-tex="\(w\)">\(w\)</span> with integral one.</p>
+<p>Put <span class="math" data-tex="\(\rho=w\mu\)">\(\rho=w\mu\)</span>. It is an equivalent probability, so the action is still nonsingular and its completed invariant algebra is unchanged. Apply the probability theorem to <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, including the strict transfer to the original point action. It gives an invariant conull Borel subset <span class="math" data-tex="\(X_*\)">\(X_*\)</span>, a strictly invariant factor <span class="math" data-tex="\(p:X_*\to Y\)">\(p:X_*\to Y\)</span> realizing that whole invariant algebra, and conditional probabilities <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span> over
+<span class="math math-display" data-tex="\[
+ \nu_w=p_*(\rho|_{X_*}).
+ \tag{Q19}
+\]">\[
+ \nu_w=p_*(\rho|_{X_*}).
+ \tag{Q19}
+\]</span>
+On one Borel <span class="math" data-tex="\(\nu_w\)">\(\nu_w\)</span>-conull base, <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span> is concentrated on <span class="math" data-tex="\(X_y=p^{-1}\{y\}\)">\(X_y=p^{-1}\{y\}\)</span>, is nonsingular under every group element, and is ergodic. We restrict all functions, including <span class="math" data-tex="\(w\)">\(w\)</span>, to <span class="math" data-tex="\(X_*\)">\(X_*\)</span> from now on. Since its complement is <span class="math" data-tex="\(\mu\)">\(\mu\)</span>-null, recovering <span class="math" data-tex="\(\mu|_{X_*}\)">\(\mu|_{X_*}\)</span> recovers the original measure by assigning zero mass to that complement.</p>
+<p>Use the inverse-density construction of <a href="OA-FLOW-L75.html#oa-flow.kernel.sigmafinite">L75</a>:
+<span class="math math-display" data-tex="\[
+ \mu_y(A)=\int_{X_*}\frac{1_A(x)}{w(x)}\,d\kappa_y(x)
+ \qquad(A\subseteq X_*\text{ Borel}).
+ \tag{Q20}
+\]">\[
+ \mu_y(A)=\int_{X_*}\frac{1_A(x)}{w(x)}\,d\kappa_y(x)
+ \qquad(A\subseteq X_*\text{ Borel}).
+ \tag{Q20}
+\]</span>
+Monotone convergence makes this a countably additive measure, and kernel integration makes <span class="math" data-tex="\(y\mapsto\mu_y(A)\)">\(y\mapsto\mu_y(A)\)</span> Borel, allowing <span class="math" data-tex="\(+\infty\)">\(+\infty\)</span>. Every <span class="math" data-tex="\(\mu_y\)">\(\mu_y\)</span> is sigma-finite, with an exhaustion independent of <span class="math" data-tex="\(y\)">\(y\)</span>, and its normalization is exact:
+<span class="math math-display" data-tex="\[
+ X_n=\{x\in X_*:w(x)\ge1/n\}\uparrow X_*,
+ \qquad \mu_y(X_n)\le n,\qquad
+ \int_{X_*}w\,d\mu_y=1.
+ \tag{Q21}
+\]">\[
+ X_n=\{x\in X_*:w(x)\ge1/n\}\uparrow X_*,
+ \qquad \mu_y(X_n)\le n,\qquad
+ \int_{X_*}w\,d\mu_y=1.
+ \tag{Q21}
+\]</span>
+The positive finite weight implies <span class="math" data-tex="\(\mu_y\sim\kappa_y\)">\(\mu_y\sim\kappa_y\)</span>. In particular the support, all-group nonsingularity and ergodicity survive this change of measure: the null sets are identical, so both the equivalence of a measure with its pushforward and every invariant-set test are unchanged.</p>
+<p>The exact disintegration identity is
+<span class="math math-display" data-tex="\[
+ \int_Y\int_{X_*}F(y,x)\,d\mu_y(x)\,d\nu_w(y)
+     =\int_{X_*}F(p(x),x)\,d\mu(x)
+ \quad(F\ge0\text{ jointly Borel}).
+ \tag{Q22}
+\]">\[
+ \int_Y\int_{X_*}F(y,x)\,d\mu_y(x)\,d\nu_w(y)
+     =\int_{X_*}F(p(x),x)\,d\mu(x)
+ \quad(F\ge0\text{ jointly Borel}).
+ \tag{Q22}
+\]</span>
+Indeed apply the probability kernel's parameter identity to <span class="math" data-tex="\(F(y,x)/w(x)\)">\(F(y,x)/w(x)\)</span>; all terms are nonnegative, and cancellation against <span class="math" data-tex="\(\rho=w\mu\)">\(\rho=w\mu\)</span> is legitimate even when the result is infinite. For <span class="math" data-tex="\(F(y,x)=1_D(y)1_A(x)\)">\(F(y,x)=1_D(y)1_A(x)\)</span>, this says
+<span class="math" data-tex="\(\mu(A\cap p^{-1}D)=\int_D\mu_y(A)\,d\nu_w(y)\)">\(\mu(A\cap p^{-1}D)=\int_D\mu_y(A)\,d\nu_w(y)\)</span>.
+Absolutely integrable complex functions follow by their four nonnegative parts.</p>
+<p>The change of density also has an explicit derivative formula. For a retained <span class="math" data-tex="\(y\)">\(y\)</span>, choose any representative
+<span class="math" data-tex="\(r^\kappa_{g,y}=d(T_g)_*\kappa_y/d\kappa_y\)">\(r^\kappa_{g,y}=d(T_g)_*\kappa_y/d\kappa_y\)</span>. A pushforward test against nonnegative functions gives
+<span class="math math-display" data-tex="\[
+ \frac{d(T_g)_*\mu_y}{d\mu_y}(x)
+     =\frac{w(x)}{w(T_{g^{-1}}x)}\,r^\kappa_{g,y}(x)
+ \quad \mu_y\text{-almost everywhere}.
+ \tag{Q23}
+\]">\[
+ \frac{d(T_g)_*\mu_y}{d\mu_y}(x)
+     =\frac{w(x)}{w(T_{g^{-1}}x)}\,r^\kappa_{g,y}(x)
+ \quad \mu_y\text{-almost everywhere}.
+ \tag{Q23}
+\]</span>
+To verify it, push forward <span class="math" data-tex="\(w^{-1}\kappa_y\)">\(w^{-1}\kappa_y\)</span>: its density with respect to <span class="math" data-tex="\((T_g)_*\kappa_y\)">\((T_g)_*\kappa_y\)</span> is <span class="math" data-tex="\(w(T_{g^{-1}}x)^{-1}\)">\(w(T_{g^{-1}}x)^{-1}\)</span>, and <span class="math" data-tex="\(\kappa_y=w\mu_y\)">\(\kappa_y=w\mu_y\)</span>. Multiplying these two identities proves (Q23). Every factor is positive and finite almost everywhere. The formula is for each fixed <span class="math" data-tex="\(g,y\)">\(g,y\)</span>; the all-group equivalence of measures was already proved without a simultaneous choice of pointwise derivatives.</p>
+<p>The finite base depends on the normalization, with a precise compensation in the fibres. Let <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span> be another finite Borel function with <span class="math" data-tex="\(\int_Xv\,d\mu=1\)">\(\int_Xv\,d\mu=1\)</span>, and keep the specified factor <span class="math" data-tex="\(p\)">\(p\)</span>. Define
+<span class="math math-display" data-tex="\[
+ a(y)=\int_{X_*}v\,d\mu_y
+      =\int_{X_*}\frac{v}{w}\,d\kappa_y.
+ \tag{Q24}
+\]">\[
+ a(y)=\int_{X_*}v\,d\mu_y
+      =\int_{X_*}\frac{v}{w}\,d\kappa_y.
+ \tag{Q24}
+\]</span>
+It is Borel and strictly positive because <span class="math" data-tex="\(v/w&gt;0\)">\(v/w&gt;0\)</span> everywhere and <span class="math" data-tex="\(\kappa_y\)">\(\kappa_y\)</span> is a probability. Formula (Q22) gives <span class="math" data-tex="\(\int a\,d\nu_w=1\)">\(\int a\,d\nu_w=1\)</span>, so <span class="math" data-tex="\(a&lt;\infty\)">\(a&lt;\infty\)</span> almost everywhere. On the common Borel conull set where <span class="math" data-tex="\(0&lt;a&lt;\infty\)">\(0&lt;a&lt;\infty\)</span>, the exact change is
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \nu_v=p_*(v\mu|_{X_*})=a\,\nu_w,\qquad
+ \mu_y^{\,v}=a(y)^{-1}\mu_y,\\
+ \kappa_y^{\,v}(A)
+     =a(y)^{-1}\int_Av\,d\mu_y
+     =\int_A\frac{v(x)}{a(y)w(x)}\,d\kappa_y(x).
+ \end{gathered}
+ \tag{Q25}
+\]">\[
+ \begin{gathered}
+ \nu_v=p_*(v\mu|_{X_*})=a\,\nu_w,\qquad
+ \mu_y^{\,v}=a(y)^{-1}\mu_y,\\
+ \kappa_y^{\,v}(A)
+     =a(y)^{-1}\int_Av\,d\mu_y
+     =\int_A\frac{v(x)}{a(y)w(x)}\,d\kappa_y(x).
+ \end{gathered}
+ \tag{Q25}
+\]</span>
+The first identity follows by testing (Q22) with <span class="math" data-tex="\(1_D(y)v(x)\)">\(1_D(y)v(x)\)</span>. The second and third give <span class="math" data-tex="\(\int v\,d\mu_y^{\,v}=1\)">\(\int v\,d\mu_y^{\,v}=1\)</span> and <span class="math" data-tex="\(\kappa_y^{\,v}(X_*)=1\)">\(\kappa_y^{\,v}(X_*)=1\)</span>. Cancellation of <span class="math" data-tex="\(a(y)\)">\(a(y)\)</span> in the two integrals shows that <span class="math" data-tex="\((\nu_v,\mu_y^{\,v})\)">\((\nu_v,\mu_y^{\,v})\)</span> still disintegrates <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and that <span class="math" data-tex="\(\kappa_y^{\,v}\)">\(\kappa_y^{\,v}\)</span> disintegrates <span class="math" data-tex="\(v\mu\)">\(v\mu\)</span>. Their fibres have the same measure classes and hence the same nonsingularity and ergodicity properties. On the discarded Borel null set one may choose a fixed point mass for <span class="math" data-tex="\(\kappa_y^{\,v}\)">\(\kappa_y^{\,v}\)</span> and its <span class="math" data-tex="\(v\)">\(v\)</span>-normalized multiple for <span class="math" data-tex="\(\mu_y^{\,v}\)">\(\mu_y^{\,v}\)</span>, as in <a href="OA-FLOW-L75.html#oa-flow.kernel.normalization">L75's normalization proof</a>. That restores whole-base Borel kernels without affecting any assertion on the retained base.</p>
+<p>More generally, for any finite positive Borel <span class="math" data-tex="\(s:Y\to(0,\infty)\)">\(s:Y\to(0,\infty)\)</span>,
+<span class="math math-display" data-tex="\[
+ d\widehat\nu=s\,d\nu_w,\qquad
+ \widehat\mu_y=s(y)^{-1}\mu_y,\qquad
+ \int w\,d\widehat\mu_y=s(y)^{-1}.
+ \tag{Q26}
+\]">\[
+ d\widehat\nu=s\,d\nu_w,\qquad
+ \widehat\mu_y=s(y)^{-1}\mu_y,\qquad
+ \int w\,d\widehat\mu_y=s(y)^{-1}.
+ \tag{Q26}
+\]</span>
+This gives the same localized mixture by cancellation. The base <span class="math" data-tex="\(\widehat\nu\)">\(\widehat\nu\)</span> is sigma-finite, since <span class="math" data-tex="\(\widehat\nu(\{s\le n\})\le n\)">\(\widehat\nu(\{s\le n\})\le n\)</span>. Formula (Q26) records exactly the resulting change in the chosen <span class="math" data-tex="\(w\)">\(w\)</span>-normalization.</p>
+<p>For completeness, that normalization also gives whole-kernel uniqueness and fixes the base. Suppose <span class="math" data-tex="\(\tau_y\)">\(\tau_y\)</span> is a Borel measure kernel over a sigma-finite base <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, concentrated on the specified fibres almost everywhere, with mixture <span class="math" data-tex="\(\mu|_{X_*}\)">\(\mu|_{X_*}\)</span>, and <span class="math" data-tex="\(\int w\,d\tau_y=1\)">\(\int w\,d\tau_y=1\)</span> almost everywhere. Simple approximation extends its mixture identity to all nonnegative Borel integrands. Fibre support and normalization then give, for every Borel <span class="math" data-tex="\(D\subseteq Y\)">\(D\subseteq Y\)</span>,
+<span class="math math-display" data-tex="\[
+ \lambda(D)
+   =\int_Y\int_{X_*}1_D(p(x))w(x)\,d\tau_y(x)\,d\lambda(y)
+   =\int_{p^{-1}D}w\,d\mu
+   =\nu_w(D).
+ \tag{Q27}
+\]">\[
+ \lambda(D)
+   =\int_Y\int_{X_*}1_D(p(x))w(x)\,d\tau_y(x)\,d\lambda(y)
+   =\int_{p^{-1}D}w\,d\mu
+   =\nu_w(D).
+ \tag{Q27}
+\]</span>
+Moreover <span class="math" data-tex="\(w\tau_y\)">\(w\tau_y\)</span> is a probability kernel on a Borel conull set, has mixture <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, and has the same fibre support. Define a point mass on the null complement if needed. <a href="OA-FLOW-L75.html#oa-flow.kernel.uniqueness">Whole probability-kernel uniqueness</a> gives <span class="math" data-tex="\(w\tau_y=\kappa_y\)">\(w\tau_y=\kappa_y\)</span> as measures on all Borel sets on one common conull base. Integration of the positive Borel function <span class="math" data-tex="\(1_A/w\)">\(1_A/w\)</span> against these equal measures then yields
+<span class="math math-display" data-tex="\[
+ \tau_y(A)=\mu_y(A)
+ \quad\text{for every Borel }A\subseteq X_*
+ \quad\text{on one common conull base}.
+ \tag{Q28}
+\]">\[
+ \tau_y(A)=\mu_y(A)
+ \quad\text{for every Borel }A\subseteq X_*
+ \quad\text{on one common conull base}.
+ \tag{Q28}
+\]</span>
+This includes infinite values. If the base is already <span class="math" data-tex="\(\nu_w\)">\(\nu_w\)</span> and the full localized disintegration identity is assumed, the normalization follows automatically: apply that identity to <span class="math" data-tex="\(w\)">\(w\)</span> over every <span class="math" data-tex="\(p^{-1}D\)">\(p^{-1}D\)</span> to obtain
+<span class="math" data-tex="\(\int_D\int w\,d\tau_y\,d\nu_w=\nu_w(D)\)">\(\int_D\int w\,d\tau_y\,d\nu_w=\nu_w(D)\)</span>; the measurable tests where the inner function is above or below one force it to equal one almost everywhere.</p>
+<p>The base in (Q19) is the pushforward of the chosen probability <span class="math" data-tex="\(w\mu\)">\(w\mu\)</span>. No sigma-finiteness of <span class="math" data-tex="\(p_*\mu\)">\(p_*\mu\)</span> is asserted or required; it need not hold, as <a href="OA-FLOW-L75.html#oa-flow.kernel.example">L75's explicit infinite-fibre example</a> shows. The change formulas keep the factor map fixed. An independently chosen description of the invariant factor must first be identified with this specified base before those formulas compare its kernels.</p>
+<p>Finally, the kernels throughout are kernels on the underlying Borel sets. For any one completed set or function, Borel versions and the <a href="OA-FLOW-L75.html#oa-flow.kernel.completion">L75 completion argument</a>, applied to the equivalent probability <span class="math" data-tex="\(w\mu\)">\(w\mu\)</span>, give the corresponding almost-everywhere identities. The good set may depend on that completed object. In the zero-measure case there is no positive weight with integral one: use the zero base and zero kernel instead, with the component assertions vacuous.</p>
+<p><span id="OA-FLOW.ERGDEC.EXAMPLE"></span><a id="oa-flow.ergdec.example"></a></p>
+<h2 id="two-finite-components-with-non-invariant-probabilities">Two finite components with non-invariant probabilities</h2>
+<p>Let <span class="math" data-tex="\(G=C_2=\{e,s\}\)">\(G=C_2=\{e,s\}\)</span>, let <span class="math" data-tex="\(Y=\{a,b\}\)">\(Y=\{a,b\}\)</span>, and let <span class="math" data-tex="\(X=Y\times\{0,1\}\)">\(X=Y\times\{0,1\}\)</span>. Set
+<span class="math math-display" data-tex="\[
+ T_s(y,i)=(y,1-i),\qquad
+ \nu(a)=\frac13,\quad\nu(b)=\frac23,
+ \qquad
+ \mu_a=\left(\frac14,\frac34\right),\quad
+ \mu_b=\left(\frac25,\frac35\right).
+ \tag{E1}
+\]">\[
+ T_s(y,i)=(y,1-i),\qquad
+ \nu(a)=\frac13,\quad\nu(b)=\frac23,
+ \qquad
+ \mu_a=\left(\frac14,\frac34\right),\quad
+ \mu_b=\left(\frac25,\frac35\right).
+ \tag{E1}
+\]</span>
+The global probability is the mixture over <span class="math" data-tex="\(p(y,i)=y\)">\(p(y,i)=y\)</span>. In the displayed order <span class="math" data-tex="\((a,0),(a,1),(b,0),(b,1)\)">\((a,0),(a,1),(b,0),(b,1)\)</span>, its masses are
+<span class="math math-display" data-tex="\[
+ \mu=\left(\frac1{12},\frac14,\frac4{15},\frac25\right).
+ \tag{E2}
+\]">\[
+ \mu=\left(\frac1{12},\frac14,\frac4{15},\frac25\right).
+ \tag{E2}
+\]</span>
+They sum to one. Every point has positive measure, so the swap is nonsingular. A multiplication function is fixed precisely when its two values in each pair are equal. Consequently <span class="math" data-tex="\(D\)">\(D\)</span> consists of exactly the functions of <span class="math" data-tex="\(p\)">\(p\)</span>, and is isomorphic to <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>. Directly summing over either pair proves (T3) for all subsets of these finite spaces.</p>
+<p>The Radon–Nikodym densities of the pushed conditional probabilities are
+<span class="math math-display" data-tex="\[
+ r_s(a,0)=3,\quad r_s(a,1)=\frac13,
+ \qquad r_s(b,0)=\frac32,\quad r_s(b,1)=\frac23.
+ \tag{E3}
+\]">\[
+ r_s(a,0)=3,\quad r_s(a,1)=\frac13,
+ \qquad r_s(b,0)=\frac32,\quad r_s(b,1)=\frac23.
+ \tag{E3}
+\]</span>
+Indeed <span class="math" data-tex="\((T_s)_*\mu_y(\{i\})=\mu_y(\{1-i\})\)">\((T_s)_*\mu_y(\{i\})=\mu_y(\{1-i\})\)</span>, so the density at <span class="math" data-tex="\(i\)">\(i\)</span> is the ratio of that mass to <span class="math" data-tex="\(\mu_y(\{i\})\)">\(\mu_y(\{i\})\)</span>. These strictly positive ratios prove equivalence of the measures. Neither conditional probability is invariant, because its two masses are unequal. Nevertheless each conditional system is ergodic: its only invariant subsets are the empty set and the whole two-point orbit, and there are no nonempty null subsets to change that condition.</p>
+<p>On <span class="math" data-tex="\(H_y=L^2(\{0,1\},\mu_y)\)">\(H_y=L^2(\{0,1\},\mu_y)\)</span>, the canonical nonsingular unitary is
+<span class="math math-display" data-tex="\[
+ (V_y(s)f)(i)=r_s(y,i)^{1/2}f(1-i).
+ \tag{E4}
+\]">\[
+ (V_y(s)f)(i)=r_s(y,i)^{1/2}f(1-i).
+ \tag{E4}
+\]</span>
+The identity <span class="math" data-tex="\(\mu_y(i)r_s(y,i)=\mu_y(1-i)\)">\(\mu_y(i)r_s(y,i)=\mu_y(1-i)\)</span> proves norm preservation after summing over <span class="math" data-tex="\(i\)">\(i\)</span>, and <span class="math" data-tex="\(r_s(y,0)r_s(y,1)=1\)">\(r_s(y,0)r_s(y,1)=1\)</span> proves <span class="math" data-tex="\(V_y(s)^2=1\)">\(V_y(s)^2=1\)</span>. It conjugates multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> to multiplication by <span class="math" data-tex="\(f\circ T_s\)">\(f\circ T_s\)</span>. In particular
+<span class="math math-display" data-tex="\[
+ |V_y(s)1_y|^2=r_s(y,\cdot),
+ \tag{E5}
+\]">\[
+ |V_y(s)1_y|^2=r_s(y,\cdot),
+ \tag{E5}
+\]</span>
+which checks the direction of the pushforward density in the general proof. The conditional direct-integral map is simply <span class="math" data-tex="\(f\mapsto(f(a,\cdot),f(b,\cdot))\)">\(f\mapsto(f(a,\cdot),f(b,\cdot))\)</span>; its norm identity uses the base weights <span class="math" data-tex="\(1/3,2/3\)">\(1/3,2/3\)</span>, and arbitrary pairs of fibre vectors show that it is onto.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Two two-point ergodic components, their unequal conditional masses and the positive density ratios produced by swapping each pair." src="assets/conditional-ergodic-components/conditional-ergodic-components.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure ED.1. The exact finite system (E1)–(E5). The map <span class="math" data-tex="\(p\)">\(p\)</span> sends each swapped pair to one invariant base point. Each conditional probability has unequal masses, so the swap changes that probability, but all four density ratios are positive and each pair is a transitive orbit. Ergodicity here concerns invariant sets; invariance of the probability is a different assertion.</em></p>
+<p><span id="OA-FLOW.ERGDEC.INFINITE.EXAMPLE"></span><a id="oa-flow.ergdec.infinite_example"></a></p>
+<h2 id="counting-measures-recovered-from-a-finite-normalization">Counting measures recovered from a finite normalization</h2>
+<p>Consider the strict translation action of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> on <span class="math" data-tex="\((\mathbb R,dx)\)">\((\mathbb R,dx)\)</span>, with <span class="math" data-tex="\(T_kx=x+k\)">\(T_kx=x+k\)</span>, and let <span class="math" data-tex="\(p(x)=x-\lfloor x\rfloor\in[0,1)\)">\(p(x)=x-\lfloor x\rfloor\in[0,1)\)</span>. The <a href="OA-FLOW-L75.html#oa-flow.kernel.example">normalization example in L75</a> uses
+<span class="math math-display" data-tex="\[
+ a_n=\frac{2^{-|n|}}3,\qquad
+ w(y+n)=a_n\quad(0\le y&lt;1,\ n\in\mathbb Z).
+ \tag{E6}
+\]">\[
+ a_n=\frac{2^{-|n|}}3,\qquad
+ w(y+n)=a_n\quad(0\le y&lt;1,\ n\in\mathbb Z).
+ \tag{E6}
+\]</span>
+The series has total one: <span class="math" data-tex="\(\sum_{n\in\mathbb Z}2^{-|n|}=1+2\sum_{n\ge1}2^{-n}=3\)">\(\sum_{n\in\mathbb Z}2^{-|n|}=1+2\sum_{n\ge1}2^{-n}=3\)</span>. Thus <span class="math" data-tex="\(w\,dx\)">\(w\,dx\)</span> is a probability equivalent to Lebesgue measure. Its base is ordinary Lebesgue probability <span class="math" data-tex="\(dy\)">\(dy\)</span> on <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, and its conditional probabilities are
+<span class="math math-display" data-tex="\[
+ \kappa_y=\sum_{n\in\mathbb Z}a_n\delta_{y+n}.
+ \tag{E7}
+\]">\[
+ \kappa_y=\sum_{n\in\mathbb Z}a_n\delta_{y+n}.
+ \tag{E7}
+\]</span>
+The equalities for all Borel sets, concentration and measurability are proved in the cited example by partitioning <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> into its half-open unit intervals and using monotone convergence.</p>
+<p>We check that <span class="math" data-tex="\(p\)">\(p\)</span> gives the whole invariant factor. Every bounded Lebesgue-measurable invariant class has a Borel representative <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(f(x+k)=f(x)\)">\(f(x+k)=f(x)\)</span> almost everywhere for each integer <span class="math" data-tex="\(k\)">\(k\)</span>. Delete the union of these countably many exceptional sets and their integer translates. The complement is invariant and conull, and there <span class="math" data-tex="\(f(y+n)=f(y)\)">\(f(y+n)=f(y)\)</span>. Its intersection with <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> is conull in that interval. Extending <span class="math" data-tex="\(f|_{[0,1)}\)">\(f|_{[0,1)}\)</span> arbitrarily on the discarded null set gives a bounded measurable <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(f=h\circ p\)">\(f=h\circ p\)</span> almost everywhere. Conversely every such pullback is fixed. Equivalent normalization by <span class="math" data-tex="\(w\)">\(w\)</span> changes none of these null classes.</p>
+<p>Translation by one has conditional density
+<span class="math math-display" data-tex="\[
+ \frac{d(T_1)_*\kappa_y}{d\kappa_y}(y+n)
+ =\frac{a_{n-1}}{a_n}
+ =\begin{cases}\frac12,&amp;n\le0,\\2,&amp;n\ge1.\end{cases}
+ \tag{E8}
+\]">\[
+ \frac{d(T_1)_*\kappa_y}{d\kappa_y}(y+n)
+ =\frac{a_{n-1}}{a_n}
+ =\begin{cases}\frac12,&amp;n\le0,\\2,&amp;n\ge1.\end{cases}
+ \tag{E8}
+\]</span>
+Every integer translation permutes the same countable support, with positive masses at every point, so it is nonsingular. Each fibre is a transitive <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>-orbit, so it is ergodic. Undoing the normalization gives
+<span class="math math-display" data-tex="\[
+ \mu_y=w^{-1}\kappa_y=\sum_{n\in\mathbb Z}\delta_{y+n},
+ \qquad dx=\int_{[0,1)}\mu_y\,dy.
+ \tag{E9}
+\]">\[
+ \mu_y=w^{-1}\kappa_y=\sum_{n\in\mathbb Z}\delta_{y+n},
+ \qquad dx=\int_{[0,1)}\mu_y\,dy.
+ \tag{E9}
+\]</span>
+These conditional measures are counting measures, sigma-finite, invariant and ergodic. The original pushforward <span class="math" data-tex="\(p_*dx\)">\(p_*dx\)</span>, however, is zero on Lebesgue-null Borel sets and infinite on every positive-Lebesgue-measure Borel set. It is not sigma-finite: a countable cover by sets of finite pushforward measure would cover <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span> by Lebesgue-null sets. This is why the finite base chosen by the normalization is retained in the sigma-finite theorem.</p>
+<p><span id="OA-FLOW.ERGDEC.EXERCISES"></span><a id="oa-flow.ergdec.exercises"></a></p>
+<h2 id="checks-on-the-theorem-s-hypotheses-and-quantifiers">Checks on the theorem's hypotheses and quantifiers</h2>
+<p><strong>Problem 1.</strong> In the finite example, a density is computed at <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span>. Should it equal <span class="math" data-tex="\(3\)">\(3\)</span> or <span class="math" data-tex="\(1/3\)">\(1/3\)</span>, and why does the answer not use the base mass <span class="math" data-tex="\(\nu(a)\)">\(\nu(a)\)</span>?</p>
+<p><strong>Solution.</strong> The pushforward puts the old mass of <span class="math" data-tex="\((a,1)\)">\((a,1)\)</span> at <span class="math" data-tex="\((a,0)\)">\((a,0)\)</span>, so the conditional ratio is <span class="math" data-tex="\((3/4)/(1/4)=3\)">\((3/4)/(1/4)=3\)</span>. The global ratio is the same: both masses carry the common factor <span class="math" data-tex="\(\nu(a)=1/3\)">\(\nu(a)=1/3\)</span>, which cancels. The number <span class="math" data-tex="\(1/3\)">\(1/3\)</span> is the density at the other point. This checks that the vector in the density formula is <span class="math" data-tex="\(V_y(s)1_y\)">\(V_y(s)1_y\)</span> with the stated pushforward convention.</p>
+<p><strong>Problem 2.</strong> Why is a fixed-<span class="math" data-tex="\(g\)">\(g\)</span> application of conditional-measure uniqueness insufficient to prove the simultaneous assertion in (T4)? What extra argument supplies it?</p>
+<p><strong>Solution.</strong> Uniqueness at a fixed <span class="math" data-tex="\(g\)">\(g\)</span> may discard a base null set depending on <span class="math" data-tex="\(g\)">\(g\)</span>. An uncountable union of such sets need not be null. Instead, localize the covariance identities for a countable dense subgroup and a countable continuous algebra on one common base. Strong continuity of the recovered fibre unitaries and norm continuity of the continuous-function orbits then extend those identities to every group element in each retained fibre. The faithful normal-state argument applies there for every <span class="math" data-tex="\(g\)">\(g\)</span> separately, with no further base deletion, and proves all the conditional measure-class equivalences on that same base.</p>
+<p><strong>Problem 3.</strong> Does ergodicity of a conditional system imply that its conditional probability is invariant? Does replacing a measure by an equivalent one change ergodicity?</p>
+<p><strong>Solution.</strong> The finite example has ergodic conditional systems but unequal masses on each swapped pair, so invariance fails. Equivalent measures have exactly the same null sets. Therefore the condition that a Borel set be invariant modulo null sets under every group element is unchanged, as is the assertion that it or its complement is null. Ergodicity and nonsingularity both depend on the measure class. A particular probability normalization can change its numerical densities without changing either property.</p>
+<p>For the operator-algebraic formulation of decomposition over the fixed centre, see M. Takesaki, <em>Theory of Operator Algebras II</em>, §X.3, Corollary X.3.14 and Definition X.3.16, pp. 288–289. The proofs above connect that formulation to actual conditional measures using the earlier programme constructions. The <a href="assets/conditional-ergodic-components/conditional-ergodic-components.svg">editable figure</a>, <a href="assets/conditional-ergodic-components/exact-data.json">exact fraction data</a> and <a href="assets/conditional-ergodic-components/render_components.py">reproduction code</a> accompany Figure ED.1.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-L42.html">Previous lesson</a><a href="OA-FLOW-L41.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-ED.md">Lesson source</a></nav></main></body></html>

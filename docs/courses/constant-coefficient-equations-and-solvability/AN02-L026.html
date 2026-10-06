@@ -1,0 +1,524 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Subspace detection and singularity carriers</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="subspace-detection-and-singularity-carriers">Subspace detection and singularity carriers</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A homogeneous equation can have solutions that are smooth away from an entire plane and singular at every point of that plane. The relevant algebra is measured in the perpendicular frequency directions. This lesson defines that measurement, proves its continuity and quantitative consequences, and constructs solutions with prescribed singular sets. The construction can retain any fixed finite number of continuous derivatives.</p>
+<p>Read <a href="AN02-L006.html">Rescaled symbols and stable strength</a>, <a href="AN02-L018.html">Symbols at infinity</a>, and <a href="AN02-L021.html">Hypoellipticity and complex zeros</a>. We use the finite-dimensional polynomial norm estimates, semialgebraic projection and one-variable asymptotics established there. The other inputs are Baire's theorem for a complete metrizable vector space and the elementary complex-analysis facts of Cauchy's estimate, the argument principle and Rouché's theorem. Grubb [Grubb] supplies the distribution background; Coste [Coste] discusses the algebraic asymptotics; Hörmander [Hormander] places the construction within the theory of singularities.</p>
+<p>Keep <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>, let <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span> be a complex polynomial on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, and write <span class="math" data-tex="\(m=\deg P\)">\(m=\deg P\)</span>. Subspaces and orthogonal projections are real Euclidean ones. Singular support is the complement of the largest open set on which a distribution is smooth.</p>
+<p><a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, Sections 6 and 14.1, proves Baire for the complete metrics used here. <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>, Sections 1–2, proves maximum modulus, weighted disk root counts and their persistence under perturbation.</p>
+<h2 id="measuring-a-frequency-subspace">Measuring a frequency subspace</h2>
+<p>For a subspace <span class="math" data-tex="\(W\)">\(W\)</span>, a real frequency <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, and <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>, set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{P,W}(\xi,t)=
+\max_{\substack{\theta\in W\\|\theta|\leq t}}|P(\xi+\theta)|,\\
+A_P(\xi,t)=A_{P,\mathbb R^n}(\xi,t),\\
+\sigma_P(W)=\inf_{t\geq1}
+\liminf_{|\xi|\to\infty}
+\frac{A_{P,W}(\xi,t)}{A_P(\xi,t)}.
+\end{gathered}
+\tag{1}
+\]">\[
+\begin{gathered}
+A_{P,W}(\xi,t)=
+\max_{\substack{\theta\in W\\|\theta|\leq t}}|P(\xi+\theta)|,\\
+A_P(\xi,t)=A_{P,\mathbb R^n}(\xi,t),\\
+\sigma_P(W)=\inf_{t\geq1}
+\liminf_{|\xi|\to\infty}
+\frac{A_{P,W}(\xi,t)}{A_P(\xi,t)}.
+\end{gathered}
+\tag{1}
+\]</span>
+The full norm <span class="math" data-tex="\(A_P\)">\(A_P\)</span> is positive: a polynomial vanishing on a real ball is zero. Thus <span class="math" data-tex="\(0\leq\sigma_P(W)\leq1\)">\(0\leq\sigma_P(W)\leq1\)</span>. A nonzero constant gives <span class="math" data-tex="\(\sigma_P(W)=1\)">\(\sigma_P(W)=1\)</span> for every <span class="math" data-tex="\(W\)">\(W\)</span>, and <span class="math" data-tex="\(\sigma_P(\mathbb R^n)=1\)">\(\sigma_P(\mathbb R^n)=1\)</span> for every nonzero <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p>The radius is held fixed while taking the lower limit. Its infimum is taken afterwards. A sequence whose radii also tend to infinity requires a separate argument; Lemma 2.1 below provides it.</p>
+<p>Choose orthonormal coordinates in <span class="math" data-tex="\(W\)">\(W\)</span>. Finite-dimensional polynomial norm comparison gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{P,W}(\xi,t)\asymp\\
+\left(\sum_{|\alpha|\leq m}
+t^{2|\alpha|}|\partial_W^\alpha P(\xi)|^2\right)^{1/2}.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+A_{P,W}(\xi,t)\asymp\\
+\left(\sum_{|\alpha|\leq m}
+t^{2|\alpha|}|\partial_W^\alpha P(\xi)|^2\right)^{1/2}.
+\end{gathered}
+\tag{2}
+\]</span>
+For <span class="math" data-tex="\(W=\{0\}\)">\(W=\{0\}\)</span> the sum is just <span class="math" data-tex="\(|P(\xi)|^2\)">\(|P(\xi)|^2\)</span>. For the full space this is the rescaled derivative norm proved in <a href="AN02-L006.html">Rescaled symbols and stable strength</a>. Apply that same result to the restriction polynomial to obtain (2). Its constants depend on degree and dimension, and not on <span class="math" data-tex="\(\xi,t\)">\(\xi,t\)</span>.</p>
+<p><strong>Proposition 1.1.</strong> Let <span class="math" data-tex="\(\pi_W,\pi_Z\)">\(\pi_W,\pi_Z\)</span> be orthogonal projections and <span class="math" data-tex="\(g(W,Z)=\|\pi_W-\pi_Z\|\)">\(g(W,Z)=\|\pi_W-\pi_Z\|\)</span>. There is <span class="math" data-tex="\(C\)">\(C\)</span>, depending only on <span class="math" data-tex="\(m,n\)">\(m,n\)</span>, such that
+<span class="math math-display" data-tex="\[
+|\sigma_P(W)-\sigma_P(Z)|\leq Cg(W,Z).
+\tag{3}
+\]">\[
+|\sigma_P(W)-\sigma_P(Z)|\leq Cg(W,Z).
+\tag{3}
+\]</span>
+In particular <span class="math" data-tex="\(\sigma_P\)">\(\sigma_P\)</span> is continuous on every Grassmannian of a fixed dimension.</p>
+<p><strong>Proof.</strong> Given <span class="math" data-tex="\(\theta\in W\)">\(\theta\in W\)</span> with <span class="math" data-tex="\(|\theta|\leq t\)">\(|\theta|\leq t\)</span>, put <span class="math" data-tex="\(\eta=\pi_Z\theta\)">\(\eta=\pi_Z\theta\)</span>. Then <span class="math" data-tex="\(|\eta|\leq t\)">\(|\eta|\leq t\)</span> and <span class="math" data-tex="\(|\theta-\eta|\leq tg(W,Z)\)">\(|\theta-\eta|\leq tg(W,Z)\)</span>. The derivative norm estimate on the ball of radius <span class="math" data-tex="\(2t\)">\(2t\)</span> yields
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|P(\xi+\theta)-P(\xi+\eta)|\\
+\leq C A_P(\xi,t)g(W,Z).
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+|P(\xi+\theta)-P(\xi+\eta)|\\
+\leq C A_P(\xi,t)g(W,Z).
+\end{gathered}
+\tag{4}
+\]</span>
+One can obtain this by integrating the gradient on the segment and using (2); the segment stays in the radius-<span class="math" data-tex="\(t\)">\(t\)</span> ball. Take the maximum in <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, divide by <span class="math" data-tex="\(A_P\)">\(A_P\)</span>, and pass to the lower limit and then the infimum. This gives <span class="math" data-tex="\(\sigma_P(W)\leq\sigma_P(Z)+Cg(W,Z)\)">\(\sigma_P(W)\leq\sigma_P(Z)+Cg(W,Z)\)</span>. Reverse the subspaces. The argument includes the zero subspace, whose unit sphere is empty. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="quantitative-tests-at-large-frequencies">Quantitative tests at large frequencies</h2>
+<p>The following estimates convert (1) into bounds usable when <span class="math" data-tex="\(t\)">\(t\)</span> grows slowly with <span class="math" data-tex="\(|\xi|\)">\(|\xi|\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> Fix <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<ol>
+<li>If <span class="math" data-tex="\(\sigma_P(W)=0\)">\(\sigma_P(W)=0\)</span>, there are <span class="math" data-tex="\(b,\beta,p,t_0&gt;0\)">\(b,\beta,p,t_0&gt;0\)</span> such that, for every <span class="math" data-tex="\(t&gt;t_0\)">\(t&gt;t_0\)</span> and every <span class="math" data-tex="\(r&gt;t^p\)">\(r&gt;t^p\)</span>, some real <span class="math" data-tex="\(\xi\)">\(\xi\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\xi|=r,\\
+A_{P,W}(\xi,t)&lt;bt^{-\beta}A_P(\xi,t).
+\end{gathered}
+\tag{5}
+\]">\[
+\begin{gathered}
+|\xi|=r,\\
+A_{P,W}(\xi,t)&lt;bt^{-\beta}A_P(\xi,t).
+\end{gathered}
+\tag{5}
+\]</span></li>
+<li>If <span class="math" data-tex="\(\sigma_P(W)&gt;0\)">\(\sigma_P(W)&gt;0\)</span>, there are <span class="math" data-tex="\(b,p,t_0&gt;0\)">\(b,p,t_0&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{P,W}(\xi,t)\geq b A_P(\xi,t),\\
+t&gt;t_0,\qquad |\xi|&gt;t^p.
+\end{gathered}
+\tag{6}
+\]">\[
+\begin{gathered}
+A_{P,W}(\xi,t)\geq b A_P(\xi,t),\\
+t&gt;t_0,\qquad |\xi|&gt;t^p.
+\end{gathered}
+\tag{6}
+\]</span></li>
+</ol>
+<p><strong>Proof.</strong> Write
+<span class="math math-display" data-tex="\[
+a(t)=\liminf_{|\xi|\to\infty}
+\frac{A_{P,W}(\xi,t)}{A_P(\xi,t)}.
+\]">\[
+a(t)=\liminf_{|\xi|\to\infty}
+\frac{A_{P,W}(\xi,t)}{A_P(\xi,t)}.
+\]</span>
+This function is semialgebraic. Indeed the graph of each maximum in (1) is specified by polynomial inequalities with quantified real variables. A lower limit is specified by eventual lower bounds and arbitrarily distant points below any larger proposed bound. Quantifier elimination therefore applies. Complex coefficients cause no difficulty: squared absolute values are real polynomials.</p>
+<p>Polynomial dilation estimates show that on each bounded interval <span class="math" data-tex="\(1\leq t\leq T\)">\(1\leq t\leq T\)</span>,
+<span class="math math-display" data-tex="\[
+a(t)\geq c_Ta(1).
+\]">\[
+a(t)\geq c_Ta(1).
+\]</span>
+They also give <span class="math" data-tex="\(a(t)\leq Ct^ma(1)\)">\(a(t)\leq Ct^ma(1)\)</span>. If <span class="math" data-tex="\(a(1)=0\)">\(a(1)=0\)</span>, then <span class="math" data-tex="\(a(t)=0\)">\(a(t)=0\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. Otherwise a vanishing infimum must occur along <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>. The one-variable semialgebraic asymptotics proved in <a href="AN02-L018.html">Symbols at infinity</a> imply that <span class="math" data-tex="\(a(t)\to0\)">\(a(t)\to0\)</span> and, after increasing <span class="math" data-tex="\(t_0\)">\(t_0\)</span>,
+<span class="math math-display" data-tex="\[
+a(t)&lt;\tfrac b2t^{-\beta}
+\]">\[
+a(t)&lt;\tfrac b2t^{-\beta}
+\]</span>
+for some <span class="math" data-tex="\(\beta&gt;0\)">\(\beta&gt;0\)</span>; a rational <span class="math" data-tex="\(\beta\)">\(\beta\)</span> may be used. This also holds when <span class="math" data-tex="\(a\)">\(a\)</span> is identically zero.</p>
+<p>For each such <span class="math" data-tex="\(t\)">\(t\)</span>, consider the set of radii <span class="math" data-tex="\(r\)">\(r\)</span> for which a point on the sphere <span class="math" data-tex="\(|\xi|=r\)">\(|\xi|=r\)</span> satisfies (5). This is a semialgebraic subset of the line, and it is unbounded by the strict lower-limit inequality. It consequently contains a terminal interval. The infimum of the beginnings of its terminal intervals is a finite semialgebraic function <span class="math" data-tex="\(h(t)\)">\(h(t)\)</span>: its graph is again expressed by quantified inequalities. Polynomial growth gives <span class="math" data-tex="\(h(t)&lt;t^p\)">\(h(t)&lt;t^p\)</span> for all sufficiently large <span class="math" data-tex="\(t\)">\(t\)</span>, after enlarging <span class="math" data-tex="\(p\)">\(p\)</span>. This proves (5) for every large radius.</p>
+<p>For the second assertion choose <span class="math" data-tex="\(0&lt;b&lt;\sigma_P(W)\)">\(0&lt;b&lt;\sigma_P(W)\)</span>. At each fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the set where the ratio is less than <span class="math" data-tex="\(b\)">\(b\)</span> is bounded. Its supremum radius, set to zero when the set is empty, is a finite semialgebraic function. Polynomial growth bounds that radius by <span class="math" data-tex="\(t^p\)">\(t^p\)</span> for large <span class="math" data-tex="\(t\)">\(t\)</span>, proving (6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In (5), any radius <span class="math" data-tex="\(r=e^{dt}\)">\(r=e^{dt}\)</span> with fixed <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> is eventually eligible. In (6), a radius proportional to <span class="math" data-tex="\(\log|\xi|\)">\(\log|\xi|\)</span> is eventually eligible. These two uses will produce singular solutions and smoothing inverses respectively.</p>
+<h2 id="an-analytic-family-of-solutions">An analytic family of solutions</h2>
+<p>We first record an elementary fact about a polynomial in one complex variable.</p>
+<p><strong>Lemma 3.1.</strong> If <span class="math" data-tex="\(g\ne0\)">\(g\ne0\)</span> has degree at most <span class="math" data-tex="\(m\)">\(m\)</span>, some <span class="math" data-tex="\(R\in[1/2,1]\)">\(R\in[1/2,1]\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\min_{|z|=R}|g(z)|
+\geq c_m\max_{|z|\leq1}|g(z)|,
+\tag{7}
+\]">\[
+\min_{|z|=R}|g(z)|
+\geq c_m\max_{|z|\leq1}|g(z)|,
+\tag{7}
+\]</span>
+where <span class="math" data-tex="\(c_m&gt;0\)">\(c_m&gt;0\)</span> depends only on <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>, factor <span class="math" data-tex="\(g\)">\(g\)</span> into at most <span class="math" data-tex="\(m\)">\(m\)</span> linear factors. Set <span class="math" data-tex="\(h=1/(8(m+1))\)">\(h=1/(8(m+1))\)</span>. Avoid intervals of radius <span class="math" data-tex="\(h\)">\(h\)</span> around the moduli of roots with modulus at most two. Their total length is less than <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, so a radius remains in <span class="math" data-tex="\([1/2,1]\)">\([1/2,1]\)</span>. On its circle, a factor belonging to one of these roots has absolute value at least <span class="math" data-tex="\(h\)">\(h\)</span>; on the unit disk it has absolute value at most three. For a root with modulus greater than two, the ratio of the circle minimum to the disk maximum is at least <span class="math" data-tex="\(1/3\)">\(1/3\)</span>. Multiply the factor bounds to get (7), for example with <span class="math" data-tex="\(c_m=(h/3)^m\)">\(c_m=(h/3)^m\)</span>. A constant polynomial satisfies the assertion directly. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Split <span class="math" data-tex="\(x=(x&#x27;,x&#x27;&#x27;)\)">\(x=(x&#x27;,x&#x27;&#x27;)\)</span>, where <span class="math" data-tex="\(x&#x27;\in\mathbb R^k\)">\(x&#x27;\in\mathbb R^k\)</span>, and let
+<span class="math math-display" data-tex="\[
+V=\{x&#x27;=0\},\qquad W=V^\perp.
+\]">\[
+V=\{x&#x27;=0\},\qquad W=V^\perp.
+\]</span>
+The same split is used in frequency space. The prime block may have dimension zero.</p>
+<p><strong>Lemma 3.2.</strong> Suppose <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>, <span class="math" data-tex="\(t\geq1\)">\(t\geq1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{P,W}(\xi,t)\leq\varepsilon A_P(\xi,t),\\
+0&lt;\varepsilon&lt;\varepsilon_0.
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+A_{P,W}(\xi,t)\leq\varepsilon A_P(\xi,t),\\
+0&lt;\varepsilon&lt;\varepsilon_0.
+\end{gathered}
+\tag{8}
+\]</span>
+There are a real <span class="math" data-tex="\(\eta\)">\(\eta\)</span> with <span class="math" data-tex="\(\eta-\xi\in W\)">\(\eta-\xi\in W\)</span>, <span class="math" data-tex="\(|\eta-\xi|\leq t\)">\(|\eta-\xi|\leq t\)</span>, and a function <span class="math" data-tex="\(U(\theta,x&#x27;&#x27;)\)">\(U(\theta,x&#x27;&#x27;)\)</span>, holomorphic for complex <span class="math" data-tex="\(|\theta|&lt;\gamma t\)">\(|\theta|&lt;\gamma t\)</span> and entire in <span class="math" data-tex="\(x&#x27;&#x27;\)">\(x&#x27;&#x27;\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U(\theta,0)=1,\\
+P\bigl(\eta+(\theta,D&#x27;&#x27;)\bigr)U(\theta,x&#x27;&#x27;)=0,\\
+|U(\theta,x&#x27;&#x27;)|
+\leq C\exp(Ct\varepsilon^{1/m}|x&#x27;&#x27;|).
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+U(\theta,0)=1,\\
+P\bigl(\eta+(\theta,D&#x27;&#x27;)\bigr)U(\theta,x&#x27;&#x27;)=0,\\
+|U(\theta,x&#x27;&#x27;)|
+\leq C\exp(Ct\varepsilon^{1/m}|x&#x27;&#x27;|).
+\end{gathered}
+\tag{9}
+\]</span>
+The constants depend only on degree and dimension.</p>
+<p><strong>Proof.</strong> Normalize
+<span class="math math-display" data-tex="\[
+p(z)=\frac{P(\xi+tz)}{A_P(\xi,t)}.
+\]">\[
+p(z)=\frac{P(\xi+tz)}{A_P(\xi,t)}.
+\]</span>
+Its real unit-ball norm is one; its restriction to the prime unit ball has norm at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. With a fixed large <span class="math" data-tex="\(K\)">\(K\)</span>, put <span class="math" data-tex="\(\rho=(K\varepsilon)^{1/m}&lt;1\)">\(\rho=(K\varepsilon)^{1/m}&lt;1\)</span>, and set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B=\max_{|z|\leq1,\ z\text{ real}}
+|p(z&#x27;,\rho z&#x27;&#x27;)|,\\
+q(z&#x27;,z&#x27;&#x27;)=B^{-1}p(z&#x27;,\rho z&#x27;&#x27;).
+\end{gathered}
+\tag{10}
+\]">\[
+\begin{gathered}
+B=\max_{|z|\leq1,\ z\text{ real}}
+|p(z&#x27;,\rho z&#x27;&#x27;)|,\\
+q(z&#x27;,z&#x27;&#x27;)=B^{-1}p(z&#x27;,\rho z&#x27;&#x27;).
+\end{gathered}
+\tag{10}
+\]</span>
+Coefficient norm comparison gives <span class="math" data-tex="\(B\geq c\rho^m\)">\(B\geq c\rho^m\)</span>: shrinking the double-prime variables multiplies every coefficient by a power of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> at most <span class="math" data-tex="\(m\)">\(m\)</span>. Hence <span class="math" data-tex="\(q\)">\(q\)</span> has full unit-ball norm one and prime restriction norm at most <span class="math" data-tex="\(C/K\)">\(C/K\)</span>.</p>
+<p>Take a real <span class="math" data-tex="\((v&#x27;,v&#x27;&#x27;)\)">\((v&#x27;,v&#x27;&#x27;)\)</span> in that ball with <span class="math" data-tex="\(|q(v&#x27;,v&#x27;&#x27;)|=1\)">\(|q(v&#x27;,v&#x27;&#x27;)|=1\)</span>, and apply Lemma 3.1 to <span class="math" data-tex="\(g(z)=q(v&#x27;,zv&#x27;&#x27;)\)">\(g(z)=q(v&#x27;,zv&#x27;&#x27;)\)</span>. On some circle <span class="math" data-tex="\(|z|=R\)">\(|z|=R\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span> has absolute value at least <span class="math" data-tex="\(c_m\)">\(c_m\)</span>. Choose <span class="math" data-tex="\(K\)">\(K\)</span> so large that <span class="math" data-tex="\(|g(0)|&lt;c_m\)">\(|g(0)|&lt;c_m\)</span>. Then <span class="math" data-tex="\(g\)">\(g\)</span> has at least one zero in the circle: otherwise the maximum-modulus principle for <span class="math" data-tex="\(1/g\)">\(1/g\)</span> would contradict this inequality.</p>
+<p>The coefficient norms of <span class="math" data-tex="\(q\)">\(q\)</span> are bounded. Thus for a fixed small <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|q(v&#x27;+\vartheta,zv&#x27;&#x27;)|\geq c_m/2,\\
+|\vartheta|&lt;\gamma,\qquad |z|=R.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+|q(v&#x27;+\vartheta,zv&#x27;&#x27;)|\geq c_m/2,\\
+|\vartheta|&lt;\gamma,\qquad |z|=R.
+\end{gathered}
+\tag{11}
+\]</span>
+Rouché's theorem keeps the positive number <span class="math" data-tex="\(L\)">\(L\)</span> of enclosed zeros, counted with multiplicity, constant as <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> varies. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_\vartheta(z)=q(v&#x27;+\vartheta,zv&#x27;&#x27;),\\
+H(\vartheta,y&#x27;&#x27;)=\\
+\frac1{2\pi iL}\int_{|z|=R}
+e^{izv&#x27;&#x27;\cdot y&#x27;&#x27;}\frac{g_\vartheta&#x27;(z)}{g_\vartheta(z)}\,dz.
+\end{gathered}
+\tag{12}
+\]">\[
+\begin{gathered}
+g_\vartheta(z)=q(v&#x27;+\vartheta,zv&#x27;&#x27;),\\
+H(\vartheta,y&#x27;&#x27;)=\\
+\frac1{2\pi iL}\int_{|z|=R}
+e^{izv&#x27;&#x27;\cdot y&#x27;&#x27;}\frac{g_\vartheta&#x27;(z)}{g_\vartheta(z)}\,dz.
+\end{gathered}
+\tag{12}
+\]</span>
+The argument principle gives <span class="math" data-tex="\(H(\vartheta,0)=1\)">\(H(\vartheta,0)=1\)</span>. Applying <span class="math" data-tex="\(q(v&#x27;+\vartheta,D_{y&#x27;&#x27;})\)">\(q(v&#x27;+\vartheta,D_{y&#x27;&#x27;})\)</span> cancels the denominator; the remaining integrand is entire in <span class="math" data-tex="\(z\)">\(z\)</span>, so its contour integral is zero. The bounded numerator and (11) give <span class="math" data-tex="\(|H|\leq C e^{C|y&#x27;&#x27;|}\)">\(|H|\leq C e^{C|y&#x27;&#x27;|}\)</span>. Differentiation under the contour establishes the asserted holomorphy.</p>
+<p>Finally take
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta=\xi+t(v&#x27;,0),\\
+U(\theta,x&#x27;&#x27;)=H(\theta/t,t\rho x&#x27;&#x27;).
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+\eta=\xi+t(v&#x27;,0),\\
+U(\theta,x&#x27;&#x27;)=H(\theta/t,t\rho x&#x27;&#x27;).
+\end{gathered}
+\tag{13}
+\]</span>
+Equation (10) converts the equation for <span class="math" data-tex="\(H\)">\(H\)</span> into the equation in (9). The normalization and exponential bound follow at once. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The contour counts all enclosed roots together. No continuous choice of individual roots is needed, even at multiple roots.</p>
+<h2 id="concentrating-homogeneous-solutions-near-a-plane">Concentrating homogeneous solutions near a plane</h2>
+<p>We will need cutoffs whose first <span class="math" data-tex="\(N\)">\(N\)</span> derivatives obey a uniform rule. For each <span class="math" data-tex="\(N\geq1\)">\(N\geq1\)</span>, there is a nonnegative <span class="math" data-tex="\(\chi_N\in C_c^\infty(\mathbb R^k)\)">\(\chi_N\in C_c^\infty(\mathbb R^k)\)</span>, with integral one and support in the fixed ball <span class="math" data-tex="\(|\theta|&lt;\gamma/2\)">\(|\theta|&lt;\gamma/2\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\partial^\alpha\chi_N\|_\infty\leq C(CN)^{|\alpha|},\\
+|\alpha|\leq N.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+\|\partial^\alpha\chi_N\|_\infty\leq C(CN)^{|\alpha|},\\
+|\alpha|\leq N.
+\end{gathered}
+\tag{14}
+\]</span>
+To construct it, convolve a fixed smooth probability function supported in <span class="math" data-tex="\(|\theta|&lt;\gamma/4\)">\(|\theta|&lt;\gamma/4\)</span> with <span class="math" data-tex="\(N\)">\(N\)</span> smooth probability kernels of radius <span class="math" data-tex="\(\gamma/(4N)\)">\(\gamma/(4N)\)</span>. Assign each of at most <span class="math" data-tex="\(N\)">\(N\)</span> derivatives to a different small kernel. Each differentiated kernel has <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm at most <span class="math" data-tex="\(CN\)">\(CN\)</span>, and Young's inequality proves (14). Support and integral are preserved. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span> the integral is scalar and no cutoff derivatives are needed.</p>
+<p>Using Lemma 3.2, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v_t(x)=e^{ix\cdot\eta}B_t(x),\\
+B_t(x)=\\
+\int_{\mathbb R^k}
+e^{itx&#x27;\cdot\theta}U(t\theta,x&#x27;&#x27;)\chi_N(\theta)\,d\theta.
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+v_t(x)=e^{ix\cdot\eta}B_t(x),\\
+B_t(x)=\\
+\int_{\mathbb R^k}
+e^{itx&#x27;\cdot\theta}U(t\theta,x&#x27;&#x27;)\chi_N(\theta)\,d\theta.
+\end{gathered}
+\tag{15}
+\]</span>
+It is globally smooth, <span class="math" data-tex="\(P(D)v_t=0\)">\(P(D)v_t=0\)</span>, and <span class="math" data-tex="\(v_t(0)=1\)">\(v_t(0)=1\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(|\xi|=e^{dt}\)">\(|\xi|=e^{dt}\)</span>, with fixed <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>. Then <span class="math" data-tex="\(|\eta|\asymp e^{dt}\)">\(|\eta|\asymp e^{dt}\)</span>. For each fixed compact <span class="math" data-tex="\(K\)">\(K\)</span> and derivative order <span class="math" data-tex="\(r\)">\(r\)</span>, Cauchy's estimate in <span class="math" data-tex="\(x&#x27;&#x27;\)">\(x&#x27;&#x27;\)</span>, (9), and positivity with <span class="math" data-tex="\(\int\chi_N=1\)">\(\int\chi_N=1\)</span> give
+<span class="math math-display" data-tex="\[
+\|v_t\|_{C^r(K)}
+\leq C_{K,r}|\eta|^r
+e^{C_Kt\varepsilon^{1/m}}.
+\tag{16}
+\]">\[
+\|v_t\|_{C^r(K)}
+\leq C_{K,r}|\eta|^r
+e^{C_Kt\varepsilon^{1/m}}.
+\tag{16}
+\]</span>
+These constants are independent of <span class="math" data-tex="\(N\)">\(N\)</span>. Derivatives of the envelope at zero are at most <span class="math" data-tex="\(C_rt^r\)">\(C_rt^r\)</span>. The product rule consequently gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D^\alpha v_t(0)=\eta^\alpha+O_r\bigl(t|\eta|^{r-1}\bigr),\\
+|\alpha|=r.
+\end{gathered}
+\tag{17}
+\]">\[
+\begin{gathered}
+D^\alpha v_t(0)=\eta^\alpha+O_r\bigl(t|\eta|^{r-1}\bigr),\\
+|\alpha|=r.
+\end{gathered}
+\tag{17}
+\]</span>
+Indeed the terms with <span class="math" data-tex="\(j\geq1\)">\(j\geq1\)</span> envelope derivatives are bounded by <span class="math" data-tex="\(C_r t^j|\eta|^{r-j}\)">\(C_r t^j|\eta|^{r-j}\)</span>, and <span class="math" data-tex="\(t/|\eta|\to0\)">\(t/|\eta|\to0\)</span>. A coordinate with <span class="math" data-tex="\(|\eta_\ell|\geq|\eta|/\sqrt n\)">\(|\eta_\ell|\geq|\eta|/\sqrt n\)</span> therefore supplies an order-<span class="math" data-tex="\(r\)">\(r\)</span> derivative of size at least <span class="math" data-tex="\(c_r|\eta|^r\)">\(c_r|\eta|^r\)</span> for large <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>If <span class="math" data-tex="\(K_2\)">\(K_2\)</span> is compact outside <span class="math" data-tex="\(V\)">\(V\)</span>, then <span class="math" data-tex="\(|x&#x27;|\geq c_0&gt;0\)">\(|x&#x27;|\geq c_0&gt;0\)</span> there. Integrate (15) <span class="math" data-tex="\(N\)">\(N\)</span> times in the <span class="math" data-tex="\(\theta\)">\(\theta\)</span> direction <span class="math" data-tex="\(x&#x27;/|x&#x27;|\)">\(x&#x27;/|x&#x27;|\)</span>. Holomorphy in <span class="math" data-tex="\(\theta\)">\(\theta\)</span> gives a bound <span class="math" data-tex="\(l!C^l\)">\(l!C^l\)</span> for <span class="math" data-tex="\(l\)">\(l\)</span> derivatives of <span class="math" data-tex="\(U(t\theta,x&#x27;&#x27;)\)">\(U(t\theta,x&#x27;&#x27;)\)</span>, apart from the exponential in (9). Combining this with (14), the product rule and <span class="math" data-tex="\(l!\leq N^l\)">\(l!\leq N^l\)</span> yields
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|v_t\|_{C^r(K_2)}\\
+\leq C_{K_2,r}|\eta|^r
+\left(\frac{CN}{c_0t}\right)^N
+e^{C_{K_2}t\varepsilon^{1/m}}.
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+\|v_t\|_{C^r(K_2)}\\
+\leq C_{K_2,r}|\eta|^r
+\left(\frac{CN}{c_0t}\right)^N
+e^{C_{K_2}t\varepsilon^{1/m}}.
+\end{gathered}
+\tag{18}
+\]</span>
+Fixed extra polynomial factors introduced by the <span class="math" data-tex="\(x\)">\(x\)</span> derivatives are absorbed into <span class="math" data-tex="\(|\eta|^r\)">\(|\eta|^r\)</span>. Choose <span class="math" data-tex="\(N=\lfloor qt\rfloor\)">\(N=\lfloor qt\rfloor\)</span>, with <span class="math" data-tex="\(q&gt;0\)">\(q&gt;0\)</span> so small that <span class="math" data-tex="\(Cq/c_0&lt;e^{-2}\)">\(Cq/c_0&lt;e^{-2}\)</span>. The middle factor is then at most a fixed constant times <span class="math" data-tex="\(e^{-2qt}\)">\(e^{-2qt}\)</span>.</p>
+<p>Thus a derivative at zero can grow like <span class="math" data-tex="\(e^{rdt}\)">\(e^{rdt}\)</span>, while arbitrarily many prescribed derivatives on a compact set off the plane decay exponentially. This separation of estimates is the mechanism behind the carrier theorem.</p>
+<h2 id="prescribing-the-singular-set">Prescribing the singular set</h2>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(V\)">\(V\)</span> be a real linear subspace with <span class="math" data-tex="\(\sigma_P(V^\perp)=0\)">\(\sigma_P(V^\perp)=0\)</span>. Let <span class="math" data-tex="\(F\)">\(F\)</span> be a closed set satisfying <span class="math" data-tex="\(F+V=F\)">\(F+V=F\)</span>, and let <span class="math" data-tex="\(\mu\geq0\)">\(\mu\geq0\)</span> be an integer. There is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u\in C^\mu(\mathbb R^n),\qquad P(D)u=0,\\
+\operatorname{sing\,supp}u=F,
+\end{gathered}
+\tag{19}
+\]">\[
+\begin{gathered}
+u\in C^\mu(\mathbb R^n),\qquad P(D)u=0,\\
+\operatorname{sing\,supp}u=F,
+\end{gathered}
+\tag{19}
+\]</span>
+such that <span class="math" data-tex="\(u\)">\(u\)</span> is not <span class="math" data-tex="\(C^{\mu+1}\)">\(C^{\mu+1}\)</span> on any open set meeting <span class="math" data-tex="\(F\)">\(F\)</span>. For <span class="math" data-tex="\(F=\varnothing\)">\(F=\varnothing\)</span>, use <span class="math" data-tex="\(u=0\)">\(u=0\)</span>; the last assertion is vacuous.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(F\ne\varnothing\)">\(F\ne\varnothing\)</span>. Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal H_\mu(F)=\{u\in C^\mu(\mathbb R^n)\colon\\
+P(D)u=0,\quad u\in C^\infty(\mathbb R^n\setminus F)\}.
+\end{gathered}
+\tag{20}
+\]">\[
+\begin{gathered}
+\mathcal H_\mu(F)=\{u\in C^\mu(\mathbb R^n)\colon\\
+P(D)u=0,\quad u\in C^\infty(\mathbb R^n\setminus F)\}.
+\end{gathered}
+\tag{20}
+\]</span>
+Give it the compact <span class="math" data-tex="\(C^\mu\)">\(C^\mu\)</span> seminorms on all space and all compact smooth seminorms off <span class="math" data-tex="\(F\)">\(F\)</span>. Countable compact exhaustions give a metrizable topology. It is complete: a Cauchy sequence has compatible limits of every required derivative on every compact set, and its homogeneous equation passes to the distributional limit.</p>
+<p>For each rational ball <span class="math" data-tex="\(B\)">\(B\)</span> meeting <span class="math" data-tex="\(F\)">\(F\)</span> and integer <span class="math" data-tex="\(M\geq1\)">\(M\geq1\)</span>, let <span class="math" data-tex="\(E_{B,M}\)">\(E_{B,M}\)</span> consist of the elements for which every <span class="math" data-tex="\(|\alpha|=\mu+1\)">\(|\alpha|=\mu+1\)</span> obeys
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\langle D^\alpha u,\phi\rangle|\leq M\|\phi\|_{L^1},\\
+\phi\in C_c^\infty(B).
+\end{gathered}
+\tag{21}
+\]">\[
+\begin{gathered}
+|\langle D^\alpha u,\phi\rangle|\leq M\|\phi\|_{L^1},\\
+\phi\in C_c^\infty(B).
+\end{gathered}
+\tag{21}
+\]</span>
+This set is closed, since each test pairing is continuous. We prove it has empty interior.</p>
+<p>If it had interior, subtracting two elements in a basic translated neighborhood and then scaling would give an estimate on all globally smooth homogeneous solutions <span class="math" data-tex="\(v\)">\(v\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{|\alpha|=\mu+1}|D^\alpha v(y)|\\
+\leq C\bigl(\|v\|_{C^\mu(K_1)}+\|v\|_{C^\nu(K_2)}\bigr).
+\end{gathered}
+\tag{22}
+\]">\[
+\begin{gathered}
+\sum_{|\alpha|=\mu+1}|D^\alpha v(y)|\\
+\leq C\bigl(\|v\|_{C^\mu(K_1)}+\|v\|_{C^\nu(K_2)}\bigr).
+\end{gathered}
+\tag{22}
+\]</span>
+Here <span class="math" data-tex="\(y\in B\cap F\)">\(y\in B\cap F\)</span>, <span class="math" data-tex="\(K_1\)">\(K_1\)</span> is compact in all space, <span class="math" data-tex="\(K_2\)">\(K_2\)</span> is compact off <span class="math" data-tex="\(F\)">\(F\)</span>, and <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is finite. Finitely many seminorms combine into these two norms. Inequality (21) for a smooth function bounds its derivative pointwise by testing with smooth approximate point masses. If the combined seminorm of <span class="math" data-tex="\(v\)">\(v\)</span> is zero, scaling by arbitrary constants forces the left side to be zero; otherwise divide by that seminorm to obtain (22).</p>
+<p>Translate the packets (15) to <span class="math" data-tex="\(y\)">\(y\)</span>. Because <span class="math" data-tex="\(y+V\subset F\)">\(y+V\subset F\)</span>, <span class="math" data-tex="\(K_2\)">\(K_2\)</span> is a positive distance from that translated plane. Choose <span class="math" data-tex="\(q\)">\(q\)</span> as in (18). Next choose <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span> small enough that <span class="math" data-tex="\(d\nu&lt;q/2\)">\(d\nu&lt;q/2\)</span>. Finally choose a fixed <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> so small that all compact exponential constants needed in (16) and (18) satisfy
+<span class="math math-display" data-tex="\[
+C_K\varepsilon^{1/m}
+&lt;\min(d/2,q/2).
+\tag{23}
+\]">\[
+C_K\varepsilon^{1/m}
+&lt;\min(d/2,q/2).
+\tag{23}
+\]</span>
+Lemma 2.1 supplies a suitable <span class="math" data-tex="\(\xi\)">\(\xi\)</span> on the sphere <span class="math" data-tex="\(|\xi|=e^{dt}\)">\(|\xi|=e^{dt}\)</span> for every large <span class="math" data-tex="\(t\)">\(t\)</span>, since the ratio in (5) eventually falls below this fixed <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>By (17), the left side of (22) is at least <span class="math" data-tex="\(c e^{(\mu+1)dt}\)">\(c e^{(\mu+1)dt}\)</span>. Its first right-hand term is at most <span class="math" data-tex="\(C e^{(\mu d+d/2)t}\)">\(C e^{(\mu d+d/2)t}\)</span>, by (16). Its second tends to zero, by (18), (23), and <span class="math" data-tex="\(d\nu&lt;q/2\)">\(d\nu&lt;q/2\)</span>. This contradicts (22).</p>
+<p>Baire's theorem now gives <span class="math" data-tex="\(u\)">\(u\)</span> outside the countable union of the <span class="math" data-tex="\(E_{B,M}\)">\(E_{B,M}\)</span>. It is smooth off <span class="math" data-tex="\(F\)">\(F\)</span> by definition. If it were <span class="math" data-tex="\(C^{\mu+1}\)">\(C^{\mu+1}\)</span> on an open set meeting <span class="math" data-tex="\(F\)">\(F\)</span>, that set would contain the closure of a rational ball meeting <span class="math" data-tex="\(F\)">\(F\)</span>. The relevant continuous derivatives would be bounded there, placing <span class="math" data-tex="\(u\)">\(u\)</span> in some <span class="math" data-tex="\(E_{B,M}\)">\(E_{B,M}\)</span>. This contradiction proves the full conclusion.</p>
+<p>When <span class="math" data-tex="\(V=\mathbb R^n\)">\(V=\mathbb R^n\)</span>, the only nonempty invariant closed set is all space; the off-<span class="math" data-tex="\(F\)">\(F\)</span> seminorms disappear and the same argument uses (16). When <span class="math" data-tex="\(V=\{0\}\)">\(V=\{0\}\)</span>, the hypothesis cannot hold because <span class="math" data-tex="\(\sigma_P(\mathbb R^n)=1\)">\(\sigma_P(\mathbb R^n)=1\)</span>. A constant polynomial also cannot satisfy the hypothesis. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, take <span class="math" data-tex="\(F=a+V\)">\(F=a+V\)</span> to prescribe one affine plane. The perpendicular in the hypothesis matters: <span class="math" data-tex="\(V\)">\(V\)</span> is a set of physical points, while <span class="math" data-tex="\(V^\perp\)">\(V^\perp\)</span> is where the frequency norm is being tested.</p>
+<h2 id="stability-under-equal-strength">Stability under equal strength</h2>
+<p>Two polynomials have equal strength when their full derivative norms dominate each other uniformly at every real frequency. The rescaled comparison in <a href="AN02-L006.html">Rescaled symbols and stable strength</a> gives constants <span class="math" data-tex="\(c,C&gt;0\)">\(c,C&gt;0\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+cA_P(\xi,t)\leq A_Q(\xi,t)\leq CA_P(\xi,t),\\
+\xi\in\mathbb R^n,\qquad t\geq1.
+\end{gathered}
+\tag{24}
+\]">\[
+\begin{gathered}
+cA_P(\xi,t)\leq A_Q(\xi,t)\leq CA_P(\xi,t),\\
+\xi\in\mathbb R^n,\qquad t\geq1.
+\end{gathered}
+\tag{24}
+\]</span></p>
+<p><strong>Theorem 6.1.</strong> If <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span> have equal strength, then for every subspace <span class="math" data-tex="\(W\)">\(W\)</span>,
+<span class="math math-display" data-tex="\[
+\sigma_P(W)=0\quad\Longleftrightarrow\quad\sigma_Q(W)=0.
+\tag{25}
+\]">\[
+\sigma_P(W)=0\quad\Longleftrightarrow\quad\sigma_Q(W)=0.
+\tag{25}
+\]</span></p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(\sigma_P(W)=0\)">\(\sigma_P(W)=0\)</span>. Lemma 2.1 gives <span class="math" data-tex="\(t_j\to\infty\)">\(t_j\to\infty\)</span> and <span class="math" data-tex="\(|\xi_j|=e^{t_j}\)">\(|\xi_j|=e^{t_j}\)</span> with restricted ratio tending to zero. Normalize
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_j(z)=\frac{P(\xi_j+t_jz)}{A_P(\xi_j,t_j)},\\
+q_j(z)=\frac{Q(\xi_j+t_jz)}{A_P(\xi_j,t_j)}.
+\end{gathered}
+\tag{26}
+\]">\[
+\begin{gathered}
+p_j(z)=\frac{P(\xi_j+t_jz)}{A_P(\xi_j,t_j)},\\
+q_j(z)=\frac{Q(\xi_j+t_jz)}{A_P(\xi_j,t_j)}.
+\end{gathered}
+\tag{26}
+\]</span>
+Their coefficients are bounded by polynomial norm comparison. Pass to coefficientwise limits <span class="math" data-tex="\(p,q\)">\(p,q\)</span>. The unit-ball norm of <span class="math" data-tex="\(p\)">\(p\)</span> is one; that of <span class="math" data-tex="\(q\)">\(q\)</span> lies between <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span>. Both are nonzero, and <span class="math" data-tex="\(p|_W=0\)">\(p|_W=0\)</span>.</p>
+<p>For any fixed real <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, apply (24) at <span class="math" data-tex="\(\xi_j+t_jz\)">\(\xi_j+t_jz\)</span> with radius <span class="math" data-tex="\(t_js\)">\(t_js\)</span>, which is eventually at least one. The coefficient limits give
+<span class="math math-display" data-tex="\[
+cA_p(z,s)\leq A_q(z,s)\leq CA_p(z,s).
+\]">\[
+cA_p(z,s)\leq A_q(z,s)\leq CA_p(z,s).
+\]</span>
+Let <span class="math" data-tex="\(s\downarrow0\)">\(s\downarrow0\)</span>. It follows that <span class="math" data-tex="\(c|p(z)|\leq|q(z)|\leq C|p(z)|\)">\(c|p(z)|\leq|q(z)|\leq C|p(z)|\)</span> at every real <span class="math" data-tex="\(z\)">\(z\)</span>. Hence <span class="math" data-tex="\(q|_W=0\)">\(q|_W=0\)</span>, and
+<span class="math math-display" data-tex="\[
+\frac{A_{Q,W}(\xi_j,t_j)}{A_Q(\xi_j,t_j)}\longrightarrow0.
+\tag{27}
+\]">\[
+\frac{A_{Q,W}(\xi_j,t_j)}{A_Q(\xi_j,t_j)}\longrightarrow0.
+\tag{27}
+\]</span>
+If <span class="math" data-tex="\(\sigma_Q(W)&gt;0\)">\(\sigma_Q(W)&gt;0\)</span>, (6) would bound these ratios below for large <span class="math" data-tex="\(j\)">\(j\)</span>, since <span class="math" data-tex="\(e^{t_j}\)">\(e^{t_j}\)</span> exceeds every fixed power of <span class="math" data-tex="\(t_j\)">\(t_j\)</span>. Thus <span class="math" data-tex="\(\sigma_Q(W)=0\)">\(\sigma_Q(W)=0\)</span>. Reverse <span class="math" data-tex="\(P,Q\)">\(P,Q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem preserves the zero set of the invariant. It does not assert equality of its positive numerical values.</p>
+<h2 id="transport-as-an-exact-model">Transport as an exact model</h2>
+<p>Let <span class="math" data-tex="\(P(\xi)=\xi_1\)">\(P(\xi)=\xi_1\)</span> on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, and <span class="math" data-tex="\(a=|\pi_We_1|\)">\(a=|\pi_We_1|\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{P,W}(\xi,t)=|\xi_1|+ta,\\
+A_P(\xi,t)=|\xi_1|+t.
+\end{gathered}
+\tag{28}
+\]">\[
+\begin{gathered}
+A_{P,W}(\xi,t)=|\xi_1|+ta,\\
+A_P(\xi,t)=|\xi_1|+t.
+\end{gathered}
+\tag{28}
+\]</span>
+Their ratio is at least <span class="math" data-tex="\(a\)">\(a\)</span>. Unbounded frequencies with <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span> realize <span class="math" data-tex="\(a\)">\(a\)</span> at every fixed <span class="math" data-tex="\(t\)">\(t\)</span>, so <span class="math" data-tex="\(\sigma_P(W)=a\)">\(\sigma_P(W)=a\)</span>.</p>
+<p>For a physical plane <span class="math" data-tex="\(V\)">\(V\)</span>, its perpendicular has zero invariant precisely when <span class="math" data-tex="\(e_1\in V\)">\(e_1\in V\)</span>. The carrier theorem therefore permits exactly these planes for solutions of <span class="math" data-tex="\(D_1u=0\)">\(D_1u=0\)</span>. The elementary distributional identity <span class="math" data-tex="\(D_1u=0\Rightarrow u=1\otimes w\)">\(D_1u=0\Rightarrow u=1\otimes w\)</span>, proved in the AN-01 lesson <em>Weak equations and classical functions</em>, explains the same geometry: the solution is independent of the transport coordinate.</p>
+<p>In dimension one there are no unbounded frequencies with <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span>. For every fixed <span class="math" data-tex="\(t\)">\(t\)</span>, the ratio in (28) tends to one as <span class="math" data-tex="\(|\xi_1|\to\infty\)">\(|\xi_1|\to\infty\)</span>, even for <span class="math" data-tex="\(W=\{0\}\)">\(W=\{0\}\)</span>. Thus every invariant equals one, consistent with ordinary differential equation regularity.</p>
+<h2 id="exercises-and-full-solutions">Exercises and full solutions</h2>
+<p><strong>Exercise 1. Powers of transport (basic).</strong> For <span class="math" data-tex="\(P(\xi)=\xi_1^r\)">\(P(\xi)=\xi_1^r\)</span>, <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, calculate <span class="math" data-tex="\(\sigma_P(W)\)">\(\sigma_P(W)\)</span> in dimension at least two. Explain the dimension-one answer and identify all affine-plane carriers allowed by Theorem 5.1.</p>
+<p><strong>Solution.</strong> Since the projection of the radius-<span class="math" data-tex="\(t\)">\(t\)</span> ball of <span class="math" data-tex="\(W\)">\(W\)</span> onto the first coordinate is <span class="math" data-tex="\([-ta,ta]\)">\([-ta,ta]\)</span>, where <span class="math" data-tex="\(a=|\pi_We_1|\)">\(a=|\pi_We_1|\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{A_{P,W}(\xi,t)}{A_P(\xi,t)}
+=\left(\frac{|\xi_1|+ta}{|\xi_1|+t}\right)^r.
+\]">\[
+\frac{A_{P,W}(\xi,t)}{A_P(\xi,t)}
+=\left(\frac{|\xi_1|+ta}{|\xi_1|+t}\right)^r.
+\]</span>
+The ratio is at least <span class="math" data-tex="\(a^r\)">\(a^r\)</span>; frequencies with <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span> and another coordinate tending to infinity attain it. Hence <span class="math" data-tex="\(\sigma_P(W)=a^r\)">\(\sigma_P(W)=a^r\)</span>. In dimension one the fixed-<span class="math" data-tex="\(t\)">\(t\)</span> ratio tends to one, so all invariants are one. In higher dimension the permitted affine planes <span class="math" data-tex="\(b+V\)">\(b+V\)</span> have <span class="math" data-tex="\(e_1\in V\)">\(e_1\in V\)</span>, since <span class="math" data-tex="\(a=0\)">\(a=0\)</span> for <span class="math" data-tex="\(W=V^\perp\)">\(W=V^\perp\)</span> exactly in that case.</p>
+<p><strong>Exercise 2. A vanishing value at infinity (basic).</strong> Let <span class="math" data-tex="\(P(\xi)=1+\xi_1^2\)">\(P(\xi)=1+\xi_1^2\)</span> in dimension at least two. Determine <span class="math" data-tex="\(\sigma_P(\{0\})\)">\(\sigma_P(\{0\})\)</span> and <span class="math" data-tex="\(\sigma_P(\mathbb Re_1)\)">\(\sigma_P(\mathbb Re_1)\)</span>. Does the absence of real zeros imply hypoellipticity?</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(W=\{0\}\)">\(W=\{0\}\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{A_{P,W}(\xi,t)}{A_P(\xi,t)}
+=\frac{1+\xi_1^2}{1+(|\xi_1|+t)^2}.
+\]">\[
+\frac{A_{P,W}(\xi,t)}{A_P(\xi,t)}
+=\frac{1+\xi_1^2}{1+(|\xi_1|+t)^2}.
+\]</span>
+Along <span class="math" data-tex="\(\xi_1=0\)">\(\xi_1=0\)</span> its lower limit is at most <span class="math" data-tex="\(1/(1+t^2)\)">\(1/(1+t^2)\)</span>. Taking the infimum over <span class="math" data-tex="\(t\)">\(t\)</span> gives zero. For <span class="math" data-tex="\(W=\mathbb Re_1\)">\(W=\mathbb Re_1\)</span>, varying that coordinate already obtains the full ball maximum, so the ratio is identically one. The complex zeros <span class="math" data-tex="\(\xi_1=\pm i\)">\(\xi_1=\pm i\)</span>, with the other coordinates arbitrarily large and real, stay at distance one from real space. The complex-zero criterion therefore rules out hypoellipticity. Real nonvanishing alone is insufficient.</p>
+<p><strong>Exercise 3. Checking the cutoff estimate (intermediate).</strong> Prove (14) with the stated common support and integral, using only scaling and Young's inequality. Why is a fixed cutoff with no dependence on <span class="math" data-tex="\(N\)">\(N\)</span> insufficient for the estimate used in (18)?</p>
+<p><strong>Solution.</strong> Choose smooth nonnegative probability functions <span class="math" data-tex="\(\chi_0,\rho\)">\(\chi_0,\rho\)</span> supported in the balls of radii <span class="math" data-tex="\(\gamma/4\)">\(\gamma/4\)</span> and one. Put <span class="math" data-tex="\(a_N=\gamma/(4N)\)">\(a_N=\gamma/(4N)\)</span>, <span class="math" data-tex="\(\rho_N(\theta)=a_N^{-k}\rho(\theta/a_N)\)">\(\rho_N(\theta)=a_N^{-k}\rho(\theta/a_N)\)</span>, and <span class="math" data-tex="\(\chi_N=\chi_0*\rho_N^{*N}\)">\(\chi_N=\chi_0*\rho_N^{*N}\)</span>. Its support radius is less than <span class="math" data-tex="\(\gamma/4+Na_N=\gamma/2\)">\(\gamma/4+Na_N=\gamma/2\)</span>, and its integral is one. Write <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> as <span class="math" data-tex="\(|\alpha|\)">\(|\alpha|\)</span> coordinate derivatives and apply each to a distinct <span class="math" data-tex="\(\rho_N\)">\(\rho_N\)</span>. Every differentiated factor has <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm at most <span class="math" data-tex="\(C/a_N\leq CN\)">\(C/a_N\leq CN\)</span>; undifferentiated factors have norm one. Keep <span class="math" data-tex="\(\chi_0\)">\(\chi_0\)</span> in <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> and apply Young repeatedly, proving (14). A fixed smooth cutoff has finite constants at each order, but they need not be bounded by <span class="math" data-tex="\(C(CN)^N\)">\(C(CN)^N\)</span> as <span class="math" data-tex="\(N\)">\(N\)</span> grows. Such uncontrolled growth would invalidate the exponential decay inferred by choosing <span class="math" data-tex="\(N\)">\(N\)</span> proportional to <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><strong>Exercise 4. A non-linear singular set (intermediate).</strong> In <span class="math" data-tex="\(\mathbb R^3\)">\(\mathbb R^3\)</span>, let <span class="math" data-tex="\(P(\xi)=\xi_1\)">\(P(\xi)=\xi_1\)</span>, <span class="math" data-tex="\(V=\mathbb Re_1\)">\(V=\mathbb Re_1\)</span>, and let <span class="math" data-tex="\(C\subset\mathbb R^2\)">\(C\subset\mathbb R^2\)</span> be any nonempty closed set. Apply Theorem 5.1 to <span class="math" data-tex="\(F=\mathbb R\times C\)">\(F=\mathbb R\times C\)</span>. What regularity can be prescribed, and why must the set be invariant in the transport direction?</p>
+<p><strong>Solution.</strong> Here <span class="math" data-tex="\(V^\perp=\{\xi_1=0\}\)">\(V^\perp=\{\xi_1=0\}\)</span>, so (28) gives <span class="math" data-tex="\(\sigma_P(V^\perp)=0\)">\(\sigma_P(V^\perp)=0\)</span>. The set <span class="math" data-tex="\(F\)">\(F\)</span> is closed and satisfies <span class="math" data-tex="\(F+V=F\)">\(F+V=F\)</span>. For each integer <span class="math" data-tex="\(\mu\geq0\)">\(\mu\geq0\)</span>, the theorem gives a <span class="math" data-tex="\(C^\mu\)">\(C^\mu\)</span> solution of <span class="math" data-tex="\(D_1u=0\)">\(D_1u=0\)</span> with singular support exactly <span class="math" data-tex="\(F\)">\(F\)</span>, failing to be <span class="math" data-tex="\(C^{\mu+1}\)">\(C^{\mu+1}\)</span> on every open set meeting <span class="math" data-tex="\(F\)">\(F\)</span>. The result applies to disconnected or fractal <span class="math" data-tex="\(C\)">\(C\)</span> as well as smooth sets. Conversely a distribution solving <span class="math" data-tex="\(D_1u=0\)">\(D_1u=0\)</span> is independent of <span class="math" data-tex="\(x_1\)">\(x_1\)</span>, so its singular support is a cylinder in that direction. An arbitrary closed set lacking that invariance cannot be its singular support.</p>
+<p><strong>Exercise 5. Why growing radii need a lemma (advanced).</strong> Explain why (27) alone does not imply <span class="math" data-tex="\(\sigma_Q(W)=0\)">\(\sigma_Q(W)=0\)</span>. Complete the contradiction using the positive half of Lemma 2.1, including the comparison of <span class="math" data-tex="\(e^{t_j}\)">\(e^{t_j}\)</span> with <span class="math" data-tex="\(t_j^p\)">\(t_j^p\)</span>.</p>
+<p><strong>Solution.</strong> In definition (1), the lower limit is taken at a fixed radius. Formula (27) permits <span class="math" data-tex="\(t_j\to\infty\)">\(t_j\to\infty\)</span>, so it does not by itself produce a zero lower limit at any fixed radius. If <span class="math" data-tex="\(\sigma_Q(W)&gt;0\)">\(\sigma_Q(W)&gt;0\)</span>, Lemma 2.1 gives fixed <span class="math" data-tex="\(b,p,t_0&gt;0\)">\(b,p,t_0&gt;0\)</span> bounding the ratio below whenever <span class="math" data-tex="\(t&gt;t_0\)">\(t&gt;t_0\)</span> and <span class="math" data-tex="\(|\xi|&gt;t^p\)">\(|\xi|&gt;t^p\)</span>. Since <span class="math" data-tex="\(t-p\log t\to\infty\)">\(t-p\log t\to\infty\)</span>, <span class="math" data-tex="\(e^t&gt;t^p\)">\(e^t&gt;t^p\)</span> for every sufficiently large <span class="math" data-tex="\(t\)">\(t\)</span>. Our sequence has <span class="math" data-tex="\(|\xi_j|=e^{t_j}\)">\(|\xi_j|=e^{t_j}\)</span>, so its ratios are eventually at least <span class="math" data-tex="\(b\)">\(b\)</span>, contradicting (27). The uniform polynomial threshold supplies the missing implication.</p>
+<p><strong>Exercise 6. Local boundedness in the Baire argument (advanced).</strong> Show that a function which is <span class="math" data-tex="\(C^{\mu+1}\)">\(C^{\mu+1}\)</span> on an open set <span class="math" data-tex="\(N\)">\(N\)</span> meeting <span class="math" data-tex="\(F\)">\(F\)</span> belongs to some <span class="math" data-tex="\(E_{B,M}\)">\(E_{B,M}\)</span>. Explain why this proves the theorem's pointwise singular-support assertion rather than only a failure of global smoothness.</p>
+<p><strong>Solution.</strong> Choose <span class="math" data-tex="\(y\in N\cap F\)">\(y\in N\cap F\)</span> and a rational ball <span class="math" data-tex="\(B\)">\(B\)</span> containing <span class="math" data-tex="\(y\)">\(y\)</span> with compact closure inside <span class="math" data-tex="\(N\)">\(N\)</span>. Every derivative of order <span class="math" data-tex="\(\mu+1\)">\(\mu+1\)</span> is continuous and bounded on that closure. There are finitely many such derivatives, so choose an integer <span class="math" data-tex="\(M\)">\(M\)</span> above all their bounds. Their distributional pairings then satisfy (21), because integration against <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is bounded by the supremum times <span class="math" data-tex="\(\|\phi\|_1\)">\(\|\phi\|_1\)</span>. Hence the function lies in <span class="math" data-tex="\(E_{B,M}\)">\(E_{B,M}\)</span>. A function outside all these sets cannot be <span class="math" data-tex="\(C^{\mu+1}\)">\(C^{\mu+1}\)</span> on any neighborhood of any point of <span class="math" data-tex="\(F\)">\(F\)</span>. Since it is smooth off <span class="math" data-tex="\(F\)">\(F\)</span>, its singular support is exactly <span class="math" data-tex="\(F\)">\(F\)</span>, with no omitted regular point in that set.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Grubb]</strong> Gerd Grubb, <em>Distributions and Operators</em>, open lectures, sections on distributional differentiation and Fourier transformation. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li><strong>[Coste]</strong> Michel Coste, <em>Real Algebraic Sets</em>, ICTP lecture notes, 2003, sections on semialgebraic projection and growth. <a href="https://indico.ictp.it/event/a02455/session/9/contribution/6/material/0/0.pdf">Lecture notes</a>.</li>
+<li><strong>[Hormander]</strong> Lars Hörmander, “On the singularities of solutions of partial differential equations with constant coefficients,” <em>Séminaire Goulaouic–Schwartz</em>, 1971–1972, exposé 25, 1–6. <a href="https://www.numdam.org/item/SEDP_1971-1972____A25_0/">Original article</a>.</li>
+</ul>
+</main></body></html>

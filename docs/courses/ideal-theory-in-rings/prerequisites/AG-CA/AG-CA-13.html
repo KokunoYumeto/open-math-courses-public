@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Projective dimension and the Auslander–Buchsbaum formula · Ideal theory in rings</title><meta name="robots" content="noindex,nofollow">
+<style>
+:root{color-scheme:light dark;--paper:#f9f7f1;--ink:#252b2b;--muted:#5f6865;--link:#176b63;--line:#d7ddd5}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.7 Georgia,serif}
+main{max-width:980px;margin:auto;padding:2rem 1.5rem 4rem}a{color:var(--link);text-underline-offset:.17em}
+header,nav,footer,.notice{font-family:system-ui,sans-serif}nav{display:flex;flex-wrap:wrap;gap:.9rem;font-size:.9rem}
+h1{font-size:clamp(2rem,5vw,3.25rem);line-height:1.16;margin:1.5rem 0}h2{margin-top:2.4rem;line-height:1.25}
+h3{line-height:1.3}.notice{padding:1rem 1.2rem;border:1px solid var(--line);border-left:4px solid var(--link);font-size:.92rem}
+article img{max-width:100%;height:auto;display:block;margin:1.5rem auto}pre{overflow:auto;padding:1rem;border:1px solid var(--line)}
+article{min-width:0;overflow-wrap:anywhere}
+.math.inline{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.2rem 0}
+code{font-size:.86em}table{border-collapse:collapse;display:block;overflow-x:auto}td,th{padding:.5rem .8rem;border:1px solid var(--line)}
+.math.display,mjx-container[display="true"]{display:block;overflow-x:auto;overflow-y:hidden;padding:.2rem 0}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;list-style:none;padding:0}
+.cards li{padding:1rem;border:1px solid var(--line);border-radius:.35rem}.cards a{font-size:1.1rem;font-weight:600}
+footer{margin-top:3rem;padding-top:1rem;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.skip{position:absolute;left:-9999px}.skip:focus{left:1rem;top:1rem;background:var(--paper);padding:1rem}
+@media(prefers-color-scheme:dark){:root{--paper:#17201e;--ink:#ecede8;--muted:#b6c0b8;--link:#80d6c0;--line:#40504b}}
+@media(max-width:600px){body{font-size:17px}main{padding:1rem .9rem 3rem}.cards{grid-template-columns:1fr}}
+</style><script>window.MathJax={"loader": {"paths": {"mathjax": "../../runtime/mathjax"}}, "tex": {"inlineMath": [["\\(", "\\)"], ["$", "$"]], "displayMath": [["\\[", "\\]"], ["$$", "$$"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "chtml": {"fontURL": "../../runtime/mathjax/output/chtml/fonts/woff-v2"}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script id="MathJax-script" defer src="../../runtime/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip" href="#main">Skip to content</a><main id="main">
+<header><nav aria-label="Course navigation"><a href="../../index.html">Ideal theory in rings</a><a href="src/projective-dimension-and-the-auslander-buchsbaum-formula.md">Original Markdown snapshot</a></nav></header>
+<aside class="notice">Private prerequisite snapshot. Component terms: <a href="CC0-1.0.txt">CC0-1.0</a>. The complete source body and attribution are retained. This snapshot has not been cleared for public release.</aside>
+<article class="math"><h1
+id="projective-dimension-and-the-auslanderbuchsbaum-formula">Projective
+dimension and the Auslander–Buchsbaum formula</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October
+2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A presentation describes a module by generators and relations. A
+resolution continues by describing relations among the relations.
+Projective dimension measures how long this process must continue. Over
+a Noetherian local ring, minimal resolutions make that length visible
+after reduction to the residue field. The Auslander–Buchsbaum formula
+then measures the same length as a loss of depth.</p>
+<p>We use <a href="AG-CA-12.html">Regular sequences, depth and
+Cohen–Macaulay modules</a>, particularly its Ext characterization of
+depth and its proof that regular local generators form a regular
+sequence. The resolution comparison, balanced Tor formalism and Ext
+exact sequences are proved in <a href="AG-CA-06S.html">Resolutions, Tor
+and Ext</a>, Theorem 1.1 and Sections 2–4, and used in <a
+href="AG-CA-07.html">Tor and flat modules</a>. Nakayama and Noetherian
+finiteness retain their earlier hypotheses. All rings are commutative
+with identity. A local ring is nonzero and has one maximal ideal; it is
+not automatically Noetherian. A finite module is finitely generated.</p>
+<p>Projective means that maps from the module lift along every
+surjection, equivalently that it is a direct summand of a free module.
+We set <span class="math inline">\(\operatorname{pd}_R(0)=0\)</span>.
+Depth still has the convention <span
+class="math inline">\(\operatorname{depth}(0)=\infty\)</span>. The depth
+formulas below concern nonzero modules; this distinction also matters
+for the residue-field formula for projective dimension.</p>
+<h2 id="projective-dimension-over-an-arbitrary-ring">1. Projective
+dimension over an arbitrary ring</h2>
+<p>The <strong>projective dimension</strong> <span
+class="math inline">\(\operatorname{pd}_R M\)</span> is the least <span
+class="math inline">\(n\geq0\)</span> for which there is an exact
+sequence <span class="math display">\[
+0\longrightarrow P_n\longrightarrow\cdots\longrightarrow P_0
+\longrightarrow M\longrightarrow0
+\tag{1}
+\]</span> with all <span class="math inline">\(P_i\)</span> projective.
+It is infinity if there is no such <span
+class="math inline">\(n\)</span>. A zero module may appear among the
+projective terms. In particular, dimension zero means projective.</p>
+<p><strong>Lemma 1.1 (Schanuel).</strong> Suppose <span
+class="math inline">\(0\to K\to P\xrightarrow{\alpha}M\to0\)</span> and
+<span class="math inline">\(0\to L\to Q\xrightarrow{\beta}M\to0\)</span>
+are exact, with <span class="math inline">\(P,Q\)</span> projective.
+Then <span class="math display">\[
+K\oplus Q\cong L\oplus P.
+\tag{2}
+\]</span></p>
+<p><strong>Proof.</strong> Form <span class="math inline">\(T=\{(p,q)\in
+P\oplus Q:\alpha(p)=\beta(q)\}\)</span>. Projection onto <span
+class="math inline">\(Q\)</span> gives <span class="math inline">\(0\to
+K\to T\to Q\to0\)</span>; projection onto <span
+class="math inline">\(P\)</span> gives <span class="math inline">\(0\to
+L\to T\to P\to0\)</span>. Both projections are surjective because the
+original maps to <span class="math inline">\(M\)</span> are. Both
+sequences split because their last terms are projective. These two
+decompositions of <span class="math inline">\(T\)</span> prove (2).
+<span class="math inline">\(\square\)</span></p>
+<p>We need the long exact Ext sequence in the <strong>first</strong>
+argument, with its arrows reversed. Here is the resolution construction
+that provides it and will also be used for global dimension.</p>
+<p><strong>Lemma 1.2 (horseshoe construction).</strong> Given <span
+class="math inline">\(0\to A\to B\to C\to0\)</span> and projective
+resolutions of <span class="math inline">\(A,C\)</span> of length at
+most <span class="math inline">\(n\)</span>, one can construct a
+resolution of <span class="math inline">\(B\)</span> of length at most
+<span class="math inline">\(n\)</span>, in a short exact sequence of
+resolutions which splits in every degree. Its degree-<span
+class="math inline">\(i\)</span> module is the direct sum of the chosen
+degree-<span class="math inline">\(i\)</span> modules for <span
+class="math inline">\(A,C\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math inline">\(n=0\)</span>,
+the given sequence splits since <span class="math inline">\(C\)</span>
+is projective. For <span class="math inline">\(n&gt;0\)</span>, let
+<span class="math inline">\(P_0\to A\)</span> and <span
+class="math inline">\(Q_0\to C\)</span> be the first surjections. Lift
+<span class="math inline">\(Q_0\to C\)</span> to <span
+class="math inline">\(B\)</span> using projectivity. Together with <span
+class="math inline">\(P_0\to A\to B\)</span>, this gives a surjection
+<span class="math inline">\(P_0\oplus Q_0\to B\)</span>. Its kernel sits
+in <span class="math display">\[
+0\longrightarrow K_A\longrightarrow K_B\longrightarrow
+K_C\longrightarrow0.
+\tag{3}
+\]</span> For surjectivity on kernels, lift an element of <span
+class="math inline">\(K_C\)</span> to <span
+class="math inline">\(Q_0\)</span>; its image in <span
+class="math inline">\(B\)</span> lies in <span
+class="math inline">\(A\)</span>, and a suitable element of <span
+class="math inline">\(P_0\)</span> cancels it. The kernel on the left is
+exactly <span class="math inline">\(K_A\)</span>. The tails of the
+original resolutions resolve <span
+class="math inline">\(K_A,K_C\)</span> in length <span
+class="math inline">\(n-1\)</span>. Apply induction to (3) and splice
+its resolution with the degree-zero surjection. This produces the
+asserted maps and degreewise splittings. With resolutions of unbounded
+length, the same kernel construction continues indefinitely. <span
+class="math inline">\(\square\)</span></p>
+<p>Applying <span
+class="math inline">\(\operatorname{Hom}_R(-,N)\)</span> to the
+degreewise split sequence of complexes gives a short exact sequence of
+Hom complexes. Its cohomology yields <span class="math display">\[
+\cdots\to\operatorname{Ext}^i_R(C,N)\to\operatorname{Ext}^i_R(B,N)
+\to\operatorname{Ext}^i_R(A,N)\to\operatorname{Ext}^{i+1}_R(C,N)\to\cdots.
+\tag{4}
+\]</span> Resolution comparison applies to projective resolutions as
+well as free ones, since the lifting and homotopy constructions only use
+projectivity.</p>
+<p><strong>Theorem 1.3 (Ext test and syzygies).</strong> For every ring,
+module and integer <span class="math inline">\(n\geq0\)</span>, <span
+class="math display">\[
+\operatorname{pd}_R M\leq n
+\quad\Longleftrightarrow\quad
+\operatorname{Ext}^{n+1}_R(M,N)=0\text{ for every }N.
+\tag{5}
+\]</span> These conditions also imply vanishing in every degree greater
+than <span class="math inline">\(n\)</span>. In any projective
+resolution, write <span class="math inline">\(\Omega^0M=M\)</span> and
+<span class="math display">\[
+0\longrightarrow\Omega^{i+1}M\longrightarrow P_i
+\longrightarrow\Omega^iM\longrightarrow0.
+\tag{6}
+\]</span> Then <span class="math inline">\(\operatorname{pd}M\leq
+n\)</span> precisely when <span class="math inline">\(\Omega^nM\)</span>
+is projective.</p>
+<p><strong>Proof.</strong> A length-<span
+class="math inline">\(n\)</span> projective resolution computes Ext by a
+complex with no terms above degree <span
+class="math inline">\(n\)</span>, giving all the asserted
+vanishings.</p>
+<p>First prove the converse at <span class="math inline">\(n=0\)</span>.
+Choose <span class="math inline">\(0\to K\to F\to M\to0\)</span> with
+<span class="math inline">\(F\)</span> free. If <span
+class="math inline">\(\operatorname{Ext}^1_R(M,K)=0\)</span>, (4) makes
+<span
+class="math inline">\(\operatorname{Hom}(F,K)\to\operatorname{Hom}(K,K)\)</span>
+surjective. The identity of <span class="math inline">\(K\)</span>
+extends to a retraction <span class="math inline">\(F\to K\)</span>, so
+the sequence splits and <span class="math inline">\(M\)</span> is
+projective. Thus vanishing of Ext in degree one for every second
+argument detects projectivity.</p>
+<p>For general <span class="math inline">\(n\)</span>, (4) applied
+repeatedly to (6), using positive-degree Ext vanishing for each <span
+class="math inline">\(P_i\)</span>, gives <span class="math display">\[
+\operatorname{Ext}^1_R(\Omega^nM,N)
+\cong\operatorname{Ext}^{n+1}_R(M,N).
+\tag{7}
+\]</span> For <span class="math inline">\(n=0\)</span> this is the
+identity. Condition (5) therefore makes <span
+class="math inline">\(\Omega^nM\)</span> projective. Truncating at that
+module supplies (1). This also proves the criterion for any chosen
+resolution. <span class="math inline">\(\square\)</span></p>
+<p><strong>Corollary 1.4 (short exact sequences).</strong> If <span
+class="math inline">\(0\to A\to B\to C\to0\)</span> is exact, then <span
+class="math display">\[
+\begin{aligned}
+\operatorname{pd}A&amp;\leq\max(\operatorname{pd}B,\operatorname{pd}C-1,0),\\
+\operatorname{pd}B&amp;\leq\max(\operatorname{pd}A,\operatorname{pd}C),\\
+\operatorname{pd}C&amp;\leq\max(\operatorname{pd}B,\operatorname{pd}A+1).
+\end{aligned}
+\tag{8}
+\]</span></p>
+<p><strong>Proof.</strong> If a right side is infinite its inequality is
+immediate. Otherwise, for the first inequality (4) places <span
+class="math inline">\(\operatorname{Ext}^{n+1}(A,N)\)</span> between
+<span class="math inline">\(\operatorname{Ext}^{n+1}(B,N)\)</span> and
+<span class="math inline">\(\operatorname{Ext}^{n+2}(C,N)\)</span>, both
+zero at the indicated bound. For the second, the surrounding groups are
+those for <span class="math inline">\(C\)</span> and <span
+class="math inline">\(A\)</span> in degree <span
+class="math inline">\(n+1\)</span>. For the third, use <span
+class="math inline">\(\operatorname{Ext}^{n}(A,N)\)</span> and <span
+class="math inline">\(\operatorname{Ext}^{n+1}(B,N)\)</span>, where the
+indicated <span class="math inline">\(n\)</span> is at least one. Apply
+Theorem 1.3. The extra zero in the first bound respects our convention
+on projective and zero modules. <span
+class="math inline">\(\square\)</span></p>
+<p>The <strong>global dimension</strong> <span
+class="math inline">\(\operatorname{gl.dim}R\)</span> is <span
+class="math inline">\(\sup_M\operatorname{pd}_R M\)</span>, allowing
+infinity. It includes arbitrary modules, not just finite ones.</p>
+<p><strong>Theorem 1.5 (cyclic test for global dimension).</strong> For
+every ring, <span class="math display">\[
+\operatorname{gl.dim}R=\sup_{I\subset R}\operatorname{pd}_R(R/I).
+\tag{9}
+\]</span> In particular, a uniform bound on projective dimensions of
+finite modules bounds the dimensions of all modules.</p>
+<p><strong>Proof.</strong> The right side is at most the left side. If
+it is infinite, equality follows. Suppose every cyclic quotient has
+dimension at most a finite <span class="math inline">\(n\)</span>. We
+show that every module <span class="math inline">\(M\)</span> has such a
+resolution.</p>
+<p>Well-order a set of generators <span
+class="math inline">\(m_\alpha\)</span>, indexed by an ordinal <span
+class="math inline">\(\lambda\)</span>. Let <span
+class="math inline">\(M_\alpha\)</span> be generated by the elements
+with index less than <span class="math inline">\(\alpha\)</span>, so
+<span class="math inline">\(M_0=0\)</span>, <span
+class="math inline">\(M_\lambda=M\)</span>, and at a limit index the
+module is the union of the earlier ones. Each successor quotient <span
+class="math inline">\(M_{\alpha+1}/M_\alpha\)</span> is cyclic, possibly
+zero, and has a chosen length-<span class="math inline">\(n\)</span>
+projective resolution.</p>
+<p>Construct compatible resolutions of <span
+class="math inline">\(M_\alpha\)</span> by transfinite induction. At a
+successor index, Lemma 1.2 extends the previously constructed resolution
+using that of the cyclic quotient. The inclusion of old resolution terms
+into new terms splits in every degree. At a limit index, take their
+unions in every degree, with the induced differential and augmentation.
+The resulting augmented complex is exact: a cycle occurs at some earlier
+index, where exactness supplies its preimage; surjectivity of the
+augmentation follows the same way. Each degree module is a direct sum of
+the projective pieces added at successor stages, since all the
+inclusions were constructed as direct-sum inclusions. Such a direct sum
+is projective: lift a map from it along a surjection by lifting the maps
+from its individual summands. There are no terms above degree <span
+class="math inline">\(n\)</span>.</p>
+<p>This produces a length-<span class="math inline">\(n\)</span>
+projective resolution of <span class="math inline">\(M\)</span>, proving
+the reverse bound in (9). Every cyclic module is finite, giving the last
+assertion. For the zero ring, all modules are zero and both sides are
+zero under our convention. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="minimal-resolutions-over-a-local-ring">2. Minimal resolutions
+over a local ring</h2>
+<p><strong>Proposition 2.1.</strong> A finite projective module over any
+local ring is finite free.</p>
+<p><strong>Proof.</strong> Lift a basis of <span
+class="math inline">\(P/\mathfrak mP\)</span> to obtain <span
+class="math inline">\(R^r\to P\)</span>, surjective by Nakayama.
+Projectivity splits it, so <span class="math inline">\(R^r=K\oplus
+P\)</span>, with <span class="math inline">\(K\)</span> finite as a
+direct summand of a finite free module. Reduction modulo <span
+class="math inline">\(\mathfrak m\)</span> makes the map an isomorphism,
+hence <span class="math inline">\(K/\mathfrak mK=0\)</span>. Nakayama
+gives <span class="math inline">\(K=0\)</span>. This includes <span
+class="math inline">\(P=0\)</span>, with rank zero. <span
+class="math inline">\(\square\)</span></p>
+<p>A free resolution over <span class="math inline">\((R,\mathfrak
+m)\)</span> is <strong>minimal</strong> if <span class="math display">\[
+d_i(F_i)\subset\mathfrak mF_{i-1}\quad(i\geq1),
+\qquad F_0/\mathfrak mF_0\xrightarrow{\sim}M/\mathfrak mM.
+\tag{10}
+\]</span></p>
+<p><strong>Theorem 2.2 (minimal resolution and Tor).</strong> Over a
+Noetherian local ring, every finite module has a minimal resolution by
+finite free modules. For nonzero finite <span
+class="math inline">\(M\)</span>, <span class="math display">\[
+\operatorname{pd}_R M
+=\sup\{i\geq0:\operatorname{Tor}^R_i(\kappa,M)\ne0\}.
+\tag{11}
+\]</span> If this value is finite, the supremum is a maximum. More
+precisely, for every <span class="math inline">\(n\geq0\)</span>, <span
+class="math display">\[
+\operatorname{pd}_R M\leq n
+\quad\Longleftrightarrow\quad
+\operatorname{Tor}^R_{n+1}(\kappa,M)=0.
+\tag{12}
+\]</span> This last criterion also holds for <span
+class="math inline">\(M=0\)</span>.</p>
+<p><strong>Proof.</strong> Lift a basis of <span
+class="math inline">\(M/\mathfrak mM\)</span> to a surjection <span
+class="math inline">\(F_0\to M\)</span>. Its kernel <span
+class="math inline">\(\Omega^1M\)</span> is finite by Noetherianity and
+contained in <span class="math inline">\(\mathfrak mF_0\)</span>, since
+the induced residue map is an isomorphism. Repeat with a
+minimal-generator surjection <span
+class="math inline">\(F_i\to\Omega^iM\)</span>. Each kernel is finite
+and lies in <span class="math inline">\(\mathfrak mF_i\)</span>. The
+resulting resolution satisfies (10). Once a kernel is zero, take all
+subsequent terms zero.</p>
+<p>After tensoring with <span class="math inline">\(\kappa\)</span>,
+every differential is zero. The balanced Tor formalism therefore gives
+<span class="math display">\[
+\operatorname{Tor}^R_i(\kappa,M)\cong F_i/\mathfrak mF_i,
+\qquad \beta_i(M):=\dim_\kappa\operatorname{Tor}^R_i(\kappa,M)
+=\operatorname{rank}F_i.
+\tag{13}
+\]</span> These ranks, the <strong>Betti numbers</strong>, consequently
+do not depend on the choices of generators.</p>
+<p>If <span class="math inline">\(\operatorname{pd}M\leq n\)</span>,
+Theorem 1.3 makes <span class="math inline">\(\Omega^nM\)</span>
+projective, hence finite free by Proposition 2.1. Its minimal-generator
+surjection <span class="math inline">\(F_n\to\Omega^nM\)</span> is an
+isomorphism by the same splitting-and-Nakayama argument. Thus <span
+class="math inline">\(F_{n+1}=0\)</span>. Conversely, (13) makes
+vanishing of <span
+class="math inline">\(\operatorname{Tor}_{n+1}\)</span> equivalent to
+<span class="math inline">\(F_{n+1}=0\)</span>. Exactness then truncates
+the resolution at <span class="math inline">\(F_n\)</span>, giving
+dimension at most <span class="math inline">\(n\)</span>. This proves
+(12).</p>
+<p>For nonzero <span class="math inline">\(M\)</span>, Nakayama gives
+nonzero <span class="math inline">\(\operatorname{Tor}_0= M/\mathfrak
+mM\)</span>. If projective dimension is finite <span
+class="math inline">\(p\)</span>, the minimal resolution terminates in
+degree <span class="math inline">\(p\)</span>, and its last term cannot
+be zero when <span class="math inline">\(p&gt;0\)</span>, since that
+would give a shorter resolution. If the dimension is infinite, no stage
+can vanish by (12), so the nonzero Tor degrees are unbounded. This
+proves (11). For the zero module, all Tor groups vanish, and its
+projective dimension zero is handled separately. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Theorem 2.3 (the residue field detects global
+dimension).</strong> For every Noetherian local ring, <span
+class="math display">\[
+\operatorname{gl.dim}R=\operatorname{pd}_R\kappa.
+\tag{14}
+\]</span></p>
+<p><strong>Proof.</strong> One inequality follows by including <span
+class="math inline">\(\kappa\)</span> among all modules. If its
+projective dimension is infinite, equality follows. Otherwise write it
+as <span class="math inline">\(d\)</span>. A length-<span
+class="math inline">\(d\)</span> projective resolution of <span
+class="math inline">\(\kappa\)</span> gives <span
+class="math inline">\(\operatorname{Tor}_{d+1}^R(\kappa,M)=0\)</span>
+for every <span class="math inline">\(M\)</span>. Theorem 2.2 makes
+every finite module have projective dimension at most <span
+class="math inline">\(d\)</span>. In particular this holds for every
+<span class="math inline">\(R/I\)</span>. The arbitrary-ring cyclic test
+in Theorem 1.5 now bounds the dimensions of all modules by <span
+class="math inline">\(d\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<h2 id="the-auslanderbuchsbaum-formula">3. The Auslander–Buchsbaum
+formula</h2>
+<p><strong>Theorem 3.1 (Auslander–Buchsbaum).</strong> If <span
+class="math inline">\((R,\mathfrak m,\kappa)\)</span> is Noetherian
+local and <span class="math inline">\(M\ne0\)</span> is finite with
+finite projective dimension, then <span class="math display">\[
+\boxed{\operatorname{pd}_R M+\operatorname{depth}_R M
+=\operatorname{depth}R.}
+\tag{15}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span
+class="math inline">\(t=\operatorname{depth}R\)</span> and <span
+class="math inline">\(p=\operatorname{pd}M\)</span>. We induct on <span
+class="math inline">\(p\)</span> using the minimal resolution. If <span
+class="math inline">\(p=0\)</span>, Proposition 2.1 makes <span
+class="math inline">\(M\cong R^r\)</span> with <span
+class="math inline">\(r&gt;0\)</span>. Ext from <span
+class="math inline">\(\kappa\)</span> commutes with finite direct sums,
+so its first nonzero degree is <span class="math inline">\(t\)</span> on
+both modules. Theorem 2.3 of <em>Regular sequences, depth and
+Cohen–Macaulay modules</em> gives depth <span
+class="math inline">\(t\)</span>, proving (15).</p>
+<p>For <span class="math inline">\(p=1\)</span>, the minimal resolution
+is <span class="math display">\[
+0\longrightarrow K\xrightarrow{a}F\longrightarrow M\longrightarrow0,
+\tag{16}
+\]</span> with <span class="math inline">\(K,F\)</span> nonzero finite
+free and every matrix entry of <span class="math inline">\(a\)</span> in
+<span class="math inline">\(\mathfrak m\)</span>. Section 2 of the
+preceding lesson proves that <span class="math inline">\(\mathfrak
+m\)</span> kills every <span
+class="math inline">\(\operatorname{Ext}^i_R(\kappa,R)\)</span>. Hence
+the map induced by <span class="math inline">\(a\)</span> on <span
+class="math inline">\(\operatorname{Ext}^t\)</span> is zero. Its source
+is nonzero, since <span class="math inline">\(K\)</span> has positive
+rank and depth <span class="math inline">\(t\)</span>.</p>
+<p>If <span class="math inline">\(t=0\)</span>, this would be the zero
+map <span
+class="math inline">\(\operatorname{Hom}(\kappa,K)\to\operatorname{Hom}(\kappa,F)\)</span>,
+contradicting its injectivity in the long exact sequence of (16). Thus
+<span class="math inline">\(t\geq1\)</span>. The surrounding Ext groups
+vanish below degree <span class="math inline">\(t\)</span>, and that
+sequence gives <span class="math display">\[
+\operatorname{Ext}^{t-1}_R(\kappa,M)
+\cong\operatorname{Ext}^{t}_R(\kappa,K)\ne0,
+\quad
+\operatorname{Ext}^i_R(\kappa,M)=0\quad(0\leq i&lt;t-1).
+\tag{17}
+\]</span> Therefore <span
+class="math inline">\(\operatorname{depth}M=t-1\)</span>. This is the
+case where minimality supplies more information than the three depth
+inequalities alone.</p>
+<p>Now suppose <span class="math inline">\(p\geq2\)</span>. In <span
+class="math inline">\(0\to K\to F_0\to M\to0\)</span>, the tail of the
+minimal resolution is a minimal resolution of <span
+class="math inline">\(K\)</span> of length <span
+class="math inline">\(p-1\)</span>, so Theorem 2.2 gives <span
+class="math inline">\(\operatorname{pd}K=p-1\)</span>. Induction gives
+<span class="math display">\[
+s:=\operatorname{depth}K=t-p+1\geq0.
+\tag{18}
+\]</span> If <span class="math inline">\(s=0\)</span>, then <span
+class="math inline">\(t=p-1\geq1\)</span>. But the nonzero group <span
+class="math inline">\(\operatorname{Hom}(\kappa,K)\)</span> injects into
+<span class="math inline">\(\operatorname{Hom}(\kappa,F_0)=0\)</span>,
+impossible. Consequently <span class="math inline">\(1\leq
+s&lt;t\)</span>. The long exact sequence now makes <span
+class="math inline">\(\operatorname{Ext}^i(\kappa,M)\)</span> vanish for
+<span class="math inline">\(i&lt;s-1\)</span>, since the adjacent groups
+for <span class="math inline">\(F_0\)</span> and <span
+class="math inline">\(K\)</span> vanish. In degree <span
+class="math inline">\(s-1\)</span> it gives <span
+class="math display">\[
+\operatorname{Ext}^{s-1}_R(\kappa,M)
+\cong\operatorname{Ext}^{s}_R(\kappa,K)\ne0,
+\]</span> because both <span
+class="math inline">\(\operatorname{Ext}^{s-1}(\kappa,F_0)\)</span> and
+<span class="math inline">\(\operatorname{Ext}^{s}(\kappa,F_0)\)</span>
+vanish. Thus depth <span class="math inline">\(M=s-1=t-p\)</span>,
+completing the induction. <span
+class="math inline">\(\square\)</span></p>
+<p>In particular, finite projective dimension of a nonzero finite module
+is at most <span class="math inline">\(\operatorname{depth}R\)</span>.
+The finiteness hypothesis is essential: the periodic example in Section
+5 has infinite projective dimension and cannot satisfy (15).</p>
+<h2 id="koszul-resolutions">4. Koszul resolutions</h2>
+<p>Let <span class="math inline">\(R\)</span> be any ring and <span
+class="math inline">\(f_1,\ldots,f_r\in R\)</span>. With basis <span
+class="math inline">\(e_1,\ldots,e_r\)</span> of <span
+class="math inline">\(R^r\)</span>, the <strong>Koszul complex</strong>
+has <span class="math display">\[
+K_i=\bigwedge^iR^r\cong R^{\binom ri},\qquad 0\leq i\leq r,
+\]</span> and its differential is defined on the increasing exterior
+basis by <span class="math display">\[
+d(e_{j_1}\wedge\cdots\wedge e_{j_i})
+=\sum_{a=1}^i(-1)^{a-1}f_{j_a}
+e_{j_1}\wedge\cdots\wedge\widehat{e_{j_a}}\wedge\cdots\wedge e_{j_i}.
+\tag{19}
+\]</span> The hat means omission. For each pair of omitted indices, the
+two contributions to <span class="math inline">\(d^2\)</span> have
+opposite signs and the same commuting coefficient product. Thus <span
+class="math inline">\(d^2=0\)</span>, also in characteristic two. In
+degree one, <span class="math inline">\(d(e_j)=f_j\)</span>, so <span
+class="math inline">\(H_0(K)=R/(f_1,\ldots,f_r)\)</span>.</p>
+<p><strong>Theorem 4.1 (Koszul exactness).</strong> If <span
+class="math inline">\(f_1,\ldots,f_r\)</span> is regular on <span
+class="math inline">\(R\)</span>, its augmented Koszul complex is a
+finite free resolution of <span
+class="math inline">\(R/(f_1,\ldots,f_r)\)</span>. More generally, if
+the list is <span class="math inline">\(M\)</span>-regular, then <span
+class="math inline">\(K_\bullet\otimes_RM\)</span> has no positive
+homology and has degree-zero homology <span
+class="math inline">\(M/(f_1,\ldots,f_r)M\)</span>.</p>
+<p><strong>Proof.</strong> Induct on <span
+class="math inline">\(r\)</span>. For the empty list there is just the
+degree-zero module. Write <span class="math inline">\(K&#39;\)</span>
+for the complex on the first <span class="math inline">\(r-1\)</span>
+entries. In degree <span class="math inline">\(i\)</span>, decompose
+<span class="math display">\[
+K_i=K&#39;_i\oplus(K&#39;_{i-1}\wedge e_r).
+\]</span> For <span class="math inline">\(v\in K&#39;_{i-1}\)</span>,
+formula (19) gives <span class="math display">\[
+d(v\wedge e_r)=d&#39;v\wedge e_r+(-1)^{i-1}f_rv.
+\tag{20}
+\]</span> Thus the inclusion of <span
+class="math inline">\(K&#39;\)</span> and projection onto the second
+component give a short exact sequence of complexes with quotient <span
+class="math inline">\(K&#39;[1]\)</span>, the complex having <span
+class="math inline">\(K&#39;_{i-1}\)</span> in degree <span
+class="math inline">\(i\)</span> and differential <span
+class="math inline">\(-d&#39;\)</span>. The projection includes the sign
+<span class="math inline">\((-1)^{i-1}\)</span>, which makes it commute
+with differentials. Its homology connecting map is multiplication by
+<span class="math inline">\(f_r\)</span>: a cycle <span
+class="math inline">\(w\)</span> of degree <span
+class="math inline">\(i-1\)</span> lifts as <span
+class="math inline">\((-1)^{i-1}w\wedge e_r\)</span>, whose differential
+has first component <span class="math inline">\(f_rw\)</span>.</p>
+<p>Tensor this degreewise split sequence with <span
+class="math inline">\(M\)</span>. The homology exact sequence contains
+<span class="math display">\[
+\cdots\to H_i(K&#39;\otimes M)\to H_i(K\otimes M)
+\to H_{i-1}(K&#39;\otimes M)\xrightarrow{f_r}H_{i-1}(K&#39;\otimes
+M)\to\cdots.
+\tag{21}
+\]</span> Induction makes all the positive homology groups of <span
+class="math inline">\(K&#39;\otimes M\)</span> zero, and its degree-zero
+homology is <span
+class="math inline">\(M/(f_1,\ldots,f_{r-1})M\)</span>. Regularity says
+that <span class="math inline">\(f_r\)</span> is injective on this last
+module. Equation (21) therefore kills <span
+class="math inline">\(H_1\)</span>, kills every higher homology group,
+and identifies <span class="math inline">\(H_0\)</span> with the
+quotient by all entries. Taking <span class="math inline">\(M=R\)</span>
+proves the resolution assertion. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Corollary 4.2 (exact projective dimension).</strong> For any
+ring and regular sequence of length <span
+class="math inline">\(r\)</span>, with <span
+class="math inline">\(J=(f_1,\ldots,f_r)\)</span>, <span
+class="math display">\[
+\operatorname{pd}_R(R/J)=r,
+\qquad \operatorname{Ext}^r_R(R/J,R)\cong R/J.
+\tag{22}
+\]</span></p>
+<p><strong>Proof.</strong> The Koszul resolution gives dimension at most
+<span class="math inline">\(r\)</span>. In its dual Hom complex, the
+degree-<span class="math inline">\(r\)</span> term is <span
+class="math inline">\(R\)</span>, and the image of the preceding
+differential is exactly <span class="math inline">\(J\)</span>: its
+coefficients are the signed entries <span
+class="math inline">\(f_i\)</span>. Hence the top Ext is <span
+class="math inline">\(R/J\)</span>, nonzero by the definition of a
+regular sequence. If <span class="math inline">\(r&gt;0\)</span>,
+Theorem 1.3 makes this incompatible with projective dimension at most
+<span class="math inline">\(r-1\)</span>. For <span
+class="math inline">\(r=0\)</span>, the quotient is <span
+class="math inline">\(R\ne0\)</span>, its dimension is zero and <span
+class="math inline">\(\operatorname{Hom}_R(R,R)=R\)</span>. <span
+class="math inline">\(\square\)</span></p>
+<p><strong>Corollary 4.3 (regular local upper bound).</strong> For a
+regular local ring <span class="math inline">\(R\)</span> of dimension
+<span class="math inline">\(D\)</span>, <span class="math display">\[
+\operatorname{gl.dim}R=\operatorname{pd}_R\kappa=D.
+\tag{23}
+\]</span> Every nonzero finite module satisfies <span
+class="math display">\[
+\operatorname{pd}_R M=D-\operatorname{depth}_R M,
+\qquad
+M\text{ is free}\ \Longleftrightarrow\ \operatorname{depth}_R M=D.
+\tag{24}
+\]</span></p>
+<p><strong>Proof.</strong> Theorem 6.1 of the preceding lesson makes a
+minimal generating list of the maximal ideal a regular sequence of
+length <span class="math inline">\(D\)</span>. Its Koszul complex
+resolves <span class="math inline">\(\kappa\)</span>, and (22) gives
+projective dimension <span class="math inline">\(D\)</span>. Equation
+(14) proves (23), including the field case <span
+class="math inline">\(D=0\)</span>. Thus every finite module has finite
+projective dimension, and the ring has depth <span
+class="math inline">\(D\)</span> by the same earlier theorem. Apply
+Auslander–Buchsbaum and Proposition 2.1 to obtain (24). <span
+class="math inline">\(\square\)</span></p>
+<p>This proves the regular-local consequence needed here. The converse,
+finite projective dimension of the residue field implying regularity,
+belongs to the later lesson <em>Regular local rings</em> and is not used
+above. The zero module is free of rank zero but has depth infinity, so
+it is excluded from the equivalence in (24).</p>
+<h2 id="calculations-and-the-finiteness-boundary">5. Calculations and
+the finiteness boundary</h2>
+<p><strong>The plane origin.</strong> In <span
+class="math inline">\(R=k[x,y]_{(x,y)}\)</span>, the coordinate pair is
+regular: the ring is a domain, and modulo <span
+class="math inline">\(x\)</span> multiplication by <span
+class="math inline">\(y\)</span> is injective in <span
+class="math inline">\(k[y]_{(y)}\)</span>. The Koszul resolution is
+<span class="math display">\[
+0\longrightarrow R\xrightarrow{\binom{-y}{x}}R^2
+\xrightarrow{(x\ \ y)}R\longrightarrow k\longrightarrow0.
+\tag{25}
+\]</span> All entries lie in the maximal ideal, so the Betti numbers are
+<span class="math inline">\(1,2,1\)</span>. Projective dimension of
+<span class="math inline">\(k\)</span> is two. The ring is regular of
+dimension two by the polynomial height and embedding-dimension results,
+hence has depth two; the field quotient has depth zero. Formula (15)
+reads <span class="math inline">\(2+0=2\)</span>.</p>
+<p><strong>A periodic resolution.</strong> Let <span
+class="math inline">\(R=k[\epsilon]/(\epsilon^2)\)</span>, with residue
+field <span class="math inline">\(k\)</span>. The annihilator of <span
+class="math inline">\(\epsilon\)</span> is exactly <span
+class="math inline">\((\epsilon)\)</span>, as the basis <span
+class="math inline">\(1,\epsilon\)</span> shows. Consequently <span
+class="math display">\[
+\cdots\xrightarrow{\epsilon}R\xrightarrow{\epsilon}R
+\xrightarrow{\epsilon}R\longrightarrow k\longrightarrow0
+\tag{26}
+\]</span> is exact and minimal. Tensoring with <span
+class="math inline">\(k\)</span> gives zero differentials and one copy
+of <span class="math inline">\(k\)</span> in each degree. Thus <span
+class="math inline">\(\operatorname{Tor}^R_i(k,k)=k\)</span> for every
+<span class="math inline">\(i\geq0\)</span>, and <span
+class="math inline">\(\operatorname{pd}_R k=\infty\)</span>. The ring
+and its residue field both have depth zero; the
+finite-projective-dimension hypothesis in (15) cannot be discarded.</p>
+<p><strong>One regular equation.</strong> If <span
+class="math inline">\(x\in\mathfrak m\)</span> is injective on a
+Noetherian local ring, then <span class="math inline">\(0\to
+R\xrightarrow{x}R\to R/(x)\to0\)</span> is minimal and nontrivial. It
+gives projective dimension one, while the preceding lesson gives depth
+<span class="math inline">\(\operatorname{depth}R-1\)</span>. This is
+the first dimension-loss case of Auslander–Buchsbaum. If <span
+class="math inline">\(x\)</span> is a unit instead, its quotient is
+zero, so this conclusion would not apply.</p>
+<h2 id="exercises">6. Exercises</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Prove that a finite projective
+module over a Noetherian local ring is free. Identify which part of the
+proof can be made without Noetherianity, and include rank zero.</p>
+<p><strong>Exercise 6.2 (easy).</strong> Compute the projective
+dimension of <span class="math inline">\(k[x,y]/(x,y)\)</span> over
+<span class="math inline">\(k[x,y]\)</span>. Write its resolution and
+check Auslander–Buchsbaum after localization at the origin.</p>
+<p><strong>Exercise 6.3 (medium).</strong> For <span
+class="math inline">\(R=k[\epsilon]/(\epsilon^2)\)</span>, compute <span
+class="math inline">\(\operatorname{Tor}^R_i(k,k)\)</span> for every
+<span class="math inline">\(i\geq0\)</span>, and deduce that the residue
+field has infinite projective dimension.</p>
+<p><strong>Exercise 6.4 (medium).</strong> For a regular local ring and
+a nonzero finite module <span class="math inline">\(M\)</span>, prove
+that <span class="math inline">\(M\)</span> is free precisely when its
+depth equals the ring’s dimension. Explain why the
+finite-projective-dimension hypothesis is available, and what happens
+for <span class="math inline">\(M=0\)</span>.</p>
+<p><strong>Exercise 6.5 (medium).</strong> For <span
+class="math inline">\(A=k[x,y]_{(x,y)}\)</span> and positive integers
+<span class="math inline">\(a,b\)</span>, compute projective dimension,
+depth, Betti numbers and <span
+class="math inline">\(\operatorname{Ext}^2_A(A/(x^a,y^b),A)\)</span>.
+Compute the length of the quotient.</p>
+<p><strong>Exercise 6.6 (hard).</strong> In the same <span
+class="math inline">\(A\)</span>, let <span
+class="math inline">\(I=(x,y)\)</span>. Construct minimal free
+resolutions of <span class="math inline">\(I\)</span> and <span
+class="math inline">\(I^2\)</span>, prove exactness directly, and
+calculate their depths and projective dimensions. Then calculate these
+invariants for <span class="math inline">\(A/I\)</span> and <span
+class="math inline">\(A/I^2\)</span>. Explain how an ideal with full
+support can have depth less than <span class="math inline">\(\dim
+A\)</span>.</p>
+<h2 id="complete-solutions">7. Complete solutions</h2>
+<p><strong>Solution 6.1.</strong> Lift a basis of <span
+class="math inline">\(M/\mathfrak mM\)</span> to a surjection <span
+class="math inline">\(R^r\to M\)</span>. Projectivity splits it, with
+kernel <span class="math inline">\(K\)</span> a direct summand of <span
+class="math inline">\(R^r\)</span>, hence finite even without
+Noetherianity. The induced residue map is an isomorphism, and the
+splitting makes <span class="math inline">\(K/\mathfrak mK=0\)</span>.
+Nakayama gives <span class="math inline">\(K=0\)</span>, so the chosen
+lifts form a free basis. The entire argument works over any local ring.
+For the zero module, use <span class="math inline">\(r=0\)</span>.</p>
+<p><strong>Solution 6.2.</strong> The pair <span
+class="math inline">\(x,y\)</span> is regular already over the
+polynomial ring: <span class="math inline">\(x\)</span> is injective,
+and its quotient is the domain <span
+class="math inline">\(k[y]\)</span>, on which <span
+class="math inline">\(y\)</span> is injective. The final quotient is
+<span class="math inline">\(k\)</span>. Formula (25), over <span
+class="math inline">\(k[x,y]\)</span> before localization, is therefore
+a free resolution. It has length two, and its dual top Ext group is
+<span class="math inline">\(k\ne0\)</span> by (22), so projective
+dimension is exactly two. At the origin the localized resolution is
+minimal, the regular local ring has dimension and depth two, and the
+residue field has depth zero. Auslander–Buchsbaum gives the equality
+<span class="math inline">\(2+0=2\)</span>.</p>
+<p><strong>Solution 6.3.</strong> Every element of <span
+class="math inline">\(R\)</span> has a unique expression <span
+class="math inline">\(u+v\epsilon\)</span>, with <span
+class="math inline">\(u,v\in k\)</span>. Multiplication by <span
+class="math inline">\(\epsilon\)</span> has kernel and image both <span
+class="math inline">\(k\epsilon=(\epsilon)\)</span>. The kernel of <span
+class="math inline">\(R\to k\)</span> is the same ideal, so (26) is a
+free resolution. Modulo <span class="math inline">\(\epsilon\)</span>,
+all differentials are zero, giving one copy of <span
+class="math inline">\(k\)</span> as homology in every nonnegative
+degree. A finite-length projective resolution would make all Tor groups
+above its length zero. The computed groups exclude this, proving
+infinite projective dimension. This also proves <span
+class="math inline">\(\operatorname{gl.dim}R=\infty\)</span> by
+(14).</p>
+<p><strong>Solution 6.4.</strong> If the dimension is <span
+class="math inline">\(D\)</span>, the preceding lesson makes the <span
+class="math inline">\(D\)</span> minimal generators of the maximal ideal
+regular. Their Koszul complex resolves the residue field, with
+projective dimension <span class="math inline">\(D\)</span>. The local
+global-dimension theorem therefore bounds the projective dimension of
+every module by <span class="math inline">\(D\)</span>. The ring has
+depth <span class="math inline">\(D\)</span>. For nonzero finite <span
+class="math inline">\(M\)</span>, Auslander–Buchsbaum says <span
+class="math inline">\(\operatorname{pd}M=D-\operatorname{depth}M\)</span>.
+Depth <span class="math inline">\(D\)</span> is equivalent to projective
+dimension zero, hence to finite projectivity and to freeness.
+Conversely, a nonzero finite free module has the same first nonzero Ext
+degree as the ring, so depth <span class="math inline">\(D\)</span>. The
+zero module is free, but its depth is infinity under the course
+convention, so it must be excepted from this characterization.</p>
+<p><strong>Solution 6.5.</strong> The coordinate list is regular, and
+Proposition 1.3 of <em>Regular sequences, depth and Cohen–Macaulay
+modules</em> makes <span class="math inline">\(x^a,y^b\)</span> regular.
+Its minimal Koszul resolution has modules <span
+class="math inline">\(A,A^2,A\)</span>, with matrices <span
+class="math inline">\((x^a\ \ y^b)\)</span> and <span
+class="math inline">\(\binom{-y^b}{x^a}\)</span>. Thus the Betti numbers
+are <span class="math inline">\(1,2,1\)</span>, with all subsequent ones
+zero. Projective dimension is two and top Ext is <span
+class="math inline">\(A/(x^a,y^b)\)</span> by (22).</p>
+<p>The quotient is already an Artinian local ring before localization:
+the positive-degree ideal is nilpotent and the residue is <span
+class="math inline">\(k\)</span>. A basis consists of <span
+class="math inline">\(x^iy^j\)</span>, <span class="math inline">\(0\leq
+i&lt;a\)</span>, <span class="math inline">\(0\leq j&lt;b\)</span>,
+because membership in the monomial ideal is termwise divisibility.
+Localization at the origin changes nothing: a nonzero constant plus a
+nilpotent element is a unit by a finite geometric series. The length is
+its <span class="math inline">\(k\)</span>-dimension <span
+class="math inline">\(ab\)</span>, since all simple factors are <span
+class="math inline">\(k\)</span>. Its support dimension and depth are
+zero, and Auslander–Buchsbaum again reads <span
+class="math inline">\(2+0=2\)</span>.</p>
+<p><strong>Solution 6.6.</strong> The ideal <span
+class="math inline">\(I\)</span> has a resolution <span
+class="math display">\[
+0\longrightarrow A\xrightarrow{\binom{-y}{x}}A^2
+\xrightarrow{(u,v)\mapsto ux+vy}I\longrightarrow0.
+\tag{27}
+\]</span> For direct exactness, if <span
+class="math inline">\(ux+vy=0\)</span>, reduce modulo <span
+class="math inline">\(x\)</span>. The quotient is a domain in which
+<span class="math inline">\(y\)</span> is nonzero, so <span
+class="math inline">\(v=xh\)</span>. Cancel <span
+class="math inline">\(x\)</span> in <span
+class="math inline">\(A\)</span> to obtain <span
+class="math inline">\(u=-yh\)</span>. Thus every kernel element is in
+the image, and that first map is injective because <span
+class="math inline">\(A\)</span> is a domain.</p>
+<p>For <span class="math inline">\(I^2\)</span>, use <span
+class="math display">\[
+0\longrightarrow A^2
+\xrightarrow{\begin{pmatrix}-y&amp;0\\x&amp;-y\\0&amp;x\end{pmatrix}}A^3
+\xrightarrow{(u,v,w)\mapsto ux^2+vxy+wy^2}I^2
+\longrightarrow0.
+\tag{28}
+\]</span> The matrix’s columns are relations. If <span
+class="math inline">\(ux^2+vxy+wy^2=0\)</span>, reduction modulo <span
+class="math inline">\(x\)</span> gives <span
+class="math inline">\(w=xw_1\)</span>. Cancel <span
+class="math inline">\(x\)</span>, obtaining <span
+class="math inline">\(ux+(v+w_1y)y=0\)</span>. Reduction modulo <span
+class="math inline">\(y\)</span> gives <span
+class="math inline">\(u=yu_1\)</span>. Cancel <span
+class="math inline">\(y\)</span> in the resulting equality to get <span
+class="math inline">\(v=-xu_1-yw_1\)</span>. Hence <span
+class="math display">\[
+(u,v,w)=-u_1(-y,x,0)+w_1(0,-y,x),
+\]</span> as required. The matrix is injective: its first row kills the
+first coefficient only if that coefficient is zero, and its last row
+then kills the second only if it is zero.</p>
+<p>Both resolutions are minimal. The displayed ideal generators are
+bases modulo <span class="math inline">\(\mathfrak mI\)</span> and <span
+class="math inline">\(\mathfrak mI^2\)</span>: their degree-one or
+degree-two monomials are linearly independent in <span
+class="math inline">\(\operatorname{gr}_{\mathfrak m}A=k[X,Y]\)</span>.
+Every differential entry is in <span class="math inline">\(\mathfrak
+m\)</span>. Thus <span class="math inline">\(I\)</span> has Betti
+numbers <span class="math inline">\(2,1\)</span> and <span
+class="math inline">\(I^2\)</span> has <span
+class="math inline">\(3,2\)</span>, and both have projective dimension
+one. Auslander–Buchsbaum gives depth one to both.</p>
+<p>Appending their inclusions into <span
+class="math inline">\(A\)</span> turns (27) and (28) into minimal
+resolutions of <span class="math inline">\(A/I\)</span> and <span
+class="math inline">\(A/I^2\)</span>. Their Betti numbers are
+respectively <span class="math inline">\(1,2,1\)</span> and <span
+class="math inline">\(1,3,2\)</span>; both have projective dimension two
+and depth zero. The quotients have lengths one and three, with the
+latter represented by <span class="math inline">\(1,x,y\)</span>.</p>
+<p>Each ideal is nonzero in a domain, so its annihilator is zero and its
+support is the whole dimension-two spectrum of <span
+class="math inline">\(A\)</span>. Nevertheless each has depth one. Full
+support and absence of torsion do not force a finite module to be CM or
+free; the relation modules in (27) and (28) account for the lost
+depth.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not
+prove</h2>
+<p>All the projective-dimension tests, the cyclic global-dimension
+theorem, local residue-field test, Auslander–Buchsbaum formula and
+Koszul resolution asserted here are proved. Resolution comparison,
+balanced Tor and homology long exact sequences are proved in <a
+href="AG-CA-06S.html">Resolutions, Tor and Ext</a>, Theorems 1.1 and 3.2
+and Section 2. The first-variable Ext sequence is constructed in Section
+1; the second-variable sequence and scalar annihilation used in Section
+3 are those established in the preceding lesson. The converse
+homological characterization of regular local rings is deferred to
+<em>Regular local rings</em>, without being assumed here. No
+classification of projective modules over polynomial rings or proof of
+the Hilbert syzygy theorem is asserted.</p>
+<h2 id="references">References</h2>
+<p>The <a href="https://stacks.math.columbia.edu/">official Stacks
+project</a> is the maintained reference. Tag links here use <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/">AI
+Integrated Stacks Project</a>, an edition with AI-proposed corrections
+and AI-written additions that have not been reviewed by the Stacks
+project maintainers. The proof organization and solutions above are
+independent expressions.</p>
+<ul>
+<li>Projective dimension, Schanuel, Ext tests and short exact sequences:
+<a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-Schanuel">Stacks,
+Tag 00O3</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-finite-proj-dim">Stacks,
+Tag 00O4</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-projective-dimension-ext">Stacks,
+Tag 065R</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-exact-sequence-projective-dimension">Stacks,
+Tag 065S</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-reverse-long-exact-seq-ext">Stacks,
+Tag 065P</a>.</li>
+<li>Global dimension and resolutions: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-definition-finite-gl-dim">Stacks,
+Tag 00O6</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-finite-gl-dim">Stacks,
+Tag 065T</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-colimit-projective-dimension">Stacks,
+Tag 0D1U</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-lemma-what-kind-of-resolutions-Noetherian-local">Stacks,
+Tag 0CXF</a>.</li>
+<li>The general local formula is <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-Auslander-Buchsbaum">Stacks,
+Tag 090V</a>. The regular-local resolution bound is also <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#algebra-proposition-regular-finite-gl-dim">Stacks,
+Tag 00O7</a>.</li>
+<li>Koszul definitions and exactness: <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-definition-koszul">Stacks,
+Tag 0622</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-definition-koszul-complex">Stacks,
+Tag 0623</a>, <a
+href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/more-algebra.html#more-algebra-lemma-regular-koszul-regular">Stacks,
+Tag 062F</a>.</li>
+<li>Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic
+Geometry</em>, public draft of 27 July 2024, §24.4 on Koszul complexes
+and resolutions; §§26.1–26.2 on depth and Cohen–Macaulay rings.</li>
+</ul>
+</article>
+<footer>Original course contributions: CC0 1.0. Historical readings, prerequisite snapshots, rendering software and fonts retain their own notices. <a href="../../NOTICES.txt">Component notices</a>.</footer>
+</main></body></html>

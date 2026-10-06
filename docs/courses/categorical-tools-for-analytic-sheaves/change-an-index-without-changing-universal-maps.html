@@ -1,0 +1,311 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Change an index without changing its universal maps</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="change-an-index-without-changing-its-universal-maps">Change an index without changing its universal maps</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol, Ultra). Original text public domain (CC0).</em></p>
+<p>One can often compute a colimit using fewer stages. Reaching every stage is only part of the requirement: different ways of reaching it must also impose the same map to the proposed target. Connected comma categories express exactly this second condition. They let us extend every cocone, with all its maps, rather than merely compare two candidate objects.</p>
+<p>We use the complete comma and component constructions in <a href="zero-maps-components-and-subobjects.html#1-a-category-whose-objects-carry-an-arrow">Zero maps, components and subobjects</a>, the quotient and representable calculations in <a href="colimits-as-connected-components.html">Colimits as connected components</a>, and the universal cone and cocone functors in <a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families and universal cones</a>. A fixed Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, ambient choice and the size conventions of <a href="universes-and-small-categories.html">Universes and small categories</a> are understood. All category data are sets in the ambient setting. We specify whenever an object set or a Hom set must be <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small.</p>
+<h2 id="1-connected-comma-categories">1. Connected comma categories</h2>
+<p>Let <span class="math" data-tex="\(\phi:J\to I\)">\(\phi:J\to I\)</span>. For <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, the category <span class="math" data-tex="\((i\downarrow\phi)\)">\((i\downarrow\phi)\)</span> has objects <span class="math" data-tex="\((j,u)\)">\((j,u)\)</span>, where <span class="math" data-tex="\(u:i\to\phi(j)\)">\(u:i\to\phi(j)\)</span>. A morphism
+<span class="math" data-tex="\(s:(j,u)\to(j&#x27;,u&#x27;)\)">\(s:(j,u)\to(j&#x27;,u&#x27;)\)</span> is <span class="math" data-tex="\(s:j\to j&#x27;\)">\(s:j\to j&#x27;\)</span> satisfying</p>
+<span class="math math-display" data-tex="\[
+\phi(s)u=u&#x27;.
+\tag{1.1}
+\]">\[
+\phi(s)u=u&#x27;.
+\tag{1.1}
+\]</span>
+<p>Retain the complete typed identity and composition proof for incoming comma categories in <em>Zero maps</em>, Section 1, with the constant functor at <span class="math" data-tex="\(i\)">\(i\)</span> on its left. Its identities are those of <span class="math" data-tex="\(J\)">\(J\)</span>, and the composite of <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> satisfies the equation because
+<span class="math" data-tex="\(\phi(ts)u=\phi(t)\phi(s)u=\phi(t)u&#x27;=u&#x27;&#x27;\)">\(\phi(ts)u=\phi(t)\phi(s)u=\phi(t)u&#x27;=u&#x27;&#x27;\)</span>.</p>
+<p>A category is connected when it is nonempty and all its objects are joined by a finite zigzag of arrows, permitting either direction. The full equivalence-relation and opposite-invariance proofs are retained from <em>Zero maps</em>, Section 4. In particular connectedness does not require a common receiver or filteredness.</p>
+<p>We call <span class="math" data-tex="\(\phi\)">\(\phi\)</span> <strong>cofinal</strong> when <span class="math" data-tex="\((i\downarrow\phi)\)">\((i\downarrow\phi)\)</span> is connected for every <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>. The alternative name is a <strong>final functor</strong>. We call it <strong>co-initial</strong>, or <strong>co-cofinal</strong>, when <span class="math" data-tex="\(\phi^{\mathrm{op}}\)">\(\phi^{\mathrm{op}}\)</span> is cofinal. The opposite of
+<span class="math" data-tex="\((i\downarrow\phi^{\mathrm{op}})\)">\((i\downarrow\phi^{\mathrm{op}})\)</span> is <span class="math" data-tex="\((\phi\downarrow i)\)">\((\phi\downarrow i)\)</span>: its objects are arrows <span class="math" data-tex="\(\phi(j)\to i\)">\(\phi(j)\to i\)</span>, and its arrows satisfy the outgoing comma equation. Thus co-initiality means that these outgoing comma categories are connected.</p>
+<p>These definitions use the actual ambient comma categories. They impose no working-universe bound on their entire sets of objects.</p>
+<h2 id="2-extend-every-cocone">2. Extend every cocone</h2>
+<p><strong>Theorem 2.1.</strong> If <span class="math" data-tex="\(\phi:J\to I\)">\(\phi:J\to I\)</span> is cofinal and <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, restriction is a bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_T:\operatorname{Cocone}(D,T)\\
+\longrightarrow
+\operatorname{Cocone}(D\phi,T),\\
+(a_i)_i\longmapsto(a_{\phi(j)})_j .
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+R_T:\operatorname{Cocone}(D,T)\\
+\longrightarrow
+\operatorname{Cocone}(D\phi,T),\\
+(a_i)_i\longmapsto(a_{\phi(j)})_j .
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>It is natural in <span class="math" data-tex="\(T\)">\(T\)</span>, and compatible with every transformation of <span class="math" data-tex="\(D\)">\(D\)</span>. The assertion holds for arbitrary ambient index and value categories. Neither colimit is presumed to exist.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(b_j:D(\phi(j))\to T\)">\(b_j:D(\phi(j))\to T\)</span> be a cocone on the restriction. For each <span class="math" data-tex="\(i\)">\(i\)</span>, take an object <span class="math" data-tex="\((j,u)\)">\((j,u)\)</span> of the nonempty comma category and set</p>
+<span class="math math-display" data-tex="\[
+e_i=b_jD(u):D(i)\to T.
+\tag{2.2}
+\]">\[
+e_i=b_jD(u):D(i)\to T.
+\tag{2.2}
+\]</span>
+<p>This is independent of the choice. For a comma arrow <span class="math" data-tex="\(s:(j,u)\to(j&#x27;,u&#x27;)\)">\(s:(j,u)\to(j&#x27;,u&#x27;)\)</span>, the restricted cocone equation and (1.1) give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b_{j&#x27;}D(u&#x27;)
+&amp;=b_{j&#x27;}D(\phi(s))D(u)\\
+&amp;=b_jD(u).
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+b_{j&#x27;}D(u&#x27;)
+&amp;=b_{j&#x27;}D(\phi(s))D(u)\\
+&amp;=b_jD(u).
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>The same equality can be read in reverse. Applying it along a finite zigzag identifies the two expressions for any pair of comma objects. No common upper object is used.</p>
+<p>For <span class="math" data-tex="\(v:i\to i&#x27;\)">\(v:i\to i&#x27;\)</span>, choose <span class="math" data-tex="\((j,u&#x27;)\in(i&#x27;\downarrow\phi)\)">\((j,u&#x27;)\in(i&#x27;\downarrow\phi)\)</span>. Then
+<span class="math" data-tex="\((j,u&#x27;v)\in(i\downarrow\phi)\)">\((j,u&#x27;v)\in(i\downarrow\phi)\)</span>, so independence of choices gives</p>
+<span class="math math-display" data-tex="\[
+e_i=b_jD(u&#x27;v)=e_{i&#x27;}D(v).
+\tag{2.4}
+\]">\[
+e_i=b_jD(u&#x27;v)=e_{i&#x27;}D(v).
+\tag{2.4}
+\]</span>
+<p>Thus <span class="math" data-tex="\(e\)">\(e\)</span> is an <span class="math" data-tex="\(I\)">\(I\)</span>-cocone. At <span class="math" data-tex="\(i=\phi(j)\)">\(i=\phi(j)\)</span>, use the comma object <span class="math" data-tex="\((j,1_{\phi(j)})\)">\((j,1_{\phi(j)})\)</span>; it gives <span class="math" data-tex="\(e_{\phi(j)}=b_j\)">\(e_{\phi(j)}=b_j\)</span>. Hence <span class="math" data-tex="\(R_T(e)=b\)">\(R_T(e)=b\)</span>.</p>
+<p>Conversely, start with an <span class="math" data-tex="\(I\)">\(I\)</span>-cocone <span class="math" data-tex="\(a\)">\(a\)</span>, restrict it, then apply (2.2). Its equation at <span class="math" data-tex="\(u:i\to\phi(j)\)">\(u:i\to\phi(j)\)</span> gives
+<span class="math" data-tex="\(a_{\phi(j)}D(u)=a_i\)">\(a_{\phi(j)}D(u)=a_i\)</span>, so extension recovers <span class="math" data-tex="\(a\)">\(a\)</span>. These are both inverse equations.</p>
+<p>For <span class="math" data-tex="\(w:T\to T&#x27;\)">\(w:T\to T&#x27;\)</span>, extending the cocone <span class="math" data-tex="\(w b_j\)">\(w b_j\)</span> gives
+<span class="math" data-tex="\(w b_jD(u)=w e_i\)">\(w b_jD(u)=w e_i\)</span>; this proves naturality in the target. For a transformation <span class="math" data-tex="\(t:D\to E\)">\(t:D\to E\)</span> and a restricted cocone <span class="math" data-tex="\(b:E\phi\to T\)">\(b:E\phi\to T\)</span>, the two routes of the diagram-variable square at <span class="math" data-tex="\(i\)">\(i\)</span> agree:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+b_jt_{\phi(j)}D(u)
+&amp;=b_jE(u)t_i\\
+&amp;=e_i^E t_i.
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+b_jt_{\phi(j)}D(u)
+&amp;=b_jE(u)t_i\\
+&amp;=e_i^E t_i.
+\end{aligned}
+\tag{2.5}
+\]</span>
+<p>Restriction itself has the same compatibility by its component formula. Thus the inverse bijections are natural in both variables. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.2.</strong> Either of <span class="math" data-tex="\(\operatorname{colim}_J D\phi\)">\(\operatorname{colim}_J D\phi\)</span> and
+<span class="math" data-tex="\(\operatorname{colim}_I D\)">\(\operatorname{colim}_I D\)</span> exists if and only if the other does. If both are chosen, the canonical arrow</p>
+<span class="math math-display" data-tex="\[
+\lambda:\operatorname{colim}_J D\phi
+\longrightarrow\operatorname{colim}_I D
+\tag{2.6}
+\]">\[
+\lambda:\operatorname{colim}_J D\phi
+\longrightarrow\operatorname{colim}_I D
+\tag{2.6}
+\]</span>
+<p>is invertible and respects the specified coprojections.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(K\)">\(K\)</span>, with coprojections <span class="math" data-tex="\(c_j\)">\(c_j\)</span>, is the restricted colimit. Extend <span class="math" data-tex="\(c\)">\(c\)</span> by Theorem 2.1 to <span class="math" data-tex="\(e_i:D(i)\to K\)">\(e_i:D(i)\to K\)</span>. For an <span class="math" data-tex="\(I\)">\(I\)</span>-cocone <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span>, its restriction factors through a unique <span class="math" data-tex="\(f:K\to T\)">\(f:K\to T\)</span>. Equation (2.2) gives
+<span class="math" data-tex="\(f e_i=f c_jD(u)=a_{\phi(j)}D(u)=a_i\)">\(f e_i=f c_jD(u)=a_{\phi(j)}D(u)=a_i\)</span>.
+If another arrow factors <span class="math" data-tex="\(a\)">\(a\)</span>, evaluating at <span class="math" data-tex="\(\phi(j)\)">\(\phi(j)\)</span>, where <span class="math" data-tex="\(e_{\phi(j)}=c_j\)">\(e_{\phi(j)}=c_j\)</span>, makes it the same restricted factor. This proves the full <span class="math" data-tex="\(I\)">\(I\)</span>-colimit property. If the <span class="math" data-tex="\(I\)">\(I\)</span>-colimit exists first, its restriction represents the restricted cocone functor by (2.1), giving the other existence implication.</p>
+<p>Write <span class="math" data-tex="\(L=\operatorname{colim}_I D\)">\(L=\operatorname{colim}_I D\)</span>, with maps <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. The canonical <span class="math" data-tex="\(\lambda:K\to L\)">\(\lambda:K\to L\)</span> has <span class="math" data-tex="\(\lambda c_j=a_{\phi(j)}\)">\(\lambda c_j=a_{\phi(j)}\)</span>. The extended cocone induces <span class="math" data-tex="\(\mu:L\to K\)">\(\mu:L\to K\)</span>, with <span class="math" data-tex="\(\mu a_i=e_i\)">\(\mu a_i=e_i\)</span>. Then
+<span class="math" data-tex="\(\lambda\mu a_i=\lambda e_i=a_i\)">\(\lambda\mu a_i=\lambda e_i=a_i\)</span> and
+<span class="math" data-tex="\(\mu\lambda c_j=e_{\phi(j)}=c_j\)">\(\mu\lambda c_j=e_{\phi(j)}=c_j\)</span>.
+Both universal uniqueness properties prove the inverse identities. Naturality in a transformation of <span class="math" data-tex="\(D\)">\(D\)</span> follows from (2.5) and these coprojection equations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\beta:I^{\mathrm{op}}\to C\)">\(\beta:I^{\mathrm{op}}\to C\)</span>, apply the entire proof to
+<span class="math" data-tex="\(\beta^{\mathrm{op}}:I\to C^{\mathrm{op}}\)">\(\beta^{\mathrm{op}}:I\to C^{\mathrm{op}}\)</span>. The complete cone–cocone reversal in <em>Compatible families</em>, Section 3, identifies its factors and uniqueness with incoming cones in <span class="math" data-tex="\(C\)">\(C\)</span>. Thus, for cofinal <span class="math" data-tex="\(\phi\)">\(\phi\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\lim_{I^{\mathrm{op}}}\beta
+\longrightarrow
+\lim_{J^{\mathrm{op}}}\beta\phi^{\mathrm{op}}
+\tag{2.7}
+\]">\[
+\lim_{I^{\mathrm{op}}}\beta
+\longrightarrow
+\lim_{J^{\mathrm{op}}}\beta\phi^{\mathrm{op}}
+\tag{2.7}
+\]</span>
+<p>is the canonical isomorphism whenever either limit exists. It sends a cone to its restricted cone. For co-initial <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, the dual statement applies to covariant diagrams <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, giving
+<span class="math" data-tex="\(\lim_I D\to\lim_J D\phi\)">\(\lim_I D\to\lim_J D\phi\)</span>.</p>
+<h2 id="3-six-tests-for-the-same-property">3. Six tests for the same property</h2>
+<p>Assume here that <span class="math" data-tex="\(I,J\)">\(I,J\)</span> are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Value categories in the formal-functor statements are locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small; their object sets may be larger. The complete Hom encoding and small compatible-family bounds from <em>Compatible families</em>, Sections 2–3, supply the actual universe-member versions of all value functors below.</p>
+<p>For <span class="math" data-tex="\(D\)">\(D\)</span>, let <span class="math" data-tex="\(P_D(T)\)">\(P_D(T)\)</span> be its set of incoming cones and let <span class="math" data-tex="\(Q_D(T)\)">\(Q_D(T)\)</span> be its set of outgoing cocones. Retain their full functor and universal-factor proofs from that lesson: <span class="math" data-tex="\(P_D\)">\(P_D\)</span> is an object of
+<span class="math" data-tex="\(\widehat C=\operatorname{Fun}(C^{\mathrm{op}},\mathsf{Set}_{\mathcal U})\)">\(\widehat C=\operatorname{Fun}(C^{\mathrm{op}},\mathsf{Set}_{\mathcal U})\)</span>;
+<span class="math" data-tex="\(Q_D\)">\(Q_D\)</span> is covariant as a value functor, and is regarded as an object of
+<span class="math" data-tex="\(C^\vee=\operatorname{Fun}(C,\mathsf{Set}_{\mathcal U})^{\mathrm{op}}\)">\(C^\vee=\operatorname{Fun}(C,\mathsf{Set}_{\mathcal U})^{\mathrm{op}}\)</span>.
+These objects exist even if <span class="math" data-tex="\(C\)">\(C\)</span> supplies no limit or colimit representative.</p>
+<p><strong>Theorem 3.1.</strong> The following conditions are equivalent.</p>
+<ol>
+<li><span class="math" data-tex="\(\phi\)">\(\phi\)</span> is cofinal.</li>
+<li>For every <span class="math" data-tex="\(\beta:I^{\mathrm{op}}\to\mathsf{Set}_{\mathcal U}\)">\(\beta:I^{\mathrm{op}}\to\mathsf{Set}_{\mathcal U}\)</span>, restriction of compatible tuples gives a bijection
+<span class="math" data-tex="\(\lim_{I^{\mathrm{op}}}\beta\to\lim_{J^{\mathrm{op}}}\beta\phi^{\mathrm{op}}\)">\(\lim_{I^{\mathrm{op}}}\beta\to\lim_{J^{\mathrm{op}}}\beta\phi^{\mathrm{op}}\)</span>.</li>
+<li>For every such projective diagram <span class="math" data-tex="\(\beta\)">\(\beta\)</span> into every locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small <span class="math" data-tex="\(C\)">\(C\)</span>, the canonical transformation <span class="math" data-tex="\(P_\beta\to P_{\beta\phi^{\mathrm{op}}}\)">\(P_\beta\to P_{\beta\phi^{\mathrm{op}}}\)</span> is an isomorphism in <span class="math" data-tex="\(\widehat C\)">\(\widehat C\)</span>.</li>
+<li>For every <span class="math" data-tex="\(\alpha:I\to\mathsf{Set}_{\mathcal U}\)">\(\alpha:I\to\mathsf{Set}_{\mathcal U}\)</span>, the canonical map
+<span class="math" data-tex="\(\operatorname{colim}_J\alpha\phi\to\operatorname{colim}_I\alpha\)">\(\operatorname{colim}_J\alpha\phi\to\operatorname{colim}_I\alpha\)</span> is bijective.</li>
+<li>For every <span class="math" data-tex="\(\alpha:I\to C\)">\(\alpha:I\to C\)</span> as above, the canonical arrow
+<span class="math" data-tex="\(Q_{\alpha\phi}\to Q_\alpha\)">\(Q_{\alpha\phi}\to Q_\alpha\)</span> is an isomorphism in <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span>.</li>
+<li>For every <span class="math" data-tex="\(i\in I\)">\(i\in I\)</span>, the colimit
+<span class="math" data-tex="\(\operatorname{colim}_{j\in J}\operatorname{Hom}_I(i,\phi(j))\)">\(\operatorname{colim}_{j\in J}\operatorname{Hom}_I(i,\phi(j))\)</span> is a singleton.</li>
+</ol>
+<p>In condition 5 the underlying covariant transformation is restriction
+<span class="math" data-tex="\(Q_\alpha\to Q_{\alpha\phi}\)">\(Q_\alpha\to Q_{\alpha\phi}\)</span>. The opposite on <span class="math" data-tex="\(C^\vee\)">\(C^\vee\)</span> reverses that direction.</p>
+<p><strong>Proof.</strong> Condition 1 implies 4 by Corollary 2.2, since small Set colimits exist. It implies 2 by (2.7). The same cocone bijection, natural in <span class="math" data-tex="\(T\)">\(T\)</span>, is an isomorphism of covariant value functors, hence gives 5 in their opposite category. Applying the full opposite-category proof gives a cone bijection natural in <span class="math" data-tex="\(T\)">\(T\)</span>, hence 3.</p>
+<p>To compare 4 and 6, fix <span class="math" data-tex="\(i\)">\(i\)</span> and set <span class="math" data-tex="\(H_i(k)=\operatorname{Hom}_I(i,k)\)">\(H_i(k)=\operatorname{Hom}_I(i,k)\)</span>, with postcomposition as its arrow action. The complete covariant Hom proof and identity-class calculation in <em>Colimits as connected components</em>, Section 3, give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_I H_i\simeq 1,\\
+[k,u]=[i,1_i].
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_I H_i\simeq 1,\\
+[k,u]=[i,1_i].
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>Applying 4 to <span class="math" data-tex="\(H_i\)">\(H_i\)</span> gives 6. Conversely the covariant element category of <span class="math" data-tex="\(H_i\phi\)">\(H_i\phi\)</span> is exactly <span class="math" data-tex="\((i\downarrow\phi)\)">\((i\downarrow\phi)\)</span>: objects are <span class="math" data-tex="\((j,u:i\to\phi(j))\)">\((j,u:i\to\phi(j))\)</span>, and its arrow equation is (1.1). The entire class–component bijection in that lesson, Section 2, identifies its colimit with
+<span class="math" data-tex="\(\pi_0(i\downarrow\phi)\)">\(\pi_0(i\downarrow\phi)\)</span>, on every generating arrow. Condition 6 says this component set has one element; the retained connectedness convention says precisely that the comma category is nonempty and connected. Thus 6 implies 1.</p>
+<p>Condition 2 also implies 6, without presuming a colimit-preservation result. Let <span class="math" data-tex="\(2=\{0,1\}\)">\(2=\{0,1\}\)</span> and consider the contravariant diagram</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\beta_i(k)=\mathsf{Set}(H_i(k),2),\\
+\beta_i(v)(f)=f\circ H_i(v).
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+\beta_i(k)=\mathsf{Set}(H_i(k),2),\\
+\beta_i(v)(f)=f\circ H_i(v).
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>The functor laws follow from the covariant laws of <span class="math" data-tex="\(H_i\)">\(H_i\)</span>, and these function sets are small by the full universe function-set proof. A compatible tuple in <span class="math" data-tex="\(\lim\beta_i\)">\(\lim\beta_i\)</span> is exactly a Set cocone from <span class="math" data-tex="\(H_i\)">\(H_i\)</span> to <span class="math" data-tex="\(2\)">\(2\)</span>. The quotient universal factors in <em>Colimits as connected components</em>, Section 1, therefore identify the restriction map in 2 with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+2=\mathsf{Set}(1,2)\\
+\longrightarrow \mathsf{Set}(Q_i,2),\\
+Q_i=\operatorname{colim}_J H_i\phi,
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+2=\mathsf{Set}(1,2)\\
+\longrightarrow \mathsf{Set}(Q_i,2),\\
+Q_i=\operatorname{colim}_J H_i\phi,
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>where the map sends a value to the constant function on <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span>. If <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> is empty, its two possible values give the same empty function, so this map is not injective. If <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> has distinct <span class="math" data-tex="\(x,y\)">\(x,y\)</span>, the function equal to <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere is not constant, so the map is not surjective. Bijectivity forces <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> to have exactly one element. Hence 2 implies 6.</p>
+<p>For 3 implies 2, take <span class="math" data-tex="\(C=\mathsf{Set}_{\mathcal U}\)">\(C=\mathsf{Set}_{\mathcal U}\)</span> and evaluate the presheaf transformation at the singleton. The natural bijection
+<span class="math" data-tex="\(\mathsf{Set}(1,S)\simeq S\)">\(\mathsf{Set}(1,S)\simeq S\)</span>, sending a function to its value, identifies its component with exactly the compatible-tuple restriction in 2. Its inverse sends <span class="math" data-tex="\(s\)">\(s\)</span> to the function with that value; both maps commute with every transition.</p>
+<p>For 5 implies 4, again take <span class="math" data-tex="\(C=\mathsf{Set}_{\mathcal U}\)">\(C=\mathsf{Set}_{\mathcal U}\)</span>.
+The existing Set colimits represent <span class="math" data-tex="\(Q_\alpha\)">\(Q_\alpha\)</span> and <span class="math" data-tex="\(Q_{\alpha\phi}\)">\(Q_{\alpha\phi}\)</span> by their specified cocone factors. The underlying transformation in 5 is precomposition by the actual canonical arrow <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of condition 4. The full covariant Yoneda and full-faithfulness proof in <a href="points-fibres-and-universal-representations.html#2-evaluation-at-an-identity">Points and representations, Section 2</a> reflects its invertibility, so <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is invertible. Thus 5 implies 4.</p>
+<p>We have proved <span class="math" data-tex="\(1\)">\(1\)</span> implies <span class="math" data-tex="\(2,3,4,5\)">\(2,3,4,5\)</span>, and
+<span class="math" data-tex="\(3\Rightarrow2\Rightarrow6\Rightarrow1\)">\(3\Rightarrow2\Rightarrow6\Rightarrow1\)</span> and
+<span class="math" data-tex="\(5\Rightarrow4\Rightarrow6\Rightarrow1\)">\(5\Rightarrow4\Rightarrow6\Rightarrow1\)</span>. This proves all six equivalences, with the specified comparison maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(I\)">\(I\)</span> is empty, the existence of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> forces <span class="math" data-tex="\(J\)">\(J\)</span> empty. The comma condition is vacuous and every comparison is the identity on the empty-index universal family. If <span class="math" data-tex="\(J\)">\(J\)</span> is empty and <span class="math" data-tex="\(I\)">\(I\)</span> has an object <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(Q_i\)">\(Q_i\)</span> is empty and the two-point test fails; the unique functor is not cofinal. The same statements, after opposites, describe co-initiality.</p>
+<h2 id="4-compose-and-cancel-index-changes">4. Compose and cancel index changes</h2>
+<p><strong>Proposition 4.1.</strong> Cofinality has the following consequences.</p>
+<ul>
+<li>It induces a bijection <span class="math" data-tex="\(\pi_0(J)\to\pi_0(I)\)">\(\pi_0(J)\to\pi_0(I)\)</span>. In particular <span class="math" data-tex="\(J\)">\(J\)</span> is connected if and only if <span class="math" data-tex="\(I\)">\(I\)</span> is connected.</li>
+<li>If <span class="math" data-tex="\(\psi:K\to J\)">\(\psi:K\to J\)</span> and <span class="math" data-tex="\(\phi:J\to I\)">\(\phi:J\to I\)</span> are cofinal, then <span class="math" data-tex="\(\phi\psi\)">\(\phi\psi\)</span> is cofinal.</li>
+<li>If <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and <span class="math" data-tex="\(\phi\psi\)">\(\phi\psi\)</span> are cofinal, then <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is cofinal.</li>
+<li>If <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is fully faithful and <span class="math" data-tex="\(\phi\psi\)">\(\phi\psi\)</span> is cofinal, then both <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and <span class="math" data-tex="\(\phi\)">\(\phi\)</span> are cofinal.</li>
+</ul>
+<p><strong>Proof.</strong> For small indices, apply Theorem 3.1 to the constant singleton diagram. The full constant-diagram class bijection in <em>Colimits as connected components</em>, Section 3, identifies its canonical colimit map with
+<span class="math" data-tex="\([j]\mapsto[\phi(j)]\)">\([j]\mapsto[\phi(j)]\)</span>. Hence the component sets are bijective. A connected category has a singleton component set, while an empty category has an empty component set, giving the first conclusion with its nonemptiness condition.</p>
+<p>Write <span class="math" data-tex="\(a_\phi(\alpha)\)">\(a_\phi(\alpha)\)</span> for the canonical Set-colimit map for <span class="math" data-tex="\(\alpha:I\to\mathsf{Set}\)">\(\alpha:I\to\mathsf{Set}\)</span>. On the quotient's every representative,
+<span class="math" data-tex="\([k,x]\)">\([k,x]\)</span> maps first to <span class="math" data-tex="\([\psi(k),x]\)">\([\psi(k),x]\)</span> and then to <span class="math" data-tex="\([\phi\psi(k),x]\)">\([\phi\psi(k),x]\)</span>. Thus the entire canonical maps satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_{\phi\psi}(\alpha)=\\
+a_\phi(\alpha)\,
+a_\psi(\alpha\phi).
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+a_{\phi\psi}(\alpha)=\\
+a_\phi(\alpha)\,
+a_\psi(\alpha\phi).
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>If both factors are bijective for every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, the composite is bijective, so Theorem 3.1 gives the second conclusion. If the composite and the second factor are bijective, then
+<span class="math" data-tex="\(a_\phi=a_{\phi\psi}a_\psi^{-1}\)">\(a_\phi=a_{\phi\psi}a_\psi^{-1}\)</span> is bijective for every <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, giving the third conclusion.</p>
+<p>For the fourth conclusion, full faithfulness gives an isomorphism of entire comma categories</p>
+<span class="math math-display" data-tex="\[
+(j\downarrow\psi)
+\simeq
+(\phi(j)\downarrow\phi\psi).
+\tag{4.2}
+\]">\[
+(j\downarrow\psi)
+\simeq
+(\phi(j)\downarrow\phi\psi).
+\tag{4.2}
+\]</span>
+<p>Send <span class="math" data-tex="\((k,v:j\to\psi(k))\)">\((k,v:j\to\psi(k))\)</span> to <span class="math" data-tex="\((k,\phi(v))\)">\((k,\phi(v))\)</span> and leave its underlying <span class="math" data-tex="\(K\)">\(K\)</span>-arrow unchanged. Conversely every arrow
+<span class="math" data-tex="\(\phi(j)\to\phi\psi(k)\)">\(\phi(j)\to\phi\psi(k)\)</span> lifts to a unique <span class="math" data-tex="\(v\)">\(v\)</span>, by fullness and faithfulness. A <span class="math" data-tex="\(K\)">\(K\)</span>-arrow <span class="math" data-tex="\(t:k\to k&#x27;\)">\(t:k\to k&#x27;\)</span> satisfies
+<span class="math" data-tex="\(\psi(t)v=v&#x27;\)">\(\psi(t)v=v&#x27;\)</span> if and only if its image satisfies
+<span class="math" data-tex="\(\phi\psi(t)\phi(v)=\phi(v&#x27;)\)">\(\phi\psi(t)\phi(v)=\phi(v&#x27;)\)</span>, by faithfulness. This verifies the inverse on every Hom set. Both functors preserve identities and composites because they leave the underlying arrows unchanged. Cofinality of the composite makes the right comma connected, so <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is cofinal. The third conclusion now gives <span class="math" data-tex="\(\phi\)">\(\phi\)</span> cofinal.</p>
+<p>For arbitrary ambient <span class="math" data-tex="\(I,J,K\)">\(I,J,K\)</span>, take one larger universe containing their complete object and arrow data, with their encoding if needed. All three categories are small there, so the arguments just given apply to Set values in that universe. Their conclusions concern only actual comma objects, arrows and finite zigzags, and hence are unchanged by enlargement. This proves the full ambient assertions. It does not assert that an arbitrary large-index colimit has values small in the original <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Applying all four conclusions to opposite categories gives the corresponding statements for co-initial functors.</p>
+<h2 id="5-replace-a-large-index-by-a-small-full-one">5. Replace a large index by a small full one</h2>
+<p>An ambient category <span class="math" data-tex="\(I\)">\(I\)</span> is <strong>cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small</strong> when there is a <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small <span class="math" data-tex="\(K\)">\(K\)</span> and a cofinal functor <span class="math" data-tex="\(\theta:K\to I\)">\(\theta:K\to I\)</span>. It is <strong>co-cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small</strong> when <span class="math" data-tex="\(I^{\mathrm{op}}\)">\(I^{\mathrm{op}}\)</span> is cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. The empty category has both properties, witnessed by its identity. An empty category cannot witness cofinality into a nonempty one, because its incoming commas there are empty.</p>
+<p><strong>Theorem 5.1.</strong> Let <span class="math" data-tex="\(I\)">\(I\)</span> be locally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small and cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. Then it has a full <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small subcategory whose inclusion is cofinal.</p>
+<p><strong>Proof.</strong> Choose a small witness <span class="math" data-tex="\(\theta:K\to I\)">\(\theta:K\to I\)</span>, and let <span class="math" data-tex="\(S\)">\(S\)</span> be the image of its object map. It is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small: it is bijective to the quotient of <span class="math" data-tex="\(\operatorname{Ob}(K)\)">\(\operatorname{Ob}(K)\)</span> by “has the same image,” using the full transported-quotient proof in <em>Universes</em>, Section 3. Let <span class="math" data-tex="\(J\)">\(J\)</span> be the full subcategory on <span class="math" data-tex="\(S\)">\(S\)</span>. It is locally small because its Hom sets are the corresponding Hom sets of <span class="math" data-tex="\(I\)">\(I\)</span>. Its entire arrow set is the tagged union of these small Hom sets over the small set <span class="math" data-tex="\(S^2\)">\(S^2\)</span>; the same universe proof bounds this union. Thus <span class="math" data-tex="\(J\)">\(J\)</span>, including all its morphisms, is small.</p>
+<p>Factor <span class="math" data-tex="\(\theta\)">\(\theta\)</span> as</p>
+<span class="math math-display" data-tex="\[
+K\xrightarrow{\psi}J
+\xrightarrow{\phi}I.
+\tag{5.1}
+\]">\[
+K\xrightarrow{\psi}J
+\xrightarrow{\phi}I.
+\tag{5.1}
+\]</span>
+<p>The inclusion <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is fully faithful, and <span class="math" data-tex="\(\phi\psi=\theta\)">\(\phi\psi=\theta\)</span> is cofinal. Proposition 4.1 gives cofinality of both <span class="math" data-tex="\(\psi\)">\(\psi\)</span> and <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The locally small hypothesis is the category convention used in the working-universe full-image assertion. It bounds every Hom set, rather than merely the number of chosen objects. For a co-cofinally small locally small <span class="math" data-tex="\(I\)">\(I\)</span>, apply the full proof to <span class="math" data-tex="\(I^{\mathrm{op}}\)">\(I^{\mathrm{op}}\)</span> and take opposites. This gives a small full co-initial subcategory of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><strong>Corollary 5.2.</strong> If <span class="math" data-tex="\(C\)">\(C\)</span> admits all <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small colimits, then it admits every colimit indexed by a cofinally <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small <span class="math" data-tex="\(I\)">\(I\)</span>. If <span class="math" data-tex="\(C\)">\(C\)</span> admits all small limits, it admits every limit indexed by a co-cofinally small <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><strong>Proof.</strong> A small witness <span class="math" data-tex="\(\theta:K\to I\)">\(\theta:K\to I\)</span> suffices; local smallness of <span class="math" data-tex="\(I\)">\(I\)</span> is unnecessary for this conclusion. For <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, form the small colimit of <span class="math" data-tex="\(D\theta\)">\(D\theta\)</span>. Theorem 2.1 extends its cocone to every <span class="math" data-tex="\(i\)">\(i\)</span>, and the complete existence and factor argument in Corollary 2.2 makes it the <span class="math" data-tex="\(I\)">\(I\)</span>-colimit. The cone–cocone reversal gives the limit statement.</p>
+<p>Different witnesses and chosen small colimits yield the unique comparison commuting with every extended <span class="math" data-tex="\(I\)">\(I\)</span>-coprojection. To see its inverse, factor each universal cocone through the other; their composites fix every coprojection, so uniqueness makes them identities. For three choices, the composite comparison and the direct comparison agree on every coprojection, proving the cocycle identity. For the empty index these statements reduce to the full initial-object uniqueness proof; their duals reduce to terminal-object uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Without local <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-smallness, the full-image conclusion can fail even though small witnesses still compute colimits. For a concrete boundary, let
+<span class="math" data-tex="\(M=\{1\}\sqcup\mathcal U\)">\(M=\{1\}\sqcup\mathcal U\)</span>, with identity <span class="math" data-tex="\(1\)">\(1\)</span>, and let the product of any two elements different from <span class="math" data-tex="\(1\)">\(1\)</span> be a fixed <span class="math" data-tex="\(0\)">\(0\)</span> in the second summand. This is associative: after removing identity factors, a product of at least two nonidentity factors is <span class="math" data-tex="\(0\)">\(0\)</span>, independently of parentheses. In particular <span class="math" data-tex="\(0m=m0=0\)">\(0m=m0=0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be its one-object monoid category, and let <span class="math" data-tex="\(K\)">\(K\)</span> be the one-object submonoid category <span class="math" data-tex="\(\{1,0\}\)">\(\{1,0\}\)</span>. The inclusion <span class="math" data-tex="\(K\to I\)">\(K\to I\)</span> is cofinal. Its comma objects are <span class="math" data-tex="\(m\in M\)">\(m\in M\)</span>, and the <span class="math" data-tex="\(K\)">\(K\)</span>-arrow <span class="math" data-tex="\(0\)">\(0\)</span> sends every <span class="math" data-tex="\(m\)">\(m\)</span> to <span class="math" data-tex="\(0m=0\)">\(0m=0\)</span>; hence the comma is nonempty and connected. But a full subcategory of <span class="math" data-tex="\(I\)">\(I\)</span> is either empty or all of <span class="math" data-tex="\(I\)">\(I\)</span>. The empty one is not cofinal, and the other has the nonsmall Hom set <span class="math" data-tex="\(M\)">\(M\)</span>. Indeed <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> is not <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small by the complete Cantor proof in <em>Universes</em>, Lemma 1.1, and subsets of small sets would be small. Thus neither is a small full cofinal subcategory. This example falls outside the locally small convention in Theorem 5.1.</p>
+<h2 id="6-four-graded-exercises-with-full-solutions">6. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-reaching-objects-does-not-connect-choices">Exercise 1 — reaching objects does not connect choices</h3>
+<p>Let <span class="math" data-tex="\(J\)">\(J\)</span> be discrete with two objects, let <span class="math" data-tex="\(I\)">\(I\)</span> have one object and only its identity, and let <span class="math" data-tex="\(\phi:J\to I\)">\(\phi:J\to I\)</span> be the unique functor. Every object of <span class="math" data-tex="\(I\)">\(I\)</span> maps to an image object. Determine cofinality, and exhibit failures of both the Set-colimit and projective-limit tests.</p>
+<p><strong>Solution.</strong> The sole incoming comma is the discrete two-object category: there is one arrow to each image, but no arrow in <span class="math" data-tex="\(J\)">\(J\)</span> connecting them. It is not connected, so <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is not cofinal.</p>
+<p>For the singleton diagram on <span class="math" data-tex="\(I\)">\(I\)</span>, its colimit is a singleton. The restricted diagram on <span class="math" data-tex="\(J\)">\(J\)</span> has a tagged two-element colimit. The canonical map sends both elements to the singleton, so is not injective.</p>
+<p>For the contravariant diagram with value <span class="math" data-tex="\(2=\{0,1\}\)">\(2=\{0,1\}\)</span> on <span class="math" data-tex="\(I\)">\(I\)</span>, the limit is <span class="math" data-tex="\(2\)">\(2\)</span>. On <span class="math" data-tex="\(J\)">\(J\)</span> the limit is <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span>, and restriction is <span class="math" data-tex="\(x\mapsto(x,x)\)">\(x\mapsto(x,x)\)</span>. The compatible pair <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> is outside its image. Nonempty comma categories alone do not ensure either comparison.</p>
+<h3 id="exercise-2-choose-the-endpoint-with-the-correct-direction">Exercise 2 — choose the endpoint with the correct direction</h3>
+<p>Let <span class="math" data-tex="\(I=(0\to1)\)">\(I=(0\to1)\)</span>. Prove that the inclusion of <span class="math" data-tex="\(1\)">\(1\)</span> is cofinal and the inclusion of <span class="math" data-tex="\(0\)">\(0\)</span> is co-initial. Compute the resulting universal maps for a diagram <span class="math" data-tex="\(A\xrightarrow{f}B\)">\(A\xrightarrow{f}B\)</span> and for a projective diagram <span class="math" data-tex="\(B&#x27;\xrightarrow{g}A&#x27;\)">\(B&#x27;\xrightarrow{g}A&#x27;\)</span> indexed by <span class="math" data-tex="\(I^{\mathrm{op}}\)">\(I^{\mathrm{op}}\)</span>. Show that the two endpoint inclusions cannot be interchanged.</p>
+<p><strong>Solution.</strong> For the inclusion of <span class="math" data-tex="\(1\)">\(1\)</span>, each incoming comma contains exactly the unique arrow <span class="math" data-tex="\(i\to1\)">\(i\to1\)</span>, and only its identity. Hence it is cofinal. Its colimit calculation says <span class="math" data-tex="\(\operatorname{colim}(A\to B)=B\)">\(\operatorname{colim}(A\to B)=B\)</span>, with coprojections <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(1_B\)">\(1_B\)</span>. A cocone <span class="math" data-tex="\((a:A\to T,b:B\to T)\)">\((a:A\to T,b:B\to T)\)</span> has <span class="math" data-tex="\(a=bf\)">\(a=bf\)</span>, so its unique factor is <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>For the inclusion of <span class="math" data-tex="\(0\)">\(0\)</span>, every outgoing comma contains exactly the unique arrow <span class="math" data-tex="\(0\to i\)">\(0\to i\)</span>. Hence it is co-initial. Its limit calculation says <span class="math" data-tex="\(\lim(A\to B)=A\)">\(\lim(A\to B)=A\)</span>, with projections <span class="math" data-tex="\(1_A,f\)">\(1_A,f\)</span>. A cone <span class="math" data-tex="\((a:T\to A,b:T\to B)\)">\((a:T\to A,b:T\to B)\)</span> has <span class="math" data-tex="\(b=fa\)">\(b=fa\)</span>, so its unique factor is <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p>The projective diagram has its actual arrow from value <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> at <span class="math" data-tex="\(1\)">\(1\)</span> to value <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span>. Cofinality of the inclusion of <span class="math" data-tex="\(1\)">\(1\)</span> gives its limit <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>, with projections <span class="math" data-tex="\(1_{B&#x27;},g\)">\(1_{B&#x27;},g\)</span>. Its compatible incoming cones factor uniquely through their component at <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>The inclusion of <span class="math" data-tex="\(0\)">\(0\)</span> is not cofinal: the incoming comma at <span class="math" data-tex="\(1\)">\(1\)</span> is empty. The inclusion of <span class="math" data-tex="\(1\)">\(1\)</span> is not co-initial: the outgoing comma at <span class="math" data-tex="\(0\)">\(0\)</span> is empty. For the concrete covariant Set diagram <span class="math" data-tex="\(\varnothing\to1\)">\(\varnothing\to1\)</span>, choosing <span class="math" data-tex="\(0\)">\(0\)</span> for its colimit would give <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, while its true colimit is <span class="math" data-tex="\(1\)">\(1\)</span>; choosing <span class="math" data-tex="\(1\)">\(1\)</span> for its limit would give <span class="math" data-tex="\(1\)">\(1\)</span>, while its true limit is <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>.</p>
+<h3 id="exercise-3-why-one-cancellation-needs-full-faithfulness">Exercise 3 — why one cancellation needs full faithfulness</h3>
+<p>Let <span class="math" data-tex="\(J=(0\to1)\)">\(J=(0\to1)\)</span>, let <span class="math" data-tex="\(I\)">\(I\)</span> be the one-object identity category, and let <span class="math" data-tex="\(\phi:J\to I\)">\(\phi:J\to I\)</span> be its collapse. Let <span class="math" data-tex="\(K\)">\(K\)</span> be the one-object identity category and let <span class="math" data-tex="\(\psi:K\to J\)">\(\psi:K\to J\)</span> select <span class="math" data-tex="\(0\)">\(0\)</span>. Determine cofinality of <span class="math" data-tex="\(\phi,\psi,\phi\psi\)">\(\phi,\psi,\phi\psi\)</span> and the failed hypothesis of fully faithful cancellation.</p>
+<p><strong>Solution.</strong> The incoming comma for <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is <span class="math" data-tex="\(J\)">\(J\)</span> itself: there is a unique arrow in <span class="math" data-tex="\(I\)">\(I\)</span> from its object to each <span class="math" data-tex="\(\phi(j)\)">\(\phi(j)\)</span>, and all <span class="math" data-tex="\(J\)">\(J\)</span>-arrows satisfy its equation. It is nonempty and connected, so <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is cofinal. The composite is the identity functor between one-object identity categories, so is cofinal.</p>
+<p>The incoming comma <span class="math" data-tex="\((1\downarrow\psi)\)">\((1\downarrow\psi)\)</span> is empty, since there is no arrow <span class="math" data-tex="\(1\to0\)">\(1\to0\)</span> in <span class="math" data-tex="\(J\)">\(J\)</span>. Thus <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is not cofinal. The Hom map
+<span class="math" data-tex="\(\operatorname{Hom}_J(1,0)=\varnothing\to\operatorname{Hom}_I(*,*)=1\)">\(\operatorname{Hom}_J(1,0)=\varnothing\to\operatorname{Hom}_I(*,*)=1\)</span>
+is not surjective, so <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is not full. This exhibits why cofinality of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and <span class="math" data-tex="\(\phi\psi\)">\(\phi\psi\)</span> does not by itself permit cancellation to obtain cofinality of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<h3 id="exercise-4-omit-every-odd-stage">Exercise 4 — omit every odd stage</h3>
+<p>Consider the ordered category <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>, with a unique arrow <span class="math" data-tex="\(n\to m\)">\(n\to m\)</span> when <span class="math" data-tex="\(n\le m\)">\(n\le m\)</span>. Let <span class="math" data-tex="\(E\)">\(E\)</span> be its full subcategory on the even numbers. Prove the inclusion is cofinal. Compute its effect on the colimit of <span class="math" data-tex="\(D(n)=\{0,\ldots,n\}\)">\(D(n)=\{0,\ldots,n\}\)</span>, with inclusions, and on the limit of the projective diagram of binary strings of length <span class="math" data-tex="\(n\)">\(n\)</span>, with truncation maps.</p>
+<p><strong>Solution.</strong> At <span class="math" data-tex="\(n\)">\(n\)</span>, the incoming comma is the ordered set of even numbers <span class="math" data-tex="\(e\ge n\)">\(e\ge n\)</span>. It is nonempty, since some even number is at least <span class="math" data-tex="\(n\)">\(n\)</span>. Two objects <span class="math" data-tex="\(e,e&#x27;\)">\(e,e&#x27;\)</span> have the even common receiver <span class="math" data-tex="\(\max(e,e&#x27;)\)">\(\max(e,e&#x27;)\)</span>, so the comma is connected. This verifies cofinality on every <span class="math" data-tex="\(n\)">\(n\)</span>. The full subcategory is small because its objects and unique-arrow sets are countable.</p>
+<p>For <span class="math" data-tex="\(D\)">\(D\)</span>, send a quotient class <span class="math" data-tex="\([n,x]\)">\([n,x]\)</span> to <span class="math" data-tex="\(x\in\mathbb N\)">\(x\in\mathbb N\)</span>. Transitions preserve <span class="math" data-tex="\(x\)">\(x\)</span>, so this is well-defined. Every <span class="math" data-tex="\(x\)">\(x\)</span> occurs at stage <span class="math" data-tex="\(x\)">\(x\)</span>. If <span class="math" data-tex="\([n,x]\)">\([n,x]\)</span> and <span class="math" data-tex="\([m,y]\)">\([m,y]\)</span> have the same image, <span class="math" data-tex="\(x=y\)">\(x=y\)</span>, and both representatives map to that same element in stage <span class="math" data-tex="\(\max(n,m)\)">\(\max(n,m)\)</span>, so the map is injective. Thus the colimit is <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. Over the even stages the same proof uses an even stage at least <span class="math" data-tex="\(\max(n,m)\)">\(\max(n,m)\)</span>, giving the same bijection. The canonical comparison sends each class to its unchanged integer, so is the identity under these bijections.</p>
+<p>A cocone to a set <span class="math" data-tex="\(T\)">\(T\)</span> is a family of functions <span class="math" data-tex="\(b_n:\{0,\ldots,n\}\to T\)">\(b_n:\{0,\ldots,n\}\to T\)</span> agreeing under inclusions. Its unique factor <span class="math" data-tex="\(\mathbb N\to T\)">\(\mathbb N\to T\)</span> sends <span class="math" data-tex="\(x\)">\(x\)</span> to <span class="math" data-tex="\(b_n(x)\)">\(b_n(x)\)</span> for any <span class="math" data-tex="\(n\ge x\)">\(n\ge x\)</span>. Independence and uniqueness follow from a common later stage. Restricting to even <span class="math" data-tex="\(n\)">\(n\)</span> supplies the same formula. This also includes <span class="math" data-tex="\(T=\varnothing\)">\(T=\varnothing\)</span>: neither family nor a factor exists.</p>
+<p>Write the binary-string diagram as
+<span class="math" data-tex="\(\beta(n)=2^{\{0,\ldots,n-1\}}\)">\(\beta(n)=2^{\{0,\ldots,n-1\}}\)</span>, with <span class="math" data-tex="\(\beta(0)=1\)">\(\beta(0)=1\)</span>; arrows in <span class="math" data-tex="\(\mathbb N^{\mathrm{op}}\)">\(\mathbb N^{\mathrm{op}}\)</span> truncate a longer string to a shorter one. A compatible family <span class="math" data-tex="\((s_n)\)">\((s_n)\)</span> determines a unique infinite string <span class="math" data-tex="\(s:\mathbb N\to2\)">\(s:\mathbb N\to2\)</span>: for <span class="math" data-tex="\(r\)">\(r\)</span>, choose any <span class="math" data-tex="\(n&gt;r\)">\(n&gt;r\)</span> and set <span class="math" data-tex="\(s(r)=s_n(r)\)">\(s(r)=s_n(r)\)</span>. Truncation compatibility makes this independent of <span class="math" data-tex="\(n\)">\(n\)</span>. Conversely <span class="math" data-tex="\(s\)">\(s\)</span> supplies all its finite initial segments; both constructions are inverse.</p>
+<p>The even-length family determines the same infinite string by choosing an even <span class="math" data-tex="\(e&gt;r\)">\(e&gt;r\)</span>. Its missing odd segment of length <span class="math" data-tex="\(n\)">\(n\)</span> is the truncation of any even segment of length <span class="math" data-tex="\(e\ge n\)">\(e\ge n\)</span>, independently of <span class="math" data-tex="\(e\)">\(e\)</span>. Hence restriction to even stages is bijective on compatible families. For an incoming cone from <span class="math" data-tex="\(T\)">\(T\)</span>, apply these constructions separately to each <span class="math" data-tex="\(t\in T\)">\(t\in T\)</span>; the unique factor <span class="math" data-tex="\(T\to2^{\mathbb N}\)">\(T\to2^{\mathbb N}\)</span> is its resulting infinite string. This proves the full limit property and the exact canonical restriction comparison, including empty <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<h2 id="7-references-and-retained-proof-interfaces">7. References and retained proof interfaces</h2>
+<ul>
+<li>Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Section 2.6, for cofinal functors and directed colimits.</li>
+<li><a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex#L1719">The Stacks Project, cofinal and initial categories at the pinned structured revision</a>, records the same incoming-comma convention and the dual. Section 2 supplies the full comparison proof.</li>
+<li><a href="colimits-as-connected-components.html#1-identify-every-transported-element">Colimits as connected components</a>, Sections 1–3, supplies the full small Set quotient factors, the exact element-component bijection, the constant-singleton component map and the covariant representable identity-class calculation.</li>
+<li><a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families and universal cones</a>, Sections 2–3, supplies full cone and cocone value functors, actual universal structural maps, restriction, opposite-category reversal and size transfer. <a href="points-fibres-and-universal-representations.html#2-evaluation-at-an-identity">Points and representations, Section 2</a> supplies complete covariant Yoneda and reflection of invertible represented comparisons.</li>
+<li><a href="universes-and-small-categories.html#3-transporting-the-size-bound">Universes and small categories</a>, Sections 1–4, supplies the complete Cantor, image, union and category-data bounds. <a href="zero-maps-components-and-subobjects.html#4-forgetting-every-arrow-except-its-component">Zero maps, components and subobjects</a>, Sections 1 and 4, supplies the complete comma laws and finite-zigzag connectedness proofs.</li>
+</ul>
+</main></body></html>

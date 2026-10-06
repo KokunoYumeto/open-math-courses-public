@@ -1,0 +1,447 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Amenable actions and tensor absorption · Open Mathematics Courses</title><meta name="description" content="Amenable actions and tensor absorption: lesson draft with 8 solved exercises."><link rel="stylesheet" href="../../assets/site.css"><style>.draft-notice{max-width:880px;margin:1rem auto;padding:.5rem 1rem;border-left:4px solid #856000;background:#fff8df;color:#342b17}.equation{position:relative;margin:1.25rem 0;padding:0 3.8rem}.equation-tag{position:absolute;right:0;top:50%;transform:translateY(-50%);font-family:serif}.math-display{overflow-x:auto;padding:.4rem 0}.lesson{max-width:880px}mjx-container[display="true"]{overflow-x:auto;overflow-y:hidden}@media(max-width:600px){.lesson{padding:1rem}.equation{padding:0}.equation-tag{position:static;display:block;transform:none;text-align:right;margin-top:.25rem}}</style><script>window.MathJax={"tex":{"inlineMath":[["\\(","\\)"]],"displayMath":[["\\[","\\]"]],"processEscapes":true},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav" aria-label="Main"><a href="../../">Courses</a><span class="unlinked">Licensing</span></nav><p class="lang-note">English</p></div></header><main id="main"><nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> › Operator algebras</nav><nav class="lesson-nav" aria-label="Course lessons"><a href="index.html">Projection orthogonalization</a> · <a href="moving-hyperfinite-tensor-factors.html">Moving tensor factors</a> · <a href="finite-outer-period-and-obstruction.html">Period and obstruction</a> · <a href="independent-copies-of-orbit-algebras.html">Independent orbit copies</a> · <a href="gaussian-models-and-amenable-towers.html">Gaussian amenable towers</a> · <a href="relative-character-eigenunitaries.html">Relative character eigenunitaries</a> · <a href="bounded-topology-and-tracial-representations.html">Topology and tracial representations</a> · <a href="finite-free-actions-and-coboundaries.html">Finite free actions</a> · <a href="type-ii-projection-division.html">Projection division</a> · <a href="the-simple-outer-group-of-the-hyperfinite-factor.html">The simple outer group</a> · <a href="from-approximate-cocycles-to-exact-coboundaries.html">Cocycle diagonals</a> · <a href="correcting-approximate-relative-towers.html">Approximate tower correction</a> · <a href="cyclic-towers-in-finite-algebras.html">Cyclic towers</a> · <a href="cyclic-finite-models-for-outer-conjugacy.html">Cyclic finite models</a> · <a href="amenable-actions-and-tensor-absorption.html">Amenable tensor absorption</a> · <a href="almost-invariant-inner-implementers.html">Almost invariant implementers</a> · <a href="central-towers-and-unitary-cocycles.html">Central towers and cohomology</a> · <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix phases and absorption</a> · <a href="comparing-asymptotically-aperiodic-automorphisms.html">Aperiodic comparison</a> · <a href="classifying-finite-cyclic-automorphisms.html">Finite cyclic classification</a> · <a href="exact-implementers-for-cyclic-actions.html">Exact cyclic implementers</a> · <a href="exact-weyl-pairs-for-cyclic-actions.html">Exact Weyl pairs</a> · <a href="central-sequences-and-the-module-circle.html">The module circle</a> · <a href="central-triviality-and-modular-powers.html">Modular powers</a> · <a href="trace-scaling-on-the-hyperfinite-semifinite-factor.html">Semifinite trace scaling</a> · <a href="centrally-trivial-automorphisms-and-core-normalizers.html">Core normalizers</a></nav><aside class="draft-notice" aria-label="Edition status"><p>Full source, structure and prerequisite checks remain incomplete. <a href="source-review.html">Review scope and remaining work</a>.</p></aside><aside class="draft-notice" aria-label="Prerequisite scope"><p>This draft proves the Bernoulli-model absorption, onto normal isomorphism, genuine cocycle, semifinite trace equality and chosen inner phases under its stated centralizer and approximation foundations. It supplies the fixed-coordinate diagonal, finite-head flip, central-kernel, tensor-factor and globally normal inverse arguments.</p></aside><article class="lesson"><h1 id="amenable-actions-and-tensor-absorption">Amenable actions and tensor absorption</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the AI that wrote it, under the stated prerequisites. Original text and figures are public domain (CC0). Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>Projection towers can place an equivariant copy of a Bernoulli matrix algebra inside an asymptotic centralizer. To absorb its action on the original factor, we must turn local matrix flips into an onto normal isomorphism and a genuine unitary cocycle. This requires additional work when the factor has no finite trace: conjugation changes a normal state, and an element limit alone does not establish normality or surjectivity.</p>
+<p>We construct the matrix model, lift almost invariant finite flips, and perform the complete intertwining. Normal conditional expectations provide left inverses at every stage. Their predual limits and their summably stable preimages first give a multiplicative, faithful left inverse. Dense forward tests then make it onto. Only afterwards do we pass the cocycle equations to the limit. For a semifinite factor, the two inverse maps prove trace preservation together.</p>
+<p>The exact foundations are <a href="matrix-eigenvectors-and-tensor-absorption.html">Matrix eigenvectors and tensor absorption</a>, Proposition 2.1 and its finite matrix lifting foundation; <a href="independent-copies-of-orbit-algebras.html">Independent copies of orbit algebras</a>, Sections 5–7; <a href="gaussian-models-and-amenable-towers.html">Gaussian models and amenable towers</a>, Theorems 1.1 and 8.1; and <span class="unbundled-lesson">Characteristic-compatible inner approximations <small>(lesson outside this selection)</small></span>, Theorem 4.1. We retain their centralizer, spectral, normal tracial GNS and strong density hypotheses. In particular, strong stability supplies type II relative centralizer commutants. This lesson proves absorption under those foundations; it does not assert full action classification or completion of every prerequisite in the course.</p>
+<p>The strong-stability background is [Connes], Theorem 2.2.1; his Section 2.2 credits the earlier work of McDuff and Araki. Lemma 2.3.6 treats the normal-functional summability method for tensor factorization. For amenable actions, [Ocneanu thesis], Theorem 8.6 and Section 8.7, proves model splitting using the model of its Section 4.5. Here we construct the Bernoulli site model (1.1) and prove absorption through finite flips and normal left inverses. The Gaussian tower and relative-cohomology proofs used below are the exact preceding programme results; the human references identify classical context and comparison, and do not replace those proofs.</p>
+<h2 id="1-the-model-and-the-absorption-statement">1. The model and the absorption statement</h2>
+<p>Let <span class="math">\(M\)</span> be a strongly stable factor with separable predual, <span class="math">\(\alpha:G\to\operatorname{Aut}M\)</span> an action of a countable amenable group, and <span class="math">\(F=M_\omega\)</span> its canonical tracial asymptotic centralizer. Put</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ H&amp;=\ker(G\longrightarrow\operatorname{Aut}F),\\
+ Q&amp;=G/H,\qquad I=Q\times\mathbb N,\\
+ B&amp;=\overline{\bigotimes}_{(q,n)\in I}(M_2,\operatorname{tr}_2).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.1)</span></div>
+<p>The subgroup <span class="math">\(H\)</span> consists exactly of the elements inducing centrally trivial automorphisms, by the separable centralizer characterization in the stated foundations. It is normal. The quotient <span class="math">\(Q\)</span> is countable and amenable; the pushforward probability and superlevel-set proof in the approximation lesson, Section 5, verifies the Følner criterion for this quotient.</p>
+<p>Let <span class="math">\(\delta_q\)</span> permute sites by <span class="math">\((s,n)\mapsto(qs,n)\)</span>, and pull this action back to <span class="math">\(G\)</span>. We write</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \Delta_g&amp;=\delta_{gH},\qquad A=M\,\overline\otimes\, B,\\
+ a_g&amp;=\alpha_g\otimes\Delta_g,\\
+ \iota(x)&amp;=x\otimes1,\qquad E=\mathrm{id}_M\otimes\tau_B.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.2)</span></div>
+<p>Here <span class="math">\(E:A\to M\)</span> is the normal slice map; when taking a difference in <span class="math">\(A\)</span>, we identify its value with <span class="math">\(\iota E\)</span>. Fix a faithful normal state <span class="math">\(\varphi\)</span> on <span class="math">\(M\)</span> and <span class="math">\(\rho=\varphi\otimes\tau_B\)</span> on <span class="math">\(A\)</span>. For a normal positive functional <span class="math">\(\chi\)</span>, our sharp seminorm is</p>
+<div class="equation"><div class="math math-display">\[
+ \|z\|_\chi^{\sharp\,2}=\chi(z^*z)+\chi(zz^*).
+ 
+\]</div><span class="equation-tag">(1.3)</span></div>
+<p>The seminorm of a faithful normal state gives the strong-star topology on bounded sets. This follows in its faithful normal GNS representation by approximating vectors with the commutant applied to the cyclic separating vector; normal functionals then follow by finite sums of vector functionals. In particular, making a bounded element small for <span class="math">\(\rho\)</span> makes it small for any fixed finite collection of normal positive functionals.</p>
+<p><strong>Theorem 1.1.</strong> Under the stated foundations, there are a normal isomorphism <span class="math">\(\Phi:M\to A\)</span> and unitaries <span class="math">\(c_g\in A\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ c_{gh}&amp;=c_ga_g(c_h),\qquad c_e=1,\\
+ \Phi\alpha_g\Phi^{-1}&amp;=\operatorname{Ad}c_g\circ a_g.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(1.4)</span></div>
+<p>Thus <span class="math">\(\alpha\)</span> absorbs the Bernoulli action of its centrally trivial quotient. If <span class="math">\(M\)</span> has a faithful normal semifinite trace <span class="math">\(\tau_M\)</span>, then <span class="math">\(\Phi\)</span> preserves <span class="math">\(\tau_M\)</span> and <span class="math">\(\tau_M\otimes\tau_B\)</span>. If <span class="math">\(\alpha_n=\operatorname{Ad}U_n\)</span>, its chosen implementing unitary satisfies</p>
+<div class="equation"><div class="math math-display">\[
+ \Phi(U_n)=c_n(U_n\otimes1).
+ 
+\]</div><span class="equation-tag">(1.5)</span></div>
+<p>There is no requirement that the original action of <span class="math">\(G\)</span> be outer. The induced action of <span class="math">\(Q\)</span> on <span class="math">\(F\)</span> is faithful by its definition. Representative automorphisms for elements of <span class="math">\(Q\)</span> need only multiply correctly on <span class="math">\(F\)</span>.</p>
+<h2 id="2-bernoulli-matrices-on-projection-towers">2. Bernoulli matrices on projection towers</h2>
+<p>Each finite site algebra <span class="math">\(B_J\)</span> is a full matrix algebra. The trace GNS construction identifies <span class="math">\(B\)</span> with the hyperfinite finite factor <span class="math">\(R\)</span>. To see factoriality directly, the trace-preserving expectations onto finite heads converge in <span class="math">\(L^2\)</span>. The head expectation of a central element commutes with that full matrix head and is scalar; the limit is therefore scalar. Infinitely many sites make the algebra diffuse. Site permutations preserve all finite word moments, so the associated GNS unitaries extend <span class="math">\(\delta\)</span> normally and preserve its trace. Permutation identities prove the action law.</p>
+<p>For <span class="math">\(q\ne e\)</span>, let <span class="math">\(X_n\)</span> be the trace-zero Pauli matrix at site <span class="math">\((e,n)\)</span>. This is a strongly central sequence: finite head densities commute with it eventually, these densities are dense in the predual, and its uniform norm bound extends the estimate. The sites <span class="math">\((e,n)\)</span> and <span class="math">\((q,n)\)</span> are independent. Hence</p>
+<div class="equation"><div class="math math-display">\[
+ \|\delta_q(X_n)-X_n\|_2^2=2.
+ 
+\]</div><span class="equation-tag">(2.1)</span></div>
+<p>This also witnesses nontriviality on the centralizer for <span class="math">\(\delta_q\otimes\delta_q\)</span>. It works for finite <span class="math">\(Q\)</span> because the second coordinate still tends to infinity; for trivial <span class="math">\(Q\)</span> there are no nonidentity tests.</p>
+<p>We need a relative version of the model construction. Let <span class="math">\(\gamma\)</span> be the faithful induced action of <span class="math">\(Q\)</span> on <span class="math">\(F\)</span>, let <span class="math">\(P\subset F\)</span> be countably generated and invariant, and put <span class="math">\(D=P^\prime\cap F\)</span>. Strong stability and the matrix proposition make <span class="math">\(D\)</span>, and its nonzero corners, type II.</p>
+<p>Fix finite <span class="math">\(K\subset Q\)</span> containing the identity and finite <span class="math">\(J\subset I\)</span>. The Gaussian tower theorem supplies orthogonal levels <span class="math">\(E_{i,s}=\gamma_s(E_{i,e})\)</span>, with finite shapes <span class="math">\(R_i\)</span> reanchored at <span class="math">\(e\)</span>, and residual projection <span class="math">\(E_0\)</span>. Choose their residual mass below <span class="math">\(\zeta\)</span> and their weighted outgoing boundary below <span class="math">\(\kappa\)</span>, for all <span class="math">\(q\in K\)</span>. Define finite site sets</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ J&#39;&amp;=J\cup\bigcup_{q\in K}qJ,\\
+ L&amp;=\bigcup_i\bigcup_{s\in R_i}s^{-1}J&#39;.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(2.2)</span></div>
+<p>In each nonzero base corner choose a unital matrix embedding <span class="math">\(\theta_i:B_L\to E_{i,e}DE_{i,e}\)</span>, and choose <span class="math">\(\theta_0:B_{J&#39;}\to E_0DE_0\)</span> when that corner is nonzero. Theorem 1.1 and Corollary 1.2 of <a href="type-ii-projection-division.html">Dividing type-II projections and constructing matrix units</a> give these unital corner embeddings, for arbitrary center. The type-II property is inherited by every nonzero corner. Omit zero corners. Set, for <span class="math">\(x\in B_{J&#39;}\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+ \Theta(x)=\sum_{i,s\in R_i}
+ \gamma_s\theta_i\delta_{s^{-1}}(x)+\theta_0(x).
+ 
+\]</div><span class="equation-tag">(2.3)</span></div>
+<p>The domains are valid by (2.2). Orthogonal supports summing to one make <span class="math">\(\Theta\)</span> a unital homomorphism. A full matrix domain is simple, so it is injective. The trace on each corner is its level mass times the unique normalized matrix trace. Summing these masses shows that <span class="math">\(\Theta\)</span> preserves trace exactly.</p>
+<p>For <span class="math">\(q\in K\)</span>, put</p>
+<div class="equation"><div class="math math-display">\[
+ C_q=\sum_i\sum_{s\in R_i,\,qs\in R_i}E_{i,qs}.
+ 
+\]</div><span class="equation-tag">(2.4)</span></div>
+<p>For <span class="math">\(x\in B_J\)</span>, the transformed source and target agree on every level of <span class="math">\(C_q\)</span>, since <span class="math">\(\delta_{(qs)^{-1}}\delta_q=\delta_{s^{-1}}\)</span> and <span class="math">\(\gamma_q\gamma_s=\gamma_{qs}\)</span>. Both maps commute with <span class="math">\(C_q\)</span>. Both remaining terms are supported on the same projection <span class="math">\(1-C_q\)</span>, with difference of norm at most <span class="math">\(2\|x\|\)</span>. Thus</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|\gamma_q\Theta(x)-\Theta\delta_q(x)\|_2
+ &amp;\le2\|x\|\sqrt{\tau(1-C_q)},\\
+ \tau(1-C_q)&amp;&lt;\zeta+\kappa.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(2.5)</span></div>
+<p>There is no independence assumption for these bad parts. The missing mass is precisely residual mass plus outgoing level mass.</p>
+<p>Extend this finite head embedding to <span class="math">\(B\)</span>. The commutant of a full matrix algebra in a type II algebra remains type II: the matrix coordinates identify the ambient algebra with that matrix algebra tensored with its commutant. A type I summand in the latter would give one in the ambient algebra. Successive halving therefore places all remaining commuting <span class="math">\(M_2\)</span> sites in successive commutants. Finite word traces factor, and the faithful tracial GNS construction extends the map normally onto its generated algebra. The finite head is unchanged; equivariance has not yet been imposed on the tail.</p>
+<p><img src="figures/bernoulli-tower-model.svg" alt="An exact five-block Bernoulli tower"></p>
+<p>Figure 1. In the exact finite example <span class="math">\(Q=C_5\)</span>, the shape is <span class="math">\(R=\{0,1,2\}\)</span> and the finite Bernoulli algebra is <span class="math">\(M_{32}\)</span>. The outer block shift is <span class="math">\(\gamma\)</span>; the internal site permutation is <span class="math">\(\delta\)</span>. The residual blocks are 3 and 4. For translation by 1 the good projection is <span class="math">\(E_1+E_2\)</span>, and both bad terms lie on blocks 0, 3 and 4. Residual mass <span class="math">\(2/5\)</span> plus outgoing mass <span class="math">\(1/5\)</span> gives (2.5), with bound <span class="math">\(2\|x\|\sqrt{3/5}\)</span>. The <a href="figures/draw_bernoulli_tower_model.py">editable source</a> retains these exact coordinates. This finite picture illustrates the support estimate, rather than the infinite diagonal of the next section.</p>
+<h2 id="3-an-equivariant-copy-in-the-same-centralizer">3. An equivariant copy in the same centralizer</h2>
+<p><strong>Proposition 3.1.</strong> There is a unital normal trace-preserving embedding <span class="math">\(T:B\to D\)</span> satisfying</p>
+<div class="equation"><div class="math math-display">\[
+ T\delta_q=\gamma_qT\quad(q\in Q).
+ 
+\]</div><span class="equation-tag">(3.1)</span></div>
+<p><em>Proof.</em> Enumerate <span class="math">\(Q\)</span>, the Pauli generators at all sites, all their star words, and a generating family of <span class="math">\(P\)</span> with fixed bounded strongly central representatives <span class="math">\(p_{v,n}\)</span>. Choose growing finite site and group sets exhausting all these tests. Section 2 gives embeddings <span class="math">\(\Theta_r:B\to D\)</span> with covariance error below <span class="math">\(1/(8r)\)</span> on the tested matrix head. Include every translated generator label required by the first <span class="math">\(r\)</span> tests before choosing this head.</p>
+<p>Choose exact unitary strongly central representatives <span class="math">\(x_{j,k}^{(r)}\)</span> of <span class="math">\(\Theta_r(b_j)\)</span>. At output coordinate <span class="math">\(n\)</span>, choose one inner coordinate <span class="math">\(k(n)\ge n\)</span> in a finite intersection of ultrafilter-large sets. Require predual commutators with the first <span class="math">\(n\)</span> dense normal functionals below <span class="math">\(1/n\)</span>, sharp commutators with the fixed coefficients <span class="math">\(p_{v,n}\)</span> below <span class="math">\(1/n\)</span>, the first <span class="math">\(n\)</span> word trace errors below <span class="math">\(1/n\)</span>, and all tested covariance errors below <span class="math">\(1/n\)</span>.</p>
+<p>These sets are large for different, explicit reasons. Strong centrality gives the predual tests. With the output coordinate <span class="math">\(n\)</span> held fixed, it also gives strong-star commutation with each of the finitely many fixed elements <span class="math">\(p_{v,n}\in M\)</span>. This supplies the relative commutator tests; quotient commutation alone would not justify resampling the given representatives of <span class="math">\(P\)</span>. Exact finite word moments give the trace tests. The squared sharp covariance limits are twice the squared tracial errors in <span class="math">\(F\)</span>; the selected error <span class="math">\(1/(8n)\)</span> makes those limits less than <span class="math">\(1/(32n^2)\)</span>. Each finite set of tests is therefore compatible. Translated labels are included in the same finite closure; they use the same coordinate.</p>
+<p>The classes <span class="math">\(Y_j=[(x_{j,k(n)}^{(n)})]\)</span> are strongly central by dense predual tests, and belong to <span class="math">\(D\)</span> by the commutators with the original <span class="math">\(p_{v,n}\)</span>. Those representatives of <span class="math">\(P\)</span> were not resampled. All star word moments are exact in the limit. Equality of the moments of <span class="math">\(z^*z\)</span> preserves and reflects polynomial relations, and the trace power formula preserves the norm of a polynomial. The tracial GNS unitary consequently extends the polynomial map normally from <span class="math">\(B\)</span> onto <span class="math">\(W^*(Y_j)\)</span>. The covariance tests prove (3.1) on generators; normality proves it on all of <span class="math">\(B\)</span>. This is one coordinate diagonal in the original centralizer, with no new ultrafilter or saturation assertion. <span class="math">\(\square\)</span></p>
+<h2 id="4-almost-invariant-finite-flips">4. Almost invariant finite flips</h2>
+<p><strong>Proposition 4.1.</strong> Given finite <span class="math">\(K\subset Q\)</span>, a finite collection <span class="math">\(\mathcal F\)</span> in the unit ball of a finite head <span class="math">\(B_J\)</span>, and <span class="math">\(\eta&gt;0\)</span>, there is a finite <span class="math">\(L\supset J\)</span> and a unitary <span class="math">\(U\in B_L\otimes B_L\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|(\delta_q\otimes\delta_q)(U)-U\|_2&amp;&lt;\eta,\\
+ \|U(1\otimes b)U^*-b\otimes1\|_2&amp;&lt;\eta
+ \quad(b\in\mathcal F).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(4.1)</span></div>
+<p><em>Proof.</em> On <span class="math">\(N=B\overline\otimes B\cong R\)</span>, the flip <span class="math">\(\pi\)</span> commutes with <span class="math">\(\sigma_q=\delta_q\otimes\delta_q\)</span> and preserves trace. Its approximate innerness can be seen directly. For a finite head <span class="math">\(B_L\)</span> with matrix units <span class="math">\((e_{ij})\)</span>, the self-adjoint unitary <span class="math">\(S_L=\sum_{i,j}e_{ij}\otimes e_{ji}\)</span> implements the flip exactly on <span class="math">\(B_L\otimes B_L\)</span>. If <span class="math">\(h\)</span> belongs to a fixed finite head and <span class="math">\(\psi_h(z)=\tau_N(hz)\)</span>, then, for all larger <span class="math">\(L\)</span>, traciality gives</p>
+<div class="equation"><div class="math math-display">\[
+ \psi_h\circ\operatorname{Ad}S_L
+ =\psi_h\circ\pi.
+\]</div></div>
+<p>These functionals are norm dense in <span class="math">\(N_*\)</span>. Indeed, in the faithful normal tracial representation, normal functionals are norm limits of finite sums of vector functionals. Approximate each of their vectors by finite-head vectors; their vector functionals then have finite-head densities, and the approximation is in functional norm. Contractivity now gives <span class="math">\(\operatorname{Ad}S_L\to\pi\)</span> in the u-topology. This verifies the exact approximate-innerness hypothesis of the approximation theorem using this particular flip. The witness (2.1) shows that <span class="math">\(\sigma_q\)</span> induces a nontrivial centralizer automorphism for every nonidentity <span class="math">\(q\)</span>. Its inner subgroup is therefore trivial. The genuine comparison cocycle is <span class="math">\(w_q=1\)</span>, with automatic inner-subgroup compatibility.</p>
+<p>The Gaussian cohomology theorem with <span class="math">\(P=\mathbb C1\)</span>, followed by the approximation lesson, Theorem 4.1, supplies ordinary unitaries <span class="math">\(W_m\in N\)</span> with <span class="math">\(\operatorname{Ad}W_m\to\pi\)</span> and <span class="math">\(W_m\sigma_q(W_m^*)\to1\)</span>. In the finite tracial algebra,</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|\sigma_q(W_m)-W_m\|_2
+ &amp;=\|W_m\sigma_q(W_m^*)-1\|_2\\
+ &amp;\longrightarrow0.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(4.2)</span></div>
+<p>Choose <span class="math">\(m\)</span> for the prescribed finite tests. Let <span class="math">\(a_L\)</span> be the finite head expectation of <span class="math">\(W_m\)</span>. It is a contraction and tends to <span class="math">\(W_m\)</span> in <span class="math">\(L^2\)</span>. Complete its polar partial isometry to a unitary <span class="math">\(U_L\)</span> in the same full matrix algebra: initial and final ranks agree, so the complementary ranks agree too. Then</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|U_L-a_L\|_2^2
+ &amp;=\tau((1-|a_L|)^2)\\
+ &amp;\le\tau(1-|a_L|^2)\longrightarrow0.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(4.3)</span></div>
+<p>Thus <span class="math">\(U_L\to W_m\)</span> in <span class="math">\(L^2\)</span>. Each invariance or flip test changes by at most <span class="math">\(2\|U_L-W_m\|_2\)</span>. Choose <span class="math">\(L\)</span> large enough for all tests and include <span class="math">\(J\)</span>. This proves (4.1). The trivial quotient case uses the same flip approximation without group tests. <span class="math">\(\square\)</span></p>
+<h2 id="5-a-local-move-with-transported-states">5. A local move with transported states</h2>
+<p>The map <span class="math">\(E\)</span> in (1.2) is unital and completely positive, is an <span class="math">\(M\)</span>-bimodule map, and preserves <span class="math">\(\rho\)</span>. Kadison's inequality gives</p>
+<div class="equation"><div class="math math-display">\[
+ \|E(z)\|_\varphi^\sharp\le\|z\|_\rho^\sharp.
+ 
+\]</div><span class="equation-tag">(5.1)</span></div>
+<p><strong>Lemma 5.1.</strong> Given finite sets in the unit balls of <span class="math">\(M\)</span> and <span class="math">\(A\)</span>, finitely many <span class="math">\(g\in G\)</span>, finitely many normal predual functionals <span class="math">\(\psi\in M_*\)</span>, and finitely many normal positive functionals <span class="math">\(\chi\in A_*\)</span>, one can choose a unitary <span class="math">\(u\in A\)</span> with arbitrarily small prescribed bounds for the following quantities:</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ &amp;\|\operatorname{Ad}u^{\pm1}(\iota x)-\iota x\|_\chi^\sharp,\\
+ &amp;\|(\psi\otimes\tau_B)\circ\operatorname{Ad}u
+             -\psi\otimes\tau_B\|,\\
+ &amp;\|a_g(u)-u\|_\rho^\sharp,\\
+ &amp;\|\operatorname{Ad}u(z)-\iota E(\operatorname{Ad}u(z))\|_\rho^\sharp.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(5.2)</span></div>
+<p>The canonical preimage <span class="math">\(E(\operatorname{Ad}u(z))\)</span> is a contraction when <span class="math">\(z\)</span> is. The finite sets and normal functionals may be chosen using all previously constructed unitaries.</p>
+<p><em>Proof.</em> Use Proposition 3.1 with <span class="math">\(P=\mathbb C1\)</span>. Choose a finite matrix flip <span class="math">\(U\)</span> from Proposition 4.1, and enlarge its head to include every tested translate. Lift this single full matrix system <span class="math">\(T(B_{L&#39;})\)</span> exactly to strongly central systems <span class="math">\(t_k:B_{L&#39;}\to M\)</span>, by <span class="unlinked">Central sequence algebras and exact lifts, Theorem 6.1</span>, in its unital case. All products and submatrix inclusions are lifted together. Set</p>
+<div class="equation"><div class="math math-display">\[
+ v_k=(t_k\otimes\mathrm{id})(U)\in\mathcal U(A).
+ 
+\]</div><span class="equation-tag">(5.3)</span></div>
+<p>Finite coefficient expansions show that <span class="math">\(v_k\)</span> commutes strongly-star with every fixed <span class="math">\(\iota x\)</span>. They also show that its predual commutator with <span class="math">\(\psi\otimes\tau_B\)</span> tends to zero: first coefficients commute with <span class="math">\(\psi\)</span> in predual norm, and the second-leg trace commutes with every second coefficient. This proves the second test in (5.2), and in particular approximate preservation of <span class="math">\(\rho\)</span> in predual norm. The same holds for inverse conjugation. Approximate preservation of <span class="math">\(\rho\)</span> controls multiplication by the moving unitary when proving the first test; bounded strong-star equivalence then supplies every fixed <span class="math">\(\chi\)</span>. This assertion concerns <span class="math">\(\psi\otimes\tau_B\)</span>; an arbitrary second-leg functional need not commute with these coefficients.</p>
+<p>Every fixed strongly central coefficient has scalar ultraweak limit equal to its canonical trace. Equivariance of <span class="math">\(T\)</span> gives <span class="math">\(\alpha_g(t_k(b))-t_k(\Delta_g b)\to0\)</span> strongly-star along <span class="math">\(\omega\)</span>. This is valid for all <span class="math">\(g\in G\)</span>, including <span class="math">\(H\)</span>. Put <span class="math">\(R_{g,k}=a_g(v_k)-v_k\)</span> and <span class="math">\(S_{b,k}=v_k(1\otimes b)v_k^*-t_k(b)\otimes1\)</span>. Expanding the finite tensor words yields</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \lim_{k\to\omega}\|R_{g,k}\|_\rho^{\sharp\,2}
+ &amp;=2\|(\Delta_g\otimes\Delta_g)(U)-U\|_2^2,\\
+ \lim_{k\to\omega}\|S_{b,k}\|_\rho^{\sharp\,2}
+ &amp;=2\|U(1\otimes b)U^*-b\otimes1\|_2^2.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(5.4)</span></div>
+<p>Products with moving first coefficients are justified by their predual centrality. For example, commuting a bounded coefficient <span class="math">\(d_k\)</span> with <span class="math">\(\varphi\)</span> in norm controls the difference between <span class="math">\(\varphi(d_k^*r_k^*r_kd_k)\)</span> and <span class="math">\(\varphi(r_k^*r_kd_kd_k^*)\)</span>; the latter is bounded by <span class="math">\(\|d_k\|^2\varphi(r_k^*r_k)\)</span>. Applying this to adjoints proves the sharp estimate. Thus no arbitrary moving right multiplier is discarded.</p>
+<p>For a finite sum <span class="math">\(z_J=\sum x_i\otimes b_i\)</span>, choose flip tests on its finite coefficients and first-leg commutator tests on all <span class="math">\(x_i\)</span>. Formula (5.4) makes <span class="math">\(\operatorname{Ad}v_k(z_J)\)</span> arbitrarily close to <span class="math">\(M\otimes1\)</span> in <span class="math">\(\rho\)</span>-sharp seminorm. For a general contraction <span class="math">\(z\)</span>, the normal finite head expectations give contraction approximants <span class="math">\(z_J\to z\)</span> strongly-star, hence in that seminorm. If <span class="math">\(\|\rho\circ\operatorname{Ad}u-\rho\|&lt;d\)</span>, then</p>
+<div class="equation"><div class="math math-display">\[
+ \|\operatorname{Ad}u(r)\|_\rho^{\sharp\,2}
+ \le\|r\|_\rho^{\sharp\,2}+2\|r\|^2d.
+ 
+\]</div><span class="equation-tag">(5.5)</span></div>
+<p>For <span class="math">\(r=z-z_J\)</span> the norm is at most 2, so the added term is at most <span class="math">\(8d\)</span>. Choose the finite head first, then make its flip errors and <span class="math">\(d\)</span> as small as needed. This gives some first-leg approximant <span class="math">\(m\)</span>. By (5.1), replacing it with the canonical approximant <span class="math">\(E(\operatorname{Ad}u(z))\)</span> increases the error by at most a factor 2. Indeed, the difference between these two first-leg approximants is the expectation of the original error. A single coordinate in the finite intersection of all the required ultrafilter-large sets gives every test in (5.2). <span class="math">\(\square\)</span></p>
+<p>We will also need to make <span class="math">\(u^*a_g(u)-1\)</span> small for specified transported functionals. Write <span class="math">\(R=a_g(u)-u\)</span>, so that this defect is <span class="math">\(d_g=u^*R\)</span>. Its two square terms give</p>
+<div class="equation"><div class="math math-display">\[
+ \|d_g\|_\rho^{\sharp\,2}
+ \le\|R\|_\rho^{\sharp\,2}+4d.
+ 
+\]</div><span class="equation-tag">(5.6)</span></div>
+<p>Here <span class="math">\(d_g^*d_g=R^*R\)</span>, whereas <span class="math">\(d_gd_g^*=u^*RR^*u\)</span>; inverse conjugation changes <span class="math">\(\rho\)</span> by the same predual norm <span class="math">\(d\)</span>. Since <span class="math">\(\|d_g\|\le2\)</span>, smallness in (5.6) also gives arbitrarily small seminorms for any fixed finite family of normal positive functionals. Lemma 5.1 can satisfy this together with all its other tests.</p>
+<h2 id="6-the-induction-and-its-normal-left-inverses">6. The induction and its normal left inverses</h2>
+<p>Choose countable strong-star dense sets <span class="math">\(X_i\)</span> and <span class="math">\(Y_j\)</span> in the unit balls of <span class="math">\(M\)</span> and <span class="math">\(A\)</span>, respectively, and a norm-dense sequence <span class="math">\(\psi_i\)</span> in <span class="math">\(M_*\)</span>. Such sets exist by separability of the preduals. Enumerate <span class="math">\(G\)</span>, put <span class="math">\(\epsilon_n=2^{-n}\)</span>, and start with <span class="math">\(W_0=1\)</span>. Given <span class="math">\(W_{n-1}\)</span>, choose <span class="math">\(u_n\)</span> by Lemma 5.1 and define</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ W_n&amp;=W_{n-1}u_n^*,\\
+ \Phi_n&amp;=\operatorname{Ad}W_n\circ\iota,\\
+ \Psi_n&amp;=E\circ\operatorname{Ad}W_n^*.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(6.1)</span></div>
+<p>Every <span class="math">\(\Phi_n\)</span> is a normal unital embedding, every <span class="math">\(\Psi_n\)</span> is normal unital completely positive, and <span class="math">\(\Psi_n\Phi_n=\mathrm{id}_M\)</span>. Impose the following finite conditions at stage <span class="math">\(n\)</span>.</p>
+<p>First, for <span class="math">\(i\le n\)</span>, require</p>
+<div class="equation"><div class="math math-display">\[
+ \|\Phi_n(X_i)-\Phi_{n-1}(X_i)\|_\rho^\sharp
+ &lt;\epsilon_n.
+ 
+\]</div><span class="equation-tag">(6.2)</span></div>
+<p>This is a first-leg test for <span class="math">\(\operatorname{Ad}u_n^*\)</span>, measured by the already known functional <span class="math">\(\rho\circ\operatorname{Ad}W_{n-1}\)</span>. Next, for <span class="math">\(i\le n\)</span>, require</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|(\psi_i\otimes\tau_B)\circ\operatorname{Ad}u_n
+     -\psi_i\otimes\tau_B\|&amp;&lt;\epsilon_n,\\
+ d_n=\|\rho\circ\operatorname{Ad}u_n-\rho\|
+ &amp;&lt;\epsilon_n^2/16.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(6.3)</span></div>
+<p>Define <span class="math">\(x_{j,n}=\Psi_n(Y_j)\)</span>. For <span class="math">\(j&lt;n\)</span>, almost fix the previously selected first-leg contraction <span class="math">\(\iota x_{j,n-1}\)</span> under <span class="math">\(\operatorname{Ad}u_n\)</span>, with error below <span class="math">\(\epsilon_n\)</span> in <span class="math">\(\rho\)</span>-sharp seminorm. For <span class="math">\(j\le n\)</span>, transfer the already known contraction <span class="math">\(\operatorname{Ad}W_{n-1}^*(Y_j)\)</span> close to the first leg. The canonical choice in the local lemma gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ r_{j,n}&amp;=\operatorname{Ad}W_n^*(Y_j)-\iota x_{j,n},\\
+ \|r_{j,n}\|_\rho^\sharp&amp;&lt;\epsilon_n,\qquad
+ \|r_{j,n}\|\le2.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(6.4)</span></div>
+<p>Finally set <span class="math">\(c_{g,n}=W_na_g(W_n^*)\)</span>, and require, for the first <span class="math">\(n\)</span> group elements,</p>
+<div class="equation"><div class="math math-display">\[
+ \|c_{g,n}-c_{g,n-1}\|_\rho^\sharp&lt;\epsilon_n.
+ 
+\]</div><span class="equation-tag">(6.5)</span></div>
+<p>To realize this last test, the exact increment is</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ &amp;c_{g,n}-c_{g,n-1}\\
+ &amp;\quad=W_{n-1}(u_n^*a_g(u_n)-1)a_g(W_{n-1}^*).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(6.6)</span></div>
+<p>Its two square terms are bounded by the sharp seminorm of the middle defect for the known positive functional</p>
+<div class="equation"><div class="math math-display">\[
+ \chi_{g,n}=\rho\circ\operatorname{Ad}W_{n-1}
+       +\rho\circ\operatorname{Ad}a_g(W_{n-1}).
+ 
+\]</div><span class="equation-tag">(6.7)</span></div>
+<p>Make (5.6) sufficiently small to enforce this test. All these functionals and elements are fixed before choosing <span class="math">\(u_n\)</span>, so Lemma 5.1 applies to one finite collection. There is no assumption that a fixed state is unchanged by <span class="math">\(W_{n-1}\)</span>.</p>
+<p><img src="figures/normal-absorption-intertwining.svg" alt="Normal left inverses in the tensor absorption proof"></p>
+<p>Figure 2. Equations (6.1) give exact left inverses at every finite stage. The predual limit alone is a completely positive map. Equations (6.4) and (7.1) make its dense preimages converge strongly-star; vanishing Schwarz defects then make it a homomorphism. Factoriality gives injectivity, and the forward tests (6.2) give surjectivity in Section 8. The <a href="figures/draw_normal_absorption_intertwining.py">editable source</a> records the maps and the order of these implications.</p>
+<h2 id="6a-normal-kernels-tensor-centers-and-inverse-maps">6A. Normal kernels, tensor centers and inverse maps</h2>
+<p>These three facts apply to arbitrary von Neumann algebras and arbitrary Hilbert-space dimensions. No trace, separable predual, standard form, or amenability assumption is required. Normal means ultraweakly continuous.</p>
+<p>The underlying Hilbert facts are the representation of bounded sesquilinear forms by bounded operators, and the Hilbert tensor product with a dense span of elementary tensors. The operator facts are continuous functional calculus, strong limits of bounded increasing positive nets, bounded strong convergence implying ultraweak convergence, and the bicommutant theorem. The functional-analytic facts are the concrete Banach predual <span class="math">\(P=(P_*)^*\)</span> and complex Hahn–Banach. The earlier programme providers are <em>Bounded operator kernel</em> (OA-MOD), BK01–BK06; <em>Concrete preduals</em> (OA-MOD), CP01–CP07; the Hahn–Banach proof NP1 in its real-coercivity prerequisites; and the Hilbert tensor construction AF.T1 in <em>Abelian fusion and weight spectral models</em>. The continuous-calculus chain is GP0, equations (GP0.1)–(GP0.5), in OA-MOD’s <em>Bounded right multiplier</em>, followed by BK01’s restriction to the actual spectrum. GP0 proves Bernstein approximation and the polynomial norm bound before constructing the interval calculus; BK01 proves spectral restriction, exact norm equality, inverses and square-root uniqueness. These full needed proofs, their preceding Hilbert arguments and the particular proof slices just listed have been checked. The support argument also appears in the included <a href="finite-free-actions-and-coboundaries.html">Finite free actions and unitary coboundaries</a>, Section 15.1. We give the exact three assertions and their proofs here.</p>
+<h3 id="6a1-the-central-kernel">6A.1. The central kernel</h3>
+<p><strong>Proposition N1.</strong> If <span class="math">\(\theta:P\to Q\)</span> is a normal *-homomorphism, there is a central projection <span class="math">\(z\in P\)</span> such that</p>
+<div class="equation"><div class="math math-display">\[
+ \ker\theta=Pz.
+ 
+\]</div><span class="equation-tag">(N1)</span></div>
+<p>In particular, if <span class="math">\(P\)</span> is a nonzero factor and <span class="math">\(\theta\)</span> is nonzero, then <span class="math">\(\theta\)</span> is injective.</p>
+<p><em>Proof.</em> First let <span class="math">\(I\)</span> be any ultraweakly closed two-sided *-ideal of <span class="math">\(P\)</span>. For <span class="math">\(x\in I\)</span>, put <span class="math">\(h=x^*x\)</span>. The positive contractions</p>
+<div class="equation"><div class="math math-display">\[
+ h(h+t1)^{-1}\in I\qquad(t&gt;0)
+ 
+\]</div><span class="equation-tag">(N2)</span></div>
+<p>converge strongly to the projection <span class="math">\(p_x\)</span> onto <span class="math">\((\ker h)^\perp\)</span> as <span class="math">\(t\downarrow0\)</span>. To recall this support limit, the contractions vanish on <span class="math">\(\ker h\)</span>, while on the dense subspace <span class="math">\(hH\)</span> of <span class="math">\((\ker h)^\perp\)</span> one has
+<span class="math">\(\|(1-h(h+t1)^{-1})h\xi\|\le t\|\xi\|\)</span>.
+The contraction bound extends the convergence to the whole Hilbert space. The limit is bounded and thus ultraweak, so <span class="math">\(p_x\in I\)</span>. Also <span class="math">\(x=xp_x\)</span>, since <span class="math">\(x\)</span> vanishes on <span class="math">\(\ker(x^*x)\)</span>.</p>
+<p>Every finite join of the projections <span class="math">\(p_x\)</span> lies in <span class="math">\(I\)</span>. Indeed it is the support of their positive sum: the null space of a sum of positive operators is the intersection of their null spaces, as follows by evaluating its nonnegative quadratic form. The same cutoff argument places that support in <span class="math">\(I\)</span>. The increasing net of all finite joins has a strong limit <span class="math">\(z\in P\)</span>, which is its supremum and a projection. For the last assertion, bounded strong convergence preserves products of this net with itself, so the limit of the equations <span class="math">\(p^2=p\)</span> is <span class="math">\(z^2=z\)</span>. Ultraweak closedness gives <span class="math">\(z\in I\)</span>.</p>
+<p>Since <span class="math">\(p_x\le z\)</span>, every <span class="math">\(x\in I\)</span> satisfies <span class="math">\(x=xz\)</span>. Conversely <span class="math">\(Pz\subset I\)</span>, so <span class="math">\(I=Pz\)</span>. As <span class="math">\(I\)</span> is also a right ideal, for every <span class="math">\(a\in P\)</span> we have <span class="math">\(za\in Pz\)</span>, hence <span class="math">\(za=zaz\)</span>. Apply this to <span class="math">\(a^*\)</span> and take adjoints to obtain <span class="math">\(az=zaz\)</span>. Therefore <span class="math">\(z\)</span> is central.</p>
+<p>The kernel of <span class="math">\(\theta\)</span> is a two-sided *-ideal and is ultraweakly closed by normality. Apply the preceding argument. If <span class="math">\(P\)</span> is a factor, its central projections are <span class="math">\(0\)</span> and <span class="math">\(1\)</span>. The choice <span class="math">\(z=1\)</span> would make <span class="math">\(\theta=0\)</span>; otherwise <span class="math">\(z=0\)</span>, proving injectivity. <span class="math">\(\square\)</span></p>
+<p>We will also use isometry of a unital injective *-homomorphism <span class="math">\(\theta\)</span>. Positivity follows from square-root factorization, and <span class="math">\(0\le a^*a\le\|a\|^2 1\)</span> gives contractivity. If <span class="math">\(\|\theta(a)\|&lt;\|a\|\)</span>, put <span class="math">\(h=a^*a\)</span> and choose a continuous function <span class="math">\(f\)</span> on <span class="math">\([0,\|h\|]\)</span> that vanishes on <span class="math">\([0,\|\theta(h)\|]\)</span> but is nonzero at <span class="math">\(\|h\|\)</span>. Continuous functional calculus gives <span class="math">\(f(h)\ne0\)</span>. Polynomial approximation and contractivity give <span class="math">\(\theta(f(h))=f(\theta(h))=0\)</span>, contradicting injectivity. Hence <span class="math">\(\|\theta(a)\|=\|a\|\)</span>. This supplies the isometry used in the compact-ball argument below.</p>
+<h3 id="6a2-tensor-products-of-factors">6A.2. Tensor products of factors</h3>
+<p><strong>Proposition N2.</strong> Let <span class="math">\(P\subset B(H)\)</span> and <span class="math">\(Q\subset B(K)\)</span> be nonzero factors acting faithfully and unitally. Then their spatial tensor product <span class="math">\(P\overline\otimes Q\)</span> is a factor. More generally, if only <span class="math">\(P\)</span> is a factor, then</p>
+<div class="equation"><div class="math math-display">\[
+ (P\overline\otimes Q)\cap(P\otimes1)&#39;=1\otimes Q.
+ 
+\]</div><span class="equation-tag">(N3)</span></div>
+<p><em>Proof.</em> Inner products are linear in their first variable. For <span class="math">\(X\in B(H\otimes K)\)</span> and <span class="math">\(\xi,\eta\in K\)</span>, the bounded-form theorem defines <span class="math">\(S_{\xi,\eta}(X)\in B(H)\)</span> by</p>
+<div class="equation"><div class="math math-display">\[
+ \langle S_{\xi,\eta}(X)h,k\rangle
+ =\langle X(h\otimes\xi),k\otimes\eta\rangle.
+ 
+\]</div><span class="equation-tag">(N4)</span></div>
+<p>Its norm is at most <span class="math">\(\|X\|\|\xi\|\|\eta\|\)</span>. Formula (N4) also shows that this map is weak-operator continuous and satisfies</p>
+<div class="equation"><div class="math math-display">\[
+ S_{\xi,\eta}((a\otimes1)X(b\otimes1))
+ =aS_{\xi,\eta}(X)b.
+ 
+\]</div><span class="equation-tag">(N5)</span></div>
+<p>For an elementary tensor <span class="math">\(a\otimes b\)</span>, its value is <span class="math">\(\langle b\xi,\eta\rangle a\)</span>. Consequently <span class="math">\(S_{\xi,\eta}(X)\in P\)</span> whenever <span class="math">\(X\in P\overline\otimes Q\)</span>: approximate <span class="math">\(X\)</span> weakly by finite sums of elementary tensors and use weak closedness of <span class="math">\(P\)</span>. This approximation is precisely the bicommutant theorem applied to the unital algebraic tensor product. No bounded approximating net or tensor-commutant formula is needed.</p>
+<p>Suppose now that <span class="math">\(X\)</span> belongs to the left side of (N3). By (N5), each <span class="math">\(S_{\xi,\eta}(X)\)</span> commutes with <span class="math">\(P\)</span>, and hence equals <span class="math">\(c(\xi,\eta)1\)</span>. Fix a unit vector <span class="math">\(h_0\in H\)</span>. Then</p>
+<div class="equation"><div class="math math-display">\[
+ c(\xi,\eta)
+ =\langle X(h_0\otimes\xi),h_0\otimes\eta\rangle
+ 
+\]</div><span class="equation-tag">(N6)</span></div>
+<p>is a bounded sesquilinear form on <span class="math">\(K\)</span>. It defines <span class="math">\(b\in B(K)\)</span>. Exchanging the roles of the two tensor legs in the preceding weak-approximation argument shows that this coefficient operator <span class="math">\(b\)</span> belongs to <span class="math">\(Q\)</span>.</p>
+<p>Equations (N4) and (N6) give, for all <span class="math">\(h,k,\xi,\eta\)</span>,</p>
+<div class="equation"><div class="math math-display">\[
+ \langle X(h\otimes\xi),k\otimes\eta\rangle
+ =\langle h,k\rangle\langle b\xi,\eta\rangle.
+ 
+\]</div><span class="equation-tag">(N7)</span></div>
+<p>The finite linear span of elementary tensors is dense in <span class="math">\(H\otimes K\)</span>. Equality of all these coefficients therefore proves <span class="math">\(X=1\otimes b\)</span>. Conversely every <span class="math">\(1\otimes b\)</span>, with <span class="math">\(b\in Q\)</span>, belongs to that relative commutant. This proves (N3).</p>
+<p>If <span class="math">\(X\)</span> is central in <span class="math">\(P\overline\otimes Q\)</span>, write it as <span class="math">\(1\otimes b\)</span> by (N3). Commutation with <span class="math">\(1\otimes Q\)</span> says <span class="math">\(b\in Z(Q)\)</span>. If <span class="math">\(Q\)</span> is also a factor, then <span class="math">\(b\)</span> is scalar. The tensor product thus has scalar center. <span class="math">\(\square\)</span></p>
+<h3 id="6a3-global-normality-of-the-inverse">6A.3. Global normality of the inverse</h3>
+<p><strong>Proposition N3.</strong> A bijective normal *-homomorphism <span class="math">\(V:P\to Q\)</span> has a normal inverse. Composition with <span class="math">\(V\)</span> gives an onto isometry of Banach preduals</p>
+<div class="equation"><div class="math math-display">\[
+ V_*:Q_*\longrightarrow P_*,\qquad V_*\omega=\omega\circ V.
+ 
+\]</div><span class="equation-tag">(N8)</span></div>
+<p><em>Proof.</em> Bijectivity makes both <span class="math">\(V\)</span> and its algebraic inverse unital *-homomorphisms. Such a map is positive, by square-root factorization, and contractive, because
+<span class="math">\(0\le x^*x\le\|x\|^2 1\)</span> implies
+<span class="math">\(0\le V(x)^*V(x)\le\|x\|^2 1\)</span>.
+Applying the same argument to <span class="math">\(V^{-1}\)</span> shows that <span class="math">\(V\)</span> maps the unit ball of <span class="math">\(P\)</span> isometrically onto that of <span class="math">\(Q\)</span>.</p>
+<p>Normality makes (N8) well defined, and the equality of these unit balls gives
+<span class="math">\(\|V_*\omega\|=\|\omega\|\)</span>. Thus its range <span class="math">\(W\)</span> is norm closed: a Cauchy sequence of images lifts isometrically to a Cauchy sequence in the Banach space <span class="math">\(Q_*\)</span>.</p>
+<p>Its annihilator in <span class="math">\((P_*)^*=P\)</span> is zero. Indeed, if <span class="math">\(x\in P\)</span> satisfies <span class="math">\(\omega(Vx)=0\)</span> for every <span class="math">\(\omega\in Q_*\)</span>, predual separation gives <span class="math">\(Vx=0\)</span>, and injectivity gives <span class="math">\(x=0\)</span>. To see why this implies <span class="math">\(W=P_*\)</span>, suppose instead that <span class="math">\(u\in P_*\setminus W\)</span>. The distance <span class="math">\(d=\operatorname{dist}(u,W)\)</span> is positive, and</p>
+<div class="equation"><div class="math math-display">\[
+ f(w+\lambda u)=\lambda
+ \quad(w\in W,\ \lambda\in\mathbb C)
+ 
+\]</div><span class="equation-tag">(N9)</span></div>
+<p>defines a nonzero bounded functional on <span class="math">\(W+\mathbb Cu\)</span>, with norm at most <span class="math">\(1/d\)</span>. Complex Hahn–Banach extends it to <span class="math">\(P_*\)</span>. Concrete duality represents that extension by a nonzero element of <span class="math">\(P\)</span> annihilating <span class="math">\(W\)</span>, contradicting the preceding paragraph. Hence <span class="math">\(V_*\)</span> is onto.</p>
+<p>For any <span class="math">\(\rho\in P_*\)</span>, choose <span class="math">\(\omega\in Q_*\)</span> with <span class="math">\(\rho=\omega V\)</span>. Then</p>
+<div class="equation"><div class="math math-display">\[
+ \rho\circ V^{-1}=\omega\in Q_*.
+ 
+\]</div><span class="equation-tag">(N10)</span></div>
+<p>Every ultraweak test on <span class="math">\(P\)</span> therefore pulls back under <span class="math">\(V^{-1}\)</span> to an ultraweak test on <span class="math">\(Q\)</span>. This is global ultraweak continuity, so <span class="math">\(V^{-1}\)</span> is normal. No assertion that arbitrary ultraweakly convergent nets are norm bounded is used. <span class="math">\(\square\)</span></p>
+<h2 id="7-the-limiting-left-inverse-is-a-faithful-homomorphism">7. The limiting left inverse is a faithful homomorphism</h2>
+<p>For each tested <span class="math">\(\psi_i\)</span>, the increment of the predual maps <span class="math">\(\Psi_n^*\)</span> has exactly the norm in (6.3), since composition with <span class="math">\(\operatorname{Ad}W_{n-1}^*\)</span> is isometric on the predual. Summability, norm density of the <span class="math">\(\psi_i\)</span>, and uniform contractivity give pointwise norm convergence of <span class="math">\(\Psi_n^*:M_*\to A_*\)</span>. The adjoint limit is a normal unital completely positive map <span class="math">\(\Psi:A\to M\)</span>. Complete positivity follows by taking ultraweak limits of positive matrices at every fixed matrix size. In particular <span class="math">\(\sigma_n=\varphi\Psi_n\)</span> converges in predual norm to the normal state <span class="math">\(\sigma=\varphi\Psi\)</span>. We do not yet assert that <span class="math">\(\sigma\)</span> is faithful.</p>
+<p>For fixed <span class="math">\(j\)</span> and <span class="math">\(n&gt;j\)</span>, apply (5.5) to <span class="math">\(r_{j,n-1}\)</span>, use the earlier first-leg preimage test, and apply the expectation contraction (5.1). This gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|x_{j,n}-x_{j,n-1}\|_\varphi^\sharp
+ &amp;\le\sqrt{\epsilon_{n-1}^2+8d_n}+\epsilon_n\\
+ &amp;\le\epsilon_{n-1}+2\epsilon_n.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(7.1)</span></div>
+<p>Indeed, the difference before applying <span class="math">\(E\)</span> is the conjugated previous residual plus the error in fixing <span class="math">\(\iota x_{j,n-1}\)</span>. The bound is summable. The contractions <span class="math">\(x_{j,n}\)</span> converge strongly-star in the bounded complete unit ball of <span class="math">\(M\)</span>. Their ultraweak limit identifies that limit as <span class="math">\(\Psi(Y_j)\)</span>.</p>
+<p>This strong-star convergence extends to every fixed <span class="math">\(y\)</span> in the unit ball of <span class="math">\(A\)</span>. The completely positive Schwarz inequality yields</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ t&amp;=y-Y_j,\\
+ \|\Psi_n(t)\|_\varphi^{\sharp\,2}
+ &amp;\le\sigma_n(t^*t+tt^*).
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(7.2)</span></div>
+<p>Approximate <span class="math">\(y\)</span> strongly-star by a member of the dense set, with respect to the fixed normal state <span class="math">\(\sigma\)</span>. Predual norm convergence <span class="math">\(\sigma_n\to\sigma\)</span> bounds the additional error uniformly for large <span class="math">\(n\)</span>, since the difference has norm at most 2. The same Schwarz estimate applies to <span class="math">\(\Psi\)</span>. Combining this with convergence on <span class="math">\(Y_j\)</span> proves <span class="math">\(\Psi_n(y)\to\Psi(y)\)</span> strongly-star. Normality of <span class="math">\(\sigma\)</span>, rather than faithfulness, is enough here.</p>
+<p>The expectation bimodule identity now turns the small residuals into exact multiplicativity. Write <span class="math">\(z=\operatorname{Ad}W_n^*(Y_j)\)</span>, <span class="math">\(x=E(z)\)</span>, and <span class="math">\(r=z-\iota x\)</span>. Expanding the square and using <span class="math">\(E(r)=0\)</span> gives</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{gathered}
+ \varphi\bigl(\Psi_n(Y_j^*Y_j)-x_{j,n}^*x_{j,n}\bigr)\\
+ =\rho(r_{j,n}^*r_{j,n})\le\epsilon_n^2,\\
+ \varphi\bigl(\Psi_n(Y_jY_j^*)-x_{j,n}x_{j,n}^*\bigr)\\
+ =\rho(r_{j,n}r_{j,n}^*)\le\epsilon_n^2.
+ \end{gathered}
+ 
+\]</div><span class="equation-tag">(7.3)</span></div>
+<p>Taking limits is legitimate: <span class="math">\(\Psi_n\)</span> converges pointwise ultraweakly, and its values on <span class="math">\(Y_j\)</span> converge boundedly strongly-star, hence so do their products. The Schwarz defects of <span class="math">\(\Psi\)</span> are positive. Their faithful <span class="math">\(\varphi\)</span>-values vanish, so both defects vanish.</p>
+<p>For completeness, these two equalities put <span class="math">\(Y_j\)</span> in the multiplicative domain of <span class="math">\(\Psi\)</span>. Complete positivity makes the matrix of sesquilinear defects <span class="math">\(\Psi(v_i^*v_k)-\Psi(v_i)^*\Psi(v_k)\)</span> positive. A zero diagonal entry forces every corresponding off-diagonal entry to be zero: test the positive two-by-two corner on vectors with arbitrary scalar multiples, whose linear term must then vanish. Apply this first with <span class="math">\(Y_j\)</span>, then with <span class="math">\(Y_j^*\)</span>, to obtain both multiplication identities with any <span class="math">\(y\in A\)</span>.</p>
+<p>Bounded strong density of the <span class="math">\(Y_j\)</span>, normality of <span class="math">\(\Psi\)</span>, and separate ultraweak continuity of multiplication extend these identities to every first argument. Thus <span class="math">\(\Psi\)</span> is a normal unital homomorphism. Proposition N2 makes <span class="math">\(A=M\overline\otimes B\)</span> a factor. Proposition N1 identifies the kernel of <span class="math">\(\Psi\)</span> with a central ideal. Since <span class="math">\(\Psi(1)=1\)</span>, that kernel is zero. Consequently <span class="math">\(\Psi\)</span> is injective, and only now can we conclude that <span class="math">\(\sigma=\varphi\Psi\)</span> is faithful.</p>
+<h2 id="8-onto-maps-and-a-genuine-limiting-cocycle">8. Onto maps and a genuine limiting cocycle</h2>
+<p>For fixed <span class="math">\(i\)</span>, equation (6.2) gives a strong-star limit <span class="math">\(Z_i=\lim_n\Phi_n(X_i)\)</span> in the unit ball of <span class="math">\(A\)</span>. Since <span class="math">\(\Psi_n\Phi_n(X_i)=X_i\)</span>, we have</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ &amp;\|\Psi_n(\Phi_n(X_i)-Z_i)\|_\varphi^{\sharp\,2}\\
+ &amp;\quad\le\sigma_n\bigl(t_n^*t_n+t_nt_n^*\bigr)
+       \longrightarrow0,\\
+ &amp;t_n=\Phi_n(X_i)-Z_i.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(8.1)</span></div>
+<p>The last limit uses bounded strong-star convergence of <span class="math">\(t_n\)</span> and predual norm convergence of <span class="math">\(\sigma_n\)</span> to a normal functional. Section 7 also gives <span class="math">\(\Psi_n(Z_i)\to\Psi(Z_i)\)</span> strongly-star, so <span class="math">\(\Psi(Z_i)=X_i\)</span>.</p>
+<p>The injective homomorphism <span class="math">\(\Psi\)</span> is isometric. Its image of the unit ball of <span class="math">\(A\)</span> is therefore the unit ball of its range. This image is ultraweakly compact, since <span class="math">\(\Psi\)</span> is normal and the original unit ball is ultraweakly compact. It contains the dense <span class="math">\(X_i\)</span>, hence every element of the unit ball of <span class="math">\(M\)</span>. Thus <span class="math">\(\Psi\)</span> is onto. Proposition N3 now proves that its inverse <span class="math">\(\Phi\)</span> is globally ultraweakly continuous, hence a normal isomorphism. The preceding compact-ball argument supplies surjectivity; the onto-predual argument in N3 supplies normality of the inverse. In particular <span class="math">\(\Phi(X_i)=Z_i\)</span>.</p>
+<p>We also obtain pointwise predual convergence of the forward embeddings. Given <span class="math">\(\eta\in A_*\)</span>, the onto-predual assertion of Proposition N3 gives <span class="math">\(\eta=\psi\Psi\)</span>, with <span class="math">\(\psi\in M_*\)</span>. The exact left-inverse identities imply</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \|\eta\Phi_n-\eta\Phi\|
+ &amp;=\|\psi\Psi\Phi_n-\psi\|\\
+ &amp;\le\|\psi\Psi-\psi\Psi_n\|\longrightarrow0.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(8.2)</span></div>
+<p>Thus <span class="math">\(\Phi_n(x)\to\Phi(x)\)</span> ultraweakly for each <span class="math">\(x\)</span>, including <span class="math">\(x^*x\)</span> and <span class="math">\(xx^*\)</span>. Since all these maps are homomorphisms, expanding the squared sharp seminorm of <span class="math">\(\Phi_n(x)-\Phi(x)\)</span> shows strong-star convergence as well: the square terms and both cross terms have their asserted ultraweak limits. The inverse maps already converge strongly-star by Section 7. Both directions have normal functional control.</p>
+<p>For fixed <span class="math">\(g\)</span>, equation (6.5) makes <span class="math">\(c_{g,n}\)</span> a sharp-summable, bounded strong-star Cauchy sequence. Its limit <span class="math">\(c_g\)</span> is unitary, because both it and its adjoint converge strongly, and products of bounded strong convergent sequences converge strongly. At every finite stage,</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ c_{gh,n}&amp;=c_{g,n}a_g(c_{h,n}),\\
+ \Phi_n\alpha_g&amp;=\operatorname{Ad}c_{g,n}\circ a_g\circ\Phi_n.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(8.3)</span></div>
+<p>Normal automorphisms preserve bounded strong-star convergence. Pass to the limit in these equations using the convergence just established. This gives (1.4), including <span class="math">\(c_e=1\)</span>, and proves the absorption part of Theorem 1.1. The construction uses ordinary summable sequences on the original factor, not an isomorphism asserted from an ultraproduct alone.</p>
+<h2 id="9-semifinite-traces-and-inner-subgroup-data">9. Semifinite traces and inner-subgroup data</h2>
+<p>Suppose <span class="math">\(M\)</span> has faithful normal semifinite trace <span class="math">\(\tau_M\)</span>, and write <span class="math">\(\tau_A=\tau_M\otimes\tau_B\)</span>. For every positive bounded element, at each stage</p>
+<div class="equation"><div class="math math-display">\[
+ \tau_A\Phi_n(x)=\tau_M(x),\qquad
+ \tau_M\Psi_n(y)=\tau_A(y).
+ 
+\]</div><span class="equation-tag">(9.1)</span></div>
+<p>The first identity uses invariance of trace under unitary conjugation and the normalized second trace. The second also uses trace preservation by the normal slice expectation; it follows first on finite trace corners and elementary positive tensors, then by normality. These identities permit infinite values.</p>
+<p>A semifinite normal trace is lower semicontinuous on bounded positive strong limits. One way to see this is to express it as the supremum of its normal positive finite-corner functionals; each such functional is continuous on bounded strong limits. The two established strong-star limits therefore give</p>
+<div class="equation"><div class="math math-display">\[
+ \tau_A\Phi(x)\le\tau_M(x),\qquad
+ \tau_M\Psi(y)\le\tau_A(y).
+ 
+\]</div><span class="equation-tag">(9.2)</span></div>
+<p>Set <span class="math">\(y=\Phi(x)\)</span> and use <span class="math">\(\Psi\Phi=\mathrm{id}\)</span>. The reverse inequality now follows from the second inequality. Equality holds, also when either side is infinite. This proves trace preservation without assuming that one lower semicontinuity inequality is equality.</p>
+<p>If <span class="math">\(\alpha_n=\operatorname{Ad}U_n\)</span>, then <span class="math">\(n\in H\)</span>, so <span class="math">\(\Delta_n=\mathrm{id}\)</span>. Directly at each finite stage,</p>
+<div class="equation"><div class="math math-display">\[
+ c_{n,k}=\Phi_k(U_n)(U_n^*\otimes1).
+ 
+\]</div><span class="equation-tag">(9.3)</span></div>
+<p>Its limit gives (1.5). Thus the actual chosen inner implementers, including their scalar multiplication and conjugation phases, are carried to <span class="math">\(\Phi(U_n)\)</span>. For example, if <span class="math">\(U_nU_m=\mu(n,m)U_{nm}\)</span>, apply the homomorphism <span class="math">\(\Phi\)</span> to preserve the same <span class="math">\(\mu(n,m)\)</span>. Applying its equivariance to the corresponding <span class="math">\(g\)</span>-conjugation relation preserves that phase as well.</p>
+<p>On the hyperfinite semifinite factor, centrally trivial automorphisms are inner by the trace-scaling lesson, Theorem 4.2. Here <span class="math">\(H\)</span> is precisely the inner subgroup. The absorption result consequently retains its characteristic phases and its trace information. Comparing two arbitrary actions with common data still requires a separate isotropy comparison and gluing argument; no such comparison is inferred from absorbing this one model.</p>
+<h2 id="10-exercises-with-solutions">10. Exercises with solutions</h2>
+<p><strong>Exercise 1.</strong> Why retain the <span class="math">\(\mathbb N\)</span>-coordinate in the Bernoulli model when <span class="math">\(Q\)</span> is finite? What changes when <span class="math">\(Q\)</span> is trivial?</p>
+<p><em>Solution.</em> The coordinate supplies infinitely many commuting matrix sites, so <span class="math">\(B\)</span> is diffuse and isomorphic to <span class="math">\(R\)</span>. It also supplies the central sequence in (2.1): any fixed finite head misses <span class="math">\((e,n)\)</span> eventually, while its nonidentity translate remains a distinct site. With only finitely many sites, there would be no such tail argument. For trivial <span class="math">\(Q\)</span>, the model is still <span class="math">\(R\)</span> and its action is the identity. All nonidentity tests disappear, and Theorem 1.1 recovers tensor absorption for the given strongly stable factor.</p>
+<p><strong>Exercise 2.</strong> In Figure 1, calculate the common bad support for translation by 1 and the resulting bound.</p>
+<p><em>Solution.</em> The levels at 0 and 1 have successors in <span class="math">\(R\)</span>; their targets give <span class="math">\(C_1=E_1+E_2\)</span>. The level at 2 leaves the shape. The complement is the sum of blocks 0, 3 and 4, with mass <span class="math">\(3/5\)</span>. The residual mass is <span class="math">\(2/5\)</span> and outgoing mass <span class="math">\(1/5\)</span>. Since the norm of the difference is at most <span class="math">\(2\|x\|\)</span> on this common support, its <span class="math">\(L^2\)</span> norm is at most <span class="math">\(2\|x\|\sqrt{3/5}\)</span>, exactly (2.5).</p>
+<p><strong>Exercise 3.</strong> Verify (5.6) and explain why a transported normal functional can also be tested.</p>
+<p><em>Solution.</em> Put <span class="math">\(R=a_g(u)-u\)</span> and <span class="math">\(d_g=u^*R\)</span>. Then <span class="math">\(d_g^*d_g=R^*R\)</span> and <span class="math">\(d_gd_g^*=u^*RR^*u\)</span>. The second term changes its <span class="math">\(\rho\)</span>-value by at most <span class="math">\(\|RR^*\|d\le4d\)</span>, proving (5.6). On the norm ball of radius 2, the faithful <span class="math">\(\rho\)</span>-sharp seminorm gives the strong-star topology, so every fixed normal positive functional is continuous there. The finitely many transported functionals at a stage are known before selecting <span class="math">\(u\)</span>; choose sufficiently small <span class="math">\(\rho\)</span>-errors for them all. Their being transported does not make them moving during this selection.</p>
+<p><strong>Exercise 4.</strong> Check the orientation of the update <span class="math">\(W_n=W_{n-1}u_n^*\)</span>, including the exact left inverse and the cocycle increment.</p>
+<p><em>Solution.</em> Taking adjoints gives <span class="math">\(W_n^*=u_nW_{n-1}^*\)</span>. Thus <span class="math">\(\Psi_n=E\operatorname{Ad}u_n\operatorname{Ad}W_{n-1}^*\)</span>, the orientation used in the transfer test, and <span class="math">\(\Psi_n\Phi_n=E\iota=\mathrm{id}\)</span>. Expanding <span class="math">\(W_na_g(W_n^*)\)</span> gives <span class="math">\(W_{n-1}u_n^*a_g(u_n)a_g(W_{n-1}^*)\)</span>; subtracting the old expression gives (6.6). Expanding the two squares of this increment yields the two transported states in (6.7).</p>
+<p><strong>Exercise 5.</strong> Calculate the tail bound supplied by (7.1) for <span class="math">\(\epsilon_n=2^{-n}\)</span>, after stage <span class="math">\(N\ge j\)</span>.</p>
+<p><em>Solution.</em> Sum the two geometric series:</p>
+<div class="equation"><div class="math math-display">\[
+ \begin{aligned}
+ \sum_{n&gt;N}(\epsilon_{n-1}+2\epsilon_n)
+ &amp;=2^{1-N}+2^{1-N}\\
+ &amp;=4\cdot2^{-N}.
+ \end{aligned}
+ 
+\]</div><span class="equation-tag">(10.1)</span></div>
+<p>Hence <span class="math">\(\|x_{j,N}-\Psi(Y_j)\|_\varphi^\sharp\le4\cdot2^{-N}\)</span>. This estimates an actual fixed preimage sequence; it does not assume uniform convergence on the whole unit ball.</p>
+<p><strong>Exercise 6.</strong> Why is <span class="math">\(\varphi\Psi\)</span> not declared faithful as soon as the normal completely positive limit <span class="math">\(\Psi\)</span> exists?</p>
+<p><em>Solution.</em> A unital normal completely positive map need not be injective on positive elements. For example, the vector state <span class="math">\(M_2\to\mathbb C\)</span>, <span class="math">\(x\mapsto x_{11}\)</span>, is such a map. The faithful state on <span class="math">\(\mathbb C\)</span> composed with it vanishes on the nonzero positive projection <span class="math">\(e_{22}\)</span>. In our proof, (7.3) first proves multiplicativity; only then is the kernel a central ideal. Factoriality and unitality make that ideal zero, so faithfulness follows at the stated later step.</p>
+<p><strong>Exercise 7.</strong> Give a finite-rank example showing why one inequality in (9.2) is insufficient to prove trace equality, and state what supplies the reverse inequality here.</p>
+<p><em>Solution.</em> On <span class="math">\(\ell^2(\mathbb N)\)</span>, let <span class="math">\(p_n\)</span> project onto the first and the <span class="math">\((n+1)\)</span>-st coordinate. For <span class="math">\(n\ge1\)</span>, these projections have trace 2 and converge strongly to the first coordinate projection, whose trace is 1. Lower semicontinuity supplies a strict inequality. In (9.2), the independently controlled inverse <span class="math">\(\Psi\)</span> provides the reverse inequality at <span class="math">\(y=\Phi(x)\)</span>. The inverse identity forces equality and prevents this escape of trace.</p>
+<p><strong>Exercise 8.</strong> Verify preservation of the chosen inner multiplication phase using (1.5). Does absorption alone classify two arbitrary actions?</p>
+<p><em>Solution.</em> The perturbed tensor action has implementing unitaries <span class="math">\(V_n=c_n(U_n\otimes1)=\Phi(U_n)\)</span>. Thus</p>
+<div class="equation"><div class="math math-display">\[
+ V_nV_m=\Phi(U_nU_m)=\mu(n,m)V_{nm}.
+ 
+\]</div><span class="equation-tag">(10.2)</span></div>
+<p>The phase is the actual original scalar, with no additional adjustment. Applying equivariance gives the same conclusion for the prescribed conjugation phases. Absorption compares the given action to its own tensor model. It does not by itself compare the original parts of two arbitrary actions, so the characteristic-and-trace isotropy comparison, outer gluing and reconstruction remain separate mathematical tasks.</p>
+<h2 id="references-and-scope">References and scope</h2>
+<p>[Connes] Alain Connes, “Outer conjugacy classes of automorphisms of factors,” <em>Annales scientifiques de l'École Normale Supérieure</em> (4) 8 (1975), 383–419. <a href="https://www.numdam.org/item/ASENS_1975_4_8_3_383_0/">NUMDAM original article</a>. Theorem 2.2.1; the discussion preceding that theorem credits McDuff and Araki. Lemma 2.3.6 and its proof give the classical normal-functional tensor-factorization method. These passages are comparison sources for the earlier strong-stability and matrix foundations.</p>
+<p>[Ocneanu thesis] Adrian Ocneanu, <em>Actions of discrete amenable groups on factors</em>, PhD thesis, University of Warwick, February 1982. <a href="https://wrap.warwick.ac.uk/id/eprint/110062/">Institutional record and submitted thesis</a>. Section 4.5 specifies its model; Theorem 8.6 and Section 8.7 treat model splitting. The source constructs its model from finite paving approximations and corrects matrix systems through cocycles. Our Bernoulli finite-flip construction and normal left-inverse argument are given in Sections 2–8 above.</p>
+<p>The result of this lesson is a normal, onto tensor absorption isomorphism and a convergent genuine cocycle, under its exact strongly stable centralizer and approximation foundations. It includes the semifinite trace and the chosen inner-subgroup phases. Full characteristic-and-trace classification, outer isotropy gluing, continuous reconstruction and the remaining classification bridges have not been established by this lesson.</p>
+</article><nav class="lesson-nav" aria-label="Sources"><span class="unlinked">Editable Markdown</span> · <span class="unlinked">Sources and authorship</span> · <a href="LICENSE.txt">Licences and component notices</a></nav></main></body></html>

@@ -1,0 +1,277 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SH02-MSD — Comparing sheaves through local support tests · Microlocal sheaves</title>
+<meta name="description" content="A lesson of the course Microlocal sheaves. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-02/microlocal-comparison-foundations.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <span class="unlinked">Microlocal sheaves</span> <span aria-hidden="true">›</span> <span>SH02-MSD — Comparing sheaves through local support tests</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written by AI in Codex.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="sh02-msd-comparing-sheaves-through-local-support-tests">SH02-MSD — Comparing sheaves through local support tests</h1>
+<p>Local unit: <code>SH02-MSD</code>. This supplementary lesson gives the complete formal arguments behind microlocal comparison, finite truncation, forgetting scalars, and changes of <span class="math" data-tex="$C^1$">$C^1$</span> coordinates. Original expression is offered under GFDL 1.2 or any later version, with no invariant sections or cover texts.</p>
+<h2 id="sh02-msd-contract-what-a-comparison-has-to-preserve">SH02-MSD-CONTRACT — What a comparison has to preserve</h2>
+<p>Local identifier: <code>SH02-MSD-CONTRACT</code>.</p>
+<p>Throughout, <span class="math" data-tex="$k$">$k$</span> is a commutative unital ring of finite global dimension, <span class="math" data-tex="$X$">$X$</span> is a finite-dimensional real manifold countable at infinity, and sheaf complexes lie in <span class="math" data-tex="$D^b(k_X)$">$D^b(k_X)$</span>. Coefficient modules can be arbitrary; no constructibility or finite-rank assumption is imposed. The zero ring is allowed. A cotangent subset <span class="math" data-tex="$A\subset T^*X$">$A\subset T^*X$</span> can be completely arbitrary.</p>
+<p>We use the <span class="math" data-tex="$C^1$">$C^1$</span> support test and the definition of microsupport from <a href="../sheaf-proof-readings/SH02-microsupport-tests.html#SH02-MST-TEST">the local experiment</a>. If <span class="math" data-tex="$f$">$f$</span> is defined on an open neighborhood <span class="math" data-tex="$V$">$V$</span> of <span class="math" data-tex="$x$">$x$</span>, write
+<span class="math math-display" data-tex="\[
+\mathcal T_{x,f}(K)=
+\bigl(R\Gamma_{\{f\geq f(x)\}}(K|_V)\bigr)_x.
+\tag{MSD1}
+\]">\[
+\mathcal T_{x,f}(K)=
+\bigl(R\Gamma_{\{f\geq f(x)\}}(K|_V)\bigr)_x.
+\tag{MSD1}
+\]</span>
+The support is closed in <span class="math" data-tex="$V$">$V$</span>; it need not be closed in <span class="math" data-tex="$X$">$X$</span>. Shrinking <span class="math" data-tex="$V$">$V$</span> does not change this complex. The definition says that <span class="math" data-tex="$p\notin\operatorname{SS}(K)$">$p\notin\operatorname{SS}(K)$</span> precisely when one open cotangent neighborhood of <span class="math" data-tex="$p$">$p$</span> makes every such test vanish. The neighborhood is chosen before the testing point and function.</p>
+<p>For a morphism, the relevant question is whether these experiments give isomorphic complexes. This involves all cohomological degrees. We first show that one bounded cone records every failure of a comparison, then prove that the record is independent of the chosen cone.</p>
+<h2 id="sh02-msd-prerequisites-the-exact-sheaf-facts-used-below">SH02-MSD-PREREQUISITES — The exact sheaf facts used below</h2>
+<p>Local identifier: <code>SH02-MSD-PREREQUISITES</code>.</p>
+<p>The proofs use the following finite list of statements.</p>
+<p><strong>Stalks.</strong> Module sheaves form an abelian category, exactness is detected on stalks, and a stalk functor is exact. This is <a href="../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-ABELIAN">the abelian-sheaf contract</a>, specialized to the constant ring sheaf <span class="math" data-tex="$k_X$">$k_X$</span>.</p>
+<p><strong>Derived tests and acyclic resolutions.</strong> Module sheaves have enough injectives, and bounded-below injective resolutions compute right derived functors of left exact additive functors. These are <a href="../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-INJECTIVE">the injective-resolution contract</a> and <a href="../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-DERIVE">the derived-functor contract</a>. Applied to sheaf sections with closed support and then to a stalk, they make (MSD1) a triangulated functor into <span class="math" data-tex="$D^+(k)$">$D^+(k)$</span>. Its output need not be asserted bounded. We also use the exact acyclic-resolution form: when the right derived functor is defined, a bounded-below complex of objects acyclic for it computes that functor by termwise application. This is <a href="https://stacks.math.columbia.edu/tag/015E">Leray's acyclicity lemma, Tag 015E</a>; the derived-support functors here are defined by the preceding injective construction.</p>
+<p><strong>Localization and open restriction.</strong> For a closed subset <span class="math" data-tex="$Z\subset V$">$Z\subset V$</span> with complementary open inclusion <span class="math" data-tex="$j$">$j$</span>, the functorial triangle is
+<span class="math math-display" data-tex="\[
+R\Gamma_Z K\longrightarrow K\longrightarrow Rj_*j^{-1}K\xrightarrow{+1}.
+\tag{MSD2}
+\]">\[
+R\Gamma_Z K\longrightarrow K\longrightarrow Rj_*j^{-1}K\xrightarrow{+1}.
+\tag{MSD2}
+\]</span>
+This is <a href="../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-LOCALIZATION">the localization contract</a>. Exact open restriction and the local stalk identifications give independence of the test domain in (MSD1). We also use <a href="../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-OPEN-ZERO">exact extension by zero for an open inclusion</a>, whose adjunction with restriction makes the restriction of an injective sheaf to an open set injective.</p>
+<p><strong>Triangles.</strong> Distinguished triangles have long exact cohomology sequences. A commutative square on the first two objects extends to a morphism of distinguished triangles. A quasi-isomorphism becomes invertible in the derived category. These are the derived-category operations used in the cone argument below; that argument explicitly derives the cone-independence and zero-cone criteria it needs.</p>
+<p><strong>Finite truncations.</strong> For the finite-truncation argument alone, use the shift invariance and triangle bound already established in <a href="../sheaf-proof-readings/SH02-microsupport-tests.html#SH02-MST-FORMAL">the formal microsupport properties</a>: for a distinguished triangle, the microsupport of any term is contained in the union for the other two terms, and a cohomological shift leaves microsupport unchanged.</p>
+<p><strong>Flabby resolutions.</strong> For the coefficient comparison alone, an injective module sheaf is flabby and a flabby module sheaf has zero higher direct images along any morphism of ringed spaces. These exact statements are <a href="https://stacks.math.columbia.edu/tag/09SX">Tag 09SX</a> and <a href="https://stacks.math.columbia.edu/tag/09T0">Tag 09T0</a>, collected in <a href="../sheaf-proof-readings/SH02-open-prerequisites.html#SH02-IMP-FLABBY">the flabby-sheaf contract</a>. The passage from them to sections with support is proved below.</p>
+<p>The finite calculations in this lesson require no propagation theorem or cone projector. The equivalence between different regularities of test functions belongs to <a href="../sheaf-proof-readings/SH02-microsupport-tests.html#SH02-MST-EQUIVALENCE">the separate test-equivalence theorem</a>.</p>
+<h2 id="sh02-msd-cone-one-object-records-the-failure-of-a-morphism">SH02-MSD-CONE — One object records the failure of a morphism</h2>
+<p>Local identifier: <code>SH02-MSD-CONE</code>.</p>
+<p>Let <span class="math" data-tex="$u:F\to G$">$u:F\to G$</span> be a morphism in <span class="math" data-tex="$D^b(k_X)$">$D^b(k_X)$</span>. Complete it to a distinguished triangle
+<span class="math math-display" data-tex="\[
+F\xrightarrow{u}G\longrightarrow C\longrightarrow F[1].
+\tag{MSD3}
+\]">\[
+F\xrightarrow{u}G\longrightarrow C\longrightarrow F[1].
+\tag{MSD3}
+\]</span>
+The long exact cohomology sequence shows that <span class="math" data-tex="$C$">$C$</span> is bounded: once the neighboring cohomology sheaves of <span class="math" data-tex="$F$">$F$</span> and <span class="math" data-tex="$G$">$G$</span> vanish, the cohomology sheaf of <span class="math" data-tex="$C$">$C$</span> vanishes as well.</p>
+<p><strong>Definition.</strong> The morphism <span class="math" data-tex="$u$">$u$</span> is a <strong>microlocal isomorphism on <span class="math" data-tex="$A$">$A$</span></strong> if
+<span class="math math-display" data-tex="\[
+\operatorname{SS}(C)\cap A=\varnothing.
+\tag{MSD4}
+\]">\[
+\operatorname{SS}(C)\cap A=\varnothing.
+\tag{MSD4}
+\]</span>
+No openness, closedness, compactness, or conicity condition on <span class="math" data-tex="$A$">$A$</span> is part of this definition.</p>
+<p><strong>Proposition.</strong> Condition (MSD4) is independent of the distinguished triangle chosen in (MSD3).</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="$C&#x27;$">$C&#x27;$</span> is the third object of another distinguished triangle with the same first map <span class="math" data-tex="$u$">$u$</span>. The identity maps of <span class="math" data-tex="$F$">$F$</span> and <span class="math" data-tex="$G$">$G$</span> give a commutative square, so the triangle axiom extends them to a map <span class="math" data-tex="$c:C\to C&#x27;$">$c:C\to C&#x27;$</span> of third objects.</p>
+<p>Fix a point <span class="math" data-tex="$x$">$x$</span> and an integer <span class="math" data-tex="$n$">$n$</span>. The cohomology stalks give a commutative diagram with exact rows
+<span class="math math-display" data-tex="\[
+\begin{array}{ccccc}
+\mathcal H^n(F)_x&amp;\longrightarrow\mathcal H^n(G)_x
+&amp;\longrightarrow\mathcal H^n(C)_x
+&amp;\longrightarrow\mathcal H^{n+1}(F)_x
+&amp;\longrightarrow\mathcal H^{n+1}(G)_x\\
+\big\Vert&amp;\big\Vert&amp;\downarrow\mathcal H^n(c)_x
+&amp;\big\Vert&amp;\big\Vert\\
+\mathcal H^n(F)_x&amp;\longrightarrow\mathcal H^n(G)_x
+&amp;\longrightarrow\mathcal H^n(C&#x27;)_x
+&amp;\longrightarrow\mathcal H^{n+1}(F)_x
+&amp;\longrightarrow\mathcal H^{n+1}(G)_x.
+\end{array}
+\tag{MSD5}
+\]">\[
+\begin{array}{ccccc}
+\mathcal H^n(F)_x&amp;\longrightarrow\mathcal H^n(G)_x
+&amp;\longrightarrow\mathcal H^n(C)_x
+&amp;\longrightarrow\mathcal H^{n+1}(F)_x
+&amp;\longrightarrow\mathcal H^{n+1}(G)_x\\
+\big\Vert&amp;\big\Vert&amp;\downarrow\mathcal H^n(c)_x
+&amp;\big\Vert&amp;\big\Vert\\
+\mathcal H^n(F)_x&amp;\longrightarrow\mathcal H^n(G)_x
+&amp;\longrightarrow\mathcal H^n(C&#x27;)_x
+&amp;\longrightarrow\mathcal H^{n+1}(F)_x
+&amp;\longrightarrow\mathcal H^{n+1}(G)_x.
+\end{array}
+\tag{MSD5}
+\]</span>
+Here is the short exactness argument for the middle map. An upper middle element that maps to zero below has zero boundary, hence comes from <span class="math" data-tex="$\mathcal H^n(G)_x$">$\mathcal H^n(G)_x$</span>. Its zero lower image means that this lift comes from <span class="math" data-tex="$\mathcal H^n(F)_x$">$\mathcal H^n(F)_x$</span>, so the original element is zero. Conversely, the boundary of a lower middle element lies in the kernel of the last arrow. Lift that boundary through the upper middle term. Subtracting its image from the original lower element leaves an element with zero boundary, which lifts from <span class="math" data-tex="$\mathcal H^n(G)_x$">$\mathcal H^n(G)_x$</span>. Adding the two lifts gives a preimage. Thus <span class="math" data-tex="$\mathcal H^n(c)_x$">$\mathcal H^n(c)_x$</span> is bijective.</p>
+<p>This holds for every <span class="math" data-tex="$n$">$n$</span> and <span class="math" data-tex="$x$">$x$</span>, so <span class="math" data-tex="$c$">$c$</span> is a quasi-isomorphism and hence an isomorphism in <span class="math" data-tex="$D^b(k_X)$">$D^b(k_X)$</span>. The construction proves that an isomorphism between the cones exists; it does not specify a canonical one. Every support-test functor sends <span class="math" data-tex="$c$">$c$</span> to an isomorphism. The tests of <span class="math" data-tex="$C$">$C$</span> and <span class="math" data-tex="$C&#x27;$">$C&#x27;$</span> consequently vanish on exactly the same cotangent neighborhoods, giving <span class="math" data-tex="$\operatorname{SS}(C)=\operatorname{SS}(C&#x27;)$">$\operatorname{SS}(C)=\operatorname{SS}(C&#x27;)$</span>. This proves independence of (MSD4). <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-msd-tests-uniform-comparison-near-a-cotangent-subset">SH02-MSD-TESTS — Uniform comparison near a cotangent subset</h2>
+<p>Local identifier: <code>SH02-MSD-TESTS</code>.</p>
+<p><strong>Theorem.</strong> For <span class="math" data-tex="$u:F\to G$">$u:F\to G$</span> and an arbitrary subset <span class="math" data-tex="$A\subset T^*X$">$A\subset T^*X$</span>, the following conditions are equivalent.</p>
+<ol>
+<li>The morphism <span class="math" data-tex="$u$">$u$</span> is a microlocal isomorphism on <span class="math" data-tex="$A$">$A$</span>.</li>
+<li>For every <span class="math" data-tex="$p\in A$">$p\in A$</span>, there is an open neighborhood <span class="math" data-tex="$W_p$">$W_p$</span> of <span class="math" data-tex="$p$">$p$</span> such that <span class="math" data-tex="$\mathcal T_{x,f}(u)$">$\mathcal T_{x,f}(u)$</span> is an isomorphism for every point <span class="math" data-tex="$x$">$x$</span> and every real <span class="math" data-tex="$C^1$">$C^1$</span> function <span class="math" data-tex="$f$">$f$</span> defined near <span class="math" data-tex="$x$">$x$</span> with <span class="math" data-tex="$(x,df_x)\in W_p$">$(x,df_x)\in W_p$</span>.</li>
+<li>There is an open set <span class="math" data-tex="$W\supset A$">$W\supset A$</span> with the same property for every test whose cotangent point belongs to <span class="math" data-tex="$W$">$W$</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Apply the triangulated functor <span class="math" data-tex="$\mathcal T_{x,f}$">$\mathcal T_{x,f}$</span> to (MSD3). Its image is a distinguished triangle with first map <span class="math" data-tex="$\mathcal T_{x,f}(u)$">$\mathcal T_{x,f}(u)$</span> and third object <span class="math" data-tex="$\mathcal T_{x,f}(C)$">$\mathcal T_{x,f}(C)$</span>. In a derived category a triangle's first map is invertible exactly when the third object is zero. Indeed, if the third term has zero cohomology, the long exact sequence makes the first map a quasi-isomorphism. Conversely, if the first map is an isomorphism on cohomology in every degree, exactness forces every cohomology group of the third object to vanish. Therefore
+<span class="math math-display" data-tex="\[
+\mathcal T_{x,f}(u)\text{ is an isomorphism}
+\quad\Longleftrightarrow\quad
+\mathcal T_{x,f}(C)=0.
+\tag{MSD6}
+\]">\[
+\mathcal T_{x,f}(u)\text{ is an isomorphism}
+\quad\Longleftrightarrow\quad
+\mathcal T_{x,f}(C)=0.
+\tag{MSD6}
+\]</span>
+The equivalence of 1 and 2 is now exactly the <span class="math" data-tex="$C^1$">$C^1$</span> definition of <span class="math" data-tex="$p\notin\operatorname{SS}(C)$">$p\notin\operatorname{SS}(C)$</span>, applied at every <span class="math" data-tex="$p\in A$">$p\in A$</span>.</p>
+<p>Assuming 2, set <span class="math" data-tex="$W=\bigcup_{p\in A}W_p$">$W=\bigcup_{p\in A}W_p$</span>. A cotangent point in <span class="math" data-tex="$W$">$W$</span> belongs to one <span class="math" data-tex="$W_p$">$W_p$</span>, and every allowed function at that point passes the required morphism test. This proves 3. Conversely the same <span class="math" data-tex="$W$">$W$</span> works at each point of <span class="math" data-tex="$A$">$A$</span>, so 3 implies 2. When <span class="math" data-tex="$A=\varnothing$">$A=\varnothing$</span>, take <span class="math" data-tex="$W=\varnothing$">$W=\varnothing$</span>. No finite subcover is used, and points of the zero section are included. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Subtracting <span class="math" data-tex="$f(x)$">$f(x)$</span> from a test function changes neither its differential nor the support set in (MSD1). The theorem is therefore unchanged if every test is normalized by <span class="math" data-tex="$f(x)=0$">$f(x)=0$</span>. The word “every” and the order of the neighborhood quantifiers are essential; one successful test at a single covector does not imply any of the three conditions.</p>
+<p>For a class of smoother tests, (MSD6) is still true for each individual function. To replace all <span class="math" data-tex="$C^1$">$C^1$</span> tests in the theorem by <span class="math" data-tex="$C^r$">$C^r$</span> tests for an integer <span class="math" data-tex="$r&gt;1$">$r&gt;1$</span>, smooth tests, or analytic tests on an analytic manifold, apply the separate regularity-equivalence theorem to the bounded cone <span class="math" data-tex="$C$">$C$</span>. That supplies exactly the extra implication from vanishing for the restricted class to vanishing for every <span class="math" data-tex="$C^1$">$C^1$</span> test. The theorem proved here uses the original <span class="math" data-tex="$C^1$">$C^1$</span> definition directly.</p>
+<h2 id="sh02-msd-truncation-a-finite-cohomology-bound">SH02-MSD-TRUNCATION — A finite cohomology bound</h2>
+<p>Local identifier: <code>SH02-MSD-TRUNCATION</code>.</p>
+<p><strong>Proposition.</strong> For every <span class="math" data-tex="$F\in D^b(k_X)$">$F\in D^b(k_X)$</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{SS}(F)\subset
+\bigcup_j\operatorname{SS}(\mathcal H^jF).
+\tag{MSD7}
+\]">\[
+\operatorname{SS}(F)\subset
+\bigcup_j\operatorname{SS}(\mathcal H^jF).
+\tag{MSD7}
+\]</span></p>
+<p><strong>Proof.</strong> Choose integers <span class="math" data-tex="$a\leq b$">$a\leq b$</span> such that <span class="math" data-tex="$\mathcal H^jF=0$">$\mathcal H^jF=0$</span> outside <span class="math" data-tex="$a\leq j\leq b$">$a\leq j\leq b$</span>. For <span class="math" data-tex="$a\leq m\leq b$">$a\leq m\leq b$</span> there is a canonical truncation triangle
+<span class="math math-display" data-tex="\[
+\tau_{\leq m-1}F\longrightarrow\tau_{\leq m}F
+\longrightarrow\mathcal H^m(F)[-m]\xrightarrow{+1}.
+\tag{MSD8}
+\]">\[
+\tau_{\leq m-1}F\longrightarrow\tau_{\leq m}F
+\longrightarrow\mathcal H^m(F)[-m]\xrightarrow{+1}.
+\tag{MSD8}
+\]</span>
+Begin with <span class="math" data-tex="$\tau_{\leq a-1}F=0$">$\tau_{\leq a-1}F=0$</span>. The microsupport triangle bound and shift invariance give, by induction on <span class="math" data-tex="$m$">$m$</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{SS}(\tau_{\leq m}F)
+\subset\bigcup_{j=a}^{m}\operatorname{SS}(\mathcal H^jF).
+\]">\[
+\operatorname{SS}(\tau_{\leq m}F)
+\subset\bigcup_{j=a}^{m}\operatorname{SS}(\mathcal H^jF).
+\]</span>
+At <span class="math" data-tex="$m=b$">$m=b$</span> the truncated object is isomorphic to <span class="math" data-tex="$F$">$F$</span>, which proves (MSD7). There are only finitely many nonzero cohomology sheaves. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This proof provides an upper bound for <span class="math" data-tex="$\operatorname{SS}(F)$">$\operatorname{SS}(F)$</span>. It does not put the microsupport of every cohomology sheaf inside <span class="math" data-tex="$\operatorname{SS}(F)$">$\operatorname{SS}(F)$</span>: taking cohomology sheaves can change which directional obstructions cancel in the complex. A separate worked example in <a href="../sheaf-proof-readings/SH02-microsupport-tests.html#SH02-MST-PROBLEMS">the microsupport problems</a> investigates that failure using a cone projector.</p>
+<h2 id="sh02-msd-coefficients-forgetting-the-coefficient-action">SH02-MSD-COEFFICIENTS — Forgetting the coefficient action</h2>
+<p>Local identifier: <code>SH02-MSD-COEFFICIENTS</code>.</p>
+<p>Let <span class="math" data-tex="$U$">$U$</span> forget the <span class="math" data-tex="$k$">$k$</span> action on a sheaf or complex, leaving its underlying abelian sheaf. Kernels, images, and cokernels have the same underlying groups. Thus <span class="math" data-tex="$U$">$U$</span> is exact and conservative: it detects zero sheaves and quasi-isomorphisms. In particular it gives a functor <span class="math" data-tex="$D^b(k_X)\to D^b(\mathbb Z_X)$">$D^b(k_X)\to D^b(\mathbb Z_X)$</span> without needing to derive <span class="math" data-tex="$U$">$U$</span>.</p>
+<p><strong>Theorem.</strong> There are natural isomorphisms
+<span class="math math-display" data-tex="\[
+U\bigl(\mathcal T_{x,f}(F)\bigr)
+\simeq\mathcal T_{x,f}(UF),
+\qquad
+\operatorname{SS}(F)=\operatorname{SS}(UF).
+\tag{MSD9}
+\]">\[
+U\bigl(\mathcal T_{x,f}(F)\bigr)
+\simeq\mathcal T_{x,f}(UF),
+\qquad
+\operatorname{SS}(F)=\operatorname{SS}(UF).
+\tag{MSD9}
+\]</span></p>
+<p><strong>Proof.</strong> Underived sections with closed support, restriction, and stalks commute with forgetting the action: each is computed with the same sections or germs and the same zero conditions. We must justify the derived comparison. Forgetting the action need not preserve injective objects, so we use acyclic resolutions.</p>
+<p>First let <span class="math" data-tex="$J$">$J$</span> be a flabby sheaf on an open domain <span class="math" data-tex="$V$">$V$</span>, and let <span class="math" data-tex="$Z\subset V$">$Z\subset V$</span> be closed with complementary inclusion <span class="math" data-tex="$j:V\setminus Z\hookrightarrow V$">$j:V\setminus Z\hookrightarrow V$</span>. The restriction <span class="math" data-tex="$j^{-1}J$">$j^{-1}J$</span> is flabby because restriction maps between opens of <span class="math" data-tex="$V\setminus Z$">$V\setminus Z$</span> are restriction maps between opens of <span class="math" data-tex="$V$">$V$</span>. By the flabby direct-image theorem, <span class="math" data-tex="$R^qj_*j^{-1}J=0$">$R^qj_*j^{-1}J=0$</span> for <span class="math" data-tex="$q&gt;0$">$q&gt;0$</span>. Moreover <span class="math" data-tex="$J\to j_*j^{-1}J$">$J\to j_*j^{-1}J$</span> is surjective on sections over every open subset <span class="math" data-tex="$O\subset V$">$O\subset V$</span>, since it is the flabby restriction <span class="math" data-tex="$J(O)\to J(O\setminus Z)$">$J(O)\to J(O\setminus Z)$</span>.</p>
+<p>Apply (MSD2) to <span class="math" data-tex="$J$">$J$</span> in degree zero. Its middle and last derived terms are the sheaves <span class="math" data-tex="$J$">$J$</span> and <span class="math" data-tex="$j_*j^{-1}J$">$j_*j^{-1}J$</span>, and the map between them is surjective. The first term is therefore represented by the ordinary kernel <span class="math" data-tex="$\Gamma_ZJ$">$\Gamma_ZJ$</span> in degree zero. This proves that every such flabby sheaf is acyclic for the sheaf-support functor <span class="math" data-tex="$\Gamma_Z$">$\Gamma_Z$</span>.</p>
+<p>Now choose a bounded-below injective resolution <span class="math" data-tex="$F|_V\to I^\bullet$">$F|_V\to I^\bullet$</span> in <span class="math" data-tex="$k$">$k$</span>-module sheaves. Each <span class="math" data-tex="$I^n$">$I^n$</span> is flabby. The underlying sheaf <span class="math" data-tex="$UI^n$">$UI^n$</span> has the same surjective restriction maps, so it too is flabby and therefore <span class="math" data-tex="$\Gamma_Z$">$\Gamma_Z$</span>-acyclic in abelian sheaves. Exactness of <span class="math" data-tex="$U$">$U$</span> makes <span class="math" data-tex="$UI^\bullet$">$UI^\bullet$</span> a resolution of <span class="math" data-tex="$UF|_V$">$UF|_V$</span>. The bounded-below acyclic-resolution theorem then gives
+<span class="math math-display" data-tex="\[
+U\bigl(R\Gamma_Z(F|_V)\bigr)
+\simeq U(\Gamma_Z I^\bullet)
+=\Gamma_Z(UI^\bullet)
+\simeq R\Gamma_Z(UF|_V).
+\tag{MSD10}
+\]">\[
+U\bigl(R\Gamma_Z(F|_V)\bigr)
+\simeq U(\Gamma_Z I^\bullet)
+=\Gamma_Z(UI^\bullet)
+\simeq R\Gamma_Z(UF|_V).
+\tag{MSD10}
+\]</span>
+The maps are natural in <span class="math" data-tex="$F$">$F$</span>: a comparison of injective resolutions becomes the same comparison of acyclic resolutions after forgetting scalars. They also commute with restriction to smaller open test domains, since open restriction preserves injectives here by its exact left adjoint, extension by zero.</p>
+<p>Take the stalk at <span class="math" data-tex="$x$">$x$</span> in (MSD10). Stalks are exact and commute with <span class="math" data-tex="$U$">$U$</span>, giving the first assertion in (MSD9). Exact conservativity of <span class="math" data-tex="$U$">$U$</span> says that this complex is zero exactly when the original <span class="math" data-tex="$k$">$k$</span>-module support test is zero. Thus precisely the same cotangent neighborhoods make every test vanish in the two coefficient categories. The <span class="math" data-tex="$C^1$">$C^1$</span> definition proves the second assertion. <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>This theorem views the same complex after forgetting its action. It does not claim invariance under tensoring with a different ring, since such a tensor functor can kill a nonzero complex. No nonzero-ring assumption was needed in the proof.</p>
+<h2 id="sh02-msd-coordinates-transport-by-a-c1-diffeomorphism">SH02-MSD-COORDINATES — Transport by a C1 diffeomorphism</h2>
+<p>Local identifier: <code>SH02-MSD-COORDINATES</code>.</p>
+<p>Let <span class="math" data-tex="$h:X\to Y$">$h:X\to Y$</span> be a <span class="math" data-tex="$C^1$">$C^1$</span> diffeomorphism and define the induced cotangent homeomorphism by
+<span class="math math-display" data-tex="\[
+h^\#:T^*Y\longrightarrow T^*X,\qquad
+(y,\eta)\longmapsto
+\bigl(h^{-1}(y),(dh_{h^{-1}(y)})^*\eta\bigr).
+\tag{MSD11}
+\]">\[
+h^\#:T^*Y\longrightarrow T^*X,\qquad
+(y,\eta)\longmapsto
+\bigl(h^{-1}(y),(dh_{h^{-1}(y)})^*\eta\bigr).
+\tag{MSD11}
+\]</span>
+The derivatives of <span class="math" data-tex="$h$">$h$</span> and <span class="math" data-tex="$h^{-1}$">$h^{-1}$</span> are continuous, and their differentials are inverse linear maps at corresponding points. This proves both invertibility and continuity in both directions of (MSD11).</p>
+<p><strong>Theorem.</strong> For <span class="math" data-tex="$G\in D^b(k_Y)$">$G\in D^b(k_Y)$</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{SS}(h^{-1}G)=h^\#\operatorname{SS}(G).
+\tag{MSD12}
+\]">\[
+\operatorname{SS}(h^{-1}G)=h^\#\operatorname{SS}(G).
+\tag{MSD12}
+\]</span></p>
+<p><strong>Proof.</strong> Inverse image along the homeomorphism <span class="math" data-tex="$h$">$h$</span> is an exact equivalence of sheaf categories. An exact equivalence preserves injectives. It also identifies sheaf sections supported in a subset with sections supported in its inverse image, so applying it to an injective resolution gives the same identification for derived supports and their local stalks.</p>
+<p>Let <span class="math" data-tex="$y=h(x)$">$y=h(x)$</span> and let <span class="math" data-tex="$f$">$f$</span> be a <span class="math" data-tex="$C^1$">$C^1$</span> test near <span class="math" data-tex="$y$">$y$</span>. Its superlevel set pulls back to the superlevel set of <span class="math" data-tex="$f\circ h$">$f\circ h$</span> at <span class="math" data-tex="$x$">$x$</span>, and the chain rule gives
+<span class="math math-display" data-tex="\[
+\mathcal T_{x,f\circ h}(h^{-1}G)
+\simeq\mathcal T_{y,f}(G),
+\qquad d(f\circ h)_x=(dh_x)^*df_y.
+\tag{MSD13}
+\]">\[
+\mathcal T_{x,f\circ h}(h^{-1}G)
+\simeq\mathcal T_{y,f}(G),
+\qquad d(f\circ h)_x=(dh_x)^*df_y.
+\tag{MSD13}
+\]</span>
+Every <span class="math" data-tex="$C^1$">$C^1$</span> test near <span class="math" data-tex="$x$">$x$</span> arises in this way by composing it with <span class="math" data-tex="$h^{-1}$">$h^{-1}$</span>. The homeomorphism (MSD11) transports open cotangent neighborhoods in both directions, and (MSD13) transports all tests in those neighborhoods. A neighborhood passes every test for one complex exactly when its corresponding neighborhood passes every test for the other. This proves (MSD12). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Applied to overlapping coordinate charts, the theorem shows that microsupport depends only on the <span class="math" data-tex="$C^1$">$C^1$</span> structure. Analytic-test replacements, when an analytic structure is available, still use the separate test-regularity theorem.</p>
+<h2 id="sh02-msd-exercises-composing-comparisons">SH02-MSD-EXERCISES — Composing comparisons</h2>
+<p>Local identifier: <code>SH02-MSD-EXERCISES</code>.</p>
+<p><strong>Exercise.</strong> Let <span class="math" data-tex="$F\xrightarrow{u}G\xrightarrow{v}H$">$F\xrightarrow{u}G\xrightarrow{v}H$</span> be morphisms of bounded complexes, and let <span class="math" data-tex="$A\subset T^*X$">$A\subset T^*X$</span> be arbitrary. Prove that if any two of <span class="math" data-tex="$u$">$u$</span>, <span class="math" data-tex="$v$">$v$</span>, and <span class="math" data-tex="$vu$">$vu$</span> are microlocal isomorphisms on <span class="math" data-tex="$A$">$A$</span>, then so is the third. Use local support tests to keep track of a single neighborhood on which the two known comparisons work.</p>
+<p><strong>Solution.</strong> Fix <span class="math" data-tex="$p\in A$">$p\in A$</span>. For each of the two given comparisons, the uniform-test theorem supplies an open neighborhood of <span class="math" data-tex="$p$">$p$</span>. Intersect the two neighborhoods. Every support-test functor at a cotangent point of that intersection preserves composition, so its maps satisfy
+<span class="math math-display" data-tex="\[
+\mathcal T_{x,f}(vu)=\mathcal T_{x,f}(v)\,\mathcal T_{x,f}(u).
+\]">\[
+\mathcal T_{x,f}(vu)=\mathcal T_{x,f}(v)\,\mathcal T_{x,f}(u).
+\]</span>
+Any two of these three maps are isomorphisms. The elementary two-out-of-three property for isomorphisms makes the third an isomorphism too: compose with the inverse of whichever factor is known when the composite is one of the given maps. The same neighborhood therefore works for every test of the third comparison. Apply the uniform-test theorem at each <span class="math" data-tex="$p\in A$">$p\in A$</span>. The assertion for empty <span class="math" data-tex="$A$">$A$</span> is vacuous. <span class="math" data-tex="$\square$">$\square$</span></p>
+<h2 id="sh02-msd-antecedents-scope-and-antecedents">SH02-MSD-ANTECEDENTS — Scope and antecedents</h2>
+<p>Local identifier: <code>SH02-MSD-ANTECEDENTS</code>.</p>
+<p>The micro-support and its equivalent definitions are due to Kashiwara and Schapira; see M. Kashiwara and P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf"><em>Microlocal study of sheaves</em></a>, Astérisque 128 (1985), §3.1. The organization here follows the comparison morphism through its cone, tests, coefficient action and coordinates. The finite-truncation proof uses the earlier microsupport triangle bound; it does not establish a reverse inclusion for cohomology sheaves. The stronger theorem replacing <span class="math" data-tex="$C^1$">$C^1$</span> tests by smoother or analytic tests has its own geometric proof and is a separate prerequisite whenever that replacement is used.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><span class="unlinked">Course contents</span><span></span></nav>
+<p class="small source-link"><a href="src/microlocal-comparison-foundations.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. </p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/SH-02">Repository</a></nav>
+</footer>
+</body>
+</html>

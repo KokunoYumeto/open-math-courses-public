@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Representations of GL₂ over finite fields · Open Mathematics Courses</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/RT-FIN/representations-of-gl2-over-finite-fields.html"><link rel="stylesheet" href="../../assets/site.css"><style>.result-link{scroll-margin-top:1rem}.lesson-nav{display:flex;gap:1rem;flex-wrap:wrap;margin:1rem 0}.crosswalk td{padding:.4rem;vertical-align:top}.crosswalk code{font-size:.72rem}details{margin:1rem 0}</style><script>window.MathJax={"tex":{"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]],"processEscapes":true,"macros":{"Eta":"\\mathrm{H}"}},"options":{"ignoreHtmlClass":"no-math","processHtmlClass":"math"}};</script><script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><a class="skip-link" href="#main">Skip to content</a><header class="site-header"><div class="header-inner"><a class="brand" href="../../">Open Mathematics Courses</a><nav class="primary-nav"><a href="index.html">Representations of finite groups</a><a href="sources.html">Sources and terms</a><a href="proof-crosswalk.html">Proof index</a></nav></div></header><main id="main"><article class="lesson"><nav class="lesson-nav" aria-label="Lesson navigation"><a href="schur-weyl-duality.html">← Previous lesson</a><a href="index.html">Course contents</a><a href="src/RT-FIN-17.md" download>Editable source</a></nav><details><summary>Results in this lesson</summary><ul><li><a href="#lemma-1-1">Lemma 1.1</a></li><li><a href="#proposition-1-2">Proposition 1.2</a></li><li><a href="#theorem-2-1">Theorem 2.1</a></li><li><a href="#lemma-3-1">Lemma 3.1</a></li><li><a href="#theorem-4-1">Theorem 4.1</a></li><li><a href="#theorem-5-1">Theorem 5.1</a></li><li><a href="#proposition-7-1">Proposition 7.1</a></li></ul></details><h1 id="representations-of-gl₂-over-finite-fields">Representations of GL₂ over finite fields</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra in Codex, October 2026. Self-checked by the AI that wrote it. Independent AI review is not yet recorded. Public domain (CC0).</em></p>
+<p>The geometry of a two-dimensional vector space gives two ways to build representations of its general linear group. Rational lines lead to principal series and the Steinberg representation. Multiplication in a quadratic field extension supplies an elliptic torus. Combining induction from that torus with induction from an additive subgroup produces the remaining representations. Character orthogonality turns a difference of representations into an actual irreducible representation.</p>
+<p>We construct every irreducible complex representation of <span class="math" data-tex="\(G=\mathrm{GL}_2(\mathbf F_q)\)">\(G=\mathrm{GL}_2(\mathbf F_q)\)</span>, for every prime power <span class="math" data-tex="\(q\)">\(q\)</span>, including even characteristic. We use character determination, orthogonality, completeness and the column relation from <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a>, Theorems 3.1–3.2 and 4.1 and Corollary 4.2. The induced-character formula, reciprocity and tensoring with a character are <a href="induced-representations-and-frobenius-reciprocity.html">Induced representations and Frobenius reciprocity</a>, formulas (3), (8), Theorem 3.1 and Proposition 4.1. Mackey's intertwining formula is <a href="mackey-theory-and-cliffords-theorem.html">Mackey theory and Clifford's theorem</a>, Corollary 1.2. The final examples use the Frobenius–Schur indicator from <a href="tensor-products-duals-and-real-representations.html">Tensor products, duals and real representations</a>, Theorems 2.1 and 3.1. Basic references are [Etingof et al.], [Gruson–Serganova], [Deligne–Lusztig 1976] and [Deligne–Lusztig 1982].</p>
+<p>Representations are finite-dimensional over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. Write <span class="math" data-tex="\(\widehat A\)">\(\widehat A\)</span> for the complex linear characters of an abelian group <span class="math" data-tex="\(A\)">\(A\)</span>, and use an inner product linear in the first variable. Set</p>
+<span class="math math-display" data-tex="\[
+B=\left\{\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix}:ad\ne0\right\},\quad
+U=\{u(x):x\in\mathbf F_q\},\quad
+u(x)=\begin{pmatrix}1&amp;x\\0&amp;1\end{pmatrix},
+\tag{1}
+\]">\[
+B=\left\{\begin{pmatrix}a&amp;b\\0&amp;d\end{pmatrix}:ad\ne0\right\},\quad
+U=\{u(x):x\in\mathbf F_q\},\quad
+u(x)=\begin{pmatrix}1&amp;x\\0&amp;1\end{pmatrix},
+\tag{1}
+\]</span>
+<p>and let <span class="math" data-tex="\(T\)">\(T\)</span> be the diagonal subgroup and <span class="math" data-tex="\(Z=\{aI:a\ne0\}\)">\(Z=\{aI:a\ne0\}\)</span>. Distinguish <span class="math" data-tex="\(T\)">\(T\)</span> from the elliptic torus introduced below.</p>
+<h2 id="1-fields-eigenvalues-and-rational-lines">1. Fields, eigenvalues and rational lines</h2>
+<p>The elementary field facts needed for the elliptic construction can be obtained directly.</p>
+<p id="lemma-1-1" class="result-link"><strong>Lemma 1.1 (quadratic extension and its characters).</strong> There is a field <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(q^2\)">\(q^2\)</span> elements containing <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>. Its nontrivial <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>-automorphism is <span class="math" data-tex="\(\lambda\mapsto\lambda^q\)">\(\lambda\mapsto\lambda^q\)</span>. The groups <span class="math" data-tex="\(H=\mathbf F_q^\times\)">\(H=\mathbf F_q^\times\)</span> and <span class="math" data-tex="\(E=K^\times\)">\(E=K^\times\)</span> are cyclic. The norm</p>
+<span class="math math-display" data-tex="\[
+N:E\longrightarrow H,\qquad N(\lambda)=\lambda^{q+1}
+\tag{2}
+\]">\[
+N:E\longrightarrow H,\qquad N(\lambda)=\lambda^{q+1}
+\tag{2}
+\]</span>
+<p>is onto. Exactly <span class="math" data-tex="\(q-1\)">\(q-1\)</span> characters of <span class="math" data-tex="\(E\)">\(E\)</span> satisfy <span class="math" data-tex="\(\theta^q=\theta\)">\(\theta^q=\theta\)</span>, where <span class="math" data-tex="\(\theta^q(\lambda)=\theta(\lambda^q)\)">\(\theta^q(\lambda)=\theta(\lambda^q)\)</span>; they are the characters <span class="math" data-tex="\(\chi\circ N\)">\(\chi\circ N\)</span>.</p>
+<p><strong>Proof.</strong> Among the <span class="math" data-tex="\(q^2\)">\(q^2\)</span> monic quadratic polynomials, exactly <span class="math" data-tex="\(q(q+1)/2\)">\(q(q+1)/2\)</span> are products of two monic linear factors: an unordered pair of roots, with repetition, determines the product. Thus <span class="math" data-tex="\(q(q-1)/2&gt;0\)">\(q(q-1)/2&gt;0\)</span> are irreducible. Quotienting <span class="math" data-tex="\(\mathbf F_q[X]\)">\(\mathbf F_q[X]\)</span> by any one gives <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p>The <span class="math" data-tex="\(q\)">\(q\)</span>-power map is an injective field homomorphism, hence an automorphism of this finite field. Lagrange's theorem gives <span class="math" data-tex="\(x^{q^2}=x\)">\(x^{q^2}=x\)</span> for all <span class="math" data-tex="\(x\in K\)">\(x\in K\)</span>, so its square is the identity. Its fixed elements are exactly <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>: they include that field and are roots of the polynomial <span class="math" data-tex="\(X^q-X\)">\(X^q-X\)</span>, which has at most <span class="math" data-tex="\(q\)">\(q\)</span> roots. An element outside the base field generates the quadratic extension, and its minimal polynomial has exactly the two distinct roots <span class="math" data-tex="\(\lambda,\lambda^q\)">\(\lambda,\lambda^q\)</span>. Every base-field automorphism must send it to one of these roots, so the identity and Frobenius are the only two automorphisms.</p>
+<p>For any finite subgroup <span class="math" data-tex="\(A\)">\(A\)</span> of the multiplicative group of a field, let <span class="math" data-tex="\(m\)">\(m\)</span> be the least common multiple of the orders of its elements. For each prime power dividing <span class="math" data-tex="\(m\)">\(m\)</span>, choose an element whose order contains that entire prime power and raise it to a suitable coprime-part power. Multiplying these commuting elements of coprime orders gives an element of order <span class="math" data-tex="\(m\)">\(m\)</span>. Every element of <span class="math" data-tex="\(A\)">\(A\)</span> is a root of <span class="math" data-tex="\(X^m-1\)">\(X^m-1\)</span>, so <span class="math" data-tex="\(|A|\le m\)">\(|A|\le m\)</span>; the element just constructed gives <span class="math" data-tex="\(m\le|A|\)">\(m\le|A|\)</span>. Consequently <span class="math" data-tex="\(A\)">\(A\)</span> is cyclic. This applies to <span class="math" data-tex="\(H,E\)">\(H,E\)</span>.</p>
+<p>If <span class="math" data-tex="\(z\)">\(z\)</span> generates <span class="math" data-tex="\(E\)">\(E\)</span>, then <span class="math" data-tex="\(z^{q+1}\)">\(z^{q+1}\)</span> has order <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. It is fixed by the <span class="math" data-tex="\(q\)">\(q\)</span>-power map, so it generates <span class="math" data-tex="\(H\)">\(H\)</span>, proving norm surjectivity. A character is determined by <span class="math" data-tex="\(\theta(z)=\exp(2\pi i k/(q^2-1))\)">\(\theta(z)=\exp(2\pi i k/(q^2-1))\)</span>. The condition <span class="math" data-tex="\(\theta^q=\theta\)">\(\theta^q=\theta\)</span> is <span class="math" data-tex="\((q^2-1)\mid k(q-1)\)">\((q^2-1)\mid k(q-1)\)</span>, or <span class="math" data-tex="\((q+1)\mid k\)">\((q+1)\mid k\)</span>. These are precisely the norm characters, and there are <span class="math" data-tex="\(q-1\)">\(q-1\)</span> of them. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Regard <span class="math" data-tex="\(K\)">\(K\)</span> as a two-dimensional <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>-space. Multiplication by <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> embeds <span class="math" data-tex="\(E\)">\(E\)</span> into <span class="math" data-tex="\(G\)">\(G\)</span> after choosing a basis. Denote this operator by <span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span>. Its determinant is <span class="math" data-tex="\(N(\lambda)\)">\(N(\lambda)\)</span>; its eigenvalues over <span class="math" data-tex="\(K\)">\(K\)</span> are <span class="math" data-tex="\(\lambda,\lambda^q\)">\(\lambda,\lambda^q\)</span> when <span class="math" data-tex="\(\lambda\notin\mathbf F_q\)">\(\lambda\notin\mathbf F_q\)</span>. Indeed its minimal polynomial is <span class="math" data-tex="\((X-\lambda)(X-\lambda^q)\)">\((X-\lambda)(X-\lambda^q)\)</span>, which has coefficients in the fixed field and is irreducible over it.</p>
+<p id="proposition-1-2" class="result-link"><strong>Proposition 1.2 (all conjugacy classes).</strong> The four class types, their centralizer orders and their numbers are as follows. In the last two rows take unordered pairs and Frobenius pairs, respectively.</p>
+<table>
+<thead>
+<tr>
+<th>Representative</th>
+<th>Conditions</th>
+<th style="text-align:right">Centralizer order</th>
+<th style="text-align:right">Class size</th>
+<th style="text-align:right">Number of classes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(aI\)">\(aI\)</span></td>
+<td><span class="math" data-tex="\(a\in H\)">\(a\in H\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(q(q+1)(q-1)^2\)">\(q(q+1)(q-1)^2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(q-1\)">\(q-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(j_a=a u(1)\)">\(j_a=a u(1)\)</span></td>
+<td><span class="math" data-tex="\(a\in H\)">\(a\in H\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(q(q-1)\)">\(q(q-1)\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(q^2-1\)">\(q^2-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(q-1\)">\(q-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(d_{a,b}=\operatorname{diag}(a,b)\)">\(d_{a,b}=\operatorname{diag}(a,b)\)</span></td>
+<td><span class="math" data-tex="\(a,b\in H, a\ne b\)">\(a,b\in H, a\ne b\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\((q-1)^2\)">\((q-1)^2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(q(q+1)\)">\(q(q+1)\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\((q-1)(q-2)/2\)">\((q-1)(q-2)/2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span></td>
+<td><span class="math" data-tex="\(\lambda\in E\setminus H\)">\(\lambda\in E\setminus H\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(q^2-1\)">\(q^2-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(q(q-1)\)">\(q(q-1)\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(q(q-1)/2\)">\(q(q-1)/2\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>There are <span class="math" data-tex="\(q^2-1\)">\(q^2-1\)</span> classes in total.</p>
+<p><strong>Proof.</strong> Choose the first column of an invertible matrix nonzero and its second column outside the first column's span. This gives</p>
+<span class="math math-display" data-tex="\[
+|G|=(q^2-1)(q^2-q)=q(q+1)(q-1)^2.
+\tag{3}
+\]">\[
+|G|=(q^2-1)(q^2-q)=q(q+1)(q-1)^2.
+\tag{3}
+\]</span>
+<p>If the characteristic polynomial has two distinct roots in the base field, eigenvectors give <span class="math" data-tex="\(d_{a,b}\)">\(d_{a,b}\)</span>, and conjugacy forgets their order. For a repeated root <span class="math" data-tex="\(a\)">\(a\)</span>, either the matrix is scalar or its nonzero nilpotent part has square zero. A vector outside its kernel and its image give a Jordan basis. Rescaling that basis makes it <span class="math" data-tex="\(j_a\)">\(j_a\)</span>. Distinct roots <span class="math" data-tex="\(a\)">\(a\)</span> distinguish these classes.</p>
+<p>For an irreducible characteristic polynomial <span class="math" data-tex="\(f\)">\(f\)</span>, a nonzero vector <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(gv\)">\(gv\)</span> are independent, since dependence would give a base-field eigenvalue. The action is therefore the cyclic module <span class="math" data-tex="\(\mathbf F_q[X]/(f)\)">\(\mathbf F_q[X]/(f)\)</span>. The roots of every such quadratic lie in <span class="math" data-tex="\(K\)">\(K\)</span>: the quotient field has <span class="math" data-tex="\(q^2\)">\(q^2\)</span> elements, so <span class="math" data-tex="\(f\)">\(f\)</span> divides <span class="math" data-tex="\(X^{q^2}-X\)">\(X^{q^2}-X\)</span>; this polynomial splits into distinct linear factors in <span class="math" data-tex="\(K\)">\(K\)</span>, by the preceding lemma and its nonzero derivative. Thus the action is <span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span>, with <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> unique up to <span class="math" data-tex="\(q\)">\(q\)</span>-power. Conversely equal characteristic polynomials give the same cyclic module, so these pairs determine conjugacy exactly.</p>
+<p>Commuting with <span class="math" data-tex="\(j_a\)">\(j_a\)</span> forces a matrix to have the form <span class="math" data-tex="\(\begin{pmatrix}r&amp;s\\0&amp;r\end{pmatrix}\)">\(\begin{pmatrix}r&amp;s\\0&amp;r\end{pmatrix}\)</span>, with <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>. Commuting with <span class="math" data-tex="\(d_{a,b}\)">\(d_{a,b}\)</span> preserves both eigenlines and gives the invertible diagonal matrices. Commuting with <span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span> means being <span class="math" data-tex="\(K\)">\(K\)</span>-linear on the one-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>-space; its invertible commutant is <span class="math" data-tex="\(E\)">\(E\)</span>. Scalars commute with all of <span class="math" data-tex="\(G\)">\(G\)</span>. Dividing (3) by these centralizer orders gives the sizes. Counting the labels gives the last column, and their sum is <span class="math" data-tex="\(q^2-1\)">\(q^2-1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The projective line <span class="math" data-tex="\(\mathbf P^1(\mathbf F_q)\)">\(\mathbf P^1(\mathbf F_q)\)</span> is the set of one-dimensional subspaces. A scalar fixes all <span class="math" data-tex="\(q+1\)">\(q+1\)</span> lines, <span class="math" data-tex="\(j_a\)">\(j_a\)</span> fixes its unique eigenline, <span class="math" data-tex="\(d_{a,b}\)">\(d_{a,b}\)</span> fixes two, and an elliptic element fixes none. These four counts will give the Steinberg character.</p>
+<h2 id="2-two-orbits-produce-principal-series">2. Two orbits produce principal series</h2>
+<p>The subgroup <span class="math" data-tex="\(B\)">\(B\)</span> stabilizes <span class="math" data-tex="\(L_\infty=\mathbf F_q(1,0)\)">\(L_\infty=\mathbf F_q(1,0)\)</span>. The map <span class="math" data-tex="\(gB\mapsto gL_\infty\)">\(gB\mapsto gL_\infty\)</span> identifies <span class="math" data-tex="\(G/B\)">\(G/B\)</span> with the projective line. Its <span class="math" data-tex="\(B\)">\(B\)</span>-orbits are <span class="math" data-tex="\(L_\infty\)">\(L_\infty\)</span> and the <span class="math" data-tex="\(q\)">\(q\)</span> affine lines <span class="math" data-tex="\(\mathbf F_q(x,1)\)">\(\mathbf F_q(x,1)\)</span>. The latter are one orbit because <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> adds <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(x\)">\(x\)</span>. With <span class="math" data-tex="\(w=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)">\(w=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>, this proves</p>
+<span class="math math-display" data-tex="\[
+G=B\sqcup BwB,\qquad B\cap wBw^{-1}=T.
+\tag{4}
+\]">\[
+G=B\sqcup BwB,\qquad B\cap wBw^{-1}=T.
+\tag{4}
+\]</span>
+<p>Here is the same decomposition at the level of a basis of coset copies:</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c|c}
+G/B&amp;\{B\}&amp;\{u(x)wB:x\in\mathbf F_q\}\\\hline
+\text{rational lines}&amp;L_\infty&amp;\mathbf F_q(x,1)\\
+\text{number of copies}&amp;1&amp;q\\
+u(t)&amp;L_\infty\mapsto L_\infty&amp;x\mapsto x+t
+\end{array}
+\tag{5}
+\]">\[
+\begin{array}{c|c|c}
+G/B&amp;\{B\}&amp;\{u(x)wB:x\in\mathbf F_q\}\\\hline
+\text{rational lines}&amp;L_\infty&amp;\mathbf F_q(x,1)\\
+\text{number of copies}&amp;1&amp;q\\
+u(t)&amp;L_\infty\mapsto L_\infty&amp;x\mapsto x+t
+\end{array}
+\tag{5}
+\]</span>
+<p><em>Figure 1. The two actual orbits on rational lines. The affine orbit has <span class="math" data-tex="\(q\)">\(q\)</span> elements and is a free orbit for the additive group <span class="math" data-tex="\(U\)">\(U\)</span>. Together with the fixed line it accounts for every coset and both terms in Mackey's formula.</em></p>
+<p>For <span class="math" data-tex="\(\alpha,\beta\in\widehat H\)">\(\alpha,\beta\in\widehat H\)</span>, let <span class="math" data-tex="\(\xi_{\alpha,\beta}\)">\(\xi_{\alpha,\beta}\)</span> be the character of <span class="math" data-tex="\(B\)">\(B\)</span> with value <span class="math" data-tex="\(\alpha(a)\beta(d)\)">\(\alpha(a)\beta(d)\)</span> on the matrix in (1). Define</p>
+<span class="math math-display" data-tex="\[
+I(\alpha,\beta)=\operatorname{Ind}_B^G\xi_{\alpha,\beta},\qquad
+D_\chi(g)=\chi(\det g).
+\tag{6}
+\]">\[
+I(\alpha,\beta)=\operatorname{Ind}_B^G\xi_{\alpha,\beta},\qquad
+D_\chi(g)=\chi(\det g).
+\tag{6}
+\]</span>
+<p>We use the same symbol for a representation and its character when taking inner products.</p>
+<p id="theorem-2-1" class="result-link"><strong>Theorem 2.1 (principal series and Steinberg).</strong> The representation <span class="math" data-tex="\(I(\alpha,\beta)\)">\(I(\alpha,\beta)\)</span> has dimension <span class="math" data-tex="\(q+1\)">\(q+1\)</span>. It is irreducible exactly when <span class="math" data-tex="\(\alpha\ne\beta\)">\(\alpha\ne\beta\)</span>, and then its isomorphism class determines the unordered pair <span class="math" data-tex="\(\{\alpha,\beta\}\)">\(\{\alpha,\beta\}\)</span>. The augmentation subspace</p>
+<span class="math math-display" data-tex="\[
+\mathrm{St}=\left\{\sum_L c_L[L]\in\mathbf C[\mathbf P^1(\mathbf F_q)]:\sum_Lc_L=0\right\}
+\tag{7}
+\]">\[
+\mathrm{St}=\left\{\sum_L c_L[L]\in\mathbf C[\mathbf P^1(\mathbf F_q)]:\sum_Lc_L=0\right\}
+\tag{7}
+\]</span>
+<p>is irreducible of dimension <span class="math" data-tex="\(q\)">\(q\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+I(\chi,\chi)\simeq D_\chi\oplus\mathrm{St}_\chi,
+\qquad\mathrm{St}_\chi=\mathrm{St}\otimes D_\chi.
+\tag{8}
+\]">\[
+I(\chi,\chi)\simeq D_\chi\oplus\mathrm{St}_\chi,
+\qquad\mathrm{St}_\chi=\mathrm{St}\otimes D_\chi.
+\tag{8}
+\]</span>
+<p><strong>Proof.</strong> The dimension is the number of cosets. Mackey's formula and (4) give the full intertwining number</p>
+<span class="math math-display" data-tex="\[
+\langle I(\alpha,\beta),I(\gamma,\delta)\rangle
+=\delta_{\alpha,\gamma}\delta_{\beta,\delta}
++\delta_{\alpha,\delta}\delta_{\beta,\gamma}.
+\tag{9}
+\]">\[
+\langle I(\alpha,\beta),I(\gamma,\delta)\rangle
+=\delta_{\alpha,\gamma}\delta_{\beta,\delta}
++\delta_{\alpha,\delta}\delta_{\beta,\gamma}.
+\tag{9}
+\]</span>
+<p>In the identity double coset we compare the two characters on <span class="math" data-tex="\(B\)">\(B\)</span>. In the other we compare them on <span class="math" data-tex="\(T\)">\(T\)</span>, where conjugating by <span class="math" data-tex="\(w\)">\(w\)</span> interchanges the diagonal entries. Characters of <span class="math" data-tex="\(H\times H\)">\(H\times H\)</span> are equal exactly when both entries agree. This proves (9).</p>
+<p>The norm is one for distinct entries and two for equal entries. Complete reducibility and character multiplicities therefore prove irreducibility in the former case. The nonzero Hom space between the two orders of a distinct pair is an isomorphism; (9) also proves the asserted uniqueness. For equal trivial entries, induction is the permutation representation. It is the direct sum of constants and the space (7), because <span class="math" data-tex="\(q+1\ne0\)">\(q+1\ne0\)</span> in <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>. Transitivity makes the constants occur once. A norm of two now forces the remaining summand to be one irreducible of multiplicity one. Tensoring with <span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span>, whose restriction to <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(\xi_{\chi,\chi}\)">\(\xi_{\chi,\chi}\)</span>, proves (8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an induced character, each fixed line contributes the character of the stabilizer on its coset copy. On a fixed eigenline with eigenvalue <span class="math" data-tex="\(a\)">\(a\)</span>, the quotient eigenvalue is <span class="math" data-tex="\(b\)">\(b\)</span>, and the contribution is <span class="math" data-tex="\(\alpha(a)\beta(b)\)">\(\alpha(a)\beta(b)\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|cccc}
+g&amp;aI&amp;j_a&amp;d_{a,b}&amp;e_\lambda\\\hline
+I(\alpha,\beta)(g)&amp;(q+1)\alpha(a)\beta(a)&amp;\alpha(a)\beta(a)&amp;
+\alpha(a)\beta(b)+\alpha(b)\beta(a)&amp;0\\
+\mathrm{St}(g)&amp;q&amp;0&amp;1&amp;-1
+\end{array}
+\tag{10}
+\]">\[
+\begin{array}{c|cccc}
+g&amp;aI&amp;j_a&amp;d_{a,b}&amp;e_\lambda\\\hline
+I(\alpha,\beta)(g)&amp;(q+1)\alpha(a)\beta(a)&amp;\alpha(a)\beta(a)&amp;
+\alpha(a)\beta(b)+\alpha(b)\beta(a)&amp;0\\
+\mathrm{St}(g)&amp;q&amp;0&amp;1&amp;-1
+\end{array}
+\tag{10}
+\]</span>
+<p>For the scalar and Jordan cases the two diagonal eigenvalues are <span class="math" data-tex="\(a,a\)">\(a,a\)</span>. For <span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span>, subtract the constant character from the four fixed-line counts. This proves every entry of (10), independently of any table of irreducibles.</p>
+<h2 id="3-an-elliptic-torus-and-an-additive-character">3. An elliptic torus and an additive character</h2>
+<p>The principal series do not yet fill the character space. Induction from <span class="math" data-tex="\(E\)">\(E\)</span> alone gives representations of degree <span class="math" data-tex="\(q(q-1)\)">\(q(q-1)\)</span>, too large for the missing types. A second induction will cancel most of that degree.</p>
+<p>Choose a nontrivial additive character <span class="math" data-tex="\(\psi:\mathbf F_q\to\mathbf C^\times\)">\(\psi:\mathbf F_q\to\mathbf C^\times\)</span>. For example choose a nonzero <span class="math" data-tex="\(\mathbf F_p\)">\(\mathbf F_p\)</span>-linear functional <span class="math" data-tex="\(\ell:\mathbf F_q\to\mathbf F_p\)">\(\ell:\mathbf F_q\to\mathbf F_p\)</span> and put <span class="math" data-tex="\(\psi(x)=\exp(2\pi i\ell(x)/p)\)">\(\psi(x)=\exp(2\pi i\ell(x)/p)\)</span>. For <span class="math" data-tex="\(\mu\in\widehat H\)">\(\mu\in\widehat H\)</span>, define a linear character of <span class="math" data-tex="\(ZU\)">\(ZU\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\eta_{\mu,\psi}(a u(x))=\mu(a)\psi(x).
+\tag{11}
+\]">\[
+\eta_{\mu,\psi}(a u(x))=\mu(a)\psi(x).
+\tag{11}
+\]</span>
+<p>The expression is unique, <span class="math" data-tex="\(Z\)">\(Z\)</span> commutes with <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(u(x)u(y)=u(x+y)\)">\(u(x)u(y)=u(x+y)\)</span>, so this is a homomorphism. Let</p>
+<span class="math math-display" data-tex="\[
+\Gamma_\mu=\operatorname{Ind}_{ZU}^G\eta_{\mu,\psi},\qquad
+Y_\theta=\operatorname{Ind}_E^G\theta,\qquad
+C_\theta=\Gamma_{\theta|_H}-Y_\theta.
+\tag{12}
+\]">\[
+\Gamma_\mu=\operatorname{Ind}_{ZU}^G\eta_{\mu,\psi},\qquad
+Y_\theta=\operatorname{Ind}_E^G\theta,\qquad
+C_\theta=\Gamma_{\theta|_H}-Y_\theta.
+\tag{12}
+\]</span>
+<p>The last expression is a virtual character: an integral difference of actual characters. It does not yet assert a representation exists with that character.</p>
+<p id="lemma-3-1" class="result-link"><strong>Lemma 3.1 (the two induced tables).</strong> The values are</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|cccc}
+g&amp;aI&amp;j_a&amp;d_{a,b}&amp;e_\lambda\\\hline
+\Gamma_\mu(g)&amp;(q^2-1)\mu(a)&amp;-\mu(a)&amp;0&amp;0\\
+Y_\theta(g)&amp;q(q-1)\theta(a)&amp;0&amp;0&amp;\theta(\lambda)+\theta(\lambda^q)\\
+C_\theta(g)&amp;(q-1)\theta(a)&amp;-\theta(a)&amp;0&amp;-\theta(\lambda)-\theta(\lambda^q)
+\end{array}
+\tag{13}
+\]">\[
+\begin{array}{c|cccc}
+g&amp;aI&amp;j_a&amp;d_{a,b}&amp;e_\lambda\\\hline
+\Gamma_\mu(g)&amp;(q^2-1)\mu(a)&amp;-\mu(a)&amp;0&amp;0\\
+Y_\theta(g)&amp;q(q-1)\theta(a)&amp;0&amp;0&amp;\theta(\lambda)+\theta(\lambda^q)\\
+C_\theta(g)&amp;(q-1)\theta(a)&amp;-\theta(a)&amp;0&amp;-\theta(\lambda)-\theta(\lambda^q)
+\end{array}
+\tag{13}
+\]</span>
+<p>In particular <span class="math" data-tex="\(C_\theta(1)=q-1\)">\(C_\theta(1)=q-1\)</span>, and <span class="math" data-tex="\(\Gamma_\mu\)">\(\Gamma_\mu\)</span> is independent, up to isomorphism, of the chosen nontrivial <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<p><strong>Proof.</strong> For a subgroup <span class="math" data-tex="\(A\)">\(A\)</span> and a linear character <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, regrouping the induced-character formula by its image under conjugation gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Ind}_A^G\eta(g)
+=\frac{|C_G(g)|}{|A|}\sum_{h\in A\cap g^G}\eta(h).
+\tag{14}
+\]">\[
+\operatorname{Ind}_A^G\eta(g)
+=\frac{|C_G(g)|}{|A|}\sum_{h\in A\cap g^G}\eta(h).
+\tag{14}
+\]</span>
+<p>Every element <span class="math" data-tex="\(h\)">\(h\)</span> in that intersection has exactly <span class="math" data-tex="\(|C_G(g)|\)">\(|C_G(g)|\)</span> conjugators. For scalars the original formula gives <span class="math" data-tex="\([G:A]\eta(g)\)">\([G:A]\eta(g)\)</span>. Here <span class="math" data-tex="\(|ZU|=q(q-1)\)">\(|ZU|=q(q-1)\)</span>, so its index is <span class="math" data-tex="\(q^2-1\)">\(q^2-1\)</span>. The intersection of the class of <span class="math" data-tex="\(j_a\)">\(j_a\)</span> with <span class="math" data-tex="\(ZU\)">\(ZU\)</span> consists exactly of <span class="math" data-tex="\(a u(x)\)">\(a u(x)\)</span>, <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>; all are conjugate by diagonal rescaling. Its centralizer has the same order as <span class="math" data-tex="\(ZU\)">\(ZU\)</span>. Since a translate of the sum of <span class="math" data-tex="\(\psi\)">\(\psi\)</span> multiplies it by a nontrivial value, <span class="math" data-tex="\(\sum_x\psi(x)=0\)">\(\sum_x\psi(x)=0\)</span>, and the sum over <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> is <span class="math" data-tex="\(-1\)">\(-1\)</span>. This proves the first row. Split noncentral and elliptic classes do not intersect <span class="math" data-tex="\(ZU\)">\(ZU\)</span>.</p>
+<p>The index of <span class="math" data-tex="\(E\)">\(E\)</span> is <span class="math" data-tex="\(q(q-1)\)">\(q(q-1)\)</span>. Jordan and split noncentral classes do not intersect it. An elliptic class intersects <span class="math" data-tex="\(E\)">\(E\)</span> precisely in <span class="math" data-tex="\(e_\lambda,e_{\lambda^q}\)">\(e_\lambda,e_{\lambda^q}\)</span>, by its characteristic polynomial. Its centralizer is <span class="math" data-tex="\(E\)">\(E\)</span>, so the factor in (14) is one. This gives the second row and then the third. The first row used only nontriviality of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>; equality of characters determines the induced representation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Reference:</em> [Etingof et al., §4.24.4] obtains the same virtual character using a tensor product involving <span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span>. Formula (12) exposes the additive induction directly.</p>
+<h2 id="4-orthogonality-makes-the-difference-irreducible">4. Orthogonality makes the difference irreducible</h2>
+<p>Call <span class="math" data-tex="\(\theta\in\widehat E\)">\(\theta\in\widehat E\)</span> <strong>regular</strong> if <span class="math" data-tex="\(\theta\ne\theta^q\)">\(\theta\ne\theta^q\)</span>. All sums below are over actual elements, with a factor of two when replacing elliptic classes by elements of <span class="math" data-tex="\(E\setminus H\)">\(E\setminus H\)</span>.</p>
+<p>For characters <span class="math" data-tex="\(\theta,\phi\)">\(\theta,\phi\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+M=\sum_{a\in H}\theta(a)\overline{\phi(a)},\qquad
+\Delta=\delta_{\theta,\phi}+\delta_{\theta,\phi^q}.
+\tag{15}
+\]">\[
+M=\sum_{a\in H}\theta(a)\overline{\phi(a)},\qquad
+\Delta=\delta_{\theta,\phi}+\delta_{\theta,\phi^q}.
+\tag{15}
+\]</span>
+<p>A character sum on a finite group is zero unless the character is trivial: translation by an element on which it is nontrivial proves this, as for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Expanding four products and changing <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to <span class="math" data-tex="\(\lambda^q\)">\(\lambda^q\)</span> therefore gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{\lambda\in E}
+(\theta(\lambda)+\theta(\lambda^q))
+\overline{\phi(\lambda)+\phi(\lambda^q)}
+=2(q^2-1)\Delta.
+\tag{16}
+\]">\[
+\sum_{\lambda\in E}
+(\theta(\lambda)+\theta(\lambda^q))
+\overline{\phi(\lambda)+\phi(\lambda^q)}
+=2(q^2-1)\Delta.
+\tag{16}
+\]</span>
+<p>The part of that sum on <span class="math" data-tex="\(H\)">\(H\)</span> is <span class="math" data-tex="\(4M\)">\(4M\)</span>, since Frobenius fixes each <span class="math" data-tex="\(a\in H\)">\(a\in H\)</span>.</p>
+<p id="theorem-4-1" class="result-link"><strong>Theorem 4.1 (cuspidal representations).</strong> For every regular <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, <span class="math" data-tex="\(C_\theta\)">\(C_\theta\)</span> is the character of an irreducible representation <span class="math" data-tex="\(\pi_\theta\)">\(\pi_\theta\)</span> of degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. Its values are the third row of (13). Furthermore,</p>
+<span class="math math-display" data-tex="\[
+\pi_\theta\simeq\pi_\phi
+\quad\Longleftrightarrow\quad
+\phi\in\{\theta,\theta^q\}.
+\tag{17}
+\]">\[
+\pi_\theta\simeq\pi_\phi
+\quad\Longleftrightarrow\quad
+\phi\in\{\theta,\theta^q\}.
+\tag{17}
+\]</span>
+<p>It has no <span class="math" data-tex="\(U\)">\(U\)</span>-fixed vector.</p>
+<p><strong>Proof.</strong> Use the class sizes from Proposition 1.2 and (16). The central, Jordan and elliptic contributions give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|G|\langle C_\theta,C_\phi\rangle
+&amp;=((q-1)^2+q^2-1)M\\
+&amp;\quad+\frac{q(q-1)}2\bigl(2(q^2-1)\Delta-4M\bigr)\\
+&amp;=|G|\Delta.
+\end{aligned}
+\tag{18}
+\]">\[
+\begin{aligned}
+|G|\langle C_\theta,C_\phi\rangle
+&amp;=((q-1)^2+q^2-1)M\\
+&amp;\quad+\frac{q(q-1)}2\bigl(2(q^2-1)\Delta-4M\bigr)\\
+&amp;=|G|\Delta.
+\end{aligned}
+\tag{18}
+\]</span>
+<p>The coefficient of <span class="math" data-tex="\(M\)">\(M\)</span> vanishes because <span class="math" data-tex="\((q-1)^2+q^2-1=2q(q-1)\)">\((q-1)^2+q^2-1=2q(q-1)\)</span>. For <span class="math" data-tex="\(\phi=\theta\)">\(\phi=\theta\)</span> regular, <span class="math" data-tex="\(\Delta=1\)">\(\Delta=1\)</span>. Expand the virtual character in the irreducible basis: <span class="math" data-tex="\(C_\theta=\sum n_i\chi_i\)">\(C_\theta=\sum n_i\chi_i\)</span>, with integers <span class="math" data-tex="\(n_i\)">\(n_i\)</span>, since (12) is a difference of representations. Norm one says <span class="math" data-tex="\(\sum n_i^2=1\)">\(\sum n_i^2=1\)</span>, so it is either an irreducible character or its negative. Its degree <span class="math" data-tex="\(q-1&gt;0\)">\(q-1&gt;0\)</span> chooses the positive sign. Formula (18) proves (17).</p>
+<p>Finally, averaging the operators over <span class="math" data-tex="\(U\)">\(U\)</span> projects onto the fixed vectors. The dimension of that space is the average of the character. There is one identity and <span class="math" data-tex="\(q-1\)">\(q-1\)</span> elements <span class="math" data-tex="\(u(x)\)">\(u(x)\)</span>, <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, all conjugate to <span class="math" data-tex="\(j_1\)">\(j_1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\dim\pi_\theta^U=\frac{(q-1)+(q-1)(-1)}q=0.
+\tag{19}
+\]">\[
+\dim\pi_\theta^U=\frac{(q-1)+(q-1)(-1)}q=0.
+\tag{19}
+\]</span>
+<p>This completes the construction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The use of virtual characters is essential to this argument. Norm one alone for an arbitrary class function would not prove it is a character: integrality of the coefficients came from (12).</p>
+<p>An irreducible representation is called <strong>cuspidal</strong> here when it is not a constituent of any <span class="math" data-tex="\(I(\alpha,\beta)\)">\(I(\alpha,\beta)\)</span>. This is equivalent to having no <span class="math" data-tex="\(U\)">\(U\)</span>-fixed vectors. Indeed <span class="math" data-tex="\(V^U\)">\(V^U\)</span> is stable under <span class="math" data-tex="\(T\)">\(T\)</span>, and the abelian group <span class="math" data-tex="\(T\)">\(T\)</span> decomposes it into linear characters. A nonzero such component is exactly a nonzero <span class="math" data-tex="\(B\)">\(B\)</span>-map from a character trivial on <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(V\)">\(V\)</span>. Frobenius reciprocity identifies that with occurrence in a principal series. This proves the equivalence and justifies the name for <span class="math" data-tex="\(\pi_\theta\)">\(\pi_\theta\)</span>.</p>
+<h3 id="why-regularity-cannot-be-omitted">Why regularity cannot be omitted</h3>
+<p>If <span class="math" data-tex="\(\theta=\chi\circ N\)">\(\theta=\chi\circ N\)</span>, the third row of (13) is the character of</p>
+<span class="math math-display" data-tex="\[
+C_{\chi\circ N}=\mathrm{St}_\chi-D_\chi.
+\tag{20}
+\]">\[
+C_{\chi\circ N}=\mathrm{St}_\chi-D_\chi.
+\tag{20}
+\]</span>
+<p>To verify this, its scalar values are <span class="math" data-tex="\((q-1)\chi(a^2)\)">\((q-1)\chi(a^2)\)</span>, its Jordan values <span class="math" data-tex="\(-\chi(a^2)\)">\(-\chi(a^2)\)</span>, its split values zero, and its elliptic values <span class="math" data-tex="\(-2\chi(N\lambda)\)">\(-2\chi(N\lambda)\)</span>. These are exactly the difference given by (10) and the determinant character. Its norm is two, also visible in (18). It is not an additional irreducible. Lemma 1.1 shows that these are all the nonregular parameters.</p>
+<h2 id="5-completing-the-table-and-separating-the-families">5. Completing the table and separating the families</h2>
+<p id="theorem-5-1" class="result-link"><strong>Theorem 5.1 (classification).</strong> A complete list of mutually nonisomorphic irreducible representations consists of</p>
+<ul>
+<li><span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span>, for <span class="math" data-tex="\(\chi\in\widehat H\)">\(\chi\in\widehat H\)</span>, of degree <span class="math" data-tex="\(1\)">\(1\)</span>;</li>
+<li><span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span>, for <span class="math" data-tex="\(\chi\in\widehat H\)">\(\chi\in\widehat H\)</span>, of degree <span class="math" data-tex="\(q\)">\(q\)</span>;</li>
+<li><span class="math" data-tex="\(I(\alpha,\beta)\)">\(I(\alpha,\beta)\)</span>, for unordered distinct <span class="math" data-tex="\(\alpha,\beta\in\widehat H\)">\(\alpha,\beta\in\widehat H\)</span>, of degree <span class="math" data-tex="\(q+1\)">\(q+1\)</span>;</li>
+<li><span class="math" data-tex="\(\pi_\theta\)">\(\pi_\theta\)</span>, for regular <span class="math" data-tex="\(\theta\in\widehat E\)">\(\theta\in\widehat E\)</span> up to <span class="math" data-tex="\(\theta\leftrightarrow\theta^q\)">\(\theta\leftrightarrow\theta^q\)</span>, of degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>.</li>
+</ul>
+<p><strong>Proof of separation.</strong> Determinant characters are distinct because the determinant is onto. Frobenius reciprocity gives</p>
+<span class="math math-display" data-tex="\[
+\langle D_\chi,I(\alpha,\beta)\rangle
+=\delta_{\chi,\alpha}\delta_{\chi,\beta}.
+\tag{21}
+\]">\[
+\langle D_\chi,I(\alpha,\beta)\rangle
+=\delta_{\chi,\alpha}\delta_{\chi,\beta}.
+\tag{21}
+\]</span>
+<p>Substitute <span class="math" data-tex="\(\mathrm{St}_\chi=I(\chi,\chi)-D_\chi\)">\(\mathrm{St}_\chi=I(\chi,\chi)-D_\chi\)</span> in (9) and (21). It follows that the Steinberg twists have pairwise inner products <span class="math" data-tex="\(\delta_{\chi,\eta}\)">\(\delta_{\chi,\eta}\)</span>, are orthogonal to all determinant characters, and are orthogonal to all unequal principal series. Formula (9) separates the latter among themselves.</p>
+<p>For completeness, compute the remaining cross-inner-products directly. Put</p>
+<span class="math math-display" data-tex="\[
+M_\chi=\sum_{a\in H}\theta(a)\overline{\chi(a^2)}.
+\tag{22}
+\]">\[
+M_\chi=\sum_{a\in H}\theta(a)\overline{\chi(a^2)}.
+\tag{22}
+\]</span>
+<p>When <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is regular, character orthogonality on <span class="math" data-tex="\(E\)">\(E\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{\lambda\in E\setminus H}
+(\theta(\lambda)+\theta(\lambda^q))\overline{\chi(N\lambda)}
+=-2M_\chi.
+\tag{23}
+\]">\[
+\sum_{\lambda\in E\setminus H}
+(\theta(\lambda)+\theta(\lambda^q))\overline{\chi(N\lambda)}
+=-2M_\chi.
+\tag{23}
+\]</span>
+<p>Indeed the full sum over <span class="math" data-tex="\(E\)">\(E\)</span> is zero: neither <span class="math" data-tex="\(\theta\)">\(\theta\)</span> nor <span class="math" data-tex="\(\theta^q\)">\(\theta^q\)</span> equals the norm character <span class="math" data-tex="\(\chi\circ N\)">\(\chi\circ N\)</span>. Subtract its part on <span class="math" data-tex="\(H\)">\(H\)</span>, which is <span class="math" data-tex="\(2M_\chi\)">\(2M_\chi\)</span>. The class contributions now yield</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|G|\langle C_\theta,D_\chi\rangle
+&amp;=\bigl((q-1)-(q^2-1)+q(q-1)\bigr)M_\chi=0,\\
+|G|\langle C_\theta,\mathrm{St}_\chi\rangle
+&amp;=q(q-1)M_\chi-q(q-1)M_\chi=0.
+\end{aligned}
+\tag{24}
+\]">\[
+\begin{aligned}
+|G|\langle C_\theta,D_\chi\rangle
+&amp;=\bigl((q-1)-(q^2-1)+q(q-1)\bigr)M_\chi=0,\\
+|G|\langle C_\theta,\mathrm{St}_\chi\rangle
+&amp;=q(q-1)M_\chi-q(q-1)M_\chi=0.
+\end{aligned}
+\tag{24}
+\]</span>
+<p>For <span class="math" data-tex="\(I(\alpha,\beta)\)">\(I(\alpha,\beta)\)</span>, only central and Jordan classes contribute; their contributions cancel:</p>
+<span class="math math-display" data-tex="\[
+|G|\langle C_\theta,I(\alpha,\beta)\rangle
+=\bigl((q-1)(q+1)-(q^2-1)\bigr)
+\sum_{a\in H}\theta(a)\overline{\alpha(a)\beta(a)}=0.
+\tag{25}
+\]">\[
+|G|\langle C_\theta,I(\alpha,\beta)\rangle
+=\bigl((q-1)(q+1)-(q^2-1)\bigr)
+\sum_{a\in H}\theta(a)\overline{\alpha(a)\beta(a)}=0.
+\tag{25}
+\]</span>
+<p>Together with (18), these computations prove all required orthogonality.</p>
+<p><strong>Proof of completeness.</strong> The numbers in the four families are</p>
+<span class="math math-display" data-tex="\[
+q-1,\quad q-1,\quad\frac{(q-1)(q-2)}2,\quad\frac{q(q-1)}2.
+\tag{26}
+\]">\[
+q-1,\quad q-1,\quad\frac{(q-1)(q-2)}2,\quad\frac{q(q-1)}2.
+\tag{26}
+\]</span>
+<p>For the last, Lemma 1.1 gives <span class="math" data-tex="\(q^2-1-(q-1)=q(q-1)\)">\(q^2-1-(q-1)=q(q-1)\)</span> regular characters, each in a two-element Frobenius orbit. The sum of (26) is <span class="math" data-tex="\(q^2-1\)">\(q^2-1\)</span>, the dimension of the class-function space. The orthonormal irreducible characters constructed above are therefore a basis, so there is no other irreducible. Their squared degrees also give</p>
+<span class="math math-display" data-tex="\[
+(q-1)(1+q^2)
++\frac{(q-1)(q-2)}2(q+1)^2
++\frac{q(q-1)}2(q-1)^2
+=q(q+1)(q-1)^2=|G|.
+\tag{27}
+\]">\[
+(q-1)(1+q^2)
++\frac{(q-1)(q-2)}2(q+1)^2
++\frac{q(q-1)}2(q-1)^2
+=q(q+1)(q-1)^2=|G|.
+\tag{27}
+\]</span>
+<p>This agrees with the regular representation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Here is the full table in symbolic form. Every column has the conditions of Proposition 1.2; every row has the parameter conditions of Theorem 5.1.</p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th><span class="math" data-tex="\(aI\)">\(aI\)</span></th>
+<th><span class="math" data-tex="\(j_a\)">\(j_a\)</span></th>
+<th><span class="math" data-tex="\(d_{a,b}\)">\(d_{a,b}\)</span></th>
+<th><span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span></td>
+<td><span class="math" data-tex="\(\chi(a^2)\)">\(\chi(a^2)\)</span></td>
+<td><span class="math" data-tex="\(\chi(a^2)\)">\(\chi(a^2)\)</span></td>
+<td><span class="math" data-tex="\(\chi(ab)\)">\(\chi(ab)\)</span></td>
+<td><span class="math" data-tex="\(\chi(N\lambda)\)">\(\chi(N\lambda)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span></td>
+<td><span class="math" data-tex="\(q\chi(a^2)\)">\(q\chi(a^2)\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(\chi(ab)\)">\(\chi(ab)\)</span></td>
+<td><span class="math" data-tex="\(-\chi(N\lambda)\)">\(-\chi(N\lambda)\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(I(\alpha,\beta)\)">\(I(\alpha,\beta)\)</span></td>
+<td><span class="math" data-tex="\((q+1)\alpha(a)\beta(a)\)">\((q+1)\alpha(a)\beta(a)\)</span></td>
+<td><span class="math" data-tex="\(\alpha(a)\beta(a)\)">\(\alpha(a)\beta(a)\)</span></td>
+<td><span class="math" data-tex="\(\alpha(a)\beta(b)+\alpha(b)\beta(a)\)">\(\alpha(a)\beta(b)+\alpha(b)\beta(a)\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\pi_\theta\)">\(\pi_\theta\)</span></td>
+<td><span class="math" data-tex="\((q-1)\theta(a)\)">\((q-1)\theta(a)\)</span></td>
+<td><span class="math" data-tex="\(-\theta(a)\)">\(-\theta(a)\)</span></td>
+<td><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td><span class="math" data-tex="\(-\theta(\lambda)-\theta(\lambda^q)\)">\(-\theta(\lambda)-\theta(\lambda^q)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The column relation follows too. Multiply the entry in column <span class="math" data-tex="\(K\)">\(K\)</span> by <span class="math" data-tex="\(\sqrt{|K|/|G|}\)">\(\sqrt{|K|/|G|}\)</span>. Row orthogonality makes the resulting square matrix unitary. Its columns are orthonormal, giving</p>
+<span class="math math-display" data-tex="\[
+\sum_\rho\chi_\rho(g)\overline{\chi_\rho(h)}
+=\begin{cases}|C_G(g)|,&amp;g,h\text{ conjugate},\\0,&amp;\text{otherwise}.
+\end{cases}
+\tag{28}
+\]">\[
+\sum_\rho\chi_\rho(g)\overline{\chi_\rho(h)}
+=\begin{cases}|C_G(g)|,&amp;g,h\text{ conjugate},\\0,&amp;\text{otherwise}.
+\end{cases}
+\tag{28}
+\]</span>
+<p>This also explains why class sizes, rather than just class counts, enter a numerical table check.</p>
+<p>For <span class="math" data-tex="\(q&gt;2\)">\(q&gt;2\)</span>, the cuspidal degree exceeds one, so the only linear characters are determinant characters. For <span class="math" data-tex="\(q=2\)">\(q=2\)</span> the cuspidal degree is one; this gives the additional sign character below. The distinction matters when extending an odd-characteristic description to every finite field.</p>
+<h2 id="6-two-complete-small-tables">6. Two complete small tables</h2>
+<h3 id="three-nonzero-vectors-the-case-q-2">Three nonzero vectors: the case <span class="math" data-tex="\(q=2\)">\(q=2\)</span></h3>
+<p>The group acts on the three nonzero vectors of <span class="math" data-tex="\(\mathbf F_2^2\)">\(\mathbf F_2^2\)</span>. The action is faithful because fixing every vector fixes a basis. Both <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(S_3\)">\(S_3\)</span> have order six, so it is an isomorphism. Scalars give the identity class, nontrivial unipotents the three transpositions, and the elliptic class the two three-cycles.</p>
+<p>Here <span class="math" data-tex="\(H\)">\(H\)</span> is trivial and <span class="math" data-tex="\(E\)">\(E\)</span> has order three. Its two nontrivial characters form one Frobenius pair. Their sum at either nonidentity element is <span class="math" data-tex="\(-1\)">\(-1\)</span>, so their cuspidal character takes values <span class="math" data-tex="\(1,-1,1\)">\(1,-1,1\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></th>
+<th style="text-align:right">Transposition</th>
+<th style="text-align:right">Three-cycle</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class size</td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(D_1\)">\(D_1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\pi_\theta\)">\(\pi_\theta\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>These are the trivial, standard and sign rows of the <span class="math" data-tex="\(S_3\)">\(S_3\)</span> table in <a href="characters-and-the-orthogonality-relations.html">Characters and the orthogonality relations</a>, §5. They all have indicator one: sign and trivial are real lines, and the standard plane has indicator <span class="math" data-tex="\((2+3\cdot2+2(-1))/6=1\)">\((2+3\cdot2+2(-1))/6=1\)</span>, as in <a href="tensor-products-duals-and-real-representations.html">Tensor products, duals and real representations</a>, Exercise 1. The sign row is cuspidal because the order-two group <span class="math" data-tex="\(U\)">\(U\)</span> acts nontrivially on it.</p>
+<h3 id="eight-classes-the-case-q-3">Eight classes: the case <span class="math" data-tex="\(q=3\)">\(q=3\)</span></h3>
+<p>Use <span class="math" data-tex="\(K=\mathbf F_3[i]\)">\(K=\mathbf F_3[i]\)</span>, with <span class="math" data-tex="\(i^2=-1\)">\(i^2=-1\)</span>, and <span class="math" data-tex="\(z=1+i\)">\(z=1+i\)</span>. Then <span class="math" data-tex="\(z^2=-i\)">\(z^2=-i\)</span>, <span class="math" data-tex="\(z^4=-1\)">\(z^4=-1\)</span>, so <span class="math" data-tex="\(z\)">\(z\)</span> generates <span class="math" data-tex="\(E\)">\(E\)</span> of order eight. A concrete multiplication matrix is</p>
+<span class="math math-display" data-tex="\[
+e_{a+bi}=\begin{pmatrix}a&amp;-b\\b&amp;a\end{pmatrix}.
+\tag{29}
+\]">\[
+e_{a+bi}=\begin{pmatrix}a&amp;-b\\b&amp;a\end{pmatrix}.
+\tag{29}
+\]</span>
+<p>Let <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> be the nontrivial character of <span class="math" data-tex="\(\mathbf F_3^\times\)">\(\mathbf F_3^\times\)</span>, let <span class="math" data-tex="\(\zeta=\exp(2\pi i/8)\)">\(\zeta=\exp(2\pi i/8)\)</span>, and define <span class="math" data-tex="\(\theta_k(z)=\zeta^k\)">\(\theta_k(z)=\zeta^k\)</span>. Frobenius acts on indices by <span class="math" data-tex="\(k\mapsto3k\)">\(k\mapsto3k\)</span> modulo eight. The nonregular indices are <span class="math" data-tex="\(0,4\)">\(0,4\)</span>; the regular pairs are <span class="math" data-tex="\(\{1,3\},\{2,6\},\{5,7\}\)">\(\{1,3\},\{2,6\},\{5,7\}\)</span>. Put <span class="math" data-tex="\(r=i\sqrt2\)">\(r=i\sqrt2\)</span> as a complex number, so <span class="math" data-tex="\(\overline r=-r\)">\(\overline r=-r\)</span> and <span class="math" data-tex="\(r^2=-2\)">\(r^2=-2\)</span>; this complex <span class="math" data-tex="\(i\)">\(i\)</span> is distinguished from the element of <span class="math" data-tex="\(K\)">\(K\)</span> by context.</p>
+<table>
+<thead>
+<tr>
+<th>Character</th>
+<th style="text-align:right"><span class="math" data-tex="\(I\)">\(I\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(-I\)">\(-I\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(j_1\)">\(j_1\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(j_{-1}\)">\(j_{-1}\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(d_{1,-1}\)">\(d_{1,-1}\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(e_z\)">\(e_z\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(e_{z^2}\)">\(e_{z^2}\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(e_{z^5}\)">\(e_{z^5}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Class size</td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(8\)">\(8\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(8\)">\(8\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(12\)">\(12\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(6\)">\(6\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(D_1\)">\(D_1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(D_\epsilon\)">\(D_\epsilon\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{St}\)">\(\mathrm{St}\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\mathrm{St}_\epsilon\)">\(\mathrm{St}_\epsilon\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(I(1,\epsilon)\)">\(I(1,\epsilon)\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(4\)">\(4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-4\)">\(-4\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\pi_{\theta_1}\)">\(\pi_{\theta_1}\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-r\)">\(-r\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(r\)">\(r\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\pi_{\theta_2}\)">\(\pi_{\theta_2}\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+</tr>
+<tr>
+<td><span class="math" data-tex="\(\pi_{\theta_5}\)">\(\pi_{\theta_5}\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2\)">\(2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-2\)">\(-2\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-1\)">\(-1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(1\)">\(1\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(r\)">\(r\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(0\)">\(0\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(-r\)">\(-r\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For example, <span class="math" data-tex="\(\zeta+\zeta^3=i\sqrt2\)">\(\zeta+\zeta^3=i\sqrt2\)</span>, which gives the first elliptic value <span class="math" data-tex="\(-r\)">\(-r\)</span>. Multiplication by <span class="math" data-tex="\(z^2\)">\(z^2\)</span> gives <span class="math" data-tex="\(\zeta^4+\zeta^{12}=-2\)">\(\zeta^4+\zeta^{12}=-2\)</span> for <span class="math" data-tex="\(\theta_2\)">\(\theta_2\)</span>, hence the entry <span class="math" data-tex="\(2\)">\(2\)</span>. These signs follow the induced difference (12).</p>
+<p>If <span class="math" data-tex="\(X\)">\(X\)</span> is the eight-by-eight matrix of character rows, the two orthogonality relations are explicitly</p>
+<span class="math math-display" data-tex="\[
+X\operatorname{diag}(1,1,8,8,12,6,6,6)\overline X^{\,t}=48I_8,
+\quad
+\overline X^{\,t}X=\operatorname{diag}(48,48,6,6,4,8,8,8).
+\tag{30}
+\]">\[
+X\operatorname{diag}(1,1,8,8,12,6,6,6)\overline X^{\,t}=48I_8,
+\quad
+\overline X^{\,t}X=\operatorname{diag}(48,48,6,6,4,8,8,8).
+\tag{30}
+\]</span>
+<p>The proof in §5 applies to these entries. As illustrations of the cancellations, the first cuspidal row has weighted norm <span class="math" data-tex="\((4+4+8+8+12+12)/48=1\)">\((4+4+8+8+12+12)/48=1\)</span>. Its weighted product with the conjugate cuspidal row is <span class="math" data-tex="\((4+4+8+8-12-12)/48=0\)">\((4+4+8+8-12-12)/48=0\)</span>, since <span class="math" data-tex="\(r^2=-2\)">\(r^2=-2\)</span>. The split column has norm <span class="math" data-tex="\(1+1+1+1=4\)">\(1+1+1+1=4\)</span>, its centralizer order. The squared degrees are <span class="math" data-tex="\(1+1+9+9+16+4+4+4=48\)">\(1+1+9+9+16+4+4+4=48\)</span>.</p>
+<h3 id="real-structures-and-the-quaternion-group">Real structures and the quaternion group</h3>
+<p>The square map sends the eight classes in the table, in order, to</p>
+<span class="math math-display" data-tex="\[
+I,\ I,\ j_1,\ j_1,\ I,\ e_{z^2},\ -I,\ e_{z^2}.
+\tag{31}
+\]">\[
+I,\ I,\ j_1,\ j_1,\ I,\ e_{z^2},\ -I,\ e_{z^2}.
+\tag{31}
+\]</span>
+<p>For the Jordan classes, <span class="math" data-tex="\(u(1)^2=u(2)\)">\(u(1)^2=u(2)\)</span> is conjugate to <span class="math" data-tex="\(u(1)\)">\(u(1)\)</span>. Squaring <span class="math" data-tex="\(e_{z^5}\)">\(e_{z^5}\)</span> gives <span class="math" data-tex="\(e_{z^{10}}=e_{z^2}\)">\(e_{z^{10}}=e_{z^2}\)</span>. Consequently the indicator of a row <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\nu(\chi)=\frac{14\chi(I)+16\chi(j_1)+12\chi(e_{z^2})+6\chi(-I)}{48}.
+\tag{32}
+\]">\[
+\nu(\chi)=\frac{14\chi(I)+16\chi(j_1)+12\chi(e_{z^2})+6\chi(-I)}{48}.
+\tag{32}
+\]</span>
+<p>For <span class="math" data-tex="\(\pi_{\theta_1}\)">\(\pi_{\theta_1}\)</span> and <span class="math" data-tex="\(\pi_{\theta_5}\)">\(\pi_{\theta_5}\)</span> this is <span class="math" data-tex="\((28-16-12)/48=0\)">\((28-16-12)/48=0\)</span>. They are nonreal conjugate representations. For <span class="math" data-tex="\(\pi_{\theta_2}\)">\(\pi_{\theta_2}\)</span> it is <span class="math" data-tex="\((28-16+24+12)/48=1\)">\((28-16+24+12)/48=1\)</span>. Substitution gives one for each of the other five rows. Thus all the real-valued irreducibles in this particular table have real forms.</p>
+<p>Nevertheless a restriction recovers the quaternionic example from <a href="tensor-products-duals-and-real-representations.html">Tensor products, duals and real representations</a>, §6. In <span class="math" data-tex="\(G\)">\(G\)</span> take</p>
+<span class="math math-display" data-tex="\[
+A=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\qquad
+B_0=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}.
+\tag{33}
+\]">\[
+A=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\qquad
+B_0=\begin{pmatrix}1&amp;1\\1&amp;-1\end{pmatrix}.
+\tag{33}
+\]</span>
+<p>Direct multiplication in <span class="math" data-tex="\(\mathbf F_3\)">\(\mathbf F_3\)</span> gives <span class="math" data-tex="\(A^2=B_0^2=-I\)">\(A^2=B_0^2=-I\)</span> and <span class="math" data-tex="\(AB_0=-B_0A\)">\(AB_0=-B_0A\)</span>. The eight distinct matrices <span class="math" data-tex="\(\{\pm I,\pm A,\pm B_0,\pm AB_0\}\)">\(\{\pm I,\pm A,\pm B_0,\pm AB_0\}\)</span> therefore form <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span>. Every noncentral element has characteristic polynomial <span class="math" data-tex="\(X^2+1\)">\(X^2+1\)</span> and lies in the class <span class="math" data-tex="\(e_{z^2}\)">\(e_{z^2}\)</span>. Either nonreal cuspidal row restricts to values <span class="math" data-tex="\(2,-2,0,0,0\)">\(2,-2,0,0,0\)</span> on its five classes. Its norm on <span class="math" data-tex="\(Q_8\)">\(Q_8\)</span> is <span class="math" data-tex="\((4+4)/8=1\)">\((4+4)/8=1\)</span>, and its indicator is <span class="math" data-tex="\((2\cdot2+6(-2))/8=-1\)">\((2\cdot2+6(-2))/8=-1\)</span>. Thus the restrictions are irreducible and quaternionic, although the two representations of <span class="math" data-tex="\(G\)">\(G\)</span> themselves have indicator zero.</p>
+<h2 id="7-parabolic-duality-and-the-next-geometric-questions">7. Parabolic duality and the next geometric questions</h2>
+<p>There is already a full duality calculation available from the rational-line construction. For a <span class="math" data-tex="\(G\)">\(G\)</span>-representation <span class="math" data-tex="\(V\)">\(V\)</span>, its fixed space <span class="math" data-tex="\(V^U\)">\(V^U\)</span> is a representation of <span class="math" data-tex="\(T=B/U\)">\(T=B/U\)</span>. Inflate it to <span class="math" data-tex="\(B\)">\(B\)</span>, and define on the group of virtual representations</p>
+<span class="math math-display" data-tex="\[
+\mathcal D[V]=[\operatorname{Ind}_B^G V^U]-[V].
+\tag{34}
+\]">\[
+\mathcal D[V]=[\operatorname{Ind}_B^G V^U]-[V].
+\tag{34}
+\]</span>
+<p>Taking <span class="math" data-tex="\(U\)">\(U\)</span>-invariants is exact over <span class="math" data-tex="\(\mathbf C\)">\(\mathbf C\)</span>, because averaging gives a projection and a map from an invariant vector lifts by averaging. Thus (34) is well-defined and additive.</p>
+<p id="proposition-7-1" class="result-link"><strong>Proposition 7.1 (rank-one duality).</strong> The operation satisfies</p>
+<span class="math math-display" data-tex="\[
+\mathcal D(D_\chi)=\mathrm{St}_\chi,\quad
+\mathcal D(\mathrm{St}_\chi)=D_\chi,\quad
+\mathcal D(I(\alpha,\beta))=I(\alpha,\beta)\ (\alpha\ne\beta),\quad
+\mathcal D(\pi_\theta)=-\pi_\theta.
+\tag{35}
+\]">\[
+\mathcal D(D_\chi)=\mathrm{St}_\chi,\quad
+\mathcal D(\mathrm{St}_\chi)=D_\chi,\quad
+\mathcal D(I(\alpha,\beta))=I(\alpha,\beta)\ (\alpha\ne\beta),\quad
+\mathcal D(\pi_\theta)=-\pi_\theta.
+\tag{35}
+\]</span>
+<p>It is an involution and preserves the character inner product.</p>
+<p><strong>Proof.</strong> In the induced coset basis (5), the fixed-line copy has <span class="math" data-tex="\(T\)">\(T\)</span>-character <span class="math" data-tex="\(\alpha\otimes\beta\)">\(\alpha\otimes\beta\)</span>. On the affine copies <span class="math" data-tex="\(U\)">\(U\)</span> acts regularly by translation, so its fixed space is their sum, a single line. For <span class="math" data-tex="\(t=\operatorname{diag}(a,d)\)">\(t=\operatorname{diag}(a,d)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+t u(x)w=u((a/d)x)w\operatorname{diag}(d,a).
+\tag{36}
+\]">\[
+t u(x)w=u((a/d)x)w\operatorname{diag}(d,a).
+\tag{36}
+\]</span>
+<p>The affine sum therefore has character <span class="math" data-tex="\(\beta\otimes\alpha\)">\(\beta\otimes\alpha\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+I(\alpha,\beta)^U\simeq
+(\alpha\otimes\beta)\oplus(\beta\otimes\alpha).
+\tag{37}
+\]">\[
+I(\alpha,\beta)^U\simeq
+(\alpha\otimes\beta)\oplus(\beta\otimes\alpha).
+\tag{37}
+\]</span>
+<p>The fixed space of <span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span> is <span class="math" data-tex="\(\chi\otimes\chi\)">\(\chi\otimes\chi\)</span>, and subtracting it from (37) with equal entries gives <span class="math" data-tex="\(\mathrm{St}_\chi^U\simeq\chi\otimes\chi\)">\(\mathrm{St}_\chi^U\simeq\chi\otimes\chi\)</span>. Equation (19) gives <span class="math" data-tex="\(\pi_\theta^U=0\)">\(\pi_\theta^U=0\)</span>. Inducing each of these spaces and subtracting the original representation proves (35), using (8) and the symmetry of principal series. This permutes an orthonormal basis up to signs and has square the identity, proving both final assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the rank-one parabolic operation underlying Alvis–Curtis and Deligne–Lusztig duality. The exchange of trivial and Steinberg representations has been proved here, including its signs on the other families. It differs from taking the contragredient: for example the contragredient exchanges <span class="math" data-tex="\(\pi_{\theta_1}\)">\(\pi_{\theta_1}\)</span> and <span class="math" data-tex="\(\pi_{\theta_5}\)">\(\pi_{\theta_5}\)</span> at <span class="math" data-tex="\(q=3\)">\(q=3\)</span>, whereas (35) negates each virtual class. [Deligne–Lusztig 1982, §§1 and 5] constructs the broader operation from parabolic fixed spaces.</p>
+<p>For further geometry, let <span class="math" data-tex="\(\mathbf G\)">\(\mathbf G\)</span> be a connected reductive algebraic group with Frobenius <span class="math" data-tex="\(F\)">\(F\)</span>, and <span class="math" data-tex="\(\mathbf T\)">\(\mathbf T\)</span> an <span class="math" data-tex="\(F\)">\(F\)</span>-stable maximal torus. Deligne–Lusztig induction uses compactly supported <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic cohomology of varieties of flags related to their Frobenius images. The alternating sum of the <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-isotypic cohomology defines a virtual character <span class="math" data-tex="\(R_{\mathbf T}^{\theta}\)">\(R_{\mathbf T}^{\theta}\)</span>; see [Deligne–Lusztig 1976, §1.20]. For two-dimensional general linear groups, the flag is just a line: the relevant base varieties are the rational lines and their complement in the projective line over the algebraic closure.</p>
+<p>The next geometric comparison problem is to identify these cohomological characters with the elementary virtual characters already constructed: <span class="math" data-tex="\(I(\alpha,\beta)\)">\(I(\alpha,\beta)\)</span> for the split torus, and <span class="math" data-tex="\(-C_\theta\)">\(-C_\theta\)</span> for the elliptic torus. Its regular elliptic target is <span class="math" data-tex="\(-\pi_\theta\)">\(-\pi_\theta\)</span>, so the minus sign is forced by our complete table. The wider questions are how torus intertwining gives irreducibility, how nonsingularity controls positivity up to sign, and how an elliptic torus gives cuspidality. The precise geometric statements are [Deligne–Lusztig 1976, Proposition 5.16 and Theorems 6.8 and 8.3]. They guide these further questions; no geometric theorem is needed in the constructions or proofs above.</p>
+<p>The torus conditions can already be understood arithmetically here. The elliptic torus has no rational invariant line, by irreducibility of its quadratic action. Frobenius acts on its characters by <span class="math" data-tex="\(\theta\mapsto\theta^q\)">\(\theta\mapsto\theta^q\)</span>. Moreover</p>
+<span class="math math-display" data-tex="\[
+\theta=\theta^q
+\quad\Longleftrightarrow\quad
+\theta|_{\ker N}=1.
+\tag{38}
+\]">\[
+\theta=\theta^q
+\quad\Longleftrightarrow\quad
+\theta|_{\ker N}=1.
+\tag{38}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(\ker N\)">\(\ker N\)</span> is generated by <span class="math" data-tex="\(z^{q-1}\)">\(z^{q-1}\)</span>, of order <span class="math" data-tex="\(q+1\)">\(q+1\)</span>; triviality there is exactly <span class="math" data-tex="\((q^2-1)\mid k(q-1)\)">\((q^2-1)\mid k(q-1)\)</span>, the condition in Lemma 1.1. Thus the regularity test is the failure to factor through the norm. The split ranks of <span class="math" data-tex="\(\mathrm{GL}_2\)">\(\mathrm{GL}_2\)</span> and its elliptic torus are respectively two and one: the latter has the scalar split torus, and a two-dimensional split torus would have all its characters fixed by Frobenius, whereas the two eigencharacters of the elliptic torus are interchanged. Their rank difference again indicates the sign <span class="math" data-tex="\(-1\)">\(-1\)</span> in the geometric comparison.</p>
+<p>Over a nonarchimedean local field with residue field <span class="math" data-tex="\(\mathbf F_q\)">\(\mathbf F_q\)</span>, reduction gives a quotient <span class="math" data-tex="\(\mathrm{GL}_2(\mathcal O)\to\mathrm{GL}_2(\mathbf F_q)\)">\(\mathrm{GL}_2(\mathcal O)\to\mathrm{GL}_2(\mathbf F_q)\)</span>. A representation <span class="math" data-tex="\(\pi_\theta\)">\(\pi_\theta\)</span> therefore inflates to the compact subgroup, trivially on the kernel of reduction. This is the finite-group input for the depth-zero construction in the planned lesson <em>Supercuspidal representations of GL₂ over a local field: constructions</em>. Its exact next theorem is that, after extending the central action compatibly to <span class="math" data-tex="\(F^\times\mathrm{GL}_2(\mathcal O)\)">\(F^\times\mathrm{GL}_2(\mathcal O)\)</span>, compact induction yields an irreducible supercuspidal representation. That local-field theorem belongs to that planned lesson; our proved contribution is the cuspidal input and its character, including the case of residue characteristic two.</p>
+<h2 id="8-exercises-with-complete-solutions">8. Exercises with complete solutions</h2>
+<h3 id="exercise-1-account-for-every-small-class">Exercise 1 — Account for every small class</h3>
+<p>For <span class="math" data-tex="\(q=2,3\)">\(q=2,3\)</span>, list the four types, their counts and sizes, and show that their total number of elements is <span class="math" data-tex="\(|G|\)">\(|G|\)</span>. For <span class="math" data-tex="\(q=3\)">\(q=3\)</span>, give explicit elliptic representatives using (29).</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(q=2\)">\(q=2\)</span> there is one scalar class of size one, one Jordan class of size three, no noncentral split class, and one elliptic class of size two. Their sizes sum to six and there are three classes. Multiplication by a root of <span class="math" data-tex="\(X^2+X+1\)">\(X^2+X+1\)</span> gives the elliptic representative.</p>
+<p>For <span class="math" data-tex="\(q=3\)">\(q=3\)</span>, there are two scalar classes of size one, two Jordan classes of size eight, one split class of size twelve and three elliptic classes of size six. The element count is <span class="math" data-tex="\(2+16+12+18=48\)">\(2+16+12+18=48\)</span>, and the class count is eight. Besides <span class="math" data-tex="\(I,-I,j_1,j_{-1},d_{1,-1}\)">\(I,-I,j_1,j_{-1},d_{1,-1}\)</span>, use</p>
+<span class="math math-display" data-tex="\[
+e_z=\begin{pmatrix}1&amp;-1\\1&amp;1\end{pmatrix},\quad
+e_{z^2}=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\quad
+e_{z^5}=\begin{pmatrix}-1&amp;1\\-1&amp;-1\end{pmatrix}.
+\tag{39}
+\]">\[
+e_z=\begin{pmatrix}1&amp;-1\\1&amp;1\end{pmatrix},\quad
+e_{z^2}=\begin{pmatrix}0&amp;1\\-1&amp;0\end{pmatrix},\quad
+e_{z^5}=\begin{pmatrix}-1&amp;1\\-1&amp;-1\end{pmatrix}.
+\tag{39}
+\]</span>
+<p>The first and third have respectively traces <span class="math" data-tex="\(-1,1\)">\(-1,1\)</span>, determinant <span class="math" data-tex="\(-1\)">\(-1\)</span>, and discriminant <span class="math" data-tex="\(-1\)">\(-1\)</span>, a nonsquare in <span class="math" data-tex="\(\mathbf F_3\)">\(\mathbf F_3\)</span>. The middle has polynomial <span class="math" data-tex="\(X^2+1\)">\(X^2+1\)</span>, also irreducible. Their root pairs are <span class="math" data-tex="\(\{z,z^3\},\{z^2,z^6\},\{z^5,z^7\}\)">\(\{z,z^3\},\{z^2,z^6\},\{z^5,z^7\}\)</span>, so all three classes are distinct.</p>
+<h3 id="exercise-2-use-both-bruhat-cells">Exercise 2 — Use both Bruhat cells</h3>
+<p>Derive (9) from Mackey and Frobenius reciprocity. Recover all irreducibility and isomorphism assertions of Theorem 2.1. At <span class="math" data-tex="\(q=3\)">\(q=3\)</span>, decompose the three ordered parameter possibilities up to swapping.</p>
+<p><strong>Solution.</strong> The action on lines gives exactly the two double cosets <span class="math" data-tex="\(B,BwB\)">\(B,BwB\)</span>. Their intersections are <span class="math" data-tex="\(B\)">\(B\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span>. Reciprocity followed by Mackey makes the Hom space between the two induced modules a direct sum of the Hom spaces of their linear characters on these intersections. On <span class="math" data-tex="\(B\)">\(B\)</span> equality means <span class="math" data-tex="\(\alpha=\gamma,\beta=\delta\)">\(\alpha=\gamma,\beta=\delta\)</span>. On <span class="math" data-tex="\(T\)">\(T\)</span> conjugation by <span class="math" data-tex="\(w\)">\(w\)</span> swaps the entries, giving <span class="math" data-tex="\(\alpha=\delta,\beta=\gamma\)">\(\alpha=\delta,\beta=\gamma\)</span>. These one-dimensional or zero-dimensional spaces give (9).</p>
+<p>The endomorphism dimension is one for unequal entries and two for equal entries, so the first is irreducible and the second is reducible. A distinct swapped pair has a nonzero map between irreducibles and hence gives one isomorphism class. No other pair can do so by (9). For equal entries, <span class="math" data-tex="\(D_\chi\)">\(D_\chi\)</span> occurs once by reciprocity; subtracting its squared multiplicity from the norm two leaves exactly one other irreducible, of degree <span class="math" data-tex="\(q\)">\(q\)</span>. Tensoring the trivial-entry decomposition gives (8).</p>
+<p>For <span class="math" data-tex="\(q=3\)">\(q=3\)</span>, the characters of <span class="math" data-tex="\(H\)">\(H\)</span> are <span class="math" data-tex="\(1,\epsilon\)">\(1,\epsilon\)</span>. The resulting modules are <span class="math" data-tex="\(I(1,1)=D_1\oplus\mathrm{St}\)">\(I(1,1)=D_1\oplus\mathrm{St}\)</span>, <span class="math" data-tex="\(I(\epsilon,\epsilon)=D_\epsilon\oplus\mathrm{St}_\epsilon\)">\(I(\epsilon,\epsilon)=D_\epsilon\oplus\mathrm{St}_\epsilon\)</span>, and the irreducible <span class="math" data-tex="\(I(1,\epsilon)=I(\epsilon,1)\)">\(I(1,\epsilon)=I(\epsilon,1)\)</span>. Their dimensions are four in each case, with summand dimensions <span class="math" data-tex="\(1+3\)">\(1+3\)</span> for the first two.</p>
+<h3 id="exercise-3-check-the-steinberg-norm-directly">Exercise 3 — Check the Steinberg norm directly</h3>
+<p>Compute the Steinberg character from fixed lines and verify its norm using all four class types. Why does the calculation remain valid at <span class="math" data-tex="\(q=2\)">\(q=2\)</span>?</p>
+<p><strong>Solution.</strong> The four fixed-line counts are <span class="math" data-tex="\(q+1,1,2,0\)">\(q+1,1,2,0\)</span>. Removing the constants gives <span class="math" data-tex="\(q,0,1,-1\)">\(q,0,1,-1\)</span>. The sum of the weighted squared values is</p>
+<span class="math math-display" data-tex="\[
+(q-1)q^2
++\frac{(q-1)(q-2)}2q(q+1)
++\frac{q(q-1)}2q(q-1)
+=q(q+1)(q-1)^2.
+\tag{40}
+\]">\[
+(q-1)q^2
++\frac{(q-1)(q-2)}2q(q+1)
++\frac{q(q-1)}2q(q-1)
+=q(q+1)(q-1)^2.
+\tag{40}
+\]</span>
+<p>Factor <span class="math" data-tex="\(q(q-1)\)">\(q(q-1)\)</span> on the left; the remaining bracket is <span class="math" data-tex="\(q+((q-2)(q+1)+q(q-1))/2=q^2-1\)">\(q+((q-2)(q+1)+q(q-1))/2=q^2-1\)</span>. Division by (3) gives norm one. At <span class="math" data-tex="\(q=2\)">\(q=2\)</span> the split term simply vanishes, and the weighted sum is <span class="math" data-tex="\(4+2=6\)">\(4+2=6\)</span>. No step divides by <span class="math" data-tex="\(q-2\)">\(q-2\)</span> or requires a nonsquare in the base field.</p>
+<h3 id="exercise-4-turn-a-virtual-character-into-a-representation">Exercise 4 — Turn a virtual character into a representation</h3>
+<p>For regular <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, construct the virtual character (12), calculate its norm and degree, and prove that it is an irreducible cuspidal character. Repeat the norm calculation for a norm character and identify the resulting virtual class.</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(\mu=\theta|_H\)">\(\mu=\theta|_H\)</span>. The two induced degrees are <span class="math" data-tex="\(q^2-1\)">\(q^2-1\)</span> and <span class="math" data-tex="\(q(q-1)\)">\(q(q-1)\)</span>, giving difference <span class="math" data-tex="\(q-1\)">\(q-1\)</span>. Formula (14), the sum <span class="math" data-tex="\(\sum_{x\ne0}\psi(x)=-1\)">\(\sum_{x\ne0}\psi(x)=-1\)</span>, and the two elliptic conjugates give (13).</p>
+<p>Since <span class="math" data-tex="\(\theta/\theta^q\)">\(\theta/\theta^q\)</span> is nontrivial on <span class="math" data-tex="\(E\)">\(E\)</span> and trivial on <span class="math" data-tex="\(H\)">\(H\)</span>, its sum over <span class="math" data-tex="\(E\setminus H\)">\(E\setminus H\)</span> is <span class="math" data-tex="\(-(q-1)\)">\(-(q-1)\)</span>. The inverse character has the same sum. Therefore</p>
+<span class="math math-display" data-tex="\[
+\sum_{\lambda\in E\setminus H}|\theta(\lambda)+\theta(\lambda^q)|^2
+=2(q^2-q)-2(q-1)=2(q-1)^2.
+\tag{41}
+\]">\[
+\sum_{\lambda\in E\setminus H}|\theta(\lambda)+\theta(\lambda^q)|^2
+=2(q^2-q)-2(q-1)=2(q-1)^2.
+\tag{41}
+\]</span>
+<p>Central and Jordan contributions are <span class="math" data-tex="\((q-1)^3\)">\((q-1)^3\)</span> and <span class="math" data-tex="\((q^2-1)(q-1)\)">\((q^2-1)(q-1)\)</span>. Elliptic classes contribute <span class="math" data-tex="\(q(q-1)/2\)">\(q(q-1)/2\)</span> times (41). Their total is</p>
+<span class="math math-display" data-tex="\[
+(q-1)^3+(q^2-1)(q-1)+q(q-1)^3
+=q(q+1)(q-1)^2=|G|.
+\tag{42}
+\]">\[
+(q-1)^3+(q^2-1)(q-1)+q(q-1)^3
+=q(q+1)(q-1)^2=|G|.
+\tag{42}
+\]</span>
+<p>Thus the norm is one. Integral multiplicities of the virtual class leave exactly one coefficient <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>, and its positive degree fixes the plus sign. Averaging on <span class="math" data-tex="\(U\)">\(U\)</span> gives zero as in (19), so the irreducible is cuspidal.</p>
+<p>For <span class="math" data-tex="\(\theta=\chi\circ N\)">\(\theta=\chi\circ N\)</span>, the elliptic summand in (41) is instead <span class="math" data-tex="\(4(q^2-q)\)">\(4(q^2-q)\)</span>, since <span class="math" data-tex="\(\theta=\theta^q\)">\(\theta=\theta^q\)</span>. The total weighted norm is twice <span class="math" data-tex="\(|G|\)">\(|G|\)</span>, in agreement with (18). Comparing the four values identifies the virtual representation with <span class="math" data-tex="\(\mathrm{St}_\chi-D_\chi\)">\(\mathrm{St}_\chi-D_\chi\)</span>. It is a difference of two distinct irreducibles, not a new irreducible of degree <span class="math" data-tex="\(q-1\)">\(q-1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>P. Etingof, O. Golberg, S. Hensel, T. Liu, A. Schwendner, D. Vaintrob and E. Yudovina</strong>, <em>Introduction to Representation Theory</em>, <a href="https://math.mit.edu/~etingof/replect.pdf">lecture notes</a>, §4.24, particularly Theorem 4.71, §4.24.4 and Lemma 4.72. These give an odd-characteristic presentation of the principal and cuspidal character constructions. The field and induction arguments here cover every prime power.</li>
+<li><strong>C. Gruson and V. Serganova</strong>, <em>A Journey Through Representation Theory: From Finite Groups to Quivers via Algebras</em>, Springer, 2018, Chapter 6 §9, especially Definition 9.3 and Example 9.22. The general positive self-adjoint Hopf-algebra discussion supplies context for the four families; the rank-two proof is given here directly.</li>
+<li><strong>P. Deligne and G. Lusztig</strong>, <em>Representations of reductive groups over finite fields</em>, Annals of Mathematics 103 (1976), 103–161, <a href="https://publications.ias.edu/sites/default/files/Number27.pdf">Institute for Advanced Study copy</a>, §1.20, Proposition 5.16 and Theorems 6.8 and 8.3. These are the precise references for the geometric comparison questions in §7.</li>
+<li><strong>P. Deligne and G. Lusztig</strong>, <em>Duality for representations of a reductive group over a finite field</em>, Journal of Algebra 74 (1982), 284–291, <a href="https://publications.ias.edu/sites/default/files/Number44.pdf">author's deposited article</a>, §§1 and 5. Proposition 7.1 proves the rank-one parabolic character operation used in this lesson.</li>
+</ul>
+</article></main><footer class="header-inner"><p>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, in Codex. <a href="sources.html">Authorship and component terms</a>.</p></footer></body></html>

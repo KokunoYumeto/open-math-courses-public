@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Lorentz cones and domain solvability</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="lorentz-cones-and-domain-solvability">Lorentz cones and domain solvability</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>For a wave equation, a domain can fail the support condition even though the troublesome part of its boundary is only a portion of a light ray. The decisive configuration consists of a null segment whose endpoints lie inside the domain, together with a neighborhood in which the double cone from one endpoint contains no other missing points. We prove that this configuration characterizes failure of support convexity, including when all lower order coefficients are complex.</p>
+<p>Basic references are Kalmes's papers on geometric criteria for surjectivity and Bär, Ginoux and Pfäffle's treatment of causal wave kernels, listed below.</p>
+<p>Throughout this lesson <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, <span class="math" data-tex="\(x=(t,z)\in\mathbb R\times\mathbb R^{n-1}\)">\(x=(t,z)\in\mathbb R\times\mathbb R^{n-1}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Lambda(t,z)&amp;=t^2-|z|^2,\\
+P_2(\tau,\xi)&amp;=-\tau^2+|\xi|^2.
+\end{aligned}
+\tag{1}
+\]">\[
+\begin{aligned}
+\Lambda(t,z)&amp;=t^2-|z|^2,\\
+P_2(\tau,\xi)&amp;=-\tau^2+|\xi|^2.
+\end{aligned}
+\tag{1}
+\]</span>
+The polynomial <span class="math" data-tex="\(P\)">\(P\)</span> has degree two and principal part <span class="math" data-tex="\(P_2\)">\(P_2\)</span>. Its lower order coefficients are arbitrary complex numbers. We write <span class="math" data-tex="\(A=P^t=P(-D)\)">\(A=P^t=P(-D)\)</span>, <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span>. Euclidean balls and distances will always be distinguished from the Lorentz form <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C_+=\{(t,z):t\geq|z|\},\\
+C_-=-C_+.
+\end{gathered}
+\tag{2}
+\]">\[
+\begin{gathered}
+C_+=\{(t,z):t\geq|z|\},\\
+C_-=-C_+.
+\end{gathered}
+\tag{2}
+\]</span>
+A nonzero vector is <strong>timelike</strong> if <span class="math" data-tex="\(\Lambda&gt;0\)">\(\Lambda&gt;0\)</span>, <strong>null</strong> if <span class="math" data-tex="\(\Lambda=0\)">\(\Lambda=0\)</span>. Future means its time component is positive. The interiors <span class="math" data-tex="\(C_\pm^\circ\)">\(C_\pm^\circ\)</span> consist of the corresponding timelike vectors.</p>
+<p>We use the support-distance criterion from <a href="AN02-L010.html">Approximation and global solvability from support geometry</a>, Theorem 4.1. We also use the analytic support-normal and propagation statements declared in <a href="AN02-L013.html">Boundary distance and propagation</a>. Their applicability here follows from
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\nabla P_2(\tau,\xi)=(-2\tau,2\xi)\ne0\\
+\text{when }(\tau,\xi)\ne0.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+\nabla P_2(\tau,\xi)=(-2\tau,2\xi)\ne0\\
+\text{when }(\tau,\xi)\ne0.
+\end{gathered}
+\tag{3}
+\]</span>
+These statements permit complex lower order coefficients.</p>
+<p>The general characteristic-hyperplane continuation theorem and analytic support-normal propagation used below are planned prerequisites of <a href="prerequisites/planned-foundation-proofs.html">Distributions, kernels and analytic singularities</a>. Their exact statements are retained here; the Lorentz geometry and the conditional solvability criterion are proved in this lesson.</p>
+<h2 id="convex-continuation">Convex continuation</h2>
+<p>We use the following general analytic continuation theorem. Let <span class="math" data-tex="\(R\ne0\)">\(R\ne0\)</span> be any complex constant-coefficient polynomial on <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, with principal homogeneous part <span class="math" data-tex="\(R_d\)">\(R_d\)</span>. Suppose <span class="math" data-tex="\(U\subset V\)">\(U\subset V\)</span> are nonempty convex open sets and every affine hyperplane whose real normal <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> satisfies <span class="math" data-tex="\(R_d(N)=0\)">\(R_d(N)=0\)</span>, and which meets <span class="math" data-tex="\(V\)">\(V\)</span>, also meets <span class="math" data-tex="\(U\)">\(U\)</span>. If <span class="math" data-tex="\(u\in\mathcal D&#x27;(V)\)">\(u\in\mathcal D&#x27;(V)\)</span>, <span class="math" data-tex="\(R(D)u=0\)">\(R(D)u=0\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span>, and <span class="math" data-tex="\(u=0\)">\(u=0\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span>, then <span class="math" data-tex="\(u=0\)">\(u=0\)</span> in <span class="math" data-tex="\(V\)">\(V\)</span>. We take this theorem from analytic distribution theory as a prerequisite; its generality includes complex lower order coefficients and operators of arbitrary degree.</p>
+<p>In this lesson we apply the theorem with <span class="math" data-tex="\(R(D)=A=P(-D)\)">\(R(D)=A=P(-D)\)</span>. Its characteristic normals <span class="math" data-tex="\(N=(a,b)\ne0\)">\(N=(a,b)\ne0\)</span> satisfy <span class="math" data-tex="\(a^2=|b|^2\)">\(a^2=|b|^2\)</span>. The two lemmas below are consequences of this specialization.</p>
+<h2 id="two-continuation-lemmas">Two continuation lemmas</h2>
+<p>For <span class="math" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, define the open diamond
+<span class="math math-display" data-tex="\[
+D_R=\{(t,z):|t|+|z|&lt;\sqrt2R\}.
+\tag{4}
+\]">\[
+D_R=\{(t,z):|t|+|z|&lt;\sqrt2R\}.
+\tag{4}
+\]</span>
+Euclidean Cauchy–Schwarz gives <span class="math" data-tex="\(B(0,R)\subset D_R\subset B(0,\sqrt2R)\)">\(B(0,R)\subset D_R\subset B(0,\sqrt2R)\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> If <span class="math" data-tex="\(Au=0\)">\(Au=0\)</span> in <span class="math" data-tex="\(D_R\)">\(D_R\)</span> and <span class="math" data-tex="\(u=0\)">\(u=0\)</span> in <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>, then <span class="math" data-tex="\(u=0\)">\(u=0\)</span> in <span class="math" data-tex="\(D_R\)">\(D_R\)</span>. The same assertion holds after translation.</p>
+<p><strong>Proof.</strong> Normalize a characteristic normal <span class="math" data-tex="\(N=(a,b)\)">\(N=(a,b)\)</span> to Euclidean length one. Then <span class="math" data-tex="\(|a|=|b|=1/\sqrt2\)">\(|a|=|b|=1/\sqrt2\)</span>, and
+<span class="math math-display" data-tex="\[
+|N\cdot(t,z)|\leq
+\frac{|t|+|z|}{\sqrt2}&lt;R
+\quad\text{on }D_R.
+\tag{5}
+\]">\[
+|N\cdot(t,z)|\leq
+\frac{|t|+|z|}{\sqrt2}&lt;R
+\quad\text{on }D_R.
+\tag{5}
+\]</span>
+Any characteristic hyperplane meeting <span class="math" data-tex="\(D_R\)">\(D_R\)</span> therefore has equation <span class="math" data-tex="\(N\cdot x=c\)">\(N\cdot x=c\)</span> with <span class="math" data-tex="\(|c|&lt;R\)">\(|c|&lt;R\)</span>. It meets the ball <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>. Both sets are convex and open, so the continuation theorem applies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For timelike separated points <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, with <span class="math" data-tex="\(b-a\)">\(b-a\)</span> future, their open causal diamond is
+<span class="math math-display" data-tex="\[
+\mathcal D(a,b)=(a+C_+^\circ)\cap(b+C_-^\circ).
+\tag{6}
+\]">\[
+\mathcal D(a,b)=(a+C_+^\circ)\cap(b+C_-^\circ).
+\tag{6}
+\]</span>
+It contains the open segment between them.</p>
+<p><strong>Lemma 1.2.</strong> Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be convex and open, <span class="math" data-tex="\(Au=0\)">\(Au=0\)</span> in <span class="math" data-tex="\(Y\)">\(Y\)</span>. Let <span class="math" data-tex="\(a(s),b(s)\)">\(a(s),b(s)\)</span>, <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>, be continuous curves in <span class="math" data-tex="\(Y\setminus\operatorname{supp}u\)">\(Y\setminus\operatorname{supp}u\)</span> with <span class="math" data-tex="\(\Lambda(b(s)-a(s))&gt;0\)">\(\Lambda(b(s)-a(s))&gt;0\)</span>. Then <span class="math" data-tex="\(u\)">\(u\)</span> vanishes near the whole segment <span class="math" data-tex="\([a(s),b(s)]\)">\([a(s),b(s)]\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>, or for no <span class="math" data-tex="\(s\)">\(s\)</span>. Whenever it vanishes near that segment, it also vanishes on <span class="math" data-tex="\(Y\cap\mathcal D(a(s),b(s))\)">\(Y\cap\mathcal D(a(s),b(s))\)</span>, with time orientation chosen continuously.</p>
+<p><strong>Proof.</strong> The nonzero time component of <span class="math" data-tex="\(b(s)-a(s)\)">\(b(s)-a(s)\)</span> has constant sign. Interchange the curves if necessary so that it is positive.</p>
+<p>First fix a pair <span class="math" data-tex="\(a,b\)">\(a,b\)</span> whose segment has a zero neighborhood. For a characteristic normal <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>, the linear form <span class="math" data-tex="\(N\cdot v\)">\(N\cdot v\)</span> has one strict sign on <span class="math" data-tex="\(C_+^\circ\)">\(C_+^\circ\)</span>: after possibly changing <span class="math" data-tex="\(N\)">\(N\)</span> to <span class="math" data-tex="\(-N\)">\(-N\)</span>, its time component is positive and
+<span class="math math-display" data-tex="\[
+N\cdot v\geq |N_t|(v_t-|v_z|)&gt;0.
+\tag{7}
+\]">\[
+N\cdot v\geq |N_t|(v_t-|v_z|)&gt;0.
+\tag{7}
+\]</span>
+Thus, at each <span class="math" data-tex="\(w\in\mathcal D(a,b)\)">\(w\in\mathcal D(a,b)\)</span>, <span class="math" data-tex="\(N\cdot w\)">\(N\cdot w\)</span> is strictly between <span class="math" data-tex="\(N\cdot a\)">\(N\cdot a\)</span> and <span class="math" data-tex="\(N\cdot b\)">\(N\cdot b\)</span>. Every characteristic hyperplane meeting <span class="math" data-tex="\(Y\cap\mathcal D(a,b)\)">\(Y\cap\mathcal D(a,b)\)</span> cuts the open segment <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span>. Take a small convex open tube about <span class="math" data-tex="\([a,b]\)">\([a,b]\)</span>, contained in <span class="math" data-tex="\(Y\)">\(Y\)</span> and in the zero set of <span class="math" data-tex="\(u\)">\(u\)</span>, and intersect it with this diamond. The continuation theorem proves vanishing on the whole of <span class="math" data-tex="\(Y\cap\mathcal D(a,b)\)">\(Y\cap\mathcal D(a,b)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be the set of good parameters. It is relatively open, because a compact segment with a zero neighborhood retains that property under small changes of its endpoints. To prove closedness, let <span class="math" data-tex="\(s_j\in S\)">\(s_j\in S\)</span> tend to <span class="math" data-tex="\(s\)">\(s\)</span>. Every compact subset of <span class="math" data-tex="\(\mathcal D(a(s),b(s))\)">\(\mathcal D(a(s),b(s))\)</span> lies in <span class="math" data-tex="\(\mathcal D(a(s_j),b(s_j))\)">\(\mathcal D(a(s_j),b(s_j))\)</span> for large <span class="math" data-tex="\(j\)">\(j\)</span>, by the strict cone inequalities. The preceding paragraph makes <span class="math" data-tex="\(u\)">\(u\)</span> zero on <span class="math" data-tex="\(Y\cap\mathcal D(a(s),b(s))\)">\(Y\cap\mathcal D(a(s),b(s))\)</span>. The endpoints themselves have zero neighborhoods by hypothesis. These open zero sets cover <span class="math" data-tex="\([a(s),b(s)]\)">\([a(s),b(s)]\)</span>, so <span class="math" data-tex="\(s\in S\)">\(s\in S\)</span>. A relatively open and closed subset of the connected interval <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> is either empty or the whole interval. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Strict timelike separation is used in (7) and in the open diamond. It cannot simply be replaced by a nonstrict inequality in this argument.</p>
+<h2 id="the-null-segment-criterion">The null-segment criterion</h2>
+<p>Recall that <span class="math" data-tex="\(X\)">\(X\)</span> is <strong><span class="math" data-tex="\(P\)">\(P\)</span>-convex for supports</strong> if for every compact <span class="math" data-tex="\(K\subset X\)">\(K\subset X\)</span> there is a compact <span class="math" data-tex="\(K&#x27;\subset X\)">\(K&#x27;\subset X\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v\in\mathcal E&#x27;(X),\qquad
+\operatorname{supp}Av\subset K\\
+\Longrightarrow\quad\operatorname{supp}v\subset K&#x27;.
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+v\in\mathcal E&#x27;(X),\qquad
+\operatorname{supp}Av\subset K\\
+\Longrightarrow\quad\operatorname{supp}v\subset K&#x27;.
+\end{gathered}
+\tag{8}
+\]</span></p>
+<p><strong>Theorem 2.1.</strong> An open set <span class="math" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> fails to be <span class="math" data-tex="\(P\)">\(P\)</span>-convex for supports if and only if there are distinct points <span class="math" data-tex="\(p,q\in X\)">\(p,q\in X\)</span>, a null segment <span class="math" data-tex="\(I=[p,q]\)">\(I=[p,q]\)</span>, and an open neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Lambda(q-p)=0,\qquad I\cap\partial X\ne\varnothing,\\
+W\cap\{w:\Lambda(w-p)\geq0\}\subset X\cup I.
+\end{gathered}
+\tag{9}
+\]">\[
+\begin{gathered}
+\Lambda(q-p)=0,\qquad I\cap\partial X\ne\varnothing,\\
+W\cap\{w:\Lambda(w-p)\geq0\}\subset X\cup I.
+\end{gathered}
+\tag{9}
+\]</span></p>
+<p>The statement does not require <span class="math" data-tex="\(X\)">\(X\)</span> to be connected. In one dimension the principal part is elliptic, all open sets satisfy the support condition, and there is no pair of distinct null-separated points.</p>
+<p>We first prove that (9) forces failure, then construct such a configuration from a support-distance defect.</p>
+<h2 id="a-compact-witness-from-the-light-front">A compact witness from the light front</h2>
+<p><strong>Proof that (9) implies failure.</strong> Reverse time if necessary so that <span class="math" data-tex="\(q-p\)">\(q-p\)</span> is future. By <a href="AN02-L015.html">Wave kernels with complex coefficients</a>, Theorems 3.1 and 4.1, the transpose <span class="math" data-tex="\(A\)">\(A\)</span> has a global homogeneous distribution <span class="math" data-tex="\(F\)">\(F\)</span> supported in the double cone with vertex <span class="math" data-tex="\(p\)">\(p\)</span>, with every point of that light cone in its support.</p>
+<p>Choose <span class="math" data-tex="\(\chi\in C_c^\infty(W)\)">\(\chi\in C_c^\infty(W)\)</span> equal to one near <span class="math" data-tex="\(I\)">\(I\)</span>, and put <span class="math" data-tex="\(v=\chi F\)">\(v=\chi F\)</span>. Then
+<span class="math math-display" data-tex="\[
+I\subset\operatorname{supp}v\subset X\cup I.
+\tag{10}
+\]">\[
+I\subset\operatorname{supp}v\subset X\cup I.
+\tag{10}
+\]</span>
+Since <span class="math" data-tex="\(AF=0\)">\(AF=0\)</span>, the image is <span class="math" data-tex="\(Av=[A,\chi]F\)">\(Av=[A,\chi]F\)</span>. The commutator has support where derivatives of <span class="math" data-tex="\(\chi\)">\(\chi\)</span> meet the support of <span class="math" data-tex="\(F\)">\(F\)</span>; this compact set is disjoint from <span class="math" data-tex="\(I\)">\(I\)</span> and lies in <span class="math" data-tex="\(X\)">\(X\)</span>, by (9). Thus <span class="math" data-tex="\(Av\)">\(Av\)</span> has compact support inside <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Choose a fixed future timelike vector <span class="math" data-tex="\(h\)">\(h\)</span>. For small <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, let <span class="math" data-tex="\(v_\varepsilon(x)=v(x-\varepsilon h)\)">\(v_\varepsilon(x)=v(x-\varepsilon h)\)</span>. We claim that its entire support lies in <span class="math" data-tex="\(X\)">\(X\)</span>. Split <span class="math" data-tex="\(\operatorname{supp}v\)">\(\operatorname{supp}v\)</span> into its compact intersections with <span class="math" data-tex="\(p+C_+\)">\(p+C_+\)</span> and <span class="math" data-tex="\(p+C_-\)">\(p+C_-\)</span>. The past part is already a compact subset of <span class="math" data-tex="\(X\)">\(X\)</span>, because <span class="math" data-tex="\(I\)">\(I\)</span> meets that past cone only at <span class="math" data-tex="\(p\)">\(p\)</span>, which lies in <span class="math" data-tex="\(X\)">\(X\)</span>. Its sufficiently small translates stay in <span class="math" data-tex="\(X\)">\(X\)</span>. The future part, after translation by <span class="math" data-tex="\(\varepsilon h\)">\(\varepsilon h\)</span>, lies in <span class="math" data-tex="\(p+C_+^\circ\)">\(p+C_+^\circ\)</span>. All such translates stay in <span class="math" data-tex="\(W\)">\(W\)</span> for uniformly small <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, since the unshifted support is compact in <span class="math" data-tex="\(W\)">\(W\)</span>. They cannot belong to the null segment <span class="math" data-tex="\(I\)">\(I\)</span>. Condition (9) therefore puts them in <span class="math" data-tex="\(X\)">\(X\)</span> too.</p>
+<p>The image supports of these translates lie in one fixed compact subset of <span class="math" data-tex="\(X\)">\(X\)</span>: translate the compact set <span class="math" data-tex="\(\operatorname{supp}Av\)">\(\operatorname{supp}Av\)</span> by <span class="math" data-tex="\([0,\varepsilon_0]h\)">\([0,\varepsilon_0]h\)</span>, with <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span> small enough. But if <span class="math" data-tex="\(r\in I\cap\partial X\)">\(r\in I\cap\partial X\)</span>, then
+<span class="math math-display" data-tex="\[
+r+\varepsilon h\in\operatorname{supp}v_\varepsilon,
+\qquad r+\varepsilon h\longrightarrow r.
+\tag{11}
+\]">\[
+r+\varepsilon h\in\operatorname{supp}v_\varepsilon,
+\qquad r+\varepsilon h\longrightarrow r.
+\tag{11}
+\]</span>
+No compact subset of <span class="math" data-tex="\(X\)">\(X\)</span> can contain all these support points. This contradicts (8), and proves failure. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Notice why the support statement at every light-front point was needed. The boundary point <span class="math" data-tex="\(r\)">\(r\)</span> in (11) is specified by the domain, not selected afterward to match a potentially smaller kernel support.</p>
+<h2 id="from-a-distance-defect-to-a-boundary-interval">From a distance defect to a boundary interval</h2>
+<p>For the converse, suppose <span class="math" data-tex="\(X\)">\(X\)</span> is not <span class="math" data-tex="\(P\)">\(P\)</span>-convex for supports. It is then a nonempty proper open set. By the support-distance criterion there is <span class="math" data-tex="\(0\ne u\in\mathcal E&#x27;(X)\)">\(0\ne u\in\mathcal E&#x27;(X)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+r&amp;=d_X(\operatorname{supp}u),\\
+b&amp;=d_X(\operatorname{supp}Au)&gt;r.
+\end{aligned}
+\tag{12}
+\]">\[
+\begin{aligned}
+r&amp;=d_X(\operatorname{supp}u),\\
+b&amp;=d_X(\operatorname{supp}Au)&gt;r.
+\end{aligned}
+\tag{12}
+\]</span>
+Both support sets are nonempty: the compact-support hull identity rules out a nonzero compactly supported homogeneous solution. Choose <span class="math" data-tex="\(y\in\operatorname{supp}u\)">\(y\in\operatorname{supp}u\)</span>, <span class="math" data-tex="\(x_0\in\partial X\)">\(x_0\in\partial X\)</span> attaining the distance <span class="math" data-tex="\(r\)">\(r\)</span>, and put <span class="math" data-tex="\(a=y-x_0\)">\(a=y-x_0\)</span>. In particular <span class="math" data-tex="\(|a|=r&gt;0\)">\(|a|=r&gt;0\)</span>.</p>
+<p>Translate by the full contact vector and then partially translate back:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+v_\varepsilon(x)=u(x+(1-\varepsilon)a),\\
+0\leq\varepsilon\leq1.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+v_\varepsilon(x)=u(x+(1-\varepsilon)a),\\
+0\leq\varepsilon\leq1.
+\end{gathered}
+\tag{13}
+\]</span>
+For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> its support lies in <span class="math" data-tex="\(X\)">\(X\)</span>, because the translation length is strictly smaller than <span class="math" data-tex="\(r\)">\(r\)</span>. Hence <span class="math" data-tex="\(\operatorname{supp}v_0\subset\overline X\)">\(\operatorname{supp}v_0\subset\overline X\)</span>, by passing to limits of its translated support points. Also
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x_0\in\operatorname{supp}v_0,\\
+v_0=0\text{ in }B(x_0-a,r),\\
+d_X(\operatorname{supp}Av_\varepsilon)\geq
+\delta:=b-r&gt;0,\\
+0\leq\varepsilon\leq1.
+\end{gathered}
+\tag{14}
+\]">\[
+\begin{gathered}
+x_0\in\operatorname{supp}v_0,\\
+v_0=0\text{ in }B(x_0-a,r),\\
+d_X(\operatorname{supp}Av_\varepsilon)\geq
+\delta:=b-r&gt;0,\\
+0\leq\varepsilon\leq1.
+\end{gathered}
+\tag{14}
+\]</span></p>
+<p>The real analytic function <span class="math" data-tex="\(-|x-(x_0-a)|^2\)">\(-|x-(x_0-a)|^2\)</span> attains its maximum on <span class="math" data-tex="\(\operatorname{supp}v_0\)">\(\operatorname{supp}v_0\)</span> at <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, with nonzero differential <span class="math" data-tex="\(-2a\)">\(-2a\)</span>. The support-normal theorem puts <span class="math" data-tex="\((x_0,a)\)">\((x_0,a)\)</span> in the analytic wavefront set, using its conic symmetry at a support normal. Since <span class="math" data-tex="\(Av_0=0\)">\(Av_0=0\)</span> near <span class="math" data-tex="\(x_0\)">\(x_0\)</span>, analytic elliptic regularity gives <span class="math" data-tex="\(\Lambda(a)=0\)">\(\Lambda(a)=0\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\nu=a/r\)">\(\nu=a/r\)</span>, and reverse time if necessary so that it is future. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H=\operatorname{diag}(1,-1,\ldots,-1),\\
+g=H\nu.
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+H=\operatorname{diag}(1,-1,\ldots,-1),\\
+g=H\nu.
+\end{gathered}
+\tag{15}
+\]</span>
+Both <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> are future null unit vectors in the Euclidean metric, and <span class="math" data-tex="\(\nu\cdot g=0\)">\(\nu\cdot g=0\)</span>. A bicharacteristic line at covector <span class="math" data-tex="\(a\)">\(a\)</span> runs in direction <span class="math" data-tex="\(g\)">\(g\)</span>, since <span class="math" data-tex="\(\nabla P_2(a)=-2Ha\)">\(\nabla P_2(a)=-2Ha\)</span>.</p>
+<p>Choose
+<span class="math math-display" data-tex="\[
+0&lt;R&lt;\min\left(r,\frac{\delta}{1+\sqrt2}\right).
+\tag{16}
+\]">\[
+0&lt;R&lt;\min\left(r,\frac{\delta}{1+\sqrt2}\right).
+\tag{16}
+\]</span>
+Let <span class="math" data-tex="\(J\)">\(J\)</span> be the maximal compact interval in
+<span class="math math-display" data-tex="\[
+(x_0+\mathbb Rg)\cap
+\partial X\cap\operatorname{supp}v_0
+\tag{17}
+\]">\[
+(x_0+\mathbb Rg)\cap
+\partial X\cap\operatorname{supp}v_0
+\tag{17}
+\]</span>
+containing <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. It may initially be a singleton. Such an interval exists as the connected component containing <span class="math" data-tex="\(x_0\)">\(x_0\)</span> in a compact closed subset of a line.</p>
+<p>Every <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span> satisfies <span class="math" data-tex="\(x+a\in\operatorname{supp}u\)">\(x+a\in\operatorname{supp}u\)</span>. Because <span class="math" data-tex="\(x\notin X\)">\(x\notin X\)</span>, its distance from <span class="math" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span> is at least <span class="math" data-tex="\(r\)">\(r\)</span>, and the point <span class="math" data-tex="\(x+a\)">\(x+a\)</span> makes it exactly <span class="math" data-tex="\(r\)">\(r\)</span>. The entire contact argument (14) therefore applies at <span class="math" data-tex="\(x\)">\(x\)</span>. In particular <span class="math" data-tex="\(v_0=0\)">\(v_0=0\)</span> in <span class="math" data-tex="\(B(x-a,r)\)">\(B(x-a,r)\)</span>, and the support-normal theorem gives the analytic covector <span class="math" data-tex="\(a\)">\(a\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>The smaller ball <span class="math" data-tex="\(B(x-R\nu,R)\)">\(B(x-R\nu,R)\)</span> lies in <span class="math" data-tex="\(B(x-a,r)\)">\(B(x-a,r)\)</span>. Its concentric diamond is contained in <span class="math" data-tex="\(B(x-R\nu,\sqrt2R)\)">\(B(x-R\nu,\sqrt2R)\)</span>, on which <span class="math" data-tex="\(Av_0=0\)">\(Av_0=0\)</span>: every point of that ball is within <span class="math" data-tex="\(R+\sqrt2R&lt;\delta\)">\(R+\sqrt2R&lt;\delta\)</span> of <span class="math" data-tex="\(x\in X^c\)">\(x\in X^c\)</span>. Lemma 1.1 thus gives
+<span class="math math-display" data-tex="\[
+v_0=0\text{ on }\Omega(x):=x-R\nu+D_R.
+\tag{18}
+\]">\[
+v_0=0\text{ on }\Omega(x):=x-R\nu+D_R.
+\tag{18}
+\]</span>
+Analytic propagation at covector <span class="math" data-tex="\(a\)">\(a\)</span> also gives
+<span class="math math-display" data-tex="\[
+\widehat J:=J+(-R,R)g
+\subset\operatorname{supp}v_0\subset\overline X.
+\tag{19}
+\]">\[
+\widehat J:=J+(-R,R)g
+\subset\operatorname{supp}v_0\subset\overline X.
+\tag{19}
+\]</span>
+Indeed each propagation segment starts at a point <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span> and has length less than <span class="math" data-tex="\(R&lt;\delta\)">\(R&lt;\delta\)</span>, so it avoids the image support.</p>
+<p>The union
+<span class="math math-display" data-tex="\[
+\Gamma=J-R\nu+D_R
+\tag{20}
+\]">\[
+\Gamma=J-R\nu+D_R
+\tag{20}
+\]</span>
+is an open convex zero set of <span class="math" data-tex="\(v_0\)">\(v_0\)</span>, since <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(D_R\)">\(D_R\)</span> are convex. Define also the open convex tubes
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W_0&amp;=J+B(0,R),\\
+Y&amp;=J+B(0,2R).
+\end{aligned}
+\tag{21}
+\]">\[
+\begin{aligned}
+W_0&amp;=J+B(0,R),\\
+Y&amp;=J+B(0,2R).
+\end{aligned}
+\tag{21}
+\]</span>
+We have <span class="math" data-tex="\(Av_0=0\)">\(Av_0=0\)</span> in <span class="math" data-tex="\(Y\)">\(Y\)</span>, because <span class="math" data-tex="\(2R&lt;\delta\)">\(2R&lt;\delta\)</span> and all points of <span class="math" data-tex="\(J\)">\(J\)</span> lie in <span class="math" data-tex="\(X^c\)">\(X^c\)</span>.</p>
+<h2 id="the-interior-cone-must-be-inside-the-domain">The interior cone must be inside the domain</h2>
+<p>We claim that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W_0\cap(x+C_+^\circ)\subset X\\
+\text{for every }x\in\widehat J.
+\end{gathered}
+\tag{22}
+\]">\[
+\begin{gathered}
+W_0\cap(x+C_+^\circ)\subset X\\
+\text{for every }x\in\widehat J.
+\end{gathered}
+\tag{22}
+\]</span>
+Fix such an <span class="math" data-tex="\(x\)">\(x\)</span> and a point <span class="math" data-tex="\(w\in W_0\)">\(w\in W_0\)</span> with <span class="math" data-tex="\(d=w-x\in C_+^\circ\)">\(d=w-x\in C_+^\circ\)</span>. Choose <span class="math" data-tex="\(x_*\in J\)">\(x_*\in J\)</span>, <span class="math" data-tex="\(|c|&lt;R\)">\(|c|&lt;R\)</span>, with <span class="math" data-tex="\(x=x_*+cg\)">\(x=x_*+cg\)</span>, and set <span class="math" data-tex="\(z=x-\eta d\)">\(z=x-\eta d\)</span>, with <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> to be chosen small.</p>
+<p>Choose <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span> with <span class="math" data-tex="\(|w-j|&lt;R\)">\(|w-j|&lt;R\)</span>. There is <span class="math" data-tex="\(s_1&lt;R/r\)">\(s_1&lt;R/r\)</span>, sufficiently close to <span class="math" data-tex="\(R/r\)">\(R/r\)</span>, for which
+<span class="math math-display" data-tex="\[
+w-s_1a\in j-R\nu+B(0,R)\subset\Gamma.
+\tag{23}
+\]">\[
+w-s_1a\in j-R\nu+B(0,R)\subset\Gamma.
+\tag{23}
+\]</span>
+We will also choose <span class="math" data-tex="\(\eta\)">\(\eta\)</span> so that
+<span class="math math-display" data-tex="\[
+z-sa\in\Gamma\quad(0\leq s\leq s_1).
+\tag{24}
+\]">\[
+z-sa\in\Gamma\quad(0\leq s\leq s_1).
+\tag{24}
+\]</span>
+Here is the geometric verification, including the endpoint <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. In coordinates with <span class="math" data-tex="\(\nu=(1,e)/\sqrt2\)">\(\nu=(1,e)/\sqrt2\)</span>, <span class="math" data-tex="\(g=(1,-e)/\sqrt2\)">\(g=(1,-e)/\sqrt2\)</span>, <span class="math" data-tex="\(|e|=1\)">\(|e|=1\)</span>, one has
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|(b\nu+cg)_t|+|(b\nu+cg)_z|\\
+{}=\sqrt2\max(|b|,|c|).
+\end{gathered}
+\tag{25}
+\]">\[
+\begin{gathered}
+|(b\nu+cg)_t|+|(b\nu+cg)_z|\\
+{}=\sqrt2\max(|b|,|c|).
+\end{gathered}
+\tag{25}
+\]</span>
+Before the perturbation <span class="math" data-tex="\(-\eta d\)">\(-\eta d\)</span>, the vector relative to the center <span class="math" data-tex="\(x_*-R\nu\)">\(x_*-R\nu\)</span> is <span class="math" data-tex="\((R-rs)\nu+cg\)">\((R-rs)\nu+cg\)</span>. For <span class="math" data-tex="\(0&lt;s\leq s_1\)">\(0&lt;s\leq s_1\)</span> both coefficients in (25) have absolute value strictly less than <span class="math" data-tex="\(R\)">\(R\)</span>, so it lies in <span class="math" data-tex="\(D_R\)">\(D_R\)</span>. At <span class="math" data-tex="\(s=0\)">\(s=0\)</span> it lies on a smooth part of the diamond boundary, because <span class="math" data-tex="\(|c|&lt;R\)">\(|c|&lt;R\)</span>. The outward differential there is <span class="math" data-tex="\(\sqrt2\nu\)">\(\sqrt2\nu\)</span>, whose pairing with the future timelike vector <span class="math" data-tex="\(d\)">\(d\)</span> is strictly positive. Thus <span class="math" data-tex="\(-\eta d\)">\(-\eta d\)</span> moves it into the diamond. Uniformly for <span class="math" data-tex="\(s\)">\(s\)</span> in a small interval starting at zero, the same differential has a positive pairing with <span class="math" data-tex="\(d\)">\(d\)</span>: the time component and the nonzero spatial component keep their signs, and their directions vary continuously under this small perturbation. On the remaining compact <span class="math" data-tex="\(s\)">\(s\)</span>-interval the unperturbed points have a positive margin inside <span class="math" data-tex="\(D_R\)">\(D_R\)</span>. Taking <span class="math" data-tex="\(\eta\)">\(\eta\)</span> small proves (24).</p>
+<p>Both curves <span class="math" data-tex="\(w-sa\)">\(w-sa\)</span> and <span class="math" data-tex="\(z-sa\)">\(z-sa\)</span>, <span class="math" data-tex="\(0\leq s\leq s_1\)">\(0\leq s\leq s_1\)</span>, lie in <span class="math" data-tex="\(Y\)">\(Y\)</span>. For the first, its distance to <span class="math" data-tex="\(J\)">\(J\)</span> is less than <span class="math" data-tex="\(R+rs_1&lt;2R\)">\(R+rs_1&lt;2R\)</span>. For the unperturbed second, the displacement <span class="math" data-tex="\(cg-rs\nu\)">\(cg-rs\nu\)</span> has length less than <span class="math" data-tex="\(\sqrt2R\)">\(\sqrt2R\)</span>, using <span class="math" data-tex="\(\nu\cdot g=0\)">\(\nu\cdot g=0\)</span>; a sufficiently small perturbation retains the strict <span class="math" data-tex="\(2R\)">\(2R\)</span> bound.</p>
+<p>Suppose no positive <span class="math" data-tex="\(s\leq s_1\)">\(s\leq s_1\)</span> had <span class="math" data-tex="\(w-sa\in\operatorname{supp}v_0\)">\(w-sa\in\operatorname{supp}v_0\)</span>. On each closed interval <span class="math" data-tex="\([s_0,s_1]\)">\([s_0,s_1]\)</span> with <span class="math" data-tex="\(s_0&gt;0\)">\(s_0&gt;0\)</span>, the two curves would satisfy Lemma 1.2: both endpoints of each segment lie outside the support, and their difference is the fixed timelike vector <span class="math" data-tex="\((1+\eta)d\)">\((1+\eta)d\)</span>. At <span class="math" data-tex="\(s_1\)">\(s_1\)</span> both endpoints lie in the convex open zero set <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>; hence their segment has a zero neighborhood. The lemma makes the same true at every <span class="math" data-tex="\(s\in[s_0,s_1]\)">\(s\in[s_0,s_1]\)</span>, and makes the causal diamond between its endpoints a zero set in <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>At <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, the point <span class="math" data-tex="\(x\)">\(x\)</span> lies strictly between <span class="math" data-tex="\(z=x-\eta d\)">\(z=x-\eta d\)</span> and <span class="math" data-tex="\(w=x+d\)">\(w=x+d\)</span> in the timelike sense. For all sufficiently small positive <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, it still belongs to <span class="math" data-tex="\(\mathcal D(z-s_0a,w-s_0a)\)">\(\mathcal D(z-s_0a,w-s_0a)\)</span>. The preceding conclusion would make <span class="math" data-tex="\(v_0=0\)">\(v_0=0\)</span> near <span class="math" data-tex="\(x\)">\(x\)</span>, contradicting (19). Consequently some strictly positive <span class="math" data-tex="\(s\leq s_1&lt;1\)">\(s\leq s_1&lt;1\)</span> has <span class="math" data-tex="\(w-sa\in\operatorname{supp}v_0\)">\(w-sa\in\operatorname{supp}v_0\)</span>. By (13), this means <span class="math" data-tex="\(w\in\operatorname{supp}v_s\subset X\)">\(w\in\operatorname{supp}v_s\subset X\)</span>. This proves (22).</p>
+<p>The positive parameter is essential here. A support point obtained only at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> would show membership in <span class="math" data-tex="\(\overline X\)">\(\overline X\)</span>, which would not suffice.</p>
+<p>We can strengthen (22) to the closed cone:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W_0\cap(x+C_+)\subset X\cup\widehat J,\\
+x\in\widehat J.
+\end{gathered}
+\tag{26}
+\]">\[
+\begin{gathered}
+W_0\cap(x+C_+)\subset X\cup\widehat J,\\
+x\in\widehat J.
+\end{gathered}
+\tag{26}
+\]</span>
+If <span class="math" data-tex="\(w-x\)">\(w-x\)</span> is future null and not parallel to <span class="math" data-tex="\(g\)">\(g\)</span>, choose <span class="math" data-tex="\(x&#x27;=x-\varepsilon g\in\widehat J\)">\(x&#x27;=x-\varepsilon g\in\widehat J\)</span> with <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> small. The sum <span class="math" data-tex="\(w-x+\varepsilon g\)">\(w-x+\varepsilon g\)</span> is future timelike: two nonparallel future null vectors have strictly positive Lorentz product. Thus (22), applied at <span class="math" data-tex="\(x&#x27;\)">\(x&#x27;\)</span>, gives <span class="math" data-tex="\(w\in X\)">\(w\in X\)</span>. If <span class="math" data-tex="\(w-x\)">\(w-x\)</span> is parallel to <span class="math" data-tex="\(g\)">\(g\)</span>, or zero, then <span class="math" data-tex="\(w\)">\(w\)</span> lies on the line of <span class="math" data-tex="\(J\)">\(J\)</span>; its membership in <span class="math" data-tex="\(W_0\)">\(W_0\)</span> puts it in <span class="math" data-tex="\(\widehat J\)">\(\widehat J\)</span>. Timelike differences were already treated.</p>
+<h2 id="choosing-the-two-interior-endpoints">Choosing the two interior endpoints</h2>
+<p>Write the endpoints of <span class="math" data-tex="\(J\)">\(J\)</span> in their future order. There are points of <span class="math" data-tex="\(X\)">\(X\)</span> in <span class="math" data-tex="\(\widehat J\)">\(\widehat J\)</span> arbitrarily close beyond each endpoint. Otherwise a nontrivial adjacent interval in <span class="math" data-tex="\(\widehat J\)">\(\widehat J\)</span> would be outside <span class="math" data-tex="\(X\)">\(X\)</span>. By (19) it would belong to <span class="math" data-tex="\(\partial X\cap\operatorname{supp}v_0\)">\(\partial X\cap\operatorname{supp}v_0\)</span>, contradicting maximality of <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>Choose <span class="math" data-tex="\(p,q\in\widehat J\cap X\)">\(p,q\in\widehat J\cap X\)</span>, with <span class="math" data-tex="\(p\)">\(p\)</span> before <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> after it. Then <span class="math" data-tex="\(I=[p,q]\)">\(I=[p,q]\)</span> is null, is contained in <span class="math" data-tex="\(W_0\)">\(W_0\)</span>, and contains the nonempty boundary interval <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>Shrink a neighborhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span>, keeping <span class="math" data-tex="\(W\subset W_0\)">\(W\subset W_0\)</span>, as follows. The part of <span class="math" data-tex="\(\widehat J\cap W\)">\(\widehat J\cap W\)</span> outside <span class="math" data-tex="\(I\)">\(I\)</span> can be confined to small balls about <span class="math" data-tex="\(p,q\)">\(p,q\)</span> contained in <span class="math" data-tex="\(X\)">\(X\)</span>. Also the closed past cone <span class="math" data-tex="\(p+C_-\)">\(p+C_-\)</span> meets <span class="math" data-tex="\(I\)">\(I\)</span> only at <span class="math" data-tex="\(p\)">\(p\)</span>. On the compact part of <span class="math" data-tex="\(I\)">\(I\)</span> outside a small such ball it has positive Euclidean separation; shrink <span class="math" data-tex="\(W\)">\(W\)</span> there so that its intersection with this past cone is absent. Near <span class="math" data-tex="\(p\)">\(p\)</span>, keep <span class="math" data-tex="\(W\)">\(W\)</span> inside <span class="math" data-tex="\(X\)">\(X\)</span>. We have arranged
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat J\cap W\subset X\cup I,\\
+W\cap(p+C_-)\subset X.
+\end{gathered}
+\tag{27}
+\]">\[
+\begin{gathered}
+\widehat J\cap W\subset X\cup I,\\
+W\cap(p+C_-)\subset X.
+\end{gathered}
+\tag{27}
+\]</span>
+Formula (26) at <span class="math" data-tex="\(p\)">\(p\)</span> now puts the future cone portion of <span class="math" data-tex="\(W\)">\(W\)</span> in <span class="math" data-tex="\(X\cup I\)">\(X\cup I\)</span>; (27) does the same for the past cone. Their union is exactly <span class="math" data-tex="\(\{w:\Lambda(w-p)\geq0\}\)">\(\{w:\Lambda(w-p)\geq0\}\)</span>. This is (9), and completes the converse and Theorem 2.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Although the construction used the image of one compact distribution to locate a boundary interval, the final obstruction (9) depends only on <span class="math" data-tex="\(X\)">\(X\)</span> and the principal Lorentz form. Thus support convexity in this class is independent of its first-order and constant coefficients.</p>
+<h2 id="exercises-with-solutions">Exercises with solutions</h2>
+<p><strong>Exercise 1 — Intermediate level: the diamond constant is sharp.</strong> Show that Lemma 1.1 cannot hold uniformly with <span class="math" data-tex="\(D_R\)">\(D_R\)</span> replaced by <span class="math" data-tex="\(\{|t|+|z|&lt;CR\}\)">\(\{|t|+|z|&lt;CR\}\)</span> for any <span class="math" data-tex="\(C&gt;\sqrt2\)">\(C&gt;\sqrt2\)</span>. Use the characteristic halfspace solution declared in <em>Boundary distance and propagation</em>.</p>
+<p><strong>Solution.</strong> Choose a Euclidean unit future null normal <span class="math" data-tex="\(N\)">\(N\)</span>, and choose <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(R&lt;h&lt;CR/\sqrt2\)">\(R&lt;h&lt;CR/\sqrt2\)</span>. There is a global smooth homogeneous solution of <span class="math" data-tex="\(Au=0\)">\(Au=0\)</span> with exact support <span class="math" data-tex="\(\{N\cdot x\geq h\}\)">\(\{N\cdot x\geq h\}\)</span>. It is zero in <span class="math" data-tex="\(B(0,R)\)">\(B(0,R)\)</span>. The larger diamond has points with <span class="math" data-tex="\(N\cdot x&gt;h\)">\(N\cdot x&gt;h\)</span>: take a point on its positive time axis with time between <span class="math" data-tex="\(\sqrt2h\)">\(\sqrt2h\)</span> and <span class="math" data-tex="\(CR\)">\(CR\)</span>. That point lies in the support, so the solution cannot vanish throughout the diamond. This applies with the same complex lower order coefficients as in Lemma 1.1.</p>
+<p><strong>Exercise 2 — Elementary level: why timelike matters.</strong> Prove that a nonzero characteristic linear form never vanishes on a future timelike vector. Give a null vector on which it does vanish, and identify the step of Lemma 1.2 that this destroys.</p>
+<p><strong>Solution.</strong> Write <span class="math" data-tex="\(N=(a,b)\)">\(N=(a,b)\)</span>, <span class="math" data-tex="\(|a|=|b|&gt;0\)">\(|a|=|b|&gt;0\)</span>. After changing its sign assume <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. For <span class="math" data-tex="\(v_t&gt;|v_z|\)">\(v_t&gt;|v_z|\)</span>, <span class="math" data-tex="\(N\cdot v\geq a(v_t-|v_z|)&gt;0\)">\(N\cdot v\geq a(v_t-|v_z|)&gt;0\)</span>. Take instead <span class="math" data-tex="\(v=(1,-b/a)\)">\(v=(1,-b/a)\)</span>, which is future null and has <span class="math" data-tex="\(N\cdot v=0\)">\(N\cdot v=0\)</span>. A characteristic hyperplane can then contain both endpoints of a null segment, and the open causal diamond between those endpoints is empty. Neither the strict-between argument nor the closedness proof through an open diamond applies. This calculation identifies a limitation of that proof without asserting a different continuation theorem.</p>
+<p><strong>Exercise 3 — Intermediate level: deleting part of a light ray.</strong> Let <span class="math" data-tex="\(J_0\)">\(J_0\)</span> be a nonempty compact subset of a null line. Suppose it is contained strictly between distinct points <span class="math" data-tex="\(p,q\)">\(p,q\)</span> on that line, and neither endpoint belongs to <span class="math" data-tex="\(J_0\)">\(J_0\)</span>. Show that <span class="math" data-tex="\(X=\mathbb R^n\setminus J_0\)">\(X=\mathbb R^n\setminus J_0\)</span> fails support convexity for every polynomial with principal part (1).</p>
+<p><strong>Solution.</strong> The compact set <span class="math" data-tex="\(J_0\)">\(J_0\)</span> has empty interior in <span class="math" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, so it is the boundary of <span class="math" data-tex="\(X\)">\(X\)</span>. The segment <span class="math" data-tex="\(I=[p,q]\)">\(I=[p,q]\)</span> contains it and has endpoints in <span class="math" data-tex="\(X\)">\(X\)</span>. Every point outside <span class="math" data-tex="\(X\)">\(X\)</span> already lies in <span class="math" data-tex="\(I\)">\(I\)</span>, so (9) holds with <span class="math" data-tex="\(W=\mathbb R^n\)">\(W=\mathbb R^n\)</span>. Theorem 2.1 gives the failure, independently of the complex lower order coefficients. No connectedness hypothesis on the deleted subset is needed.</p>
+<p><strong>Exercise 4 — Advanced level: uniform compact image supports.</strong> In the first implication of Theorem 2.1, justify both compact sets used in the translation argument, and explain why translating the whole of <span class="math" data-tex="\(\operatorname{supp}v\)">\(\operatorname{supp}v\)</span> using only compactness would be insufficient.</p>
+<p><strong>Solution.</strong> The past part <span class="math" data-tex="\(S_-=\operatorname{supp}v\cap(p+C_-)\)">\(S_-=\operatorname{supp}v\cap(p+C_-)\)</span> is compact and contained in <span class="math" data-tex="\(X\)">\(X\)</span>, so it has positive distance from <span class="math" data-tex="\(X^c\)">\(X^c\)</span>. Therefore <span class="math" data-tex="\(S_-+[0,\varepsilon_0]h\subset X\)">\(S_-+[0,\varepsilon_0]h\subset X\)</span> for small <span class="math" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span>. The image support <span class="math" data-tex="\(K=\operatorname{supp}Av\)">\(K=\operatorname{supp}Av\)</span> is also compact in <span class="math" data-tex="\(X\)">\(X\)</span>, and the same reasoning makes <span class="math" data-tex="\(K+[0,\varepsilon_0]h\)">\(K+[0,\varepsilon_0]h\)</span> a fixed compact subset of <span class="math" data-tex="\(X\)">\(X\)</span>. These facts respectively control the past support and all image supports. The future support may contain <span class="math" data-tex="\(I\cap\partial X\)">\(I\cap\partial X\)</span>, so it has no positive distance from <span class="math" data-tex="\(X^c\)">\(X^c\)</span>. Its translates are controlled instead by the strict cone inclusion, the null nature of <span class="math" data-tex="\(I\)">\(I\)</span>, and condition (9). Compactness alone could not justify them.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Thomas Kalmes, <a href="https://arxiv.org/abs/1408.4356"><em>Surjectivity of differential operators and linear topological invariants for spaces of zero solutions</em></a>, <em>Revista Matemática Complutense</em> 32 (2019), 37–55. The geometric criteria there relate boundary distance and characteristic directions.</li>
+<li>Thomas Kalmes, <a href="https://www.tu-chemnitz.de/mathematik/analysis/kalmes/Preprints/Some_results_on_surjectivity_of_augmented_differential_operators_manuscript.pdf"><em>Some results on surjectivity of augmented differential operators</em></a>, <em>Journal of Mathematical Analysis and Applications</em> 386 (2012), 125–134. This provides further context for support and singular-support convexity.</li>
+<li>Christian Bär, Nicolas Ginoux and Frank Pfäffle, <a href="https://arxiv.org/abs/0806.1036"><em>Wave Equations on Lorentzian Manifolds and Quantization</em></a>, European Mathematical Society, 2007. The preceding lesson constructs the particular complex-coefficient homogeneous kernel needed in (10).</li>
+</ul>
+</main></body></html>

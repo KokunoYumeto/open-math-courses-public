@@ -1,0 +1,314 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Characteristic numbers and projective-product independence · Characteristic classes</title><link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/DG-CHAR/DG-CHAR-11.html">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="assets/dg-char-inline-math.css"><script defer src="assets/dg-char-inline-math.js"></script><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<style>body{max-width:1100px;margin:2rem auto;padding:0 1.2rem;font:18px/1.65 system-ui}.lesson{overflow-wrap:anywhere}.pager{display:flex;gap:1.2rem;flex-wrap:wrap;margin:2rem 0}.math-display{display:block;overflow-x:auto}footer{border-top:1px solid #bbb;margin-top:2rem;padding-top:1rem}</style></head>
+<body class="no-math"><a href="#main">Skip to content</a><nav aria-label="Course navigation"><a href="../../">Open Mathematics Courses</a> · <a href="./">Characteristic classes</a> · <a href="STUDY_ROUTE.html">Reading guide</a> · <a href="LICENSING.html">Sources and component terms</a></nav>
+<main id="main"><article class="lesson"><h1 id="characteristic-numbers-and-projective-product-independence">Characteristic numbers and projective-product independence</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored text dedicated under CC0.</em></p>
+<p>Characteristic classes become integer invariants when evaluated in the top dimension of a closed manifold. A change from elementary symmetric functions to monomial symmetric functions makes their behaviour on products transparent. We use it to prove independence of Chern numbers and Pontryagin numbers, first for general families with nonzero power-sum numbers and then for projective-space products.</p>
+<p>The <a href="DG-CHAR-09.html">Chern chapter</a> proves the integral classes, their full Whitney formula, root injection and projective tangent computation. The <a href="DG-CHAR-10.html">Pontryagin chapter</a> proves complexification, its integral two-torsion qualification and the projective Pontryagin formula. The <a href="DG-CHAR-07.html">manifold chapter</a> supplies perfect pairings, finite generation, product fundamental classes and Euler evaluation; the <a href="DG-CHAR-09.html">Chern evaluation foundations</a> give signed boundary fundamental classes. The <a href="DG-CHAR-04.html">Schubert chapter</a> proves the integral symmetric-polynomial theorem and cellular facts. We use their stated hypotheses, rather than treating a reference as a proof.</p>
+<h2 id="1-top-degree-numbers-and-orientations">1. Top-degree numbers and orientations</h2>
+<p>A partition <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(n\)">\(n\)</span> is an unordered multiset of positive integers with sum <span class="math" data-tex="\(n\)">\(n\)</span>, written in decreasing order. Its length <span class="math" data-tex="\(\ell(I)\)">\(\ell(I)\)</span> is its number of parts. The empty partition has weight zero and length zero. Concatenation <span class="math" data-tex="\(J\sqcup K\)">\(J\sqcup K\)</span> adds multisets. Say <span class="math" data-tex="\(I\)">\(I\)</span> <strong>refines</strong> <span class="math" data-tex="\(J\)">\(J\)</span> if the parts of <span class="math" data-tex="\(I\)">\(I\)</span> can be grouped into blocks whose sums are the parts of <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>For a closed complex <span class="math" data-tex="\(n\)">\(n\)</span>-manifold <span class="math" data-tex="\(K\)">\(K\)</span>, the complex tangent bundle and its canonical real orientation define
+<span class="math math-display" data-tex="\[
+c_I[K]=\langle c_{i_1}(TK)\cdots c_{i_r}(TK),[K]\rangle\in\mathbb Z,
+\qquad |I|=n.
+\tag{1.1}
+\]">\[
+c_I[K]=\langle c_{i_1}(TK)\cdots c_{i_r}(TK),[K]\rangle\in\mathbb Z,
+\qquad |I|=n.
+\tag{1.1}
+\]</span>
+For a closed oriented real <span class="math" data-tex="\(4n\)">\(4n\)</span>-manifold <span class="math" data-tex="\(M\)">\(M\)</span>, define
+<span class="math math-display" data-tex="\[
+p_I[M]=\langle p_{i_1}(TM)\cdots p_{i_r}(TM),[M]\rangle\in\mathbb Z.
+\tag{1.2}
+\]">\[
+p_I[M]=\langle p_{i_1}(TM)\cdots p_{i_r}(TM),[M]\rangle\in\mathbb Z.
+\tag{1.2}
+\]</span>
+If the weight does not give the manifold's top dimension, set the corresponding number to zero as a grading convention. This does not claim that the lower-degree characteristic class vanishes. All manifolds here are smooth, Hausdorff and second countable, so their closed bases are paracompact.</p>
+<p>The Chern monomials of weight <span class="math" data-tex="\(n\)">\(n\)</span> form an integral basis of <span class="math" data-tex="\(H^{2n}(BU(n);\mathbb Z)\)">\(H^{2n}(BU(n);\mathbb Z)\)</span>. The complex Schubert cells prove its homology free in even degrees, with no odd groups; the coefficient theorem therefore makes this basis perfectly dual to <span class="math" data-tex="\(H_{2n}(BU(n);\mathbb Z)\)">\(H_{2n}(BU(n);\mathbb Z)\)</span>. If <span class="math" data-tex="\(f:K\to BU(n)\)">\(f:K\to BU(n)\)</span> classifies its tangent bundle, naturality shows its Chern numbers are precisely the evaluations of this basis on <span class="math" data-tex="\(f_*[K]\)">\(f_*[K]\)</span>. Thus the number vector determines this universal homology class.</p>
+<p>Reversing the orientation of <span class="math" data-tex="\(M\)">\(M\)</span> leaves its Pontryagin classes unchanged and negates its fundamental class, so negates every <span class="math" data-tex="\(p_I[M]\)">\(p_I[M]\)</span>. An orientation-reversing diffeomorphism identifies tangent bundles by its derivative; naturality would then make each number equal to its negative. Any nonzero Pontryagin number rules out such a diffeomorphism. The Euler number behaves differently: reversing the positive-dimensional tangent orientation negates both its Euler class and its fundamental class, and their evaluation is unchanged.</p>
+<p>For the positive hyperplane generator <span class="math" data-tex="\(x\)">\(x\)</span> of <span class="math" data-tex="\(\mathbb {CP}^n\)">\(\mathbb {CP}^n\)</span>, the previous chapters give
+<span class="math math-display" data-tex="\[
+c_I[\mathbb {CP}^n]=\prod_{i\in I}\binom{n+1}{i}.
+\tag{1.3}
+\]">\[
+c_I[\mathbb {CP}^n]=\prod_{i\in I}\binom{n+1}{i}.
+\tag{1.3}
+\]</span>
+For <span class="math" data-tex="\(\mathbb {CP}^{2n}\)">\(\mathbb {CP}^{2n}\)</span>, with its complex orientation,
+<span class="math math-display" data-tex="\[
+p_I[\mathbb {CP}^{2n}]=\prod_{i\in I}\binom{2n+1}{i}.
+\tag{1.4}
+\]">\[
+p_I[\mathbb {CP}^{2n}]=\prod_{i\in I}\binom{2n+1}{i}.
+\tag{1.4}
+\]</span>
+Both formulas use the proved positive top evaluation. In particular its <span class="math" data-tex="\(p_1^n\)">\(p_1^n\)</span> number is <span class="math" data-tex="\((2n+1)^n\ne0\)">\((2n+1)^n\ne0\)</span>, so <span class="math" data-tex="\(\mathbb {CP}^{2n}\)">\(\mathbb {CP}^{2n}\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, has no orientation-reversing diffeomorphism. Complex conjugation reverses orientation on odd complex projective spaces: in a complex <span class="math" data-tex="\(r\)">\(r\)</span>-coordinate chart its real determinant has sign <span class="math" data-tex="\((-1)^r\)">\((-1)^r\)</span>.</p>
+<h2 id="2-monomial-symmetric-classes-integrally">2. Monomial symmetric classes, integrally</h2>
+<p>For a partition <span class="math" data-tex="\(I\)">\(I\)</span>, define <span class="math" data-tex="\(m_I(t_1,\ldots,t_N)\)">\(m_I(t_1,\ldots,t_N)\)</span> to be the sum of the distinct monomials whose positive exponents, as a multiset, are <span class="math" data-tex="\(I\)">\(I\)</span>. Each monomial occurs once, even when parts repeat. Set <span class="math" data-tex="\(m_{\varnothing}=1\)">\(m_{\varnothing}=1\)</span>; if <span class="math" data-tex="\(\ell(I)&gt;N\)">\(\ell(I)&gt;N\)</span>, set <span class="math" data-tex="\(m_I=0\)">\(m_I=0\)</span>.</p>
+<p><span id="DG-CHAR-11.lemma-2.1"></span><strong>Lemma 2.1.</strong> The polynomials <span class="math" data-tex="\(m_I\)">\(m_I\)</span>, <span class="math" data-tex="\(|I|=n,\ell(I)\leq N\)">\(|I|=n,\ell(I)\leq N\)</span>, form an integral additive basis of the symmetric homogeneous polynomials of weight <span class="math" data-tex="\(n\)">\(n\)</span>. There is a unique stable integral polynomial <span class="math" data-tex="\(s_I(e_1,\ldots,e_n)\)">\(s_I(e_1,\ldots,e_n)\)</span>, with <span class="math" data-tex="\(e_j\)">\(e_j\)</span> given weight <span class="math" data-tex="\(j\)">\(j\)</span>, satisfying
+<span class="math math-display" data-tex="\[
+s_I(e_1(t),\ldots,e_n(t))=m_I(t)
+\tag{2.1}
+\]">\[
+s_I(e_1(t),\ldots,e_n(t))=m_I(t)
+\tag{2.1}
+\]</span>
+whenever <span class="math" data-tex="\(N\geq n\)">\(N\geq n\)</span>. The same identity holds for smaller <span class="math" data-tex="\(N\)">\(N\)</span> after setting its nonexistent elementary functions to zero.</p>
+<p><strong>Proof.</strong> Permutations partition all degree-<span class="math" data-tex="\(n\)">\(n\)</span> monomials into disjoint orbits indexed exactly by their positive exponent partitions. A symmetric polynomial has one integer coefficient on each orbit. The orbit sums therefore give the asserted basis, without dividing by a stabilizer size. The proved integral symmetric-polynomial theorem expresses each orbit sum uniquely in the elementary functions. Homogeneity makes only <span class="math" data-tex="\(e_1,\ldots,e_n\)">\(e_1,\ldots,e_n\)</span> occur in weight <span class="math" data-tex="\(n\)">\(n\)</span>. Adding a variable equal to zero preserves each orbit sum and each elementary function already present. For <span class="math" data-tex="\(N\geq n\)">\(N\geq n\)</span>, algebraic independence of those elementary functions proves the expression independent of <span class="math" data-tex="\(N\)">\(N\)</span>. Setting further variables equal to zero proves the assertion for smaller <span class="math" data-tex="\(N\)">\(N\)</span>. ∎</p>
+<p>Define <span class="math" data-tex="\(s_I(c(V))\)">\(s_I(c(V))\)</span> or <span class="math" data-tex="\(s_I(p(\xi))\)">\(s_I(p(\xi))\)</span> by substituting the corresponding classes in this integral polynomial. They have degrees <span class="math" data-tex="\(2|I|\)">\(2|I|\)</span> and <span class="math" data-tex="\(4|I|\)">\(4|I|\)</span>, respectively. Their numbers use the top-degree grading convention of Section 1.</p>
+<p>For a one-part partition <span class="math" data-tex="\((j)\)">\((j)\)</span>, write <span class="math" data-tex="\(s_j\)">\(s_j\)</span>. It is a power sum, rather than the <span class="math" data-tex="\(j\)">\(j\)</span>-th elementary class. In particular
+<span class="math math-display" data-tex="\[
+s_1=e_1,\quad s_2=e_1^2-2e_2,\quad
+s_3=e_1^3-3e_1e_2+3e_3,
+\]">\[
+s_1=e_1,\quad s_2=e_1^2-2e_2,\quad
+s_3=e_1^3-3e_1e_2+3e_3,
+\]</span>
+<span class="math math-display" data-tex="\[
+s_{1,1}=e_2,\qquad s_{2,1}=e_1e_2-3e_3,\qquad
+s_{1,1,1}=e_3.
+\tag{2.2}
+\]">\[
+s_{1,1}=e_2,\qquad s_{2,1}=e_1e_2-3e_3,\qquad
+s_{1,1,1}=e_3.
+\tag{2.2}
+\]</span>
+For example <span class="math" data-tex="\(e_1e_2\)">\(e_1e_2\)</span> contains every monomial with exponents <span class="math" data-tex="\(2,1\)">\(2,1\)</span> once and each three-distinct-variable monomial three times, proving the displayed mixed formula.</p>
+<p>All power sums can be computed without denominators. Differentiate the formal polynomial
+<span class="math" data-tex="\(E(z)=\prod_i(1+t_i z)=\sum_j e_j z^j\)">\(E(z)=\prod_i(1+t_i z)=\sum_j e_j z^j\)</span>. Its logarithmic derivative is the formal series
+<span class="math math-display" data-tex="\[
+\frac{E&#x27;(z)}{E(z)}
+=\sum_i\frac{t_i}{1+t_i z}
+=\sum_{j\geq1}(-1)^{j-1}s_j z^{j-1}.
+\]">\[
+\frac{E&#x27;(z)}{E(z)}
+=\sum_i\frac{t_i}{1+t_i z}
+=\sum_{j\geq1}(-1)^{j-1}s_j z^{j-1}.
+\]</span>
+Multiplying by <span class="math" data-tex="\(E(z)\)">\(E(z)\)</span> and comparing coefficients proves
+<span class="math math-display" data-tex="\[
+s_j-e_1s_{j-1}+e_2s_{j-2}-\cdots
++(-1)^{j-1}e_{j-1}s_1+(-1)^j j e_j=0.
+\tag{2.3}
+\]">\[
+s_j-e_1s_{j-1}+e_2s_{j-2}-\cdots
++(-1)^{j-1}e_{j-1}s_1+(-1)^j j e_j=0.
+\tag{2.3}
+\]</span>
+Here inverse series are formal, with constant coefficient one; each coefficient uses finitely many terms. This supplies an integral recursive calculation and proves (2.2)'s power-sum formulas.</p>
+<p>In weight <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(N\geq n\)">\(N\geq n\)</span>, both the elementary monomials <span class="math" data-tex="\(e_I\)">\(e_I\)</span> and the orbit sums <span class="math" data-tex="\(m_I\)">\(m_I\)</span> are bases of the same free abelian group. Their change-of-basis matrix is therefore invertible over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, with determinant <span class="math" data-tex="\(+1\)">\(+1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus the numbers <span class="math" data-tex="\(s_I(c)[K]\)">\(s_I(c)[K]\)</span> are integral linear combinations of Chern numbers, with an integral inverse change of coordinates. The same stable polynomial change applies to Pontryagin monomials; this is an algebraic change of coordinates, without asserting a geometric splitting of every real bundle into oriented two-planes.</p>
+<p><span id="DG-CHAR-11.proposition-2.2"></span><strong>Proposition 2.2 — Even Chern exponents.</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> is a complex bundle on a paracompact Hausdorff base and <span class="math" data-tex="\(2I\)">\(2I\)</span> denotes the partition obtained by doubling every part of <span class="math" data-tex="\(I\)">\(I\)</span>, then
+<span class="math math-display" data-tex="\[
+s_{2I}(c(V))=s_I(p(V_{\mathbb R}))
+\tag{2.4}
+\]">\[
+s_{2I}(c(V))=s_I(p(V_{\mathbb R}))
+\tag{2.4}
+\]</span>
+as integral classes.</p>
+<p><strong>Proof.</strong> On the injective complex flag space let <span class="math" data-tex="\(t_j\)">\(t_j\)</span> be the Chern line roots. The proved Pontryagin root formula gives <span class="math" data-tex="\(p(V_{\mathbb R})=\prod_j(1+t_j^2)\)">\(p(V_{\mathbb R})=\prod_j(1+t_j^2)\)</span>. Its orbit sum <span class="math" data-tex="\(m_I(t_1^2,\ldots,t_r^2)\)">\(m_I(t_1^2,\ldots,t_r^2)\)</span> is exactly <span class="math" data-tex="\(m_{2I}(t_1,\ldots,t_r)\)">\(m_{2I}(t_1,\ldots,t_r)\)</span>: doubling every positive exponent is a bijection of the distinct monomials. Integral flag injection proves (2.4) on the base. In particular <span class="math" data-tex="\(s_{2j}(c)=s_j(p)\)">\(s_{2j}(c)=s_j(p)\)</span>, and <span class="math" data-tex="\(s_{2,\ldots,2}(c)=p_j\)">\(s_{2,\ldots,2}(c)=p_j\)</span> with <span class="math" data-tex="\(j\)">\(j\)</span> parts. This equality needs no two-torsion qualification because the real bundle in question underlies a complex bundle. ∎</p>
+<h2 id="3-the-full-product-formula">3. The full product formula</h2>
+<p><span id="DG-CHAR-11.theorem-3.1"></span><strong>Theorem 3.1.</strong> For complex bundles on a paracompact Hausdorff base,
+<span class="math math-display" data-tex="\[
+s_I(c(V\oplus W))
+=\sum_{J\sqcup L=I}s_J(c(V))s_L(c(W)).
+\tag{3.1}
+\]">\[
+s_I(c(V\oplus W))
+=\sum_{J\sqcup L=I}s_J(c(V))s_L(c(W)).
+\tag{3.1}
+\]</span>
+The sum is over distinct ordered pairs of partitions, including the empty partition. For real bundles on such a base the analogous formula with <span class="math" data-tex="\(p\)">\(p\)</span> has a difference annihilated by two.</p>
+<p><strong>Proof.</strong> In formal root variables <span class="math" data-tex="\(t\)">\(t\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span>, each distinct monomial contributing to <span class="math" data-tex="\(m_I(t,u)\)">\(m_I(t,u)\)</span> has a unique multiset <span class="math" data-tex="\(J\)">\(J\)</span> of positive exponents on the <span class="math" data-tex="\(t\)">\(t\)</span> variables and a unique multiset <span class="math" data-tex="\(L\)">\(L\)</span> on the <span class="math" data-tex="\(u\)">\(u\)</span> variables. Its contribution for that pair is exactly <span class="math" data-tex="\(m_J(t)m_L(u)\)">\(m_J(t)m_L(u)\)</span>. Conversely every term of that product has exponent multiset <span class="math" data-tex="\(I\)">\(I\)</span>. This proves the orbit identity with coefficient one for each pair; repeated parts create no binomial multiplicities.</p>
+<p>Take each formal list to have at least <span class="math" data-tex="\(|I|\)">\(|I|\)</span> variables, so the elementary functions of that weight on each list are algebraically independent. Express the identity in them using Lemma 2.1 and the symmetric-polynomial theorem. The elementary functions of the combined variables are the coefficient convolution of the two sequences. Thus this is an integral polynomial identity in the two independent sequences. Substitute any actual Chern sequences, including their zeros above the ranks; Chern Whitney proves (3.1).</p>
+<p>For Pontryagin classes, every difference between a direct-sum coefficient and that coefficient convolution is annihilated by two, by the proved Pontryagin Whitney theorem. Substituting in any integral polynomial changes its value by a sum of products containing at least one such difference: telescope each monomial's factors. Every product, and hence their sum, is annihilated by two. Applying the same polynomial identity proves the asserted qualification. No formal root variable was asserted to be an actual real-bundle root. ∎</p>
+<p>In particular <span class="math" data-tex="\(s_j(c(V\oplus W))=s_j(c(V))+s_j(c(W))\)">\(s_j(c(V\oplus W))=s_j(c(V))+s_j(c(W))\)</span>, since a one-part partition has just the two decompositions with one part empty. The same statement for <span class="math" data-tex="\(s_j(p)\)">\(s_j(p)\)</span> has its two-torsion qualification.</p>
+<p><span id="DG-CHAR-11.corollary-3.2"></span><strong>Corollary 3.2 — Numbers of products.</strong> For closed complex manifolds <span class="math" data-tex="\(K^a,L^b\)">\(K^a,L^b\)</span>,
+<span class="math math-display" data-tex="\[
+s_I(c)[K\times L]
+=\sum_{\substack{J\sqcup T=I\\|J|=a,\ |T|=b}}
+s_J(c)[K]\,s_T(c)[L].
+\tag{3.2}
+\]">\[
+s_I(c)[K\times L]
+=\sum_{\substack{J\sqcup T=I\\|J|=a,\ |T|=b}}
+s_J(c)[K]\,s_T(c)[L].
+\tag{3.2}
+\]</span>
+For closed oriented manifolds of real dimensions <span class="math" data-tex="\(4a,4b\)">\(4a,4b\)</span>, the identical formula holds for Pontryagin numbers, as an exact integer equality.</p>
+<p><strong>Proof.</strong> The tangent bundle of a product is the sum of the pulled-back tangent bundles, by differentiating the product charts; for complex charts this is a complex-linear identification. Apply Theorem 3.1. Evaluation on the ordered product fundamental class factors into the two evaluations, by the previously proved chain external product. Only terms of top degree on both factors contribute. All characteristic degrees are even, so there is no multiplication sign. The Pontryagin error is annihilated by two, whose integer evaluation is necessarily zero. This proves its exact numerical equality as well. ∎</p>
+<p>If an oriented product of total real dimension <span class="math" data-tex="\(4n\)">\(4n\)</span> has a factor whose dimension is not divisible by four, every Pontryagin number is zero. Indeed in the product expansion all classes on each factor have degree divisible by four; none can have that factor's top degree. In any nontrivial product with both factors of positive dimension, the top one-part <span class="math" data-tex="\(s\)">\(s\)</span>-number is zero: its additive formula is pulled back from degrees strictly above the dimensions of the factors.</p>
+<p>Projective tangent stabilization gives
+<span class="math math-display" data-tex="\[
+s_j(c(T\mathbb {CP}^a))=(a+1)x^j,\qquad
+s_j(p(T\mathbb {CP}^{2a}))=(2a+1)x^{2j}.
+\tag{3.3}
+\]">\[
+s_j(c(T\mathbb {CP}^a))=(a+1)x^j,\qquad
+s_j(p(T\mathbb {CP}^{2a}))=(2a+1)x^{2j}.
+\tag{3.3}
+\]</span>
+For the first equality, the stable bundle has <span class="math" data-tex="\(a+1\)">\(a+1\)</span> identical Chern roots <span class="math" data-tex="\(x\)">\(x\)</span>, and the trivial line has zero power sum. For the second use the already proved polynomial <span class="math" data-tex="\(p=(1+x^2)^{2a+1}\)">\(p=(1+x^2)^{2a+1}\)</span>, interpreting its coefficients as elementary functions of <span class="math" data-tex="\(2a+1\)">\(2a+1\)</span> formal copies of <span class="math" data-tex="\(x^2\)">\(x^2\)</span>. Lemma 2.1 allows this stable polynomial substitution; it is not a real geometric splitting claim. Taking top evaluations gives
+<span class="math math-display" data-tex="\[
+s_a(c)[\mathbb {CP}^a]=a+1,\qquad
+s_a(p)[\mathbb {CP}^{2a}]=2a+1.
+\tag{3.4}
+\]">\[
+s_a(c)[\mathbb {CP}^a]=a+1,\qquad
+s_a(p)[\mathbb {CP}^{2a}]=2a+1.
+\tag{3.4}
+\]</span>
+These nonzero top power-sum numbers obstruct a nontrivial product decomposition of the corresponding complex or oriented manifold of the indicated types, by Corollary 3.2.</p>
+<h2 id="4-triangular-matrices-and-independence">4. Triangular matrices and independence</h2>
+<p><span id="DG-CHAR-11.theorem-4.1"></span><strong>Theorem 4.1 — Chern numbers.</strong> Fix <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. Suppose for each <span class="math" data-tex="\(1\leq j\leq n\)">\(1\leq j\leq n\)</span> a closed complex <span class="math" data-tex="\(j\)">\(j\)</span>-manifold <span class="math" data-tex="\(K_j\)">\(K_j\)</span> is chosen with <span class="math" data-tex="\(s_j(c)[K_j]\ne0\)">\(s_j(c)[K_j]\ne0\)</span>. For a partition <span class="math" data-tex="\(J=(j_1,\ldots,j_q)\)">\(J=(j_1,\ldots,j_q)\)</span> of <span class="math" data-tex="\(n\)">\(n\)</span>, put <span class="math" data-tex="\(K_J=K_{j_1}\times\cdots\times K_{j_q}\)">\(K_J=K_{j_1}\times\cdots\times K_{j_q}\)</span>. The matrix
+<span class="math math-display" data-tex="\[
+\bigl(c_I[K_J]\bigr)_{I,J\vdash n}
+\tag{4.1}
+\]">\[
+\bigl(c_I[K_J]\bigr)_{I,J\vdash n}
+\tag{4.1}
+\]</span>
+is nonsingular over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Its determinant has absolute value
+<span class="math math-display" data-tex="\[
+\prod_{J\vdash n}\ \prod_{j\in J}|s_j(c)[K_j]|.
+\tag{4.2}
+\]">\[
+\prod_{J\vdash n}\ \prod_{j\in J}|s_j(c)[K_j]|.
+\tag{4.2}
+\]</span>
+In particular all the Chern-number functionals of complex dimension <span class="math" data-tex="\(n\)">\(n\)</span> are linearly independent over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, as witnessed by products of complex projective spaces.</p>
+<p><strong>Proof.</strong> Replace the row coordinates <span class="math" data-tex="\(c_I\)">\(c_I\)</span> by <span class="math" data-tex="\(s_I(c)\)">\(s_I(c)\)</span>; Lemma 2.1 gives an integral invertible change of basis, so changes the determinant only by a sign. Iterate (3.2). A nonzero term in <span class="math" data-tex="\(s_I(c)[K_J]\)">\(s_I(c)[K_J]\)</span> requires a tuple of partitions <span class="math" data-tex="\(I_1,\ldots,I_q\)">\(I_1,\ldots,I_q\)</span> of weights <span class="math" data-tex="\(j_1,\ldots,j_q\)">\(j_1,\ldots,j_q\)</span>, with multiset union <span class="math" data-tex="\(I\)">\(I\)</span>. Thus <span class="math" data-tex="\(I\)">\(I\)</span> refines <span class="math" data-tex="\(J\)">\(J\)</span>, and necessarily <span class="math" data-tex="\(\ell(I)\geq\ell(J)\)">\(\ell(I)\geq\ell(J)\)</span>. If these lengths are equal, every <span class="math" data-tex="\(I_a\)">\(I_a\)</span> has exactly one part, because its weight <span class="math" data-tex="\(j_a\)">\(j_a\)</span> is positive. Hence <span class="math" data-tex="\(I=J\)">\(I=J\)</span>. The diagonal entry is precisely <span class="math" data-tex="\(\prod_{j\in J}s_j(c)[K_j]\)">\(\prod_{j\in J}s_j(c)[K_j]\)</span>: there is one distinct tuple of singleton partitions, even when parts repeat.</p>
+<p>Order partitions by increasing length, and in any order within each length. The resulting <span class="math" data-tex="\(s\)">\(s\)</span>-matrix is lower triangular, with no off-diagonal entries inside each equal-length block and with the stated nonzero diagonal. Its determinant is the diagonal product. Undoing the integral row change proves (4.1)–(4.2). Taking <span class="math" data-tex="\(K_j=\mathbb {CP}^j\)">\(K_j=\mathbb {CP}^j\)</span> satisfies the hypothesis by (3.4). A rational linear relation between Chern numbers valid for every complex manifold would vanish on all these columns; the nonsingular matrix makes each coefficient zero. ∎</p>
+<p><span id="DG-CHAR-11.theorem-4.2"></span><strong>Theorem 4.2 — Pontryagin numbers.</strong> If closed oriented <span class="math" data-tex="\(4j\)">\(4j\)</span>-manifolds <span class="math" data-tex="\(M_j\)">\(M_j\)</span>, <span class="math" data-tex="\(1\leq j\leq n\)">\(1\leq j\leq n\)</span>, satisfy <span class="math" data-tex="\(s_j(p)[M_j]\ne0\)">\(s_j(p)[M_j]\ne0\)</span>, the matrix
+<span class="math math-display" data-tex="\[
+\bigl(p_I[M_{j_1}\times\cdots\times M_{j_q}]\bigr)_{I,J\vdash n}
+\tag{4.3}
+\]">\[
+\bigl(p_I[M_{j_1}\times\cdots\times M_{j_q}]\bigr)_{I,J\vdash n}
+\tag{4.3}
+\]</span>
+is nonsingular over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, with absolute determinant <span class="math" data-tex="\(\prod_{J\vdash n}\prod_{j\in J}|s_j(p)[M_j]|\)">\(\prod_{J\vdash n}\prod_{j\in J}|s_j(p)[M_j]|\)</span>. Products of the <span class="math" data-tex="\(M_j=\mathbb {CP}^{2j}\)">\(M_j=\mathbb {CP}^{2j}\)</span> therefore witness rational independence of all Pontryagin-number functionals in dimension <span class="math" data-tex="\(4n\)">\(4n\)</span>.</p>
+<p><strong>Proof.</strong> The numerical Pontryagin product formula (3.2) is an exact integer equality, despite the two-torsion qualification of its bundle-class formula. Its iterated expansion has exactly the same partition tuples. A surviving term requires refinement; equal lengths force equal partitions; the diagonal entry is the product of the nonzero one-part numbers. The stable integral symmetric-polynomial change of coordinates takes <span class="math" data-tex="\(p_I\)">\(p_I\)</span> to <span class="math" data-tex="\(s_I(p)\)">\(s_I(p)\)</span> and is invertible over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>. Thus the same triangular determinant argument proves the theorem. Formula (3.4) gives the projective choice <span class="math" data-tex="\(s_j(p)[\mathbb {CP}^{2j}]=2j+1\ne0\)">\(s_j(p)[\mathbb {CP}^{2j}]=2j+1\ne0\)</span>, and nonsingularity rules out a nonzero rational relation valid on every oriented manifold. ∎</p>
+<p>All factor dimensions are even, so permuting factors preserves their product orientation; thus the products indexed by unordered partitions are unambiguous for these numbers. The empty-partition case <span class="math" data-tex="\(n=0\)">\(n=0\)</span> is the one-by-one matrix of the positively oriented point, with entry one. The stated nonsingularity is over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Its nonunit integer determinants do not assert that all integer number vectors are attained.</p>
+<p>For <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, use the column order <span class="math" data-tex="\(\mathbb {CP}^2,\mathbb {CP}^1\times\mathbb {CP}^1\)">\(\mathbb {CP}^2,\mathbb {CP}^1\times\mathbb {CP}^1\)</span> and row order <span class="math" data-tex="\(c_1^2,c_2\)">\(c_1^2,c_2\)</span>. The matrix is
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}9&amp;8\\3&amp;4\end{pmatrix},\qquad \det=12.
+\tag{4.4}
+\]">\[
+\begin{pmatrix}9&amp;8\\3&amp;4\end{pmatrix},\qquad \det=12.
+\tag{4.4}
+\]</span>
+For Pontryagin numbers, use columns <span class="math" data-tex="\(\mathbb {CP}^4,\mathbb {CP}^2\times\mathbb {CP}^2\)">\(\mathbb {CP}^4,\mathbb {CP}^2\times\mathbb {CP}^2\)</span> and rows <span class="math" data-tex="\(p_1^2,p_2\)">\(p_1^2,p_2\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}25&amp;18\\10&amp;9\end{pmatrix},\qquad \det=45.
+\tag{4.5}
+\]">\[
+\begin{pmatrix}25&amp;18\\10&amp;9\end{pmatrix},\qquad \det=45.
+\tag{4.5}
+\]</span>
+Indeed on the second product, <span class="math" data-tex="\(p=(1+3x^2)(1+3y^2)\)">\(p=(1+3x^2)(1+3y^2)\)</span>, where <span class="math" data-tex="\(x^3=y^3=0\)">\(x^3=y^3=0\)</span> and <span class="math" data-tex="\(x^2y^2\)">\(x^2y^2\)</span> evaluates to one. Thus <span class="math" data-tex="\(p_1^2=18x^2y^2\)">\(p_1^2=18x^2y^2\)</span> and <span class="math" data-tex="\(p_2=9x^2y^2\)">\(p_2=9x^2y^2\)</span>. Changing to the rows <span class="math" data-tex="\(s_2,s_{1,1}\)">\(s_2,s_{1,1}\)</span> gives respectively
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}3&amp;0\\3&amp;4\end{pmatrix},\qquad
+\begin{pmatrix}5&amp;0\\10&amp;9\end{pmatrix},
+\]">\[
+\begin{pmatrix}3&amp;0\\3&amp;4\end{pmatrix},\qquad
+\begin{pmatrix}5&amp;0\\10&amp;9\end{pmatrix},
+\]</span>
+which display the triangular mechanism directly.</p>
+<h2 id="5-boundaries-and-the-rational-chern-character">5. Boundaries and the rational Chern character</h2>
+<p><span id="DG-CHAR-11.proposition-5.1"></span><strong>Proposition 5.1 — Pontryagin numbers of a boundary.</strong> If a closed oriented <span class="math" data-tex="\(4n\)">\(4n\)</span>-manifold <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, is the outward-oriented boundary of a compact oriented manifold <span class="math" data-tex="\(W\)">\(W\)</span>, every Pontryagin number of <span class="math" data-tex="\(M\)">\(M\)</span> is zero.</p>
+<p><strong>Proof.</strong> Choose a smooth metric on <span class="math" data-tex="\(W\)">\(W\)</span>, using half-space charts and the proved smooth partitions of unity. Along <span class="math" data-tex="\(M\)">\(M\)</span> its orthogonal normal line has a unique unit vector pointing outward. The inward half-space direction in each boundary chart identifies that choice; changes of boundary chart preserve its inward sign. It is therefore a smooth global nonzero normal field. Hence <span class="math" data-tex="\(TW|_M\cong TM\oplus\varepsilon^1\)">\(TW|_M\cong TM\oplus\varepsilon^1\)</span> as real bundles. Pontryagin stability is an exact equality, so each <span class="math" data-tex="\(p_i(TM)\)">\(p_i(TM)\)</span> is the restriction of <span class="math" data-tex="\(p_i(TW)\)">\(p_i(TW)\)</span>. The signed relative fundamental class already proved in the Chern chapter satisfies <span class="math" data-tex="\(\partial[W,M]=[M]\)">\(\partial[W,M]=[M]\)</span>. Exactness of the pair sequence gives <span class="math" data-tex="\(i_*[M]=0\)">\(i_*[M]=0\)</span> in <span class="math" data-tex="\(H_{4n}(W;\mathbb Z)\)">\(H_{4n}(W;\mathbb Z)\)</span>. For <span class="math" data-tex="\(I\vdash n\)">\(I\vdash n\)</span>,
+<span class="math math-display" data-tex="\[
+p_I[M]=\langle i^*p_I(TW),[M]\rangle
+=\langle p_I(TW),i_*[M]\rangle=0.
+\]">\[
+p_I[M]=\langle i^*p_I(TW),[M]\rangle
+=\langle p_I(TW),i_*[M]\rangle=0.
+\]</span>
+This proves the assertion in integers, including all component sums. ∎</p>
+<p>Consequently no positive multiple of <span class="math" data-tex="\(\mathbb {CP}^{2n}\)">\(\mathbb {CP}^{2n}\)</span> is an oriented boundary, since its positive <span class="math" data-tex="\(p_1^n\)">\(p_1^n\)</span> number is nonzero and numbers add over disjoint unions. The Euler number supplies a different kind of information: an even-dimensional sphere bounds its disk but has Euler number two. Euler class is not stable under adding the boundary's normal line.</p>
+<p>For a finite-rank complex bundle <span class="math" data-tex="\(V\)">\(V\)</span>, define the rational <strong>Chern character</strong> in the degree completion of cohomology by
+<span class="math math-display" data-tex="\[
+\operatorname{ch}(V)=\operatorname{rank}V+
+\sum_{j\geq1}\frac{s_j(c(V))}{j!}.
+\tag{5.1}
+\]">\[
+\operatorname{ch}(V)=\operatorname{rank}V+
+\sum_{j\geq1}\frac{s_j(c(V))}{j!}.
+\tag{5.1}
+\]</span>
+Each degree is a well-defined rational class; on a finite-dimensional manifold the sum truncates. Naturality follows from Chern naturality.</p>
+<p>On paracompact Hausdorff bases this character is uniquely characterized by naturality, sum additivity and its value <span class="math" data-tex="\(e^{c_1(\gamma)}\)">\(e^{c_1(\gamma)}\)</span> on the universal complex line over <span class="math" data-tex="\(\mathbb {CP}^{\infty}\)">\(\mathbb {CP}^{\infty}\)</span>. Indeed classification makes its value on every line the corresponding exponential. Pull back an arbitrary finite-rank bundle to its injective flag space, split it into lines, and use additivity. Every degree is then forced to be the sum of their exponentials, which is (5.1); injectivity proves uniqueness on the base. Conversely the definition has that line value and the additivity proved next.</p>
+<p><span id="DG-CHAR-11.proposition-5.2"></span><strong>Proposition 5.2.</strong> On a paracompact Hausdorff base,
+<span class="math math-display" data-tex="\[
+\operatorname{ch}(V\oplus W)=\operatorname{ch}(V)+\operatorname{ch}(W),
+\qquad
+\operatorname{ch}(V\otimes W)=\operatorname{ch}(V)\operatorname{ch}(W).
+\tag{5.2}
+\]">\[
+\operatorname{ch}(V\oplus W)=\operatorname{ch}(V)+\operatorname{ch}(W),
+\qquad
+\operatorname{ch}(V\otimes W)=\operatorname{ch}(V)\operatorname{ch}(W).
+\tag{5.2}
+\]</span>
+For a real bundle <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, its rational complexification character has zero odd-index components and
+<span class="math math-display" data-tex="\[
+\operatorname{ch}_{2j}(\xi_{\mathbb C})
+=\frac{2s_j(p(\xi))}{(2j)!},\qquad j\geq1.
+\tag{5.3}
+\]">\[
+\operatorname{ch}_{2j}(\xi_{\mathbb C})
+=\frac{2s_j(p(\xi))}{(2j)!},\qquad j\geq1.
+\tag{5.3}
+\]</span></p>
+<p><strong>Proof.</strong> The one-part case of (3.1) and rank additivity prove the first formula. On a common injective flag space, <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(W\)">\(W\)</span> split with line roots <span class="math" data-tex="\(t_i,u_l\)">\(t_i,u_l\)</span>. The proved tensor formula for complex lines makes their tensor product roots <span class="math" data-tex="\(t_i+u_l\)">\(t_i+u_l\)</span>. Equation (5.1) on that space is <span class="math" data-tex="\(\sum_i e^{t_i}\)">\(\sum_i e^{t_i}\)</span>, so the formal binomial identity <span class="math" data-tex="\(e^{t+u}=e^t e^u\)">\(e^{t+u}=e^t e^u\)</span> proves the tensor formula. Injective flag pullback with rational coefficients proves it on the base. These are formal series identities; each homogeneous coefficient is finite.</p>
+<p>For the last statement, the conjugate isomorphism of <span class="math" data-tex="\(\xi_{\mathbb C}\)">\(\xi_{\mathbb C}\)</span> and the Chern conjugation rule make all its odd Chern classes zero rationally. Put <span class="math" data-tex="\(C(z)=\sum_k c_k(\xi_{\mathbb C})z^k\)">\(C(z)=\sum_k c_k(\xi_{\mathbb C})z^k\)</span> and <span class="math" data-tex="\(P(t)=\sum_i p_i(\xi)t^i\)">\(P(t)=\sum_i p_i(\xi)t^i\)</span>. The definition of <span class="math" data-tex="\(p_i\)">\(p_i\)</span> gives <span class="math" data-tex="\(C(z)=P(-z^2)\)">\(C(z)=P(-z^2)\)</span>. Taking formal logarithmic derivatives, (2.3)'s generating identity gives
+<span class="math math-display" data-tex="\[
+\frac{C&#x27;(z)}{C(z)}
+=\sum_{k\geq1}(-1)^{k-1}s_k(c)z^{k-1}
+=-2\sum_{j\geq1}s_j(p)z^{2j-1}.
+\]">\[
+\frac{C&#x27;(z)}{C(z)}
+=\sum_{k\geq1}(-1)^{k-1}s_k(c)z^{k-1}
+=-2\sum_{j\geq1}s_j(p)z^{2j-1}.
+\]</span>
+Thus the odd power sums are zero and <span class="math" data-tex="\(s_{2j}(c)=2s_j(p)\)">\(s_{2j}(c)=2s_j(p)\)</span>. Divide by the factorial in (5.1) to obtain (5.3). This part is an algebraic consequence of natural complexification and works on every Hausdorff base; the flag and tensor statements have their paracompact hypotheses. ∎</p>
+<p>The same root calculation makes dualization and conjugation transparent. On a paracompact Hausdorff base, their line roots are <span class="math" data-tex="\(-t_i\)">\(-t_i\)</span>, so in degree <span class="math" data-tex="\(2j\)">\(2j\)</span>, including the rank component at <span class="math" data-tex="\(j=0\)">\(j=0\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{ch}_j(V^*)=\operatorname{ch}_j(\overline V)
+=(-1)^j\operatorname{ch}_j(V).
+\]">\[
+\operatorname{ch}_j(V^*)=\operatorname{ch}_j(\overline V)
+=(-1)^j\operatorname{ch}_j(V).
+\]</span>
+Injective flag pullback proves the identity on the base. The already proved bundle isomorphism <span class="math" data-tex="\((V_{\mathbb R})_{\mathbb C}\cong V\oplus\overline V\)">\((V_{\mathbb R})_{\mathbb C}\cong V\oplus\overline V\)</span> therefore cancels the odd-index character components and doubles the even-index ones. This explains the factor two in (5.3) when the real bundle underlies a complex bundle, and the computation in Exercise 6.6.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><span id="DG-CHAR-11.exercise-6.1"></span><strong>Exercise 6.1 — Easy.</strong> Compute <span class="math" data-tex="\(s_2(c)[\mathbb {CP}^2]\)">\(s_2(c)[\mathbb {CP}^2]\)</span> and <span class="math" data-tex="\(s_1(c)[\mathbb {CP}^1\times\mathbb {CP}^1]\)">\(s_1(c)[\mathbb {CP}^1\times\mathbb {CP}^1]\)</span>. Distinguish a lower-degree class from a number.</p>
+<p><strong>Solution.</strong> On <span class="math" data-tex="\(\mathbb {CP}^2\)">\(\mathbb {CP}^2\)</span>, <span class="math" data-tex="\(c_1=3x,c_2=3x^2\)">\(c_1=3x,c_2=3x^2\)</span>, so <span class="math" data-tex="\(s_2=c_1^2-2c_2=3x^2\)">\(s_2=c_1^2-2c_2=3x^2\)</span>, whose number is three. The second requested expression has weight one on a complex two-manifold. Its number is therefore zero by the explicit grading convention; it is not an evaluation of a degree-two class on a degree-four cycle. The class itself is nonzero: with <span class="math" data-tex="\(x,y\)">\(x,y\)</span> the two positive factor generators, <span class="math" data-tex="\(s_1=c_1=2x+2y\)">\(s_1=c_1=2x+2y\)</span>. In top degree <span class="math" data-tex="\(s_{1,1}=c_2=4xy\)">\(s_{1,1}=c_2=4xy\)</span> has number four, whereas <span class="math" data-tex="\(s_2=0\)">\(s_2=0\)</span> has number zero. This preserves the requested calculation while correcting its degree interpretation.</p>
+<p><span id="DG-CHAR-11.exercise-6.2"></span><strong>Exercise 6.2 — Medium.</strong> Prove the <span class="math" data-tex="\(s\)">\(s\)</span>-number product formula and explain why repeated parts do not produce extra combinatorial coefficients.</p>
+<p><strong>Solution.</strong> Each orbit monomial in the combined root variables has a unique positive-exponent multiset on the first root block and on the second. The product of the two corresponding orbit sums contains that monomial exactly once. Thus the sum is indexed by distinct partition pairs with multiset union <span class="math" data-tex="\(I\)">\(I\)</span>, with coefficient one per pair. Substitute elementary Chern classes and apply tangent Whitney, then evaluate on the product fundamental class. Only partition pairs of the respective top weights survive, proving (3.2). For <span class="math" data-tex="\(I=(1,1)\)">\(I=(1,1)\)</span> on two complex curves, the only surviving pair is <span class="math" data-tex="\(((1),(1))\)">\(((1),(1))\)</span>, so its number is the product of their <span class="math" data-tex="\(s_1\)">\(s_1\)</span> numbers. On two projective lines this is <span class="math" data-tex="\(2\cdot2=4\)">\(2\cdot2=4\)</span>, not twice this number. Pontryagin numbers obey the same exact formula because the class error is annihilated by two and has integer evaluation zero.</p>
+<p><span id="DG-CHAR-11.exercise-6.3"></span><strong>Exercise 6.3 — Medium.</strong> Prove the Pontryagin independence theorem in weight two by computing its matrix on <span class="math" data-tex="\(\mathbb {CP}^4\)">\(\mathbb {CP}^4\)</span> and <span class="math" data-tex="\(\mathbb {CP}^2\times\mathbb {CP}^2\)">\(\mathbb {CP}^2\times\mathbb {CP}^2\)</span>.</p>
+<p><strong>Solution.</strong> The first space has <span class="math" data-tex="\(p_1=5x^2,p_2=10x^4\)">\(p_1=5x^2,p_2=10x^4\)</span>, so its <span class="math" data-tex="\(p_1^2,p_2\)">\(p_1^2,p_2\)</span> numbers are <span class="math" data-tex="\(25,10\)">\(25,10\)</span>. On the second, <span class="math" data-tex="\(p_1=3x^2+3y^2,p_2=9x^2y^2\)">\(p_1=3x^2+3y^2,p_2=9x^2y^2\)</span>, and <span class="math" data-tex="\(x^3=y^3=0\)">\(x^3=y^3=0\)</span>. Thus its numbers are <span class="math" data-tex="\(18,9\)">\(18,9\)</span>. The specified row/column order gives (4.5), with determinant <span class="math" data-tex="\(225-180=45\ne0\)">\(225-180=45\ne0\)</span>. No rational linear combination of the two functionals can vanish on both columns except the zero one. The change to <span class="math" data-tex="\(s_2=p_1^2-2p_2,s_{1,1}=p_2\)">\(s_2=p_1^2-2p_2,s_{1,1}=p_2\)</span> gives the triangular matrix with diagonal <span class="math" data-tex="\(5,9\)">\(5,9\)</span>, recovering the general proof's mechanism.</p>
+<p><span id="DG-CHAR-11.exercise-6.4"></span><strong>Exercise 6.4 — Hard.</strong> Prove general Chern-number independence from a family <span class="math" data-tex="\(K_j\)">\(K_j\)</span> with <span class="math" data-tex="\(s_j(c)[K_j]\ne0\)">\(s_j(c)[K_j]\ne0\)</span>. State the projective specialization.</p>
+<p><strong>Solution.</strong> The monomial orbit sums and elementary monomials are integral bases of symmetric polynomials of weight <span class="math" data-tex="\(n\)">\(n\)</span>. Their invertible integer transition matrix converts the Chern-number rows into the <span class="math" data-tex="\(s_I\)">\(s_I\)</span> rows. On the product <span class="math" data-tex="\(K_J\)">\(K_J\)</span>, an iterated product term survives only if its exponent partition <span class="math" data-tex="\(I\)">\(I\)</span> splits into nonempty partitions of the factor weights. Hence <span class="math" data-tex="\(I\)">\(I\)</span> refines <span class="math" data-tex="\(J\)">\(J\)</span>. Arrange the partitions by increasing length. Terms above the diagonal vanish; within equal-length blocks a surviving term forces one part per factor and therefore <span class="math" data-tex="\(I=J\)">\(I=J\)</span>. The diagonal is <span class="math" data-tex="\(\prod_{j\in J}s_j[K_j]\)">\(\prod_{j\in J}s_j[K_j]\)</span>, with no factorial from repeated parts. Every diagonal entry is nonzero, so the determinant is their nonzero product; undoing the integral row change proves the theorem. With <span class="math" data-tex="\(K_j=\mathbb {CP}^j\)">\(K_j=\mathbb {CP}^j\)</span>, the diagonal factors are <span class="math" data-tex="\(j+1\)">\(j+1\)</span>, by (3.4). This proves independence on explicit products, and therefore independence as functionals on all closed complex <span class="math" data-tex="\(n\)">\(n\)</span>-manifolds. Its integer determinant is generally not a unit.</p>
+<p><span id="DG-CHAR-11.exercise-6.5"></span><strong>Exercise 6.5 — Medium.</strong> Prove Pontryagin boundary-number vanishing and explain why the same conclusion for Euler numbers would be false.</p>
+<p><strong>Solution.</strong> The outward-normal splitting <span class="math" data-tex="\(TW|_M=TM\oplus\varepsilon\)">\(TW|_M=TM\oplus\varepsilon\)</span> and exact Pontryagin stability extend every top characteristic product from <span class="math" data-tex="\(M\)">\(M\)</span> to <span class="math" data-tex="\(W\)">\(W\)</span>. The outward-boundary identity <span class="math" data-tex="\(\partial[W,M]=[M]\)">\(\partial[W,M]=[M]\)</span> puts its fundamental class in the kernel of inclusion to <span class="math" data-tex="\(W\)">\(W\)</span>. The evaluation of each extending product is therefore zero, exactly as in Proposition 5.1. On the other hand, <span class="math" data-tex="\(S^{2r}\)">\(S^{2r}\)</span>, <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>, bounds the oriented disk <span class="math" data-tex="\(D^{2r+1}\)">\(D^{2r+1}\)</span> and has Euler number two. Its tangent Euler class does not extend by the stated stable argument: Euler class is not stable on adding a nonzero trivial line.</p>
+<p><span id="DG-CHAR-11.exercise-6.6"></span><strong>Exercise 6.6 — Medium.</strong> Compute <span class="math" data-tex="\(\operatorname{ch}(T\mathbb {CP}^2)\)">\(\operatorname{ch}(T\mathbb {CP}^2)\)</span> and the character of its underlying real tangent bundle after complexification.</p>
+<p><strong>Solution.</strong> The complex rank is two, <span class="math" data-tex="\(s_1=3x\)">\(s_1=3x\)</span> and <span class="math" data-tex="\(s_2=3x^2\)">\(s_2=3x^2\)</span>, with all higher-degree terms zero on this manifold. Hence
+<span class="math math-display" data-tex="\[
+\operatorname{ch}(T\mathbb {CP}^2)=2+3x+\frac32x^2.
+\]">\[
+\operatorname{ch}(T\mathbb {CP}^2)=2+3x+\frac32x^2.
+\]</span>
+The complexification of its underlying real bundle is <span class="math" data-tex="\(V\oplus\overline V\)">\(V\oplus\overline V\)</span>, as proved in the Pontryagin chapter. Conjugation negates the degree-two component and preserves the degree-four component. Additivity gives <span class="math" data-tex="\(4+3x^2\)">\(4+3x^2\)</span>. Formula (5.3) gives the same answer: its real rank is four and <span class="math" data-tex="\(\operatorname{ch}_2=p_1=3x^2\)">\(\operatorname{ch}_2=p_1=3x^2\)</span>. The rational number <span class="math" data-tex="\(3/2\)">\(3/2\)</span> here is a Chern-character evaluation, whereas the integral top Chern number is <span class="math" data-tex="\(c_2[M]=3\)">\(c_2[M]=3\)</span>; the definitions and their factorials are different.</p>
+<h2 id="sources-and-scope">Sources and scope</h2>
+<p>Freely accessible comparisons for this pass are Allen Hatcher, <a href="https://pi.math.cornell.edu/~hatcher/VBKT/VB.pdf"><em>Vector Bundles and K-Theory</em></a>, printed p.63 for the stable Newton polynomials and pp.109–110 for the Chern character and its complete sum/tensor proof, and Haynes Miller, <a href="https://ocw.mit.edu/courses/18-906-algebraic-topology-ii-spring-2020/e8a061a73ca1a451df8809c7a7fbc846_MIT18_906S20_notes.pdf"><em>Lectures on Algebraic Topology II</em>, Lecture 40</a>. Hatcher states the symmetric-polynomial theorem by reference; our Schubert chapter proves it integrally. Miller states the projective-generator conclusion with its number calculation abbreviated; the orbit-basis and triangular determinant proofs above supply the complete independence argument. No stable homotopy or bordism conclusion is needed for that argument. The formal completion in the character definition is explicit, including bases with unbounded cohomological dimension.</p>
+<p>The product formula, numerical evaluation, projective calculation and rational independence theorem are proved above. The boundary-number proof uses the earlier signed relative fundamental class and the Pontryagin stability proved in the preceding chapter. The rational character and even-exponent comparison include their full algebraic arguments.</p>
+<p>All numbers have their explicit top-degree and orientation conventions. Chern Whitney/root and Pontryagin Whitney calculations use paracompact Hausdorff bases; natural definitions and the complexification character identity have the stated broader Hausdorff scope. Two-torsion can affect the integral bundle-class formula and vanishes in these integer numerical evaluations. Independence is rational; this chapter asserts no unrestricted integral realization of number vectors. The writing AI's check is distinct from independent review. The complete assigned teaching and proof prerequisites are now supplied across the course.</p>
+</article><nav class="pager"><a rel="prev" href="DG-CHAR-17.html">Previous chapter</a><a href="./">Course contents</a><a rel="next" href="DG-CHAR-12.html">Next chapter</a></nav><p><a href="characteristic-numbers-and-projective-product-independence.md">Editable Markdown source</a></p></main><footer><p>Independent course contributions use CC0 1.0. Three marked adaptations of David Michael Roberts retain CC BY 4.0. <a href="LICENSING.html">Authorship and component terms</a> · <span class="unlinked">Collection and software terms</span> · <span class="unlinked">Course metadata</span> · <a href="providers.json">Proof providers</a> · <a href="sources.html">Human mathematical sources</a></p></footer></body></html>

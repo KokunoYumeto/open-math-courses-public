@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="0CB2162DC6A8A25377E63DF908F89E5D467D674951CD3D58BB8A3CAE7BEDD95F">
+<title>Hilbert C*-modules — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-hilbert-c-star-modules-and-morita-equivalence/hilbert-c-star-modules</span></nav>
+<article id="lesson" class="lesson"><h1 id="hilbert-c--modules">Hilbert C*-modules</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Hilbert space measures the interaction of two vectors by a complex number. A Hilbert C*-module measures it by an element of a C*-algebra. When that algebra is <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>, the inner product records a separate measurement at each point of <span class="math" data-tex="\(X\)">\(X\)</span>. For a noncommutative algebra, the same axioms still give a useful norm, a completion, and positive matrices of inner products. They do not give all the orthogonal decompositions available in Hilbert spaces.</p>
+<p>This lesson develops those basic constructions for an arbitrary C*-algebra, including algebras without an identity. It assumes the normed-space background of <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D20">Functional Analysis</a> and the material of <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/c-star-algebras-continuous-functional-calculus-automatic-continuity-positive-cones.html">C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients</a>. Basic references are [Connes 1994], [Blackadar 2006] and [Blackadar 1998]. [Emerson 2024] gives another treatment. All the module results needed here are proved below. Representations of Hilbert modules, module tensor products and modules associated with foliations belong to later lessons.</p>
+<h2 id="1-keeping-the-coefficients-in-the-inner-product">1. Keeping the coefficients in the inner product</h2>
+<p>Throughout, <span class="math" data-tex="\(A\)">\(A\)</span> is a complex C*-algebra. A right <span class="math" data-tex="\(A\)">\(A\)</span>-module is also a complex vector space, and its action is complex bilinear. We write vectors on the left and coefficients on the right.</p>
+<p><span id="definition-1-1"></span><strong>Definition 1.1.</strong> A <em>pre-Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module</em> is such a module <span class="math" data-tex="\(E\)">\(E\)</span> with a map <span class="math" data-tex="\(E\times E\to A\)">\(E\times E\to A\)</span>, written <span class="math" data-tex="\(\langle x,y\rangle\)">\(\langle x,y\rangle\)</span>, satisfying</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle x,\lambda y+z\rangle&amp;=\lambda\langle x,y\rangle+\langle x,z\rangle,\\
+\langle x,ya\rangle&amp;=\langle x,y\rangle a,\\
+\langle y,x\rangle&amp;=\langle x,y\rangle^*,\\
+\langle x,x\rangle&amp;\geq0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\langle x,\lambda y+z\rangle&amp;=\lambda\langle x,y\rangle+\langle x,z\rangle,\\
+\langle x,ya\rangle&amp;=\langle x,y\rangle a,\\
+\langle y,x\rangle&amp;=\langle x,y\rangle^*,\\
+\langle x,x\rangle&amp;\geq0,
+\end{aligned}
+\]</span>
+<p>and <span class="math" data-tex="\(\langle x,x\rangle=0\)">\(\langle x,x\rangle=0\)</span> only when <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Thus the inner product is conjugate-linear in the first variable. In particular,</p>
+<span id="equation-1-1"></span><span class="math math-display" data-tex="\[
+\langle xa,yb\rangle=a^*\langle x,y\rangle b.
+\tag{1.1}
+\]">\[
+\langle xa,yb\rangle=a^*\langle x,y\rangle b.
+\tag{1.1}
+\]</span>
+<p>We will also use <em>positive semidefinite forms</em>, for which the last implication is not required. Their zero-length vectors will be removed before completion. Put</p>
+<span class="math math-display" data-tex="\[
+\|x\|=\|\langle x,x\rangle\|^{1/2}.
+\]">\[
+\|x\|=\|\langle x,x\rangle\|^{1/2}.
+\]</span>
+<p>We prove shortly that this is a norm in the definite case. A <em>Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module</em> is a pre-Hilbert module complete for this norm.</p>
+<p><span id="example-1-2"></span><strong>Example 1.2 (The coefficient algebra).</strong> On <span class="math" data-tex="\(A\)">\(A\)</span> itself, use its right multiplication and set <span class="math" data-tex="\(\langle a,b\rangle=a^*b\)">\(\langle a,b\rangle=a^*b\)</span>. Linearity and (1.1) follow from multiplication and involution. Positivity follows from <span class="math" data-tex="\(a^*a\geq0\)">\(a^*a\geq0\)</span>, and the C*-identity gives <span class="math" data-tex="\(\|a^*a\|^{1/2}=\|a\|\)">\(\|a^*a\|^{1/2}=\|a\|\)</span>. Thus the form is definite and <span class="math" data-tex="\(A\)">\(A\)</span> is already complete. This module is denoted <span class="math" data-tex="\(A_A\)">\(A_A\)</span>.</p>
+<p><span id="example-1-3"></span><strong>Example 1.3 (Finite columns).</strong> The module <span class="math" data-tex="\(A^n\)">\(A^n\)</span> has coordinatewise action and</p>
+<span id="equation-1-2"></span><span class="math math-display" data-tex="\[
+\langle (a_i),(b_i)\rangle=\sum_{i=1}^n a_i^*b_i.
+\tag{1.2}
+\]">\[
+\langle (a_i),(b_i)\rangle=\sum_{i=1}^n a_i^*b_i.
+\tag{1.2}
+\]</span>
+<p>All algebraic axioms follow term by term. A sum of positive elements is positive. If <span class="math" data-tex="\(\sum a_i^*a_i=0\)">\(\sum a_i^*a_i=0\)</span>, then each summand is both nonnegative and at most zero, so every <span class="math" data-tex="\(a_i=0\)">\(a_i=0\)</span>. Its completeness will follow in Section 2. When <span class="math" data-tex="\(A=\mathbb C\)">\(A=\mathbb C\)</span>, these definitions give precisely complex inner product spaces and Hilbert spaces, with the convention that the second variable is linear.</p>
+<p>An identity in <span class="math" data-tex="\(A\)">\(A\)</span>, when present, acts as the identity on a definite module: expansion gives <span class="math" data-tex="\(\langle x-x1,x-x1\rangle=0\)">\(\langle x-x1,x-x1\rangle=0\)</span>. For computations with a missing identity, adjoin one and let its action be scalar multiplication. More explicitly, formal elements <span class="math" data-tex="\(a+\lambda1\)">\(a+\lambda1\)</span> act by <span class="math" data-tex="\(xa+\lambda x\)">\(xa+\lambda x\)</span>. The identities for the form continue to hold for these coefficients. This allows us to use inverses in the unitization without assuming that <span class="math" data-tex="\(A\)">\(A\)</span> has an identity.</p>
+<h2 id="2-the-estimate-that-makes-completion-possible">2. The estimate that makes completion possible</h2>
+<p>The useful form of Cauchy–Schwarz compares positive elements of <span class="math" data-tex="\(A\)">\(A\)</span>, rather than merely their norms.</p>
+<p><span id="theorem-2-1"></span><strong>Theorem 2.1 (Cauchy–Schwarz in the order).</strong> For a positive semidefinite module form,</p>
+<span id="equation-2-1"></span><span class="math math-display" data-tex="\[
+\langle x,y\rangle^*\langle x,y\rangle
+\leq \|\langle x,x\rangle\|\,\langle y,y\rangle.
+\tag{2.1}
+\]">\[
+\langle x,y\rangle^*\langle x,y\rangle
+\leq \|\langle x,x\rangle\|\,\langle y,y\rangle.
+\tag{2.1}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\|\langle x,y\rangle\|\leq\|x\|\|y\|\)">\(\|\langle x,y\rangle\|\leq\|x\|\|y\|\)</span>.</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(b=\langle x,x\rangle\)">\(b=\langle x,x\rangle\)</span>, <span class="math" data-tex="\(c=\langle x,y\rangle\)">\(c=\langle x,y\rangle\)</span>, and <span class="math" data-tex="\(d=\langle y,y\rangle\)">\(d=\langle y,y\rangle\)</span>. For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, continuous functional calculus in the unitization gives the positive element <span class="math" data-tex="\(r=(b+\varepsilon1)^{-1}\)">\(r=(b+\varepsilon1)^{-1}\)</span>. Expanding the positive element <span class="math" data-tex="\(\langle y-xrc,y-xrc\rangle\)">\(\langle y-xrc,y-xrc\rangle\)</span> yields</p>
+<span class="math math-display" data-tex="\[
+0\leq d-2c^*rc+c^*rbrc
+=d-c^*rc-\varepsilon c^*r^2c.
+\]">\[
+0\leq d-2c^*rc+c^*rbrc
+=d-c^*rc-\varepsilon c^*r^2c.
+\]</span>
+<p>Therefore <span class="math" data-tex="\(c^*rc\leq d\)">\(c^*rc\leq d\)</span>. Functional calculus also gives</p>
+<span class="math math-display" data-tex="\[
+r\geq (\|b\|+\varepsilon)^{-1}1.
+\]">\[
+r\geq (\|b\|+\varepsilon)^{-1}1.
+\]</span>
+<p>Multiplication on the left by <span class="math" data-tex="\(c^*\)">\(c^*\)</span> and on the right by <span class="math" data-tex="\(c\)">\(c\)</span> preserves order. Hence <span class="math" data-tex="\(c^*c\leq(\|b\|+\varepsilon)d\)">\(c^*c\leq(\|b\|+\varepsilon)d\)</span>. Letting <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decrease to zero proves (2.1), since the positive cone is norm closed. This also handles <span class="math" data-tex="\(b=0\)">\(b=0\)</span>. Finally, take norms and use <span class="math" data-tex="\(\|c^*c\|=\|c\|^2\)">\(\|c^*c\|=\|c\|^2\)</span> and monotonicity of the norm on positive elements. ∎</p>
+<p><span id="proposition-2-2"></span><strong>Proposition 2.2 (Norm and continuity).</strong> A positive semidefinite form defines a seminorm. It is a norm for a definite form, and</p>
+<span id="equation-2-2"></span><span class="math math-display" data-tex="\[
+\|xa\|\leq\|x\|\|a\|.
+\tag{2.2}
+\]">\[
+\|xa\|\leq\|x\|\|a\|.
+\tag{2.2}
+\]</span>
+<p><em>Proof.</em> Homogeneity follows from sesquilinearity. Expanding the inner product and using Theorem 2.1 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|x+y\|^2
+&amp;\leq\|x\|^2+\|\langle x,y\rangle\|
++\|\langle y,x\rangle\|+\|y\|^2\\
+&amp;\leq(\|x\|+\|y\|)^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|x+y\|^2
+&amp;\leq\|x\|^2+\|\langle x,y\rangle\|
++\|\langle y,x\rangle\|+\|y\|^2\\
+&amp;\leq(\|x\|+\|y\|)^2.
+\end{aligned}
+\]</span>
+<p>Definiteness is exactly the condition that the seminorm vanish only at zero. Also</p>
+<span class="math math-display" data-tex="\[
+\|xa\|^2=\|a^*\langle x,x\rangle a\|
+\leq\|a\|^2\|x\|^2.
+\]">\[
+\|xa\|^2=\|a^*\langle x,x\rangle a\|
+\leq\|a\|^2\|x\|^2.
+\]</span>
+<p>In particular the action is continuous. For later use, Cauchy–Schwarz gives</p>
+<span id="equation-2-3"></span><span class="math math-display" data-tex="\[
+\|\langle x,y\rangle-\langle x&#x27;,y&#x27;\rangle\|
+\leq\|x-x&#x27;\|\|y\|+\|x&#x27;\|\|y-y&#x27;\|.
+\tag{2.3}
+\]">\[
+\|\langle x,y\rangle-\langle x&#x27;,y&#x27;\rangle\|
+\leq\|x-x&#x27;\|\|y\|+\|x&#x27;\|\|y-y&#x27;\|.
+\tag{2.3}
+\]</span>
+<p>∎</p>
+<p><span id="theorem-2-3"></span><strong>Theorem 2.3 (Removing null vectors and completing).</strong> If <span class="math" data-tex="\(E_0\)">\(E_0\)</span> has a positive semidefinite form, set <span class="math" data-tex="\(N=\{x:\|x\|=0\}\)">\(N=\{x:\|x\|=0\}\)</span>. Then <span class="math" data-tex="\(E_0/N\)">\(E_0/N\)</span> is a pre-Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module, and its norm completion is a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module.</p>
+<p><em>Proof.</em> The seminorm laws and (2.2) make <span class="math" data-tex="\(N\)">\(N\)</span> a complex linear submodule. Theorem 2.1 implies <span class="math" data-tex="\(\langle n,y\rangle=\langle y,n\rangle=0\)">\(\langle n,y\rangle=\langle y,n\rangle=0\)</span> whenever <span class="math" data-tex="\(n\in N\)">\(n\in N\)</span>. Thus the form descends to the quotient and is definite there.</p>
+<p>Construct the completion as follows. Take all Cauchy sequences in the quotient and identify two sequences when the norm of their difference tends to zero. Coordinatewise operations descend to the equivalence classes, and their norm is the limit of the sequence of norms. Constant sequences embed the quotient isometrically and densely. This space is complete: for a Cauchy sequence of classes <span class="math" data-tex="\(X_k\)">\(X_k\)</span>, choose quotient vectors <span class="math" data-tex="\(u_k\)">\(u_k\)</span> within <span class="math" data-tex="\(1/k\)">\(1/k\)</span> of <span class="math" data-tex="\(X_k\)">\(X_k\)</span>. The vectors <span class="math" data-tex="\(u_k\)">\(u_k\)</span> form a Cauchy sequence. Its class is a limit of <span class="math" data-tex="\(u_k\)">\(u_k\)</span>, and therefore also of <span class="math" data-tex="\(X_k\)">\(X_k\)</span>, by the triangle inequality.</p>
+<p>For Cauchy sequences <span class="math" data-tex="\(x_m,y_m\)">\(x_m,y_m\)</span>, formula (2.3) makes <span class="math" data-tex="\(\langle x_m,y_m\rangle\)">\(\langle x_m,y_m\rangle\)</span> a Cauchy sequence in the complete algebra <span class="math" data-tex="\(A\)">\(A\)</span>. Its limit is independent of the representing sequences, by the same estimate. Define the extended inner product by this limit. Define <span class="math" data-tex="\(xa\)">\(xa\)</span> by the class of <span class="math" data-tex="\(x_ma\)">\(x_ma\)</span>; (2.2) makes this well-defined. All linearity and module identities pass to limits, and positivity passes to the limit through the closed positive cone. Finally,</p>
+<span class="math math-display" data-tex="\[
+\|\langle x,x\rangle\|=\lim_m\|x_m\|^2=\|x\|^2.
+\]">\[
+\|\langle x,x\rangle\|=\lim_m\|x_m\|^2=\|x\|^2.
+\]</span>
+<p>So the extended form is definite and induces exactly the completed norm. ∎</p>
+<p>This construction is unique up to an isometric module map preserving the inner product and the original dense submodule. Indeed, such a map is forced on the dense submodule and then on all its limits.</p>
+<p><span id="proposition-2-4"></span><strong>Proposition 2.4 (Finite columns are complete).</strong> For the norm from (1.2),</p>
+<span id="equation-2-4"></span><span class="math math-display" data-tex="\[
+\max_i\|a_i\|\leq\|(a_i)\|
+\leq\sqrt n\max_i\|a_i\|.
+\tag{2.4}
+\]">\[
+\max_i\|a_i\|\leq\|(a_i)\|
+\leq\sqrt n\max_i\|a_i\|.
+\tag{2.4}
+\]</span>
+<p><em>Proof.</em> Each positive summand <span class="math" data-tex="\(a_i^*a_i\)">\(a_i^*a_i\)</span> is at most their sum, giving the first inequality. The triangle inequality in <span class="math" data-tex="\(A\)">\(A\)</span> gives the second. A Cauchy sequence of columns therefore has Cauchy coordinates. Their limits form a column in <span class="math" data-tex="\(A^n\)">\(A^n\)</span>, and the second inequality gives convergence in the module norm. ∎</p>
+<p>Equality in the numerical Cauchy–Schwarz bound does not force one vector to be a coefficient multiple of the other. In <span class="math" data-tex="\(C([0,1])^2\)">\(C([0,1])^2\)</span>, take <span class="math" data-tex="\(x=(1,0)\)">\(x=(1,0)\)</span> and <span class="math" data-tex="\(y=(t,1-t)\)">\(y=(t,1-t)\)</span>. Both norms are <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(\|\langle x,y\rangle\|=\|t\|=1\)">\(\|\langle x,y\rangle\|=\|t\|=1\)</span>. But <span class="math" data-tex="\(y\ne xa\)">\(y\ne xa\)</span> for every <span class="math" data-tex="\(a\in C([0,1])\)">\(a\in C([0,1])\)</span>, because its second coordinate is not zero.</p>
+<h2 id="3-positive-matrices-from-finite-families">3. Positive matrices from finite families</h2>
+<p>Before using matrix positivity, we specify its C*-norm. The Gelfand–Naimark theorem in <a href="https://kokunoyumeto.github.io/open-math-courses-public/courses/foundations-of-von-neumann-algebras/representations-and-positive-functionals-the-gns-construction-and-the-gelfand-naimark.html">Representations and positive functionals</a>, Theorem 7.2, supplies a faithful representation <span class="math" data-tex="\(A\subset B(H)\)">\(A\subset B(H)\)</span>. Represent <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> on <span class="math" data-tex="\(H^n\)">\(H^n\)</span> by its operator matrix. This is a faithful *-algebra representation, with</p>
+<span class="math math-display" data-tex="\[
+\max_{i,j}\|a_{ij}\|\leq\|(a_{ij})\|
+\leq\sum_{i,j}\|a_{ij}\|.
+\]">\[
+\max_{i,j}\|a_{ij}\|\leq\|(a_{ij})\|
+\leq\sum_{i,j}\|a_{ij}\|.
+\]</span>
+<p>Consequently entrywise completeness makes its image closed, and the operator C*-identity makes it a C*-algebra. The norm is independent of the faithful representation: identity on the algebraic matrix algebra is an injective homomorphism between the two completed C*-algebras, hence isometric by the functional-calculus prerequisite. Positivity and square roots can therefore be computed in this matrix algebra without choosing a representation. The next theorem proves the coefficient-column criterion for that positivity.</p>
+<p>For scalars, a matrix is positive exactly when all its quadratic forms are nonnegative. With coefficients in <span class="math" data-tex="\(A\)">\(A\)</span>, the test vectors must themselves have entries in <span class="math" data-tex="\(A\)">\(A\)</span>. We use the C*-algebra structure on <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> with involution <span class="math" data-tex="\((T^*)_{ij}=T_{ji}^*\)">\((T^*)_{ij}=T_{ji}^*\)</span>.</p>
+<p><span id="theorem-3-1"></span><strong>Theorem 3.1 (The matrix positivity test).</strong> An arbitrary <span class="math" data-tex="\(T\in M_n(A)\)">\(T\in M_n(A)\)</span> is positive if and only if</p>
+<span id="equation-3-1"></span><span class="math math-display" data-tex="\[
+q_T(a):=\sum_{i,j=1}^n a_i^*T_{ij}a_j\geq0
+\qquad(a\in A^n).
+\tag{3.1}
+\]">\[
+q_T(a):=\sum_{i,j=1}^n a_i^*T_{ij}a_j\geq0
+\qquad(a\in A^n).
+\tag{3.1}
+\]</span>
+<p><em>Proof.</em> If <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span>, write <span class="math" data-tex="\(T=R^*R\)">\(T=R^*R\)</span> using its positive square root. Then</p>
+<span class="math math-display" data-tex="\[
+q_T(a)=\sum_k\left(\sum_iR_{ki}a_i\right)^*
+\left(\sum_jR_{kj}a_j\right)\geq0.
+\]">\[
+q_T(a)=\sum_k\left(\sum_iR_{ki}a_i\right)^*
+\left(\sum_jR_{kj}a_j\right)\geq0.
+\]</span>
+<p>Conversely, suppose (3.1) holds. Let <span class="math" data-tex="\(B(a,b)=\sum a_i^*T_{ij}b_j\)">\(B(a,b)=\sum a_i^*T_{ij}b_j\)</span>. Expanding <span class="math" data-tex="\(q_T(a+b)\)">\(q_T(a+b)\)</span>, <span class="math" data-tex="\(q_T(a-b)\)">\(q_T(a-b)\)</span>, <span class="math" data-tex="\(q_T(a+ib)\)">\(q_T(a+ib)\)</span> and <span class="math" data-tex="\(q_T(a-ib)\)">\(q_T(a-ib)\)</span>, and using that each is self-adjoint, gives <span class="math" data-tex="\(B(a,b)=B(b,a)^*\)">\(B(a,b)=B(b,a)^*\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\sum a_i^*(T-T^*)_{ij}b_j=0
+\]">\[
+\sum a_i^*(T-T^*)_{ij}b_j=0
+\]</span>
+<p>for every pair of columns. Choose columns supported at positions <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, both with value <span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span>, where <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> is a positive contractive approximate identity for <span class="math" data-tex="\(A\)">\(A\)</span>. Then <span class="math" data-tex="\(e_\lambda(T-T^*)_{ij}e_\lambda=0\)">\(e_\lambda(T-T^*)_{ij}e_\lambda=0\)</span>. Passing to the limit proves <span class="math" data-tex="\(T=T^*\)">\(T=T^*\)</span>.</p>
+<p>Now let <span class="math" data-tex="\(S=T_-\)">\(S=T_-\)</span>, the negative part of <span class="math" data-tex="\(T\)">\(T\)</span> given by functional calculus. It is positive and <span class="math" data-tex="\(STS=-S^3\)">\(STS=-S^3\)</span>. For each <span class="math" data-tex="\(k\)">\(k\)</span>, apply (3.1) to the <span class="math" data-tex="\(k\)">\(k\)</span>-th column of <span class="math" data-tex="\(S\)">\(S\)</span>. This gives</p>
+<span class="math math-display" data-tex="\[
+-(S^3)_{kk}\geq0.
+\]">\[
+-(S^3)_{kk}\geq0.
+\]</span>
+<p>But, writing <span class="math" data-tex="\(R=S^{3/2}\)">\(R=S^{3/2}\)</span>, we have <span class="math" data-tex="\((S^3)_{kk}=\sum_i R_{ik}^*R_{ik}\geq0\)">\((S^3)_{kk}=\sum_i R_{ik}^*R_{ik}\geq0\)</span>. Hence this sum is zero, so all <span class="math" data-tex="\(R_{ik}=0\)">\(R_{ik}=0\)</span>. This holds for every <span class="math" data-tex="\(k\)">\(k\)</span>; consequently <span class="math" data-tex="\(R=0\)">\(R=0\)</span>, <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, and <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span>. The argument works without an identity in <span class="math" data-tex="\(A\)">\(A\)</span>. ∎</p>
+<p><span id="corollary-3-2"></span><strong>Corollary 3.2 (Gram positivity).</strong> For <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span> in a module with a positive semidefinite form, the Gram matrix</p>
+<span class="math math-display" data-tex="\[
+G=(\langle x_i,x_j\rangle)_{i,j}
+\]">\[
+G=(\langle x_i,x_j\rangle)_{i,j}
+\]</span>
+<p>is positive in <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>.</p>
+<p><em>Proof.</em> For every <span class="math" data-tex="\(a\in A^n\)">\(a\in A^n\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{i,j}a_i^*\langle x_i,x_j\rangle a_j
+=\left\langle\sum_i x_i a_i,\sum_j x_j a_j\right\rangle\geq0.
+\]">\[
+\sum_{i,j}a_i^*\langle x_i,x_j\rangle a_j
+=\left\langle\sum_i x_i a_i,\sum_j x_j a_j\right\rangle\geq0.
+\]</span>
+<p>Apply Theorem 3.1. ∎</p>
+<p>The order of the factors is essential: the coefficient on the first vector appears as <span class="math" data-tex="\(a_i^*\)">\(a_i^*\)</span> on the left. No commutativity of <span class="math" data-tex="\(A\)">\(A\)</span> has been used.</p>
+<h2 id="4-infinite-columns-sections-and-averaging">4. Infinite columns, sections and averaging</h2>
+<h3 id="the-standard-module">The standard module</h3>
+<p>Define</p>
+<span id="equation-4-1"></span><span class="math math-display" data-tex="\[
+H_A=\left\{(a_k)_{k\geq1}:a_k\in A,
+\quad\sum_{k=1}^{\infty}a_k^*a_k
+\text{ converges in norm in }A\right\}.
+\tag{4.1}
+\]">\[
+H_A=\left\{(a_k)_{k\geq1}:a_k\in A,
+\quad\sum_{k=1}^{\infty}a_k^*a_k
+\text{ converges in norm in }A\right\}.
+\tag{4.1}
+\]</span>
+<p>The action is coordinatewise, and its proposed inner product is <span class="math" data-tex="\(\langle a,b\rangle=\sum_k a_k^*b_k\)">\(\langle a,b\rangle=\sum_k a_k^*b_k\)</span>.</p>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1.</strong> This series defines an inner product on <span class="math" data-tex="\(H_A\)">\(H_A\)</span>. The module is complete, and finite columns are dense in it.</p>
+<p><em>Proof.</em> The elementary order inequality</p>
+<span class="math math-display" data-tex="\[
+(u+v)^*(u+v)\leq2(u^*u+v^*v)
+\]">\[
+(u+v)^*(u+v)\leq2(u^*u+v^*v)
+\]</span>
+<p>follows by expanding <span class="math" data-tex="\((u-v)^*(u-v)\geq0\)">\((u-v)^*(u-v)\geq0\)</span>. Applied to finite tails, it shows that adding two sequences in (4.1) again gives a sequence with norm-Cauchy square-sum partial sums. Scalar multiplication is immediate. For right multiplication by <span class="math" data-tex="\(c\in A\)">\(c\in A\)</span>, a tail is <span class="math" data-tex="\(c^*(\sum a_k^*a_k)c\)">\(c^*(\sum a_k^*a_k)c\)</span>, whose norm is at most <span class="math" data-tex="\(\|c\|^2\|\sum a_k^*a_k\|\)">\(\|c\|^2\|\sum a_k^*a_k\|\)</span>. Thus <span class="math" data-tex="\(H_A\)">\(H_A\)</span> is a module.</p>
+<p>Apply Theorem 2.1 to finite columns from indices <span class="math" data-tex="\(m\)">\(m\)</span> through <span class="math" data-tex="\(n\)">\(n\)</span>. It gives</p>
+<span id="equation-4-2"></span><span class="math math-display" data-tex="\[
+\left\|\sum_{k=m}^n a_k^*b_k\right\|
+\leq
+\left\|\sum_{k=m}^n a_k^*a_k\right\|^{1/2}
+\left\|\sum_{k=m}^n b_k^*b_k\right\|^{1/2}.
+\tag{4.2}
+\]">\[
+\left\|\sum_{k=m}^n a_k^*b_k\right\|
+\leq
+\left\|\sum_{k=m}^n a_k^*a_k\right\|^{1/2}
+\left\|\sum_{k=m}^n b_k^*b_k\right\|^{1/2}.
+\tag{4.2}
+\]</span>
+<p>The right side tends to zero for tails, so the inner product series converges. Its algebraic axioms pass from finite sums to limits. Its diagonal values are positive. Moreover each <span class="math" data-tex="\(a_k^*a_k\)">\(a_k^*a_k\)</span> is at most <span class="math" data-tex="\(\langle a,a\rangle\)">\(\langle a,a\rangle\)</span>; if the latter is zero, every coordinate is zero. This verifies definiteness.</p>
+<p>Let <span class="math" data-tex="\(a^{(r)}\)">\(a^{(r)}\)</span> be a Cauchy sequence in <span class="math" data-tex="\(H_A\)">\(H_A\)</span>. Each coordinate is Cauchy, since <span class="math" data-tex="\(\|a_k^{(r)}-a_k^{(s)}\|\leq\|a^{(r)}-a^{(s)}\|\)">\(\|a_k^{(r)}-a_k^{(s)}\|\leq\|a^{(r)}-a^{(s)}\|\)</span>. Write its limit as <span class="math" data-tex="\(a_k\in A\)">\(a_k\in A\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose <span class="math" data-tex="\(r_0\)">\(r_0\)</span> so that <span class="math" data-tex="\(\|a^{(r)}-a^{(s)}\|&lt;\varepsilon\)">\(\|a^{(r)}-a^{(s)}\|&lt;\varepsilon\)</span> for <span class="math" data-tex="\(r,s\geq r_0\)">\(r,s\geq r_0\)</span>. On any finite block, let <span class="math" data-tex="\(s\to\infty\)">\(s\to\infty\)</span>. The block of <span class="math" data-tex="\(a-a^{(r)}\)">\(a-a^{(r)}\)</span> then has finite-column norm at most <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(r\geq r_0\)">\(r\geq r_0\)</span>. Its own tails have norm less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> once the initial index is large. The triangle inequality for finite columns therefore bounds every sufficiently late finite block of <span class="math" data-tex="\(a\)">\(a\)</span> by <span class="math" data-tex="\(2\varepsilon\)">\(2\varepsilon\)</span>. Its square-sum partial sums are Cauchy, so <span class="math" data-tex="\(a\in H_A\)">\(a\in H_A\)</span>. Passing to the limit over initial blocks now gives <span class="math" data-tex="\(\|a-a^{(r)}\|\leq\varepsilon\)">\(\|a-a^{(r)}\|\leq\varepsilon\)</span>, proving completeness. Finally, truncation converges because its error norm squared is exactly the norm of a square-sum tail. ∎</p>
+<p><span id="example-4-2"></span><strong>Example 4.2 (Bounded partial sums are insufficient).</strong> Let <span class="math" data-tex="\(A=c_0(\mathbb N)\)">\(A=c_0(\mathbb N)\)</span>, and let <span class="math" data-tex="\(p_k\)">\(p_k\)</span> be the sequence that is <span class="math" data-tex="\(1\)">\(1\)</span> at <span class="math" data-tex="\(k\)">\(k\)</span> and zero elsewhere. Put <span class="math" data-tex="\(a_k=p_k\)">\(a_k=p_k\)</span>. Then <span class="math" data-tex="\(\sum_{k=1}^n a_k^*a_k=\sum_{k=1}^n p_k\)">\(\sum_{k=1}^n a_k^*a_k=\sum_{k=1}^n p_k\)</span> has norm <span class="math" data-tex="\(1\)">\(1\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, but any two distinct partial sums differ by an element of norm <span class="math" data-tex="\(1\)">\(1\)</span>. Thus <span class="math" data-tex="\((a_k)\notin H_A\)">\((a_k)\notin H_A\)</span>. Its pointwise square sum is the constant sequence <span class="math" data-tex="\(1\)">\(1\)</span>, outside <span class="math" data-tex="\(c_0\)">\(c_0\)</span>.</p>
+<p>Even square summability of the coordinate norms is stronger than necessary. For <span class="math" data-tex="\(a_k=k^{-1/2}p_k\)">\(a_k=k^{-1/2}p_k\)</span>, square-sum tails have norm <span class="math" data-tex="\(1/(n+1)\)">\(1/(n+1)\)</span> after index <span class="math" data-tex="\(n\)">\(n\)</span>, so this sequence belongs to <span class="math" data-tex="\(H_{c_0}\)">\(H_{c_0}\)</span>. Nevertheless <span class="math" data-tex="\(\sum_k\|a_k\|^2=\sum_k1/k\)">\(\sum_k\|a_k\|^2=\sum_k1/k\)</span> diverges.</p>
+<h3 id="sections-of-a-hermitian-bundle">Sections of a Hermitian bundle</h3>
+<p>Let <span class="math" data-tex="\(X\)">\(X\)</span> be locally compact Hausdorff, and let <span class="math" data-tex="\(V\to X\)">\(V\to X\)</span> be a locally trivial finite-dimensional complex vector bundle with a continuous Hermitian metric. Let <span class="math" data-tex="\(\Gamma_0(V)\)">\(\Gamma_0(V)\)</span> be its continuous sections whose fibre norms vanish at infinity. Give it the action <span class="math" data-tex="\((sf)(t)=s(t)f(t)\)">\((sf)(t)=s(t)f(t)\)</span> for <span class="math" data-tex="\(f\in C_0(X)\)">\(f\in C_0(X)\)</span>, and set</p>
+<span id="equation-4-3"></span><span class="math math-display" data-tex="\[
+\langle s,u\rangle(t)=\langle s(t),u(t)\rangle_{V_t}.
+\tag{4.3}
+\]">\[
+\langle s,u\rangle(t)=\langle s(t),u(t)\rangle_{V_t}.
+\tag{4.3}
+\]</span>
+<p><span id="proposition-4-3"></span><strong>Proposition 4.3.</strong> These operations make <span class="math" data-tex="\(\Gamma_0(V)\)">\(\Gamma_0(V)\)</span> a Hilbert <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-module with <span class="math" data-tex="\(\|s\|=\sup_t\|s(t)\|\)">\(\|s\|=\sup_t\|s(t)\|\)</span>.</p>
+<p><em>Proof.</em> All module identities and inner product identities hold in each fibre. The right side of (4.3) is continuous. The scalar Cauchy–Schwarz inequality bounds its absolute value by <span class="math" data-tex="\(\|s(t)\|\|u(t)\|\)">\(\|s(t)\|\|u(t)\|\)</span>, so it vanishes at infinity. Positivity and definiteness are pointwise, and the norm formula follows immediately.</p>
+<p>A Cauchy sequence of sections converges uniformly in fibre norm to a fibrewise limit <span class="math" data-tex="\(s\)">\(s\)</span>. In a local trivialization near any point, the continuous positive definite metric is uniformly equivalent, on a sufficiently small neighborhood, to a fixed Euclidean norm. Consequently the coordinate functions converge uniformly there. Their limit is continuous: approximate it uniformly within one third of a prescribed error by one continuous coordinate function, and use continuity of that function for the remaining third. Thus <span class="math" data-tex="\(s\)">\(s\)</span> is a continuous section. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, choose a section in the sequence within <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> of <span class="math" data-tex="\(s\)">\(s\)</span>, then a compact set outside which that section has norm below <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. Outside this set, <span class="math" data-tex="\(s\)">\(s\)</span> has norm below <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. It belongs to <span class="math" data-tex="\(\Gamma_0(V)\)">\(\Gamma_0(V)\)</span>, proving completeness. ∎</p>
+<p>For the trivial line bundle on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, this is simply <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span>: its inner product is <span class="math" data-tex="\(\overline s u\)">\(\overline s u\)</span>, not the integral of that function. This explains why the module norm is a supremum norm rather than an <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-norm.</p>
+<h3 id="averaging-with-a-conditional-expectation">Averaging with a conditional expectation</h3>
+<p>Let <span class="math" data-tex="\(A\subseteq B\)">\(A\subseteq B\)</span> be C*-algebras and let <span class="math" data-tex="\(\phi:B\to A\)">\(\phi:B\to A\)</span> be a conditional expectation. The properties used here are positivity, linearity, <span class="math" data-tex="\(\phi|_A=\mathrm{id}_A\)">\(\phi|_A=\mathrm{id}_A\)</span>, and the bimodule identity</p>
+<span class="math math-display" data-tex="\[
+\phi(a_1ba_2)=a_1\phi(b)a_2.
+\]">\[
+\phi(a_1ba_2)=a_1\phi(b)a_2.
+\]</span>
+<p>On the right <span class="math" data-tex="\(A\)">\(A\)</span>-module <span class="math" data-tex="\(B\)">\(B\)</span>, define <span class="math" data-tex="\(\langle b,c\rangle_\phi=\phi(b^*c)\)">\(\langle b,c\rangle_\phi=\phi(b^*c)\)</span>. It is linear in the second variable, and the bimodule identity gives coefficient compatibility. A positive linear map preserves involution: express a self-adjoint element as a difference of two positive elements, then use complex linearity. This proves conjugate symmetry. Positivity is <span class="math" data-tex="\(\phi(b^*b)\geq0\)">\(\phi(b^*b)\geq0\)</span>. The form may be degenerate; Theorem 2.3 removes its null space and completes it. Denote the resulting Hilbert module by <span class="math" data-tex="\(E_\phi\)">\(E_\phi\)</span>. If <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is faithful, the original form is definite, but completeness in its new norm still needs to be considered.</p>
+<p><span id="example-4-4"></span><strong>Example 4.4 (A four-dimensional scalar module).</strong> Take <span class="math" data-tex="\(B=M_2(\mathbb C)\)">\(B=M_2(\mathbb C)\)</span>, <span class="math" data-tex="\(A=\mathbb C1\)">\(A=\mathbb C1\)</span>, and <span class="math" data-tex="\(\phi(b)=\tfrac12\operatorname{Tr}(b)1\)">\(\phi(b)=\tfrac12\operatorname{Tr}(b)1\)</span>. This is a positive projection fixing <span class="math" data-tex="\(A\)">\(A\)</span>, and its bimodule identity is scalar linearity. It preserves the normalized trace. Identifying <span class="math" data-tex="\(A\)">\(A\)</span> with <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle b,c\rangle_\phi=\tfrac12\operatorname{Tr}(b^*c),
+\qquad
+\|b\|_\phi^2=\tfrac12\sum_{i,j=1}^2|b_{ij}|^2.
+\]">\[
+\langle b,c\rangle_\phi=\tfrac12\operatorname{Tr}(b^*c),
+\qquad
+\|b\|_\phi^2=\tfrac12\sum_{i,j=1}^2|b_{ij}|^2.
+\]</span>
+<p>This form is definite and complete in four dimensions. The four vectors <span class="math" data-tex="\(\sqrt2e_{11},\sqrt2e_{12},\sqrt2e_{21},\sqrt2e_{22}\)">\(\sqrt2e_{11},\sqrt2e_{12},\sqrt2e_{21},\sqrt2e_{22}\)</span> are an orthonormal basis, since <span class="math" data-tex="\(\operatorname{Tr}(e_{ij}^*e_{kl})=\delta_{ik}\delta_{jl}\)">\(\operatorname{Tr}(e_{ij}^*e_{kl})=\delta_{ik}\delta_{jl}\)</span>. Thus <span class="math" data-tex="\(E_\phi\)">\(E_\phi\)</span> is a Hilbert space of complex dimension <span class="math" data-tex="\(4\)">\(4\)</span>.</p>
+<h2 id="5-which-part-of-the-algebra-does-the-module-use">5. Which part of the algebra does the module use?</h2>
+<p><span id="definition-5-1"></span><strong>Definition 5.1.</strong> The <em>coefficient ideal</em> of a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module is</p>
+<span class="math math-display" data-tex="\[
+J_E=\overline{\operatorname{span}}\{\langle x,y\rangle:x,y\in E\}.
+\]">\[
+J_E=\overline{\operatorname{span}}\{\langle x,y\rangle:x,y\in E\}.
+\]</span>
+<p>The module is <em>full</em> if <span class="math" data-tex="\(J_E=A\)">\(J_E=A\)</span>.</p>
+<p><span id="proposition-5-2"></span><strong>Proposition 5.2.</strong> The set <span class="math" data-tex="\(J_E\)">\(J_E\)</span> is a closed two-sided ideal. If <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> is a positive contractive approximate identity of <span class="math" data-tex="\(A\)">\(A\)</span> or of <span class="math" data-tex="\(J_E\)">\(J_E\)</span>, then <span class="math" data-tex="\(xe_\lambda\to x\)">\(xe_\lambda\to x\)</span> for every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>.</p>
+<p><em>Proof.</em> The linear span of inner products is closed under involution and under right multiplication, since <span class="math" data-tex="\(\langle x,y\rangle a=\langle x,ya\rangle\)">\(\langle x,y\rangle a=\langle x,ya\rangle\)</span>. It is closed under left multiplication because <span class="math" data-tex="\(a\langle x,y\rangle=\langle xa^*,y\rangle\)">\(a\langle x,y\rangle=\langle xa^*,y\rangle\)</span>. Its norm closure is therefore a two-sided ideal.</p>
+<p>Put <span class="math" data-tex="\(b=\langle x,x\rangle\)">\(b=\langle x,x\rangle\)</span>. It belongs both to <span class="math" data-tex="\(A\)">\(A\)</span> and to <span class="math" data-tex="\(J_E\)">\(J_E\)</span>. In either case the approximate identity properties give</p>
+<span id="equation-5-1"></span><span class="math math-display" data-tex="\[
+\|x-xe_\lambda\|^2
+=\|b-be_\lambda-e_\lambda b+e_\lambda b e_\lambda\|\longrightarrow0.
+\tag{5.1}
+\]">\[
+\|x-xe_\lambda\|^2
+=\|b-be_\lambda-e_\lambda b+e_\lambda b e_\lambda\|\longrightarrow0.
+\tag{5.1}
+\]</span>
+<p>∎</p>
+<p>This proves density of products. The next theorem proves the stronger statement that each vector is a single product.</p>
+<p><span id="theorem-5-3"></span><strong>Theorem 5.3 (Exact factorization).</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module, let <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, and let <span class="math" data-tex="\(0&lt;\alpha&lt;1/2\)">\(0&lt;\alpha&lt;1/2\)</span>. There is <span class="math" data-tex="\(y\in E\)">\(y\in E\)</span> such that</p>
+<span id="equation-5-2"></span><span class="math math-display" data-tex="\[
+x=y\langle x,x\rangle^\alpha.
+\tag{5.2}
+\]">\[
+x=y\langle x,x\rangle^\alpha.
+\tag{5.2}
+\]</span>
+<p>For nonzero <span class="math" data-tex="\(x\)">\(x\)</span>, one can choose <span class="math" data-tex="\(\|y\|=\|x\|^{1-2\alpha}\)">\(\|y\|=\|x\|^{1-2\alpha}\)</span>. In particular, if <span class="math" data-tex="\(\|x\|=1\)">\(\|x\|=1\)</span>, then <span class="math" data-tex="\(\|y\|=1\)">\(\|y\|=1\)</span>, hence <span class="math" data-tex="\(\|y\|\leq1\)">\(\|y\|\leq1\)</span>. Consequently <span class="math" data-tex="\(E\cdot J_E=E\)">\(E\cdot J_E=E\)</span> and <span class="math" data-tex="\(E\cdot A=E\)">\(E\cdot A=E\)</span>, even if the product notation means only single products.</p>
+<p><em>Proof.</em> The case <span class="math" data-tex="\(x=0\)">\(x=0\)</span> uses <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. Otherwise put <span class="math" data-tex="\(b=\langle x,x\rangle\)">\(b=\langle x,x\rangle\)</span> and <span class="math" data-tex="\(y_\varepsilon=x(b+\varepsilon1)^{-\alpha}\)">\(y_\varepsilon=x(b+\varepsilon1)^{-\alpha}\)</span>. For continuous coefficient functions <span class="math" data-tex="\(f,g\)">\(f,g\)</span>, functional calculus gives</p>
+<span id="equation-5-3"></span><span class="math math-display" data-tex="\[
+\|x(f(b)-g(b))\|^2
+=\|b\,|f(b)-g(b)|^2\|.
+\tag{5.3}
+\]">\[
+\|x(f(b)-g(b))\|^2
+=\|b\,|f(b)-g(b)|^2\|.
+\tag{5.3}
+\]</span>
+<p>On <span class="math" data-tex="\([0,\|b\|]\)">\([0,\|b\|]\)</span>, the functions <span class="math" data-tex="\(t^{1/2}(t+\varepsilon)^{-\alpha}\)">\(t^{1/2}(t+\varepsilon)^{-\alpha}\)</span> converge uniformly to <span class="math" data-tex="\(t^{1/2-\alpha}\)">\(t^{1/2-\alpha}\)</span>. To see uniformity, on <span class="math" data-tex="\([0,\delta]\)">\([0,\delta]\)</span> both are bounded by <span class="math" data-tex="\(\delta^{1/2-\alpha}\)">\(\delta^{1/2-\alpha}\)</span>; away from zero ordinary uniform convergence applies. Formula (5.3) therefore makes <span class="math" data-tex="\(y_\varepsilon\)">\(y_\varepsilon\)</span> Cauchy as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Completeness supplies a limit <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p>Also <span class="math" data-tex="\(t^{1/2}((t/(t+\varepsilon))^\alpha-1)\to0\)">\(t^{1/2}((t/(t+\varepsilon))^\alpha-1)\to0\)</span> uniformly: its absolute value is at most <span class="math" data-tex="\(\sqrt\delta\)">\(\sqrt\delta\)</span> near zero, and it converges uniformly away from zero. Using (5.3) again shows <span class="math" data-tex="\(y_\varepsilon b^\alpha\to x\)">\(y_\varepsilon b^\alpha\to x\)</span>. The continuity of the action proves (5.2). Finally,</p>
+<span class="math math-display" data-tex="\[
+\|y_\varepsilon\|^2
+=\|b(b+\varepsilon1)^{-2\alpha}\|
+\longrightarrow\|b^{1-2\alpha}\|
+=\|x\|^{2-4\alpha}.
+\]">\[
+\|y_\varepsilon\|^2
+=\|b(b+\varepsilon1)^{-2\alpha}\|
+\longrightarrow\|b^{1-2\alpha}\|
+=\|x\|^{2-4\alpha}.
+\]</span>
+<p>Taking square roots gives the claimed norm. Since <span class="math" data-tex="\(b^\alpha\in C^*(b)\subseteq J_E\)">\(b^\alpha\in C^*(b)\subseteq J_E\)</span>, the factor lies in the coefficient ideal, proving both product equalities. ∎</p>
+<p>The endpoint <span class="math" data-tex="\(\alpha=1/2\)">\(\alpha=1/2\)</span> cannot be included in general. In <span class="math" data-tex="\(E=A=C_0((0,1])\)">\(E=A=C_0((0,1])\)</span>, take <span class="math" data-tex="\(x(t)=t\)">\(x(t)=t\)</span>. Then <span class="math" data-tex="\(\langle x,x\rangle^{1/2}(t)=t\)">\(\langle x,x\rangle^{1/2}(t)=t\)</span>. A factorization <span class="math" data-tex="\(x=yt\)">\(x=yt\)</span> would force <span class="math" data-tex="\(y(t)=1\)">\(y(t)=1\)</span> for all <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, which does not vanish at the missing endpoint and is not in <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p>The modules <span class="math" data-tex="\(A_A\)">\(A_A\)</span>, <span class="math" data-tex="\(A^n\)">\(A^n\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, and <span class="math" data-tex="\(H_A\)">\(H_A\)</span> are full: their inner products include all <span class="math" data-tex="\(a^*b\)">\(a^*b\)</span>, whose span is <span class="math" data-tex="\(A\)">\(A\)</span>. Indeed every positive element is a square <span class="math" data-tex="\(c^*c\)">\(c^*c\)</span>, and every element of a C*-algebra is a linear combination of positive elements. The expectation module is full for the same reason, using vectors from <span class="math" data-tex="\(A\subseteq B\)">\(A\subseteq B\)</span>.</p>
+<p><span id="example-5-4"></span><strong>Example 5.4 (Closed right ideals).</strong> A closed right ideal <span class="math" data-tex="\(R\subseteq A\)">\(R\subseteq A\)</span> with <span class="math" data-tex="\(\langle r,s\rangle=r^*s\)">\(\langle r,s\rangle=r^*s\)</span> is a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module: it inherits the algebraic axioms and its norm is the original algebra norm, so closedness gives completeness. Its coefficient ideal is</p>
+<span id="equation-5-4"></span><span class="math math-display" data-tex="\[
+J_R=\overline{\operatorname{span}}R^*R,
+\tag{5.4}
+\]">\[
+J_R=\overline{\operatorname{span}}R^*R,
+\tag{5.4}
+\]</span>
+<p>which need not be <span class="math" data-tex="\(R\)">\(R\)</span>. For <span class="math" data-tex="\(A=M_2(\mathbb C)\)">\(A=M_2(\mathbb C)\)</span> and <span class="math" data-tex="\(R=e_{11}A\)">\(R=e_{11}A\)</span>, the ideal <span class="math" data-tex="\(R\)">\(R\)</span> consists of matrices with zero second row. But <span class="math" data-tex="\(e_{1i}^*e_{1j}=e_{ij}\)">\(e_{1i}^*e_{1j}=e_{ij}\)</span>, so <span class="math" data-tex="\(J_R=A\)">\(J_R=A\)</span>. This is a full module although <span class="math" data-tex="\(R\ne A\)">\(R\ne A\)</span>.</p>
+<p>Closed submodules can also fail to have orthogonal complements. In <span class="math" data-tex="\(E=C([0,1])\)">\(E=C([0,1])\)</span>, let <span class="math" data-tex="\(R=\{f:f(0)=0\}\)">\(R=\{f:f(0)=0\}\)</span>. If <span class="math" data-tex="\(g\)">\(g\)</span> is orthogonal to <span class="math" data-tex="\(R\)">\(R\)</span>, testing against <span class="math" data-tex="\(f(t)=t\)">\(f(t)=t\)</span> gives <span class="math" data-tex="\(tg(t)=0\)">\(tg(t)=0\)</span>; continuity forces <span class="math" data-tex="\(g=0\)">\(g=0\)</span>. Thus <span class="math" data-tex="\(R^\perp=0\)">\(R^\perp=0\)</span>, while <span class="math" data-tex="\(R\)">\(R\)</span> is proper. We cannot decompose <span class="math" data-tex="\(E=R\oplus R^\perp\)">\(E=R\oplus R^\perp\)</span>.</p>
+<h2 id="6-exercises-with-complete-solutions">6. Exercises with complete solutions</h2>
+<p><strong>Exercise 6.1 (Basic).</strong> Verify all Hilbert module axioms for <span class="math" data-tex="\(A^n\)">\(A^n\)</span> with (1.2), including completeness.</p>
+<p><em>Solution.</em> Coordinatewise multiplication is a complex bilinear associative right action. Finite summation gives linearity in the second variable, <span class="math" data-tex="\(\langle x,ya\rangle=\langle x,y\rangle a\)">\(\langle x,ya\rangle=\langle x,y\rangle a\)</span>, and <span class="math" data-tex="\(\langle y,x\rangle=\langle x,y\rangle^*\)">\(\langle y,x\rangle=\langle x,y\rangle^*\)</span>. Each <span class="math" data-tex="\(x_i^*x_i\)">\(x_i^*x_i\)</span> is positive. If their sum is zero, positivity implies <span class="math" data-tex="\(x_i^*x_i=0\)">\(x_i^*x_i=0\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, hence <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. Proposition 2.2 gives the norm laws. The estimates (2.4) show that a Cauchy sequence has coordinatewise limits in <span class="math" data-tex="\(A\)">\(A\)</span> and converges to the resulting column. Thus <span class="math" data-tex="\(A^n\)">\(A^n\)</span> is complete.</p>
+<p><strong>Exercise 6.2 (Basic).</strong> Let <span class="math" data-tex="\(R\)">\(R\)</span> be a closed right ideal of <span class="math" data-tex="\(A\)">\(A\)</span>. Show it is a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module and compute its coefficient ideal. Specialize to <span class="math" data-tex="\(R=pA\)">\(R=pA\)</span> for a projection <span class="math" data-tex="\(p\in A\)">\(p\in A\)</span>.</p>
+<p><em>Solution.</em> Right multiplication preserves <span class="math" data-tex="\(R\)">\(R\)</span>. The form <span class="math" data-tex="\(r^*s\)">\(r^*s\)</span> has the axioms checked in Example 1.2; its norm is <span class="math" data-tex="\(\|r\|\)">\(\|r\|\)</span>, and <span class="math" data-tex="\(R\)">\(R\)</span> is complete as a closed subspace of <span class="math" data-tex="\(A\)">\(A\)</span>. Its coefficient ideal is (5.4). The span is two-sided: <span class="math" data-tex="\((r^*s)a=r^*(sa)\)">\((r^*s)a=r^*(sa)\)</span> and <span class="math" data-tex="\(a(r^*s)=(ra^*)^*s\)">\(a(r^*s)=(ra^*)^*s\)</span>. For <span class="math" data-tex="\(R=pA\)">\(R=pA\)</span>, products have the form <span class="math" data-tex="\(a^*pb\)">\(a^*pb\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+J_{pA}=\overline{\operatorname{span}}\{apb:a,b\in A\}.
+\]">\[
+J_{pA}=\overline{\operatorname{span}}\{apb:a,b\in A\}.
+\]</span>
+<p>This is the closed two-sided ideal generated by <span class="math" data-tex="\(p\)">\(p\)</span>. It contains <span class="math" data-tex="\(p\)">\(p\)</span>, by taking <span class="math" data-tex="\(a=b=p\)">\(a=b=p\)</span>, and every two-sided ideal containing <span class="math" data-tex="\(p\)">\(p\)</span> contains all displayed products. The set <span class="math" data-tex="\(pA\)">\(pA\)</span> is closed because it is the range of the bounded idempotent <span class="math" data-tex="\(a\mapsto pa\)">\(a\mapsto pa\)</span>. If <span class="math" data-tex="\(R\)">\(R\)</span> is itself a closed two-sided ideal, then <span class="math" data-tex="\(J_R=R\)">\(J_R=R\)</span>: inclusion in <span class="math" data-tex="\(R\)">\(R\)</span> is immediate, and positive square roots within <span class="math" data-tex="\(R\)">\(R\)</span> show that its positive elements, hence all of <span class="math" data-tex="\(R\)">\(R\)</span>, lie in the span <span class="math" data-tex="\(R^*R\)">\(R^*R\)</span>.</p>
+<p><strong>Exercise 6.3 (Intermediate).</strong> Prove the matrix positivity test, allowing <span class="math" data-tex="\(A\)">\(A\)</span> to be nonunital and without assuming in advance that the tested matrix is self-adjoint. Deduce Gram positivity.</p>
+<p><em>Solution.</em> If <span class="math" data-tex="\(T=U^*U\)">\(T=U^*U\)</span>, every tested expression is <span class="math" data-tex="\(\sum_k(Ua)_k^*(Ua)_k\geq0\)">\(\sum_k(Ua)_k^*(Ua)_k\geq0\)</span>. In the other direction, polarization of the four tests on <span class="math" data-tex="\(a\pm b\)">\(a\pm b\)</span> and <span class="math" data-tex="\(a\pm ib\)">\(a\pm ib\)</span> gives <span class="math" data-tex="\(a^*(T-T^*)b=0\)">\(a^*(T-T^*)b=0\)</span>. Testing columns with one nonzero coordinate <span class="math" data-tex="\(e_\lambda\)">\(e_\lambda\)</span> and using <span class="math" data-tex="\(e_\lambda d e_\lambda\to d\)">\(e_\lambda d e_\lambda\to d\)</span> shows each entry of <span class="math" data-tex="\(T-T^*\)">\(T-T^*\)</span> is zero.</p>
+<p>Let <span class="math" data-tex="\(P=T_-\)">\(P=T_-\)</span> and <span class="math" data-tex="\(S=P^{1/2}\)">\(S=P^{1/2}\)</span>. Functional calculus gives <span class="math" data-tex="\(STS=-P^2\)">\(STS=-P^2\)</span>. Testing on column <span class="math" data-tex="\(k\)">\(k\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span> yields <span class="math" data-tex="\(-(P^2)_{kk}\geq0\)">\(-(P^2)_{kk}\geq0\)</span>. But <span class="math" data-tex="\((P^2)_{kk}=\sum_iP_{ik}^*P_{ik}\geq0\)">\((P^2)_{kk}=\sum_iP_{ik}^*P_{ik}\geq0\)</span>. Thus every such sum is zero and every entry of <span class="math" data-tex="\(P\)">\(P\)</span> is zero. So the negative part vanishes and <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span>. For a Gram matrix, the tested expression is exactly the inner product of <span class="math" data-tex="\(\sum_i x_i a_i\)">\(\sum_i x_i a_i\)</span> with itself. This proves its positivity by the criterion.</p>
+<p><strong>Exercise 6.4 (Intermediate).</strong> For <span class="math" data-tex="\(A=c_0\)">\(A=c_0\)</span>, construct a sequence with bounded square-sum partial sums that does not belong to <span class="math" data-tex="\(H_A\)">\(H_A\)</span>.</p>
+<p><em>Solution.</em> Let <span class="math" data-tex="\(a_k=p_k\)">\(a_k=p_k\)</span>, where <span class="math" data-tex="\(p_k\)">\(p_k\)</span> is the <span class="math" data-tex="\(k\)">\(k\)</span>-th coordinate projection. Then <span class="math" data-tex="\(a_k^*a_k=p_k\)">\(a_k^*a_k=p_k\)</span>. Each partial sum has norm <span class="math" data-tex="\(1\)">\(1\)</span>; for <span class="math" data-tex="\(m&gt;n\)">\(m&gt;n\)</span>, the difference of partial sums is <span class="math" data-tex="\(p_{n+1}+\cdots+p_m\)">\(p_{n+1}+\cdots+p_m\)</span>, again of norm <span class="math" data-tex="\(1\)">\(1\)</span>. The partial sums are not norm Cauchy, so their series does not converge in <span class="math" data-tex="\(c_0\)">\(c_0\)</span>. Definition (4.1) therefore excludes this sequence, even though the partial sums are bounded.</p>
+<p><strong>Exercise 6.5 (Advanced).</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module and <span class="math" data-tex="\(J=J_E\)">\(J=J_E\)</span>. Prove that <span class="math" data-tex="\(E\)">\(E\)</span> is a full Hilbert <span class="math" data-tex="\(J\)">\(J\)</span>-module. Explain precisely how its <span class="math" data-tex="\(A\)">\(A\)</span>-action is recovered from the <span class="math" data-tex="\(J\)">\(J\)</span>-action. More generally, start with a Hilbert <span class="math" data-tex="\(J\)">\(J\)</span>-module and a specified inclusion of <span class="math" data-tex="\(J\)">\(J\)</span> as a closed two-sided ideal of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><em>Solution.</em> Restrict the action to <span class="math" data-tex="\(J\)">\(J\)</span> and regard inner products as elements of <span class="math" data-tex="\(J\)">\(J\)</span>. The norm is unchanged because the ideal has its inherited C*-norm, so completeness and definiteness remain true. Its coefficient span is dense in <span class="math" data-tex="\(J\)">\(J\)</span> by definition, giving fullness. Theorem 5.3 proves <span class="math" data-tex="\(EJ=E\)">\(EJ=E\)</span>.</p>
+<p>For the more general construction, let <span class="math" data-tex="\((e_\lambda)\)">\((e_\lambda)\)</span> be a positive contractive approximate identity of <span class="math" data-tex="\(J\)">\(J\)</span>. Formula (5.1), now inside <span class="math" data-tex="\(J\)">\(J\)</span>, proves <span class="math" data-tex="\(xe_\lambda\to x\)">\(xe_\lambda\to x\)</span>. Since <span class="math" data-tex="\(e_\lambda a\in J\)">\(e_\lambda a\in J\)</span>, define</p>
+<span id="equation-6-1"></span><span class="math math-display" data-tex="\[
+x\cdot a=\lim_\lambda x(e_\lambda a).
+\tag{6.1}
+\]">\[
+x\cdot a=\lim_\lambda x(e_\lambda a).
+\tag{6.1}
+\]</span>
+<p>This limit exists. For <span class="math" data-tex="\(b=\langle x,x\rangle\)">\(b=\langle x,x\rangle\)</span>, the square of the norm of a difference is</p>
+<span class="math math-display" data-tex="\[
+\|a^*(e_\lambda-e_\mu)b(e_\lambda-e_\mu)a\|
+\leq\|a\|^2\|x(e_\lambda-e_\mu)\|^2,
+\]">\[
+\|a^*(e_\lambda-e_\mu)b(e_\lambda-e_\mu)a\|
+\leq\|a\|^2\|x(e_\lambda-e_\mu)\|^2,
+\]</span>
+<p>which tends to zero. Each term in (6.1) has norm at most <span class="math" data-tex="\(\|a\|\|x\|\)">\(\|a\|\|x\|\)</span>, so the resulting action has the same bound. Passing inner products to the limit gives</p>
+<span id="equation-6-2"></span><span class="math math-display" data-tex="\[
+\langle z,x\cdot a\rangle=\langle z,x\rangle a,
+\qquad
+\langle x\cdot a,z\rangle=a^*\langle x,z\rangle.
+\tag{6.2}
+\]">\[
+\langle z,x\cdot a\rangle=\langle z,x\rangle a,
+\qquad
+\langle x\cdot a,z\rangle=a^*\langle x,z\rangle.
+\tag{6.2}
+\]</span>
+<p>For <span class="math" data-tex="\(j\in J\)">\(j\in J\)</span>, the limit is the old <span class="math" data-tex="\(xj\)">\(xj\)</span>, since <span class="math" data-tex="\(e_\lambda j\to j\)">\(e_\lambda j\to j\)</span>. Equations (6.2) show that any two choices of approximate identity give the same limit: their difference pairs to zero with every <span class="math" data-tex="\(z\)">\(z\)</span>, hence has zero norm by taking <span class="math" data-tex="\(z\)">\(z\)</span> to be that difference. They also prove linearity and <span class="math" data-tex="\((x\cdot a)\cdot a&#x27;=x\cdot(aa&#x27;)\)">\((x\cdot a)\cdot a&#x27;=x\cdot(aa&#x27;)\)</span>, by pairing both sides with every <span class="math" data-tex="\(z\)">\(z\)</span>. Thus (6.1) is a compatible <span class="math" data-tex="\(A\)">\(A\)</span>-module structure with the original norm and inner product.</p>
+<p>Finally, in any compatible extension, the norm bound and <span class="math" data-tex="\(xe_\lambda\to x\)">\(xe_\lambda\to x\)</span> force <span class="math" data-tex="\(xa=\lim_\lambda(xe_\lambda)a\)">\(xa=\lim_\lambda(xe_\lambda)a\)</span>, which is (6.1). The extension is unique and recovers the original action when one was already given. The specified inclusion <span class="math" data-tex="\(J\subseteq A\)">\(J\subseteq A\)</span> matters: a Hilbert <span class="math" data-tex="\(J\)">\(J\)</span>-module alone does not determine an ambient algebra. For example, <span class="math" data-tex="\(E=\mathbb C\)">\(E=\mathbb C\)</span> over <span class="math" data-tex="\(J=\mathbb C\)">\(J=\mathbb C\)</span> extends to <span class="math" data-tex="\(A=\mathbb C\oplus\mathbb C\)">\(A=\mathbb C\oplus\mathbb C\)</span>, with <span class="math" data-tex="\(J\)">\(J\)</span> embedded as its first summand, by <span class="math" data-tex="\(x\cdot(a,b)=xa\)">\(x\cdot(a,b)=xa\)</span>. The second summand acts as zero.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>The exact functional-calculus prerequisite is <em>C*-algebras: continuous functional calculus, automatic continuity, positive cones, approximate identities and quotients</em>: Theorem 3.2 gives spectral permanence; Theorems 5.1 and 5.3 and Corollary 5.4 give the isometric continuous calculus in unital and nonunital algebras; Theorem 6.1 gives continuity under uniform limits; Theorem 8.2 and Proposition 8.5 give positivity, roots, powers and order; Theorem 11.4 and Corollary 11.5 give positive contractive approximate identities for every C*-algebra and its ideals. These are written programme proofs. Section 3 here constructs the matrix C*-algebra from the faithful representation theorem and then proves its coefficient-column positivity criterion. The Blackadar references below credit the classical formulations rather than replace these proofs.</p>
+<p>The following facts from C*-algebra theory are used without proof. Continuous functional calculus is isometric, has spectral mapping and respects uniform limits [Blackadar 2006, II.2.3.1–II.2.3.2]. Positive elements have square roots and positive real powers; self-adjoint elements have positive and negative parts [Blackadar 2006, II.3.1.2]. The positive cone is closed, contains every <span class="math" data-tex="\(a^*a\)">\(a^*a\)</span>, and is preserved by <span class="math" data-tex="\(b\mapsto a^*ba\)">\(b\mapsto a^*ba\)</span> [Blackadar 2006, II.3.1.3 and II.3.1.5]. For <span class="math" data-tex="\(b\geq0\)">\(b\geq0\)</span>, <span class="math" data-tex="\(0\leq b\leq\|b\|1\)">\(0\leq b\leq\|b\|1\)</span> in the unitization [Blackadar 2006, II.3.1.8]. In particular <span class="math" data-tex="\(0\leq b\leq c\)">\(0\leq b\leq c\)</span> implies <span class="math" data-tex="\(\|b\|\leq\|c\|\)">\(\|b\|\leq\|c\|\)</span>: compare both with <span class="math" data-tex="\(\|c\|1\)">\(\|c\|1\)</span> and use functional calculus for <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>Every C*-algebra, including each closed ideal, has a positive contractive approximate identity; its left, right and two-sided products converge to the element being approximated [Blackadar 2006, II.4.1.2–II.4.1.3]. C*-subalgebras have the inherited norm and positivity [Blackadar 2006, II.2.2.9 and II.3.1.1]. The matrix algebra <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span>, with its stated involution, is a C*-algebra [Blackadar 2006, II.6.6.1–II.6.6.3]. Theorem 3.1 proves its positivity criterion rather than assuming that criterion.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Connes 1994]</strong> Alain Connes, <em>Noncommutative Geometry</em>, Academic Press, 1994, Chapter II, Appendix A, “C*-modules and Strong Morita Equivalence,” opening definitions and Definition 1. <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">Author’s electronic edition</a>.</li>
+<li><strong>[Blackadar 2006]</strong> Bruce Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Encyclopaedia of Mathematical Sciences 122, Springer, 2006; <a href="https://www.bruceblackadar.com/Mathematics/Cycr.pdf">revised author’s edition, 2017</a>. Sections II.2.3, II.3.1, II.4.1, II.6.6 and II.7.1.</li>
+<li><strong>[Blackadar 1998]</strong> Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Mathematical Sciences Research Institute Publications 5, Cambridge University Press, 1998, §13.1. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</li>
+<li><strong>[Emerson 2024]</strong> Heath Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser Advanced Texts, 2024, §5.4.</li>
+</ul>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/hilbert-c-star-modules-and-morita-equivalence/hilbert-c-star-modules.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

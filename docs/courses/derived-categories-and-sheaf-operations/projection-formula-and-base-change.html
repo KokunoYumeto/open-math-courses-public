@@ -1,0 +1,383 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The projection formula and the base change map</title><link rel="stylesheet" href="../../assets/site.css"><style>.lesson{max-width:58rem;margin:auto;padding:1.2rem}body{overflow-wrap:break-word}.math-display,mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{skipHtmlTags:["script","noscript","style","textarea","pre","code"]}};</script><script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head><body><main class="lesson"><nav><a href="../../">Open Mathematics Courses</a> · <a href="./">Derived categories of sheaves</a></nav><h1 id="the-projection-formula-and-the-base-change-map">The projection formula and the base change map</h1>
+<p><em>Written and edited by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Mathematically self-checked by the writing AI. Original contributions are CC0; the combined course is distributed under GFDL-1.2-or-later. Full authorship and source attribution appear in the <a href="licence.html">course notice</a>.</em></p>
+<p>The projection formula compares tensoring after pushforward with tensoring before it. Base change compares pullback after pushforward with pushforward after pullback. Each comparison has a canonical direction, supplied by adjunction. Their existence is general; their invertibility needs hypotheses. Keeping these two questions separate prevents a flatness assumption from being mistaken for a universal base-change theorem.</p>
+<p>The prerequisites are <a href="derived-pullback-and-pushforward.html">Derived pullback and pushforward</a>, Theorem 1.1, Proposition 1.2, Theorem 2.2, Propositions 3.1–3.2 and 4.2; <a href="perfect-complexes-and-duals.html">Perfect complexes and duals</a>, Lemma 1.1, Corollary 3.3 and Theorems 4.1–4.2; <a href="derived-tensor-products-and-tor-sheaves.html">The derived tensor product and Tor sheaves</a>, Theorems 1.2 and 2.2; and the exact pullback and closed-support arguments in the first lesson's Theorem 4.4 and the support lesson's Proposition 1.1. We use maps into K-injectives from the bounded-derived lesson's Theorem 3.3 and unbounded resolutions from the K-injective lesson's Theorem 4.1.</p>
+<p>All structure sheaves are commutative and unital. Objects may be unbounded. Let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> be a morphism of ringed spaces. Every tensor in a derived formula below is over the structure sheaf of the indicated space. Ordinary tensors and functors are expressly distinguished when models are used.</p>
+<p>The construction follows the Stacks project authors’ <em>Cohomology of Sheaves</em>, “Projection formula” (Tags 01E7, 01E8, 0B54 and 0B55), “The base change map” (Tag 02N7), and the unbounded base-change and composition results, in the <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/cohomology.tex">AI Integrated Stacks Project edition</a>. We prove the local identifications and compatibility diagrams, keeping the existence and invertibility hypotheses explicit. Source attribution and the licence for adapted passages appear in the <a href="licence.html">course notice</a>.</p>
+<h2 id="1-finite-locally-free-coefficients">1. Finite locally free coefficients</h2>
+<p><strong>Lemma 1.1.</strong> If <span class="math" data-tex="\(V\)">\(V\)</span> is finite locally free and <span class="math" data-tex="\(I\)">\(I\)</span> is an injective module sheaf on a ringed space, then <span class="math" data-tex="\(V\otimes I\)">\(V\otimes I\)</span> is injective. Tensoring a K-injective complex with <span class="math" data-tex="\(V\)">\(V\)</span> also gives a K-injective complex.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(V^*=\mathcal Hom(V,\mathcal O)\)">\(V^*=\mathcal Hom(V,\mathcal O)\)</span>. The ordinary dual-basis evaluation maps give a natural bijection</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}(A,V\otimes I)\\
+\cong\operatorname{Hom}(A\otimes V^*,I).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}(A,V\otimes I)\\
+\cong\operatorname{Hom}(A\otimes V^*,I).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Indeed, this is the finite free tensor–Hom identity on a trivializing open; the canonical evaluation and coevaluation maps define inverse operations globally, so the local descriptions glue. Both <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(V^*\)">\(V^*\)</span> are flat by the stalk criterion. For a monomorphism <span class="math" data-tex="\(A\to B\)">\(A\to B\)</span>, tensoring with <span class="math" data-tex="\(V^*\)">\(V^*\)</span> remains monic. Injectivity of <span class="math" data-tex="\(I\)">\(I\)</span>, followed by (1.1), extends every map <span class="math" data-tex="\(A\to V\otimes I\)">\(A\to V\otimes I\)</span> across <span class="math" data-tex="\(B\)">\(B\)</span>. This proves injectivity.</p>
+<p>The same degree-zero duality induces a bijection of chain maps modulo homotopy from a complex <span class="math" data-tex="\(A\)">\(A\)</span> to <span class="math" data-tex="\(V\otimes I^\bullet\)">\(V\otimes I^\bullet\)</span>, and from <span class="math" data-tex="\(A\otimes V^*\)">\(A\otimes V^*\)</span> to <span class="math" data-tex="\(I^\bullet\)">\(I^\bullet\)</span>. An acyclic <span class="math" data-tex="\(A\)">\(A\)</span> stays acyclic after this exact tensor. The K-injective acyclic test therefore proves the second assertion. The ranks can vary on the space; global constancy of rank was not used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.2 (finite coefficient projection).</strong> For a finite locally free sheaf <span class="math" data-tex="\(V\)">\(V\)</span> on <span class="math" data-tex="\(Y\)">\(Y\)</span> and any <span class="math" data-tex="\(E\in D(\mathcal O_X)\)">\(E\in D(\mathcal O_X)\)</span>, there is a natural isomorphism</p>
+<span class="math math-display" data-tex="\[
+Rf_*E\otimes V\ \cong\ Rf_*(E\otimes f^*V).
+\tag{1.2}
+\]">\[
+Rf_*E\otimes V\ \cong\ Rf_*(E\otimes f^*V).
+\tag{1.2}
+\]</span>
+<p>For a module sheaf <span class="math" data-tex="\(F\)">\(F\)</span> and <span class="math" data-tex="\(q\ge0\)">\(q\ge0\)</span>, this induces</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R^qf_*F\otimes V\\
+\cong R^qf_*(F\otimes f^*V).
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+R^qf_*F\otimes V\\
+\cong R^qf_*(F\otimes f^*V).
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p><strong>Proof.</strong> The ordinary projection map is the adjoint of the tensor of the ordinary counit <span class="math" data-tex="\(f^*f_*F\to F\)">\(f^*f_*F\to F\)</span> with <span class="math" data-tex="\(f^*V\)">\(f^*V\)</span>. On an open <span class="math" data-tex="\(W\subset Y\)">\(W\subset Y\)</span> trivializing <span class="math" data-tex="\(V\)">\(V\)</span> as <span class="math" data-tex="\(\mathcal O_W^r\)">\(\mathcal O_W^r\)</span>, put <span class="math" data-tex="\(F_W=F|_{f^{-1}W}\)">\(F_W=F|_{f^{-1}W}\)</span>. Its restriction identifies with</p>
+<span class="math math-display" data-tex="\[
+(f_W)_*(F_W)^r\longrightarrow(f_W)_*(F_W^r).
+\tag{1.4}
+\]">\[
+(f_W)_*(F_W)^r\longrightarrow(f_W)_*(F_W^r).
+\tag{1.4}
+\]</span>
+<p>It is the identity on each component: the adjoint of each component inclusion is the corresponding counit. Finite sums equal finite products, and pushforward preserves them. Hence (1.4) is an isomorphism. Since the map was globally defined by adjunction, these local isomorphisms prove its global invertibility without choosing compatible trivializations.</p>
+<p>Choose a K-injective resolution <span class="math" data-tex="\(E\to I\)">\(E\to I\)</span>. The pullback <span class="math" data-tex="\(f^*V\)">\(f^*V\)</span> is finite locally free, and Lemma 1.1 makes <span class="math" data-tex="\(I\otimes f^*V\)">\(I\otimes f^*V\)</span> K-injective. Its exact tensor represents <span class="math" data-tex="\(E\otimes f^*V\)">\(E\otimes f^*V\)</span>. Applying the ordinary projection isomorphism termwise gives</p>
+<span class="math math-display" data-tex="\[
+f_*I\otimes V\cong f_*(I\otimes f^*V),
+\tag{1.5}
+\]">\[
+f_*I\otimes V\cong f_*(I\otimes f^*V),
+\tag{1.5}
+\]</span>
+<p>which computes both sides of (1.2). All maps are natural in chain maps and homotopies, hence in derived maps through their K-injective representatives. For <span class="math" data-tex="\(F\)">\(F\)</span> in degree zero use its bounded-below injective resolution; Lemma 1.1 makes the tensor another injective resolution. Flatness of <span class="math" data-tex="\(V\)">\(V\)</span> commutes its tensor with kernels, images and cohomology, giving (1.3). This proves the source's bounded-below assertion and the stronger unbounded version. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-general-map-and-perfect-coefficients">2. The general map and perfect coefficients</h2>
+<p>For any <span class="math" data-tex="\(E\in D(\mathcal O_X)\)">\(E\in D(\mathcal O_X)\)</span>, <span class="math" data-tex="\(K\in D(\mathcal O_Y)\)">\(K\in D(\mathcal O_Y)\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\pi_{f,E,K}:Rf_*E\otimes^L K\\
+\longrightarrow Rf_*(E\otimes^L Lf^*K)
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+\pi_{f,E,K}:Rf_*E\otimes^L K\\
+\longrightarrow Rf_*(E\otimes^L Lf^*K)
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p>as the adjoint, under <span class="math" data-tex="\(Lf^*\dashv Rf_*\)">\(Lf^*\dashv Rf_*\)</span>, of</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Lf^*(Rf_*E\otimes^L K)\\
+\cong Lf^*Rf_*E\otimes^L Lf^*K\\
+\xrightarrow{\epsilon_f\otimes1}E\otimes^L Lf^*K.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+Lf^*(Rf_*E\otimes^L K)\\
+\cong Lf^*Rf_*E\otimes^L Lf^*K\\
+\xrightarrow{\epsilon_f\otimes1}E\otimes^L Lf^*K.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Here <span class="math" data-tex="\(\epsilon_f\)">\(\epsilon_f\)</span> is the derived counit. The proven tensor comparison and the adjunction supply every arrow for arbitrary unbounded inputs. This is a definition of a global map, not an attempt to glue local derived morphisms.</p>
+<p>Naturality follows by taking adjoints: in either variable the relevant square transposes to the naturality square of <span class="math" data-tex="\(\epsilon_f\)">\(\epsilon_f\)</span>, with the same tensor identity on the other factor. The same argument proves compatibility with shifts and triangles. More concretely, the resolution functors, tensor cone comparison and adjunction identify the transposes of all three arrows in the cone triangle; they agree with those in (2.2). Thus (2.1) is a morphism of the two triangle-valued functors in <span class="math" data-tex="\(K\)">\(K\)</span>. The map for <span class="math" data-tex="\(K=\mathcal O_Y\)">\(K=\mathcal O_Y\)</span> is the identity of <span class="math" data-tex="\(Rf_*E\)">\(Rf_*E\)</span>: its transpose is <span class="math" data-tex="\(\epsilon_f\)">\(\epsilon_f\)</span>, exactly the transpose of that identity.</p>
+<p><strong>Theorem 2.1 (perfect projection formula).</strong> If <span class="math" data-tex="\(K\)">\(K\)</span> is perfect on <span class="math" data-tex="\(Y\)">\(Y\)</span>, (2.1) is an isomorphism for every <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p><strong>Proof.</strong> Restrict to an open <span class="math" data-tex="\(W\subset Y\)">\(W\subset Y\)</span>, replacing <span class="math" data-tex="\(X\)">\(X\)</span> by <span class="math" data-tex="\(f^{-1}W\)">\(f^{-1}W\)</span>. Proposition 3.2 of the pullback–pushforward lesson identifies the restricted pushforward, while its Theorem 1.1 and Proposition 1.2 identify the restricted pullbacks and tensors. The counit restricts to the same counit by its defining Hom bijection; hence (2.1) restricts to the projection map for <span class="math" data-tex="\(f_W\)">\(f_W\)</span>.</p>
+<p>Now work on a strict-model neighbourhood for <span class="math" data-tex="\(K\)">\(K\)</span>. For <span class="math" data-tex="\(\mathcal O_Y\)">\(\mathcal O_Y\)</span> the map is the identity. Finite direct sums preserve that assertion, and naturality with the inclusion and retraction of a finite projective summand makes the map on the summand an isomorphism too. Shifts preserve it by the comparison above. Filter the bounded strict complex by its brutal lower tails. Each successive triangle has one term equal to a finite projective sheaf in one degree. The compatible two triangle sequences, and their long exact cohomology sequences, prove the assertion inductively on its finite number of terms. The cone of (2.1) is consequently zero on an open cover, so all its cohomology sheaves vanish globally. Thus the map is an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof does not require <span class="math" data-tex="\(f\)">\(f\)</span> to be proper, flat, separated or of finite cohomological dimension. Finiteness is in the coefficient <span class="math" data-tex="\(K\)">\(K\)</span>, and it is local finiteness. In particular, a perfect coefficient without a uniform bound on a noncompact target is allowed.</p>
+<h2 id="3-closed-inclusions-with-arbitrary-coefficients">3. Closed inclusions with arbitrary coefficients</h2>
+<p><strong>Theorem 3.1.</strong> If the underlying map of <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> is a homeomorphism onto a closed subset, the projection map (2.1) is an isomorphism for every <span class="math" data-tex="\(E,K\)">\(E,K\)</span>. The coefficient map need not be flat or an isomorphism.</p>
+<p><strong>Proof.</strong> Identify the underlying space <span class="math" data-tex="\(X\)">\(X\)</span> with its image <span class="math" data-tex="\(Z\)">\(Z\)</span>. At <span class="math" data-tex="\(y\notin Z\)">\(y\notin Z\)</span>, a neighbourhood disjoint from <span class="math" data-tex="\(Z\)">\(Z\)</span> makes <span class="math" data-tex="\((f_*F)_y=0\)">\((f_*F)_y=0\)</span>. At <span class="math" data-tex="\(y=f(x)\)">\(y=f(x)\)</span>, intersections of neighbourhoods in <span class="math" data-tex="\(Y\)">\(Y\)</span> with <span class="math" data-tex="\(Z\)">\(Z\)</span> are cofinal among neighbourhoods in <span class="math" data-tex="\(X\)">\(X\)</span>, so <span class="math" data-tex="\((f_*F)_y=F_x\)">\((f_*F)_y=F_x\)</span>, with its action restricted from <span class="math" data-tex="\(\mathcal O_{Y,y}\)">\(\mathcal O_{Y,y}\)</span>. These stalk formulas prove that <span class="math" data-tex="\(f_*\)">\(f_*\)</span> is exact and commutes with arbitrary sheaf direct sums: the respective comparison maps are exact or isomorphisms on every stalk. This remains true for arbitrary structure sheaves and their given coefficient homomorphism.</p>
+<p>For module sheaves the ordinary projection map is an isomorphism on stalks. Outside <span class="math" data-tex="\(Z\)">\(Z\)</span> both sides vanish; at <span class="math" data-tex="\(y=f(x)\)">\(y=f(x)\)</span>, with <span class="math" data-tex="\(R=\mathcal O_{Y,y}\)">\(R=\mathcal O_{Y,y}\)</span>, <span class="math" data-tex="\(S=\mathcal O_{X,x}\)">\(S=\mathcal O_{X,x}\)</span>, it is the balanced isomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F_x\otimes_R M_y\\
+\longrightarrow F_x\otimes_S(S\otimes_R M_y),\\
+e\otimes m\longmapsto e\otimes(1\otimes m).
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+F_x\otimes_R M_y\\
+\longrightarrow F_x\otimes_S(S\otimes_R M_y),\\
+e\otimes m\longmapsto e\otimes(1\otimes m).
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>Its inverse sends <span class="math" data-tex="\(e\otimes(s\otimes m)\)">\(e\otimes(s\otimes m)\)</span> to <span class="math" data-tex="\(se\otimes m\)">\(se\otimes m\)</span>. Balancing verifies both inverse composites, without flatness.</p>
+<p>Choose a K-flat model <span class="math" data-tex="\(P\)">\(P\)</span> for <span class="math" data-tex="\(K\)">\(K\)</span>, and any representative <span class="math" data-tex="\(G\)">\(G\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span>. Pullback <span class="math" data-tex="\(f^*P\)">\(f^*P\)</span> is K-flat. Exactness of <span class="math" data-tex="\(f_*\)">\(f_*\)</span> makes the right side of (2.1) represented by <span class="math" data-tex="\(f_*\operatorname{Tot}(G\otimes f^*P)\)">\(f_*\operatorname{Tot}(G\otimes f^*P)\)</span>, and the left by <span class="math" data-tex="\(\operatorname{Tot}(f_*G\otimes P)\)">\(\operatorname{Tot}(f_*G\otimes P)\)</span>. The ordinary projection maps in each pair of degrees give a chain isomorphism between them: (3.1) is an isomorphism and <span class="math" data-tex="\(f_*\)">\(f_*\)</span> commutes with the totalization's sums.</p>
+<p>This is the canonical derived map. To check it, take a K-flat resolution <span class="math" data-tex="\(Q\to f_*G\)">\(Q\to f_*G\)</span>. The map <span class="math" data-tex="\(Q\otimes P\to f_*G\otimes P\)">\(Q\otimes P\to f_*G\otimes P\)</span> is a quasi-isomorphism. Under the ordinary adjunction the chain projection map, precomposed with this resolution, transposes to the map</p>
+<span class="math math-display" data-tex="\[
+f^*Q\otimes f^*P\longrightarrow G\otimes f^*P
+\tag{3.2}
+\]">\[
+f^*Q\otimes f^*P\longrightarrow G\otimes f^*P
+\tag{3.2}
+\]</span>
+<p>from the adjoint <span class="math" data-tex="\(f^*Q\to G\)">\(f^*Q\to G\)</span>. That adjoint represents the derived counit: comparing <span class="math" data-tex="\(G\to I\)">\(G\to I\)</span> with a K-flat resolution of <span class="math" data-tex="\(f_*I\)">\(f_*I\)</span>, and refining the two roofs by the common reading's fraction theorem, gives a commuting-up-to-homotopy square; its adjoint is precisely the counit construction in the pullback–pushforward lesson's Theorem 2.2. Thus (3.2) is (2.2). The isomorphism proved on these models is (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a one-point coefficient homomorphism <span class="math" data-tex="\(R\to S\)">\(R\to S\)</span>, this says</p>
+<span class="math math-display" data-tex="\[
+E\otimes_R^L K\cong E\otimes_S^L(S\otimes_R^L K),
+\tag{3.3}
+\]">\[
+E\otimes_R^L K\cong E\otimes_S^L(S\otimes_R^L K),
+\tag{3.3}
+\]</span>
+<p>where on the left <span class="math" data-tex="\(E\)">\(E\)</span> is regarded as an <span class="math" data-tex="\(R\)">\(R\)</span>-complex. Even <span class="math" data-tex="\(R\to R/I\)">\(R\to R/I\)</span> is allowed. On more general spaces the closed image is what ensures exact pushforward and its stalk description. An open inclusion has different boundary stalks, as Section 5 will demonstrate.</p>
+<h2 id="4-base-change-flat-models-and-compatibility">4. Base change, flat models and compatibility</h2>
+<p>Consider a commutative square of ringed spaces</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+X&#x27;&amp;\xrightarrow{g&#x27;}&amp;X\\
+{\scriptstyle f&#x27;}\downarrow&amp;&amp;\downarrow{\scriptstyle f}\\
+Y&#x27;&amp;\xrightarrow{g}&amp;Y.
+\end{array}
+\tag{4.1}
+\]">\[
+\begin{array}{ccc}
+X&#x27;&amp;\xrightarrow{g&#x27;}&amp;X\\
+{\scriptstyle f&#x27;}\downarrow&amp;&amp;\downarrow{\scriptstyle f}\\
+Y&#x27;&amp;\xrightarrow{g}&amp;Y.
+\end{array}
+\tag{4.1}
+\]</span>
+<p>Commutative includes the coefficient homomorphisms, not just the continuous maps. The square need not be Cartesian.</p>
+<p><strong>Theorem 4.1 (canonical base change).</strong> For every <span class="math" data-tex="\(E\in D(\mathcal O_X)\)">\(E\in D(\mathcal O_X)\)</span> there is a natural map</p>
+<span class="math math-display" data-tex="\[
+b_E:Lg^*Rf_*E\longrightarrow Rf&#x27;_*Lg&#x27;^*E.
+\tag{4.2}
+\]">\[
+b_E:Lg^*Rf_*E\longrightarrow Rf&#x27;_*Lg&#x27;^*E.
+\tag{4.2}
+\]</span>
+<p>It respects identity squares, horizontal and vertical composition of squares, and the projection maps. If both <span class="math" data-tex="\(g,g&#x27;\)">\(g,g&#x27;\)</span> are flat, its construction uses ordinary exact pullbacks, for unbounded as well as bounded-below complexes. These statements construct and compare maps; they assert no general invertibility.</p>
+<p><strong>Proof: definition and naturality.</strong> Let <span class="math" data-tex="\(A=Lg^*Rf_*E\)">\(A=Lg^*Rf_*E\)</span>. Define <span class="math" data-tex="\(b_E\)">\(b_E\)</span> to be the adjoint under <span class="math" data-tex="\(Lf&#x27;^*\dashv Rf&#x27;_*\)">\(Lf&#x27;^*\dashv Rf&#x27;_*\)</span> of</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Lf&#x27;^*A\cong Lg&#x27;^*Lf^*Rf_*E\\
+\xrightarrow{Lg&#x27;^*\epsilon_{f,E}}Lg&#x27;^*E.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+Lf&#x27;^*A\cong Lg&#x27;^*Lf^*Rf_*E\\
+\xrightarrow{Lg&#x27;^*\epsilon_{f,E}}Lg&#x27;^*E.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>The pullback composition comparison supplies the isomorphism. Naturality of the counit and of this comparison proves naturality of <span class="math" data-tex="\(b\)">\(b\)</span> for every derived map, by taking its transpose. In particular, no choice of representatives occurs in the definition.</p>
+<p>The equivalent pushforward description first takes the unit</p>
+<span class="math math-display" data-tex="\[
+E\longrightarrow Rg&#x27;_*Lg&#x27;^*E,
+\]">\[
+E\longrightarrow Rg&#x27;_*Lg&#x27;^*E,
+\]</span>
+<p>pushes it through <span class="math" data-tex="\(Rf_*\)">\(Rf_*\)</span>, identifies <span class="math" data-tex="\(Rf_*Rg&#x27;_*\)">\(Rf_*Rg&#x27;_*\)</span> with <span class="math" data-tex="\(Rg_*Rf&#x27;_*\)">\(Rg_*Rf&#x27;_*\)</span> by composition, and takes its adjoint under <span class="math" data-tex="\(Lg^*\dashv Rg_*\)">\(Lg^*\dashv Rg_*\)</span>. To verify equivalence, take that map's further transpose under <span class="math" data-tex="\(Lf&#x27;^*\)">\(Lf&#x27;^*\)</span>. Successive Hom bijections identify the composite adjunctions for <span class="math" data-tex="\(fg&#x27;=gf&#x27;\)">\(fg&#x27;=gf&#x27;\)</span>; cancel the unit–counit pairs using their triangle identities. What remains is <span class="math" data-tex="\(Lg&#x27;^*\epsilon_{f,E}\)">\(Lg&#x27;^*\epsilon_{f,E}\)</span>, which is (4.3). This also identifies exactly which units are meant in model calculations.</p>
+<p><strong>Proof: flat construction.</strong> Flatness of a ringed-space morphism means that the target-to-source map on each relevant stalk makes the source stalk flat. The stalk formula for pullback then makes <span class="math" data-tex="\(g^*\)">\(g^*\)</span> and <span class="math" data-tex="\(g&#x27;^*\)">\(g&#x27;^*\)</span> exact, so they compute <span class="math" data-tex="\(Lg^*,Lg&#x27;^*\)">\(Lg^*,Lg&#x27;^*\)</span> on any representatives. Choose <span class="math" data-tex="\(E\to I\)">\(E\to I\)</span> K-injective and <span class="math" data-tex="\(g&#x27;^*E\to J\)">\(g&#x27;^*E\to J\)</span> K-injective. Pushforward <span class="math" data-tex="\(g&#x27;_*J\)">\(g&#x27;_*J\)</span> is K-injective because its left adjoint <span class="math" data-tex="\(g&#x27;^*\)">\(g&#x27;^*\)</span> is exact, as proved in Proposition 4.2 of the pullback–pushforward lesson. The ordinary unit followed by the resolution gives a chain map <span class="math" data-tex="\(E\to g&#x27;_*J\)">\(E\to g&#x27;_*J\)</span>. Maps into K-injectives give a unique homotopy class</p>
+<span class="math math-display" data-tex="\[
+\beta:I\longrightarrow g&#x27;_*J
+\tag{4.4}
+\]">\[
+\beta:I\longrightarrow g&#x27;_*J
+\tag{4.4}
+\]</span>
+<p>extending it. Push (4.4) through <span class="math" data-tex="\(f_*\)">\(f_*\)</span> and use <span class="math" data-tex="\(f_*g&#x27;_* = g_*f&#x27;_*\)">\(f_*g&#x27;_* = g_*f&#x27;_*\)</span>. Ordinary adjunction gives the chain map</p>
+<span class="math math-display" data-tex="\[
+g^*f_*I\longrightarrow f&#x27;_*J.
+\tag{4.5}
+\]">\[
+g^*f_*I\longrightarrow f&#x27;_*J.
+\tag{4.5}
+\]</span>
+<p>The complexes in (4.5) represent the two sides of (4.2); a homotopy of <span class="math" data-tex="\(\beta\)">\(\beta\)</span> induces a homotopy of (4.5). Comparison between K-injective resolutions therefore makes this a well-defined natural derived map. A pullback of an injective was never asserted injective.</p>
+<p>Here is a direct check that (4.5) agrees with (4.3). Resolve <span class="math" data-tex="\(f_*I\)">\(f_*I\)</span> by a K-flat <span class="math" data-tex="\(Q\)">\(Q\)</span>. Since <span class="math" data-tex="\(g\)">\(g\)</span> is flat, <span class="math" data-tex="\(g^*Q\to g^*f_*I\)">\(g^*Q\to g^*f_*I\)</span> is a quasi-isomorphism, and <span class="math" data-tex="\(g^*Q\)">\(g^*Q\)</span> is K-flat. The transpose of (4.5), on that model, is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f&#x27;^*g^*Q\cong g&#x27;^*f^*Q\\
+\longrightarrow g&#x27;^*I\longrightarrow J.
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+f&#x27;^*g^*Q\cong g&#x27;^*f^*Q\\
+\longrightarrow g&#x27;^*I\longrightarrow J.
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>The first arrow after the isomorphism is <span class="math" data-tex="\(g&#x27;^*\)">\(g&#x27;^*\)</span> of the adjoint to <span class="math" data-tex="\(Q\to f_*I\)">\(Q\to f_*I\)</span>, hence of the derived counit. The last arrow is adjoint to <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Its composite with <span class="math" data-tex="\(g&#x27;^*E\to g&#x27;^*I\)">\(g&#x27;^*E\to g&#x27;^*I\)</span> is the chosen resolution map to <span class="math" data-tex="\(J\)">\(J\)</span>, up to homotopy, by (4.4). Flatness makes that first map a quasi-isomorphism, so the last arrow represents the required identification with <span class="math" data-tex="\(Lg&#x27;^*E\)">\(Lg&#x27;^*E\)</span>. Thus (4.6) is exactly (4.3).</p>
+<p>For bounded-below <span class="math" data-tex="\(E\)">\(E\)</span>, injective resolutions may be bounded below with injective terms. This specializes to Tag 02N7: <strong>both horizontal maps are flat and the conclusion is a canonical map</strong>. Its proof does not turn a Cartesian square, flat horizontal arrows, or any combination of those conditions into an isomorphism claim.</p>
+<p><strong>Proof: pasting squares.</strong> For any adjunction <span class="math" data-tex="\(L\dashv R\)">\(L\dashv R\)</span>, the transpose of <span class="math" data-tex="\(u:A\to RB\)">\(u:A\to RB\)</span> is <span class="math" data-tex="\(\epsilon_B\circ L(u)\)">\(\epsilon_B\circ L(u)\)</span>. We use this formula and (4.3). In an identity square (4.3) is a counit, so (4.2) is the identity.</p>
+<p>For horizontal pasting, add a square with <span class="math" data-tex="\(h:Y&#x27;&#x27;\to Y&#x27;\)">\(h:Y&#x27;&#x27;\to Y&#x27;\)</span>, <span class="math" data-tex="\(h&#x27;:X&#x27;&#x27;\to X&#x27;\)">\(h&#x27;:X&#x27;&#x27;\to X&#x27;\)</span> and <span class="math" data-tex="\(f&#x27;&#x27;:X&#x27;&#x27;\to Y&#x27;&#x27;\)">\(f&#x27;&#x27;:X&#x27;&#x27;\to Y&#x27;&#x27;\)</span>. The proposed composite is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Lh^*Lg^*Rf_*E\\
+\longrightarrow Lh^*Rf&#x27;_*Lg&#x27;^*E\\
+\longrightarrow Rf&#x27;&#x27;_*Lh&#x27;^*Lg&#x27;^*E.
+\end{gathered}
+\tag{4.7}
+\]">\[
+\begin{gathered}
+Lh^*Lg^*Rf_*E\\
+\longrightarrow Lh^*Rf&#x27;_*Lg&#x27;^*E\\
+\longrightarrow Rf&#x27;&#x27;_*Lh&#x27;^*Lg&#x27;^*E.
+\end{gathered}
+\tag{4.7}
+\]</span>
+<p>Transpose under <span class="math" data-tex="\(Lf&#x27;&#x27;^*\dashv Rf&#x27;&#x27;_*\)">\(Lf&#x27;&#x27;^*\dashv Rf&#x27;&#x27;_*\)</span>. The defining equation for the second base-change map replaces its pullback followed by the counit with <span class="math" data-tex="\(Lh&#x27;^*\epsilon_{f&#x27;}\)">\(Lh&#x27;^*\epsilon_{f&#x27;}\)</span>. The defining equation for the first then replaces <span class="math" data-tex="\(\epsilon_{f&#x27;}\circ Lf&#x27;^*(b_E)\)">\(\epsilon_{f&#x27;}\circ Lf&#x27;^*(b_E)\)</span> with <span class="math" data-tex="\(Lg&#x27;^*\epsilon_f\)">\(Lg&#x27;^*\epsilon_f\)</span>. The result is <span class="math" data-tex="\(Lh&#x27;^*Lg&#x27;^*\epsilon_f\)">\(Lh&#x27;^*Lg&#x27;^*\epsilon_f\)</span>, with the coherent pullback-composition identification. This is the transpose for the outer rectangle, proving equality of the maps.</p>
+<p>For vertical pasting take <span class="math" data-tex="\(p:Y\to Z\)">\(p:Y\to Z\)</span>, <span class="math" data-tex="\(p&#x27;:Y&#x27;\to Z&#x27;\)">\(p&#x27;:Y&#x27;\to Z&#x27;\)</span>, and <span class="math" data-tex="\(h:Z&#x27;\to Z\)">\(h:Z&#x27;\to Z\)</span>, with <span class="math" data-tex="\(pg=hp&#x27;\)">\(pg=hp&#x27;\)</span>. The composite first applies base change for <span class="math" data-tex="\(p\)">\(p\)</span> to <span class="math" data-tex="\(Rf_*E\)">\(Rf_*E\)</span>, then <span class="math" data-tex="\(Rp&#x27;_*\)">\(Rp&#x27;_*\)</span> to the base change for <span class="math" data-tex="\(f\)">\(f\)</span>. The counit of the composite adjunction <span class="math" data-tex="\(L(pf)^*\dashv R(pf)_*\)">\(L(pf)^*\dashv R(pf)_*\)</span>, under the composition isomorphisms, is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Lf^*Lp^*Rp_*Rf_*E\\
+\xrightarrow{Lf^*\epsilon_p}Lf^*Rf_*E\\
+\xrightarrow{\epsilon_f}E.
+\end{gathered}
+\tag{4.8}
+\]">\[
+\begin{gathered}
+Lf^*Lp^*Rp_*Rf_*E\\
+\xrightarrow{Lf^*\epsilon_p}Lf^*Rf_*E\\
+\xrightarrow{\epsilon_f}E.
+\end{gathered}
+\tag{4.8}
+\]</span>
+<p>This formula follows by composing the two Hom adjunction bijections: the identity of the composed right-adjoint value transposes successively through those two counits. Transposing the proposed pasted map uses the same two factors, pulled back through <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span>. It is therefore the transpose (4.3) for the rectangle. This proves vertical pasting without an omitted diagram verification.</p>
+<p><strong>Proof: projection compatibility.</strong> Fix <span class="math" data-tex="\(K\in D(\mathcal O_Y)\)">\(K\in D(\mathcal O_Y)\)</span>. The two routes from</p>
+<span class="math math-display" data-tex="\[
+Lg^*(Rf_*E\otimes^L K)
+\]">\[
+Lg^*(Rf_*E\otimes^L K)
+\]</span>
+<p>to</p>
+<span class="math math-display" data-tex="\[
+Rf&#x27;_*(Lg&#x27;^*E\otimes^L Lf&#x27;^*Lg^*K)
+\tag{4.9}
+\]">\[
+Rf&#x27;_*(Lg&#x27;^*E\otimes^L Lf&#x27;^*Lg^*K)
+\tag{4.9}
+\]</span>
+<p>are as follows. One pulls back <span class="math" data-tex="\(\pi_f\)">\(\pi_f\)</span>, applies base change to <span class="math" data-tex="\(E\otimes^L Lf^*K\)">\(E\otimes^L Lf^*K\)</span>, then uses tensor and pullback composition. The other uses tensor compatibility first, applies <span class="math" data-tex="\(b_E\otimes1\)">\(b_E\otimes1\)</span>, then <span class="math" data-tex="\(\pi_{f&#x27;}\)">\(\pi_{f&#x27;}\)</span>. Transpose both under <span class="math" data-tex="\(Lf&#x27;^*\)">\(Lf&#x27;^*\)</span>. On the common source model the first route is <span class="math" data-tex="\(Lg&#x27;^*\epsilon_{f,E}\otimes1\)">\(Lg&#x27;^*\epsilon_{f,E}\otimes1\)</span>, with the coefficient factor <span class="math" data-tex="\(Lg&#x27;^*Lf^*K\)">\(Lg&#x27;^*Lf^*K\)</span>. The second uses</p>
+<span class="math math-display" data-tex="\[
+\epsilon_{f&#x27;,Lg&#x27;^*E}\circ Lf&#x27;^*(b_E)
+=Lg&#x27;^*\epsilon_{f,E},
+\tag{4.10}
+\]">\[
+\epsilon_{f&#x27;,Lg&#x27;^*E}\circ Lf&#x27;^*(b_E)
+=Lg&#x27;^*\epsilon_{f,E},
+\tag{4.10}
+\]</span>
+<p>which is precisely (4.3)'s defining transpose equation, and then tensors the same coefficient identity. The two transposes agree globally, proving compatibility. All tensor reassociations here are the coherent ones established earlier. No invertibility of <span class="math" data-tex="\(b_E\)">\(b_E\)</span> was needed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Projection maps also compose for <span class="math" data-tex="\(X\xrightarrow fY\xrightarrow pZ\)">\(X\xrightarrow fY\xrightarrow pZ\)</span>. First apply <span class="math" data-tex="\(\pi_p\)">\(\pi_p\)</span> to <span class="math" data-tex="\(Rf_*E\)">\(Rf_*E\)</span> and <span class="math" data-tex="\(K\)">\(K\)</span>, then <span class="math" data-tex="\(Rp_*\pi_f\)">\(Rp_*\pi_f\)</span> with coefficient <span class="math" data-tex="\(Lp^*K\)">\(Lp^*K\)</span>. Their transpose under the composite pullback is the tensor of (4.8) with <span class="math" data-tex="\(L(pf)^*K\)">\(L(pf)^*K\)</span>, hence is the transpose of <span class="math" data-tex="\(\pi_{pf}\)">\(\pi_{pf}\)</span>. The maps are equal by adjunction. This observation and Theorem 4.1 ensure that iterating these constructions changes neither their direction nor their definition.</p>
+<h2 id="5-two-boundary-failures-and-a-coefficient-calculation">5. Two boundary failures and a coefficient calculation</h2>
+<p>Let <span class="math" data-tex="\(Y=\{0\}\cup\{1/n:n\ge1\}\)">\(Y=\{0\}\cup\{1/n:n\ge1\}\)</span> have its subspace topology in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, let <span class="math" data-tex="\(U=Y\setminus\{0\}\)">\(U=Y\setminus\{0\}\)</span>, and let <span class="math" data-tex="\(j:U\hookrightarrow Y\)">\(j:U\hookrightarrow Y\)</span>. Give both spaces the constant coefficient sheaf <span class="math" data-tex="\(k\)">\(k\)</span>, for a field <span class="math" data-tex="\(k\)">\(k\)</span>. Every point of <span class="math" data-tex="\(U\)">\(U\)</span> is isolated. A sheaf there is a family of vector spaces, and its sections on an open are their product. Products of vector-space short exact sequences are exact: choose a preimage in each component to prove surjectivity; kernels are componentwise. Consequently <span class="math" data-tex="\(j_*\)">\(j_*\)</span> is exact on these sheaves, and its derived functor is computed on any complex by ordinary pushforward.</p>
+<p>Take <span class="math" data-tex="\(F=k_U\)">\(F=k_U\)</span>. At the boundary point the neighbourhoods contain all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(j_*F)_0=\varinjlim_N\prod_{n\ge N}k\\
+\cong\left(\prod_{n\ge1}k\right)\Big/\left(\bigoplus_{n\ge1}k\right).
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+(j_*F)_0=\varinjlim_N\prod_{n\ge N}k\\
+\cong\left(\prod_{n\ge1}k\right)\Big/\left(\bigoplus_{n\ge1}k\right).
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>Indeed, extending a tail by zero proves surjectivity from the full product to this colimit, and a sequence dies exactly when a tail is zero, equivalently when its support is finite. Write this quotient as <span class="math" data-tex="\(A\)">\(A\)</span>; the class of the constant sequence one is nonzero.</p>
+<p><strong>Failure with a flat infinite coefficient.</strong> Put <span class="math" data-tex="\(K=\bigoplus_{m\ge1}k_Y\)">\(K=\bigoplus_{m\ge1}k_Y\)</span>, in degree zero. It is flat, but not perfect, since its stalk at any point is an infinite-dimensional vector space and Proposition 2.2 of the perfect lesson says a perfect module is of finite type. All derived tensors in this example are ordinary. The projection map at zero is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A\otimes_k\left(\bigoplus_{m\ge1}k\right)\\
+\longrightarrow\varinjlim_N\prod_{n\ge N}\left(\bigoplus_{m\ge1}k\right).
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+A\otimes_k\left(\bigoplus_{m\ge1}k\right)\\
+\longrightarrow\varinjlim_N\prod_{n\ge N}\left(\bigoplus_{m\ge1}k\right).
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>An element on the left uses only finitely many coordinate indices <span class="math" data-tex="\(m\)">\(m\)</span>, uniformly over its sequence entries. On the right take the sequence whose <span class="math" data-tex="\(n\)">\(n\)</span>-th value is the <span class="math" data-tex="\(n\)">\(n\)</span>-th basis vector <span class="math" data-tex="\(e_n\)">\(e_n\)</span>. It is a valid section on the discrete <span class="math" data-tex="\(U\)">\(U\)</span>. No tail of that sequence has its values in a fixed finite coordinate subspace. Hence its germ is not in the image of (5.2), and the projection map is not an isomorphism, even in degree zero. The failure is about finite coefficients, not about flatness: this coefficient is flat, and there is no higher-cohomology complication hiding the failure.</p>
+<p><strong>Failure in a Cartesian flat square.</strong> Base change the same open inclusion along <span class="math" data-tex="\(g:\{0\}\hookrightarrow Y\)">\(g:\{0\}\hookrightarrow Y\)</span>, with coefficient <span class="math" data-tex="\(k\)">\(k\)</span> at the point. The Cartesian top-left space is empty, so <span class="math" data-tex="\(g&#x27;:\varnothing\to U\)">\(g&#x27;:\varnothing\to U\)</span> and <span class="math" data-tex="\(f&#x27;:\varnothing\to\{0\}\)">\(f&#x27;:\varnothing\to\{0\}\)</span>. The stalk coefficient map for <span class="math" data-tex="\(g\)">\(g\)</span> is <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span>, hence flat; <span class="math" data-tex="\(g&#x27;\)">\(g&#x27;\)</span> is flat vacuously. For <span class="math" data-tex="\(F\)">\(F\)</span>, (4.2) becomes</p>
+<span class="math math-display" data-tex="\[
+A[0]\longrightarrow0.
+\tag{5.3}
+\]">\[
+A[0]\longrightarrow0.
+\tag{5.3}
+\]</span>
+<p>This is not an isomorphism because <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>. Thus both flat horizontal maps and a Cartesian square still do not imply base change for arbitrary ringed spaces and pushforward. Every hypothesis has been checked in this example; no appeal to a vague exceptional topology is needed.</p>
+<p>The contrast with restriction to an open is instructive. If <span class="math" data-tex="\(g:V\hookrightarrow Y\)">\(g:V\hookrightarrow Y\)</span> is open and <span class="math" data-tex="\(X&#x27;=f^{-1}V\)">\(X&#x27;=f^{-1}V\)</span> has restricted coefficients, the base-change map is an isomorphism. On a K-injective <span class="math" data-tex="\(I\)">\(I\)</span>, restriction to <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> remains K-injective, and the two sides are literally the complexes</p>
+<span class="math math-display" data-tex="\[
+(f_*I)|_V=(f_V)_*(I|_{X&#x27;}).
+\tag{5.4}
+\]">\[
+(f_*I)|_V=(f_V)_*(I|_{X&#x27;}).
+\tag{5.4}
+\]</span>
+<p>Their section values on every smaller open coincide. The map (4.3) gives this same equality: its transpose is the restricted counit. This is precisely Proposition 3.2 of the pullback–pushforward lesson. Replacing an open neighbourhood by a boundary point removes the sectionwise equality that proves (5.4), which explains (5.3).</p>
+<p><strong>A nonflat closed coefficient map.</strong> On one-point spaces take <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>, <span class="math" data-tex="\(S=\mathbb Z/2\)">\(S=\mathbb Z/2\)</span>, <span class="math" data-tex="\(E=S\)">\(E=S\)</span>, and <span class="math" data-tex="\(K=\mathbb Z/2\)">\(K=\mathbb Z/2\)</span>. The free resolution <span class="math" data-tex="\(\mathbb Z\xrightarrow{2}\mathbb Z\)">\(\mathbb Z\xrightarrow{2}\mathbb Z\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span> represents <span class="math" data-tex="\(K\)">\(K\)</span>. Its scalar extension is <span class="math" data-tex="\(S\xrightarrow{0}S\)">\(S\xrightarrow{0}S\)</span>. Thus both sides of (3.3) have one copy of <span class="math" data-tex="\(S\)">\(S\)</span> in each of degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>, and the projection isomorphism is the identity on those copies. Replacing derived pullback by ordinary pullback would lose the negative cohomology. Closedness guarantees this projection formula even though the coefficient map is nonflat; it does not erase its Tor groups.</p>
+<p>Continue with <a href="quasi-coherent-sheaves-and-concentrated-maps.html">Quasi-coherent sheaves and concentrated scheme maps</a> for the scheme projection and flat-base-change proofs. After its Sections 1–2, return to <a href="inverse-limits-and-unbounded-resolutions.html#finite-affine-cover-bound">the inverse-limit lesson, Theorem 6.2</a>, for the finite affine-cover product bound.</p>
+<h2 id="6-exercises-with-checked-solutions">6. Exercises with checked solutions</h2>
+<p><strong>Exercise 1 (easy: pushforward to a point).</strong> Let <span class="math" data-tex="\(f:X\to\{*\}\)">\(f:X\to\{*\}\)</span> have coefficient ring <span class="math" data-tex="\(R\)">\(R\)</span> at the point. Show the projection formula for <span class="math" data-tex="\(K=R^r\)">\(K=R^r\)</span>, with <span class="math" data-tex="\(r\)">\(r\)</span> finite, directly on a K-injective model. Explain why this calculation does not justify arbitrary infinite free coefficients.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(E\to I\)">\(E\to I\)</span> K-injective, <span class="math" data-tex="\(Lf^*R^r=\mathcal O_X^r\)">\(Lf^*R^r=\mathcal O_X^r\)</span>, and <span class="math" data-tex="\(I^r\)">\(I^r\)</span> is K-injective: finite Hom groups split into finite products, so the acyclic test vanishes in each component. Sections commute with finite direct sums, which are finite products. Both sides are therefore represented by <span class="math" data-tex="\(\Gamma(X,I)^r\)">\(\Gamma(X,I)^r\)</span>, and the map is the identity in every degree and on each component. For infinite rank a tensor uses a sheaf direct sum. Its section functor need not commute with that sum, and its pushforward at a boundary may include families with coordinate support varying without a common finite bound. Formula (5.2) supplies a checked counterexample to exactly that inference. The finite proof uses finiteness twice, in the direct-sum identity and in the coefficient dual.</p>
+<p><strong>Exercise 2 (medium: more general degree-zero coefficients).</strong> Extend (1.3) to a locally finite projective sheaf <span class="math" data-tex="\(V\)">\(V\)</span> that need not be finite locally free. State the needed ring hypothesis, and check independence of the chosen splitting.</p>
+<p><strong>Solution.</strong> The rings remain commutative, but their stalks need not be local. On an open neighbourhood choose <span class="math" data-tex="\(V\)">\(V\)</span> as a summand of <span class="math" data-tex="\(\mathcal O^r\)">\(\mathcal O^r\)</span>, with inclusion <span class="math" data-tex="\(a\)">\(a\)</span> and retraction <span class="math" data-tex="\(b\)">\(b\)</span>. The ordinary projection maps commute with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> because they are defined by the counit and tensor functoriality. Their map on the finite power is an isomorphism; restricting it and its inverse to the summand therefore gives an isomorphism on <span class="math" data-tex="\(V\)">\(V\)</span>. The global projection map is already defined by adjunction, so a second splitting gives the same map, rather than a new choice of gluing data. The pullback remains locally finite projective and flat. Its ordinary duality gives (1.1), hence preserves injectives; alternatively this follows locally from finite projective dual bases, with globally canonical maps. Applying these facts to an injective resolution gives (1.3) on every member of the cover, hence globally. This includes the nonfree module <span class="math" data-tex="\((1,0)(k\times k)\)">\((1,0)(k\times k)\)</span> on the one-point example in the perfect lesson.</p>
+<p><strong>Exercise 3 (medium: a two-term strict model).</strong> Prove the projection formula for <span class="math" data-tex="\(K=(P^{-1}\xrightarrow dP^0)\)">\(K=(P^{-1}\xrightarrow dP^0)\)</span>, where both terms are finite projective. Specify the triangle and the comparison that is used; a reference to “devissage” alone is insufficient.</p>
+<p><strong>Solution.</strong> Inclusion of the top term gives the triangle</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P^0[0]\longrightarrow K\longrightarrow P^{-1}[1]\\
+\longrightarrow P^0[1].
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+P^0[0]\longrightarrow K\longrightarrow P^{-1}[1]\\
+\longrightarrow P^0[1].
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>It comes from the degreewise split short exact sequence of the brutal tails, using the common reading's cone convention. Apply the exact functors <span class="math" data-tex="\(Rf_*E\otimes^L-\)">\(Rf_*E\otimes^L-\)</span> and <span class="math" data-tex="\(Rf_*(E\otimes^L Lf^*(-))\)">\(Rf_*(E\otimes^L Lf^*(-))\)</span>. Naturality and triangle compatibility of (2.1) give a map between these triangles, including their last arrows. The maps on <span class="math" data-tex="\(P^0\)">\(P^0\)</span> and <span class="math" data-tex="\(P^{-1}[1]\)">\(P^{-1}[1]\)</span> are isomorphisms by the finite-power, summand and shift cases. The long exact cohomology sequences then give an isomorphism on the middle object: injectivity follows by lifting a zero image to the preceding term and cancelling its isomorphic counterpart; surjectivity follows by lifting the following-term image and correcting by the preceding-term image. Thus the middle cone is acyclic. This proves the two-term case for any differential, rather than only for a split complex.</p>
+<p><strong>Exercise 4 (hard: a global duality proof).</strong> Give a second proof of Theorem 2.1 using perfect duality and the derived adjunction, without choosing a global strict model for <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Solution.</strong> Pullback preserves the evaluation, coevaluation and their identities, because it is a monoidal functor with coherent comparisons. Hence <span class="math" data-tex="\(Lf^*(K^\vee)\)">\(Lf^*(K^\vee)\)</span> is the dual of <span class="math" data-tex="\(Lf^*K\)">\(Lf^*K\)</span>; uniqueness of the dual identifies it with <span class="math" data-tex="\((Lf^*K)^\vee\)">\((Lf^*K)^\vee\)</span>. Write <span class="math" data-tex="\(A=Rf_*E\)">\(A=Rf_*E\)</span>, <span class="math" data-tex="\(P=Lf^*K\)">\(P=Lf^*K\)</span>, and <span class="math" data-tex="\(T_X=Lf^*T\)">\(T_X=Lf^*T\)</span>. For every <span class="math" data-tex="\(T\in D(\mathcal O_Y)\)">\(T\in D(\mathcal O_Y)\)</span>, the dual and pullback adjunctions give successive natural bijections</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Hom}(T,A\otimes K)\\
+\cong\operatorname{Hom}(T\otimes K^\vee,A)\\
+\cong\operatorname{Hom}(T_X\otimes P^\vee,E)\\
+\cong\operatorname{Hom}(T_X,E\otimes P)\\
+\cong\operatorname{Hom}(T,Rf_*(E\otimes P)).
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+\operatorname{Hom}(T,A\otimes K)\\
+\cong\operatorname{Hom}(T\otimes K^\vee,A)\\
+\cong\operatorname{Hom}(T_X\otimes P^\vee,E)\\
+\cong\operatorname{Hom}(T_X,E\otimes P)\\
+\cong\operatorname{Hom}(T,Rf_*(E\otimes P)).
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>The tensor symbols in this calculation are derived. The first bijection evaluates the coefficient dual, and the third inserts its coevaluation; the inverse operations use the other two maps and their triangle identities. The middle bijection uses the counit of <span class="math" data-tex="\(f\)">\(f\)</span>, and pullback identifies the dual data just described. Composing the operations, the dual evaluation–coevaluation pairs cancel. The resulting map on Hom groups is composition with the map whose pullback transpose is <span class="math" data-tex="\(\epsilon_f\otimes1\)">\(\epsilon_f\otimes1\)</span>. By (2.2), that map is exactly <span class="math" data-tex="\(\pi_{f,E,K}\)">\(\pi_{f,E,K}\)</span>. Thus composition with <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a bijection for all <span class="math" data-tex="\(T\)">\(T\)</span>. With <span class="math" data-tex="\(T\)">\(T\)</span> equal to its target, surjectivity supplies a right inverse; with <span class="math" data-tex="\(T\)">\(T\)</span> equal to its source, injectivity makes that right inverse also a left inverse. This proves the canonical map is an isomorphism globally. It also explains why no uniform bound or global free presentation was necessary.</p>
+<p><strong>Exercise 5 (medium: Cartesian flat change on one-point spaces).</strong> Let <span class="math" data-tex="\(R\to B\)">\(R\to B\)</span> and a flat homomorphism <span class="math" data-tex="\(R\to R&#x27;\)">\(R\to R&#x27;\)</span> be given, and let <span class="math" data-tex="\(B&#x27;=B\otimes_RR&#x27;\)">\(B&#x27;=B\otimes_RR&#x27;\)</span>. Form the square of one-point ringed spaces with these coefficient rings. Prove that its base-change map is an isomorphism for every unbounded <span class="math" data-tex="\(B\)">\(B\)</span>-complex, and explain why this does not contradict (5.3).</p>
+<p><strong>Solution.</strong> Both pushforwards are restriction of scalars, hence exact. The map <span class="math" data-tex="\(B\to B&#x27;\)">\(B\to B&#x27;\)</span> is flat: for a short exact sequence of <span class="math" data-tex="\(B\)">\(B\)</span>-modules, tensoring with <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> over <span class="math" data-tex="\(B\)">\(B\)</span> identifies with tensoring the same underlying <span class="math" data-tex="\(R\)">\(R\)</span>-sequence with the flat <span class="math" data-tex="\(R&#x27;\)">\(R&#x27;\)</span>. Thus both horizontal pullbacks are exact. For any complex <span class="math" data-tex="\(E\)">\(E\)</span>, the two base-change values are represented by <span class="math" data-tex="\(R&#x27;\otimes_RE\)">\(R&#x27;\otimes_RE\)</span> and <span class="math" data-tex="\(B&#x27;\otimes_BE\)">\(B&#x27;\otimes_BE\)</span>. Their canonical balanced isomorphism sends <span class="math" data-tex="\(r&#x27;\otimes e\)">\(r&#x27;\otimes e\)</span> to <span class="math" data-tex="\((1\otimes r&#x27;)\otimes e\)">\((1\otimes r&#x27;)\otimes e\)</span>, with inverse <span class="math" data-tex="\((b\otimes r&#x27;)\otimes e\mapsto r&#x27;\otimes be\)">\((b\otimes r&#x27;)\otimes e\mapsto r&#x27;\otimes be\)</span>. It commutes with differentials. The counit for restriction and extension of scalars is multiplication, so its transpose is precisely this balanced map. Theorem 4.1 therefore identifies it with base change. These particular pushforwards have no boundary-section phenomenon. Flatness is sufficient in this coefficient-only situation, while the topological example (5.3) has nonzero boundary germs over an empty fibre. Neither example licenses replacing the other's hypotheses.</p>
+<p><strong>Exercise 6 (hard: a nonflat algebraic square).</strong> In the preceding square take <span class="math" data-tex="\(R=\mathbb Z\)">\(R=\mathbb Z\)</span>, <span class="math" data-tex="\(B=R&#x27;=B&#x27;=\mathbb Z/2\)">\(B=R&#x27;=B&#x27;=\mathbb Z/2\)</span>, and <span class="math" data-tex="\(E=B[0]\)">\(E=B[0]\)</span>. Compute the general derived base-change map and compare it with ordinary pullback.</p>
+<p><strong>Solution.</strong> The lower horizontal coefficient homomorphism <span class="math" data-tex="\(\mathbb Z\to\mathbb Z/2\)">\(\mathbb Z\to\mathbb Z/2\)</span> is not flat: tensoring the injection <span class="math" data-tex="\(2:\mathbb Z\to\mathbb Z\)">\(2:\mathbb Z\to\mathbb Z\)</span> makes it zero. The upper horizontal homomorphism <span class="math" data-tex="\(B\to B&#x27;\)">\(B\to B&#x27;\)</span> is the identity, hence flat. The source of (4.2) is <span class="math" data-tex="\((\mathbb Z/2)\otimes^L_{\mathbb Z}(\mathbb Z/2)\)">\((\mathbb Z/2)\otimes^L_{\mathbb Z}(\mathbb Z/2)\)</span>, represented by <span class="math" data-tex="\(B\xrightarrow0B\)">\(B\xrightarrow0B\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span>; the target is <span class="math" data-tex="\(B[0]\)">\(B[0]\)</span>. The transpose description is scalar-extension multiplication. On this model it is the identity on degree zero and zero on degree <span class="math" data-tex="\(-1\)">\(-1\)</span>, so it is the usual augmentation. It induces an isomorphism on <span class="math" data-tex="\(H^0\)">\(H^0\)</span> but kills the nonzero <span class="math" data-tex="\(H^{-1}=B\)">\(H^{-1}=B\)</span>. Thus it is not a quasi-isomorphism. Ordinary pullback would keep only the degree-zero tensor and obscure the failure. The square is Cartesian with the ordinary tensor coefficient ring, but that ring records no derived Tor correction. Theorem 4.1 supplies the comparison, while the calculation states exactly why it is not invertible.</p>
+<footer><a href="src/projection-formula-and-base-change.md">Editable Markdown source</a> · <span class="unlinked">Sources and authorship</span></footer></main></body></html>

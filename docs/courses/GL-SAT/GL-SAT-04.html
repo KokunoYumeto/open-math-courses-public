@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbits and Schubert varieties in the affine Grassmannian · The affine Grassmannian and geometric Satake</title>
+<meta name="description" content="A lesson of the course The affine Grassmannian and geometric Satake. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-SAT/GL-SAT-04.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The affine Grassmannian and geometric Satake</a> <span aria-hidden="true">›</span> <span>Lesson 4</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> This lesson is a draft.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="orbits-and-schubert-varieties-in-the-affine-grassmannian">Orbits and Schubert varieties in the affine Grassmannian</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).</em></p>
+<p>A relative position records how far a lattice has moved. Its orbit is smooth, but its compactification can acquire singularities. We will compute the orbit directions, prove the closure order and component classification, and describe the first singular Schubert surface by an equation. This gives concrete geometry for the intersection complexes used in the later lessons.</p>
+<p>Throughout, <span class="math">\(k\)</span> is algebraically closed, <span class="math">\(O=k[[t]]\)</span>, <span class="math">\(F=k((t))\)</span>, and <span class="math">\(G\)</span> is connected reductive. Fix <span class="math">\(T\subset B\subset G\)</span>, with positive roots those of <span class="math">\(B\)</span>. Write <span class="math">\(K=G(O)\)</span>, <span class="math">\(\rho=\frac12\sum_{\alpha&gt;0}\alpha\)</span>, and <span class="math">\(t^\lambda=\lambda(t)\)</span>. Dominance means <span class="math">\(\langle\alpha,\lambda\rangle\geq0\)</span> for every positive root. Our Schubert varieties have the <strong>reduced</strong> structure on orbit closures. This qualification matters in positive characteristic and for torus factors.</p>
+<p>The construction of lattice families is in <a href="GL-SAT-02.html">Loop groups and the affine Grassmannian</a>. The torsor interpretation and relative positions are in <a href="GL-SAT-03.html">Beauville–Laszlo gluing and the moduli interpretation</a>. The earlier programme lesson <a href="../AG-RG/AG-RG-03.html">Roots and reductive groups of rank one</a>, Theorem 7.1, proves the root subgroups and the rank-one homomorphisms <span class="math">\(SL_2\to G\)</span>, in every characteristic. <a href="../AG-RG/AG-RG-04.html">Root data, Weyl chambers and the Bruhat decomposition</a>, §5, proves their ordered products, big-cell coordinates and polynomial commutator identities; Theorem 6.2 proves ordinary Bruhat decomposition.</p>
+<p>Theorem 7.1 of <a href="GL-SAT-02.html">Loop groups and the affine Grassmannian</a> constructs the full ind-projective Grassmannian for every connected reductive group, in every characteristic. Its closed finite-type lattice stages supply the ambient schemes used for orbit closures and specialization arguments in this lesson.</p>
+<h2 id="1-elementary-divisors-classify-lattices">1. Elementary divisors classify lattices</h2>
+<p>For <span class="math">\(GL_n\)</span>, write a coweight as
+<span class="math math-display">\[
+\lambda=(\lambda_1,\ldots,\lambda_n),\qquad
+\lambda_1\geq\cdots\geq\lambda_n.
+\]</span>
+The point <span class="math">\(t^\lambda\)</span> is the lattice <span class="math">\(\bigoplus_i Ot^{\lambda_i}e_i\)</span>.</p>
+<p><strong>Theorem 1.1 (Cartan decomposition for <span class="math">\(GL_n\)</span>).</strong> Every lattice in <span class="math">\(F^n\)</span> is <span class="math">\(GL_n(O)\)</span>-equivalent to exactly one such lattice. Consequently
+<span class="math math-display">\[
+GL_n(F)=\coprod_{\lambda_1\geq\cdots\geq\lambda_n}
+GL_n(O)t^\lambda GL_n(O).
+\]</span></p>
+<p><em>Proof.</em> Give a lattice an <span class="math">\(O\)</span>-basis. Its columns form an invertible Laurent matrix <span class="math">\(A\)</span>. Multiply by a power of <span class="math">\(t\)</span> to make every entry integral. Choose a nonzero entry of smallest valuation, move it to the upper left, and multiply its row by a unit to make it a power <span class="math">\(t^m\)</span>. Every other entry is divisible by <span class="math">\(t^m\)</span>. Integral elementary column operations clear the remainder of its row; row operations then clear its column. The remaining block still has entries divisible by <span class="math">\(t^m\)</span>. Repeat on that block. We obtain a diagonal matrix with nondecreasing valuations. Removing the initial common power and reversing the order proves existence.</p>
+<p>For uniqueness, the ideal generated by the <span class="math">\(r\)</span>-by-<span class="math">\(r\)</span> minors is preserved by invertible integral row and column operations. On a diagonal matrix its valuation is the sum of the <span class="math">\(r\)</span> smallest exponents. These sums recover each exponent by subtraction. Thus the sorted tuple is unique. Left operations change the ambient frame; right operations change the lattice basis. This is precisely the asserted double-coset classification. <span class="math">\(\square\)</span></p>
+<p>For a general reductive group the Cartan statement is
+<span class="math math-display">\[
+G(F)=\coprod_{\lambda\in X_*(T)^+}Kt^\lambda K. \tag{1.2}
+\]</span>
+The general split-group Cartan argument is the affine-Iwahori argument in <a href="GL-SAT-01.html">Spherical Hecke algebras as functions on the affine Grassmannian</a>: it proves the affine double-coset normal form from the earlier root-coordinate and ordinary Bruhat proofs, then takes finite-Weyl double cosets. It works over every field, in every characteristic. Theorem 1.1 gives a separate direct proof for lattices. Zhu's freely accessible introduction, §2.1, equation (2.1.1), is a further-reading reference for this statement.</p>
+<h2 id="2-the-stabilizer-and-the-finite-orbit-directions">2. The stabilizer and the finite orbit directions</h2>
+<p>Let <span class="math">\(\operatorname{Gr}^{\lambda}=Kt^\lambda\)</span> and
+<span class="math math-display">\[
+H_\lambda=K\cap t^\lambda Kt^{-\lambda}.
+\]</span>
+Conjugation on a root group satisfies
+<span class="math math-display">\[
+t^\lambda u_\alpha(z)t^{-\lambda}
+ =u_\alpha(t^{\langle\alpha,\lambda\rangle}z).
+\]</span>
+Hence its integral parameter in <span class="math">\(H_\lambda\)</span> must lie in
+<span class="math math-display">\[
+t^{\max(0,\langle\alpha,\lambda\rangle)}O. \tag{2.1}
+\]</span>
+Torus arcs lie in the stabilizer. Write
+<span class="math math-display">\[
+P_\lambda^-=\langle T,\ U_\alpha:
+ \langle\alpha,\lambda\rangle\leq0\rangle.
+\]</span>
+Reduction modulo <span class="math">\(t\)</span> sends <span class="math">\(H_\lambda\)</span> onto <span class="math">\(P_\lambda^-\)</span>.</p>
+<p>Here is why these parameter computations control the whole stabilizer. For <span class="math">\(h\in K\)</span>, the condition <span class="math">\(t^{-\lambda}ht^\lambda\in K\)</span> says that conjugation by the one-parameter subgroup <span class="math">\(\lambda\)</span> has no negative powers. On the special fibre it is exactly the parabolic limit condition. A lift of a point of <span class="math">\(P_\lambda^-\)</span> can be made using its constant Levi and negative root factors. After dividing by this lift we are in the first congruence group <span class="math">\(K_1\)</span>. Every element of <span class="math">\(K_1\)</span> lies in the big-cell neighbourhood of the identity, and has a unique product of negative root coordinates, torus coordinates, and positive root coordinates. Substituting <span class="math">\(t^{-\lambda}ht^\lambda\)</span> imposes (2.1) on these coordinates. Uniqueness of the big-cell factorization prevents cancellation between root coordinates. This argument works over every <span class="math">\(k\)</span>-algebra and at each finite jet level.</p>
+<p>Choose <span class="math">\(M\)</span> larger than every positive <span class="math">\(\langle\alpha,\lambda\rangle\)</span>. Then <span class="math">\(K_M\subset H_\lambda\)</span>, and
+<span class="math math-display">\[
+\operatorname{Gr}^{\lambda}
+ = (K/K_M)/(H_\lambda/K_M). \tag{2.2}
+\]</span>
+Both groups in (2.2) are smooth of finite type. The stabilizer has a connected parabolic quotient and a connected kernel with successive additive root-coordinate quotients. It is therefore connected. The quotient is a smooth variety.</p>
+<p><strong>Theorem 2.3.</strong> The stabilizer <span class="math">\(H_\lambda\)</span> is connected, and
+<span class="math math-display">\[
+\dim\operatorname{Gr}^{\lambda}
+ =\sum_{\alpha&gt;0}\langle\alpha,\lambda\rangle
+ =\langle2\rho,\lambda\rangle.
+\]</span></p>
+<p><em>Proof.</em> The preceding finite-jet description proves connectedness and smoothness. Taking Lie algebras gives the orbit tangent space
+<span class="math math-display">\[
+\mathfrak g(O)/
+ \bigl(\mathfrak g(O)\cap
+        \operatorname{Ad}(t^\lambda)\mathfrak g(O)\bigr)
+ \cong
+ \bigoplus_{\alpha&gt;0}
+ \mathfrak g_\alpha\otimes_k
+       O/t^{\langle\alpha,\lambda\rangle}O.
+\]</span>
+There is no torus contribution; a root of nonpositive pairing contributes zero. Counting the coefficients in these truncated series gives the dimension formula. <span class="math">\(\square\)</span></p>
+<p>Evaluation gives a projection
+<span class="math math-display">\[
+\operatorname{Gr}^{\lambda}\longrightarrow G/P_\lambda^-.
+\]</span>
+Its fibre is <span class="math">\(K_1/(K_1\cap H_\lambda)\)</span>, an affine space of dimension
+<span class="math math-display">\[
+\sum_{\alpha&gt;0,\ \langle\alpha,\lambda\rangle&gt;0}
+       (\langle\alpha,\lambda\rangle-1).
+\]</span>
+To see the affine-space assertion, order the root coefficients by increasing <span class="math">\(t\)</span>-degree and root height. Divide successively by allowed stabilizer coefficients. The remaining coefficients are unrestricted affine coordinates; commutators involve only later coefficients in this order. Local sections of <span class="math">\(G\to G/P_\lambda^-\)</span> over the usual big-cell charts identify the projection with that affine-space fibre over each chart. Its transition functions can contain nonlinear terms. Thus this is an affine-space fibration; the calculation alone does not give a vector bundle.</p>
+<p>If <span class="math">\(\lambda\)</span> is minuscule, every positive pairing is <span class="math">\(0\)</span> or <span class="math">\(1\)</span>. There are no surviving congruence coefficients, so evaluation identifies the orbit with <span class="math">\(G/P_\lambda^-\)</span>. The latter is projective. Since the affine Grassmannian is separated, this orbit is closed.</p>
+<h2 id="3-the-closure-order-for-lattices">3. The closure order for lattices</h2>
+<p>For two decreasing <span class="math">\(n\)</span>-tuples with equal sum, write <span class="math">\(\mu\leq\lambda\)</span> when
+<span class="math math-display">\[
+\sum_{i=1}^r\mu_i\leq\sum_{i=1}^r\lambda_i
+ \quad(1\leq r&lt;n).
+\]</span>
+Equivalently, <span class="math">\(\lambda-\mu\)</span> is a nonnegative integral sum of the simple coroots <span class="math">\(e_i-e_{i+1}\)</span>. Equality of total sums is part of this definition.</p>
+<p><strong>Theorem 3.1.</strong> For <span class="math">\(GL_n\)</span>,
+<span class="math math-display">\[
+\overline{\operatorname{Gr}^{\lambda}}
+ =\coprod_{\mu\leq\lambda}
+       \operatorname{Gr}^{\mu}.
+\]</span></p>
+<p><em>Proof of the upper bound.</em> Put <span class="math">\(s_r(\lambda)=\lambda_{n-r+1}+\cdots+\lambda_n\)</span>. Every point of <span class="math">\(\operatorname{Gr}^{\lambda}\)</span> satisfies
+<span class="math math-display">\[
+\bigwedge^r\Lambda\subset
+ t^{s_r(\lambda)}\bigwedge^r O^n.
+ \tag{3.2}
+\]</span>
+In any bounded lattice Grassmannian, these are closed incidence conditions: the map from the universal exterior-power lattice to the indicated quotient must vanish. They persist under specialization. The determinant component is fixed as well; applying the determinant to a lattice gives a map to the torus Grassmannian, whose reduced components are the individual integers, as proved in the previous lesson.</p>
+<p>For a diagonal lattice of type <span class="math">\(\mu\)</span>, (3.2) says <span class="math">\(s_r(\mu)\geq s_r(\lambda)\)</span>. Together with equal sums, these are exactly the displayed dominance inequalities. This proves that every orbit in the closure has type <span class="math">\(\mu\leq\lambda\)</span>.</p>
+<p><em>Proof of the lower bound.</em> Suppose <span class="math">\(a-b\geq2\)</span>. In two selected coordinates use the family
+<span class="math math-display">\[
+A(s)=
+\begin{pmatrix}
+t^{a-1}&amp;0\\
+s t^b&amp;t^{b+1}
+\end{pmatrix},\qquad s\in\mathbb A^1.
+\tag{3.3}
+\]</span>
+The determinant is <span class="math">\(t^{a+b}\)</span>, so the columns define a lattice family over <span class="math">\(k[s]\)</span>. For <span class="math">\(s\ne0\)</span>, the smallest entry valuation is <span class="math">\(b\)</span>, and the elementary-divisor type is <span class="math">\((a,b)\)</span>. At zero it is <span class="math">\((a-1,b+1)\)</span>. Keeping the other diagonal coordinates fixed gives a degeneration that transfers one unit from a larger exponent to a smaller one.</p>
+<p>These transfers reach every <span class="math">\(\mu\leq\lambda\)</span>. Indeed, if <span class="math">\(\lambda\ne\mu\)</span>, choose the first index <span class="math">\(i\)</span> where they differ. Then <span class="math">\(\lambda_i&gt;\mu_i\)</span>. Let <span class="math">\(j&gt;i\)</span> be the first index where the running difference
+<span class="math math-display">\[
+D_j=\sum_{h=1}^j(\lambda_h-\mu_h)
+\]</span>
+returns to zero. Such an index exists because <span class="math">\(D_n=0\)</span>, and <span class="math">\(D_h\geq1\)</span> for <span class="math">\(i\leq h&lt;j\)</span>. We have <span class="math">\(\lambda_j&lt;\mu_j\)</span>. Since <span class="math">\(\mu_i\geq\mu_j\)</span>, it follows that <span class="math">\(\lambda_i-\lambda_j\geq2\)</span>. Transfer one unit from <span class="math">\(i\)</span> to <span class="math">\(j\)</span>, then sort the tuple again. Before sorting all running differences remain nonnegative; sorting can only increase the sums of the largest <span class="math">\(r\)</span> entries. The sorted tuple therefore still dominates <span class="math">\(\mu\)</span>. Balancing two entries cannot increase any largest-entry sum relative to <span class="math">\(\lambda\)</span>, so it is dominated by <span class="math">\(\lambda\)</span>.</p>
+<p>The sum of absolute differences from the sorted tuple <span class="math">\(\mu\)</span> falls by at least two. Before sorting it falls by two; sorting minimizes that sum against a decreasing tuple, as follows by exchanging any inverted pair. The process terminates at <span class="math">\(\mu\)</span>. Each step is the degeneration (3.3). Orbit closures are <span class="math">\(K\)</span>-stable, so containment of the diagonal point gives containment of its entire orbit. This proves the lower bound. <span class="math">\(\square\)</span></p>
+<p>For <span class="math">\(GL_2\)</span>, this reads
+<span class="math math-display">\[
+\overline{\operatorname{Gr}^{(a,b)}}
+ =\coprod_{0\leq r\leq\lfloor(a-b)/2\rfloor}
+       \operatorname{Gr}^{(a-r,b+r)}.
+\tag{3.4}
+\]</span>
+For general reductive <span class="math">\(G\)</span>, the corresponding order is
+<span class="math math-display">\[
+\mu\leq\lambda
+\quad\Longleftrightarrow\quad
+\lambda-\mu\in\sum_{\alpha\ {\rm simple}}
+                     \mathbb Z_{\geq0}\alpha^\vee.
+\]</span></p>
+<p><strong>Theorem 3.5 (the closure order).</strong> For every dominant coweight <span class="math">\(\lambda\)</span>,
+<span class="math math-display">\[
+\overline{\operatorname{Gr}^{\lambda}}
+ =\coprod_{\substack{\mu\in X_*(T)^+\\\mu\leq\lambda}}
+       \operatorname{Gr}^{\mu}.
+\tag{3.5}
+\]</span></p>
+<p><em>The rank-one degeneration.</em> It is useful to allow intermediate coweights that are not dominant. Let <span class="math">\(\nu\in X_*(T)\)</span>, let <span class="math">\(\alpha\)</span> be a positive root, and suppose
+<span class="math math-display">\[
+m=\langle\alpha,\nu\rangle\geq1.
+\]</span>
+Consider the polynomial family of loops
+<span class="math math-display">\[
+g(s)=u_{-\alpha}(s t^{1-m})t^{\nu-\alpha^\vee},
+\qquad s\in\mathbb A^1.
+\tag{3.6}
+\]</span>
+At zero its point is <span class="math">\(t^{\nu-\alpha^\vee}\)</span>. For every nonzero <span class="math">\(s\)</span>, its point is in the <span class="math">\(K\)</span>-orbit of <span class="math">\(t^\nu\)</span>. Here is the complete matrix check. In the rank-one calculation one can write the diagonal exponents as <span class="math">\((a,b)\)</span>, where <span class="math">\(a-b=m\)</span>. The relevant matrix and two determinant-one integral matrices are
+<span class="math math-display">\[
+A(s)=
+\begin{pmatrix}t^{a-1}&amp;0\\s t^b&amp;t^{b+1}\end{pmatrix},
+\quad
+L(s)=\begin{pmatrix}0&amp;s^{-1}\\-s&amp;t^{m-1}\end{pmatrix},
+\quad
+R(s)=\begin{pmatrix}1&amp;-s^{-1}t\\0&amp;1\end{pmatrix}.
+\]</span>
+Their product is
+<span class="math math-display">\[
+L(s)A(s)R(s)=\operatorname{diag}(t^b,t^a).
+\tag{3.7}
+\]</span>
+All entries of <span class="math">\(L(s)\)</span> and <span class="math">\(R(s)\)</span> are integral because <span class="math">\(m\geq1\)</span>. More explicitly, if <span class="math">\(n_\alpha\)</span> is the image of <span class="math">\(\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}\)</span>, then
+<span class="math math-display">\[
+L(s)=\alpha^\vee(s^{-1})n_\alpha^{-1}
+                 u_\alpha(-s^{-1}t^{m-1}),
+\qquad R(s)=u_\alpha(-s^{-1}t).
+\]</span>
+These formulas make sense in <span class="math">\(G\)</span>. Use the rank-one identity with the upper parameter <span class="math">\(x=-s^{-1}t^{m-1}\)</span> and lower parameter <span class="math">\(-x^{-1}=s t^{1-m}\)</span>; their product has zero upper-left entry and factors through the interchange matrix. Commuting the remaining upper factor through <span class="math">\(t^{\nu-\alpha^\vee}\)</span> multiplies it by <span class="math">\(t^{m-2}\)</span>, so it cancels the factor in <span class="math">\(R(s)\)</span>. The remaining torus factor is exactly <span class="math">\(t^{\nu-m\alpha^\vee}=t^{s_\alpha\nu}\)</span>, proving (3.7) in <span class="math">\(G\)</span> as well. This checks the identity even when <span class="math">\(\nu\)</span> does not factor through the rank-one torus. Both reflection representatives and the two multiplying factors belong to <span class="math">\(K\)</span>. Thus (3.6) is the required degeneration in every characteristic. For <span class="math">\(m=1\)</span>, its two torus points are Weyl conjugate and already in the same orbit; this step will be needed in the chain argument.</p>
+<p><em>The chain argument.</em> Suppose <span class="math">\(\mu\)</span> is dominant and
+<span class="math math-display">\[
+\nu-\mu=\sum_i d_i\alpha_i^\vee,
+\qquad d_i\in\mathbb Z_{\geq0},
+\quad \nu\ne\mu.
+\]</span>
+Average a positive definite inner product over the finite Weyl group. On the semisimple real space, <span class="math">\((\alpha_i^\vee,x)\)</span> is a positive multiple of <span class="math">\(\langle\alpha_i,x\rangle\)</span>: the reflection fixes the corresponding root hyperplane and reverses its coroot normal. Put <span class="math">\(\delta=\nu-\mu\)</span>. Since <span class="math">\(\mu\)</span> is dominant,
+<span class="math math-display">\[
+(\delta,\nu)=(\delta,\mu)+\|\delta\|^2&gt;0.
+\]</span>
+As <span class="math">\(\delta\)</span> is a nonnegative sum of simple coroots, some index with <span class="math">\(d_i&gt;0\)</span> therefore has <span class="math">\(\langle\alpha_i,\nu\rangle&gt;0\)</span>. Its pairing is an integer, hence at least one. Apply (3.6) and replace <span class="math">\(\nu\)</span> by <span class="math">\(\nu-\alpha_i^\vee\)</span>. The remaining difference from <span class="math">\(\mu\)</span> is still a nonnegative simple-coroot sum, and <span class="math">\(\sum_i d_i\)</span> has decreased by one. Repetition reaches <span class="math">\(\mu\)</span>. The intermediate coweights may be nondominant; their torus points and their <span class="math">\(K\)</span>-orbits are nevertheless defined. Starting at <span class="math">\(\lambda\)</span>, transitivity of closure containment proves that every <span class="math">\(\operatorname{Gr}^\mu\)</span> with <span class="math">\(\mu\leq\lambda\)</span> occurs in its closure.</p>
+<p>For example, in <span class="math">\(SL_3\)</span> the chain from <span class="math">\((1,0,-1)\)</span> to zero can pass through <span class="math">\((0,1,-1)\)</span>. The first simple-root pairing is one, so that step is a Weyl conjugacy; the next pairing is two and gives the degeneration to zero. Requiring every intermediate coweight to remain dominant would exclude this elementary chain.</p>
+<p><em>The upper bound.</em> We first build the representations that detect all dominance inequalities, without importing a highest-weight theorem in characteristic zero. For each simple root <span class="math">\(\alpha_i\)</span>, let <span class="math">\(U_i\)</span> be the unipotent radical of the standard maximal parabolic omitting that root. In <span class="math">\(\bigwedge^{\dim U_i}\mathfrak g\)</span>, the top wedge of <span class="math">\(\mathfrak u_i\)</span> is a vector <span class="math">\(v_i\)</span> of weight
+<span class="math math-display">\[
+\chi_i=\sum_{\substack{\alpha&gt;0\\
+             \text{the coefficient of }\alpha_i\text{ is positive}}}\alpha.
+\]</span>
+The group <span class="math">\(U^+\)</span> fixes this wedge: it normalizes <span class="math">\(\mathfrak u_i\)</span>, acts triangularly with diagonal entries one in ordered root coordinates, and hence has determinant one. The reflections in all the other simple roots permute the displayed root set, so <span class="math">\(\langle\chi_i,\alpha_j^\vee\rangle=0\)</span> for <span class="math">\(j\ne i\)</span>. The remaining pairing is positive. Indeed, if it were nonpositive, the squared norm of this nonzero positive-root sum would be nonpositive, by pairing its simple-root expansion with <span class="math">\(\chi_i\)</span>. Consequently <span class="math">\(\chi_i=c_i\omega_i\)</span>, where <span class="math">\(c_i&gt;0\)</span> and <span class="math">\(\omega_i\)</span> is the corresponding rational fundamental weight.</p>
+<p>Let <span class="math">\(V_i\)</span> be the finite-dimensional subrepresentation generated by <span class="math">\(v_i\)</span>. Its weights are <span class="math">\(\chi_i\)</span> minus nonnegative sums of positive roots. To check this directly, the big cell <span class="math">\(U^-TU^+\)</span> is dense in <span class="math">\(G\)</span>, so its action on <span class="math">\(v_i\)</span> spans the same space as the action of <span class="math">\(G\)</span>. The positive factor fixes <span class="math">\(v_i\)</span>, and an ordered negative-root factor has polynomial coefficients of weights <span class="math">\(\chi_i-n\alpha\)</span>, <span class="math">\(n\geq0\)</span>, by torus equivariance. Iteration proves the claim. Thus the largest weight pairing on <span class="math">\(V_i\)</span> for any dominant <span class="math">\(\tau\)</span> is exactly <span class="math">\(\langle\chi_i,\tau\rangle\)</span>.</p>
+<p>For a point represented by <span class="math">\(g\)</span>, put <span class="math">\(\Lambda_i(g)=\rho_i(g)(V_i\otimes O)\)</span>. Every point of the orbit of <span class="math">\(\lambda\)</span> satisfies
+<span class="math math-display">\[
+t^{\langle\chi_i,\lambda\rangle}(V_i\otimes O)
+       \subset\Lambda_i(g).
+\tag{3.8}
+\]</span>
+This is equivalent to requiring every coefficient of
+<span class="math">\(\rho_i(g^{-1})\)</span> below degree <span class="math">\(-\langle\chi_i,\lambda\rangle\)</span> to vanish. In a bounded lattice Grassmannian it is a closed incidence condition, and therefore holds on the orbit closure. At <span class="math">\(t^\mu\)</span>, it gives
+<span class="math math-display">\[
+\langle\chi_i,\mu\rangle\leq
+\langle\chi_i,\lambda\rangle
+\quad\text{for every }i.
+\tag{3.9}
+\]</span>
+The specialization invariant proved in §5 also gives
+<span class="math">\(\lambda-\mu\in\mathbb Z\Phi^\vee\)</span>. Write this difference in the simple-coroot basis. Since <span class="math">\(\chi_i=c_i\omega_i\)</span> with <span class="math">\(c_i&gt;0\)</span>, (3.9) says precisely that each integral coefficient is nonnegative. Hence <span class="math">\(\mu\leq\lambda\)</span>.</p>
+<p>Cartan decomposition says that every point belongs to one of the displayed orbits. Their closures are <span class="math">\(K\)</span>-stable, so the lower and upper bounds prove (3.5). We take reduced structures throughout; equality of their closed sets in a bounded finite-type stage gives equality of their reduced closed subschemes. Theorem 7.1 of the preceding loop-group lesson makes the ambient bounded stages projective. These reduced closed finite-type Schubert varieties are therefore projective for every connected reductive group. <span class="math">\(\square\)</span></p>
+<h2 id="4-the-first-singular-surface">4. The first singular surface</h2>
+<p>Consider <span class="math">\(GL_2\)</span> and <span class="math">\(\lambda=(1,-1)\)</span>. The closure has its two orbits: the dimension-two orbit and the base point <span class="math">\(\Lambda_0=O^2\)</span>. Every lattice in it lies between <span class="math">\(tO^2\)</span> and <span class="math">\(t^{-1}O^2\)</span>. In
+<span class="math math-display">\[
+V=t^{-1}O^2/tO^2
+\]</span>
+use the ordered basis
+<span class="math math-display">\[
+a=t^{-1}e_1,\quad b=t^{-1}e_2,\quad
+c=e_1,\quad d=e_2.
+\]</span>
+Multiplication by <span class="math">\(t\)</span> is <span class="math">\(\phi(a)=c,\ \phi(b)=d,\ \phi(c)=\phi(d)=0\)</span>. A lattice corresponds to a <span class="math">\(\phi\)</span>-stable two-plane <span class="math">\(W\subset V\)</span>.</p>
+<p>Apart from <span class="math">\(W_0=\ker\phi=\langle c,d\rangle\)</span>, every such plane has
+<span class="math math-display">\[
+\ell=W\cap\ker\phi=\phi(W)
+\]</span>
+a line. Identify <span class="math">\(\ker\phi\)</span> with <span class="math">\(k^2\)</span>. Then
+<span class="math math-display">\[
+W=\langle uc+vd,\ ua+vb+z\rangle,
+\qquad z\in k^2/\ell,\quad \ell=\langle(u,v)\rangle.
+\]</span>
+The choice of lift defines a homomorphism <span class="math">\(\ell\to k^2/\ell\)</span>. Thus the open orbit is the total space of
+<span class="math math-display">\[
+\operatorname{Hom}(\mathcal O(-1),\mathcal O(1))
+ =\mathcal O_{\mathbb P^1}(2).
+\]</span></p>
+<p>Let <span class="math">\(p_{ij}\)</span> be Plücker coordinates. These planes satisfy
+<span class="math math-display">\[
+p_{12}=0,\qquad p_{14}=p_{23},\qquad
+p_{13}p_{24}=p_{14}^2.
+\]</span>
+The first two are linear equations, and the last is the remaining Plücker relation. Conversely, a nonvertex point satisfying them has <span class="math">\((p_{13},p_{14},p_{24})\)</span> on the Veronese conic, and the preceding formula recovers its plane; the vertex is <span class="math">\(W_0\)</span>. Both the cone and the Schubert closure are reduced, so this identification of their closed points in the same projective Grassmannian identifies their reduced closed subschemes. Therefore
+<span class="math math-display">\[
+\overline{\operatorname{Gr}^{(1,-1)}}\cong
+\{[x:y:z:w]\in\mathbb P^3:xz=y^2\}. \tag{4.1}
+\]</span>
+The vertex is <span class="math">\([0:0:0:1]\)</span>. In the affine chart <span class="math">\(w=1\)</span>, its tangent space has dimension three, whereas the surface has dimension two. It is singular. Away from the vertex one of <span class="math">\(x,z\)</span> is nonzero, and the equation eliminates one coordinate; the surface is smooth there. This argument remains valid in characteristic two.</p>
+<p>For <span class="math">\(SL_2\)</span>, determinant trivialization identifies its reduced quasi-minuscule Schubert closure with this same surface. The diagonal type is <span class="math">\(\alpha^\vee=(1,-1)\)</span>. A determinant-zero <span class="math">\(GL_2\)</span> lattice over a field admits a basis with determinant <span class="math">\(1\)</span>, so the orbit and its base point agree with the <span class="math">\(SL_2\)</span> points. Their reduced closures in the bounded Grassmannian agree. Multiplication of lattices by <span class="math">\(t\)</span> also identifies (4.1) with the <span class="math">\(GL_2\)</span> closure of type <span class="math">\((2,0)\)</span>.</p>
+<p>The cone has a useful resolution. Compactify the line bundle <span class="math">\(\mathcal O(2)\)</span> by its infinity section; this is the Hirzebruch surface <span class="math">\(\mathbb F_2\)</span>. The infinity section has normal bundle <span class="math">\(\mathcal O(-2)\)</span>, and the map to (4.1) contracts it to the vertex. The open orbit is the complementary <span class="math">\(\mathcal O(2)\)</span>. In characteristic zero with characteristic-zero sheaf coefficients this is the familiar <span class="math">\(A_1\)</span> surface singularity.</p>
+<h2 id="5-components-and-small-groups">5. Components and small groups</h2>
+<p>The determinant degree labels the components of <span class="math">\(\operatorname{Gr}_{GL_n}\)</span>. To prove that one degree gives only one component, start with any tuple of that degree. Repeated balancing transfers, using (3.3), reach the unique decreasing tuple whose entries differ by at most one. The corresponding orbit is a connected ordinary Grassmannian. Every orbit of that degree has closure meeting it, and each orbit is connected. Their union is therefore connected. Different degrees are separated by the determinant map to the discrete reduced torus Grassmannian. We obtain
+<span class="math math-display">\[
+\pi_0(\operatorname{Gr}_{GL_n})=\mathbb Z.
+\]</span></p>
+<p>For <span class="math">\(SL_2\)</span>, the dominant coweights are <span class="math">\(m\alpha^\vee=(m,-m)\)</span>, <span class="math">\(m\geq0\)</span>, and the dimensions are <span class="math">\(2m\)</span>. Smith reduction can be performed with determinant-one ambient and lattice basis operations: adjust the determinants of the two change-of-basis matrices by diagonal units, which commute with the diagonal normal form. The closure relation is <span class="math">\(0\leq r\leq m\)</span>, and all orbit closures meet the base point. Thus its Grassmannian is connected.</p>
+<p>For <span class="math">\(PGL_2\)</span>, coweights are indexed by <span class="math">\(n\geq0\)</span>, represented by <span class="math">\(\operatorname{diag}(t^n,1)\)</span> modulo scalar matrices. A point is a rank-two lattice up to homothety. Every <span class="math">\(PGL_2(F)\)</span> point lifts to <span class="math">\(GL_2(F)\)</span>, since the obstruction is a line bundle over the field <span class="math">\(F\)</span>. Smith reduction therefore proves the classification. Scalar homothety changes determinant degree by an even integer, giving the invariant <span class="math">\(n\bmod2\)</span>. The odd component has closed minimal orbit <span class="math">\(\mathbb P^1\)</span>, of type <span class="math">\(1\)</span>, and the even one has the base point. Formula (3.4) gives the orbit closure types <span class="math">\(n,n-2,\ldots\)</span>.</p>
+<p>For the topological claim over all characteristic, one can use the reduced homothety-lattice functor: locally lift a homothety class to a lattice; changing the lift shifts its determinant degree by two. Thus determinant degree modulo two is locally constant and descends. This separates the two components, while the degenerations just given connect every orbit to its minimal one. Nilpotent structure of <span class="math">\(PGL_2\)</span> in characteristic two does not change connected components.</p>
+<p>For general <span class="math">\(G\)</span>, the component theorem is
+<span class="math math-display">\[
+\pi_0(\operatorname{Gr}_G)
+ =\pi_1(G):=X_*(T)/\mathbb Z\Phi^\vee.
+\tag{5.1}
+\]</span>
+The symbol <span class="math">\(\pi_1(G)\)</span> here denotes the algebraic root-datum fundamental group. We now prove both the locally constant class invariant and connectedness of each of its fibres. The proof includes characteristics dividing the order of the finite part of <span class="math">\(\pi_1(G)\)</span>.</p>
+<p><em>A torus-kernel extension.</em> The earlier lesson <a href="../AG-RG/AG-RG-05.html">Pinnings and the classification of split reductive groups</a>, Theorem 10.1 and its following derived-group section, gives a presentation
+<span class="math math-display">\[
+G=(G_{\mathrm{sc}}\times C)/H,
+\]</span>
+where <span class="math">\(C\)</span> is a split torus, <span class="math">\(G_{\mathrm{sc}}\)</span> is semisimple simply connected, and <span class="math">\(H\)</span> is finite central diagonalizable. Embed <span class="math">\(H\)</span> into a split torus <span class="math">\(S\)</span>: a finite list of generators of its character group gives a surjection from a free abelian group, hence this closed immersion. Divide
+<span class="math">\(G_{\mathrm{sc}}\times C\times S\)</span> by the graph of this embedding of <span class="math">\(H\)</span>. The earlier affine central-quotient proof constructs the resulting reductive group <span class="math">\(\widetilde G\)</span>, and projection gives
+<span class="math math-display">\[
+1\longrightarrow S\longrightarrow\widetilde G
+\longrightarrow G\longrightarrow1.
+\tag{5.2}
+\]</span>
+Its derived subgroup is the embedded <span class="math">\(G_{\mathrm{sc}}\)</span>: the graph intersects this factor trivially, and the earlier proof shows that this factor is perfect, while its quotient is a torus. Write <span class="math">\(A=\widetilde G/G_{\mathrm{sc}}\)</span>. For the inverse-image maximal torus <span class="math">\(\widetilde T\)</span>, the coroots are a basis of the cocharacter lattice of its simply connected semisimple subtorus. The exact sequences of split tori therefore give
+<span class="math math-display">\[
+X_*(A)=X_*(\widetilde T)/\mathbb Z\Phi^\vee,
+\qquad
+X_*(A)/\operatorname{im}X_*(S)
+   =X_*(T)/\mathbb Z\Phi^\vee.
+\tag{5.3}
+\]</span>
+Cocharacter surjectivity in these sequences follows by dualizing their character sequences: the character group of the kernel torus is free, so the sequences split as abelian groups. No finite central isogeny is assumed to be étale.</p>
+<p><em>The invariant on field points.</em> An element <span class="math">\(g\in G(F)\)</span> lifts to <span class="math">\(\widetilde g\in\widetilde G(F)\)</span>, since its lifting torsor is a split-torus torsor over a field and every line bundle there is trivial. Map the lift to <span class="math">\(A(F)\)</span>, take the valuations of its torus coordinates, and reduce the resulting element of <span class="math">\(X_*(A)\)</span> modulo <span class="math">\(\operatorname{im}X_*(S)\)</span>. By (5.3) this defines
+<span class="math math-display">\[
+\kappa(g)\in X_*(T)/\mathbb Z\Phi^\vee.
+\]</span>
+Changing the lift multiplies it by an <span class="math">\(S(F)\)</span>-point, so the class is independent of the lift. Multiplication of lifts shows that <span class="math">\(\kappa\)</span> is a homomorphism. Integral points lift integrally because line bundles over the local ring <span class="math">\(O\)</span> are free; hence <span class="math">\(\kappa(K)=0\)</span>. It therefore descends to the Grassmannian, and <span class="math">\(\kappa(t^\lambda)=[\lambda]\)</span>.</p>
+<p><em>Preservation under specialization.</em> Let a family be defined over the complete discrete valuation ring <span class="math">\(R=k[[s]]\)</span>. Its <span class="math">\(G\)</span>-torsor on <span class="math">\(\operatorname{Spec}R[[t]]\)</span> is trivial: the ring is complete local, its residue-field torsor has a point because <span class="math">\(k\)</span> is algebraically closed, and smoothness lifts that point successively modulo powers of <span class="math">\((s,t)\)</span>. Thus the family is represented by <span class="math">\(g\in G(R[[t]][1/t])\)</span>.</p>
+<p>This element lifts through (5.2). Its lifting torsor is a product of line-bundle torsors, and
+<span class="math math-display">\[
+\operatorname{Pic}(k[[s,t]][1/t])=0.
+\]</span>
+This is exactly Proposition 5.2 of the earlier programme lesson <a href="../AG-CA/regular-local-rings.html">Regular local rings</a>: it proves that a rank-one projective over a localization of a regular local ring is stably free by localizing a finite free resolution, then free by its top exterior power. Its §6 proves that <span class="math">\(k[[s,t]]\)</span> is regular local. These are the needed algebraic statements, with actual preceding proofs.</p>
+<p>The image of the lift in <span class="math">\(A\)</span> has invertible coordinates in <span class="math">\(R[[t]][1/t]\)</span>. Each such unit is uniquely <span class="math">\(t^n u\)</span>, where <span class="math">\(u\in R[[t]]^\times\)</span>: if it and its inverse have bounded denominators, their numerators multiply to a power of the prime element <span class="math">\(t\)</span>; successive cancellation of that prime gives the assertion. The factor <span class="math">\(u\)</span> is a unit on both the generic and special fibres. Thus each integer valuation is the same on both fibres, and so is <span class="math">\(\kappa\)</span>.</p>
+<p>This also tests boundary points of orbit closures. A closed point in the closure of a locally closed finite-type orbit is reached by a curve with generic point in that orbit. For completeness, in an affine neighbourhood cut its irreducible closure by successive general hyperplanes through the point. At every step choose a hyperplane that contains no positive-dimensional component of the boundary; the infinite field permits avoidance of those finitely many linear conditions. After <span class="math">\(d-1\)</span> cuts the closure has a curve through the point and the boundary there is zero-dimensional, so a curve component through the point meets the orbit. Normalize that curve and complete a local ring above the point to obtain <span class="math">\(k[[s]]\)</span>. Finite normalization and this discrete valuation ring and completion calculation are proved in <a href="../AG-RG/AG-RG-S03.html">Completing a smooth affine curve and extending its group action</a>, Lemmas 1.2 and 2.1 and the paragraph following Lemma 2.1. Hence every orbit-closure specialization preserves the coroot class. This is the specialization statement used in the upper bound of Theorem 3.5; it does not use that closure theorem.</p>
+<p>The class is locally constant. Indeed, a bounded finite-type stage meets only finitely many Cartan orbits. To see finiteness, use a faithful representation and bounds <span class="math">\(t^N V_O\subset\Lambda\subset t^{-N}V_O\)</span>; every weight pairing of its diagonal Cartan point then lies between <span class="math">\(-N\)</span> and <span class="math">\(N\)</span>. The weights of a faithful torus representation span the rational character space, so only finitely many integral coweights satisfy these bounds. The orbits are locally closed finite-jet homogeneous spaces. The closure of each orbit has just been shown to retain its class; with finitely many orbits, the union belonging to one class and its complement are both closed. This proves local constancy at each bounded stage and therefore on the ind-scheme. Reduction changes no topological points, so it changes no connected components.</p>
+<p><em>Connectedness of a class.</em> The group <span class="math">\(K\)</span> is connected: its evaluation quotient is connected <span class="math">\(G\)</span>, and its congruence kernels have successive additive Lie-algebra quotients, as in the earlier loop-group construction. Its finite-dimensional orbits are therefore connected. For every root <span class="math">\(\alpha\)</span>, the rank-one homomorphism gives a morphism
+<span class="math math-display">\[
+\operatorname{Gr}_{SL_2}\longrightarrow\operatorname{Gr}_G.
+\]</span>
+The <span class="math">\(SL_2\)</span> quasi-minuscule closure from §4 is connected and contains the base point and <span class="math">\(t^{\alpha^\vee}\)</span>. Translating its image by <span class="math">\(t^\eta\)</span> connects <span class="math">\(t^\eta\)</span> with <span class="math">\(t^{\eta+\alpha^\vee}\)</span>, for every coweight <span class="math">\(\eta\)</span>. Reversing the same connection permits subtraction. Hence any two torus points whose difference is in the coroot lattice lie in the same connected component. Cartan decomposition puts every point in a connected orbit containing a torus point. Each fibre of <span class="math">\(\kappa\)</span> is consequently connected, and every coroot class occurs. Local constancy separates distinct classes, proving (5.1). <span class="math">\(\square\)</span></p>
+<p>Dimensions have constant parity on a coroot class. Indeed,
+<span class="math math-display">\[
+\langle2\rho,\alpha_i^\vee\rangle=2
+\]</span>
+for each simple coroot. This explains why orbit dimensions within a connected component have the same parity. It does not assert that all orbits of the Grassmannian have even dimension: <span class="math">\(\mathbb P^1\subset\operatorname{Gr}_{GL_2}\)</span> has dimension one.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><strong>Exercise 6.1 (easy).</strong> Compute the <span class="math">\(GL_2\)</span> orbit dimensions of <span class="math">\((1,0)\)</span>, <span class="math">\((2,0)\)</span>, and <span class="math">\((1,-1)\)</span>.</p>
+<p><em>Solution.</em> There is one positive root, with pairing <span class="math">\(a-b\)</span>. The dimensions are respectively <span class="math">\(1,2,2\)</span>. The first orbit is <span class="math">\(\mathbb P^1\)</span>. The latter two have isomorphic closures by central translation, and each closure is the surface (4.1). <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 6.2 (easy).</strong> Identify the <span class="math">\(GL_n\)</span> orbit of <span class="math">\((1,0,\ldots,0)\)</span>.</p>
+<p><em>Solution.</em> Such a lattice satisfies
+<span class="math math-display">\[
+tO^n\subset\Lambda\subset O^n,\qquad
+\dim_k(O^n/\Lambda)=1.
+\]</span>
+It is the inverse image of a hyperplane in <span class="math">\(k^n\)</span>. Thus it is the dual projective space <span class="math">\(\mathbb P((k^n)^*)\)</span>, isomorphic to <span class="math">\(\mathbb P^{n-1}\)</span>. This description works for families using a locally free rank-one quotient, so it identifies schemes. The orbit is closed and has dimension <span class="math">\(n-1\)</span>. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 6.3 (medium).</strong> Determine the equation and singular locus of the <span class="math">\(SL_2\)</span> quasi-minuscule closure.</p>
+<p><em>Solution.</em> Use the <span class="math">\(\phi\)</span>-stable two-plane description in §4. The equations <span class="math">\(p_{12}=0\)</span> and <span class="math">\(p_{14}=p_{23}\)</span> leave the Plücker equation <span class="math">\(p_{13}p_{24}=p_{14}^2\)</span>. This is the cone <span class="math">\(xz=y^2\)</span> in <span class="math">\(\mathbb P^3\)</span>. Every nonvertex point is smooth, because either <span class="math">\(x\)</span> or <span class="math">\(z\)</span> permits elimination. At the vertex the local equation has no linear term, so the Zariski tangent dimension is three instead of two. The singular locus of the reduced surface is exactly its vertex, in every characteristic. The two orbits are its smooth complement and that vertex. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 6.4 (medium).</strong> Compute the tangent space of the affine Grassmannian at <span class="math">\(t^\lambda\)</span>, and distinguish it from the orbit tangent space.</p>
+<p><em>Solution.</em> A first-order deformation is represented locally by
+<span class="math math-display">\[
+(1+\epsilon X)t^\lambda,\qquad
+X\in\mathfrak g((t)),\quad \epsilon^2=0.
+\]</span>
+Changing its right integral frame identifies <span class="math">\(X\)</span> modulo
+<span class="math">\(\operatorname{Ad}(t^\lambda)\mathfrak g[[t]]\)</span>. Hence, for the full quotient functor,
+<span class="math math-display">\[
+T_{t^\lambda}\operatorname{Gr}_G
+ =\mathfrak g((t))/
+       \operatorname{Ad}(t^\lambda)\mathfrak g[[t]].
+\]</span>
+This is generally infinite-dimensional; even a torus has such infinitesimal directions. Restricting <span class="math">\(X\)</span> to <span class="math">\(\mathfrak g[[t]]\)</span> gives the finite-dimensional orbit tangent quotient in Theorem 2.3. It is incorrect to equate the two. When passing to the reduced ind-scheme, nilpotent tangent directions can disappear; the displayed full-functor tangent space need not be the tangent space of its reduction. <span class="math">\(\square\)</span></p>
+<p><strong>Exercise 6.5 (hard).</strong> Prove the <span class="math">\(GL_2\)</span> closure relation without using a general reductive-group theorem.</p>
+<p><em>Solution.</em> Fix <span class="math">\(d=a+b\)</span>. The closed bounds <span class="math">\(t^aO^2\subset\Lambda\subset t^bO^2\)</span> and determinant degree <span class="math">\(d\)</span> restrict an elementary-divisor tuple <span class="math">\((u,v)\)</span> to
+<span class="math math-display">\[
+a\geq u\geq v\geq b,\qquad u+v=d.
+\]</span>
+These are precisely <span class="math">\((u,v)=(a-r,b+r)\)</span> with <span class="math">\(0\leq r\leq\lfloor(a-b)/2\rfloor\)</span>. They give the necessary bound. Family (3.3) supplies the first next orbit, and its central translates with <span class="math">\(a,b\)</span> replaced by <span class="math">\(a-1,b+1\)</span> supply every subsequent one. Stability under <span class="math">\(GL_2(O)\)</span> gives the whole orbit at each step. Thus (3.4) is the exact closure, with its reduced structure. <span class="math">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<p>Further reading is freely available in Xinwen Zhu, <a href="https://arxiv.org/abs/1603.05593v2"><em>An introduction to affine Grassmannians and the geometric Satake equivalence</em></a>, §§1.3 and 2.1; Edward Frenkel, <a href="https://arxiv.org/abs/hep-th/0512172v1"><em>Lectures on the Langlands program and conformal field theory</em></a>, §5.5, for the <span class="math">\(PGL_2\)</span> example; and Laurent Fargues and Peter Scholze, <a href="https://arxiv.org/abs/2102.13459"><em>Geometrization of the local Langlands correspondence</em></a>, VI.2, for the related mixed-characteristic geometry. The arguments above use ordinary power series.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/GL-SAT-04.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/GL-SAT">Repository</a></nav>
+</footer>
+</body>
+</html>

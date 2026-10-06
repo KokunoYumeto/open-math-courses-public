@@ -1,0 +1,1035 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Smooth traces, duality and Gysin maps</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="smooth-traces-duality-and-gysin-maps">Smooth traces, duality and Gysin maps</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Codex Ultra, October 2026. Original explanatory text is CC0. The local-duality argument adapts the earlier CC0 exposition “Poincaré duality for smooth varieties” by the same stated writing model; the higher-dimensional trace is constructed here, and the divisor orientation is corrected through the supported Kummer class. Human mathematical sources are credited below. Independent human review is not claimed.</em></p>
+<p>A trace in top compact cohomology is more than a list of degrees on fibres: its local definitions must agree when coordinates change. We first construct the curve map as an actual morphism of sheaves, then connect smooth coordinate systems while retaining smooth one-dimensional projections. Compact-support adjunction turns the resulting trace into smooth duality. The same adjunction gives purity and Gysin maps with a positive Kummer normalization.</p>
+<p>Let <span class="math" data-tex="\(\Lambda=\mathbf Z/n\)">\(\Lambda=\mathbf Z/n\)</span>, with <span class="math" data-tex="\(n\)">\(n\)</span> invertible on every scheme considered, and put <span class="math" data-tex="\(\Lambda(1)=\mu_n\)">\(\Lambda(1)=\mu_n\)</span>. The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is zero. Complexes have cohomological grading, so <span class="math" data-tex="\(H^r(A[s])=H^{r+s}(A)\)">\(H^r(A[s])=H^{r+s}(A)\)</span>. In the relative theorem <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> is separated, smooth of finite presentation, and purely of relative dimension <span class="math" data-tex="\(d\)">\(d\)</span>, with <span class="math" data-tex="\(S\)">\(S\)</span> quasi-compact and quasi-separated. In the absolute theorem <span class="math" data-tex="\(X/k\)">\(X/k\)</span> is separated, smooth and finite type of pure dimension <span class="math" data-tex="\(N\)">\(N\)</span>, with <span class="math" data-tex="\(k\)">\(k\)</span> algebraically closed. Neither finite local systems nor the coefficient ring are assumed to be vector spaces.</p>
+<p>We use these exact preceding geometric results:</p>
+<ul>
+<li><a href="../support/ag-etale-cohomology--pushforward-pullback-and-finite-morphisms.html">Pushforward, pullback and finite morphisms</a>, §§3–4: finite strict-local decomposition, geometric stalks, exact finite pushforward and finite-data continuity. Its expressly stated cohomological continuity on affine inverse limits is retained as a foundation.</li>
+<li><a href="../support/ag-etale-cohomology--constructible-sheaves-and-extension-by-zero.html">Constructible sheaves and extension by zero</a>: the constructible Serre category and descent of finite presentations.</li>
+<li><a href="../support/ag-etale-cohomology--cohomology-with-compact-support.html">Cohomology with compact support</a>, §§5,7–12: composition, arbitrary base change, arbitrary-complex projection formula, sums, localization and the relative bound <span class="math" data-tex="\([0,2d]\)">\([0,2d]\)</span>. Its expressly stated general constructibility and compact finiteness premises are retained; they are not silently proved anew here.</li>
+<li><a href="../support/ag-etale-cohomology--smooth-base-change-and-local-acyclicity.html">Smooth base change and local acyclicity</a>, Theorem 9.1: universal local acyclicity of smooth maps, including the strict-local fibre calculation used in §5.</li>
+<li><a href="../support/ag-etale-cohomology--cohomological-dimension-and-the-kunneth-formula.html">Cohomological dimension and the Künneth formula</a>: derived Künneth.</li>
+<li><a href="../support/ag-etale-cohomology--poincare-duality-for-curves.html">Poincaré duality for curves</a>, §§2–11: degree trace, exact duality over <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>, self-injectivity of these coefficients, and the compatibility of finite transfer and open extension with cup product.</li>
+</ul>
+<p>Brown representability for derived categories of Grothendieck abelian categories is the categorical foundation used in §8 to construct a right adjoint. No smooth duality, purity, higher-dimensional trace or flat-family trace is assumed among the geometric inputs.</p>
+<h2 id="1-the-trace-of-a-smooth-relative-curve">1. The trace of a smooth relative curve</h2>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be quasi-compact and quasi-separated, let <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> be invertible on <span class="math" data-tex="\(S\)">\(S\)</span>, and put <span class="math" data-tex="\(\Lambda=\mathbf Z/n\)">\(\Lambda=\mathbf Z/n\)</span> and <span class="math" data-tex="\(\Lambda(1)=\mu_n\)">\(\Lambda(1)=\mu_n\)</span>. Let</p>
+<span class="math math-display" data-tex="\[
+h:X\longrightarrow S
+\]">\[
+h:X\longrightarrow S
+\]</span>
+<p>be separated, smooth, and of finite presentation, with every nonempty geometric fibre purely of dimension one. Empty fibres are permitted. The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> has zero coefficients and the unique zero trace. All sheaves are on the small étale site. The separated finite-type compact-support formalism over quasi-compact quasi-separated schemes is used with its canonical composition, arbitrary-base-change, projection, and open-extension maps. Its construction is the published provider the compact-support chapter identified in the source map below.</p>
+<p><strong>Theorem RC.1.</strong> There is a canonical morphism of sheaves</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_h:R^2h_!\mu_n\longrightarrow\Lambda_S.
+\tag{RC.1}
+\]">\[
+\operatorname{Tr}_h:R^2h_!\mu_n\longrightarrow\Lambda_S.
+\tag{RC.1}
+\]</span>
+<p>At a geometric point <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span>, proper/compact base change identifies its stalk with the sum of the degree/Kummer traces on the connected components of the smooth curve <span class="math" data-tex="\(X_{\bar s}\)">\(X_{\bar s}\)</span>. The morphism commutes with every change of base within the compact-support formalism. If <span class="math" data-tex="\(e:Y\to X\)">\(e:Y\to X\)</span> is separated, étale, and of finite presentation, then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_{he}
+=\operatorname{Tr}_h\circ R^2h_!(\operatorname{tr}_e),
+\qquad
+\operatorname{tr}_e:e_!e^*\mu_n\longrightarrow\mu_n,
+\tag{RC.2}
+\]">\[
+\operatorname{Tr}_{he}
+=\operatorname{Tr}_h\circ R^2h_!(\operatorname{tr}_e),
+\qquad
+\operatorname{tr}_e:e_!e^*\mu_n\longrightarrow\mu_n,
+\tag{RC.2}
+\]</span>
+<p>under canonical composition. The same identity holds for a separated quasi-finite flat map of finite presentation between smooth relative curves, with the weighted trace constructed below. If all geometric fibres of <span class="math" data-tex="\(h\)">\(h\)</span> are nonempty and connected, (RC.1) is an isomorphism.</p>
+<p>The proof constructs actual maps on coordinate neighborhoods and descends them. A specified collection of fibre homomorphisms is used to compare existing maps; it is not taken to be a sheaf morphism by itself.</p>
+<h3 id="1-1-degree-orientation-over-an-algebraically-closed-field">1.1. Degree orientation over an algebraically closed field</h3>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be algebraically closed with <span class="math" data-tex="\(n\)">\(n\)</span> invertible in <span class="math" data-tex="\(k\)">\(k\)</span>. A connected smooth curve <span class="math" data-tex="\(C\)">\(C\)</span> of finite type has a smooth projective completion <span class="math" data-tex="\(\overline C\)">\(\overline C\)</span>. Its boundary is finite. Open localization and vanishing of positive cohomology on a finite scheme give a canonical isomorphism</p>
+<span class="math math-display" data-tex="\[
+H^2_c(C,\mu_n)\xrightarrow{\sim}H^2(\overline C,\mu_n).
+\tag{RC.3}
+\]">\[
+H^2_c(C,\mu_n)\xrightarrow{\sim}H^2(\overline C,\mu_n).
+\tag{RC.3}
+\]</span>
+<p>Kummer, the vanishing of the Brauer group of a smooth projective curve over <span class="math" data-tex="\(k\)">\(k\)</span>, and divisibility by <span class="math" data-tex="\(n\)">\(n\)</span> of <span class="math" data-tex="\(\operatorname{Pic}^0(\overline C)\)">\(\operatorname{Pic}^0(\overline C)\)</span> give</p>
+<span class="math math-display" data-tex="\[
+H^2(\overline C,\mu_n)
+\simeq \operatorname{Pic}(\overline C)/n
+\xrightarrow[\deg]{\sim}\Lambda.
+\tag{RC.4}
+\]">\[
+H^2(\overline C,\mu_n)
+\simeq \operatorname{Pic}(\overline C)/n
+\xrightarrow[\deg]{\sim}\Lambda.
+\tag{RC.4}
+\]</span>
+<p>These inputs and this calculation are proved in the curve-duality chapter, §2, using its explicitly named preceding providers the multiplicative-group, Jacobian, proper-base-change and compact-support chapters. This is only the curve-duality chapter's degree trace, before its duality argument. Define <span class="math" data-tex="\(\tau_C\)">\(\tau_C\)</span> as (RC.3) followed by (RC.4), and define <span class="math" data-tex="\(\tau_C\)">\(\tau_C\)</span> for a disconnected smooth curve as the sum over its finitely many connected components. The trace on the empty curve is zero.</p>
+<p>A nonempty open of a connected smooth curve has the same smooth projective completion. Consequently open extension</p>
+<span class="math math-display" data-tex="\[
+H^2_c(V,\mu_n)\longrightarrow H^2_c(C,\mu_n)
+\tag{RC.5}
+\]">\[
+H^2_c(V,\mu_n)\longrightarrow H^2_c(C,\mu_n)
+\tag{RC.5}
+\]</span>
+<p>preserves trace. For an arbitrary open, the same assertion follows component by component, with zero from omitted components. A divisor of one point on a connected completion has trace <span class="math" data-tex="\(+1\)">\(+1\)</span>. This fixes the sign without a choice of a primitive root of unity.</p>
+<h3 id="1-2-finite-and-quasi-finite-weighted-traces">1.2. Finite and quasi-finite weighted traces</h3>
+<p>The following zero-dimensional construction is included to specify precisely what is meant by the trace on sheets and by a branch weight. It does not assume (RC.1).</p>
+<p><strong>Lemma RC.2.</strong> If <span class="math" data-tex="\(q:Z\to T\)">\(q:Z\to T\)</span> is separated, quasi-finite, flat, and of finite presentation, and <span class="math" data-tex="\(n\)">\(n\)</span> is invertible on <span class="math" data-tex="\(T\)">\(T\)</span>, there is a morphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{tr}_q:q_!q^*\mu_n\longrightarrow\mu_n.
+\tag{RC.6}
+\]">\[
+\operatorname{tr}_q:q_!q^*\mu_n\longrightarrow\mu_n.
+\tag{RC.6}
+\]</span>
+<p>Under the geometric-stalk formula for <span class="math" data-tex="\(q_!\)">\(q_!\)</span>, its value at <span class="math" data-tex="\(\bar t:\operatorname{Spec}\Omega\to T\)">\(\bar t:\operatorname{Spec}\Omega\to T\)</span> is</p>
+<span class="math math-display" data-tex="\[
+(a_z)_{z\in |Z_{\bar t}|}\longmapsto
+\sum_z m_z a_z,
+\qquad
+m_z=\dim_\Omega\mathcal O_{Z_{\bar t},z}.
+\tag{RC.7}
+\]">\[
+(a_z)_{z\in |Z_{\bar t}|}\longmapsto
+\sum_z m_z a_z,
+\qquad
+m_z=\dim_\Omega\mathcal O_{Z_{\bar t},z}.
+\tag{RC.7}
+\]</span>
+<p>The stalk is a sum, with finite support. The trace commutes with arbitrary base change and composition. If <span class="math" data-tex="\(q\)">\(q\)</span> is étale, every <span class="math" data-tex="\(m_z=1\)">\(m_z=1\)</span>; (RC.6) is the usual counit <span class="math" data-tex="\(q_!q^*\to\mathrm{id}\)">\(q_!q^*\to\mathrm{id}\)</span>, summing its sheets. An open immersion has the canonical extension map.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(q\)">\(q\)</span> finite locally free. For a finite locally free algebra <span class="math" data-tex="\(B/A\)">\(B/A\)</span>, the determinant of multiplication defines</p>
+<span class="math math-display" data-tex="\[
+N_{B/A}:B^*\longrightarrow A^*,\qquad
+b\longmapsto\det_A(m_b).
+\tag{RC.8}
+\]">\[
+N_{B/A}:B^*\longrightarrow A^*,\qquad
+b\longmapsto\det_A(m_b).
+\tag{RC.8}
+\]</span>
+<p>It is multiplicative and commutes with arbitrary ring base change, since multiplication, exterior powers, and the determinant commute with base change. Thus it defines a norm of unit sheaves. The norm commutes with <span class="math" data-tex="\(n\)">\(n\)</span>-th powers and therefore restricts to a map <span class="math" data-tex="\(q_*q^*\mu_n\to\mu_n\)">\(q_*q^*\mu_n\to\mu_n\)</span>.</p>
+<p>Over the strict localization of <span class="math" data-tex="\(T\)">\(T\)</span> at <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span>, the finite algebra is the product of its strictly local factors (the finite-morphism chapter, Lemma 3.2 and Theorem 3.3). Each factor <span class="math" data-tex="\(B_z\)">\(B_z\)</span> is finite free over the strictly local base and has rank <span class="math" data-tex="\(m_z\)">\(m_z\)</span>, as seen by its geometric closed fibre. The invertible locally constant sheaf <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span> has constant sections on such a connected factor. A scalar root of unity <span class="math" data-tex="\(a_z\)">\(a_z\)</span> has determinant norm <span class="math" data-tex="\(a_z^{m_z}\)">\(a_z^{m_z}\)</span>. Products of these norms give (RC.7), in additive notation. In particular the branch weight is the whole local fibre length, including a nonreduced branch, and the unit followed by trace for a finite map of constant rank <span class="math" data-tex="\(r\)">\(r\)</span> is multiplication by <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>Here is an actual local construction for a general <span class="math" data-tex="\(q\)">\(q\)</span>; assigning (RC.7) to stalks alone would omit this step. Work on an affine target neighborhood and use the finite compactification supplied by relative Zariski's main theorem, as in the compact-support chapter, §7:</p>
+<span class="math math-display" data-tex="\[
+Z\hookrightarrow\overline Z\longrightarrow T,
+\qquad \overline Z/T\text{ finite}.
+\tag{RC.9}
+\]">\[
+Z\hookrightarrow\overline Z\longrightarrow T,
+\qquad \overline Z/T\text{ finite}.
+\tag{RC.9}
+\]</span>
+<p>After strict localization at <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span>, split this finite scheme into its local factors. A factor whose closed point belongs to the open <span class="math" data-tex="\(Z\)">\(Z\)</span> lies entirely in <span class="math" data-tex="\(Z\)">\(Z\)</span>: an open containing the closed point of a local scheme is the whole scheme. The other factors contribute an open part with empty closed fibre. The finitely many idempotents effecting this splitting descend to an étale neighborhood <span class="math" data-tex="\(V\)">\(V\)</span> of <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span>; this is the ordinary filtered-colimit descent of elements and their finitely many idempotent equations. For the selected factors, the complement of <span class="math" data-tex="\(Z_V\)">\(Z_V\)</span> has closed image in <span class="math" data-tex="\(V\)">\(V\)</span>, since those factors are finite. Shrinking <span class="math" data-tex="\(V\)">\(V\)</span> removes that image. We obtain</p>
+<span class="math math-display" data-tex="\[
+Z_V=Z_0\amalg Z_1\amalg\cdots\amalg Z_r,
+\tag{RC.10}
+\]">\[
+Z_V=Z_0\amalg Z_1\amalg\cdots\amalg Z_r,
+\tag{RC.10}
+\]</span>
+<p>where each <span class="math" data-tex="\(Z_i/V\)">\(Z_i/V\)</span>, <span class="math" data-tex="\(i&gt;0\)">\(i&gt;0\)</span>, is finite locally free and <span class="math" data-tex="\((Z_0)_{\bar t}\)">\((Z_0)_{\bar t}\)</span> is empty. Flatness and finite presentation of <span class="math" data-tex="\(q\)">\(q\)</span> ensure finite local freeness on the selected factors.</p>
+<p>For a section <span class="math" data-tex="\(s\in(q_!q^*\mu_n)(V)\)">\(s\in(q_!q^*\mu_n)(V)\)</span>, its support is proper over <span class="math" data-tex="\(V\)">\(V\)</span> by the definition of <span class="math" data-tex="\(q_!\)">\(q_!\)</span>. Its part in <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span> also has proper support: <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span> is clopen. The image of that support is closed and misses <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span>. On the target open obtained by deleting this image, <span class="math" data-tex="\(s\)">\(s\)</span> has contributions only in the finite locally free factors. Apply their determinant norms and multiply the resulting roots of unity. This gives an actual target section near <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span>, with every stalk equal to (RC.7). These sections agree on overlaps by stalk detection, hence glue; restriction and addition are respected. This constructs (RC.6).</p>
+<p>This construction also proves arbitrary-base-change compatibility: proper supports pull back, the finite decompositions pull back, and determinant norm commutes with base change. Equivalently the two existing maps have the same formula (RC.7) on every geometric stalk, using the canonical base-change identification for <span class="math" data-tex="\(q_!\)">\(q_!\)</span> from the compact-support chapter, Lemma 2.2.</p>
+<p>For composition <span class="math" data-tex="\(Z\xrightarrow q T\xrightarrow r U\)">\(Z\xrightarrow q T\xrightarrow r U\)</span>, one can check the two existing traces at a geometric point of <span class="math" data-tex="\(U\)">\(U\)</span>. A local factor of the fibre of <span class="math" data-tex="\(T\)">\(T\)</span> is an Artinian <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, of length <span class="math" data-tex="\(a\)">\(a\)</span>. A corresponding finite flat local factor of <span class="math" data-tex="\(Z\)">\(Z\)</span> is free of rank <span class="math" data-tex="\(b\)">\(b\)</span> over <span class="math" data-tex="\(A\)">\(A\)</span>, and has <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>-length <span class="math" data-tex="\(ab\)">\(ab\)</span>. Thus the weights in the composite sum are products of the two weights. The finite decompositions just constructed justify reduction to these factors. Reindexing the finite sums proves composition. For étale maps all fibre lengths are one. Their canonical extension/sheet-sum counit has these same stalks, hence equals (RC.6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Tensoring (RC.6) by <span class="math" data-tex="\(\mu_n^{-1}\)">\(\mu_n^{-1}\)</span>, and using the finite-support projection isomorphism</p>
+<span class="math math-display" data-tex="\[
+q_!\Lambda\otimes_\Lambda F\simeq q_!q^*F
+\tag{RC.11}
+\]">\[
+q_!\Lambda\otimes_\Lambda F\simeq q_!q^*F
+\tag{RC.11}
+\]</span>
+<p>for a <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>, gives <span class="math" data-tex="\(\operatorname{tr}_q:q_!q^*F\to F\)">\(\operatorname{tr}_q:q_!q^*F\to F\)</span>. The projection isomorphism is the canonical one and is an isomorphism on stalks, where it is the distributivity of tensor over the finite-support sum. Its formula is again (RC.7); it is functorial in <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Lemma RC.3 (finite curve norm).</strong> If <span class="math" data-tex="\(v:C\to D\)">\(v:C\to D\)</span> is finite between smooth curves over an algebraically closed field, then</p>
+<span class="math math-display" data-tex="\[
+\tau_D\circ H^2_c(\operatorname{tr}_v)=\tau_C.
+\tag{RC.12}
+\]">\[
+\tau_D\circ H^2_c(\operatorname{tr}_v)=\tau_C.
+\tag{RC.12}
+\]</span>
+<p><strong>Proof.</strong> First take connected smooth projective curves. A finite nonconstant map is flat: its finite algebra over any target discrete valuation ring is torsion free, hence free. Apply the exact finite direct-image functor to Kummer; its exactness is the finite-morphism chapter, Theorem 4.1. The norm (RC.8) gives the commutative diagram</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccccccccc}
+1&amp;\to&amp;v_*\mu_n&amp;\to&amp;v_*\mathbf G_m&amp;\xrightarrow{n}&amp;v_*\mathbf G_m&amp;\to&amp;1\\
+&amp;&amp;\downarrow\operatorname{tr}_v&amp;&amp;\downarrow N&amp;&amp;\downarrow N\\
+1&amp;\to&amp;\mu_n&amp;\to&amp;\mathbf G_m&amp;\xrightarrow{n}&amp;\mathbf G_m&amp;\to&amp;1.
+\end{array}
+\tag{RC.13}
+\]">\[
+\begin{array}{ccccccccc}
+1&amp;\to&amp;v_*\mu_n&amp;\to&amp;v_*\mathbf G_m&amp;\xrightarrow{n}&amp;v_*\mathbf G_m&amp;\to&amp;1\\
+&amp;&amp;\downarrow\operatorname{tr}_v&amp;&amp;\downarrow N&amp;&amp;\downarrow N\\
+1&amp;\to&amp;\mu_n&amp;\to&amp;\mathbf G_m&amp;\xrightarrow{n}&amp;\mathbf G_m&amp;\to&amp;1.
+\end{array}
+\tag{RC.13}
+\]</span>
+<p>Naturality of the connecting maps identifies <span class="math" data-tex="\(H^2(\operatorname{tr}_v)\)">\(H^2(\operatorname{tr}_v)\)</span>, under (RC.4), with norm on <span class="math" data-tex="\(\operatorname{Pic}/n\)">\(\operatorname{Pic}/n\)</span>. The norm of a line bundle can be written</p>
+<span class="math math-display" data-tex="\[
+N(L)=\det(v_*L)\otimes\det(v_*\mathcal O_C)^{-1}.
+\tag{RC.14}
+\]">\[
+N(L)=\det(v_*L)\otimes\det(v_*\mathcal O_C)^{-1}.
+\tag{RC.14}
+\]</span>
+<p>We check the degree assertion rather than infer it from the sheaf's branch weights. Over the target discrete valuation ring, the valuation of the determinant norm of a nonzero integral function <span class="math" data-tex="\(b\)">\(b\)</span> is the length of the quotient of the finite free lattice by multiplication by <span class="math" data-tex="\(b\)">\(b\)</span>. Decomposing the quotient into its source branches shows</p>
+<span class="math math-display" data-tex="\[
+\operatorname{ord}_y N(b)
+=\sum_{x\mid y}[k(x):k(y)]\operatorname{ord}_x(b).
+\tag{RC.15}
+\]">\[
+\operatorname{ord}_y N(b)
+=\sum_{x\mid y}[k(x):k(y)]\operatorname{ord}_x(b).
+\tag{RC.15}
+\]</span>
+<p>For a rational function, subtract the formulas for a numerator and denominator. Applying the same lattice calculation to a divisor line bundle in (RC.14) gives</p>
+<span class="math math-display" data-tex="\[
+N\bigl(\mathcal O_C(\textstyle\sum_x d_x[x])\bigr)
+=\mathcal O_D\bigl(\textstyle\sum_x d_x[k(x):k(vx)][vx]\bigr).
+\tag{RC.16}
+\]">\[
+N\bigl(\mathcal O_C(\textstyle\sum_x d_x[x])\bigr)
+=\mathcal O_D\bigl(\textstyle\sum_x d_x[k(x):k(vx)][vx]\bigr).
+\tag{RC.16}
+\]</span>
+<p>All residue degrees are one over the algebraically closed field. Thus norm preserves divisor degree, and (RC.13) proves (RC.12) for projective curves. This proof works even for an inseparable finite map; in the application below the map is generically étale. In (RC.7) the sheaf trace weights a root on a ramified branch by its local fibre length. In (RC.16) the norm pushes a source point divisor with its residue degree. These two compatible norm calculations concern different objects and do not replace one another.</p>
+<p>A finite map of open smooth curves extends to a finite map of their smooth projective completions. Its inverse image of the target open is exactly the source open, by the valuative criterion for the given finite map. The completion square is therefore cartesian. Finite base change, open extension, and the norm map commute in this square: on every target stalk, retained source branches contribute their norms and omitted branches contribute zero in additive notation. Applying compact cohomology transports the projective identity to (RC.12). For disconnected curves apply the connected proof to each component and add. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary RC.4.</strong> If <span class="math" data-tex="\(u:C\to D\)">\(u:C\to D\)</span> is separated and quasi-finite flat between smooth curves over an algebraically closed field, then</p>
+<span class="math math-display" data-tex="\[
+\tau_D\circ H^2_c(\operatorname{tr}_u)=\tau_C.
+\tag{RC.17}
+\]">\[
+\tau_D\circ H^2_c(\operatorname{tr}_u)=\tau_C.
+\tag{RC.17}
+\]</span>
+<p>Indeed each nonempty connected source component has a nonconstant function-field map to a target component. It extends to a finite map of smooth projective completions. If <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> is the inverse image of <span class="math" data-tex="\(D\)">\(D\)</span> in the source completion, <span class="math" data-tex="\(u\)">\(u\)</span> factors as the open <span class="math" data-tex="\(C\hookrightarrow C&#x27;\)">\(C\hookrightarrow C&#x27;\)</span> followed by the finite map <span class="math" data-tex="\(C&#x27;\to D\)">\(C&#x27;\to D\)</span>. Lemma RC.2 identifies <span class="math" data-tex="\(\operatorname{tr}_u\)">\(\operatorname{tr}_u\)</span> with the composite of open extension and the weighted finite trace. Equation (RC.5) and Lemma RC.3 give (RC.17). This proves the particular compatibility for an étale chart <span class="math" data-tex="\(C\to\mathbf A^1_k\)">\(C\to\mathbf A^1_k\)</span>.</p>
+<h3 id="1-3-the-actual-relative-map-for-the-affine-line">1.3. The actual relative map for the affine line</h3>
+<p>Write <span class="math" data-tex="\(p:\mathbf P^1_S\to S\)">\(p:\mathbf P^1_S\to S\)</span>, <span class="math" data-tex="\(a:\mathbf A^1_S\to S\)">\(a:\mathbf A^1_S\to S\)</span>, and <span class="math" data-tex="\(j:\mathbf A^1_S\hookrightarrow\mathbf P^1_S\)">\(j:\mathbf A^1_S\hookrightarrow\mathbf P^1_S\)</span>. On each étale <span class="math" data-tex="\(V\to S\)">\(V\to S\)</span>, the Kummer class</p>
+<span class="math math-display" data-tex="\[
+c_1^{(n)}\bigl(\mathcal O_{\mathbf P^1_V}(1)\bigr)
+\in H^2(\mathbf P^1_V,\mu_n)
+\]">\[
+c_1^{(n)}\bigl(\mathcal O_{\mathbf P^1_V}(1)\bigr)
+\in H^2(\mathbf P^1_V,\mu_n)
+\]</span>
+<p>is compatible with restriction. Multiples of this class define a sheaf morphism</p>
+<span class="math math-display" data-tex="\[
+\kappa:\Lambda_S\longrightarrow R^2p_*\mu_n.
+\tag{RC.18}
+\]">\[
+\kappa:\Lambda_S\longrightarrow R^2p_*\mu_n.
+\tag{RC.18}
+\]</span>
+<p>Proper base change and (RC.4) show that each geometric stalk of <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is the degree-one generator, so <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is an isomorphism. Put <span class="math" data-tex="\(\operatorname{Tr}_p=\kappa^{-1}\)">\(\operatorname{Tr}_p=\kappa^{-1}\)</span>. This is already an actual sheaf map.</p>
+<p>The complement <span class="math" data-tex="\(i:S\hookrightarrow\mathbf P^1_S\)">\(i:S\hookrightarrow\mathbf P^1_S\)</span> is the infinity section, with <span class="math" data-tex="\(pi=\mathrm{id}_S\)">\(pi=\mathrm{id}_S\)</span>. Localization gives</p>
+<span class="math math-display" data-tex="\[
+R^1(pi)_*\mu_n\longrightarrow R^2a_!\mu_n
+\xrightarrow{j_!}R^2p_*\mu_n
+\longrightarrow R^2(pi)_*\mu_n.
+\]">\[
+R^1(pi)_*\mu_n\longrightarrow R^2a_!\mu_n
+\xrightarrow{j_!}R^2p_*\mu_n
+\longrightarrow R^2(pi)_*\mu_n.
+\]</span>
+<p>Both outer terms vanish, since <span class="math" data-tex="\(pi\)">\(pi\)</span> is the identity. Define</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_a:
+R^2a_!\mu_n\xrightarrow[ j_!]{\sim}R^2p_*\mu_n
+\xrightarrow{\kappa^{-1}}\Lambda_S.
+\tag{RC.19}
+\]">\[
+\operatorname{Tr}_a:
+R^2a_!\mu_n\xrightarrow[ j_!]{\sim}R^2p_*\mu_n
+\xrightarrow{\kappa^{-1}}\Lambda_S.
+\tag{RC.19}
+\]</span>
+<p>Kummer's connecting map and <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> commute with arbitrary base change, as do proper base change and open localization. Hence (RC.19) commutes with every base change. Its geometric fibres are precisely <span class="math" data-tex="\(\tau_{\mathbf A^1}\)">\(\tau_{\mathbf A^1}\)</span>.</p>
+<h3 id="1-4-coordinate-neighborhoods-and-descent">1.4. Coordinate neighborhoods and descent</h3>
+<p>Every point of <span class="math" data-tex="\(X\)">\(X\)</span> has a quasi-compact open neighborhood <span class="math" data-tex="\(U\)">\(U\)</span> with an <span class="math" data-tex="\(S\)">\(S\)</span>-morphism</p>
+<span class="math math-display" data-tex="\[
+u:U\longrightarrow\mathbf A^1_S
+\tag{RC.20}
+\]">\[
+u:U\longrightarrow\mathbf A^1_S
+\tag{RC.20}
+\]</span>
+<p>which is étale. One can see this directly from a standard smooth presentation: choose one of its free variables as the coordinate and use the invertible Jacobian determinant in the other variables. Equivalently choose a local function whose relative differential generates the line bundle <span class="math" data-tex="\(\Omega^1_{X/S}\)">\(\Omega^1_{X/S}\)</span>; the smooth coordinate theorem gives the étale map after shrinking. The base need not be a field or reduced. This is the usual local algebraic structure theorem for smooth morphisms, not a cohomological trace input.</p>
+<p>Since <span class="math" data-tex="\(X/S\)">\(X/S\)</span> is separated, the chart morphism is separated; its graph is closed in <span class="math" data-tex="\(U\times_S\mathbf A^1_S\)">\(U\times_S\mathbf A^1_S\)</span>. The quasi-compact charts and their intersections are of finite presentation over <span class="math" data-tex="\(S\)">\(S\)</span>, and the chart is quasi-finite. Its exact lower shriek and genuine sheet-sum trace are Lemma RC.2. By canonical composition define</p>
+<span class="math math-display" data-tex="\[
+\theta_u:R^2(h|_U)_!\mu_n
+\simeq R^2a_!(u_!u^*\mu_n)
+\xrightarrow{R^2a_!\operatorname{tr}_u}R^2a_!\mu_n
+\xrightarrow{\operatorname{Tr}_a}\Lambda_S.
+\tag{RC.21}
+\]">\[
+\theta_u:R^2(h|_U)_!\mu_n
+\simeq R^2a_!(u_!u^*\mu_n)
+\xrightarrow{R^2a_!\operatorname{tr}_u}R^2a_!\mu_n
+\xrightarrow{\operatorname{Tr}_a}\Lambda_S.
+\tag{RC.21}
+\]</span>
+<p>This composition is a morphism of sheaves. The arbitrary-base-change theorem for compact support and Lemma RC.2 identify its geometric stalk with the compact transfer along <span class="math" data-tex="\(u_{\bar s}\)">\(u_{\bar s}\)</span>, followed by <span class="math" data-tex="\(\tau_{\mathbf A^1}\)">\(\tau_{\mathbf A^1}\)</span>. Corollary RC.4 proves that this stalk equals <span class="math" data-tex="\(\tau_{U_{\bar s}}\)">\(\tau_{U_{\bar s}}\)</span>. In particular two coordinate maps on the same open give the same sheaf morphism: the two actual maps have equal geometric stalks. If <span class="math" data-tex="\(W\subset U\)">\(W\subset U\)</span> is a quasi-compact open, restriction of the chart is a chart on <span class="math" data-tex="\(W\)">\(W\)</span>; (RC.5), or Lemma RC.2's composition law, proves</p>
+<span class="math math-display" data-tex="\[
+\theta_u\circ R^2(h|_U)_!(\text{open extension from }W)
+=\theta_{u|_W}.
+\tag{RC.22}
+\]">\[
+\theta_u\circ R^2(h|_U)_!(\text{open extension from }W)
+=\theta_{u|_W}.
+\tag{RC.22}
+\]</span>
+<p>Choose finitely many such opens <span class="math" data-tex="\(U_i\)">\(U_i\)</span> covering <span class="math" data-tex="\(X\)">\(X\)</span>. Put <span class="math" data-tex="\(U_{ij}=U_i\cap U_j\)">\(U_{ij}=U_i\cap U_j\)</span> and let <span class="math" data-tex="\(j_i,j_{ij}\)">\(j_i,j_{ij}\)</span> denote the open immersions into <span class="math" data-tex="\(X\)">\(X\)</span>. Their intersections are quasi-compact because <span class="math" data-tex="\(X\)">\(X\)</span> is quasi-separated. On <span class="math" data-tex="\(X\)">\(X\)</span> the usual open-cover presentation is exact:</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_{i,j}(j_{ij})_!\mu_n
+\xrightarrow{\text{difference}}
+\bigoplus_i(j_i)_!\mu_n
+\xrightarrow{\text{sum}}\mu_n\longrightarrow0.
+\tag{RC.23}
+\]">\[
+\bigoplus_{i,j}(j_{ij})_!\mu_n
+\xrightarrow{\text{difference}}
+\bigoplus_i(j_i)_!\mu_n
+\xrightarrow{\text{sum}}\mu_n\longrightarrow0.
+\tag{RC.23}
+\]</span>
+<p>At a geometric point <span class="math" data-tex="\(x\)">\(x\)</span> this is the presentation of one copy of <span class="math" data-tex="\(\mu_{n,x}\)">\(\mu_{n,x}\)</span> by the copies indexed by the nonempty set of covering opens containing <span class="math" data-tex="\(x\)">\(x\)</span>: differences generate precisely the kernel of summation. Thus (RC.23) is exact without an assumption on the geometry of overlaps.</p>
+<p>For every <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(X\)">\(X\)</span>, the compact-support fibre formula and the curve bound give</p>
+<span class="math math-display" data-tex="\[
+R^qh_!G=0\quad(q&gt;2).
+\tag{RC.24}
+\]">\[
+R^qh_!G=0\quad(q&gt;2).
+\tag{RC.24}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(R^2h_!\)">\(R^2h_!\)</span> is right exact. More explicitly, factor (RC.23) through its image <span class="math" data-tex="\(K\)">\(K\)</span>. The two resulting short exact sequences, together with <span class="math" data-tex="\(R^3h_!\)">\(R^3h_!\)</span> vanishing on both kernels, give the exact presentation</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_{i,j}R^2(h|_{U_{ij}})_!\mu_n
+\xrightarrow{\text{difference}}
+\bigoplus_i R^2(h|_{U_i})_!\mu_n
+\longrightarrow R^2h_!\mu_n\longrightarrow0.
+\tag{RC.25}
+\]">\[
+\bigoplus_{i,j}R^2(h|_{U_{ij}})_!\mu_n
+\xrightarrow{\text{difference}}
+\bigoplus_i R^2(h|_{U_i})_!\mu_n
+\longrightarrow R^2h_!\mu_n\longrightarrow0.
+\tag{RC.25}
+\]</span>
+<p>Here composition with exact open extension identifies the terms. By (RC.22) and coordinate independence on <span class="math" data-tex="\(U_{ij}\)">\(U_{ij}\)</span>, the sum of the maps <span class="math" data-tex="\(\theta_{u_i}\)">\(\theta_{u_i}\)</span> annihilates the first arrow. It therefore descends uniquely through (RC.25) to the actual morphism (RC.1).</p>
+<p>At a geometric point of <span class="math" data-tex="\(S\)">\(S\)</span>, (RC.25) remains exact. The absolute trace <span class="math" data-tex="\(\tau_{X_{\bar s}}\)">\(\tau_{X_{\bar s}}\)</span>, composed with each open-extension map, is <span class="math" data-tex="\(\tau_{(U_i)_{\bar s}}\)">\(\tau_{(U_i)_{\bar s}}\)</span> by (RC.5). Equation (RC.21) has just this stalk. Surjectivity in (RC.25) proves that the descended trace has stalk <span class="math" data-tex="\(\tau_{X_{\bar s}}\)">\(\tau_{X_{\bar s}}\)</span>. Any two sheaf maps with those specified stalks are equal. This proves uniqueness and independence of the cover.</p>
+<h3 id="1-5-base-change-sheet-compatibility-and-coefficient-extension">1.5. Base change, sheet compatibility, and coefficient extension</h3>
+<p>For <span class="math" data-tex="\(g:S&#x27;\to S\)">\(g:S&#x27;\to S\)</span>, use the pulled-back cover and coordinates. The maps in (RC.21) commute with base change by the compact-support composition/base-change laws, the base change of the sheet sum, and (RC.19). The sheaf presentations (RC.23) also pull back. Since inverse image on étale sheaves is exact, the two descended maps agree after the surjection in (RC.25). Thus</p>
+<span class="math math-display" data-tex="\[
+g^*\operatorname{Tr}_h=\operatorname{Tr}_{h&#x27;}
+\tag{RC.26}
+\]">\[
+g^*\operatorname{Tr}_h=\operatorname{Tr}_{h&#x27;}
+\tag{RC.26}
+\]</span>
+<p>under <span class="math" data-tex="\(g^*R^2h_!\mu_n\simeq R^2h&#x27;_!\mu_n\)">\(g^*R^2h_!\mu_n\simeq R^2h&#x27;_!\mu_n\)</span>. For a base outside the global quasi-compact category the statement is read on quasi-compact quasi-separated target neighborhoods where the same formalism is defined; the local maps agree on overlaps.</p>
+<p>If <span class="math" data-tex="\(e:Y\to X\)">\(e:Y\to X\)</span> is separated, quasi-finite flat, and of finite presentation, and both <span class="math" data-tex="\(Y/S\)">\(Y/S\)</span> and <span class="math" data-tex="\(X/S\)">\(X/S\)</span> are smooth curves, the two sides of (RC.2) are existing sheaf maps. Compact base change and Lemma RC.2 identify their stalks with the two sides of (RC.17) for <span class="math" data-tex="\(e_{\bar s}\)">\(e_{\bar s}\)</span>. Hence they are equal. This includes every étale map and every open-extension map needed to change relative coordinates. For an étale map there is no unmentioned ramification factor: each retained sheet has weight one. The finite completions used to prove the fibre identity retain their local-length weights through (RC.13).</p>
+<p>If every geometric fibre is nonempty and connected, its degree trace is an isomorphism by (RC.3)-(RC.4). Stalk detection makes (RC.1) an isomorphism. Smoothness ensures that a connected geometric curve has one irreducible component: a regular curve's distinct irreducible components are disjoint.</p>
+<p>For any <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, the canonical derived projection formula and (RC.24) give</p>
+<span class="math math-display" data-tex="\[
+R^2h_!\mu_n\otimes_\Lambda F
+\xrightarrow{\sim}R^2h_!\bigl(h^*F(1)\bigr).
+\tag{RC.27}
+\]">\[
+R^2h_!\mu_n\otimes_\Lambda F
+\xrightarrow{\sim}R^2h_!\bigl(h^*F(1)\bigr).
+\tag{RC.27}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(Rh_!\mu_n\)">\(Rh_!\mu_n\)</span> has cohomology only in degrees <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>, and derived tensor with a sheaf cannot raise the upper cohomological degree. Its degree-two cohomology is its top cohomology tensored ordinarily with <span class="math" data-tex="\(F\)">\(F\)</span>; the lower truncation contributes only degrees at most one. Define the <span class="math" data-tex="\(F\)">\(F\)</span>-trace by (RC.27) followed by <span class="math" data-tex="\(\operatorname{Tr}_h\otimes\mathrm{id}_F\)">\(\operatorname{Tr}_h\otimes\mathrm{id}_F\)</span>. It is functorial in <span class="math" data-tex="\(F\)">\(F\)</span>, commutes with base change, and obeys the same sheet compatibility.</p>
+<p>Finally (RC.24) gives <span class="math" data-tex="\(Rh_!\mu_n[2]\in D^{\leq0}(S,\Lambda)\)">\(Rh_!\mu_n[2]\in D^{\leq0}(S,\Lambda)\)</span>. Its canonical top-truncation map followed by (RC.1) defines</p>
+<span class="math math-display" data-tex="\[
+Rh_!\mu_n[2]\longrightarrow R^2h_!\mu_n
+\xrightarrow{\operatorname{Tr}_h}\Lambda_S.
+\tag{RC.28}
+\]">\[
+Rh_!\mu_n[2]\longrightarrow R^2h_!\mu_n
+\xrightarrow{\operatorname{Tr}_h}\Lambda_S.
+\tag{RC.28}
+\]</span>
+<p>The étale compatibility of (RC.28) follows by naturality of top truncation and (RC.2). This is a curve trace in the derived category. Its construction has used neither an extraordinary inverse-image identification nor higher-dimensional duality.</p>
+<h2 id="2-construction-in-higher-dimension">2. Construction in higher dimension</h2>
+<h3 id="2-1-scope-and-the-top-degree-descent-mechanism">2.1. Scope and the top-degree descent mechanism</h3>
+<p>Let <span class="math" data-tex="\(S\)">\(S\)</span> be quasi-compact and quasi-separated, let <span class="math" data-tex="\(n\)">\(n\)</span> be invertible on <span class="math" data-tex="\(S\)">\(S\)</span>, and put <span class="math" data-tex="\(\Lambda=\mathbf Z/n\)">\(\Lambda=\mathbf Z/n\)</span>. Let <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span> be separated and smooth of finite presentation, purely of relative dimension <span class="math" data-tex="\(d\)">\(d\)</span>. The case <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is the zero category. We construct</p>
+<span class="math math-display" data-tex="\[
+\tau_f:R^{2d}f_!\Lambda_X(d)\longrightarrow\Lambda_S.
+\tag{ST.1}
+\]">\[
+\tau_f:R^{2d}f_!\Lambda_X(d)\longrightarrow\Lambda_S.
+\tag{ST.1}
+\]</span>
+<p>The construction is compatible with arbitrary base change, étale maps in the source, composition of smooth maps, and coefficient reduction. It sums components; it does not select one component of a fibre. When <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, it is the étale summation map.</p>
+<p>The compact-support chapter’s dimension bound says <span class="math" data-tex="\(R^rf_!F=0\)">\(R^rf_!F=0\)</span> for <span class="math" data-tex="\(r&gt;2d\)">\(r&gt;2d\)</span>, for every torsion sheaf <span class="math" data-tex="\(F\)">\(F\)</span>. Its long exact sequence therefore makes <span class="math" data-tex="\(R^{2d}f_!\)">\(R^{2d}f_!\)</span> a right exact functor on sheaves. For a finite open cover <span class="math" data-tex="\(X=\bigcup U_i\)">\(X=\bigcup U_i\)</span>, with inclusions <span class="math" data-tex="\(j_i\)">\(j_i\)</span> and <span class="math" data-tex="\(j_{ij}\)">\(j_{ij}\)</span>, the stalkwise exact sequence</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_{i,j}j_{ij,!}\Lambda\longrightarrow
+\bigoplus_i j_{i,!}\Lambda\longrightarrow\Lambda_X\longrightarrow0
+\tag{ST.2}
+\]">\[
+\bigoplus_{i,j}j_{ij,!}\Lambda\longrightarrow
+\bigoplus_i j_{i,!}\Lambda\longrightarrow\Lambda_X\longrightarrow0
+\tag{ST.2}
+\]</span>
+<p>uses the difference of the two extension maps on intersections. To check exactness, choose any geometric point: the remaining terms are the usual augmented degree-zero Čech sequence of its nonempty finite set of covering indices. An element whose coefficient sum is zero is a sum of differences from those indices. Apply the right exact functor to obtain</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_{i,j}R^{2d}(fj_{ij})_!\Lambda(d)\longrightarrow
+\bigoplus_iR^{2d}(fj_i)_!\Lambda(d)\longrightarrow
+R^{2d}f_!\Lambda(d)\longrightarrow0.
+\tag{ST.3}
+\]">\[
+\bigoplus_{i,j}R^{2d}(fj_{ij})_!\Lambda(d)\longrightarrow
+\bigoplus_iR^{2d}(fj_i)_!\Lambda(d)\longrightarrow
+R^{2d}f_!\Lambda(d)\longrightarrow0.
+\tag{ST.3}
+\]</span>
+<p>Thus local traces that agree on intersections descend to one trace. Equality of global trace maps can also be tested after these covering maps. The use of the highest possible degree is essential to this descent argument.</p>
+<p>For a separated étale morphism <span class="math" data-tex="\(u:V\to W\)">\(u:V\to W\)</span> of finite presentation, <span class="math" data-tex="\(u_!\)">\(u_!\)</span> is exact: its stalk is a finite direct sum over the geometric fibre. Its counit</p>
+<span class="math math-display" data-tex="\[
+\operatorname{sum}_u:u_!u^*F\longrightarrow F
+\tag{ST.4}
+\]">\[
+\operatorname{sum}_u:u_!u^*F\longrightarrow F
+\tag{ST.4}
+\]</span>
+<p>adds those entries. Summation commutes with base change and with composition, by the same stalk formula. The identities also hold on complexes because this functor is exact.</p>
+<h3 id="2-2-affine-space-integration-and-local-candidates">2.2. Affine-space integration and local candidates</h3>
+<p>Write <span class="math" data-tex="\(a_d:\mathbf A^d_S\to S\)">\(a_d:\mathbf A^d_S\to S\)</span>. The relative affine-line trace is obtained from <span class="math" data-tex="\(\mathbf P^1_S\)">\(\mathbf P^1_S\)</span> using <span class="math" data-tex="\(c_1(\mathcal O(1))\)">\(c_1(\mathcal O(1))\)</span>, proper base change and excision at infinity. It is the isomorphism</p>
+<span class="math math-display" data-tex="\[
+\tau_{a_1}:R^2a_{1,!}\Lambda(1)\xrightarrow{\sim}\Lambda.
+\tag{ST.5}
+\]">\[
+\tau_{a_1}:R^2a_{1,!}\Lambda(1)\xrightarrow{\sim}\Lambda.
+\tag{ST.5}
+\]</span>
+<p>There is no sign change: a degree-one Kummer Chern class has trace one. The relative-curve foundation proves that construction and its geometric normalization.</p>
+<p>For composable maps with fibre dimensions at most <span class="math" data-tex="\(e,d\)">\(e,d\)</span>, the compact-support composition spectral sequence has only one possible term of total degree <span class="math" data-tex="\(2e+2d\)">\(2e+2d\)</span>. Its edge isomorphism is</p>
+<span class="math math-display" data-tex="\[
+R^{2e}g_!R^{2d}h_!F\xrightarrow{\sim}
+R^{2(e+d)}(gh)_!F.
+\tag{ST.6}
+\]">\[
+R^{2e}g_!R^{2d}h_!F\xrightarrow{\sim}
+R^{2(e+d)}(gh)_!F.
+\tag{ST.6}
+\]</span>
+<p>Indeed a term in that total degree requires both indices at their upper bounds; incoming and outgoing differentials would require an index above one of those bounds. Successive affine-line projections and (ST.6) define <span class="math" data-tex="\(\tau_{a_d}\)">\(\tau_{a_d}\)</span>. These are isomorphisms, because (ST.5) is an isomorphism after every base change.</p>
+<p>The definition is independent of the order of the coordinates. This can be checked on every geometric fibre by the proved derived Künneth formula. Compact cohomology of <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span> is the free rank-one module in degree two, with its Tate twist. Consequently compact cohomology of <span class="math" data-tex="\(\mathbf A^d\)">\(\mathbf A^d\)</span> is the tensor product of these degree-two factors. Permuting them contributes <span class="math" data-tex="\((-1)^{2\cdot2}=1\)">\((-1)^{2\cdot2}=1\)</span>, and each factor's normalized generator integrates to one. All coordinate permutations preserve <span class="math" data-tex="\(\tau_{a_d}\)">\(\tau_{a_d}\)</span>. The fibre formula for compact support and conservativity of geometric stalks prove the relative assertion.</p>
+<p>If <span class="math" data-tex="\(u:U\to\mathbf A^d_S\)">\(u:U\to\mathbf A^d_S\)</span> is a separated étale coordinate map, the composition isomorphism and (ST.4) give a local candidate</p>
+<span class="math math-display" data-tex="\[
+t_{f|_U,u}=\tau_{a_d}\circ
+R^{2d}a_{d,!}(\operatorname{sum}_u):
+R^{2d}(f|_U)_!\Lambda(d)\longrightarrow\Lambda_S.
+\tag{ST.7}
+\]">\[
+t_{f|_U,u}=\tau_{a_d}\circ
+R^{2d}a_{d,!}(\operatorname{sum}_u):
+R^{2d}(f|_U)_!\Lambda(d)\longrightarrow\Lambda_S.
+\tag{ST.7}
+\]</span>
+<p>It already commutes with base change. Its independence of <span class="math" data-tex="\(u\)">\(u\)</span> requires a proof; geometric stalks alone do not prove independence until the fibre maps have been compared.</p>
+<h3 id="2-3-connecting-étale-coordinates-without-introducing-singular-curve-fibres">2.3. Connecting étale coordinates without introducing singular curve fibres</h3>
+<p>Fix a smooth finite-type <span class="math" data-tex="\(d\)">\(d\)</span>-fold <span class="math" data-tex="\(U\)">\(U\)</span> over an algebraically closed field <span class="math" data-tex="\(k\)">\(k\)</span>, two étale coordinate maps <span class="math" data-tex="\(u,v:U\to\mathbf A^d_k\)">\(u,v:U\to\mathbf A^d_k\)</span>, and a closed point <span class="math" data-tex="\(x\)">\(x\)</span>. The differentials <span class="math" data-tex="\(du_1,\ldots,du_d\)">\(du_1,\ldots,du_d\)</span> and <span class="math" data-tex="\(dv_1,\ldots,dv_d\)">\(dv_1,\ldots,dv_d\)</span> are bases at <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p>There are functions <span class="math" data-tex="\(w_i=\sum_jm_{ij}u_j\)">\(w_i=\sum_jm_{ij}u_j\)</span>, with <span class="math" data-tex="\(M=(m_{ij})\in\operatorname{GL}_d(k)\)">\(M=(m_{ij})\in\operatorname{GL}_d(k)\)</span>, such that every intermediate list formed by replacing the coordinates of <span class="math" data-tex="\(u\)">\(u\)</span> by those of <span class="math" data-tex="\(w\)">\(w\)</span>, one at a time, has independent differentials at <span class="math" data-tex="\(x\)">\(x\)</span>; the same holds while replacing <span class="math" data-tex="\(w\)">\(w\)</span> by <span class="math" data-tex="\(v\)">\(v\)</span>. Here is the existence argument. The determinants of the finitely many mixed differential matrices are polynomials in the entries of <span class="math" data-tex="\(M\)">\(M\)</span>. A mixed matrix using fixed rows from <span class="math" data-tex="\(du\)">\(du\)</span> can be completed to a basis by freely choosing its remaining rows, so its determinant polynomial is nonzero. A mixed matrix using fixed rows from <span class="math" data-tex="\(dv\)">\(dv\)</span> has the same property, since those fixed rows are independent and every cotangent vector is a linear combination of the <span class="math" data-tex="\(du_j\)">\(du_j\)</span>. Include <span class="math" data-tex="\(\det M\)">\(\det M\)</span> among these nonzero polynomials. Their product is nonzero. A nonzero polynomial over the infinite field <span class="math" data-tex="\(k\)">\(k\)</span> cannot vanish at every <span class="math" data-tex="\(k\)">\(k\)</span>-point: induct on the number of variables, using the finite number of roots of a nonzero polynomial in one variable. Choose <span class="math" data-tex="\(M\)">\(M\)</span> at which this product is nonzero.</p>
+<p>Each intermediate coordinate map is therefore étale at <span class="math" data-tex="\(x\)">\(x\)</span>. Restrict to the intersection of their finitely many étale loci, an open neighbourhood <span class="math" data-tex="\(W\)">\(W\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>. We have connected <span class="math" data-tex="\(u|_W\)">\(u|_W\)</span> to <span class="math" data-tex="\(v|_W\)">\(v|_W\)</span> by changing one coordinate at a time while keeping every entire coordinate system étale. If the changed coordinate is moved to first position, the common remaining coordinates define</p>
+<span class="math math-display" data-tex="\[
+h:W\longrightarrow\mathbf A^{d-1}_k
+\tag{ST.8}
+\]">\[
+h:W\longrightarrow\mathbf A^{d-1}_k
+\tag{ST.8}
+\]</span>
+<p>as a smooth relative curve: either of the full coordinate maps factors it as an étale map to <span class="math" data-tex="\(\mathbf A^1_{\mathbf A^{d-1}_k}\)">\(\mathbf A^1_{\mathbf A^{d-1}_k}\)</span>, followed by its smooth projection. This construction avoids a hidden use of a trace theorem for singular flat curves.</p>
+<p>For those two full coordinate maps, (ST.7), (ST.6) and the order independence of affine-space integration express both candidates as</p>
+<span class="math math-display" data-tex="\[
+\tau_{a_{d-1}}\circ R^{2d-2}a_{d-1,!}(\tau_h).
+\tag{ST.9}
+\]">\[
+\tau_{a_{d-1}}\circ R^{2d-2}a_{d-1,!}(\tau_h).
+\tag{ST.9}
+\]</span>
+<p>The relative-curve construction identifies <span class="math" data-tex="\(\tau_h\)">\(\tau_h\)</span> with the composite obtained using <strong>either</strong> of its étale maps to the relative affine line. Hence changing the first coordinate leaves the candidate unchanged. Coordinate permutations allow the same conclusion for each step. The entire chain proves equality of the two candidates on <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p>The neighbourhoods just constructed cover every closed point of <span class="math" data-tex="\(U\)">\(U\)</span>, and hence cover <span class="math" data-tex="\(U\)">\(U\)</span>: a finite-type scheme over a field is Jacobson, so a nonempty closed complement would contain a closed point. A finite subcover and (ST.3) give equality on all of <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>Now return to an arbitrary base <span class="math" data-tex="\(S\)">\(S\)</span>. The candidates for two coordinate maps have compact-support base-change isomorphisms. At a geometric point of <span class="math" data-tex="\(S\)">\(S\)</span>, they become exactly the maps just compared over its algebraically closed residue field. Equality at all geometric stalks proves equality of the original sheaf maps. This proves coordinate independence in (ST.7), including over nonreduced bases.</p>
+<h3 id="2-4-global-construction-and-functorial-properties">2.4. Global construction and functorial properties</h3>
+<p>Choose finitely many affine open charts of <span class="math" data-tex="\(X\)">\(X\)</span>, after covering <span class="math" data-tex="\(S\)">\(S\)</span> by finitely many affine opens. Smooth coordinates give étale maps from these charts to <span class="math" data-tex="\(\mathbf A^d_S\)">\(\mathbf A^d_S\)</span>. Their intersections can be covered by charts with either inherited coordinate map, whose candidate traces agree by §2.3. Equation (ST.3) descends their sum to <span class="math" data-tex="\(\tau_f\)">\(\tau_f\)</span> in (ST.1). Comparing two covers with their common refinement proves independence of the cover. All constructions commute with base change. The base-changed open cover still covers, and its descended map is characterized by its chart restrictions, so <span class="math" data-tex="\(\tau_f\)">\(\tau_f\)</span> commutes with arbitrary base change.</p>
+<p>If <span class="math" data-tex="\(b:X&#x27;\to X\)">\(b:X&#x27;\to X\)</span> is separated étale of finite presentation, the chart of <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> obtained by composing with a chart of <span class="math" data-tex="\(X\)">\(X\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\tau_{fb}=\tau_f\circ R^{2d}f_!(\operatorname{sum}_b).
+\tag{ST.10}
+\]">\[
+\tau_{fb}=\tau_f\circ R^{2d}f_!(\operatorname{sum}_b).
+\tag{ST.10}
+\]</span>
+<p>This is first the composition identity for the finite sums in (ST.4), and then descends by (ST.3). In particular it proves compatibility with open extension.</p>
+<p>For separated smooth <span class="math" data-tex="\(h:X\to Y\)">\(h:X\to Y\)</span> of relative dimension <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(g:Y\to S\)">\(g:Y\to S\)</span> of relative dimension <span class="math" data-tex="\(e\)">\(e\)</span>, choose a chart of <span class="math" data-tex="\(Y/S\)">\(Y/S\)</span> and a relative chart of <span class="math" data-tex="\(X/Y\)">\(X/Y\)</span>. Their composite is an étale map to <span class="math" data-tex="\(\mathbf A^d_S\times_S\mathbf A^e_S\)">\(\mathbf A^d_S\times_S\mathbf A^e_S\)</span>: an étale map remains étale after the product base change, and compositions of étale maps are étale. Affine-space integration on that product can first integrate the <span class="math" data-tex="\(d\)">\(d\)</span> coordinates and then the <span class="math" data-tex="\(e\)">\(e\)</span> coordinates, by (ST.6) and §2.2. Summation over the intermediate étale sheets commutes with the first integration: its square is the compact-support base-change square for the affine-space projection, and the counit is a finite sum on each geometric stalk. Equivalently, on a geometric fibre both orders add the same entries and integrate the same normalized affine factors. The chart candidates consequently satisfy</p>
+<span class="math math-display" data-tex="\[
+\tau_{gh}=\tau_g\circ R^{2e}g_!(\tau_h),
+\tag{ST.11}
+\]">\[
+\tau_{gh}=\tau_g\circ R^{2e}g_!(\tau_h),
+\tag{ST.11}
+\]</span>
+<p>under (ST.6), with the remaining twists retained. Apply (ST.3) first to the source charts and then to the intermediate charts to obtain (ST.11) globally. Associativity follows from the associativity of the compact-support composition isomorphisms and these same local integrations.</p>
+<p>Every affine normalization is defined by the Kummer class of <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>, and every other map is tensor, an étale counit, composition or descent. The Kummer coefficient diagrams and finite summation show that these maps commute with reduction <span class="math" data-tex="\(\mathbf Z/n\to\mathbf Z/m\)">\(\mathbf Z/n\to\mathbf Z/m\)</span> when <span class="math" data-tex="\(m\mid n\)">\(m\mid n\)</span>. This is a statement about the coefficient comparison maps themselves; it does not assert that arbitrary cohomology groups commute with ordinary underived tensor product.</p>
+<h3 id="2-5-derived-trace-and-arbitrary-pulled-back-coefficients">2.5. Derived trace and arbitrary pulled-back coefficients</h3>
+<p>The amplitude bound places <span class="math" data-tex="\(Rf_!\Lambda(d)[2d]\)">\(Rf_!\Lambda(d)[2d]\)</span> in <span class="math" data-tex="\(D^{\leq0}\)">\(D^{\leq0}\)</span>. Its canonical truncation map to its degree-zero cohomology, followed by (ST.1), defines</p>
+<span class="math math-display" data-tex="\[
+T_f:Rf_!\Lambda(d)[2d]\longrightarrow\Lambda.
+\tag{ST.12}
+\]">\[
+T_f:Rf_!\Lambda(d)[2d]\longrightarrow\Lambda.
+\tag{ST.12}
+\]</span>
+<p>For an arbitrary complex <span class="math" data-tex="\(A\)">\(A\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, the already proved arbitrary-complex projection formula gives</p>
+<span class="math math-display" data-tex="\[
+Rf_!\bigl(f^*A(d)[2d]\bigr)
+\xrightarrow{\sim} A\otimes^L Rf_!\Lambda(d)[2d]
+\xrightarrow{1\otimes T_f}A.
+\tag{ST.13}
+\]">\[
+Rf_!\bigl(f^*A(d)[2d]\bigr)
+\xrightarrow{\sim} A\otimes^L Rf_!\Lambda(d)[2d]
+\xrightarrow{1\otimes T_f}A.
+\tag{ST.13}
+\]</span>
+<p>Base change, étale extension and smooth composition of (ST.12) follow from those properties of the top-degree maps. For composition, both compact-support orientation complexes have highest degree zero, so the composition spectral sequence identifies the highest degree with (ST.6); the canonical truncation followed by the successive top traces is the truncation followed by (ST.11). Applying the projection formula and the associativity of derived tensor proves the corresponding properties of (ST.13), without imposing a boundedness or finite Tor-dimension condition on <span class="math" data-tex="\(A\)">\(A\)</span>. The orientation shifts are even, so interchanging their factors introduces no sign.</p>
+<h2 id="3-compact-support-near-a-geometric-point">3. Compact support near a geometric point</h2>
+<p>Let <span class="math" data-tex="\(\bar x\to X\)">\(\bar x\to X\)</span> be a geometric point. Use affine pointed étale neighbourhoods <span class="math" data-tex="\((U,\bar u)\)">\((U,\bar u)\)</span>; morphisms preserve the chosen point. Fibre products and further affine neighbourhoods give common refinements, and two parallel maps agree after a further refinement. This is a cofiltered category, and its inverse limit is <span class="math" data-tex="\(X_{(\bar x)}\)">\(X_{(\bar x)}\)</span>.</p>
+<p>A refinement <span class="math" data-tex="\(v:U&#x27;\to U\)">\(v:U&#x27;\to U\)</span> is separated and étale of finite presentation. The counit <span class="math" data-tex="\(v_!v^*\Lambda\to\Lambda\)">\(v_!v^*\Lambda\to\Lambda\)</span>, given by summation, induces</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_c(U&#x27;,\Lambda(a))\longrightarrow
+R\Gamma_c(U,\Lambda(a)).
+\tag{3.1}
+\]">\[
+R\Gamma_c(U&#x27;,\Lambda(a))\longrightarrow
+R\Gamma_c(U,\Lambda(a)).
+\tag{3.1}
+\]</span>
+<p>On ordinary cohomology the direction is reversed: there is pullback from <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(U&#x27;\)">\(U&#x27;\)</span>. These two directions are dual under the curve theorem when <span class="math" data-tex="\(U\)">\(U\)</span> has dimension one. For a general refinement of smooth curves, factor its quasi-finite map as an open immersion followed by a finite map using normalization. The finite trace and the open adjunction proved in the curve-duality chapter identify (3.1) with the transpose of ordinary pullback. Thus this compatibility includes affine neighbourhoods and not just finite étale covers.</p>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+\mathcal C^r_{\bar x}(\Lambda(a))
+=\{H^r_c(U,\Lambda(a))\}_U,
+\qquad
+H^r_{c,\mathrm{germ}}(X_{(\bar x)},\Lambda(a))
+=\varprojlim_U H^r_c(U,\Lambda(a)).
+\tag{3.2}
+\]">\[
+\mathcal C^r_{\bar x}(\Lambda(a))
+=\{H^r_c(U,\Lambda(a))\}_U,
+\qquad
+H^r_{c,\mathrm{germ}}(X_{(\bar x)},\Lambda(a))
+=\varprojlim_U H^r_c(U,\Lambda(a)).
+\tag{3.2}
+\]</span>
+<p>The first object is a pro-module: it retains the system, including maps that eventually become zero. It is this object that our proof computes. The second is its inverse limit. Neither is a filtered colimit of compact groups using ordinary pullback. For a strict germ not finite type, (3.2) is a definition and does not assert that a finite-type compactification of the germ has been chosen.</p>
+<p><strong>Lemma 3.1 (finite systems).</strong> Inverse limit is exact on cofiltered systems of finite modules. Such a system is pro-zero if and only if its inverse limit is zero.</p>
+<p><em>Proof.</em> A pro-zero system means that for each target stage some later transition into it is zero. Its limit is then zero. Conversely, fix a stage <span class="math" data-tex="\(i\)">\(i\)</span>. The images of later groups in the finite group <span class="math" data-tex="\(A_i\)">\(A_i\)</span> form a filtered decreasing family of subgroups, so their intersection is achieved by a common refinement of finitely many stages. That intersection is the image of the inverse limit in <span class="math" data-tex="\(A_i\)">\(A_i\)</span>: any value in it has a compatible lift. To prove the last assertion, put all possible lifts in a product of finite discrete sets. The compatibility conditions are closed, and every finite family of them is solvable at one common refinement. Compactness of the product supplies a simultaneous solution. If the limit is zero, the intersection is zero, so a later map into <span class="math" data-tex="\(A_i\)">\(A_i\)</span> is zero.</p>
+<p>For a levelwise short exact sequence of finite systems, a compatible element of the quotient likewise has compatible lifts: impose the lifting equations and the transition equations in the product of the finite sets of lifts. Every finite set of equations is solvable at one common refinement, by levelwise surjectivity. Compactness gives all the equations at once. Limits already preserve kernels, so they are exact. Finite diagrams in a pro-category can be represented at common indices by taking refinements; this proves the same assertion for an exact sequence of pro-finite modules. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No assumption of a countable list of neighbourhoods, and no unproved interchange with an infinite product of cochain degrees, occurs in this argument.</p>
+<h2 id="4-from-pointwise-vanishing-to-a-uniform-derived-limit">4. From pointwise vanishing to a uniform derived limit</h2>
+<p>Two elementary lemmas make the local induction rigorous.</p>
+<p><strong>Lemma 4.1 (uniform refinement).</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be quasi-compact and quasi-separated, and let <span class="math" data-tex="\(\{E_i\}\)">\(\{E_i\}\)</span> be a cofiltered system of constructible finite module sheaves on <span class="math" data-tex="\(B\)">\(B\)</span>. If its stalk system is pro-zero at every geometric point, then the sheaf system is pro-zero.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(i\)">\(i\)</span>. For a later stage <span class="math" data-tex="\(j\)">\(j\)</span>, the image of <span class="math" data-tex="\(E_j\to E_i\)">\(E_j\to E_i\)</span> is constructible by the Serre property. Its nonzero-stalk locus is a constructible subset of <span class="math" data-tex="\(B\)">\(B\)</span>. Its complement, where that map is zero, is therefore open in the constructible topology. These complements cover <span class="math" data-tex="\(B\)">\(B\)</span>, by the hypothesis on stalks. The constructible topology of a quasi-compact, quasi-separated scheme is compact: on an affine this is the compact topology generated by quasi-compact opens and their complements, and a finite affine cover gives the assertion for <span class="math" data-tex="\(B\)">\(B\)</span>. A finite number of the complements consequently cover <span class="math" data-tex="\(B\)">\(B\)</span>. Choose a common later stage for their maps. Its map to <span class="math" data-tex="\(E_i\)">\(E_i\)</span> is zero at every stalk and hence zero as a sheaf map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply the lemma to kernels, cokernels and cohomology sheaves when their finite presentation has been fixed. In particular, an isomorphism of stalk pro-systems gives a pro-isomorphism of constructible sheaf systems. Pointwise vanishing alone would not justify this conclusion without the constructibility and compactness argument.</p>
+<p><strong>Lemma 4.2 (bounded ghosts).</strong> Suppose all <span class="math" data-tex="\(K_i\)">\(K_i\)</span> lie in <span class="math" data-tex="\(D^{[a,b]}\)">\(D^{[a,b]}\)</span>, and each map in a chain induces zero on every cohomology object. A composite of <span class="math" data-tex="\(b-a+1\)">\(b-a+1\)</span> such maps is zero. Consequently a uniformly bounded system with pro-zero cohomology has pro-zero objects in the derived category.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(u:A\to B\)">\(u:A\to B\)</span> kills <span class="math" data-tex="\(H^b\)">\(H^b\)</span>, its composite with <span class="math" data-tex="\(B\to H^b(B)[-b]\)">\(B\to H^b(B)[-b]\)</span> is zero. Indeed any map from <span class="math" data-tex="\(A\in D^{\leq b}\)">\(A\in D^{\leq b}\)</span> to the last object is determined by <span class="math" data-tex="\(H^b(A)\)">\(H^b(A)\)</span>, by the truncation triangle and the vanishing of Hom from <span class="math" data-tex="\(D^{\leq b-1}\)">\(D^{\leq b-1}\)</span> to <span class="math" data-tex="\(D^{\geq b}\)">\(D^{\geq b}\)</span>. Thus <span class="math" data-tex="\(u\)">\(u\)</span> factors through <span class="math" data-tex="\(\tau_{\leq b-1}B\)">\(\tau_{\leq b-1}B\)</span>. The next ghost, restricted to that truncation, factors through <span class="math" data-tex="\(\tau_{\leq b-2}\)">\(\tau_{\leq b-2}\)</span> of its target by the same argument. Repeating lowers the upper degree by one at each step, and after <span class="math" data-tex="\(b-a+1\)">\(b-a+1\)</span> steps the composite factors through zero. For a system, first refine to kill all its finitely many cohomology degrees, and repeat this finitely many times. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We also use finite-presentation descent explicitly. A constructible sheaf and its morphisms on a strict local base descend to an étale neighbourhood of that base point. Equality or zero of a descended morphism holds at some later neighbourhood. This is the finite-presentation/continuity assertion from the finite-morphism and constructible-sheaf chapters: use finite presentations on the finite-presentation étale basis, and descend the finite generators and relations at a common stage. For a bounded derived diagram, make these descents in its finitely many cohomology degrees and use Lemma 4.2 to kill the remaining ghosts. Thus the computations below on a strict base give actual refined neighbourhood maps, rather than merely an equality of numerical fibre dimensions.</p>
+<h2 id="5-the-relative-curve-calculation">5. The relative-curve calculation</h2>
+<p>For a smooth <span class="math" data-tex="\(f:X\to S\)">\(f:X\to S\)</span>, fix <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span> over <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span>. A neighbourhood diagram consists of an affine étale <span class="math" data-tex="\(V\to S\)">\(V\to S\)</span>, a pointed affine étale <span class="math" data-tex="\(U\to X\times_S V\)">\(U\to X\times_S V\)</span>, and its smooth map <span class="math" data-tex="\(g:U\to V\)">\(g:U\to V\)</span>. Put <span class="math" data-tex="\(j_V:V\to S\)">\(j_V:V\to S\)</span>. Trace gives a morphism of inverse systems</p>
+<span class="math math-display" data-tex="\[
+\{R(fj_U)_!\Lambda(d)\}_{{(U,V)}}
+\longrightarrow
+\{j_{V,!}\Lambda[-2d]\}_{{(U,V)}}.
+\tag{5.1}
+\]">\[
+\{R(fj_U)_!\Lambda(d)\}_{{(U,V)}}
+\longrightarrow
+\{j_{V,!}\Lambda[-2d]\}_{{(U,V)}}.
+\tag{5.1}
+\]</span>
+<p>On the left <span class="math" data-tex="\(j_U:U\to X\)">\(j_U:U\to X\)</span>; its map to the term on the right is <span class="math" data-tex="\(j_{V,!}\operatorname{Tr}_g\)">\(j_{V,!}\operatorname{Tr}_g\)</span>. The transition maps on both sides are the étale counits. The trace constructed in §2 makes their squares commute by (ST.10).</p>
+<p><strong>Proposition 5.1 (dimension one).</strong> If <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, the cone system in (5.1) is pro-zero in the derived category. Equivalently, trace is an isomorphism of these bounded derived pro-systems.</p>
+<p><em>Proof.</em> Fix an original target diagram <span class="math" data-tex="\((U_0,V_0)\)">\((U_0,V_0)\)</span>. The chosen geometric point identifies <span class="math" data-tex="\(B=(V_0)_{(\bar v_0)}\)">\(B=(V_0)_{(\bar v_0)}\)</span> with <span class="math" data-tex="\(S_{(\bar s)}\)">\(S_{(\bar s)}\)</span>, and selects the map <span class="math" data-tex="\(B\to V_0\)">\(B\to V_0\)</span>. First consider the relative trace cones on <span class="math" data-tex="\(V_0\)">\(V_0\)</span>, before applying <span class="math" data-tex="\(j_{V_0,!}\)">\(j_{V_0,!}\)</span>. Pullback along this selected map identifies their source terms with <span class="math" data-tex="\(Rg_{U,!}\Lambda(1)\)">\(Rg_{U,!}\Lambda(1)\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>. Thus <span class="math" data-tex="\(U_B\)">\(U_B\)</span> means <span class="math" data-tex="\(U\times_{V_0}B\)">\(U\times_{V_0}B\)</span>, rather than the union of all sheets of <span class="math" data-tex="\(U\times_SB\)">\(U\times_SB\)</span>. They have degrees zero through two. The source neighbourhoods have smooth relative dimension one. Their images contain the closed point of <span class="math" data-tex="\(B\)">\(B\)</span>, and a smooth map has open image; an open subset of a local scheme containing its closed point is the whole scheme. Thus every geometric fibre is nonempty.</p>
+<p>For a geometric <span class="math" data-tex="\(\bar t\to B\)">\(\bar t\to B\)</span>, compact base change gives the finite groups</p>
+<span class="math math-display" data-tex="\[
+(R^qg_{U,!}\Lambda(1))_{\bar t}
+=H^q_c(U_{\bar t},\Lambda(1)).
+\tag{5.2}
+\]">\[
+(R^qg_{U,!}\Lambda(1))_{\bar t}
+=H^q_c(U_{\bar t},\Lambda(1)).
+\tag{5.2}
+\]</span>
+<p>The inverse limit of the affine schemes <span class="math" data-tex="\(U_{\bar t}\)">\(U_{\bar t}\)</span> is the local fibre
+<span class="math" data-tex="\(X_{(\bar x)}\times_B\bar t\)">\(X_{(\bar x)}\times_B\bar t\)</span>. Continuity and smooth local acyclicity, already proved in the smooth-base-change chapter, give</p>
+<span class="math math-display" data-tex="\[
+\mathop{\mathrm{colim}}_U H^r(U_{\bar t},\Lambda)
+=\begin{cases}\Lambda&amp;r=0,\\0&amp;r&gt;0.\end{cases}
+\tag{5.3}
+\]">\[
+\mathop{\mathrm{colim}}_U H^r(U_{\bar t},\Lambda)
+=\begin{cases}\Lambda&amp;r=0,\\0&amp;r&gt;0.\end{cases}
+\tag{5.3}
+\]</span>
+<p>The map from <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> in degree zero is the constant-section map. These are smooth affine curves over a separably closed field; passage to its algebraic closure is an étale-topos equivalence, so the proved curve theorem applies. It identifies each group in (5.2) with the dual of <span class="math" data-tex="\(H^{2-q}(U_{\bar t},\Lambda)\)">\(H^{2-q}(U_{\bar t},\Lambda)\)</span>, and identifies the transition trace with the transpose of pullback, by Section 3.</p>
+<p>For positive ordinary degree, a finite group's generators all become zero at a common later stage by (5.3). The corresponding compact transition is zero. In ordinary degree zero the constant-section inclusion is injective, because the fibre is nonempty. Its finite quotient becomes zero at a later stage, since (5.3) says the colimit is exactly the constants. Exact finite-module duality turns this into the statement that the kernel system of the top trace is pro-zero. That trace is surjective: on each fibre it sums the component traces, each normalized to one. Thus at every <span class="math" data-tex="\(\bar t\)">\(\bar t\)</span> the compact pro-system is <span class="math" data-tex="\(\Lambda[-2]\)">\(\Lambda[-2]\)</span>, via trace.</p>
+<p>Each <span class="math" data-tex="\(R^qg_{U,!}\Lambda(1)\)">\(R^qg_{U,!}\Lambda(1)\)</span>, its trace kernel and the relevant images are constructible, by the explicitly stated general constructibility input of the compact-support chapter. Their images are again constructible: on a common finite stratification where the two sheaves are locally constant, a morphism is locally a fixed map of finite modules, whose kernel and image are locally constant. This also proves the needed Serre assertion over the coherent strict base. Lemma 4.1 now kills the finitely many cohomology sheaves of the trace cone by one uniform refinement on <span class="math" data-tex="\(B\)">\(B\)</span>. The cones have a fixed finite range, so repeated refinement and Lemma 4.2 kill their maps in the derived category itself.</p>
+<p>Finally descend the finite data to <span class="math" data-tex="\(V\)">\(V\)</span>'s. The schemes and coefficients have finite presentation; compact base change identifies their cohomology sheaves over <span class="math" data-tex="\(B\)">\(B\)</span>, and zero of the finitely many descended sheaf maps holds at a later base neighbourhood. Repeat the bounded-ghost construction there. For the resulting <span class="math" data-tex="\(v:V&#x27;\to V_0\)">\(v:V&#x27;\to V_0\)</span>, the refined relative cone map <span class="math" data-tex="\(C_{U&#x27;}\to v^*C_{U_0}\)">\(C_{U&#x27;}\to v^*C_{U_0}\)</span> is zero on <span class="math" data-tex="\(V&#x27;\)">\(V&#x27;\)</span>. Its adjoint <span class="math" data-tex="\(v_!C_{U&#x27;}\to C_{U_0}\)">\(v_!C_{U&#x27;}\to C_{U_0}\)</span> is therefore zero. Applying <span class="math" data-tex="\(j_{V_0,!}\)">\(j_{V_0,!}\)</span> gives the zero cone map on <span class="math" data-tex="\(S\)">\(S\)</span> required in (5.1). Since the original diagram was arbitrary, this proves pro-zero of that system, including the extension-by-zero maps between different base neighbourhoods. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof used local acyclicity of the strict fibre, not the false assertion that a whole smooth affine curve has zero degree-one cohomology. The finite cohomology of whole curves supplies the uniform generator argument; their degree-one groups are allowed to be large.</p>
+<h2 id="6-induction-in-the-relative-dimension">6. Induction in the relative dimension</h2>
+<p><strong>Theorem 6.1 (local trace system).</strong> Proposition 5.1 holds for every <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(d=0\)">\(d=0\)</span>, <span class="math" data-tex="\(f\)">\(f\)</span> is étale. After taking <span class="math" data-tex="\(V\)">\(V\)</span> to be a pointed étale neighbourhood in its source, the base-changed map has the distinguished section through <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>. Its image is open, since it is a section of an étale map. Restrict the source neighbourhood to that section. The trace comparison there is the identity of <span class="math" data-tex="\(j_{V,!}\Lambda\)">\(j_{V,!}\Lambda\)</span>. Such restrictions refine every diagram, proving the result.</p>
+<p>The case <span class="math" data-tex="\(d=1\)">\(d=1\)</span> is Proposition 5.1. Suppose <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, and assume the result in lower dimension. Étale locally at <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span>, smooth coordinates factor <span class="math" data-tex="\(f\)">\(f\)</span> as</p>
+<span class="math math-display" data-tex="\[
+X\xrightarrow{h}Y\xrightarrow{g}S,
+\qquad \dim(h)=1,\quad\dim(g)=d-1.
+\tag{6.1}
+\]">\[
+X\xrightarrow{h}Y\xrightarrow{g}S,
+\qquad \dim(h)=1,\quad\dim(g)=d-1.
+\tag{6.1}
+\]</span>
+<p>Indeed take an étale coordinate map to <span class="math" data-tex="\(\mathbf A^d_S\)">\(\mathbf A^d_S\)</span>, and project onto <span class="math" data-tex="\(\mathbf A^{d-1}_S\)">\(\mathbf A^{d-1}_S\)</span>. After restriction to an affine chart both maps are separated and smooth of finite presentation. This restriction is cofinal in the source neighbourhood system, so suffices for the local assertion.</p>
+<p>Use neighbourhood triples <span class="math" data-tex="\(U\to X\)">\(U\to X\)</span>, <span class="math" data-tex="\(V\to Y\)">\(V\to Y\)</span>, <span class="math" data-tex="\(W\to S\)">\(W\to S\)</span>, with <span class="math" data-tex="\(U\to V\to W\)">\(U\to V\to W\)</span>. Any finite list of such conditions can be achieved by taking fibre products and a further affine pointed chart. Conversely every source neighbourhood admits such a refinement. Thus the iterated system is the same local system, indexed cofinally, and no special chosen sequence is being substituted for it.</p>
+<p>The dimension-one result for <span class="math" data-tex="\(h\)">\(h\)</span>, in the derived pro-category on <span class="math" data-tex="\(Y\)">\(Y\)</span>, is</p>
+<span class="math math-display" data-tex="\[
+\{R(hj_U)_!\Lambda(1)\}_{(U,V)}
+\xrightarrow{\sim}
+\{j_{V,!}\Lambda[-2]\}_{(U,V)}.
+\tag{6.2}
+\]">\[
+\{R(hj_U)_!\Lambda(1)\}_{(U,V)}
+\xrightarrow{\sim}
+\{j_{V,!}\Lambda[-2]\}_{(U,V)}.
+\tag{6.2}
+\]</span>
+<p>Apply <span class="math" data-tex="\(Rg_!\)">\(Rg_!\)</span>, tensor with the additional twist <span class="math" data-tex="\((d-1)\)">\((d-1)\)</span>, and use composition. Zero derived maps remain zero under this exact functor, so a pro-zero cone remains pro-zero. The resulting source terms are <span class="math" data-tex="\(R(fj_U)_!\Lambda(d)\)">\(R(fj_U)_!\Lambda(d)\)</span>; the target terms are
+<span class="math" data-tex="\(R(gj_V)_!\Lambda(d-1)[-2]\)">\(R(gj_V)_!\Lambda(d-1)[-2]\)</span>. The induction hypothesis for <span class="math" data-tex="\(g\)">\(g\)</span> identifies their pro-system with
+<span class="math" data-tex="\(j_{W,!}\Lambda[-2(d-1)][-2]\)">\(j_{W,!}\Lambda[-2(d-1)][-2]\)</span>. The composite is exactly (5.1), by compatibility of trace with composition and base change. It therefore has pro-zero cone.</p>
+<p>Here is the compact Leray content of this argument. At every finite neighbourhood diagram, composition has the good-truncation spectral sequence</p>
+<span class="math math-display" data-tex="\[
+R^pg_!R^qh_!\Lambda(d)
+\Longrightarrow R^{p+q}(gh)_!\Lambda(d).
+\tag{6.3}
+\]">\[
+R^pg_!R^qh_!\Lambda(d)
+\Longrightarrow R^{p+q}(gh)_!\Lambda(d).
+\tag{6.3}
+\]</span>
+<p>There are only <span class="math" data-tex="\(0\leq q\leq2\)">\(0\leq q\leq2\)</span> and <span class="math" data-tex="\(0\leq p\leq2(d-1)\)">\(0\leq p\leq2(d-1)\)</span>. Proposition 5.1 kills the unwanted rows uniformly as pro-sheaves; the remaining row is <span class="math" data-tex="\(\Lambda(d-1)\)">\(\Lambda(d-1)\)</span> in degree two, via the actual trace map. The finite filtration then reduces (6.3) to the induction hypothesis. More strongly, Lemma 4.2 gives (6.2) at the derived level before applying <span class="math" data-tex="\(Rg_!\)">\(Rg_!\)</span>, so possible extension maps between rows are killed as well. This is the justification of the limit Leray step. It uses finitely many truncations and refinements, rather than an unjustified interchange of infinite cochain totals with inverse limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-the-absolute-local-statement">7. The absolute local statement</h2>
+<p><strong>Corollary 7.1.</strong> If <span class="math" data-tex="\(X/k\)">\(X/k\)</span> is smooth of pure dimension <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> is a closed point, then</p>
+<span class="math math-display" data-tex="\[
+\mathcal C^r_x(\Lambda)=0\quad(r\ne2N),
+\qquad
+\operatorname{Tr}:\mathcal C^{2N}_x(\Lambda(N))
+\xrightarrow{\sim}\Lambda.
+\tag{7.1}
+\]">\[
+\mathcal C^r_x(\Lambda)=0\quad(r\ne2N),
+\qquad
+\operatorname{Tr}:\mathcal C^{2N}_x(\Lambda(N))
+\xrightarrow{\sim}\Lambda.
+\tag{7.1}
+\]</span>
+<p>The same formulas hold for the inverse-limit groups in (3.2).</p>
+<p><em>Proof.</em> Apply Theorem 6.1 to <span class="math" data-tex="\(X\to\operatorname{Spec}k\)">\(X\to\operatorname{Spec}k\)</span>. Pointed étale base neighbourhoods of the algebraically closed field refine to its distinguished copy of <span class="math" data-tex="\(\operatorname{Spec}k\)">\(\operatorname{Spec}k\)</span>. Hence its target system is the constant <span class="math" data-tex="\(\Lambda[-2N]\)">\(\Lambda[-2N]\)</span>. Taking cohomology gives (7.1). Compact cohomology at every source stage is finite by the general finiteness input of the compact-support chapter. Lemma 3.1 passes the pro-isomorphism to inverse limits and identifies vanishing with pro-zero. Removing the twist gives <span class="math" data-tex="\(\Lambda(-N)\)">\(\Lambda(-N)\)</span> in degree <span class="math" data-tex="\(2N\)">\(2N\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Explicitly, coordinates give a smooth relative curve from the strict germ of <span class="math" data-tex="\(X\)">\(X\)</span> to the strict germ of a smooth <span class="math" data-tex="\((N-1)\)">\((N-1)\)</span>-fold. Equations (5.2)–(5.3) identify its local-fibre compact row with <span class="math" data-tex="\(\Lambda(-1)\)">\(\Lambda(-1)\)</span> in degree two. The finite Leray filtration of Section 6 then gives</p>
+<span class="math math-display" data-tex="\[
+H^r_{c,\mathrm{germ}}(X_{(x)},\Lambda(N))
+=H^{r-2}_{c,\mathrm{germ}}(Y_{(y)},\Lambda(N-1)),
+\tag{7.2}
+\]">\[
+H^r_{c,\mathrm{germ}}(X_{(x)},\Lambda(N))
+=H^{r-2}_{c,\mathrm{germ}}(Y_{(y)},\Lambda(N-1)),
+\tag{7.2}
+\]</span>
+<p>via trace. Iteration ends at a point. Thus the claimed local concentration was proved from the curve case and local acyclicity; it has not been deduced from the global theorem we are about to prove.</p>
+<h2 id="8-exceptional-inverse-image-and-its-local-description">8. Exceptional inverse image and its local description</h2>
+<p>Let <span class="math" data-tex="\(f\)">\(f\)</span> be separated finite type between quasi-compact, quasi-separated schemes. The category of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-module sheaves is Grothendieck. Brown representability in its derived category says that a contravariant cohomological functor taking sums to products is represented by an object. For fixed <span class="math" data-tex="\(A\)">\(A\)</span>, apply it to</p>
+<span class="math math-display" data-tex="\[
+E\longmapsto\operatorname{Hom}_S(Rf_!E,A).
+\]">\[
+E\longmapsto\operatorname{Hom}_S(Rf_!E,A).
+\]</span>
+<p>It is cohomological because <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> is exact, and takes sums to products because <span class="math" data-tex="\(Rf_!\)">\(Rf_!\)</span> preserves sums. Representing objects and Yoneda give a right adjoint <span class="math" data-tex="\(Rf^!\)">\(Rf^!\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_X(E,Rf^!A)
+=\operatorname{Hom}_S(Rf_!E,A).
+\tag{8.1}
+\]">\[
+\operatorname{Hom}_X(E,Rf^!A)
+=\operatorname{Hom}_S(Rf_!E,A).
+\tag{8.1}
+\]</span>
+<p>Naturality determines its functoriality and counit; adjoints of exact triangulated functors are exact, as follows by applying (8.1) to a triangle and its shifts. This constructs the operation without assuming its smooth formula.</p>
+<p>For an affine étale <span class="math" data-tex="\(j:U\to X\)">\(j:U\to X\)</span>, exact extension by zero and composition give</p>
+<span class="math math-display" data-tex="\[
+H^r(U,Rf^!A)
+=\operatorname{Hom}_X(j_!\Lambda,Rf^!A[r])
+=\operatorname{Hom}_S(R(fj)_!\Lambda,A[r]).
+\tag{8.2}
+\]">\[
+H^r(U,Rf^!A)
+=\operatorname{Hom}_X(j_!\Lambda,Rf^!A[r])
+=\operatorname{Hom}_S(R(fj)_!\Lambda,A[r]).
+\tag{8.2}
+\]</span>
+<p>Sheafifying this presheaf computes <span class="math" data-tex="\(H^r(Rf^!A)\)">\(H^r(Rf^!A)\)</span>. In particular its stalk is the filtered colimit over pointed <span class="math" data-tex="\(U\)">\(U\)</span> of the last groups. To see that sheafification is valid even for an unbounded <span class="math" data-tex="\(A\)">\(A\)</span>, use a K-injective representative for <span class="math" data-tex="\(Rf^!A\)">\(Rf^!A\)</span>. Its sections on <span class="math" data-tex="\(U\)">\(U\)</span> compute hypercohomology; the filtered colimit of those section complexes is its stalk complex. Exact filtered colimits commute with taking cohomology, giving the assertion.</p>
+<p>Composition of lower shrieks transposes to
+<span class="math" data-tex="\(R(gh)^!=Rh^!Rg^!\)">\(R(gh)^!=Rh^!Rg^!\)</span>. The counit is the composite of the two counits: testing Hom makes both maps the identity map in the two adjunctions, so uniqueness proves their agreement and the associativity condition. For an étale base change <span class="math" data-tex="\(v:V\to S\)">\(v:V\to S\)</span>, with source map <span class="math" data-tex="\(v_X\)">\(v_X\)</span>, the corresponding comparison
+<span class="math" data-tex="\(v_X^*Rf^!A=Rf_V^!v^*A\)">\(v_X^*Rf^!A=Rf_V^!v^*A\)</span> follows by testing a complex <span class="math" data-tex="\(B\)">\(B\)</span> on the base-changed source:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}(B,v_X^*Rf^!A)
+&amp;=\operatorname{Hom}(v_{X,!}B,Rf^!A)\\
+&amp;=\operatorname{Hom}(v_!Rf_{V,!}B,A)\\
+&amp;=\operatorname{Hom}(Rf_{V,!}B,v^*A).
+\end{aligned}
+\tag{8.3}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}(B,v_X^*Rf^!A)
+&amp;=\operatorname{Hom}(v_{X,!}B,Rf^!A)\\
+&amp;=\operatorname{Hom}(v_!Rf_{V,!}B,A)\\
+&amp;=\operatorname{Hom}(Rf_{V,!}B,v^*A).
+\end{aligned}
+\tag{8.3}
+\]</span>
+<p>These equalities also prove compatibility of the counit with étale localization: each comparison is the mate of the lower-shriek comparison under the same adjunction, so composing it with the counit returns that comparison. The two triangle identities for units and counits verify this directly. This is the compatibility isolated in Deligne's “Dualité,” §4.</p>
+<p>There is also an internal comparison, for arbitrary <span class="math" data-tex="\(A,E\)">\(A,E\)</span>,</p>
+<span class="math math-display" data-tex="\[
+Rf_*R\mathcal Hom_X(E,Rf^!A)
+\xrightarrow{\sim}R\mathcal Hom_S(Rf_!E,A).
+\tag{8.4}
+\]">\[
+Rf_*R\mathcal Hom_X(E,Rf^!A)
+\xrightarrow{\sim}R\mathcal Hom_S(Rf_!E,A).
+\tag{8.4}
+\]</span>
+<p>To prove it, test by Hom from an arbitrary <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>. The left group is, in order,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\operatorname{Hom}_X(f^*M\otimes^LE,Rf^!A)
+&amp;=\operatorname{Hom}_S(Rf_!(f^*M\otimes^LE),A)\\
+&amp;=\operatorname{Hom}_S(M\otimes^LRf_!E,A)\\
+&amp;=\operatorname{Hom}_S(M,R\mathcal Hom_S(Rf_!E,A)).
+\end{aligned}
+\tag{8.5}
+\]">\[
+\begin{aligned}
+\operatorname{Hom}_X(f^*M\otimes^LE,Rf^!A)
+&amp;=\operatorname{Hom}_S(Rf_!(f^*M\otimes^LE),A)\\
+&amp;=\operatorname{Hom}_S(M\otimes^LRf_!E,A)\\
+&amp;=\operatorname{Hom}_S(M,R\mathcal Hom_S(Rf_!E,A)).
+\end{aligned}
+\tag{8.5}
+\]</span>
+<p>The middle equality is the already proved arbitrary-complex projection formula. Yoneda gives (8.4). Its map is evaluation followed by the counit, because every equality used that adjunction. Taking derived global sections gives the corresponding isomorphism of global derived Hom complexes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="9-the-relative-smooth-duality-formula">9. The relative smooth duality formula</h2>
+<p>Transpose (ST.13) under (8.1). It gives a natural map</p>
+<span class="math math-display" data-tex="\[
+t_{f,A}:f^*A(d)[2d]\longrightarrow Rf^!A.
+\tag{9.1}
+\]">\[
+t_{f,A}:f^*A(d)[2d]\longrightarrow Rf^!A.
+\tag{9.1}
+\]</span>
+<p><strong>Theorem 9.1.</strong> For every complex <span class="math" data-tex="\(A\in D(S,\Lambda)\)">\(A\in D(S,\Lambda)\)</span>, (9.1) is an isomorphism. Under it the adjunction counit is precisely (ST.13).</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span> over <span class="math" data-tex="\(\bar s\)">\(\bar s\)</span>. In the neighbourhood diagrams of Section 5, untwist (5.1) to obtain the derived pro-comparison</p>
+<span class="math math-display" data-tex="\[
+\{R(fj_U)_!\Lambda\}\xrightarrow{\sim}
+\{j_{V,!}\Lambda(-d)[-2d]\}.
+\tag{9.2}
+\]">\[
+\{R(fj_U)_!\Lambda\}\xrightarrow{\sim}
+\{j_{V,!}\Lambda(-d)[-2d]\}.
+\tag{9.2}
+\]</span>
+<p>Its cone is pro-zero by Theorem 6.1. Apply Hom into <span class="math" data-tex="\(A[r]\)">\(A[r]\)</span>. The long exact sequences of the cone triangles, followed by exact filtered colimit, show that (9.2) gives an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathop{\mathrm{colim}}_{(U,V)}
+\operatorname{Hom}_S(R(fj_U)_!\Lambda,A[r])
+&amp;=\mathop{\mathrm{colim}}_{(U,V)}
+\operatorname{Hom}_S(j_{V,!}\Lambda(-d)[-2d],A[r])\\
+&amp;=\mathop{\mathrm{colim}}_V H^{r+2d}(V,A(d))\\
+&amp;=(H^{r+2d}(A(d)))_{\bar s}.
+\end{aligned}
+\tag{9.3}
+\]">\[
+\begin{aligned}
+\mathop{\mathrm{colim}}_{(U,V)}
+\operatorname{Hom}_S(R(fj_U)_!\Lambda,A[r])
+&amp;=\mathop{\mathrm{colim}}_{(U,V)}
+\operatorname{Hom}_S(j_{V,!}\Lambda(-d)[-2d],A[r])\\
+&amp;=\mathop{\mathrm{colim}}_V H^{r+2d}(V,A(d))\\
+&amp;=(H^{r+2d}(A(d)))_{\bar s}.
+\end{aligned}
+\tag{9.3}
+\]</span>
+<p>There is no boundedness restriction on <span class="math" data-tex="\(A\)">\(A\)</span>: any element of Hom from a cone is killed by the later zero cone map itself. Forgetting the auxiliary neighbourhood in these colimits is cofinal. For a fixed source neighbourhood and a fixed base neighbourhood, their fibre product has a further pointed source neighbourhood; similarly every base neighbourhood has such a source neighbourhood. This verifies both cofinality assertions in (9.3).</p>
+<p>By (8.2), the left group is <span class="math" data-tex="\(H^r(Rf^!A)_{\bar x}\)">\(H^r(Rf^!A)_{\bar x}\)</span>; the right group is <span class="math" data-tex="\(H^r(f^*A(d)[2d])_{\bar x}\)">\(H^r(f^*A(d)[2d])_{\bar x}\)</span>. The comparison is the map induced by (9.1): both are obtained by precomposing Hom with the trace of the same neighbourhood diagram. All geometric stalks and all cohomological degrees agree, proving the theorem. Finally (9.1) was the adjoint of (ST.13), so the counit composed with <span class="math" data-tex="\(Rf_!t_{f,A}\)">\(Rf_!t_{f,A}\)</span> is (ST.13), by the adjunction triangle identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This proof also verifies composition of the smooth identifications. Transpose the two successive traces; their composite is the transpose of the composite trace and hence <span class="math" data-tex="\(t_{gh,A}\)">\(t_{gh,A}\)</span>. Their twists add and their shifts add. The identification commutes with base change because the trace, the lower-shriek base-change comparison and inverse image do. It can alternatively be used to define that smooth upper-shriek base-change isomorphism, with the same counit.</p>
+<p>For completeness, the formula gives the amplitude</p>
+<span class="math math-display" data-tex="\[
+Rf^!(D^{[a,b]})\subset D^{[a-2d,b-2d]}.
+\tag{9.4}
+\]">\[
+Rf^!(D^{[a,b]})\subset D^{[a-2d,b-2d]}.
+\tag{9.4}
+\]</span>
+<p>Before knowing the formula, adjunction gives the lower bound <span class="math" data-tex="\(Rf^!D^{\geq a}\subset D^{\geq a-2d}\)">\(Rf^!D^{\geq a}\subset D^{\geq a-2d}\)</span>. Indeed test (8.1) on <span class="math" data-tex="\(E=\tau_{\leq a-2d-1}Rf^!A\)">\(E=\tau_{\leq a-2d-1}Rf^!A\)</span>. The lower-shriek amplitude places <span class="math" data-tex="\(Rf_!E\)">\(Rf_!E\)</span> in <span class="math" data-tex="\(D^{\leq a-1}\)">\(D^{\leq a-1}\)</span>, so its Hom into <span class="math" data-tex="\(A\in D^{\geq a}\)">\(A\in D^{\geq a}\)</span> is zero. The truncation inclusion is therefore zero, forcing its cohomology to vanish. This adjunction argument alone supplies no analogous upper bound. Equation (9.3) proves the arbitrary-complex smooth formula directly, and that formula supplies both bounds in (9.4).</p>
+<h2 id="10-global-poincaré-duality">10. Global Poincaré duality</h2>
+<p>Set <span class="math" data-tex="\(p:X\to\operatorname{Spec}k\)">\(p:X\to\operatorname{Spec}k\)</span> and</p>
+<span class="math math-display" data-tex="\[
+K_X=\Lambda_X(N)[2N],\qquad
+D_XE=R\mathcal Hom_X(E,K_X).
+\tag{10.1}
+\]">\[
+K_X=\Lambda_X(N)[2N],\qquad
+D_XE=R\mathcal Hom_X(E,K_X).
+\tag{10.1}
+\]</span>
+<p><strong>Theorem 10.1.</strong> For every <span class="math" data-tex="\(E\in D(X,\Lambda)\)">\(E\in D(X,\Lambda)\)</span>, evaluation and trace give a canonical isomorphism</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(X,D_XE)
+\xrightarrow{\sim}
+R\operatorname{Hom}_\Lambda(R\Gamma_c(X,E),\Lambda).
+\tag{10.2}
+\]">\[
+R\Gamma(X,D_XE)
+\xrightarrow{\sim}
+R\operatorname{Hom}_\Lambda(R\Gamma_c(X,E),\Lambda).
+\tag{10.2}
+\]</span>
+<p>For a finite locally constant <span class="math" data-tex="\(F\)">\(F\)</span>, it gives mutually perfect finite-group pairings</p>
+<span class="math math-display" data-tex="\[
+H^i_c(X,F)\times H^{2N-i}(X,F^\vee(N))
+\xrightarrow{\ \operatorname{Tr}_X(a\cup b)\ }\Lambda,
+\qquad F^\vee=\mathcal Hom_\Lambda(F,\Lambda).
+\tag{10.3}
+\]">\[
+H^i_c(X,F)\times H^{2N-i}(X,F^\vee(N))
+\xrightarrow{\ \operatorname{Tr}_X(a\cup b)\ }\Lambda,
+\qquad F^\vee=\mathcal Hom_\Lambda(F,\Lambda).
+\tag{10.3}
+\]</span>
+<p><em>Proof.</em> Theorem 9.1 identifies <span class="math" data-tex="\(Rp^!\Lambda\)">\(Rp^!\Lambda\)</span> with <span class="math" data-tex="\(K_X\)">\(K_X\)</span>, with counit the specified trace. Apply (8.4) to <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(A=\Lambda\)">\(A=\Lambda\)</span> and <span class="math" data-tex="\(E\)">\(E\)</span>. The small étale site of the algebraically closed field is the category of modules, with exact global sections. Thus (8.4) is exactly (10.2), with its evaluation-and-trace map.</p>
+<p>Locally <span class="math" data-tex="\(F\)">\(F\)</span> is a constant finite module <span class="math" data-tex="\(M\)">\(M\)</span>. the curve-duality chapter, Lemma 3.1, proves that <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> is injective over itself, including composite <span class="math" data-tex="\(n\)">\(n\)</span>; therefore <span class="math" data-tex="\(R\operatorname{Hom}_\Lambda(M,\Lambda)=M^\vee\)">\(R\operatorname{Hom}_\Lambda(M,\Lambda)=M^\vee\)</span> in degree zero. Sheafifying a finite-free module resolution on a trivializing cover proves the same internal formula. The invertible twist is exact, so
+<span class="math" data-tex="\(D_XF=F^\vee(N)[2N]\)">\(D_XF=F^\vee(N)[2N]\)</span>.</p>
+<p>The same self-injectivity identifies degree <span class="math" data-tex="\(-i\)">\(-i\)</span> on the right of (10.2) with <span class="math" data-tex="\(H^i_c(X,F)^\vee\)">\(H^i_c(X,F)^\vee\)</span>: dualize cycles, boundaries and their quotient by the exact Hom functor. Degree <span class="math" data-tex="\(-i\)">\(-i\)</span> on the left is <span class="math" data-tex="\(H^{2N-i}(X,F^\vee(N))\)">\(H^{2N-i}(X,F^\vee(N))\)</span>. Compact groups are finite by the earlier stated finiteness input; the isomorphism proves finiteness of these ordinary groups as well. Finite-module evaluation is an isomorphism to the bidual, so each factor is the dual of the other. The pairing is (10.3) because (8.4) uses evaluation followed by the trace counit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Invertibility of <span class="math" data-tex="\(n\)">\(n\)</span> is essential. In characteristic <span class="math" data-tex="\(p\)">\(p\)</span>, the affine-vanishing chapter's Artin–Schreier example gives an infinite <span class="math" data-tex="\(H^1(\mathbf A^1,\mathbf Z/p)\)">\(H^1(\mathbf A^1,\mathbf Z/p)\)</span>; the finite prime-to-characteristic pairing proved here has no such conclusion for those coefficients.</p>
+<p>For a general constructible complex, (10.2) still uses internal derived Hom. Replacing it by just the ordinary degree-zero dual sheaf would drop ramification or extension terms. For local systems (10.3) is ordinary cohomology and needs neither free fibres nor a finite projective resolution of <span class="math" data-tex="\(F\)">\(F\)</span>. We order the compactly supported factor first; exchanging degree <span class="math" data-tex="\(r\)">\(r\)</span> and degree <span class="math" data-tex="\(s\)">\(s\)</span> contributes <span class="math" data-tex="\((-1)^{rs}\)">\((-1)^{rs}\)</span>.</p>
+<p><strong>Corollary 10.2 (top compact degree).</strong> For connected <span class="math" data-tex="\(X\)">\(X\)</span>, trace is an isomorphism</p>
+<span class="math math-display" data-tex="\[
+H^{2N}_c(X,\Lambda(N))\xrightarrow{\sim}\Lambda.
+\tag{10.4}
+\]">\[
+H^{2N}_c(X,\Lambda(N))\xrightarrow{\sim}\Lambda.
+\tag{10.4}
+\]</span>
+<p><em>Proof.</em> Apply (10.3) to <span class="math" data-tex="\(F=\Lambda(N)\)">\(F=\Lambda(N)\)</span> in degree <span class="math" data-tex="\(2N\)">\(2N\)</span>. Its other factor is <span class="math" data-tex="\(H^0(X,\Lambda)=\Lambda\)">\(H^0(X,\Lambda)=\Lambda\)</span>, since <span class="math" data-tex="\(X\)">\(X\)</span> is connected. Pairing with its constant section <span class="math" data-tex="\(1\)">\(1\)</span> is exactly trace, proving (10.4). For a finite union of connected components the group is a copy of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> for each component and trace is their sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="11-purity-and-the-distinction-between-sheaves-and-groups">11. Purity and the distinction between sheaves and groups</h2>
+<p>Let <span class="math" data-tex="\(i:Z\hookrightarrow X\)">\(i:Z\hookrightarrow X\)</span> be a closed immersion of smooth <span class="math" data-tex="\(k\)">\(k\)</span>-schemes, with <span class="math" data-tex="\(X\)">\(X\)</span> purely <span class="math" data-tex="\(N\)">\(N\)</span>-dimensional and <span class="math" data-tex="\(Z\)">\(Z\)</span> purely <span class="math" data-tex="\((N-c)\)">\((N-c)\)</span>-dimensional. Write <span class="math" data-tex="\(j:X-Z\hookrightarrow X\)">\(j:X-Z\hookrightarrow X\)</span>. The right adjoint <span class="math" data-tex="\(i^!\)">\(i^!\)</span> of exact <span class="math" data-tex="\(i_*\)">\(i_*\)</span> is sections supported on <span class="math" data-tex="\(Z\)">\(Z\)</span>, regarded as a sheaf on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Since <span class="math" data-tex="\(i_*\)">\(i_*\)</span> is exact, <span class="math" data-tex="\(i^!\)">\(i^!\)</span> sends injectives to injectives. An injective resolution therefore gives both</p>
+<span class="math math-display" data-tex="\[
+i_*Ri^!E\longrightarrow E\longrightarrow Rj_*j^*E\longrightarrow i_*Ri^!E[1]
+\tag{11.1}
+\]">\[
+i_*Ri^!E\longrightarrow E\longrightarrow Rj_*j^*E\longrightarrow i_*Ri^!E[1]
+\tag{11.1}
+\]</span>
+<p>and <span class="math" data-tex="\(R\Gamma_Z(X,E)=R\Gamma(Z,Ri^!E)\)">\(R\Gamma_Z(X,E)=R\Gamma(Z,Ri^!E)\)</span>. Indeed restriction of an injective sheaf to an open is surjective on sections, with kernel the supported sections, so (11.1) comes from that short exact sequence of resolution complexes. This proves the support formalism used here.</p>
+<p><strong>Theorem 11.1 (smooth-pair purity).</strong> There is a canonical orientation isomorphism</p>
+<span class="math math-display" data-tex="\[
+Ri^!\Lambda_X=\Lambda_Z(-c)[-2c].
+\tag{11.2}
+\]">\[
+Ri^!\Lambda_X=\Lambda_Z(-c)[-2c].
+\tag{11.2}
+\]</span>
+<p>Consequently</p>
+<span class="math math-display" data-tex="\[
+R^qi^!\Lambda_X=0\ (q\ne2c),\qquad
+R^{2c}i^!\Lambda_X=\Lambda_Z(-c),
+\tag{11.3}
+\]">\[
+R^qi^!\Lambda_X=0\ (q\ne2c),\qquad
+R^{2c}i^!\Lambda_X=\Lambda_Z(-c),
+\tag{11.3}
+\]</span>
+<p>whereas the global groups satisfy</p>
+<span class="math math-display" data-tex="\[
+H^r_Z(X,\Lambda)=H^{r-2c}(Z,\Lambda(-c)).
+\tag{11.4}
+\]">\[
+H^r_Z(X,\Lambda)=H^{r-2c}(Z,\Lambda(-c)).
+\tag{11.4}
+\]</span>
+<p><em>Proof.</em> The structure maps satisfy <span class="math" data-tex="\(p_Z=p_Xi\)">\(p_Z=p_Xi\)</span>. Composition of right adjoints gives</p>
+<span class="math math-display" data-tex="\[
+Ri^!Rp_X^!\Lambda=Rp_Z^!\Lambda.
+\tag{11.5}
+\]">\[
+Ri^!Rp_X^!\Lambda=Rp_Z^!\Lambda.
+\tag{11.5}
+\]</span>
+<p>Substitute the two proved smooth formulas:
+<span class="math" data-tex="\(Ri^!(\Lambda_X(N)[2N])=\Lambda_Z(N-c)[2N-2c]\)">\(Ri^!(\Lambda_X(N)[2N])=\Lambda_Z(N-c)[2N-2c]\)</span>.
+An invertible local system <span class="math" data-tex="\(T\)">\(T\)</span> commutes with <span class="math" data-tex="\(Ri^!\)">\(Ri^!\)</span>. To verify this, test Hom from <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span>, move <span class="math" data-tex="\(T\)">\(T\)</span> to its inverse twist on the other argument, use <span class="math" data-tex="\(i_*B\otimes T^{-1}=i_*(B\otimes i^*T^{-1})\)">\(i_*B\otimes T^{-1}=i_*(B\otimes i^*T^{-1})\)</span>, and apply the adjunction. Yoneda identifies the resulting functors. Thus twist by <span class="math" data-tex="\((-N)\)">\((-N)\)</span> and shift by <span class="math" data-tex="\([-2N]\)">\([-2N]\)</span> give (11.2). Its single cohomology degree gives (11.3). Applying <span class="math" data-tex="\(R\Gamma(Z,-)\)">\(R\Gamma(Z,-)\)</span> to (11.2) gives (11.4). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular <span class="math" data-tex="\(H^{2c}_Z(X,\Lambda)=H^0(Z,\Lambda(-c))\)">\(H^{2c}_Z(X,\Lambda)=H^0(Z,\Lambda(-c))\)</span>, and the groups below <span class="math" data-tex="\(2c\)">\(2c\)</span> vanish. Higher global groups need not vanish. For example take the zero section
+<span class="math" data-tex="\(Z=\mathbf P^1\times\{0\}\subset X=\mathbf P^1\times\mathbf A^1\)">\(Z=\mathbf P^1\times\{0\}\subset X=\mathbf P^1\times\mathbf A^1\)</span>, with <span class="math" data-tex="\(c=1\)">\(c=1\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+H^4_Z(X,\Lambda)=H^2(\mathbf P^1,\Lambda(-1))
+=\Lambda(-2)\ne0.
+\tag{11.6}
+\]">\[
+H^4_Z(X,\Lambda)=H^2(\mathbf P^1,\Lambda(-1))
+=\Lambda(-2)\ne0.
+\tag{11.6}
+\]</span>
+<p>So the global cohomology with supports is not concentrated in one degree. The concentrated object is <span class="math" data-tex="\(Ri^!\Lambda\)">\(Ri^!\Lambda\)</span>; global support cohomology also includes the cohomology of <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<h2 id="12-gysin-maps-orientation-and-point-classes">12. Gysin maps, orientation and point classes</h2>
+<p>Transpose the purity isomorphism by the closed adjunction. The counit supplies
+<span class="math" data-tex="\(i_*\Lambda_Z\to\Lambda_X(c)[2c]\)">\(i_*\Lambda_Z\to\Lambda_X(c)[2c]\)</span>. With a twist and either ordinary or compact global sections, it gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+i_* &amp;:H^r(Z,\Lambda(a))\longrightarrow H^{r+2c}(X,\Lambda(a+c)),\\
+i_* &amp;:H^r_c(Z,\Lambda(a))\longrightarrow H^{r+2c}_c(X,\Lambda(a+c)).
+\end{aligned}
+\tag{12.1}
+\]">\[
+\begin{aligned}
+i_* &amp;:H^r(Z,\Lambda(a))\longrightarrow H^{r+2c}(X,\Lambda(a+c)),\\
+i_* &amp;:H^r_c(Z,\Lambda(a))\longrightarrow H^{r+2c}_c(X,\Lambda(a+c)).
+\end{aligned}
+\tag{12.1}
+\]</span>
+<p>In the second line, <span class="math" data-tex="\(Rp_{X,!}i_*=Rp_{Z,!}\)">\(Rp_{X,!}i_*=Rp_{Z,!}\)</span>, since a closed immersion is proper. These are the Gysin maps. Their degrees and twists record the codimension, not the dimensions of the whole varieties.</p>
+<p><strong>Proposition 12.1.</strong> Gysin maps compose for a chain of smooth closed immersions. They satisfy the projection formula, and in the top compact degree preserve trace:</p>
+<span class="math math-display" data-tex="\[
+i_*(u\cup i^*v)=i_*u\cup v,
+\qquad
+\operatorname{Tr}_X(i_*u)=\operatorname{Tr}_Z(u)
+\quad(u\in H^{2(N-c)}_c(Z,\Lambda(N-c))).
+\tag{12.2}
+\]">\[
+i_*(u\cup i^*v)=i_*u\cup v,
+\qquad
+\operatorname{Tr}_X(i_*u)=\operatorname{Tr}_Z(u)
+\quad(u\in H^{2(N-c)}_c(Z,\Lambda(N-c))).
+\tag{12.2}
+\]</span>
+<p><em>Proof.</em> Purity was defined by (11.5), so for two closed immersions its orientation is the composite right-adjoint identification. The counit for their composite is the composite of their counits, as proved in Section 8. This proves composition, with the twists and shifts added. The closed projection formula follows on sheaf stalks, on <span class="math" data-tex="\(Z\)">\(Z\)</span> by the identity tensor formula and off <span class="math" data-tex="\(Z\)">\(Z\)</span> by zero, and hence on K-flat complexes. Applying its adjunction and the counit gives the first equality of (12.2); the class <span class="math" data-tex="\(u\)">\(u\)</span> remains first in the coefficient tensor. For trace, compose the counit of <span class="math" data-tex="\(i\)">\(i\)</span> with the counit of <span class="math" data-tex="\(p_X\)">\(p_X\)</span>. Their composite is the counit of <span class="math" data-tex="\(p_Z\)">\(p_Z\)</span>, which Theorem 9.1 identifies with its trace. This is the second equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A closed point <span class="math" data-tex="\(x\)">\(x\)</span> has <span class="math" data-tex="\(c=N\)">\(c=N\)</span>. Its class is <span class="math" data-tex="\(i_*1\)">\(i_*1\)</span> in compact degree <span class="math" data-tex="\(2N\)">\(2N\)</span>, or the image of the supported class in ordinary degree <span class="math" data-tex="\(2N\)">\(2N\)</span>. Equation (12.2) gives</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_X(\operatorname{cl}_c(x))=1.
+\tag{12.3}
+\]">\[
+\operatorname{Tr}_X(\operatorname{cl}_c(x))=1.
+\tag{12.3}
+\]</span>
+<p>This fixes its orientation without choosing a root. Even if its ordinary image vanishes, its compact image is the generator of (10.4).</p>
+<p><strong>Lemma 12.2 (divisor normalization).</strong> For a smooth divisor <span class="math" data-tex="\(D\)">\(D\)</span> in a smooth <span class="math" data-tex="\(X\)">\(X\)</span>, the Gysin class of <span class="math" data-tex="\(1\)">\(1\)</span> is <span class="math" data-tex="\(c_1^{(n)}\mathcal O_X(D)\)">\(c_1^{(n)}\mathcal O_X(D)\)</span> in <span class="math" data-tex="\(H^2(X,\mu_n)\)">\(H^2(X,\mu_n)\)</span>.</p>
+<p><em>Proof.</em> First take a closed point <span class="math" data-tex="\(x\)">\(x\)</span> on <span class="math" data-tex="\(\mathbf P^1_k\)">\(\mathbf P^1_k\)</span>. Purity identifies <span class="math" data-tex="\(H^2_x(\mathbf P^1,\mu_n)\)">\(H^2_x(\mathbf P^1,\mu_n)\)</span> with <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and its orientation generator maps to the Gysin class. Proposition 12.1 gives that class trace one. The supported Kummer class of the pair <span class="math" data-tex="\((\mathcal O(x),1)\)">\((\mathcal O(x),1)\)</span>, with its trivialization away from <span class="math" data-tex="\(x\)">\(x\)</span>, maps to <span class="math" data-tex="\(c_1\mathcal O(x)\)">\(c_1\mathcal O(x)\)</span>, whose trace is also one by the degree construction of §1. The forgetful map from this rank-one supported group to top cohomology is an isomorphism: the composite with trace sends its orientation generator to one. Thus the two supported classes are equal. Restrict to <span class="math" data-tex="\(\mathbf A^1\)">\(\mathbf A^1\)</span> through an affine open containing <span class="math" data-tex="\(x\)">\(x\)</span>; open localization and purity preserve this equality.</p>
+<p>Near a point of <span class="math" data-tex="\(D\)">\(D\)</span>, choose a normal parameter <span class="math" data-tex="\(t\)">\(t\)</span>; after shrinking, <span class="math" data-tex="\(t:X\to\mathbf A^1\)">\(t:X\to\mathbf A^1\)</span> is smooth of relative dimension <span class="math" data-tex="\(N-1\)">\(N-1\)</span> and <span class="math" data-tex="\(D=t^{-1}(0)\)">\(D=t^{-1}(0)\)</span>. Smooth base change for the complementary open direct image identifies the supported localization triangle with the pullback of the point triangle. This comparison also preserves the orientation defined by (11.5): writing <span class="math" data-tex="\(i_0:\{0\}\hookrightarrow\mathbf A^1\)">\(i_0:\{0\}\hookrightarrow\mathbf A^1\)</span> and <span class="math" data-tex="\(h:D\to\{0\}\)">\(h:D\to\{0\}\)</span>, the identity <span class="math" data-tex="\(ti=i_0h\)">\(ti=i_0h\)</span> gives <span class="math" data-tex="\(Ri^!Rt^!=Rh^!Ri_0^!\)">\(Ri^!Rt^!=Rh^!Ri_0^!\)</span>. The two smooth formulas have the same twist <span class="math" data-tex="\((N-1)\)">\((N-1)\)</span> and shift <span class="math" data-tex="\([2N-2]\)">\([2N-2]\)</span>; canceling them gives the indicated supported comparison. Their composite counits agree by §8 and the trace composition proved in §2.</p>
+<p>The Kummer class with support pulls back as well: the pair <span class="math" data-tex="\((\mathcal O(D),1)\)">\((\mathcal O(D),1)\)</span> is the pullback of the point's pair in the normal coordinate. The preceding point equality therefore proves equality of the two supported classes on these charts. Under purity the degree-two supported group is <span class="math" data-tex="\(H^0(D,\Lambda)\)">\(H^0(D,\Lambda)\)</span>, so equality on the charts proves equality globally. Forgetting support gives the asserted ordinary Chern class. This proof uses the positive class of <span class="math" data-tex="\(\mathcal O(D)\)">\(\mathcal O(D)\)</span> with its trivialization; it does not identify that class with an unsigned valuation-sequence boundary. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The construction commutes with étale localization. In the normal coordinate calculation it also commutes with transverse pullback: both local classes come from the pulled-back supported Kummer pair. These compatibilities are enough for the hyperplane and affine-space calculations below. No purity assertion for arbitrary singular closed subschemes has been used.</p>
+<h2 id="13-perfect-constant-coefficient-complexes-and-products">13. Perfect constant-coefficient complexes and products</h2>
+<p>One cannot in general replace the dual of a derived tensor by the tensor of its duals over <span class="math" data-tex="\(\mathbf Z/n\)">\(\mathbf Z/n\)</span>. We prove the finite-projective property needed for constant coefficients.</p>
+<p><strong>Lemma 13.1.</strong> The complex <span class="math" data-tex="\(A_X=R\Gamma_c(X,\Lambda)\)">\(A_X=R\Gamma_c(X,\Lambda)\)</span> is perfect over <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>: it has a bounded representative by finite projective modules, in degrees <span class="math" data-tex="\([0,2N]\)">\([0,2N]\)</span>.</p>
+<p><em>Proof.</em> Its cohomology is finite and in that interval, by the earlier compact bound and finiteness input. For any module <span class="math" data-tex="\(M\)">\(M\)</span>, the projection formula gives</p>
+<span class="math math-display" data-tex="\[
+A_X\otimes^L_\Lambda M=R\Gamma_c(X,\underline M).
+\tag{13.1}
+\]">\[
+A_X\otimes^L_\Lambda M=R\Gamma_c(X,\underline M).
+\tag{13.1}
+\]</span>
+<p>The right side has no negative cohomology and vanishes above <span class="math" data-tex="\(2N\)">\(2N\)</span>, since the compact bound applies to every <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>-sheaf. A bounded complex with finite cohomology over the Noetherian ring <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> admits a bounded-above resolution <span class="math" data-tex="\(P\)">\(P\)</span> by finite free modules: successively choose finite generators for the highest cohomology and the kernels of the maps already constructed. Noetherianity keeps each subsequent kernel finitely generated. We may take <span class="math" data-tex="\(P^r=0\)">\(P^r=0\)</span> for <span class="math" data-tex="\(r&gt;2N\)">\(r&gt;2N\)</span>.</p>
+<p>Put <span class="math" data-tex="\(Q=\operatorname{coker}(P^{-1}\to P^0)\)">\(Q=\operatorname{coker}(P^{-1}\to P^0)\)</span>. Since the negative cohomology of <span class="math" data-tex="\(P\)">\(P\)</span> vanishes, its nonpositive part is a free resolution of <span class="math" data-tex="\(Q\)">\(Q\)</span>. For every <span class="math" data-tex="\(M\)">\(M\)</span>, (13.1) gives
+<span class="math" data-tex="\(\operatorname{Tor}_1^\Lambda(Q,M)=H^{-1}(P\otimes M)=0\)">\(\operatorname{Tor}_1^\Lambda(Q,M)=H^{-1}(P\otimes M)=0\)</span>.
+Thus <span class="math" data-tex="\(Q\)">\(Q\)</span> is flat, by the tensor criterion for flatness. It is finitely presented, so is projective. Replace the negative part of <span class="math" data-tex="\(P\)">\(P\)</span> by <span class="math" data-tex="\(Q\)">\(Q\)</span> in degree zero. The resulting finite-projective complex, in degrees zero through <span class="math" data-tex="\(2N\)">\(2N\)</span>, is quasi-isomorphic to <span class="math" data-tex="\(A_X\)">\(A_X\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same proof works for any separated finite-type variety when its constant coefficient is <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. It does not assert that <span class="math" data-tex="\(R\Gamma_c(X,F)\)">\(R\Gamma_c(X,F)\)</span> is perfect for a nonfree local system: already on a point, <span class="math" data-tex="\(F=\mathbf Z/\ell\)">\(F=\mathbf Z/\ell\)</span> over <span class="math" data-tex="\(\mathbf Z/\ell^2\)">\(\mathbf Z/\ell^2\)</span> is a counterexample.</p>
+<p><strong>Lemma 13.2 (compact Künneth and trace).</strong> For separated finite-type <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>,</p>
+<span class="math math-display" data-tex="\[
+R\Gamma_c(X\times Y,\Lambda)
+=A_X\otimes^L A_Y.
+\tag{13.2}
+\]">\[
+R\Gamma_c(X\times Y,\Lambda)
+=A_X\otimes^L A_Y.
+\tag{13.2}
+\]</span>
+<p>For smooth varieties of dimensions <span class="math" data-tex="\(N,M\)">\(N,M\)</span>, the product trace is the tensor of their traces under the twisted version of (13.2).</p>
+<p><em>Proof.</em> Compact base change for <span class="math" data-tex="\(\operatorname{pr}_1:X\times Y\to X\)">\(\operatorname{pr}_1:X\times Y\to X\)</span> identifies <span class="math" data-tex="\(R\operatorname{pr}_{1,!}\Lambda\)">\(R\operatorname{pr}_{1,!}\Lambda\)</span> with the constant complex <span class="math" data-tex="\(\underline{R\Gamma_c(Y,\Lambda)}\)">\(\underline{R\Gamma_c(Y,\Lambda)}\)</span>. Apply composition and then the compact projection formula over the point to obtain (13.2). These maps are the external-product maps because both projection comparisons are defined by tensor and adjunction. For trace, factor the structure map of <span class="math" data-tex="\(X\times Y\)">\(X\times Y\)</span> as <span class="math" data-tex="\(\operatorname{pr}_1\)">\(\operatorname{pr}_1\)</span> followed by <span class="math" data-tex="\(p_X\)">\(p_X\)</span>. The trace of <span class="math" data-tex="\(\operatorname{pr}_1\)">\(\operatorname{pr}_1\)</span> is the base change of the trace of <span class="math" data-tex="\(p_Y\)">\(p_Y\)</span>; composition compatibility gives the stated tensor trace. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently duality for <span class="math" data-tex="\(X\)">\(X\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>, together with ordinary Künneth from the affine-vanishing chapter, proves constant-coefficient duality for their product. Here are the actual derived identifications:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;R\Gamma(X\times Y,\Lambda(N+M)[2N+2M])\\
+&amp;\quad=R\Gamma(X,\Lambda(N)[2N])\otimes^L
+R\Gamma(Y,\Lambda(M)[2M])\\
+&amp;\quad=A_X^\vee\otimes^L A_Y^\vee\\
+&amp;\quad=(A_X\otimes^LA_Y)^\vee.
+\end{aligned}
+\tag{13.3}
+\]">\[
+\begin{aligned}
+&amp;R\Gamma(X\times Y,\Lambda(N+M)[2N+2M])\\
+&amp;\quad=R\Gamma(X,\Lambda(N)[2N])\otimes^L
+R\Gamma(Y,\Lambda(M)[2M])\\
+&amp;\quad=A_X^\vee\otimes^L A_Y^\vee\\
+&amp;\quad=(A_X\otimes^LA_Y)^\vee.
+\end{aligned}
+\tag{13.3}
+\]</span>
+<p>The last equality is valid by Lemma 13.1: on bounded finite-projective representatives it is the ordinary Hom–tensor identity with the graded signs. The first two comparisons are the factor Künneth and factor duality maps, so by Lemma 13.2 their composite is the product evaluation-and-trace map. This argument does not assume duality for the product in advance.</p>
+<p>For classes <span class="math" data-tex="\(a,b\)">\(a,b\)</span> in compact degrees <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, and <span class="math" data-tex="\(\alpha,\beta\)">\(\alpha,\beta\)</span> in the complementary ordinary degrees, the resulting value is</p>
+<span class="math math-display" data-tex="\[
+(-1)^{j(2N-i)}
+\operatorname{Tr}_X(a\cup\alpha)
+\operatorname{Tr}_Y(b\cup\beta).
+\tag{13.4}
+\]">\[
+(-1)^{j(2N-i)}
+\operatorname{Tr}_X(a\cup\alpha)
+\operatorname{Tr}_Y(b\cup\beta).
+\tag{13.4}
+\]</span>
+<p>The sign moves <span class="math" data-tex="\(b\)">\(b\)</span> past <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> before pairing the factors. For a composite <span class="math" data-tex="\(n\)">\(n\)</span>, Tor contributions can still enter the cohomology of (13.2). The proof concerns derived complexes, so does not discard those terms.</p>
+<h2 id="14-projective-space-cohomology-and-the-hyperplane-generator">14. Projective-space cohomology and the hyperplane generator</h2>
+<p><strong>Proposition 14.1.</strong> Over an algebraically closed field with <span class="math" data-tex="\(n\)">\(n\)</span> invertible, the cohomology of <span class="math" data-tex="\(\mathbf P^m\)">\(\mathbf P^m\)</span> is one free copy of <span class="math" data-tex="\(\Lambda(-j)\)">\(\Lambda(-j)\)</span> in each degree <span class="math" data-tex="\(2j\)">\(2j\)</span>, <span class="math" data-tex="\(0\leq j\leq m\)">\(0\leq j\leq m\)</span>, and zero in every other degree. Its generator is <span class="math" data-tex="\(h^j\)">\(h^j\)</span>, with <span class="math" data-tex="\(h=c_1\mathcal O(1)\)">\(h=c_1\mathcal O(1)\)</span>, retaining the indicated coefficient twist. The sum of these class maps is a derived decomposition</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_{j=0}^m\Lambda(-j)[-2j]
+\xrightarrow{\sim}R\Gamma(\mathbf P^m,\Lambda).
+\tag{14.1}
+\]">\[
+\bigoplus_{j=0}^m\Lambda(-j)[-2j]
+\xrightarrow{\sim}R\Gamma(\mathbf P^m,\Lambda).
+\tag{14.1}
+\]</span>
+<p><em>Proof.</em> The curve calculation gives <span class="math" data-tex="\(R\Gamma_c(\mathbf A^1,\Lambda)=\Lambda(-1)[-2]\)">\(R\Gamma_c(\mathbf A^1,\Lambda)=\Lambda(-1)[-2]\)</span>. To check the lower degrees, use compact localization in <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span>: the map on degree-zero sections from <span class="math" data-tex="\(\mathbf P^1\)">\(\mathbf P^1\)</span> to its single infinity point is an isomorphism, and the projective line has no degree-one cohomology. Thus the affine line has no compact cohomology in degrees zero and one. Its degree-two trace is (RC.19). Compact Künneth gives <span class="math" data-tex="\(R\Gamma_c(\mathbf A^m,\Lambda)=\Lambda(-m)[-2m]\)">\(R\Gamma_c(\mathbf A^m,\Lambda)=\Lambda(-m)[-2m]\)</span>. The global smooth duality already proved in §10 therefore gives <span class="math" data-tex="\(R\Gamma(\mathbf A^m,\Lambda)=\Lambda\)">\(R\Gamma(\mathbf A^m,\Lambda)=\Lambda\)</span> in degree zero.</p>
+<p>Induct on <span class="math" data-tex="\(m\)">\(m\)</span>, starting with a point. For the hyperplane <span class="math" data-tex="\(i:\mathbf P^{m-1}\hookrightarrow\mathbf P^m\)">\(i:\mathbf P^{m-1}\hookrightarrow\mathbf P^m\)</span>, purity and localization give</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(\mathbf P^{m-1},\Lambda(-1))[-2]
+\longrightarrow R\Gamma(\mathbf P^m,\Lambda)
+\longrightarrow R\Gamma(\mathbf A^m,\Lambda).
+\tag{14.2}
+\]">\[
+R\Gamma(\mathbf P^{m-1},\Lambda(-1))[-2]
+\longrightarrow R\Gamma(\mathbf P^m,\Lambda)
+\longrightarrow R\Gamma(\mathbf A^m,\Lambda).
+\tag{14.2}
+\]</span>
+<p>The restriction of the constant degree-zero section is an isomorphism. Since the last complex has no positive cohomology, the first map identifies every positive cohomology group with the hyperplane group shifted by two and twisted by <span class="math" data-tex="\((-1)\)">\((-1)\)</span>; in degree one both groups are zero. Induction gives the asserted ranks and vanishings. Lemma 12.2 says <span class="math" data-tex="\(i_*1=h\)">\(i_*1=h\)</span>; the projection identity and <span class="math" data-tex="\(i^*h=c_1\mathcal O_{\mathbf P^{m-1}}(1)\)">\(i^*h=c_1\mathcal O_{\mathbf P^{m-1}}(1)\)</span> show that the induction generator maps to <span class="math" data-tex="\(h^j\)">\(h^j\)</span>. These actual class morphisms define (14.1), and the proved cohomology calculation makes it a quasi-isomorphism. No splitting of an arbitrary torsion cohomology complex has been assumed. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="15-sources-and-proof-dependencies">15. Sources and proof dependencies</h2>
+<p>P. Deligne, <a href="https://www.normalesup.org/~forgogozo/SGA4/tomes/tome3.pdf"><em>SGA 4</em>, Tome 3</a>, Exposé XVIII, §§1.1,2–3, supplies the classical curve-to-trace construction and its smooth-duality application. The freely accessible French typesetting is dated 30 July 2024. The relative curve construction here uses actual chart morphisms and highest-degree descent; the smooth coordinate comparison retains smooth curve projections throughout. The degree-one normalization corrects the projective-line paragraph’s displayed degree-one typo to degree two.</p>
+<p>Deligne, <a href="https://publications.ias.edu/sites/default/files/Number32.pdf"><em>SGA 4½</em></a>, “Dualité,” §§2–4, supplies the comparison with the Artin curve argument, local concentration and adjunction. The exact preceding chapters named in the introduction supply the compact-support and curve foundations. The local proof in §§3–13 adapts their earlier CC0 companion exposition, with the previously stated trace input replaced by §§1–2 and the divisor-sign comparison replaced by the supported Kummer argument in Lemma 12.2. Free access to either primary PDF does not confer permission to copy its prose; no primary PDF prose is reproduced here.</p>
+<p>The proved scope is smooth relative trace and duality, arbitrary pulled-back coefficient complexes, global smooth duality, smooth-pair purity and Gysin compatibility. Purity for arbitrary singular pairs and trace for general nonsmooth flat families are not used to establish these statements. The finiteness, constructibility, continuity and categorical foundations expressly identified in the introduction retain their stated status.</p>
+</article></main></body></html>

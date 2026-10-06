@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Regularity and tempered growth</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="regularity-and-tempered-growth">Regularity and tempered growth</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Every nonzero constant-coefficient polynomial has a regular fundamental solution. Regularity controls its Fourier transform after compact cutoffs; it does not bound its growth on all of space. We now prove a necessary condition for having regularity and tempered growth simultaneously. Positive limiting symbols must have uniformly integrable reciprocals. A degenerate diffusion equation will violate that condition even though it has a tempered causal inverse.</p>
+<p>Read <a href="AN02-L018.html">Symbols at infinity</a>, <a href="AN02-L004.html">Regular kernels and changes in the equation</a>, and <a href="AN02-L019.html">Wavefronts of regular kernels</a>. We use the Fourier transform on tempered distributions and the Schwartz topology from Grubb's freely readable lecture chapter §5 [Grubb], especially the fixed-seminorm bound (5.21) and Theorems 5.16–5.17; Melrose's notes [Melrose] give additional background. Coste [Coste] provides background on the algebraic asymptotics used below.</p>
+<p>Keep <span class="math" data-tex="\(D=-i\partial\)">\(D=-i\partial\)</span> and the negative-exponential Fourier transform. For <span class="math" data-tex="\(P\ne0\)">\(P\ne0\)</span>, <span class="math" data-tex="\(S_P\)">\(S_P\)</span> is its full derivative norm and <span class="math" data-tex="\(\mathcal L(P)\)">\(\mathcal L(P)\)</span> its set of normalized localizations. A positive localization here means a real polynomial <span class="math" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-tex="\(Q(\xi)&gt;0\)">\(Q(\xi)&gt;0\)</span> for every real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, still normalized by <span class="math" data-tex="\(|Q|_J=1\)">\(|Q|_J=1\)</span>.</p>
+<h2 id="a-necessary-uniform-integral-bound">A necessary uniform integral bound</h2>
+<p><strong>Theorem 1.1.</strong> If <span class="math" data-tex="\(P(D)\)">\(P(D)\)</span> has a fundamental solution
+<span class="math math-display" data-tex="\[
+E\in\mathcal S&#x27;(\mathbb R^n)
+\cap B_{\infty,S_P}^{\mathrm{loc}}(\mathbb R^n),
+\tag{1}
+\]">\[
+E\in\mathcal S&#x27;(\mathbb R^n)
+\cap B_{\infty,S_P}^{\mathrm{loc}}(\mathbb R^n),
+\tag{1}
+\]</span>
+then there is a finite constant <span class="math" data-tex="\(C\)">\(C\)</span> such that
+<span class="math math-display" data-tex="\[
+\int_{|\xi|&lt;1}\frac{d\xi}{Q(\xi)}\leq C
+\tag{2}
+\]">\[
+\int_{|\xi|&lt;1}\frac{d\xi}{Q(\xi)}\leq C
+\tag{2}
+\]</span>
+for every positive <span class="math" data-tex="\(Q\in\mathcal L(P)\)">\(Q\in\mathcal L(P)\)</span>.</p>
+<p>The constant is uniform over normalized positive localizations. Their individual lower bounds can tend to zero.</p>
+<p><strong>Proof.</strong> Fix such a <span class="math" data-tex="\(Q\)">\(Q\)</span>. It belongs to some directional set by compactness of the unit sphere of directions. The polynomial-path theorem gives a real polynomial path <span class="math" data-tex="\(\eta(t)\)">\(\eta(t)\)</span>, tending to infinity, with
+<span class="math math-display" data-tex="\[
+P_t(\xi)=\frac{P(\xi+\eta(t))}{S_P(\eta(t))}
+\longrightarrow Q(\xi)
+\tag{3}
+\]">\[
+P_t(\xi)=\frac{P(\xi+\eta(t))}{S_P(\eta(t))}
+\longrightarrow Q(\xi)
+\tag{3}
+\]</span>
+in coefficient norm. If <span class="math" data-tex="\(m=\deg P\)">\(m=\deg P\)</span>, then
+<span class="math math-display" data-tex="\[
+|P_t(\xi)-Q(\xi)|
+\leq C_Qt^{-1}(1+|\xi|)^m
+\tag{4}
+\]">\[
+|P_t(\xi)-Q(\xi)|
+\leq C_Qt^{-1}(1+|\xi|)^m
+\tag{4}
+\]</span>
+for large <span class="math" data-tex="\(t\)">\(t\)</span>. To verify the rate, every coefficient of the numerator in (3) is a polynomial in <span class="math" data-tex="\(t\)">\(t\)</span>. The squared denominator is the sum of their squared absolute values with the derivative weights, so its leading term is <span class="math" data-tex="\(a^2t^{2\sigma}\)">\(a^2t^{2\sigma}\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Factoring this term gives
+<span class="math math-display" data-tex="\[
+S_P(\eta(t))=at^\sigma(1+O(t^{-1})).
+\]">\[
+S_P(\eta(t))=at^\sigma(1+O(t^{-1})).
+\]</span>
+No numerator coefficient can have degree greater than <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>. Dividing its polynomial by this expression has its limiting constant plus <span class="math" data-tex="\(O(t^{-1})\)">\(O(t^{-1})\)</span>. The finite coefficient norm and the Taylor formula give (4).</p>
+<p>Positivity and the algebraic lower-bound argument of the symbols-at-infinity lesson give
+<span class="math math-display" data-tex="\[
+Q(\xi)\geq c_Q(1+|\xi|)^{-N}
+\tag{5}
+\]">\[
+Q(\xi)\geq c_Q(1+|\xi|)^{-N}
+\tag{5}
+\]</span>
+for some <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>. In particular <span class="math" data-tex="\(1/Q\)">\(1/Q\)</span> is a smooth function of polynomial growth and defines a tempered distribution.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+E_t=S_P(\eta(t))e^{-ix\cdot\eta(t)}E.
+\tag{6}
+\]">\[
+E_t=S_P(\eta(t))e^{-ix\cdot\eta(t)}E.
+\tag{6}
+\]</span>
+It is tempered. Modulation of the equation gives <span class="math" data-tex="\(P_t(D)E_t=\delta_0\)">\(P_t(D)E_t=\delta_0\)</span>, hence
+<span class="math math-display" data-tex="\[
+P_t\widehat E_t=1.
+\tag{7}
+\]">\[
+P_t\widehat E_t=1.
+\tag{7}
+\]</span>
+Choose <span class="math" data-tex="\(a,\delta&gt;0\)">\(a,\delta&gt;0\)</span> small enough that, for <span class="math" data-tex="\(T(t)=at^\delta\)">\(T(t)=at^\delta\)</span>, (4) and (5) imply
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|P_t(\xi)-Q(\xi)|\leq\tfrac12c_Q(1+|\xi|)^{-N},\\
+|P_t(\xi)|\geq\tfrac12c_Q(1+|\xi|)^{-N},\\
+|\xi|\leq T(t).
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+|P_t(\xi)-Q(\xi)|\leq\tfrac12c_Q(1+|\xi|)^{-N},\\
+|P_t(\xi)|\geq\tfrac12c_Q(1+|\xi|)^{-N},\\
+|\xi|\leq T(t).
+\end{gathered}
+\tag{8}
+\]</span>
+For example take <span class="math" data-tex="\(\delta(m+N)&lt;1\)">\(\delta(m+N)&lt;1\)</span> when <span class="math" data-tex="\(m+N&gt;0\)">\(m+N&gt;0\)</span>, then increase the lower bound on <span class="math" data-tex="\(t\)">\(t\)</span>. If <span class="math" data-tex="\(m+N=0\)">\(m+N=0\)</span>, any fixed positive <span class="math" data-tex="\(\delta\)">\(\delta\)</span> works after doing so. Equation (7), multiplied locally by the smooth reciprocal of <span class="math" data-tex="\(P_t\)">\(P_t\)</span>, gives
+<span class="math math-display" data-tex="\[
+\widehat E_t=1/P_t
+\quad\text{on the ball }|\xi|&lt;T(t).
+\tag{9}
+\]">\[
+\widehat E_t=1/P_t
+\quad\text{on the ball }|\xi|&lt;T(t).
+\tag{9}
+\]</span></p>
+<p>We claim
+<span class="math math-display" data-tex="\[
+\widehat E_t\longrightarrow1/Q
+\quad\text{in }\mathcal S&#x27;.
+\tag{10}
+\]">\[
+\widehat E_t\longrightarrow1/Q
+\quad\text{in }\mathcal S&#x27;.
+\tag{10}
+\]</span>
+The tail estimate is essential here; (9) alone gives only convergence on compactly supported frequency tests.</p>
+<p>Take <span class="math" data-tex="\(h\in\mathcal S\)">\(h\in\mathcal S\)</span>, and choose a smooth cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> supported in the unit ball, equal to one on the half-unit ball. Write <span class="math" data-tex="\(h=h_{\rm in}+h_{\rm out}\)">\(h=h_{\rm in}+h_{\rm out}\)</span>, where <span class="math" data-tex="\(h_{\rm in}(\xi)=\chi(\xi/T(t))h(\xi)\)">\(h_{\rm in}(\xi)=\chi(\xi/T(t))h(\xi)\)</span>. On the inner part, (4), (5), and (8) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\langle\widehat E_t-Q^{-1},h_{\rm in}\rangle|\\
+&amp;\quad\leq C_Qt^{-1}
+\int(1+|\xi|)^{m+2N}|h(\xi)|\,d\xi\\
+&amp;\quad\longrightarrow0.
+\end{aligned}
+\tag{11}
+\]">\[
+\begin{aligned}
+&amp;|\langle\widehat E_t-Q^{-1},h_{\rm in}\rangle|\\
+&amp;\quad\leq C_Qt^{-1}
+\int(1+|\xi|)^{m+2N}|h(\xi)|\,d\xi\\
+&amp;\quad\longrightarrow0.
+\end{aligned}
+\tag{11}
+\]</span>
+The tail pairing with <span class="math" data-tex="\(1/Q\)">\(1/Q\)</span> also tends to zero, since this function has polynomial growth and <span class="math" data-tex="\(h_{\rm out}\)">\(h_{\rm out}\)</span> is supported outside a ball of radius <span class="math" data-tex="\(T(t)/2\)">\(T(t)/2\)</span>.</p>
+<p>For the other tail, temperedness provides some <span class="math" data-tex="\(M\)">\(M\)</span> and a constant <span class="math" data-tex="\(C_E\)">\(C_E\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\langle\widehat E,g\rangle|
+&amp;\leq C_E\max_{|\beta|\leq M}\\
+&amp;\quad\sup_\xi(1+|\xi|)^M|\partial^\beta g(\xi)|.
+\end{aligned}
+\tag{12}
+\]">\[
+\begin{aligned}
+|\langle\widehat E,g\rangle|
+&amp;\leq C_E\max_{|\beta|\leq M}\\
+&amp;\quad\sup_\xi(1+|\xi|)^M|\partial^\beta g(\xi)|.
+\end{aligned}
+\tag{12}
+\]</span>
+If the path has degree <span class="math" data-tex="\(k\)">\(k\)</span>, then <span class="math" data-tex="\(|\eta(t)|\leq C t^k\)">\(|\eta(t)|\leq C t^k\)</span> and <span class="math" data-tex="\(S_P(\eta(t))\leq Ct^\sigma\)">\(S_P(\eta(t))\leq Ct^\sigma\)</span>. The Fourier transform of (6) is the translate of <span class="math" data-tex="\(\widehat E\)">\(\widehat E\)</span> multiplied by that scalar. Applied to <span class="math" data-tex="\(h_{\rm out}\)">\(h_{\rm out}\)</span>, (12) therefore gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\langle\widehat E_t,h_{\rm out}\rangle|\\
+&amp;\quad\leq C t^{\sigma+kM}\max_{|\beta|\leq M}\\
+&amp;\qquad\sup_\xi(1+|\xi|)^M
+|\partial^\beta h_{\rm out}(\xi)|.
+\end{aligned}
+\tag{13}
+\]">\[
+\begin{aligned}
+&amp;|\langle\widehat E_t,h_{\rm out}\rangle|\\
+&amp;\quad\leq C t^{\sigma+kM}\max_{|\beta|\leq M}\\
+&amp;\qquad\sup_\xi(1+|\xi|)^M
+|\partial^\beta h_{\rm out}(\xi)|.
+\end{aligned}
+\tag{13}
+\]</span>
+Indeed translating a test function by <span class="math" data-tex="\(\eta(t)\)">\(\eta(t)\)</span> enlarges its weight by at most <span class="math" data-tex="\(C(1+|\eta(t)|)^M\)">\(C(1+|\eta(t)|)^M\)</span>. The derivatives of the dilated cutoff are bounded by nonpositive powers of <span class="math" data-tex="\(T(t)\)">\(T(t)\)</span>, and every surviving term is supported where <span class="math" data-tex="\(|\xi|\geq T(t)/2\)">\(|\xi|\geq T(t)/2\)</span>. Schwartz decrease thus bounds the last maximum by <span class="math" data-tex="\(C_L T(t)^{-L}\)">\(C_L T(t)^{-L}\)</span> for any <span class="math" data-tex="\(L\)">\(L\)</span>. Choose <span class="math" data-tex="\(L&gt;(\sigma+kM)/\delta\)">\(L&gt;(\sigma+kM)/\delta\)</span>. Equation (13) tends to zero. Together with (11) this proves (10). These estimates are uniform for <span class="math" data-tex="\(h\)">\(h\)</span> in any bounded subset of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, so they also give convergence in the strong distribution topology.</p>
+<p>Now fix <span class="math" data-tex="\(\phi\in C_c^\infty(\mathbb R^n)\)">\(\phi\in C_c^\infty(\mathbb R^n)\)</span>. Regularity of the original <span class="math" data-tex="\(E\)">\(E\)</span> gives a constant <span class="math" data-tex="\(C_\phi\)">\(C_\phi\)</span>, independent of the path and of <span class="math" data-tex="\(Q\)">\(Q\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\langle E_t,\phi\rangle|
+&amp;=S_P(\eta(t))
+|\widehat{\phi E}(\eta(t))|\\
+&amp;\leq C_\phi.
+\end{aligned}
+\tag{14}
+\]">\[
+\begin{aligned}
+|\langle E_t,\phi\rangle|
+&amp;=S_P(\eta(t))
+|\widehat{\phi E}(\eta(t))|\\
+&amp;\leq C_\phi.
+\end{aligned}
+\tag{14}
+\]</span>
+Fourier inversion on tempered distributions and (10) imply
+<span class="math math-display" data-tex="\[
+\left|(2\pi)^{-n}
+\int\frac{\widehat\phi(-\xi)}{Q(\xi)}\,d\xi\right|
+\leq C_\phi.
+\tag{15}
+\]">\[
+\left|(2\pi)^{-n}
+\int\frac{\widehat\phi(-\xi)}{Q(\xi)}\,d\xi\right|
+\leq C_\phi.
+\tag{15}
+\]</span></p>
+<p>Choose once and for all a real nonnegative <span class="math" data-tex="\(\psi\in C_c^\infty(B(0,r))\)">\(\psi\in C_c^\infty(B(0,r))\)</span> of integral one, with <span class="math" data-tex="\(r&lt;1/2\)">\(r&lt;1/2\)</span>, and let
+<span class="math math-display" data-tex="\[
+\widetilde\psi(x)=\psi(-x),\qquad
+\phi=\psi*\widetilde\psi.
+\]">\[
+\widetilde\psi(x)=\psi(-x),\qquad
+\phi=\psi*\widetilde\psi.
+\]</span>
+Then <span class="math" data-tex="\(\widehat\phi=|\widehat\psi|^2\geq0\)">\(\widehat\phi=|\widehat\psi|^2\geq0\)</span>. For <span class="math" data-tex="\(|\xi|\leq1\)">\(|\xi|\leq1\)</span>,
+<span class="math math-display" data-tex="\[
+|\widehat\psi(\xi)-1|
+\leq\int|x\cdot\xi|\psi(x)\,dx
+\leq r,
+\]">\[
+|\widehat\psi(\xi)-1|
+\leq\int|x\cdot\xi|\psi(x)\,dx
+\leq r,
+\]</span>
+so <span class="math" data-tex="\(\widehat\phi(\xi)\geq1/4\)">\(\widehat\phi(\xi)\geq1/4\)</span> there. Its modulus is even because <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is real. Positivity of <span class="math" data-tex="\(Q\)">\(Q\)</span> makes the integral in (15) nonnegative, and yields
+<span class="math math-display" data-tex="\[
+\int_{|\xi|&lt;1}Q(\xi)^{-1}\,d\xi
+\leq4(2\pi)^n C_\phi.
+\tag{16}
+\]">\[
+\int_{|\xi|&lt;1}Q(\xi)^{-1}\,d\xi
+\leq4(2\pi)^n C_\phi.
+\tag{16}
+\]</span>
+The choice of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> is fixed, so this constant is independent of <span class="math" data-tex="\(Q\)">\(Q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constants in the convergence proof can depend on <span class="math" data-tex="\(Q\)">\(Q\)</span>. Uniformity in the final conclusion comes entirely from applying the original regular estimate to the same physical cutoff <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<h2 id="a-degenerate-diffusion-equation">A degenerate diffusion equation</h2>
+<p>Consider four variables, written <span class="math" data-tex="\((x,t)\in\mathbb R^3\times\mathbb R\)">\((x,t)\in\mathbb R^3\times\mathbb R\)</span>, with symbol
+<span class="math math-display" data-tex="\[
+P(\xi,\tau)=\xi_1^2\xi_2^2+2\xi_3^2+i\tau.
+\tag{17}
+\]">\[
+P(\xi,\tau)=\xi_1^2\xi_2^2+2\xi_3^2+i\tau.
+\tag{17}
+\]</span>
+Its differential operator is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P(D)=\partial_t+A(D_x),\\
+A(\xi)=\xi_1^2\xi_2^2+2\xi_3^2\geq0.
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+P(D)=\partial_t+A(D_x),\\
+A(\xi)=\xi_1^2\xi_2^2+2\xi_3^2\geq0.
+\end{gathered}
+\tag{18}
+\]</span></p>
+<p><strong>Proposition 2.1.</strong> This operator has a tempered fundamental solution supported in <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>. It is the unique tempered fundamental solution with that support. The operator has no fundamental solution that is both regular and tempered.</p>
+<p><strong>Proof: the inverse and its causal uniqueness.</strong> Define <span class="math" data-tex="\(E_+\)">\(E_+\)</span> by the spatial inverse Fourier transform of
+<span class="math math-display" data-tex="\[
+H(t)e^{-tA(\xi)}.
+\tag{19}
+\]">\[
+H(t)e^{-tA(\xi)}.
+\tag{19}
+\]</span>
+Precisely, for <span class="math" data-tex="\(\varphi\in\mathcal S(\mathbb R^4)\)">\(\varphi\in\mathcal S(\mathbb R^4)\)</span>, set
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\langle E_+,\varphi\rangle
+&amp;=(2\pi)^{-3}\int_0^\infty\int_{\mathbb R^3}\\
+&amp;\quad e^{-tA(\xi)}
+\widehat{\varphi(\cdot,t)}(-\xi)\,d\xi\,dt.
+\end{aligned}
+\tag{20}
+\]">\[
+\begin{aligned}
+\langle E_+,\varphi\rangle
+&amp;=(2\pi)^{-3}\int_0^\infty\int_{\mathbb R^3}\\
+&amp;\quad e^{-tA(\xi)}
+\widehat{\varphi(\cdot,t)}(-\xi)\,d\xi\,dt.
+\end{aligned}
+\tag{20}
+\]</span>
+The integrand is bounded by the absolute value of the partial Fourier transform of the Schwartz test, since <span class="math" data-tex="\(A\geq0\)">\(A\geq0\)</span>. For instance its product with <span class="math" data-tex="\((1+t)^2(1+|\xi|)^4\)">\((1+t)^2(1+|\xi|)^4\)</span> is bounded by a Schwartz seminorm. The inverse of that weight is integrable on this half-space. Thus (20) is a continuous functional on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, and is tempered with support in <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>.</p>
+<p>Integration by parts in <span class="math" data-tex="\(t\)">\(t\)</span>, or differentiation of (19) as a distribution, gives
+<span class="math math-display" data-tex="\[
+(\partial_t+A(\xi))
+\big(H(t)e^{-tA(\xi)}\big)=\delta_0(t).
+\tag{21}
+\]">\[
+(\partial_t+A(\xi))
+\big(H(t)e^{-tA(\xi)}\big)=\delta_0(t).
+\tag{21}
+\]</span>
+The boundary value at <span class="math" data-tex="\(t=0\)">\(t=0\)</span> is the constant <span class="math" data-tex="\(1\)">\(1\)</span> in spatial frequency, whose inverse transform is <span class="math" data-tex="\(\delta_0(x)\)">\(\delta_0(x)\)</span>. Hence <span class="math" data-tex="\(P(D)E_+=\delta_0(x,t)\)">\(P(D)E_+=\delta_0(x,t)\)</span>.</p>
+<p>For uniqueness let <span class="math" data-tex="\(w\)">\(w\)</span> be the difference of two tempered causal inverses. Its partial spatial Fourier transform <span class="math" data-tex="\(\widetilde w\)">\(\widetilde w\)</span> is tempered, has support in <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span>, and solves
+<span class="math math-display" data-tex="\[
+(\partial_t+A(\xi))\widetilde w=0.
+\]">\[
+(\partial_t+A(\xi))\widetilde w=0.
+\]</span>
+In the space of distributions, without any growth requirement on the multiplier, <span class="math" data-tex="\(v=e^{tA(\xi)}\widetilde w\)">\(v=e^{tA(\xi)}\widetilde w\)</span> is well defined locally and satisfies <span class="math" data-tex="\(\partial_t v=0\)">\(\partial_t v=0\)</span>. Such a distribution has the form <span class="math" data-tex="\(v=C(\xi)\otimes1\)">\(v=C(\xi)\otimes1\)</span>: for a compactly supported test <span class="math" data-tex="\(h(\xi,t)\)">\(h(\xi,t)\)</span>, subtract <span class="math" data-tex="\(\rho(t)\int h(\xi,s)\,ds\)">\(\rho(t)\int h(\xi,s)\,ds\)</span>, where <span class="math" data-tex="\(\int\rho=1\)">\(\int\rho=1\)</span>. The difference has zero time integral and is a time derivative of a compactly supported smooth function, so <span class="math" data-tex="\(v\)">\(v\)</span> annihilates it. This proves the asserted form. Choose <span class="math" data-tex="\(\rho\)">\(\rho\)</span> supported in <span class="math" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>. Causality then gives <span class="math" data-tex="\(C=0\)">\(C=0\)</span>, hence <span class="math" data-tex="\(w=0\)">\(w=0\)</span>.</p>
+<p><strong>Proof: the obstruction.</strong> For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, take centers <span class="math" data-tex="\(\eta_s=(0,s,as,0)\)">\(\eta_s=(0,s,as,0)\)</span> in the four frequency variables. Translating (17), dividing by <span class="math" data-tex="\(s^2\)">\(s^2\)</span>, and then letting <span class="math" data-tex="\(s\to\infty\)">\(s\to\infty\)</span> gives the polynomial <span class="math" data-tex="\(\xi_1^2+2a^2\)">\(\xi_1^2+2a^2\)</span>. The leading derivative norm is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_P(\eta_s)/s^2\longrightarrow\sqrt{4+4a^4},\\
+\sqrt{4+4a^4}=2\sqrt{1+a^4}.
+\end{gathered}
+\tag{22}
+\]">\[
+\begin{gathered}
+S_P(\eta_s)/s^2\longrightarrow\sqrt{4+4a^4},\\
+\sqrt{4+4a^4}=2\sqrt{1+a^4}.
+\end{gathered}
+\tag{22}
+\]</span>
+Indeed the undifferentiated value is <span class="math" data-tex="\(2a^2s^2\)">\(2a^2s^2\)</span>, the second <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span>-derivative is <span class="math" data-tex="\(2s^2\)">\(2s^2\)</span>, and every other derivative is <span class="math" data-tex="\(O(s)\)">\(O(s)\)</span> or <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+Q_a(\xi,\tau)=
+\frac{\xi_1^2+2a^2}{2\sqrt{1+a^4}}
+\in\mathcal L(P).
+\tag{23}
+\]">\[
+Q_a(\xi,\tau)=
+\frac{\xi_1^2+2a^2}{2\sqrt{1+a^4}}
+\in\mathcal L(P).
+\tag{23}
+\]</span>
+It is positive for every real frequency.</p>
+<p>The box with all four coordinate absolute values less than <span class="math" data-tex="\(r=1/4\)">\(r=1/4\)</span> lies in the unit ball. Integrating on this box gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{|\zeta|&lt;1}\frac{d\zeta}{Q_a(\zeta)}\\
+&amp;\quad\geq 2(2r)^3\int_{-r}^r\frac{ds}{s^2+2a^2}\\
+&amp;\quad=\frac{4(2r)^3}{\sqrt2\,a}
+\arctan\left(\frac r{\sqrt2\,a}\right).
+\end{aligned}
+\tag{24}
+\]">\[
+\begin{aligned}
+&amp;\int_{|\zeta|&lt;1}\frac{d\zeta}{Q_a(\zeta)}\\
+&amp;\quad\geq 2(2r)^3\int_{-r}^r\frac{ds}{s^2+2a^2}\\
+&amp;\quad=\frac{4(2r)^3}{\sqrt2\,a}
+\arctan\left(\frac r{\sqrt2\,a}\right).
+\end{aligned}
+\tag{24}
+\]</span>
+For <span class="math" data-tex="\(0&lt;a\leq r/\sqrt2\)">\(0&lt;a\leq r/\sqrt2\)</span>, the arctangent is at least <span class="math" data-tex="\(\pi/4\)">\(\pi/4\)</span>, so this is at least <span class="math" data-tex="\(\pi/(8\sqrt2\,a)\)">\(\pi/(8\sqrt2\,a)\)</span>. It diverges as <span class="math" data-tex="\(a\to0\)">\(a\to0\)</span>, contradicting the necessary uniform bound of Theorem 1.1. No inverse can have both properties. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Consequently <span class="math" data-tex="\(E_+\)">\(E_+\)</span> is tempered but not regular, whereas every regular inverse supplied by the averaging construction is untempered. The equation is the same; the two existence statements concern different choices and different estimates.</p>
+<p>There is no unrestricted uniqueness among tempered inverses. The symbol (17) vanishes at zero, so <span class="math" data-tex="\(P(D)1=0\)">\(P(D)1=0\)</span>. Hence <span class="math" data-tex="\(E_++c\)">\(E_++c\)</span> is a tempered fundamental solution for every constant <span class="math" data-tex="\(c\)">\(c\)</span>. The support requirement <span class="math" data-tex="\(t\geq0\)">\(t\geq0\)</span> in Proposition 2.1 is what makes its uniqueness true.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1. Why normalization is necessary.</strong> If <span class="math" data-tex="\(Q\)">\(Q\)</span> is a positive localization, explain why a bound uniform over all its positive scalar multiples cannot hold. What set is used in Theorem 1.1?</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, the integral of <span class="math" data-tex="\(1/(\lambda Q)\)">\(1/(\lambda Q)\)</span> is <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span> times that of <span class="math" data-tex="\(1/Q\)">\(1/Q\)</span>, and becomes arbitrarily large as <span class="math" data-tex="\(\lambda\to0\)">\(\lambda\to0\)</span>. The theorem uses only coefficient-normalized limits <span class="math" data-tex="\(Q\in\mathcal L(P)\)">\(Q\in\mathcal L(P)\)</span>, with <span class="math" data-tex="\(|Q|_J=1\)">\(|Q|_J=1\)</span>, rather than all nonzero multiples allowed by the broader word “localization.”</p>
+<p><strong>Exercise 2. Strict positivity and a zero minimum at infinity.</strong> Show that
+<span class="math math-display" data-tex="\[
+q(u,v)=(uv-1)^2+u^2
+\tag{25}
+\]">\[
+q(u,v)=(uv-1)^2+u^2
+\tag{25}
+\]</span>
+is positive everywhere but has infimum zero. Give an explicit polynomial lower bound in terms of <span class="math" data-tex="\(|(u,v)|\)">\(|(u,v)|\)</span>.</p>
+<p><strong>Solution.</strong> A zero would require both <span class="math" data-tex="\(u=0\)">\(u=0\)</span> and <span class="math" data-tex="\(uv=1\)">\(uv=1\)</span>, which is impossible. Along <span class="math" data-tex="\((u,v)=(s^{-1},s)\)">\((u,v)=(s^{-1},s)\)</span>, its value is <span class="math" data-tex="\(s^{-2}\to0\)">\(s^{-2}\to0\)</span>. Put <span class="math" data-tex="\(R=\sqrt{u^2+v^2}\)">\(R=\sqrt{u^2+v^2}\)</span>. If <span class="math" data-tex="\(|uv-1|\geq1/2\)">\(|uv-1|\geq1/2\)</span>, then <span class="math" data-tex="\(q\geq1/4\)">\(q\geq1/4\)</span>. Otherwise <span class="math" data-tex="\(|uv|&gt;1/2\)">\(|uv|&gt;1/2\)</span>, so <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span> and <span class="math" data-tex="\(|u|&gt;1/(2|v|)\)">\(|u|&gt;1/(2|v|)\)</span>, giving <span class="math" data-tex="\(q\geq u^2&gt;1/(4R^2)\)">\(q\geq u^2&gt;1/(4R^2)\)</span>. In both cases <span class="math" data-tex="\(q\geq1/[4(1+R)^2]\)">\(q\geq1/[4(1+R)^2]\)</span>. Thus strict positivity does not give a constant positive lower bound, but is compatible with (8) of the symbols-at-infinity lesson.</p>
+<p><strong>Exercise 3. A growing ball is insufficient by itself.</strong> Let <span class="math" data-tex="\(T_j=j\)">\(T_j=j\)</span> and <span class="math" data-tex="\(u_j=e^{j^2}\delta_{2j}\)">\(u_j=e^{j^2}\delta_{2j}\)</span> on the real frequency line. Show that <span class="math" data-tex="\(u_j\)">\(u_j\)</span> vanishes on <span class="math" data-tex="\((-T_j,T_j)\)">\((-T_j,T_j)\)</span>, yet does not tend to zero in <span class="math" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span>.</p>
+<p><strong>Solution.</strong> Its support is the point <span class="math" data-tex="\(2j\)">\(2j\)</span>, outside that interval. Take <span class="math" data-tex="\(h(\xi)=e^{-\xi^2/8}\)">\(h(\xi)=e^{-\xi^2/8}\)</span>, a Schwartz function. Then
+<span class="math math-display" data-tex="\[
+\langle u_j,h\rangle=e^{j^2}e^{-(2j)^2/8}
+=e^{j^2/2}\to\infty.
+\]">\[
+\langle u_j,h\rangle=e^{j^2}e^{-(2j)^2/8}
+=e^{j^2/2}\to\infty.
+\]</span>
+This explains why the tail estimate (13), using the polynomial growth of the modulation factors and the fixed tempered distribution <span class="math" data-tex="\(E\)">\(E\)</span>, is required in the proof of Theorem 1.1.</p>
+<p><strong>Exercise 4. The test stays fixed.</strong> Identify all quantities in the proof of Theorem 1.1 that may depend on <span class="math" data-tex="\(Q\)">\(Q\)</span>, and explain why the final integral constant still does not.</p>
+<p><strong>Solution.</strong> The polynomial path, its degree, the coefficient convergence constant, the positive lower-bound constants <span class="math" data-tex="\(c_Q,N\)">\(c_Q,N\)</span>, and the parameters <span class="math" data-tex="\(a,\delta\)">\(a,\delta\)</span> of the growing ball can all depend on <span class="math" data-tex="\(Q\)">\(Q\)</span>. They are used only to prove the limit (10) for that individual localization. The physical cutoff <span class="math" data-tex="\(\phi=\psi*\widetilde\psi\)">\(\phi=\psi*\widetilde\psi\)</span> is chosen once. Its regular estimate <span class="math" data-tex="\(S_P(\eta)|\widehat{\phi E}(\eta)|\leq C_\phi\)">\(S_P(\eta)|\widehat{\phi E}(\eta)|\leq C_\phi\)</span> holds for every center with the same constant. Passing to the limit separately for each <span class="math" data-tex="\(Q\)">\(Q\)</span> therefore gives the common bound <span class="math" data-tex="\(4(2\pi)^n C_\phi\)">\(4(2\pi)^n C_\phi\)</span>.</p>
+<p><strong>Exercise 5. Changing the diffusion coefficient.</strong> Replace <span class="math" data-tex="\(2\xi_3^2\)">\(2\xi_3^2\)</span> in (17) by <span class="math" data-tex="\(c\xi_3^2\)">\(c\xi_3^2\)</span>, where <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. Compute the normalized localization along <span class="math" data-tex="\((0,s,as,0)\)">\((0,s,as,0)\)</span>, and show that the same obstruction persists.</p>
+<p><strong>Solution.</strong> The leading undifferentiated coefficient is <span class="math" data-tex="\(ca^2s^2\)">\(ca^2s^2\)</span>, and the second <span class="math" data-tex="\(\xi_1\)">\(\xi_1\)</span>-derivative remains <span class="math" data-tex="\(2s^2\)">\(2s^2\)</span>. All other derivatives are of lower order in <span class="math" data-tex="\(s\)">\(s\)</span>. The localization is
+<span class="math math-display" data-tex="\[
+Q_{a,c}=
+\frac{\xi_1^2+ca^2}{\sqrt{4+c^2a^4}}.
+\]">\[
+Q_{a,c}=
+\frac{\xi_1^2+ca^2}{\sqrt{4+c^2a^4}}.
+\]</span>
+It is positive. Its reciprocal integral on the same box is bounded below by a positive constant times
+<span class="math math-display" data-tex="\[
+\int_{-r}^r\frac{ds}{s^2+ca^2}
+=\frac2{\sqrt c\,a}
+\arctan\left(\frac r{\sqrt c\,a}\right),
+\]">\[
+\int_{-r}^r\frac{ds}{s^2+ca^2}
+=\frac2{\sqrt c\,a}
+\arctan\left(\frac r{\sqrt c\,a}\right),
+\]</span>
+which diverges as <span class="math" data-tex="\(a\to0\)">\(a\to0\)</span>. Since <span class="math" data-tex="\(A_c\geq0\)">\(A_c\geq0\)</span>, formula (20) still constructs its unique tempered causal inverse, and Theorem 1.1 still excludes regular tempered inverses.</p>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Grubb]</strong> Gerd Grubb, <em>Distributions and Operators</em>, author-hosted lecture chapter §5, <em>Fourier transformation of distributions</em>: §§5.1–5.3, Definitions 5.1 and 5.8, estimate (5.21), Example 5.11, and Theorems 5.16–5.17 (native pp. 5.1, 5.9 and 5.11–5.14). <a href="https://www.math.ku.dk/~grubb/dist5.pdf">Exact freely readable chapter</a>. <a href="https://web.math.ku.dk/~grubb/">Author's notes</a>.</li>
+<li><strong>[Melrose]</strong> Richard Melrose, <em>Introduction to Microlocal Analysis</em>, chapters on distributions and Fourier analysis. <a href="https://math.mit.edu/~rbm/iml/">MIT notes</a>.</li>
+<li><strong>[Coste]</strong> Michel Coste, <em>Real Algebraic Sets</em>, lecture notes, 2003, §1.1 and §1.5. <a href="https://indico.ictp.it/event/a02455/session/9/contribution/6/material/0/0.pdf">ICTP notes</a>.</li>
+</ul>
+</main></body></html>

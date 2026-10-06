@@ -1,0 +1,1046 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Non-holomorphic Eisenstein series and Maass forms · Modular forms</title>
+<meta name="description" content="A lesson of the course Modular forms. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-MF/LG-MF-18.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular forms</a> <span aria-hidden="true">›</span> <span>Lesson 18 of 19</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI; no independent review is recorded.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="non-holomorphic-eisenstein-series-and-maass-forms">Non-holomorphic Eisenstein series and Maass forms</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A holomorphic modular form satisfies a first-order differential equation. Here we replace holomorphy by an eigenvalue equation for the hyperbolic Laplacian. Averaging a power of the height over the modular group gives an Eisenstein series. Its Fourier coefficients involve Bessel functions; a theta integral explains its continuation and reflection symmetry.</p>
+<p>We use the hyperbolic measure from <a href="LG-MF-07.html">The Petersson inner product and Poincaré series</a>, and the real Poisson and Gaussian formulas from <a href="LG-MF-13.html">Theta functions and sums of squares</a>, equations (1.3)–(1.5). All sums and integrals below are justified in their initial domains before they are continued.</p>
+<h2 id="1-the-laplacian-and-the-defining-series">1. The Laplacian and the defining series</h2>
+<p>Write <span class="math" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>, <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, and put
+<span class="math math-display" data-tex="\[
+\Delta=-y^2(\partial_x^2+\partial_y^2),\qquad
+d\mu=\frac{dx\,dy}{y^2}.
+\tag{1.1}
+\]">\[
+\Delta=-y^2(\partial_x^2+\partial_y^2),\qquad
+d\mu=\frac{dx\,dy}{y^2}.
+\tag{1.1}
+\]</span>
+For a real determinant-one matrix <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, its holomorphic fractional transformation has
+<span class="math math-display" data-tex="\[
+\gamma&#x27;(z)=(cz+d)^{-2},\qquad
+\operatorname{Im}(\gamma z)=y|cz+d|^{-2}.
+\]">\[
+\gamma&#x27;(z)=(cz+d)^{-2},\qquad
+\operatorname{Im}(\gamma z)=y|cz+d|^{-2}.
+\]</span>
+The ordinary chain rule for a holomorphic map <span class="math" data-tex="\(w=u+iv\)">\(w=u+iv\)</span> gives
+<span class="math math-display" data-tex="\[
+(\partial_x^2+\partial_y^2)(f\circ w)
+=|w&#x27;(z)|^2(f_{uu}+f_{vv})\circ w.
+\tag{1.2}
+\]">\[
+(\partial_x^2+\partial_y^2)(f\circ w)
+=|w&#x27;(z)|^2(f_{uu}+f_{vv})\circ w.
+\tag{1.2}
+\]</span>
+Indeed <span class="math" data-tex="\(u,v\)">\(u,v\)</span> are harmonic, their gradients are orthogonal and have equal squared length <span class="math" data-tex="\(|w&#x27;|^2\)">\(|w&#x27;|^2\)</span>. Multiplying (1.2) by <span class="math" data-tex="\(-y^2\)">\(-y^2\)</span> proves
+<span class="math math-display" data-tex="\[
+\Delta(f\circ\gamma)=(\Delta f)\circ\gamma.
+\tag{1.3}
+\]">\[
+\Delta(f\circ\gamma)=(\Delta f)\circ\gamma.
+\tag{1.3}
+\]</span>
+Also <span class="math" data-tex="\(\Delta y^s=-s(s-1)y^s\)">\(\Delta y^s=-s(s-1)y^s\)</span>, where positive real numbers are raised to complex powers using their real logarithms.</p>
+<p>Let
+<span class="math math-display" data-tex="\[
+\Gamma=SL_2(\mathbb Z),\qquad
+\Gamma_\infty=\left\{\pm\begin{pmatrix}1&amp;b\\0&amp;1\end{pmatrix}:b\in\mathbb Z\right\}.
+\]">\[
+\Gamma=SL_2(\mathbb Z),\qquad
+\Gamma_\infty=\left\{\pm\begin{pmatrix}1&amp;b\\0&amp;1\end{pmatrix}:b\in\mathbb Z\right\}.
+\]</span>
+For <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span> define
+<span class="math math-display" data-tex="\[
+E(z,s)=\sum_{\gamma\in\Gamma_\infty\backslash\Gamma}
+       \operatorname{Im}(\gamma z)^s
+=\frac12\sum_{\substack{(c,d)\in\mathbb Z^2\\\gcd(c,d)=1}}
+       \frac{y^s}{|cz+d|^{2s}}.
+\tag{1.4}
+\]">\[
+E(z,s)=\sum_{\gamma\in\Gamma_\infty\backslash\Gamma}
+       \operatorname{Im}(\gamma z)^s
+=\frac12\sum_{\substack{(c,d)\in\mathbb Z^2\\\gcd(c,d)=1}}
+       \frac{y^s}{|cz+d|^{2s}}.
+\tag{1.4}
+\]</span>
+The factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> identifies <span class="math" data-tex="\((c,d)\)">\((c,d)\)</span> and <span class="math" data-tex="\((-c,-d)\)">\((-c,-d)\)</span>. To check the equality, a primitive row can be completed to a determinant-one matrix by Bezout's identity. Two completions differ by adding an integer multiple of the bottom row to the top row. Left multiplication by <span class="math" data-tex="\(\Gamma_\infty\)">\(\Gamma_\infty\)</span> performs exactly these operations, together with simultaneous negation.</p>
+<p><strong>Theorem 1.1 (convergence and eigenfunction).</strong> On <span class="math" data-tex="\(\mathfrak H\times\{\operatorname{Re}s&gt;1\}\)">\(\mathfrak H\times\{\operatorname{Re}s&gt;1\}\)</span>, the series <span class="math" data-tex="\(E\)">\(E\)</span> is locally uniformly absolutely convergent, is holomorphic in <span class="math" data-tex="\(s\)">\(s\)</span>, and is smooth in <span class="math" data-tex="\(z\)">\(z\)</span>. All its fixed-order <span class="math" data-tex="\(z\)">\(z\)</span>-derivatives converge locally uniformly. It is <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-invariant and satisfies
+<span class="math math-display" data-tex="\[
+\Delta E(z,s)=s(1-s)E(z,s).
+\tag{1.5}
+\]">\[
+\Delta E(z,s)=s(1-s)E(z,s).
+\tag{1.5}
+\]</span></p>
+<p><strong>Proof.</strong> On a compact set of <span class="math" data-tex="\(z\)">\(z\)</span>-values, the positive quadratic form
+<span class="math math-display" data-tex="\[
+|cz+d|^2=(cx+d)^2+c^2y^2
+\]">\[
+|cz+d|^2=(cx+d)^2+c^2y^2
+\]</span>
+is at least <span class="math" data-tex="\(a(c^2+d^2)\)">\(a(c^2+d^2)\)</span> for one <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, uniformly on the compact set. There are <span class="math" data-tex="\(O(R)\)">\(O(R)\)</span> integer pairs with <span class="math" data-tex="\(\max(|c|,|d|)=R\)">\(\max(|c|,|d|)=R\)</span>. Thus for <span class="math" data-tex="\(\operatorname{Re}s\ge1+\epsilon\)">\(\operatorname{Re}s\ge1+\epsilon\)</span>, the sum is dominated by a constant times
+<span class="math" data-tex="\(\sum_{R\ge1}R^{1-2(1+\epsilon)}\)">\(\sum_{R\ge1}R^{1-2(1+\epsilon)}\)</span>, which converges.</p>
+<p>Differentiation does not require a larger half-plane. If <span class="math" data-tex="\(h=y^s|cz+d|^{-2s}\)">\(h=y^s|cz+d|^{-2s}\)</span>, differentiation of <span class="math" data-tex="\(\log h\)">\(\log h\)</span> introduces <span class="math" data-tex="\(s/y\)">\(s/y\)</span> and multiples of
+<span class="math math-display" data-tex="\[
+\frac{c}{cz+d},\qquad \frac{c}{c\bar z+d}.
+\]">\[
+\frac{c}{cz+d},\qquad \frac{c}{c\bar z+d}.
+\]</span>
+Their absolute values are at most <span class="math" data-tex="\(1/y\)">\(1/y\)</span>. Further derivatives have the same property with higher powers of <span class="math" data-tex="\(1/y\)">\(1/y\)</span>. Induction gives
+<span class="math math-display" data-tex="\[
+|\partial_x^\alpha\partial_y^\beta h|
+\le C_{\alpha,\beta,K}|h|
+\]">\[
+|\partial_x^\alpha\partial_y^\beta h|
+\le C_{\alpha,\beta,K}|h|
+\]</span>
+on any compact set <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(z,s\)">\(z,s\)</span>-values in the initial domain. The preceding summable majorant therefore applies to every fixed derivative. Uniform convergence proves smoothness and permits termwise application of <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. Holomorphy in <span class="math" data-tex="\(s\)">\(s\)</span> follows from local uniform convergence of the holomorphic summands.</p>
+<p>Right multiplication permutes the left cosets <span class="math" data-tex="\(\Gamma_\infty\backslash\Gamma\)">\(\Gamma_\infty\backslash\Gamma\)</span>, proving invariance. Each summand is an eigenfunction by (1.3) and the calculation for <span class="math" data-tex="\(y^s\)">\(y^s\)</span>. Summing gives (1.5). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Separate every nonzero integer vector into its positive integer content and its primitive vector. Absolute convergence gives
+<span class="math math-display" data-tex="\[
+\zeta(2s)E(z,s)
+=\frac12\sum_{(m,n)\ne(0,0)}\frac{y^s}{|mz+n|^{2s}}.
+\tag{1.6}
+\]">\[
+\zeta(2s)E(z,s)
+=\frac12\sum_{(m,n)\ne(0,0)}\frac{y^s}{|mz+n|^{2s}}.
+\tag{1.6}
+\]</span>
+Here <span class="math" data-tex="\(\zeta(w)=\sum_{r\ge1}r^{-w}\)">\(\zeta(w)=\sum_{r\ge1}r^{-w}\)</span> initially for <span class="math" data-tex="\(\operatorname{Re}w&gt;1\)">\(\operatorname{Re}w&gt;1\)</span>. Its absolutely convergent Euler product is nonzero there: the logarithms of <span class="math" data-tex="\((1-p^{-w})^{-1}\)">\((1-p^{-w})^{-1}\)</span> form an absolutely convergent series. This justifies division by <span class="math" data-tex="\(\zeta(2s)\)">\(\zeta(2s)\)</span> in the initial domain.</p>
+<h2 id="2-fourier-coefficients-and-the-bessel-integral">2. Fourier coefficients and the Bessel integral</h2>
+<p>For <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span> and <span class="math" data-tex="\(\nu\in\mathbb C\)">\(\nu\in\mathbb C\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_\nu(u)
+&amp;=\frac12\int_0^\infty
+       e^{-u(t+t^{-1})/2}t^\nu\,\frac{dt}{t}\\
+&amp;=\int_0^\infty e^{-u\cosh v}\cosh(\nu v)\,dv.
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+K_\nu(u)
+&amp;=\frac12\int_0^\infty
+       e^{-u(t+t^{-1})/2}t^\nu\,\frac{dt}{t}\\
+&amp;=\int_0^\infty e^{-u\cosh v}\cosh(\nu v)\,dv.
+\end{aligned}
+\tag{2.1}
+\]</span>
+The second equality follows by <span class="math" data-tex="\(t=e^v\)">\(t=e^v\)</span>, then pairing <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(-v\)">\(-v\)</span>. The exponential dominates every fixed power of <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(t^{-1}\)">\(t^{-1}\)</span>, and <span class="math" data-tex="\(\log t\)">\(\log t\)</span> at both ends. Consequently <span class="math" data-tex="\(K_\nu(u)\)">\(K_\nu(u)\)</span> is entire in <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, smooth in <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(K_{-\nu}=K_\nu\)">\(K_{-\nu}=K_\nu\)</span>.</p>
+<p>For <span class="math" data-tex="\(\nu\)">\(\nu\)</span> in a compact set, and for every fixed number of <span class="math" data-tex="\(u\)">\(u\)</span>-derivatives, there are constants <span class="math" data-tex="\(C,A\)">\(C,A\)</span> such that, for <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+|\partial_u^j K_\nu(u)|\le C(1+u)^A e^{-u}.
+\tag{2.2}
+\]">\[
+|\partial_u^j K_\nu(u)|\le C(1+u)^A e^{-u}.
+\tag{2.2}
+\]</span>
+For example, use <span class="math" data-tex="\(\cosh v\ge1+v^2/2\)">\(\cosh v\ge1+v^2/2\)</span>, absorb the extra factors <span class="math" data-tex="\((\cosh v)^j\)">\((\cosh v)^j\)</span> into a fixed exponential in <span class="math" data-tex="\(v\)">\(v\)</span>, and integrate the resulting Gaussian bound. This estimate will justify all Fourier-series continuations.</p>
+<p><strong>Lemma 2.1 (the Fourier integral).</strong> If <span class="math" data-tex="\(\operatorname{Re}s&gt;1/2\)">\(\operatorname{Re}s&gt;1/2\)</span>, <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>, and <span class="math" data-tex="\(r\in\mathbb R\)">\(r\in\mathbb R\)</span>, then
+<span class="math math-display" data-tex="\[
+I_s(r,y):=\int_{\mathbb R}(x^2+y^2)^{-s}e^{-2\pi irx}\,dx
+=\begin{cases}
+\displaystyle
+\frac{\sqrt\pi\,\Gamma(s-\tfrac12)}{\Gamma(s)}y^{1-2s},
+&amp;r=0,\\[6pt]
+\displaystyle
+\frac{2\pi^s}{\Gamma(s)}
+\left(\frac{|r|}{y}\right)^{s-1/2}
+K_{s-1/2}(2\pi|r|y),
+&amp;r\ne0.
+\end{cases}
+\tag{2.3}
+\]">\[
+I_s(r,y):=\int_{\mathbb R}(x^2+y^2)^{-s}e^{-2\pi irx}\,dx
+=\begin{cases}
+\displaystyle
+\frac{\sqrt\pi\,\Gamma(s-\tfrac12)}{\Gamma(s)}y^{1-2s},
+&amp;r=0,\\[6pt]
+\displaystyle
+\frac{2\pi^s}{\Gamma(s)}
+\left(\frac{|r|}{y}\right)^{s-1/2}
+K_{s-1/2}(2\pi|r|y),
+&amp;r\ne0.
+\end{cases}
+\tag{2.3}
+\]</span></p>
+<p><strong>Proof.</strong> The Gamma integral gives
+<span class="math math-display" data-tex="\[
+(x^2+y^2)^{-s}
+=\frac1{\Gamma(s)}\int_0^\infty
+ t^{s-1}e^{-t(x^2+y^2)}\,dt.
+\]">\[
+(x^2+y^2)^{-s}
+=\frac1{\Gamma(s)}\int_0^\infty
+ t^{s-1}e^{-t(x^2+y^2)}\,dt.
+\]</span>
+The absolute double integral after integration in <span class="math" data-tex="\(x\)">\(x\)</span> is a constant times
+<span class="math" data-tex="\(\int_0^\infty t^{\operatorname{Re}s-3/2}e^{-y^2t}\,dt\)">\(\int_0^\infty t^{\operatorname{Re}s-3/2}e^{-y^2t}\,dt\)</span>; it is finite precisely in the stated domain. Fubini and the Gaussian transform give
+<span class="math math-display" data-tex="\[
+I_s(r,y)=\frac{\sqrt\pi}{\Gamma(s)}
+\int_0^\infty
+ t^{s-3/2}e^{-y^2t-\pi^2r^2/t}\,dt.
+\tag{2.4}
+\]">\[
+I_s(r,y)=\frac{\sqrt\pi}{\Gamma(s)}
+\int_0^\infty
+ t^{s-3/2}e^{-y^2t-\pi^2r^2/t}\,dt.
+\tag{2.4}
+\]</span>
+For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, substitution <span class="math" data-tex="\(v=y^2t\)">\(v=y^2t\)</span> proves the first case. For <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>, substitute <span class="math" data-tex="\(t=(\pi|r|/y)v\)">\(t=(\pi|r|/y)v\)</span> and compare with (2.1). The factor outside the integral is
+<span class="math" data-tex="\(\pi^s(|r|/y)^{s-1/2}/\Gamma(s)\)">\(\pi^s(|r|/y)^{s-1/2}/\Gamma(s)\)</span>, and the integral is twice <span class="math" data-tex="\(K_{s-1/2}(2\pi|r|y)\)">\(K_{s-1/2}(2\pi|r|y)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Set <span class="math" data-tex="\(\sigma_a(n)=\sum_{d\mid n,\ d&gt;0}d^a\)">\(\sigma_a(n)=\sum_{d\mid n,\ d&gt;0}d^a\)</span>.</p>
+<p><strong>Theorem 2.2 (the Fourier expansion).</strong> For <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E(z,s)
+&amp;=y^s+\phi(s)y^{1-s}\\
+&amp;\quad+\sum_{r\ne0}c_r(s)\sqrt y\,
+ K_{s-1/2}(2\pi|r|y)e^{2\pi irx},
+\end{aligned}
+\tag{2.5}
+\]">\[
+\begin{aligned}
+E(z,s)
+&amp;=y^s+\phi(s)y^{1-s}\\
+&amp;\quad+\sum_{r\ne0}c_r(s)\sqrt y\,
+ K_{s-1/2}(2\pi|r|y)e^{2\pi irx},
+\end{aligned}
+\tag{2.5}
+\]</span>
+where
+<span class="math math-display" data-tex="\[
+\phi(s)=
+\frac{\sqrt\pi\,\Gamma(s-\tfrac12)\zeta(2s-1)}
+     {\Gamma(s)\zeta(2s)},\qquad
+c_r(s)=
+\frac{2\pi^s|r|^{s-1/2}\sigma_{1-2s}(|r|)}
+     {\Gamma(s)\zeta(2s)}.
+\tag{2.6}
+\]">\[
+\phi(s)=
+\frac{\sqrt\pi\,\Gamma(s-\tfrac12)\zeta(2s-1)}
+     {\Gamma(s)\zeta(2s)},\qquad
+c_r(s)=
+\frac{2\pi^s|r|^{s-1/2}\sigma_{1-2s}(|r|)}
+     {\Gamma(s)\zeta(2s)}.
+\tag{2.6}
+\]</span></p>
+<p><strong>Proof.</strong> Compute the <span class="math" data-tex="\(r\)">\(r\)</span>-th Fourier coefficient of (1.6) by integrating over <span class="math" data-tex="\(0\le x\le1\)">\(0\le x\le1\)</span>. The terms <span class="math" data-tex="\(m=0\)">\(m=0\)</span> contribute <span class="math" data-tex="\(\zeta(2s)y^s\)">\(\zeta(2s)y^s\)</span> when <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, and zero otherwise. Pair <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span> with <span class="math" data-tex="\((-m,-n)\)">\((-m,-n)\)</span> to leave <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>.</p>
+<p>For fixed <span class="math" data-tex="\(m\)">\(m\)</span>, write <span class="math" data-tex="\(n=a+m\ell\)">\(n=a+m\ell\)</span>, <span class="math" data-tex="\(0\le a&lt;m\)">\(0\le a&lt;m\)</span>. Factoring out <span class="math" data-tex="\(m^{-2s}\)">\(m^{-2s}\)</span> and putting <span class="math" data-tex="\(v=x+a/m+\ell\)">\(v=x+a/m+\ell\)</span>, the intervals indexed by <span class="math" data-tex="\(\ell\)">\(\ell\)</span> cover the real line. Their combined contribution is
+<span class="math math-display" data-tex="\[
+y^s m^{-2s}
+\sum_{a=0}^{m-1}e^{2\pi ira/m}I_s(r,y).
+\tag{2.7}
+\]">\[
+y^s m^{-2s}
+\sum_{a=0}^{m-1}e^{2\pi ira/m}I_s(r,y).
+\tag{2.7}
+\]</span>
+All these integral and sum interchanges are absolute: after dropping the Fourier exponential their total is the integral of the absolutely convergent lattice sum on a compact horizontal interval.</p>
+<p>The finite geometric sum in (2.7) equals <span class="math" data-tex="\(m\)">\(m\)</span> if <span class="math" data-tex="\(m\mid r\)">\(m\mid r\)</span>, and zero otherwise. For <span class="math" data-tex="\(r=0\)">\(r=0\)</span>, all <span class="math" data-tex="\(m\)">\(m\)</span> occur, giving
+<span class="math math-display" data-tex="\[
+y^s\zeta(2s-1)I_s(0,y).
+\]">\[
+y^s\zeta(2s-1)I_s(0,y).
+\]</span>
+For <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>, only the positive divisors of <span class="math" data-tex="\(|r|\)">\(|r|\)</span> occur, giving
+<span class="math" data-tex="\(y^s\sigma_{1-2s}(|r|)I_s(r,y)\)">\(y^s\sigma_{1-2s}(|r|)I_s(r,y)\)</span>.
+Substitute (2.3) and divide by <span class="math" data-tex="\(\zeta(2s)\)">\(\zeta(2s)\)</span>. This proves the claimed coefficients.</p>
+<p>Estimate (2.2) and a polynomial bound for the divisor sum show that the displayed Fourier series and all its fixed <span class="math" data-tex="\(z\)">\(z\)</span>-derivatives converge uniformly on compact subsets. It has the coefficients just computed. Uniqueness of Fourier coefficients, or Fourier inversion for the smooth periodic function of <span class="math" data-tex="\(x\)">\(x\)</span>, identifies it with <span class="math" data-tex="\(E\)">\(E\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The completed series is
+<span class="math math-display" data-tex="\[
+E^*(z,s)=\pi^{-s}\Gamma(s)\zeta(2s)E(z,s).
+\tag{2.8}
+\]">\[
+E^*(z,s)=\pi^{-s}\Gamma(s)\zeta(2s)E(z,s).
+\tag{2.8}
+\]</span>
+Its nonconstant coefficient is particularly simple:
+<span class="math math-display" data-tex="\[
+2|r|^{s-1/2}\sigma_{1-2s}(|r|)
+\sqrt y\,K_{s-1/2}(2\pi|r|y).
+\tag{2.9}
+\]">\[
+2|r|^{s-1/2}\sigma_{1-2s}(|r|)
+\sqrt y\,K_{s-1/2}(2\pi|r|y).
+\tag{2.9}
+\]</span>
+Neither <span class="math" data-tex="\(\Gamma(s)\)">\(\Gamma(s)\)</span> nor a zeta denominator remains in (2.9).</p>
+<h2 id="3-a-theta-integral-continuation-and-the-residue">3. A theta integral, continuation and the residue</h2>
+<p>Define the positive quadratic form and its theta function by
+<span class="math math-display" data-tex="\[
+Q_z(m,n)=\frac{|mz+n|^2}{y},\qquad
+\Theta_z(t)=\sum_{(m,n)\in\mathbb Z^2}e^{-\pi tQ_z(m,n)}
+\quad(t&gt;0).
+\tag{3.1}
+\]">\[
+Q_z(m,n)=\frac{|mz+n|^2}{y},\qquad
+\Theta_z(t)=\sum_{(m,n)\in\mathbb Z^2}e^{-\pi tQ_z(m,n)}
+\quad(t&gt;0).
+\tag{3.1}
+\]</span>
+In the coordinates <span class="math" data-tex="\((m,n)\)">\((m,n)\)</span>, its matrix is
+<span class="math math-display" data-tex="\[
+A_z=\frac1y
+\begin{pmatrix}|z|^2&amp;x\\x&amp;1\end{pmatrix},
+\qquad \det A_z=1.
+\tag{3.2}
+\]">\[
+A_z=\frac1y
+\begin{pmatrix}|z|^2&amp;x\\x&amp;1\end{pmatrix},
+\qquad \det A_z=1.
+\tag{3.2}
+\]</span></p>
+<p><strong>Lemma 3.1 (theta inversion).</strong> One has
+<span class="math math-display" data-tex="\[
+\Theta_z(t)=t^{-1}\Theta_z(1/t).
+\tag{3.3}
+\]">\[
+\Theta_z(t)=t^{-1}\Theta_z(1/t).
+\tag{3.3}
+\]</span>
+Moreover, <span class="math" data-tex="\(\Theta_z(t)-1\)">\(\Theta_z(t)-1\)</span> and all its fixed <span class="math" data-tex="\(z\)">\(z\)</span>-derivatives decay exponentially as <span class="math" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>, uniformly on compact subsets of <span class="math" data-tex="\(\mathfrak H\)">\(\mathfrak H\)</span>.</p>
+<p><strong>Proof.</strong> Apply the one-dimensional Poisson formula in each coordinate to a Schwartz function on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>. The iterated sums and integrals are absolute for a positive Gaussian; its partial transforms are also Gaussians. Diagonalizing a positive real symmetric matrix <span class="math" data-tex="\(A\)">\(A\)</span> by an orthogonal change of variables and using the one-dimensional Gaussian transform gives
+<span class="math math-display" data-tex="\[
+\widehat{e^{-\pi t v^tAv}}(\xi)
+=t^{-1}(\det A)^{-1/2}e^{-\pi \xi^tA^{-1}\xi/t}.
+\tag{3.4}
+\]">\[
+\widehat{e^{-\pi t v^tAv}}(\xi)
+=t^{-1}(\det A)^{-1/2}e^{-\pi \xi^tA^{-1}\xi/t}.
+\tag{3.4}
+\]</span>
+This uses exactly the transform convention <span class="math" data-tex="\(e^{-2\pi i v\cdot\xi}\)">\(e^{-2\pi i v\cdot\xi}\)</span>.</p>
+<p>For a symmetric <span class="math" data-tex="\(2\)">\(2\)</span>-by-<span class="math" data-tex="\(2\)">\(2\)</span> matrix of determinant one,
+<span class="math math-display" data-tex="\[
+A^{-1}=J^tAJ,\qquad
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}.
+\]">\[
+A^{-1}=J^tAJ,\qquad
+J=\begin{pmatrix}0&amp;-1\\1&amp;0\end{pmatrix}.
+\]</span>
+Poisson summation and the bijection <span class="math" data-tex="\(\xi\mapsto J\xi\)">\(\xi\mapsto J\xi\)</span> of <span class="math" data-tex="\(\mathbb Z^2\)">\(\mathbb Z^2\)</span> therefore prove (3.3) for <span class="math" data-tex="\(A=A_z\)">\(A=A_z\)</span>.</p>
+<p>On a compact <span class="math" data-tex="\(z\)">\(z\)</span>-set, <span class="math" data-tex="\(Q_z(v)\ge a|v|^2\)">\(Q_z(v)\ge a|v|^2\)</span> for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Each derivative of a nonconstant summand adds a polynomial in <span class="math" data-tex="\(t,m,n\)">\(t,m,n\)</span>. For <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, these polynomial factors can be absorbed into
+<span class="math" data-tex="\(C e^{-\pi a t|v|^2/2}\)">\(C e^{-\pi a t|v|^2/2}\)</span>. Summing over <span class="math" data-tex="\(v\ne0\)">\(v\ne0\)</span>, and splitting off another fixed part of this Gaussian, gives <span class="math" data-tex="\(C&#x27;e^{-bt}\)">\(C&#x27;e^{-bt}\)</span>. This proves the last assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>, the Gamma integral and (1.6) yield
+<span class="math math-display" data-tex="\[
+E^*(z,s)=\frac12\int_0^\infty
+(\Theta_z(t)-1)t^{s-1}\,dt.
+\tag{3.5}
+\]">\[
+E^*(z,s)=\frac12\int_0^\infty
+(\Theta_z(t)-1)t^{s-1}\,dt.
+\tag{3.5}
+\]</span>
+The absolute interchange follows either from the convergent lattice sum or from (3.3) near zero and the exponential bound near infinity.</p>
+<p><strong>Theorem 3.2 (continuation and reflection).</strong> The completion extends meromorphically to all <span class="math" data-tex="\(s\in\mathbb C\)">\(s\in\mathbb C\)</span>, has only simple poles at <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, and satisfies
+<span class="math math-display" data-tex="\[
+E^*(z,s)=E^*(z,1-s),\qquad
+\operatorname*{Res}_{s=1}E^*(z,s)=\frac12,\qquad
+\operatorname*{Res}_{s=0}E^*(z,s)=-\frac12.
+\tag{3.6}
+\]">\[
+E^*(z,s)=E^*(z,1-s),\qquad
+\operatorname*{Res}_{s=1}E^*(z,s)=\frac12,\qquad
+\operatorname*{Res}_{s=0}E^*(z,s)=-\frac12.
+\tag{3.6}
+\]</span>
+It is smooth in <span class="math" data-tex="\(z\)">\(z\)</span> away from those poles.</p>
+<p><strong>Proof.</strong> Split (3.5) at <span class="math" data-tex="\(1\)">\(1\)</span>. In the integral below <span class="math" data-tex="\(1\)">\(1\)</span>, insert
+<span class="math math-display" data-tex="\[
+\Theta_z(t)-1
+=t^{-1}(\Theta_z(1/t)-1)+t^{-1}-1
+\]">\[
+\Theta_z(t)-1
+=t^{-1}(\Theta_z(1/t)-1)+t^{-1}-1
+\]</span>
+and change variables <span class="math" data-tex="\(t=1/u\)">\(t=1/u\)</span> in the first part. The result is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E^*(z,s)
+=\frac12\left\{
+\frac1{s-1}-\frac1s+
+\int_1^\infty(\Theta_z(t)-1)
+\bigl(t^{s-1}+t^{-s}\bigr)\,dt
+\right\}.
+\end{aligned}
+\tag{3.7}
+\]">\[
+\begin{aligned}
+E^*(z,s)
+=\frac12\left\{
+\frac1{s-1}-\frac1s+
+\int_1^\infty(\Theta_z(t)-1)
+\bigl(t^{s-1}+t^{-s}\bigr)\,dt
+\right\}.
+\end{aligned}
+\tag{3.7}
+\]</span>
+The integral is entire in <span class="math" data-tex="\(s\)">\(s\)</span>. On every compact set of <span class="math" data-tex="\(s,z\)">\(s,z\)</span>-values, its derivatives in <span class="math" data-tex="\(s\)">\(s\)</span> add powers of <span class="math" data-tex="\(\log t\)">\(\log t\)</span>, and its derivatives in <span class="math" data-tex="\(z\)">\(z\)</span> retain the exponential bound of Lemma 3.1. Dominated differentiation proves both claims about regularity.</p>
+<p>Under <span class="math" data-tex="\(s\mapsto1-s\)">\(s\mapsto1-s\)</span>, the two powers in the integral exchange places, and
+<span class="math" data-tex="\(1/(s-1)-1/s\)">\(1/(s-1)-1/s\)</span> is unchanged. This proves reflection. The rational terms have precisely the stated poles and residues, which cannot be cancelled by an entire integral. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For completeness, the same argument with the one-dimensional real theta function <span class="math" data-tex="\(\Theta_{\rm real}\)">\(\Theta_{\rm real}\)</span> gives the meromorphic completed zeta function
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Xi(w)&amp;=\pi^{-w/2}\Gamma(w/2)\zeta(w)\\
+&amp;=\frac1{w-1}-\frac1w\\
+&amp;\quad+\frac12\int_1^\infty(\Theta_{\rm real}(t)-1)
+ \left(t^{w/2-1}+t^{(1-w)/2-1}\right)\,dt.
+\end{aligned}
+\tag{3.8}
+\]">\[
+\begin{aligned}
+\Xi(w)&amp;=\pi^{-w/2}\Gamma(w/2)\zeta(w)\\
+&amp;=\frac1{w-1}-\frac1w\\
+&amp;\quad+\frac12\int_1^\infty(\Theta_{\rm real}(t)-1)
+ \left(t^{w/2-1}+t^{(1-w)/2-1}\right)\,dt.
+\end{aligned}
+\tag{3.8}
+\]</span>
+Initially this follows by integrating each nonzero one-dimensional Gaussian for <span class="math" data-tex="\(\operatorname{Re}w&gt;1\)">\(\operatorname{Re}w&gt;1\)</span>. Below one, use
+<span class="math" data-tex="\(\Theta_{\rm real}(t)=t^{-1/2}\Theta_{\rm real}(1/t)\)">\(\Theta_{\rm real}(t)=t^{-1/2}\Theta_{\rm real}(1/t)\)</span>.
+The integral is entire. Thus <span class="math" data-tex="\(\Xi(w)=\Xi(1-w)\)">\(\Xi(w)=\Xi(1-w)\)</span>, with residues <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span> at <span class="math" data-tex="\(1,0\)">\(1,0\)</span>. The ordinary meromorphic continuation of <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> follows by multiplying by <span class="math" data-tex="\(\pi^{w/2}/\Gamma(w/2)\)">\(\pi^{w/2}/\Gamma(w/2)\)</span>.</p>
+<p>Formula (2.8) now continues <span class="math" data-tex="\(E\)">\(E\)</span> meromorphically as <span class="math" data-tex="\(E^*/\Xi(2s)\)">\(E^*/\Xi(2s)\)</span>. The assertion that the <em>only</em> poles are <span class="math" data-tex="\(0,1\)">\(0,1\)</span> belongs to <span class="math" data-tex="\(E^*\)">\(E^*\)</span>; zeros of the factor used in division require separate consideration for <span class="math" data-tex="\(E\)">\(E\)</span>. The eigenvalue identity also continues as a meromorphic identity, because it holds on the initial open half-plane and (3.7) allows differentiation in <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><strong>Corollary 3.3 (the residue and the area).</strong>
+<span class="math math-display" data-tex="\[
+\operatorname*{Res}_{s=1}E(z,s)=\frac3\pi
+=\frac1{\operatorname{vol}(\Gamma\backslash\mathfrak H)}.
+\tag{3.9}
+\]">\[
+\operatorname*{Res}_{s=1}E(z,s)=\frac3\pi
+=\frac1{\operatorname{vol}(\Gamma\backslash\mathfrak H)}.
+\tag{3.9}
+\]</span></p>
+<p><strong>Proof.</strong> At <span class="math" data-tex="\(s=1\)">\(s=1\)</span>,
+<span class="math math-display" data-tex="\[
+\Xi(2)=\pi^{-1}\Gamma(1)\zeta(2)
+=\frac{\pi}{6}.
+\]">\[
+\Xi(2)=\pi^{-1}\Gamma(1)\zeta(2)
+=\frac{\pi}{6}.
+\]</span>
+Divide the residue <span class="math" data-tex="\(1/2\)">\(1/2\)</span> in (3.6) by this nonzero number.</p>
+<p>The fundamental region from <a href="LG-MF-01.html">The upper half-plane and the modular group</a> is
+<span class="math" data-tex="\(|x|\le1/2,\ y\ge\sqrt{1-x^2}\)">\(|x|\le1/2,\ y\ge\sqrt{1-x^2}\)</span>, apart from paired boundary points of measure zero. Consequently
+<span class="math math-display" data-tex="\[
+\int_{-1/2}^{1/2}\int_{\sqrt{1-x^2}}^\infty\frac{dy\,dx}{y^2}
+=\int_{-1/2}^{1/2}\frac{dx}{\sqrt{1-x^2}}
+=\frac{\pi}{3}.
+\]">\[
+\int_{-1/2}^{1/2}\int_{\sqrt{1-x^2}}^\infty\frac{dy\,dx}{y^2}
+=\int_{-1/2}^{1/2}\frac{dx}{\sqrt{1-x^2}}
+=\frac{\pi}{3}.
+\]</span>
+This proves the second equality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In completed notation, the constant Fourier term is
+<span class="math math-display" data-tex="\[
+\Xi(2s)y^s+\Xi(2s-1)y^{1-s}.
+\tag{3.10}
+\]">\[
+\Xi(2s)y^s+\Xi(2s-1)y^{1-s}.
+\tag{3.10}
+\]</span>
+The nonconstant terms (2.9) are entire in <span class="math" data-tex="\(s\)">\(s\)</span>, and their series is locally normally convergent by (2.2). The two apparent poles in (3.10) at <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span> cancel: their residues as functions of <span class="math" data-tex="\(s\)">\(s\)</span> are opposite. Formula (3.7) independently proves that this point is regular.</p>
+<p>Reflection of each nonconstant term can also be checked directly. The divisor identity
+<span class="math math-display" data-tex="\[
+\sigma_{2s-1}(n)=n^{2s-1}\sigma_{1-2s}(n)
+\]">\[
+\sigma_{2s-1}(n)=n^{2s-1}\sigma_{1-2s}(n)
+\]</span>
+and <span class="math" data-tex="\(K_{1/2-s}=K_{s-1/2}\)">\(K_{1/2-s}=K_{s-1/2}\)</span> leave (2.9) unchanged. This is a useful check on the power of <span class="math" data-tex="\(|r|\)">\(|r|\)</span> and the factor <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<h2 id="4-maass-cusp-forms">4. Maass cusp forms</h2>
+<p>A weight-zero <strong>Maass form</strong> for <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> is a smooth invariant function <span class="math" data-tex="\(f\)">\(f\)</span> satisfying <span class="math" data-tex="\(\Delta f=\lambda f\)">\(\Delta f=\lambda f\)</span> and
+<span class="math math-display" data-tex="\[
+\sup_{0\le x\le1}|f(x+iy)|=O(y^B)
+\quad(y\to\infty)
+\]">\[
+\sup_{0\le x\le1}|f(x+iy)|=O(y^B)
+\quad(y\to\infty)
+\]</span>
+for some <span class="math" data-tex="\(B\)">\(B\)</span>. It is a <strong>Maass cusp form</strong> if
+<span class="math math-display" data-tex="\[
+\int_0^1 f(x+iy)\,dx=0\qquad(y&gt;0).
+\tag{4.1}
+\]">\[
+\int_0^1 f(x+iy)\,dx=0\qquad(y&gt;0).
+\tag{4.1}
+\]</span>
+The word “cusp” removes the constant Fourier term. For a general congruence group one imposes this condition in a scaling coordinate at every cusp.</p>
+<p><strong>Proposition 4.1 (the Maass Fourier expansion).</strong> Choose <span class="math" data-tex="\(\nu\in\mathbb C\)">\(\nu\in\mathbb C\)</span> with
+<span class="math" data-tex="\(\lambda=1/4-\nu^2\)">\(\lambda=1/4-\nu^2\)</span>. Every Maass form has
+<span class="math math-display" data-tex="\[
+f(x+iy)=a_0(y)+
+\sum_{n\ne0}\rho_n\sqrt y\,K_\nu(2\pi|n|y)e^{2\pi inx}.
+\tag{4.2}
+\]">\[
+f(x+iy)=a_0(y)+
+\sum_{n\ne0}\rho_n\sqrt y\,K_\nu(2\pi|n|y)e^{2\pi inx}.
+\tag{4.2}
+\]</span>
+For <span class="math" data-tex="\(\nu\ne0\)">\(\nu\ne0\)</span>, <span class="math" data-tex="\(a_0(y)=Ay^{1/2+\nu}+By^{1/2-\nu}\)">\(a_0(y)=Ay^{1/2+\nu}+By^{1/2-\nu}\)</span>.
+For <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span>, it is
+<span class="math math-display" data-tex="\[
+a_0(y)=\sqrt y\,(A+B\log y).
+\tag{4.3}
+\]">\[
+a_0(y)=\sqrt y\,(A+B\log y).
+\tag{4.3}
+\]</span>
+For a cusp form <span class="math" data-tex="\(a_0=0\)">\(a_0=0\)</span>, and the function and its fixed derivatives decay exponentially in the cusp.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(a_n(y)=\int_0^1f(x+iy)e^{-2\pi inx}\,dx\)">\(a_n(y)=\int_0^1f(x+iy)e^{-2\pi inx}\,dx\)</span>.
+Two integrations by parts in <span class="math" data-tex="\(x\)">\(x\)</span>, using periodicity, give
+<span class="math math-display" data-tex="\[
+y^2a_n&#x27;&#x27;(y)+\bigl(\lambda-4\pi^2n^2y^2\bigr)a_n(y)=0.
+\tag{4.4}
+\]">\[
+y^2a_n&#x27;&#x27;(y)+\bigl(\lambda-4\pi^2n^2y^2\bigr)a_n(y)=0.
+\tag{4.4}
+\]</span>
+For <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, this is an Euler equation. Its indicial roots are <span class="math" data-tex="\(1/2+\nu\)">\(1/2+\nu\)</span> and <span class="math" data-tex="\(1/2-\nu\)">\(1/2-\nu\)</span>. Distinct roots give the first formula; a double root gives the logarithmic solution (4.3), as can also be checked by direct differentiation.</p>
+<p>For <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, put <span class="math" data-tex="\(u=2\pi|n|y\)">\(u=2\pi|n|y\)</span> and <span class="math" data-tex="\(a_n(y)=\sqrt y\,b(u)\)">\(a_n(y)=\sqrt y\,b(u)\)</span>. Equation (4.4) becomes
+<span class="math math-display" data-tex="\[
+u^2b&#x27;&#x27;+ub&#x27;-(u^2+\nu^2)b=0.
+\tag{4.5}
+\]">\[
+u^2b&#x27;&#x27;+ub&#x27;-(u^2+\nu^2)b=0.
+\tag{4.5}
+\]</span>
+The function <span class="math" data-tex="\(K_\nu\)">\(K_\nu\)</span> in (2.1) solves this equation. To see it directly, integrate twice by parts in <span class="math" data-tex="\(v\)">\(v\)</span> in
+<span class="math" data-tex="\(\int_0^\infty e^{-u\cosh v}\cosh(\nu v)\,dv\)">\(\int_0^\infty e^{-u\cosh v}\cosh(\nu v)\,dv\)</span>.
+There are no boundary terms, and
+<span class="math math-display" data-tex="\[
+\partial_v^2e^{-u\cosh v}
+=(u^2\sinh^2v-u\cosh v)e^{-u\cosh v}.
+\]">\[
+\partial_v^2e^{-u\cosh v}
+=(u^2\sinh^2v-u\cosh v)e^{-u\cosh v}.
+\]</span>
+The resulting identity is
+<span class="math" data-tex="\(u^2(K_\nu&#x27;&#x27;-K_\nu)+uK_\nu&#x27;=\nu^2K_\nu\)">\(u^2(K_\nu&#x27;&#x27;-K_\nu)+uK_\nu&#x27;=\nu^2K_\nu\)</span>, which is (4.5).</p>
+<p>We also need to exclude the other solution using growth, rather than just naming a second Bessel function. Laplace's method applied to (2.1) gives
+<span class="math math-display" data-tex="\[
+K_\nu(u)=\sqrt{\frac{\pi}{2u}}e^{-u}
+             \bigl(1+O_\nu(u^{-1})\bigr)\qquad(u\to\infty).
+\tag{4.6}
+\]">\[
+K_\nu(u)=\sqrt{\frac{\pi}{2u}}e^{-u}
+             \bigl(1+O_\nu(u^{-1})\bigr)\qquad(u\to\infty).
+\tag{4.6}
+\]</span>
+Here is a justification of the estimate. Substitute <span class="math" data-tex="\(v=w/\sqrt u\)">\(v=w/\sqrt u\)</span>. On a fixed small <span class="math" data-tex="\(v\)">\(v\)</span>-interval, Taylor's formulas for <span class="math" data-tex="\(\cosh v\)">\(\cosh v\)</span> and <span class="math" data-tex="\(\cosh(\nu v)\)">\(\cosh(\nu v)\)</span> leave a Gaussian <span class="math" data-tex="\(e^{-w^2/2}\)">\(e^{-w^2/2}\)</span> with an integrable error bounded by a constant times
+<span class="math" data-tex="\(u^{-1}(w^2+w^4)e^{-c w^2}\)">\(u^{-1}(w^2+w^4)e^{-c w^2}\)</span>. This follows from the Taylor remainders and <span class="math" data-tex="\(\cosh v-1\ge v^2/2\)">\(\cosh v-1\ge v^2/2\)</span>. Outside the small interval, the extra decay <span class="math" data-tex="\(e^{-u(\cosh v-1)}\)">\(e^{-u(\cosh v-1)}\)</span> is exponential in <span class="math" data-tex="\(u\)">\(u\)</span>, even after the fixed factor <span class="math" data-tex="\(e^{|\operatorname{Re}\nu|v}\)">\(e^{|\operatorname{Re}\nu|v}\)</span>. The leading integral is
+<span class="math" data-tex="\(\int_0^\infty e^{-w^2/2}\,dw=\sqrt{\pi/2}\)">\(\int_0^\infty e^{-w^2/2}\,dw=\sqrt{\pi/2}\)</span>.
+This proves (4.6).</p>
+<p>In particular <span class="math" data-tex="\(K_\nu(u)\ne0\)">\(K_\nu(u)\ne0\)</span> for sufficiently large <span class="math" data-tex="\(u\)">\(u\)</span>. On that interval reduction of order gives an independent solution
+<span class="math math-display" data-tex="\[
+L_\nu(u)=K_\nu(u)\int_U^u\frac{dt}{tK_\nu(t)^2}.
+\tag{4.7}
+\]">\[
+L_\nu(u)=K_\nu(u)\int_U^u\frac{dt}{tK_\nu(t)^2}.
+\tag{4.7}
+\]</span>
+Its Wronskian with <span class="math" data-tex="\(K_\nu\)">\(K_\nu\)</span> is <span class="math" data-tex="\(1/u\)">\(1/u\)</span>. If <span class="math" data-tex="\(a=\sqrt{\pi/2}\)">\(a=\sqrt{\pi/2}\)</span>, (4.6) gives
+<span class="math math-display" data-tex="\[
+L_\nu(u)=\frac1{2a}u^{-1/2}e^u(1+O_\nu(u^{-1})).
+\]">\[
+L_\nu(u)=\frac1{2a}u^{-1/2}e^u(1+O_\nu(u^{-1})).
+\]</span>
+Indeed the integrand in (4.7) is <span class="math" data-tex="\(a^{-2}e^{2t}(1+O_\nu(t^{-1}))\)">\(a^{-2}e^{2t}(1+O_\nu(t^{-1}))\)</span>, whose integral has leading term <span class="math" data-tex="\(e^{2u}/(2a^2)\)">\(e^{2u}/(2a^2)\)</span>.
+Every solution of (4.5) is a linear combination of these two, by uniqueness for a second-order linear equation and the nonzero Wronskian. A nonzero <span class="math" data-tex="\(L_\nu\)">\(L_\nu\)</span> coefficient violates the polynomial bound on <span class="math" data-tex="\(a_n(y)\)">\(a_n(y)\)</span>. Thus <span class="math" data-tex="\(a_n(y)=\rho_n\sqrt y K_\nu(2\pi|n|y)\)">\(a_n(y)=\rho_n\sqrt y K_\nu(2\pi|n|y)\)</span> for large <span class="math" data-tex="\(y\)">\(y\)</span>, and uniqueness extends this equality to every <span class="math" data-tex="\(y&gt;0\)">\(y&gt;0\)</span>.</p>
+<p>Fourier inversion for the smooth periodic function gives (4.2) on each compact horizontal strip. To justify exponential decay of the entire cusp form, choose <span class="math" data-tex="\(y_0\)">\(y_0\)</span> so large that (4.6) gives upper and lower bounds for every <span class="math" data-tex="\(K_\nu(2\pi|n|y_0)\)">\(K_\nu(2\pi|n|y_0)\)</span>, <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>. The coefficients <span class="math" data-tex="\(a_n(y_0)\)">\(a_n(y_0)\)</span> are bounded by
+<span class="math" data-tex="\(\sup_x|f(x+iy_0)|\)">\(\sup_x|f(x+iy_0)|\)</span>. Taking the ratio of (4.6) at <span class="math" data-tex="\(y\)">\(y\)</span> and <span class="math" data-tex="\(y_0\)">\(y_0\)</span> shows
+<span class="math math-display" data-tex="\[
+|a_n(y)|\le C|a_n(y_0)|e^{-2\pi|n|(y-y_0)}
+\quad(y\ge y_0).
+\]">\[
+|a_n(y)|\le C|a_n(y_0)|e^{-2\pi|n|(y-y_0)}
+\quad(y\ge y_0).
+\]</span>
+For <span class="math" data-tex="\(y\ge y_0+1\)">\(y\ge y_0+1\)</span>, summation gives exponential decay. Differentiating (2.1), or (4.5), gives the same conclusion with any fixed derivative; the extra polynomial powers of <span class="math" data-tex="\(|n|\)">\(|n|\)</span> remain summable against this exponential. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.2.</strong> A nonzero Maass cusp form belongs to <span class="math" data-tex="\(L^2(\Gamma\backslash\mathfrak H,d\mu)\)">\(L^2(\Gamma\backslash\mathfrak H,d\mu)\)</span>, and its eigenvalue is real and strictly positive.</p>
+<p><strong>Proof.</strong> Exponential cusp decay gives square integrability and finite Dirichlet energy. On a truncated fundamental region, integration by parts gives
+<span class="math math-display" data-tex="\[
+\lambda\int |f|^2\,d\mu
+=\int (|f_x|^2+|f_y|^2)\,dx\,dy
+\]">\[
+\lambda\int |f|^2\,d\mu
+=\int (|f_x|^2+|f_y|^2)\,dx\,dy
+\]</span>
+in the limit as the truncation height tends to infinity. Paired boundary sides cancel because the transformation is an isometry and <span class="math" data-tex="\(f\)">\(f\)</span> is invariant. Small boundary circles around elliptic points contribute zero in the limit, since the lifted function and derivatives are smooth there. The upper boundary contributes zero by Proposition 4.1. Thus the right side is real and nonnegative. If it is zero, both derivatives vanish and <span class="math" data-tex="\(f\)">\(f\)</span> is constant on the connected half-plane. The cusp condition then makes <span class="math" data-tex="\(f=0\)">\(f=0\)</span>, a contradiction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>It follows that either <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is purely imaginary or it is real with <span class="math" data-tex="\(|\nu|&lt;1/2\)">\(|\nu|&lt;1/2\)</span>. The case <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span> is the spectral value <span class="math" data-tex="\(1/4\)">\(1/4\)</span>; it must be included in the Fourier discussion.</p>
+<p>The reflection <span class="math" data-tex="\(Rf(z)=f(-\bar z)\)">\(Rf(z)=f(-\bar z)\)</span> preserves invariance, the Laplacian and cuspidality. Since <span class="math" data-tex="\(R^2=1\)">\(R^2=1\)</span>, every cusp form splits as <span class="math" data-tex="\((f+Rf)/2+(f-Rf)/2\)">\((f+Rf)/2+(f-Rf)/2\)</span>, into even and odd parts. In these two parts respectively,
+<span class="math" data-tex="\(\rho_{-n}=\rho_n\)">\(\rho_{-n}=\rho_n\)</span> and <span class="math" data-tex="\(\rho_{-n}=-\rho_n\)">\(\rho_{-n}=-\rho_n\)</span>.</p>
+<h3 id="4-1-infinitely-many-cusp-forms-from-reflection">4.1. Infinitely many cusp forms from reflection</h3>
+<p>There is an elementary variational route to existence on the full modular quotient. It uses the reflection <span class="math" data-tex="\(Rz=-\bar z\)">\(Rz=-\bar z\)</span>, which preserves the fundamental region and normalizes <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>. Odd functions have zero constant term in the only cusp; this removes the escape of mass responsible for continuous spectrum.</p>
+<p><strong>Theorem 4.3 (existence in the odd subspace).</strong> There are infinitely many linearly independent odd Maass cusp forms for <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span>, with positive eigenvalues tending to infinity.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(M=\Gamma\backslash\mathfrak H\)">\(M=\Gamma\backslash\mathfrak H\)</span>. Complete the smooth, compactly supported odd functions on <span class="math" data-tex="\(M\)">\(M\)</span> in the norm
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|u\|_{\mathcal H}^2=\|u\|_2^2+Q(u),\\
+\begin{aligned}
+Q(u)&amp;=\int_M\Bigl[|u_x|^2\\
+&amp;\qquad+|u_y|^2\Bigr]\,dx\,dy.
+\end{aligned}
+\end{gathered}
+\tag{4.7a}
+\]">\[
+\begin{gathered}
+\|u\|_{\mathcal H}^2=\|u\|_2^2+Q(u),\\
+\begin{aligned}
+Q(u)&amp;=\int_M\Bigl[|u_x|^2\\
+&amp;\qquad+|u_y|^2\Bigr]\,dx\,dy.
+\end{aligned}
+\end{gathered}
+\tag{4.7a}
+\]</span>
+The energy is invariant under modular coordinate changes. At elliptic points use smooth invariant functions in the finite covering disk and divide its integrals by the stabilizer order. The map from this completion to <span class="math" data-tex="\(L^2(M)\)">\(L^2(M)\)</span> is injective. Indeed, suppose a smooth sequence tends to zero in <span class="math" data-tex="\(L^2(M)\)">\(L^2(M)\)</span> and its coordinate derivatives tend to <span class="math" data-tex="\(v_x,v_y\)">\(v_x,v_y\)</span> in local <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. On a compact coordinate disk the hyperbolic and Euclidean <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norms are comparable. For every smooth compactly supported test function <span class="math" data-tex="\(\phi\)">\(\phi\)</span>, integration by parts gives
+<span class="math math-display" data-tex="\[
+ \int v_i\phi=-\lim_j\int u_j\partial_i\phi=0,
+ \qquad i=x,y.
+\]">\[
+ \int v_i\phi=-\lim_j\int u_j\partial_i\phi=0,
+ \qquad i=x,y.
+\]</span>
+Thus <span class="math" data-tex="\(v_i=0\)">\(v_i=0\)</span>, since such test functions are dense in local <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, as follows by smoothing compact step-function approximations. Consequently a limit with zero <span class="math" data-tex="\(L^2\)">\(L^2\)</span> component has zero energy component too. For an arbitrary Cauchy sequence the same integration-by-parts identity identifies its derivative limit with the weak derivative of its <span class="math" data-tex="\(L^2\)">\(L^2\)</span> limit. Every element of the completion therefore defines an odd <span class="math" data-tex="\(L^2\)">\(L^2\)</span> function with one weak derivative locally and finite norm (4.7a). The Fourier completeness used below can be checked by the period-one Fejér kernels <span class="math" data-tex="\(K_A(t)=A^{-1}|\sum_{j=0}^{A-1}e^{2\pi ijt}|^2\)">\(K_A(t)=A^{-1}|\sum_{j=0}^{A-1}e^{2\pi ijt}|^2\)</span>: they are nonnegative with integral one, and their mass outside any fixed neighborhood of zero tends to zero. Uniform continuity makes their convolutions converge uniformly for continuous periodic functions. Continuous functions are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, by smoothing the finitely many endpoints of step-function approximations. Thus the exponentials are complete in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and orthogonality gives Parseval. Products of these kernels give the same result on rectangles; integration by parts gives the derivative coefficients.</p>
+<p>For <span class="math" data-tex="\(Y\ge1\)">\(Y\ge1\)</span>, the cusp is <span class="math" data-tex="\(-1/2\le x\le1/2\)">\(-1/2\le x\le1/2\)</span>, <span class="math" data-tex="\(y\ge Y\)">\(y\ge Y\)</span>. Oddness gives <span class="math" data-tex="\(\int_{-1/2}^{1/2}u(x+iy)dx=0\)">\(\int_{-1/2}^{1/2}u(x+iy)dx=0\)</span>. Fourier orthogonality on this period-one interval proves
+<span class="math" data-tex="\(\int|u|^2dx\le(4\pi^2)^{-1}\int|u_x|^2dx\)">\(\int|u|^2dx\le(4\pi^2)^{-1}\int|u_x|^2dx\)</span>: the constant coefficient vanishes, and each other derivative coefficient is multiplied by <span class="math" data-tex="\(2\pi in\)">\(2\pi in\)</span>, with <span class="math" data-tex="\(|n|\ge1\)">\(|n|\ge1\)</span>. Integrate and use <span class="math" data-tex="\(y^{-2}\le Y^{-2}\)">\(y^{-2}\le Y^{-2}\)</span> to obtain
+<span class="math math-display" data-tex="\[
+ \int_{y\ge Y}|u|^2d\mu
+ \le\frac{Q(u)}{4\pi^2Y^2}.
+ \tag{4.7b}
+\]">\[
+ \int_{y\ge Y}|u|^2d\mu
+ \le\frac{Q(u)}{4\pi^2Y^2}.
+ \tag{4.7b}
+\]</span>
+Approximation extends this inequality to the completion.</p>
+<p>We next prove compactness of the inclusion <span class="math" data-tex="\(\mathcal H\to L^2(M)\)">\(\mathcal H\to L^2(M)\)</span>. On a compact part of <span class="math" data-tex="\(M\)">\(M\)</span>, finitely many coordinate disks, with smooth cutoffs, reduce the question to functions supported inside bounded Euclidean rectangles. Extend each cutoff function by zero and put it in a larger periodic rectangle. A bound on its function and first derivatives bounds <span class="math" data-tex="\(\sum_{\ell}(1+|\ell|^2)|\widehat u(\ell)|^2\)">\(\sum_{\ell}(1+|\ell|^2)|\widehat u(\ell)|^2\)</span>, by Fourier orthogonality. The sum of squared coefficients with <span class="math" data-tex="\(|\ell|&gt;A\)">\(|\ell|&gt;A\)</span> is at most <span class="math" data-tex="\(C/A^2\)">\(C/A^2\)</span>. A subsequence converges in every finite set of coefficients; the tail bound makes it converge in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. Covering disks above elliptic points have the same argument, and restriction to their invariant subspaces preserves compactness. A diagonal choice over compact parts and the uniform cusp-tail estimate (4.7b) then give an <span class="math" data-tex="\(L^2(M)\)">\(L^2(M)\)</span>-convergent subsequence of every bounded sequence in <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>.</p>
+<p>Minimize <span class="math" data-tex="\(Q(u)\)">\(Q(u)\)</span> subject to <span class="math" data-tex="\(\|u\|_2=1\)">\(\|u\|_2=1\)</span> in <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. A minimizing sequence is bounded in this Hilbert space. Here is the weak-compactness step explicitly: choose a countable orthonormal basis, extract a subsequence on which every coordinate converges, and use the squared-coordinate bound to obtain a Hilbert-space vector with those limits. Finite-coordinate approximation and the uniform norm bound imply weak convergence to that vector; the same squared-coordinate argument proves that its norm is at most the lower limit. A countable basis exists because the coordinate-disk Fourier approximations and smooth cutoffs above give a countable dense set. Apply this to the norm in (4.7a), and apply compactness to get strong <span class="math" data-tex="\(L^2\)">\(L^2\)</span> convergence as well. The limit has <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm one and minimizes <span class="math" data-tex="\(Q\)">\(Q\)</span>, since <span class="math" data-tex="\(Q=\|\cdot\|_{\mathcal H}^2-\|\cdot\|_2^2\)">\(Q=\|\cdot\|_{\mathcal H}^2-\|\cdot\|_2^2\)</span> is lower semicontinuous along this subsequence.</p>
+<p>Variation with respect to real and imaginary multiples of every test function gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q(u,v)=\lambda\langle u,v\rangle_2,\\
+\lambda=Q(u).
+\end{gathered}
+\tag{4.7c}
+\]">\[
+\begin{gathered}
+Q(u,v)=\lambda\langle u,v\rangle_2,\\
+\lambda=Q(u).
+\end{gathered}
+\tag{4.7c}
+\]</span>
+where the polarized energy is linear in its first variable. This identity holds for every odd test function. For an even test function both sides vanish by reflection, so it holds for every test function. In a local disk it is the weak equation
+<span class="math" data-tex="\(-u_{xx}-u_{yy}=\lambda y^{-2}u\)">\(-u_{xx}-u_{yy}=\lambda y^{-2}u\)</span>.</p>
+<p>For clarity, this weak solution is smooth without a spectral regularity import. Multiply by a compactly supported cutoff in a disk and extend by zero inside a larger periodic rectangle. The Laplacian of the product is in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, since initially <span class="math" data-tex="\(u\)">\(u\)</span> has one weak derivative and <span class="math" data-tex="\(y^{-2}\)">\(y^{-2}\)</span> is smooth and bounded on that disk. The Fourier-coefficient identity for <span class="math" data-tex="\(1-\partial_x^2-\partial_y^2\)">\(1-\partial_x^2-\partial_y^2\)</span> shows that division by its multiplier <span class="math" data-tex="\(1+c_1\ell_1^2+c_2\ell_2^2\)">\(1+c_1\ell_1^2+c_2\ell_2^2\)</span>, with positive rectangle constants <span class="math" data-tex="\(c_i\)">\(c_i\)</span>, gives two square-integrable weak derivatives. Repeating with nested cutoffs increases the number of derivatives by one at each step. The Fourier series and Cauchy–Schwarz show that sufficiently many square-integrable derivatives give any specified number of continuous derivatives: <span class="math" data-tex="\(\sum_{\ell\in\mathbb Z^2}(1+|\ell|^2)^{-a}&lt;\infty\)">\(\sum_{\ell\in\mathbb Z^2}(1+|\ell|^2)^{-a}&lt;\infty\)</span> for <span class="math" data-tex="\(a&gt;1\)">\(a&gt;1\)</span>, by counting lattice points in square shells. Thus <span class="math" data-tex="\(u\)">\(u\)</span> is smooth. Above an elliptic point, first average a test function over its finite stabilizer; the same weak equation and argument hold on the covering disk.</p>
+<p>Repeat minimization in the <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-orthogonal complement of the previously obtained functions. There is always a nonzero trial function: choose arbitrarily many disjoint disks in the interior of the right half of the fundamental region, and subtract the reflected copy of a bump on each disk. These give an infinite-dimensional odd trial space, whereas the orthogonality constraints are finite. Orthogonality in energy to the previous eigenfunctions follows from (4.7c), so variation in the constrained space still gives (4.7c) for every test function. We obtain an orthonormal sequence of smooth eigenfunctions <span class="math" data-tex="\(u_j\)">\(u_j\)</span>. Their eigenvalues tend to infinity: an infinite subsequence with bounded <span class="math" data-tex="\(Q\)">\(Q\)</span> would be bounded in <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> and hence would have an <span class="math" data-tex="\(L^2\)">\(L^2\)</span>-convergent subsequence, contradicting orthonormality. An eigenvalue zero would make the derivatives zero, so the function would be constant on the connected quotient; oddness makes that constant zero. All eigenvalues are therefore positive.</p>
+<p>Finally, oddness kills the constant Fourier coefficient at every cusp height. For each nonzero coefficient the differential equation in Proposition 4.1 applies. Its growing solution is excluded by <span class="math" data-tex="\(L^2\)">\(L^2\)</span> integrability, leaving the <span class="math" data-tex="\(K_\nu\)">\(K_\nu\)</span> solution. Choose a fixed height large enough for its large-positive-argument estimate to hold uniformly for <span class="math" data-tex="\(2\pi|n|y\)">\(2\pi|n|y\)</span>. Smoothness on that fixed horocycle makes its Fourier coefficients decrease faster than any power of <span class="math" data-tex="\(|n|\)">\(|n|\)</span>; the ratio of its decaying solutions at larger heights supplies <span class="math" data-tex="\(e^{-2\pi|n|(y-Y)}\)">\(e^{-2\pi|n|(y-Y)}\)</span> times a fixed polynomial bound. Summing proves exponential decay in the cusp, together with derivatives. Thus the functions just constructed are Maass cusp forms in the definition used here. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h3 id="4-2-spectral-assertions-whose-proofs-remain-required">4.2. Spectral assertions whose proofs remain required</h3>
+<p>The existence assertion is now proved locally. The following sharper statements are retained with their source locators and explicit outstanding proof requirements. Selberg's Weyl law for the modular surface says that the number of cuspidal eigenvalues at most <span class="math" data-tex="\(T\)">\(T\)</span>, counted with multiplicity, is
+<span class="math math-display" data-tex="\[
+N_{\rm cusp}(T)\sim
+\frac{\operatorname{vol}(\Gamma\backslash\mathfrak H)}{4\pi}T
+=\frac{T}{12}.
+\tag{4.8}
+\]">\[
+N_{\rm cusp}(T)\sim
+\frac{\operatorname{vol}(\Gamma\backslash\mathfrak H)}{4\pi}T
+=\frac{T}{12}.
+\tag{4.8}
+\]</span>
+Theorem 4.3 proves infinitude without (4.8), but does not prove its asymptotic or completeness of the full spectral expansion. A freely accessible account is [Miller, <em>On the existence and temperedness of cusp forms for <span class="math" data-tex="\(SL_3(\mathbb Z)\)">\(SL_3(\mathbb Z)\)</span></em>, Theorem 2.1; the discussion following Corollary 1.4 identifies the noncuspidal discrete spectrum at prime rank as the constants]. The constant eigenfunction has eigenvalue zero by direct differentiation and is square integrable because the quotient has finite area. For <span class="math" data-tex="\(s=1/2+it\)">\(s=1/2+it\)</span>, the directly proved identity <span class="math" data-tex="\(s(1-s)=1/4+t^2\)">\(s(1-s)=1/4+t^2\)</span> explains the proposed Eisenstein spectral parameter. Identifying these generalized eigenfunctions with the full continuous part, proving that it begins at <span class="math" data-tex="\(1/4\)">\(1/4\)</span>, and proving Miller's Proposition 2.4 are outstanding spectral proof tasks.</p>
+<p><strong>Selberg's eigenvalue conjecture</strong> concerns all congruence quotients: every positive discrete eigenvalue should be at least <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. The uniform established bound is
+<span class="math math-display" data-tex="\[
+\lambda\ge\frac{975}{4096}
+=\frac14-\left(\frac7{64}\right)^2.
+\tag{4.9}
+\]">\[
+\lambda\ge\frac{975}{4096}
+=\frac14-\left(\frac7{64}\right)^2.
+\tag{4.9}
+\]</span>
+See [Sarnak, <em>Notes on the generalized Ramanujan conjectures</em>, author's freely distributed notes, §1, equations (24)–(25)], for the Kim–Sarnak bound and its parameter interpretation. A programme proof of this deep bound remains required; it is not used in the continuation or Fourier calculations. The assertion about all congruence levels is the conjecture; the theta integral above is not a proof of it.</p>
+<p>In adelic language, Eisenstein series are built from representations on Levi subgroups by induction and averaging. Their continuation, intertwining equations and spectral decomposition are the statements in <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf">Getz–Hahn, <em>An Introduction to Automorphic Representations</em>, draft of 22 April 2022, Theorems 10.3.2 and 10.4.1</a>. The classical computation here gives a concrete instance. The general theorems are an outlook toward <em>Adelic Eisenstein series</em>, not inputs to our proofs.</p>
+<h2 id="5-the-limit-formula-and-a-check-on-the-constant-term">5. The limit formula and a check on the constant term</h2>
+<p>Put <span class="math" data-tex="\(q=e^{2\pi iz}\)">\(q=e^{2\pi iz}\)</span> and
+<span class="math math-display" data-tex="\[
+\eta(z)=q^{1/24}\prod_{n\ge1}(1-q^n),
+\qquad q^{1/24}=e^{\pi iz/12}.
+\tag{5.1}
+\]">\[
+\eta(z)=q^{1/24}\prod_{n\ge1}(1-q^n),
+\qquad q^{1/24}=e^{\pi iz/12}.
+\tag{5.1}
+\]</span>
+This product converges locally uniformly to a nonzero holomorphic function: the series of holomorphic logarithms
+<span class="math" data-tex="\(\sum_n\log(1-q^n)\)">\(\sum_n\log(1-q^n)\)</span> converges absolutely and locally uniformly, using the branch defined by its power series.</p>
+<p>Kronecker's first limit formula in the present normalization is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E(z,s)
+&amp;=\frac{3}{\pi(s-1)}
++\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right)\\
+&amp;\quad-\frac3\pi\log\bigl(y|\eta(z)|^4\bigr)+O(s-1).
+\end{aligned}
+\tag{5.2}
+\]">\[
+\begin{aligned}
+E(z,s)
+&amp;=\frac{3}{\pi(s-1)}
++\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right)\\
+&amp;\quad-\frac3\pi\log\bigl(y|\eta(z)|^4\bigr)+O(s-1).
+\end{aligned}
+\tag{5.2}
+\]</span>
+Here <span class="math" data-tex="\(\gamma=\lim_{N\to\infty}(\sum_{n=1}^N1/n-\log N)\)">\(\gamma=\lim_{N\to\infty}(\sum_{n=1}^N1/n-\log N)\)</span>.
+Solution 4 proves the entire formula, including its additive constant.</p>
+<p>For example, at the square lattice point <span class="math" data-tex="\(z=i\)">\(z=i\)</span>, the finite part is exactly
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right)
+-\frac{12}{\pi}\log|\eta(i)|\\
+&amp;\quad=
+1+\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right)
+-\frac{12}{\pi}\sum_{n\ge1}\log(1-e^{-2\pi n}).
+\end{aligned}
+\tag{5.3}
+\]">\[
+\begin{aligned}
+&amp;\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right)
+-\frac{12}{\pi}\log|\eta(i)|\\
+&amp;\quad=
+1+\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right)
+-\frac{12}{\pi}\sum_{n\ge1}\log(1-e^{-2\pi n}).
+\end{aligned}
+\tag{5.3}
+\]</span>
+The equality uses <span class="math" data-tex="\(q^{1/24}=e^{-\pi/12}\)">\(q^{1/24}=e^{-\pi/12}\)</span> at <span class="math" data-tex="\(i\)">\(i\)</span>. Every term in the last sum is a real logarithm of a positive number. The full convergent expression follows by specializing (5.2), rather than by retaining only its leading <span class="math" data-tex="\(q\)">\(q\)</span>-term.</p>
+<p>There is also a useful example at the center of the functional equation. Write
+<span class="math math-display" data-tex="\[
+C_\Xi=\frac{\gamma}{2}-\log2-\frac12\log\pi.
+\]">\[
+C_\Xi=\frac{\gamma}{2}-\log2-\frac12\log\pi.
+\]</span>
+The expansions in Solution 4 give
+<span class="math" data-tex="\(\Xi(1+\epsilon)=1/\epsilon+C_\Xi+O(\epsilon)\)">\(\Xi(1+\epsilon)=1/\epsilon+C_\Xi+O(\epsilon)\)</span>.
+Reflection gives <span class="math" data-tex="\(\Xi(\epsilon)=-1/\epsilon+C_\Xi+O(\epsilon)\)">\(\Xi(\epsilon)=-1/\epsilon+C_\Xi+O(\epsilon)\)</span>.
+Taking the limit in (3.10), and then using the normally convergent nonconstant series, yields
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E^*(z,\tfrac12)
+&amp;=\sqrt y\,(\log y+2C_\Xi)\\
+&amp;\quad+\sum_{n\ne0}2\sigma_0(|n|)\sqrt y\,
+K_0(2\pi|n|y)e^{2\pi inx}.
+\end{aligned}
+\tag{5.4}
+\]">\[
+\begin{aligned}
+E^*(z,\tfrac12)
+&amp;=\sqrt y\,(\log y+2C_\Xi)\\
+&amp;\quad+\sum_{n\ne0}2\sigma_0(|n|)\sqrt y\,
+K_0(2\pi|n|y)e^{2\pi inx}.
+\end{aligned}
+\tag{5.4}
+\]</span>
+This illustrates both cancellation of the apparent pole and the logarithmic solution for a repeated indicial root. Its constant term grows as <span class="math" data-tex="\(\sqrt y\log y\)">\(\sqrt y\log y\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li><strong>[Easy]</strong> Check <span class="math" data-tex="\(\Delta y^s=s(1-s)y^s\)">\(\Delta y^s=s(1-s)y^s\)</span> and prove the commutation identity for every <span class="math" data-tex="\(\gamma\in SL_2(\mathbb R)\)">\(\gamma\in SL_2(\mathbb R)\)</span>, including the second-derivative terms in the chain rule.</li>
+<li><strong>[Medium]</strong> Compute <span class="math" data-tex="\(I_s(n,y)=\int_{\mathbb R}(x^2+y^2)^{-s}e^{-2\pi inx}\,dx\)">\(I_s(n,y)=\int_{\mathbb R}(x^2+y^2)^{-s}e^{-2\pi inx}\,dx\)</span> for <span class="math" data-tex="\(\operatorname{Re}s&gt;1/2\)">\(\operatorname{Re}s&gt;1/2\)</span>. Treat <span class="math" data-tex="\(n=0\)">\(n=0\)</span> separately and recover the constants in (2.6).</li>
+<li><strong>[Medium]</strong> Prove that the residue of the primitive-coset series at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> is <span class="math" data-tex="\(3/\pi\)">\(3/\pi\)</span>. Explain how the answer changes if opposite primitive vectors are counted separately.</li>
+<li><strong>[Hard]</strong> Prove (5.2), Kronecker's first limit formula, including the additive constant. Derive the eta product from the limiting nonconstant Fourier terms.</li>
+</ol>
+<h2 id="7-complete-solutions">7. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>The function <span class="math" data-tex="\(y^s\)">\(y^s\)</span> is independent of <span class="math" data-tex="\(x\)">\(x\)</span>. Its second <span class="math" data-tex="\(y\)">\(y\)</span>-derivative is <span class="math" data-tex="\(s(s-1)y^{s-2}\)">\(s(s-1)y^{s-2}\)</span>, so multiplication by <span class="math" data-tex="\(-y^2\)">\(-y^2\)</span> gives the answer.</p>
+<p>For <span class="math" data-tex="\(w=\gamma z=u(x,y)+iv(x,y)\)">\(w=\gamma z=u(x,y)+iv(x,y)\)</span>, write out the second derivatives:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Delta_{\rm eucl}(f\circ w)
+&amp;=(u_x^2+u_y^2)f_{uu}
+ +2(u_xv_x+u_yv_y)f_{uv}\\
+&amp;\quad+(v_x^2+v_y^2)f_{vv}
+ +(u_{xx}+u_{yy})f_u+(v_{xx}+v_{yy})f_v.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Delta_{\rm eucl}(f\circ w)
+&amp;=(u_x^2+u_y^2)f_{uu}
+ +2(u_xv_x+u_yv_y)f_{uv}\\
+&amp;\quad+(v_x^2+v_y^2)f_{vv}
+ +(u_{xx}+u_{yy})f_u+(v_{xx}+v_{yy})f_v.
+\end{aligned}
+\]</span>
+All derivatives of <span class="math" data-tex="\(f\)">\(f\)</span> on the right are evaluated at <span class="math" data-tex="\(w\)">\(w\)</span>. The Cauchy–Riemann equations give
+<span class="math" data-tex="\(u_x=v_y,\ u_y=-v_x\)">\(u_x=v_y,\ u_y=-v_x\)</span>; hence the mixed coefficient is zero and both square coefficients equal <span class="math" data-tex="\(|w&#x27;|^2\)">\(|w&#x27;|^2\)</span>. Differentiating these equations gives
+<span class="math" data-tex="\(\Delta_{\rm eucl}u=\Delta_{\rm eucl}v=0\)">\(\Delta_{\rm eucl}u=\Delta_{\rm eucl}v=0\)</span>.
+Since <span class="math" data-tex="\(w&#x27;=(cz+d)^{-2}\)">\(w&#x27;=(cz+d)^{-2}\)</span> and <span class="math" data-tex="\(v=y/|cz+d|^2\)">\(v=y/|cz+d|^2\)</span>, one has <span class="math" data-tex="\(y^2|w&#x27;|^2=v^2\)">\(y^2|w&#x27;|^2=v^2\)</span>. Multiplication by <span class="math" data-tex="\(-y^2\)">\(-y^2\)</span> therefore proves
+<span class="math" data-tex="\(\Delta(f\circ\gamma)=(\Delta f)\circ\gamma\)">\(\Delta(f\circ\gamma)=(\Delta f)\circ\gamma\)</span>.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>Insert the Gamma integral as in Lemma 2.1. Absolute Fubini is valid because
+<span class="math math-display" data-tex="\[
+\int_0^\infty t^{\operatorname{Re}s-1}e^{-y^2t}
+\int_{\mathbb R}e^{-tx^2}\,dx\,dt
+=\sqrt\pi\int_0^\infty t^{\operatorname{Re}s-3/2}e^{-y^2t}\,dt&lt;\infty.
+\]">\[
+\int_0^\infty t^{\operatorname{Re}s-1}e^{-y^2t}
+\int_{\mathbb R}e^{-tx^2}\,dx\,dt
+=\sqrt\pi\int_0^\infty t^{\operatorname{Re}s-3/2}e^{-y^2t}\,dt&lt;\infty.
+\]</span>
+The transform of <span class="math" data-tex="\(e^{-tx^2}\)">\(e^{-tx^2}\)</span> is
+<span class="math" data-tex="\(\sqrt{\pi/t}\,e^{-\pi^2n^2/t}\)">\(\sqrt{\pi/t}\,e^{-\pi^2n^2/t}\)</span>. This gives (2.4).
+For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> the substitution <span class="math" data-tex="\(v=y^2t\)">\(v=y^2t\)</span> gives
+<span class="math" data-tex="\(\sqrt\pi\,\Gamma(s-1/2)y^{1-2s}/\Gamma(s)\)">\(\sqrt\pi\,\Gamma(s-1/2)y^{1-2s}/\Gamma(s)\)</span>.
+For <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span>, the substitution <span class="math" data-tex="\(t=(\pi|n|/y)v\)">\(t=(\pi|n|/y)v\)</span> gives
+<span class="math math-display" data-tex="\[
+I_s(n,y)=
+\frac{\pi^s}{\Gamma(s)}
+\left(\frac{|n|}{y}\right)^{s-1/2}
+\int_0^\infty
+e^{-\pi|n|y(v+v^{-1})}v^{s-1/2}\,\frac{dv}{v}.
+\]">\[
+I_s(n,y)=
+\frac{\pi^s}{\Gamma(s)}
+\left(\frac{|n|}{y}\right)^{s-1/2}
+\int_0^\infty
+e^{-\pi|n|y(v+v^{-1})}v^{s-1/2}\,\frac{dv}{v}.
+\]</span>
+The last integral is <span class="math" data-tex="\(2K_{s-1/2}(2\pi|n|y)\)">\(2K_{s-1/2}(2\pi|n|y)\)</span>, proving (2.3). Multiplying by
+<span class="math" data-tex="\(y^s\sigma_{1-2s}(|n|)/\zeta(2s)\)">\(y^s\sigma_{1-2s}(|n|)/\zeta(2s)\)</span> gives exactly <span class="math" data-tex="\(c_n(s)\sqrt y K_{s-1/2}\)">\(c_n(s)\sqrt y K_{s-1/2}\)</span> in (2.6). For the zero coefficient, multiply by
+<span class="math" data-tex="\(y^s\zeta(2s-1)/\zeta(2s)\)">\(y^s\zeta(2s-1)/\zeta(2s)\)</span>, giving the <span class="math" data-tex="\(\phi(s)y^{1-s}\)">\(\phi(s)y^{1-s}\)</span> term. The remaining <span class="math" data-tex="\(y^s\)">\(y^s\)</span> comes from the lattice vectors with <span class="math" data-tex="\(m=0\)">\(m=0\)</span>.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>The residue of <span class="math" data-tex="\(E^*\)">\(E^*\)</span> is <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, by the explicit rational terms in (3.7); the entire integral contributes no pole. At <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, its normalizing factor is
+<span class="math" data-tex="\(\pi^{-1}\Gamma(1)\zeta(2)=\pi/6\)">\(\pi^{-1}\Gamma(1)\zeta(2)=\pi/6\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\operatorname*{Res}_{s=1}E
+=\frac{1/2}{\pi/6}=\frac3\pi.
+\]">\[
+\operatorname*{Res}_{s=1}E
+=\frac{1/2}{\pi/6}=\frac3\pi.
+\]</span></p>
+<p>One elementary verification of the value of <span class="math" data-tex="\(\zeta(2)\)">\(\zeta(2)\)</span> is the cosine expansion
+<span class="math math-display" data-tex="\[
+x^2=\frac{\pi^2}{3}
++4\sum_{n\ge1}\frac{(-1)^n}{n^2}\cos(nx)
+\quad(-\pi\le x\le\pi).
+\]">\[
+x^2=\frac{\pi^2}{3}
++4\sum_{n\ge1}\frac{(-1)^n}{n^2}\cos(nx)
+\quad(-\pi\le x\le\pi).
+\]</span>
+Two integrations by parts compute the coefficients. Their absolute summability makes the series uniformly convergent, and Fourier uniqueness identifies it with the continuous periodic function <span class="math" data-tex="\(x^2\)">\(x^2\)</span>. Substituting <span class="math" data-tex="\(x=\pi\)">\(x=\pi\)</span> gives
+<span class="math" data-tex="\(\pi^2=\pi^2/3+4\zeta(2)\)">\(\pi^2=\pi^2/3+4\zeta(2)\)</span>, hence <span class="math" data-tex="\(\zeta(2)=\pi^2/6\)">\(\zeta(2)=\pi^2/6\)</span>.</p>
+<p>If instead one sums over all primitive vectors without the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, the resulting series is <span class="math" data-tex="\(2E\)">\(2E\)</span>, and its residue is <span class="math" data-tex="\(6/\pi\)">\(6/\pi\)</span>. If one sums over all nonzero vectors with the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span>, but without Gamma or <span class="math" data-tex="\(\pi\)">\(\pi\)</span> factors, the result is <span class="math" data-tex="\(\zeta(2s)E\)">\(\zeta(2s)E\)</span> and its residue is
+<span class="math" data-tex="\(\zeta(2)\cdot3/\pi=\pi/2\)">\(\zeta(2)\cdot3/\pi=\pi/2\)</span>.
+These are distinct normalizations of the same lattice calculation.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>We first calculate the constant coefficient at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. Near <span class="math" data-tex="\(w=1\)">\(w=1\)</span>,
+<span class="math math-display" data-tex="\[
+\zeta(w)=\frac1{w-1}+\gamma+O(w-1).
+\tag{7.1}
+\]">\[
+\zeta(w)=\frac1{w-1}+\gamma+O(w-1).
+\tag{7.1}
+\]</span>
+For a direct justification, subtract the integral of <span class="math" data-tex="\(u^{-w}\)">\(u^{-w}\)</span> over each interval <span class="math" data-tex="\([n,n+1]\)">\([n,n+1]\)</span>. The series
+<span class="math math-display" data-tex="\[
+\sum_{n\ge1}\left(n^{-w}-\int_n^{n+1}u^{-w}\,du\right)
+\]">\[
+\sum_{n\ge1}\left(n^{-w}-\int_n^{n+1}u^{-w}\,du\right)
+\]</span>
+is locally normally convergent for <span class="math" data-tex="\(\operatorname{Re}w&gt;0\)">\(\operatorname{Re}w&gt;0\)</span>, by the mean value estimate <span class="math" data-tex="\(O_K(n^{-\operatorname{Re}w-1})\)">\(O_K(n^{-\operatorname{Re}w-1})\)</span>. In the original domain it equals <span class="math" data-tex="\(\zeta(w)-1/(w-1)\)">\(\zeta(w)-1/(w-1)\)</span>. At <span class="math" data-tex="\(w=1\)">\(w=1\)</span> its partial sums are
+<span class="math" data-tex="\(\sum_{n=1}^N1/n-\log(N+1)\)">\(\sum_{n=1}^N1/n-\log(N+1)\)</span>, whose limit is <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. This proves (7.1).</p>
+<p>Let <span class="math" data-tex="\(\psi=\Gamma&#x27;/\Gamma\)">\(\psi=\Gamma&#x27;/\Gamma\)</span>. We need
+<span class="math math-display" data-tex="\[
+\psi(1)=-\gamma,\qquad \psi(\tfrac12)=-\gamma-2\log2.
+\tag{7.2}
+\]">\[
+\psi(1)=-\gamma,\qquad \psi(\tfrac12)=-\gamma-2\log2.
+\tag{7.2}
+\]</span>
+These constants can be derived from the Gamma integral. The beta integral gives the locally uniform Euler limit
+<span class="math math-display" data-tex="\[
+\Gamma(s)=\lim_{N\to\infty}
+\frac{N!\,N^s}{s(s+1)\cdots(s+N)}
+\quad(\operatorname{Re}s&gt;0).
+\]">\[
+\Gamma(s)=\lim_{N\to\infty}
+\frac{N!\,N^s}{s(s+1)\cdots(s+N)}
+\quad(\operatorname{Re}s&gt;0).
+\]</span>
+Indeed substitute <span class="math" data-tex="\(u=Nt\)">\(u=Nt\)</span> in <span class="math" data-tex="\(N^sB(s,N+1)\)">\(N^sB(s,N+1)\)</span>; the integrand
+<span class="math" data-tex="\(u^{s-1}(1-u/N)^N\)">\(u^{s-1}(1-u/N)^N\)</span>, extended by zero for <span class="math" data-tex="\(u&gt;N\)">\(u&gt;N\)</span>, tends to <span class="math" data-tex="\(u^{s-1}e^{-u}\)">\(u^{s-1}e^{-u}\)</span> and is dominated on compact <span class="math" data-tex="\(s\)">\(s\)</span>-sets. The same domination with powers of <span class="math" data-tex="\(\log u\)">\(\log u\)</span> permits differentiation. Logarithmic differentiation at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> gives
+<span class="math" data-tex="\(\psi(1)=\lim_N(\log N-\sum_{j=0}^N(1+j)^{-1})=-\gamma\)">\(\psi(1)=\lim_N(\log N-\sum_{j=0}^N(1+j)^{-1})=-\gamma\)</span>.</p>
+<p>In the beta integral, the substitutions <span class="math" data-tex="\(t=(1+v)/2\)">\(t=(1+v)/2\)</span> and then <span class="math" data-tex="\(u=v^2\)">\(u=v^2\)</span> give
+<span class="math" data-tex="\(B(s,s)=2^{1-2s}B(1/2,s)\)">\(B(s,s)=2^{1-2s}B(1/2,s)\)</span>. Expressing both beta integrals in terms of Gamma functions yields the duplication identity
+<span class="math math-display" data-tex="\[
+\Gamma(s)\Gamma(s+\tfrac12)
+=2^{1-2s}\sqrt\pi\,\Gamma(2s).
+\]">\[
+\Gamma(s)\Gamma(s+\tfrac12)
+=2^{1-2s}\sqrt\pi\,\Gamma(2s).
+\]</span>
+The value <span class="math" data-tex="\(\Gamma(1/2)=\sqrt\pi\)">\(\Gamma(1/2)=\sqrt\pi\)</span> follows from the Gaussian integral. Logarithmic differentiation of duplication at <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span> gives the second formula in (7.2).</p>
+<p>Put <span class="math" data-tex="\(\epsilon=s-1\)">\(\epsilon=s-1\)</span>. The factor
+<span class="math math-display" data-tex="\[
+H(s)=\frac{\sqrt\pi\,\Gamma(s-\tfrac12)}
+              {\Gamma(s)\zeta(2s)}
+\]">\[
+H(s)=\frac{\sqrt\pi\,\Gamma(s-\tfrac12)}
+              {\Gamma(s)\zeta(2s)}
+\]</span>
+is holomorphic near <span class="math" data-tex="\(1\)">\(1\)</span>, with
+<span class="math math-display" data-tex="\[
+H(1)=\frac6\pi,\qquad
+\frac{H&#x27;(1)}{H(1)}
+=-2\log2-2\frac{\zeta&#x27;(2)}{\zeta(2)}.
+\]">\[
+H(1)=\frac6\pi,\qquad
+\frac{H&#x27;(1)}{H(1)}
+=-2\log2-2\frac{\zeta&#x27;(2)}{\zeta(2)}.
+\]</span>
+Since <span class="math" data-tex="\(\phi(s)=H(s)\zeta(2s-1)\)">\(\phi(s)=H(s)\zeta(2s-1)\)</span>, (7.1) gives
+<span class="math math-display" data-tex="\[
+\phi(s)=\frac3{\pi\epsilon}
++\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right)
++O(\epsilon).
+\tag{7.3}
+\]">\[
+\phi(s)=\frac3{\pi\epsilon}
++\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right)
++O(\epsilon).
+\tag{7.3}
+\]</span>
+Also <span class="math" data-tex="\(y^{1-s}=1-\epsilon\log y+O(\epsilon^2)\)">\(y^{1-s}=1-\epsilon\log y+O(\epsilon^2)\)</span> and <span class="math" data-tex="\(y^s=y+O(\epsilon)\)">\(y^s=y+O(\epsilon)\)</span>. Thus the finite part of the constant Fourier coefficient in (2.5) is
+<span class="math math-display" data-tex="\[
+y-\frac3\pi\log y+
+\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right).
+\tag{7.4}
+\]">\[
+y-\frac3\pi\log y+
+\frac6\pi\left(\gamma-\log2-\frac{\zeta&#x27;(2)}{\zeta(2)}\right).
+\tag{7.4}
+\]</span></p>
+<p>For the nonconstant terms we need the special value
+<span class="math math-display" data-tex="\[
+K_{1/2}(u)=\sqrt{\frac{\pi}{2u}}e^{-u}.
+\tag{7.5}
+\]">\[
+K_{1/2}(u)=\sqrt{\frac{\pi}{2u}}e^{-u}.
+\tag{7.5}
+\]</span>
+It follows directly from the Gaussian Fourier integral: set <span class="math" data-tex="\(s=1\)">\(s=1\)</span> in (2.3), and use the elementary contour evaluation
+<span class="math" data-tex="\(\int_{\mathbb R}(x^2+y^2)^{-1}e^{-2\pi irx}\,dx
+=(\pi/y)e^{-2\pi|r|y}\)">\(\int_{\mathbb R}(x^2+y^2)^{-1}e^{-2\pi irx}\,dx
+=(\pi/y)e^{-2\pi|r|y}\)</span> for <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>.
+For <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, close in the lower half-plane, where the exponential decays, and take the pole at <span class="math" data-tex="\(-iy\)">\(-iy\)</span> with clockwise orientation. Its residue gives the displayed value. For <span class="math" data-tex="\(r&lt;0\)">\(r&lt;0\)</span>, close in the upper half-plane; evenness gives the same answer. The closing semicircle contributes zero, since the rational factor is <span class="math" data-tex="\(O(R^{-2})\)">\(O(R^{-2})\)</span> and the exponential has modulus at most one there. Comparing the two expressions for the integral proves (7.5).</p>
+<p>At <span class="math" data-tex="\(s=1\)">\(s=1\)</span>, (2.6) and (7.5) therefore give the nonconstant sum
+<span class="math math-display" data-tex="\[
+\frac6\pi\sum_{n\ne0}\sigma_{-1}(|n|)
+e^{-2\pi|n|y}e^{2\pi inx}
+=\frac{12}{\pi}\operatorname{Re}
+\sum_{n\ge1}\sigma_{-1}(n)q^n.
+\tag{7.6}
+\]">\[
+\frac6\pi\sum_{n\ne0}\sigma_{-1}(|n|)
+e^{-2\pi|n|y}e^{2\pi inx}
+=\frac{12}{\pi}\operatorname{Re}
+\sum_{n\ge1}\sigma_{-1}(n)q^n.
+\tag{7.6}
+\]</span>
+The normally convergent Fourier series is holomorphic in <span class="math" data-tex="\(s\)">\(s\)</span> near <span class="math" data-tex="\(1\)">\(1\)</span>, since <span class="math" data-tex="\(\Gamma(s)\zeta(2s)\ne0\)">\(\Gamma(s)\zeta(2s)\ne0\)</span> there and (2.2) is uniform on a small closed disk. Hence substitution <span class="math" data-tex="\(s=1\)">\(s=1\)</span> in its nonconstant part is justified, with a remainder <span class="math" data-tex="\(O(s-1)\)">\(O(s-1)\)</span>.</p>
+<p>Finally, absolute convergence permits rearranging the logarithmic series:
+<span class="math math-display" data-tex="\[
+-\sum_{m\ge1}\log(1-q^m)
+=\sum_{m,j\ge1}\frac{q^{mj}}{j}
+=\sum_{n\ge1}\sigma_{-1}(n)q^n.
+\tag{7.7}
+\]">\[
+-\sum_{m\ge1}\log(1-q^m)
+=\sum_{m,j\ge1}\frac{q^{mj}}{j}
+=\sum_{n\ge1}\sigma_{-1}(n)q^n.
+\tag{7.7}
+\]</span>
+By (5.1),
+<span class="math math-display" data-tex="\[
+\log|\eta(z)|=-\frac{\pi y}{12}
++\sum_{m\ge1}\log|1-q^m|.
+\]">\[
+\log|\eta(z)|=-\frac{\pi y}{12}
++\sum_{m\ge1}\log|1-q^m|.
+\]</span>
+Thus (7.6) is
+<span class="math math-display" data-tex="\[
+-\frac{12}{\pi}\log|\eta(z)|-y.
+\]">\[
+-\frac{12}{\pi}\log|\eta(z)|-y.
+\]</span>
+Adding it to (7.4) cancels <span class="math" data-tex="\(y\)">\(y\)</span> and gives exactly the finite part in (5.2). Together with the residue term, this proves Kronecker's formula. All remainders are locally uniform in <span class="math" data-tex="\(z\)">\(z\)</span>, by the same compact-set exponential majorants.</p>
+<p>To check (5.4), expand
+<span class="math" data-tex="\(\pi^{-w/2}\Gamma(w/2)\)">\(\pi^{-w/2}\Gamma(w/2)\)</span> at <span class="math" data-tex="\(w=1\)">\(w=1\)</span>, using (7.2):
+<span class="math math-display" data-tex="\[
+\Xi(1+\epsilon)
+=\frac1\epsilon+
+\gamma+\frac12\bigl(\psi(\tfrac12)-\log\pi\bigr)+O(\epsilon)
+=\frac1\epsilon+C_\Xi+O(\epsilon).
+\]">\[
+\Xi(1+\epsilon)
+=\frac1\epsilon+
+\gamma+\frac12\bigl(\psi(\tfrac12)-\log\pi\bigr)+O(\epsilon)
+=\frac1\epsilon+C_\Xi+O(\epsilon).
+\]</span>
+Insert this and its reflected expansion in (3.10), at
+<span class="math" data-tex="\(s=1/2+\epsilon\)">\(s=1/2+\epsilon\)</span>. The poles <span class="math" data-tex="\(1/(2\epsilon)\)">\(1/(2\epsilon)\)</span> and <span class="math" data-tex="\(-1/(2\epsilon)\)">\(-1/(2\epsilon)\)</span> cancel, leaving <span class="math" data-tex="\(\sqrt y(\log y+2C_\Xi)\)">\(\sqrt y(\log y+2C_\Xi)\)</span>. In (2.9), <span class="math" data-tex="\(s=1/2\)">\(s=1/2\)</span> leaves the divisor count <span class="math" data-tex="\(\sigma_0\)">\(\sigma_0\)</span> and <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, proving the rest of (5.4).</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<ul>
+<li>The one-dimensional Schwartz Poisson formula, Gaussian transform and real theta inversion are the exact prerequisite statements in <em>Theta functions and sums of squares</em>, equations (1.3)–(1.5). Lemma 3.1 derives the two-dimensional Gaussian case from them.</li>
+<li>The meromorphic Gamma function and its entire reciprocal are proved in <a href="../NT-ZETA/NT-ZETA-03.html#from-an-integral-to-an-entire-reciprocal">The Gamma function and Stirling's formula</a>, Theorems 1.1–1.2. Its Theorem 2.2 proves <span class="math" data-tex="\(\Gamma(1/2)=\sqrt\pi\)">\(\Gamma(1/2)=\sqrt\pi\)</span>. The needed local Gamma constants are derived in Solution 4. The zeta continuation and reflection used here are derived in (3.8); <a href="../NT-ZETA/NT-ZETA-04.html#mellin-transformation-and-reflection-in-the-critical-strip">Poisson summation, theta, and the functional equation</a>, Theorem 3.1 and Corollary 3.2, give an independent programme proof with the same completed-zeta normalization.</li>
+<li>Theorem 4.3 proves infinitely many odd Maass cusp forms by a compactness and minimization argument, including the required local smoothness and cusp decay. The full Weyl asymptotic, completeness and continuous spectral decomposition remain proof tasks, located in the freely accessible [Miller, Theorem 2.1 and Proposition 2.4]. The local existence proof does not establish these stronger assertions.</li>
+<li>Selberg's conjecture for all congruence quotients is a conjecture. The Kim–Sarnak bound is stated from [Sarnak, §1, equations (24)–(25)].</li>
+<li>General adelic Eisenstein continuation and Langlands' spectral decomposition are the outlook statements [Getz–Hahn, draft of 22 April 2022, Theorems 10.3.2 and 10.4.1]. Higher-rank induction, intertwining operators and the trace formula are not developed here.</li>
+</ul>
+<p>Free references: Sarnak, <a href="https://publications.ias.edu/sites/default/files/FieldNotesCurrent.pdf"><em>Notes on the generalized Ramanujan conjectures</em></a>, author's notes, §1, equations (24)–(25), for the retained spectral bound; Getz–Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations</em></a>, author's draft of 22 April 2022, Chapter 10, for the adelic outlook; and Miller's <a href="https://sites.math.rutgers.edu/~sdmiller/sl3/sl3spectrum.pdf">original article</a>, especially §2, for the full modular-surface spectral assertions. These references identify outstanding proofs; their availability does not replace those proofs in the programme.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-MF-17.html">← Complex tori, elliptic curves and the moduli interpretation of modular curves</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-MF-19.html">The Rankin–Selberg method →</a></span></nav>
+<p class="small source-link"><a href="src/non-holomorphic-eisenstein-series-and-maass-forms.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. CC0 1.0.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-MF">Repository</a></nav>
+</footer>
+</body>
+</html>

@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projective space, relative Proj and maps to projective space · Sheaves and schemes</title>
+<meta name="description" content="A lesson of the course Sheaves and schemes. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/AG-SS/projective-space-relative-proj-and-maps-to-projective-space.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Sheaves and schemes</a> <span aria-hidden="true">›</span> <span>Lesson 12 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="projective-space-relative-proj-and-maps-to-projective-space">Projective space, relative Proj and maps to projective space</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol. Public domain (CC0).</em></p>
+<p>A point of projective space is often written as a list of coordinates up to a common scalar. Over a scheme, the scalar can vary from one open set to another. The coordinates then belong to an invertible sheaf rather than necessarily to the structure sheaf. This lesson proves that description, extends it to degree-one generated graded rings, and constructs relative Proj by gluing over the base. Projective bundles will parametrize invertible <strong>quotients</strong> throughout.</p>
+<p>We use <a href="proj-of-a-graded-ring.html">Proj of a graded ring</a>, especially its chart construction, exact sheafification, and degree-one twisting formulas. Maps from any scheme to an affine scheme are determined by their maps on global functions, by <a href="affine-schemes.html">Affine schemes</a>, Theorem 4.1. Pullback of quasi-coherent modules and its right exactness were proved in <a href="quasi-coherent-sheaves-on-schemes.html">Quasi-coherent sheaves on schemes</a>, Theorem 3.1. No Noetherian or finite-generation hypothesis is implicit here. References [Stacks] and [Vakil] provide further context; their projectivization conventions must be checked separately.</p>
+<h2 id="1-coordinates-in-an-invertible-sheaf">1. Coordinates in an invertible sheaf</h2>
+<p>For an invertible sheaf <span class="math" data-tex="\(L\)">\(L\)</span> on <span class="math" data-tex="\(T\)">\(T\)</span>, a section <span class="math" data-tex="\(s\)">\(s\)</span> <em>does not vanish at</em> <span class="math" data-tex="\(t\)">\(t\)</span> when its image in <span class="math" data-tex="\(L\otimes\kappa(t)\)">\(L\otimes\kappa(t)\)</span> is nonzero. In a local frame write <span class="math" data-tex="\(s=a e\)">\(s=a e\)</span>. Nonvanishing means <span class="math" data-tex="\(a\notin\mathfrak m_t\)">\(a\notin\mathfrak m_t\)</span>, so <span class="math" data-tex="\(a\)">\(a\)</span> is a unit near <span class="math" data-tex="\(t\)">\(t\)</span>. Thus the nonvanishing locus <span class="math" data-tex="\(T_s\)">\(T_s\)</span> is open, and <span class="math" data-tex="\(s\)">\(s\)</span> itself is a frame there.</p>
+<p>A family <span class="math" data-tex="\(s_i\)">\(s_i\)</span> generates <span class="math" data-tex="\(L\)">\(L\)</span> precisely when the map</p>
+<span class="math math-display" data-tex="\[
+\bigoplus_i\mathcal O_T\longrightarrow L,\qquad (a_i)\longmapsto\sum_i a_i s_i
+\tag{1.1}
+\]">\[
+\bigoplus_i\mathcal O_T\longrightarrow L,\qquad (a_i)\longmapsto\sum_i a_i s_i
+\tag{1.1}
+\]</span>
+<p>is surjective. At a local ring a family generates a rank-one free module exactly when some coefficient is a unit: if they generate, a finite linear combination equals one, which cannot happen with every coefficient in the maximal ideal. Hence generation is equivalent to the opens <span class="math" data-tex="\(T_{s_i}\)">\(T_{s_i}\)</span> covering <span class="math" data-tex="\(T\)">\(T\)</span>, even for an infinite family.</p>
+<p><strong>Theorem 1.1 (the functor of projective space).</strong> For every scheme <span class="math" data-tex="\(T\)">\(T\)</span>, there is a natural bijection between morphisms <span class="math" data-tex="\(T\to\mathbb P^n_{\mathbb Z}\)">\(T\to\mathbb P^n_{\mathbb Z}\)</span> and isomorphism classes of data</p>
+<span class="math math-display" data-tex="\[
+(L,s_0,\ldots,s_n),\qquad L\text{ invertible},\quad s_i\in\Gamma(T,L)\text{ generating }L.
+\tag{1.2}
+\]">\[
+(L,s_0,\ldots,s_n),\qquad L\text{ invertible},\quad s_i\in\Gamma(T,L)\text{ generating }L.
+\tag{1.2}
+\]</span>
+<p>An isomorphism of data carries each indicated section to the corresponding section. The morphism associated with the data satisfies <span class="math" data-tex="\(\varphi^*\mathcal O(1)\cong L\)">\(\varphi^*\mathcal O(1)\cong L\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(U_i=D_+(X_i)\)">\(U_i=D_+(X_i)\)</span>. Its coordinate ring is
+<span class="math" data-tex="\(\mathbb Z[X_0/X_i,\ldots,\widehat{X_i/X_i},\ldots,X_n/X_i]\)">\(\mathbb Z[X_0/X_i,\ldots,\widehat{X_i/X_i},\ldots,X_n/X_i]\)</span>.
+On <span class="math" data-tex="\(T_{s_i}\)">\(T_{s_i}\)</span>, send <span class="math" data-tex="\(X_j/X_i\)">\(X_j/X_i\)</span> to <span class="math" data-tex="\(s_j/s_i\)">\(s_j/s_i\)</span>. The affine mapping theorem produces a morphism <span class="math" data-tex="\(T_{s_i}\to U_i\)">\(T_{s_i}\to U_i\)</span>, even if <span class="math" data-tex="\(T_{s_i}\)">\(T_{s_i}\)</span> is not affine. The preimage of <span class="math" data-tex="\(U_i\cap U_j\)">\(U_i\cap U_j\)</span> is exactly <span class="math" data-tex="\(T_{s_i}\cap T_{s_j}\)">\(T_{s_i}\cap T_{s_j}\)</span>, because <span class="math" data-tex="\(s_j/s_i\)">\(s_j/s_i\)</span> is a unit exactly there. On that intersection the ratios transform by</p>
+<span class="math math-display" data-tex="\[
+\frac{s_k}{s_j}=\frac{s_k/s_i}{s_j/s_i}.
+\tag{1.3}
+\]">\[
+\frac{s_k}{s_j}=\frac{s_k/s_i}{s_j/s_i}.
+\tag{1.3}
+\]</span>
+<p>These are the chart transitions of projective space, so the morphisms glue.</p>
+<p>Conversely, pull back <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> and its sections <span class="math" data-tex="\(X_i\)">\(X_i\)</span> along <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. On <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, <span class="math" data-tex="\(X_i\)">\(X_i\)</span> is a frame, and therefore its pullback is a frame on <span class="math" data-tex="\(\varphi^{-1}U_i\)">\(\varphi^{-1}U_i\)</span>. The pulled-back sections generate. Starting with (1.2), the local isomorphism <span class="math" data-tex="\(\varphi^*\mathcal O(1)\to L\)">\(\varphi^*\mathcal O(1)\to L\)</span> sending <span class="math" data-tex="\(X_i\)">\(X_i\)</span> to <span class="math" data-tex="\(s_i\)">\(s_i\)</span> sends <span class="math" data-tex="\(X_j\)">\(X_j\)</span> to <span class="math" data-tex="\((s_j/s_i)s_i=s_j\)">\((s_j/s_i)s_i=s_j\)</span>. Thus these isomorphisms agree on overlaps and recover all the data. Starting with <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, reconstruction recovers both the preimages of the <span class="math" data-tex="\(U_i\)">\(U_i\)</span> and the maps on their coordinate rings, so recovers <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. The formulas commute with pullback, proving naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a base scheme <span class="math" data-tex="\(S\)">\(S\)</span>, the same statement describes <span class="math" data-tex="\(S\)">\(S\)</span>-morphisms <span class="math" data-tex="\(T\to\mathbb P^n_S=\mathbb P^n_{\mathbb Z}\times S\)">\(T\to\mathbb P^n_S=\mathbb P^n_{\mathbb Z}\times S\)</span>, where the map <span class="math" data-tex="\(T\to S\)">\(T\to S\)</span> is fixed. In particular, projective coordinates over a ring need not admit a single global choice of functions: the invertible quotient can be nontrivial.</p>
+<h2 id="2-the-universal-property-of-degree-one-proj">2. The universal property of degree-one Proj</h2>
+<p>For an invertible <span class="math" data-tex="\(L\)">\(L\)</span>, use the nonnegative section algebra</p>
+<span class="math math-display" data-tex="\[
+\Gamma_*(T,L)=\bigoplus_{r\geq0}\Gamma(T,L^{\otimes r}).
+\tag{2.1}
+\]">\[
+\Gamma_*(T,L)=\bigoplus_{r\geq0}\Gamma(T,L^{\otimes r}).
+\tag{2.1}
+\]</span>
+<p>Multiplication comes from tensoring sections. This definition takes sections degree by degree; it makes no claim that global sections commute with arbitrary sheaf direct sums on a non-quasi-compact scheme.</p>
+<p><strong>Theorem 2.1.</strong> Suppose <span class="math" data-tex="\(S=\bigoplus_{r\geq0}S_r\)">\(S=\bigoplus_{r\geq0}S_r\)</span> is generated by <span class="math" data-tex="\(S_1\)">\(S_1\)</span> as an <span class="math" data-tex="\(S_0\)">\(S_0\)</span>-algebra. Morphisms <span class="math" data-tex="\(T\to\operatorname{Proj}S\)">\(T\to\operatorname{Proj}S\)</span> correspond naturally to isomorphism classes of pairs</p>
+<span class="math math-display" data-tex="\[
+(L,\psi),\qquad \psi:S\longrightarrow\Gamma_*(T,L)
+\tag{2.2}
+\]">\[
+(L,\psi),\qquad \psi:S\longrightarrow\Gamma_*(T,L)
+\tag{2.2}
+\]</span>
+<p>where <span class="math" data-tex="\(L\)">\(L\)</span> is invertible, <span class="math" data-tex="\(\psi\)">\(\psi\)</span> preserves degrees and units, and the sections <span class="math" data-tex="\(\psi(S_1)\)">\(\psi(S_1)\)</span> generate <span class="math" data-tex="\(L\)">\(L\)</span>. The degree-zero map specifies the composite <span class="math" data-tex="\(T\to\operatorname{Spec}S_0\)">\(T\to\operatorname{Spec}S_0\)</span>.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(f\in S_1\)">\(f\in S_1\)</span>, let <span class="math" data-tex="\(T_f\)">\(T_f\)</span> be the locus where <span class="math" data-tex="\(\psi(f)\)">\(\psi(f)\)</span> is a frame. These opens cover. Define a ring homomorphism</p>
+<span class="math math-display" data-tex="\[
+S_{(f)}\longrightarrow\Gamma(T_f,\mathcal O_T),\qquad
+\frac{a}{f^r}\longmapsto\frac{\psi(a)}{\psi(f)^r},\quad a\in S_r.
+\tag{2.3}
+\]">\[
+S_{(f)}\longrightarrow\Gamma(T_f,\mathcal O_T),\qquad
+\frac{a}{f^r}\longmapsto\frac{\psi(a)}{\psi(f)^r},\quad a\in S_r.
+\tag{2.3}
+\]</span>
+<p>It is well defined without cancellation assumptions on <span class="math" data-tex="\(S\)">\(S\)</span>. Equality of fractions is witnessed by a power of <span class="math" data-tex="\(f\)">\(f\)</span> annihilating their cross-multiplied difference. Applying <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, that power becomes an invertible frame on <span class="math" data-tex="\(T_f\)">\(T_f\)</span>, so the normalized functions coincide. Sums and products are respected by the same normalization.</p>
+<p>The induced map to <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span> has preimage of <span class="math" data-tex="\(D_+(g)\)">\(D_+(g)\)</span> equal to <span class="math" data-tex="\(T_f\cap T_g\)">\(T_f\cap T_g\)</span>: in this chart the defining function is <span class="math" data-tex="\(g/f\)">\(g/f\)</span>, sent to <span class="math" data-tex="\(\psi(g)/\psi(f)\)">\(\psi(g)/\psi(f)\)</span>. On this overlap (2.3) for <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> agrees in the common localized ring. The maps glue to <span class="math" data-tex="\(\varphi:T\to\operatorname{Proj}S\)">\(\varphi:T\to\operatorname{Proj}S\)</span>.</p>
+<p>In the reverse direction, <span class="math" data-tex="\(S_r\)">\(S_r\)</span> has a canonical map to <span class="math" data-tex="\(\Gamma(\operatorname{Proj}S,\mathcal O(r))\)">\(\Gamma(\operatorname{Proj}S,\mathcal O(r))\)</span>: on <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span>, an element <span class="math" data-tex="\(a\in S_r\)">\(a\in S_r\)</span> gives <span class="math" data-tex="\((a/f^r)f^r\)">\((a/f^r)f^r\)</span>, where <span class="math" data-tex="\(f\)">\(f\)</span> denotes the frame of <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>. The twisting identities proved in the preceding lesson make these maps multiplicative. Pulling them back gives (2.2). Degree-one sections generate, since the opens <span class="math" data-tex="\(D_+(f)\)">\(D_+(f)\)</span>, <span class="math" data-tex="\(f\in S_1\)">\(f\in S_1\)</span>, cover. The local identification sending the pulled-back frame <span class="math" data-tex="\(f\)">\(f\)</span> to <span class="math" data-tex="\(\psi(f)\)">\(\psi(f)\)</span> glues and recovers <span class="math" data-tex="\(\psi\)">\(\psi\)</span> in every degree by (2.3). Conversely those same fraction formulas recover a given morphism. This also proves naturality and uniqueness. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Degree-one generation can be infinite. It ensures that <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> is invertible; the weighted example in the preceding lesson shows why this condition cannot simply be omitted from this universal property.</p>
+<p>When <span class="math" data-tex="\(S=A[X_0,\ldots,X_n]/I\)">\(S=A[X_0,\ldots,X_n]/I\)</span> for a homogeneous ideal <span class="math" data-tex="\(I\)">\(I\)</span>, Theorem 2.1 says exactly that the coordinate sections satisfy every homogeneous equation in <span class="math" data-tex="\(I\)">\(I\)</span>, as equations in the corresponding tensor powers of <span class="math" data-tex="\(L\)">\(L\)</span>. For completeness this realizes <span class="math" data-tex="\(\operatorname{Proj}S\)">\(\operatorname{Proj}S\)</span> as a closed subscheme of <span class="math" data-tex="\(\mathbb P^n_A\)">\(\mathbb P^n_A\)</span>: on <span class="math" data-tex="\(D_+(X_i)\)">\(D_+(X_i)\)</span>, the map from the polynomial chart ring to <span class="math" data-tex="\(S_{(X_i)}\)">\(S_{(X_i)}\)</span> is surjective. A fraction in the latter ring lifts its homogeneous numerator to the polynomial ring. These quotient charts glue, and their closed immersions glue by the closed-immersion criterion proved in <a href="schemes-gluing-and-immersions.html">Schemes, gluing and immersions</a>, Theorem 3.1.</p>
+<p><strong>Tensor products and the Segre map.</strong> If <span class="math" data-tex="\(s_0,\ldots,s_a\)">\(s_0,\ldots,s_a\)</span> generate <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(t_0,\ldots,t_b\)">\(t_0,\ldots,t_b\)</span> generate <span class="math" data-tex="\(M\)">\(M\)</span>, their products generate <span class="math" data-tex="\(L\otimes M\)">\(L\otimes M\)</span>: near each point choose a frame from each family, whose tensor product is a frame. The associated map to <span class="math" data-tex="\(\mathbb P^{(a+1)(b+1)-1}\)">\(\mathbb P^{(a+1)(b+1)-1}\)</span> has coordinates <span class="math" data-tex="\(s_it_j\)">\(s_it_j\)</span>. Applied to the pulled-back coordinate sections on <span class="math" data-tex="\(\mathbb P^a_R\times_R\mathbb P^b_R\)">\(\mathbb P^a_R\times_R\mathbb P^b_R\)</span>, this is the Segre map
+<span class="math" data-tex="\([X_i],[Y_j]\mapsto[X_iY_j]\)">\([X_i],[Y_j]\mapsto[X_iY_j]\)</span>.
+It identifies the product with the closed subscheme defined by the two-by-two minors of the matrix <span class="math" data-tex="\((Z_{ij})\)">\((Z_{ij})\)</span>. Indeed, on <span class="math" data-tex="\(D_+(Z_{ij})\)">\(D_+(Z_{ij})\)</span> those equations say</p>
+<span class="math math-display" data-tex="\[
+\frac{Z_{kl}}{Z_{ij}}=
+\frac{Z_{kj}}{Z_{ij}}\frac{Z_{il}}{Z_{ij}}.
+\tag{2.4}
+\]">\[
+\frac{Z_{kl}}{Z_{ij}}=
+\frac{Z_{kj}}{Z_{ij}}\frac{Z_{il}}{Z_{ij}}.
+\tag{2.4}
+\]</span>
+<p>Its chart ring is the polynomial ring in <span class="math" data-tex="\(Z_{kj}/Z_{ij}\)">\(Z_{kj}/Z_{ij}\)</span> for <span class="math" data-tex="\(k\ne i\)">\(k\ne i\)</span> and <span class="math" data-tex="\(Z_{il}/Z_{ij}\)">\(Z_{il}/Z_{ij}\)</span> for <span class="math" data-tex="\(l\ne j\)">\(l\ne j\)</span>: substitution using (2.4) gives an inverse to this presentation. This is exactly the chart <span class="math" data-tex="\(D_+(X_i)\times_R D_+(Y_j)\)">\(D_+(X_i)\times_R D_+(Y_j)\)</span> of the product. The charts cover the closed subscheme and their ratio formulas agree on overlaps. Thus the identification is schematic, over any ring <span class="math" data-tex="\(R\)">\(R\)</span>, and its pulled-back hyperplane line is the tensor product of the two pulled-back <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>'s.</p>
+<h2 id="3-relative-proj-and-arbitrary-base-change">3. Relative Proj and arbitrary base change</h2>
+<p>Let <span class="math" data-tex="\(\mathcal A=\bigoplus_{r\geq0}\mathcal A_r\)">\(\mathcal A=\bigoplus_{r\geq0}\mathcal A_r\)</span> be a quasi-coherent graded <span class="math" data-tex="\(\mathcal O_S\)">\(\mathcal O_S\)</span>-algebra. Its degree-zero part need not equal <span class="math" data-tex="\(\mathcal O_S\)">\(\mathcal O_S\)</span>. Quasi-coherence here means that each graded piece is quasi-coherent and multiplication respects the grading.</p>
+<p><strong>Lemma 3.1 (affine base change).</strong> If <span class="math" data-tex="\(A\)">\(A\)</span> is a nonnegatively graded <span class="math" data-tex="\(R\)">\(R\)</span>-algebra and <span class="math" data-tex="\(R\to B\)">\(R\to B\)</span> is any homomorphism, then</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Proj}(A\otimes_R B)
+\cong\operatorname{Proj}A\times_{\operatorname{Spec}R}\operatorname{Spec}B.
+\tag{3.1}
+\]">\[
+\operatorname{Proj}(A\otimes_R B)
+\cong\operatorname{Proj}A\times_{\operatorname{Spec}R}\operatorname{Spec}B.
+\tag{3.1}
+\]</span>
+<p>All twisting sheaves pull back under this identification, including when they are not invertible.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(f\in A_d\)">\(f\in A_d\)</span>, <span class="math" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, degree-zero localization has the module description</p>
+<span class="math math-display" data-tex="\[
+A_{(f)}=\mathop{\rm colim}_{r\geq0}
+(A_{rd}\xrightarrow{\ f\ }A_{(r+1)d}).
+\tag{3.2}
+\]">\[
+A_{(f)}=\mathop{\rm colim}_{r\geq0}
+(A_{rd}\xrightarrow{\ f\ }A_{(r+1)d}).
+\tag{3.2}
+\]</span>
+<p>The map sends <span class="math" data-tex="\(a\)">\(a\)</span> at stage <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(a/f^r\)">\(a/f^r\)</span>. Every fraction occurs and its equality relation is exactly equality at a later stage. Tensor product commutes with this colimit, as is seen from the presentation of a colimit by a direct sum modulo the transition relations. Also the degree <span class="math" data-tex="\(j\)">\(j\)</span> piece of <span class="math" data-tex="\(A\otimes_R B\)">\(A\otimes_R B\)</span> is <span class="math" data-tex="\(A_j\otimes_R B\)">\(A_j\otimes_R B\)</span>. Consequently, as rings,</p>
+<span class="math math-display" data-tex="\[
+(A\otimes_R B)_{(f\otimes1)}\cong A_{(f)}\otimes_R B.
+\tag{3.3}
+\]">\[
+(A\otimes_R B)_{(f\otimes1)}\cong A_{(f)}\otimes_R B.
+\tag{3.3}
+\]</span>
+<p>Products agree by multiplying representatives at sufficiently large stages. These are precisely the coordinate rings of the base-changed affine charts of <span class="math" data-tex="\(\operatorname{Proj}A\)">\(\operatorname{Proj}A\)</span>.</p>
+<p>The opens <span class="math" data-tex="\(D_+(f\otimes1)\)">\(D_+(f\otimes1)\)</span> cover the new Proj. At a relevant homogeneous prime, some positive-degree element is outside the prime. Express it as a finite sum <span class="math" data-tex="\(\sum a_i\otimes b_i\)">\(\sum a_i\otimes b_i\)</span> in one degree. If every <span class="math" data-tex="\(a_i\otimes1\)">\(a_i\otimes1\)</span> belonged to the prime, the sum would also belong; therefore one such element is outside. Formula (3.3) respects localization on overlaps, so gluing the chart identifications proves (3.1). Replacing the stages in (3.2) by <span class="math" data-tex="\(A_{rd+m}\)">\(A_{rd+m}\)</span>, with multiplication by <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(A_j=0\)">\(A_j=0\)</span> for <span class="math" data-tex="\(j&lt;0\)">\(j&lt;0\)</span>, proves the identical statement for <span class="math" data-tex="\((A(m)_f)_0\)">\((A(m)_f)_0\)</span>. Sheafifying these module identifications proves the twisting assertion for every integer <span class="math" data-tex="\(m\)">\(m\)</span>. All maps are canonical and commute with further base change. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.2 (relative Proj).</strong> There is a scheme <span class="math" data-tex="\(p:\operatorname{Proj}_S\mathcal A\to S\)">\(p:\operatorname{Proj}_S\mathcal A\to S\)</span>, characterized by compatible isomorphisms</p>
+<span class="math math-display" data-tex="\[
+p^{-1}(U)\cong\operatorname{Proj}\mathcal A(U)
+\quad\text{over every affine }U\subset S.
+\tag{3.4}
+\]">\[
+p^{-1}(U)\cong\operatorname{Proj}\mathcal A(U)
+\quad\text{over every affine }U\subset S.
+\tag{3.4}
+\]</span>
+<p>Here <span class="math" data-tex="\(\mathcal A(U)\)">\(\mathcal A(U)\)</span> denotes <span class="math" data-tex="\(\bigoplus_r\Gamma(U,\mathcal A_r)\)">\(\bigoplus_r\Gamma(U,\mathcal A_r)\)</span>. For every <span class="math" data-tex="\(h:S&#x27;\to S\)">\(h:S&#x27;\to S\)</span>, there is a canonical isomorphism</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Proj}_{S&#x27;}(h^*\mathcal A)
+\cong S&#x27;\times_S\operatorname{Proj}_S\mathcal A.
+\tag{3.5}
+\]">\[
+\operatorname{Proj}_{S&#x27;}(h^*\mathcal A)
+\cong S&#x27;\times_S\operatorname{Proj}_S\mathcal A.
+\tag{3.5}
+\]</span>
+<p>The twists <span class="math" data-tex="\(\mathcal O(m)\)">\(\mathcal O(m)\)</span> exist and obey the same pullback formula. If <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> is generated in degree one over <span class="math" data-tex="\(\mathcal A_0\)">\(\mathcal A_0\)</span>, these twists are invertible.</p>
+<p><strong>Proof.</strong> If affine <span class="math" data-tex="\(V\subset U\subset S\)">\(V\subset U\subset S\)</span>, quasi-coherence and the affine pullback formula give, degree by degree,</p>
+<span class="math math-display" data-tex="\[
+\mathcal A(V)\cong\mathcal A(U)\otimes_{\mathcal O_S(U)}\mathcal O_S(V).
+\tag{3.6}
+\]">\[
+\mathcal A(V)\cong\mathcal A(U)\otimes_{\mathcal O_S(U)}\mathcal O_S(V).
+\tag{3.6}
+\]</span>
+<p>The multiplication agrees because restriction respects multiplication. Lemma 3.1 therefore identifies <span class="math" data-tex="\(\operatorname{Proj}\mathcal A(V)\)">\(\operatorname{Proj}\mathcal A(V)\)</span> with the inverse image of <span class="math" data-tex="\(V\)">\(V\)</span> in <span class="math" data-tex="\(\operatorname{Proj}\mathcal A(U)\)">\(\operatorname{Proj}\mathcal A(U)\)</span>, an open subscheme. These identifications compose correctly for nested affine opens: each map on a standard chart is the same localization and tensor map on fractions.</p>
+<p>Choose an affine cover <span class="math" data-tex="\(U_i\)">\(U_i\)</span> of <span class="math" data-tex="\(S\)">\(S\)</span>. Cover each <span class="math" data-tex="\(U_i\cap U_j\)">\(U_i\cap U_j\)</span>, which need not be affine, by common affine opens <span class="math" data-tex="\(V\)">\(V\)</span>. The preceding identifications glue on these <span class="math" data-tex="\(V\)">\(V\)</span> and give an isomorphism between the inverse images of <span class="math" data-tex="\(U_i\cap U_j\)">\(U_i\cap U_j\)</span> in the two Proj schemes. On triple intersections they satisfy the cocycle condition, checked on common affine opens by the fraction formulas. The scheme gluing theorem constructs <span class="math" data-tex="\(p\)">\(p\)</span>. The same argument with any affine <span class="math" data-tex="\(U\subset S\)">\(U\subset S\)</span> proves (3.4). It also proves uniqueness with the specified affine identifications, independent of the chosen cover.</p>
+<p>To prove (3.5), cover <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> by affine opens <span class="math" data-tex="\(V\)">\(V\)</span> mapping into affine opens <span class="math" data-tex="\(U\subset S\)">\(U\subset S\)</span>. On each such pair, the algebra of <span class="math" data-tex="\(h^*\mathcal A\)">\(h^*\mathcal A\)</span> is the tensor product in Lemma 3.1, by quasi-coherent pullback. That lemma identifies both sides of (3.5) over <span class="math" data-tex="\(V\)">\(V\)</span>. The canonical formulas agree on overlaps and glue. The module part of the lemma first glues the twists in (3.4), then proves their arbitrary-base-change formula. Invertibility under degree-one generation is checked on these affine base charts using the preceding lesson, Theorem 3.2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a degree-one generated <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, the relative version of Theorem 2.1 follows too: over a fixed <span class="math" data-tex="\(f:T\to S\)">\(f:T\to S\)</span>, morphisms <span class="math" data-tex="\(T\to\operatorname{Proj}_S\mathcal A\)">\(T\to\operatorname{Proj}_S\mathcal A\)</span> correspond to invertible <span class="math" data-tex="\(L\)">\(L\)</span> and multiplicative degree-preserving maps</p>
+<span class="math math-display" data-tex="\[
+f^*\mathcal A_r\longrightarrow L^{\otimes r}
+\tag{3.7}
+\]">\[
+f^*\mathcal A_r\longrightarrow L^{\otimes r}
+\tag{3.7}
+\]</span>
+<p>whose degree-one map is surjective; the degree-zero map is compatible with the structure maps. Indeed, over affine <span class="math" data-tex="\(U\subset S\)">\(U\subset S\)</span>, morphisms from the pulled-back module associated to <span class="math" data-tex="\(\mathcal A_r(U)\)">\(\mathcal A_r(U)\)</span> are equivalent to <span class="math" data-tex="\(\mathcal O_S(U)\)">\(\mathcal O_S(U)\)</span>-linear maps into <span class="math" data-tex="\(\Gamma(f^{-1}U,L^r)\)">\(\Gamma(f^{-1}U,L^r)\)</span>. This follows from the free presentation of that module and the pullback adjunction, without assuming <span class="math" data-tex="\(f^{-1}U\)">\(f^{-1}U\)</span> affine. Apply Theorem 2.1 there. On overlaps its uniqueness glues the morphisms and the data. Thus no commuting of an infinite direct sum with global sections of <span class="math" data-tex="\(T\)">\(T\)</span> is needed.</p>
+<h2 id="4-projective-bundles-with-the-quotient-convention">4. Projective bundles with the quotient convention</h2>
+<p>For any quasi-coherent <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>, form its symmetric algebra
+<span class="math" data-tex="\(\operatorname{Sym}^{\bullet}\mathcal E\)">\(\operatorname{Sym}^{\bullet}\mathcal E\)</span>: the tensor algebra modulo the relations <span class="math" data-tex="\(v\otimes w-w\otimes v\)">\(v\otimes w-w\otimes v\)</span>. Its pieces are quasi-coherent by the tensor and cokernel results of the ninth lesson. A linear map from <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> into the degree-one part of a commutative graded algebra extends uniquely to an algebra map: send a tensor to the product of its images, then factor through the displayed relations. This proves both the symmetric algebra's universal property and its compatibility with arbitrary pullback, by applying the same construction after tensoring.</p>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\mathbb P(\mathcal E)=\operatorname{Proj}_S
+\operatorname{Sym}^{\bullet}\mathcal E.
+\tag{4.1}
+\]">\[
+\mathbb P(\mathcal E)=\operatorname{Proj}_S
+\operatorname{Sym}^{\bullet}\mathcal E.
+\tag{4.1}
+\]</span>
+<p><strong>Theorem 4.1 (invertible quotients).</strong> For a fixed <span class="math" data-tex="\(f:T\to S\)">\(f:T\to S\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span>-morphisms <span class="math" data-tex="\(T\to\mathbb P(\mathcal E)\)">\(T\to\mathbb P(\mathcal E)\)</span> correspond naturally to surjections</p>
+<span class="math math-display" data-tex="\[
+q:f^*\mathcal E\twoheadrightarrow L,\qquad L\text{ invertible},
+\tag{4.2}
+\]">\[
+q:f^*\mathcal E\twoheadrightarrow L,\qquad L\text{ invertible},
+\tag{4.2}
+\]</span>
+<p>up to isomorphism of the quotient. There is a universal quotient <span class="math" data-tex="\(p^*\mathcal E\twoheadrightarrow\mathcal O(1)\)">\(p^*\mathcal E\twoheadrightarrow\mathcal O(1)\)</span> on <span class="math" data-tex="\(\mathbb P(\mathcal E)\)">\(\mathbb P(\mathcal E)\)</span>. Furthermore,</p>
+<span class="math math-display" data-tex="\[
+\mathbb P^n_S\cong\mathbb P(\mathcal O_S^{\oplus(n+1)}).
+\tag{4.3}
+\]">\[
+\mathbb P^n_S\cong\mathbb P(\mathcal O_S^{\oplus(n+1)}).
+\tag{4.3}
+\]</span>
+<p><strong>Proof.</strong> The algebra in (4.1) has degree zero <span class="math" data-tex="\(\mathcal O_S\)">\(\mathcal O_S\)</span> and is generated in degree one. By (3.7) and the symmetric algebra's universal property, giving its multiplicative map into the powers of <span class="math" data-tex="\(L\)">\(L\)</span> is exactly giving the linear map (4.2). The required degree-one generation condition is exactly surjectivity of that map. This proves the bijection. The degree-one universal sections in Theorem 2.1 glue over the base to give the universal quotient; pulling it back recovers (4.2).</p>
+<p>On affine <span class="math" data-tex="\(U=\operatorname{Spec}R\)">\(U=\operatorname{Spec}R\)</span>, the symmetric algebra of <span class="math" data-tex="\(\mathcal O_U^{n+1}\)">\(\mathcal O_U^{n+1}\)</span> is <span class="math" data-tex="\(R[X_0,\ldots,X_n]\)">\(R[X_0,\ldots,X_n]\)</span>. Lemma 3.1 identifies its Proj with <span class="math" data-tex="\(U\times\mathbb P^n_{\mathbb Z}\)">\(U\times\mathbb P^n_{\mathbb Z}\)</span>. These identifications agree on overlaps and prove (4.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>No finite-type condition on <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> was used. If it is locally free of rank <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, its projective bundle is locally <span class="math" data-tex="\(\mathbb P^{r-1}\)">\(\mathbb P^{r-1}\)</span> over the base. If it has rank zero on an open set, the projective bundle there is empty. Formula (3.5) and compatibility of symmetric algebras give
+<span class="math" data-tex="\(\mathbb P(h^*\mathcal E)\cong S&#x27;\times_S\mathbb P(\mathcal E)\)">\(\mathbb P(h^*\mathcal E)\cong S&#x27;\times_S\mathbb P(\mathcal E)\)</span>.
+Over a field the points are one-dimensional quotients of the vector space. Authors using one-dimensional subspaces often put a dual into their definition; (4.1) fixes our convention explicitly.</p>
+<h2 id="5-curves-and-a-ruled-surface">5. Curves and a ruled surface</h2>
+<p><strong>Example 5.1 (the conic).</strong> On <span class="math" data-tex="\(\mathbb P^1_k\)">\(\mathbb P^1_k\)</span>, the sections <span class="math" data-tex="\(s^2,st,t^2\)">\(s^2,st,t^2\)</span> of <span class="math" data-tex="\(\mathcal O(2)\)">\(\mathcal O(2)\)</span> generate: wherever <span class="math" data-tex="\(s\)">\(s\)</span>, respectively <span class="math" data-tex="\(t\)">\(t\)</span>, is a frame, its square is a frame. They define</p>
+<span class="math math-display" data-tex="\[
+\nu_2:[s:t]\longmapsto[s^2:st:t^2].
+\tag{5.1}
+\]">\[
+\nu_2:[s:t]\longmapsto[s^2:st:t^2].
+\tag{5.1}
+\]</span>
+<p>The equation <span class="math" data-tex="\(X_0X_2-X_1^2=0\)">\(X_0X_2-X_1^2=0\)</span> holds as an equation of sections. In this closed conic, <span class="math" data-tex="\(D_+(X_0)\)">\(D_+(X_0)\)</span> has coordinate ring <span class="math" data-tex="\(k[v]\)">\(k[v]\)</span>, with <span class="math" data-tex="\(X_1/X_0=v\)">\(X_1/X_0=v\)</span>, <span class="math" data-tex="\(X_2/X_0=v^2\)">\(X_2/X_0=v^2\)</span>. Likewise <span class="math" data-tex="\(D_+(X_2)\)">\(D_+(X_2)\)</span> has ring <span class="math" data-tex="\(k[w]\)">\(k[w]\)</span>, with <span class="math" data-tex="\(X_1/X_2=w\)">\(X_1/X_2=w\)</span>, <span class="math" data-tex="\(X_0/X_2=w^2\)">\(X_0/X_2=w^2\)</span>. They cover: a prime containing <span class="math" data-tex="\(X_0,X_2\)">\(X_0,X_2\)</span> also contains <span class="math" data-tex="\(X_1\)">\(X_1\)</span>. Their overlap has <span class="math" data-tex="\(w=v^{-1}\)">\(w=v^{-1}\)</span>. The map (5.1) is the chart isomorphism from <span class="math" data-tex="\(\mathbb P^1_k\)">\(\mathbb P^1_k\)</span> to this conic, so is a closed immersion. Its pulled-back <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> is <span class="math" data-tex="\(\mathcal O(2)\)">\(\mathcal O(2)\)</span>, as the universal property predicts. This works in every characteristic.</p>
+<p><strong>Example 5.2 (the twisted cubic).</strong> The generating sections <span class="math" data-tex="\(s^3,s^2t,st^2,t^3\)">\(s^3,s^2t,st^2,t^3\)</span> of <span class="math" data-tex="\(\mathcal O(3)\)">\(\mathcal O(3)\)</span> define <span class="math" data-tex="\(\nu_3:\mathbb P^1_k\to\mathbb P^3_k\)">\(\nu_3:\mathbb P^1_k\to\mathbb P^3_k\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+J=(X_0X_2-X_1^2,\ X_0X_3-X_1X_2,\ X_1X_3-X_2^2).
+\tag{5.2}
+\]">\[
+J=(X_0X_2-X_1^2,\ X_0X_3-X_1X_2,\ X_1X_3-X_2^2).
+\tag{5.2}
+\]</span>
+<p>All three relations hold on these sections. The closed scheme <span class="math" data-tex="\(C=\operatorname{Proj}k[X_0,X_1,X_2,X_3]/J\)">\(C=\operatorname{Proj}k[X_0,X_1,X_2,X_3]/J\)</span> is covered by <span class="math" data-tex="\(D_+(X_0)\)">\(D_+(X_0)\)</span> and <span class="math" data-tex="\(D_+(X_3)\)">\(D_+(X_3)\)</span>: a prime containing both contains <span class="math" data-tex="\(X_1^2,X_2^2\)">\(X_1^2,X_2^2\)</span>, hence all four coordinates. On the first chart (5.2) gives
+<span class="math" data-tex="\(X_1/X_0=v,\ X_2/X_0=v^2,\ X_3/X_0=v^3\)">\(X_1/X_0=v,\ X_2/X_0=v^2,\ X_3/X_0=v^3\)</span>;
+the chart ring is exactly <span class="math" data-tex="\(k[v]\)">\(k[v]\)</span>, since substitution defines its inverse presentation. On the second chart it gives
+<span class="math" data-tex="\(X_2/X_3=w,\ X_1/X_3=w^2,\ X_0/X_3=w^3\)">\(X_2/X_3=w,\ X_1/X_3=w^2,\ X_0/X_3=w^3\)</span>.
+The overlap again has <span class="math" data-tex="\(w=v^{-1}\)">\(w=v^{-1}\)</span>. Thus <span class="math" data-tex="\(\nu_3\)">\(\nu_3\)</span> identifies <span class="math" data-tex="\(\mathbb P^1_k\)">\(\mathbb P^1_k\)</span> with the closed subscheme <span class="math" data-tex="\(C\)">\(C\)</span>, and its pulled-back twist is <span class="math" data-tex="\(\mathcal O(3)\)">\(\mathcal O(3)\)</span>. We established the scheme structure by chart rings, rather than just checking the set of points.</p>
+<p><strong>Example 5.3 (directions on a punctured plane).</strong> On
+<span class="math" data-tex="\(U=\mathbb A^2_k\setminus\{(0,0)\}=D(x)\cup D(y)\)">\(U=\mathbb A^2_k\setminus\{(0,0)\}=D(x)\cup D(y)\)</span>, the sections <span class="math" data-tex="\(x,y\)">\(x,y\)</span> generate <span class="math" data-tex="\(\mathcal O_U\)">\(\mathcal O_U\)</span>. They define <span class="math" data-tex="\([x:y]:U\to\mathbb P^1_k\)">\([x:y]:U\to\mathbb P^1_k\)</span>, whose chart functions are <span class="math" data-tex="\(y/x\)">\(y/x\)</span> and <span class="math" data-tex="\(x/y\)">\(x/y\)</span>. The pullback of <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span> is trivial even though the morphism varies with the direction. The sections do not generate at the origin; Exercise 6 proves that this particular morphism cannot extend there by changing its presentation.</p>
+<p><strong>Example 5.4 (a Hirzebruch surface).</strong> Let
+<span class="math" data-tex="\(S=\mathbb P^1_k\)">\(S=\mathbb P^1_k\)</span>, <span class="math" data-tex="\(\mathcal E=\mathcal O_S\oplus\mathcal O_S(1)\)">\(\mathcal E=\mathcal O_S\oplus\mathcal O_S(1)\)</span>, and <span class="math" data-tex="\(F=\mathbb P(\mathcal E)\)">\(F=\mathbb P(\mathcal E)\)</span>. It is a <span class="math" data-tex="\(\mathbb P^1\)">\(\mathbb P^1\)</span>-bundle. The two projections of <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> onto its summands yield two sections of <span class="math" data-tex="\(F\to S\)">\(F\to S\)</span>. The gluing can be seen explicitly. Write <span class="math" data-tex="\(t=X_1/X_0\)">\(t=X_1/X_0\)</span>, <span class="math" data-tex="\(u=t^{-1}\)">\(u=t^{-1}\)</span> on the base, and use the frames <span class="math" data-tex="\(e_{1,0}=X_0\)">\(e_{1,0}=X_0\)</span>, <span class="math" data-tex="\(e_{1,\infty}=X_1\)">\(e_{1,\infty}=X_1\)</span> of <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>. Thus <span class="math" data-tex="\(e_{1,\infty}=t e_{1,0}\)">\(e_{1,\infty}=t e_{1,0}\)</span>; the frame <span class="math" data-tex="\(e_0=1\)">\(e_0=1\)</span> of <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> stays fixed. For a quotient <span class="math" data-tex="\(q\)">\(q\)</span>, on the fibre chart where <span class="math" data-tex="\(q(e_0)\)">\(q(e_0)\)</span> is a frame put</p>
+<span class="math math-display" data-tex="\[
+w_0=\frac{q(e_{1,0})}{q(e_0)},\qquad
+w_\infty=\frac{q(e_{1,\infty})}{q(e_0)}=t w_0.
+\tag{5.3}
+\]">\[
+w_0=\frac{q(e_{1,0})}{q(e_0)},\qquad
+w_\infty=\frac{q(e_{1,\infty})}{q(e_0)}=t w_0.
+\tag{5.3}
+\]</span>
+<p>On the other fibre chart put <span class="math" data-tex="\(v_i=q(e_0)/q(e_{1,i})\)">\(v_i=q(e_0)/q(e_{1,i})\)</span>, giving <span class="math" data-tex="\(v_\infty=t^{-1}v_0\)">\(v_\infty=t^{-1}v_0\)</span>. On the overlap of the two fibre charts, <span class="math" data-tex="\(v_i=w_i^{-1}\)">\(v_i=w_i^{-1}\)</span>. Each base affine chart therefore carries two affine planes, glued in the fibre direction by this inversion, and across the base by (5.3). The first projection is the section <span class="math" data-tex="\(w_i=0\)">\(w_i=0\)</span>; the second is <span class="math" data-tex="\(v_i=0\)">\(v_i=0\)</span>. Exercise 5 computes their fibres and normal bundles directly.</p>
+<figure><img src="figures/hirzebruch-quotient-charts.png" alt="Two base charts and the fibre-coordinate transition for the projective bundle of O plus O(1)." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. Exact gluing data for Example 5.4. The ring isomorphisms are on the base overlap <span class="math" data-tex="\(u=t^{-1}\)">\(u=t^{-1}\)</span>, with the base coordinate inverted. The displayed fibre coordinates are defined on the charts where the indicated quotient sections are frames; on their mutual overlap, <span class="math" data-tex="\(v_i=w_i^{-1}\)">\(v_i=w_i^{-1}\)</span>. The two zero sections belong to different fibre charts. Their conormal and normal bundles follow from these precise transition factors (Solution 5); this is a chart schematic, not a drawing of all points of the surface. Original CC0 figure; reproducible source: <code>figure_sources/hirzebruch_quotient_charts.py</code>. See [Stacks] for the general projective-bundle construction and [Vakil], Section 17.2, for ruled surfaces.</em></p>
+<h2 id="6-graded-exercises">6. Graded exercises</h2>
+<p><strong>Exercise 1 — easy.</strong> Verify the scheme-theoretic image of <span class="math" data-tex="\([s:t]\mapsto[s^2:st:t^2]\)">\([s:t]\mapsto[s^2:st:t^2]\)</span>, and compute its pulled-back hyperplane bundle.</p>
+<p><strong>Exercise 2 — medium.</strong> Show that every morphism <span class="math" data-tex="\(\operatorname{Spec}R\to\mathbb P^n_{\mathbb Z}\)">\(\operatorname{Spec}R\to\mathbb P^n_{\mathbb Z}\)</span> for a local ring <span class="math" data-tex="\(R\)">\(R\)</span> factors through at least one standard chart. Express it by a unimodular coordinate vector, up to a unit.</p>
+<p><strong>Exercise 3 — medium.</strong> Describe the action of <span class="math" data-tex="\(\operatorname{PGL}_{n+1}(R)\)">\(\operatorname{PGL}_{n+1}(R)\)</span> on projective-space quotient data. Account for projective matrices whose coordinate line is nontrivial, as well as matrices in <span class="math" data-tex="\(\operatorname{GL}_{n+1}(R)\)">\(\operatorname{GL}_{n+1}(R)\)</span>.</p>
+<p><strong>Exercise 4 — medium.</strong> Compute arbitrary base change of <span class="math" data-tex="\(\operatorname{Proj}_S\mathcal A\)">\(\operatorname{Proj}_S\mathcal A\)</span>, its twists, and <span class="math" data-tex="\(\mathbb P(\mathcal E)\)">\(\mathbb P(\mathcal E)\)</span> by standard chart rings. Explain why flatness is unnecessary.</p>
+<p><strong>Exercise 5 — hard.</strong> For <span class="math" data-tex="\(F=\mathbb P(\mathcal O\oplus\mathcal O(1))\to\mathbb P^1_k\)">\(F=\mathbb P(\mathcal O\oplus\mathcal O(1))\to\mathbb P^1_k\)</span>, determine the fibres and the two sections from the summand quotients. Show that they are disjoint closed immersions, and compute their normal bundles.</p>
+<p><strong>Exercise 6 — hard.</strong> Prove that the morphism <span class="math" data-tex="\([x:y]:\mathbb A^2_k\setminus\{0\}\to\mathbb P^1_k\)">\([x:y]:\mathbb A^2_k\setminus\{0\}\to\mathbb P^1_k\)</span> cannot extend to <span class="math" data-tex="\(\mathbb A^2_k\)">\(\mathbb A^2_k\)</span>. Explain why choosing a different invertible sheaf would not repair it.</p>
+<h2 id="7-complete-solutions">7. Complete solutions</h2>
+<p><strong>Solution 1.</strong> Example 5.1 identifies the source, as a scheme, with the closed conic <span class="math" data-tex="\(V_+(X_0X_2-X_1^2)\)">\(V_+(X_0X_2-X_1^2)\)</span>. A closed immersion's scheme-theoretic image is its target closed subscheme, by <a href="closed-subschemes-and-scheme-theoretic-images.html">Closed subschemes and scheme-theoretic images</a>, Theorem 4.1, or by its quotient rings on the two charts. The pulled-back universal generating sections are <span class="math" data-tex="\(s^2,st,t^2\)">\(s^2,st,t^2\)</span>, so Theorem 1.1 identifies the pullback with <span class="math" data-tex="\(\mathcal O(2)\)">\(\mathcal O(2)\)</span>. Merely checking the quadratic relation would give containment, while the chart isomorphisms prove equality including scheme structure.</p>
+<p><strong>Solution 2.</strong> The image of the closed point belongs to some <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. Its inverse image is an open containing the maximal ideal of <span class="math" data-tex="\(R\)">\(R\)</span>. Any such open contains a principal neighbourhood <span class="math" data-tex="\(D(a)\)">\(D(a)\)</span> of that point; then <span class="math" data-tex="\(a\)">\(a\)</span> is a unit, so <span class="math" data-tex="\(D(a)=\operatorname{Spec}R\)">\(D(a)=\operatorname{Spec}R\)</span>. Thus the entire morphism factors through <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. Its quotient line is consequently trivial, framed by <span class="math" data-tex="\(s_i\)">\(s_i\)</span>. In this frame the coordinates <span class="math" data-tex="\((a_0,\ldots,a_n)\)">\((a_0,\ldots,a_n)\)</span> include <span class="math" data-tex="\(a_i=1\)">\(a_i=1\)</span>. More generally they generate the unit ideal, equivalently at least one is a unit in the local ring. Changing the frame multiplies all coordinates by a unit, and Theorem 1.1 proves that this is exactly the equivalence relation.</p>
+<p><strong>Solution 3.</strong> Put <span class="math" data-tex="\(N=n+1\)">\(N=n+1\)</span>. A scheme model of <span class="math" data-tex="\(\operatorname{PGL}_N\)">\(\operatorname{PGL}_N\)</span> is the determinant nonvanishing open in <span class="math" data-tex="\(\mathbb P^{N^2-1}_{\mathbb Z}\)">\(\mathbb P^{N^2-1}_{\mathbb Z}\)</span>. By Theorem 1.1 its <span class="math" data-tex="\(R\)">\(R\)</span>-points are represented by an invertible module <span class="math" data-tex="\(M\)">\(M\)</span> and a matrix giving an isomorphism</p>
+<span class="math math-display" data-tex="\[
+\alpha:R^N\xrightarrow{\sim}M\otimes_R R^N,
+\tag{7.1}
+\]">\[
+\alpha:R^N\xrightarrow{\sim}M\otimes_R R^N,
+\tag{7.1}
+\]</span>
+<p>up to isomorphism of <span class="math" data-tex="\(M\)">\(M\)</span>. Indeed, the determinant is a section of <span class="math" data-tex="\(M^{\otimes N}\)">\(M^{\otimes N}\)</span>; its nonvanishing means it is a frame everywhere. After locally framing <span class="math" data-tex="\(M\)">\(M\)</span>, the usual adjugate formula proves that this is equivalent to (7.1). Its entries generate <span class="math" data-tex="\(M\)">\(M\)</span>, since otherwise they would all vanish in some residue fibre and so would the determinant. Conversely these conditions give a point in the displayed open.</p>
+<p>Tensoring the line modules and composing the matrices defines multiplication, locally ordinary matrix multiplication. The inverse uses the dual line and <span class="math" data-tex="\(1_{M^{-1}}\otimes\alpha^{-1}:R^N\to M^{-1}\otimes R^N\)">\(1_{M^{-1}}\otimes\alpha^{-1}:R^N\to M^{-1}\otimes R^N\)</span>; identity uses <span class="math" data-tex="\(M=R\)">\(M=R\)</span> and the identity matrix. These constructions satisfy the group laws on local frames and thus globally, giving the projective linear group model. Locally framing <span class="math" data-tex="\(M\)">\(M\)</span> lifts every such projective matrix to an invertible matrix, and two lifts differ by a scalar unit. Conversely local lifts differing by scalar units glue their coordinate lines and matrices. This identifies the model with the usual sheaf quotient of <span class="math" data-tex="\(\operatorname{GL}_N\)">\(\operatorname{GL}_N\)</span> by scalar units, explaining the name <span class="math" data-tex="\(\operatorname{PGL}_N\)">\(\operatorname{PGL}_N\)</span>.</p>
+<p>For a quotient <span class="math" data-tex="\(q:\mathcal O_T^N\twoheadrightarrow L\)">\(q:\mathcal O_T^N\twoheadrightarrow L\)</span> on an <span class="math" data-tex="\(R\)">\(R\)</span>-scheme <span class="math" data-tex="\(T\)">\(T\)</span>, pull (7.1) to <span class="math" data-tex="\(T\)">\(T\)</span> and take the quotient</p>
+<span class="math math-display" data-tex="\[
+\mathcal O_T^N\xrightarrow{\ 1\otimes\alpha^{-1}\ }
+M_T^{-1}\otimes\mathcal O_T^N
+\xrightarrow{\ 1\otimes q\ }M_T^{-1}\otimes L.
+\tag{7.2}
+\]">\[
+\mathcal O_T^N\xrightarrow{\ 1\otimes\alpha^{-1}\ }
+M_T^{-1}\otimes\mathcal O_T^N
+\xrightarrow{\ 1\otimes q\ }M_T^{-1}\otimes L.
+\tag{7.2}
+\]</span>
+<p>Both arrows have the required isomorphism or surjectivity property. The construction respects isomorphisms of <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(L\)">\(L\)</span>, and commutes with base change. In frames it is <span class="math" data-tex="\(q\mapsto qA^{-1}\)">\(q\mapsto qA^{-1}\)</span>; applying <span class="math" data-tex="\(B\)">\(B\)</span>, then <span class="math" data-tex="\(A\)">\(A\)</span>, gives <span class="math" data-tex="\(qB^{-1}A^{-1}=q(AB)^{-1}\)">\(qB^{-1}A^{-1}=q(AB)^{-1}\)</span>, so it is a left action. Scalar matrices change only the chosen frame of the quotient. When <span class="math" data-tex="\(M\)">\(M\)</span> is trivial this is the familiar action of <span class="math" data-tex="\(\operatorname{GL}_N(R)/R^\times\)">\(\operatorname{GL}_N(R)/R^\times\)</span>. Over a general ring, that description covers the classes with trivial coordinate line; the full description (7.1) does not assume every invertible module trivial.</p>
+<p><strong>Solution 4.</strong> On <span class="math" data-tex="\(U=\operatorname{Spec}R\subset S\)">\(U=\operatorname{Spec}R\subset S\)</span> and <span class="math" data-tex="\(V=\operatorname{Spec}B\subset S&#x27;\)">\(V=\operatorname{Spec}B\subset S&#x27;\)</span> mapping into <span class="math" data-tex="\(U\)">\(U\)</span>, write <span class="math" data-tex="\(A=\mathcal A(U)\)">\(A=\mathcal A(U)\)</span>. The chart over <span class="math" data-tex="\(V\)">\(V\)</span> associated to <span class="math" data-tex="\(f\in A_d\)">\(f\in A_d\)</span> has ring <span class="math" data-tex="\(A_{(f)}\otimes_R B\)">\(A_{(f)}\otimes_R B\)</span>. Lemma 3.1 identifies this with <span class="math" data-tex="\((A\otimes_R B)_{(f\otimes1)}\)">\((A\otimes_R B)_{(f\otimes1)}\)</span>, and these charts cover the new Proj. The degree-<span class="math" data-tex="\(m\)">\(m\)</span> twist has module
+<span class="math" data-tex="\((A(m)_f)_0\otimes_R B\)">\((A(m)_f)_0\otimes_R B\)</span>, identified by the same colimit with the new twist module. The overlap localizations are identical, so gluing gives (3.5) and the twist formula. For <span class="math" data-tex="\(A=\operatorname{Sym}E\)">\(A=\operatorname{Sym}E\)</span>, its tensor product is <span class="math" data-tex="\(\operatorname{Sym}_B(E\otimes_R B)\)">\(\operatorname{Sym}_B(E\otimes_R B)\)</span> by the symmetric universal property, giving the projective-bundle formula. The argument uses preservation of colimits by tensor product, not preservation of kernels; therefore it works without flatness.</p>
+<p><strong>Solution 5.</strong> Base change to <span class="math" data-tex="\(\operatorname{Spec}\kappa(s)\)">\(\operatorname{Spec}\kappa(s)\)</span> gives <span class="math" data-tex="\(\mathbb P(\kappa(s)^2)=\mathbb P^1_{\kappa(s)}\)">\(\mathbb P(\kappa(s)^2)=\mathbb P^1_{\kappa(s)}\)</span> for each base point <span class="math" data-tex="\(s\)">\(s\)</span>. The summand projections give its two distinct quotient points. To check closed immersions globally, each projection <span class="math" data-tex="\(\mathcal E\twoheadrightarrow L_i\)">\(\mathcal E\twoheadrightarrow L_i\)</span> induces a surjection of symmetric algebras. The corresponding Proj is a closed subscheme by the quotient chart argument after Theorem 2.1. Since <span class="math" data-tex="\(\operatorname{Proj}_S\operatorname{Sym}L_i\cong S\)">\(\operatorname{Proj}_S\operatorname{Sym}L_i\cong S\)</span> (locally <span class="math" data-tex="\(\operatorname{Proj}R[z]=\operatorname{Spec}R\)">\(\operatorname{Proj}R[z]=\operatorname{Spec}R\)</span>, with compatible transitions), this closed subscheme is the indicated section. Their supports are disjoint in every fibre, hence globally; their scheme-theoretic intersection is empty as well.</p>
+<p>For the first section, an affine neighbourhood is <span class="math" data-tex="\(\operatorname{Spec}k[t,w_0]\)">\(\operatorname{Spec}k[t,w_0]\)</span> on <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and <span class="math" data-tex="\(\operatorname{Spec}k[u,w_\infty]\)">\(\operatorname{Spec}k[u,w_\infty]\)</span> on <span class="math" data-tex="\(U_\infty\)">\(U_\infty\)</span>. Its ideal is generated by <span class="math" data-tex="\(w_i\)">\(w_i\)</span>. Modulo its square, the generators have transition <span class="math" data-tex="\(\overline w_\infty=t\overline w_0\)">\(\overline w_\infty=t\overline w_0\)</span>, so its conormal line is <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>. Each equation is a non-zero-divisor in its polynomial chart, so this is a Cartier section; the normal bundle, the dual conormal, is <span class="math" data-tex="\(\mathcal O(-1)\)">\(\mathcal O(-1)\)</span>. For the second section use <span class="math" data-tex="\(v_i\)">\(v_i\)</span>, with <span class="math" data-tex="\(v_\infty=t^{-1}v_0\)">\(v_\infty=t^{-1}v_0\)</span>. Its conormal is <span class="math" data-tex="\(\mathcal O(-1)\)">\(\mathcal O(-1)\)</span>, and its normal bundle is <span class="math" data-tex="\(\mathcal O(1)\)">\(\mathcal O(1)\)</span>. These signs follow from the quotient convention and the stated frame transitions.</p>
+<p><strong>Solution 6.</strong> On the punctured <span class="math" data-tex="\(x\)">\(x\)</span>-axis the morphism is constantly <span class="math" data-tex="\([1:0]\)">\([1:0]\)</span>; on the punctured <span class="math" data-tex="\(y\)">\(y\)</span>-axis it is constantly <span class="math" data-tex="\([0:1]\)">\([0:1]\)</span>. If an extension existed, its restriction to the entire <span class="math" data-tex="\(x\)">\(x\)</span>-axis would have inverse image of the closed point <span class="math" data-tex="\([1:0]\)">\([1:0]\)</span> a closed set containing the dense open punctured axis. That inverse image would be the whole axis, so the origin would map to <span class="math" data-tex="\([1:0]\)">\([1:0]\)</span>. The other axis would force the origin to map to <span class="math" data-tex="\([0:1]\)">\([0:1]\)</span>, a contradiction. This uses the dense principal open in <span class="math" data-tex="\(\operatorname{Spec}k[z]\)">\(\operatorname{Spec}k[z]\)</span>, so also holds over finite fields. It rules out every extension as a morphism, independently of how its quotient line or coordinate sections might be presented.</p>
+<h2 id="references-and-proof-dependencies">References and proof dependencies</h2>
+<p>[Stacks] The Stacks Project authors; statements and proofs checked in the GFDL-1.2 <em>Unofficial Stacks Project AI Drafts</em>, pinned source revision <code>565b10e987aba5969b21145a0833f42d69f96790</code>. Relevant statements are <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-projective-space">projective space, Tag 01NE</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-apply">maps into Proj, Tag 01NA</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-proj-base-change">affine base change, Tag 01NT</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-relative-proj">relative Proj, Tag 01NY</a>, <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#lemma-relative-proj-base-change">relative base change, Tag 01O3</a>, and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/constructions.html#definition-projective-bundle">projective bundles, Tag 01OB</a>. The standard-covering and relative universal-property arguments were also compared. All assigned proofs are independently written above; no source wording was imported.</p>
+<p>[Vakil] Ravi Vakil, <em>The Rising Sea: Foundations of Algebraic Geometry</em>, July 27, 2024 version, Sections 15.2, 16.1 and 17.2. Used for comparison of generating sections, maps to projective space, relative Proj and ruled surfaces. The book uses a dual in its vector-bundle projectivization convention; our explicit quotient convention is (4.1). No protected book text or illustrations are reproduced. <a href="https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf">Consulted public draft</a> (personal viewing and downloading only; no redistribution or derivative works).</p>
+<p>The four assigned results are proved in Theorems 1.1, 2.1, 3.2 and 4.1, respectively. The chart-level base-change proof is Lemma 3.1. Dependencies on earlier course results are given at the points of use; all six exercises have complete solutions. Mathematical and reader checks were performed by the writing AI; no independent review is claimed.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="proj-of-a-graded-ring.html">← Proj of a graded ring</a></span><a href="./">Course contents</a><span></span></nav>
+<p class="small source-link"><a href="src/projective-space-relative-proj-and-maps-to-projective-space.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/AG-SS">Repository</a></nav>
+</footer>
+</body>
+</html>

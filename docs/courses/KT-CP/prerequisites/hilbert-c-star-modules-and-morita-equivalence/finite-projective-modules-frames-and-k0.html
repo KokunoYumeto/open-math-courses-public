@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="reader-source-sha256" content="C725EA1D8AC99DF16B8E494309AEBE02B60B1018449DB47203624EFCFB2A0C62">
+<title>Finite projective modules, frames and \(K_0\) — Crossed products and groupoid C*-algebras</title>
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "displayMath": [["$$", "$$"], ["\\[", "\\]"]], "processEscapes": true, "macros": {"Eta": "\\mathrm{H}"}}, "options": {"ignoreHtmlClass": "no-math", "processHtmlClass": "math"}};</script>
+<script defer src="../../assets/mathjax/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#lesson">Skip to lesson</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="../../index.html">Crossed products and groupoid C*-algebras</a></div></header>
+<main><nav class="crumbs" aria-label="Breadcrumb"><a href="../../index.html">Course contents</a><span aria-hidden="true"> / </span><span>prerequisite-hilbert-c-star-modules-and-morita-equivalence/finite-projective-modules-frames-and-k0</span></nav>
+<article id="lesson" class="lesson"><h1 id="finite-projective-modules-frames-and-k_0">Finite projective modules, frames and <span class="math" data-tex="\(K_0\)">\(K_0\)</span></h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A Hermitian vector bundle on a compact space can be described by finitely many sections which reconstruct every section. The same reconstruction identity makes sense over a C*-algebra. It produces a matrix projection, identifies the module with the range of that projection, and explains why projective modules enter <span class="math" data-tex="\(K\)">\(K\)</span>-theory.</p>
+<p>We use right Hilbert modules and inner products linear in the second variable. The preceding lessons <a href="adjointable-operators.html">Adjointable operators</a> and <a href="compact-operators-multipliers-and-the-strict-topology.html">Compact operators, multipliers and the strict topology</a> supply the closed-range theorem and the calculus of <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span> and <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span>. In particular,</p>
+<span class="math math-display" data-tex="\[
+\theta_{x,y}z=x\langle y,z\rangle,\qquad
+\theta_{x,y}^*=\theta_{y,x},\qquad
+\overline{\mathcal K(E)E}=E.
+\]">\[
+\theta_{x,y}z=x\langle y,z\rangle,\qquad
+\theta_{x,y}^*=\theta_{y,x},\qquad
+\overline{\mathcal K(E)E}=E.
+\]</span>
+<p>The coefficient algebra is unital except where a different hypothesis is explicitly stated. The zero module is included: its frame can be empty, and its identity operator is zero.</p>
+<h2 id="1-reconstruction-by-a-finite-frame">1. Reconstruction by a finite frame</h2>
+<p><span id="definition-1-1"></span><strong>Definition 1.1.</strong> A finite Parseval frame for <span class="math" data-tex="\(E\)">\(E\)</span> is a finite family <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span> such that</p>
+<span id="equation-1-1"></span><span class="math math-display" data-tex="\[
+\sum_{i=1}^n\theta_{x_i,x_i}=1_E.
+\tag{1.1}
+\]">\[
+\sum_{i=1}^n\theta_{x_i,x_i}=1_E.
+\tag{1.1}
+\]</span>
+<p>Thus every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span> satisfies <span class="math" data-tex="\(x=\sum_i x_i\langle x_i,x\rangle\)">\(x=\sum_i x_i\langle x_i,x\rangle\)</span>. A frame need not be a basis: the coefficients in a representation of <span class="math" data-tex="\(x\)">\(x\)</span> can be nonunique, and the vectors need not be orthogonal.</p>
+<p>For an arbitrary finite family, define its synthesis and analysis operators by</p>
+<span class="math math-display" data-tex="\[
+\Phi:A^n\longrightarrow E,\quad \Phi(a)=\sum_i x_i a_i,
+\qquad
+\Lambda:E\longrightarrow A^n,\quad
+\Lambda x=(\langle x_i,x\rangle)_i.
+\]">\[
+\Phi:A^n\longrightarrow E,\quad \Phi(a)=\sum_i x_i a_i,
+\qquad
+\Lambda:E\longrightarrow A^n,\quad
+\Lambda x=(\langle x_i,x\rangle)_i.
+\]</span>
+<p>They are bounded. For example, each coordinate of <span class="math" data-tex="\(\Lambda x\)">\(\Lambda x\)</span> has norm at most <span class="math" data-tex="\(\|x_i\|\|x\|\)">\(\|x_i\|\|x\|\)</span>, and the square of the finite-column norm is bounded by the sum of the squared coordinate norms. Direct calculation gives</p>
+<span class="math math-display" data-tex="\[
+\langle\Phi a,x\rangle=\sum_i a_i^*\langle x_i,x\rangle
+=\langle a,\Lambda x\rangle.
+\]">\[
+\langle\Phi a,x\rangle=\sum_i a_i^*\langle x_i,x\rangle
+=\langle a,\Lambda x\rangle.
+\]</span>
+<p>Consequently <span class="math" data-tex="\(\Phi^*=\Lambda\)">\(\Phi^*=\Lambda\)</span>. This calculation also works for a nonunital coefficient algebra.</p>
+<p><span id="theorem-1-2"></span><strong>Theorem 1.2 (The frame projection).</strong> For any C*-algebra <span class="math" data-tex="\(A\)">\(A\)</span>, a finite Parseval frame determines a projection</p>
+<span id="equation-1-2"></span><span class="math math-display" data-tex="\[
+P=\Lambda\Phi=(\langle x_i,x_j\rangle)_{i,j}\in M_n(A).
+\tag{1.2}
+\]">\[
+P=\Lambda\Phi=(\langle x_i,x_j\rangle)_{i,j}\in M_n(A).
+\tag{1.2}
+\]</span>
+<p>The analysis operator is a unitary <span class="math" data-tex="\(E\longrightarrow PA^n\)">\(E\longrightarrow PA^n\)</span>, with inverse the restriction of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>.</p>
+<p><em>Proof.</em> The frame identity says <span class="math" data-tex="\(\Phi\Lambda=1_E\)">\(\Phi\Lambda=1_E\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+P^2=\Lambda\Phi\Lambda\Phi=P,\qquad
+P^*=(\Phi^*\Phi)^*=P.
+\]">\[
+P^2=\Lambda\Phi\Lambda\Phi=P,\qquad
+P^*=(\Phi^*\Phi)^*=P.
+\]</span>
+<p>Moreover <span class="math" data-tex="\(P\Lambda=\Lambda\)">\(P\Lambda=\Lambda\)</span>, so the analysis operator takes values in <span class="math" data-tex="\(PA^n\)">\(PA^n\)</span>. For <span class="math" data-tex="\(x,y\in E\)">\(x,y\in E\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\langle\Lambda x,\Lambda y\rangle
+=\langle x,\Phi\Lambda y\rangle
+=\langle x,y\rangle.
+\]">\[
+\langle\Lambda x,\Lambda y\rangle
+=\langle x,\Phi\Lambda y\rangle
+=\langle x,y\rangle.
+\]</span>
+<p>If <span class="math" data-tex="\(a=Pa\)">\(a=Pa\)</span>, then <span class="math" data-tex="\(\Lambda\Phi a=Pa=a\)">\(\Lambda\Phi a=Pa=a\)</span>. The two restricted maps are inverse and preserve the inner product. ∎</p>
+<p>Conversely, let <span class="math" data-tex="\(p\in M_n(A)\)">\(p\in M_n(A)\)</span> be a projection. Its range <span class="math" data-tex="\(pA^n\)">\(pA^n\)</span> is closed, since it is the range of a bounded projection on the complete module <span class="math" data-tex="\(A^n\)">\(A^n\)</span>. It has the inherited inner product. The columns <span class="math" data-tex="\(z_i\)">\(z_i\)</span> of <span class="math" data-tex="\(p\)">\(p\)</span> belong to <span class="math" data-tex="\(pA^n\)">\(pA^n\)</span>, even when <span class="math" data-tex="\(A\)">\(A\)</span> is nonunital. Writing these columns formally as <span class="math" data-tex="\(pe_i\)">\(pe_i\)</span>, we have</p>
+<span id="equation-1-3"></span><span class="math math-display" data-tex="\[
+\sum_i z_i\langle z_i,a\rangle=p^2a=a
+\quad(a\in pA^n).
+\tag{1.3}
+\]">\[
+\sum_i z_i\langle z_i,a\rangle=p^2a=a
+\quad(a\in pA^n).
+\tag{1.3}
+\]</span>
+<p>Here the symbols <span class="math" data-tex="\(e_i\)">\(e_i\)</span> refer to coordinate columns in the unitization; the actual vectors <span class="math" data-tex="\(pe_i\)">\(pe_i\)</span> have entries in <span class="math" data-tex="\(A\)">\(A\)</span>. Thus every such projection range has a finite frame.</p>
+<p>For <span class="math" data-tex="\(p=1_n\)">\(p=1_n\)</span> over a unital algebra this is the usual coordinate frame. For
+<span class="math" data-tex="\(p=\frac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)">\(p=\frac12\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix}\)</span> over <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, its two frame vectors are equal. Both are needed in the displayed Parseval identity with this normalization, but they are certainly not linearly independent.</p>
+<h2 id="2-compact-identity-and-algebraic-finiteness">2. Compact identity and algebraic finiteness</h2>
+<p><span id="lemma-2-1"></span><strong>Lemma 2.1 (Normalizing generators).</strong> If a Hilbert <span class="math" data-tex="\(A\)">\(A\)</span>-module is algebraically generated by <span class="math" data-tex="\(x_1,\ldots,x_n\)">\(x_1,\ldots,x_n\)</span>, then it has a finite Parseval frame. This implication does not require <span class="math" data-tex="\(A\)">\(A\)</span> to be unital.</p>
+<p><em>Proof.</em> The associated synthesis operator <span class="math" data-tex="\(\Phi:A^n\to E\)">\(\Phi:A^n\to E\)</span> is surjective and adjointable. Its range is therefore closed. The closed-range theorem gives an orthogonal decomposition</p>
+<span class="math math-display" data-tex="\[
+A^n=\ker\Phi\oplus\operatorname{ran}\Phi^*,
+\]">\[
+A^n=\ker\Phi\oplus\operatorname{ran}\Phi^*,
+\]</span>
+<p>and the restriction of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> to <span class="math" data-tex="\(\operatorname{ran}\Phi^*\)">\(\operatorname{ran}\Phi^*\)</span> is invertible onto <span class="math" data-tex="\(E\)">\(E\)</span>, with adjointable inverse. It follows that <span class="math" data-tex="\(S=\Phi\Phi^*\)">\(S=\Phi\Phi^*\)</span> is positive and invertible in <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>. Equivalently this is the surjective case of that theorem. Put <span class="math" data-tex="\(z_i=S^{-1/2}x_i\)">\(z_i=S^{-1/2}x_i\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\sum_i\theta_{z_i,z_i}
+=S^{-1/2}\left(\sum_i\theta_{x_i,x_i}\right)S^{-1/2}
+=S^{-1/2}SS^{-1/2}=1_E.
+\]">\[
+\sum_i\theta_{z_i,z_i}
+=S^{-1/2}\left(\sum_i\theta_{x_i,x_i}\right)S^{-1/2}
+=S^{-1/2}SS^{-1/2}=1_E.
+\]</span>
+<p>These are the required frame vectors. ∎</p>
+<p>The word “algebraically” matters: every element must be an exact finite coefficient combination of the displayed generators. A dense coefficient span is a weaker assertion.</p>
+<p><span id="theorem-2-2"></span><strong>Theorem 2.2 (Four descriptions).</strong> For a Hilbert module over a unital C*-algebra, the following conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(E\)">\(E\)</span> has a finite Parseval frame.</li>
+<li><span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> is unital.</li>
+<li><span class="math" data-tex="\(E\)">\(E\)</span> is unitarily isomorphic to <span class="math" data-tex="\(pA^n\)">\(pA^n\)</span> for a projection <span class="math" data-tex="\(p\in M_n(A)\)">\(p\in M_n(A)\)</span>.</li>
+<li>The underlying module is algebraically finitely generated and projective.</li>
+</ol>
+<p>In this case <span class="math" data-tex="\(\mathcal K(E)=\mathcal L(E)\)">\(\mathcal K(E)=\mathcal L(E)\)</span>. In fact, algebraic finite generation alone implies all four conditions.</p>
+<p><em>Proof.</em> A frame writes <span class="math" data-tex="\(1_E\)">\(1_E\)</span> as a finite sum of rank-one operators, so <span class="math" data-tex="\(1_E\in\mathcal K(E)\)">\(1_E\in\mathcal K(E)\)</span>. Since <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> is an ideal of <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>, it then contains every <span class="math" data-tex="\(T=T1_E\)">\(T=T1_E\)</span>.</p>
+<p>If <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> has a unit <span class="math" data-tex="\(u\)">\(u\)</span>, then <span class="math" data-tex="\(u\)">\(u\)</span> acts as the identity on <span class="math" data-tex="\(\mathcal K(E)E\)">\(\mathcal K(E)E\)</span>. This subspace is dense in <span class="math" data-tex="\(E\)">\(E\)</span>, so <span class="math" data-tex="\(u=1_E\)">\(u=1_E\)</span>. Choose a finite-rank operator</p>
+<span class="math math-display" data-tex="\[
+T=\sum_{i=1}^n\theta_{a_i,b_i},
+\qquad \|1_E-T\|&lt;1.
+\]">\[
+T=\sum_{i=1}^n\theta_{a_i,b_i},
+\qquad \|1_E-T\|&lt;1.
+\]</span>
+<p>The Neumann series makes <span class="math" data-tex="\(T\)">\(T\)</span> invertible in <span class="math" data-tex="\(\mathcal L(E)\)">\(\mathcal L(E)\)</span>. For <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>,</p>
+<span class="math math-display" data-tex="\[
+x=T(T^{-1}x)=\sum_i a_i\langle b_i,T^{-1}x\rangle.
+\]">\[
+x=T(T^{-1}x)=\sum_i a_i\langle b_i,T^{-1}x\rangle.
+\]</span>
+<p>Thus <span class="math" data-tex="\(a_1,\ldots,a_n\)">\(a_1,\ldots,a_n\)</span> generate <span class="math" data-tex="\(E\)">\(E\)</span> algebraically, and Lemma 2.1 supplies a frame.</p>
+<p>Theorem 1.2 gives the projection description from a frame. A projection range is an algebraic direct summand</p>
+<span class="math math-display" data-tex="\[
+A^n=pA^n\oplus(1-p)A^n
+\]">\[
+A^n=pA^n\oplus(1-p)A^n
+\]</span>
+<p>of a finite free module, so it is finitely generated projective. Such a module is in particular finitely generated, and Lemma 2.1 closes the cycle. ∎</p>
+<p>The first three conditions and their equivalence remain valid for nonunital <span class="math" data-tex="\(A\)">\(A\)</span>. The algebraic terminology for projectivity over a nonunital ring depends on the chosen category of modules; we shall use projection ranges and finite frames when discussing that case.</p>
+<p>For a unital algebra, a finite projective Hilbert module is unusually rigid: every algebraic module map from it to another Hilbert module is bounded and adjointable. If <span class="math" data-tex="\(x_i\)">\(x_i\)</span> is a frame and <span class="math" data-tex="\(T\)">\(T\)</span> is such a map, then</p>
+<span id="equation-2-1"></span><span class="math math-display" data-tex="\[
+Tx=\sum_i Tx_i\langle x_i,x\rangle,\qquad
+T^*y=\sum_i x_i\langle Tx_i,y\rangle.
+\tag{2.1}
+\]">\[
+Tx=\sum_i Tx_i\langle x_i,x\rangle,\qquad
+T^*y=\sum_i x_i\langle Tx_i,y\rangle.
+\tag{2.1}
+\]</span>
+<p>The finite sums prove boundedness and the adjoint identity directly. General Hilbert modules do not have this property.</p>
+<h2 id="3-existence-and-uniqueness-of-the-metric">3. Existence and uniqueness of the metric</h2>
+<p>An algebraic finite projective module is initially a summand of a finite free module. Its presenting idempotent need not be self-adjoint. We first replace it by a projection without assuming a Hilbert structure on the module.</p>
+<p><span id="lemma-3-1"></span><strong>Lemma 3.1.</strong> Every idempotent <span class="math" data-tex="\(e\in M_n(A)\)">\(e\in M_n(A)\)</span>, for unital <span class="math" data-tex="\(A\)">\(A\)</span>, is similar to a projection.</p>
+<p><em>Proof.</em> Set</p>
+<span class="math math-display" data-tex="\[
+s=e^*e+(1-e^*)(1-e).
+\]">\[
+s=e^*e+(1-e^*)(1-e).
+\]</span>
+<p>The identity</p>
+<span class="math math-display" data-tex="\[
+2s-1=(2e-1)^*(2e-1)\geq0
+\]">\[
+2s-1=(2e-1)^*(2e-1)\geq0
+\]</span>
+<p>shows that <span class="math" data-tex="\(s\geq\frac12 1\)">\(s\geq\frac12 1\)</span>, so <span class="math" data-tex="\(s\)">\(s\)</span> is positive and invertible. Using <span class="math" data-tex="\(e^2=e\)">\(e^2=e\)</span>, multiplication gives</p>
+<span class="math math-display" data-tex="\[
+se=e^*e=e^*s.
+\]">\[
+se=e^*e=e^*s.
+\]</span>
+<p>Therefore</p>
+<span class="math math-display" data-tex="\[
+p=s^{1/2}es^{-1/2}
+\]">\[
+p=s^{1/2}es^{-1/2}
+\]</span>
+<p>satisfies <span class="math" data-tex="\(p^2=p\)">\(p^2=p\)</span> and</p>
+<span class="math math-display" data-tex="\[
+p^*=s^{-1/2}e^*s^{1/2}
+=s^{1/2}es^{-1/2}=p.
+\]">\[
+p^*=s^{-1/2}e^*s^{1/2}
+=s^{1/2}es^{-1/2}=p.
+\]</span>
+<p>Multiplication by <span class="math" data-tex="\(s^{1/2}\)">\(s^{1/2}\)</span> identifies <span class="math" data-tex="\(eA^n\)">\(eA^n\)</span> with <span class="math" data-tex="\(pA^n\)">\(pA^n\)</span>. ∎</p>
+<p><span id="theorem-3-2"></span><strong>Theorem 3.2 (Hilbert structures).</strong> Every algebraic finite projective module over a unital C*-algebra admits a complete Hilbert-module inner product. Any two such inner products are related by a unitary module isomorphism. More precisely, on a fixed underlying module there is a positive invertible <span class="math" data-tex="\(R\)">\(R\)</span>, adjointable for the first inner product, such that</p>
+<span id="equation-3-1"></span><span class="math math-display" data-tex="\[
+\langle x,y\rangle_2=\langle x,Ry\rangle_1.
+\tag{3.1}
+\]">\[
+\langle x,y\rangle_2=\langle x,Ry\rangle_1.
+\tag{3.1}
+\]</span>
+<p><em>Proof.</em> Write the algebraic module as <span class="math" data-tex="\(eA^n\)">\(eA^n\)</span>. Lemma 3.1 identifies it with the closed Hilbert module <span class="math" data-tex="\(pA^n\)">\(pA^n\)</span>. Pulling back its inner product gives existence and completeness.</p>
+<p>For uniqueness, let <span class="math" data-tex="\(E_1,E_2\)">\(E_1,E_2\)</span> denote the same algebraic module with the two complete metrics. Each has a finite frame by Theorem 2.2. Apply (2.1) to the algebraic identity <span class="math" data-tex="\(S:E_1\to E_2\)">\(S:E_1\to E_2\)</span>. It is bounded and adjointable, and the same argument applies to its inverse. In particular <span class="math" data-tex="\(R=S^*S\)">\(R=S^*S\)</span> is positive and invertible in <span class="math" data-tex="\(\mathcal L(E_1)\)">\(\mathcal L(E_1)\)</span>, since</p>
+<span class="math math-display" data-tex="\[
+R^{-1}=S^{-1}(S^{-1})^*.
+\]">\[
+R^{-1}=S^{-1}(S^{-1})^*.
+\]</span>
+<p>The adjoint identity gives (3.1). Now</p>
+<span class="math math-display" data-tex="\[
+U=SR^{-1/2}:E_1\longrightarrow E_2
+\]">\[
+U=SR^{-1/2}:E_1\longrightarrow E_2
+\]</span>
+<p>is invertible and satisfies <span class="math" data-tex="\(U^*U=1_{E_1}\)">\(U^*U=1_{E_1}\)</span>; its inverse is <span class="math" data-tex="\(U^*\)">\(U^*\)</span>, so <span class="math" data-tex="\(UU^*=1_{E_2}\)">\(UU^*=1_{E_2}\)</span>. This is the required unitary. ∎</p>
+<p>Uniqueness concerns the isomorphism class of the metric, not equality of metrics. On <span class="math" data-tex="\(A\)">\(A\)</span>, for example, <span class="math" data-tex="\(\langle a,b\rangle_h=a^*hb\)">\(\langle a,b\rangle_h=a^*hb\)</span> is a complete Hilbert structure for any positive invertible <span class="math" data-tex="\(h\in A\)">\(h\in A\)</span>. Multiplication by <span class="math" data-tex="\(h^{1/2}\)">\(h^{1/2}\)</span> is unitary from this metric to the standard one.</p>
+<p>Similarity of arbitrary idempotents must not be confused with unitary conjugacy. In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, the non-self-adjoint idempotent
+<span class="math" data-tex="\(\begin{pmatrix}1&amp;1\\0&amp;0\end{pmatrix}\)">\(\begin{pmatrix}1&amp;1\\0&amp;0\end{pmatrix}\)</span> is similar to a projection, but cannot be unitarily conjugate to one: unitary conjugation preserves self-adjointness.</p>
+<h2 id="4-projection-equivalence-and-the-module-definition-of-k_0">4. Projection equivalence and the module definition of <span class="math" data-tex="\(K_0\)">\(K_0\)</span></h2>
+<p>For projections <span class="math" data-tex="\(p\in M_n(A)\)">\(p\in M_n(A)\)</span> and <span class="math" data-tex="\(q\in M_m(A)\)">\(q\in M_m(A)\)</span>, write <span class="math" data-tex="\(p\sim q\)">\(p\sim q\)</span> if there exists <span class="math" data-tex="\(v\in M_{m,n}(A)\)">\(v\in M_{m,n}(A)\)</span> such that</p>
+<span id="equation-4-1"></span><span class="math math-display" data-tex="\[
+v^*v=p,\qquad vv^*=q.
+\tag{4.1}
+\]">\[
+v^*v=p,\qquad vv^*=q.
+\tag{4.1}
+\]</span>
+<p>This is Murray–von Neumann equivalence, with different matrix sizes allowed. Such a <span class="math" data-tex="\(v\)">\(v\)</span> automatically satisfies <span class="math" data-tex="\(v=qvp\)">\(v=qvp\)</span>.</p>
+<p><span id="theorem-4-1"></span><strong>Theorem 4.1.</strong> Over a unital C*-algebra,</p>
+<span class="math math-display" data-tex="\[
+pA^n\cong qA^m\text{ unitarily}\quad\Longleftrightarrow\quad p\sim q.
+\]">\[
+pA^n\cong qA^m\text{ unitarily}\quad\Longleftrightarrow\quad p\sim q.
+\]</span>
+<p>An algebraic module isomorphism between these modules exists if and only if a unitary one exists.</p>
+<p><em>Proof.</em> A matrix <span class="math" data-tex="\(v\)">\(v\)</span> satisfying (4.1) maps <span class="math" data-tex="\(pA^n\)">\(pA^n\)</span> into <span class="math" data-tex="\(qA^m\)">\(qA^m\)</span>, preserves inner products, and has inverse <span class="math" data-tex="\(v^*\)">\(v^*\)</span>.</p>
+<p>Conversely, extend a unitary <span class="math" data-tex="\(U:pA^n\to qA^m\)">\(U:pA^n\to qA^m\)</span> to <span class="math" data-tex="\(A^n\)">\(A^n\)</span> by <span class="math" data-tex="\(Up\)">\(Up\)</span>. Since <span class="math" data-tex="\(A\)">\(A\)</span> is unital, its values on coordinate vectors are the columns of a matrix <span class="math" data-tex="\(v\in M_{m,n}(A)\)">\(v\in M_{m,n}(A)\)</span>. We have <span class="math" data-tex="\(v=qvp\)">\(v=qvp\)</span>. On <span class="math" data-tex="\(pA^n\)">\(pA^n\)</span>, <span class="math" data-tex="\(v^*v\)">\(v^*v\)</span> is the identity; it is zero on <span class="math" data-tex="\((1-p)A^n\)">\((1-p)A^n\)</span>. Thus <span class="math" data-tex="\(v^*v=p\)">\(v^*v=p\)</span>, and similarly <span class="math" data-tex="\(vv^*=q\)">\(vv^*=q\)</span>.</p>
+<p>Finally let <span class="math" data-tex="\(S:pA^n\to qA^m\)">\(S:pA^n\to qA^m\)</span> be an algebraic isomorphism. Formula (2.1) makes <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(S^{-1}\)">\(S^{-1}\)</span> adjointable. The positive normalization <span class="math" data-tex="\(S(S^*S)^{-1/2}\)">\(S(S^*S)^{-1/2}\)</span> is unitary by the proof of Theorem 3.2. ∎</p>
+<p>Direct sum corresponds to block sum:</p>
+<span class="math math-display" data-tex="\[
+pA^n\oplus qA^m\cong(p\oplus q)A^{n+m}.
+\]">\[
+pA^n\oplus qA^m\cong(p\oplus q)A^{n+m}.
+\]</span>
+<p>Consequently the commutative monoid of finite projective Hilbert-module isomorphism classes is exactly the projection monoid <span class="math" data-tex="\(V(A)\)">\(V(A)\)</span>. We do not identify projections merely because they become equal in a group: their equivalence here is the actual relation (4.1).</p>
+<p>Define the Grothendieck group of this monoid using pairs <span class="math" data-tex="\(([E],[F])\)">\(([E],[F])\)</span>. Two pairs <span class="math" data-tex="\(([E],[F])\)">\(([E],[F])\)</span> and <span class="math" data-tex="\(([E&#x27;],[F&#x27;])\)">\(([E&#x27;],[F&#x27;])\)</span> represent the same element if for some finite projective <span class="math" data-tex="\(G\)">\(G\)</span>,</p>
+<span id="equation-4-2"></span><span class="math math-display" data-tex="\[
+E\oplus F&#x27;\oplus G\cong E&#x27;\oplus F\oplus G.
+\tag{4.2}
+\]">\[
+E\oplus F&#x27;\oplus G\cong E&#x27;\oplus F\oplus G.
+\tag{4.2}
+\]</span>
+<p>Addition is componentwise direct sum, and the inverse exchanges the two entries. The projection correspondence identifies (4.2) with exactly the stabilization relation in the projection definition of <span class="math" data-tex="\(K_0(A)\)">\(K_0(A)\)</span>. We have therefore proved</p>
+<span id="equation-4-3"></span><span class="math math-display" data-tex="\[
+K_0(A)=\operatorname{Groth}\{\text{finite projective Hilbert }A\text{-modules}\}.
+\tag{4.3}
+\]">\[
+K_0(A)=\operatorname{Groth}\{\text{finite projective Hilbert }A\text{-modules}\}.
+\tag{4.3}
+\]</span>
+<p>No cancellation assumption on the monoid is used.</p>
+<p>For nonunital <span class="math" data-tex="\(A\)">\(A\)</span>, put <span class="math" data-tex="\(\widetilde A=A\oplus\mathbb C1\)">\(\widetilde A=A\oplus\mathbb C1\)</span> and let <span class="math" data-tex="\(\pi:\widetilde A\to\mathbb C\)">\(\pi:\widetilde A\to\mathbb C\)</span> be the quotient. The definition is</p>
+<span id="equation-4-4"></span><span class="math math-display" data-tex="\[
+K_0(A)=\ker\!\left(K_0(\widetilde A)
+\xrightarrow{\pi_*}K_0(\mathbb C)\cong\mathbb Z\right).
+\tag{4.4}
+\]">\[
+K_0(A)=\ker\!\left(K_0(\widetilde A)
+\xrightarrow{\pi_*}K_0(\mathbb C)\cong\mathbb Z\right).
+\tag{4.4}
+\]</span>
+<p>Thus a typical class is <span class="math" data-tex="\([p\widetilde A^n]-[q\widetilde A^m]\)">\([p\widetilde A^n]-[q\widetilde A^m]\)</span> whose scalar quotient projections have equal rank. The modules over <span class="math" data-tex="\(\widetilde A\)">\(\widetilde A\)</span> can retain geometry at infinity which projections inside <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> do not detect.</p>
+<p>For example, when <span class="math" data-tex="\(X\)">\(X\)</span> is connected and noncompact, every projection in <span class="math" data-tex="\(M_n(C_0(X))\)">\(M_n(C_0(X))\)</span> is zero. Indeed its pointwise norm is either zero or one; its nonzero set is both open and closed, while vanishing at infinity makes that set compact. Connectedness leaves only the empty set. This explains why the Grothendieck group of projection ranges over the nonunital algebra is insufficient as a general definition of <span class="math" data-tex="\(K_0\)">\(K_0\)</span>.</p>
+<h2 id="5-bundle-and-smooth-examples">5. Bundle and smooth examples</h2>
+<p>To construct a frame from local bundle coordinates, we need scalar weights whose supports stay inside the coordinate domains. We give the topological construction explicitly.</p>
+<p><strong>Lemma (Cutoffs and finite partitions).</strong> A finite open cover of a compact Hausdorff space admits a continuous subordinate partition of unity. For a compact set <span class="math" data-tex="\(K\)">\(K\)</span> in an open subset <span class="math" data-tex="\(U\)">\(U\)</span> of a locally compact Hausdorff space, there is <span class="math" data-tex="\(\chi\in C_c(U)\)">\(\chi\in C_c(U)\)</span>, <span class="math" data-tex="\(0\leq\chi\leq1\)">\(0\leq\chi\leq1\)</span>, with <span class="math" data-tex="\(\chi=1\)">\(\chi=1\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. A finite open cover of such a compact set admits subordinate compactly supported weights whose sum is one near that set.</p>
+<p><em>Proof.</em> First a compact Hausdorff space is normal. To separate a point from a closed set, use disjoint neighborhoods of the point and each point of the closed set, then take a finite intersection on the first side and a finite union on the second. Apply this construction to each point of a second disjoint closed set and use its compactness. It follows that whenever <span class="math" data-tex="\(F\subset U\)">\(F\subset U\)</span>, with <span class="math" data-tex="\(F\)">\(F\)</span> closed and <span class="math" data-tex="\(U\)">\(U\)</span> open, one can insert an open <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(F\subset V\subset\overline V\subset U\)">\(F\subset V\subset\overline V\subset U\)</span>.</p>
+<p>For disjoint closed sets <span class="math" data-tex="\(F_0,F_1\)">\(F_0,F_1\)</span>, repeatedly use this insertion to choose open sets <span class="math" data-tex="\(V_r\)">\(V_r\)</span>, indexed by dyadic rationals in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, with <span class="math" data-tex="\(F_0\subset V_0\)">\(F_0\subset V_0\)</span>, <span class="math" data-tex="\(V_1=X\setminus F_1\)">\(V_1=X\setminus F_1\)</span>, and <span class="math" data-tex="\(\overline V_r\subset V_s\)">\(\overline V_r\subset V_s\)</span> for <span class="math" data-tex="\(r&lt;s\)">\(r&lt;s\)</span>. The function <span class="math" data-tex="\(f(x)=\inf\{r:x\in V_r\}\)">\(f(x)=\inf\{r:x\in V_r\}\)</span>, with empty infimum one, is continuous, equals zero on <span class="math" data-tex="\(F_0\)">\(F_0\)</span>, and equals one on <span class="math" data-tex="\(F_1\)">\(F_1\)</span>. Indeed <span class="math" data-tex="\(\{f&lt;a\}=\bigcup_{r&lt;a}V_r\)">\(\{f&lt;a\}=\bigcup_{r&lt;a}V_r\)</span> and <span class="math" data-tex="\(\{f&gt;a\}=\bigcup_{r&gt;a}(X\setminus\overline V_r)\)">\(\{f&gt;a\}=\bigcup_{r&gt;a}(X\setminus\overline V_r)\)</span>. This is the required separating function.</p>
+<p>Shrink a finite open cover <span class="math" data-tex="\((U_i)\)">\((U_i)\)</span> to an open cover <span class="math" data-tex="\((V_i)\)">\((V_i)\)</span> with <span class="math" data-tex="\(\overline V_i\subset U_i\)">\(\overline V_i\subset U_i\)</span>. One can shrink in order: the closed set not covered by the other current members lies in the member being replaced, and insertion retains the cover. Insert once more between <span class="math" data-tex="\(\overline V_i\)">\(\overline V_i\)</span> and <span class="math" data-tex="\(U_i\)">\(U_i\)</span>, and use the separating function to obtain <span class="math" data-tex="\(f_i=1\)">\(f_i=1\)</span> on <span class="math" data-tex="\(\overline V_i\)">\(\overline V_i\)</span> with support inside <span class="math" data-tex="\(U_i\)">\(U_i\)</span>. Then <span class="math" data-tex="\(\sum_i f_i&gt;0\)">\(\sum_i f_i&gt;0\)</span>, and <span class="math" data-tex="\(\rho_i=f_i/\sum_jf_j\)">\(\rho_i=f_i/\sum_jf_j\)</span> is the desired partition.</p>
+<p>For a locally compact Hausdorff space use its one-point compactification, or the space itself if compact. Cover <span class="math" data-tex="\(K\)">\(K\)</span> by finitely many relatively compact neighborhoods whose closures lie in <span class="math" data-tex="\(U\)">\(U\)</span>; these neighborhoods exist by local compactness and regularity, the latter obtained from the same compact Hausdorff argument. Apply the separating-function construction twice between <span class="math" data-tex="\(K\)">\(K\)</span>, those closures and <span class="math" data-tex="\(U\)">\(U\)</span>. The resulting cutoff has compact support in <span class="math" data-tex="\(U\)">\(U\)</span>. For a finite cover of <span class="math" data-tex="\(K\)">\(K\)</span>, choose finitely many smaller neighborhoods with compact closure inside the respective members, construct their cutoffs <span class="math" data-tex="\(f_i\)">\(f_i\)</span>, and put <span class="math" data-tex="\(F=\sum_i f_i\)">\(F=\sum_i f_i\)</span>, positive near <span class="math" data-tex="\(K\)">\(K\)</span>. Choose a cutoff <span class="math" data-tex="\(\eta=1\)">\(\eta=1\)</span> near <span class="math" data-tex="\(K\)">\(K\)</span> with support in <span class="math" data-tex="\(\{F&gt;0\}\)">\(\{F&gt;0\}\)</span>. The functions <span class="math" data-tex="\(\eta f_i/F\)">\(\eta f_i/F\)</span>, extended by zero, are continuous, have the prescribed compact supports, and sum to <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, hence to one near <span class="math" data-tex="\(K\)">\(K\)</span>. ∎</p>
+<p>Local orthonormal frames require no additional bundle theorem: the Gram matrix of a local continuous frame is positive and invertible, and multiplying the frame by its continuous inverse square root orthonormalizes it. These scalar and matrix constructions also apply in the later locally compact bundle and field examples.</p>
+<p><span id="example-5-1"></span><strong>Example 5.1 (A Hermitian bundle).</strong> Let <span class="math" data-tex="\(V\to X\)">\(V\to X\)</span> be a finite-rank Hermitian vector bundle on a compact Hausdorff space. Its continuous sections form a Hilbert <span class="math" data-tex="\(C(X)\)">\(C(X)\)</span>-module with pointwise inner product. Take a finite trivializing cover, continuous local orthonormal frames <span class="math" data-tex="\(e_{i,\alpha}\)">\(e_{i,\alpha}\)</span>, and a partition of unity <span class="math" data-tex="\(\rho_i\)">\(\rho_i\)</span> with support contained in the corresponding trivializing open set. Define</p>
+<span class="math math-display" data-tex="\[
+x_{i,\alpha}(t)=\sqrt{\rho_i(t)}\,e_{i,\alpha}(t)
+\]">\[
+x_{i,\alpha}(t)=\sqrt{\rho_i(t)}\,e_{i,\alpha}(t)
+\]</span>
+<p>there and extend by zero. These are continuous global sections. At each point,</p>
+<span class="math math-display" data-tex="\[
+\sum_{i,\alpha}x_{i,\alpha}(t)
+\langle x_{i,\alpha}(t),v\rangle
+=\sum_i\rho_i(t)v=v.
+\]">\[
+\sum_{i,\alpha}x_{i,\alpha}(t)
+\langle x_{i,\alpha}(t),v\rangle
+=\sum_i\rho_i(t)v=v.
+\]</span>
+<p>They are a finite Parseval frame. The Gram projection presents the section module as <span class="math" data-tex="\(pC(X)^N\)">\(pC(X)^N\)</span>.</p>
+<p>Conversely a continuous projection-valued matrix <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span> gives a vector bundle with fibre <span class="math" data-tex="\(\operatorname{ran}p(t)\)">\(\operatorname{ran}p(t)\)</span>. To see local triviality, fix <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, choose a basis of <span class="math" data-tex="\(\operatorname{ran}p(t_0)\)">\(\operatorname{ran}p(t_0)\)</span>, and apply <span class="math" data-tex="\(p(t)\)">\(p(t)\)</span> to these vectors. They remain independent near <span class="math" data-tex="\(t_0\)">\(t_0\)</span>. The rank remains constant there: projections at distance less than one have isomorphic ranges by the corner-inverse argument used below. These sections are therefore a local basis. Its section module is exactly <span class="math" data-tex="\(pC(X)^N\)">\(pC(X)^N\)</span>. This proves the existence part of the compact-space Serre–Swan correspondence needed here.</p>
+<p><span id="example-5-2"></span><strong>Example 5.2 (The Bott line).</strong> On <span class="math" data-tex="\(S^2=\{(x,y,z):x^2+y^2+z^2=1\}\)">\(S^2=\{(x,y,z):x^2+y^2+z^2=1\}\)</span>, set</p>
+<span id="equation-5-1"></span><span class="math math-display" data-tex="\[
+p(x,y,z)=\frac12
+\begin{pmatrix}
+1+z&amp;x-iy\\
+x+iy&amp;1-z
+\end{pmatrix}.
+\tag{5.1}
+\]">\[
+p(x,y,z)=\frac12
+\begin{pmatrix}
+1+z&amp;x-iy\\
+x+iy&amp;1-z
+\end{pmatrix}.
+\tag{5.1}
+\]</span>
+<p>The off-diagonal entries are conjugate. Multiplication, using <span class="math" data-tex="\(x^2+y^2=1-z^2\)">\(x^2+y^2=1-z^2\)</span>, gives <span class="math" data-tex="\(p^2=p\)">\(p^2=p\)</span>. Its trace is one, so its range is a line at every point. The two columns of <span class="math" data-tex="\(p\)">\(p\)</span> form a finite Parseval frame for <span class="math" data-tex="\(pC(S^2)^2\)">\(pC(S^2)^2\)</span>.</p>
+<p>Away from the south pole and north pole respectively, normalized local spanning vectors are</p>
+<span class="math math-display" data-tex="\[
+u_N=\frac{(1+z,x+iy)^{\mathsf T}}{\sqrt{2(1+z)}},
+\qquad
+u_S=\frac{(x-iy,1-z)^{\mathsf T}}{\sqrt{2(1-z)}}.
+\]">\[
+u_N=\frac{(1+z,x+iy)^{\mathsf T}}{\sqrt{2(1+z)}},
+\qquad
+u_S=\frac{(x-iy,1-z)^{\mathsf T}}{\sqrt{2(1-z)}}.
+\]</span>
+<p>On the equator <span class="math" data-tex="\(x+iy=e^{it}\)">\(x+iy=e^{it}\)</span>, their relation is <span class="math" data-tex="\(u_S=e^{-it}u_N\)">\(u_S=e^{-it}u_N\)</span>. This computes the transition function with the stated convention. It also proves nontriviality: a global unit section would write as <span class="math" data-tex="\(u_Na_N=u_Sa_S\)">\(u_Na_N=u_Sa_S\)</span> on the two hemispheres, with circle-valued <span class="math" data-tex="\(a_N,a_S\)">\(a_N,a_S\)</span> extending over disks. Their boundary winding numbers are zero, whereas the transition requires <span class="math" data-tex="\(a_N=e^{-it}a_S\)">\(a_N=e^{-it}a_S\)</span>, whose winding number differs by <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p>Here are the elementary winding facts used in that argument. A continuous circle-valued path has a continuous real argument: subdivide its parameter interval into finitely many pieces whose images lie in proper arcs, choose an argument on each arc, and adjust by multiples of <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> at successive endpoints. For a loop the argument's endpoint difference is <span class="math" data-tex="\(2\pi\)">\(2\pi\)</span> times an integer, its winding number. Arguments add under multiplication, so winding numbers add. Two uniformly close loops have the same winding number: their quotient avoids <span class="math" data-tex="\(-1\)">\(-1\)</span>, hence has a periodic principal argument and winding zero. Uniform continuity of a homotopy then proves invariance by subdividing its homotopy parameter into such close pairs. A loop extending over a disk contracts by radial restriction to a constant loop, so has winding zero. These facts justify the contradiction above.</p>
+<p><span id="theorem-5-3"></span><strong>Theorem 5.3 (Dense smooth algebras).</strong> Let <span class="math" data-tex="\(\mathcal A\subseteq A\)">\(\mathcal A\subseteq A\)</span> be a dense unital *-subalgebra stable under holomorphic functional calculus at all matrix levels. Extension of scalars gives a bijection between isomorphism classes of algebraic finite projective <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>-modules and finite projective <span class="math" data-tex="\(A\)">\(A\)</span>-modules, preserving direct sums.</p>
+<p><em>Proof.</em> An idempotent over <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> can be replaced by the projection of Lemma 3.1 inside <span class="math" data-tex="\(M_n(\mathcal A)\)">\(M_n(\mathcal A)\)</span>: the positive square root and inverse square root of its <span class="math" data-tex="\(s\)">\(s\)</span> are holomorphic functions on a neighborhood of its positive spectrum. Thus we can work with projections.</p>
+<p>Let <span class="math" data-tex="\(p\in M_n(A)\)">\(p\in M_n(A)\)</span> be a projection. Approximate it by self-adjoint <span class="math" data-tex="\(b\in M_n(\mathcal A)\)">\(b\in M_n(\mathcal A)\)</span> with <span class="math" data-tex="\(\delta=\|b-p\|&lt;1/8\)">\(\delta=\|b-p\|&lt;1/8\)</span>. The spectrum of <span class="math" data-tex="\(b\)">\(b\)</span> lies in the <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-neighborhood of <span class="math" data-tex="\(\{0,1\}\)">\(\{0,1\}\)</span>: outside it the resolvent of <span class="math" data-tex="\(p\)">\(p\)</span> and a Neumann series give the resolvent of <span class="math" data-tex="\(b\)">\(b\)</span>. The holomorphic function which is zero near the first spectral component and one near the second yields a projection <span class="math" data-tex="\(q\in M_n(\mathcal A)\)">\(q\in M_n(\mathcal A)\)</span>. On the contour <span class="math" data-tex="\(|z-1|=1/2\)">\(|z-1|=1/2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\|(z-p)^{-1}\|\leq2,\qquad
+\|(z-b)^{-1}\|\leq\frac{2}{1-2\delta}.
+\]">\[
+\|(z-p)^{-1}\|\leq2,\qquad
+\|(z-b)^{-1}\|\leq\frac{2}{1-2\delta}.
+\]</span>
+<p>The resolvent identity and the contour length give</p>
+<span class="math math-display" data-tex="\[
+\|q-p\|\leq\frac{2\delta}{1-2\delta}&lt;1.
+\]">\[
+\|q-p\|\leq\frac{2\delta}{1-2\delta}&lt;1.
+\]</span>
+<p>Both <span class="math" data-tex="\(pqp\)">\(pqp\)</span> and <span class="math" data-tex="\(qpq\)">\(qpq\)</span> are invertible in their corners, since they differ from the corner units by norm less than one. Thus <span class="math" data-tex="\(qp:pA^n\to qA^n\)">\(qp:pA^n\to qA^n\)</span> has a left inverse <span class="math" data-tex="\((pqp)^{-1}pq\)">\((pqp)^{-1}pq\)</span> and a right inverse <span class="math" data-tex="\(pq(qpq)^{-1}\)">\(pq(qpq)^{-1}\)</span>. They coincide, proving that <span class="math" data-tex="\(pA^n\cong qA^n\)">\(pA^n\cong qA^n\)</span>. Moreover the natural scalar-extension map <span class="math" data-tex="\(q\mathcal A^n\otimes_{\mathcal A}A\to qA^n\)">\(q\mathcal A^n\otimes_{\mathcal A}A\to qA^n\)</span> is an algebraic isomorphism: it is the restriction of the free-module isomorphism <span class="math" data-tex="\(\mathcal A^n\otimes_{\mathcal A}A\cong A^n\)">\(\mathcal A^n\otimes_{\mathcal A}A\cong A^n\)</span> to a direct summand.</p>
+<p>For injectivity, suppose smooth projections <span class="math" data-tex="\(q,r\)">\(q,r\)</span> give isomorphic <span class="math" data-tex="\(A\)">\(A\)</span>-modules. By Theorem 4.1 take a rectangular partial isometry <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(v^*v=q\)">\(v^*v=q\)</span>, <span class="math" data-tex="\(vv^*=r\)">\(vv^*=r\)</span>. Approximate <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(w\in rM_{m,n}(\mathcal A)q\)">\(w\in rM_{m,n}(\mathcal A)q\)</span>. For sufficiently close approximation, <span class="math" data-tex="\(w^*w\)">\(w^*w\)</span> and <span class="math" data-tex="\(ww^*\)">\(ww^*\)</span> are invertible in the respective corners. Their inverses belong to the smooth corners: add the complementary projection, invert in the full matrix algebra, and compress. Therefore</p>
+<span class="math math-display" data-tex="\[
+(w^*w)^{-1}w^*
+\]">\[
+(w^*w)^{-1}w^*
+\]</span>
+<p>is a left inverse over <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>, and <span class="math" data-tex="\(w^*(ww^*)^{-1}\)">\(w^*(ww^*)^{-1}\)</span> is a right inverse. The two coincide. Hence the smooth modules were already isomorphic. Direct sum commutes with scalar extension. ∎</p>
+<p>The theorem asserts a bijection of isomorphism classes, not an equivalence of all module categories with all morphisms. For instance, the endomorphisms of the rank-one free modules are <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span>, which generally differ. Matrix-level holomorphic stability is the precise condition used in the proof. For smooth elements of a norm-continuous Lie group action it holds: the orbit map of an inverse is the inverse of the orbit map, and differentiation under the contour integral proves smoothness of holomorphic functions. The same argument applies entrywise to matrices.</p>
+<p><span id="example-5-4"></span><strong>Example 5.4 (Schwartz modules for a rotation algebra).</strong> Let <span class="math" data-tex="\(A_\theta\)">\(A_\theta\)</span> be the universal unital C*-algebra generated by unitaries with <span class="math" data-tex="\(UV=e^{2\pi i\theta}VU\)">\(UV=e^{2\pi i\theta}VU\)</span>. Its smooth algebra <span class="math" data-tex="\(A_\theta^\infty\)">\(A_\theta^\infty\)</span> consists of the series <span class="math" data-tex="\(\sum_{n,m}a_{n,m}U^nV^m\)">\(\sum_{n,m}a_{n,m}U^nV^m\)</span> whose coefficients are rapidly decreasing: for every <span class="math" data-tex="\(N\geq0\)">\(N\geq0\)</span>, <span class="math" data-tex="\(\sup_{n,m}(1+|n|+|m|)^N|a_{n,m}|&lt;\infty\)">\(\sup_{n,m}(1+|n|+|m|)^N|a_{n,m}|&lt;\infty\)</span>. These are the smooth vectors for the torus action multiplying <span class="math" data-tex="\(U,V\)">\(U,V\)</span> by scalar phases; the preceding inverse-orbit argument applies. The construction and its connection are also developed in <a href="../NCG-CYCLIC/connections-and-curvature-for-c-star-dynamical-systems.html">Connections and curvature from symmetries of an algebra</a>, Sections 6–7. Let <span class="math" data-tex="\(q\geq1\)">\(q\geq1\)</span>, <span class="math" data-tex="\(p\in\mathbb Z\)">\(p\in\mathbb Z\)</span>, and <span class="math" data-tex="\(\varepsilon=p/q-\theta\ne0\)">\(\varepsilon=p/q-\theta\ne0\)</span>. On <span class="math" data-tex="\(\mathcal S(\mathbb R\times\mathbb Z/q)\)">\(\mathcal S(\mathbb R\times\mathbb Z/q)\)</span>, set</p>
+<span id="equation-5-2"></span><span class="math math-display" data-tex="\[
+(\xi U)(s,h)=\xi(s+\varepsilon,h+p),\qquad
+(\xi V)(s,h)=e^{2\pi i(s-h/q)}\xi(s,h).
+\tag{5.2}
+\]">\[
+(\xi U)(s,h)=\xi(s+\varepsilon,h+p),\qquad
+(\xi V)(s,h)=e^{2\pi i(s-h/q)}\xi(s,h).
+\tag{5.2}
+\]</span>
+<p>The right-action operators satisfy <span class="math" data-tex="\(R_UR_V=e^{-2\pi i\theta}R_VR_U\)">\(R_UR_V=e^{-2\pi i\theta}R_VR_U\)</span>; reversed operator composition is exactly what a right action requires. With the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> inner product linear in the second variable, define</p>
+<span id="equation-5-3"></span><span class="math math-display" data-tex="\[
+\langle\xi,\eta\rangle_A
+=\sum_{n,m\in\mathbb Z}
+\langle R_{U^nV^m}\xi,\eta\rangle_{L^2}\,U^nV^m.
+\tag{5.3}
+\]">\[
+\langle\xi,\eta\rangle_A
+=\sum_{n,m\in\mathbb Z}
+\langle R_{U^nV^m}\xi,\eta\rangle_{L^2}\,U^nV^m.
+\tag{5.3}
+\]</span>
+<p>Translation decay and integration by parts in the modulation variable give rapidly decreasing coefficients. Unitarity and reversed composition give right linearity and Hermitian symmetry, by comparing coefficients of unitary monomials.</p>
+<p>Here is a concrete finite frame. Choose finitely many compactly supported smooth functions <span class="math" data-tex="\(g_j\)">\(g_j\)</span>, each supported in an interval of length less than one, such that</p>
+<span id="equation-5-4"></span><span class="math math-display" data-tex="\[
+\sum_{j,n}|g_j(s+n\varepsilon)|^2=1.
+\tag{5.4}
+\]">\[
+\sum_{j,n}|g_j(s+n\varepsilon)|^2=1.
+\tag{5.4}
+\]</span>
+<p>They exist by taking a finite bump cover of the circle of circumference <span class="math" data-tex="\(|\varepsilon|\)">\(|\varepsilon|\)</span> and dividing the bumps by the square root of their periodized squared sum. Put <span class="math" data-tex="\(g_{j,r}(s,h)=g_j(s)\mathbf1_{h=r}\)">\(g_{j,r}(s,h)=g_j(s)\mathbf1_{h=r}\)</span> for <span class="math" data-tex="\(r\in\mathbb Z/q\)">\(r\in\mathbb Z/q\)</span>. Then</p>
+<span id="equation-5-5"></span><span class="math math-display" data-tex="\[
+\eta=\sum_{j,r}g_{j,r}\langle g_{j,r},\eta\rangle_A.
+\tag{5.5}
+\]">\[
+\eta=\sum_{j,r}g_{j,r}\langle g_{j,r},\eta\rangle_A.
+\tag{5.5}
+\]</span>
+<p>Indeed expand (5.3) in this sum. Fourier summation in <span class="math" data-tex="\(m\)">\(m\)</span> restricts the integration variable to <span class="math" data-tex="\(s+(k-h)/q-\ell\)">\(s+(k-h)/q-\ell\)</span>, <span class="math" data-tex="\(\ell\in\mathbb Z\)">\(\ell\in\mathbb Z\)</span>. The finite-coordinate supports of the two window factors force <span class="math" data-tex="\(k=h\)">\(k=h\)</span>. Their real arguments then differ by <span class="math" data-tex="\(\ell\)">\(\ell\)</span>; support length less than one forces <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span>. The remaining expression is <span class="math" data-tex="\(\eta(s,h)\sum_{j,n}|g_j(s+n\varepsilon)|^2\)">\(\eta(s,h)\sum_{j,n}|g_j(s+n\varepsilon)|^2\)</span>, proving (5.5). Fourier summation here is the Poisson identity on Schwartz functions; equivalently one can use its Fejér-regularized form.</p>
+<p>The Gram matrix of these vectors is a self-adjoint idempotent over <span class="math" data-tex="\(A_\theta^\infty\)">\(A_\theta^\infty\)</span>, so the same analysis and synthesis calculation as Theorem 1.2 gives</p>
+<span class="math math-display" data-tex="\[
+\mathcal S(\mathbb R\times\mathbb Z/q)\cong
+P(A_\theta^\infty)^N.
+\]">\[
+\mathcal S(\mathbb R\times\mathbb Z/q)\cong
+P(A_\theta^\infty)^N.
+\]</span>
+<p>It also proves positivity of (5.3), since (5.5) gives
+<span class="math" data-tex="\(\langle\eta,\eta\rangle_A=\sum_i\langle g_i,\eta\rangle_A^*\langle g_i,\eta\rangle_A\)">\(\langle\eta,\eta\rangle_A=\sum_i\langle g_i,\eta\rangle_A^*\langle g_i,\eta\rangle_A\)</span>.
+If this is zero all coefficients vanish, and (5.5) gives <span class="math" data-tex="\(\eta=0\)">\(\eta=0\)</span>. Its Hilbert completion is <span class="math" data-tex="\(PA_\theta^N\)">\(PA_\theta^N\)</span>. This is the frame construction in <em>Connections and curvature from symmetries of an algebra</em>, Section 7; the general frame theorem explains its projection formula.</p>
+<p>For completeness, the Fourier identity just used follows directly from periodization. For a Schwartz function <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(F(t)=\sum_{\ell\in\mathbb Z}f(t+\ell)\)">\(F(t)=\sum_{\ell\in\mathbb Z}f(t+\ell)\)</span> is smooth and periodic, with uniform convergence of every differentiated sum. Its <span class="math" data-tex="\(m\)">\(m\)</span>-th Fourier coefficient is <span class="math" data-tex="\(\int_{\mathbb R}f(t)e^{-2\pi imt}\,dt\)">\(\int_{\mathbb R}f(t)e^{-2\pi imt}\,dt\)</span>. Integration by parts makes these coefficients rapidly decreasing, so their Fourier series converges uniformly. It equals <span class="math" data-tex="\(F\)">\(F\)</span>: their difference has all Fourier coefficients zero, hence all its Fejér means vanish. Those means converge uniformly to every continuous periodic function. Indeed their convolution kernels</p>
+<span class="math math-display" data-tex="\[
+K_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{2\pi ijt}\right|^2
+\]">\[
+K_N(t)=\frac1N\left|\sum_{j=0}^{N-1}e^{2\pi ijt}\right|^2
+\]</span>
+<p>are nonnegative with integral one, and satisfy
+<span class="math" data-tex="\(K_N(t)\leq[N\sin^2(\pi\delta)]^{-1}\)">\(K_N(t)\leq[N\sin^2(\pi\delta)]^{-1}\)</span> when the distance of <span class="math" data-tex="\(t\)">\(t\)</span> from an integer is at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Splitting the convolution into that region and its complement proves uniform convergence by uniform continuity. This proves the periodization identity, including the translated test-function version in (5.5).</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<p><strong>Exercise 6.1 (Basic: the Gram projection).</strong> For a Parseval frame, verify <span class="math" data-tex="\(\Phi\Lambda=1_E\)">\(\Phi\Lambda=1_E\)</span>, <span class="math" data-tex="\(P^2=P=P^*\)">\(P^2=P=P^*\)</span>, and identify the range of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>.</p>
+<p><em>Solution.</em> For <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span>, <span class="math" data-tex="\(\Phi\Lambda x=\sum_i x_i\langle x_i,x\rangle=x\)">\(\Phi\Lambda x=\sum_i x_i\langle x_i,x\rangle=x\)</span>. Hence <span class="math" data-tex="\((\Lambda\Phi)^2=\Lambda(\Phi\Lambda)\Phi=\Lambda\Phi\)">\((\Lambda\Phi)^2=\Lambda(\Phi\Lambda)\Phi=\Lambda\Phi\)</span>. Since <span class="math" data-tex="\(\Lambda=\Phi^*\)">\(\Lambda=\Phi^*\)</span>, the operator <span class="math" data-tex="\(\Lambda\Phi\)">\(\Lambda\Phi\)</span> is self-adjoint. Its matrix entries are <span class="math" data-tex="\(\langle x_i,x_j\rangle\)">\(\langle x_i,x_j\rangle\)</span>, so it is <span class="math" data-tex="\(P\)">\(P\)</span>. The inclusion <span class="math" data-tex="\(\operatorname{ran}\Lambda\subseteq PA^n\)">\(\operatorname{ran}\Lambda\subseteq PA^n\)</span> follows from <span class="math" data-tex="\(P\Lambda=\Lambda\)">\(P\Lambda=\Lambda\)</span>. If <span class="math" data-tex="\(a=Pa\)">\(a=Pa\)</span>, then <span class="math" data-tex="\(a=\Lambda\Phi a\)">\(a=\Lambda\Phi a\)</span>, giving the reverse inclusion. Finally <span class="math" data-tex="\(\langle\Lambda x,\Lambda y\rangle=\langle x,y\rangle\)">\(\langle\Lambda x,\Lambda y\rangle=\langle x,y\rangle\)</span>, so this identification is unitary. ∎</p>
+<p><strong>Exercise 6.2 (Intermediate: a compact unit).</strong> Derive a finite frame from the assumption that <span class="math" data-tex="\(\mathcal K(E)\)">\(\mathcal K(E)\)</span> has a unit.</p>
+<p><em>Solution.</em> Its unit is <span class="math" data-tex="\(1_E\)">\(1_E\)</span>, because it acts as the identity on the dense subspace <span class="math" data-tex="\(\mathcal K(E)E\)">\(\mathcal K(E)E\)</span>. Approximate it within distance less than one by <span class="math" data-tex="\(T=\sum_{i=1}^n\theta_{a_i,b_i}\)">\(T=\sum_{i=1}^n\theta_{a_i,b_i}\)</span>. Invertibility of <span class="math" data-tex="\(T\)">\(T\)</span> gives the exact reconstruction <span class="math" data-tex="\(x=\sum_i a_i\langle b_i,T^{-1}x\rangle\)">\(x=\sum_i a_i\langle b_i,T^{-1}x\rangle\)</span>. Thus the synthesis operator <span class="math" data-tex="\(X:A^n\to E\)">\(X:A^n\to E\)</span> for the <span class="math" data-tex="\(a_i\)">\(a_i\)</span> is surjective. The closed-range theorem makes <span class="math" data-tex="\(XX^*\)">\(XX^*\)</span> invertible. Set <span class="math" data-tex="\(z_i=(XX^*)^{-1/2}a_i\)">\(z_i=(XX^*)^{-1/2}a_i\)</span>. Multiplying the rank-one sum on both sides by <span class="math" data-tex="\((XX^*)^{-1/2}\)">\((XX^*)^{-1/2}\)</span> gives <span class="math" data-tex="\(\sum_i\theta_{z_i,z_i}=1_E\)">\(\sum_i\theta_{z_i,z_i}=1_E\)</span>. Neither this proof nor its conclusion needs unitality of the coefficient algebra. ∎</p>
+<p><strong>Exercise 6.3 (Intermediate: changing the metric).</strong> On an algebraic finite projective module, prove that two complete Hilbert metrics are unitarily equivalent.</p>
+<p><em>Solution.</em> The finite-frame formula (2.1) makes the algebraic identity <span class="math" data-tex="\(S\)">\(S\)</span> and its inverse bounded and adjointable for the two metrics. Thus <span class="math" data-tex="\(R=S^*S\)">\(R=S^*S\)</span> is positive invertible, and <span class="math" data-tex="\(\langle x,y\rangle_2=\langle x,Ry\rangle_1\)">\(\langle x,y\rangle_2=\langle x,Ry\rangle_1\)</span>. The map <span class="math" data-tex="\(U=SR^{-1/2}\)">\(U=SR^{-1/2}\)</span> satisfies <span class="math" data-tex="\(U^*U=1\)">\(U^*U=1\)</span>. Because it is invertible, this identity also implies <span class="math" data-tex="\(UU^*=1\)">\(UU^*=1\)</span>, by substituting <span class="math" data-tex="\(U^{-1}\)">\(U^{-1}\)</span>. Hence <span class="math" data-tex="\(U\)">\(U\)</span> is unitary. Existence of at least one complete metric follows separately from the idempotent-to-projection construction; it is not assumed merely from algebraic projectivity. ∎</p>
+<p><strong>Exercise 6.4 (Intermediate: the standard module).</strong> Show that <span class="math" data-tex="\(H_A\)">\(H_A\)</span> is not algebraically finitely generated if <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>.</p>
+<p><em>Solution.</em> If it were, Lemma 2.1 would give a finite frame, hence <span class="math" data-tex="\(1_{H_A}\in\mathcal K(H_A)\)">\(1_{H_A}\in\mathcal K(H_A)\)</span>. We show that this is impossible. Fix <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> with <span class="math" data-tex="\(\|a\|=1\)">\(\|a\|=1\)</span>, and let <span class="math" data-tex="\(z^{(k)}\in H_A\)">\(z^{(k)}\in H_A\)</span> have coordinate <span class="math" data-tex="\(a\)">\(a\)</span> at <span class="math" data-tex="\(k\)">\(k\)</span> and zero elsewhere. For a rank-one operator,</p>
+<span class="math math-display" data-tex="\[
+\|\theta_{x,y}z^{(k)}\|
+=\|x\,y_k^*a\|\leq\|x\|\|y_k\|.
+\]">\[
+\|\theta_{x,y}z^{(k)}\|
+=\|x\,y_k^*a\|\leq\|x\|\|y_k\|.
+\]</span>
+<p>The coordinates of <span class="math" data-tex="\(y\in H_A\)">\(y\in H_A\)</span> satisfy <span class="math" data-tex="\(\|y_k\|\to0\)">\(\|y_k\|\to0\)</span>, since its squared-coordinate series converges in norm. Therefore <span class="math" data-tex="\(\|Fz^{(k)}\|\to0\)">\(\|Fz^{(k)}\|\to0\)</span> for every finite-rank <span class="math" data-tex="\(F\)">\(F\)</span>. Since <span class="math" data-tex="\(\|z^{(k)}\|=1\)">\(\|z^{(k)}\|=1\)</span>, it follows that <span class="math" data-tex="\(\|1-F\|\geq1\)">\(\|1-F\|\geq1\)</span>. No finite-rank sequence or net can approximate the identity in norm, contradicting compactness. ∎</p>
+<p><strong>Exercise 6.5 (Advanced: noncompact coefficient spaces).</strong> Let <span class="math" data-tex="\(X\)">\(X\)</span> be noncompact and locally compact Hausdorff. Show that a Hilbert <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>-module with a finite frame cannot be full. Deduce the same for any algebraically finitely generated Hilbert module, and explain the unitization in <span class="math" data-tex="\(K_0\)">\(K_0\)</span>.</p>
+<p><em>Solution.</em> By Theorem 1.2 the module is <span class="math" data-tex="\(pC_0(X)^n\)">\(pC_0(X)^n\)</span>, with <span class="math" data-tex="\(p\in M_n(C_0(X))\)">\(p\in M_n(C_0(X))\)</span> a projection. Its support</p>
+<span class="math math-display" data-tex="\[
+Y=\{t:p(t)\ne0\}=\{t:\|p(t)\|=1\}
+\]">\[
+Y=\{t:p(t)\ne0\}=\{t:\|p(t)\|=1\}
+\]</span>
+<p>is open by continuity and closed as the inverse image of <span class="math" data-tex="\(\{1\}\)">\(\{1\}\)</span>. It is compact by vanishing at infinity. Since <span class="math" data-tex="\(X\)">\(X\)</span> is noncompact, <span class="math" data-tex="\(Y\ne X\)">\(Y\ne X\)</span>. Every inner product of vectors in the module vanishes outside <span class="math" data-tex="\(Y\)">\(Y\)</span>, so their closed span lies in the proper ideal <span class="math" data-tex="\(C_0(Y)\subsetneq C_0(X)\)">\(C_0(Y)\subsetneq C_0(X)\)</span>. Properness follows, for example, by a nonzero compactly supported function at a point outside <span class="math" data-tex="\(Y\)">\(Y\)</span>. Thus the module is not full. In fact its coefficient ideal is <span class="math" data-tex="\(C_0(Y)\)">\(C_0(Y)\)</span>: the entries of the Gram matrix include the entries of <span class="math" data-tex="\(p\)">\(p\)</span>, whose scalar sum of absolute squares is <span class="math" data-tex="\(\operatorname{tr}p\)">\(\operatorname{tr}p\)</span>, positive throughout <span class="math" data-tex="\(Y\)">\(Y\)</span>; these generate that ideal.</p>
+<p>Lemma 2.1 applies to an algebraically finitely generated Hilbert module, giving the same conclusion. On a connected noncompact space <span class="math" data-tex="\(Y\)">\(Y\)</span> must be empty, so there are no nonzero finite-frame modules at all. Projection classes in the nonunital algebra can therefore lose the relevant information at infinity. Formula (4.4) instead uses finite projective modules over <span class="math" data-tex="\(C(X^+)\)">\(C(X^+)\)</span> and subtracts equal fibre ranks at the added point.</p>
+<p>For <span class="math" data-tex="\(X=\mathbb R^2\)">\(X=\mathbb R^2\)</span>, the Bott projection of Example 5.2 is viewed on <span class="math" data-tex="\(X^+=S^2\)">\(X^+=S^2\)</span>; subtract its constant rank-one limit at infinity. The quotient ranks agree, so this defines a relative class in <span class="math" data-tex="\(K_0(C_0(\mathbb R^2))\)">\(K_0(C_0(\mathbb R^2))\)</span>. The projection difference has entries vanishing at infinity, even though the individual projection generally does not. This illustrates precisely what the relative definition retains. The calculation of the whole group or a proof that this relative class generates it would require Bott periodicity and is not asserted here. ∎</p>
+<p>The noncompact conclusion is specific to these commutative coefficient algebras. It is not a statement that every full finite-frame module over every nonunital C*-algebra is impossible.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>We use the C*-algebra matrix norm, positivity, continuous and holomorphic functional calculus, and spectral mapping as prerequisites; precise standard references are Blackadar, <em>Operator Algebras</em>, II.2.3, II.3.1 and II.6.6. We use the preceding course proofs of the closed-range theorem and the essential action of compact operators.</p>
+<p>The opening lemma of Section 5 proves compact Hausdorff partitions, locally compact cutoffs and continuous local orthonormalization. The winding and Fourier reconstruction facts needed for the two explicit examples are proved in Section 5.</p>
+<p>We do not prove Bott periodicity, a classification of rotation-algebra projections, or Morita equivalence of rotation algebras. Those assertions are unnecessary for the frame and projectivity statements above. Nor does the dense-algebra theorem assert that every algebraic endomorphism over the completion descends to the dense subalgebra.</p>
+<h2 id="references">References</h2>
+<p>[Blackadar 1998] Bruce Blackadar, <em>K-Theory for Operator Algebras</em>, second edition, Cambridge University Press, 1998, Sections 5.1–5.5: the projection monoid, Grothendieck completion and the relative definition for nonunital algebras. <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf">Author's corrected second edition</a>.</p>
+<p>[Blackadar 2006] Bruce Blackadar, <em>Operator Algebras: Theory of C*-Algebras and von Neumann Algebras</em>, Springer, 2006, II.7.1–II.7.2 for module and operator foundations. <a href="https://www.bruceblackadar.com/Mathematics/Cycr.pdf">Author's revised edition</a>.</p>
+<p>[Connes 1994] Alain Connes, <em>Noncommutative Geometry</em>, Academic Press, 1994, Chapter II, Appendix A, Proposition 4: compact identity, finite projectivity and change of metric. <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf">Author's electronic edition</a>.</p>
+<p>[Emerson 2024] Heath Emerson, <em>An Introduction to C*-Algebras and Noncommutative Geometry</em>, Birkhäuser, 2024, Section 5.2 for compact-space bundles and projective modules, and Section 6.2 for their relation to Morita correspondences.</p>
+</article>
+<nav class="pager" aria-label="Lesson navigation"><a href="../../index.html">Course contents</a> <a href="../index.html">Supporting proofs</a></nav>
+<p class="source-link"><a href="../src/hilbert-c-star-modules-and-morita-equivalence/finite-projective-modules-frames-and-k0.md">Markdown source</a> · <span class="unlinked">Download the complete course</span></p>
+</main></body></html>

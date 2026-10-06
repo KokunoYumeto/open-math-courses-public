@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Uniform bounds for algebraic analytic branches</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="uniform-bounds-for-algebraic-analytic-branches">Uniform bounds for algebraic analytic branches</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>A single algebraic root can be bounded using its leading coefficient. Uniform estimates for a family are more delicate: a leading coefficient can vanish in a limit, and a nearby polynomial can have extra roots far away. We use a circle in the root variable as a barrier, then move that barrier along regular spatial paths. This gives uniform analytic-branch bounds without dividing by a coefficient which might tend to zero.</p>
+<p>Read <a href="AN02-L057.html">Regular balls, moving roots and complex gauges</a>, <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies Schwartz Fourier inversion; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies finite coordinates, scalar calculus and compact cutoffs; <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a> supplies the norm, extension and integration estimates.</p>
+<p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>. The proofs use the linked prerequisite lessons and any stated planned theorem.</p>
+<h2 id="the-family-and-its-scalar-normalizations">The family and its scalar normalizations</h2>
+<p>Let <span class="math" data-tex="\(Z\subset\mathbb C^d\)">\(Z\subset\mathbb C^d\)</span>, <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span>, be connected and open, and let <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>. Let <span class="math" data-tex="\(\mathcal A_m(Z)\)">\(\mathcal A_m(Z)\)</span> consist of the holomorphic functions <span class="math" data-tex="\(f\)">\(f\)</span> for which there is a nonzero polynomial <span class="math" data-tex="\(R\)">\(R\)</span> of total degree at most <span class="math" data-tex="\(m\)">\(m\)</span> in <span class="math" data-tex="\(d+1\)">\(d+1\)</span> variables such that
+<span class="math math-display" data-tex="\[
+ R(z,f(z))=0\quad(z\in Z).
+ \tag{1}
+\]">\[
+ R(z,f(z))=0\quad(z\in Z).
+ \tag{1}
+\]</span>
+The polynomial can depend on <span class="math" data-tex="\(f\)">\(f\)</span>. Total degree, rather than just degree in the last variable, is bounded. The family is preserved by <span class="math" data-tex="\(f\mapsto af+b\)">\(f\mapsto af+b\)</span>, for <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span>: substitute <span class="math" data-tex="\((w-b)/a\)">\((w-b)/a\)</span> in a relation and multiply by a nonzero scalar. The substitution is invertible, does not turn a nonzero polynomial into zero and does not increase total degree. Constant functions belong to the family through <span class="math" data-tex="\(R(z,w)=w-b\)">\(R(z,w)=w-b\)</span>. Degree zero has no such nonzero relation and gives an empty family.</p>
+<p>Write <span class="math" data-tex="\(U\Subset Z\)">\(U\Subset Z\)</span> when <span class="math" data-tex="\(U\)">\(U\)</span> is open and its closure is a compact subset of <span class="math" data-tex="\(Z\)">\(Z\)</span>.</p>
+<p><strong>Theorem 1 (uniform comparison).</strong> If <span class="math" data-tex="\(Z_1,Z_2\Subset Z\)">\(Z_1,Z_2\Subset Z\)</span> are nonempty, there is a finite constant <span class="math" data-tex="\(C\)">\(C\)</span>, depending only on these sets, <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span>, for which
+<span class="math math-display" data-tex="\[
+ \sup_{Z_2}|f|\le C\sup_{Z_1}|f|,
+                    \qquad f\in\mathcal A_m(Z).
+ \tag{2}
+\]">\[
+ \sup_{Z_2}|f|\le C\sup_{Z_1}|f|,
+                    \qquad f\in\mathcal A_m(Z).
+ \tag{2}
+\]</span></p>
+<p><strong>Proof.</strong> It suffices to bound every <span class="math" data-tex="\(f\in\mathcal A_m(Z)\)">\(f\in\mathcal A_m(Z)\)</span> with <span class="math" data-tex="\(\sup_{Z_1}|f|\le1\)">\(\sup_{Z_1}|f|\le1\)</span>. If the original supremum is positive, divide by it and use the preceding invariance. If it is zero, the identity principle on connected <span class="math" data-tex="\(Z\)">\(Z\)</span> gives <span class="math" data-tex="\(f=0\)">\(f=0\)</span>.</p>
+<p>Normalize a relation by its coefficient norm:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R(z,w)=\sum_{|\beta|+j\le m}a_{\beta j}z^\beta w^j,
+             \\
+\qquad \sum_{\beta,j}|a_{\beta j}|=1.
+\end{gathered}
+\tag{3}
+\]">\[
+\begin{gathered}
+R(z,w)=\sum_{|\beta|+j\le m}a_{\beta j}z^\beta w^j,
+             \\
+\qquad \sum_{\beta,j}|a_{\beta j}|=1.
+\end{gathered}
+\tag{3}
+\]</span>
+The coefficient sphere is compact in its actual finite complex coordinate space. We construct a uniform branch bound in a neighborhood of every point <span class="math" data-tex="\(R_0\)">\(R_0\)</span> of that sphere; finitely many such neighborhoods will suffice.</p>
+<p>Write <span class="math" data-tex="\(R_0(z,w)=\sum_{j=0}^q a_j(z)w^j\)">\(R_0(z,w)=\sum_{j=0}^q a_j(z)w^j\)</span>, where <span class="math" data-tex="\(a_q\ne0\)">\(a_q\ne0\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> is the last-variable degree of this limiting polynomial. The possibility <span class="math" data-tex="\(q=0\)">\(q=0\)</span> must be retained. Let <span class="math" data-tex="\(E=\{z\in Z:a_q(z)\ne0\}\)">\(E=\{z\in Z:a_q(z)\ne0\}\)</span>. It is dense and open: a nonzero polynomial cannot vanish on a complex open set, by the iterated one-variable identity argument.</p>
+<p>The set <span class="math" data-tex="\(E\)">\(E\)</span> is path connected. Here is the needed proof. A connected open set is joined by finite chains of overlapping open balls: the points reachable from a fixed ball by such chains form an open set, and their complement is also open, so connectedness makes the reachable set all of <span class="math" data-tex="\(Z\)">\(Z\)</span>. Choose connecting points in the overlaps outside the polynomial zero set, using density. Two successive regular points in a common ball can be joined while avoiding that zero set. On the complex line through them the restriction of <span class="math" data-tex="\(a_q\)">\(a_q\)</span> is a nonzero one-variable polynomial, since it is nonzero at each endpoint. It has finitely many zeros. In its line parameter, replace small pieces of the interval <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span> at those zeros by small semicircular arcs. The image stays in the ball: the original compact segment has a positive distance from the complement, and the detours can be chosen smaller than that distance after division by the nonzero direction length. Concatenating the finitely many detoured paths gives a path in <span class="math" data-tex="\(E\)">\(E\)</span>. Coincident endpoints need no detour.</p>
+<p>Choose <span class="math" data-tex="\(b\in Z_1\cap E\)">\(b\in Z_1\cap E\)</span>. Fix a point <span class="math" data-tex="\(c\in\overline{Z_2}\)">\(c\in\overline{Z_2}\)</span>, which may lie outside <span class="math" data-tex="\(E\)">\(E\)</span>. Choose a complex unit vector <span class="math" data-tex="\(e\)">\(e\)</span> so that <span class="math" data-tex="\(a_q(c+\lambda e)\)">\(a_q(c+\lambda e)\)</span> is not identically zero. If <span class="math" data-tex="\(a_q\)">\(a_q\)</span> is constant, any unit vector works. Otherwise its top homogeneous part is nonzero at some unit vector <span class="math" data-tex="\(e\)">\(e\)</span>; that part is the leading coefficient of the polynomial in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> for every <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>Choose a small radius <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> such that the closed disk <span class="math" data-tex="\(c+\lambda e\)">\(c+\lambda e\)</span>, <span class="math" data-tex="\(|\lambda|\le\rho\)">\(|\lambda|\le\rho\)</span>, lies in <span class="math" data-tex="\(Z\)">\(Z\)</span>, and the leading coefficient has no zero on its boundary circle. Only finitely many forbidden radii occur. Compactness and continuity now give <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_c=\{z+\lambda e:|z-c|\le\sigma,\ |\lambda|=\rho\}
+                    \\
+\subset E,
+ \\\{z+\lambda e:|z-c|\le\sigma,\ |\lambda|\le\rho\}
+                    \\
+\subset Z.
+\end{gathered}
+\tag{4}
+\]">\[
+\begin{gathered}
+K_c=\{z+\lambda e:|z-c|\le\sigma,\ |\lambda|=\rho\}
+                    \\
+\subset E,
+ \\\{z+\lambda e:|z-c|\le\sigma,\ |\lambda|\le\rho\}
+                    \\
+\subset Z.
+\end{gathered}
+\tag{4}
+\]</span>
+Indeed shrink <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> both for the positive distance of the disk from the complement of <span class="math" data-tex="\(Z\)">\(Z\)</span> and for the positive minimum of <span class="math" data-tex="\(|a_q|\)">\(|a_q|\)</span> on its boundary. The set <span class="math" data-tex="\(K_c\)">\(K_c\)</span> is compact and path connected, as the continuous image of a closed ball times a circle. Join <span class="math" data-tex="\(b\)">\(b\)</span> to one point of its central circle by a path in <span class="math" data-tex="\(E\)">\(E\)</span>. The union of that path and <span class="math" data-tex="\(K_c\)">\(K_c\)</span> is compact and path connected and contains <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>The neighborhoods <span class="math" data-tex="\(\{|z-c|&lt;\sigma\}\)">\(\{|z-c|&lt;\sigma\}\)</span>, constructed for every <span class="math" data-tex="\(c\in\overline{Z_2}\)">\(c\in\overline{Z_2}\)</span>, have a finite subcover. Let <span class="math" data-tex="\(K\)">\(K\)</span> be the union of their finitely many compact circle families and paths. They all contain or connect to <span class="math" data-tex="\(b\)">\(b\)</span>, so <span class="math" data-tex="\(K\)">\(K\)</span> is compact and path connected in <span class="math" data-tex="\(E\)">\(E\)</span>. If <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span>, the coefficients of the monic polynomial <span class="math" data-tex="\(R_0(z,w)/a_q(z)\)">\(R_0(z,w)/a_q(z)\)</span> are bounded on <span class="math" data-tex="\(K\)">\(K\)</span>, because <span class="math" data-tex="\(|a_q|\)">\(|a_q|\)</span> has a positive minimum there. The scalar root bound gives one <span class="math" data-tex="\(W&gt;1\)">\(W&gt;1\)</span> larger than every last-variable root for <span class="math" data-tex="\(z\in K\)">\(z\in K\)</span>. If <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, choose <span class="math" data-tex="\(W=2\)">\(W=2\)</span>. In both cases
+<span class="math math-display" data-tex="\[
+ R_0(z,w)\ne0\quad(z\in K,\ |w|=W).
+ \tag{5}
+\]">\[
+ R_0(z,w)\ne0\quad(z\in K,\ |w|=W).
+ \tag{5}
+\]</span>
+Its modulus has a positive minimum on this compact set. Polynomial evaluation is uniformly continuous in the finitely many coefficients there. Consequently(5) holds also for every coefficient-normalized polynomial <span class="math" data-tex="\(R\)">\(R\)</span> in some neighborhood of <span class="math" data-tex="\(R_0\)">\(R_0\)</span>, with the same <span class="math" data-tex="\(K,W\)">\(K,W\)</span>.</p>
+<p>For any such <span class="math" data-tex="\(R\)">\(R\)</span> and any analytic <span class="math" data-tex="\(f\)">\(f\)</span> satisfying its relation and <span class="math" data-tex="\(\sup_{Z_1}|f|\le1\)">\(\sup_{Z_1}|f|\le1\)</span>, we have <span class="math" data-tex="\(|f(z)|\ne W\)">\(|f(z)|\ne W\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. At <span class="math" data-tex="\(b\)">\(b\)</span>, its modulus is at most one and hence is less than <span class="math" data-tex="\(W\)">\(W\)</span>. Along every path in <span class="math" data-tex="\(K\)">\(K\)</span>, continuity prevents crossing that circle in the root variable. Thus <span class="math" data-tex="\(|f|&lt;W\)">\(|f|&lt;W\)</span> on <span class="math" data-tex="\(K\)">\(K\)</span>. For each of the finitely many neighborhoods of <span class="math" data-tex="\(c\)">\(c\)</span>, fix <span class="math" data-tex="\(z\)">\(z\)</span> in it and restrict <span class="math" data-tex="\(f\)">\(f\)</span> to its disk <span class="math" data-tex="\(z+\lambda e\)">\(z+\lambda e\)</span>. The boundary belongs to <span class="math" data-tex="\(K\)">\(K\)</span>, so maximum modulus gives
+<span class="math math-display" data-tex="\[
+ |f(z)|\le W,\qquad z\in Z_2.
+ \tag{6}
+\]">\[
+ |f(z)|\le W,\qquad z\in Z_2.
+ \tag{6}
+\]</span>
+This bounds all eligible branches for every <span class="math" data-tex="\(R\)">\(R\)</span> in the chosen coefficient neighborhood, even if a nearby polynomial has higher last-variable degree than <span class="math" data-tex="\(R_0\)">\(R_0\)</span>. Compactness of the coefficient sphere supplies finitely many neighborhoods; take the largest of their <span class="math" data-tex="\(W\)">\(W\)</span>'s. This proves(2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-compactness-consequence-with-its-proof">The compactness consequence with its proof</h2>
+<p><strong>Lemma 2 (normalized families).</strong> For a fixed nonempty <span class="math" data-tex="\(U\Subset Z\)">\(U\Subset Z\)</span>, every sequence in <span class="math" data-tex="\(\mathcal A_m(Z)\)">\(\mathcal A_m(Z)\)</span> satisfying <span class="math" data-tex="\(\sup_U|f_j|\le1\)">\(\sup_U|f_j|\le1\)</span> has a subsequence converging locally uniformly on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Its limit still belongs to <span class="math" data-tex="\(\mathcal A_m(Z)\)">\(\mathcal A_m(Z)\)</span>. If every <span class="math" data-tex="\(\sup_U|f_j|=1\)">\(\sup_U|f_j|=1\)</span>, the limit also has that supremum.</p>
+<p><strong>Proof.</strong> Theorem1 bounds the sequence on every relatively compact open subset of <span class="math" data-tex="\(Z\)">\(Z\)</span>. Cauchy estimates then bound its first coordinate derivatives on every smaller compact set, by enclosing each point in a closed polydisk with a slightly larger closed polydisk in <span class="math" data-tex="\(Z\)">\(Z\)</span>. A finite cover gives uniform equicontinuity locally on each compact set.</p>
+<p>Choose a countable dense set in <span class="math" data-tex="\(Z\)">\(Z\)</span>, for example the complex rational-coordinate points which lie there. On this set each sequence of values is bounded. Finite-dimensional subsequence compactness, followed by a diagonal selection, gives one subsequence converging at every such point. It is uniformly Cauchy on every compact subset: choose a slightly larger compact neighborhood, use its derivative bounds on finitely many small balls, and approximate that compact subset by finitely many dense points in those balls. For a prescribed error, two late subsequence members are close at the finitely many points; equicontinuity bounds each of their changes from a point of the compact set to its chosen dense point. The sum of these three errors proves the uniform Cauchy property. Complex scalar completeness supplies its uniform limit on each compact set, and these limits agree on overlaps.</p>
+<p>The locally uniform limit is holomorphic by the Cauchy-integral limit argument in Lemma1.2 of <a href="AN02-L045.html">Cauchy bounds, root counts and analytic extensions</a>. All fixed derivatives converge on smaller compact subsets by that same argument.</p>
+<p>For each <span class="math" data-tex="\(f_j\)">\(f_j\)</span>, choose and normalize a relation <span class="math" data-tex="\(R_j\)">\(R_j\)</span> by(3). After taking a further subsequence, finite coefficient compactness gives <span class="math" data-tex="\(R_j\to R\)">\(R_j\to R\)</span>, with coefficient norm one. The limit polynomial is therefore nonzero. Local uniform convergence and finite polynomial evaluation give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0=\lim_j R_j(z,f_j(z))=R(z,f(z)),\\
+\qquad z\in Z.
+\end{gathered}
+\tag{7}
+\]">\[
+\begin{gathered}
+0=\lim_j R_j(z,f_j(z))=R(z,f(z)),\\
+\qquad z\in Z.
+\end{gathered}
+\tag{7}
+\]</span>
+Thus <span class="math" data-tex="\(f\in\mathcal A_m(Z)\)">\(f\in\mathcal A_m(Z)\)</span>. Uniform convergence on the compact closure of <span class="math" data-tex="\(U\)">\(U\)</span> also gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\left|\sup_U|f_j|-\sup_U|f|\right|
+                         \\
+\le\sup_{\overline U}|f_j-f|\\
+\longrightarrow0.
+\end{gathered}
+\tag{8}
+\]">\[
+\begin{gathered}
+\left|\sup_U|f_j|-\sup_U|f|\right|
+                         \\
+\le\sup_{\overline U}|f_j-f|\\
+\longrightarrow0.
+\end{gathered}
+\tag{8}
+\]</span>
+This proves both normalization assertions. For an explicit exhaustion, take the sets <span class="math" data-tex="\(\{|z|\le j,\ \operatorname{dist}(z,\mathbb C^d\setminus Z)\ge1/j\}\)">\(\{|z|\le j,\ \operatorname{dist}(z,\mathbb C^d\setminus Z)\ge1/j\}\)</span>, <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, with distance to the empty complement interpreted as infinity. Distance to a nonempty closed set is Lipschitz with constant one, by taking the infimum in the triangle inequality. Thus each such set is closed and bounded, hence compact; they are increasing and cover <span class="math" data-tex="\(Z\)">\(Z\)</span>. Every compact subset of <span class="math" data-tex="\(Z\)">\(Z\)</span> has a positive minimum distance from the complement, by its continuous distance function, and is bounded, so it is contained in one of these sets, and indeed in the interior of a later one. The construction therefore applies to the whole open domain; it does not assume a uniform root labeling on <span class="math" data-tex="\(Z\)">\(Z\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We need only this sequential form, not a separate assertion that an infinite-dimensional closed ball is compact.</p>
+<h2 id="positive-imaginary-parts-control-derivatives">Positive imaginary parts control derivatives</h2>
+<p><strong>Theorem 3.</strong> Let <span class="math" data-tex="\(Z_1,Z_2\Subset Z\)">\(Z_1,Z_2\Subset Z\)</span> be nonempty and let <span class="math" data-tex="\(Z_0\Subset Z_1\)">\(Z_0\Subset Z_1\)</span> be nonempty. For each nonzero multi-index <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, there is a finite <span class="math" data-tex="\(C_\beta\)">\(C_\beta\)</span>, and there are constants <span class="math" data-tex="\(C_0\ge1\)">\(C_0\ge1\)</span>, <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, depending only on the fixed sets and <span class="math" data-tex="\(m\)">\(m\)</span>, such that every <span class="math" data-tex="\(f\in\mathcal A_m(Z)\)">\(f\in\mathcal A_m(Z)\)</span> with <span class="math" data-tex="\(\sup_{Z_0}\operatorname{Im}f\ge0\)">\(\sup_{Z_0}\operatorname{Im}f\ge0\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \sup_{Z_2}|\partial^\beta f|
+       \le C_\beta\sup_{Z_1}\operatorname{Im}f,\qquad \beta\ne0,
+ \tag{9}
+\]">\[
+ \sup_{Z_2}|\partial^\beta f|
+       \le C_\beta\sup_{Z_1}\operatorname{Im}f,\qquad \beta\ne0,
+ \tag{9}
+\]</span>
+and, for some ball <span class="math" data-tex="\(B_f\subset Z_1\)">\(B_f\subset Z_1\)</span> of radius exactly <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+ \sup_{Z_1}\operatorname{Im}f
+                     \le C_0\inf_{B_f}\operatorname{Im}f.
+ \tag{10}
+\]">\[
+ \sup_{Z_1}\operatorname{Im}f
+                     \le C_0\inf_{B_f}\operatorname{Im}f.
+ \tag{10}
+\]</span>
+The same derivative estimate holds with <span class="math" data-tex="\(D^\beta=(-i)^{|\beta|}\partial^\beta\)">\(D^\beta=(-i)^{|\beta|}\partial^\beta\)</span>, since the factor has modulus one.</p>
+<p><strong>Proof.</strong> The compact closure of <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span> lies inside <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span>. Let <span class="math" data-tex="\(a\)">\(a\)</span> maximize <span class="math" data-tex="\(\operatorname{Im}f\)">\(\operatorname{Im}f\)</span> there, and put <span class="math" data-tex="\(b=\operatorname{Im}f(a)=\sup_{Z_0}\operatorname{Im}f\ge0\)">\(b=\operatorname{Im}f(a)=\sup_{Z_0}\operatorname{Im}f\ge0\)</span>. Subtract the complete complex value <span class="math" data-tex="\(f(a)\)">\(f(a)\)</span>, not only its real part, and set <span class="math" data-tex="\(h=f-f(a)\)">\(h=f-f(a)\)</span>. If <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, then <span class="math" data-tex="\(f\)">\(f\)</span> is constant; all derivatives in(9) vanish, while(10) holds on any fixed ball in <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span>, with <span class="math" data-tex="\(C_0\ge1\)">\(C_0\ge1\)</span>. We will choose <span class="math" data-tex="\(r\)">\(r\)</span> small enough for one such ball.</p>
+<p>If <span class="math" data-tex="\(h\ne0\)">\(h\ne0\)</span>, let <span class="math" data-tex="\(L=\sup_{Z_2}|h|&gt;0\)">\(L=\sup_{Z_2}|h|&gt;0\)</span>, and define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g=\frac{f-f(a)}L,\\
+\qquad
+ \sup_{Z_2}|g|=1,\\
+\quad g(a)=0,\\
+\quad
+ \operatorname{Im}f=b+L\operatorname{Im}g.
+\end{gathered}
+\tag{11}
+\]">\[
+\begin{gathered}
+g=\frac{f-f(a)}L,\\
+\qquad
+ \sup_{Z_2}|g|=1,\\
+\quad g(a)=0,\\
+\quad
+ \operatorname{Im}f=b+L\operatorname{Im}g.
+\end{gathered}
+\tag{11}
+\]</span>
+These changes preserve the degree-bounded graph family. Consider all normalized functions <span class="math" data-tex="\(g\)">\(g\)</span> for which <span class="math" data-tex="\(g(a)=0\)">\(g(a)=0\)</span> at some <span class="math" data-tex="\(a\in\overline{Z_0}\)">\(a\in\overline{Z_0}\)</span>. Lemma2 makes this set sequentially compact for local uniform convergence. For the zero condition, take a convergent subsequence of the points <span class="math" data-tex="\(a_j\)">\(a_j\)</span> in their compact set; uniform convergence near that set gives <span class="math" data-tex="\(g(a)=0\)">\(g(a)=0\)</span>. The supremum normalization and algebraic relation remain true by Lemma2.</p>
+<p>Every such <span class="math" data-tex="\(g\)">\(g\)</span> has
+<span class="math math-display" data-tex="\[
+ S(g)=\sup_{Z_1}\operatorname{Im}g&gt;0.
+ \tag{12}
+\]">\[
+ S(g)=\sup_{Z_1}\operatorname{Im}g&gt;0.
+ \tag{12}
+\]</span>
+If its imaginary part were nonpositive on <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span>, its value zero at the interior point <span class="math" data-tex="\(a\)">\(a\)</span> would be a local maximum. On every sufficiently small complex-line circle about <span class="math" data-tex="\(a\)">\(a\)</span>, the mean of <span class="math" data-tex="\(\operatorname{Im}g\)">\(\operatorname{Im}g\)</span> is zero by the Cauchy formula. All its values there are nonpositive, so continuity forces every value on that circle to be zero. Varying the line and radius gives <span class="math" data-tex="\(\operatorname{Im}g=0\)">\(\operatorname{Im}g=0\)</span> in a neighborhood of <span class="math" data-tex="\(a\)">\(a\)</span>. The coordinate Cauchy–Riemann equations make its real part constant there, and <span class="math" data-tex="\(g(a)=0\)">\(g(a)=0\)</span> makes the constant zero. The identity principle on connected <span class="math" data-tex="\(Z\)">\(Z\)</span> would give <span class="math" data-tex="\(g=0\)">\(g=0\)</span>, contrary to its supremum one on <span class="math" data-tex="\(Z_2\)">\(Z_2\)</span>.</p>
+<p>The function <span class="math" data-tex="\(S\)">\(S\)</span> is continuous under local uniform convergence, by the supremum bound on the compact closure of <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span>. Sequential compactness and(12) therefore give constants <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, <span class="math" data-tex="\(A&lt;\infty\)">\(A&lt;\infty\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c\le S(g)\le A
+ \\
+\quad\text{for every normalized }g.
+\end{gathered}
+\tag{13}
+\]">\[
+\begin{gathered}
+c\le S(g)\le A
+ \\
+\quad\text{for every normalized }g.
+\end{gathered}
+\tag{13}
+\]</span>
+For example, if there were no positive lower bound, a sequence with <span class="math" data-tex="\(S(g_j)\to0\)">\(S(g_j)\to0\)</span> would converge along a subsequence to another normalized function with <span class="math" data-tex="\(S=0\)">\(S=0\)</span>, a contradiction. The upper bound follows from Theorem1 with <span class="math" data-tex="\(Z_2\)">\(Z_2\)</span> as normalizing set. Cauchy estimates on a compact neighborhood of <span class="math" data-tex="\(\overline{Z_2}\)">\(\overline{Z_2}\)</span> similarly give bounds <span class="math" data-tex="\(\sup_{Z_2}|\partial^\beta g|\le A_\beta\)">\(\sup_{Z_2}|\partial^\beta g|\le A_\beta\)</span>.</p>
+<p>There are also fixed <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span> such that every normalized <span class="math" data-tex="\(g\)">\(g\)</span> has a ball of radius <span class="math" data-tex="\(r\)">\(r\)</span> in <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span> on which
+<span class="math math-display" data-tex="\[
+ \inf_{B_g}\operatorname{Im}g\ge\nu.
+ \tag{14}
+\]">\[
+ \inf_{B_g}\operatorname{Im}g\ge\nu.
+ \tag{14}
+\]</span>
+To prove uniformity, suppose no such pair existed. For each integer <span class="math" data-tex="\(j\)">\(j\)</span>, choose a normalized <span class="math" data-tex="\(g_j\)">\(g_j\)</span> for which no ball of radius <span class="math" data-tex="\(1/j\)">\(1/j\)</span> contained in <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span> has imaginary infimum at least <span class="math" data-tex="\(1/j\)">\(1/j\)</span>. A subsequence converges locally uniformly to a normalized <span class="math" data-tex="\(g\)">\(g\)</span>. By(12), <span class="math" data-tex="\(g\)">\(g\)</span> has positive imaginary part at some point of <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span>; continuity gives a closed ball there, contained in <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span>, on which it is at least a fixed positive number. Uniform convergence on that closed ball gives half that bound for every late subsequence member. For large <span class="math" data-tex="\(j\)">\(j\)</span>, its centered subball of radius <span class="math" data-tex="\(1/j\)">\(1/j\)</span> has infimum greater than <span class="math" data-tex="\(1/j\)">\(1/j\)</span>, contradicting its choice. Thus(14) holds. Decrease <span class="math" data-tex="\(r\)">\(r\)</span>, if necessary, to fit the fixed constant-function ball as well; the same infimum bound persists on centered subballs.</p>
+<p>Return to(11). Since <span class="math" data-tex="\(b\ge0\)">\(b\ge0\)</span>, equations(13)–(14) give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{Z_2}|\partial^\beta f|
+   \le LA_\beta
+    \\
+\le (A_\beta/c)\,[b+LS(g)],\\
+ \sup_{Z_1}\operatorname{Im}f
+   =b+LS(g)\\
+\le b+LA
+    \\
+\le \max(1,A/\nu)\,[b+L\inf_{B_g}\operatorname{Im}g].
+\end{gathered}
+\tag{15}
+\]">\[
+\begin{gathered}
+\sup_{Z_2}|\partial^\beta f|
+   \le LA_\beta
+    \\
+\le (A_\beta/c)\,[b+LS(g)],\\
+ \sup_{Z_1}\operatorname{Im}f
+   =b+LS(g)\\
+\le b+LA
+    \\
+\le \max(1,A/\nu)\,[b+L\inf_{B_g}\operatorname{Im}g].
+\end{gathered}
+\tag{15}
+\]</span>
+Choose <span class="math" data-tex="\(C_\beta=A_\beta/c\)">\(C_\beta=A_\beta/c\)</span> and <span class="math" data-tex="\(C_0=\max(1,A/\nu)\)">\(C_0=\max(1,A/\nu)\)</span>. This proves both assertions. If the normalized set is empty, every function under consideration is constant, and the earlier fixed ball proves the result directly. The construction tracks the nonnegative imaginary shift <span class="math" data-tex="\(b\)">\(b\)</span>; it does not confuse an arbitrary additive real constant with the size controlled by the imaginary part. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="a-product-cannot-hide-all-its-factors">A product cannot hide all its factors</h2>
+<p><strong>Theorem 4.</strong> If <span class="math" data-tex="\(U\Subset Z\)">\(U\Subset Z\)</span> is nonempty and <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is a positive integer, there is a finite constant <span class="math" data-tex="\(C\)">\(C\)</span>, depending on <span class="math" data-tex="\(U,Z,m,\ell\)">\(U,Z,m,\ell\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\prod_{j=1}^{\ell}\sup_U|f_j|
+       \le C\sup_U\left|\prod_{j=1}^{\ell}f_j\right|,
+                    \\
+\qquad f_j\in\mathcal A_m(Z).
+\end{gathered}
+\tag{16}
+\]">\[
+\begin{gathered}
+\prod_{j=1}^{\ell}\sup_U|f_j|
+       \le C\sup_U\left|\prod_{j=1}^{\ell}f_j\right|,
+                    \\
+\qquad f_j\in\mathcal A_m(Z).
+\end{gathered}
+\tag{16}
+\]</span></p>
+<p><strong>Proof.</strong> If any individual supremum is zero, the left side is zero and the assertion follows. Otherwise divide each function by that positive supremum; the family remains unchanged and every normalized factor has supremum one.</p>
+<p>For normalized factors, their product is not identically zero on <span class="math" data-tex="\(U\)">\(U\)</span>. Indeed none of the factors is identically zero on connected <span class="math" data-tex="\(Z\)">\(Z\)</span>. Its zero set is closed with empty interior, by the identity principle. In a nonempty open part of <span class="math" data-tex="\(U\)">\(U\)</span>, choose successively a smaller nonempty open neighborhood avoiding each of the finitely many zero sets. After <span class="math" data-tex="\(\ell\)">\(\ell\)</span> steps there is a point where all factors are nonzero. Hence
+<span class="math math-display" data-tex="\[
+ \sup_U\left|\prod_{j=1}^{\ell}f_j\right|&gt;0.
+ \tag{17}
+\]">\[
+ \sup_U\left|\prod_{j=1}^{\ell}f_j\right|&gt;0.
+ \tag{17}
+\]</span>
+If these positive suprema had no positive lower bound across normalized <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-tuples, choose a sequence tending to zero. Apply Lemma2 to the first factor, then to the second within its subsequence, and so on through the finite list. Every factor converges locally uniformly to a normalized algebraic analytic function. Their products converge uniformly on <span class="math" data-tex="\(\overline U\)">\(\overline U\)</span>, since all factors are uniformly bounded there. The limiting product has supremum zero, contradicting(17). Therefore there is a positive lower bound; its reciprocal is the required <span class="math" data-tex="\(C\)">\(C\)</span>. Restore the scalar normalizations to obtain(16). No degree bound for the product itself was used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — basic: why the outer set is relatively compact.</strong> For <span class="math" data-tex="\(Z=\{|z|&lt;1\}\)">\(Z=\{|z|&lt;1\}\)</span>, consider <span class="math" data-tex="\(f(z)=1/(1-z)\)">\(f(z)=1/(1-z)\)</span>. Find its total-degree graph relation and compare its exact suprema on concentric disks of radii <span class="math" data-tex="\(0&lt;r_1&lt;r_2&lt;1\)">\(0&lt;r_1&lt;r_2&lt;1\)</span>. Explain why an estimate with the outer set equal to <span class="math" data-tex="\(Z\)">\(Z\)</span> fails.</p>
+<p><strong>Solution.</strong> The relation is <span class="math" data-tex="\((1-z)w-1=0\)">\((1-z)w-1=0\)</span>, of total degree two. The reverse triangle inequality gives <span class="math" data-tex="\(|1-z|\ge1-|z|\)">\(|1-z|\ge1-|z|\)</span>, and values on the positive real radius approach equality. Consequently
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_{|z|&lt;r}|f(z)|=\frac1{1-r},\\
+\qquad
+ \frac{\sup_{|z|&lt;r_2}|f|}{\sup_{|z|&lt;r_1}|f|}
+                    =\frac{1-r_1}{1-r_2}.
+\end{gathered}
+\tag{18}
+\]">\[
+\begin{gathered}
+\sup_{|z|&lt;r}|f(z)|=\frac1{1-r},\\
+\qquad
+ \frac{\sup_{|z|&lt;r_2}|f|}{\sup_{|z|&lt;r_1}|f|}
+                    =\frac{1-r_1}{1-r_2}.
+\end{gathered}
+\tag{18}
+\]</span>
+These finite suprema match Theorem1 on relatively compact disks. On all of <span class="math" data-tex="\(Z\)">\(Z\)</span>, the supremum is infinite, while the inner supremum is finite. A finite constant cannot give the proposed comparison there. Holomorphy on an open domain does not supply a bound up to its boundary.</p>
+<p><strong>Exercise 2 — intermediate: real shifts and the imaginary hypothesis.</strong> On <span class="math" data-tex="\(Z_1=\{|z|&lt;r_1\}\)">\(Z_1=\{|z|&lt;r_1\}\)</span>, let <span class="math" data-tex="\(f(z)=H+Az\)">\(f(z)=H+Az\)</span>, with <span class="math" data-tex="\(H\in\mathbb R\)">\(H\in\mathbb R\)</span>, <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, and <span class="math" data-tex="\(0&lt;r_1&lt;1\)">\(0&lt;r_1&lt;1\)</span>. Compute the quantities in Theorem3 and give one positive ball. Then exhibit failure of the derivative estimate when its nonnegative-imaginary-part hypothesis is omitted.</p>
+<p><strong>Solution.</strong> These functions have a degree-one graph relation. Their derivative and imaginary supremum are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|f&#x27;|=A,\\
+\qquad
+ \sup_{Z_1}\operatorname{Im}f=Ar_1,\\
+\qquad
+ \inf_{|z-ir_1/2|&lt;r_1/4}\operatorname{Im}f=Ar_1/4.
+\end{gathered}
+\tag{19}
+\]">\[
+\begin{gathered}
+|f&#x27;|=A,\\
+\qquad
+ \sup_{Z_1}\operatorname{Im}f=Ar_1,\\
+\qquad
+ \inf_{|z-ir_1/2|&lt;r_1/4}\operatorname{Im}f=Ar_1/4.
+\end{gathered}
+\tag{19}
+\]</span>
+The indicated ball lies in <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span>, since its center distance plus radius is <span class="math" data-tex="\(3r_1/4\)">\(3r_1/4\)</span>. Thus <span class="math" data-tex="\(C_1=1/r_1\)">\(C_1=1/r_1\)</span> and <span class="math" data-tex="\(C_0=4\)">\(C_0=4\)</span> suffice for this family. They are independent of <span class="math" data-tex="\(H\)">\(H\)</span>, even though <span class="math" data-tex="\(\sup|f|\)">\(\sup|f|\)</span> grows without bound as <span class="math" data-tex="\(|H|\to\infty\)">\(|H|\to\infty\)</span>.</p>
+<p>For the failure, take <span class="math" data-tex="\(f(z)=z-iH\)">\(f(z)=z-iH\)</span> with <span class="math" data-tex="\(H&gt;1\)">\(H&gt;1\)</span>, on the unit disk <span class="math" data-tex="\(Z_1\)">\(Z_1\)</span> inside a larger connected disk <span class="math" data-tex="\(Z\)">\(Z\)</span>. Its derivative is one while <span class="math" data-tex="\(\sup_{Z_1}\operatorname{Im}f=1-H&lt;0\)">\(\sup_{Z_1}\operatorname{Im}f=1-H&lt;0\)</span>. No nonnegative derivative constant can bound one by that negative right side. Every smaller centered <span class="math" data-tex="\(Z_0\)">\(Z_0\)</span> also has negative imaginary supremum, so this function is precisely excluded by the theorem's hypothesis.</p>
+<p><strong>Exercise 3 — advanced: dependence on the number of factors.</strong> On the unit disk, let <span class="math" data-tex="\(\omega=e^{2\pi i/\ell}\)">\(\omega=e^{2\pi i/\ell}\)</span> and <span class="math" data-tex="\(f_j(z)=1-\omega^jz\)">\(f_j(z)=1-\omega^jz\)</span>, <span class="math" data-tex="\(0\le j&lt;\ell\)">\(0\le j&lt;\ell\)</span>. Compute both sides of(16) without the constant. Deduce a necessary lower bound on a universal constant for <span class="math" data-tex="\(\ell\)">\(\ell\)</span> factors.</p>
+<p><strong>Solution.</strong> Each factor has supremum two on the open disk: the triangle inequality bounds it by two, and radial points approaching the opposite boundary direction approach that bound. Their product is <span class="math" data-tex="\(1-z^\ell\)">\(1-z^\ell\)</span>. This identity follows by its degree, its <span class="math" data-tex="\(\ell\)">\(\ell\)</span> distinct unit-circle zeros and its constant term one, or by scalar factorization. Its supremum is also two, by the triangle inequality and radial points for which <span class="math" data-tex="\(z^\ell\to-1\)">\(z^\ell\to-1\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\prod_{j=0}^{\ell-1}\sup_{|z|&lt;1}|f_j|=2^\ell,\\
+\qquad
+ \sup_{|z|&lt;1}\left|\prod_{j=0}^{\ell-1}f_j(z)\right|=2.
+\end{gathered}
+\tag{20}
+\]">\[
+\begin{gathered}
+\prod_{j=0}^{\ell-1}\sup_{|z|&lt;1}|f_j|=2^\ell,\\
+\qquad
+ \sup_{|z|&lt;1}\left|\prod_{j=0}^{\ell-1}f_j(z)\right|=2.
+\end{gathered}
+\tag{20}
+\]</span>
+Each factor has a degree-one graph relation and is analytic on, for example, the disk <span class="math" data-tex="\(Z=\{|z|&lt;2\}\)">\(Z=\{|z|&lt;2\}\)</span>; the unit disk is relatively compact there. Therefore any constant covering all such <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-tuples must be at least <span class="math" data-tex="\(2^{\ell-1}\)">\(2^{\ell-1}\)</span>. The factor count in Theorem4 is essential even for linear functions. The functions attain their large individual suprema in different boundary directions, while the product comparison still gives a finite bound at every fixed count.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>Gerd Grubb, <em>Distributions and Operators</em>, lecture-note versions, 2007–2008. <a href="https://web.math.ku.dk/~grubb/distribution.htm">Lecture-note index</a>.</li>
+<li>Richard Melrose, <em>Differential Analysis</em>, MIT OpenCourseWare, Fall 2004. <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Open course</a>.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer, 1983.</li>
+<li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
+</ul>
+</main></body></html>

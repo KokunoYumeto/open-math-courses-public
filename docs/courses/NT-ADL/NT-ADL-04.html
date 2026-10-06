@@ -1,0 +1,420 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Idèles, ideals and ray class groups</title><link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/course.css">
+<script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="index.html">Course contents</a> · Lesson 4 of 12</nav><aside class="notice"><p>Author-self-checked draft. Independent programme review is pending.</p><p>Lessons 1 and 4, as revised adaptations: CC BY-NC-SA 4.0; their previously original CC0 components retain that dedication. Other original course text: CC0. The marked edge-stabilizer adaptation in lesson 11: CC BY 4.0. Source credits and changes appear in the lessons. Prerequisite snapshots retain their edition-specific notices. MathJax and font licences are retained in the assets folder.</p><p>The five separate prerequisites <a href="prerequisites/HA-LCA-02.md">HA-LCA-02</a>, <a href="prerequisites/HA-LCA-03.md">HA-LCA-03</a>, <a href="prerequisites/HA-LCA-09.md">HA-LCA-09</a>, <a href="prerequisites/HA-LCA-10.md">HA-LCA-10</a>, <a href="prerequisites/HA-LCA-11.md">HA-LCA-11</a> are Design Science License adaptations of D. H. Fremlin. Their exact editable lessons retain all human-source credits, copyright, adaptation, change and warranty notices. Their <a href="prerequisites/assets/fremlin/DESIGN-SCIENCE-LICENSE.txt">full licence</a> and <span class="unlinked">unchanged author source package</span> are bundled. The archive retains all auxiliary notices. These separate components retain their own terms; independent NT-ADL lesson licences remain as stated.</p></aside><article class="lesson"><h1 id="idèles-ideals-and-ray-class-groups">Idèles, ideals and ray class groups</h1>
+<p><em>Original independently authored material written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026, and dedicated under <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>. Source adaptations are credited below. Self-checked by the writing AI. This revised lesson as a whole is licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>; the prior CC0 dedication of its original components remains in force.</em></p>
+<p>An idèle specifies a nonzero element at every completion. Its valuations form a fractional ideal; its unit components carry congruence information that the ideal forgets. A ray class group remembers a prescribed finite amount of this information, together with prescribed signs at real embeddings. We will construct these groups as finite discrete quotients of the idèle class group and prove that they detect every open subgroup.</p>
+<p>Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field, <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span> its ring of integers, <span class="math" data-tex="\(J_K\)">\(J_K\)</span> its idèle group, and <span class="math" data-tex="\(C_K=J_K/K^\times\)">\(C_K=J_K/K^\times\)</span>. At a finite place <span class="math" data-tex="\(v\)">\(v\)</span> corresponding to <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, write <span class="math" data-tex="\(\operatorname{ord}_v\)">\(\operatorname{ord}_v\)</span> for the valuation with <span class="math" data-tex="\(\operatorname{ord}_v(\varpi_v)=1\)">\(\operatorname{ord}_v(\varpi_v)=1\)</span>, and <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> for the valuation ring. We use the topology and arithmetic proved in <a href="NT-ADL-03.html">Idèles and the idèle class group</a>, including the finiteness of the ordinary ideal class group. Simultaneous approximation at any finite set of places follows from Theorem 2.3 of <a href="NT-ADL-02.html">The adèle ring of a number field</a>, by omitting a place outside that set. For the conventions allowing a selected set of real places, compare [Milne CFT, Chapter V, §§1 and 4]. [Sutherland 21, Remark 21.5] gives the narrow case, with positivity at all real places. The exact diagram adapted from Sutherland is credited below.</p>
+<h2 id="what-the-valuations-retain">What the valuations retain</h2>
+<p>Let <span class="math" data-tex="\(I_K\)">\(I_K\)</span> be the group of nonzero fractional ideals of <span class="math" data-tex="\(\mathcal O_K\)">\(\mathcal O_K\)</span>, given the discrete topology. Unique ideal factorization identifies it with the direct sum of copies of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> indexed by finite primes. Put</p>
+<span class="math math-display" data-tex="\[
+J_{K,\infty}=\prod_{v\mid\infty}K_v^\times
+\times\prod_{v&lt;\infty}\mathcal O_v^\times.
+\tag{1}
+\]">\[
+J_{K,\infty}=\prod_{v\mid\infty}K_v^\times
+\times\prod_{v&lt;\infty}\mathcal O_v^\times.
+\tag{1}
+\]</span>
+<p>This is an open subgroup of <span class="math" data-tex="\(J_K\)">\(J_K\)</span>. The ordinary ideal class group is <span class="math" data-tex="\(\operatorname{Cl}_K=I_K/\{(a):a\in K^\times\}\)">\(\operatorname{Cl}_K=I_K/\{(a):a\in K^\times\}\)</span>.</p>
+<p><strong>Proposition 4.1 (the ideal attached to an idèle).</strong> The map</p>
+<span class="math math-display" data-tex="\[
+\mathfrak a:J_K\longrightarrow I_K,
+\qquad x\longmapsto\prod_{v&lt;\infty}\mathfrak p_v^{\operatorname{ord}_v(x_v)}
+\tag{2}
+\]">\[
+\mathfrak a:J_K\longrightarrow I_K,
+\qquad x\longmapsto\prod_{v&lt;\infty}\mathfrak p_v^{\operatorname{ord}_v(x_v)}
+\tag{2}
+\]</span>
+<p>is a continuous surjective homomorphism with kernel <span class="math" data-tex="\(J_{K,\infty}\)">\(J_{K,\infty}\)</span>. It induces a continuous surjection</p>
+<span class="math math-display" data-tex="\[
+C_K\longrightarrow\operatorname{Cl}_K
+\quad\text{with kernel }J_{K,\infty}K^\times/K^\times.
+\tag{3}
+\]">\[
+C_K\longrightarrow\operatorname{Cl}_K
+\quad\text{with kernel }J_{K,\infty}K^\times/K^\times.
+\tag{3}
+\]</span>
+<p><strong>Proof.</strong> All but finitely many finite components of an idèle are units, so the product in (2) is finite. Additivity of the valuations makes the map a homomorphism. For an ideal <span class="math" data-tex="\(\prod\mathfrak p^{n_{\mathfrak p}}\)">\(\prod\mathfrak p^{n_{\mathfrak p}}\)</span>, take the component <span class="math" data-tex="\(\varpi_v^{n_{\mathfrak p_v}}\)">\(\varpi_v^{n_{\mathfrak p_v}}\)</span> at the finitely many indicated primes and take <span class="math" data-tex="\(1\)">\(1\)</span> everywhere else. This idèle maps to the given ideal. The valuation is zero precisely on <span class="math" data-tex="\(\mathcal O_v^\times\)">\(\mathcal O_v^\times\)</span>, proving the kernel statement. A homomorphism into a discrete group is continuous when its kernel is open: every fiber is then an open coset. This applies here.</p>
+<p>For a diagonal element <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>, (2) equals its principal fractional ideal <span class="math" data-tex="\((a)\)">\((a)\)</span>. Hence the map descends to (3), and surjectivity survives. If <span class="math" data-tex="\(\mathfrak a(x)=(a)\)">\(\mathfrak a(x)=(a)\)</span>, then <span class="math" data-tex="\(xa^{-1}\)">\(xa^{-1}\)</span> has zero valuation at every finite place and belongs to (1). Conversely, an element of <span class="math" data-tex="\(J_{K,\infty}K^\times\)">\(J_{K,\infty}K^\times\)</span> has principal ideal. The quotient topology on <span class="math" data-tex="\(C_K\)">\(C_K\)</span> gives continuity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(P_K=\{(a):a\in K^\times\}\)">\(P_K=\{(a):a\in K^\times\}\)</span> for the group of principal fractional ideals. The relation between idèles and ideals can be read in the commutative diagram</p>
+<span class="math math-display ideal-diagram" data-tex="\[
+\begin{array}{ccccccccc}
+1&amp;\longrightarrow&amp;K^\times&amp;\longrightarrow&amp;J_K&amp;\longrightarrow&amp;C_K&amp;\longrightarrow&amp;1\\
+&amp;&amp;\scriptstyle a\mapsto(a)\;\downarrow&amp;&amp;\scriptstyle\mathfrak a\;\downarrow&amp;&amp;\downarrow\;\scriptstyle[x]\mapsto[\mathfrak a(x)]&amp;&amp;\\
+1&amp;\longrightarrow&amp;P_K&amp;\longrightarrow&amp;I_K&amp;\longrightarrow&amp;\operatorname{Cl}_K&amp;\longrightarrow&amp;1.
+\end{array}
+\]">\[
+\begin{array}{ccccccccc}
+1&amp;\longrightarrow&amp;K^\times&amp;\longrightarrow&amp;J_K&amp;\longrightarrow&amp;C_K&amp;\longrightarrow&amp;1\\
+&amp;&amp;\scriptstyle a\mapsto(a)\;\downarrow&amp;&amp;\scriptstyle\mathfrak a\;\downarrow&amp;&amp;\downarrow\;\scriptstyle[x]\mapsto[\mathfrak a(x)]&amp;&amp;\\
+1&amp;\longrightarrow&amp;P_K&amp;\longrightarrow&amp;I_K&amp;\longrightarrow&amp;\operatorname{Cl}_K&amp;\longrightarrow&amp;1.
+\end{array}
+\]</span>
+<p>Both rows are exact by the definitions of the two quotients. The valuations forget local units and send a principal idèle to its principal ideal, so both squares commute. Proposition 4.1 identifies the right-hand map and its kernel: the classes represented by <span class="math" data-tex="\(J_{K,\infty}K^\times\)">\(J_{K,\infty}K^\times\)</span>.</p>
+<p>The diagram adapts Andrew V. Sutherland’s <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec26/">MIT 18.785 Lecture 26, §26.1, p.2</a> (1 December 2021), provided by MIT OpenCourseWare under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a>. GPT-6.1 Sol (OpenAI), Ultra, adapted the notation and explanatory caption. The source’s attribution, noncommercial and ShareAlike conditions apply to this revised lesson as a whole.</p>
+<p>Even when the ordinary class group is trivial, its kernel in (3) contains much information. The rational case already shows this: <span class="math" data-tex="\(C_{\mathbb Q}\)">\(C_{\mathbb Q}\)</span> has a positive real factor and a profinite unit factor. Congruences will give finite quotients of the latter.</p>
+<h2 id="finite-congruences-and-real-signs">Finite congruences and real signs</h2>
+<p>A <strong>modulus</strong> is a pair <span class="math" data-tex="\(\mathfrak m=\mathfrak m_f M\)">\(\mathfrak m=\mathfrak m_f M\)</span>, where <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> is a nonzero integral ideal and <span class="math" data-tex="\(M\)">\(M\)</span> is a set of real places of <span class="math" data-tex="\(K\)">\(K\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+\mathfrak m_f=\prod_{\mathfrak p}\mathfrak p^{n_{\mathfrak p}},
+\qquad n_{\mathfrak p}\geq0,
+\]">\[
+\mathfrak m_f=\prod_{\mathfrak p}\mathfrak p^{n_{\mathfrak p}},
+\qquad n_{\mathfrak p}\geq0,
+\]</span>
+<p>with only finitely many positive exponents. A complex place never belongs to <span class="math" data-tex="\(M\)">\(M\)</span>. Define</p>
+<span class="math math-display" data-tex="\[
+U_v^{(0)}=\mathcal O_v^\times,
+\qquad U_v^{(n)}=1+\mathfrak p_v^n\mathcal O_v\quad(n\geq1)
+\tag{4}
+\]">\[
+U_v^{(0)}=\mathcal O_v^\times,
+\qquad U_v^{(n)}=1+\mathfrak p_v^n\mathcal O_v\quad(n\geq1)
+\tag{4}
+\]</span>
+<p>at a finite place. The congruence subgroup of idèles is</p>
+<span class="math math-display" data-tex="\[
+U_{\mathfrak m}=
+\prod_{v\in M}\mathbb R_{&gt;0}
+\times\prod_{\substack{v\text{ real}\\v\notin M}}\mathbb R^\times
+\times\prod_{v\text{ complex}}\mathbb C^\times
+\times\prod_{v&lt;\infty}U_v^{(n_{\mathfrak p_v})}.
+\tag{5}
+\]">\[
+U_{\mathfrak m}=
+\prod_{v\in M}\mathbb R_{&gt;0}
+\times\prod_{\substack{v\text{ real}\\v\notin M}}\mathbb R^\times
+\times\prod_{v\text{ complex}}\mathbb C^\times
+\times\prod_{v&lt;\infty}U_v^{(n_{\mathfrak p_v})}.
+\tag{5}
+\]</span>
+<p>It is open in <span class="math" data-tex="\(J_K\)">\(J_K\)</span>: at the finitely many primes dividing <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> we impose open principal-unit conditions, and the remaining finite factors are the usual unit subgroups. Each real positivity condition is open as well.</p>
+<p>Write <span class="math" data-tex="\(K_{\mathfrak m,1}^\times\)">\(K_{\mathfrak m,1}^\times\)</span> for the subgroup of <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+a-1\in\mathfrak p_v^{n_{\mathfrak p_v}}\mathcal O_v
+\quad(\mathfrak p_v\mid\mathfrak m_f),
+\qquad a_v&gt;0\quad(v\in M).
+\tag{6}
+\]">\[
+a-1\in\mathfrak p_v^{n_{\mathfrak p_v}}\mathcal O_v
+\quad(\mathfrak p_v\mid\mathfrak m_f),
+\qquad a_v&gt;0\quad(v\in M).
+\tag{6}
+\]</span>
+<p>The finite conditions automatically make <span class="math" data-tex="\(a\)">\(a\)</span> a unit at those primes. Let</p>
+<span class="math math-display" data-tex="\[
+I_K^{\mathfrak m}=\left\{\mathfrak b\in I_K:
+\operatorname{ord}_{\mathfrak p}(\mathfrak b)=0
+\text{ for every }\mathfrak p\mid\mathfrak m_f\right\},
+\qquad
+P_{\mathfrak m,1}=\{(a):a\in K_{\mathfrak m,1}^\times\}.
+\tag{7}
+\]">\[
+I_K^{\mathfrak m}=\left\{\mathfrak b\in I_K:
+\operatorname{ord}_{\mathfrak p}(\mathfrak b)=0
+\text{ for every }\mathfrak p\mid\mathfrak m_f\right\},
+\qquad
+P_{\mathfrak m,1}=\{(a):a\in K_{\mathfrak m,1}^\times\}.
+\tag{7}
+\]</span>
+<p>These are fractional ideals prime to the finite part of the modulus; negative exponents at other primes are allowed. The <strong>ray class group</strong> is</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Cl}_{\mathfrak m}=I_K^{\mathfrak m}/P_{\mathfrak m,1}.
+\tag{8}
+\]">\[
+\operatorname{Cl}_{\mathfrak m}=I_K^{\mathfrak m}/P_{\mathfrak m,1}.
+\tag{8}
+\]</span>
+<p>Two ideals in (7) represent the same ray class precisely when their ratio has a generator satisfying (6). With <span class="math" data-tex="\(\mathfrak m_f=(1)\)">\(\mathfrak m_f=(1)\)</span> and <span class="math" data-tex="\(M=\varnothing\)">\(M=\varnothing\)</span>, (8) is the ordinary class group. With <span class="math" data-tex="\(\mathfrak m_f=(1)\)">\(\mathfrak m_f=(1)\)</span> and <span class="math" data-tex="\(M\)">\(M\)</span> all real places, it is the <strong>narrow class group</strong> <span class="math" data-tex="\(\operatorname{Cl}_K^+\)">\(\operatorname{Cl}_K^+\)</span>. Thus an absent infinite part does not impose positivity.</p>
+<p>The selected set <span class="math" data-tex="\(M\)">\(M\)</span> is part of the modulus data, as in [Milne CFT, Definition 1.3, pp.148–149]. It affects only the real signs. The finite residue conditions are imposed in the completed valuation rings, and a complex component remains unrestricted. This distinction is necessary when comparing with the narrow convention, which imposes positivity at all real places [Sutherland 21, Remark 21.5]: an ordinary class group and a narrow class group need not agree.</p>
+<p>For the proof, introduce another subgroup <span class="math" data-tex="\(J_K^{\mathfrak m}\)">\(J_K^{\mathfrak m}\)</span>. Its components satisfy the conditions in (6) at primes dividing <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> and at places in <span class="math" data-tex="\(M\)">\(M\)</span>, and are unrestricted elsewhere, subject to being an idèle. In particular, away from <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> they may have nonzero valuations. This distinguishes <span class="math" data-tex="\(J_K^{\mathfrak m}\)">\(J_K^{\mathfrak m}\)</span> from <span class="math" data-tex="\(U_{\mathfrak m}\)">\(U_{\mathfrak m}\)</span>, whose every finite component is a unit.</p>
+<p>In [Milne CFT, V, §4, pp.172–173], these two groups are <span class="math" data-tex="\(I^{\mathfrak m}\)">\(I^{\mathfrak m}\)</span> and <span class="math" data-tex="\(W_{\mathfrak m}\)">\(W_{\mathfrak m}\)</span>, respectively. Proposition 4.6 there passes first from idèles satisfying the conditions at the modulus to ideals prime to its finite part, and then uses approximation to reach every idèle class. The proof below writes out both maps and their kernels. Keeping the two subgroups distinct avoids imposing unit conditions at primes where the representing ideal needs a nonzero exponent.</p>
+<p><strong>Theorem 4.2 (the idèlic ray quotient).</strong> There are canonical isomorphisms of discrete groups</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Cl}_{\mathfrak m}
+\simeq J_K/(U_{\mathfrak m}K^\times)
+\simeq C_K/C_{\mathfrak m},
+\qquad
+C_{\mathfrak m}=U_{\mathfrak m}K^\times/K^\times.
+\tag{9}
+\]">\[
+\operatorname{Cl}_{\mathfrak m}
+\simeq J_K/(U_{\mathfrak m}K^\times)
+\simeq C_K/C_{\mathfrak m},
+\qquad
+C_{\mathfrak m}=U_{\mathfrak m}K^\times/K^\times.
+\tag{9}
+\]</span>
+<p>The first isomorphism sends the ideal of <span class="math" data-tex="\(x\in J_K^{\mathfrak m}\)">\(x\in J_K^{\mathfrak m}\)</span> to the class of that idèle.</p>
+<p><strong>Proof.</strong> First we prove</p>
+<span class="math math-display" data-tex="\[
+J_K=J_K^{\mathfrak m}K^\times.
+\tag{10}
+\]">\[
+J_K=J_K^{\mathfrak m}K^\times.
+\tag{10}
+\]</span>
+<p>For <span class="math" data-tex="\(x\in J_K\)">\(x\in J_K\)</span>, use simultaneous approximation to choose <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> close enough to <span class="math" data-tex="\(x_v^{-1}\)">\(x_v^{-1}\)</span> at every prime dividing <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> that <span class="math" data-tex="\(ax_v\in1+\mathfrak p_v^{n_{\mathfrak p_v}}\mathcal O_v\)">\(ax_v\in1+\mathfrak p_v^{n_{\mathfrak p_v}}\mathcal O_v\)</span>. At every real place in <span class="math" data-tex="\(M\)">\(M\)</span>, require <span class="math" data-tex="\(a_v\)">\(a_v\)</span> to have the sign of <span class="math" data-tex="\(x_v\)">\(x_v\)</span>. These are finitely many open conditions about nonzero targets. Approximation provides such an <span class="math" data-tex="\(a\)">\(a\)</span>; if there are no conditions, choose <span class="math" data-tex="\(a=1\)">\(a=1\)</span>. Then <span class="math" data-tex="\(ax\in J_K^{\mathfrak m}\)">\(ax\in J_K^{\mathfrak m}\)</span>, proving (10).</p>
+<p>Restriction of (2) gives a surjection <span class="math" data-tex="\(J_K^{\mathfrak m}\to I_K^{\mathfrak m}\)">\(J_K^{\mathfrak m}\to I_K^{\mathfrak m}\)</span>. Indeed, uniformizer powers at primes outside <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>, with every other component <span class="math" data-tex="\(1\)">\(1\)</span>, realize all these ideals. Its kernel is exactly <span class="math" data-tex="\(U_{\mathfrak m}\)">\(U_{\mathfrak m}\)</span>. Moreover,</p>
+<span class="math math-display" data-tex="\[
+J_K^{\mathfrak m}\cap K^\times=K_{\mathfrak m,1}^\times.
+\tag{11}
+\]">\[
+J_K^{\mathfrak m}\cap K^\times=K_{\mathfrak m,1}^\times.
+\tag{11}
+\]</span>
+<p>Consequently (8) identifies with <span class="math" data-tex="\(J_K^{\mathfrak m}/(U_{\mathfrak m}K_{\mathfrak m,1}^\times)\)">\(J_K^{\mathfrak m}/(U_{\mathfrak m}K_{\mathfrak m,1}^\times)\)</span>. Inclusion in <span class="math" data-tex="\(J_K\)">\(J_K\)</span> maps this group onto <span class="math" data-tex="\(J_K/(U_{\mathfrak m}K^\times)\)">\(J_K/(U_{\mathfrak m}K^\times)\)</span> by (10). Its kernel is trivial: if <span class="math" data-tex="\(x=ua\in J_K^{\mathfrak m}\)">\(x=ua\in J_K^{\mathfrak m}\)</span>, where <span class="math" data-tex="\(u\in U_{\mathfrak m}\)">\(u\in U_{\mathfrak m}\)</span> and <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>, then <span class="math" data-tex="\(a=u^{-1}x\in J_K^{\mathfrak m}\cap K^\times\)">\(a=u^{-1}x\in J_K^{\mathfrak m}\cap K^\times\)</span>, which is (11). This proves the first isomorphism in (9). Quotienting first by <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span> proves the second. Since <span class="math" data-tex="\(U_{\mathfrak m}K^\times\)">\(U_{\mathfrak m}K^\times\)</span> is open, its quotient is discrete. All the maps just constructed therefore respect the indicated discrete topologies. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-finite-sequence-behind-a-ray-group">The finite sequence behind a ray group</h2>
+<p>Let <span class="math" data-tex="\(\mathcal O_{\mathfrak m,1}^\times=\mathcal O_K^\times\cap K_{\mathfrak m,1}^\times\)">\(\mathcal O_{\mathfrak m,1}^\times=\mathcal O_K^\times\cap K_{\mathfrak m,1}^\times\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+B_{\mathfrak m}=(\mathcal O_K/\mathfrak m_f)^\times
+\times\{\pm1\}^{M}.
+\tag{12}
+\]">\[
+B_{\mathfrak m}=(\mathcal O_K/\mathfrak m_f)^\times
+\times\{\pm1\}^{M}.
+\tag{12}
+\]</span>
+<p>When <span class="math" data-tex="\(\mathfrak m_f=(1)\)">\(\mathfrak m_f=(1)\)</span>, the first factor means the trivial group. A global unit has a residue in the finite factor and a sign at every selected real place. Denote this homomorphism by <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<p><strong>Proposition 4.3 (residues, signs and ideal classes).</strong> The following sequence is exact:</p>
+<span class="math math-display" data-tex="\[
+1\longrightarrow\mathcal O_K^\times/\mathcal O_{\mathfrak m,1}^\times
+\xrightarrow{\ \delta\ }B_{\mathfrak m}
+\xrightarrow{\ \beta\ }\operatorname{Cl}_{\mathfrak m}
+\xrightarrow{\ \gamma\ }\operatorname{Cl}_K
+\longrightarrow1.
+\tag{13}
+\]">\[
+1\longrightarrow\mathcal O_K^\times/\mathcal O_{\mathfrak m,1}^\times
+\xrightarrow{\ \delta\ }B_{\mathfrak m}
+\xrightarrow{\ \beta\ }\operatorname{Cl}_{\mathfrak m}
+\xrightarrow{\ \gamma\ }\operatorname{Cl}_K
+\longrightarrow1.
+\tag{13}
+\]</span>
+<p>Here <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> forgets the ray conditions. To define <span class="math" data-tex="\(\beta\)">\(\beta\)</span>, choose <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> with the specified residues at <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> and signs at <span class="math" data-tex="\(M\)">\(M\)</span>, and take the ray class of <span class="math" data-tex="\((a)\)">\((a)\)</span>. In particular, <span class="math" data-tex="\(\operatorname{Cl}_{\mathfrak m}\)">\(\operatorname{Cl}_{\mathfrak m}\)</span> is finite. If <span class="math" data-tex="\(h_K=\#\operatorname{Cl}_K\)">\(h_K=\#\operatorname{Cl}_K\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\#\operatorname{Cl}_{\mathfrak m}
+=h_K\frac{2^{\#M}\#(\mathcal O_K/\mathfrak m_f)^\times}
+{[\mathcal O_K^\times:\mathcal O_{\mathfrak m,1}^\times]}.
+\tag{14}
+\]">\[
+\#\operatorname{Cl}_{\mathfrak m}
+=h_K\frac{2^{\#M}\#(\mathcal O_K/\mathfrak m_f)^\times}
+{[\mathcal O_K^\times:\mathcal O_{\mathfrak m,1}^\times]}.
+\tag{14}
+\]</span>
+<p><strong>Proof.</strong> The kernel of the residue-and-sign map on units is exactly <span class="math" data-tex="\(\mathcal O_{\mathfrak m,1}^\times\)">\(\mathcal O_{\mathfrak m,1}^\times\)</span>. Thus the displayed map <span class="math" data-tex="\(\delta\)">\(\delta\)</span> is injective.</p>
+<p>For an element of (12), the Chinese remainder theorem identifies its finite residue with unit residues modulo each <span class="math" data-tex="\(\mathfrak p^{n_{\mathfrak p}}\)">\(\mathfrak p^{n_{\mathfrak p}}\)</span>. These are also the residues in <span class="math" data-tex="\(\mathcal O_v/\mathfrak p_v^{n_{\mathfrak p}}\mathcal O_v\)">\(\mathcal O_v/\mathfrak p_v^{n_{\mathfrak p}}\mathcal O_v\)</span>: localization preserves this quotient because elements outside <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> become units modulo <span class="math" data-tex="\(\mathfrak p^n\)">\(\mathfrak p^n\)</span>, and completion preserves it because the localized ring is dense and <span class="math" data-tex="\(\mathfrak p_v^n\mathcal O_v\)">\(\mathfrak p_v^n\mathcal O_v\)</span> is open. Choose local lifts, and impose the selected signs. Simultaneous approximation produces <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span> meeting those finite congruences and signs. Each such <span class="math" data-tex="\(a\)">\(a\)</span> is a unit at primes dividing <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>, so <span class="math" data-tex="\((a)\in I_K^{\mathfrak m}\)">\((a)\in I_K^{\mathfrak m}\)</span>. If <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> is a second choice, then <span class="math" data-tex="\(a/a&#x27;\)">\(a/a&#x27;\)</span> is congruent to <span class="math" data-tex="\(1\)">\(1\)</span> at all those primes and positive at all places in <span class="math" data-tex="\(M\)">\(M\)</span>. It belongs to <span class="math" data-tex="\(K_{\mathfrak m,1}^\times\)">\(K_{\mathfrak m,1}^\times\)</span>, so <span class="math" data-tex="\((a)\)">\((a)\)</span> and <span class="math" data-tex="\((a&#x27;)\)">\((a&#x27;)\)</span> have the same ray class. Products of choices give choices for products, making <span class="math" data-tex="\(\beta\)">\(\beta\)</span> a well-defined homomorphism.</p>
+<p>If <span class="math" data-tex="\(\beta(b)=1\)">\(\beta(b)=1\)</span>, choose <span class="math" data-tex="\(a\)">\(a\)</span> representing its residues and signs. Then <span class="math" data-tex="\((a)=(c)\)">\((a)=(c)\)</span> for some <span class="math" data-tex="\(c\in K_{\mathfrak m,1}^\times\)">\(c\in K_{\mathfrak m,1}^\times\)</span>. Equality of their fractional ideals means <span class="math" data-tex="\(a/c\in\mathcal O_K^\times\)">\(a/c\in\mathcal O_K^\times\)</span>. The residues and signs of <span class="math" data-tex="\(a/c\)">\(a/c\)</span> are those of <span class="math" data-tex="\(a\)">\(a\)</span>, because <span class="math" data-tex="\(c\)">\(c\)</span> has residue <span class="math" data-tex="\(1\)">\(1\)</span> and positive signs. Hence <span class="math" data-tex="\(b\in\operatorname{im}\delta\)">\(b\in\operatorname{im}\delta\)</span>. Conversely, a unit gives the unit ideal and maps to the identity under <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. This proves exactness at <span class="math" data-tex="\(B_{\mathfrak m}\)">\(B_{\mathfrak m}\)</span>.</p>
+<p>The map <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is well defined, since every ray-principal ideal is principal. If a ray class maps to the identity under <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, represent it by <span class="math" data-tex="\(\mathfrak b=(a)\in I_K^{\mathfrak m}\)">\(\mathfrak b=(a)\in I_K^{\mathfrak m}\)</span>. The element <span class="math" data-tex="\(a\)">\(a\)</span> is a unit at each prime dividing <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>. Its residues and selected signs give an element <span class="math" data-tex="\(b\in B_{\mathfrak m}\)">\(b\in B_{\mathfrak m}\)</span> with <span class="math" data-tex="\(\beta(b)=[\mathfrak b]\)">\(\beta(b)=[\mathfrak b]\)</span>. Conversely, <span class="math" data-tex="\(\beta\)">\(\beta\)</span> produces principal ideals, so its image lies in <span class="math" data-tex="\(\ker\gamma\)">\(\ker\gamma\)</span>.</p>
+<p>Finally, let <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span> be any fractional ideal. At every prime dividing <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>, approximate a local element of valuation <span class="math" data-tex="\(-\operatorname{ord}_{\mathfrak p}(\mathfrak b)\)">\(-\operatorname{ord}_{\mathfrak p}(\mathfrak b)\)</span> by <span class="math" data-tex="\(a\in K^\times\)">\(a\in K^\times\)</span>. A sufficiently small neighborhood fixes that valuation. The ideal <span class="math" data-tex="\((a)\mathfrak b\)">\((a)\mathfrak b\)</span> is then prime to <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span>, and has the same ordinary class as <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span>. This proves surjectivity of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>.</p>
+<p>The group <span class="math" data-tex="\(B_{\mathfrak m}\)">\(B_{\mathfrak m}\)</span> is finite, and <span class="math" data-tex="\(\operatorname{Cl}_K\)">\(\operatorname{Cl}_K\)</span> is finite by Corollary 3.4. Exactness shows that the kernel of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is the quotient of <span class="math" data-tex="\(B_{\mathfrak m}\)">\(B_{\mathfrak m}\)</span> by the indicated unit image. Therefore the middle ray group is finite, and counting gives (14). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(q_{\mathfrak p}=\#(\mathcal O_K/\mathfrak p)\)">\(q_{\mathfrak p}=\#(\mathcal O_K/\mathfrak p)\)</span>, the finite residue factor has order</p>
+<span class="math math-display" data-tex="\[
+\#(\mathcal O_K/\mathfrak m_f)^\times
+=\prod_{\mathfrak p\mid\mathfrak m_f}
+q_{\mathfrak p}^{n_{\mathfrak p}-1}(q_{\mathfrak p}-1).
+\tag{15}
+\]">\[
+\#(\mathcal O_K/\mathfrak m_f)^\times
+=\prod_{\mathfrak p\mid\mathfrak m_f}
+q_{\mathfrak p}^{n_{\mathfrak p}-1}(q_{\mathfrak p}-1).
+\tag{15}
+\]</span>
+<p>Indeed, each successive quotient <span class="math" data-tex="\(\mathfrak p^j/\mathfrak p^{j+1}\)">\(\mathfrak p^j/\mathfrak p^{j+1}\)</span> has <span class="math" data-tex="\(q_{\mathfrak p}\)">\(q_{\mathfrak p}\)</span> elements: localization at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> identifies it with the one-dimensional residue space in the discrete valuation ring, and localization does not change this module, which is killed by <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>. Thus <span class="math" data-tex="\(\mathcal O_K/\mathfrak p^n\)">\(\mathcal O_K/\mathfrak p^n\)</span> has <span class="math" data-tex="\(q_{\mathfrak p}^n\)">\(q_{\mathfrak p}^n\)</span> elements. The nonunits are exactly its ideal <span class="math" data-tex="\(\mathfrak p/\mathfrak p^n\)">\(\mathfrak p/\mathfrak p^n\)</span>, with <span class="math" data-tex="\(q_{\mathfrak p}^{n-1}\)">\(q_{\mathfrak p}^{n-1}\)</span> elements. Subtract and apply the Chinese remainder theorem to get (15).</p>
+<p>At the purely infinite modulus consisting of all real places, (14) becomes</p>
+<span class="math math-display" data-tex="\[
+h_K^+=h_K\frac{2^{r_1}}
+{[\mathcal O_K^\times:\mathcal O_K^{\times,+}]},
+\tag{16}
+\]">\[
+h_K^+=h_K\frac{2^{r_1}}
+{[\mathcal O_K^\times:\mathcal O_K^{\times,+}]},
+\tag{16}
+\]</span>
+<p>where <span class="math" data-tex="\(\mathcal O_K^{\times,+}\)">\(\mathcal O_K^{\times,+}\)</span> is the group of totally positive units. The difference between ordinary and narrow classes is therefore precisely the failure of unit signs to realize all sign patterns.</p>
+<p>Say <span class="math" data-tex="\(\mathfrak m\mid\mathfrak n\)">\(\mathfrak m\mid\mathfrak n\)</span> if the finite exponents for <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> are at least those for <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> and its real-place set contains that of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. Then <span class="math" data-tex="\(U_{\mathfrak n}\subset U_{\mathfrak m}\)">\(U_{\mathfrak n}\subset U_{\mathfrak m}\)</span>, and (9) gives a surjection</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Cl}_{\mathfrak n}\longrightarrow\operatorname{Cl}_{\mathfrak m}.
+\tag{17}
+\]">\[
+\operatorname{Cl}_{\mathfrak n}\longrightarrow\operatorname{Cl}_{\mathfrak m}.
+\tag{17}
+\]</span>
+<p>On an ideal prime to <span class="math" data-tex="\(\mathfrak n_f\)">\(\mathfrak n_f\)</span>, this simply forgets the extra congruences. Every ray class modulo <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> has such a representative: its idèle class lifts by (10) for <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>, and the ideal of the resulting element of <span class="math" data-tex="\(J_K^{\mathfrak n}\)">\(J_K^{\mathfrak n}\)</span> is prime to <span class="math" data-tex="\(\mathfrak n_f\)">\(\mathfrak n_f\)</span>.</p>
+<h2 id="which-subgroups-the-moduli-detect">Which subgroups the moduli detect</h2>
+<p><strong>Proposition 4.4 (open subgroups).</strong> A subgroup <span class="math" data-tex="\(N\subset C_K\)">\(N\subset C_K\)</span> is open of finite index if and only if it contains <span class="math" data-tex="\(C_{\mathfrak m}\)">\(C_{\mathfrak m}\)</span> for some modulus <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. In fact every open subgroup of <span class="math" data-tex="\(C_K\)">\(C_K\)</span> has finite index.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(N\)">\(N\)</span> is open. Its inverse image <span class="math" data-tex="\(\widetilde N\)">\(\widetilde N\)</span> in <span class="math" data-tex="\(J_K\)">\(J_K\)</span> is an open subgroup containing <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>. Choose an identity neighborhood inside it of the form</p>
+<span class="math math-display" data-tex="\[
+W=\prod_{v\mid\infty}W_v
+\times\prod_{v\in S_f}W_v
+\times\prod_{\substack{v&lt;\infty\\v\notin S_f}}\mathcal O_v^\times,
+\tag{18}
+\]">\[
+W=\prod_{v\mid\infty}W_v
+\times\prod_{v\in S_f}W_v
+\times\prod_{\substack{v&lt;\infty\\v\notin S_f}}\mathcal O_v^\times,
+\tag{18}
+\]</span>
+<p>where <span class="math" data-tex="\(S_f\)">\(S_f\)</span> is finite and every <span class="math" data-tex="\(W_v\)">\(W_v\)</span> is an open neighborhood of <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>For each real place, <span class="math" data-tex="\(\widetilde N\)">\(\widetilde N\)</span> contains the subgroup supported there that is generated by <span class="math" data-tex="\(W_v\cap\mathbb R_{&gt;0}\)">\(W_v\cap\mathbb R_{&gt;0}\)</span>. That generated subgroup is all of <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span>: under the logarithm an identity neighborhood contains an interval about <span class="math" data-tex="\(0\)">\(0\)</span>, and sums of that interval cover <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. At a complex place the subgroup generated by an identity neighborhood is all of <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>. To justify this, the generated subgroup is open, its complement is a union of open cosets, and <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> is connected; it must therefore be the whole group. Connectedness follows, for example, by joining a nonzero complex number to <span class="math" data-tex="\(1\)">\(1\)</span> through its polar radius and angle.</p>
+<p>At each <span class="math" data-tex="\(v\in S_f\)">\(v\in S_f\)</span>, choose <span class="math" data-tex="\(n_v\geq1\)">\(n_v\geq1\)</span> sufficiently large that <span class="math" data-tex="\(1+\mathfrak p_v^{n_v}\mathcal O_v\subset W_v\)">\(1+\mathfrak p_v^{n_v}\mathcal O_v\subset W_v\)</span>. These subgroups form an identity-neighborhood basis because the powers of the maximal ideal form an additive neighborhood basis, and translation by <span class="math" data-tex="\(1\)">\(1\)</span> preserves the topology. The complete product of unit groups outside <span class="math" data-tex="\(S_f\)">\(S_f\)</span>, supported at those places, already lies in (18). Multiplying this tail by the finitely many supported principal-unit factors and the supported infinite factors shows that <span class="math" data-tex="\(\widetilde N\)">\(\widetilde N\)</span> contains <span class="math" data-tex="\(U_{\mathfrak m}\)">\(U_{\mathfrak m}\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+\mathfrak m_f=\prod_{v\in S_f}\mathfrak p_v^{n_v},
+\qquad M=\{\text{all real places of }K\}.
+\]">\[
+\mathfrak m_f=\prod_{v\in S_f}\mathfrak p_v^{n_v},
+\qquad M=\{\text{all real places of }K\}.
+\]</span>
+<p>It also contains <span class="math" data-tex="\(K^\times\)">\(K^\times\)</span>, so <span class="math" data-tex="\(N\supset C_{\mathfrak m}\)">\(N\supset C_{\mathfrak m}\)</span>.</p>
+<p>Conversely, (5) is open, so its image <span class="math" data-tex="\(C_{\mathfrak m}\)">\(C_{\mathfrak m}\)</span> is open in the quotient <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. By (9) and Proposition 4.3 it has finite index. Any subgroup containing it is a union of its open cosets and has index at most <span class="math" data-tex="\(\#\operatorname{Cl}_{\mathfrak m}\)">\(\#\operatorname{Cl}_{\mathfrak m}\)</span>. It is therefore open of finite index. Applying this conclusion to the modulus constructed from an arbitrary open <span class="math" data-tex="\(N\)">\(N\)</span> proves the last assertion as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This gives a concrete way to locate a continuous finite quotient of <span class="math" data-tex="\(C_K\)">\(C_K\)</span>. Its kernel is open because the target is discrete, and hence contains a ray congruence subgroup. Real positivity is enough at the infinite places because an open subgroup always contains their identity components. The assertion does not identify the connected component of <span class="math" data-tex="\(C_K\)">\(C_K\)</span> with a positive real line for a general number field.</p>
+<p>[Milne CFT, Proposition 4.7, p.174] uses this same local argument to show that a continuous homomorphism to a finite discrete group kills some <span class="math" data-tex="\(U_{\mathfrak m}\)">\(U_{\mathfrak m}\)</span>. Proposition 4.4 gives the subgroup formulation directly, including the entire compact unit tail; it also proves finite index for every open subgroup, rather than assuming it at the start.</p>
+<h2 id="reading-the-rational-quotient-explicitly">Reading the rational quotient explicitly</h2>
+<p>Use the decomposition from Proposition 3.6,</p>
+<span class="math math-display" data-tex="\[
+C_{\mathbb Q}\simeq\mathbb R_{&gt;0}\times\widehat{\mathbb Z}^{\times}.
+\tag{19}
+\]">\[
+C_{\mathbb Q}\simeq\mathbb R_{&gt;0}\times\widehat{\mathbb Z}^{\times}.
+\tag{19}
+\]</span>
+<p>Concretely, for an idèle <span class="math" data-tex="\(x\)">\(x\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+q_0=\prod_p p^{\operatorname{ord}_p(x_p)},
+\quad q=\operatorname{sgn}(x_\infty)q_0,
+\quad t=x_\infty/q&gt;0,
+\quad u_p=x_p/q\in\mathbb Z_p^\times.
+\tag{20}
+\]">\[
+q_0=\prod_p p^{\operatorname{ord}_p(x_p)},
+\quad q=\operatorname{sgn}(x_\infty)q_0,
+\quad t=x_\infty/q&gt;0,
+\quad u_p=x_p/q\in\mathbb Z_p^\times.
+\tag{20}
+\]</span>
+<p>The pair <span class="math" data-tex="\((t,u)\)">\((t,u)\)</span> is unchanged by multiplying <span class="math" data-tex="\(x\)">\(x\)</span> by a diagonal rational number. Write <span class="math" data-tex="\(V_m=\ker(\widehat{\mathbb Z}^{\times}\to(\mathbb Z/m\mathbb Z)^\times)\)">\(V_m=\ker(\widehat{\mathbb Z}^{\times}\to(\mathbb Z/m\mathbb Z)^\times)\)</span>. This reduction map is surjective: choose a unit lift at each prime dividing <span class="math" data-tex="\(m\)">\(m\)</span>, and use <span class="math" data-tex="\(1\)">\(1\)</span> at other primes.</p>
+<p><strong>Proposition 4.5 (rational ray groups).</strong> For <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+C_{(m)\infty}=\mathbb R_{&gt;0}\times V_m,
+\qquad
+C_{(m)}=\mathbb R_{&gt;0}\times\bigl(\{\pm1\}V_m\bigr).
+\tag{21}
+\]">\[
+C_{(m)\infty}=\mathbb R_{&gt;0}\times V_m,
+\qquad
+C_{(m)}=\mathbb R_{&gt;0}\times\bigl(\{\pm1\}V_m\bigr).
+\tag{21}
+\]</span>
+<p>Here <span class="math" data-tex="\(-1\)">\(-1\)</span> in the second formula is the same sign in every finite component. Consequently</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Cl}_{(m)\infty}(\mathbb Q)
+\simeq(\mathbb Z/m\mathbb Z)^\times,
+\qquad
+\operatorname{Cl}_{(m)}(\mathbb Q)
+\simeq(\mathbb Z/m\mathbb Z)^\times/\operatorname{im}\{\pm1\}.
+\tag{22}
+\]">\[
+\operatorname{Cl}_{(m)\infty}(\mathbb Q)
+\simeq(\mathbb Z/m\mathbb Z)^\times,
+\qquad
+\operatorname{Cl}_{(m)}(\mathbb Q)
+\simeq(\mathbb Z/m\mathbb Z)^\times/\operatorname{im}\{\pm1\}.
+\tag{22}
+\]</span>
+<p>Under (19), these are the maps given by reducing <span class="math" data-tex="\(u\)">\(u\)</span>, and reducing it modulo the sign image, respectively.</p>
+<p><strong>Proof.</strong> Every element of <span class="math" data-tex="\(U_{(m)\infty}\)">\(U_{(m)\infty}\)</span> has finite valuation zero, so <span class="math" data-tex="\(q_0=1\)">\(q_0=1\)</span>; its infinite component is positive, so <span class="math" data-tex="\(q=1\)">\(q=1\)</span> in (20). Its finite components therefore form <span class="math" data-tex="\(u\in V_m\)">\(u\in V_m\)</span>, and its real component is an arbitrary <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. Conversely, every such pair is represented by an element of <span class="math" data-tex="\(U_{(m)\infty}\)">\(U_{(m)\infty}\)</span>. This proves the first formula of (21).</p>
+<p>For <span class="math" data-tex="\(U_{(m)}\)">\(U_{(m)}\)</span> the infinite component may be negative. A positive component gives <span class="math" data-tex="\(u\in V_m\)">\(u\in V_m\)</span>; a negative one gives <span class="math" data-tex="\(q=-1\)">\(q=-1\)</span>, so its normalized finite component is the negative of an element of <span class="math" data-tex="\(V_m\)">\(V_m\)</span>. Both possibilities occur for every <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. This proves the second formula. Theorem 4.2 and surjectivity of reduction now give (22). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is an inverse in passing between the idèlic reduction convention and the common positive-generator convention for ideals. If <span class="math" data-tex="\((a)\)">\((a)\)</span> is prime to <span class="math" data-tex="\(m\)">\(m\)</span>, with <span class="math" data-tex="\(a\in\mathbb Q_{&gt;0}\)">\(a\in\mathbb Q_{&gt;0}\)</span>, represent it by finite components <span class="math" data-tex="\(p^{\operatorname{ord}_p(a)}\)">\(p^{\operatorname{ord}_p(a)}\)</span> and infinite component <span class="math" data-tex="\(1\)">\(1\)</span>. The normalization in (20) divides by <span class="math" data-tex="\(q=a\)">\(q=a\)</span>. At the primes dividing <span class="math" data-tex="\(m\)">\(m\)</span>, those finite components were <span class="math" data-tex="\(1\)">\(1\)</span>, so the normalized residue is <span class="math" data-tex="\(a^{-1}\bmod m\)">\(a^{-1}\bmod m\)</span>. Thus the isomorphism in (22) compatible with idèlic reduction sends <span class="math" data-tex="\([(a)]\)">\([(a)]\)</span> to <span class="math" data-tex="\(a^{-1}\)">\(a^{-1}\)</span>; sending it to <span class="math" data-tex="\(a\)">\(a\)</span> instead gives the equally valid isomorphism obtained by inversion. For the modulus without <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, changing a generator's sign has exactly the quotient effect in (22).</p>
+<p>For <span class="math" data-tex="\(m=5\)">\(m=5\)</span>, the group with <span class="math" data-tex="\(\infty\)">\(\infty\)</span> is cyclic of order <span class="math" data-tex="\(4\)">\(4\)</span>, generated by residue <span class="math" data-tex="\(2\)">\(2\)</span>. Omitting <span class="math" data-tex="\(\infty\)">\(\infty\)</span> identifies residues <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(4\)">\(4\)</span>, and residues <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span>, leaving a cyclic group of order <span class="math" data-tex="\(2\)">\(2\)</span>. For <span class="math" data-tex="\(m=1\)">\(m=1\)</span> or <span class="math" data-tex="\(2\)">\(2\)</span>, the residue group is trivial. In general the order without <span class="math" data-tex="\(\infty\)">\(\infty\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\frac{\varphi(m)}{\#\operatorname{im}(\{\pm1\}\to(\mathbb Z/m\mathbb Z)^\times)}.
+\tag{23}
+\]">\[
+\frac{\varphi(m)}{\#\operatorname{im}(\{\pm1\}\to(\mathbb Z/m\mathbb Z)^\times)}.
+\tag{23}
+\]</span>
+<p>The denominator is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(m=1,2\)">\(m=1,2\)</span>, and <span class="math" data-tex="\(2\)">\(2\)</span> for <span class="math" data-tex="\(m&gt;2\)">\(m&gt;2\)</span>.</p>
+<h2 id="a-narrow-class-that-ordinary-ideals-cannot-distinguish">A narrow class that ordinary ideals cannot distinguish</h2>
+<p>Consider <span class="math" data-tex="\(K=\mathbb Q(\sqrt3)\)">\(K=\mathbb Q(\sqrt3)\)</span>, with real embeddings <span class="math" data-tex="\(\sigma_+(\sqrt3)=\sqrt3\)">\(\sigma_+(\sqrt3)=\sqrt3\)</span> and <span class="math" data-tex="\(\sigma_-(\sqrt3)=-\sqrt3\)">\(\sigma_-(\sqrt3)=-\sqrt3\)</span>. We will compute both the ordinary and narrow class groups rather than presume the ordinary class number.</p>
+<p>First, <span class="math" data-tex="\(\mathcal O_K=\mathbb Z[\sqrt3]\)">\(\mathcal O_K=\mathbb Z[\sqrt3]\)</span>. Here is a direct verification. Write an algebraic integer as <span class="math" data-tex="\(a+b\sqrt3\)">\(a+b\sqrt3\)</span>, where <span class="math" data-tex="\(a,b\in\mathbb Q\)">\(a,b\in\mathbb Q\)</span>. Its trace gives <span class="math" data-tex="\(2a=m\in\mathbb Z\)">\(2a=m\in\mathbb Z\)</span>, and its norm gives <span class="math" data-tex="\(a^2-3b^2\in\mathbb Z\)">\(a^2-3b^2\in\mathbb Z\)</span>. Thus <span class="math" data-tex="\(12b^2\in\mathbb Z\)">\(12b^2\in\mathbb Z\)</span>. The denominator of <span class="math" data-tex="\(b\)">\(b\)</span> in lowest terms has square dividing <span class="math" data-tex="\(12\)">\(12\)</span>, so <span class="math" data-tex="\(2b=l\in\mathbb Z\)">\(2b=l\in\mathbb Z\)</span>. Integrality of the norm now says <span class="math" data-tex="\(m^2-3l^2\equiv0\pmod4\)">\(m^2-3l^2\equiv0\pmod4\)</span>. If <span class="math" data-tex="\(l\)">\(l\)</span> were odd this would force a square to be <span class="math" data-tex="\(3\)">\(3\)</span> modulo <span class="math" data-tex="\(4\)">\(4\)</span>, which is impossible. Hence <span class="math" data-tex="\(l\)">\(l\)</span>, and then <span class="math" data-tex="\(m\)">\(m\)</span>, are even; <span class="math" data-tex="\(a,b\in\mathbb Z\)">\(a,b\in\mathbb Z\)</span>. Conversely, every element of <span class="math" data-tex="\(\mathbb Z[\sqrt3]\)">\(\mathbb Z[\sqrt3]\)</span> satisfies a monic polynomial over <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>.</p>
+<p>The ring is Euclidean for the absolute norm. For <span class="math" data-tex="\(\alpha,\beta\in\mathcal O_K\)">\(\alpha,\beta\in\mathcal O_K\)</span>, <span class="math" data-tex="\(\beta\ne0\)">\(\beta\ne0\)</span>, write <span class="math" data-tex="\(\alpha/\beta=x+y\sqrt3\)">\(\alpha/\beta=x+y\sqrt3\)</span>. Choose integers <span class="math" data-tex="\(r,s\)">\(r,s\)</span> with <span class="math" data-tex="\(|x-r|,|y-s|\leq1/2\)">\(|x-r|,|y-s|\leq1/2\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\left|N_{K/\mathbb Q}\bigl(\alpha/\beta-(r+s\sqrt3)\bigr)\right|
+=\left|(x-r)^2-3(y-s)^2\right|\leq\frac34&lt;1.
+\tag{24}
+\]">\[
+\left|N_{K/\mathbb Q}\bigl(\alpha/\beta-(r+s\sqrt3)\bigr)\right|
+=\left|(x-r)^2-3(y-s)^2\right|\leq\frac34&lt;1.
+\tag{24}
+\]</span>
+<p>Multiplying by <span class="math" data-tex="\(|N(\beta)|\)">\(|N(\beta)|\)</span> gives a remainder of smaller absolute norm. Choosing a nonzero element of least absolute norm in an integral ideal and applying division shows that it generates the ideal: every remainder in that ideal must be zero. Every fractional ideal is therefore principal, and <span class="math" data-tex="\(h_K=1\)">\(h_K=1\)</span>.</p>
+<p>A unit <span class="math" data-tex="\(a+b\sqrt3\)">\(a+b\sqrt3\)</span> has norm <span class="math" data-tex="\(a^2-3b^2=\pm1\)">\(a^2-3b^2=\pm1\)</span>. Norm <span class="math" data-tex="\(-1\)">\(-1\)</span> would imply <span class="math" data-tex="\(a^2\equiv2\pmod3\)">\(a^2\equiv2\pmod3\)</span>, impossible. Thus every unit has norm <span class="math" data-tex="\(+1\)">\(+1\)</span>, and its two signs agree. The units <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> realize the sign patterns <span class="math" data-tex="\((+,+)\)">\((+,+)\)</span> and <span class="math" data-tex="\((-,-)\)">\((-,-)\)</span>, so these are exactly the unit sign image. By (13) at the purely infinite modulus,</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Cl}_K^+
+\simeq\{\pm1\}^2/\{(+,+),(-,-)\}
+\simeq\mathbb Z/2\mathbb Z.
+\tag{25}
+\]">\[
+\operatorname{Cl}_K^+
+\simeq\{\pm1\}^2/\{(+,+),(-,-)\}
+\simeq\mathbb Z/2\mathbb Z.
+\tag{25}
+\]</span>
+<p>The ideal <span class="math" data-tex="\((\sqrt3)\)">\((\sqrt3)\)</span> represents its nontrivial class. Its generator has signs <span class="math" data-tex="\((+,-)\)">\((+,-)\)</span>; multiplying by any unit cannot make both signs positive. Its square is <span class="math" data-tex="\((3)\)">\((3)\)</span>, whose positive generator makes it narrow-principal. This realizes the order-two class concretely.</p>
+<p>The unit <span class="math" data-tex="\(\varepsilon=2+\sqrt3\)">\(\varepsilon=2+\sqrt3\)</span> is totally positive and has norm <span class="math" data-tex="\(+1\)">\(+1\)</span>. In fact the totally positive units are exactly <span class="math" data-tex="\(\varepsilon^{\mathbb Z}\)">\(\varepsilon^{\mathbb Z}\)</span>. To see this, multiply a totally positive unit by a suitable power of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> so that its <span class="math" data-tex="\(\sigma_+\)">\(\sigma_+\)</span>-value <span class="math" data-tex="\(u\)">\(u\)</span> lies in <span class="math" data-tex="\([1,\varepsilon)\)">\([1,\varepsilon)\)</span>. Its other value is <span class="math" data-tex="\(u^{-1}\)">\(u^{-1}\)</span>, so its coefficient of <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span> is</p>
+<span class="math math-display" data-tex="\[
+b=\frac{u-u^{-1}}{2\sqrt3}\in[0,1).
+\]">\[
+b=\frac{u-u^{-1}}{2\sqrt3}\in[0,1).
+\]</span>
+<p>This coefficient is an integer and hence zero. The reduced unit is <span class="math" data-tex="\(1\)">\(1\)</span>. Every unit has equal signs, so the full unit group is <span class="math" data-tex="\(\{\pm\varepsilon^n:n\in\mathbb Z\}\)">\(\{\pm\varepsilon^n:n\in\mathbb Z\}\)</span>, in agreement with the sign calculation above.</p>
+<h2 id="exercises">Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Compute the rational ray class groups for the moduli <span class="math" data-tex="\((12)\infty\)">\((12)\infty\)</span> and <span class="math" data-tex="\((12)\)">\((12)\)</span>. Give their group structures and list the sign-identification classes.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Compute the narrow class group of <span class="math" data-tex="\(\mathbb Q(\sqrt3)\)">\(\mathbb Q(\sqrt3)\)</span> using idèles. Identify an idèle whose class gives the nontrivial narrow class, and explain which ideal represents it.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Reconstruct (13) without assuming the cardinality formula. Specify the map out of the residue-and-sign group, check both nontrivial kernels, and prove surjectivity onto the ordinary class group.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Show that the intersection over all rational moduli is</p>
+<span class="math math-display" data-tex="\[
+\bigcap_{\mathfrak m}U_{\mathfrak m}\mathbb Q^\times/\mathbb Q^\times
+=\mathbb R_{&gt;0}\times\{1\}\subset C_{\mathbb Q}.
+\]">\[
+\bigcap_{\mathfrak m}U_{\mathfrak m}\mathbb Q^\times/\mathbb Q^\times
+=\mathbb R_{&gt;0}\times\{1\}\subset C_{\mathbb Q}.
+\]</span>
+<p>Prove that this is the connected component of the identity in <span class="math" data-tex="\(C_{\mathbb Q}\)">\(C_{\mathbb Q}\)</span>.</p>
+</li>
+</ol>
+<h2 id="solutions">Solutions</h2>
+<p><strong>Solution 1.</strong> The units modulo <span class="math" data-tex="\(12\)">\(12\)</span> are <span class="math" data-tex="\(1,5,7,11\)">\(1,5,7,11\)</span>. Each of the three nonidentity elements has square <span class="math" data-tex="\(1\)">\(1\)</span>, so the unit group is <span class="math" data-tex="\((\mathbb Z/2\mathbb Z)^2\)">\((\mathbb Z/2\mathbb Z)^2\)</span>, generated, for instance, by <span class="math" data-tex="\(5\)">\(5\)</span> and <span class="math" data-tex="\(7\)">\(7\)</span>. Proposition 4.5 gives this group for <span class="math" data-tex="\((12)\infty\)">\((12)\infty\)</span>. Without <span class="math" data-tex="\(\infty\)">\(\infty\)</span>, divide by the sign image <span class="math" data-tex="\(\{1,11\}\)">\(\{1,11\}\)</span>. The two cosets are <span class="math" data-tex="\(\{1,11\}\)">\(\{1,11\}\)</span> and <span class="math" data-tex="\(\{5,7\}\)">\(\{5,7\}\)</span>, so <span class="math" data-tex="\(\operatorname{Cl}_{(12)}(\mathbb Q)\simeq\mathbb Z/2\mathbb Z\)">\(\operatorname{Cl}_{(12)}(\mathbb Q)\simeq\mathbb Z/2\mathbb Z\)</span>. This also follows from (14): the ordinary rational class number is <span class="math" data-tex="\(1\)">\(1\)</span>, and the residue-and-sign contribution is divided by the image of its global units <span class="math" data-tex="\(\{\pm1\}\)">\(\{\pm1\}\)</span>.</p>
+<p><strong>Solution 2.</strong> Let <span class="math" data-tex="\(M=\{\sigma_+,\sigma_-\}\)">\(M=\{\sigma_+,\sigma_-\}\)</span> and <span class="math" data-tex="\(\mathfrak m_f=(1)\)">\(\mathfrak m_f=(1)\)</span>. Then <span class="math" data-tex="\(U_{\mathfrak m}=\mathbb R_{&gt;0}^2\times\prod_{v&lt;\infty}\mathcal O_v^\times\)">\(U_{\mathfrak m}=\mathbb R_{&gt;0}^2\times\prod_{v&lt;\infty}\mathcal O_v^\times\)</span>. The Euclidean argument (24) shows that every ordinary ideal class is trivial, so (2) allows any idèle to be multiplied by a diagonal element until all its finite components are units. The remaining obstruction to membership in <span class="math" data-tex="\(U_{\mathfrak m}\)">\(U_{\mathfrak m}\)</span> is its two real signs. Two such representatives differ by a diagonal element with unit finite components precisely when that element lies in <span class="math" data-tex="\(\mathcal O_K^\times\)">\(\mathcal O_K^\times\)</span>. Its sign pattern is either <span class="math" data-tex="\((+,+)\)">\((+,+)\)</span> or <span class="math" data-tex="\((-,-)\)">\((-,-)\)</span>, as the norm equation modulo <span class="math" data-tex="\(3\)">\(3\)</span> proves. Hence the quotient is the group in (25).</p>
+<p>For an explicit idèle <span class="math" data-tex="\(z\)">\(z\)</span>, take its infinite components to be <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> and every finite component to be <span class="math" data-tex="\(1\)">\(1\)</span>. Its sign pattern is mixed, so its class is nontrivial. To compute its corresponding ideal under Theorem 4.2, multiply by the diagonal element <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span>. The infinite components of <span class="math" data-tex="\(\sqrt3 z\)">\(\sqrt3 z\)</span> are both positive, and the finite components are those of <span class="math" data-tex="\(\sqrt3\)">\(\sqrt3\)</span>. Thus <span class="math" data-tex="\(\sqrt3 z\in J_K^{\mathfrak m}\)">\(\sqrt3 z\in J_K^{\mathfrak m}\)</span>, and (2) gives the ideal <span class="math" data-tex="\((\sqrt3)\)">\((\sqrt3)\)</span>. Squaring <span class="math" data-tex="\(z\)">\(z\)</span> gives the identity idèle, consistent with the narrow class of <span class="math" data-tex="\((\sqrt3)^2=(3)\)">\((\sqrt3)^2=(3)\)</span> being trivial.</p>
+<p><strong>Solution 3.</strong> Send a unit to its residues modulo <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> and its signs at <span class="math" data-tex="\(M\)">\(M\)</span>. The kernel consists of the units congruent to <span class="math" data-tex="\(1\)">\(1\)</span> and positive at the selected places, namely <span class="math" data-tex="\(\mathcal O_{\mathfrak m,1}^\times\)">\(\mathcal O_{\mathfrak m,1}^\times\)</span>. This proves injectivity after dividing by that kernel. For a residue-and-sign tuple, choose a nonzero <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span> with these data by approximation, and send the tuple to <span class="math" data-tex="\([(a)]\)">\([(a)]\)</span> in the ray group. The quotient of any two choices is in <span class="math" data-tex="\(K_{\mathfrak m,1}^\times\)">\(K_{\mathfrak m,1}^\times\)</span>, proving independence; multiplying choices proves the homomorphism property.</p>
+<p>Its image is ray-principal exactly when <span class="math" data-tex="\((a)=(c)\)">\((a)=(c)\)</span> for a <span class="math" data-tex="\(c\)">\(c\)</span> satisfying the ray conditions. Then <span class="math" data-tex="\(a/c\)">\(a/c\)</span> is a global unit with the original residue-and-sign data. Conversely such unit data give the unit ideal. Thus its kernel is precisely the unit image. The map from ray classes to ordinary classes forgets the conditions. A class in its kernel has a prime-to-modulus representative <span class="math" data-tex="\((a)\)">\((a)\)</span>; the residue-and-sign tuple of <span class="math" data-tex="\(a\)">\(a\)</span> maps back to that ray class. This proves the second kernel assertion. For an arbitrary fractional ideal <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span>, choose a nonzero <span class="math" data-tex="\(a\in K\)">\(a\in K\)</span> whose valuations at primes dividing <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> cancel those of <span class="math" data-tex="\(\mathfrak b\)">\(\mathfrak b\)</span>, using sufficiently close approximation to local elements with those valuations. Then <span class="math" data-tex="\((a)\mathfrak b\)">\((a)\mathfrak b\)</span> is prime to <span class="math" data-tex="\(\mathfrak m_f\)">\(\mathfrak m_f\)</span> and represents the same ordinary class. This proves the final surjectivity and every step of (13). Finiteness now follows from the finite residue-and-sign group and the finite ordinary class group, without using (14) in the proof.</p>
+<p>This is the exact sequence of [Milne CFT, Theorem 1.7, pp.150–151], with the finite residues written before the selected real signs. Its unit term is an image in the finite group <span class="math" data-tex="\(B_{\mathfrak m}\)">\(B_{\mathfrak m}\)</span>, even when <span class="math" data-tex="\(\mathcal O_K^\times\)">\(\mathcal O_K^\times\)</span> itself is infinite. The finite index in (14) therefore measures the realized residue-and-sign patterns. [Milne CFT, Example 1.8, pp.151–152] also separates the rational moduli with and without the real place; our formula (22) keeps track of the inversion required by the idèlic reduction convention.</p>
+<p><strong>Solution 4.</strong> Every congruence subgroup in (21) contains <span class="math" data-tex="\(\mathbb R_{&gt;0}\times\{1\}\)">\(\mathbb R_{&gt;0}\times\{1\}\)</span>. Conversely, suppose <span class="math" data-tex="\((t,u)\)">\((t,u)\)</span> belongs to every rational congruence subgroup. In particular it belongs to <span class="math" data-tex="\(C_{(p^n)\infty}\)">\(C_{(p^n)\infty}\)</span> for every prime <span class="math" data-tex="\(p\)">\(p\)</span> and every <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. By (21), <span class="math" data-tex="\(u_p-1\in p^n\mathbb Z_p\)">\(u_p-1\in p^n\mathbb Z_p\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. The intersection <span class="math" data-tex="\(\bigcap_n p^n\mathbb Z_p\)">\(\bigcap_n p^n\mathbb Z_p\)</span> is <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>: a nonzero element has a finite valuation. Hence <span class="math" data-tex="\(u_p=1\)">\(u_p=1\)</span> for every <span class="math" data-tex="\(p\)">\(p\)</span>, proving the asserted intersection.</p>
+<p>The group <span class="math" data-tex="\(\mathbb R_{&gt;0}\)">\(\mathbb R_{&gt;0}\)</span> is connected. The finite reduction maps separate distinct elements of <span class="math" data-tex="\(\widehat{\mathbb Z}^{\times}\)">\(\widehat{\mathbb Z}^{\times}\)</span>: if two units differ at <span class="math" data-tex="\(p\)">\(p\)</span>, some reduction modulo <span class="math" data-tex="\(p^n\)">\(p^n\)</span> distinguishes them. Each finite discrete image of a connected subset is a singleton. Consequently any connected subset of <span class="math" data-tex="\(\widehat{\mathbb Z}^{\times}\)">\(\widehat{\mathbb Z}^{\times}\)</span> containing the identity contains no other point. Projection of a connected subset of (19) to this factor is connected, so the identity component of <span class="math" data-tex="\(C_{\mathbb Q}\)">\(C_{\mathbb Q}\)</span> lies in <span class="math" data-tex="\(\mathbb R_{&gt;0}\times\{1\}\)">\(\mathbb R_{&gt;0}\times\{1\}\)</span>. The opposite inclusion follows from connectedness of that real factor. This completes the identification.</p>
+<h2 id="what-this-lesson-does-not-prove">Prerequisites and further directions</h2>
+<ul>
+<li>Theorem 3.2 of <a href="prerequisites/NT-ANT-03.md">Discrete valuation rings and Dedekind domains</a> proves unique fractional ideal factorization and its local valuation exponents; Proposition 3.3 proves Chinese remainders for distinct prime powers and their localization quotients. These are used in (2) and (15). The completion valuation rings are those of Theorem 2.1 and Proposition 2.3 of <a href="prerequisites/NT-LOC-02.html">Completions, the p-adic numbers and complete discretely valued fields</a>, with the number-field paragraph there, and Proposition 2.1 of <a href="NT-ADL-02.html">The adèle ring of a number field</a>. [Milne ANT, Theorems 1.14 and 3.20, Lemmas 3.9–3.10 and Example 3.26(c)] is the scholarly reference.</li>
+<li>The restricted-product topology on <span class="math" data-tex="\(J_K\)">\(J_K\)</span>, the identification of a field element with a diagonal idèle, and finiteness of <span class="math" data-tex="\(\operatorname{Cl}_K\)">\(\operatorname{Cl}_K\)</span>. These are proved in <a href="NT-ADL-03.html">Idèles and the idèle class group</a>, especially Proposition 3.1 and Corollary 3.4.</li>
+<li>Simultaneous approximation at a finite set of places: given nonempty open subsets of finitely many completions, one element of <span class="math" data-tex="\(K\)">\(K\)</span> belongs to all of them. It follows by projection from Theorem 2.3 of <a href="NT-ADL-02.html">The adèle ring of a number field</a>, choosing an omitted place outside the finite set.</li>
+<li>The topological isomorphism (19), including its formula (20), is Proposition 3.6 of <a href="NT-ADL-03.html">Idèles and the idèle class group</a>. This lesson proves all of its stated ray-quotient consequences.</li>
+</ul>
+<h2 id="references">References</h2>
+<ul>
+<li><strong>[Milne CFT]</strong> J. S. Milne, <em>Class Field Theory</em>, version 4.03 (6 August 2020), <a href="https://www.jmilne.org/math/CourseNotes/CFT.pdf">author-hosted notes</a>, Chapter V, §1, Definition 1.3, Theorem 1.7 and Example 1.8, pp.148–152; §4, especially 4.1–4.4 and Propositions 4.6–4.7, pp.170–174.</li>
+<li><strong>[Milne ANT]</strong> J. S. Milne, <em>Algebraic Number Theory</em>, version 3.08 (19 July 2020), <a href="https://www.jmilne.org/math/CourseNotes/ANT.pdf">author-hosted notes</a>, Theorems 1.14 and 3.20, Lemmas 3.9–3.10 and Example 3.26(c): Chinese remainders, prime-power quotients and their localizations, and fractional-ideal factorization with its valuations.</li>
+<li><strong>[Sutherland 21]</strong> A. V. Sutherland, <em>Class field theory: ray class groups and ray class fields</em>, MIT 18.785, Lecture 21 (22 November 2021), <a href="https://math.mit.edu/classes/18.785/2021fa/LectureNotes21.pdf">lecture notes</a>, §21.3, Definitions 21.2–21.3 and Remark 21.5: moduli with a selected set of real places, ray class groups and the narrow case.</li>
+<li><strong>[Sutherland 26]</strong> A. V. Sutherland, <em>The idele group, profinite groups, infinite Galois theory</em>, MIT 18.785, Lecture 26 (1 December 2021), <a href="https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec26/">MIT OpenCourseWare notes</a>, §26.1, p.2, for the exact diagram explicitly adapted and credited above under CC BY-NC-SA 4.0.</li>
+</ul>
+</article><nav class="pager"><a rel="prev" href="NT-ADL-03.html">Previous lesson</a><a href="index.html">Course contents</a><a rel="next" href="NT-ADL-05.html">Next lesson</a></nav><p><a href="src/NT-ADL-04.md">Markdown source</a></p></main></body></html>

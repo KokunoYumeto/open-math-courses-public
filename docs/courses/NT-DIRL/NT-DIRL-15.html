@@ -1,0 +1,906 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bombieri–Vinogradov theorem · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-15.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 15 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="the-bombieri-vinogradov-theorem">The Bombieri–Vinogradov theorem</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A bound for one progression can be weak while a sum of such bounds is strong. The Bombieri–Vinogradov theorem makes this distinction precise: primes have the expected distribution, on average over moduli, almost as far as the square-root range suggested by the generalized Riemann hypothesis. The proof combines three kinds of cancellation. Short character sums control the smallest variable in Vaughan's identity; the multiplicative large sieve controls two long variables; Siegel–Walfisz handles small conductors.</p>
+<p>We use <em>The Siegel–Walfisz theorem</em>, <em>The multiplicative large sieve and bilinear forms with characters</em>, and <em>Vaughan's identity and sums over primes</em>. The primitive Pólya–Vinogradov estimate is Theorem 1.1 of <em>Character sums: the Pólya–Vinogradov inequality</em>. The application also uses the arithmetic sieve inequality, already proved in Section 6 of <em>The large sieve inequality</em>. Only that proved inequality is needed, not its deeper discussion of the exact Brun–Titchmarsh constant.</p>
+<p>Write <span class="math" data-tex="\(L=\log(2x)\)">\(L=\log(2x)\)</span>, <span class="math" data-tex="\(\sum_\chi^*\)">\(\sum_\chi^*\)</span> for primitive characters, and</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_\psi(x,q)&amp;=\max_{0\le y\le x}\max_{(b,q)=1}
+\left|\psi(y;q,b)-\frac y{\varphi(q)}\right|,\\
+E_\theta(x,q)&amp;=\max_{0\le y\le x}\max_{(b,q)=1}
+\left|\theta(y;q,b)-\frac y{\varphi(q)}\right|,\\
+E_\pi(x,q)&amp;=\max_{2\le y\le x}\max_{(b,q)=1}
+\left|\pi(y;q,b)-\frac{\operatorname{li}(y)}{\varphi(q)}\right|.
+\end{aligned}
+\tag{0.1}
+\]">\[
+\begin{aligned}
+E_\psi(x,q)&amp;=\max_{0\le y\le x}\max_{(b,q)=1}
+\left|\psi(y;q,b)-\frac y{\varphi(q)}\right|,\\
+E_\theta(x,q)&amp;=\max_{0\le y\le x}\max_{(b,q)=1}
+\left|\theta(y;q,b)-\frac y{\varphi(q)}\right|,\\
+E_\pi(x,q)&amp;=\max_{2\le y\le x}\max_{(b,q)=1}
+\left|\pi(y;q,b)-\frac{\operatorname{li}(y)}{\varphi(q)}\right|.
+\end{aligned}
+\tag{0.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span>, <span class="math" data-tex="\(\operatorname{li}(y)=\int_2^ydu/\log u\)">\(\operatorname{li}(y)=\int_2^ydu/\log u\)</span>, and <span class="math" data-tex="\(b\)">\(b\)</span> ranges over reduced residue classes. Maxima over real cutoffs mean suprema; a supremum can occur at the left limit of a prime-power jump. For character sums without a continuous subtracted main term, the cutoff can be restricted to integers and the maximum is attained. Changing the additive normalization of <span class="math" data-tex="\(\operatorname{li}\)">\(\operatorname{li}\)</span> changes the later estimates by <span class="math" data-tex="\(O(\sum_{q\le Q}1/\varphi(q))\)">\(O(\sum_{q\le Q}1/\varphi(q))\)</span>, which is harmless. Constants are effective until Siegel–Walfisz is used.</p>
+<h2 id="1-conductors-and-the-principal-character">1. Conductors and the principal character</h2>
+<p>Two elementary totient estimates will also supply the constant in the application. Put</p>
+<span class="math math-display" data-tex="\[
+\mathcal C=\prod_p\left(1+\frac1{p(p-1)}\right)
+=\frac{\zeta(2)\zeta(3)}{\zeta(6)}.
+\tag{1.1}
+\]">\[
+\mathcal C=\prod_p\left(1+\frac1{p(p-1)}\right)
+=\frac{\zeta(2)\zeta(3)}{\zeta(6)}.
+\tag{1.1}
+\]</span>
+<p>The product converges absolutely. The equality follows by checking each local factor:</p>
+<span class="math math-display" data-tex="\[
+1+\frac1{p(p-1)}=
+\frac{1-p^{-6}}{(1-p^{-2})(1-p^{-3})}.
+\]">\[
+1+\frac1{p(p-1)}=
+\frac{1-p^{-6}}{(1-p^{-2})(1-p^{-3})}.
+\]</span>
+<p><strong>Lemma 1.1.</strong> Uniformly for <span class="math" data-tex="\(z\ge1\)">\(z\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le z}\frac1{\varphi(n)}=\mathcal C\log z+O(1),
+\qquad
+\sum_{n\le z}\frac n{\varphi(n)}\ll z.
+\tag{1.2}
+\]">\[
+\sum_{n\le z}\frac1{\varphi(n)}=\mathcal C\log z+O(1),
+\qquad
+\sum_{n\le z}\frac n{\varphi(n)}\ll z.
+\tag{1.2}
+\]</span>
+<p>Consequently <span class="math" data-tex="\(q/\varphi(q)\ll\log(2q)\)">\(q/\varphi(q)\ll\log(2q)\)</span>, and, for <span class="math" data-tex="\(d\le Q\)">\(d\le Q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{q\le Q\\d\mid q}}\frac1{\varphi(q)}
+\ll\frac{\log(2Q/d)}{\varphi(d)}.
+\tag{1.3}
+\]">\[
+\sum_{\substack{q\le Q\\d\mid q}}\frac1{\varphi(q)}
+\ll\frac{\log(2Q/d)}{\varphi(d)}.
+\tag{1.3}
+\]</span>
+<p><strong>Proof.</strong> Multiplication of the prime-power factors gives</p>
+<span class="math math-display" data-tex="\[
+\frac n{\varphi(n)}=\sum_{d\mid n}\frac{\mu^2(d)}{\varphi(d)}.
+\tag{1.4}
+\]">\[
+\frac n{\varphi(n)}=\sum_{d\mid n}\frac{\mu^2(d)}{\varphi(d)}.
+\tag{1.4}
+\]</span>
+<p>Set <span class="math" data-tex="\(a(d)=\mu^2(d)/(d\varphi(d))\)">\(a(d)=\mu^2(d)/(d\varphi(d))\)</span>. Its sum is <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span>, and <span class="math" data-tex="\(\sum_da(d)\log(2d)&lt;\infty\)">\(\sum_da(d)\log(2d)&lt;\infty\)</span>. For the latter assertion, the logarithmic contribution of a prime in the absolutely convergent product is at most a constant times <span class="math" data-tex="\(\log p/[p(p-1)]\)">\(\log p/[p(p-1)]\)</span>; its sum converges by comparison with <span class="math" data-tex="\(\sum_{n\ge2}\log n/n^2\)">\(\sum_{n\ge2}\log n/n^2\)</span>. Rearranging the finite sum in (1.4) gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{n\le z}\frac1{\varphi(n)}
+=\sum_{d\le z}a(d)H_{\lfloor z/d\rfloor},
+\qquad H_k=\sum_{m\le k}\frac1m.
+\]">\[
+\sum_{n\le z}\frac1{\varphi(n)}
+=\sum_{d\le z}a(d)H_{\lfloor z/d\rfloor},
+\qquad H_k=\sum_{m\le k}\frac1m.
+\]</span>
+<p>Since <span class="math" data-tex="\(H_{\lfloor t\rfloor}=\log t+O(1)\)">\(H_{\lfloor t\rfloor}=\log t+O(1)\)</span> for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, the difference from <span class="math" data-tex="\(\mathcal C\log z\)">\(\mathcal C\log z\)</span> is bounded by a constant times <span class="math" data-tex="\(\sum_da(d)\log(2d)\)">\(\sum_da(d)\log(2d)\)</span>. In particular, the omitted tail satisfies <span class="math" data-tex="\(\log z\sum_{d&gt;z}a(d)\le\sum_{d&gt;z}a(d)\log d\)">\(\log z\sum_{d&gt;z}a(d)\le\sum_{d&gt;z}a(d)\log d\)</span>. This proves the first estimate. Summing (1.4) without the factor <span class="math" data-tex="\(1/n\)">\(1/n\)</span> proves the second, since <span class="math" data-tex="\(\lfloor z/d\rfloor\le z/d\)">\(\lfloor z/d\rfloor\le z/d\)</span>. Also <span class="math" data-tex="\(q/\varphi(q)\le\sum_{d\le q}1/\varphi(d)\)">\(q/\varphi(q)\le\sum_{d\le q}1/\varphi(d)\)</span>, which gives the pointwise consequence.</p>
+<p>Finally <span class="math" data-tex="\(\varphi(dm)\ge\varphi(d)\varphi(m)\)">\(\varphi(dm)\ge\varphi(d)\varphi(m)\)</span>, as is checked at every prime: equality holds for disjoint prime factors, and the ratio is <span class="math" data-tex="\(p/(p-1)\)">\(p/(p-1)\)</span> when the prime occurs in both. Apply the first estimate to <span class="math" data-tex="\(m\le Q/d\)">\(m\le Q/d\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\psi&#x27;(y,\chi)=\psi(y,\chi)-\mathbf1_{\chi=\chi_0}y.
+\tag{1.5}
+\]">\[
+\psi&#x27;(y,\chi)=\psi(y,\chi)-\mathbf1_{\chi=\chi_0}y.
+\tag{1.5}
+\]</span>
+<p>Character orthogonality gives the exact identity</p>
+<span class="math math-display" data-tex="\[
+\psi(y;q,b)-\frac y{\varphi(q)}
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}
+\overline{\chi(b)}\psi&#x27;(y,\chi).
+\tag{1.6}
+\]">\[
+\psi(y;q,b)-\frac y{\varphi(q)}
+=\frac1{\varphi(q)}\sum_{\chi\bmod q}
+\overline{\chi(b)}\psi&#x27;(y,\chi).
+\tag{1.6}
+\]</span>
+<p>The principal term cannot simply be deleted: <span class="math" data-tex="\(\psi(y,\chi_0)\)">\(\psi(y,\chi_0)\)</span> is not exactly <span class="math" data-tex="\(y\)">\(y\)</span>. Defining <span class="math" data-tex="\(\psi&#x27;\)">\(\psi&#x27;\)</span> incorporates its error.</p>
+<p>Suppose <span class="math" data-tex="\(\chi\pmod q\)">\(\chi\pmod q\)</span> is induced by primitive <span class="math" data-tex="\(\chi^*\pmod d\)">\(\chi^*\pmod d\)</span>, <span class="math" data-tex="\(d\mid q\)">\(d\mid q\)</span>. The difference consists precisely of the omitted prime powers:</p>
+<span class="math math-display" data-tex="\[
+\psi&#x27;(y,\chi^*)-\psi&#x27;(y,\chi)
+=\sum_{\substack{p\mid q\\ p\nmid d}}\sum_{p^k\le y}
+\chi^*(p)^k\log p.
+\tag{1.7}
+\]">\[
+\psi&#x27;(y,\chi^*)-\psi&#x27;(y,\chi)
+=\sum_{\substack{p\mid q\\ p\nmid d}}\sum_{p^k\le y}
+\chi^*(p)^k\log p.
+\tag{1.7}
+\]</span>
+<p>The subtracted main terms agree, including <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. Each prime contributes at most <span class="math" data-tex="\(\log(2x)\)">\(\log(2x)\)</span>, so for <span class="math" data-tex="\(q\le Q\le\sqrt x\)">\(q\le Q\le\sqrt x\)</span> the absolute difference is <span class="math" data-tex="\(O(L^2)\)">\(O(L^2)\)</span>, uniformly over <span class="math" data-tex="\(0\le y\le x\)">\(0\le y\le x\)</span>. Each primitive character induces exactly one character modulo each multiple of its conductor. The triangle inequality, (1.3), and (1.6) therefore give</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}E_\psi(x,q)
+\ll QL^2+
+\sum_{d\le Q}\frac{\log(2Q/d)}{\varphi(d)}
+\sum_{\chi\bmod d}^{*}\max_{y\le x}|\psi&#x27;(y,\chi)|.
+\tag{1.8}
+\]">\[
+\sum_{q\le Q}E_\psi(x,q)
+\ll QL^2+
+\sum_{d\le Q}\frac{\log(2Q/d)}{\varphi(d)}
+\sum_{\chi\bmod d}^{*}\max_{y\le x}|\psi&#x27;(y,\chi)|.
+\tag{1.8}
+\]</span>
+<p>The initial error is <span class="math" data-tex="\(QL^2\)">\(QL^2\)</span>, not a sum of <span class="math" data-tex="\(Q^2\)">\(Q^2\)</span> errors: for each modulus the factor <span class="math" data-tex="\(1/\varphi(q)\)">\(1/\varphi(q)\)</span> cancels its number of characters before summation.</p>
+<h2 id="2-a-maximal-first-moment-over-primitive-characters">2. A maximal first moment over primitive characters</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\mathcal T(x,Q)=\sum_{q\le Q}\frac q{\varphi(q)}
+\sum_{\chi\bmod q}^{*}\max_{0\le y\le x}|\psi(y,\chi)|.
+\]">\[
+\mathcal T(x,Q)=\sum_{q\le Q}\frac q{\varphi(q)}
+\sum_{\chi\bmod q}^{*}\max_{0\le y\le x}|\psi(y,\chi)|.
+\]</span>
+<p><strong>Theorem 2.1.</strong> For every <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span> and <span class="math" data-tex="\(Q\ge1\)">\(Q\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\mathcal T(x,Q)\ll
+\left(x+Qx^{5/6}+Q^2\sqrt x\right)L^3.
+\tag{2.1}
+\]">\[
+\mathcal T(x,Q)\ll
+\left(x+Qx^{5/6}+Q^2\sqrt x\right)L^3.
+\tag{2.1}
+\]</span>
+<p>The conductor-one character is included. The constants in this theorem are effective.</p>
+<p><strong>Proof.</strong> First suppose <span class="math" data-tex="\(Q\le\sqrt x\)">\(Q\le\sqrt x\)</span>. Apply Vaughan's identity with <span class="math" data-tex="\(1\le U,V\le x\)">\(1\le U,V\le x\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\Lambda=\Lambda_{\le U}+\mu_{\le V}*\log-c*\mathbf1+\alpha*\beta,
+\tag{2.2}
+\]">\[
+\Lambda=\Lambda_{\le U}+\mu_{\le V}*\log-c*\mathbf1+\alpha*\beta,
+\tag{2.2}
+\]</span>
+<p>where <span class="math" data-tex="\(c=\Lambda_{\le U}*\mu_{\le V}\)">\(c=\Lambda_{\le U}*\mu_{\le V}\)</span>, <span class="math" data-tex="\(\alpha=\Lambda_{&gt;U}*\mathbf1\)">\(\alpha=\Lambda_{&gt;U}*\mathbf1\)</span>, and <span class="math" data-tex="\(\beta=\mu_{&gt;V}\)">\(\beta=\mu_{&gt;V}\)</span>. Thus <span class="math" data-tex="\(c(t)=0\)">\(c(t)=0\)</span> for <span class="math" data-tex="\(t&gt;UV\)">\(t&gt;UV\)</span>, <span class="math" data-tex="\(|c(t)|\le\log t\)">\(|c(t)|\le\log t\)</span>, <span class="math" data-tex="\(\alpha(m)=0\)">\(\alpha(m)=0\)</span> for <span class="math" data-tex="\(m\le U\)">\(m\le U\)</span>, <span class="math" data-tex="\(0\le\alpha(m)\le\log m\)">\(0\le\alpha(m)\le\log m\)</span>, and <span class="math" data-tex="\(|\beta(n)|\le1\)">\(|\beta(n)|\le1\)</span>, with <span class="math" data-tex="\(\beta(n)=0\)">\(\beta(n)=0\)</span> for <span class="math" data-tex="\(n\le V\)">\(n\le V\)</span>. Every estimate below has a majorant independent of <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p>For primitive nonprincipal <span class="math" data-tex="\(\chi\pmod q\)">\(\chi\pmod q\)</span>, Pólya–Vinogradov gives</p>
+<span class="math math-display" data-tex="\[
+\max_{Y\ge0}\left|\sum_{n\le Y}\chi(n)\right|
+\ll\sqrt q\log(2q).
+\tag{2.3}
+\]">\[
+\max_{Y\ge0}\left|\sum_{n\le Y}\chi(n)\right|
+\ll\sqrt q\log(2q).
+\tag{2.3}
+\]</span>
+<p>The term <span class="math" data-tex="\(c*\mathbf1\)">\(c*\mathbf1\)</span>, restricted to <span class="math" data-tex="\(t\le U\)">\(t\le U\)</span>, is consequently bounded by <span class="math" data-tex="\(U\sqrt q\,L^2\)">\(U\sqrt q\,L^2\)</span>. Summing over the primitive family with weight <span class="math" data-tex="\(q/\varphi(q)\)">\(q/\varphi(q)\)</span> gives <span class="math" data-tex="\(O(Q^{5/2}UL^2)\)">\(O(Q^{5/2}UL^2)\)</span>, since the weighted number at modulus <span class="math" data-tex="\(q\)">\(q\)</span> is at most <span class="math" data-tex="\(q\)">\(q\)</span>. At conductor 1, use instead</p>
+<span class="math math-display" data-tex="\[
+\sum_{t\le U}|c(t)|\left\lfloor\frac xt\right\rfloor
+\ll xL^2.
+\]">\[
+\sum_{t\le U}|c(t)|\left\lfloor\frac xt\right\rfloor
+\ll xL^2.
+\]</span>
+<p>For <span class="math" data-tex="\(\mu_{\le V}*\log\)">\(\mu_{\le V}*\log\)</span>, partial summation in the second variable multiplies (2.3) by at most <span class="math" data-tex="\(2L\)">\(2L\)</span>. The same argument bounds its weighted maximum by <span class="math" data-tex="\(O((x+Q^{5/2}V)L^2)\)">\(O((x+Q^{5/2}V)L^2)\)</span>. Its conductor-one contribution is bounded by <span class="math" data-tex="\(xL\sum_{d\le V}1/d\ll xL^2\)">\(xL\sum_{d\le V}1/d\ll xL^2\)</span>. Finally <span class="math" data-tex="\(\Lambda_{\le U}\)">\(\Lambda_{\le U}\)</span> contributes <span class="math" data-tex="\(O(Q^2U)\)">\(O(Q^2U)\)</span>, by the elementary Chebyshev estimate.</p>
+<p>The two remaining pieces have two variables. To see the estimates explicitly, restrict <span class="math" data-tex="\(m\)">\(m\)</span> to a dyadic block <span class="math" data-tex="\((M,2M]\)">\((M,2M]\)</span>, clip its support as necessary, and let <span class="math" data-tex="\(n\le x/M\)">\(n\le x/M\)</span>. The maximal bilinear estimate in Theorem 3.1 of the preceding lesson gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\max_{y\le x}\left|\sum_{\substack{M&lt;m\le2M\\mn\le y}}
+a_m b_n\chi(mn)\right|\\
+&amp;\hspace{12mm}\ll
+\left(x+Q\sqrt{xM}+\frac{Qx}{\sqrt M}+Q^2\sqrt x\right)L^2,
+\end{aligned}
+\tag{2.4}
+\]">\[
+\begin{aligned}
+&amp;\sum_{q\le Q}\frac q{\varphi(q)}\sum_\chi^*
+\max_{y\le x}\left|\sum_{\substack{M&lt;m\le2M\\mn\le y}}
+a_m b_n\chi(mn)\right|\\
+&amp;\hspace{12mm}\ll
+\left(x+Q\sqrt{xM}+\frac{Qx}{\sqrt M}+Q^2\sqrt x\right)L^2,
+\end{aligned}
+\tag{2.4}
+\]</span>
+<p>provided <span class="math" data-tex="\(|a_m|\le L\)">\(|a_m|\le L\)</span>, <span class="math" data-tex="\(|b_n|\le1\)">\(|b_n|\le1\)</span>. Indeed, the coefficient norms have product <span class="math" data-tex="\(O(\sqrt x\,L)\)">\(O(\sqrt x\,L)\)</span>, and expanding <span class="math" data-tex="\(\sqrt{(2M+Q^2)(x/M+Q^2)}\)">\(\sqrt{(2M+Q^2)(x/M+Q^2)}\)</span> gives the four displayed terms. This argument retains the product cutoff and the maximum; the maximizing <span class="math" data-tex="\(y\)">\(y\)</span> may vary with <span class="math" data-tex="\(\chi\)">\(\chi\)</span>.</p>
+<p>For <span class="math" data-tex="\(\alpha*\beta\)">\(\alpha*\beta\)</span>, the block parameter satisfies <span class="math" data-tex="\(U/2\le M\le x/V\)">\(U/2\le M\le x/V\)</span>. Summing <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> blocks in (2.4) gives</p>
+<span class="math math-display" data-tex="\[
+\ll\left(x+\frac{Qx}{\sqrt U}+\frac{Qx}{\sqrt V}+Q^2\sqrt x\right)L^3.
+\tag{2.5}
+\]">\[
+\ll\left(x+\frac{Qx}{\sqrt U}+\frac{Qx}{\sqrt V}+Q^2\sqrt x\right)L^3.
+\tag{2.5}
+\]</span>
+<p>This is also Corollary 11.1 of the preceding lesson. For the part of <span class="math" data-tex="\(c*\mathbf1\)">\(c*\mathbf1\)</span> with <span class="math" data-tex="\(U&lt;t\le UV\)">\(U&lt;t\le UV\)</span>, the first variable satisfies <span class="math" data-tex="\(U/2\le M\le UV\)">\(U/2\le M\le UV\)</span>, while the second has no lower cutoff. Its corresponding bound is</p>
+<span class="math math-display" data-tex="\[
+\ll\left(x+\frac{Qx}{\sqrt U}+Q\sqrt{xUV}+Q^2\sqrt x\right)L^3.
+\tag{2.6}
+\]">\[
+\ll\left(x+\frac{Qx}{\sqrt U}+Q\sqrt{xUV}+Q^2\sqrt x\right)L^3.
+\tag{2.6}
+\]</span>
+<p>If a range is empty, its contribution is zero. Real cutoffs and rounded supports change only absolute constants. Combining all pieces proves</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal T(x,Q)\ll\bigg(&amp;x+\frac{Qx}{\sqrt U}+\frac{Qx}{\sqrt V}
++Q\sqrt{xUV}+Q^2\sqrt x\\
+&amp;+Q^{5/2}(U+V)+Q^2U\bigg)L^3.
+\end{aligned}
+\tag{2.7}
+\]">\[
+\begin{aligned}
+\mathcal T(x,Q)\ll\bigg(&amp;x+\frac{Qx}{\sqrt U}+\frac{Qx}{\sqrt V}
++Q\sqrt{xUV}+Q^2\sqrt x\\
+&amp;+Q^{5/2}(U+V)+Q^2U\bigg)L^3.
+\end{aligned}
+\tag{2.7}
+\]</span>
+<p>Here logarithms of the parameters are <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span>, since <span class="math" data-tex="\(U,V\le x\)">\(U,V\le x\)</span> and <span class="math" data-tex="\(Q\le\sqrt x\)">\(Q\le\sqrt x\)</span>.</p>
+<p>Take <span class="math" data-tex="\(U=V=W\)">\(U=V=W\)</span>. For <span class="math" data-tex="\(Q\le x^{1/3}\)">\(Q\le x^{1/3}\)</span>, choose <span class="math" data-tex="\(W=x^{1/3}\)">\(W=x^{1/3}\)</span>. Then <span class="math" data-tex="\(Qx/\sqrt W=Qx^{5/6}\)">\(Qx/\sqrt W=Qx^{5/6}\)</span>, <span class="math" data-tex="\(Q\sqrt x\,W=Qx^{5/6}\)">\(Q\sqrt x\,W=Qx^{5/6}\)</span>, and <span class="math" data-tex="\(Q^{5/2}W\le Qx^{5/6}\)">\(Q^{5/2}W\le Qx^{5/6}\)</span>. Also <span class="math" data-tex="\(Q^2W\le Q^2\sqrt x\)">\(Q^2W\le Q^2\sqrt x\)</span>. For <span class="math" data-tex="\(x^{1/3}&lt;Q\le\sqrt x\)">\(x^{1/3}&lt;Q\le\sqrt x\)</span>, choose <span class="math" data-tex="\(W=x^{2/3}/Q\)">\(W=x^{2/3}/Q\)</span>. In this range</p>
+<span class="math math-display" data-tex="\[
+Qx/\sqrt W=Q^{3/2}x^{2/3}\le Q^2\sqrt x,
+\quad Q\sqrt x\,W=x^{7/6}\le Q^2\sqrt x,
+\]">\[
+Qx/\sqrt W=Q^{3/2}x^{2/3}\le Q^2\sqrt x,
+\quad Q\sqrt x\,W=x^{7/6}\le Q^2\sqrt x,
+\]</span>
+<p>and <span class="math" data-tex="\(Q^{5/2}W=Q^{3/2}x^{2/3}\le Q^2\sqrt x\)">\(Q^{5/2}W=Q^{3/2}x^{2/3}\le Q^2\sqrt x\)</span>. The remaining <span class="math" data-tex="\(Q^2W\)">\(Q^2W\)</span> is smaller as well. These substitutions prove (2.1) for <span class="math" data-tex="\(Q\le\sqrt x\)">\(Q\le\sqrt x\)</span>.</p>
+<p>If <span class="math" data-tex="\(Q&gt;\sqrt x\)">\(Q&gt;\sqrt x\)</span>, apply the same maximal bilinear theorem directly with <span class="math" data-tex="\(a_1=1\)">\(a_1=1\)</span> and <span class="math" data-tex="\(b_n=\Lambda(n)\)">\(b_n=\Lambda(n)\)</span>, <span class="math" data-tex="\(n\le x\)">\(n\le x\)</span>. Chebyshev gives <span class="math" data-tex="\(\sum_{n\le x}\Lambda(n)^2\le L\psi(x)\ll xL\)">\(\sum_{n\le x}\Lambda(n)^2\le L\psi(x)\ll xL\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\mathcal T(x,Q)\ll
+\sqrt{(1+Q^2)(x+Q^2)}\sqrt{xL}\,L
+\ll Q^2\sqrt x\,L^{3/2},
+\]">\[
+\mathcal T(x,Q)\ll
+\sqrt{(1+Q^2)(x+Q^2)}\sqrt{xL}\,L
+\ll Q^2\sqrt x\,L^{3/2},
+\]</span>
+<p>which implies (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The square-root boundary in this estimate is visible in <span class="math" data-tex="\(Q^2\sqrt x\)">\(Q^2\sqrt x\)</span>. Passing from the weight <span class="math" data-tex="\(q/\varphi(q)\)">\(q/\varphi(q)\)</span> to <span class="math" data-tex="\(1/\varphi(q)\)">\(1/\varphi(q)\)</span> on a conductor block of size <span class="math" data-tex="\(Q\)">\(Q\)</span> turns this into <span class="math" data-tex="\(Q\sqrt x\)">\(Q\sqrt x\)</span>, precisely the scale in Bombieri–Vinogradov.</p>
+<h3 id="direct-progression-estimates">Direct progression estimates</h3>
+<p>There is another useful organization of Vaughan's identity. Its Type I part is well distributed in progressions by direct counting, and its Type II part has cancellation at small conductors even after an additional coprimality restriction. We prove both facts, so that this alternative organization does not conceal an extra input.</p>
+<p>For an arithmetic function <span class="math" data-tex="\(f\)">\(f\)</span>, put</p>
+<span class="math math-display" data-tex="\[
+\Delta_f(t;q,b)=\sum_{\substack{n\le t\\n\equiv b\pmod q}}f(n)
+-\frac1{\varphi(q)}\sum_{\substack{n\le t\\(n,q)=1}}f(n).
+\tag{2.8}
+\]">\[
+\Delta_f(t;q,b)=\sum_{\substack{n\le t\\n\equiv b\pmod q}}f(n)
+-\frac1{\varphi(q)}\sum_{\substack{n\le t\\(n,q)=1}}f(n).
+\tag{2.8}
+\]</span>
+<p><strong>Lemma 2.2 (Type I distribution).</strong> If <span class="math" data-tex="\(f\)">\(f\)</span> is supported on <span class="math" data-tex="\(1\le n\le Z\)">\(1\le n\le Z\)</span>, <span class="math" data-tex="\(v\ge0\)">\(v\ge0\)</span>, <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span>, and <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+|\Delta_{f*(\log)^v}(t;q,b)|
+\le2(\log t)^v\sum_{k\le Z}|f(k)|.
+\tag{2.9}
+\]">\[
+|\Delta_{f*(\log)^v}(t;q,b)|
+\le2(\log t)^v\sum_{k\le Z}|f(k)|.
+\tag{2.9}
+\]</span>
+<p>For <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, the function <span class="math" data-tex="\((\log)^0\)">\((\log)^0\)</span> means <span class="math" data-tex="\(\mathbf1\)">\(\mathbf1\)</span>, including at 1.</p>
+<p><strong>Proof.</strong> Each reduced residue class contains either <span class="math" data-tex="\(\lfloor u/q\rfloor\)">\(\lfloor u/q\rfloor\)</span> or <span class="math" data-tex="\(\lfloor u/q\rfloor+1\)">\(\lfloor u/q\rfloor+1\)</span> positive integers up to <span class="math" data-tex="\(u\)">\(u\)</span>. Its count differs from the average over reduced classes by at most 1. Thus <span class="math" data-tex="\(|\Delta_{\mathbf1}(u;q,j)|\le1\)">\(|\Delta_{\mathbf1}(u;q,j)|\le1\)</span>. If <span class="math" data-tex="\(v&gt;0\)">\(v&gt;0\)</span>, partial summation and monotonicity of <span class="math" data-tex="\((\log u)^v\)">\((\log u)^v\)</span> give</p>
+<span class="math math-display" data-tex="\[
+|\Delta_{(\log)^v}(u;q,j)|
+\le(\log u)^v+\int_1^u d(\log s)^v=2(\log u)^v.
+\]">\[
+|\Delta_{(\log)^v}(u;q,j)|
+\le(\log u)^v+\int_1^u d(\log s)^v=2(\log u)^v.
+\]</span>
+<p>For <span class="math" data-tex="\(v=0\)">\(v=0\)</span> the stronger constant 1 suffices. Open the convolution in (2.8). Only <span class="math" data-tex="\(k\)">\(k\)</span> coprime to <span class="math" data-tex="\(q\)">\(q\)</span> contribute, and the inner discrepancy is
+<span class="math" data-tex="\(\Delta_{(\log)^v}(t/k;q,bk^{-1})\)">\(\Delta_{(\log)^v}(t/k;q,bk^{-1})\)</span>, with its average divided by <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span>. Bound it as above and sum the absolute coefficients. Terms <span class="math" data-tex="\(k&gt;t\)">\(k&gt;t\)</span> are empty. This proves (2.9). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, for <span class="math" data-tex="\(\Lambda^\sharp=\mu_{\le V}*\log-c*\mathbf1\)">\(\Lambda^\sharp=\mu_{\le V}*\log-c*\mathbf1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\max_{y\le x}\max_{(b,q)=1}|\Delta_{\Lambda^\sharp}(y;q,b)|
+\ll UVL.
+\tag{2.10}
+\]">\[
+\max_{y\le x}\max_{(b,q)=1}|\Delta_{\Lambda^\sharp}(y;q,b)|
+\ll UVL.
+\tag{2.10}
+\]</span>
+<p>The two coefficient sums are at most <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(UV\log(UV)\)">\(UV\log(UV)\)</span>, with the latter interpreted as zero when <span class="math" data-tex="\(UV=1\)">\(UV=1\)</span>. They are bounded by <span class="math" data-tex="\(O(UVL)\)">\(O(UVL)\)</span> after the logarithmic factor for the first term is included.</p>
+<p><strong>Lemma 2.3 (small conductors with a selector).</strong> Fix <span class="math" data-tex="\(A,C\ge1\)">\(A,C\ge1\)</span>. Suppose <span class="math" data-tex="\(x\ge3\)">\(x\ge3\)</span>, <span class="math" data-tex="\(1\le U\le x\)">\(1\le U\le x\)</span>, <span class="math" data-tex="\(e^{\sqrt{\log x}}\le V\le x\)">\(e^{\sqrt{\log x}}\le V\le x\)</span>, <span class="math" data-tex="\(r\le x\)">\(r\le x\)</span> is a positive integer, and <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has modulus <span class="math" data-tex="\(q\le(\log x)^C\)">\(q\le(\log x)^C\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\max_{0\le y\le x}\left|
+\sum_{n\le y}\Lambda^\flat(n)\chi(n)\mathbf1_{(n,r)=1}
+\right|\ll_{A,C}xL^{-A},
+\qquad \Lambda^\flat=\alpha*\beta.
+\tag{2.11}
+\]">\[
+\max_{0\le y\le x}\left|
+\sum_{n\le y}\Lambda^\flat(n)\chi(n)\mathbf1_{(n,r)=1}
+\right|\ll_{A,C}xL^{-A},
+\qquad \Lambda^\flat=\alpha*\beta.
+\tag{2.11}
+\]</span>
+<p>The constant is ineffective. The principal character is allowed.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(M(t,\chi)=\sum_{n\le t}\mu(n)\chi(n)\)">\(M(t,\chi)=\sum_{n\le t}\mu(n)\chi(n)\)</span>. The earlier Möbius form of Siegel–Walfisz proves
+<span class="math" data-tex="\(|M(t,\chi)|\ll_C t e^{-c\sqrt{\log t}}\)">\(|M(t,\chi)|\ll_C t e^{-c\sqrt{\log t}}\)</span> whenever the modulus is a fixed power of <span class="math" data-tex="\(\log t\)">\(\log t\)</span>. We first transfer this estimate to</p>
+<span class="math math-display" data-tex="\[
+M_r(t,\chi)=\sum_{\substack{n\le t\\(n,r)=1}}\mu(n)\chi(n),
+\qquad V\le t\le x.
+\]">\[
+M_r(t,\chi)=\sum_{\substack{n\le t\\(n,r)=1}}\mu(n)\chi(n),
+\qquad V\le t\le x.
+\]</span>
+<p>Let <span class="math" data-tex="\(\mathcal R_r\)">\(\mathcal R_r\)</span> be the positive integers all of whose prime factors divide <span class="math" data-tex="\(r\)">\(r\)</span>, including 1. A local prime-power check gives</p>
+<span class="math math-display" data-tex="\[
+M_r(t,\chi)=\sum_{\substack{d\le t\\d\in\mathcal R_r}}
+\chi(d)M(t/d,\chi).
+\tag{2.12}
+\]">\[
+M_r(t,\chi)=\sum_{\substack{d\le t\\d\in\mathcal R_r}}
+\chi(d)M(t/d,\chi).
+\tag{2.12}
+\]</span>
+<p>At a prime dividing <span class="math" data-tex="\(r\)">\(r\)</span>, convolution of <span class="math" data-tex="\(1-\chi(p)z\)">\(1-\chi(p)z\)</span> with <span class="math" data-tex="\((1-\chi(p)z)^{-1}\)">\((1-\chi(p)z)^{-1}\)</span> leaves 1. At other primes the Möbius factor is unchanged. This proves (2.12) also when <span class="math" data-tex="\(\chi(p)=0\)">\(\chi(p)=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(d\le\sqrt t\)">\(d\le\sqrt t\)</span>, one has <span class="math" data-tex="\(\log(t/d)\ge\frac12\sqrt{\log x}\)">\(\log(t/d)\ge\frac12\sqrt{\log x}\)</span>. Consequently <span class="math" data-tex="\(q\le(\log(t/d))^{3C}\)">\(q\le(\log(t/d))^{3C}\)</span> for sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span>. Siegel–Walfisz at this fixed exponent bounds that part of (2.12) by</p>
+<span class="math math-display" data-tex="\[
+\ll_C t e^{-c&#x27;(\log x)^{1/4}}
+\sum_{d\in\mathcal R_r}\frac1d
+=t e^{-c&#x27;(\log x)^{1/4}}\,O_C(r/\varphi(r))
+\ll_C tL e^{-c&#x27;(\log x)^{1/4}}.
+\tag{2.13}
+\]">\[
+\ll_C t e^{-c&#x27;(\log x)^{1/4}}
+\sum_{d\in\mathcal R_r}\frac1d
+=t e^{-c&#x27;(\log x)^{1/4}}\,O_C(r/\varphi(r))
+\ll_C tL e^{-c&#x27;(\log x)^{1/4}}.
+\tag{2.13}
+\]</span>
+<p>For the remaining <span class="math" data-tex="\(d\)">\(d\)</span>, the trivial bound for <span class="math" data-tex="\(M\)">\(M\)</span> gives <span class="math" data-tex="\(t\sum_{d&gt;\sqrt t,\ d\in\mathcal R_r}1/d\)">\(t\sum_{d&gt;\sqrt t,\ d\in\mathcal R_r}1/d\)</span>. Put <span class="math" data-tex="\(\eta=1/[4\log(2L)]\)">\(\eta=1/[4\log(2L)]\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\sum_{\substack{d&gt;\sqrt t\\d\in\mathcal R_r}}\frac1d
+\le t^{-\eta/2}\prod_{p\mid r}(1-p^{-1+\eta})^{-1}
+\ll(\log(2L))^K\exp\left(-\frac{\log t}{8\log(2L)}\right)
+\tag{2.14}
+\]">\[
+\sum_{\substack{d&gt;\sqrt t\\d\in\mathcal R_r}}\frac1d
+\le t^{-\eta/2}\prod_{p\mid r}(1-p^{-1+\eta})^{-1}
+\ll(\log(2L))^K\exp\left(-\frac{\log t}{8\log(2L)}\right)
+\tag{2.14}
+\]</span>
+<p>for an absolute effective <span class="math" data-tex="\(K\)">\(K\)</span>. To justify the product bound, split its primes at <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. At smaller primes <span class="math" data-tex="\(p^\eta\le e^{1/2}\)">\(p^\eta\le e^{1/2}\)</span>, and
+<span class="math" data-tex="\(-\log(1-p^{-1+\eta})\ll1/p\)">\(-\log(1-p^{-1+\eta})\ll1/p\)</span>. The reciprocal-prime estimate
+<span class="math" data-tex="\(\sum_{p\le w}1/p=\log\log w+O(1)\)">\(\sum_{p\le w}1/p=\log\log w+O(1)\)</span>, proved in <em>Dirichlet's theorem on primes in arithmetic progressions</em> (or the principal case of the Mertens results in <em>The Siegel–Walfisz theorem</em>), bounds the product there by a power of <span class="math" data-tex="\(\log(2L)\)">\(\log(2L)\)</span>. At larger primes each <span class="math" data-tex="\(p^{-1+\eta}\le e^{1/2}/L^2\)">\(p^{-1+\eta}\le e^{1/2}/L^2\)</span>, and there are at most <span class="math" data-tex="\(\log r/\log2\le L/\log2\)">\(\log r/\log2\le L/\log2\)</span> of them. Their product is bounded absolutely. This proves (2.14).</p>
+<p>Since <span class="math" data-tex="\(\log t\ge\sqrt{\log x}\)">\(\log t\ge\sqrt{\log x}\)</span>, both (2.13) and <span class="math" data-tex="\(t\)">\(t\)</span> times (2.14) are <span class="math" data-tex="\(O_{H,C}(tL^{-H})\)">\(O_{H,C}(tL^{-H})\)</span> for every fixed <span class="math" data-tex="\(H&gt;0\)">\(H&gt;0\)</span>, uniformly over <span class="math" data-tex="\(V\le t\le x\)">\(V\le t\le x\)</span> and <span class="math" data-tex="\(r\le x\)">\(r\le x\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+|M_r(t,\chi)|\ll_{H,C}tL^{-H}.
+\tag{2.15}
+\]">\[
+|M_r(t,\chi)|\ll_{H,C}tL^{-H}.
+\tag{2.15}
+\]</span>
+<p>Finally open the convolution <span class="math" data-tex="\(\alpha*\beta\)">\(\alpha*\beta\)</span>. For a fixed <span class="math" data-tex="\(m\le y/V\)">\(m\le y/V\)</span>, the inner sum over <span class="math" data-tex="\(V&lt;n\le y/m\)">\(V&lt;n\le y/m\)</span>, including the coprimality selector, is
+<span class="math" data-tex="\(M_r(y/m,\chi)-M_r(V,\chi)\)">\(M_r(y/m,\chi)-M_r(V,\chi)\)</span>. Its modulus is at most
+<span class="math" data-tex="\(O_{H,C}((y/m)L^{-H})\)">\(O_{H,C}((y/m)L^{-H})\)</span> because <span class="math" data-tex="\(y/m\ge V\)">\(y/m\ge V\)</span>. Since <span class="math" data-tex="\(|\alpha(m)|\le\log m\)">\(|\alpha(m)|\le\log m\)</span> and <span class="math" data-tex="\((mn,r)=1\)">\((mn,r)=1\)</span> splits into its two selectors, the total is at most</p>
+<span class="math math-display" data-tex="\[
+O_{H,C}\left(yL^{-H}\sum_{m\le y/V}\frac{\log m}{m}\right)
+\ll_{H,C}xL^{2-H}.
+\]">\[
+O_{H,C}\left(yL^{-H}\sum_{m\le y/V}\frac{\log m}{m}\right)
+\ll_{H,C}xL^{2-H}.
+\]</span>
+<p>Take <span class="math" data-tex="\(H=A+2\)">\(H=A+2\)</span>. Empty ranges contribute zero; enlarging the ineffective constant covers the bounded initial range of <span class="math" data-tex="\(x\)">\(x\)</span>. This proves (2.11). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Thus direct progression counting, small-conductor Möbius cancellation and the maximal Type II estimate are compatible approaches to the same prime-sum decomposition. In the proof that follows, Theorem 2.1 packages the large-conductor estimates into one first moment.</p>
+<h2 id="3-small-and-large-conductors">3. Small and large conductors</h2>
+<p><strong>Theorem 3.1 (Bombieri–Vinogradov).</strong> Fix <span class="math" data-tex="\(D&gt;0\)">\(D&gt;0\)</span>. Uniformly for</p>
+<span class="math math-display" data-tex="\[
+\sqrt x\,L^{-D}\le Q\le\sqrt x,\qquad x\ge2,
+\]">\[
+\sqrt x\,L^{-D}\le Q\le\sqrt x,\qquad x\ge2,
+\]</span>
+<p>we have</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}E_\psi(x,q)\ll_D Q\sqrt x\,L^3.
+\tag{3.1}
+\]">\[
+\sum_{q\le Q}E_\psi(x,q)\ll_D Q\sqrt x\,L^3.
+\tag{3.1}
+\]</span>
+<p>In particular, for every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, the choice</p>
+<span class="math math-display" data-tex="\[
+\boxed{B(A)=A+3}
+\tag{3.2}
+\]">\[
+\boxed{B(A)=A+3}
+\tag{3.2}
+\]</span>
+<p>gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}E_\psi(x,q)\ll_A\frac{x}{(\log x)^A}
+\quad\left(1\le Q\le\frac{\sqrt x}{(\log x)^{A+3}}\right).
+\tag{3.3}
+\]">\[
+\sum_{q\le Q}E_\psi(x,q)\ll_A\frac{x}{(\log x)^A}
+\quad\left(1\le Q\le\frac{\sqrt x}{(\log x)^{A+3}}\right).
+\tag{3.3}
+\]</span>
+<p>The constants in these assertions are ineffective.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(R=L^{D+1}\)">\(R=L^{D+1}\)</span>. First handle conductors <span class="math" data-tex="\(d\le R\)">\(d\le R\)</span> in (1.8). The character form of Siegel–Walfisz, proved along with the progression form in the earlier lesson, gives</p>
+<span class="math math-display" data-tex="\[
+\max_{0\le y\le x}|\psi&#x27;(y,\chi)|
+\ll_D xe^{-c\sqrt{\log x}}\quad(d\le R).
+\tag{3.4}
+\]">\[
+\max_{0\le y\le x}|\psi&#x27;(y,\chi)|
+\ll_D xe^{-c\sqrt{\log x}}\quad(d\le R).
+\tag{3.4}
+\]</span>
+<p>To verify its uniformity in the cutoff, split at <span class="math" data-tex="\(\sqrt x\)">\(\sqrt x\)</span>. Below that point use <span class="math" data-tex="\(|\psi&#x27;(y,\chi)|\le\psi(y)+y\ll\sqrt x\)">\(|\psi&#x27;(y,\chi)|\le\psi(y)+y\ll\sqrt x\)</span>. Above it, <span class="math" data-tex="\(d\le L^{D+1}\le(\log y)^{2(D+1)}\)">\(d\le L^{D+1}\le(\log y)^{2(D+1)}\)</span> for sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span>, so the earlier theorem applies with that fixed parameter. A smaller absolute <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> absorbs both pieces. The initial threshold and the resulting implied constant are ineffective. Since there are at most <span class="math" data-tex="\(\varphi(d)\)">\(\varphi(d)\)</span> primitive characters at <span class="math" data-tex="\(d\)">\(d\)</span>, their total contribution to (1.8) is</p>
+<span class="math math-display" data-tex="\[
+\ll_D RLxe^{-c\sqrt{\log x}}.
+\tag{3.5}
+\]">\[
+\ll_D RLxe^{-c\sqrt{\log x}}.
+\tag{3.5}
+\]</span>
+<p>For the remaining conductors partition <span class="math" data-tex="\(R&lt;d\le Q\)">\(R&lt;d\le Q\)</span> into blocks <span class="math" data-tex="\(r&lt;d\le2r\)">\(r&lt;d\le2r\)</span>, <span class="math" data-tex="\(r=2^jR\)">\(r=2^jR\)</span>, clipping the last one. They are all greater than 1, so <span class="math" data-tex="\(\psi&#x27;=\psi\)">\(\psi&#x27;=\psi\)</span>. Theorem 2.1 gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{r&lt;d\le\min(2r,Q)}\frac{\log(2Q/d)}{\varphi(d)}
+\sum_\chi^*\max_{y\le x}|\psi(y,\chi)|\\
+&amp;\quad\ll
+\left(\frac xr+x^{5/6}+r\sqrt x\right)L^3\log(2Q/r).
+\end{aligned}
+\tag{3.6}
+\]">\[
+\begin{aligned}
+&amp;\sum_{r&lt;d\le\min(2r,Q)}\frac{\log(2Q/d)}{\varphi(d)}
+\sum_\chi^*\max_{y\le x}|\psi(y,\chi)|\\
+&amp;\quad\ll
+\left(\frac xr+x^{5/6}+r\sqrt x\right)L^3\log(2Q/r).
+\end{aligned}
+\tag{3.6}
+\]</span>
+<p>The factor <span class="math" data-tex="\(1/r\)">\(1/r\)</span> here is the conversion from the large-sieve weight. The three sums over <span class="math" data-tex="\(r\)">\(r\)</span> behave differently:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_r\frac{\log(2Q/r)}r&amp;\ll L/R,\\
+\sum_r\log(2Q/r)&amp;\ll L^2,\\
+\sum_r r\log(2Q/r)&amp;\ll Q.
+\end{aligned}
+\tag{3.7}
+\]">\[
+\begin{aligned}
+\sum_r\frac{\log(2Q/r)}r&amp;\ll L/R,\\
+\sum_r\log(2Q/r)&amp;\ll L^2,\\
+\sum_r r\log(2Q/r)&amp;\ll Q.
+\end{aligned}
+\tag{3.7}
+\]</span>
+<p>For the first bound use <span class="math" data-tex="\(r\ge2^jR\)">\(r\ge2^jR\)</span> and <span class="math" data-tex="\(\log(2Q/r)\le L\)">\(\log(2Q/r)\le L\)</span>. For the second there are <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> blocks, each with logarithm <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span>. For the third count backwards from the largest block: the terms are bounded by constant multiples of <span class="math" data-tex="\(Q2^{-k}(k+1)\)">\(Q2^{-k}(k+1)\)</span>, whose sum converges. Retaining this last geometric estimate avoids an unnecessary logarithmic loss.</p>
+<p>The large-conductor part of (1.8) is therefore at most</p>
+<span class="math math-display" data-tex="\[
+\ll\frac xR L^4+x^{5/6}L^5+Q\sqrt x\,L^3.
+\tag{3.8}
+\]">\[
+\ll\frac xR L^4+x^{5/6}L^5+Q\sqrt x\,L^3.
+\tag{3.8}
+\]</span>
+<p>Because <span class="math" data-tex="\(Q\ge\sqrt x\,L^{-D}\)">\(Q\ge\sqrt x\,L^{-D}\)</span> and <span class="math" data-tex="\(R=L^{D+1}\)">\(R=L^{D+1}\)</span>, the first term is at most <span class="math" data-tex="\(Q\sqrt x\,L^3\)">\(Q\sqrt x\,L^3\)</span>. For fixed <span class="math" data-tex="\(D\)">\(D\)</span>, the second has the same upper bound for all sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span>, since <span class="math" data-tex="\(x^{-1/6}L^{D+2}\to0\)">\(x^{-1/6}L^{D+2}\to0\)</span>. The term (3.5) and the initial <span class="math" data-tex="\(QL^2\)">\(QL^2\)</span> in (1.8) are also absorbed. Enlarging the constant on the bounded initial range proves (3.1).</p>
+<p>For (3.3), apply (3.1) with <span class="math" data-tex="\(D=A+3\)">\(D=A+3\)</span> at <span class="math" data-tex="\(Q_0=\sqrt x/(\log x)^{A+3}\)">\(Q_0=\sqrt x/(\log x)^{A+3}\)</span>, then use monotonicity of the sum for <span class="math" data-tex="\(Q\le Q_0\)">\(Q\le Q_0\)</span>. For <span class="math" data-tex="\(x\ge3\)">\(x\ge3\)</span>, <span class="math" data-tex="\(Q_0\le\sqrt x\)">\(Q_0\le\sqrt x\)</span>, <span class="math" data-tex="\(Q_0\ge\sqrt x\,L^{-D}\)">\(Q_0\ge\sqrt x\,L^{-D}\)</span>, and <span class="math" data-tex="\(L/\log x\)">\(L/\log x\)</span> is bounded. Thus <span class="math" data-tex="\(Q_0\sqrt x\,L^3\ll_A x(\log x)^{-A}\)">\(Q_0\sqrt x\,L^3\ll_A x(\log x)^{-A}\)</span>. If <span class="math" data-tex="\(Q_0&lt;1\)">\(Q_0&lt;1\)</span> there is no admissible <span class="math" data-tex="\(Q\)">\(Q\)</span>; the remaining bounded values <span class="math" data-tex="\(2\le x&lt;3\)">\(2\le x&lt;3\)</span> are handled by enlarging the constant. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All estimates after (3.4) are effective. The ineffectivity of Bombieri–Vinogradov in this proof comes solely from the small-conductor theorem. It does not arise from the large sieve or from the maximal cutoff.</p>
+<p>An alternative treatment applies the elementary progression estimate directly to the Type I part of Vaughan's identity and the large sieve only to the Type II part. The maximal character argument above has the advantage that the conductor reduction and the exceptional principal term remain explicit throughout.</p>
+<h2 id="4-prime-weights-prime-counts-and-exceptional-moduli">4. Prime weights, prime counts and exceptional moduli</h2>
+<p><strong>Corollary 4.1.</strong> In the range of Theorem 3.1,</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}E_\theta(x,q)\ll_D Q\sqrt x\,L^3,
+\qquad
+\sum_{q\le Q}E_\pi(x,q)\ll_D Q\sqrt x\,L^2.
+\tag{4.1}
+\]">\[
+\sum_{q\le Q}E_\theta(x,q)\ll_D Q\sqrt x\,L^3,
+\qquad
+\sum_{q\le Q}E_\pi(x,q)\ll_D Q\sqrt x\,L^2.
+\tag{4.1}
+\]</span>
+<p>Consequently the range in (3.3), with the same <span class="math" data-tex="\(B(A)=A+3\)">\(B(A)=A+3\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}E_\theta(x,q)\ll_A x(\log x)^{-A},
+\qquad
+\sum_{q\le Q}E_\pi(x,q)\ll_A x(\log x)^{-A-1}.
+\tag{4.2}
+\]">\[
+\sum_{q\le Q}E_\theta(x,q)\ll_A x(\log x)^{-A},
+\qquad
+\sum_{q\le Q}E_\pi(x,q)\ll_A x(\log x)^{-A-1}.
+\tag{4.2}
+\]</span>
+<p><strong>Proof.</strong> The total weight of proper prime powers is <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span>. Indeed, it is bounded by <span class="math" data-tex="\(\sum_{2\le k\le\log_2x}\theta(x^{1/k})\)">\(\sum_{2\le k\le\log_2x}\theta(x^{1/k})\)</span>. The <span class="math" data-tex="\(k=2\)">\(k=2\)</span> term is <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span> by Chebyshev, and the others are <span class="math" data-tex="\(O(x^{1/3}L)=O(\sqrt x)\)">\(O(x^{1/3}L)=O(\sqrt x)\)</span>, after treating a bounded initial interval. This uniform bound proves <span class="math" data-tex="\(E_\theta(x,q)\le E_\psi(x,q)+O(\sqrt x)\)">\(E_\theta(x,q)\le E_\psi(x,q)+O(\sqrt x)\)</span>, and hence the first assertion.</p>
+<p>For prime counts we prove the useful maximal estimate</p>
+<span class="math math-display" data-tex="\[
+E_\pi(x,q)\ll\frac{E_\theta(x,q)+\sqrt x}{L}.
+\tag{4.3}
+\]">\[
+E_\pi(x,q)\ll\frac{E_\theta(x,q)+\sqrt x}{L}.
+\tag{4.3}
+\]</span>
+<p>For <span class="math" data-tex="\(x\ge16\)">\(x\ge16\)</span>, put <span class="math" data-tex="\(z=\sqrt x\)">\(z=\sqrt x\)</span>. When <span class="math" data-tex="\(2\le y\le z\)">\(2\le y\le z\)</span>, Chebyshev's prime bound and <span class="math" data-tex="\(|\operatorname{li}(y)|\ll z/\log z\)">\(|\operatorname{li}(y)|\ll z/\log z\)</span> give <span class="math" data-tex="\(O(\sqrt x/L)\)">\(O(\sqrt x/L)\)</span> for the prime-count error, uniformly in <span class="math" data-tex="\(q,b\)">\(q,b\)</span>. For <span class="math" data-tex="\(z\le y\le x\)">\(z\le y\le x\)</span>, exact partial summation between <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pi(y;q,b)-\frac{\operatorname{li}(y)}{\varphi(q)}
+={}&amp;\pi(z;q,b)-\frac{\operatorname{li}(z)}{\varphi(q)}\\
+&amp;+\frac{E_\theta(y;q,b)}{\log y}
+-\frac{E_\theta(z;q,b)}{\log z}
++\int_z^y\frac{E_\theta(u;q,b)}{u\log^2u}\,du,
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+\pi(y;q,b)-\frac{\operatorname{li}(y)}{\varphi(q)}
+={}&amp;\pi(z;q,b)-\frac{\operatorname{li}(z)}{\varphi(q)}\\
+&amp;+\frac{E_\theta(y;q,b)}{\log y}
+-\frac{E_\theta(z;q,b)}{\log z}
++\int_z^y\frac{E_\theta(u;q,b)}{u\log^2u}\,du,
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>where <span class="math" data-tex="\(E_\theta(u;q,b)=\theta(u;q,b)-u/\varphi(q)\)">\(E_\theta(u;q,b)=\theta(u;q,b)-u/\varphi(q)\)</span>. The lower endpoint is <span class="math" data-tex="\(O(\sqrt x/L)\)">\(O(\sqrt x/L)\)</span>; the remaining terms are bounded by <span class="math" data-tex="\(O(E_\theta(x,q)/L)\)">\(O(E_\theta(x,q)/L)\)</span>, because <span class="math" data-tex="\(\log z\)">\(\log z\)</span> is comparable to <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(\int_z^xdu/(u\log^2u)\ll1/L\)">\(\int_z^xdu/(u\log^2u)\ll1/L\)</span>. This proves (4.3). The bounded range <span class="math" data-tex="\(2\le x&lt;16\)">\(2\le x&lt;16\)</span> is absorbed into an absolute constant. Summing (4.3) and the theta estimate proves (4.1); monotonicity gives (4.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lower-argument split is essential to the extra factor <span class="math" data-tex="\(1/\log x\)">\(1/\log x\)</span>. Applying partial summation from 2 and bounding every error by its maximum would only give a constant multiple of that maximum.</p>
+<p>There is also a useful consequence with squared maxima.</p>
+<p><strong>Corollary 4.2.</strong> Under the same hypotheses,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{q\le Q}qE_\psi(x,q)^2&amp;\ll_D x^{3/2}QL^4,\\
+\sum_{q\le Q}qE_\theta(x,q)^2&amp;\ll_D x^{3/2}QL^4,\\
+\sum_{q\le Q}qE_\pi(x,q)^2&amp;\ll_D x^{3/2}QL^2.
+\end{aligned}
+\tag{4.5}
+\]">\[
+\begin{aligned}
+\sum_{q\le Q}qE_\psi(x,q)^2&amp;\ll_D x^{3/2}QL^4,\\
+\sum_{q\le Q}qE_\theta(x,q)^2&amp;\ll_D x^{3/2}QL^4,\\
+\sum_{q\le Q}qE_\pi(x,q)^2&amp;\ll_D x^{3/2}QL^2.
+\end{aligned}
+\tag{4.5}
+\]</span>
+<p><strong>Proof.</strong> There are at most <span class="math" data-tex="\(x/q+1\)">\(x/q+1\)</span> integers in a residue class up to <span class="math" data-tex="\(x\)">\(x\)</span>. By Lemma 1.1, <span class="math" data-tex="\(q/\varphi(q)\ll L\)">\(q/\varphi(q)\ll L\)</span> for <span class="math" data-tex="\(q\le\sqrt x\)">\(q\le\sqrt x\)</span>. It follows that <span class="math" data-tex="\(qE_\psi(x,q)\ll xL\)">\(qE_\psi(x,q)\ll xL\)</span> and <span class="math" data-tex="\(qE_\theta(x,q)\ll xL\)">\(qE_\theta(x,q)\ll xL\)</span>, including small cutoffs <span class="math" data-tex="\(y&lt;q\)">\(y&lt;q\)</span>. For <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, the counting term contributes <span class="math" data-tex="\(O(x)\)">\(O(x)\)</span>, while <span class="math" data-tex="\(q|\operatorname{li}(y)|/\varphi(q)\ll x\)">\(q|\operatorname{li}(y)|/\varphi(q)\ll x\)</span>, so <span class="math" data-tex="\(qE_\pi(x,q)\ll x\)">\(qE_\pi(x,q)\ll x\)</span>. Multiply these bounds by the respective errors and sum using (3.1) or (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are squares of maxima, not the sharper mean over all residue classes in the Barban–Davenport–Halberstam theorem. That distinction is the subject of the next lesson.</p>
+<p>For a fixed <span class="math" data-tex="\(0&lt;\varepsilon&lt;1/2\)">\(0&lt;\varepsilon&lt;1/2\)</span>, set <span class="math" data-tex="\(X=x^{1/2-\varepsilon}\)">\(X=x^{1/2-\varepsilon}\)</span>. Applying (4.2) with <span class="math" data-tex="\(A=4\)">\(A=4\)</span> gives, for large <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\#\bigg\{q\le X:\ 
+&amp;\max_{(b,q)=1}\left|\pi(x;q,b)-\frac{\operatorname{li}(x)}{\varphi(q)}\right|\\
+&amp;&gt;\frac{\operatorname{li}(x)}{\varphi(q)\log x}
+\bigg\}\ll\frac X{(\log x)^3}=o(X).
+\end{aligned}
+\tag{4.6}
+\]">\[
+\begin{aligned}
+\#\bigg\{q\le X:\ 
+&amp;\max_{(b,q)=1}\left|\pi(x;q,b)-\frac{\operatorname{li}(x)}{\varphi(q)}\right|\\
+&amp;&gt;\frac{\operatorname{li}(x)}{\varphi(q)\log x}
+\bigg\}\ll\frac X{(\log x)^3}=o(X).
+\end{aligned}
+\tag{4.6}
+\]</span>
+<p>Every exceptional modulus contributes at least a constant times <span class="math" data-tex="\(x/[X(\log x)^2]\)">\(x/[X(\log x)^2]\)</span> to the error sum, since <span class="math" data-tex="\(\varphi(q)\le X\)">\(\varphi(q)\le X\)</span> and <span class="math" data-tex="\(\operatorname{li}(x)\sim x/\log x\)">\(\operatorname{li}(x)\sim x/\log x\)</span>. Outside this one exceptional set the relative asymptotic holds uniformly for every reduced class. The theorem does not assert that every modulus in the square-root range has a small error.</p>
+<h2 id="5-divisors-of-a-prime-minus-one">5. Divisors of a prime minus one</h2>
+<p>We will prove the Titchmarsh divisor asymptotic, in its usual unweighted normalization:</p>
+<span class="math math-display" data-tex="\[
+\boxed{\sum_{p\le x}d(p-1)=\mathcal Cx+
+O\left(\frac{x\log\log(3x)}{\log x}\right),\qquad
+\mathcal C=\frac{\zeta(2)\zeta(3)}{\zeta(6)}.}
+\tag{5.1}
+\]">\[
+\boxed{\sum_{p\le x}d(p-1)=\mathcal Cx+
+O\left(\frac{x\log\log(3x)}{\log x}\right),\qquad
+\mathcal C=\frac{\zeta(2)\zeta(3)}{\zeta(6)}.}
+\tag{5.1}
+\]</span>
+<p>Here <span class="math" data-tex="\(d(m)\)">\(d(m)\)</span> counts the positive divisors of <span class="math" data-tex="\(m\)">\(m\)</span>. The error constant is ineffective. This is an application that really needs moduli approaching the square-root range.</p>
+<p>First we prove the upper bound for progressions used to discard the middle divisors. No optimal constant is required.</p>
+<p><strong>Lemma 5.1.</strong> There is an effective absolute constant <span class="math" data-tex="\(K\)">\(K\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\pi(t;q,b)\le K\frac{t}{\varphi(q)\log(t/q)}
+\quad(t\ge3,\ 1\le q\le\sqrt t,\ (b,q)=1).
+\tag{5.2}
+\]">\[
+\pi(t;q,b)\le K\frac{t}{\varphi(q)\log(t/q)}
+\quad(t\ge3,\ 1\le q\le\sqrt t,\ (b,q)=1).
+\tag{5.2}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(R=\sqrt{t/q}\)">\(R=\sqrt{t/q}\)</span>. Represent the positive integers congruent to <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(qk+b\)">\(qk+b\)</span>, with <span class="math" data-tex="\(1\le b\le q\)">\(1\le b\le q\)</span>, and a block of at most <span class="math" data-tex="\(t/q+1\)">\(t/q+1\)</span> integer values of <span class="math" data-tex="\(k\)">\(k\)</span>. For each prime <span class="math" data-tex="\(\ell\nmid q\)">\(\ell\nmid q\)</span>, a prime <span class="math" data-tex="\(qk+b&gt;R\)">\(qk+b&gt;R\)</span> avoids the single class <span class="math" data-tex="\(k\equiv-bq^{-1}\pmod\ell\)">\(k\equiv-bq^{-1}\pmod\ell\)</span>. When <span class="math" data-tex="\(\ell\mid q\)">\(\ell\mid q\)</span>, no class is excluded, since <span class="math" data-tex="\((b,q)=1\)">\((b,q)=1\)</span>.</p>
+<p>The arithmetic large sieve, with these forbidden classes, bounds their number by</p>
+<span class="math math-display" data-tex="\[
+\frac{2t/q}{L_q(R)},\qquad
+L_q(R)=\sum_{\substack{d\le R\\(d,q)=1}}\frac{\mu^2(d)}{\varphi(d)}.
+\tag{5.3}
+\]">\[
+\frac{2t/q}{L_q(R)},\qquad
+L_q(R)=\sum_{\substack{d\le R\\(d,q)=1}}\frac{\mu^2(d)}{\varphi(d)}.
+\tag{5.3}
+\]</span>
+<p>Indeed its numerator is the block length minus 1 plus <span class="math" data-tex="\(R^2\)">\(R^2\)</span>, at most <span class="math" data-tex="\(t/q+R^2=2t/q\)">\(t/q+R^2=2t/q\)</span>. This is precisely the proved selector form of the arithmetic sieve inequality. Primes at most <span class="math" data-tex="\(R\)">\(R\)</span> add at most <span class="math" data-tex="\(R\)">\(R\)</span>.</p>
+<p>We need a lower bound for this denominator uniform in <span class="math" data-tex="\(q\)">\(q\)</span>. For squarefree <span class="math" data-tex="\(d\)">\(d\)</span>, the product of the geometric series at its primes gives</p>
+<span class="math math-display" data-tex="\[
+\frac1{\varphi(d)}=\sum_{\operatorname{rad}(m)=d}\frac1m.
+\]">\[
+\frac1{\varphi(d)}=\sum_{\operatorname{rad}(m)=d}\frac1m.
+\]</span>
+<p>All terms are nonnegative. Thus</p>
+<span class="math math-display" data-tex="\[
+L_q(R)\ge H_q(R):=
+\sum_{\substack{m\le R\\(m,q)=1}}\frac1m.
+\tag{5.4}
+\]">\[
+L_q(R)\ge H_q(R):=
+\sum_{\substack{m\le R\\(m,q)=1}}\frac1m.
+\tag{5.4}
+\]</span>
+<p>Möbius inclusion–exclusion gives</p>
+<span class="math math-display" data-tex="\[
+H_q(R)=\sum_{\substack{d\mid\operatorname{rad}(q)\\d\le R}}
+\frac{\mu(d)}d H_{\lfloor R/d\rfloor}.
+\]">\[
+H_q(R)=\sum_{\substack{d\mid\operatorname{rad}(q)\\d\le R}}
+\frac{\mu(d)}d H_{\lfloor R/d\rfloor}.
+\]</span>
+<p>Using <span class="math" data-tex="\(H_{\lfloor u\rfloor}=\log u+\gamma+O(1/u)\)">\(H_{\lfloor u\rfloor}=\log u+\gamma+O(1/u)\)</span> for <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span>, and inserting the omitted divisors <span class="math" data-tex="\(d&gt;R\)">\(d&gt;R\)</span>, yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_q(R)={}&amp;\frac{\varphi(q)}q
+\left(\log R+\gamma+
+\sum_{\ell\mid q}\frac{\log\ell}{\ell-1}\right)\\
+&amp;+O\left(\frac{2^{\omega(q)}\log(2q)}R\right).
+\end{aligned}
+\tag{5.5}
+\]">\[
+\begin{aligned}
+H_q(R)={}&amp;\frac{\varphi(q)}q
+\left(\log R+\gamma+
+\sum_{\ell\mid q}\frac{\log\ell}{\ell-1}\right)\\
+&amp;+O\left(\frac{2^{\omega(q)}\log(2q)}R\right).
+\end{aligned}
+\tag{5.5}
+\]</span>
+<p>The coefficient of <span class="math" data-tex="\(\log R+\gamma\)">\(\log R+\gamma\)</span> is <span class="math" data-tex="\(\sum_{d\mid\operatorname{rad}(q)}\mu(d)/d=\varphi(q)/q\)">\(\sum_{d\mid\operatorname{rad}(q)}\mu(d)/d=\varphi(q)/q\)</span>. Differentiating that finite product with respect to the exponents, or expanding one prime at a time, gives
+<span class="math" data-tex="\(-\sum_{d\mid\operatorname{rad}(q)}\mu(d)\log d/d=
+(\varphi(q)/q)\sum_{\ell\mid q}\log\ell/(\ell-1)\)">\(-\sum_{d\mid\operatorname{rad}(q)}\mu(d)\log d/d=
+(\varphi(q)/q)\sum_{\ell\mid q}\log\ell/(\ell-1)\)</span>.
+The harmonic-number errors sum to <span class="math" data-tex="\(O(2^{\omega(q)}/R)\)">\(O(2^{\omega(q)}/R)\)</span>; each inserted divisor is at most <span class="math" data-tex="\(q\)">\(q\)</span> and contributes at most <span class="math" data-tex="\(O(\log(2q)/R)\)">\(O(\log(2q)/R)\)</span>. This proves (5.5). The standard harmonic estimate follows directly by comparing <span class="math" data-tex="\(1/m\)">\(1/m\)</span> with <span class="math" data-tex="\(\int_m^{m+1}du/u\)">\(\int_m^{m+1}du/u\)</span>; the tail difference is <span class="math" data-tex="\(O(1/m)\)">\(O(1/m)\)</span>. The limit <span class="math" data-tex="\(\gamma=\lim(H_m-\log m)\)">\(\gamma=\lim(H_m-\log m)\)</span> lies in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<p>For any fixed <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, the elementary product estimates</p>
+<span class="math math-display" data-tex="\[
+2^{\omega(q)}\ll_\eta q^\eta,\qquad
+q/\varphi(q)\ll_\eta q^\eta
+\tag{5.6}
+\]">\[
+2^{\omega(q)}\ll_\eta q^\eta,\qquad
+q/\varphi(q)\ll_\eta q^\eta
+\tag{5.6}
+\]</span>
+<p>are effective. To prove them, choose a finite bound for the primes below which <span class="math" data-tex="\(2&gt;\ell^\eta\)">\(2&gt;\ell^\eta\)</span>, or <span class="math" data-tex="\(\ell/(\ell-1)&gt;\ell^\eta\)">\(\ell/(\ell-1)&gt;\ell^\eta\)</span>; multiply their finitely many exceptional factors into the constant. At all larger prime factors the desired local inequality holds, and <span class="math" data-tex="\(\operatorname{rad}(q)\le q\)">\(\operatorname{rad}(q)\le q\)</span>.</p>
+<p>Here <span class="math" data-tex="\(q\le\sqrt t\)">\(q\le\sqrt t\)</span>, <span class="math" data-tex="\(R\ge t^{1/4}\)">\(R\ge t^{1/4}\)</span>. With <span class="math" data-tex="\(\eta=1/16\)">\(\eta=1/16\)</span>, the error in (5.5), after division by <span class="math" data-tex="\(\varphi(q)/q\)">\(\varphi(q)/q\)</span>, is <span class="math" data-tex="\(O(t^{-3/16}\log(2t))\)">\(O(t^{-3/16}\log(2t))\)</span>. The nonnegative terms involving <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> and <span class="math" data-tex="\(\log\ell\)">\(\log\ell\)</span> may be discarded, while <span class="math" data-tex="\(\log R\ge(\log t)/4\)">\(\log R\ge(\log t)/4\)</span>. Therefore, beyond an effective absolute threshold,</p>
+<span class="math math-display" data-tex="\[
+H_q(R)\ge\frac{\varphi(q)}{2q}\log R.
+\tag{5.7}
+\]">\[
+H_q(R)\ge\frac{\varphi(q)}{2q}\log R.
+\tag{5.7}
+\]</span>
+<p>Equations (5.3)–(5.7) bound <span class="math" data-tex="\(\pi(t;q,b)\)">\(\pi(t;q,b)\)</span> by <span class="math" data-tex="\(R+O(t/[\varphi(q)\log(t/q)])\)">\(R+O(t/[\varphi(q)\log(t/q)])\)</span>. The first term is absorbed because <span class="math" data-tex="\(\log u\ll\sqrt u\)">\(\log u\ll\sqrt u\)</span> for <span class="math" data-tex="\(u=t/q\ge1\)">\(u=t/q\ge1\)</span>. Enlarge <span class="math" data-tex="\(K\)">\(K\)</span> for the bounded initial range, in which <span class="math" data-tex="\(\log(t/q)&gt;0\)">\(\log(t/q)&gt;0\)</span>. This proves the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proof of (5.1).</strong> Put <span class="math" data-tex="\(Y=\lfloor\sqrt{x-1}\rfloor\)">\(Y=\lfloor\sqrt{x-1}\rfloor\)</span>. Pairing divisors about <span class="math" data-tex="\(\sqrt m\)">\(\sqrt m\)</span> gives the exact hyperbola identity</p>
+<span class="math math-display" data-tex="\[
+\sum_{p\le x}d(p-1)=
+2\sum_{d\le Y}\bigl(\pi(x;d,1)-\pi(d^2;d,1)\bigr)
+-\#\{p\le x\mid p-1\text{ is a square}\}.
+\tag{5.8}
+\]">\[
+\sum_{p\le x}d(p-1)=
+2\sum_{d\le Y}\bigl(\pi(x;d,1)-\pi(d^2;d,1)\bigr)
+-\#\{p\le x\mid p-1\text{ is a square}\}.
+\tag{5.8}
+\]</span>
+<p>A divisor <span class="math" data-tex="\(d\)">\(d\)</span> enters the smaller half exactly when <span class="math" data-tex="\(p-1\ge d^2\)">\(p-1\ge d^2\)</span>, which is the condition <span class="math" data-tex="\(p&gt;d^2\)">\(p&gt;d^2\)</span>. The last term corrects the double count of the square root.</p>
+<p>For sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span>, choose <span class="math" data-tex="\(Q=\lfloor\sqrt x/(\log x)^4\rfloor\)">\(Q=\lfloor\sqrt x/(\log x)^4\rfloor\)</span>. This tends to infinity and is at most <span class="math" data-tex="\(Y\)">\(Y\)</span>. For the terms <span class="math" data-tex="\(d\le Q\)">\(d\le Q\)</span>, the trivial estimate <span class="math" data-tex="\(\pi(d^2;d,1)\le d+1\)">\(\pi(d^2;d,1)\le d+1\)</span> gives a total <span class="math" data-tex="\(O(Q^2)\)">\(O(Q^2)\)</span>. The square correction is <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span>. For the terms <span class="math" data-tex="\(Q&lt;d\le Y\)">\(Q&lt;d\le Y\)</span>, Lemma 5.1, applied at <span class="math" data-tex="\(t=x\)">\(t=x\)</span>, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{Q&lt;d\le Y}\pi(x;d,1)
+&amp;\ll\frac{x}{\log x}\sum_{Q&lt;d\le Y}\frac1{\varphi(d)}\\
+&amp;\ll\frac{x}{\log x}\bigl(\log(Y/Q)+1\bigr)
+\ll\frac{x\log\log(3x)}{\log x}.
+\end{aligned}
+\tag{5.9}
+\]">\[
+\begin{aligned}
+\sum_{Q&lt;d\le Y}\pi(x;d,1)
+&amp;\ll\frac{x}{\log x}\sum_{Q&lt;d\le Y}\frac1{\varphi(d)}\\
+&amp;\ll\frac{x}{\log x}\bigl(\log(Y/Q)+1\bigr)
+\ll\frac{x\log\log(3x)}{\log x}.
+\end{aligned}
+\tag{5.9}
+\]</span>
+<p>The second inequality is Lemma 1.1 applied at the two endpoints. Since all differences in (5.8) are nonnegative, these bounds show</p>
+<span class="math math-display" data-tex="\[
+\sum_{p\le x}d(p-1)=2\sum_{d\le Q}\pi(x;d,1)
++O\left(Q^2+\sqrt x+\frac{x\log\log(3x)}{\log x}\right).
+\tag{5.10}
+\]">\[
+\sum_{p\le x}d(p-1)=2\sum_{d\le Q}\pi(x;d,1)
++O\left(Q^2+\sqrt x+\frac{x\log\log(3x)}{\log x}\right).
+\tag{5.10}
+\]</span>
+<p>Corollary 4.1 with <span class="math" data-tex="\(A=1\)">\(A=1\)</span> is applicable at this <span class="math" data-tex="\(Q\)">\(Q\)</span>; its prime-count error is <span class="math" data-tex="\(O(x/(\log x)^2)\)">\(O(x/(\log x)^2)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\sum_{d\le Q}\pi(x;d,1)
+=\operatorname{li}(x)\sum_{d\le Q}\frac1{\varphi(d)}
++O\left(\frac{x}{(\log x)^2}\right).
+\tag{5.11}
+\]">\[
+\sum_{d\le Q}\pi(x;d,1)
+=\operatorname{li}(x)\sum_{d\le Q}\frac1{\varphi(d)}
++O\left(\frac{x}{(\log x)^2}\right).
+\tag{5.11}
+\]</span>
+<p>Use <span class="math" data-tex="\(\operatorname{li}(x)=x/\log x+O(x/(\log x)^2)\)">\(\operatorname{li}(x)=x/\log x+O(x/(\log x)^2)\)</span>, which follows by one integration by parts and a split at <span class="math" data-tex="\(\sqrt x\)">\(\sqrt x\)</span>, together with</p>
+<span class="math math-display" data-tex="\[
+\sum_{d\le Q}\frac1{\varphi(d)}=\mathcal C\log Q+O(1),
+\qquad
+\log Q=\tfrac12\log x-4\log\log x+o(1).
+\]">\[
+\sum_{d\le Q}\frac1{\varphi(d)}=\mathcal C\log Q+O(1),
+\qquad
+\log Q=\tfrac12\log x-4\log\log x+o(1).
+\]</span>
+<p>The factor 2 in (5.10) cancels the factor <span class="math" data-tex="\(1/2\)">\(1/2\)</span> in <span class="math" data-tex="\(\log Q\)">\(\log Q\)</span>. All other terms have the size allowed in (5.1), proving the asserted normalization and error. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For comparison with the asymptotic, exact divisor enumeration gives:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(x\)">\(x\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(\sum_{p\le x}d(p-1)\)">\(\sum_{p\le x}d(p-1)\)</span></th>
+<th style="text-align:right">Sum divided by <span class="math" data-tex="\(x\)">\(x\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">100</td>
+<td style="text-align:right">160</td>
+<td style="text-align:right">1.60000</td>
+</tr>
+<tr>
+<td style="text-align:right">1,000</td>
+<td style="text-align:right">1,804</td>
+<td style="text-align:right">1.80400</td>
+</tr>
+<tr>
+<td style="text-align:right">10,000</td>
+<td style="text-align:right">19,069</td>
+<td style="text-align:right">1.90690</td>
+</tr>
+<tr>
+<td style="text-align:right">100,000</td>
+<td style="text-align:right">191,593</td>
+<td style="text-align:right">1.91593</td>
+</tr>
+</tbody>
+</table>
+<p>The limiting constant is <span class="math" data-tex="\(\mathcal C=1.943596436820759\ldots\)">\(\mathcal C=1.943596436820759\ldots\)</span>. These finite values illustrate the normalization; the proof of the limit is (5.8)–(5.11), not the numerical trend.</p>
+<h2 id="6-the-square-root-barrier-and-elliott-halberstam">6. The square-root barrier and Elliott–Halberstam</h2>
+<p>On GRH, the explicit-formula estimate from <em>Counting zeros and the explicit formula for character sums over prime powers</em> gives</p>
+<span class="math math-display" data-tex="\[
+E_\psi(x,q)\ll\sqrt x\,\log^2(2qx).
+\tag{6.1}
+\]">\[
+E_\psi(x,q)\ll\sqrt x\,\log^2(2qx).
+\tag{6.1}
+\]</span>
+<p>For <span class="math" data-tex="\(Q\le\sqrt x\)">\(Q\le\sqrt x\)</span>, summing this yields <span class="math" data-tex="\(O(Q\sqrt x\,L^2)\)">\(O(Q\sqrt x\,L^2)\)</span>. At <span class="math" data-tex="\(Q=\sqrt x\)">\(Q=\sqrt x\)</span>, the bound is <span class="math" data-tex="\(O(xL^2)\)">\(O(xL^2)\)</span>, so it provides no negative power of the logarithm. For <span class="math" data-tex="\(Q=\sqrt x(\log x)^{-A-2}\)">\(Q=\sqrt x(\log x)^{-A-2}\)</span>, it does give <span class="math" data-tex="\(O_A(x(\log x)^{-A})\)">\(O_A(x(\log x)^{-A})\)</span>. The unconditional proof loses only one additional logarithm in this comparison, using <span class="math" data-tex="\(B=A+3\)">\(B=A+3\)</span>.</p>
+<p>The comparison concerns error estimates, not a deduction of GRH from an average theorem. Exceptional individual moduli may remain in that average.</p>
+<p><strong>Elliott–Halberstam conjecture.</strong> For every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and every fixed <span class="math" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le x^{1-\varepsilon}}E_\psi(x,q)
+\ll_{A,\varepsilon}x(\log x)^{-A}.
+\tag{6.2}
+\]">\[
+\sum_{q\le x^{1-\varepsilon}}E_\psi(x,q)
+\ll_{A,\varepsilon}x(\log x)^{-A}.
+\tag{6.2}
+\]</span>
+<p>This remains a conjecture. It asks for distribution up to every exponent below 1, whereas Bombieri–Vinogradov supplies every exponent below <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. The individual GRH bound (6.1) alone does not imply (6.2).</p>
+<p>To see why the modulus range matters for prime gaps, fix distinct shifts <span class="math" data-tex="\(h_1,\ldots,h_k\)">\(h_1,\ldots,h_k\)</span> and nonnegative weights <span class="math" data-tex="\(w_n\)">\(w_n\)</span>, supported on a finite interval. If</p>
+<span class="math math-display" data-tex="\[
+\sum_n w_n\sum_{j=1}^k\mathbf1_{\mathbb P}(n+h_j)
+&gt;(m-1)\sum_n w_n,
+\tag{6.3}
+\]">\[
+\sum_n w_n\sum_{j=1}^k\mathbf1_{\mathbb P}(n+h_j)
+&gt;(m-1)\sum_n w_n,
+\tag{6.3}
+\]</span>
+<p>then some <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(w_n&gt;0\)">\(w_n&gt;0\)</span> has at least <span class="math" data-tex="\(m\)">\(m\)</span> prime values among its shifts. Otherwise every inner sum is at most <span class="math" data-tex="\(m-1\)">\(m-1\)</span>, contradicting (6.3). Thus a suitably evaluated weighted prime sum can produce clusters of primes.</p>
+<p>For example, expanding weights of the form</p>
+<span class="math math-display" data-tex="\[
+w_n=\left(\sum_{\substack{d\mid\prod_j(n+h_j)\\d\le R}}\lambda_d\right)^2
+\]">\[
+w_n=\left(\sum_{\substack{d\mid\prod_j(n+h_j)\\d\le R}}\lambda_d\right)^2
+\]</span>
+<p>creates simultaneous divisibility conditions with moduli <span class="math" data-tex="\([d,e]\le R^2\)">\([d,e]\le R^2\)</span>. Counting prime values among these conditions leads to primes in progressions. A larger range of distribution permits longer divisor sums in such weights. The full argument also needs estimates for their coefficients and an optimization that makes (6.3) positive; the range of distribution by itself is not a prime-gap theorem.</p>
+<p>For historical context, Zhang proved in 2013 that bounded gaps between primes recur infinitely often, by obtaining a stronger distribution estimate for restricted moduli; the Polymath project's <em>New equidistribution estimates of Zhang type</em> describes his argument in its introduction and proves a strengthened form of the estimate as its Theorem 1.1. Maynard's <em>Small gaps between primes</em>, Theorems 1.1 and 1.3, establishes bounded clusters of any fixed number of primes using a different sieve argument with Bombieri–Vinogradov; its Theorem 1.4 explains the further improvement under Elliott–Halberstam. These prime-gap results are mentioned here as applications beyond this lesson, and are not inputs to any proof above. <a href="https://arxiv.org/pdf/1402.0811v3">The Polymath paper</a>, <a href="https://arxiv.org/pdf/1311.4600v3">Maynard's paper</a>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<ol>
+<li><strong>Easy.</strong> Fix <span class="math" data-tex="\(0&lt;\varepsilon&lt;1/2\)">\(0&lt;\varepsilon&lt;1/2\)</span>. Show that, outside <span class="math" data-tex="\(o(x^{1/2-\varepsilon})\)">\(o(x^{1/2-\varepsilon})\)</span> moduli <span class="math" data-tex="\(q\le x^{1/2-\varepsilon}\)">\(q\le x^{1/2-\varepsilon}\)</span>, the asymptotic
+<span class="math" data-tex="\(\pi(x;q,b)\sim\operatorname{li}(x)/\varphi(q)\)">\(\pi(x;q,b)\sim\operatorname{li}(x)/\varphi(q)\)</span> holds uniformly for all reduced classes <span class="math" data-tex="\(b\)">\(b\)</span>.</li>
+<li><strong>Medium.</strong> Deduce the theta and prime-count versions from the theorem for <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Retain the maximum over the cutoff, and obtain the additional factor <span class="math" data-tex="\(1/\log x\)">\(1/\log x\)</span> for prime counts.</li>
+<li><strong>Medium.</strong> Assuming GRH, prove the <span class="math" data-tex="\(\psi\)">\(\psi\)</span> theorem with <span class="math" data-tex="\(Q=\sqrt x(\log x)^{-A-2}\)">\(Q=\sqrt x(\log x)^{-A-2}\)</span>. Give the corresponding prime-count saving.</li>
+<li><strong>Hard.</strong> Prove the Titchmarsh divisor asymptotic, including its constant. Explain why a modulus cutoff consisting only of a fixed power of <span class="math" data-tex="\(\log x\)">\(\log x\)</span> would not suffice for the main term.</li>
+</ol>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>Solution 1.</strong> Put <span class="math" data-tex="\(X=x^{1/2-\varepsilon}\)">\(X=x^{1/2-\varepsilon}\)</span>, and declare a modulus exceptional when the maximum relative error at <span class="math" data-tex="\(x\)">\(x\)</span> exceeds <span class="math" data-tex="\(1/\log x\)">\(1/\log x\)</span>. With <span class="math" data-tex="\(A=4\)">\(A=4\)</span>, Corollary 4.1 bounds the sum of the absolute prime-count errors by <span class="math" data-tex="\(O(x/(\log x)^5)\)">\(O(x/(\log x)^5)\)</span>; its allowable cutoff is <span class="math" data-tex="\(\sqrt x/(\log x)^7\)">\(\sqrt x/(\log x)^7\)</span>, which exceeds <span class="math" data-tex="\(X\)">\(X\)</span> for sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span>. Since <span class="math" data-tex="\(\varphi(q)\le X\)">\(\varphi(q)\le X\)</span> and <span class="math" data-tex="\(\operatorname{li}(x)\ge c x/\log x\)">\(\operatorname{li}(x)\ge c x/\log x\)</span> eventually, every exceptional modulus contributes at least <span class="math" data-tex="\(c x/[X(\log x)^2]\)">\(c x/[X(\log x)^2]\)</span>. Hence there are <span class="math" data-tex="\(O(X/(\log x)^3)=o(X)\)">\(O(X/(\log x)^3)=o(X)\)</span> of them. For all other moduli the relative error is at most <span class="math" data-tex="\(1/\log x\)">\(1/\log x\)</span>, simultaneously for every reduced class. This proves the required uniform asymptotic. If <span class="math" data-tex="\(\varepsilon\ge1/2\)">\(\varepsilon\ge1/2\)</span>, the modulus range is bounded or empty and the fixed-modulus prime theorem gives the corresponding assertion.</p>
+<p><strong>Solution 2.</strong> The exact difference <span class="math" data-tex="\(\psi(y;q,b)-\theta(y;q,b)\)">\(\psi(y;q,b)-\theta(y;q,b)\)</span> consists of proper prime powers in that class. Its weight is at most the global <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span> proved in Corollary 4.1, independently of <span class="math" data-tex="\(y\)">\(y\)</span>. Thus the sum of maximal theta errors differs by at most <span class="math" data-tex="\(O(Q\sqrt x)\)">\(O(Q\sqrt x)\)</span>, which is absorbed by the asserted bound.</p>
+<p>For prime counts set <span class="math" data-tex="\(z=\sqrt x\)">\(z=\sqrt x\)</span>. Below <span class="math" data-tex="\(z\)">\(z\)</span>, global Chebyshev bounds give an error <span class="math" data-tex="\(O(\sqrt x/\log x)\)">\(O(\sqrt x/\log x)\)</span>. Above <span class="math" data-tex="\(z\)">\(z\)</span>, apply the exact formula (4.4), and use <span class="math" data-tex="\(E_\theta(x,q)\)">\(E_\theta(x,q)\)</span> as the common majorant for all its upper-interval errors. The denominators and the integral each supply a factor <span class="math" data-tex="\(O(1/\log x)\)">\(O(1/\log x)\)</span>. This proves (4.3) with the maximum still inside the modulus sum. It follows that</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}E_\pi(x,q)
+\ll\frac1{\log x}\left(\sum_{q\le Q}E_\theta(x,q)+Q\sqrt x\right).
+\]">\[
+\sum_{q\le Q}E_\pi(x,q)
+\ll\frac1{\log x}\left(\sum_{q\le Q}E_\theta(x,q)+Q\sqrt x\right).
+\]</span>
+<p>At the cutoff <span class="math" data-tex="\(Q=\sqrt x(\log x)^{-A-3}\)">\(Q=\sqrt x(\log x)^{-A-3}\)</span>, the right side is <span class="math" data-tex="\(O_A(x(\log x)^{-A-1})\)">\(O_A(x(\log x)^{-A-1})\)</span>. Monotonicity gives the same result at every smaller cutoff. A bounded initial range of <span class="math" data-tex="\(x\)">\(x\)</span> changes only the constant.</p>
+<p><strong>Solution 3.</strong> The GRH character estimate, including the subtracted principal main term, is
+<span class="math" data-tex="\(|\psi&#x27;(y,\chi)|\ll\sqrt y\,\log^2(2qy)\)">\(|\psi&#x27;(y,\chi)|\ll\sqrt y\,\log^2(2qy)\)</span> for <span class="math" data-tex="\(y\ge2\)">\(y\ge2\)</span>. Average it in (1.6). Division by <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span> cancels the number of characters, so for <span class="math" data-tex="\(q\le\sqrt x\)">\(q\le\sqrt x\)</span> the maximal progression error is <span class="math" data-tex="\(O(\sqrt x\,L^2)\)">\(O(\sqrt x\,L^2)\)</span>. Cutoffs below 2 contribute at most an absolute constant. Therefore</p>
+<span class="math math-display" data-tex="\[
+\sum_{q\le Q}E_\psi(x,q)\ll Q\sqrt x\,L^2
+\ll_A x(\log x)^{-A}
+\]">\[
+\sum_{q\le Q}E_\psi(x,q)\ll Q\sqrt x\,L^2
+\ll_A x(\log x)^{-A}
+\]</span>
+<p>at <span class="math" data-tex="\(Q=\sqrt x(\log x)^{-A-2}\)">\(Q=\sqrt x(\log x)^{-A-2}\)</span>. The prime-power argument gives the same theta bound. Then (4.3) gives <span class="math" data-tex="\(E_\pi(x,q)\ll\sqrt x\,L\)">\(E_\pi(x,q)\ll\sqrt x\,L\)</span> and, at the same cutoff, a total <span class="math" data-tex="\(O_A(x(\log x)^{-A-1})\)">\(O_A(x(\log x)^{-A-1})\)</span>. This uses the individual GRH estimate; it does not prove a larger power range.</p>
+<p><strong>Solution 4.</strong> The divisor pairing gives (5.8) exactly. Choose <span class="math" data-tex="\(Q=\lfloor\sqrt x/(\log x)^4\rfloor\)">\(Q=\lfloor\sqrt x/(\log x)^4\rfloor\)</span>. The lower-end subtraction for <span class="math" data-tex="\(d\le Q\)">\(d\le Q\)</span> is <span class="math" data-tex="\(O(Q^2)\)">\(O(Q^2)\)</span>, and the square correction is <span class="math" data-tex="\(O(\sqrt x)\)">\(O(\sqrt x)\)</span>. For <span class="math" data-tex="\(Q&lt;d\le\sqrt{x-1}\)">\(Q&lt;d\le\sqrt{x-1}\)</span>, Lemma 5.1 and Lemma 1.1 give a total <span class="math" data-tex="\(O(x\log\log(3x)/\log x)\)">\(O(x\log\log(3x)/\log x)\)</span>, because <span class="math" data-tex="\(\log(\sqrt x/Q)=O(\log\log x)\)">\(\log(\sqrt x/Q)=O(\log\log x)\)</span>. Bombieri–Vinogradov then evaluates the small-divisor term as <span class="math" data-tex="\(2\operatorname{li}(x)(\mathcal C\log Q+O(1))+O(x/(\log x)^2)\)">\(2\operatorname{li}(x)(\mathcal C\log Q+O(1))+O(x/(\log x)^2)\)</span>. Using <span class="math" data-tex="\(\log Q=\frac12\log x-4\log\log x+o(1)\)">\(\log Q=\frac12\log x-4\log\log x+o(1)\)</span> and <span class="math" data-tex="\(\operatorname{li}(x)=x/\log x+O(x/(\log x)^2)\)">\(\operatorname{li}(x)=x/\log x+O(x/(\log x)^2)\)</span> gives (5.1).</p>
+<p>For the constant, the exact identity (1.4) makes <span class="math" data-tex="\(\mathcal C=\sum_d\mu^2(d)/(d\varphi(d))\)">\(\mathcal C=\sum_d\mu^2(d)/(d\varphi(d))\)</span>, and its absolutely convergent Euler product is (1.1). Thus there is no extra factor 2 in the final answer. If instead <span class="math" data-tex="\(Q=(\log x)^C\)">\(Q=(\log x)^C\)</span>, then the evaluated small-divisor contribution would be only <span class="math" data-tex="\(O(x\log\log x/\log x)=o(x)\)">\(O(x\log\log x/\log x)=o(x)\)</span>; the remaining divisor range would contain the main term. Siegel–Walfisz alone therefore cannot close this argument.</p>
+<h2 id="9-proof-scope-and-references">9. Proof scope and references</h2>
+<p>The maximal primitive-character first moment, both complementary Type I/II estimates, the conductor reduction including its principal term, Bombieri–Vinogradov with <span class="math" data-tex="\(B(A)=A+3\)">\(B(A)=A+3\)</span>, both prime versions, the three squared-maximum corollaries, the exceptional-set assertion and the Titchmarsh divisor asymptotic are proved here. The inputs from preceding lessons are their proved character identities, primitive Pólya–Vinogradov estimate, multiplicative maximal bilinear inequality, Siegel–Walfisz estimates for both <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> and <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, Chebyshev bounds, Mertens estimate and arithmetic sieve inequality.</p>
+<p>The Elliott–Halberstam conjecture is unproved. The bounded-gap results mentioned for context in Section 6, Zhang's theorem and Maynard's Theorems 1.1, 1.3 and 1.4, are not proved here. Neither replaces a proof step in this lesson.</p>
+<ul>
+<li>D. Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, AMS, 2019, author's preliminary version, Chapter 26, Lemma 26.1, Theorems 26.2, 26.4 and 26.6, and Corollary 26.7: the direct progression organization and its complementary small-conductor estimate.</li>
+<li>D. H. J. Polymath, <a href="https://arxiv.org/pdf/1402.0811v3"><em>New equidistribution estimates of Zhang type</em></a>, arXiv:1402.0811v3, 2014, introduction and Theorem 1.1: Zhang's bounded-gap theorem and a strengthened form of his restricted-modulus distribution estimate.</li>
+<li>J. Maynard, <a href="https://arxiv.org/pdf/1311.4600v3"><em>Small gaps between primes</em></a>, arXiv:1311.4600v3; Annals of Mathematics 181 (2015), 383–413, introduction and Theorems 1.1, 1.3 and 1.4: the prime-cluster context and the role of Elliott–Halberstam.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-14.html">← Vaughan&#x27;s identity and sums over primes</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-16.html">Mean square distribution: the Barban–Davenport–Halberstam theorem →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-15.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

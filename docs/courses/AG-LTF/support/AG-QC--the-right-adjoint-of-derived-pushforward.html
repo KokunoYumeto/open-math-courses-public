@@ -1,0 +1,306 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The right adjoint of derived pushforward</title><link rel="stylesheet" href="../runtime/site.css"><script>window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:true,macros:{Eta:"\\mathrm{H}"}},options:{ignoreHtmlClass:"no-math",processHtmlClass:"math"}};</script><script defer src="../runtime/mathjax/tex-chtml-full.js"></script></head><body class="no-math"><main><nav><a href="../index.html">ℓ-adic cohomology and trace formulas</a></nav><article class="lesson"><h1 id="the-right-adjoint-of-derived-pushforward">The right adjoint of derived pushforward</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), in Codex, at Ultra effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra effort. Public domain (CC0).</em></p>
+<p>The trace in Serre duality sends top cohomology of a canonical sheaf to the ground field. Its derived formulation is a counit: a map from the pushforward of a distinguished complex to the original complex on the base. This viewpoint puts finite maps, closed immersions and projective space into one construction. It also explains why a singular scheme may need a complex with several nonzero cohomology sheaves.</p>
+<p>We use cohomological grading: <span class="math" data-tex="\(H^i(C[r])=H^{i+r}(C)\)">\(H^i(C[r])=H^{i+r}(C)\)</span>. Write <span class="math" data-tex="\(D_{\mathrm{QCoh}}(X)\)">\(D_{\mathrm{QCoh}}(X)\)</span> for the full subcategory of <span class="math" data-tex="\(D(\mathcal O_X)\)">\(D(\mathcal O_X)\)</span> whose cohomology sheaves are quasi-coherent. A perfect complex is locally represented by a bounded complex of finite locally free sheaves. All schemes in Sections 1–2 are quasi-compact and quasi-separated. No separation assumption is silently added to that convention.</p>
+<p>The bounded-below injective machinery is taught in <em>Sheaves of modules and their derived categories</em>, Theorems 5.4 and 6.1 and Corollary 5.5. For the unbounded operations we use the exact open foundations identified in Section 8. Our two preceding lessons supply the complete classical projective duality proofs.</p>
+<h2 id="1-representing-maps-out-of-pushforward">1. Representing maps out of pushforward</h2>
+<p>For a morphism <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span>, its derived pushforward has a right adjoint
+<span class="math math-display" data-tex="\[
+a_f:D_{\mathrm{QCoh}}(Y)\longrightarrow D_{\mathrm{QCoh}}(X),
+\qquad
+\operatorname{Hom}_X(L,a_fK)
+ \simeq\operatorname{Hom}_Y(Rf_*L,K).
+\tag{1}
+\]">\[
+a_f:D_{\mathrm{QCoh}}(Y)\longrightarrow D_{\mathrm{QCoh}}(X),
+\qquad
+\operatorname{Hom}_X(L,a_fK)
+ \simeq\operatorname{Hom}_Y(Rf_*L,K).
+\tag{1}
+\]</span>
+The bijection is natural in both variables. Existence in this exact generality has an open proof in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/duality.html#duality-lemma-twisted-inverse-image">Stacks, Tag 0A9E</a>. Here is how its inputs fit together. The category <span class="math" data-tex="\(D_{\mathrm{QCoh}}(X)\)">\(D_{\mathrm{QCoh}}(X)\)</span> has a perfect compact generator, and <span class="math" data-tex="\(Rf_*\)">\(Rf_*\)</span> preserves direct sums. For fixed <span class="math" data-tex="\(K\)">\(K\)</span>, the right side of (1), viewed as a functor of <span class="math" data-tex="\(L\)">\(L\)</span>, is cohomological and changes direct sums into products. Brown representability produces its representing object. Yoneda then produces the functor on maps. The exact compact-generation and representability proofs are linked in Section 8; the existence assertion is not an unsupported convention.</p>
+<p>The <strong>trace</strong> is the counit
+<span class="math math-display" data-tex="\[
+\operatorname{Tr}_f(K):Rf_*a_fK\longrightarrow K,
+\tag{2}
+\]">\[
+\operatorname{Tr}_f(K):Rf_*a_fK\longrightarrow K,
+\tag{2}
+\]</span>
+corresponding to the identity of <span class="math" data-tex="\(a_fK\)">\(a_fK\)</span>. Thus the transpose of <span class="math" data-tex="\(u:L\to a_fK\)">\(u:L\to a_fK\)</span> is precisely <span class="math" data-tex="\(\operatorname{Tr}_f(K)\circ Rf_*u\)">\(\operatorname{Tr}_f(K)\circ Rf_*u\)</span>. This definition specifies the normalization of every computation below.</p>
+<p><strong>Proposition 1.1.</strong> The functor <span class="math" data-tex="\(a_f\)">\(a_f\)</span> is exact, commutes with shifts, and sends bounded-below objects to bounded-below objects. For composable morphisms <span class="math" data-tex="\(X\xrightarrow fY\xrightarrow gZ\)">\(X\xrightarrow fY\xrightarrow gZ\)</span>, there is a canonical isomorphism
+<span class="math math-display" data-tex="\[
+a_{gf}\simeq a_fa_g.
+\tag{3}
+\]">\[
+a_{gf}\simeq a_fa_g.
+\tag{3}
+\]</span>
+Under it, the composite trace is <span class="math" data-tex="\(\operatorname{Tr}_g\circ Rg_*\operatorname{Tr}_f\)">\(\operatorname{Tr}_g\circ Rg_*\operatorname{Tr}_f\)</span>.</p>
+<p><strong>Proof.</strong> Shifting both sides of (1) gives the shift isomorphism. Right adjoints of exact triangulated functors are exact: given a triangle on the target, transpose its first two maps, complete to a triangle, and test the third map by the adjunction and the long exact Hom sequences. The five lemma gives the required isomorphism with the third adjoint object. This is the usual derived adjunction construction, with its compatible shift maps.</p>
+<p>Choose <span class="math" data-tex="\(d\geq0\)">\(d\geq0\)</span> such that <span class="math" data-tex="\(Rf_*D^{\leq b}_{\mathrm{QCoh}}(X)\subset D^{\leq b+d}_{\mathrm{QCoh}}(Y)\)">\(Rf_*D^{\leq b}_{\mathrm{QCoh}}(X)\subset D^{\leq b+d}_{\mathrm{QCoh}}(Y)\)</span> for every <span class="math" data-tex="\(b\)">\(b\)</span>. The existence of such a uniform bound, including for unbounded complexes, is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-quasi-coherence-direct-image">Stacks, Tag 08D5</a>; it follows by finite affine covers and truncation from quasi-coherent cohomological dimension. If <span class="math" data-tex="\(K\in D^{\geq c}(Y)\)">\(K\in D^{\geq c}(Y)\)</span>, set <span class="math" data-tex="\(T=\tau_{\leq c-d-1}a_fK\)">\(T=\tau_{\leq c-d-1}a_fK\)</span>. Then <span class="math" data-tex="\(Rf_*T\in D^{\leq c-1}(Y)\)">\(Rf_*T\in D^{\leq c-1}(Y)\)</span>, so
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_X(T,a_fK)=\operatorname{Hom}_Y(Rf_*T,K)=0.
+\]">\[
+\operatorname{Hom}_X(T,a_fK)=\operatorname{Hom}_Y(Rf_*T,K)=0.
+\]</span>
+In particular the truncation map <span class="math" data-tex="\(T\to a_fK\)">\(T\to a_fK\)</span> is zero. On every cohomology sheaf in degrees at most <span class="math" data-tex="\(c-d-1\)">\(c-d-1\)</span> that map is the identity identification, so those sheaves vanish. Hence <span class="math" data-tex="\(a_fK\in D^{\geq c-d}(X)\)">\(a_fK\in D^{\geq c-d}(X)\)</span>.</p>
+<p>Finally, transpose twice:
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_X(L,a_fa_gK)
+ \simeq\operatorname{Hom}_Y(Rf_*L,a_gK)
+ \simeq\operatorname{Hom}_Z(Rg_*Rf_*L,K).
+\]">\[
+\operatorname{Hom}_X(L,a_fa_gK)
+ \simeq\operatorname{Hom}_Y(Rf_*L,a_gK)
+ \simeq\operatorname{Hom}_Z(Rg_*Rf_*L,K).
+\]</span>
+Using the canonical composition of derived pushforwards, Yoneda proves (3). The displayed rule for transposes proves the trace formula. Repeating the argument three times shows associativity: both comparison maps induce the same bijection on every Hom set. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bound need not be zero. For projective <span class="math" data-tex="\(n\)">\(n\)</span>-space, the adjoint of the field occurs in degree <span class="math" data-tex="\(-n\)">\(-n\)</span>, as Section 4 will show.</p>
+<p>There are now three different operations to keep track of. Pullback is the left adjoint of pushforward; it transports sections and tensors them with the structure sheaf upstairs. The functor <span class="math" data-tex="\(a_f\)">\(a_f\)</span> is its right adjoint and represents maps from a pushforward into a prescribed target. The compactification construction <span class="math" data-tex="\(f^!\)">\(f^!\)</span>, introduced later, uses the right adjoint of a proper map followed by restriction. Finite maps make the second operation concrete as coinduction; open immersions will show why the second and third operations require separate names.</p>
+<h2 id="2-what-sheafified-duality-says">2. What sheafified duality says</h2>
+<p>Distinguish internal <span class="math" data-tex="\(R\mathcal H om_X\)">\(R\mathcal H om_X\)</span>, which is a complex of sheaves, from global <span class="math" data-tex="\(R\operatorname{Hom}_X\)">\(R\operatorname{Hom}_X\)</span>. Evaluation and the counit give a canonical morphism
+<span class="math math-display" data-tex="\[
+Rf_*R\mathcal H om_X(L,a_fK)
+ \longrightarrow R\mathcal H om_Y(Rf_*L,K).
+\tag{4}
+\]">\[
+Rf_*R\mathcal H om_X(L,a_fK)
+ \longrightarrow R\mathcal H om_Y(Rf_*L,K).
+\tag{4}
+\]</span>
+One construction first maps into <span class="math" data-tex="\(R\mathcal H om_Y(Rf_*L,Rf_*a_fK)\)">\(R\mathcal H om_Y(Rf_*L,Rf_*a_fK)\)</span>, using evaluation and the projection-formula comparison, and then applies (2). Internal Hom of arbitrary unbounded quasi-coherent complexes need not have quasi-coherent cohomology. This prevents us from treating (4) as an isomorphism merely by applying (1).</p>
+<p>Let <span class="math" data-tex="\(DQ_Y:D(\mathcal O_Y)\to D_{\mathrm{QCoh}}(Y)\)">\(DQ_Y:D(\mathcal O_Y)\to D_{\mathrm{QCoh}}(Y)\)</span> be the right adjoint of the inclusion. Its exact open construction is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-better-coherator">Stacks, Tag 0CR0</a>.</p>
+<p><strong>Proposition 2.1.</strong> Applying <span class="math" data-tex="\(DQ_Y\)">\(DQ_Y\)</span> to (4) gives an isomorphism. Taking global sections of (4) gives
+<span class="math math-display" data-tex="\[
+R\operatorname{Hom}_X(L,a_fK)
+ \simeq R\operatorname{Hom}_Y(Rf_*L,K).
+\tag{5}
+\]">\[
+R\operatorname{Hom}_X(L,a_fK)
+ \simeq R\operatorname{Hom}_Y(Rf_*L,K).
+\tag{5}
+\]</span></p>
+<p><strong>Proof.</strong> Test (4) against <span class="math" data-tex="\(M\in D_{\mathrm{QCoh}}(Y)\)">\(M\in D_{\mathrm{QCoh}}(Y)\)</span>. The tensor–Hom and pullback–pushforward adjunctions identify its source Hom group with
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_X(Lf^*M\otimes^{\mathbf L}L,a_fK)
+ \simeq
+\operatorname{Hom}_Y(Rf_*(Lf^*M\otimes^{\mathbf L}L),K).
+\]">\[
+\operatorname{Hom}_X(Lf^*M\otimes^{\mathbf L}L,a_fK)
+ \simeq
+\operatorname{Hom}_Y(Rf_*(Lf^*M\otimes^{\mathbf L}L),K).
+\]</span>
+The unbounded quasi-coherent projection formula identifies the last group with
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_Y(M\otimes^{\mathbf L}Rf_*L,K)
+ \simeq
+\operatorname{Hom}_Y(M,R\mathcal H om_Y(Rf_*L,K)).
+\]">\[
+\operatorname{Hom}_Y(M\otimes^{\mathbf L}Rf_*L,K)
+ \simeq
+\operatorname{Hom}_Y(M,R\mathcal H om_Y(Rf_*L,K)).
+\]</span>
+The projection formula holds for every qcqs morphism and both indicated quasi-coherent complexes, without a perfectness condition on <span class="math" data-tex="\(M\)">\(M\)</span>; its open proof is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-cohomology-base-change">Stacks, Tag 08EU</a>. The identifications just made are induced by evaluation and the counit, hence by (4). The defining adjunction of <span class="math" data-tex="\(DQ_Y\)">\(DQ_Y\)</span> and Yoneda prove the first assertion. Testing with <span class="math" data-tex="\(M=\mathcal O_Y[-r]\)">\(M=\mathcal O_Y[-r]\)</span> proves that (4) induces an isomorphism on every global hypercohomology group. This gives (5), since global derived Hom is the derived global sections of internal Hom. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>There is a second, distinct locality issue. If <span class="math" data-tex="\(V\subset Y\)">\(V\subset Y\)</span> is quasi-compact open, <span class="math" data-tex="\(U=f^{-1}(V)\)">\(U=f^{-1}(V)\)</span>, and <span class="math" data-tex="\(f_V:U\to V\)">\(f_V:U\to V\)</span>, there is a canonical comparison
+<span class="math math-display" data-tex="\[
+(a_fK)|_U\longrightarrow a_{f_V}(K|_V).
+\tag{6}
+\]">\[
+(a_fK)|_U\longrightarrow a_{f_V}(K|_V).
+\tag{6}
+\]</span>
+It comes from <span class="math" data-tex="\(K\to Rj_*(K|_V)\)">\(K\to Rj_*(K|_V)\)</span> and the two adjunctions for the open inclusions. For <span class="math" data-tex="\(K\in D^+_{\mathrm{QCoh}}(Y)\)">\(K\in D^+_{\mathrm{QCoh}}(Y)\)</span>, (6) is an isomorphism if <strong><span class="math" data-tex="\(f\)">\(f\)</span> is proper</strong> and either <span class="math" data-tex="\(Y\)">\(Y\)</span> is Noetherian or <span class="math" data-tex="\(f\)">\(f\)</span> is flat of finite presentation. These precise cases have an open proof in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/duality.html#duality-lemma-proper-noetherian">Stacks, Tags 0A9N and 0A9P</a>.</p>
+<p>The mechanism is useful: the comparison is equivalent to saying that <span class="math" data-tex="\(a_f\)">\(a_f\)</span> carries complexes supported outside <span class="math" data-tex="\(V\)">\(V\)</span> to complexes supported outside <span class="math" data-tex="\(U\)">\(U\)</span>. Properness makes pushforwards of perfect complexes pseudo-coherent in these cases. A map from such a pushforward into a supported complex can be killed by a perfect factor which is the identity on <span class="math" data-tex="\(V\)">\(V\)</span>; the projection formula brings this factor back to <span class="math" data-tex="\(X\)">\(X\)</span>. Perfect generators then detect the claimed support. Section 6 exhibits the failure of unrestricted locality.</p>
+<h2 id="3-finite-maps-and-closed-immersions">3. Finite maps and closed immersions</h2>
+<p>Let <span class="math" data-tex="\(f:X\to Y\)">\(f:X\to Y\)</span> be finite between Noetherian schemes, and put <span class="math" data-tex="\(B=f_*\mathcal O_X\)">\(B=f_*\mathcal O_X\)</span>, a coherent sheaf of <span class="math" data-tex="\(\mathcal O_Y\)">\(\mathcal O_Y\)</span>-algebras. Quasi-coherent sheaves on <span class="math" data-tex="\(X\)">\(X\)</span> correspond to quasi-coherent <span class="math" data-tex="\(B\)">\(B\)</span>-modules on <span class="math" data-tex="\(Y\)">\(Y\)</span>. In the derived category this correspondence is given by exact affine pushforward; it preserves and detects quasi-isomorphisms.</p>
+<p><strong>Theorem 3.1.</strong> For <span class="math" data-tex="\(K\in D^+_{\mathrm{QCoh}}(Y)\)">\(K\in D^+_{\mathrm{QCoh}}(Y)\)</span>, the object <span class="math" data-tex="\(a_fK\)">\(a_fK\)</span>, expressed as a <span class="math" data-tex="\(B\)">\(B\)</span>-complex on <span class="math" data-tex="\(Y\)">\(Y\)</span>, is
+<span class="math math-display" data-tex="\[
+R\mathcal H om_{\mathcal O_Y}(B,K),
+\qquad (b\varphi)(b&#x27;)=\varphi(bb&#x27;).
+\tag{7}
+\]">\[
+R\mathcal H om_{\mathcal O_Y}(B,K),
+\qquad (b\varphi)(b&#x27;)=\varphi(bb&#x27;).
+\tag{7}
+\]</span>
+For a closed immersion <span class="math" data-tex="\(i:Z\hookrightarrow Y\)">\(i:Z\hookrightarrow Y\)</span>, this is the derived functor of the annihilator sheaf
+<span class="math math-display" data-tex="\[
+i^bK=\mathcal H om_Y(i_*\mathcal O_Z,K),
+\]">\[
+i^bK=\mathcal H om_Y(i_*\mathcal O_Z,K),
+\]</span>
+regarded as a sheaf on <span class="math" data-tex="\(Z\)">\(Z\)</span>. Its derived value is often denoted <span class="math" data-tex="\(Ri^bK\)">\(Ri^bK\)</span>.</p>
+<p><strong>Proof.</strong> The sheaf-level coinduction identity is
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_B(M,\mathcal H om_Y(B,J))
+ \simeq\operatorname{Hom}_{\mathcal O_Y}(M,J).
+\tag{8}
+\]">\[
+\operatorname{Hom}_B(M,\mathcal H om_Y(B,J))
+ \simeq\operatorname{Hom}_{\mathcal O_Y}(M,J).
+\tag{8}
+\]</span>
+Evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> gives the forward map; the inverse sends <span class="math" data-tex="\(v\)">\(v\)</span> to <span class="math" data-tex="\(m\mapsto[b\mapsto v(bm)]\)">\(m\mapsto[b\mapsto v(bm)]\)</span>. This works on every open subset and glues. Restriction of scalars is exact, so its right adjoint sends injectives to injectives. Resolve <span class="math" data-tex="\(K\)">\(K\)</span> by a bounded-below injective complex <span class="math" data-tex="\(J\)">\(J\)</span>. Formula (8), applied to complexes, identifies the derived adjunction with coinduction into <span class="math" data-tex="\(\mathcal H om_Y(B,J)\)">\(\mathcal H om_Y(B,J)\)</span>.</p>
+<p>This complex has quasi-coherent cohomology. Locally on the Noetherian base, resolve the finite module <span class="math" data-tex="\(B\)">\(B\)</span> by finite free modules in nonpositive degrees. The bounded-below hypothesis on <span class="math" data-tex="\(K\)">\(K\)</span> makes each fixed total degree involve only finitely many terms. Hom therefore commutes with localization and computes quasi-coherent Ext sheaves. The equivalence for affine pushforward now transports the complex back to <span class="math" data-tex="\(X\)">\(X\)</span>. It represents exactly the Hom functor (1), proving (7). For <span class="math" data-tex="\(B=\mathcal O_Y/\mathcal I\)">\(B=\mathcal O_Y/\mathcal I\)</span>, its terms are annihilated by <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>, so they are the asserted sheaves on <span class="math" data-tex="\(Z\)">\(Z\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <span class="math" data-tex="\(B\)">\(B\)</span>-action in (7) is essential. An ambient internal Hom complex without its algebra action has not yet specified an object on <span class="math" data-tex="\(X\)">\(X\)</span>. The trace in this model is evaluation at <span class="math" data-tex="\(1\)">\(1\)</span>, not an unspecified ring trace.</p>
+<p><strong>Example 3.2 (an effective Cartier divisor).</strong> If <span class="math" data-tex="\(Z=D\)">\(Z=D\)</span> is an effective Cartier divisor in <span class="math" data-tex="\(Y\)">\(Y\)</span>, resolve <span class="math" data-tex="\(\mathcal O_D\)">\(\mathcal O_D\)</span> by
+<span class="math math-display" data-tex="\[
+0\longrightarrow\mathcal O_Y(-D)\longrightarrow\mathcal O_Y
+ \longrightarrow\mathcal O_D\longrightarrow0.
+\]">\[
+0\longrightarrow\mathcal O_Y(-D)\longrightarrow\mathcal O_Y
+ \longrightarrow\mathcal O_D\longrightarrow0.
+\]</span>
+Applying Hom into <span class="math" data-tex="\(\mathcal O_Y\)">\(\mathcal O_Y\)</span> gives <span class="math" data-tex="\(\mathcal O_Y\to\mathcal O_Y(D)\)">\(\mathcal O_Y\to\mathcal O_Y(D)\)</span> in degrees 0 and 1. The map is injective, and its cokernel is the normal line <span class="math" data-tex="\(N_{D/Y}=\mathcal O_D(D)\)">\(N_{D/Y}=\mathcal O_D(D)\)</span>. Thus
+<span class="math math-display" data-tex="\[
+a_i(\mathcal O_Y)=N_{D/Y}[-1].
+\tag{9}
+\]">\[
+a_i(\mathcal O_Y)=N_{D/Y}[-1].
+\tag{9}
+\]</span>
+The minus sign in the shift places the normal line in cohomological degree 1.</p>
+<h2 id="4-projective-space-and-the-classical-trace">4. Projective space and the classical trace</h2>
+<p><strong>Theorem 4.1.</strong> For <span class="math" data-tex="\(\pi:P=\mathbf P^n_k\to\operatorname{Spec}k\)">\(\pi:P=\mathbf P^n_k\to\operatorname{Spec}k\)</span>,
+<span class="math math-display" data-tex="\[
+a_\pi(k)\simeq\mathcal O_P(-n-1)[n]=\omega_P[n].
+\tag{10}
+\]">\[
+a_\pi(k)\simeq\mathcal O_P(-n-1)[n]=\omega_P[n].
+\tag{10}
+\]</span>
+The counit is the trace whose ordered Čech representative extracts the coefficient of <span class="math" data-tex="\(T_0^{-1}\cdots T_n^{-1}\)">\(T_0^{-1}\cdots T_n^{-1}\)</span>.</p>
+<p><strong>Proof.</strong> The projective-space calculation gives <span class="math" data-tex="\(R\Gamma(P,\omega_P[n])\simeq k\)">\(R\Gamma(P,\omega_P[n])\simeq k\)</span>, with the specified trace. Transpose that map to obtain <span class="math" data-tex="\(c:\omega_P[n]\to a_\pi(k)\)">\(c:\omega_P[n]\to a_\pi(k)\)</span>. For a coherent sheaf <span class="math" data-tex="\(F\)">\(F\)</span>, testing <span class="math" data-tex="\(c\)">\(c\)</span> against every shift of <span class="math" data-tex="\(F\)">\(F\)</span> gives the maps
+<span class="math math-display" data-tex="\[
+\operatorname{Ext}^{n+r}_P(F,\omega_P)
+ \longrightarrow\operatorname{Hom}_{D(k)}(R\Gamma(P,F),k[r])
+ \simeq H^{-r}(P,F)^\vee.
+\]">\[
+\operatorname{Ext}^{n+r}_P(F,\omega_P)
+ \longrightarrow\operatorname{Hom}_{D(k)}(R\Gamma(P,F),k[r])
+ \simeq H^{-r}(P,F)^\vee.
+\]</span>
+These are precisely the Yoneda trace pairings proved in <a href="../support/AG-QC--ext-sheaves-and-serre-duality-on-projective-space.html">Serre duality on projective space</a>, Theorem 5.1. They are isomorphisms for all <span class="math" data-tex="\(r\)">\(r\)</span>, including the zero groups outside the cohomological range.</p>
+<p>Finite truncation triangles extend this assertion from coherent sheaves to every bounded complex with coherent cohomology. In particular it holds for a perfect generator <span class="math" data-tex="\(G\)">\(G\)</span> of <span class="math" data-tex="\(D_{\mathrm{QCoh}}(P)\)">\(D_{\mathrm{QCoh}}(P)\)</span>, which is bounded coherent because <span class="math" data-tex="\(P\)">\(P\)</span> is Noetherian and quasi-compact. If <span class="math" data-tex="\(C\)">\(C\)</span> is the cone of <span class="math" data-tex="\(c\)">\(c\)</span>, then <span class="math" data-tex="\(\operatorname{Hom}(G,C[r])=0\)">\(\operatorname{Hom}(G,C[r])=0\)</span> for every <span class="math" data-tex="\(r\)">\(r\)</span>. The generator property forces <span class="math" data-tex="\(C=0\)">\(C=0\)</span>. Thus the map is an isomorphism in the full unbounded category, not merely on coherent test objects. When <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, this is the identity adjunction on the field; every twist on the point is the same line. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The corresponding relative formula, for a locally free <span class="math" data-tex="\(E\)">\(E\)</span> of rank <span class="math" data-tex="\(n+1\geq1\)">\(n+1\geq1\)</span> on a qcqs base and the quotient convention for <span class="math" data-tex="\(\mathbf P(E)\)">\(\mathbf P(E)\)</span>, is
+<span class="math math-display" data-tex="\[
+a_\pi(\mathcal O_Y)\simeq
+\pi^*(\det E)\otimes\mathcal O_{\mathbf P(E)}(-n-1)[n].
+\tag{11}
+\]">\[
+a_\pi(\mathcal O_Y)\simeq
+\pi^*(\det E)\otimes\mathcal O_{\mathbf P(E)}(-n-1)[n].
+\tag{11}
+\]</span>
+Its exact open proof is <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/duality.html#duality-lemma-upper-shriek-P1">Stacks, Tag 0A9W</a>: transpose the relative top-cohomology trace and test on the generating twists <span class="math" data-tex="\(\mathcal O,\ldots,\mathcal O(-n)\)">\(\mathcal O,\ldots,\mathcal O(-n)\)</span> locally on the base. In the rank-one case <span class="math" data-tex="\(\mathcal O(1)=\pi^*E\)">\(\mathcal O(1)=\pi^*E\)</span>, so the two line factors cancel, as they must.</p>
+<h2 id="5-proper-duality-over-a-field">5. Proper duality over a field</h2>
+<p>Let <span class="math" data-tex="\(p:X\to\operatorname{Spec}k\)">\(p:X\to\operatorname{Spec}k\)</span> be proper, and define
+<span class="math math-display" data-tex="\[
+\omega_X^\bullet=a_p(k).
+\]">\[
+\omega_X^\bullet=a_p(k).
+\]</span></p>
+<p><strong>Theorem 5.1.</strong> For every <span class="math" data-tex="\(K\in D_{\mathrm{QCoh}}(X)\)">\(K\in D_{\mathrm{QCoh}}(X)\)</span> and every integer <span class="math" data-tex="\(i\)">\(i\)</span>, the trace induces
+<span class="math math-display" data-tex="\[
+H^i(X,K)^\vee\simeq
+\operatorname{Ext}^{-i}_X(K,\omega_X^\bullet).
+\tag{12}
+\]">\[
+H^i(X,K)^\vee\simeq
+\operatorname{Ext}^{-i}_X(K,\omega_X^\bullet).
+\tag{12}
+\]</span>
+If <span class="math" data-tex="\(X\)">\(X\)</span> is projective, Cohen–Macaulay and equidimensional of dimension <span class="math" data-tex="\(n\)">\(n\)</span>, then
+<span class="math math-display" data-tex="\[
+\omega_X^\bullet\simeq\omega_X^\circ[n],
+\]">\[
+\omega_X^\bullet\simeq\omega_X^\circ[n],
+\]</span>
+where <span class="math" data-tex="\(\omega_X^\circ\)">\(\omega_X^\circ\)</span> is the dualizing sheaf of the preceding lesson.</p>
+<p><strong>Proof.</strong> Formula (1) gives
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}_X(K,\omega_X^\bullet[-i])
+ \simeq\operatorname{Hom}_{D(k)}(R\Gamma(X,K),k[-i]).
+\]">\[
+\operatorname{Hom}_X(K,\omega_X^\bullet[-i])
+ \simeq\operatorname{Hom}_{D(k)}(R\Gamma(X,K),k[-i]).
+\]</span>
+Over a field, every complex splits into its cohomology complex and a contractible complex: choose complements to boundaries inside cycles and to cycles inside each term. Its maps to <span class="math" data-tex="\(k[-i]\)">\(k[-i]\)</span> in the derived category are consequently exactly the linear functionals on <span class="math" data-tex="\(H^i\)">\(H^i\)</span>. This remains valid for unbounded complexes and infinite-dimensional cohomology; no finite-dimensional biduality has been used. It proves (12). For bounded coherent <span class="math" data-tex="\(K\)">\(K\)</span>, proper coherence gives the familiar finite-dimensional interpretation.</p>
+<p>For the last assertion embed <span class="math" data-tex="\(i:X\hookrightarrow P=\mathbf P^N_k\)">\(i:X\hookrightarrow P=\mathbf P^N_k\)</span>. Composition and Theorems 3.1 and 4.1 identify
+<span class="math math-display" data-tex="\[
+\omega_X^\bullet=Ri^b(\omega_P[N]).
+\]">\[
+\omega_X^\bullet=Ri^b(\omega_P[N]).
+\]</span>
+The preceding lesson proves that <span class="math" data-tex="\(Ri^b\omega_P\)">\(Ri^b\omega_P\)</span> has only one cohomology sheaf, in degree <span class="math" data-tex="\(c=N-n\)">\(c=N-n\)</span>, and that this sheaf is <span class="math" data-tex="\(\omega_X^\circ\)">\(\omega_X^\circ\)</span>. Thus it is <span class="math" data-tex="\(\omega_X^\circ[-c]\)">\(\omega_X^\circ[-c]\)</span>; shifting by <span class="math" data-tex="\(N\)">\(N\)</span> gives <span class="math" data-tex="\(\omega_X^\circ[n]\)">\(\omega_X^\circ[n]\)</span>. The classical representing trace was defined from the same ambient pairing, so this identification respects traces. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a general proper scheme, the further assertion that <span class="math" data-tex="\(\omega_X^\bullet\)">\(\omega_X^\bullet\)</span> is a bounded coherent dualizing complex, with cohomology in <span class="math" data-tex="\([-\dim X,0]\)">\([-\dim X,0]\)</span>, has the exact open proof <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/duality.html#duality-lemma-duality-proper-over-field">Stacks, Tag 0FVV</a>. The construction here does not assume projectivity to define <span class="math" data-tex="\(a_p(k)\)">\(a_p(k)\)</span> or to prove (12).</p>
+<p>The embedded-point example <span class="math" data-tex="\(X=V(T_0^2,T_0T_1)\subset\mathbf P^2\)">\(X=V(T_0^2,T_0T_1)\subset\mathbf P^2\)</span> from the preceding lesson has <span class="math" data-tex="\(H^{-1}(\omega_X^\bullet)=\mathcal O_{\mathbf P^1}(-2)\)">\(H^{-1}(\omega_X^\bullet)=\mathcal O_{\mathbf P^1}(-2)\)</span> and <span class="math" data-tex="\(H^0(\omega_X^\bullet)=k_p\)">\(H^0(\omega_X^\bullet)=k_p\)</span>. Dropping its second cohomology sheaf was exactly what made the single-sheaf duality formula fail.</p>
+<h2 id="6-coinduction-versus-restriction">6. Coinduction versus restriction</h2>
+<p>For a finite <span class="math" data-tex="\(k\)">\(k\)</span>-algebra <span class="math" data-tex="\(B\)">\(B\)</span>, Theorem 3.1 gives <span class="math" data-tex="\(a_p(k)=\operatorname{Hom}_k(B,k)\)">\(a_p(k)=\operatorname{Hom}_k(B,k)\)</span> in degree zero. This is coinduction; <span class="math" data-tex="\(k\)">\(k\)</span> is injective as a vector space, so there is no higher cohomology.</p>
+<p>Now take <span class="math" data-tex="\(A=k[t]\)">\(A=k[t]\)</span>, <span class="math" data-tex="\(B=k[x]\)">\(B=k[x]\)</span>, with <span class="math" data-tex="\(t=x^2\)">\(t=x^2\)</span>. As an <span class="math" data-tex="\(A\)">\(A\)</span>-module, <span class="math" data-tex="\(B=A\oplus Ax\)">\(B=A\oplus Ax\)</span> is free. Let <span class="math" data-tex="\(\lambda:B\to A\)">\(\lambda:B\to A\)</span> extract the coefficient of <span class="math" data-tex="\(x\)">\(x\)</span>. The pairing <span class="math" data-tex="\((b,b&#x27;)\mapsto\lambda(bb&#x27;)\)">\((b,b&#x27;)\mapsto\lambda(bb&#x27;)\)</span> has matrix
+<span class="math math-display" data-tex="\[
+\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}
+\]">\[
+\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}
+\]</span>
+in the basis <span class="math" data-tex="\(1,x\)">\(1,x\)</span>, so <span class="math" data-tex="\(B\to\operatorname{Hom}_A(B,A)\)">\(B\to\operatorname{Hom}_A(B,A)\)</span>, <span class="math" data-tex="\(b\mapsto b\lambda\)">\(b\mapsto b\lambda\)</span>, is a <span class="math" data-tex="\(B\)">\(B\)</span>-linear isomorphism in every characteristic. Hence <span class="math" data-tex="\(a_f(\mathcal O_Y)\simeq\mathcal O_X\)">\(a_f(\mathcal O_Y)\simeq\mathcal O_X\)</span>. Under this chosen trivialization the counit sends <span class="math" data-tex="\(a+bx\)">\(a+bx\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>. The algebraic trace of multiplication is a different functional: it sends <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(2\)">\(2\)</span>, and in characteristic 2 it vanishes identically.</p>
+<p>For an open immersion <span class="math" data-tex="\(j:U\hookrightarrow X\)">\(j:U\hookrightarrow X\)</span>, the compactification functor <span class="math" data-tex="\(j^!\)">\(j^!\)</span> discussed below is restriction, but the right adjoint <span class="math" data-tex="\(a_j\)">\(a_j\)</span> of <span class="math" data-tex="\(Rj_*\)">\(Rj_*\)</span> generally differs. An explicit affine example is
+<span class="math math-display" data-tex="\[
+j:\operatorname{Spec}A[t^{-1}]\hookrightarrow\operatorname{Spec}A,
+\qquad A=k[t].
+\]">\[
+j:\operatorname{Spec}A[t^{-1}]\hookrightarrow\operatorname{Spec}A,
+\qquad A=k[t].
+\]</span>
+Here <span class="math" data-tex="\(a_j(A)=R\operatorname{Hom}_A(A[t^{-1}],A)\)">\(a_j(A)=R\operatorname{Hom}_A(A[t^{-1}],A)\)</span>, with its <span class="math" data-tex="\(A[t^{-1}]\)">\(A[t^{-1}]\)</span>-action. In degree zero this is zero: the image of <span class="math" data-tex="\(1\)">\(1\)</span> under an <span class="math" data-tex="\(A\)">\(A\)</span>-linear map must lie in every <span class="math" data-tex="\(t^mA\)">\(t^mA\)</span>, whose intersection is zero; the same argument applies to each <span class="math" data-tex="\(t^{-r}\)">\(t^{-r}\)</span>. But <span class="math" data-tex="\(j^!A=A[t^{-1}]\)">\(j^!A=A[t^{-1}]\)</span> has nonzero degree zero. Thus restriction cannot be the general right adjoint of pushforward.</p>
+<p>More precisely, the free telescope resolution has map <span class="math" data-tex="\(e_r\mapsto e_r-te_{r+1}\)">\(e_r\mapsto e_r-te_{r+1}\)</span> on <span class="math" data-tex="\(\bigoplus_{r\geq0}A\)">\(\bigoplus_{r\geq0}A\)</span>. Its cokernel is <span class="math" data-tex="\(A[t^{-1}]\)">\(A[t^{-1}]\)</span>, with <span class="math" data-tex="\(e_r\)">\(e_r\)</span> mapping to <span class="math" data-tex="\(t^{-r}\)">\(t^{-r}\)</span>; its injectivity follows by examining the last nonzero coefficient in a finite sum. Dualizing computes <span class="math" data-tex="\(a_j(A)\)">\(a_j(A)\)</span> by
+<span class="math math-display" data-tex="\[
+\prod_{r\geq0}A\longrightarrow\prod_{r\geq0}A,
+\qquad (b_r)\longmapsto(b_r-tb_{r+1})
+\tag{13}
+\]">\[
+\prod_{r\geq0}A\longrightarrow\prod_{r\geq0}A,
+\qquad (b_r)\longmapsto(b_r-tb_{r+1})
+\tag{13}
+\]</span>
+in degrees 0 and 1. Its cokernel is <span class="math" data-tex="\(k[[t]]/k[t]\)">\(k[[t]]/k[t]\)</span>. Indeed, sending <span class="math" data-tex="\((c_r)\)">\((c_r)\)</span> to <span class="math" data-tex="\(\sum t^rc_r\)">\(\sum t^rc_r\)</span> modulo <span class="math" data-tex="\(A\)">\(A\)</span> is surjective. A sequence is in its kernel exactly when that sum is a polynomial <span class="math" data-tex="\(s\)">\(s\)</span>; then <span class="math" data-tex="\(b_r=(s-\sum_{j&lt;r}t^jc_j)/t^r\)">\(b_r=(s-\sum_{j&lt;r}t^jc_j)/t^r\)</span> is a polynomial and solves (13). This calculation makes the failure visible in both degrees.</p>
+<p>For a separated finite type morphism of Noetherian schemes, choose a compactification <span class="math" data-tex="\(f=\bar f j\)">\(f=\bar f j\)</span>, with <span class="math" data-tex="\(j\)">\(j\)</span> open and <span class="math" data-tex="\(\bar f\)">\(\bar f\)</span> proper. On bounded-below quasi-coherent complexes set
+<span class="math math-display" data-tex="\[
+f^!K=j^*a_{\bar f}K.
+\tag{14}
+\]">\[
+f^!K=j^*a_{\bar f}K.
+\tag{14}
+\]</span>
+Compactification existence and the independence and composition of (14) are the exact open constructions in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/duality.html#duality-section-upper-shriek">Stacks, Tag 0A9Y</a>. Common proper refinements compare the compactifications; proper restriction compatibility and the canonical adjunction composition identify their functors. The resulting comparison maps satisfy the cocycle condition. Its properties, including <span class="math" data-tex="\(j^!=j^*\)">\(j^!=j^*\)</span> for open immersions and <span class="math" data-tex="\(f^!=a_f\)">\(f^!=a_f\)</span> for proper <span class="math" data-tex="\(f\)">\(f\)</span>, are proved in <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/duality.html#duality-section-upper-shriek-properties">Stacks, Tag 0ATZ</a>. These statements concern the compactification construction, whose domain and locality differ from the general unbounded adjoint.</p>
+<h2 id="7-exercises-with-solutions">7. Exercises with solutions</h2>
+<p><strong>Exercise 7.1 (easy).</strong> Compute the adjoint of <span class="math" data-tex="\(k\)">\(k\)</span> for <span class="math" data-tex="\(B=k[\epsilon]/(\epsilon^2)\)">\(B=k[\epsilon]/(\epsilon^2)\)</span>, its <span class="math" data-tex="\(B\)">\(B\)</span>-action and the counit.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> extract the coefficient of <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. The two functionals <span class="math" data-tex="\(\lambda,\epsilon\lambda\)">\(\lambda,\epsilon\lambda\)</span> form a basis of <span class="math" data-tex="\(B^\vee\)">\(B^\vee\)</span>, because <span class="math" data-tex="\(\epsilon\lambda\)">\(\epsilon\lambda\)</span> extracts the constant coefficient. Thus <span class="math" data-tex="\(B^\vee=B\lambda\)">\(B^\vee=B\lambda\)</span>, and <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> sends <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> to <span class="math" data-tex="\(\epsilon\lambda\)">\(\epsilon\lambda\)</span> and the latter to zero. The counit is evaluation at <span class="math" data-tex="\(1\)">\(1\)</span>: it sends <span class="math" data-tex="\(a\lambda+b\epsilon\lambda\)">\(a\lambda+b\epsilon\lambda\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>. This is a degree-zero complex.</p>
+<p><strong>Exercise 7.2 (easy).</strong> Derive the composite adjunction and verify its counit on a map <span class="math" data-tex="\(u:L\to a_fa_gK\)">\(u:L\to a_fa_gK\)</span>.</p>
+<p><strong>Solution.</strong> Its two transposes are <span class="math" data-tex="\(Rf_*L\xrightarrow{Rf_*u}Rf_*a_fa_gK\xrightarrow{\operatorname{Tr}_f}a_gK\)">\(Rf_*L\xrightarrow{Rf_*u}Rf_*a_fa_gK\xrightarrow{\operatorname{Tr}_f}a_gK\)</span> and then <span class="math" data-tex="\(Rg_*Rf_*L\to Rg_*a_gK\xrightarrow{\operatorname{Tr}_g}K\)">\(Rg_*Rf_*L\to Rg_*a_gK\xrightarrow{\operatorname{Tr}_g}K\)</span>. This is the transpose under <span class="math" data-tex="\(a_{gf}\)">\(a_{gf}\)</span>, giving (3) and the asserted composite counit. Naturality in <span class="math" data-tex="\(u\)">\(u\)</span> proves equality of the transformations.</p>
+<p><strong>Exercise 7.3 (medium).</strong> For a closed immersion of Noetherian schemes, explain why ordinary annihilators do not generally compute the derived adjoint. Compute the example <span class="math" data-tex="\(A=k[t]\)">\(A=k[t]\)</span>, <span class="math" data-tex="\(A\to k=A/(t)\)">\(A\to k=A/(t)\)</span>, with input <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>Solution.</strong> The ordinary annihilator is <span class="math" data-tex="\(\operatorname{Hom}_A(k,A)=0\)">\(\operatorname{Hom}_A(k,A)=0\)</span>. The free resolution <span class="math" data-tex="\(A\xrightarrow tA\)">\(A\xrightarrow tA\)</span> in degrees <span class="math" data-tex="\(-1,0\)">\(-1,0\)</span> gives the dual complex <span class="math" data-tex="\(A\xrightarrow tA\)">\(A\xrightarrow tA\)</span> in degrees <span class="math" data-tex="\(0,1\)">\(0,1\)</span>. Its only cohomology is <span class="math" data-tex="\(k\)">\(k\)</span> in degree 1, so the adjoint is <span class="math" data-tex="\(k[-1]\)">\(k[-1]\)</span>. The derived annihilator construction of Theorem 3.1 supplies the missing Ext term.</p>
+<p><strong>Exercise 7.4 (medium).</strong> Recover classical Serre duality for a coherent sheaf <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(\mathbf P^n_k\)">\(\mathbf P^n_k\)</span> from (10) and the adjunction, including its signs.</p>
+<p><strong>Solution.</strong> Taking <span class="math" data-tex="\(K=F\)">\(K=F\)</span> in (12) gives
+<span class="math math-display" data-tex="\[
+H^i(F)^\vee=\operatorname{Hom}(F,\omega_P[n-i])
+ =\operatorname{Ext}^{n-i}(F,\omega_P).
+\]">\[
+H^i(F)^\vee=\operatorname{Hom}(F,\omega_P[n-i])
+ =\operatorname{Ext}^{n-i}(F,\omega_P).
+\]</span>
+The pairing sends a cohomology class and its Ext partner to their composite into <span class="math" data-tex="\(\omega_P[n]\)">\(\omega_P[n]\)</span>, followed by the trace. This agrees with the ordered Čech normalization in Theorem 4.1. For <span class="math" data-tex="\(n=0\)">\(n=0\)</span> it is the vector-space evaluation pairing.</p>
+<p><strong>Exercise 7.5 (medium).</strong> In the squaring map example, compute the action of <span class="math" data-tex="\(x\)">\(x\)</span> on the dual basis <span class="math" data-tex="\(\lambda_0,\lambda_1\)">\(\lambda_0,\lambda_1\)</span>, which extracts the coefficients of <span class="math" data-tex="\(1,x\)">\(1,x\)</span>. Identify a generator and its counit.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(a+bx\)">\(a+bx\)</span>, multiplying by <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\(bt+ax\)">\(bt+ax\)</span>, so <span class="math" data-tex="\(x\lambda_0=t\lambda_1\)">\(x\lambda_0=t\lambda_1\)</span> and <span class="math" data-tex="\(x\lambda_1=\lambda_0\)">\(x\lambda_1=\lambda_0\)</span>. Hence <span class="math" data-tex="\(\lambda_1\)">\(\lambda_1\)</span> generates the dual as a free <span class="math" data-tex="\(B\)">\(B\)</span>-module; its two <span class="math" data-tex="\(A\)">\(A\)</span>-basis vectors are <span class="math" data-tex="\(\lambda_1,x\lambda_1=\lambda_0\)">\(\lambda_1,x\lambda_1=\lambda_0\)</span>. Evaluation at <span class="math" data-tex="\(1\)">\(1\)</span> takes them to <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, respectively. This computation remains valid at the branch point and in characteristic 2.</p>
+<p><strong>Exercise 7.6 (hard).</strong> Verify that the degree-one module in the open-immersion calculation is nonzero, and that multiplication by <span class="math" data-tex="\(t\)">\(t\)</span> on <span class="math" data-tex="\(k[[t]]/k[t]\)">\(k[[t]]/k[t]\)</span> is invertible.</p>
+<p><strong>Solution.</strong> The series <span class="math" data-tex="\(\sum_{r\geq1}t^{r!}\)">\(\sum_{r\geq1}t^{r!}\)</span> is not a polynomial, so gives a nonzero class. If <span class="math" data-tex="\(ts\)">\(ts\)</span> is a polynomial, then the formal series <span class="math" data-tex="\(s\)">\(s\)</span> is a polynomial, proving injectivity. For any series <span class="math" data-tex="\(s\)">\(s\)</span>, remove its constant term; <span class="math" data-tex="\((s-s(0))/t\)">\((s-s(0))/t\)</span> is a formal series whose class maps to <span class="math" data-tex="\([s]\)">\([s]\)</span>, proving surjectivity. Thus the module has the required <span class="math" data-tex="\(A[t^{-1}]\)">\(A[t^{-1}]\)</span>-action. Together with its zero degree-zero cohomology this explicitly distinguishes <span class="math" data-tex="\(a_j(A)\)">\(a_j(A)\)</span> from <span class="math" data-tex="\(j^!A\)">\(j^!A\)</span>.</p>
+<h2 id="8-proof-dependencies">8. Proof dependencies</h2>
+<p>The trace, formal adjunction properties, coherator comparison, finite and closed computations, projective-space identification in the unbounded category, and the proper-field duality formula were proved here. The following larger foundational constructions are supplied by exact open proofs:</p>
+<ul>
+<li>Compact generation for every qcqs scheme: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-theorem-bondal-van-den-Bergh">Stacks, Tag 09IS</a>. Brown representability and its adjoint consequence: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-brown">Tags 0A8F</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-proposition-brown">0A8G</a>.</li>
+<li>Affine unbounded module comparison: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-affine-compare-bounded">Tag 06Z0</a>. Preservation of direct sums by qcqs pushforward: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/perfect.html#perfect-lemma-quasi-coherence-pushforward-direct-sums">Tag 08DZ</a>. Unbounded derived pullback and tensor–Hom adjunctions: <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-adjoint">Cohomology, the derived adjunction proof</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cohomology.html#cohomology-lemma-internal-hom">the internal Hom proof</a>.</li>
+<li>The coherator, unbounded cohomological-dimension and projection-formula foundations, proper restriction theorem, relative projective-bundle computation, and bounded coherent proper dualizing-complex theorem are identified at their precise uses above. Compactification and upper shriek are imported with the exact hypotheses of (14).</li>
+</ul>
+<p>These links point to the GNU FDL 1.2 AI Integrated Stacks Project edition. They identify proof providers for the stated generality; the exposition and calculations in this lesson are independent. There is no assumption that every right adjoint is local or that a dualizing complex is a shifted line bundle.</p>
+</article></main></body></html>

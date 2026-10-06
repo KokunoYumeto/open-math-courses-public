@@ -1,0 +1,230 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Composition factors and uniform chain bounds</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="composition-factors-and-uniform-chain-bounds">Composition factors and uniform chain bounds</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI), reasoning effort Ultra, October 2026. Self-checked by the writing AI; no independent review. Public domain (CC0).</em></p>
+<p>A finite composition series does more than provide a list of simple quotients. It bounds the number of strict changes in every other chain of subobjects. The bound comes from intersecting a subobject with the chosen series and checking which simple factors survive. This gives a useful bridge between exact sequences, chain conditions and directed families.</p>
+<p>We use the abelian framework of <a href="trace-coreflections-and-balanced-nonabelian-categories.html">Trace coreflections and balanced nonabelian categories</a>, and ambient kernels, cokernels and short exact sequences as in <a href="full-subcategories-and-exact-closure.html">Full subcategories and exact closure</a>. The canonical existence theorem is <a href="https://stacks.math.columbia.edu/tag/0FCJ">Stacks, Lemma 12.9.6</a>; the stronger uniqueness theorem is <a href="https://stacks.math.columbia.edu/tag/0FCK">Stacks, Jordan–Hölder</a>. For modules over commutative rings, the <a href="#1-a-finite-filtration-detects-a-strict-inclusion">complete arguments in Sections 1–3 below</a> supply the finite-length, submodule, quotient and exact-extension foundation; the stronger Jordan–Hölder theorem remains at the cited complete Stacks proof. Here the category may be any abelian category, and the application concerns its subobject chains.</p>
+<p>Fix universes <span class="math" data-tex="\(\mathcal U\in\mathcal V\)">\(\mathcal U\in\mathcal V\)</span>, with the natural numbers in <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be abelian with <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small Hom sets, and house its objects and morphisms in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>. This ambient convention permits ordinary choice when forming countable chains. It imposes no <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-smallness on the objects of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> or on the full collection of subobjects of an object. The families below are nonempty sets in the ambient universe. No generator or infinite limit or colimit is assumed.</p>
+<p>A subobject of <span class="math" data-tex="\(X\)">\(X\)</span> is an equivalence class of monomorphisms into <span class="math" data-tex="\(X\)">\(X\)</span>, where the equivalence is an isomorphism commuting with the maps to <span class="math" data-tex="\(X\)">\(X\)</span>. Write <span class="math" data-tex="\(B\subseteq C\)">\(B\subseteq C\)</span> when the representative of <span class="math" data-tex="\(B\)">\(B\)</span> factors through that of <span class="math" data-tex="\(C\)">\(C\)</span>, and <span class="math" data-tex="\(B\subsetneq C\)">\(B\subsetneq C\)</span> when the classes differ. All intersections are finite pullbacks in <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>.</p>
+<h2 id="1-a-finite-filtration-detects-a-strict-inclusion">1. A finite filtration detects a strict inclusion</h2>
+<p>An object <span class="math" data-tex="\(S\)">\(S\)</span> is <em>simple</em> when it is nonzero and has only the subobjects <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span>. A <em>composition series</em> is a finite strict filtration</p>
+<span class="math math-display" data-tex="\[
+0=M_0\subsetneq M_1\subsetneq\cdots\subsetneq M_n=X
+\tag{1.1}
+\]">\[
+0=M_0\subsetneq M_1\subsetneq\cdots\subsetneq M_n=X
+\tag{1.1}
+\]</span>
+<p>whose quotients <span class="math" data-tex="\(S_i=M_i/M_{i-1}\)">\(S_i=M_i/M_{i-1}\)</span> are simple. The zero object has the empty series, with <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p>We first record the exact comparison needed for the finite filtration argument.</p>
+<p><strong>Lemma 1.1.</strong> In a commutative diagram between short exact sequences, if the maps on the first and last terms are isomorphisms, then the map on the middle terms is an isomorphism.</p>
+<p><strong>Proof.</strong> Write the sequences and vertical maps as</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to A\xrightarrow{i}B\xrightarrow{q}C\to0,\\
+0\to A&#x27;\xrightarrow{i&#x27;}B&#x27;\xrightarrow{q&#x27;}C&#x27;\to0,\\
+a:A\to A&#x27;,\\
+b:B\to B&#x27;,\\
+c:C\to C&#x27;,\\
+bi=i&#x27;a,\qquad q&#x27;b=cq.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+0\to A\xrightarrow{i}B\xrightarrow{q}C\to0,\\
+0\to A&#x27;\xrightarrow{i&#x27;}B&#x27;\xrightarrow{q&#x27;}C&#x27;\to0,\\
+a:A\to A&#x27;,\\
+b:B\to B&#x27;,\\
+c:C\to C&#x27;,\\
+bi=i&#x27;a,\qquad q&#x27;b=cq.
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>Let <span class="math" data-tex="\(k:K\to B\)">\(k:K\to B\)</span> be the kernel of <span class="math" data-tex="\(b\)">\(b\)</span>. The equality <span class="math" data-tex="\(cqk=0\)">\(cqk=0\)</span> and invertibility of <span class="math" data-tex="\(c\)">\(c\)</span> imply <span class="math" data-tex="\(qk=0\)">\(qk=0\)</span>. Thus <span class="math" data-tex="\(k=it\)">\(k=it\)</span> for a unique <span class="math" data-tex="\(t:K\to A\)">\(t:K\to A\)</span>. Now <span class="math" data-tex="\(i&#x27;at=bk=0\)">\(i&#x27;at=bk=0\)</span>. Since <span class="math" data-tex="\(i&#x27;\)">\(i&#x27;\)</span> is monic and <span class="math" data-tex="\(a\)">\(a\)</span> is invertible, <span class="math" data-tex="\(t=0\)">\(t=0\)</span>; hence <span class="math" data-tex="\(k=0\)">\(k=0\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> is monic.</p>
+<p>If <span class="math" data-tex="\(h:B&#x27;\to T\)">\(h:B&#x27;\to T\)</span> satisfies <span class="math" data-tex="\(hb=0\)">\(hb=0\)</span>, then <span class="math" data-tex="\(hi&#x27;a=hbi=0\)">\(hi&#x27;a=hbi=0\)</span>. Cancel <span class="math" data-tex="\(a\)">\(a\)</span>, and use that <span class="math" data-tex="\(q&#x27;\)">\(q&#x27;\)</span> is the cokernel of <span class="math" data-tex="\(i&#x27;\)">\(i&#x27;\)</span>, to write <span class="math" data-tex="\(h=zq&#x27;\)">\(h=zq&#x27;\)</span>. Consequently <span class="math" data-tex="\(zcq=zq&#x27;b=0\)">\(zcq=zq&#x27;b=0\)</span>. The map <span class="math" data-tex="\(cq\)">\(cq\)</span> is epic, so <span class="math" data-tex="\(z=0\)">\(z=0\)</span> and <span class="math" data-tex="\(h=0\)">\(h=0\)</span>. Apply this to the cokernel map of <span class="math" data-tex="\(b\)">\(b\)</span>: its cokernel is zero, so <span class="math" data-tex="\(b\)">\(b\)</span> is epic. A monic and epic map in an abelian category is an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Fix (1.1). For a subobject <span class="math" data-tex="\(B\subseteq X\)">\(B\subseteq X\)</span>, set</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+B_i=B\cap M_i,\\
+Q_i(B)=B_i/B_{i-1}.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+B_i=B\cap M_i,\\
+Q_i(B)=B_i/B_{i-1}.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>The kernel of <span class="math" data-tex="\(B_i\to M_i\to S_i\)">\(B_i\to M_i\to S_i\)</span> is <span class="math" data-tex="\(B\cap M_{i-1}=B_{i-1}\)">\(B\cap M_{i-1}=B_{i-1}\)</span>: this is the pullback of the kernel of <span class="math" data-tex="\(M_i\to S_i\)">\(M_i\to S_i\)</span>. Coimage–image factorization therefore gives a monomorphism</p>
+<span class="math math-display" data-tex="\[
+Q_i(B)\longrightarrow S_i.
+\tag{1.4}
+\]">\[
+Q_i(B)\longrightarrow S_i.
+\tag{1.4}
+\]</span>
+<p>Thus every <span class="math" data-tex="\(Q_i(B)\)">\(Q_i(B)\)</span> is zero or isomorphic to <span class="math" data-tex="\(S_i\)">\(S_i\)</span>. Removing repetitions from the filtration <span class="math" data-tex="\((B_i)\)">\((B_i)\)</span> gives a composition series of <span class="math" data-tex="\(B\)">\(B\)</span>. This is the finite induced-filtration interface in <a href="https://stacks.math.columbia.edu/tag/05SP">Stacks, Lemma 12.19.12</a>.</p>
+<p>Define the integer by counting the nonzero pieces among <span class="math" data-tex="\(Q_1(B),\ldots,Q_n(B)\)">\(Q_1(B),\ldots,Q_n(B)\)</span>:</p>
+<span class="math math-display" data-tex="\[
+r(B)=\#\{i:Q_i(B)\ne0\}.
+\tag{1.5}
+\]">\[
+r(B)=\#\{i:Q_i(B)\ne0\}.
+\tag{1.5}
+\]</span>
+<p><strong>Proposition 1.2.</strong> If <span class="math" data-tex="\(B\subsetneq C\subseteq X\)">\(B\subsetneq C\subseteq X\)</span>, then <span class="math" data-tex="\(r(B)&lt;r(C)\)">\(r(B)&lt;r(C)\)</span>. In particular <span class="math" data-tex="\(r(0)=0\)">\(r(0)=0\)</span>, <span class="math" data-tex="\(r(X)=n\)">\(r(X)=n\)</span>, and <span class="math" data-tex="\(0\le r(B)\le n\)">\(0\le r(B)\le n\)</span>.</p>
+<p><strong>Proof.</strong> Inclusion gives maps <span class="math" data-tex="\(Q_i(B)\to Q_i(C)\)">\(Q_i(B)\to Q_i(C)\)</span> commuting with (1.4). Their composites into <span class="math" data-tex="\(S_i\)">\(S_i\)</span> are monic, so the maps themselves are monic. The set of nonzero graded pieces for <span class="math" data-tex="\(B\)">\(B\)</span> is contained in that for <span class="math" data-tex="\(C\)">\(C\)</span>; hence <span class="math" data-tex="\(r(B)\le r(C)\)">\(r(B)\le r(C)\)</span>.</p>
+<p>Suppose equality holds. The two finite sets of indices then coincide. At every index the graded comparison is an isomorphism: either both terms are zero, or both monomorphisms into the same simple <span class="math" data-tex="\(S_i\)">\(S_i\)</span> are isomorphisms. Apply Lemma 1.1 successively to the short exact sequences</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to B_{i-1}\to B_i\to Q_i(B)\to0,\\
+0\to C_{i-1}\to C_i\to Q_i(C)\to0.
+\end{gathered}
+\tag{1.6}
+\]">\[
+\begin{gathered}
+0\to B_{i-1}\to B_i\to Q_i(B)\to0,\\
+0\to C_{i-1}\to C_i\to Q_i(C)\to0.
+\end{gathered}
+\tag{1.6}
+\]</span>
+<p>Starting from <span class="math" data-tex="\(B_0=C_0=0\)">\(B_0=C_0=0\)</span>, induction makes every <span class="math" data-tex="\(B_i\to C_i\)">\(B_i\to C_i\)</span> invertible. At <span class="math" data-tex="\(i=n\)">\(i=n\)</span> the inclusion <span class="math" data-tex="\(B\to C\)">\(B\to C\)</span> is an isomorphism over <span class="math" data-tex="\(X\)">\(X\)</span>, so the subobjects are equal. A strict inclusion therefore forces a strict inequality. The endpoint values follow directly from (1.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The comparison uses a finite filtration and its exact quotients. Its general filtered-object form is discussed in <a href="https://stacks.math.columbia.edu/tag/0127">Stacks, Lemma 12.19.13</a>.</p>
+<h2 id="2-four-ways-to-recognize-finite-length">2. Four ways to recognize finite length</h2>
+<p>Call <span class="math" data-tex="\(X\)">\(X\)</span> <em>Noetherian</em> if every increasing sequence of subobjects stabilizes, and <em>Artinian</em> if every decreasing sequence stabilizes. Stabilization means eventual equality of subobject classes; representatives need not literally be the same monomorphism.</p>
+<p>A family <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span> of subobjects is <em>filtered</em> if every two members have a common upper bound belonging to <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span>. It is <em>cofiltered</em> if every two have a common lower bound in <span class="math" data-tex="\(\mathscr F\)">\(\mathscr F\)</span>. Nonemptiness is part of both conventions. A greatest member contains every member; a maximal member merely has no strictly larger member in the family.</p>
+<p><strong>Theorem 2.1.</strong> For an object <span class="math" data-tex="\(X\)">\(X\)</span>, the following conditions are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(X\)">\(X\)</span> has a composition series.</li>
+<li>There is an integer <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span> bounding the length of every finite strict chain from <span class="math" data-tex="\(X\)">\(X\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>.</li>
+<li><span class="math" data-tex="\(X\)">\(X\)</span> is Noetherian and Artinian.</li>
+<li>Every nonempty filtered set of subobjects of <span class="math" data-tex="\(X\)">\(X\)</span> has a greatest member, and every nonempty cofiltered set has a least member.</li>
+</ol>
+<p>If a composition series has <span class="math" data-tex="\(n\)">\(n\)</span> factors, the least possible bound in condition 2 is <span class="math" data-tex="\(n\)">\(n\)</span>. Every composition series has that same number of factors.</p>
+<p><strong>Proof.</strong> A series (1.1) gives the rank <span class="math" data-tex="\(r\)">\(r\)</span> of Proposition 1.2. Along any strict descending chain</p>
+<span class="math math-display" data-tex="\[
+X=X_0\supsetneq X_1\supsetneq\cdots\supsetneq X_m=0
+\tag{2.1}
+\]">\[
+X=X_0\supsetneq X_1\supsetneq\cdots\supsetneq X_m=0
+\tag{2.1}
+\]</span>
+<p>the integer <span class="math" data-tex="\(r\)">\(r\)</span> strictly decreases from <span class="math" data-tex="\(n\)">\(n\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span>, so <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>. This proves <span class="math" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>.</p>
+<p>If an increasing or decreasing sequence fails to stabilize, it has strict finite subsequences of arbitrarily large length. Add <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span> as endpoints, omit any repeated endpoint, and reverse the order in the increasing case. This contradicts a uniform bound on (2.1). Thus <span class="math" data-tex="\(2\Rightarrow3\)">\(2\Rightarrow3\)</span>.</p>
+<p>The implication <span class="math" data-tex="\(3\Rightarrow1\)">\(3\Rightarrow1\)</span> is the existence interface of <a href="https://stacks.math.columbia.edu/tag/0FCJ">Stacks, Lemma 12.9.6</a>. Its chain choices can be made directly under our ambient convention. For any nonzero subobject <span class="math" data-tex="\(Y\subseteq X\)">\(Y\subseteq X\)</span>, the nonempty set of proper subobjects of <span class="math" data-tex="\(Y\)">\(Y\)</span> has a maximal member: otherwise choice constructs an infinite strictly increasing sequence of proper subobjects, contrary to the ascending chain condition inherited from <span class="math" data-tex="\(X\)">\(X\)</span>. A maximal proper subobject <span class="math" data-tex="\(Z\subsetneq Y\)">\(Z\subsetneq Y\)</span> has simple quotient. Indeed, a nonzero proper subobject of <span class="math" data-tex="\(Y/Z\)">\(Y/Z\)</span> pulls back to a subobject strictly between <span class="math" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>. Starting at <span class="math" data-tex="\(X\)">\(X\)</span>, repeatedly choose a maximal proper subobject of the current nonzero term. An infinite such process contradicts the descending chain condition. A finite process can stop only at <span class="math" data-tex="\(0\)">\(0\)</span>, and all its successive quotients are simple. Reversing this descending series gives (1.1). For <span class="math" data-tex="\(X=0\)">\(X=0\)</span>, use the empty series.</p>
+<p>For <span class="math" data-tex="\(3\Rightarrow4\)">\(3\Rightarrow4\)</span>, any nonempty set of subobjects has a maximal member under the ascending chain condition, by the same countable-choice argument. Let <span class="math" data-tex="\(B\)">\(B\)</span> be maximal in a filtered family. For any member <span class="math" data-tex="\(C\)">\(C\)</span>, choose <span class="math" data-tex="\(D\)">\(D\)</span> in the family with <span class="math" data-tex="\(B,C\subseteq D\)">\(B,C\subseteq D\)</span>. Maximality gives <span class="math" data-tex="\(D=B\)">\(D=B\)</span>, hence <span class="math" data-tex="\(C\subseteq B\)">\(C\subseteq B\)</span>; thus <span class="math" data-tex="\(B\)">\(B\)</span> is greatest. Under the descending chain condition, choose a minimal member of a cofiltered family. A common lower bound then proves that it is least.</p>
+<p>Conversely, the members of any increasing sequence form a nonempty filtered set. Its greatest member occurs at some index <span class="math" data-tex="\(j\)">\(j\)</span>; all later terms equal it. The members of a decreasing sequence form a cofiltered set, and its least member forces the same eventual equality. Thus <span class="math" data-tex="\(4\Rightarrow3\)">\(4\Rightarrow3\)</span>.</p>
+<p>Finally, if a second composition series has <span class="math" data-tex="\(m\)">\(m\)</span> factors, it is itself a chain (2.1). The bound obtained from (1.1) gives <span class="math" data-tex="\(m\le n\)">\(m\le n\)</span>. Interchanging the series gives <span class="math" data-tex="\(n\le m\)">\(n\le m\)</span>, so <span class="math" data-tex="\(n=m\)">\(n=m\)</span>. The series (1.1) attains the bound <span class="math" data-tex="\(n\)">\(n\)</span>, proving minimality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Write <span class="math" data-tex="\(\ell(X)\)">\(\ell(X)\)</span> for this integer, called the <em>length</em>. In particular <span class="math" data-tex="\(\ell(0)=0\)">\(\ell(0)=0\)</span>. The stronger canonical Jordan–Hölder theorem identifies the multiset of simple factors up to isomorphism, not just its size. Its hypotheses are exactly the finite-length conditions above; see <a href="https://stacks.math.columbia.edu/tag/0FCK">Stacks, Lemma 12.9.7</a>. We retain that stronger result by reference. The rank estimate supplies the additional uniform bound for arbitrary chains.</p>
+<h2 id="3-exact-sequences-count-the-factors">3. Exact sequences count the factors</h2>
+<p><strong>Proposition 3.1.</strong> Subobjects and quotients of a finite-length object have finite length. In a short exact sequence</p>
+<span class="math math-display" data-tex="\[
+0\to A\to E\to D\to0,
+\tag{3.1}
+\]">\[
+0\to A\to E\to D\to0,
+\tag{3.1}
+\]</span>
+<p><span class="math" data-tex="\(E\)">\(E\)</span> has finite length if and only if both <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> do. In that case</p>
+<span class="math math-display" data-tex="\[
+\ell(E)=\ell(A)+\ell(D).
+\tag{3.2}
+\]">\[
+\ell(E)=\ell(A)+\ell(D).
+\tag{3.2}
+\]</span>
+<p><strong>Proof.</strong> For a subobject, use the intersection filtration (1.3): all successive quotients are zero or simple, and repetitions can be removed. For a quotient <span class="math" data-tex="\(X\twoheadrightarrow Q\)">\(X\twoheadrightarrow Q\)</span>, let <span class="math" data-tex="\(N_i\)">\(N_i\)</span> be the image of <span class="math" data-tex="\(M_i\)">\(M_i\)</span> in <span class="math" data-tex="\(Q\)">\(Q\)</span>. The composite <span class="math" data-tex="\(M_i\twoheadrightarrow N_i\twoheadrightarrow N_i/N_{i-1}\)">\(M_i\twoheadrightarrow N_i\twoheadrightarrow N_i/N_{i-1}\)</span> is epic and kills <span class="math" data-tex="\(M_{i-1}\)">\(M_{i-1}\)</span>. It induces an epimorphism <span class="math" data-tex="\(S_i\twoheadrightarrow N_i/N_{i-1}\)">\(S_i\twoheadrightarrow N_i/N_{i-1}\)</span>, whose target is zero or simple. Removing repetitions again gives a composition series.</p>
+<p>Suppose now the ends of (3.1) have composition series. Take the series of <span class="math" data-tex="\(A\)">\(A\)</span> inside <span class="math" data-tex="\(E\)">\(E\)</span>, then append the inverse images in <span class="math" data-tex="\(E\)">\(E\)</span> of the series of <span class="math" data-tex="\(D\)">\(D\)</span>, starting above <span class="math" data-tex="\(A\)">\(A\)</span>. Pullbacks of epimorphisms in an abelian category are epic. At each step the inverse-image quotient is therefore the corresponding simple quotient in <span class="math" data-tex="\(D\)">\(D\)</span>: its quotient map has the preceding inverse image as kernel, and coimage–image factorization identifies the quotient. The concatenated series has <span class="math" data-tex="\(\ell(A)+\ell(D)\)">\(\ell(A)+\ell(D)\)</span> factors. Theorem 2.1 gives (3.2). The converse follows from subobject and quotient closure already proved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, an object of length one is simple. In (3.1), if <span class="math" data-tex="\(E\)">\(E\)</span> has finite length and <span class="math" data-tex="\(A\ne0\)">\(A\ne0\)</span>, then <span class="math" data-tex="\(\ell(D)&lt;\ell(E)\)">\(\ell(D)&lt;\ell(E)\)</span>. This assertion uses actual exact quotients; a poset with both chain conditions need not admit a uniform finite bound, as Exercise 4 shows.</p>
+<h2 id="4-graded-exercises-with-full-solutions">4. Graded exercises with full solutions</h2>
+<p><strong>Exercise 1 — Introductory.</strong> Fix a field <span class="math" data-tex="\(k\)">\(k\)</span>. Consider the category whose objects are linear maps <span class="math" data-tex="\(f:V\to W\)">\(f:V\to W\)</span> between finite-dimensional <span class="math" data-tex="\(k\)">\(k\)</span>-vector spaces and whose morphisms are commuting squares. Determine its simple objects and the length of <span class="math" data-tex="\(f\)">\(f\)</span>. Show that the identity and zero maps <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span> have the same simple-factor multiset but are not isomorphic.</p>
+<p><strong>Solution.</strong> Kernels and cokernels of a commuting square are computed at each vertex, with the arrow induced by commutativity. The vector-space universal properties give the square universal properties. The coimage–image maps are componentwise isomorphisms, and finite biproducts are componentwise; hence the category is abelian.</p>
+<p>If <span class="math" data-tex="\(W\ne0\)">\(W\ne0\)</span>, any line <span class="math" data-tex="\(L\subseteq W\)">\(L\subseteq W\)</span> gives a nonzero subobject <span class="math" data-tex="\((0\to L)\)">\((0\to L)\)</span> of <span class="math" data-tex="\((V\xrightarrow f W)\)">\((V\xrightarrow f W)\)</span>. A simple object with <span class="math" data-tex="\(W\ne0\)">\(W\ne0\)</span> must therefore have <span class="math" data-tex="\(V=0\)">\(V=0\)</span> and <span class="math" data-tex="\(\dim W=1\)">\(\dim W=1\)</span>. If <span class="math" data-tex="\(W=0\)">\(W=0\)</span>, simplicity is exactly <span class="math" data-tex="\(\dim V=1\)">\(\dim V=1\)</span>. Conversely <span class="math" data-tex="\((k\to0)\)">\((k\to0)\)</span> and <span class="math" data-tex="\((0\to k)\)">\((0\to k)\)</span> have no other subobjects, so these are all simples up to isomorphism.</p>
+<p>There is a componentwise short exact sequence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to(0\to W)\to(V\xrightarrow f W)\\
+{}\to(V\to0)\to0.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+0\to(0\to W)\to(V\xrightarrow f W)\\
+{}\to(V\to0)\to0.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Flags of lines in <span class="math" data-tex="\(W\)">\(W\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> give lengths <span class="math" data-tex="\(\dim W\)">\(\dim W\)</span> and <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span> for its ends. Proposition 3.1 yields <span class="math" data-tex="\(\ell(f)=\dim V+\dim W\)">\(\ell(f)=\dim V+\dim W\)</span>, independently of the rank of <span class="math" data-tex="\(f\)">\(f\)</span>. Both maps <span class="math" data-tex="\(k\to k\)">\(k\to k\)</span> thus have one factor of each simple type. An isomorphism of arrow objects consists of invertible changes of basis at both vertices; these preserve rank. Ranks one and zero cannot be isomorphic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 2 — Intermediate.</strong> In the category of abelian groups, show that <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is Noetherian but not Artinian, and that the Prüfer group <span class="math" data-tex="\(P=\mathbb Z[1/p]/\mathbb Z\)">\(P=\mathbb Z[1/p]/\mathbb Z\)</span>, for a prime <span class="math" data-tex="\(p\)">\(p\)</span>, is Artinian but not Noetherian. Exhibit a cofiltered family without a least member in the first group and a filtered family without a greatest member in the second.</p>
+<p><strong>Solution.</strong> Every nonzero subgroup of <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> has the form <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span> for a positive integer <span class="math" data-tex="\(d\)">\(d\)</span>: choose its least positive element and use division with remainder. Once an increasing sequence reaches a nonzero subgroup <span class="math" data-tex="\(d\mathbb Z\)">\(d\mathbb Z\)</span>, its later positive generators divide their predecessors. A strict increase strictly decreases the positive generator, so only finitely many increases occur. A sequence remaining zero is stationary too. Thus <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> is Noetherian. The strictly decreasing chain <span class="math" data-tex="\(\mathbb Z\supsetneq2\mathbb Z\supsetneq4\mathbb Z\supsetneq\cdots\)">\(\mathbb Z\supsetneq2\mathbb Z\supsetneq4\mathbb Z\supsetneq\cdots\)</span> disproves the Artinian condition.</p>
+<p>Put <span class="math" data-tex="\(P_n=p^{-n}\mathbb Z/\mathbb Z\)">\(P_n=p^{-n}\mathbb Z/\mathbb Z\)</span>, with <span class="math" data-tex="\(P_0=0\)">\(P_0=0\)</span>. Each is cyclic of order <span class="math" data-tex="\(p^n\)">\(p^n\)</span>, and <span class="math" data-tex="\(P=\bigcup_{n\ge0}P_n\)">\(P=\bigcup_{n\ge0}P_n\)</span>. An element of order <span class="math" data-tex="\(p^n\)">\(p^n\)</span> generates <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, because its numerator is relatively prime to <span class="math" data-tex="\(p\)">\(p\)</span>. If a subgroup has elements of unbounded orders, it contains every <span class="math" data-tex="\(P_n\)">\(P_n\)</span> and equals <span class="math" data-tex="\(P\)">\(P\)</span>. Otherwise the occurring orders are bounded; choose their largest exponent <span class="math" data-tex="\(n\)">\(n\)</span>, and an element of that order. The subgroup is contained in <span class="math" data-tex="\(P_n\)">\(P_n\)</span> and contains it, so it equals <span class="math" data-tex="\(P_n\)">\(P_n\)</span>. The zero subgroup is included by <span class="math" data-tex="\(n=0\)">\(n=0\)</span>.</p>
+<p>A decreasing chain of subgroups either stays equal to <span class="math" data-tex="\(P\)">\(P\)</span>, or enters some finite <span class="math" data-tex="\(P_n\)">\(P_n\)</span>, where it stabilizes. Hence <span class="math" data-tex="\(P\)">\(P\)</span> is Artinian. The strict ascending chain <span class="math" data-tex="\(P_0\subsetneq P_1\subsetneq P_2\subsetneq\cdots\)">\(P_0\subsetneq P_1\subsetneq P_2\subsetneq\cdots\)</span> shows it is not Noetherian. The set <span class="math" data-tex="\(\{2^n\mathbb Z:n\ge0\}\)">\(\{2^n\mathbb Z:n\ge0\}\)</span> is cofiltered with no least member, and <span class="math" data-tex="\(\{P_n:n\ge0\}\)">\(\{P_n:n\ge0\}\)</span> is filtered with no greatest member. The theorem requires both chain conditions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 3 — Advanced.</strong> Let <span class="math" data-tex="\(F:\mathcal A\to\mathcal B\)">\(F:\mathcal A\to\mathcal B\)</span> be an exact functor of abelian categories, and let <span class="math" data-tex="\(X\)">\(X\)</span> have simple factors <span class="math" data-tex="\(S_1,\ldots,S_n\)">\(S_1,\ldots,S_n\)</span>. Assume each <span class="math" data-tex="\(F(S_i)\)">\(F(S_i)\)</span> has finite length. Prove that <span class="math" data-tex="\(F(X)\)">\(F(X)\)</span> has finite length and compute its length from these images. Apply this to evaluation at the source vertex in Exercise 1. Give an exact functor that does not preserve finite length.</p>
+<p><strong>Solution.</strong> Exactness gives, at every step of a composition series,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\to F(M_{i-1})\to F(M_i)\\
+{}\to F(S_i)\to0.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+0\to F(M_{i-1})\to F(M_i)\\
+{}\to F(S_i)\to0.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>Starting with <span class="math" data-tex="\(F(M_0)=0\)">\(F(M_0)=0\)</span>, Proposition 3.1 proves finite length inductively and gives</p>
+<span class="math math-display" data-tex="\[
+\ell(F(X))=\sum_{i=1}^n\ell(F(S_i)).
+\tag{4.3}
+\]">\[
+\ell(F(X))=\sum_{i=1}^n\ell(F(S_i)).
+\tag{4.3}
+\]</span>
+<p>If each image is simple or zero, the sum counts the surviving factors. Evaluation <span class="math" data-tex="\((V\to W)\mapsto V\)">\((V\to W)\mapsto V\)</span> is exact because sequences of arrow objects are exact at both vertices. It sends <span class="math" data-tex="\((k\to0)\)">\((k\to0)\)</span> to <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\((0\to k)\)">\((0\to k)\)</span> to zero. Thus it gives length <span class="math" data-tex="\(\dim V\)">\(\dim V\)</span>, as expected.</p>
+<p>The forgetful functor from <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>-vector spaces to abelian groups is exact: kernels, images and quotients have the same underlying additive groups. The one-dimensional vector space <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> has length one, but its underlying group contains the strict ascending chain</p>
+<span class="math math-display" data-tex="\[
+\mathbb Z\subsetneq2^{-1}\mathbb Z\subsetneq2^{-2}\mathbb Z\subsetneq\cdots.
+\tag{4.4}
+\]">\[
+\mathbb Z\subsetneq2^{-1}\mathbb Z\subsetneq2^{-2}\mathbb Z\subsetneq\cdots.
+\tag{4.4}
+\]</span>
+<p>The underlying group is not Noetherian and has no finite length. Exactness alone does not supply the hypothesis on the images of the simple factors. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Exercise 4 — Expert.</strong> Form a poset with bottom <span class="math" data-tex="\(0\)">\(0\)</span>, top <span class="math" data-tex="\(1\)">\(1\)</span>, and, for every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, an arm</p>
+<span class="math math-display" data-tex="\[
+0&lt;a_{n,1}&lt;\cdots&lt;a_{n,n}&lt;1.
+\tag{4.5}
+\]">\[
+0&lt;a_{n,1}&lt;\cdots&lt;a_{n,n}&lt;1.
+\tag{4.5}
+\]</span>
+<p>Elements on different arms are incomparable. Show that both sequential chain conditions hold, and that every nonempty filtered family has a greatest member and every nonempty cofiltered family a least member. Show that the lengths of finite strict chains are unbounded. Explain why this does not contradict Theorem 2.1 by checking a failure of modularity.</p>
+<p><strong>Solution.</strong> A monotone sequence can use at most one arm, apart from the common endpoints: passing to a different arm would require an increase to <span class="math" data-tex="\(1\)">\(1\)</span>, or a decrease to <span class="math" data-tex="\(0\)">\(0\)</span>, after which the corresponding monotone sequence is constant. Each arm is finite, so every monotone sequence stabilizes.</p>
+<p>If a filtered family contains elements of two different arms, their only common upper bound is <span class="math" data-tex="\(1\)">\(1\)</span>, which must belong to the family and is greatest. Otherwise the family, unless it already contains <span class="math" data-tex="\(1\)">\(1\)</span>, lies in one finite arm together with possibly <span class="math" data-tex="\(0\)">\(0\)</span>; its greatest member exists. The remaining family <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span> is immediate. Dually, a cofiltered family meeting two arms must contain <span class="math" data-tex="\(0\)">\(0\)</span>; otherwise it lies in one finite arm together with possibly <span class="math" data-tex="\(1\)">\(1\)</span>, and has a least member. These statements also include singleton endpoint families.</p>
+<p>The <span class="math" data-tex="\(n\)">\(n\)</span>-th arm has <span class="math" data-tex="\(n+1\)">\(n+1\)</span> strict steps from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>, so no uniform bound exists. The poset is a lattice: on one arm use its order, while the meet of elements on different arms is <span class="math" data-tex="\(0\)">\(0\)</span> and their join is <span class="math" data-tex="\(1\)">\(1\)</span>. Put <span class="math" data-tex="\(x=a_{2,1}\)">\(x=a_{2,1}\)</span>, <span class="math" data-tex="\(z=a_{2,2}\)">\(z=a_{2,2}\)</span>, and <span class="math" data-tex="\(y=a_{1,1}\)">\(y=a_{1,1}\)</span>. Then <span class="math" data-tex="\(x\le z\)">\(x\le z\)</span>, but</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x\vee(y\wedge z)=x,\\
+(x\vee y)\wedge z=z.
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+x\vee(y\wedge z)=x,\\
+(x\vee y)\wedge z=z.
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>Thus the modular identity fails. Here is the categorical comparison for actual subobjects <span class="math" data-tex="\(B\subseteq C\)">\(B\subseteq C\)</span> of an object <span class="math" data-tex="\(X\)">\(X\)</span>. Let <span class="math" data-tex="\(q:X\to X/C\)">\(q:X\to X/C\)</span>. The kernel of the composite <span class="math" data-tex="\(B\oplus D\to B+D\to X/C\)">\(B\oplus D\to B+D\to X/C\)</span> is <span class="math" data-tex="\(B\oplus(D\cap C)\)">\(B\oplus(D\cap C)\)</span>, since <span class="math" data-tex="\(q\)">\(q\)</span> kills <span class="math" data-tex="\(B\)">\(B\)</span>. Pulling the epimorphism <span class="math" data-tex="\(B\oplus D\to B+D\)">\(B\oplus D\to B+D\)</span> back along the kernel of <span class="math" data-tex="\(B+D\to X/C\)">\(B+D\to X/C\)</span> gives an epimorphism</p>
+<span class="math math-display" data-tex="\[
+B\oplus(D\cap C)\twoheadrightarrow (B+D)\cap C.
+\tag{4.7}
+\]">\[
+B\oplus(D\cap C)\twoheadrightarrow (B+D)\cap C.
+\tag{4.7}
+\]</span>
+<p>Its image in <span class="math" data-tex="\(X\)">\(X\)</span> is <span class="math" data-tex="\(B+(D\cap C)\)">\(B+(D\cap C)\)</span>; thus <span class="math" data-tex="\(B+(D\cap C)=(B+D)\cap C\)">\(B+(D\cap C)=(B+D)\cap C\)</span>. This proves modularity of an abelian subobject lattice, so the lattice in this exercise cannot be one. Proposition 1.2 uses the stronger exact-filtration structure to obtain the bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-references-and-scope">5. References and scope</h2>
+<p>Length of objects and the Jordan–Hölder theorem are also treated in Pavel Etingof, Shlomo Gelaki, Dmitri Nikshych and Victor Ostrik, <a href="https://math.mit.edu/~etingof/egnobookfinal.pdf"><em>Tensor Categories</em></a>, author's final version, Section 1.5. Canonical existence and the stronger simple-factor uniqueness are retained from Stacks Tags <a href="https://stacks.math.columbia.edu/tag/0FCJ">0FCJ</a> and <a href="https://stacks.math.columbia.edu/tag/0FCK">0FCK</a>. Tags <a href="https://stacks.math.columbia.edu/tag/05SP">05SP</a> and <a href="https://stacks.math.columbia.edu/tag/0127">0127</a> describe induced graded pieces and finite filtered comparison. The proof here needs only their finite kernel and short exact sequence interfaces, and states the choice universe explicitly. The exercises apply these interfaces to arrow representations, abelian groups, exact functors and a lattice that fails modularity.</p>
+</main></body></html>

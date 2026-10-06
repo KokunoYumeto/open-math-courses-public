@@ -1,0 +1,555 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Filtered stages and finite limits</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="filtered-stages-and-finite-limits">Filtered stages and finite limits</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text: CC0. Internal Ultra workflows contributed bounded proof and validation work; the course writer integrated and checked the result.</em></p>
+<p>A finite list of representatives can be moved to one common stage of a filtered diagram. A finite list of equations can then be made true at a later stage. These two operations explain the quotient model for filtered colimits, the underlying set of a module colimit, and the commutation of filtered colimits with finite limits of sets. The converse theorem shows that this behavior detects filteredness itself.</p>
+<p>Fix a universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. The index of every Set or module colimit below is <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small, and its values are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. A finite category has finitely many objects and finitely many arrows. For that criterion, categories and their Hom sets are considered in an ambient universe. The elementary filteredness criterion itself does not impose smallness in the fixed working universe; smallness is needed when forming the stated Set colimits. Use the full proofs of <a href="universes-and-small-categories.html#2-building-sets-inside-a-universe">small tagged unions, quotients and function sets</a>, the <a href="colimits-as-connected-components.html#1-identify-every-transported-element">general Set colimit and covariant represented singleton</a>, and <a href="compatible-families-and-universal-cones.html">compatible families and finite limit tests</a>. Modules are left modules over associative unital rings.</p>
+<h2 id="1-bring-a-finite-diagram-to-one-object">1. Bring a finite diagram to one object</h2>
+<p>A category <span class="math" data-tex="\(I\)">\(I\)</span> is <strong>filtered</strong> when it has the following three properties.</p>
+<ol>
+<li>It has at least one object.</li>
+<li>Given objects <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, there are an object <span class="math" data-tex="\(k\)">\(k\)</span> and arrows <span class="math" data-tex="\(i\to k\)">\(i\to k\)</span>, <span class="math" data-tex="\(j\to k\)">\(j\to k\)</span>.</li>
+<li>Given parallel arrows <span class="math" data-tex="\(f,g : i\to j\)">\(f,g : i\to j\)</span>, there is an arrow <span class="math" data-tex="\(h : j\to k\)">\(h : j\to k\)</span> with <span class="math" data-tex="\(hf=hg\)">\(hf=hg\)</span>.</li>
+</ol>
+<p>The second condition brings objects together. The third repairs disagreement between arrows. Neither condition says that the chosen object or arrow is universal. For a partially ordered set, viewed as a category with one arrow <span class="math" data-tex="\(i\to j\)">\(i\to j\)</span> when <span class="math" data-tex="\(i\leq j\)">\(i\leq j\)</span>, parallel arrows already agree. Filteredness then means nonemptiness and a common upper bound for each pair. For instance <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> with its usual order is filtered. More generally, a category with a terminal object is filtered: the unique maps to that object both give common targets and equalize parallel arrows.</p>
+<p>Here <strong>finite category</strong> means that both its object set and its arrow set are finite. A diagram with finitely many objects can still have infinitely many arrows; the next assertion concerns finite categories in the stated sense.</p>
+<p><strong>Proposition 1.1.</strong> A category <span class="math" data-tex="\(I\)">\(I\)</span> is filtered if and only if every functor <span class="math" data-tex="\(\phi : J\to I\)">\(\phi : J\to I\)</span> from a finite category admits a cocone. Thus some object <span class="math" data-tex="\(k\in I\)">\(k\in I\)</span> has a family</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_a : \phi(a)\longrightarrow k
+\quad(a\in J),\\
+u_b\circ\phi(\alpha)=u_a
+\quad(\alpha : a\to b).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+u_a : \phi(a)\longrightarrow k
+\quad(a\in J),\\
+u_b\circ\phi(\alpha)=u_a
+\quad(\alpha : a\to b).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>For clarity, the compatible-family set in this statement is a limit of a contravariant Hom diagram. For a fixed <span class="math" data-tex="\(k\)">\(k\)</span>, define <span class="math" data-tex="\(F_k : J^{\mathrm{op}}\to\mathsf{Set}\)">\(F_k : J^{\mathrm{op}}\to\mathsf{Set}\)</span> by</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F_k(a)&amp;=\operatorname{Hom}_I(\phi(a),k),\\
+F_k(\alpha^{\mathrm{op}})(u)&amp;=u\circ\phi(\alpha).
+\end{aligned}
+\]">\[
+\begin{aligned}
+F_k(a)&amp;=\operatorname{Hom}_I(\phi(a),k),\\
+F_k(\alpha^{\mathrm{op}})(u)&amp;=u\circ\phi(\alpha).
+\end{aligned}
+\]</span>
+<p>Then the families (1.1) form <span class="math" data-tex="\(\varprojlim_{J^{\mathrm{op}}}F_k\)">\(\varprojlim_{J^{\mathrm{op}}}F_k\)</span>. The assertion is that this set is nonempty for some <span class="math" data-tex="\(k\)">\(k\)</span>. When <span class="math" data-tex="\(J\)">\(J\)</span> is empty its compatible-family set is a singleton for each existing <span class="math" data-tex="\(k\)">\(k\)</span>; requiring such a <span class="math" data-tex="\(k\)">\(k\)</span> still tests nonemptiness of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><strong>Proof.</strong> Suppose first that <span class="math" data-tex="\(I\)">\(I\)</span> is filtered. Choose an object of <span class="math" data-tex="\(I\)">\(I\)</span>, even if <span class="math" data-tex="\(J\)">\(J\)</span> has no objects. Enumerate the objects of <span class="math" data-tex="\(J\)">\(J\)</span>. Incorporate them one at a time: if arrows from the objects already incorporated end at <span class="math" data-tex="\(c\)">\(c\)</span>, choose a common target <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span> of <span class="math" data-tex="\(c\)">\(c\)</span> and the next <span class="math" data-tex="\(\phi(a)\)">\(\phi(a)\)</span>. Postcompose the old arrows by <span class="math" data-tex="\(c\to c&#x27;\)">\(c\to c&#x27;\)</span>, and use <span class="math" data-tex="\(\phi(a)\to c&#x27;\)">\(\phi(a)\to c&#x27;\)</span> for the new object. After finitely many steps this gives an object <span class="math" data-tex="\(c_0\)">\(c_0\)</span> and arrows <span class="math" data-tex="\(u_a^{(0)} : \phi(a)\to c_0\)">\(u_a^{(0)} : \phi(a)\to c_0\)</span> for every object <span class="math" data-tex="\(a\)">\(a\)</span>. These arrows need not yet respect the diagram.</p>
+<p>Enumerate its nonidentity arrows as <span class="math" data-tex="\(\alpha_1,\ldots,\alpha_m\)">\(\alpha_1,\ldots,\alpha_m\)</span>. At step <span class="math" data-tex="\(r\)">\(r\)</span>, write <span class="math" data-tex="\(\alpha_r : a\to b\)">\(\alpha_r : a\to b\)</span>. The arrows <span class="math" data-tex="\(u_a^{(r-1)}\)">\(u_a^{(r-1)}\)</span> and <span class="math" data-tex="\(u_b^{(r-1)}\phi(\alpha_r)\)">\(u_b^{(r-1)}\phi(\alpha_r)\)</span> have the same source and target. Choose <span class="math" data-tex="\(h_r : c_{r-1}\to c_r\)">\(h_r : c_{r-1}\to c_r\)</span> equalizing them, and replace every component by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_d^{(r)}=h_r\circ u_d^{(r-1)},\\
+u_b^{(r)}\circ\phi(\alpha_r)=u_a^{(r)}.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+u_d^{(r)}=h_r\circ u_d^{(r-1)},\\
+u_b^{(r)}\circ\phi(\alpha_r)=u_a^{(r)}.
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>Any equation installed at an earlier step remains true after this common postcomposition. Thus the final family satisfies every nonidentity-arrow equation. Identity equations hold automatically. If there are no nonidentity arrows, the initial family already suffices; if there are no objects, the initially chosen object and the empty family suffice. This constructs the cocone in every case. The same construction works for any finite graph of specified objects and arrows: enumerate its vertices and then its edges, with each edge imposing its one equation. There is no need to close the graph under compositions or assume it acyclic.</p>
+<p>Conversely, assume every finite diagram admits a cocone. The diagram with empty domain supplies an object of <span class="math" data-tex="\(I\)">\(I\)</span>. The diagram from the discrete two-object category, sending its objects to any specified <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, supplies a common target and two arrows to it. Finally use the category with two objects and exactly two nonidentity arrows from the first to the second. Send these arrows to specified parallel <span class="math" data-tex="\(f,g : i\to j\)">\(f,g : i\to j\)</span>. A cocone has components <span class="math" data-tex="\(u_i : i\to k\)">\(u_i : i\to k\)</span>, <span class="math" data-tex="\(u_j : j\to k\)">\(u_j : j\to k\)</span> with <span class="math" data-tex="\(u_jf=u_i=u_jg\)">\(u_jf=u_i=u_jg\)</span>. Its second component is the required equalizing arrow. All three filteredness conditions follow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A category is <strong>cofiltered</strong> when its opposite is filtered. In its own arrow directions this means nonemptiness, a common source <span class="math" data-tex="\(k\to i\)">\(k\to i\)</span>, <span class="math" data-tex="\(k\to j\)">\(k\to j\)</span> for each pair of objects, and an arrow <span class="math" data-tex="\(h : k\to i\)">\(h : k\to i\)</span> with <span class="math" data-tex="\(fh=gh\)">\(fh=gh\)</span> for each parallel <span class="math" data-tex="\(f,g : i\to j\)">\(f,g : i\to j\)</span>. Applying Proposition 1.1 to the opposite categories gives the dual finite-diagram statement: every finite diagram <span class="math" data-tex="\(\phi : J\to I\)">\(\phi : J\to I\)</span> has a cone, with arrows <span class="math" data-tex="\(w_a : k\to\phi(a)\)">\(w_a : k\to\phi(a)\)</span> satisfying <span class="math" data-tex="\(\phi(\alpha)w_a=w_b\)">\(\phi(\alpha)w_a=w_b\)</span>. In a partially ordered set, cofilteredness is the common-lower-bound condition. The empty category is neither filtered nor cofiltered.</p>
+<h2 id="2-equality-of-elements-has-a-common-witness">2. Equality of elements has a common witness</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be small and filtered, and let <span class="math" data-tex="\(D : I\to\mathsf{Set}_{\mathcal U}\)">\(D : I\to\mathsf{Set}_{\mathcal U}\)</span>. Smallness refers to the fixed working universe. The complete relabelling, tagged-union and quotient bounds are retained in <a href="universes-and-small-categories.html#2-building-sets-inside-a-universe">Universes and small categories, Sections 2–4</a>. They ensure that the following tagged union, and subsequently its quotient, are <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small. If labels are not universe members, transport the resulting small set to an encoded representative.</p>
+<p>Form <span class="math" data-tex="\(T=\coprod_{i\in\operatorname{Ob}I}D(i)\)">\(T=\coprod_{i\in\operatorname{Ob}I}D(i)\)</span>. Write an element as <span class="math" data-tex="\((i,x)\)">\((i,x)\)</span>, retaining its stage <span class="math" data-tex="\(i\)">\(i\)</span>. Define a relation by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(i,x)\sim(j,y)\\
+\Longleftrightarrow\\
+\text{there exist }p : i\to k,\ q : j\to k\\
+\text{with }D(p)(x)=D(q)(y).
+\end{gathered}
+\tag{2.1}
+\]">\[
+\begin{gathered}
+(i,x)\sim(j,y)\\
+\Longleftrightarrow\\
+\text{there exist }p : i\to k,\ q : j\to k\\
+\text{with }D(p)(x)=D(q)(y).
+\end{gathered}
+\tag{2.1}
+\]</span>
+<p><strong>Proposition 2.1.</strong> This is an equivalence relation. The quotient <span class="math" data-tex="\(Q=T/{\sim}\)">\(Q=T/{\sim}\)</span>, with maps <span class="math" data-tex="\(c_i : D(i)\to Q\)">\(c_i : D(i)\to Q\)</span> given by <span class="math" data-tex="\(c_i(x)=[i,x]\)">\(c_i(x)=[i,x]\)</span>, is a colimit of <span class="math" data-tex="\(D\)">\(D\)</span>.</p>
+<p><strong>Proof of equivalence.</strong> Identities witness <span class="math" data-tex="\((i,x)\sim(i,x)\)">\((i,x)\sim(i,x)\)</span>. Interchanging the two witness arrows proves symmetry. For transitivity suppose <span class="math" data-tex="\((i,x)\sim(j,y)\)">\((i,x)\sim(j,y)\)</span> has witnesses <span class="math" data-tex="\(p_1 : i\to k\)">\(p_1 : i\to k\)</span>, <span class="math" data-tex="\(p_2 : j\to k\)">\(p_2 : j\to k\)</span>, and <span class="math" data-tex="\((j,y)\sim(r,z)\)">\((j,y)\sim(r,z)\)</span> has witnesses <span class="math" data-tex="\(q_2 : j\to\ell\)">\(q_2 : j\to\ell\)</span>, <span class="math" data-tex="\(q_3 : r\to\ell\)">\(q_3 : r\to\ell\)</span>. Choose a common target <span class="math" data-tex="\(m\)">\(m\)</span> and arrows <span class="math" data-tex="\(a : k\to m\)">\(a : k\to m\)</span>, <span class="math" data-tex="\(b : \ell\to m\)">\(b : \ell\to m\)</span>. The parallel arrows <span class="math" data-tex="\(ap_2,bq_2 : j\to m\)">\(ap_2,bq_2 : j\to m\)</span> can be equalized by an arrow <span class="math" data-tex="\(h : m\to n\)">\(h : m\to n\)</span>. Functoriality gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(hap_1)(x)&amp;=D(hap_2)(y),\\
+&amp;=D(hbq_2)(y),\\
+&amp;=D(hbq_3)(z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(hap_1)(x)&amp;=D(hap_2)(y),\\
+&amp;=D(hbq_2)(y),\\
+&amp;=D(hbq_3)(z).
+\end{aligned}
+\]</span>
+<p>The middle equality uses <span class="math" data-tex="\(hap_2=hbq_2\)">\(hap_2=hbq_2\)</span>; the other two transport the original witness equalities. The arrows <span class="math" data-tex="\(hap_1 : i\to n\)">\(hap_1 : i\to n\)</span> and <span class="math" data-tex="\(hbq_3 : r\to n\)">\(hbq_3 : r\to n\)</span> therefore witness <span class="math" data-tex="\((i,x)\sim(r,z)\)">\((i,x)\sim(r,z)\)</span>.</p>
+<p><strong>Proof of the universal property.</strong> For an arrow <span class="math" data-tex="\(s : i\to j\)">\(s : i\to j\)</span>, the arrows <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(1_j\)">\(1_j\)</span> witness <span class="math" data-tex="\((i,x)\sim(j,D(s)(x))\)">\((i,x)\sim(j,D(s)(x))\)</span>. Hence <span class="math" data-tex="\(c_jD(s)=c_i\)">\(c_jD(s)=c_i\)</span>, so the <span class="math" data-tex="\(c_i\)">\(c_i\)</span> form a cocone.</p>
+<p>Now take any ambient set <span class="math" data-tex="\(S\)">\(S\)</span> and any cocone <span class="math" data-tex="\(v_i : D(i)\to S\)">\(v_i : D(i)\to S\)</span>. If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> witness <span class="math" data-tex="\((i,x)\sim(j,y)\)">\((i,x)\sim(j,y)\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+v_i(x)&amp;=v_k(D(p)(x)),\\
+&amp;=v_k(D(q)(y)),\\
+&amp;=v_j(y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+v_i(x)&amp;=v_k(D(p)(x)),\\
+&amp;=v_k(D(q)(y)),\\
+&amp;=v_j(y).
+\end{aligned}
+\]</span>
+<p>Thus the function on tagged elements descends to a well-defined function</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bar v : Q\longrightarrow S,\\
+\bar v([i,x])=v_i(x),\\
+\bar v\circ c_i=v_i.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\bar v : Q\longrightarrow S,\\
+\bar v([i,x])=v_i(x),\\
+\bar v\circ c_i=v_i.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>Every class has a tagged representative, so a function with these composites must have this value on every class. This proves uniqueness. Conversely, any function <span class="math" data-tex="\(a : Q\to S\)">\(a : Q\to S\)</span> gives the cocone <span class="math" data-tex="\((ac_i)_i\)">\((ac_i)_i\)</span>. These two constructions are inverse; postcomposing by any function <span class="math" data-tex="\(S\to S&#x27;\)">\(S\to S&#x27;\)</span> preserves their elementwise formulas. We have established the whole cocone-factor property, for all ambient targets and hence for the working-universe targets. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This quotient agrees with the general construction in <a href="colimits-as-connected-components.html#1-identify-every-transported-element">Colimits as connected components, Section 1</a>. Indeed our relation contains every generating pair <span class="math" data-tex="\((i,x),(j,D(s)(x))\)">\((i,x),(j,D(s)(x))\)</span>. Conversely, witnesses for (2.1) connect both elements to the single tagged element <span class="math" data-tex="\((k,D(p)(x))\)">\((k,D(p)(x))\)</span> by two generating steps. Since our relation is an equivalence relation, it is exactly the equivalence relation generated by these steps. Filteredness is what makes the common-witness test itself transitive.</p>
+<p>For a natural transformation <span class="math" data-tex="\(\theta:D\to D&#x27;\)">\(\theta:D\to D&#x27;\)</span>, the class formula <span class="math" data-tex="\([i,x]\mapsto[i,\theta_i(x)]\)">\([i,x]\mapsto[i,\theta_i(x)]\)</span> is well-defined. If <span class="math" data-tex="\(p,q\)">\(p,q\)</span> witness an equality, naturality transports it to <span class="math" data-tex="\(D&#x27;(p)\theta_i(x)=D&#x27;(q)\theta_j(y)\)">\(D&#x27;(p)\theta_i(x)=D&#x27;(q)\theta_j(y)\)</span>. The formula preserves identities and composition pointwise and intertwines every structural map. Postcomposition of a target cocone gives the corresponding postcomposition of its unique quotient factor. Thus the quotient is the specified colimit functor as well as a colimit object.</p>
+<p>If all the values <span class="math" data-tex="\(D(i)\)">\(D(i)\)</span> are empty, then <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span> are empty despite <span class="math" data-tex="\(I\)">\(I\)</span> being nonempty. Formula (2.2) is still the unique empty function for every target. More generally, the proof makes no choice of an element from an empty class or an empty value.</p>
+<p><strong>Corollary 2.2 (a finite family at one stage).</strong> For a finite family <span class="math" data-tex="\((\xi_t)_{t\in A}\)">\((\xi_t)_{t\in A}\)</span> of elements of <span class="math" data-tex="\(Q\)">\(Q\)</span>, there are one object <span class="math" data-tex="\(k\)">\(k\)</span> and elements <span class="math" data-tex="\(y_t\in D(k)\)">\(y_t\in D(k)\)</span> with <span class="math" data-tex="\(c_k(y_t)=\xi_t\)">\(c_k(y_t)=\xi_t\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>. In particular every finite subset of <span class="math" data-tex="\(Q\)">\(Q\)</span> lies in the image of one <span class="math" data-tex="\(c_k\)">\(c_k\)</span>.</p>
+<p><strong>Proof.</strong> Choose representatives <span class="math" data-tex="\(\xi_t=[i_t,x_t]\)">\(\xi_t=[i_t,x_t]\)</span>. The finite-object part of Proposition 1.1 supplies a common target <span class="math" data-tex="\(k\)">\(k\)</span> and arrows <span class="math" data-tex="\(p_t : i_t\to k\)">\(p_t : i_t\to k\)</span>. Set <span class="math" data-tex="\(y_t=D(p_t)(x_t)\)">\(y_t=D(p_t)(x_t)\)</span>. The cocone equations give <span class="math" data-tex="\(c_k(y_t)=c_{i_t}(x_t)=\xi_t\)">\(c_k(y_t)=c_{i_t}(x_t)=\xi_t\)</span>. For an empty family, choose any object of <span class="math" data-tex="\(I\)">\(I\)</span>; there are no elements to supply and no equations to check. This does not require <span class="math" data-tex="\(D(k)\)">\(D(k)\)</span> to be nonempty. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 2.3 (one arrow for a same-stage equality).</strong> For <span class="math" data-tex="\(x,y\in D(i)\)">\(x,y\in D(i)\)</span>, the following conditions are equivalent:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_i(x)=c_i(y);\\
+\text{there exist }s : i\to j\\
+\text{with }D(s)(x)=D(s)(y).
+\end{gathered}
+\tag{2.3}
+\]">\[
+\begin{gathered}
+c_i(x)=c_i(y);\\
+\text{there exist }s : i\to j\\
+\text{with }D(s)(x)=D(s)(y).
+\end{gathered}
+\tag{2.3}
+\]</span>
+<p><strong>Proof.</strong> Equality of the classes gives witnesses <span class="math" data-tex="\(p,q : i\to k\)">\(p,q : i\to k\)</span> with <span class="math" data-tex="\(D(p)(x)=D(q)(y)\)">\(D(p)(x)=D(q)(y)\)</span>. These may be different arrows. Choose <span class="math" data-tex="\(h : k\to j\)">\(h : k\to j\)</span> with <span class="math" data-tex="\(hp=hq\)">\(hp=hq\)</span>, and put <span class="math" data-tex="\(s=hp=hq\)">\(s=hp=hq\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D(s)(x)&amp;=D(h)(D(p)(x)),\\
+&amp;=D(h)(D(q)(y)),\\
+&amp;=D(s)(y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+D(s)(x)&amp;=D(h)(D(p)(x)),\\
+&amp;=D(h)(D(q)(y)),\\
+&amp;=D(s)(y).
+\end{aligned}
+\]</span>
+<p>Conversely, equality after a single <span class="math" data-tex="\(s\)">\(s\)</span> implies equality in <span class="math" data-tex="\(Q\)">\(Q\)</span> by the cocone equation <span class="math" data-tex="\(c_jD(s)=c_i\)">\(c_jD(s)=c_i\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A finite list of same-stage equations can be made true by one arrow. For pairs <span class="math" data-tex="\(x_t,y_t\in D(i)\)">\(x_t,y_t\in D(i)\)</span> with <span class="math" data-tex="\(c_i(x_t)=c_i(y_t)\)">\(c_i(x_t)=c_i(y_t)\)</span>, choose witnesses <span class="math" data-tex="\(s_t:i\to j_t\)">\(s_t:i\to j_t\)</span> from Corollary 2.3. A cocone on the finite graph of all these arrows gives <span class="math" data-tex="\(s:i\to k\)">\(s:i\to k\)</span> and <span class="math" data-tex="\(v_t:j_t\to k\)">\(v_t:j_t\to k\)</span> with <span class="math" data-tex="\(v_ts_t=s\)">\(v_ts_t=s\)</span>. Applying <span class="math" data-tex="\(D(v_t)\)">\(D(v_t)\)</span> to each witness equation gives <span class="math" data-tex="\(D(s)x_t=D(s)y_t\)">\(D(s)x_t=D(s)y_t\)</span> simultaneously. For an empty list use <span class="math" data-tex="\(1_i\)">\(1_i\)</span>. This synchronization includes the actual arrow composites.</p>
+<p>Both corollaries can fail for a general index. On the discrete two-object category, take one singleton at each object. Its colimit has two elements, while each stage contributes only one; the two-element subset has no common stage. For a separate failure, take objects <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, two arrows <span class="math" data-tex="\(a,b : 0\to1\)">\(a,b : 0\to1\)</span>, and only identity arrows besides these. Put <span class="math" data-tex="\(D(0)=\{t\}\)">\(D(0)=\{t\}\)</span>, <span class="math" data-tex="\(D(1)=\{x,y\}\)">\(D(1)=\{x,y\}\)</span>, with <span class="math" data-tex="\(D(a)(t)=x\)">\(D(a)(t)=x\)</span>, <span class="math" data-tex="\(D(b)(t)=y\)">\(D(b)(t)=y\)</span>. The general colimit identifies <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>, but the only arrow leaving <span class="math" data-tex="\(1\)">\(1\)</span> is its identity, which does not make these distinct elements equal. This category does have common targets for pairs of objects; it lacks an arrow equalizing <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. The distinction between two witness arrows and a single eventual arrow is essential.</p>
+<h2 id="3-the-underlying-set-of-a-module-colimit">3. The underlying set of a module colimit</h2>
+<p>Let <span class="math" data-tex="\(R\)">\(R\)</span> be an associative unital ring, and use left <span class="math" data-tex="\(R\)">\(R\)</span>-modules. Neither commutativity of <span class="math" data-tex="\(R\)">\(R\)</span> nor injectivity of the transition maps is required. Suppose <span class="math" data-tex="\(I\)">\(I\)</span> is small and filtered and <span class="math" data-tex="\(M:I\to\operatorname{Mod}(R)\)">\(M:I\to\operatorname{Mod}(R)\)</span>. Apply Section 2 to the underlying sets, obtaining the small quotient set <span class="math" data-tex="\(Q\)">\(Q\)</span> and maps <span class="math" data-tex="\(c_i:M_i\to Q\)">\(c_i:M_i\to Q\)</span>.</p>
+<p><strong>Theorem 3.1.</strong> There is a unique module structure on <span class="math" data-tex="\(Q\)">\(Q\)</span> for which all <span class="math" data-tex="\(c_i\)">\(c_i\)</span> are linear. With these maps, <span class="math" data-tex="\(Q\)">\(Q\)</span> is the module colimit. Consequently the canonical map from the colimit of underlying sets to the underlying set of the module colimit is a natural bijection.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\([i,x]=c_i(x)\)">\([i,x]=c_i(x)\)</span>. For <span class="math" data-tex="\(x\in M_i\)">\(x\in M_i\)</span>, <span class="math" data-tex="\(y\in M_j\)">\(y\in M_j\)</span>, choose arrows <span class="math" data-tex="\(a:i\to k\)">\(a:i\to k\)</span>, <span class="math" data-tex="\(b:j\to k\)">\(b:j\to k\)</span> and put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+{}[i,x]+[j,y]\\
+=[k,M(a)x+M(b)y],\\
+r[i,x]=[i,rx],\\
+-[i,x]=[i,-x].
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+{}[i,x]+[j,y]\\
+=[k,M(a)x+M(b)y],\\
+r[i,x]=[i,rx],\\
+-[i,x]=[i,-x].
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>Define <span class="math" data-tex="\(0_Q=[i,0]\)">\(0_Q=[i,0]\)</span> at any object <span class="math" data-tex="\(i\)">\(i\)</span>. Nonemptiness supplies such an object, and a common target shows that this definition does not depend on it.</p>
+<p>Here are the representative checks for addition. First keep <span class="math" data-tex="\(i,x,j,y\)">\(i,x,j,y\)</span> fixed and compare two chosen targets <span class="math" data-tex="\(k,k&#x27;\)">\(k,k&#x27;\)</span> and their two pairs of arrows. Apply the finite graph cocone construction to the objects <span class="math" data-tex="\(i,j,k,k&#x27;\)">\(i,j,k,k&#x27;\)</span> and these four arrows. At its target, the two transported copies of <span class="math" data-tex="\(x\)">\(x\)</span> agree, as do the two copies of <span class="math" data-tex="\(y\)">\(y\)</span>. Linearity of the transitions therefore makes the two sums agree there, so they define the same element of <span class="math" data-tex="\(Q\)">\(Q\)</span>.</p>
+<p>Next replace <span class="math" data-tex="\([i,x]\)">\([i,x]\)</span> by an equal representative <span class="math" data-tex="\([i&#x27;,x&#x27;]\)">\([i&#x27;,x&#x27;]\)</span>. Section 2 supplies arrows to a common object at which their values agree. Include this witness, the chosen addition arrows, and the representative of the second summand in one finite graph. Its cocone makes both first summands equal and transports the second summand identically. Again the two sums agree at its target. Replacing the second summand is proved by the same argument with its own equality witness. Thus addition is independent of both representatives and of the chosen common target. If <span class="math" data-tex="\([i,x]=[i&#x27;,x&#x27;]\)">\([i,x]=[i&#x27;,x&#x27;]\)</span>, an equality witness remains an equality after multiplying by <span class="math" data-tex="\(r\)">\(r\)</span> or taking negatives, since every transition is linear. This proves that the other two operations are well-defined.</p>
+<p>All module laws can be checked at a common stage. For associativity, choose a common stage for three representatives and use independence of the chosen addition targets to compute both parenthesizations there. The stage module's associative law proves equality. The same two-representative argument proves commutativity and scalar distributivity over addition. Zero and additive inverses are checked with a single representative. At that same stage, the laws</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(r+s)[i,x]&amp;=r[i,x]+s[i,x],\\
+(rs)[i,x]&amp;=r\bigl(s[i,x]\bigr),\\
+1[i,x]&amp;=[i,x]
+\end{aligned}
+\tag{3.2}
+\]">\[
+\begin{aligned}
+(r+s)[i,x]&amp;=r[i,x]+s[i,x],\\
+(rs)[i,x]&amp;=r\bigl(s[i,x]\bigr),\\
+1[i,x]&amp;=[i,x]
+\end{aligned}
+\tag{3.2}
+\]</span>
+<p>follow from the corresponding left-module laws in <span class="math" data-tex="\(M_i\)">\(M_i\)</span>. The order <span class="math" data-tex="\(rs\)">\(rs\)</span> in the second line is unchanged. This establishes every module axiom.</p>
+<p>Computing addition at stage <span class="math" data-tex="\(i\)">\(i\)</span> shows that <span class="math" data-tex="\(c_i\)">\(c_i\)</span> is additive, and the scalar formula makes it <span class="math" data-tex="\(R\)">\(R\)</span>-linear. Conversely any module structure making all <span class="math" data-tex="\(c_i\)">\(c_i\)</span> linear must have (3.1): move two representatives to a common target and use that target's linear <span class="math" data-tex="\(c_k\)">\(c_k\)</span>. Each element has a representative, so this also proves uniqueness of the structure.</p>
+<p>For any module <span class="math" data-tex="\(N\)">\(N\)</span> and compatible linear maps <span class="math" data-tex="\(v_i:M_i\to N\)">\(v_i:M_i\to N\)</span>, the full Set colimit factor from Section 2 is the unique function</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bar v:Q\longrightarrow N,\\
+\bar v([i,x])=v_i(x).
+\end{gathered}
+\tag{3.3}
+\]">\[
+\begin{gathered}
+\bar v:Q\longrightarrow N,\\
+\bar v([i,x])=v_i(x).
+\end{gathered}
+\tag{3.3}
+\]</span>
+<p>The definition of addition and compatibility give
+<span class="math" data-tex="\(\bar v([i,x]+[j,y])=v_i(x)+v_j(y)\)">\(\bar v([i,x]+[j,y])=v_i(x)+v_j(y)\)</span>; the scalar formula gives
+<span class="math" data-tex="\(\bar v(r[i,x])=r v_i(x)\)">\(\bar v(r[i,x])=r v_i(x)\)</span>. Thus the factor is linear. Every linear factor is a Set factor and hence is this one. This proves the colimit universal property for every module target, including the zero module, without a choice of lifts for a whole target family.</p>
+<p>Let <span class="math" data-tex="\(L\)">\(L\)</span> be any other specified module colimit with maps <span class="math" data-tex="\(\ell_i\)">\(\ell_i\)</span>. The two colimit properties give unique linear maps <span class="math" data-tex="\(Q\to L\)">\(Q\to L\)</span> and <span class="math" data-tex="\(L\to Q\)">\(L\to Q\)</span> preserving all structural maps. Their composites preserve those maps as well and so are the respective identities. The underlying map <span class="math" data-tex="\(Q\to L\)">\(Q\to L\)</span> is the canonical Set comparison, because its value on <span class="math" data-tex="\([i,x]\)">\([i,x]\)</span> is <span class="math" data-tex="\(\ell_i(x)\)">\(\ell_i(x)\)</span>. Hence it is a bijection.</p>
+<p>For a natural transformation <span class="math" data-tex="\(M\to M&#x27;\)">\(M\to M&#x27;\)</span>, the induced map is <span class="math" data-tex="\([i,x]\mapsto[i,\theta_i(x)]\)">\([i,x]\mapsto[i,\theta_i(x)]\)</span>. The same common-stage formulas prove it linear. The two comparisons to specified colimits commute with it, since they do so on every representative. This proves the stated naturality. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An underlying module always contains zero, so <span class="math" data-tex="\(Q\)">\(Q\)</span> is nonempty for filtered <span class="math" data-tex="\(I\)">\(I\)</span>, even when every <span class="math" data-tex="\(M_i\)">\(M_i\)</span> is the zero module. The zero diagram has a singleton underlying Set colimit and a zero module colimit, as the theorem requires. The empty index is not filtered: its Set colimit is empty and its module colimit is the zero module with one underlying element.</p>
+<p>There is a second useful proof of the comparison, using the <a href="kernels-cokernels-and-the-abelian-comparison.html#5-module-kernels-and-a-missing-finite-kernel">complete module colimit construction</a>. That construction takes a direct sum and divides by arrow relations. The <a href="hom-tensor-and-the-exactness-of-module-limits.html#3-finite-relations-become-equations-at-one-filtered-stage">finite-relation proof</a> proves that every class is represented at one stage, and that two representatives are equal exactly when their images agree at a common target. These are precisely the quotient and equality test of Section 2. Both identifications send a representative to its specified structural image. The direct construction above additionally supplies the complete Set-based operations and all-target factor for the forgetful comparison.</p>
+<p><strong>Example.</strong> A nonfiltered index can lose this comparison even for a finite module. Regard the group <span class="math" data-tex="\(C_2\)">\(C_2\)</span> as a one-object category. On <span class="math" data-tex="\(M=\mathbb F_2^2\)">\(M=\mathbb F_2^2\)</span>, let its nonidentity arrow interchange the basis vectors <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span>. The underlying Set colimit is the orbit set with three classes: <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, <span class="math" data-tex="\(\{e_1,e_2\}\)">\(\{e_1,e_2\}\)</span>, and <span class="math" data-tex="\(\{e_1+e_2\}\)">\(\{e_1+e_2\}\)</span>. Every invariant function has exactly one value on each orbit, which proves this Set colimit's full factor property.</p>
+<p>An invariant linear map <span class="math" data-tex="\(v:M\to N\)">\(v:M\to N\)</span> satisfies <span class="math" data-tex="\(v(e_1)=v(e_2)\)">\(v(e_1)=v(e_2)\)</span>, equivalently <span class="math" data-tex="\(v(e_1+e_2)=0\)">\(v(e_1+e_2)=0\)</span>. It therefore factors uniquely through the module quotient by the line spanned by <span class="math" data-tex="\(e_1+e_2\)">\(e_1+e_2\)</span>, and each linear map out of that quotient is invariant. This is the module colimit, with two elements. The canonical Set comparison sends both the zero orbit and the <span class="math" data-tex="\(e_1+e_2\)">\(e_1+e_2\)</span> orbit to its zero coset, so is not injective. Addition directly explains the obstruction: the orbit of <span class="math" data-tex="\(e_1\)">\(e_1\)</span> added to itself would give the zero orbit using representatives <span class="math" data-tex="\(e_1,e_1\)">\(e_1,e_1\)</span>, but the different <span class="math" data-tex="\(e_1+e_2\)">\(e_1+e_2\)</span> orbit using <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span>. The filtered refinement step in the proof is essential.</p>
+<h2 id="4-finite-limits-detect-filteredness">4. Finite limits detect filteredness</h2>
+<p>Work in <span class="math" data-tex="\(\mathsf{Set}_{\mathcal U}\)">\(\mathsf{Set}_{\mathcal U}\)</span>, with the size convention of <a href="universes-and-small-categories.html#3-transporting-the-size-bound">Universes and small categories, Sections 2–5</a>. A small category has both a small object set and small Hom sets. Its arrow set is small by the transported tagged-union bound. Thus every colimit below has a small tagged union and quotient, and every finite limit has small products and an equalizer subset. The functor category may have its objects in a larger ambient universe; that does not enlarge the value sets. A <strong>finite category</strong> has finitely many objects and arrows, and may be empty.</p>
+<p><strong>Theorem 4.1.</strong> For a small category <span class="math" data-tex="\(I\)">\(I\)</span>, the following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(I\)">\(I\)</span> is filtered.</li>
+<li>The functor <span class="math" data-tex="\(\operatorname{colim}_I\colon \operatorname{Fun}(I,\mathsf{Set}_{\mathcal U})\to\mathsf{Set}_{\mathcal U}\)">\(\operatorname{colim}_I\colon \operatorname{Fun}(I,\mathsf{Set}_{\mathcal U})\to\mathsf{Set}_{\mathcal U}\)</span> preserves every finite limit.</li>
+</ol>
+<p>Equivalently, for every finite <span class="math" data-tex="\(J\)">\(J\)</span> and every <span class="math" data-tex="\(D\colon I\times J^{\mathrm{op}}\to\mathsf{Set}_{\mathcal U}\)">\(D\colon I\times J^{\mathrm{op}}\to\mathsf{Set}_{\mathcal U}\)</span>, the specified comparison is bijective:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma_D\colon \operatorname{colim}_{i\in I}L_i\\
+\longrightarrow\lim_{j\in J^{\mathrm{op}}}Q_j,\\
+L_i=\lim_{j\in J^{\mathrm{op}}}D(i,j),\\
+Q_j=\operatorname{colim}_{i\in I}D(i,j),\\
+\Gamma_D([i,(x_j)_j])=([i,x_j])_j.
+\end{gathered}
+\tag{4.1}
+\]">\[
+\begin{gathered}
+\Gamma_D\colon \operatorname{colim}_{i\in I}L_i\\
+\longrightarrow\lim_{j\in J^{\mathrm{op}}}Q_j,\\
+L_i=\lim_{j\in J^{\mathrm{op}}}D(i,j),\\
+Q_j=\operatorname{colim}_{i\in I}D(i,j),\\
+\Gamma_D([i,(x_j)_j])=([i,x_j])_j.
+\end{gathered}
+\tag{4.1}
+\]</span>
+<p>Here and below <span class="math" data-tex="\([i,x]\)">\([i,x]\)</span> retains its index tag. An arrow <span class="math" data-tex="\(s\colon i\to i&#x27;\)">\(s\colon i\to i&#x27;\)</span> acts on <span class="math" data-tex="\(L_i\)">\(L_i\)</span> coordinatewise by <span class="math" data-tex="\(D(s,j)\)">\(D(s,j)\)</span>. For <span class="math" data-tex="\(a\colon j\to j&#x27;\)">\(a\colon j\to j&#x27;\)</span> in <span class="math" data-tex="\(J\)">\(J\)</span>, the map <span class="math" data-tex="\(Q(a)\colon Q_{j&#x27;}\to Q_j\)">\(Q(a)\colon Q_{j&#x27;}\to Q_j\)</span> sends <span class="math" data-tex="\([i,x]\)">\([i,x]\)</span> to <span class="math" data-tex="\([i,D(i,a)x]\)">\([i,D(i,a)x]\)</span>. The two-variable functor law makes both definitions preserve their respective compatibility equations and generating class relations. It follows that (4.1) lands in the indicated limit and respects every colimit generator. It is the actual cone-induced comparison.</p>
+<p>The <span class="math" data-tex="\(I\)">\(I\)</span>-diagram <span class="math" data-tex="\(L\)">\(L\)</span> is the limit of the finite diagram of <span class="math" data-tex="\(I\)">\(I\)</span>-diagrams, with its natural coordinate projections. Indeed, a cone with vertex <span class="math" data-tex="\(F\colon I\to\mathsf{Set}_{\mathcal U}\)">\(F\colon I\to\mathsf{Set}_{\mathcal U}\)</span> factors uniquely at each <span class="math" data-tex="\(i\)">\(i\)</span> through the compatible-tuple set <span class="math" data-tex="\(L_i\)">\(L_i\)</span>. For <span class="math" data-tex="\(s\colon i\to i&#x27;\)">\(s\colon i\to i&#x27;\)</span>, the two candidate composites into <span class="math" data-tex="\(L_{i&#x27;}\)">\(L_{i&#x27;}\)</span> have equal coordinate projections by the cone transformations' naturality. Tuple uniqueness makes them equal, proving the factor natural in <span class="math" data-tex="\(I\)">\(I\)</span>. Componentwise uniqueness then proves its uniqueness as a transformation. Thus (4.1) is exactly the comparison used in finite-limit preservation in the functor category.</p>
+<p><strong>Proof, forward direction.</strong> Assume <span class="math" data-tex="\(I\)">\(I\)</span> filtered. We use the full finite-cocone criterion of Section 1 and the common-stage equality criterion of Section 2. In particular, finitely many arrows and objects can be placed in one commuting cocone; merely finding a common target need not make their composites agree.</p>
+<p><strong>Finite products, including no factors.</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be a finite set and <span class="math" data-tex="\(A^k\colon I\to\mathsf{Set}_{\mathcal U}\)">\(A^k\colon I\to\mathsf{Set}_{\mathcal U}\)</span> for <span class="math" data-tex="\(k\in K\)">\(k\in K\)</span>. The comparison is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P\colon \operatorname{colim}_i\prod_{k\in K}A^k(i)\\
+\longrightarrow\prod_{k\in K}\operatorname{colim}_iA^k(i),\\
+P([i,(x_k)_k])=([i,x_k])_k.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+P\colon \operatorname{colim}_i\prod_{k\in K}A^k(i)\\
+\longrightarrow\prod_{k\in K}\operatorname{colim}_iA^k(i),\\
+P([i,(x_k)_k])=([i,x_k])_k.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>For surjectivity with <span class="math" data-tex="\(K\ne\varnothing\)">\(K\ne\varnothing\)</span>, start with a tuple of classes and choose a representative <span class="math" data-tex="\((i_k,x_k)\)">\((i_k,x_k)\)</span> for each coordinate. There are only finitely many choices. A cocone on the discrete family <span class="math" data-tex="\((i_k)_k\)">\((i_k)_k\)</span> gives <span class="math" data-tex="\(i\)">\(i\)</span> and arrows <span class="math" data-tex="\(s_k\colon i_k\to i\)">\(s_k\colon i_k\to i\)</span>. The tuple <span class="math" data-tex="\((A^k(s_k)x_k)_k\)">\((A^k(s_k)x_k)_k\)</span> at <span class="math" data-tex="\(i\)">\(i\)</span> maps to the desired tuple of classes. This argument does not assume nonempty value sets: it begins with a tuple on the right. If the right side is empty, surjectivity is vacuous; the existence of <span class="math" data-tex="\(P\)">\(P\)</span> then forces its domain empty as well.</p>
+<p>For injectivity, suppose representatives <span class="math" data-tex="\((i,(x_k)_k)\)">\((i,(x_k)_k)\)</span> and <span class="math" data-tex="\((i&#x27;,(y_k)_k)\)">\((i&#x27;,(y_k)_k)\)</span> have the same image. For each <span class="math" data-tex="\(k\)">\(k\)</span>, the common-stage criterion supplies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_k\colon i\to\ell_k,\qquad v_k\colon i&#x27;\to\ell_k,\\
+A^k(u_k)x_k=A^k(v_k)y_k.
+\end{gathered}
+\tag{4.3}
+\]">\[
+\begin{gathered}
+u_k\colon i\to\ell_k,\qquad v_k\colon i&#x27;\to\ell_k,\\
+A^k(u_k)x_k=A^k(v_k)y_k.
+\end{gathered}
+\tag{4.3}
+\]</span>
+<p>Use a finite abstract diagram with two source objects, one sink for each <span class="math" data-tex="\(k\)">\(k\)</span>, and the arrows <span class="math" data-tex="\(u_k,v_k\)">\(u_k,v_k\)</span>; separate labels are allowed even when their images in <span class="math" data-tex="\(I\)">\(I\)</span> coincide. There are no nonidentity composites in this abstract shape. A cocone gives <span class="math" data-tex="\(a\colon i\to n\)">\(a\colon i\to n\)</span>, <span class="math" data-tex="\(b\colon i&#x27;\to n\)">\(b\colon i&#x27;\to n\)</span> and <span class="math" data-tex="\(w_k\colon \ell_k\to n\)">\(w_k\colon \ell_k\to n\)</span> such that <span class="math" data-tex="\(w_ku_k=a\)">\(w_ku_k=a\)</span> and <span class="math" data-tex="\(w_kv_k=b\)">\(w_kv_k=b\)</span> simultaneously. Applying <span class="math" data-tex="\(A^k(w_k)\)">\(A^k(w_k)\)</span> to (4.3) gives <span class="math" data-tex="\(A^k(a)x_k=A^k(b)y_k\)">\(A^k(a)x_k=A^k(b)y_k\)</span> for every coordinate. The two product tuples therefore have equal images at <span class="math" data-tex="\(n\)">\(n\)</span>, so their product-colimit classes agree. Synchronizing both families of composites is essential for a category with parallel arrows.</p>
+<p>If <span class="math" data-tex="\(K=\varnothing\)">\(K=\varnothing\)</span>, each product is a singleton. Filteredness gives an object of <span class="math" data-tex="\(I\)">\(I\)</span>, and any two objects have a common target. Consequently all classes <span class="math" data-tex="\([i,*]\)">\([i,*]\)</span> are equal and one exists. Thus (4.2) is the unique bijection between singletons. In contrast, for empty <span class="math" data-tex="\(I\)">\(I\)</span> this comparison would be <span class="math" data-tex="\(\varnothing\to\{*\}\)">\(\varnothing\to\{*\}\)</span>, so preservation of the zero-factor product includes nonemptiness.</p>
+<p><strong>Equalizers.</strong> Let <span class="math" data-tex="\(f,g\colon A\rightrightarrows B\)">\(f,g\colon A\rightrightarrows B\)</span> be natural transformations of <span class="math" data-tex="\(I\)">\(I\)</span>-diagrams. Set <span class="math" data-tex="\(E(i)=\{x\in A(i)\colon f_i(x)=g_i(x)\}\)">\(E(i)=\{x\in A(i)\colon f_i(x)=g_i(x)\}\)</span>. Naturality makes <span class="math" data-tex="\(A(s)\)">\(A(s)\)</span> restrict to <span class="math" data-tex="\(E(s)\)">\(E(s)\)</span>, and the comparison is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Lambda\colon \operatorname{colim}_iE(i)\longrightarrow Z,\\
+Z=\operatorname{Eq}(\operatorname{colim}f,
+\operatorname{colim}g),\\
+\Lambda([i,x])=[i,x].
+\end{gathered}
+\tag{4.4}
+\]">\[
+\begin{gathered}
+\Lambda\colon \operatorname{colim}_iE(i)\longrightarrow Z,\\
+Z=\operatorname{Eq}(\operatorname{colim}f,
+\operatorname{colim}g),\\
+\Lambda([i,x])=[i,x].
+\end{gathered}
+\tag{4.4}
+\]</span>
+<p>For surjectivity, take <span class="math" data-tex="\([i,x]\in Z\)">\([i,x]\in Z\)</span>. The elements <span class="math" data-tex="\(f_i(x),g_i(x)\)">\(f_i(x),g_i(x)\)</span> have equal classes in the colimit of <span class="math" data-tex="\(B\)">\(B\)</span>. The common-stage criterion gives <span class="math" data-tex="\(u,v\colon i\to\ell\)">\(u,v\colon i\to\ell\)</span> with <span class="math" data-tex="\(B(u)f_i(x)=B(v)g_i(x)\)">\(B(u)f_i(x)=B(v)g_i(x)\)</span>. Coequalize the parallel arrows: choose <span class="math" data-tex="\(t\colon \ell\to n\)">\(t\colon \ell\to n\)</span> with <span class="math" data-tex="\(tu=tv=s\)">\(tu=tv=s\)</span>. Then <span class="math" data-tex="\(B(s)f_i(x)=B(s)g_i(x)\)">\(B(s)f_i(x)=B(s)g_i(x)\)</span>. Naturality gives <span class="math" data-tex="\(f_n(A(s)x)=g_n(A(s)x)\)">\(f_n(A(s)x)=g_n(A(s)x)\)</span>, so <span class="math" data-tex="\(A(s)x\in E(n)\)">\(A(s)x\in E(n)\)</span>, and its class maps to <span class="math" data-tex="\([i,x]\)">\([i,x]\)</span>.</p>
+<p>For injectivity, take <span class="math" data-tex="\(x\in E(i)\)">\(x\in E(i)\)</span> and <span class="math" data-tex="\(y\in E(i&#x27;)\)">\(y\in E(i&#x27;)\)</span> whose images in the colimit of <span class="math" data-tex="\(A\)">\(A\)</span> agree. There are <span class="math" data-tex="\(a\colon i\to n\)">\(a\colon i\to n\)</span> and <span class="math" data-tex="\(b\colon i&#x27;\to n\)">\(b\colon i&#x27;\to n\)</span> with <span class="math" data-tex="\(A(a)x=A(b)y\)">\(A(a)x=A(b)y\)</span>. These are exactly <span class="math" data-tex="\(E(a)x\)">\(E(a)x\)</span> and <span class="math" data-tex="\(E(b)y\)">\(E(b)y\)</span>, since each already lies in <span class="math" data-tex="\(E(n)\)">\(E(n)\)</span>. Their equality gives the same colimit class in <span class="math" data-tex="\(E\)">\(E\)</span>. This proves both directions, including empty equalizer values.</p>
+<p>The product and equalizer comparisons commute with transformations: applying a component map before taking a class has the same value as applying its induced class map afterward. For equalizers this means a commuting map of parallel-pair diagrams. Their inverses are independent of every choice of representatives, cocones and witnesses, by the injectivity just proved.</p>
+<p><strong>Every finite shape.</strong> Fix the finite <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> of (4.1). For each <span class="math" data-tex="\(i\)">\(i\)</span>, form</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_i=\prod_{j\in\operatorname{Ob}J}D(i,j),\\
+W_i=\prod_{a\colon j\to j&#x27;}D(i,j),\\
+r_i,t_i\colon V_i\rightrightarrows W_i,\\
+(r_i x)_a=x_j,\\
+(t_i x)_a=D(i,a)x_{j&#x27;},\\
+L_i=\operatorname{Eq}(r_i,t_i).
+\end{gathered}
+\tag{4.5}
+\]">\[
+\begin{gathered}
+V_i=\prod_{j\in\operatorname{Ob}J}D(i,j),\\
+W_i=\prod_{a\colon j\to j&#x27;}D(i,j),\\
+r_i,t_i\colon V_i\rightrightarrows W_i,\\
+(r_i x)_a=x_j,\\
+(t_i x)_a=D(i,a)x_{j&#x27;},\\
+L_i=\operatorname{Eq}(r_i,t_i).
+\end{gathered}
+\tag{4.5}
+\]</span>
+<p>Both products are finite because the object and arrow sets are finite. These equalizer equations are precisely the <span class="math" data-tex="\(J^{\mathrm{op}}\)">\(J^{\mathrm{op}}\)</span>-cone equations. The complete factor proof in <a href="universal-forks-and-diagram-constructions.html#8-one-product-and-one-equalizer">Universal forks, Section 8</a> says that this equalizer, with its coordinate projections, is the limit: a cone gives a unique tuple map, its equations equalize <span class="math" data-tex="\(r_i,t_i\)">\(r_i,t_i\)</span>, and the equalizer gives the unique factor. This includes empty <span class="math" data-tex="\(J\)">\(J\)</span>, when both products and the equalizer are singletons.</p>
+<p>The two-variable laws make <span class="math" data-tex="\(V,W\)">\(V,W\)</span> into <span class="math" data-tex="\(I\)">\(I\)</span>-diagrams and <span class="math" data-tex="\(r,t\)">\(r,t\)</span> into transformations. Apply the proved equalizer comparison to them. Apply the product comparisons to identify <span class="math" data-tex="\(\operatorname{colim}V\)">\(\operatorname{colim}V\)</span> with <span class="math" data-tex="\(\prod_jQ_j\)">\(\prod_jQ_j\)</span> and <span class="math" data-tex="\(\operatorname{colim}W\)">\(\operatorname{colim}W\)</span> with <span class="math" data-tex="\(\prod_{a\colon j\to j&#x27;}Q_j\)">\(\prod_{a\colon j\to j&#x27;}Q_j\)</span>. Under these identifications, <span class="math" data-tex="\(\operatorname{colim}r\)">\(\operatorname{colim}r\)</span> has coordinate <span class="math" data-tex="\(z_j\)">\(z_j\)</span>, while <span class="math" data-tex="\(\operatorname{colim}t\)">\(\operatorname{colim}t\)</span> has coordinate <span class="math" data-tex="\(Q(a)z_{j&#x27;}\)">\(Q(a)z_{j&#x27;}\)</span>: this follows directly by evaluating on <span class="math" data-tex="\([i,(x_j)_j]\)">\([i,(x_j)_j]\)</span>. Their equalizer is therefore <span class="math" data-tex="\(\lim_{J^{\mathrm{op}}}Q\)">\(\lim_{J^{\mathrm{op}}}Q\)</span>, by the same complete factor proof. The resulting bijection is exactly <span class="math" data-tex="\(\Gamma_D\)">\(\Gamma_D\)</span>, since each of its coordinates is <span class="math" data-tex="\([i,x_j]\)">\([i,x_j]\)</span>.</p>
+<p>One can read its inverse concretely. Given a compatible family of classes, use the product-surjectivity construction to represent all its coordinates by <span class="math" data-tex="\((x_j)_j\)">\((x_j)_j\)</span> at one <span class="math" data-tex="\(i\)">\(i\)</span>. For each arrow <span class="math" data-tex="\(a\colon j\to j&#x27;\)">\(a\colon j\to j&#x27;\)</span>, compatibility says that <span class="math" data-tex="\(x_j\)">\(x_j\)</span> and <span class="math" data-tex="\(D(i,a)x_{j&#x27;}\)">\(D(i,a)x_{j&#x27;}\)</span> have the same class. The equalizer-surjectivity argument gives a single arrow <span class="math" data-tex="\(s_a\colon i\to n_a\)">\(s_a\colon i\to n_a\)</span> making that equation true. A cocone on the finite star of all the <span class="math" data-tex="\(s_a\)">\(s_a\)</span> supplies <span class="math" data-tex="\(s\colon i\to n\)">\(s\colon i\to n\)</span> and <span class="math" data-tex="\(w_a\colon n_a\to n\)">\(w_a\colon n_a\to n\)</span> with <span class="math" data-tex="\(w_as_a=s\)">\(w_as_a=s\)</span>. At <span class="math" data-tex="\(n\)">\(n\)</span>, the tuple <span class="math" data-tex="\((D(s,j)x_j)_j\)">\((D(s,j)x_j)_j\)</span> satisfies every equation and thus belongs to <span class="math" data-tex="\(L_n\)">\(L_n\)</span>. Its class is the inverse image. Injectivity of <span class="math" data-tex="\(\Gamma_D\)">\(\Gamma_D\)</span>, already obtained from the equalizer and product comparisons, proves that all choices give that same class. If <span class="math" data-tex="\(J\)">\(J\)</span> is empty, choose any <span class="math" data-tex="\(i\)">\(i\)</span>, using filtered nonemptiness; the empty tuple represents the unique inverse image.</p>
+<p>For a transformation <span class="math" data-tex="\(\theta\colon D\to D&#x27;\)">\(\theta\colon D\to D&#x27;\)</span>, naturality is the explicit equation</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Gamma_{D&#x27;}\,(\operatorname{colim}_i\lim_j\theta)\\
+=(\lim_j\operatorname{colim}_i\theta)\,\Gamma_D,\\
+\Gamma_{D&#x27;}^{-1}\,(\lim_j\operatorname{colim}_i\theta)\\
+=(\operatorname{colim}_i\lim_j\theta)\,\Gamma_D^{-1}.
+\end{gathered}
+\tag{4.6}
+\]">\[
+\begin{gathered}
+\Gamma_{D&#x27;}\,(\operatorname{colim}_i\lim_j\theta)\\
+=(\lim_j\operatorname{colim}_i\theta)\,\Gamma_D,\\
+\Gamma_{D&#x27;}^{-1}\,(\lim_j\operatorname{colim}_i\theta)\\
+=(\operatorname{colim}_i\lim_j\theta)\,\Gamma_D^{-1}.
+\end{gathered}
+\tag{4.6}
+\]</span>
+<p>The first equation holds on representatives, with both routes giving <span class="math" data-tex="\(([i,\theta_{i,j}x_j])_j\)">\(([i,\theta_{i,j}x_j])_j\)</span>; the second follows by composing with the proved inverses. Restricting along a functor between finite index categories also commutes with the comparison: both routes retain the same selected coordinates. The inverse commutes as well by uniqueness. Hence this is a natural isomorphism of the specified limit-colimit constructions, and proves preservation of all finite limits in the functor category.</p>
+<p><strong>Proof, converse direction.</strong> Assume preservation of all finite limits. For a finite <span class="math" data-tex="\(J\)">\(J\)</span> and a functor <span class="math" data-tex="\(\phi\colon J\to I\)">\(\phi\colon J\to I\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H(i,j)=\operatorname{Hom}_I(\phi(j),i),\\
+H(s,a)(h)=s\,h\,\phi(a)\\
+s\colon i\to i&#x27;,\qquad a\colon j\to j&#x27;,\\
+h\colon \phi(j&#x27;)\to i.
+\end{gathered}
+\tag{4.7}
+\]">\[
+\begin{gathered}
+H(i,j)=\operatorname{Hom}_I(\phi(j),i),\\
+H(s,a)(h)=s\,h\,\phi(a)\\
+s\colon i\to i&#x27;,\qquad a\colon j\to j&#x27;,\\
+h\colon \phi(j&#x27;)\to i.
+\end{gathered}
+\tag{4.7}
+\]</span>
+<p>This is covariant in <span class="math" data-tex="\(I\)">\(I\)</span> and contravariant in <span class="math" data-tex="\(J\)">\(J\)</span>. Postcomposition and precomposition commute by associativity; identities and composites follow from the functor laws of <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and the category laws of <span class="math" data-tex="\(I\)">\(I\)</span>. Small Hom sets make these permitted small-set values.</p>
+<p>For any fixed <span class="math" data-tex="\(j\)">\(j\)</span>, every element <span class="math" data-tex="\(h\colon \phi(j)\to i\)">\(h\colon \phi(j)\to i\)</span> is the image of <span class="math" data-tex="\(1_{\phi(j)}\)">\(1_{\phi(j)}\)</span> under postcomposition by <span class="math" data-tex="\(h\)">\(h\)</span>. The full class-colimit construction in <a href="colimits-as-connected-components.html#3-constants-and-a-distinguished-identity">Colimits as connected components, Section 3</a> therefore gives</p>
+<span class="math math-display" data-tex="\[
+[i,h]=[\phi(j),1_{\phi(j)}].
+\tag{4.8}
+\]">\[
+[i,h]=[\phi(j),1_{\phi(j)}].
+\tag{4.8}
+\]</span>
+<p>Every class has a representative and the identity class exists. Thus the unique map <span class="math" data-tex="\(\operatorname{colim}_iH(i,j)\to\{*\}\)">\(\operatorname{colim}_iH(i,j)\to\{*\}\)</span> is bijective, with inverse the displayed identity class. No filteredness is used in this argument, and individual Hom values may be empty. These bijections are natural in <span class="math" data-tex="\(j\)">\(j\)</span>, because every function between singleton sets is the unique such function. Their diagram is consequently the constant singleton diagram. Its limit is a singleton for every <span class="math" data-tex="\(J\)">\(J\)</span>, including empty <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p>Preservation applied to <span class="math" data-tex="\(H\)">\(H\)</span> now makes <span class="math" data-tex="\(\operatorname{colim}_i\lim_jH(i,j)\)">\(\operatorname{colim}_i\lim_jH(i,j)\)</span> a singleton. In the tagged-union quotient describing this colimit, a class must be represented by some <span class="math" data-tex="\(i\)">\(i\)</span> and some element of <span class="math" data-tex="\(\lim_jH(i,j)\)">\(\lim_jH(i,j)\)</span>. Such an element is precisely a family <span class="math" data-tex="\(h_j\colon \phi(j)\to i\)">\(h_j\colon \phi(j)\to i\)</span> satisfying <span class="math" data-tex="\(h_j=h_{j&#x27;}\phi(a)\)">\(h_j=h_{j&#x27;}\phi(a)\)</span> for every <span class="math" data-tex="\(a\colon j\to j&#x27;\)">\(a\colon j\to j&#x27;\)</span>: it is a cocone on <span class="math" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p>For empty <span class="math" data-tex="\(J\)">\(J\)</span>, each <span class="math" data-tex="\(\lim_jH(i,j)\)">\(\lim_jH(i,j)\)</span> is a singleton, so this same argument forces <span class="math" data-tex="\(I\)">\(I\)</span> to have an object. In particular empty <span class="math" data-tex="\(I\)">\(I\)</span> cannot satisfy preservation. For every finite <span class="math" data-tex="\(J\)">\(J\)</span> we have obtained an actual cocone, with all its equations. The finite-cocone criterion in Section 1 proves that <span class="math" data-tex="\(I\)">\(I\)</span> is filtered. This completes both directions of Theorem 4.1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-four-graded-exercises-with-full-solutions">5. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-introductory-repair-a-finite-triangle">Exercise 1 — introductory: repair a finite triangle</h3>
+<p>In a filtered category, suppose
+<span class="math" data-tex="\(f,g : A\to B\)">\(f,g : A\to B\)</span>, <span class="math" data-tex="\(h : B\to C\)">\(h : B\to C\)</span>, and <span class="math" data-tex="\(u : A\to C\)">\(u : A\to C\)</span> satisfy <span class="math" data-tex="\(hf=hg=u\)">\(hf=hg=u\)</span>. Consider the finite diagram consisting of these three objects and arrows, with those composition relations. Choose any common target <span class="math" data-tex="\(T\)">\(T\)</span> and arrows <span class="math" data-tex="\(r_A : A\to T\)">\(r_A : A\to T\)</span>, <span class="math" data-tex="\(r_B : B\to T\)">\(r_B : B\to T\)</span>, <span class="math" data-tex="\(r_C : C\to T\)">\(r_C : C\to T\)</span>. Construct a cocone by at most three successive applications of the parallel-arrow condition. Explain why the equation involving <span class="math" data-tex="\(u\)">\(u\)</span> needs no additional application.</p>
+<p><strong>Solution.</strong> A common target for the three objects exists by two applications of the common-target condition. Equalize <span class="math" data-tex="\(r_A\)">\(r_A\)</span> and <span class="math" data-tex="\(r_Bf\)">\(r_Bf\)</span> by <span class="math" data-tex="\(e_1 : T\to T_1\)">\(e_1 : T\to T_1\)</span>, and set <span class="math" data-tex="\((A_1,B_1,C_1)=(e_1r_A,e_1r_B,e_1r_C)\)">\((A_1,B_1,C_1)=(e_1r_A,e_1r_B,e_1r_C)\)</span>; these symbols denote arrows from <span class="math" data-tex="\(A,B,C\)">\(A,B,C\)</span>, not objects. Then <span class="math" data-tex="\(B_1f=A_1\)">\(B_1f=A_1\)</span>.</p>
+<p>Equalize <span class="math" data-tex="\(A_1\)">\(A_1\)</span> and <span class="math" data-tex="\(B_1g\)">\(B_1g\)</span> by <span class="math" data-tex="\(e_2 : T_1\to T_2\)">\(e_2 : T_1\to T_2\)</span>, and postcompose all three arrows to obtain <span class="math" data-tex="\(A_2,B_2,C_2\)">\(A_2,B_2,C_2\)</span>. We have <span class="math" data-tex="\(B_2f=A_2\)">\(B_2f=A_2\)</span> because the first equation survives postcomposition, and <span class="math" data-tex="\(B_2g=A_2\)">\(B_2g=A_2\)</span> by the new equalization. Finally equalize <span class="math" data-tex="\(B_2\)">\(B_2\)</span> and <span class="math" data-tex="\(C_2h\)">\(C_2h\)</span> by <span class="math" data-tex="\(e_3 : T_2\to T_3\)">\(e_3 : T_2\to T_3\)</span>, and postcompose to obtain <span class="math" data-tex="\(A_3,B_3,C_3\)">\(A_3,B_3,C_3\)</span>. The resulting equations are</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_3f&amp;=A_3,\\
+B_3g&amp;=A_3,\\
+C_3h&amp;=B_3.
+\end{aligned}
+\tag{5.1}
+\]">\[
+\begin{aligned}
+B_3f&amp;=A_3,\\
+B_3g&amp;=A_3,\\
+C_3h&amp;=B_3.
+\end{aligned}
+\tag{5.1}
+\]</span>
+<p>The remaining arrow equation follows from the specified composition relation:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_3u&amp;=C_3hf,\\
+&amp;=B_3f,\\
+&amp;=A_3.
+\end{aligned}
+\tag{5.2}
+\]">\[
+\begin{aligned}
+C_3u&amp;=C_3hf,\\
+&amp;=B_3f,\\
+&amp;=A_3.
+\end{aligned}
+\tag{5.2}
+\]</span>
+<p>These are all nonidentity-arrow equations, and the identity equations are automatic. Thus the three arrows to <span class="math" data-tex="\(T_3\)">\(T_3\)</span> form a cocone. Each equalizer step applies to parallel arrows with the displayed common domain and codomain; postcomposition preserves the equations already established. If a pair already agrees, its target identity can serve as that step.</p>
+<h3 id="exercise-2-intermediate-locate-two-different-failures">Exercise 2 — intermediate: locate two different failures</h3>
+<p>First use a discrete two-object category and a singleton at each object. Compute its colimit and find a finite subset which cannot be represented at one stage. Then use the parallel-arrow diagram described at the end of Section 2. Compute its colimit, show that its common-witness relation (2.1) is not transitive, and exhibit an equality of two elements at one stage which cannot hold after any single outgoing arrow. State which filteredness axiom fails in each index.</p>
+<p><strong>Solution.</strong> Write the discrete objects as <span class="math" data-tex="\(U,V\)">\(U,V\)</span> and the respective singleton elements as <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. There are no generating identifications between the two tags. The quotient is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q=\{[U,a],[V,b]\},\\
+c_U(D(U))=\{[U,a]\},\\
+c_V(D(V))=\{[V,b]\}.
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+Q=\{[U,a],[V,b]\},\\
+c_U(D(U))=\{[U,a]\},\\
+c_V(D(V))=\{[V,b]\}.
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>Every pair of functions from the singleton values to a target <span class="math" data-tex="\(S\)">\(S\)</span> is a cocone, since no nonidentity-arrow equation is imposed. There is exactly one function from this two-element set to <span class="math" data-tex="\(S\)">\(S\)</span> with those two values, confirming the colimit property, including when no such functions exist. The finite subset <span class="math" data-tex="\(Q\)">\(Q\)</span> itself is contained in neither stage image. The index is nonempty and its only parallel-arrow pairs are equal, so the failing axiom is the common-target condition for <span class="math" data-tex="\(U,V\)">\(U,V\)</span>.</p>
+<p>For the second diagram, the generating identifications join <span class="math" data-tex="\((0,t)\)">\((0,t)\)</span> to both <span class="math" data-tex="\((1,x)\)">\((1,x)\)</span> and <span class="math" data-tex="\((1,y)\)">\((1,y)\)</span>. These are the only three tagged elements, so its quotient is a singleton. Equivalently, a cocone <span class="math" data-tex="\(v_0,v_1\)">\(v_0,v_1\)</span> into any set <span class="math" data-tex="\(S\)">\(S\)</span> must satisfy <span class="math" data-tex="\(v_1(x)=v_0(t)=v_1(y)\)">\(v_1(x)=v_0(t)=v_1(y)\)</span>, and a function from a singleton to <span class="math" data-tex="\(S\)">\(S\)</span> is uniquely specified by this common value. This proves the asserted colimit for every target.</p>
+<p>For the common-witness test, <span class="math" data-tex="\((1,x)\sim(0,t)\)">\((1,x)\sim(0,t)\)</span> is witnessed by <span class="math" data-tex="\(1_1,a\)">\(1_1,a\)</span>, and <span class="math" data-tex="\((0,t)\sim(1,y)\)">\((0,t)\sim(1,y)\)</span> by <span class="math" data-tex="\(b,1_1\)">\(b,1_1\)</span>. But a common target of two copies of <span class="math" data-tex="\(1\)">\(1\)</span> can only be <span class="math" data-tex="\(1\)">\(1\)</span>, and both witness arrows must be <span class="math" data-tex="\(1_1\)">\(1_1\)</span>. As <span class="math" data-tex="\(x\ne y\)">\(x\ne y\)</span>, these cannot witness <span class="math" data-tex="\((1,x)\sim(1,y)\)">\((1,x)\sim(1,y)\)</span>. Thus this relation is not transitive. In the colimit we nevertheless have</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c_1(x)=c_1(y),\\
+D(1_1)(x)=x\ne y=D(1_1)(y).
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+c_1(x)=c_1(y),\\
+D(1_1)(x)=x\ne y=D(1_1)(y).
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>There is no other outgoing arrow from <span class="math" data-tex="\(1\)">\(1\)</span>, so no single arrow can realize that equality. Every pair of objects has common target <span class="math" data-tex="\(1\)">\(1\)</span>, and the index is nonempty. Its failure is precisely the parallel-arrow condition: the only possible postcomposition of <span class="math" data-tex="\(a,b\)">\(a,b\)</span> is by <span class="math" data-tex="\(1_1\)">\(1_1\)</span>, and <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>. The generated equivalence relation always gives the colimit; the simpler common-witness test and its single-arrow consequence require filteredness.</p>
+<h3 id="exercise-3-advanced-two-failures-in-one-connected-category">Exercise 3 — advanced: two failures in one connected category</h3>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> have one object and arrow group <span class="math" data-tex="\(C_2=\{1,\sigma\}\)">\(C_2=\{1,\sigma\}\)</span>, with <span class="math" data-tex="\(\sigma^2=1\)">\(\sigma^2=1\)</span>. Let <span class="math" data-tex="\(A=\{0,1\}\)">\(A=\{0,1\}\)</span>, on which <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> exchanges the two elements. Compute the product comparison for <span class="math" data-tex="\(A\times A\)">\(A\times A\)</span>, and the equalizer comparison for the equivariant maps <span class="math" data-tex="\(f=1_A\)">\(f=1_A\)</span> and <span class="math" data-tex="\(g=\sigma\colon A\to A\)">\(g=\sigma\colon A\to A\)</span>. Show that this connected category is not filtered, despite preserving the terminal object under colimits.</p>
+<p><strong>Solution.</strong> A set diagram on this category is a <span class="math" data-tex="\(C_2\)">\(C_2\)</span>-set, and the class relation identifies each element with its translate; hence its colimit is its orbit set. The action on <span class="math" data-tex="\(A\)">\(A\)</span> is transitive, so <span class="math" data-tex="\(\operatorname{colim}A\)">\(\operatorname{colim}A\)</span> is a singleton. On <span class="math" data-tex="\(A\times A\)">\(A\times A\)</span>, the diagonal action has exactly two orbits:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\{(0,0),(1,1)\},\\
+\{(0,1),(1,0)\},\\
+\operatorname{colim}(A\times A)\\
+\longrightarrow(\operatorname{colim}A)^2,\\
+\text{the comparison }2\to1.
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+\{(0,0),(1,1)\},\\
+\{(0,1),(1,0)\},\\
+\operatorname{colim}(A\times A)\\
+\longrightarrow(\operatorname{colim}A)^2,\\
+\text{the comparison }2\to1.
+\end{gathered}
+\tag{5.5}
+\]</span>
+<p>Thus the product comparison identifies two different classes and is not injective. The two maps <span class="math" data-tex="\(1_A\)">\(1_A\)</span> and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> commute with the action and are transformations. Their pointwise equalizer is empty since the exchange has no fixed element. On the singleton orbit set their induced maps coincide. Consequently</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}\operatorname{Eq}(1_A,\sigma)
+=\varnothing,\\
+\operatorname{Eq}(\operatorname{colim}1_A,
+\operatorname{colim}\sigma)\\
+=\{*\}.
+\end{gathered}
+\tag{5.6}
+\]">\[
+\begin{gathered}
+\operatorname{colim}\operatorname{Eq}(1_A,\sigma)
+=\varnothing,\\
+\operatorname{Eq}(\operatorname{colim}1_A,
+\operatorname{colim}\sigma)\\
+=\{*\}.
+\end{gathered}
+\tag{5.6}
+\]</span>
+<p>The equalizer comparison is not surjective. No arrow <span class="math" data-tex="\(s\)">\(s\)</span> can coequalize the parallel arrows <span class="math" data-tex="\(1,\sigma\)">\(1,\sigma\)</span>: the equation <span class="math" data-tex="\(s=s\sigma\)">\(s=s\sigma\)</span>, after multiplying by <span class="math" data-tex="\(s^{-1}\)">\(s^{-1}\)</span>, would give <span class="math" data-tex="\(1=\sigma\)">\(1=\sigma\)</span>. Thus the filtered parallel-arrow axiom fails. The category has one object, so it is nonempty and connected, and its constant singleton diagram has singleton colimit. Preserving only the terminal object does not repair either failure.</p>
+<h3 id="exercise-4-challenge-equations-that-become-true-later">Exercise 4 — challenge: equations that become true later</h3>
+<p>Take <span class="math" data-tex="\(I=\mathbb N\)">\(I=\mathbb N\)</span> with its usual order as a category. Put <span class="math" data-tex="\(A_n=\{0,\ldots,n\}\)">\(A_n=\{0,\ldots,n\}\)</span>, <span class="math" data-tex="\(B_n=\{0,1\}\)">\(B_n=\{0,1\}\)</span>, and <span class="math" data-tex="\(T_n=\{0,\ldots,2n\}\)">\(T_n=\{0,\ldots,2n\}\)</span>. The <span class="math" data-tex="\(A\)">\(A\)</span>- and <span class="math" data-tex="\(T\)">\(T\)</span>-transitions are inclusions; every strict <span class="math" data-tex="\(B\)">\(B\)</span>-transition is the constant function with value <span class="math" data-tex="\(0\)">\(0\)</span>. Define <span class="math" data-tex="\(f_n\colon A_n\to B_n\)">\(f_n\colon A_n\to B_n\)</span> to be constantly <span class="math" data-tex="\(0\)">\(0\)</span>, and define <span class="math" data-tex="\(g_n(x)=1\)">\(g_n(x)=1\)</span> for <span class="math" data-tex="\(x=n\)">\(x=n\)</span>, with <span class="math" data-tex="\(g_n(x)=0\)">\(g_n(x)=0\)</span> for <span class="math" data-tex="\(x&lt;n\)">\(x&lt;n\)</span>. Verify the diagrams and transformations, then compute the comparison for the finite limit <span class="math" data-tex="\(L_n=\operatorname{Eq}(f_n,g_n)\times T_n\)">\(L_n=\operatorname{Eq}(f_n,g_n)\times T_n\)</span>. Also compute the comparison for an empty finite shape, and explain what happens if the index <span class="math" data-tex="\(I\)">\(I\)</span> itself is empty.</p>
+<p><strong>Solution.</strong> The strict <span class="math" data-tex="\(B\)">\(B\)</span>-transition functions compose to the same constant function, and identity transitions are identities, so <span class="math" data-tex="\(B\)">\(B\)</span> is a functor. If <span class="math" data-tex="\(m&gt;n\)">\(m&gt;n\)</span>, every <span class="math" data-tex="\(x\in A_n\)">\(x\in A_n\)</span> has <span class="math" data-tex="\(x&lt;m\)">\(x&lt;m\)</span>. Thus <span class="math" data-tex="\(g_m(x)=0\)">\(g_m(x)=0\)</span>, which is also the image of <span class="math" data-tex="\(g_n(x)\)">\(g_n(x)\)</span> under the strict <span class="math" data-tex="\(B\)">\(B\)</span>-transition. The same statement holds for <span class="math" data-tex="\(f\)">\(f\)</span>, proving both naturality equations; identity arrows give them trivially. The order category is filtered: it is nonempty, finitely many numbers have a common upper bound, and two parallel arrows always coincide.</p>
+<p>The equalizer is <span class="math" data-tex="\(E_n=\{0,\ldots,n-1\}\)">\(E_n=\{0,\ldots,n-1\}\)</span>, with <span class="math" data-tex="\(E_0=\varnothing\)">\(E_0=\varnothing\)</span>, and its transitions are inclusions. Each <span class="math" data-tex="\(x\in\mathbb N\)">\(x\in\mathbb N\)</span> enters <span class="math" data-tex="\(E\)">\(E\)</span> at stage <span class="math" data-tex="\(x+1\)">\(x+1\)</span>. All elements of <span class="math" data-tex="\(B\)">\(B\)</span> have the same colimit class, since at the next stage both are sent to <span class="math" data-tex="\(0\)">\(0\)</span>. Therefore <span class="math" data-tex="\(\operatorname{colim}A=\mathbb N\)">\(\operatorname{colim}A=\mathbb N\)</span>, <span class="math" data-tex="\(\operatorname{colim}B=\{*\}\)">\(\operatorname{colim}B=\{*\}\)</span> and <span class="math" data-tex="\(\operatorname{colim}T=\mathbb N\)">\(\operatorname{colim}T=\mathbb N\)</span>, with the two induced maps from <span class="math" data-tex="\(A\)">\(A\)</span> equal. The right-hand finite limit is <span class="math" data-tex="\(\mathbb N\times\mathbb N\)">\(\mathbb N\times\mathbb N\)</span>. The actual comparison is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_n(E_n\times T_n)\\
+\xrightarrow{\ \sim\ }\mathbb N\times\mathbb N,\\
+[n,(x,y)]\longmapsto(x,y),\\
+(x,y)\longmapsto[n,(x,y)],\\
+n\ge\max\{x+1,\lceil y/2\rceil\}.
+\end{gathered}
+\tag{5.7}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_n(E_n\times T_n)\\
+\xrightarrow{\ \sim\ }\mathbb N\times\mathbb N,\\
+[n,(x,y)]\longmapsto(x,y),\\
+(x,y)\longmapsto[n,(x,y)],\\
+n\ge\max\{x+1,\lceil y/2\rceil\}.
+\end{gathered}
+\tag{5.7}
+\]</span>
+<p>Such an <span class="math" data-tex="\(n\)">\(n\)</span> always exists. Two choices of <span class="math" data-tex="\(n\)">\(n\)</span> give the same class at their maximum, proving the inverse independent of the choice. Conversely, two representatives with the same pair become identical at the maximum of their stages, proving injectivity; the displayed choice proves surjectivity. Stage <span class="math" data-tex="\(0\)">\(0\)</span> contributes nothing to this colimit because its equalizer is empty, although the final colimit is nonempty. This limit is an actual finite-category limit: take the parallel-pair shape for <span class="math" data-tex="\(f,g\)">\(f,g\)</span> and an isolated object for <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For an empty finite shape, the stage limit is the singleton of the empty tuple. All its stage classes agree and one exists, giving</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_{n\in\mathbb N}\{()\}
+\xrightarrow{\ \sim\ }\{()\},\\
+\operatorname{colim}_{i\in\varnothing}\{()\}
+=\varnothing\longrightarrow\{()\}.
+\end{gathered}
+\tag{5.8}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_{n\in\mathbb N}\{()\}
+\xrightarrow{\ \sim\ }\{()\},\\
+\operatorname{colim}_{i\in\varnothing}\{()\}
+=\varnothing\longrightarrow\{()\}.
+\end{gathered}
+\tag{5.8}
+\]</span>
+<p>The second comparison is not bijective. An empty finite limit is required even when a finite shape has no objects; an empty colimit index violates precisely this requirement and the nonemptiness axiom of filteredness.</p>
+<h2 id="6-references-and-retained-proof-interfaces">6. References and retained proof interfaces</h2>
+<p>Filtered colimits and their commutation with finite limits in sets are also treated in Pierre Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/HA.pdf"><em>An Introduction to Categories and Homological Algebra</em></a>, lecture notes, version of 1 March 2026, Section 2.6, and in Emily Riehl, <a href="https://emilyriehl.github.io/files/context.pdf"><em>Category Theory in Context</em></a>, Section 3.8. The Hom test in the converse uses the diagram <span class="math" data-tex="\(\operatorname{Hom}_I(\phi(j),i)\)">\(\operatorname{Hom}_I(\phi(j),i)\)</span>; the same <span class="math" data-tex="\(\phi\)">\(\phi\)</span> occurs throughout.</p>
+<p>The linked owned lessons retain the complete general Set quotient factors, the covariant represented singleton, all small-set encodings, and the full module direct-sum and relation construction. <a href="hom-tensor-and-the-exactness-of-module-limits.html#3-finite-relations-become-equations-at-one-filtered-stage">Hom, tensor and module limits, Section 3</a> already proves the finite graph cocone and the general filtered module representative and equality tests. The present lesson states their Set interfaces, proves the converse finite-limit test, and proves all operations and factors needed for the forgetful comparison.</p>
+<p>The canonical and other-course comparisons in the private provenance record concern their exact retained versions and bounded proof ranges. The finite-model computations test the displayed examples and a specified finite family of categories and functors. They support the self-check; the arguments above prove the general results.</p>
+</main></body></html>

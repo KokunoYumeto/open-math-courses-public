@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gauss sums · Dirichlet L-functions and primes in progressions</title>
+<meta name="description" content="A lesson of the course Dirichlet L-functions and primes in progressions. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-DIRL/NT-DIRL-03.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Dirichlet L-functions and primes in progressions</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 17</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="gauss-sums">Gauss sums</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Public domain (CC0).</em></p>
+<p>A Dirichlet character is multiplicative; the oscillation in a Fourier series is additive. A Gauss sum connects them. For a primitive character its Fourier transform has the same shape as the conjugate character, multiplied by a single number of absolute value the square root of the modulus. The phase of that number matters: for quadratic characters we will determine it exactly.</p>
+<p>We use the conductor criterion, character orthogonality and real-character classification proved in <a href="NT-DIRL-01.html">Dirichlet characters</a>. The Gaussian Fourier calculation needed for the phase is proved here, including the limiting argument. Our convention throughout is</p>
+<span class="math math-display" data-tex="\[
+e(x)=\exp(2\pi i x),\qquad
+\tau(\chi)=\sum_{b\bmod q}\chi(b)e(b/q).
+\]">\[
+e(x)=\exp(2\pi i x),\qquad
+\tau(\chi)=\sum_{b\bmod q}\chi(b)e(b/q).
+\]</span>
+<p>Changing the exponential to <span class="math" data-tex="\(e(-b/q)\)">\(e(-b/q)\)</span> multiplies this Gauss sum by <span class="math" data-tex="\(\chi(-1)\)">\(\chi(-1)\)</span>. Thus signs in a different convention must be converted before comparison.</p>
+<h2 id="1-a-character-under-the-finite-fourier-transform"><span id="section-1"></span>1. A character under the finite Fourier transform</h2>
+<p>Write</p>
+<span class="math math-display" data-tex="\[
+S_\chi(n)=\sum_{b\bmod q}\chi(b)e(bn/q).
+\]">\[
+S_\chi(n)=\sum_{b\bmod q}\chi(b)e(bn/q).
+\]</span>
+<p>If <span class="math" data-tex="\((n,q)=1\)">\((n,q)=1\)</span>, multiplication by <span class="math" data-tex="\(n\)">\(n\)</span> permutes residue classes. Substituting <span class="math" data-tex="\(c=bn\)">\(c=bn\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+S_\chi(n)=\overline{\chi(n)}\sum_{c\bmod q}\chi(c)e(c/q)
+=\overline{\chi(n)}\tau(\chi).
+\tag{1.1}
+\]">\[
+S_\chi(n)=\overline{\chi(n)}\sum_{c\bmod q}\chi(c)e(c/q)
+=\overline{\chi(n)}\tau(\chi).
+\tag{1.1}
+\]</span>
+<p>Primitivity extends this formula to the nonunits, where the right side is zero.</p>
+<p><strong>Theorem 1.1.</strong> If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is primitive modulo <span class="math" data-tex="\(q\)">\(q\)</span>, then (1.1) holds for every integer <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Proof.</strong> Suppose <span class="math" data-tex="\(d=(n,q)&gt;1\)">\(d=(n,q)&gt;1\)</span>. The divisor <span class="math" data-tex="\(c=q/d\)">\(c=q/d\)</span> is proper. By the conductor criterion there is a unit <span class="math" data-tex="\(u\equiv1\pmod c\)">\(u\equiv1\pmod c\)</span> with <span class="math" data-tex="\(\chi(u)\ne1\)">\(\chi(u)\ne1\)</span>. Since <span class="math" data-tex="\(n(u-1)\)">\(n(u-1)\)</span> is divisible by <span class="math" data-tex="\(q\)">\(q\)</span>, multiplication by <span class="math" data-tex="\(u\)">\(u\)</span> in the sum gives</p>
+<span class="math math-display" data-tex="\[
+S_\chi(n)=\sum_{b\bmod q}\chi(ub)e(ubn/q)
+=\chi(u)S_\chi(n).
+\]">\[
+S_\chi(n)=\sum_{b\bmod q}\chi(ub)e(ubn/q)
+=\chi(u)S_\chi(n).
+\]</span>
+<p>Consequently <span class="math" data-tex="\(S_\chi(n)=0\)">\(S_\chi(n)=0\)</span>. The unit case was already proved. For <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, the unique character is the constant function 1 and the single-term sum is 1, so the formula also holds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Finite Fourier inversion follows directly from the geometric sum</p>
+<span class="math math-display" data-tex="\[
+\sum_{r\bmod q}e(r(b-n)/q)
+=q\,1_{b\equiv n\ (q)}.
+\]">\[
+\sum_{r\bmod q}e(r(b-n)/q)
+=q\,1_{b\equiv n\ (q)}.
+\]</span>
+<p>Inserting <span class="math" data-tex="\(S_\chi(r)\)">\(S_\chi(r)\)</span> therefore yields, for a primitive character,</p>
+<span class="math math-display" data-tex="\[
+\boxed{\chi(n)=\frac{\tau(\chi)}q
+\sum_{r\bmod q}\overline{\chi(r)}e(-rn/q).}
+\tag{1.2}
+\]">\[
+\boxed{\chi(n)=\frac{\tau(\chi)}q
+\sum_{r\bmod q}\overline{\chi(r)}e(-rn/q).}
+\tag{1.2}
+\]</span>
+<p>The negative sign here comes from inversion; the definition of <span class="math" data-tex="\(\tau\)">\(\tau\)</span> still uses the positive sign. Formula (1.2) will turn an interval character sum into a sum of elementary geometric progressions.</p>
+<h2 id="2-magnitude-conjugation-and-induction">2. Magnitude, conjugation and induction</h2>
+<p><strong>Theorem 2.1.</strong> For a primitive character modulo <span class="math" data-tex="\(q\)">\(q\)</span>,</p>
+<span class="math math-display" data-tex="\[
+|\tau(\chi)|=\sqrt q,\qquad
+\tau(\overline\chi)=\chi(-1)\overline{\tau(\chi)},\qquad
+\tau(\chi)\tau(\overline\chi)=\chi(-1)q.
+\tag{2.1}
+\]">\[
+|\tau(\chi)|=\sqrt q,\qquad
+\tau(\overline\chi)=\chi(-1)\overline{\tau(\chi)},\qquad
+\tau(\chi)\tau(\overline\chi)=\chi(-1)q.
+\tag{2.1}
+\]</span>
+<p><strong>Proof.</strong> Expand the square and sum over all additive frequencies:</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{n\bmod q}|S_\chi(n)|^2
+&amp;=\sum_{b,c\bmod q}\chi(b)\overline{\chi(c)}
+\sum_{n\bmod q}e(n(b-c)/q)\\
+&amp;=q\sum_{b\bmod q}|\chi(b)|^2=q\varphi(q).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{n\bmod q}|S_\chi(n)|^2
+&amp;=\sum_{b,c\bmod q}\chi(b)\overline{\chi(c)}
+\sum_{n\bmod q}e(n(b-c)/q)\\
+&amp;=q\sum_{b\bmod q}|\chi(b)|^2=q\varphi(q).
+\end{aligned}
+\]</span>
+<p>By Theorem 1.1 the same sum is <span class="math" data-tex="\(\varphi(q)|\tau(\chi)|^2\)">\(\varphi(q)|\tau(\chi)|^2\)</span>. Cancellation proves the magnitude, including <span class="math" data-tex="\(q=1\)">\(q=1\)</span>. Next,</p>
+<span class="math math-display" data-tex="\[
+\overline{\tau(\chi)}
+=\sum_{b\bmod q}\overline{\chi(b)}e(-b/q)
+=\overline{\chi(-1)}\tau(\overline\chi).
+\]">\[
+\overline{\tau(\chi)}
+=\sum_{b\bmod q}\overline{\chi(b)}e(-b/q)
+=\overline{\chi(-1)}\tau(\overline\chi).
+\]</span>
+<p>Since <span class="math" data-tex="\(\chi(-1)\)">\(\chi(-1)\)</span> is 1 or <span class="math" data-tex="\(-1\)">\(-1\)</span>, this proves the conjugation formula. Multiplication by <span class="math" data-tex="\(\tau(\chi)\)">\(\tau(\chi)\)</span> gives the last identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>An imprimitive character behaves differently. Its Gauss sum can vanish, and its nonzero magnitude need not be <span class="math" data-tex="\(\sqrt q\)">\(\sqrt q\)</span>.</p>
+<p><strong>Theorem 2.2.</strong> Suppose <span class="math" data-tex="\(\chi\)">\(\chi\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span> is induced by the primitive character <span class="math" data-tex="\(\chi^*\)">\(\chi^*\)</span> modulo <span class="math" data-tex="\(q^*\)">\(q^*\)</span>. Put <span class="math" data-tex="\(m=q/q^*\)">\(m=q/q^*\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\boxed{\tau(\chi)=\mu(m)\chi^*(m)\tau(\chi^*).}
+\tag{2.2}
+\]">\[
+\boxed{\tau(\chi)=\mu(m)\chi^*(m)\tau(\chi^*).}
+\tag{2.2}
+\]</span>
+<p>In particular it is zero if <span class="math" data-tex="\(m\)">\(m\)</span> is not squarefree or if <span class="math" data-tex="\((m,q^*)&gt;1\)">\((m,q^*)&gt;1\)</span>.</p>
+<p><strong>Proof.</strong> The unit indicator is <span class="math" data-tex="\(1_{(a,q)=1}=\sum_{d\mid(a,q)}\mu(d)\)">\(1_{(a,q)=1}=\sum_{d\mid(a,q)}\mu(d)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\tau(\chi)=\sum_{d\mid q}\mu(d)\chi^*(d)
+\sum_{b\bmod q/d}\chi^*(b)e\bigl(b/(q/d)\bigr).
+\tag{2.3}
+\]">\[
+\tau(\chi)=\sum_{d\mid q}\mu(d)\chi^*(d)
+\sum_{b\bmod q/d}\chi^*(b)e\bigl(b/(q/d)\bigr).
+\tag{2.3}
+\]</span>
+<p>Terms with <span class="math" data-tex="\((d,q^*)&gt;1\)">\((d,q^*)&gt;1\)</span> already vanish. For every other term, <span class="math" data-tex="\(q^*\mid q/d\)">\(q^*\mid q/d\)</span>; set <span class="math" data-tex="\(h=q/(dq^*)\)">\(h=q/(dq^*)\)</span>. Writing <span class="math" data-tex="\(b=r+kq^*\)">\(b=r+kq^*\)</span>, with <span class="math" data-tex="\(r\bmod q^*\)">\(r\bmod q^*\)</span> and <span class="math" data-tex="\(0\le k&lt;h\)">\(0\le k&lt;h\)</span>, shows that its inner sum contains the factor</p>
+<span class="math math-display" data-tex="\[
+\sum_{k=0}^{h-1}e(k/h).
+\]">\[
+\sum_{k=0}^{h-1}e(k/h).
+\]</span>
+<p>This is zero unless <span class="math" data-tex="\(h=1\)">\(h=1\)</span>. Only <span class="math" data-tex="\(d=m\)">\(d=m\)</span> can remain, and its inner sum is exactly <span class="math" data-tex="\(\tau(\chi^*)\)">\(\tau(\chi^*)\)</span>. If that <span class="math" data-tex="\(d\)">\(d\)</span> is not coprime to <span class="math" data-tex="\(q^*\)">\(q^*\)</span>, all terms vanish and the right side of (2.2) also vanishes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, the principal character has conductor 1, so <span class="math" data-tex="\(\tau(\chi_0)=\mu(q)\)">\(\tau(\chi_0)=\mu(q)\)</span>. The lift of <span class="math" data-tex="\(\chi_{-3}\)">\(\chi_{-3}\)</span> to modulus 6 has</p>
+<span class="math math-display" data-tex="\[
+\tau(\chi)=\mu(2)\chi_{-3}(2)\tau(\chi_{-3})=i\sqrt3,
+\]">\[
+\tau(\chi)=\mu(2)\chi_{-3}(2)\tau(\chi_{-3})=i\sqrt3,
+\]</span>
+<p>as can also be checked from <span class="math" data-tex="\(e(1/6)-e(5/6)\)">\(e(1/6)-e(5/6)\)</span>. The square-root magnitude here belongs to the conductor 3.</p>
+<h2 id="3-the-gaussian-transformation-with-its-branch-fixed">3. The Gaussian transformation, with its branch fixed</h2>
+<p>Let</p>
+<span class="math math-display" data-tex="\[
+\Theta(z)=\sum_{n\in\mathbb Z}\exp(-\pi z n^2),\qquad \Re z&gt;0.
+\]">\[
+\Theta(z)=\sum_{n\in\mathbb Z}\exp(-\pi z n^2),\qquad \Re z&gt;0.
+\]</span>
+<p>The series and its derivatives converge uniformly on compact subsets of this half-plane. We will prove</p>
+<span class="math math-display" data-tex="\[
+\boxed{\Theta(z)=z^{-1/2}\Theta(1/z),}
+\tag{3.1}
+\]">\[
+\boxed{\Theta(z)=z^{-1/2}\Theta(1/z),}
+\tag{3.1}
+\]</span>
+<p>where <span class="math" data-tex="\(z^{1/2}\)">\(z^{1/2}\)</span> is the holomorphic square root positive on the positive real axis. Fixing this branch is essential to determining the Gauss-sum sign.</p>
+<h3 id="the-fourier-transform-of-a-gaussian">The Fourier transform of a Gaussian</h3>
+<p>Our Fourier transform is <span class="math" data-tex="\(\widehat f(\xi)=\int_{\mathbb R}f(x)e(-\xi x)\,dx\)">\(\widehat f(\xi)=\int_{\mathbb R}f(x)e(-\xi x)\,dx\)</span>. First <span class="math" data-tex="\(\int_{\mathbb R}e^{-\pi x^2}\,dx=1\)">\(\int_{\mathbb R}e^{-\pi x^2}\,dx=1\)</span>: square the positive integral, change to polar coordinates in the plane, and obtain <span class="math" data-tex="\(2\pi\int_0^\infty r e^{-\pi r^2}\,dr=1\)">\(2\pi\int_0^\infty r e^{-\pi r^2}\,dr=1\)</span>.</p>
+<p>For real <span class="math" data-tex="\(z&gt;0\)">\(z&gt;0\)</span>, let <span class="math" data-tex="\(I_z(\xi)=\int e^{-\pi z x^2}e(-\xi x)\,dx\)">\(I_z(\xi)=\int e^{-\pi z x^2}e(-\xi x)\,dx\)</span>. Differentiation and integration by parts are justified by Gaussian decay. Since <span class="math" data-tex="\((e^{-\pi z x^2})&#x27;=-2\pi z x e^{-\pi z x^2}\)">\((e^{-\pi z x^2})&#x27;=-2\pi z x e^{-\pi z x^2}\)</span>, they give</p>
+<span class="math math-display" data-tex="\[
+I_z&#x27;(\xi)=-\frac{2\pi\xi}{z}I_z(\xi),\qquad I_z(0)=z^{-1/2}.
+\]">\[
+I_z&#x27;(\xi)=-\frac{2\pi\xi}{z}I_z(\xi),\qquad I_z(0)=z^{-1/2}.
+\]</span>
+<p>Solving this differential equation gives <span class="math" data-tex="\(I_z(\xi)=z^{-1/2}e^{-\pi\xi^2/z}\)">\(I_z(\xi)=z^{-1/2}e^{-\pi\xi^2/z}\)</span>. For each real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the integral and this expression are holomorphic in <span class="math" data-tex="\(\Re z&gt;0\)">\(\Re z&gt;0\)</span>. Dominated differentiation on compact subsets proves this for the integral. The identity theorem consequently proves</p>
+<span class="math math-display" data-tex="\[
+\widehat{e^{-\pi z x^2}}(\xi)=z^{-1/2}e^{-\pi\xi^2/z}
+\quad(\Re z&gt;0).
+\tag{3.2}
+\]">\[
+\widehat{e^{-\pi z x^2}}(\xi)=z^{-1/2}e^{-\pi\xi^2/z}
+\quad(\Re z&gt;0).
+\tag{3.2}
+\]</span>
+<h3 id="periodization-and-fourier-uniqueness">Periodization and Fourier uniqueness</h3>
+<p>Periodize the Gaussian as <span class="math" data-tex="\(P_z(x)=\sum_{n\in\mathbb Z}e^{-\pi z(x+n)^2}\)">\(P_z(x)=\sum_{n\in\mathbb Z}e^{-\pi z(x+n)^2}\)</span>. This is a continuous 1-periodic function, with uniform convergence on <span class="math" data-tex="\(0\le x\le1\)">\(0\le x\le1\)</span>. Splitting the integral into unit intervals shows that its <span class="math" data-tex="\(k\)">\(k\)</span>-th Fourier coefficient is (3.2) at <span class="math" data-tex="\(\xi=k\)">\(\xi=k\)</span>. Since <span class="math" data-tex="\(\Re(1/z)&gt;0\)">\(\Re(1/z)&gt;0\)</span>, these coefficients are absolutely summable. Their Fourier series defines a continuous function <span class="math" data-tex="\(Q_z\)">\(Q_z\)</span>.</p>
+<p>Here is the uniqueness step, so no general Poisson theorem is needed. For a continuous periodic function <span class="math" data-tex="\(H\)">\(H\)</span>, the kernels</p>
+<span class="math math-display" data-tex="\[
+K_N(y)=\frac1{N+1}\left|\sum_{j=0}^N e(jy)\right|^2
+\]">\[
+K_N(y)=\frac1{N+1}\left|\sum_{j=0}^N e(jy)\right|^2
+\]</span>
+<p>are nonnegative, have integral 1, and satisfy <span class="math" data-tex="\(K_N(y)\le((N+1)\sin^2\pi y)^{-1}\)">\(K_N(y)\le((N+1)\sin^2\pi y)^{-1}\)</span> away from integers. Uniform continuity, together with this bound outside a small neighborhood of 0, proves <span class="math" data-tex="\(H*K_N\to H\)">\(H*K_N\to H\)</span> uniformly. Expanding the finite square expresses each convolution as a finite linear combination of the Fourier coefficients of <span class="math" data-tex="\(H\)">\(H\)</span>. Thus, if all those coefficients vanish, <span class="math" data-tex="\(H=0\)">\(H=0\)</span>.</p>
+<p>Apply this to <span class="math" data-tex="\(H=P_z-Q_z\)">\(H=P_z-Q_z\)</span>. Their coefficients coincide, so <span class="math" data-tex="\(P_z=Q_z\)">\(P_z=Q_z\)</span>. Evaluation at <span class="math" data-tex="\(x=0\)">\(x=0\)</span> gives (3.1). All series used in this step converge absolutely; (3.1) has not been extended to the imaginary axis.</p>
+<h3 id="a-gaussian-residue-class-limit">A Gaussian residue-class limit</h3>
+<p>We also need, for fixed integers <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(Q\ge1\)">\(Q\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\lim_{t\downarrow0}\sqrt t\sum_{k\in\mathbb Z}
+e^{-\pi t(h+Qk)^2}=\frac1Q.
+\tag{3.3}
+\]">\[
+\lim_{t\downarrow0}\sqrt t\sum_{k\in\mathbb Z}
+e^{-\pi t(h+Qk)^2}=\frac1Q.
+\tag{3.3}
+\]</span>
+<p>Indeed, put <span class="math" data-tex="\(\delta=Q\sqrt t\)">\(\delta=Q\sqrt t\)</span>. Multiplication by <span class="math" data-tex="\(Q\)">\(Q\)</span> turns the left side into the Riemann sum <span class="math" data-tex="\(\delta\sum_k e^{-\pi(h\sqrt t+k\delta)^2}\)">\(\delta\sum_k e^{-\pi(h\sqrt t+k\delta)^2}\)</span> for the integral 1. On a fixed compact interval convergence follows from uniform continuity. Outside that interval the Gaussian is decreasing in the distance from zero, so comparison with its tail integral, plus at most two boundary rectangles, bounds the tails uniformly. Letting the interval grow proves (3.3).</p>
+<h2 id="4-the-quadratic-gauss-sum-including-its-phase">4. The quadratic Gauss sum, including its phase</h2>
+<p>Define <span class="math" data-tex="\(G(q)=\sum_{n=0}^{q-1}e(n^2/q)\)">\(G(q)=\sum_{n=0}^{q-1}e(n^2/q)\)</span>.</p>
+<p><strong>Theorem 4.1.</strong> For every integer <span class="math" data-tex="\(q\ge1\)">\(q\ge1\)</span>, with the positive real square root,</p>
+<span class="math math-display" data-tex="\[
+\boxed{G(q)=\frac{1+i}{2}(1+i^{-q})\sqrt q.}
+\tag{4.1}
+\]">\[
+\boxed{G(q)=\frac{1+i}{2}(1+i^{-q})\sqrt q.}
+\tag{4.1}
+\]</span>
+<p>Equivalently, for <span class="math" data-tex="\(q\equiv0,1,2,3\pmod4\)">\(q\equiv0,1,2,3\pmod4\)</span>, the values are respectively <span class="math" data-tex="\((1+i)\sqrt q,\sqrt q,0,i\sqrt q\)">\((1+i)\sqrt q,\sqrt q,0,i\sqrt q\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-tex="\(z_t=t-2i/q\)">\(z_t=t-2i/q\)</span>. Group the series for <span class="math" data-tex="\(\Theta(z_t)\)">\(\Theta(z_t)\)</span> by residue classes modulo <span class="math" data-tex="\(q\)">\(q\)</span>. The phase <span class="math" data-tex="\(e(n^2/q)\)">\(e(n^2/q)\)</span> is constant on each such class. By (3.3),</p>
+<span class="math math-display" data-tex="\[
+\lim_{t\downarrow0}\sqrt t\,\Theta(z_t)=\frac{G(q)}q.
+\tag{4.2}
+\]">\[
+\lim_{t\downarrow0}\sqrt t\,\Theta(z_t)=\frac{G(q)}q.
+\tag{4.2}
+\]</span>
+<p>To evaluate the transformed side of (3.1), write</p>
+<span class="math math-display" data-tex="\[
+\frac1{z_t}=\alpha_t+i\beta_t,\qquad
+\alpha_t=\frac{q^2t}{4+q^2t^2},\qquad
+\beta_t=\frac{2q}{4+q^2t^2}.
+\]">\[
+\frac1{z_t}=\alpha_t+i\beta_t,\qquad
+\alpha_t=\frac{q^2t}{4+q^2t^2},\qquad
+\beta_t=\frac{2q}{4+q^2t^2}.
+\]</span>
+<p>Thus <span class="math" data-tex="\(\alpha_t\sim q^2t/4\)">\(\alpha_t\sim q^2t/4\)</span> and <span class="math" data-tex="\(\beta_t-q/2=O_q(t^2)\)">\(\beta_t-q/2=O_q(t^2)\)</span>. We may replace <span class="math" data-tex="\(\beta_t\)">\(\beta_t\)</span> by <span class="math" data-tex="\(q/2\)">\(q/2\)</span> in the scaled series. More precisely,</p>
+<span class="math math-display" data-tex="\[
+\left|\Theta(1/z_t)-\sum_{m\in\mathbb Z}
+e^{-\pi\alpha_t m^2}e^{-\pi i q m^2/2}\right|
+\le\pi|\beta_t-q/2|\sum_m m^2e^{-\pi\alpha_t m^2}
+=O_q(\sqrt t).
+\tag{4.3}
+\]">\[
+\left|\Theta(1/z_t)-\sum_{m\in\mathbb Z}
+e^{-\pi\alpha_t m^2}e^{-\pi i q m^2/2}\right|
+\le\pi|\beta_t-q/2|\sum_m m^2e^{-\pi\alpha_t m^2}
+=O_q(\sqrt t).
+\tag{4.3}
+\]</span>
+<p>The moment sum is <span class="math" data-tex="\(O(\alpha_t^{-3/2})\)">\(O(\alpha_t^{-3/2})\)</span> for small <span class="math" data-tex="\(t\)">\(t\)</span>. This follows by comparison with the integral of <span class="math" data-tex="\(x^2e^{-\pi\alpha_t x^2}\)">\(x^2e^{-\pi\alpha_t x^2}\)</span>, whose substitution <span class="math" data-tex="\(u=\sqrt{\alpha_t}x\)">\(u=\sqrt{\alpha_t}x\)</span> gives that order; splitting at the maximum adds only <span class="math" data-tex="\(O(\alpha_t^{-1})\)">\(O(\alpha_t^{-1})\)</span>. After multiplication by <span class="math" data-tex="\(\sqrt t\)">\(\sqrt t\)</span>, the error in (4.3) tends to zero.</p>
+<p>For even <span class="math" data-tex="\(m\)">\(m\)</span>, the phase <span class="math" data-tex="\(e^{-\pi i q m^2/2}\)">\(e^{-\pi i q m^2/2}\)</span> is 1. For odd <span class="math" data-tex="\(m\)">\(m\)</span>, use <span class="math" data-tex="\(m^2\equiv1\pmod8\)">\(m^2\equiv1\pmod8\)</span> to see that the phase is <span class="math" data-tex="\(i^{-q}\)">\(i^{-q}\)</span>. Apply (3.3) separately to the even and odd integers. Since <span class="math" data-tex="\(\sqrt t/\sqrt{\alpha_t}\to2/q\)">\(\sqrt t/\sqrt{\alpha_t}\to2/q\)</span>, we get</p>
+<span class="math math-display" data-tex="\[
+\lim_{t\downarrow0}\sqrt t\,\Theta(1/z_t)
+=\frac{1+i^{-q}}q.
+\tag{4.4}
+\]">\[
+\lim_{t\downarrow0}\sqrt t\,\Theta(1/z_t)
+=\frac{1+i^{-q}}q.
+\tag{4.4}
+\]</span>
+<p>Finally, the branch fixed in Section 3 gives</p>
+<span class="math math-display" data-tex="\[
+\lim_{t\downarrow0}z_t^{-1/2}
+=(-2i/q)^{-1/2}=\frac{1+i}{2}\sqrt q.
+\]">\[
+\lim_{t\downarrow0}z_t^{-1/2}
+=(-2i/q)^{-1/2}=\frac{1+i}{2}\sqrt q.
+\]</span>
+<p>Combine (3.1), (4.2) and (4.4), and multiply by <span class="math" data-tex="\(q\)">\(q\)</span>. This proves (4.1), even when <span class="math" data-tex="\(1+i^{-q}=0\)">\(1+i^{-q}=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span>, each residue <span class="math" data-tex="\(a\)">\(a\)</span> has <span class="math" data-tex="\(1+(a/p)\)">\(1+(a/p)\)</span> square roots modulo <span class="math" data-tex="\(p\)">\(p\)</span>, including <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+G(p)=\sum_{a\bmod p}\bigl(1+(a/p)\bigr)e(a/p)
+=\tau(\chi_p),\qquad \chi_p(a)=(a/p),
+\]">\[
+G(p)=\sum_{a\bmod p}\bigl(1+(a/p)\bigr)e(a/p)
+=\tau(\chi_p),\qquad \chi_p(a)=(a/p),
+\]</span>
+<p>because the sum of all the <span class="math" data-tex="\(p\)">\(p\)</span>-th roots of unity is zero. We have proved the exact evaluation</p>
+<span class="math math-display" data-tex="\[
+\tau(\chi_p)=
+\begin{cases}
+\sqrt{p},&amp;p\equiv1\pmod4,\\
+i\sqrt{p},&amp;p\equiv3\pmod4.
+\end{cases}
+\tag{4.5}
+\]">\[
+\tau(\chi_p)=
+\begin{cases}
+\sqrt{p},&amp;p\equiv1\pmod4,\\
+i\sqrt{p},&amp;p\equiv3\pmod4.
+\end{cases}
+\tag{4.5}
+\]</span>
+<figure><img src="assets/gauss-sum-paths.png" alt="Ordered unit-vector sums for p equals 5 and 7, with each arrow labelled by n and endpoints at positive square root of 5 and positive i times square root of 7." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>Figure 1. Add the vectors <span class="math" data-tex="\(e(n^2/p)\)">\(e(n^2/p)\)</span> in the order <span class="math" data-tex="\(n=0,\ldots,p-1\)">\(n=0,\ldots,p-1\)</span>. The arrows show the successive terms; the endpoint labels give the exact values proved in Theorem 4.1. For 5 the endpoint is on the positive real axis, and for 7 it is on the positive imaginary axis. Each panel's axes specify its coordinates.</em></p>
+<p><strong>Example 4.2 (the first four moduli).</strong> Directly,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G(1)&amp;=1,\\
+G(2)&amp;=1+e(1/2)=0,\\
+G(3)&amp;=1+2e(1/3)=i\sqrt3,\\
+G(4)&amp;=2+2e(1/4)=2+2i.
+\end{aligned}
+\]">\[
+\begin{aligned}
+G(1)&amp;=1,\\
+G(2)&amp;=1+e(1/2)=0,\\
+G(3)&amp;=1+2e(1/3)=i\sqrt3,\\
+G(4)&amp;=2+2e(1/4)=2+2i.
+\end{aligned}
+\]</span>
+<p>These include the degeneracy at twice an odd modulus and the larger magnitude at a modulus divisible by 4.</p>
+<p><strong>Example 4.3 (quartic characters modulo 5).</strong> Let <span class="math" data-tex="\(\chi(2)=i\)">\(\chi(2)=i\)</span>. Its values on <span class="math" data-tex="\(1,2,3,4\)">\(1,2,3,4\)</span> are <span class="math" data-tex="\(1,i,-i,-1\)">\(1,i,-i,-1\)</span>. With <span class="math" data-tex="\(\zeta=e(1/5)\)">\(\zeta=e(1/5)\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\tau(\chi)&amp;=\zeta+i\zeta^2-i\zeta^3-\zeta^4
+=-2\sin(\pi/5)+2i\sin(2\pi/5),\\
+\tau(\overline\chi)&amp;=2\sin(\pi/5)+2i\sin(2\pi/5).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\tau(\chi)&amp;=\zeta+i\zeta^2-i\zeta^3-\zeta^4
+=-2\sin(\pi/5)+2i\sin(2\pi/5),\\
+\tau(\overline\chi)&amp;=2\sin(\pi/5)+2i\sin(2\pi/5).
+\end{aligned}
+\]</span>
+<p>The two sums have absolute value <span class="math" data-tex="\(\sqrt5\)">\(\sqrt5\)</span>, because <span class="math" data-tex="\(\sin^2(\pi/5)+\sin^2(2\pi/5)=5/4\)">\(\sin^2(\pi/5)+\sin^2(2\pi/5)=5/4\)</span>. The second is minus the conjugate of the first, as required by <span class="math" data-tex="\(\chi(-1)=-1\)">\(\chi(-1)=-1\)</span>. Their product is <span class="math" data-tex="\(-5\)">\(-5\)</span>. The quadratic character instead has Gauss sum <span class="math" data-tex="\(\sqrt5\)">\(\sqrt5\)</span>, and the principal character has Gauss sum <span class="math" data-tex="\(-1\)">\(-1\)</span>. Thus the magnitude does not determine the phase for general characters.</p>
+<h2 id="5-reciprocity-and-the-real-root-number">5. Reciprocity and the real root number</h2>
+<h3 id="reciprocity-from-the-composite-modulus-evaluation">Reciprocity from the composite-modulus evaluation</h3>
+<p>For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(p\nmid c\)">\(p\nmid c\)</span>, the same square-root count used above, followed by substitution in (1.1), gives</p>
+<span class="math math-display" data-tex="\[
+\sum_{a\bmod p}e(ca^2/p)=\left(\frac cp\right)G(p).
+\tag{5.1}
+\]">\[
+\sum_{a\bmod p}e(ca^2/p)=\left(\frac cp\right)G(p).
+\tag{5.1}
+\]</span>
+<p>Let <span class="math" data-tex="\(p,r\)">\(p,r\)</span> be distinct odd primes. The Chinese remainder theorem represents each class modulo <span class="math" data-tex="\(pr\)">\(pr\)</span> uniquely as <span class="math" data-tex="\(ra+pb\)">\(ra+pb\)</span>, with <span class="math" data-tex="\(a\bmod p\)">\(a\bmod p\)</span> and <span class="math" data-tex="\(b\bmod r\)">\(b\bmod r\)</span>. Expanding its square and discarding the integer cross term gives</p>
+<span class="math math-display" data-tex="\[
+G(pr)=\left(\frac rp\right)\left(\frac pr\right)G(p)G(r).
+\tag{5.2}
+\]">\[
+G(pr)=\left(\frac rp\right)\left(\frac pr\right)G(p)G(r).
+\tag{5.2}
+\]</span>
+<p>Theorem 4.1 evaluates all three Gauss sums. If both primes are 3 modulo 4, <span class="math" data-tex="\(G(p)G(r)=-\sqrt{pr}\)">\(G(p)G(r)=-\sqrt{pr}\)</span>, whereas <span class="math" data-tex="\(G(pr)=\sqrt{pr}\)">\(G(pr)=\sqrt{pr}\)</span>. In the other three cases their phases coincide. Consequently</p>
+<span class="math math-display" data-tex="\[
+\boxed{\left(\frac rp\right)\left(\frac pr\right)
+=(-1)^{(p-1)(r-1)/4}.}
+\tag{5.3}
+\]">\[
+\boxed{\left(\frac rp\right)\left(\frac pr\right)
+=(-1)^{(p-1)(r-1)/4}.}
+\tag{5.3}
+\]</span>
+<p>This gives a second proof of the reciprocity law from the preceding character lesson. Here the sign comes from the exact Gaussian phase.</p>
+<h3 id="products-at-coprime-conductors">Products at coprime conductors</h3>
+<p>If <span class="math" data-tex="\(\chi_1,\chi_2\)">\(\chi_1,\chi_2\)</span> have coprime moduli <span class="math" data-tex="\(q_1,q_2\)">\(q_1,q_2\)</span>, their product at modulus <span class="math" data-tex="\(q_1q_2\)">\(q_1q_2\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\tau(\chi_1\chi_2)=\chi_1(q_2)\chi_2(q_1)
+\tau(\chi_1)\tau(\chi_2).
+\tag{5.4}
+\]">\[
+\tau(\chi_1\chi_2)=\chi_1(q_2)\chi_2(q_1)
+\tau(\chi_1)\tau(\chi_2).
+\tag{5.4}
+\]</span>
+<p>To prove it, represent a residue as <span class="math" data-tex="\(q_2u+q_1v\)">\(q_2u+q_1v\)</span>. Its character value is <span class="math" data-tex="\(\chi_1(q_2)\chi_2(q_1)\chi_1(u)\chi_2(v)\)">\(\chi_1(q_2)\chi_2(q_1)\chi_1(u)\chi_2(v)\)</span>, and its exponential is <span class="math" data-tex="\(e(u/q_1)e(v/q_2)\)">\(e(u/q_1)e(v/q_2)\)</span>. Summing factors the two sums. No primitivity is required for this identity.</p>
+<p><strong>Theorem 5.1.</strong> For every real primitive character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of conductor <span class="math" data-tex="\(q\)">\(q\)</span>, put <span class="math" data-tex="\(\chi(-1)=(-1)^a\)">\(\chi(-1)=(-1)^a\)</span>, <span class="math" data-tex="\(a\in\{0,1\}\)">\(a\in\{0,1\}\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\tau(\chi)=i^a\sqrt q,
+\qquad \varepsilon(\chi):=\frac{\tau(\chi)}{i^a\sqrt q}=1.
+\tag{5.5}
+\]">\[
+\tau(\chi)=i^a\sqrt q,
+\qquad \varepsilon(\chi):=\frac{\tau(\chi)}{i^a\sqrt q}=1.
+\tag{5.5}
+\]</span>
+<p><strong>Proof.</strong> By the preceding lesson, <span class="math" data-tex="\(\chi=\chi_d\)">\(\chi=\chi_d\)</span> for a fundamental discriminant</p>
+<span class="math math-display" data-tex="\[
+d=d_2\prod_{p\in S}p^*,\qquad
+p^*=(-1)^{(p-1)/2}p,\qquad d_2\in\{1,-4,8,-8\}.
+\]">\[
+d=d_2\prod_{p\in S}p^*,\qquad
+p^*=(-1)^{(p-1)/2}p,\qquad d_2\in\{1,-4,8,-8\}.
+\]</span>
+<p>The local odd characters are <span class="math" data-tex="\((n/p)\)">\((n/p)\)</span>, whose sums are (4.5). For the 2-components, direct substitution of their four nonzero values gives</p>
+<span class="math math-display" data-tex="\[
+\tau(\chi_{-4})=2i,\qquad
+\tau(\chi_8)=\sqrt8,\qquad
+\tau(\chi_{-8})=i\sqrt8.
+\tag{5.6}
+\]">\[
+\tau(\chi_{-4})=2i,\qquad
+\tau(\chi_8)=\sqrt8,\qquad
+\tau(\chi_{-8})=i\sqrt8.
+\tag{5.6}
+\]</span>
+<p>For example, at modulus 8 the even character gives
+<span class="math" data-tex="\(e(1/8)-e(3/8)-e(5/8)+e(7/8)=2\sqrt2\)">\(e(1/8)-e(3/8)-e(5/8)+e(7/8)=2\sqrt2\)</span>, and the odd character gives
+<span class="math" data-tex="\(e(1/8)+e(3/8)-e(5/8)-e(7/8)=2i\sqrt2\)">\(e(1/8)+e(3/8)-e(5/8)-e(7/8)=2i\sqrt2\)</span>.</p>
+<p>For two odd-prime components, the cross factor in (5.4) is <span class="math" data-tex="\((r/p)(p/r)\)">\((r/p)(p/r)\)</span>, so (5.3) says it is <span class="math" data-tex="\(-1\)">\(-1\)</span> precisely when both discriminants are negative. For a component at 2 paired with <span class="math" data-tex="\(p^*\)">\(p^*\)</span>, the cross factors are respectively</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{c|c}
+d_2&amp;\chi_{d_2}(p)\chi_{p^*}(|d_2|)\\\hline
+-4&amp;(-1/p)\\
+8&amp;(2/p)^2=1\\
+-8&amp;(-1/p)(2/p)^2=(-1/p).
+\end{array}
+\]">\[
+\begin{array}{c|c}
+d_2&amp;\chi_{d_2}(p)\chi_{p^*}(|d_2|)\\\hline
+-4&amp;(-1/p)\\
+8&amp;(2/p)^2=1\\
+-8&amp;(-1/p)(2/p)^2=(-1/p).
+\end{array}
+\]</span>
+<p>They have the same rule. The supplementary laws used here were proved in the preceding lesson.</p>
+<p>Suppose there are <span class="math" data-tex="\(k\)">\(k\)</span> negative nontrivial local discriminants. Their individual Gauss sums multiply to <span class="math" data-tex="\(i^k\sqrt{|d|}\)">\(i^k\sqrt{|d|}\)</span>; the pairwise cross factors contribute <span class="math" data-tex="\((-1)^{k(k-1)/2}\)">\((-1)^{k(k-1)/2}\)</span>. Their combined phase is therefore <span class="math" data-tex="\(i^{k^2}\)">\(i^{k^2}\)</span>, which is 1 for even <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(i\)">\(i\)</span> for odd <span class="math" data-tex="\(k\)">\(k\)</span>. The sign of <span class="math" data-tex="\(d\)">\(d\)</span>, and hence <span class="math" data-tex="\(a\)">\(a\)</span>, has that same parity. This proves (5.5). The empty product <span class="math" data-tex="\(d=q=1\)">\(d=q=1\)</span> gives <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span> and is included. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For complex primitive characters <span class="math" data-tex="\(|\varepsilon(\chi)|=1\)">\(|\varepsilon(\chi)|=1\)</span> by Theorem 2.1, but it need not equal 1. This unit complex number will be the factor in the functional equation.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>
+<p><strong>Easy.</strong> Prove the product identity <span class="math" data-tex="\(\tau(\chi)\tau(\overline\chi)=\chi(-1)q\)">\(\tau(\chi)\tau(\overline\chi)=\chi(-1)q\)</span> for primitive <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, paying attention to the sign in conjugation.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Evaluate <span class="math" data-tex="\(G(q)\)">\(G(q)\)</span> directly for <span class="math" data-tex="\(q=5,6,7,8\)">\(q=5,6,7,8\)</span>, and compare with Theorem 4.1.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Deduce quadratic reciprocity from the exact Gauss-sum evaluation by factoring <span class="math" data-tex="\(G(pr)\)">\(G(pr)\)</span>.</p>
+</li>
+<li>
+<p><strong>Medium.</strong> Prove that <span class="math" data-tex="\(S_\chi(n)=0\)">\(S_\chi(n)=0\)</span> for primitive <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and <span class="math" data-tex="\((n,q)&gt;1\)">\((n,q)&gt;1\)</span>. Give an imprimitive character for which this fails.</p>
+</li>
+<li>
+<p><strong>Hard.</strong> Reconstruct the theta proof of Theorem 4.1. Justify both residue-class limits, the Gaussian moment estimate and the square-root branch; do not replace the complex Gaussian by a formal series at the boundary.</p>
+</li>
+</ol>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>1.</strong> Conjugate the defining sum and replace <span class="math" data-tex="\(b\)">\(b\)</span> by <span class="math" data-tex="\(-b\)">\(-b\)</span>:
+<span class="math" data-tex="\(\overline{\tau(\chi)}=\overline{\chi(-1)}\tau(\overline\chi)=\chi(-1)\tau(\overline\chi)\)">\(\overline{\tau(\chi)}=\overline{\chi(-1)}\tau(\overline\chi)=\chi(-1)\tau(\overline\chi)\)</span>.
+Since <span class="math" data-tex="\(\chi(-1)^2=1\)">\(\chi(-1)^2=1\)</span>, this is
+<span class="math" data-tex="\(\tau(\overline\chi)=\chi(-1)\overline{\tau(\chi)}\)">\(\tau(\overline\chi)=\chi(-1)\overline{\tau(\chi)}\)</span>.
+The finite Parseval calculation in Section 2 gives <span class="math" data-tex="\(|\tau(\chi)|^2=q\)">\(|\tau(\chi)|^2=q\)</span>, so multiplication gives the required identity. For an odd character the product is negative, although each factor has positive magnitude <span class="math" data-tex="\(\sqrt q\)">\(\sqrt q\)</span>.</p>
+<p><strong>2.</strong> For <span class="math" data-tex="\(q=5\)">\(q=5\)</span>, the square residues are <span class="math" data-tex="\(0,1,4,4,1\)">\(0,1,4,4,1\)</span>, so
+<span class="math" data-tex="\(G(5)=1+4\cos(2\pi/5)=\sqrt5\)">\(G(5)=1+4\cos(2\pi/5)=\sqrt5\)</span>. To check the trigonometric value algebraically, put <span class="math" data-tex="\(c=\cos(2\pi/5)&gt;0\)">\(c=\cos(2\pi/5)&gt;0\)</span> in
+<span class="math" data-tex="\(1+2c+2\cos(4\pi/5)=0\)">\(1+2c+2\cos(4\pi/5)=0\)</span>. Since <span class="math" data-tex="\(\cos(4\pi/5)=2c^2-1\)">\(\cos(4\pi/5)=2c^2-1\)</span>, we get <span class="math" data-tex="\(4c^2+2c-1=0\)">\(4c^2+2c-1=0\)</span>, and choose its positive root.</p>
+<p>For <span class="math" data-tex="\(q=6\)">\(q=6\)</span>, the square residues are <span class="math" data-tex="\(0,1,4,3,4,1\)">\(0,1,4,3,4,1\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+G(6)=1+2e(1/6)+2e(4/6)+e(3/6)=0,
+\]">\[
+G(6)=1+2e(1/6)+2e(4/6)+e(3/6)=0,
+\]</span>
+<p>because <span class="math" data-tex="\(e(4/6)=-e(1/6)\)">\(e(4/6)=-e(1/6)\)</span> and <span class="math" data-tex="\(e(3/6)=-1\)">\(e(3/6)=-1\)</span>.</p>
+<p>For <span class="math" data-tex="\(q=7\)">\(q=7\)</span>, put <span class="math" data-tex="\(\zeta=e(1/7)\)">\(\zeta=e(1/7)\)</span>, <span class="math" data-tex="\(A=\zeta+\zeta^2+\zeta^4\)">\(A=\zeta+\zeta^2+\zeta^4\)</span>. Direct multiplication gives
+<span class="math" data-tex="\(A^2=A+2(\zeta^3+\zeta^5+\zeta^6)=-2-A\)">\(A^2=A+2(\zeta^3+\zeta^5+\zeta^6)=-2-A\)</span>.
+Hence <span class="math" data-tex="\(A=(-1\pm i\sqrt7)/2\)">\(A=(-1\pm i\sqrt7)/2\)</span>. Its imaginary part is positive: with <span class="math" data-tex="\(\theta=2\pi/7\)">\(\theta=2\pi/7\)</span>, it is</p>
+<span class="math math-display" data-tex="\[
+\sin\theta+\sin2\theta-\sin3\theta
+=4\sin(\theta/2)\sin\theta\sin(3\theta/2)&gt;0.
+\]">\[
+\sin\theta+\sin2\theta-\sin3\theta
+=4\sin(\theta/2)\sin\theta\sin(3\theta/2)&gt;0.
+\]</span>
+<p>The square-residue count gives <span class="math" data-tex="\(G(7)=1+2A=i\sqrt7\)">\(G(7)=1+2A=i\sqrt7\)</span>.</p>
+<p>For <span class="math" data-tex="\(q=8\)">\(q=8\)</span>, the square residues are <span class="math" data-tex="\(0,1,4,1,0,1,4,1\)">\(0,1,4,1,0,1,4,1\)</span>, giving
+<span class="math" data-tex="\(G(8)=2+4e(1/8)+2e(4/8)=4e(1/8)=2\sqrt2(1+i)\)">\(G(8)=2+4e(1/8)+2e(4/8)=4e(1/8)=2\sqrt2(1+i)\)</span>.
+These four computations give the phases and magnitudes in the four congruence cases of (4.1).</p>
+<p><strong>3.</strong> Every residue is uniquely <span class="math" data-tex="\(ra+pb\)">\(ra+pb\)</span>, and
+<span class="math" data-tex="\((ra+pb)^2/(pr)=ra^2/p+pb^2/r+2ab\)">\((ra+pb)^2/(pr)=ra^2/p+pb^2/r+2ab\)</span>. The exponential of the last term is 1. Each resulting prime-modulus sum equals the corresponding Legendre factor times its unweighted Gauss sum, by (5.1). Therefore (5.2) holds. Divide by <span class="math" data-tex="\(G(p)G(r)\)">\(G(p)G(r)\)</span>, which is nonzero by (4.5). The ratio is <span class="math" data-tex="\(-1\)">\(-1\)</span> when both primes are 3 modulo 4 and is 1 otherwise. Those are exactly the signs <span class="math" data-tex="\((-1)^{(p-1)(r-1)/4}\)">\((-1)^{(p-1)(r-1)/4}\)</span>.</p>
+<p><strong>4.</strong> Put <span class="math" data-tex="\(c=q/(n,q)\)">\(c=q/(n,q)\)</span>. Primitivity supplies a unit <span class="math" data-tex="\(u\equiv1\pmod c\)">\(u\equiv1\pmod c\)</span> with <span class="math" data-tex="\(\chi(u)\ne1\)">\(\chi(u)\ne1\)</span>. Its multiplication leaves the additive phase unchanged and multiplies the sum by <span class="math" data-tex="\(\chi(u)\)">\(\chi(u)\)</span>; therefore the sum is zero. For a counterexample, take the principal character modulo 4 and <span class="math" data-tex="\(n=2\)">\(n=2\)</span>. Its only nonzero terms are at 1 and 3, and</p>
+<span class="math math-display" data-tex="\[
+S_{\chi_0}(2)=e(2/4)+e(6/4)=-2,
+\qquad \tau(\chi_0)=i-i=0.
+\]">\[
+S_{\chi_0}(2)=e(2/4)+e(6/4)=-2,
+\qquad \tau(\chi_0)=i-i=0.
+\]</span>
+<p>Thus the all-integer Fourier formula fails for this imprimitive character, although its unit version remains true.</p>
+<p><strong>5.</strong> The complex Gaussian integral is (3.2): determine the constant on the positive real axis by the squared real Gaussian integral, solve the Fourier differential equation, and continue holomorphically in the right half-plane. Periodize it; compute the coefficients by absolutely convergent integration over the real line. Fourier uniqueness follows from the nonnegative kernels <span class="math" data-tex="\(K_N\)">\(K_N\)</span> whose mass away from zero tends to zero. This proves (3.1) without making a boundary substitution.</p>
+<p>Now set <span class="math" data-tex="\(z=t-2i/q\)">\(z=t-2i/q\)</span>. Group by residues modulo <span class="math" data-tex="\(q\)">\(q\)</span>. For each residue the scaled damping sum tends to <span class="math" data-tex="\(1/q\)">\(1/q\)</span>, by the compact-interval Riemann-sum argument and monotone Gaussian tail bound of (3.3). Thus the left side tends to <span class="math" data-tex="\(G(q)/q\)">\(G(q)/q\)</span>.</p>
+<p>On the transformed side, <span class="math" data-tex="\(1/z=\alpha+i\beta\)">\(1/z=\alpha+i\beta\)</span>, with <span class="math" data-tex="\(\alpha=q^2t/(4+q^2t^2)\)">\(\alpha=q^2t/(4+q^2t^2)\)</span> and <span class="math" data-tex="\(\beta=2q/(4+q^2t^2)\)">\(\beta=2q/(4+q^2t^2)\)</span>. The phase replacement error is bounded by
+<span class="math" data-tex="\(\pi|\beta-q/2|\sum m^2e^{-\pi\alpha m^2}\)">\(\pi|\beta-q/2|\sum m^2e^{-\pi\alpha m^2}\)</span>.
+Here <span class="math" data-tex="\(|\beta-q/2|=O_q(t^2)\)">\(|\beta-q/2|=O_q(t^2)\)</span>, and the moment sum is <span class="math" data-tex="\(O_q(t^{-3/2})\)">\(O_q(t^{-3/2})\)</span>: compare its two monotone stretches with their integrals and use <span class="math" data-tex="\(u=\sqrt\alpha x\)">\(u=\sqrt\alpha x\)</span>. The unscaled error is <span class="math" data-tex="\(O_q(\sqrt t)\)">\(O_q(\sqrt t)\)</span>, so it vanishes after scaling by <span class="math" data-tex="\(\sqrt t\)">\(\sqrt t\)</span>.</p>
+<p>The even and odd phases are 1 and <span class="math" data-tex="\(i^{-q}\)">\(i^{-q}\)</span>. Their two Gaussian sums each have <span class="math" data-tex="\(\sqrt\alpha\)">\(\sqrt\alpha\)</span>-scaled limit <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. As <span class="math" data-tex="\(\sqrt t/\sqrt\alpha\to2/q\)">\(\sqrt t/\sqrt\alpha\to2/q\)</span>, the transformed theta sum has limit <span class="math" data-tex="\((1+i^{-q})/q\)">\((1+i^{-q})/q\)</span>. Finally <span class="math" data-tex="\(z^{-1/2}\to(1+i)\sqrt q/2\)">\(z^{-1/2}\to(1+i)\sqrt q/2\)</span>: the argument of <span class="math" data-tex="\(z\)">\(z\)</span> tends to <span class="math" data-tex="\(-\pi/2\)">\(-\pi/2\)</span> within the right half-plane, and the square root was fixed positive on the real axis. Multiplying these limits gives (4.1), including its sign and the zero case.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Elementary integration, integration by parts, uniform convergence, the complex identity theorem and the basic arithmetic from the preceding character lesson are assumed. The finite Fourier formulas, the Gaussian transformation used here, all Gauss-sum evaluations, quadratic reciprocity by this method and the real root-number identity have been proved in this lesson.</p>
+<h2 id="references">References</h2>
+<p>Dimitris Koukoulopoulos, <a href="https://dms.umontreal.ca/~koukoulo/documents/publications/primes.pdf"><em>The Distribution of Prime Numbers</em></a>, AMS, 2019, author's preliminary version, Chapter 10, Theorems 10.3 and 10.4 (Fourier expansion and Gauss-sum magnitude). Erich Hecke, <a href="https://archive.org/details/vorlesungenber00heckuoft"><em>Vorlesungen über die Theorie der algebraischen Zahlen</em></a>, Leipzig, 1923, §58, Satz 164 (the positive real or positive imaginary square root for quadratic-character Gauss sums).</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-DIRL-02.html">← Dirichlet&#x27;s theorem on primes in arithmetic progressions</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-DIRL-04.html">Character sums: the Pólya–Vinogradov inequality →</a></span></nav>
+<p class="small source-link"><a href="src/NT-DIRL-03.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-DIRL">Repository</a></nav>
+</footer>
+</body>
+</html>

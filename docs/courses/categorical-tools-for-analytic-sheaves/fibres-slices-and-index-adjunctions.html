@@ -1,0 +1,420 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fibres, slices and index adjunctions</title><link rel="stylesheet" href="assets/course.css"><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Course contents</a></nav><h1 id="fibres-slices-and-index-adjunctions">Fibres, slices and index adjunctions</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text: CC0.</em></p>
+<p>A diagram with maps to a fixed base carries more information than its underlying diagram. Colimits keep that information automatically. Limits keep it when their components force one common map to the base; connectedness provides exactly this mechanism. In sets, functions can also be formed separately in each fibre. Their evaluation adjunction explains why taking a new base preserves every small colimit. An adjunction between index categories gives a second useful simplification: universal extensions can be computed by restriction along the other adjoint.</p>
+<p>Composition is from right to left. Fix a working Grothendieck universe <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, with ambient choice and sufficiently large ambient universes for the categories and their functor categories. “Small” means <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>-small; <span class="math" data-tex="\(\mathsf{Set}\)">\(\mathsf{Set}\)</span> denotes the category of such sets. <a href="universes-and-small-categories.html#1-smallness-is-invariant-under-relabelling">Universes and small categories, Sections 1–3</a> prove all set closure and relabelling bounds used here. Arbitrary-index assertions below are conditional on the indicated diagrams, categories and chosen universal objects existing in that ambient setting. A larger ambient Hom set does not enlarge a small-colimit hypothesis.</p>
+<p>Keep the entire structural-map factor proofs in <a href="compatible-families-and-universal-cones.html#2-universal-functors-before-universal-objects">Compatible families, Sections 2–4</a>, the full relative product proofs in <a href="universal-forks-and-diagram-constructions.html#4-join-a-span-or-match-a-cospan">Universal forks, Sections 4–5</a>, and the specified Hom correspondence, unit, counit and triangles in <a href="passing-maps-across-an-adjunction.html#1-a-best-arrow-to-a-target">Passing maps across an adjunction, Sections 1–2</a>. <a href="colimits-as-connected-components.html#1-identify-every-transported-element">Colimits as connected components, Section 1</a> supplies existence of all small set colimits, with every quotient factor and its universe bound. References to these interfaces retain their whole proofs and size conventions.</p>
+<h2 id="1-diagrams-and-their-constant-targets">1. Diagrams and their constant targets</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be any index category and suppose that <span class="math" data-tex="\(C\)">\(C\)</span> admits <span class="math" data-tex="\(I\)">\(I\)</span>-colimits. For each <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, choose a colimit <span class="math" data-tex="\(K_D\)">\(K_D\)</span> with legs <span class="math" data-tex="\(c_i^D:D(i)\to K_D\)">\(c_i^D:D(i)\to K_D\)</span>. The complete diagram-map construction in <em>Compatible families</em>, Section 2, gives a functor</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Colim}_I:\operatorname{Fun}(I,C)\to C,\\
+\operatorname{Colim}_I(D)=K_D,\\
+\operatorname{Colim}_I(v)c_i^D=c_i^{D&#x27;}v_i
+\\
+(v:D\to D&#x27;).
+\end{gathered}
+\tag{1.1}
+\]">\[
+\begin{gathered}
+\operatorname{Colim}_I:\operatorname{Fun}(I,C)\to C,\\
+\operatorname{Colim}_I(D)=K_D,\\
+\operatorname{Colim}_I(v)c_i^D=c_i^{D&#x27;}v_i
+\\
+(v:D\to D&#x27;).
+\end{gathered}
+\tag{1.1}
+\]</span>
+<p>Its proof uses every cocone equation to construct this map. The identity and composite obey the same leg equations, so uniqueness proves both functor laws. Thus the construction applies to all natural transformations, with no filteredness assumption.</p>
+<p>Write <span class="math" data-tex="\(\Delta_I:C\to\operatorname{Fun}(I,C)\)">\(\Delta_I:C\to\operatorname{Fun}(I,C)\)</span> for the constant diagram functor. It sends <span class="math" data-tex="\(T\)">\(T\)</span> to the diagram with value <span class="math" data-tex="\(T\)">\(T\)</span> and every arrow <span class="math" data-tex="\(1_T\)">\(1_T\)</span>, and sends <span class="math" data-tex="\(b:T\to T&#x27;\)">\(b:T\to T&#x27;\)</span> to the transformation with every component <span class="math" data-tex="\(b\)">\(b\)</span>. These operations satisfy the functor laws componentwise.</p>
+<p><strong>Proposition 1.1.</strong> There is an adjunction <span class="math" data-tex="\(\operatorname{Colim}_I\dashv\Delta_I\)">\(\operatorname{Colim}_I\dashv\Delta_I\)</span>.</p>
+<p><strong>Proof by the retained universal factors.</strong> A transformation <span class="math" data-tex="\(D\to\Delta_I T\)">\(D\to\Delta_I T\)</span> is exactly a cocone <span class="math" data-tex="\((u_i:D(i)\to T)\)">\((u_i:D(i)\to T)\)</span>: its naturality equation is <span class="math" data-tex="\(u_jD(s)=u_i\)">\(u_jD(s)=u_i\)</span> for <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>. The complete cocone representation therefore gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C(K_D,T)\simeq
+\operatorname{Nat}_I(D,\Delta_I T),\\
+h\longmapsto(hc_i^D)_i.
+\end{gathered}
+\tag{1.2}
+\]">\[
+\begin{gathered}
+C(K_D,T)\simeq
+\operatorname{Nat}_I(D,\Delta_I T),\\
+h\longmapsto(hc_i^D)_i.
+\end{gathered}
+\tag{1.2}
+\]</span>
+<p>Its inverse is the unique cocone factor; both inverse equations are part of that full representation proof. For <span class="math" data-tex="\(v:D&#x27;\to D\)">\(v:D&#x27;\to D\)</span> and <span class="math" data-tex="\(b:T\to T&#x27;\)">\(b:T\to T&#x27;\)</span>, the image of <span class="math" data-tex="\(b h\operatorname{Colim}_I(v)\)">\(b h\operatorname{Colim}_I(v)\)</span> has component
+<span class="math" data-tex="\(b h c_i^D v_i\)">\(b h c_i^D v_i\)</span>, which is the component of <span class="math" data-tex="\((\Delta_I b)(hc_i^D)_i v\)">\((\Delta_I b)(hc_i^D)_i v\)</span>. This proves naturality in both variables, with the inverse family natural as well. No additional set-valued preservation hypothesis is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a projective-system index, take <span class="math" data-tex="\(\beta:I^{\mathrm{op}}\to C\)">\(\beta:I^{\mathrm{op}}\to C\)</span>. Apply Proposition 1.1 to <span class="math" data-tex="\(\beta^{\mathrm{op}}:I\to C^{\mathrm{op}}\)">\(\beta^{\mathrm{op}}:I\to C^{\mathrm{op}}\)</span> and reverse all arrows. The complete opposite-category proof in <em>Compatible families</em>, Section 3, identifies its colimit with <span class="math" data-tex="\((\lim_{I^{\mathrm{op}}}\beta)^{\mathrm{op}}\)">\((\lim_{I^{\mathrm{op}}}\beta)^{\mathrm{op}}\)</span>. We obtain</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+C(T,\lim_{I^{\mathrm{op}}}\beta)
+\simeq\operatorname{Nat}_{I^{\mathrm{op}}}
+(\Delta_{I^{\mathrm{op}}}T,\beta),\\
+h\longmapsto(p_i h)_i.
+\end{gathered}
+\tag{1.3}
+\]">\[
+\begin{gathered}
+C(T,\lim_{I^{\mathrm{op}}}\beta)
+\simeq\operatorname{Nat}_{I^{\mathrm{op}}}
+(\Delta_{I^{\mathrm{op}}}T,\beta),\\
+h\longmapsto(p_i h)_i.
+\end{gathered}
+\tag{1.3}
+\]</span>
+<p>Thus <span class="math" data-tex="\(\Delta_{I^{\mathrm{op}}}\dashv\operatorname{Lim}_{I^{\mathrm{op}}}\)">\(\Delta_{I^{\mathrm{op}}}\dashv\operatorname{Lim}_{I^{\mathrm{op}}}\)</span>. A transformation <span class="math" data-tex="\(v:\beta\to\beta&#x27;\)">\(v:\beta\to\beta&#x27;\)</span> has induced map characterized by <span class="math" data-tex="\(p_i&#x27;\operatorname{Lim}(v)=v_i p_i\)">\(p_i&#x27;\operatorname{Lim}(v)=v_i p_i\)</span>; the full retained factor proof gives the functor laws. The two naturality operations in (1.3) are precomposition on <span class="math" data-tex="\(T\)">\(T\)</span> and postcomposition by <span class="math" data-tex="\(v_i\)">\(v_i\)</span> on every cone component. These are exactly the reversed squares of (1.2).</p>
+<p>When <span class="math" data-tex="\(I\)">\(I\)</span> is empty, its diagram category has one object and one transformation. Its colimit, if available, is initial in <span class="math" data-tex="\(C\)">\(C\)</span>, and its limit is terminal. The cocone and cone families in (1.2) and (1.3) are empty, and their unique factors give the same adjunctions. The existence assumptions still require the respective initial or terminal object.</p>
+<h2 id="2-colimits-with-a-fixed-map-to-the-base">2. Colimits with a fixed map to the base</h2>
+<p>Fix <span class="math" data-tex="\(Z\in C\)">\(Z\in C\)</span>. An object of <span class="math" data-tex="\(C/Z\)">\(C/Z\)</span> is <span class="math" data-tex="\(a:A\to Z\)">\(a:A\to Z\)</span>; a morphism <span class="math" data-tex="\(a\to b\)">\(a\to b\)</span>, for <span class="math" data-tex="\(b:B\to Z\)">\(b:B\to Z\)</span>, is <span class="math" data-tex="\(v:A\to B\)">\(v:A\to B\)</span> with <span class="math" data-tex="\(bv=a\)">\(bv=a\)</span>. The slice category laws are the full retained slice construction. Write <span class="math" data-tex="\(U_Z:C/Z\to C\)">\(U_Z:C/Z\to C\)</span> for the forgetful functor.</p>
+<p><strong>Proposition 2.1.</strong> Every colimit of an underlying slice diagram has a unique lift to a colimit in <span class="math" data-tex="\(C/Z\)">\(C/Z\)</span>. Consequently, if <span class="math" data-tex="\(C\)">\(C\)</span> admits <span class="math" data-tex="\(I\)">\(I\)</span>-colimits, so does <span class="math" data-tex="\(C/Z\)">\(C/Z\)</span>, and <span class="math" data-tex="\(U_Z\)">\(U_Z\)</span> preserves them.</p>
+<p><strong>Complete retained proof and exact lift.</strong> Use all of <a href="initial-objects-universal-colimits-and-pointed-categories.html#1-a-colimit-viewed-over-a-base">Initial objects, Section 1</a>. For a slice diagram <span class="math" data-tex="\((a_i:A_i\to Z)\)">\((a_i:A_i\to Z)\)</span>, let <span class="math" data-tex="\(c_i:A_i\to K\)">\(c_i:A_i\to K\)</span> be the chosen underlying colimit. Its structure map is the unique <span class="math" data-tex="\(a:K\to Z\)">\(a:K\to Z\)</span> with</p>
+<span class="math math-display" data-tex="\[
+a c_i=a_i\quad\text{for every }i.
+\tag{2.1}
+\]">\[
+a c_i=a_i\quad\text{for every }i.
+\tag{2.1}
+\]</span>
+<p>That proof constructs the unique factor of every slice cocone and checks that it is over <span class="math" data-tex="\(Z\)">\(Z\)</span>. Uniqueness in (2.1) also proves uniqueness of the lifted structure, rather than merely existence of some slice colimit. Both the cocone legs and their factors are the original underlying maps. For the empty diagram, <span class="math" data-tex="\(K\)">\(K\)</span> is initial and <span class="math" data-tex="\(a:K\to Z\)">\(a:K\to Z\)</span> is its unique arrow; this is the empty slice colimit. For transformations of diagrams, the induced underlying map is over <span class="math" data-tex="\(Z\)">\(Z\)</span> because both composites to <span class="math" data-tex="\(Z\)">\(Z\)</span> have the same composites with all <span class="math" data-tex="\(c_i\)">\(c_i\)</span>. Hence the lift respects the functorial maps of Section 1. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the precise creation statement used here: each specified underlying colimit cocone has one slice structure making it a universal slice cocone.</p>
+<p>Suppose <span class="math" data-tex="\(C\)">\(C\)</span> has pullbacks. For <span class="math" data-tex="\(u:Y\to Z\)">\(u:Y\to Z\)</span>, the functor <span class="math" data-tex="\(u^*:C/Z\to C/Y\)">\(u^*:C/Z\to C/Y\)</span> takes <span class="math" data-tex="\(a:A\to Z\)">\(a:A\to Z\)</span> to <span class="math" data-tex="\(A\times_ZY\to Y\)">\(A\times_ZY\to Y\)</span>. On arrows it uses the unique pullback map retaining the given <span class="math" data-tex="\(A\)">\(A\)</span>-map and the identity of <span class="math" data-tex="\(Y\)">\(Y\)</span>. Checking the two projections proves identities and composition. The exact base-change definition in the retained Section 1 says that <span class="math" data-tex="\(I\)">\(I\)</span>-colimits are stable under base change precisely when these functors preserve them. Its comparison is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{colim}_{i\in I}(A_i\times_ZY)
+\longrightarrow K\times_ZY,\\
+K=\operatorname{colim}_{i\in I}A_i.
+\end{gathered}
+\tag{2.2}
+\]">\[
+\begin{gathered}
+\operatorname{colim}_{i\in I}(A_i\times_ZY)
+\longrightarrow K\times_ZY,\\
+K=\operatorname{colim}_{i\in I}A_i.
+\end{gathered}
+\tag{2.2}
+\]</span>
+<p>The map is induced by the pullbacks of <span class="math" data-tex="\(c_i\)">\(c_i\)</span>, with their actual two projections. An abstract isomorphism between the two objects would not identify this comparison.</p>
+<h2 id="3-functions-in-each-fibre-and-base-change">3. Functions in each fibre and base change</h2>
+<p>Let <span class="math" data-tex="\(X\to Z\)">\(X\to Z\)</span> and <span class="math" data-tex="\(Y\to Z\)">\(Y\to Z\)</span> be small sets over the small base <span class="math" data-tex="\(Z\)">\(Z\)</span>. Write <span class="math" data-tex="\(X_z\)">\(X_z\)</span> and <span class="math" data-tex="\(Y_z\)">\(Y_z\)</span> for their fibres. The full set construction in <em>Universal forks</em>, Section 5, provides all small products in <span class="math" data-tex="\(\mathsf{Set}/Z\)">\(\mathsf{Set}/Z\)</span>. For a family <span class="math" data-tex="\((A_i\to Z)\)">\((A_i\to Z)\)</span>, it is the set of pairs <span class="math" data-tex="\((z,(a_i)_i)\)">\((z,(a_i)_i)\)</span> satisfying <span class="math" data-tex="\(a_i\in(A_i)_z\)">\(a_i\in(A_i)_z\)</span>, with projection <span class="math" data-tex="\(z\)">\(z\)</span>. Its complete inverse factor sends an over-<span class="math" data-tex="\(Z\)">\(Z\)</span> family to exactly this tuple. All index sets and values are small by the universe closure proofs. For no indices the product is <span class="math" data-tex="\(1_Z:Z\to Z\)">\(1_Z:Z\to Z\)</span>. In particular the binary product is the usual fibre product.</p>
+<p>Define the fibrewise function object</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_Y(X)=\coprod_{z\in Z}X_z^{Y_z},\\
+X_z^{Y_z}=\operatorname{Hom}_{\mathsf{Set}}(Y_z,X_z),\\
+(z,\varphi)\longmapsto z.
+\end{gathered}
+\tag{3.1}
+\]">\[
+\begin{gathered}
+H_Y(X)=\coprod_{z\in Z}X_z^{Y_z},\\
+X_z^{Y_z}=\operatorname{Hom}_{\mathsf{Set}}(Y_z,X_z),\\
+(z,\varphi)\longmapsto z.
+\end{gathered}
+\tag{3.1}
+\]</span>
+<p>For <span class="math" data-tex="\(b:X\to X&#x27;\)">\(b:X\to X&#x27;\)</span> over <span class="math" data-tex="\(Z\)">\(Z\)</span>, its action is
+<span class="math" data-tex="\(H_Y(b)(z,\varphi)=(z,b_z\varphi)\)">\(H_Y(b)(z,\varphi)=(z,b_z\varphi)\)</span>. Identity and composition follow by evaluation at every <span class="math" data-tex="\(y\in Y_z\)">\(y\in Y_z\)</span>, so this is a functor on the slice.</p>
+<p><strong>Theorem 3.1.</strong> The functor <span class="math" data-tex="\(-\times_ZY:\mathsf{Set}/Z\to\mathsf{Set}/Z\)">\(-\times_ZY:\mathsf{Set}/Z\to\mathsf{Set}/Z\)</span> is left adjoint to <span class="math" data-tex="\(H_Y\)">\(H_Y\)</span>.</p>
+<p><strong>Proof with every inverse specified.</strong> Evaluation is the over-<span class="math" data-tex="\(Z\)">\(Z\)</span> map
+<span class="math" data-tex="\(\mathrm{ev}:H_Y(X)\times_ZY\to X\)">\(\mathrm{ev}:H_Y(X)\times_ZY\to X\)</span> given by <span class="math" data-tex="\(((z,\varphi),y)\mapsto\varphi(y)\)">\(((z,\varphi),y)\mapsto\varphi(y)\)</span>. For <span class="math" data-tex="\(T\to Z\)">\(T\to Z\)</span>, currying and its inverse are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\mathsf{Set}/Z)(T\times_ZY,X)\\
+\simeq(\mathsf{Set}/Z)(T,H_Y(X)),\\
+v\longmapsto
+\left[t\longmapsto
+\left(z_t,\ y\longmapsto v(t,y)\right)\right],\\
+w\longmapsto
+\left[(t,y)\longmapsto\varphi_t(y)\right],
+\\
+w(t)=(z_t,\varphi_t).
+\end{gathered}
+\tag{3.2}
+\]">\[
+\begin{gathered}
+(\mathsf{Set}/Z)(T\times_ZY,X)\\
+\simeq(\mathsf{Set}/Z)(T,H_Y(X)),\\
+v\longmapsto
+\left[t\longmapsto
+\left(z_t,\ y\longmapsto v(t,y)\right)\right],\\
+w\longmapsto
+\left[(t,y)\longmapsto\varphi_t(y)\right],
+\\
+w(t)=(z_t,\varphi_t).
+\end{gathered}
+\tag{3.2}
+\]</span>
+<p>The first map is defined because <span class="math" data-tex="\(v(t,y)\in X_{z_t}\)">\(v(t,y)\in X_{z_t}\)</span> whenever <span class="math" data-tex="\(y\in Y_{z_t}\)">\(y\in Y_{z_t}\)</span>; the second is defined because <span class="math" data-tex="\(w\)">\(w\)</span> is over <span class="math" data-tex="\(Z\)">\(Z\)</span>. Substitution recovers <span class="math" data-tex="\(v(t,y)\)">\(v(t,y)\)</span> at every pair, and recovers <span class="math" data-tex="\(\varphi_t\)">\(\varphi_t\)</span> at every argument, hence recovers <span class="math" data-tex="\(w(t)\)">\(w(t)\)</span>. These are both inverse equations.</p>
+<p>For <span class="math" data-tex="\(a:T&#x27;\to T\)">\(a:T&#x27;\to T\)</span> and <span class="math" data-tex="\(b:X\to X&#x27;\)">\(b:X\to X&#x27;\)</span> over <span class="math" data-tex="\(Z\)">\(Z\)</span>, either naturality route evaluates at <span class="math" data-tex="\(t&#x27;,y\)">\(t&#x27;,y\)</span> to
+<span class="math" data-tex="\(b(v(a(t&#x27;),y))\)">\(b(v(a(t&#x27;),y))\)</span>. This proves both-variable naturality, including the naturality of the inverse bijection. If <span class="math" data-tex="\(d:Y&#x27;\to Y\)">\(d:Y&#x27;\to Y\)</span> is over <span class="math" data-tex="\(Z\)">\(Z\)</span>, precomposition gives
+<span class="math" data-tex="\((z,\varphi)\mapsto(z,\varphi d_z)\)">\((z,\varphi)\mapsto(z,\varphi d_z)\)</span> from <span class="math" data-tex="\(H_Y(X)\)">\(H_Y(X)\)</span> to <span class="math" data-tex="\(H_{Y&#x27;}(X)\)">\(H_{Y&#x27;}(X)\)</span>; the corresponding square evaluates to <span class="math" data-tex="\(b(v(a(t&#x27;),d(y&#x27;)))\)">\(b(v(a(t&#x27;),d(y&#x27;)))\)</span>. Thus the correspondence is also contravariantly compatible with the fibre argument <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>The unit at <span class="math" data-tex="\(T\)">\(T\)</span> sends <span class="math" data-tex="\(t\)">\(t\)</span> to
+<span class="math" data-tex="\((z_t,y\mapsto(t,y))\)">\((z_t,y\mapsto(t,y))\)</span> in <span class="math" data-tex="\(H_Y(T\times_ZY)\)">\(H_Y(T\times_ZY)\)</span>, and the counit at <span class="math" data-tex="\(X\)">\(X\)</span> is evaluation. The first triangle at <span class="math" data-tex="\((t,y)\)">\((t,y)\)</span> returns <span class="math" data-tex="\((t,y)\)">\((t,y)\)</span>; the second at <span class="math" data-tex="\((z,\varphi)\)">\((z,\varphi)\)</span> returns the function <span class="math" data-tex="\(y\mapsto\varphi(y)\)">\(y\mapsto\varphi(y)\)</span>. They are the specified triangles of this adjunction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Each <span class="math" data-tex="\(X_z\)">\(X_z\)</span> and <span class="math" data-tex="\(Y_z\)">\(Y_z\)</span> is a small subset of its underlying set. The function-set and small indexed tagged-union proofs in <em>Universes and small categories</em>, Sections 2–3, therefore show that (3.1) is small. They include arbitrary small encodings and the needed transported bijections. There is one empty function when <span class="math" data-tex="\(Y_z=\varnothing\)">\(Y_z=\varnothing\)</span>, even when <span class="math" data-tex="\(X_z=\varnothing\)">\(X_z=\varnothing\)</span>; there is no function when <span class="math" data-tex="\(Y_z\ne\varnothing\)">\(Y_z\ne\varnothing\)</span> and <span class="math" data-tex="\(X_z=\varnothing\)">\(X_z=\varnothing\)</span>. If <span class="math" data-tex="\(Z=\varnothing\)">\(Z=\varnothing\)</span>, all sets over it are empty and its slice has just the empty object and its identity, up to the stated set convention.</p>
+<p><strong>Complete canonical preservation interface.</strong> The pinned <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex#L3624-L3660">Categories, adjoint-colimit lemma</a> proves that a left adjoint sends every existing colimit cocone to a colimit cocone. Retain its entire left-adjoint Hom-factor proof: transposing a compatible family to the right adjoint gives a cocone on the original diagram, whose unique factor transposes back. Its Hom squares supply both inverse factors and preserve the actual structural maps. Apply it with <span class="math" data-tex="\(-\times_ZY\dashv H_Y\)">\(-\times_ZY\dashv H_Y\)</span>, whose full correspondence and triangles were checked above. Thus <span class="math" data-tex="\(-\times_ZY\)">\(-\times_ZY\)</span> preserves all small colimits in <span class="math" data-tex="\(\mathsf{Set}/Z\)">\(\mathsf{Set}/Z\)</span>.</p>
+<p><strong>Corollary 3.2.</strong> Every small colimit of sets is stable under arbitrary small-set base change.</p>
+<p><strong>Proof of the required comparison.</strong> A small diagram <span class="math" data-tex="\(A_i\to Z\)">\(A_i\to Z\)</span> has its slice colimit <span class="math" data-tex="\(K\to Z\)">\(K\to Z\)</span> by Proposition 2.1 and existence of small set colimits. Apply the preceding preservation interface: the induced cocone
+<span class="math" data-tex="\(A_i\times_ZY\to K\times_ZY\)">\(A_i\times_ZY\to K\times_ZY\)</span>, regarded over <span class="math" data-tex="\(Z\)">\(Z\)</span>, is a colimit. Proposition 2.1 for <span class="math" data-tex="\(Z\)">\(Z\)</span> says that its underlying set cocone is a colimit. The very same maps commute with the projections to <span class="math" data-tex="\(Y\)">\(Y\)</span>. Proposition 2.1 for <span class="math" data-tex="\(Y\)">\(Y\)</span> now makes it a colimit in <span class="math" data-tex="\(\mathsf{Set}/Y\)">\(\mathsf{Set}/Y\)</span>. This proves that <span class="math" data-tex="\(u^*\)">\(u^*\)</span> preserves the slice colimit. Its underlying comparison is exactly (2.2), since its legs are the two-projection pullbacks of the original <span class="math" data-tex="\(c_i\)">\(c_i\)</span>; universal uniqueness makes that specified comparison invertible. Empty indices and empty fibres are already included in each step. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This argument uses the fibre product endofunctor on <span class="math" data-tex="\(\mathsf{Set}/Z\)">\(\mathsf{Set}/Z\)</span> and the two forgetful creation statements. It provides preservation for <span class="math" data-tex="\(u^*:\mathsf{Set}/Z\to\mathsf{Set}/Y\)">\(u^*:\mathsf{Set}/Z\to\mathsf{Set}/Y\)</span> with the required target slice.</p>
+<h2 id="4-limits-in-slices-and-what-forgetting-preserves">4. Limits in slices and what forgetting preserves</h2>
+<p><strong>Theorem 4.1.</strong> Every slice <span class="math" data-tex="\(C/Z\)">\(C/Z\)</span> has finite limits if and only if <span class="math" data-tex="\(C\)">\(C\)</span> has pullbacks.</p>
+<p><strong>Proof.</strong> Each slice has the terminal object <span class="math" data-tex="\(1_Z\)">\(1_Z\)</span>: its unique arrow from <span class="math" data-tex="\(a:A\to Z\)">\(a:A\to Z\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span> itself. Suppose <span class="math" data-tex="\(C\)">\(C\)</span> has pullbacks. For a cospan in <span class="math" data-tex="\(C/Z\)">\(C/Z\)</span>, with underlying arrows <span class="math" data-tex="\(A\to D\leftarrow B\)">\(A\to D\leftarrow B\)</span>, take its pullback <span class="math" data-tex="\(P\)">\(P\)</span> in <span class="math" data-tex="\(C\)">\(C\)</span>, with projections <span class="math" data-tex="\(p_A,p_B\)">\(p_A,p_B\)</span>. Its map to <span class="math" data-tex="\(Z\)">\(Z\)</span> is the common composite
+<span class="math" data-tex="\(a p_A=b p_B\)">\(a p_A=b p_B\)</span>, because the original arrows were over <span class="math" data-tex="\(Z\)">\(Z\)</span>. For a compatible pair of slice maps from <span class="math" data-tex="\(t:T\to Z\)">\(t:T\to Z\)</span>, the complete base pullback property gives a unique <span class="math" data-tex="\(h:T\to P\)">\(h:T\to P\)</span>. Its composite to <span class="math" data-tex="\(Z\)">\(Z\)</span> is <span class="math" data-tex="\(a p_Ah=t\)">\(a p_Ah=t\)</span>, so <span class="math" data-tex="\(h\)">\(h\)</span> is a slice map. This proves the full slice pullback property. Terminality and pullbacks now give all finite slice limits by the entire <a href="universal-tests-for-forks-and-finite-limits.html#6-which-basic-limits-are-enough">finite-limit criterion</a>, including its product and equalizer constructions and empty diagram.</p>
+<p>Conversely, a binary product of <span class="math" data-tex="\(A\to Z\)">\(A\to Z\)</span> and <span class="math" data-tex="\(B\to Z\)">\(B\to Z\)</span> in <span class="math" data-tex="\(C/Z\)">\(C/Z\)</span> is their pullback in <span class="math" data-tex="\(C\)">\(C\)</span>. A compatible base pair <span class="math" data-tex="\(T\to A,T\to B\)">\(T\to A,T\to B\)</span> equips <span class="math" data-tex="\(T\)">\(T\)</span> with their common map <span class="math" data-tex="\(t:T\to Z\)">\(t:T\to Z\)</span>, and the full product factor in the slice is its unique base pullback factor. This is the exact retained equivalence in <em>Universal forks</em>, Section 5. Finite limits in every slice supply these binary products for each actual target <span class="math" data-tex="\(Z\)">\(Z\)</span>. Therefore every base cospan has a pullback. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The theorem does not supply a terminal object in <span class="math" data-tex="\(C\)">\(C\)</span>. For example, take the category of nonnegative integers ordered by <span class="math" data-tex="\(\le\)">\(\le\)</span>. A cospan <span class="math" data-tex="\(a\le z\ge b\)">\(a\le z\ge b\)</span> has pullback <span class="math" data-tex="\(\min(a,b)\)">\(\min(a,b)\)</span>, since the common lower bounds are exactly the integers below this minimum. It has no terminal object, since no nonnegative integer is largest. Each slice over <span class="math" data-tex="\(z\)">\(z\)</span> is the finite chain <span class="math" data-tex="\(0\le\cdots\le z\)">\(0\le\cdots\le z\)</span>, and Theorem 4.1 gives its finite limits. This is a complete written infinite-order example.</p>
+<p>Call an index category <strong>connected</strong> when it is nonempty and all its objects belong to one equivalence class generated by its arrows. In other words, any two objects are joined by a finite zigzag of arrows with either orientation.</p>
+<p><strong>Theorem 4.2.</strong> Let <span class="math" data-tex="\(D:I\to C/Z\)">\(D:I\to C/Z\)</span>, where <span class="math" data-tex="\(I\)">\(I\)</span> is connected. An underlying base limit lifts uniquely to a slice limit. Conversely, every slice limit of this diagram is an underlying base limit. Thus <span class="math" data-tex="\(U_Z\)">\(U_Z\)</span> preserves every connected limit that exists in the slice.</p>
+<p><strong>Forward construction.</strong> Write <span class="math" data-tex="\(a_i:A_i\to Z\)">\(a_i:A_i\to Z\)</span> for its structure maps and <span class="math" data-tex="\(p_i:L\to A_i\)">\(p_i:L\to A_i\)</span> for the chosen base limit. If <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>, the cone equation and the slice equation give</p>
+<span class="math math-display" data-tex="\[
+a_j p_j=a_jD(s)p_i=a_i p_i.
+\tag{4.1}
+\]">\[
+a_j p_j=a_jD(s)p_i=a_i p_i.
+\tag{4.1}
+\]</span>
+<p>Equality propagates in either direction along a finite zigzag. Hence these composites have one common value <span class="math" data-tex="\(a:L\to Z\)">\(a:L\to Z\)</span>; nonemptiness ensures that this value is specified. The <span class="math" data-tex="\(p_i\)">\(p_i\)</span> are slice maps. A slice cone from <span class="math" data-tex="\(t:T\to Z\)">\(t:T\to Z\)</span> has its unique base factor <span class="math" data-tex="\(h:T\to L\)">\(h:T\to L\)</span>. At any index, <span class="math" data-tex="\(a h=a_i p_i h=t\)">\(a h=a_i p_i h=t\)</span>, so it is a slice factor. Base uniqueness gives slice uniqueness, and (4.1) forces the same structure map for any lift.</p>
+<p><strong>Complete canonical reverse interface.</strong> Retain all of the pinned <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex#L1668-L1697">connected slice-limit lemma</a>, including its nonempty convention and full factor proof. In its notation take the base object <span class="math" data-tex="\(X=Z\)">\(X=Z\)</span> and the diagram <span class="math" data-tex="\(M=D\)">\(M=D\)</span>. Every base cone from an arbitrary <span class="math" data-tex="\(T\)">\(T\)</span> has one common map <span class="math" data-tex="\(T\to Z\)">\(T\to Z\)</span>, by the same zigzag equations. This equips <span class="math" data-tex="\(T\)">\(T\)</span> with the slice structure to which the universal slice factor applies. That proof therefore gives the unique base factor for every base cone, including all possible structure maps on <span class="math" data-tex="\(T\)">\(T\)</span>; no base limit is assumed in this direction. It proves exactly the preservation assertion. These factors are natural in <span class="math" data-tex="\(T\)">\(T\)</span> by composition. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.3.</strong> If <span class="math" data-tex="\(C\)">\(C\)</span> has all finite, respectively all small, limits, then each <span class="math" data-tex="\(C/Z\)">\(C/Z\)</span> has all finite, respectively all small, limits. If <span class="math" data-tex="\(U_Z\)">\(U_Z\)</span> preserves all limits of that class, then <span class="math" data-tex="\(Z\)">\(Z\)</span> is terminal in <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><strong>Proof of existence by one extra vertex.</strong> For a finite or small <span class="math" data-tex="\(I\)">\(I\)</span>, adjoin an object <span class="math" data-tex="\(*\)">\(*\)</span> and one arrow <span class="math" data-tex="\(\sigma_i:i\to *\)">\(\sigma_i:i\to *\)</span> for each <span class="math" data-tex="\(i\)">\(i\)</span>, with <span class="math" data-tex="\(\sigma_j s=\sigma_i\)">\(\sigma_j s=\sigma_i\)</span> for every <span class="math" data-tex="\(s:i\to j\)">\(s:i\to j\)</span>. There are no arrows from <span class="math" data-tex="\(*\)">\(*\)</span> to an old object, and its only endomorphism is its identity. These rules define a category <span class="math" data-tex="\(I^\triangleright\)">\(I^\triangleright\)</span>: every new nonidentity composition ends at <span class="math" data-tex="\(*\)">\(*\)</span>, and the prescribed relation makes its composite the unique relevant <span class="math" data-tex="\(\sigma_i\)">\(\sigma_i\)</span>, proving associativity and both identity laws. Adding one object and one arrow per old object preserves the finite or small bound.</p>
+<p>The diagram <span class="math" data-tex="\(D\)">\(D\)</span> extends to a base diagram <span class="math" data-tex="\(\widetilde D:I^\triangleright\to C\)">\(\widetilde D:I^\triangleright\to C\)</span> with values <span class="math" data-tex="\(A_i\)">\(A_i\)</span> and <span class="math" data-tex="\(Z\)">\(Z\)</span>, sending <span class="math" data-tex="\(\sigma_i\)">\(\sigma_i\)</span> to <span class="math" data-tex="\(a_i\)">\(a_i\)</span>. Its new composition equations are precisely <span class="math" data-tex="\(a_jD(s)=a_i\)">\(a_jD(s)=a_i\)</span>, so it is a functor. Take its base limit, with projections</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_i:R\to A_i,\qquad r:R\to Z,\\
+a_i p_i=r.
+\end{gathered}
+\tag{4.2}
+\]">\[
+\begin{gathered}
+p_i:R\to A_i,\qquad r:R\to Z,\\
+a_i p_i=r.
+\end{gathered}
+\tag{4.2}
+\]</span>
+<p>A cone from <span class="math" data-tex="\(T\)">\(T\)</span> to <span class="math" data-tex="\(\widetilde D\)">\(\widetilde D\)</span> consists of a map <span class="math" data-tex="\(t:T\to Z\)">\(t:T\to Z\)</span> and a compatible family <span class="math" data-tex="\(q_i:T\to A_i\)">\(q_i:T\to A_i\)</span> satisfying <span class="math" data-tex="\(a_iq_i=t\)">\(a_iq_i=t\)</span>. For each fixed <span class="math" data-tex="\(t\)">\(t\)</span>, this is exactly a slice cone. The unique base factor satisfies both <span class="math" data-tex="\(p_i h=q_i\)">\(p_i h=q_i\)</span> and <span class="math" data-tex="\(r h=t\)">\(r h=t\)</span>, so it is the unique slice factor. Conversely every slice factor has these components. This gives the whole inverse cone-factor correspondence and proves that <span class="math" data-tex="\(r:R\to Z\)">\(r:R\to Z\)</span> is the slice limit.</p>
+<p>For <span class="math" data-tex="\(I=\varnothing\)">\(I=\varnothing\)</span>, the augmented category has just <span class="math" data-tex="\(*\)">\(*\)</span>; its limit is <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(r=1_Z\)">\(r=1_Z\)</span>. Thus the empty slice limit has underlying object <span class="math" data-tex="\(Z\)">\(Z\)</span>. If <span class="math" data-tex="\(U_Z\)">\(U_Z\)</span> preserves all finite or all small limits, it preserves this one, forcing <span class="math" data-tex="\(Z\)">\(Z\)</span> to be terminal in <span class="math" data-tex="\(C\)">\(C\)</span>. Conversely, if <span class="math" data-tex="\(Z\)">\(Z\)</span> is terminal, every object and arrow of <span class="math" data-tex="\(C\)">\(C\)</span> has a unique structure over <span class="math" data-tex="\(Z\)">\(Z\)</span>; forgetting and supplying that structure are inverse functors, with the same cone factors. They preserve every existing limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Connected preservation and unrestricted slice existence are therefore separate assertions. For a disconnected family, (4.2) imposes equality of the different maps to the base; its underlying object generally differs from the base limit of the unaugmented diagram.</p>
+<h2 id="5-an-index-adjunction-computes-kan-extensions">5. An index adjunction computes Kan extensions</h2>
+<p>Let <span class="math" data-tex="\(\phi:J\to I\)">\(\phi:J\to I\)</span> be left adjoint to <span class="math" data-tex="\(\psi:I\to J\)">\(\psi:I\to J\)</span>. Denote its specified unit and counit by</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta:1_J\to\psi\phi,\qquad
+\varepsilon:\phi\psi\to1_I,\\
+\varepsilon_{\phi j}\phi(\eta_j)=1_{\phi j},\\
+\psi(\varepsilon_i)\eta_{\psi i}=1_{\psi i}.
+\end{gathered}
+\tag{5.1}
+\]">\[
+\begin{gathered}
+\eta:1_J\to\psi\phi,\qquad
+\varepsilon:\phi\psi\to1_I,\\
+\varepsilon_{\phi j}\phi(\eta_j)=1_{\phi j},\\
+\psi(\varepsilon_i)\eta_{\psi i}=1_{\psi i}.
+\end{gathered}
+\tag{5.1}
+\]</span>
+<p>Retain the whole definition and pointwise proofs of left and right Kan extensions in <a href="extending-diagrams-by-universal-maps.html#1-restriction-and-the-two-universal-extensions">Extending diagrams, Sections 1–4</a>. In particular, its restriction operation acts on every transformation by precomposition.</p>
+<p><strong>Theorem 5.1.</strong> For any target category <span class="math" data-tex="\(C\)">\(C\)</span>, the two Kan extension functors exist and have specified natural isomorphisms</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Lan}_\phi\simeq\psi^*,
+\qquad
+\operatorname{Ran}_\psi\simeq\phi^*.
+\end{gathered}
+\tag{5.2}
+\]">\[
+\begin{gathered}
+\operatorname{Lan}_\phi\simeq\psi^*,
+\qquad
+\operatorname{Ran}_\psi\simeq\phi^*.
+\end{gathered}
+\tag{5.2}
+\]</span>
+<p>No general (co)completeness of <span class="math" data-tex="\(C\)">\(C\)</span>, or smallness of all the indices, is needed.</p>
+<p><strong>Left extension and full transformation factors.</strong> For <span class="math" data-tex="\(\beta:J\to C\)">\(\beta:J\to C\)</span> and <span class="math" data-tex="\(D:I\to C\)">\(D:I\to C\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}_I(\beta\psi,D)
+\simeq\operatorname{Nat}_J(\beta,D\phi),\\
+h\longmapsto
+\left(h_{\phi j}\beta(\eta_j)\right)_j,\\
+u\longmapsto
+\left(D(\varepsilon_i)u_{\psi i}\right)_i.
+\end{gathered}
+\tag{5.3}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}_I(\beta\psi,D)
+\simeq\operatorname{Nat}_J(\beta,D\phi),\\
+h\longmapsto
+\left(h_{\phi j}\beta(\eta_j)\right)_j,\\
+u\longmapsto
+\left(D(\varepsilon_i)u_{\psi i}\right)_i.
+\end{gathered}
+\tag{5.3}
+\]</span>
+<p>The forward family is natural in <span class="math" data-tex="\(j\)">\(j\)</span>: use naturality of <span class="math" data-tex="\(h\)">\(h\)</span> at <span class="math" data-tex="\(\phi(s)\)">\(\phi(s)\)</span> and of <span class="math" data-tex="\(\eta\)">\(\eta\)</span> at <span class="math" data-tex="\(s:j\to j&#x27;\)">\(s:j\to j&#x27;\)</span>. The inverse family is natural in <span class="math" data-tex="\(i\)">\(i\)</span>: for <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span>, naturality of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> gives
+<span class="math" data-tex="\(D(a)D(\varepsilon_i)u_{\psi i}
+=D(\varepsilon_{i&#x27;})u_{\psi i&#x27;}\beta(\psi a)\)">\(D(a)D(\varepsilon_i)u_{\psi i}
+=D(\varepsilon_{i&#x27;})u_{\psi i&#x27;}\beta(\psi a)\)</span>.</p>
+<p>Starting from <span class="math" data-tex="\(h\)">\(h\)</span>, its reconstructed component is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(\varepsilon_i)h_{\phi\psi i}\beta(\eta_{\psi i})\\
+=h_i\beta(\psi\varepsilon_i)\beta(\eta_{\psi i})\\
+=h_i.
+\end{gathered}
+\tag{5.4}
+\]">\[
+\begin{gathered}
+D(\varepsilon_i)h_{\phi\psi i}\beta(\eta_{\psi i})\\
+=h_i\beta(\psi\varepsilon_i)\beta(\eta_{\psi i})\\
+=h_i.
+\end{gathered}
+\tag{5.4}
+\]</span>
+<p>The first equality is naturality of <span class="math" data-tex="\(h\)">\(h\)</span>, and the second is the second triangle in (5.1). Starting from <span class="math" data-tex="\(u\)">\(u\)</span>, reconstruction at <span class="math" data-tex="\(j\)">\(j\)</span> is
+<span class="math" data-tex="\(D(\varepsilon_{\phi j})u_{\psi\phi j}\beta(\eta_j)
+=D(\varepsilon_{\phi j})D(\phi\eta_j)u_j=u_j\)">\(D(\varepsilon_{\phi j})u_{\psi\phi j}\beta(\eta_j)
+=D(\varepsilon_{\phi j})D(\phi\eta_j)u_j=u_j\)</span>.
+Here use naturality of <span class="math" data-tex="\(u\)">\(u\)</span> at <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> and the first triangle.</p>
+<p>For <span class="math" data-tex="\(z:\beta&#x27;\to\beta\)">\(z:\beta&#x27;\to\beta\)</span>, <span class="math" data-tex="\(v:D\to D&#x27;\)">\(v:D\to D&#x27;\)</span>, the forward correspondence satisfies
+<span class="math" data-tex="\(\Psi(vh(z\psi))=(v\phi)\Psi(h)z\)">\(\Psi(vh(z\psi))=(v\phi)\Psi(h)z\)</span>; evaluate its <span class="math" data-tex="\(j\)">\(j\)</span>-component and use naturality of <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span>. This proves naturality in both variables, and hence naturality of its inverse. Thus <span class="math" data-tex="\(\psi^*\dashv\phi^*\)">\(\psi^*\dashv\phi^*\)</span>, with left-extension unit <span class="math" data-tex="\(\beta(\eta_j)\)">\(\beta(\eta_j)\)</span> and left-extension counit <span class="math" data-tex="\(D(\varepsilon_i)\)">\(D(\varepsilon_i)\)</span>. The universal definition gives the first comparison in (5.2), compatible with these specified transformations.</p>
+<p>The pointwise formula has the same comparison. In <span class="math" data-tex="\((\phi\downarrow i)\)">\((\phi\downarrow i)\)</span>, the object <span class="math" data-tex="\((\psi i,\varepsilon_i)\)">\((\psi i,\varepsilon_i)\)</span> is terminal: the unique arrow from <span class="math" data-tex="\((j,t:\phi j\to i)\)">\((j,t:\phi j\to i)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b_{j,t}=\psi(t)\eta_j:j\to\psi i,\\
+\varepsilon_i\phi(b_{j,t})=t.
+\end{gathered}
+\tag{5.5}
+\]">\[
+\begin{gathered}
+b_{j,t}=\psi(t)\eta_j:j\to\psi i,\\
+\varepsilon_i\phi(b_{j,t})=t.
+\end{gathered}
+\tag{5.5}
+\]</span>
+<p>These are precisely the full adjunction factor and inverse equations. A diagram over a terminal index object has its colimit at that object: every cocone is uniquely determined by its component there, since the unique arrows into it force all other components; conversely those arrows give a cocone, with uniqueness following from the same terminal component. Hence the comma colimit is <span class="math" data-tex="\(\beta(\psi i)\)">\(\beta(\psi i)\)</span>, with leg <span class="math" data-tex="\(\beta(b_{j,t})\)">\(\beta(b_{j,t})\)</span>. If a different comma colimit was chosen, its canonical map to this one has these legs, and its inverse is the leg at <span class="math" data-tex="\((\psi i,\varepsilon_i)\)">\((\psi i,\varepsilon_i)\)</span>; checking all legs proves both inverse equations.</p>
+<p>For <span class="math" data-tex="\(a:i\to i&#x27;\)">\(a:i\to i&#x27;\)</span>, the pointwise Kan arrow corresponds to <span class="math" data-tex="\(\beta(\psi a)\)">\(\beta(\psi a)\)</span>: its composite with the <span class="math" data-tex="\((j,t)\)">\((j,t)\)</span>-leg is
+<span class="math" data-tex="\(\beta(\psi a\,\psi t\,\eta_j)=\beta(b_{j,at})\)">\(\beta(\psi a\,\psi t\,\eta_j)=\beta(b_{j,at})\)</span>, exactly the defining leg equation. For <span class="math" data-tex="\(z:\beta\to\beta&#x27;\)">\(z:\beta\to\beta&#x27;\)</span>, the comparison sends the induced Kan component to <span class="math" data-tex="\(z_{\psi i}\)">\(z_{\psi i}\)</span>, by naturality at <span class="math" data-tex="\(b_{j,t}\)">\(b_{j,t}\)</span>. Thus this is a natural isomorphism both in the output index and in the whole input diagram, retaining the actual Kan maps.</p>
+<p><strong>Right extension and full transformation factors.</strong> For <span class="math" data-tex="\(\alpha:I\to C\)">\(\alpha:I\to C\)</span> and <span class="math" data-tex="\(B:J\to C\)">\(B:J\to C\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Nat}_J(B,\alpha\phi)
+\simeq\operatorname{Nat}_I(B\psi,\alpha),\\
+k\longmapsto
+\left(\alpha(\varepsilon_i)k_{\psi i}\right)_i,\\
+v\longmapsto
+\left(v_{\phi j}B(\eta_j)\right)_j.
+\end{gathered}
+\tag{5.6}
+\]">\[
+\begin{gathered}
+\operatorname{Nat}_J(B,\alpha\phi)
+\simeq\operatorname{Nat}_I(B\psi,\alpha),\\
+k\longmapsto
+\left(\alpha(\varepsilon_i)k_{\psi i}\right)_i,\\
+v\longmapsto
+\left(v_{\phi j}B(\eta_j)\right)_j.
+\end{gathered}
+\tag{5.6}
+\]</span>
+<p>Both families are natural by the naturality of the unit, counit and input transformation. Starting from <span class="math" data-tex="\(v\)">\(v\)</span>, reconstruction at <span class="math" data-tex="\(i\)">\(i\)</span> is
+<span class="math" data-tex="\(\alpha(\varepsilon_i)v_{\phi\psi i}B(\eta_{\psi i})
+=v_iB(\psi\varepsilon_i)B(\eta_{\psi i})=v_i\)">\(\alpha(\varepsilon_i)v_{\phi\psi i}B(\eta_{\psi i})
+=v_iB(\psi\varepsilon_i)B(\eta_{\psi i})=v_i\)</span>.
+Starting from <span class="math" data-tex="\(k\)">\(k\)</span>, reconstruction at <span class="math" data-tex="\(j\)">\(j\)</span> is
+<span class="math" data-tex="\(\alpha(\varepsilon_{\phi j})k_{\psi\phi j}B(\eta_j)
+=\alpha(\varepsilon_{\phi j})\alpha(\phi\eta_j)k_j=k_j\)">\(\alpha(\varepsilon_{\phi j})k_{\psi\phi j}B(\eta_j)
+=\alpha(\varepsilon_{\phi j})\alpha(\phi\eta_j)k_j=k_j\)</span>.
+These use the two triangles, respectively. For <span class="math" data-tex="\(z:\alpha\to\alpha&#x27;\)">\(z:\alpha\to\alpha&#x27;\)</span>, <span class="math" data-tex="\(b:B&#x27;\to B\)">\(b:B&#x27;\to B\)</span>, the forward map obeys
+<span class="math" data-tex="\(\Xi((z\phi)kb)=z\Xi(k)(b\psi)\)">\(\Xi((z\phi)kb)=z\Xi(k)(b\psi)\)</span>, by naturality of <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span>. This checks both-variable naturality and its inverse. Consequently <span class="math" data-tex="\(\psi^*\dashv\phi^*\)">\(\psi^*\dashv\phi^*\)</span> now supplies the right Kan extension of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> along <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. Its right-extension counit is <span class="math" data-tex="\(\alpha(\varepsilon_i)\)">\(\alpha(\varepsilon_i)\)</span>, and its right-extension unit is <span class="math" data-tex="\(B(\eta_j)\)">\(B(\eta_j)\)</span>.</p>
+<p>For the pointwise right extension at <span class="math" data-tex="\(j\)">\(j\)</span>, the outgoing comma <span class="math" data-tex="\((j\downarrow\psi)\)">\((j\downarrow\psi)\)</span> has initial object <span class="math" data-tex="\((\phi j,\eta_j)\)">\((\phi j,\eta_j)\)</span>. The unique arrow from it to <span class="math" data-tex="\((i,t:j\to\psi i)\)">\((i,t:j\to\psi i)\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a_{i,t}=\varepsilon_i\phi(t):\phi j\to i,\\
+\psi(a_{i,t})\eta_j=t.
+\end{gathered}
+\tag{5.7}
+\]">\[
+\begin{gathered}
+a_{i,t}=\varepsilon_i\phi(t):\phi j\to i,\\
+\psi(a_{i,t})\eta_j=t.
+\end{gathered}
+\tag{5.7}
+\]</span>
+<p>The adjunction again proves both the equation and uniqueness. A diagram over an initial index object has its limit at that object: a cone is determined by its component there, and the unique outgoing arrows give all remaining components; each factor is the initial component. Thus this comma limit is <span class="math" data-tex="\(\alpha(\phi j)\)">\(\alpha(\phi j)\)</span>, with projection <span class="math" data-tex="\(\alpha(a_{i,t})\)">\(\alpha(a_{i,t})\)</span>. The canonical comparison from it to any chosen comma limit and the projection back at <span class="math" data-tex="\((\phi j,\eta_j)\)">\((\phi j,\eta_j)\)</span> are inverse, by checking every projection.</p>
+<p>For <span class="math" data-tex="\(s:j\to j&#x27;\)">\(s:j\to j&#x27;\)</span>, the induced right Kan arrow is <span class="math" data-tex="\(\alpha(\phi s)\)">\(\alpha(\phi s)\)</span>, since each target projection composes to
+<span class="math" data-tex="\(\alpha(\varepsilon_i\phi(t&#x27;)\phi(s))=\alpha(a_{i,t&#x27;s})\)">\(\alpha(\varepsilon_i\phi(t&#x27;)\phi(s))=\alpha(a_{i,t&#x27;s})\)</span>, the exact reindexed projection. A transformation <span class="math" data-tex="\(z:\alpha\to\alpha&#x27;\)">\(z:\alpha\to\alpha&#x27;\)</span> gives <span class="math" data-tex="\(z_{\phi j}\)">\(z_{\phi j}\)</span>, by naturality at every <span class="math" data-tex="\(a_{i,t}\)">\(a_{i,t}\)</span>. This proves the whole natural comparison in the second part of (5.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Each relevant comma category has its stated endpoint, so its required pointwise (co)limit exists even if the index is not small and <span class="math" data-tex="\(C\)">\(C\)</span> has no empty (co)limit. If either <span class="math" data-tex="\(I\)">\(I\)</span> or <span class="math" data-tex="\(J\)">\(J\)</span> is empty, the existence of both <span class="math" data-tex="\(\phi\)">\(\phi\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> forces both to be empty. Their diagram categories then have one object and one transformation, and (5.3)–(5.7) are the same vacuous universal comparisons; no initial or terminal object of <span class="math" data-tex="\(C\)">\(C\)</span> is introduced.</p>
+<h2 id="6-four-graded-exercises-with-full-solutions">6. Four graded exercises with full solutions</h2>
+<h3 id="exercise-1-count-functions-in-two-fibres">Exercise 1 — count functions in two fibres</h3>
+<p><em>Introductory.</em> Let <span class="math" data-tex="\(Z=\{r,b\}\)">\(Z=\{r,b\}\)</span>. Let <span class="math" data-tex="\(X_r=\{0,1\}\)">\(X_r=\{0,1\}\)</span>, <span class="math" data-tex="\(Y_r=\{u,v\}\)">\(Y_r=\{u,v\}\)</span>, <span class="math" data-tex="\(X_b=Y_b=\varnothing\)">\(X_b=Y_b=\varnothing\)</span>. Let <span class="math" data-tex="\(T_r=\{t\}\)">\(T_r=\{t\}\)</span> and <span class="math" data-tex="\(T_b=\{s_0,s_1\}\)">\(T_b=\{s_0,s_1\}\)</span>. Calculate <span class="math" data-tex="\(H_Y(X)\)">\(H_Y(X)\)</span> and both Hom sets in (3.2). Give evaluation and both inverse factors explicitly.</p>
+<p><strong>Solution.</strong> The fibre over <span class="math" data-tex="\(r\)">\(r\)</span> consists of the four functions labelled <span class="math" data-tex="\(00,01,10,11\)">\(00,01,10,11\)</span>, with digits recording their values at <span class="math" data-tex="\(u,v\)">\(u,v\)</span>. The fibre over <span class="math" data-tex="\(b\)">\(b\)</span> has exactly the empty function, denoted <span class="math" data-tex="\(e_b\)">\(e_b\)</span>. Thus <span class="math" data-tex="\(H_Y(X)\)">\(H_Y(X)\)</span> has five elements altogether. Its evaluation sends <span class="math" data-tex="\(((r,ab),u)\)">\(((r,ab),u)\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(((r,ab),v)\)">\(((r,ab),v)\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>; there is no evaluation pair over <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p>The product <span class="math" data-tex="\(T\times_ZY\)">\(T\times_ZY\)</span> has just <span class="math" data-tex="\((t,u),(t,v)\)">\((t,u),(t,v)\)</span>, both over <span class="math" data-tex="\(r\)">\(r\)</span>. An over-<span class="math" data-tex="\(Z\)">\(Z\)</span> map to <span class="math" data-tex="\(X\)">\(X\)</span> chooses their two values independently, so there are four maps, labelled <span class="math" data-tex="\(ab\)">\(ab\)</span>. Its curry sends <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\((r,ab)\)">\((r,ab)\)</span> and both <span class="math" data-tex="\(s_0,s_1\)">\(s_0,s_1\)</span> to <span class="math" data-tex="\((b,e_b)\)">\((b,e_b)\)</span>. Conversely, every over-<span class="math" data-tex="\(Z\)">\(Z\)</span> map <span class="math" data-tex="\(T\to H_Y(X)\)">\(T\to H_Y(X)\)</span> is forced at the two <span class="math" data-tex="\(b\)">\(b\)</span>-points and chooses one of the four <span class="math" data-tex="\(r\)">\(r\)</span>-points at <span class="math" data-tex="\(t\)">\(t\)</span>; evaluating gives back exactly the two chosen values. These four assignments prove both inverse equations concretely. Empty fibres contribute a forced empty function, rather than an absent point.</p>
+<h3 id="exercise-2-the-two-products-have-different-factors">Exercise 2 — the two products have different factors</h3>
+<p><em>Intermediate.</em> Let <span class="math" data-tex="\(Z=\{0,1\}\)">\(Z=\{0,1\}\)</span>, and let both <span class="math" data-tex="\(A\to Z\)">\(A\to Z\)</span> and <span class="math" data-tex="\(B\to Z\)">\(B\to Z\)</span> be copies of <span class="math" data-tex="\(1_Z\)">\(1_Z\)</span>, labelled <span class="math" data-tex="\(a_0,a_1\)">\(a_0,a_1\)</span> and <span class="math" data-tex="\(b_0,b_1\)">\(b_0,b_1\)</span>. Compare their product in <span class="math" data-tex="\(\mathsf{Set}/Z\)">\(\mathsf{Set}/Z\)</span> with the product of their underlying sets. Calculate both factor tests for a singleton <span class="math" data-tex="\(T=\{t\}\)">\(T=\{t\}\)</span>, and explain what happens to the empty slice limit.</p>
+<p><strong>Solution.</strong> The slice product has the two pairs
+<span class="math" data-tex="\((a_0,b_0),(a_1,b_1)\)">\((a_0,b_0),(a_1,b_1)\)</span>, with their common projection to <span class="math" data-tex="\(Z\)">\(Z\)</span>. The ordinary product has four pairs, adding <span class="math" data-tex="\((a_0,b_1),(a_1,b_0)\)">\((a_0,b_1),(a_1,b_0)\)</span>. If <span class="math" data-tex="\(t:T\to Z\)">\(t:T\to Z\)</span> is fixed at <span class="math" data-tex="\(0\)">\(0\)</span>, there is exactly one slice map to each of <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, and exactly one factor into the slice product. The same holds with fixed value <span class="math" data-tex="\(1\)">\(1\)</span>. When the structure on <span class="math" data-tex="\(T\)">\(T\)</span> is allowed to vary, there are therefore two compatible slice-factor choices.</p>
+<p>There are four unrestricted base pairs of maps from <span class="math" data-tex="\(T\)">\(T\)</span> to the underlying <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, and hence four maps into the base product. The two off-diagonal choices have no common structure <span class="math" data-tex="\(T\to Z\)">\(T\to Z\)</span>, so they do not give slice cones. This is why forgetting the disconnected two-object slice limit fails to preserve it.</p>
+<p>The empty slice limit is <span class="math" data-tex="\(1_Z\)">\(1_Z\)</span>, whose underlying set has two elements. It is not terminal in sets: there are two maps from <span class="math" data-tex="\(T\)">\(T\)</span> to it, whereas a terminal set allows one. This checks the necessity in Theorem 4.3 using the actual factor count.</p>
+<h3 id="exercise-3-compute-both-extensions-without-completeness">Exercise 3 — compute both extensions without completeness</h3>
+<p><em>Advanced.</em> Let <span class="math" data-tex="\(J=\{0&lt;1\}\)">\(J=\{0&lt;1\}\)</span>, <span class="math" data-tex="\(I=\{0&lt;1&lt;2\}\)">\(I=\{0&lt;1&lt;2\}\)</span>, with <span class="math" data-tex="\(\phi(0)=0,\phi(1)=2\)">\(\phi(0)=0,\phi(1)=2\)</span>, and <span class="math" data-tex="\(\psi(0)=\psi(1)=0,\psi(2)=1\)">\(\psi(0)=\psi(1)=0,\psi(2)=1\)</span>. Verify <span class="math" data-tex="\(\phi\dashv\psi\)">\(\phi\dashv\psi\)</span>. Take the set diagrams</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\beta:\{x\}\longrightarrow\{r,s\},
+\qquad x\longmapsto r,\\
+\alpha:\{a,b\}\longrightarrow\{c\}
+\longrightarrow\{d,e\},\\
+a,b\longmapsto c,\qquad c\longmapsto d.
+\end{gathered}
+\tag{6.1}
+\]">\[
+\begin{gathered}
+\beta:\{x\}\longrightarrow\{r,s\},
+\qquad x\longmapsto r,\\
+\alpha:\{a,b\}\longrightarrow\{c\}
+\longrightarrow\{d,e\},\\
+a,b\longmapsto c,\qquad c\longmapsto d.
+\end{gathered}
+\tag{6.1}
+\]</span>
+<p>Compute <span class="math" data-tex="\(\operatorname{Lan}_\phi\beta\)">\(\operatorname{Lan}_\phi\beta\)</span>, <span class="math" data-tex="\(\operatorname{Ran}_\psi\alpha\)">\(\operatorname{Ran}_\psi\alpha\)</span>, their specified unit/counit components, and both transformation sets in (5.3) and (5.6), taking <span class="math" data-tex="\(D=\alpha\)">\(D=\alpha\)</span> and <span class="math" data-tex="\(B=\beta\)">\(B=\beta\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, both <span class="math" data-tex="\(\phi(j)\le i\)">\(\phi(j)\le i\)</span> and <span class="math" data-tex="\(j\le\psi(i)\)">\(j\le\psi(i)\)</span> always hold. For <span class="math" data-tex="\(j=1\)">\(j=1\)</span>, both hold exactly when <span class="math" data-tex="\(i=2\)">\(i=2\)</span>. These are all six pairs, proving the natural order-category Hom bijections. The unit is the identity at both objects of <span class="math" data-tex="\(J\)">\(J\)</span>. The counit is the identity at <span class="math" data-tex="\(0,2\)">\(0,2\)</span>, and the arrow <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span> at <span class="math" data-tex="\(i=1\)">\(i=1\)</span>. Their order-category composites give both triangles.</p>
+<p>The left extension is
+<span class="math" data-tex="\(\{x\}\xrightarrow{1}\{x\}\to\{r,s\}\)">\(\{x\}\xrightarrow{1}\{x\}\to\{r,s\}\)</span>, with the last map <span class="math" data-tex="\(x\mapsto r\)">\(x\mapsto r\)</span>. Its left-extension unit is the identity at both <span class="math" data-tex="\(j\)">\(j\)</span>. The right extension is
+<span class="math" data-tex="\(\{a,b\}\to\{d,e\}\)">\(\{a,b\}\to\{d,e\}\)</span>, with both elements sent to <span class="math" data-tex="\(d\)">\(d\)</span>. Its right-extension counit at <span class="math" data-tex="\(i=0,2\)">\(i=0,2\)</span> is the identity; at <span class="math" data-tex="\(i=1\)">\(i=1\)</span> it is the map <span class="math" data-tex="\(\{a,b\}\to\{c\}\)">\(\{a,b\}\to\{c\}\)</span> sending both elements to <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p>A transformation <span class="math" data-tex="\(\beta\to\alpha\phi\)">\(\beta\to\alpha\phi\)</span> chooses the image of <span class="math" data-tex="\(x\)">\(x\)</span> freely in <span class="math" data-tex="\(\{a,b\}\)">\(\{a,b\}\)</span>. Commutativity forces the image of <span class="math" data-tex="\(r\)">\(r\)</span> to be <span class="math" data-tex="\(d\)">\(d\)</span>, while the image of <span class="math" data-tex="\(s\)">\(s\)</span> is free in <span class="math" data-tex="\(\{d,e\}\)">\(\{d,e\}\)</span>. Thus it has four possibilities. A transformation <span class="math" data-tex="\(\beta\psi\to\alpha\)">\(\beta\psi\to\alpha\)</span> has those same two choices at indices <span class="math" data-tex="\(0,2\)">\(0,2\)</span>, and its index-<span class="math" data-tex="\(1\)">\(1\)</span> map to <span class="math" data-tex="\(\{c\}\)">\(\{c\}\)</span> is forced. Its naturality at <span class="math" data-tex="\(0\to1\)">\(0\to1\)</span> and <span class="math" data-tex="\(1\to2\)">\(1\to2\)</span> is then satisfied. There are again four possibilities, and (5.3) sends the free choices to themselves.</p>
+<p>For (5.6), its left set is <span class="math" data-tex="\(\operatorname{Nat}_J(\beta,\alpha\phi)\)">\(\operatorname{Nat}_J(\beta,\alpha\phi)\)</span>, already calculated, and its right set is <span class="math" data-tex="\(\operatorname{Nat}_I(\beta\psi,\alpha)\)">\(\operatorname{Nat}_I(\beta\psi,\alpha)\)</span>, also already calculated. Its forward formula supplies the forced middle component by the counit map <span class="math" data-tex="\(\alpha(0\to1)\)">\(\alpha(0\to1)\)</span>; its inverse retains the endpoint choices because the unit is the identity. Both full correspondences therefore have four elements and the stated inverse maps. The general proof used only the index adjunction, rather than a completeness property of this target.</p>
+<h3 id="exercise-4-pull-back-a-quotient-with-its-legs">Exercise 4 — pull back a quotient with its legs</h3>
+<p><em>Challenge.</em> Let <span class="math" data-tex="\(Z=\{0,1\}\)">\(Z=\{0,1\}\)</span>, <span class="math" data-tex="\(A=\{a,b,c\}\)">\(A=\{a,b,c\}\)</span> with <span class="math" data-tex="\(a,b\)">\(a,b\)</span> over <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> over <span class="math" data-tex="\(1\)">\(1\)</span>. Let <span class="math" data-tex="\(E=\{q\}\)">\(E=\{q\}\)</span> over <span class="math" data-tex="\(0\)">\(0\)</span>, with <span class="math" data-tex="\(f(q)=a,g(q)=b\)">\(f(q)=a,g(q)=b\)</span>. Let <span class="math" data-tex="\(Y=\{r,s,t\}\to Z\)">\(Y=\{r,s,t\}\to Z\)</span> send <span class="math" data-tex="\(r,s\)">\(r,s\)</span> to <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. Calculate the coequalizer and its pullback. Prove, for every target set <span class="math" data-tex="\(W\)">\(W\)</span>, that the canonical map (2.2) for this coequalizer diagram is invertible.</p>
+<p><strong>Solution.</strong> The coequalizer <span class="math" data-tex="\(K\)">\(K\)</span> has the classes <span class="math" data-tex="\(\{a,b\}\)">\(\{a,b\}\)</span> and <span class="math" data-tex="\(\{c\}\)">\(\{c\}\)</span>, over <span class="math" data-tex="\(0,1\)">\(0,1\)</span>, respectively. Its structure is well defined because the generator pair <span class="math" data-tex="\(a\sim b\)">\(a\sim b\)</span> lies in one fibre. The set <span class="math" data-tex="\(K\times_ZY\)">\(K\times_ZY\)</span> has the three points
+<span class="math" data-tex="\((\{a,b\},r),(\{a,b\},s),(\{c\},t)\)">\((\{a,b\},r),(\{a,b\},s),(\{c\},t)\)</span>.</p>
+<p>The pulled-back <span class="math" data-tex="\(A\)">\(A\)</span> has five points
+<span class="math" data-tex="\((a,r),(b,r),(a,s),(b,s),(c,t)\)">\((a,r),(b,r),(a,s),(b,s),(c,t)\)</span>.
+The pulled-back <span class="math" data-tex="\(E\)">\(E\)</span> has <span class="math" data-tex="\((q,r),(q,s)\)">\((q,r),(q,s)\)</span>. Its two maps impose precisely
+<span class="math" data-tex="\((a,r)\sim(b,r)\)">\((a,r)\sim(b,r)\)</span> and <span class="math" data-tex="\((a,s)\sim(b,s)\)">\((a,s)\sim(b,s)\)</span>. Thus the quotient has the three classes</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R=\{(a,r),(b,r)\},\\
+S=\{(a,s),(b,s)\},\\
+T=\{(c,t)\}.
+\end{gathered}
+\tag{6.2}
+\]">\[
+\begin{gathered}
+R=\{(a,r),(b,r)\},\\
+S=\{(a,s),(b,s)\},\\
+T=\{(c,t)\}.
+\end{gathered}
+\tag{6.2}
+\]</span>
+<p>The canonical comparison sends <span class="math" data-tex="\(R,S,T\)">\(R,S,T\)</span> to the three points of <span class="math" data-tex="\(K\times_ZY\)">\(K\times_ZY\)</span> listed above; its inverse sends those points to their corresponding classes. Both composites are identities, and these maps retain the <span class="math" data-tex="\(Y\)">\(Y\)</span>-projection and the original quotient legs.</p>
+<p>For any <span class="math" data-tex="\(W\)">\(W\)</span>, a map from the five-point set equalizing the two pulled-back maps is exactly a choice of one value for <span class="math" data-tex="\(R\)">\(R\)</span>, one for <span class="math" data-tex="\(S\)">\(S\)</span>, and one for <span class="math" data-tex="\(T\)">\(T\)</span>. The unique factor on the three-point quotient uses those values. Composing with the displayed inverse gives the same unique factor through <span class="math" data-tex="\(K\times_ZY\)">\(K\times_ZY\)</span>. These operations are inverse on every point and natural under postcomposition <span class="math" data-tex="\(W\to W&#x27;\)">\(W\to W&#x27;\)</span>. They prove the full canonical coequalizer property, rather than only agreement of cardinalities. For a two-element target there are <span class="math" data-tex="\(2^3=8\)">\(2^3=8\)</span> such factors.</p>
+<h2 id="7-references-and-retained-proof-interfaces">7. References and retained proof interfaces</h2>
+<ul>
+<li><strong>Riehl.</strong> Emily Riehl, <a href="https://emilyriehl.github.io/files/context.pdf"><em>Category Theory in Context</em></a>, Sections 1.3 and 6.1, for comma and slice categories and the adjoints of restriction along a functor.</li>
+<li><strong>[Stacks, Categories].</strong> The pinned <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/categories.tex">Categories structured source</a> retains GFDL 1.2 or later under its <a href="https://github.com/KokunoYumeto/unofficial-stacks-project-ai-drafts/blob/565b10e987aba5969b21145a0833f42d69f96790/COPYING">licence</a>. The complete connected slice-limit proof at lines 1668–1697 supplies the reverse direction of Theorem 4.2; the complete left-adjoint colimit proof at lines 3624–3660 supplies the preservation interface in Section 3. Their mathematical interfaces and full factors are retained without copying their expression.</li>
+<li><strong>Owned prerequisites.</strong> The full cone/cocone and opposite proofs, set-size closure, ordinary currying, slice-colimit computation, relative products and finite-limit criterion are the linked lessons above. The entire pointwise Kan factor proofs supply the exact structural comparisons in Theorem 5.1. Existing versions retain their own attribution and licences.</li>
+</ul>
+</main></body></html>

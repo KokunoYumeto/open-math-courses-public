@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guinand&#x27;s formula · Explicit formulas and positivity</title>
+<meta name="description" content="A lesson of the course Explicit formulas and positivity. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-EXPF/NT-EXPF-03.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Explicit formulas and positivity</a> <span aria-hidden="true">›</span> <span>Lesson 3 of 8</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="guinand-s-formula">Guinand's formula</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Poisson summation compares a set of points with its Fourier counterpart. Guinand's formula has a similar shape: prime powers are the points on one side, and zeta zeros are the points on the other. Neither side has constant density. The pole of zeta contributes an exponential background on the prime side; the gamma factor contributes a logarithmic background on the zero side.</p>
+<p>We prove the formula for a class that includes Gaussians and continuous, piecewise smooth functions of compact support. We also give its unconditional version, where the ordinates become complex, and prove Guinand's exact prime-sum expression for the remainder in the zero-counting formula. Only that last expression, and the interpretation of the ordinates as real points, require RH.</p>
+<h2 id="1-a-cosine-pair-and-the-complex-ordinates">1. A cosine pair and the complex ordinates</h2>
+<p>To avoid confusing a function on the logarithmic line with the multiplicative test function in the preceding lessons, write <span class="math" data-tex="\(F(t)\)">\(F(t)\)</span> for the present test and put</p>
+<span class="math math-display" data-tex="\[
+g(z)=\sqrt{\frac2\pi}\int_0^\infty F(t)\cos(zt)\,dt.
+\tag{1.1}
+\]">\[
+g(z)=\sqrt{\frac2\pi}\int_0^\infty F(t)\cos(zt)\,dt.
+\tag{1.1}
+\]</span>
+<p>Our admissible class consists of continuous <span class="math" data-tex="\(F:[0,\infty)\to\mathbb C\)">\(F:[0,\infty)\to\mathbb C\)</span> that are piecewise twice continuously differentiable with finitely many breakpoints, have finite one-sided derivatives there and at <span class="math" data-tex="\(0\)">\(0\)</span>, and satisfy, on the smooth pieces,</p>
+<span class="math math-display" data-tex="\[
+|F(t)|+|F&#x27;(t)|+|F&#x27;&#x27;(t)|\leq C e^{-(1/2+\delta)t}
+\qquad(t\geq0)
+\tag{1.2}
+\]">\[
+|F(t)|+|F&#x27;(t)|+|F&#x27;&#x27;(t)|\leq C e^{-(1/2+\delta)t}
+\qquad(t\geq0)
+\tag{1.2}
+\]</span>
+<p>for some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. A compactly supported continuous piecewise <span class="math" data-tex="\(C^2\)">\(C^2\)</span> function satisfies this condition. The even extension of <span class="math" data-tex="\(F\)">\(F\)</span> need not have derivative zero at the origin.</p>
+<p>Equation (1.1) defines an even holomorphic function on <span class="math" data-tex="\(|\Im z|&lt;1/2+\delta\)">\(|\Im z|&lt;1/2+\delta\)</span>. Two integrations by parts, including the atoms from jumps of <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span>, give</p>
+<span class="math math-display" data-tex="\[
+g(x+iy)=O((1+|x|)^{-2})
+\quad\text{uniformly for }|y|\leq1/2.
+\tag{1.3}
+\]">\[
+g(x+iy)=O((1+|x|)^{-2})
+\quad\text{uniformly for }|y|\leq1/2.
+\tag{1.3}
+\]</span>
+<p>The first integration has no boundary term at <span class="math" data-tex="\(0\)">\(0\)</span>, because <span class="math" data-tex="\(\sin 0=0\)">\(\sin 0=0\)</span>; the second can have the bounded term involving <span class="math" data-tex="\(F&#x27;(0)\)">\(F&#x27;(0)\)</span>. The exponentially weighted variation of <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> bounds all remaining terms. This proves (1.3), also when <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> jumps at an endpoint of its support.</p>
+<p>For a nontrivial zero <span class="math" data-tex="\(\rho=\beta+i\gamma\)">\(\rho=\beta+i\gamma\)</span>, define</p>
+<span class="math math-display" data-tex="\[
+z_\rho=-i(\rho-1/2)=\gamma+i(1/2-\beta).
+\tag{1.4}
+\]">\[
+z_\rho=-i(\rho-1/2)=\gamma+i(1/2-\beta).
+\tag{1.4}
+\]</span>
+<p>Always <span class="math" data-tex="\(|\Im z_\rho|\leq1/2\)">\(|\Im z_\rho|\leq1/2\)</span>. Under RH, <span class="math" data-tex="\(z_\rho=\gamma\)">\(z_\rho=\gamma\)</span> is real. In sums over the upper half of the zeros we use <span class="math" data-tex="\(\Im\rho&gt;0\)">\(\Im\rho&gt;0\)</span>, equivalently <span class="math" data-tex="\(\Re z_\rho&gt;0\)">\(\Re z_\rho&gt;0\)</span>, and retain multiplicities. There is no real nontrivial zero to leave out: for <span class="math" data-tex="\(0&lt;s&lt;1\)">\(0&lt;s&lt;1\)</span>, the alternating series</p>
+<span class="math math-display" data-tex="\[
+(1-2^{1-s})\zeta(s)
+=\sum_{n\geq1}\bigl((2n-1)^{-s}-(2n)^{-s}\bigr)
+\]">\[
+(1-2^{1-s})\zeta(s)
+=\sum_{n\geq1}\bigl((2n-1)^{-s}-(2n)^{-s}\bigr)
+\]</span>
+<p>is positive, whereas <span class="math" data-tex="\(1-2^{1-s}&lt;0\)">\(1-2^{1-s}&lt;0\)</span>. The endpoint values are not zeros either. The functional equation pairs each upper zero <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with the lower zero <span class="math" data-tex="\(1-\rho\)">\(1-\rho\)</span>, and (1.1) is even.</p>
+<p>The analytic continuation, functional equation, and zero count of zeta used here have the same internal planned providers identified in <em>The explicit formula with general test functions</em>. In particular the zero count is <span class="math" data-tex="\(O(T\log(T+2))\)">\(O(T\log(T+2))\)</span>. That count and (1.3) make all the zero sums below absolutely convergent.</p>
+<h2 id="2-the-summation-formula">2. The summation formula</h2>
+<p>Define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P(F)&amp;=\sum_{p}\sum_{m\geq1}(\log p)p^{-m/2}F(m\log p),\\
+I(F)&amp;=\int_0^\infty F(t)e^{t/2}\,dt,\\
+J(F)&amp;=\frac12\int_0^\infty
+F(t)\left(\frac1t-\frac{e^{-3t/2}}{\sinh t}\right)dt,\\
+D(g)&amp;=\frac1{\sqrt{2\pi}}\int_0^\infty
+g(t)\log\frac{t}{2\pi}\,dt.
+\end{aligned}
+\tag{2.1}
+\]">\[
+\begin{aligned}
+P(F)&amp;=\sum_{p}\sum_{m\geq1}(\log p)p^{-m/2}F(m\log p),\\
+I(F)&amp;=\int_0^\infty F(t)e^{t/2}\,dt,\\
+J(F)&amp;=\frac12\int_0^\infty
+F(t)\left(\frac1t-\frac{e^{-3t/2}}{\sinh t}\right)dt,\\
+D(g)&amp;=\frac1{\sqrt{2\pi}}\int_0^\infty
+g(t)\log\frac{t}{2\pi}\,dt.
+\end{aligned}
+\tag{2.1}
+\]</span>
+<p>The apparent singularity in <span class="math" data-tex="\(J\)">\(J\)</span> is removable: its kernel is <span class="math" data-tex="\(3/2+O(t)\)">\(3/2+O(t)\)</span> at zero. At infinity it is <span class="math" data-tex="\(1/t+O(e^{-5t/2})\)">\(1/t+O(e^{-5t/2})\)</span>. All four expressions converge absolutely for the class (1.2).</p>
+<p><strong>Theorem 2.1 (Guinand's formula).</strong> Unconditionally,</p>
+<span class="math math-display" data-tex="\[
+\boxed{P(F)-I(F)-J(F)
+=-\sqrt{2\pi}\sum_{\Im\rho&gt;0}g(z_\rho)+D(g).}
+\tag{2.2}
+\]">\[
+\boxed{P(F)-I(F)-J(F)
+=-\sqrt{2\pi}\sum_{\Im\rho&gt;0}g(z_\rho)+D(g).}
+\tag{2.2}
+\]</span>
+<p>Under RH this is the cosine summation formula with the positive real ordinates <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. In exactly the cutoff form,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\lim_{T\to\infty}\left\{
+\sum_{0&lt;m\log p&lt;T}(\log p)p^{-m/2}F(m\log p)
+-\int_0^T F(t)e^{t/2}\,dt\right\}\\
+&amp;\qquad-\frac12\int_0^\infty
+F(t)\left(\frac1t-\frac{e^{-3t/2}}{\sinh t}\right)dt\\
+&amp;=-\sqrt{2\pi}\lim_{T\to\infty}\left\{
+\sum_{0&lt;\gamma&lt;T}g(\gamma)
+-\frac1{2\pi}\int_0^T g(t)\log\frac{t}{2\pi}\,dt\right\}.
+\end{aligned}
+\tag{2.3}
+\]">\[
+\begin{aligned}
+&amp;\lim_{T\to\infty}\left\{
+\sum_{0&lt;m\log p&lt;T}(\log p)p^{-m/2}F(m\log p)
+-\int_0^T F(t)e^{t/2}\,dt\right\}\\
+&amp;\qquad-\frac12\int_0^\infty
+F(t)\left(\frac1t-\frac{e^{-3t/2}}{\sinh t}\right)dt\\
+&amp;=-\sqrt{2\pi}\lim_{T\to\infty}\left\{
+\sum_{0&lt;\gamma&lt;T}g(\gamma)
+-\frac1{2\pi}\int_0^T g(t)\log\frac{t}{2\pi}\,dt\right\}.
+\end{aligned}
+\tag{2.3}
+\]</span>
+<p>The factor in the archimedean kernel is <span class="math" data-tex="\(e^{-3t/2}\)">\(e^{-3t/2}\)</span>. This is the exponent in Guinand's formula of 1948; changing it to <span class="math" data-tex="\(e^{-t/2}\)">\(e^{-t/2}\)</span> would change the identity.</p>
+<h3 id="the-logarithmic-density-as-a-fourier-distribution">The logarithmic density as a Fourier distribution</h3>
+<p>We first establish the exact constant needed in the proof.</p>
+<p><strong>Lemma 2.2.</strong> For the cosine pair (1.1),</p>
+<span class="math math-display" data-tex="\[
+D(g)=-\frac12\log(2\pi)F(0)
+-\frac12\int_0^\infty\frac{F(u)-F(0)e^{-u}}u\,du.
+\tag{2.4}
+\]">\[
+D(g)=-\frac12\log(2\pi)F(0)
+-\frac12\int_0^\infty\frac{F(u)-F(0)e^{-u}}u\,du.
+\tag{2.4}
+\]</span>
+<p><em>Proof.</em> For <span class="math" data-tex="\(-1&lt;\Re w&lt;0\)">\(-1&lt;\Re w&lt;0\)</span>, damp the cosine integral by <span class="math" data-tex="\(e^{-\varepsilon t}\)">\(e^{-\varepsilon t}\)</span>, apply Fubini, and then let <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. The elementary Laplace integral gives</p>
+<span class="math math-display" data-tex="\[
+\int_0^\infty g(t)t^w\,dt
+=\sqrt{\frac2\pi}\,
+\Gamma(1+w)\cos\frac{\pi(1+w)}2
+\int_0^\infty F(u)u^{-w-1}\,du.
+\tag{2.5}
+\]">\[
+\int_0^\infty g(t)t^w\,dt
+=\sqrt{\frac2\pi}\,
+\Gamma(1+w)\cos\frac{\pi(1+w)}2
+\int_0^\infty F(u)u^{-w-1}\,du.
+\tag{2.5}
+\]</span>
+<p>For the limiting passage the Laplace kernel is bounded by <span class="math" data-tex="\(C_w u^{-\Re w-1}\)">\(C_w u^{-\Re w-1}\)</span>, integrable against <span class="math" data-tex="\(F\)">\(F\)</span>. The left side and its derivative remain integrable as <span class="math" data-tex="\(w\to0\)">\(w\to0\)</span>, by (1.3) and boundedness near zero. Put</p>
+<span class="math math-display" data-tex="\[
+A=\int_0^\infty\frac{F(u)-F(0)e^{-u}}u\,du.
+\]">\[
+A=\int_0^\infty\frac{F(u)-F(0)e^{-u}}u\,du.
+\]</span>
+<p>The last integral in (2.5) is <span class="math" data-tex="\(-F(0)/w-\gamma F(0)+A+O(w)\)">\(-F(0)/w-\gamma F(0)+A+O(w)\)</span>. Also <span class="math" data-tex="\(\Gamma(1+w)=1-\gamma w+O(w^2)\)">\(\Gamma(1+w)=1-\gamma w+O(w^2)\)</span>, and the cosine factor is <span class="math" data-tex="\(-\pi w/2+O(w^3)\)">\(-\pi w/2+O(w^3)\)</span>. The constant term on the right is <span class="math" data-tex="\(\sqrt{\pi/2}F(0)\)">\(\sqrt{\pi/2}F(0)\)</span>, and its linear term is <span class="math" data-tex="\(-\sqrt{\pi/2}A w\)">\(-\sqrt{\pi/2}A w\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+\int_0^\infty g(t)\,dt=\sqrt{\pi/2}F(0),
+\qquad
+\int_0^\infty g(t)\log t\,dt=-\sqrt{\pi/2}A.
+\]">\[
+\int_0^\infty g(t)\,dt=\sqrt{\pi/2}F(0),
+\qquad
+\int_0^\infty g(t)\log t\,dt=-\sqrt{\pi/2}A.
+\]</span>
+<p>Subtracting the <span class="math" data-tex="\(\log(2\pi)\)">\(\log(2\pi)\)</span> constant proves (2.4). ∎</p>
+<h3 id="from-mellin-reflection-to-cosine-summation">From Mellin reflection to cosine summation</h3>
+<p><em>Proof of Theorem 2.1.</em> Set</p>
+<span class="math math-display" data-tex="\[
+f(x)=x^{-1/2}F(|\log x|).
+\tag{2.6}
+\]">\[
+f(x)=x^{-1/2}F(|\log x|).
+\tag{2.6}
+\]</span>
+<p>Then <span class="math" data-tex="\(f^\sharp=f\)">\(f^\sharp=f\)</span>, and its Mellin transform is</p>
+<span class="math math-display" data-tex="\[
+H(s)=\int_{\mathbb R}F(|u|)e^{(s-1/2)u}\,du
+=\sqrt{2\pi}\,g(-i(s-1/2)).
+\tag{2.7}
+\]">\[
+H(s)=\int_{\mathbb R}F(|u|)e^{(s-1/2)u}\,du
+=\sqrt{2\pi}\,g(-i(s-1/2)).
+\tag{2.7}
+\]</span>
+<p>The preceding lesson's explicit formula applies: (1.2) provides the exponential bounds for the logarithmic function and its derivative. Reflection and evenness pair the full zero sum into twice the sum over upper zeros. The prime side is <span class="math" data-tex="\(2P(F)\)">\(2P(F)\)</span>. The pole terms are</p>
+<span class="math math-display" data-tex="\[
+H(0)+H(1)=4\int_0^\infty F(u)\cosh(u/2)\,du.
+\]">\[
+H(0)+H(1)=4\int_0^\infty F(u)\cosh(u/2)\,du.
+\]</span>
+<p>After changing <span class="math" data-tex="\(x=e^u\)">\(x=e^u\)</span>, the real-place term is</p>
+<span class="math math-display" data-tex="\[
+W_{\mathbb R}(f)=(\log(4\pi)+\gamma)F(0)
++\int_0^\infty
+\frac{e^{u/2}F(u)-F(0)}{\sinh u}\,du.
+\tag{2.8}
+\]">\[
+W_{\mathbb R}(f)=(\log(4\pi)+\gamma)F(0)
++\int_0^\infty
+\frac{e^{u/2}F(u)-F(0)}{\sinh u}\,du.
+\tag{2.8}
+\]</span>
+<p>All terms inside a difference at zero are kept together. The explicit formula divided by <span class="math" data-tex="\(2\)">\(2\)</span> becomes</p>
+<span class="math math-display" data-tex="\[
+P(F)-I(F)
+=-\sqrt{2\pi}\sum_{\Im\rho&gt;0}g(z_\rho)
++\int_0^\infty F(u)e^{-u/2}\,du
+-\frac12 W_{\mathbb R}(f).
+\tag{2.9}
+\]">\[
+P(F)-I(F)
+=-\sqrt{2\pi}\sum_{\Im\rho&gt;0}g(z_\rho)
++\int_0^\infty F(u)e^{-u/2}\,du
+-\frac12 W_{\mathbb R}(f).
+\tag{2.9}
+\]</span>
+<p>Use Lemma 2.2 and the elementary constant identity</p>
+<span class="math math-display" data-tex="\[
+\int_0^\infty\left(\frac1{\sinh u}-\frac{e^{-u}}u\right)du
+=\log2+\gamma.
+\tag{2.10}
+\]">\[
+\int_0^\infty\left(\frac1{\sinh u}-\frac{e^{-u}}u\right)du
+=\log2+\gamma.
+\tag{2.10}
+\]</span>
+<p>For completeness, <span class="math" data-tex="\(\gamma=\int_0^\infty(e^{-v}/(1-e^{-v})-e^{-v}/v)\,dv\)">\(\gamma=\int_0^\infty(e^{-v}/(1-e^{-v})-e^{-v}/v)\,dv\)</span>: subtract the integral expressions for <span class="math" data-tex="\(1+\cdots+1/n\)">\(1+\cdots+1/n\)</span> and <span class="math" data-tex="\(\log(n+1)\)">\(\log(n+1)\)</span>, and let <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>. The difference near zero is bounded, and the omitted exponentially damped term tends to zero. Change <span class="math" data-tex="\(v=2u\)">\(v=2u\)</span> in (2.10); the gamma integral (2.7) of the preceding lesson at <span class="math" data-tex="\(z=1/2\)">\(z=1/2\)</span>, together with <span class="math" data-tex="\(\psi_\Gamma(1/2)=-\gamma-2\log2\)">\(\psi_\Gamma(1/2)=-\gamma-2\log2\)</span>, and Frullani's integral, gives (2.10). The value of <span class="math" data-tex="\(\psi_\Gamma(1/2)\)">\(\psi_\Gamma(1/2)\)</span> follows directly by differentiating gamma duplication at <span class="math" data-tex="\(1/2\)">\(1/2\)</span>.</p>
+<p>The coefficient multiplying <span class="math" data-tex="\(F(u)\)">\(F(u)\)</span>, after (2.4) is subtracted from the last two terms of (2.9), simplifies as</p>
+<span class="math math-display" data-tex="\[
+e^{-u/2}-\frac{e^{u/2}}{2\sinh u}+\frac1{2u}
+=\frac12\left(\frac1u-\frac{e^{-3u/2}}{\sinh u}\right).
+\tag{2.11}
+\]">\[
+e^{-u/2}-\frac{e^{u/2}}{2\sinh u}+\frac1{2u}
+=\frac12\left(\frac1u-\frac{e^{-3u/2}}{\sinh u}\right).
+\tag{2.11}
+\]</span>
+<p>Equation (2.10) cancels the remaining <span class="math" data-tex="\(F(0)\)">\(F(0)\)</span> constants. This proves (2.2). Under RH, replace <span class="math" data-tex="\(z_\rho\)">\(z_\rho\)</span> by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. Absolute convergence of the prime sum, pole integral, zero sum and density integral allows each to be cut off as in (2.3), with no restriction on the sequence of <span class="math" data-tex="\(T\)">\(T\)</span>. ∎</p>
+<h2 id="3-two-backgrounds-in-the-poisson-analogy">3. Two backgrounds in the Poisson analogy</h2>
+<p>The prime measure on the logarithmic line is</p>
+<span class="math math-display" data-tex="\[
+\sum_{p,m}(\log p)p^{-m/2}\delta_{m\log p}.
+\]">\[
+\sum_{p,m}(\log p)p^{-m/2}\delta_{m\log p}.
+\]</span>
+<p>Its background in Guinand's formula is <span class="math" data-tex="\(e^{t/2}\,dt\)">\(e^{t/2}\,dt\)</span>. The two Mellin poles initially give <span class="math" data-tex="\(4\cosh(t/2)\)">\(4\cosh(t/2)\)</span>; after reflection and the gamma correction are combined, the prime-side background is exactly <span class="math" data-tex="\(e^{t/2}\)">\(e^{t/2}\)</span>, as (2.9)–(2.11) show. It is therefore misleading to discard the reflected pole term separately.</p>
+<p>The zero measure under RH is <span class="math" data-tex="\(\sum_{\gamma&gt;0}\delta_\gamma\)">\(\sum_{\gamma&gt;0}\delta_\gamma\)</span>. Its background is</p>
+<span class="math math-display" data-tex="\[
+\frac1{2\pi}\log\frac{t}{2\pi}\,dt.
+\]">\[
+\frac1{2\pi}\log\frac{t}{2\pi}\,dt.
+\]</span>
+<p>Integrating that density to <span class="math" data-tex="\(T\)">\(T\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+M(T)=\frac T{2\pi}\log\frac{T}{2\pi}-\frac T{2\pi}.
+\tag{3.1}
+\]">\[
+M(T)=\frac T{2\pi}\log\frac{T}{2\pi}-\frac T{2\pi}.
+\tag{3.1}
+\]</span>
+<p>This is the principal term of the Riemann–von Mangoldt count. The density is a signed comparison density near zero; it is not an assertion that the discrete zero measure has negative mass there. The singular logarithm is integrable at zero.</p>
+<p>The analogy with Poisson summation is an equality between the <strong>departures from these backgrounds</strong>, with the additional local correction <span class="math" data-tex="\(J(F)\)">\(J(F)\)</span>. Prime powers are irregularly spaced, and the zeros are not a lattice. Formula (2.2) remains unconditional as a holomorphic evaluation identity at complex <span class="math" data-tex="\(z_\rho\)">\(z_\rho\)</span>; only the picture of a real dual point measure uses RH.</p>
+<h2 id="4-gaussian-tests-and-finite-computations">4. Gaussian tests and finite computations</h2>
+<p>For <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, let</p>
+<span class="math math-display" data-tex="\[
+F_a(u)=e^{-u^2/(2a^2)}.
+\]">\[
+F_a(u)=e^{-u^2/(2a^2)}.
+\]</span>
+<p>Its cosine transform is</p>
+<span class="math math-display" data-tex="\[
+g_a(z)=a e^{-a^2z^2/2}. \tag{4.1}
+\]">\[
+g_a(z)=a e^{-a^2z^2/2}. \tag{4.1}
+\]</span>
+<p>To prove this, the full Gaussian Fourier integral <span class="math" data-tex="\(Q(z)\)">\(Q(z)\)</span> is entire. Integration by parts gives <span class="math" data-tex="\(Q&#x27;(z)=-a^2zQ(z)\)">\(Q&#x27;(z)=-a^2zQ(z)\)</span>. Its value at zero is <span class="math" data-tex="\(\sqrt{2\pi}a\)">\(\sqrt{2\pi}a\)</span>, obtained by squaring the real integral and integrating in polar coordinates. Solving the differential equation gives <span class="math" data-tex="\(Q(z)=\sqrt{2\pi}a e^{-a^2z^2/2}\)">\(Q(z)=\sqrt{2\pi}a e^{-a^2z^2/2}\)</span>. Evenness divides it into the two cosine halves. In particular <span class="math" data-tex="\(F_1\)">\(F_1\)</span> is its own cosine transform in this normalization.</p>
+<p>The pole and density expressions can also be evaluated:</p>
+<span class="math math-display" data-tex="\[
+I(F_a)=a\sqrt{\frac\pi2}e^{a^2/8}
+\left(1+\operatorname{erf}\frac{a}{2\sqrt2}\right),
+\tag{4.2}
+\]">\[
+I(F_a)=a\sqrt{\frac\pi2}e^{a^2/8}
+\left(1+\operatorname{erf}\frac{a}{2\sqrt2}\right),
+\tag{4.2}
+\]</span>
+<span class="math math-display" data-tex="\[
+D(g_a)=-\frac12\log a-\frac14(\gamma+\log2)-\frac12\log(2\pi).
+\tag{4.3}
+\]">\[
+D(g_a)=-\frac12\log a-\frac14(\gamma+\log2)-\frac12\log(2\pi).
+\tag{4.3}
+\]</span>
+<p>Complete the square to obtain (4.2). For (4.3), differentiate
+<span class="math" data-tex="\(\int_0^\infty t^w e^{-a^2t^2/2}dt
+=2^{(w-1)/2}a^{-w-1}\Gamma((w+1)/2)\)">\(\int_0^\infty t^w e^{-a^2t^2/2}dt
+=2^{(w-1)/2}a^{-w-1}\Gamma((w+1)/2)\)</span>
+at zero and use <span class="math" data-tex="\(\psi_\Gamma(1/2)=-\gamma-2\log2\)">\(\psi_\Gamma(1/2)=-\gamma-2\log2\)</span>.</p>
+<p>For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, the full unconditional identity reads</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p,m}(\log p)p^{-m/2}e^{-(m\log p)^2/2}
+-\sqrt{\pi/2}e^{1/8}\left(1+\operatorname{erf}(1/(2\sqrt2))\right)\\
+&amp;\quad-\frac12\int_0^\infty e^{-t^2/2}
+\left(\frac1t-\frac{e^{-3t/2}}{\sinh t}\right)dt\\
+&amp;=-\sqrt{2\pi}\sum_{\Im\rho&gt;0}e^{-z_\rho^2/2}
+-\frac14(\gamma+\log2)-\frac12\log(2\pi).
+\end{aligned}
+\tag{4.4}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p,m}(\log p)p^{-m/2}e^{-(m\log p)^2/2}
+-\sqrt{\pi/2}e^{1/8}\left(1+\operatorname{erf}(1/(2\sqrt2))\right)\\
+&amp;\quad-\frac12\int_0^\infty e^{-t^2/2}
+\left(\frac1t-\frac{e^{-3t/2}}{\sinh t}\right)dt\\
+&amp;=-\sqrt{2\pi}\sum_{\Im\rho&gt;0}e^{-z_\rho^2/2}
+-\frac14(\gamma+\log2)-\frac12\log(2\pi).
+\end{aligned}
+\tag{4.4}
+\]</span>
+<p>The following finite computations use prime powers <span class="math" data-tex="\(p^m\leq100\)">\(p^m\leq100\)</span>, the ten first numerically located critical-line zeros, and numerical integration for <span class="math" data-tex="\(J(F_a)\)">\(J(F_a)\)</span>. The pole and density terms use (4.2)–(4.3). Let <span class="math" data-tex="\(L_{100}=P_{100}-I-J\)">\(L_{100}=P_{100}-I-J\)</span> and <span class="math" data-tex="\(R_{10}=-\sqrt{2\pi}Z_{10}+D\)">\(R_{10}=-\sqrt{2\pi}Z_{10}+D\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(a\)">\(a\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(P_{100}(F_a)\)">\(P_{100}(F_a)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(Z_{10}(g_a)\)">\(Z_{10}(g_a)\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(L_{100}\)">\(L_{100}\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(R_{10}\)">\(R_{10}\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">0.1</td>
+<td style="text-align:right"><span class="math" data-tex="\(1.808864\times10^{-11}\)">\(1.808864\times10^{-11}\)</span></td>
+<td style="text-align:right">0.053719100344</td>
+<td style="text-align:right">−0.219890754683</td>
+<td style="text-align:right">−0.219890513882</td>
+</tr>
+<tr>
+<td style="text-align:right">0.2</td>
+<td style="text-align:right">0.001208226214</td>
+<td style="text-align:right">0.003708258346</td>
+<td style="text-align:right">−0.441105513573</td>
+<td style="text-align:right">−0.441105513573</td>
+</tr>
+<tr>
+<td style="text-align:right">0.5</td>
+<td style="text-align:right">0.256167796812</td>
+<td style="text-align:right"><span class="math" data-tex="\(7.1282594\times10^{-12}\)">\(7.1282594\times10^{-12}\)</span></td>
+<td style="text-align:right">−0.889955654308</td>
+<td style="text-align:right">−0.889955654308</td>
+</tr>
+<tr>
+<td style="text-align:right">1.0</td>
+<td style="text-align:right">1.340915114850</td>
+<td style="text-align:right"><span class="math" data-tex="\(4.1309883\times10^{-44}\)">\(4.1309883\times10^{-44}\)</span></td>
+<td style="text-align:right">−1.236597826633</td>
+<td style="text-align:right">−1.236529244570</td>
+</tr>
+</tbody>
+</table>
+<p>These are demonstrations, not certified error intervals or a proof of RH. At small <span class="math" data-tex="\(a\)">\(a\)</span>, the zero-side tail matters; at large <span class="math" data-tex="\(a\)">\(a\)</span>, the prime-side tail matters. The omitted prime terms are positive for these real Gaussians. Using ten critical-line zeros in this computation does not replace the complex-zero sum in the unconditional theorem.</p>
+<h2 id="5-guinand-s-exact-remainder-formula">5. Guinand's exact remainder formula</h2>
+<p>Let <span class="math" data-tex="\(N_0(T)=\tfrac12(N(T+0)+N(T-0))\)">\(N_0(T)=\tfrac12(N(T+0)+N(T-0))\)</span>, so a zero at height <span class="math" data-tex="\(T\)">\(T\)</span> has half weight. Assume RH in this section. For <span class="math" data-tex="\(X&gt;1\)">\(X&gt;1\)</span> define</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R_X(T)={}&amp;\sum_{2\leq n\leq X}
+\frac{\Lambda(n)\sin(T\log n)}{\sqrt n\log n}
+-\int_1^X\frac{\sin(T\log t)}{\sqrt t\log t}\,dt\\
+&amp;-\frac{\sin(T\log X)}{\log X}
+\left(\sum_{n\leq X}\frac{\Lambda(n)}{\sqrt n}-2\sqrt X\right).
+\end{aligned}
+\tag{5.1}
+\]">\[
+\begin{aligned}
+R_X(T)={}&amp;\sum_{2\leq n\leq X}
+\frac{\Lambda(n)\sin(T\log n)}{\sqrt n\log n}
+-\int_1^X\frac{\sin(T\log t)}{\sqrt t\log t}\,dt\\
+&amp;-\frac{\sin(T\log X)}{\log X}
+\left(\sum_{n\leq X}\frac{\Lambda(n)}{\sqrt n}-2\sqrt X\right).
+\end{aligned}
+\tag{5.1}
+\]</span>
+<p>The integral has the finite value <span class="math" data-tex="\(T\)">\(T\)</span> at its lower endpoint. Its endpoint convention at <span class="math" data-tex="\(X\)">\(X\)</span> is immaterial to (5.1), since the two coefficients of <span class="math" data-tex="\(\Lambda(X)\)">\(\Lambda(X)\)</span> cancel.</p>
+<p><strong>Theorem 5.1 (Guinand's remainder).</strong> The limit of (5.1) exists for every <span class="math" data-tex="\(T\geq0\)">\(T\geq0\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\boxed{\begin{aligned}
+N_0(T)-M(T)
+={}&amp;-\frac1\pi\lim_{X\to\infty}R_X(T)\\
+&amp;+\frac1{2\pi}\{\arg\Gamma(1/2+iT)-T\log T+T\}\\
+&amp;+\frac1\pi\arctan(2T)-\frac1{4\pi}\arctan(\sinh(\pi T)).
+\end{aligned}}
+\tag{5.2}
+\]">\[
+\boxed{\begin{aligned}
+N_0(T)-M(T)
+={}&amp;-\frac1\pi\lim_{X\to\infty}R_X(T)\\
+&amp;+\frac1{2\pi}\{\arg\Gamma(1/2+iT)-T\log T+T\}\\
+&amp;+\frac1\pi\arctan(2T)-\frac1{4\pi}\arctan(\sinh(\pi T)).
+\end{aligned}}
+\tag{5.2}
+\]</span>
+<p>The gamma argument is continuous from its value <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(T=0\)">\(T=0\)</span>. We set <span class="math" data-tex="\(T\log T=0\)">\(T\log T=0\)</span> there. This is Guinand's exact remainder formula of 1948. The boundary term in (5.1) is part of the exact formula and cannot simply be omitted.</p>
+<h3 id="a-compact-test-that-approaches-a-zero-counting-interval">A compact test that approaches a zero-counting interval</h3>
+<p><em>Proof.</em> The case <span class="math" data-tex="\(T=0\)">\(T=0\)</span> is immediate. Fix <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>. For <span class="math" data-tex="\(U&gt;0\)">\(U&gt;0\)</span> use</p>
+<span class="math math-display" data-tex="\[
+F_U(u)=
+\begin{cases}
+\displaystyle\frac{\sin(Tu)}u-\frac{\sin(TU)}U,&amp;0\leq u\leq U,\\
+0,&amp;u&gt;U,
+\end{cases}
+\tag{5.3}
+\]">\[
+F_U(u)=
+\begin{cases}
+\displaystyle\frac{\sin(Tu)}u-\frac{\sin(TU)}U,&amp;0\leq u\leq U,\\
+0,&amp;u&gt;U,
+\end{cases}
+\tag{5.3}
+\]</span>
+<p>with the continuous value at <span class="math" data-tex="\(0\)">\(0\)</span>. It belongs to the class of Section 1 for each <span class="math" data-tex="\(U\)">\(U\)</span>; in particular its value at <span class="math" data-tex="\(U\)">\(U\)</span> is zero. Its cosine transform is</p>
+<span class="math math-display" data-tex="\[
+g_U(y)=\sqrt{\frac2\pi}\left\{
+\frac12\operatorname{Si}((T+y)U)
++\frac12\operatorname{Si}((T-y)U)
+-\frac{\sin(TU)\sin(yU)}{Uy}\right\},
+\tag{5.4}
+\]">\[
+g_U(y)=\sqrt{\frac2\pi}\left\{
+\frac12\operatorname{Si}((T+y)U)
++\frac12\operatorname{Si}((T-y)U)
+-\frac{\sin(TU)\sin(yU)}{Uy}\right\},
+\tag{5.4}
+\]</span>
+<p>with the continuous interpretation at <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. Here <span class="math" data-tex="\(\operatorname{Si}(v)=\int_0^v(\sin t)/t\,dt\)">\(\operatorname{Si}(v)=\int_0^v(\sin t)/t\,dt\)</span>. The identity <span class="math" data-tex="\(\operatorname{Si}(v)\to\pm\pi/2\)">\(\operatorname{Si}(v)\to\pm\pi/2\)</span> follows by integrating <span class="math" data-tex="\(e^{-\varepsilon t}\sin t/t\)">\(e^{-\varepsilon t}\sin t/t\)</span>, differentiating in its frequency to get <span class="math" data-tex="\(1/(1+\varepsilon^2)\)">\(1/(1+\varepsilon^2)\)</span>, and then removing the damping by the Dirichlet tail bound. Consequently</p>
+<span class="math math-display" data-tex="\[
+g_U(y)\longrightarrow\sqrt{\pi/2}
+\begin{cases}
+1,&amp;0\leq y&lt;T,\\
+1/2,&amp;y=T,\\
+0,&amp;y&gt;T.
+\end{cases}
+\tag{5.5}
+\]">\[
+g_U(y)\longrightarrow\sqrt{\pi/2}
+\begin{cases}
+1,&amp;0\leq y&lt;T,\\
+1/2,&amp;y=T,\\
+0,&amp;y&gt;T.
+\end{cases}
+\tag{5.5}
+\]</span>
+<p>We need a uniform bound before summing over zeros. The sine integral is uniformly bounded on the real line, and the last term in (5.4) is bounded by <span class="math" data-tex="\(1\)">\(1\)</span>, since <span class="math" data-tex="\(|\sin(yU)|\leq|yU|\)">\(|\sin(yU)|\leq|yU|\)</span>. For <span class="math" data-tex="\(y\geq2T+1\)">\(y\geq2T+1\)</span>, two integrations by parts in its sine-integral tails give</p>
+<span class="math math-display" data-tex="\[
+g_U(y)=O_T\left(\frac1{Uy^2}+\frac1{U^2y^2}\right)
+\quad(U\geq1).
+\tag{5.6}
+\]">\[
+g_U(y)=O_T\left(\frac1{Uy^2}+\frac1{U^2y^2}\right)
+\quad(U\geq1).
+\tag{5.6}
+\]</span>
+<p>To see the cancellation responsible for <span class="math" data-tex="\(y^{-2}\)">\(y^{-2}\)</span>, the leading terms of the two sine-integral tails and the last term of (5.4) combine to</p>
+<span class="math math-display" data-tex="\[
+\frac1U\left\{
+\frac{T\cos(yU)\cos(TU)}{y^2-T^2}
++\frac{T^2\sin(yU)\sin(TU)}{y(y^2-T^2)}
+\right\}.
+\]">\[
+\frac1U\left\{
+\frac{T\cos(yU)\cos(TU)}{y^2-T^2}
++\frac{T^2\sin(yU)\sin(TU)}{y(y^2-T^2)}
+\right\}.
+\]</span>
+<p>The remaining tails are <span class="math" data-tex="\(O(U^{-2}(y-T)^{-2})\)">\(O(U^{-2}(y-T)^{-2})\)</span>. Thus one fixed summable majorant dominates <span class="math" data-tex="\(g_U(\gamma)\)">\(g_U(\gamma)\)</span> for all <span class="math" data-tex="\(U\geq1\)">\(U\geq1\)</span>, since <span class="math" data-tex="\(\sum_\gamma(1+\gamma)^{-2}&lt;\infty\)">\(\sum_\gamma(1+\gamma)^{-2}&lt;\infty\)</span>. Equations (5.5)–(5.6) give</p>
+<span class="math math-display" data-tex="\[
+\sqrt{2\pi}\sum_{\gamma&gt;0}g_U(\gamma)\longrightarrow\pi N_0(T),
+\qquad
+D(g_U)\longrightarrow\frac12\int_0^T\log\frac t{2\pi}\,dt
+=\pi M(T).
+\tag{5.7}
+\]">\[
+\sqrt{2\pi}\sum_{\gamma&gt;0}g_U(\gamma)\longrightarrow\pi N_0(T),
+\qquad
+D(g_U)\longrightarrow\frac12\int_0^T\log\frac t{2\pi}\,dt
+=\pi M(T).
+\tag{5.7}
+\]</span>
+<p>The same majorant times <span class="math" data-tex="\(1+|\log y|\)">\(1+|\log y|\)</span> proves the integral limit, with the logarithm integrable near zero.</p>
+<figure><img src="figures/cosine-cutoff.png" alt="A compact sine test and its cosine transform approaching an interval counting function" loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><em>The test (5.3) and its normalized transform (5.4), with <span class="math" data-tex="\(T=5\)">\(T=5\)</span> and <span class="math" data-tex="\(U=1,3,8\)">\(U=1,3,8\)</span>. The upper panel shows continuity at the support endpoint. The lower panel approaches the indicator of <span class="math" data-tex="\(0\leq y&lt;5\)">\(0\leq y&lt;5\)</span>, with value <span class="math" data-tex="\(1/2\)">\(1/2\)</span> at <span class="math" data-tex="\(5\)">\(5\)</span>, as proved in (5.5). These are exact test functions plotted numerically; no zero data is used. The summable tail bound is (5.6). Original figure for the compact-test proof of Guinand's Theorem 2.</em></p>
+<p>Putting <span class="math" data-tex="\(X=e^U\)">\(X=e^U\)</span>, direct substitution into the first two terms of (2.1) shows</p>
+<span class="math math-display" data-tex="\[
+P(F_U)-I(F_U)=R_X(T)-2\frac{\sin(TU)}U.
+\tag{5.8}
+\]">\[
+P(F_U)-I(F_U)=R_X(T)-2\frac{\sin(TU)}U.
+\tag{5.8}
+\]</span>
+<p>Moreover</p>
+<span class="math math-display" data-tex="\[
+J(F_U)\longrightarrow
+j(T):=\frac12\int_0^\infty\frac{\sin(Tu)}u
+\left(\frac1u-\frac{e^{-3u/2}}{\sinh u}\right)du.
+\tag{5.9}
+\]">\[
+J(F_U)\longrightarrow
+j(T):=\frac12\int_0^\infty\frac{\sin(Tu)}u
+\left(\frac1u-\frac{e^{-3u/2}}{\sinh u}\right)du.
+\tag{5.9}
+\]</span>
+<p>Indeed the term subtracted in (5.3) contributes at most <span class="math" data-tex="\(C_T(1+\log U)/U\)">\(C_T(1+\log U)/U\)</span>, and the remaining integrand has an absolutely integrable <span class="math" data-tex="\(O(u^{-2})\)">\(O(u^{-2})\)</span> tail. Theorem 2.1 and (5.7)–(5.9) now prove existence of the limit and</p>
+<span class="math math-display" data-tex="\[
+N_0(T)-M(T)=-\frac1\pi\lim_{X\to\infty}R_X(T)+\frac{j(T)}\pi.
+\tag{5.10}
+\]">\[
+N_0(T)-M(T)=-\frac1\pi\lim_{X\to\infty}R_X(T)+\frac{j(T)}\pi.
+\tag{5.10}
+\]</span>
+<h3 id="evaluating-the-remaining-archimedean-integral">Evaluating the remaining archimedean integral</h3>
+<p>For <span class="math" data-tex="\(T&gt;0\)">\(T&gt;0\)</span>, differentiation of (5.9), first on finite intervals and then with the uniform Dirichlet tail bound on compact positive <span class="math" data-tex="\(T\)">\(T\)</span>-intervals, gives</p>
+<span class="math math-display" data-tex="\[
+j&#x27;(T)=\frac12\Re\psi_\Gamma(5/4+iT/2)-\frac12\log(T/2).
+\tag{5.11}
+\]">\[
+j&#x27;(T)=\frac12\Re\psi_\Gamma(5/4+iT/2)-\frac12\log(T/2).
+\tag{5.11}
+\]</span>
+<p>Here are the constants in that computation. The gamma integral gives</p>
+<span class="math math-display" data-tex="\[
+\Re\psi_\Gamma(5/4+iT/2)
+=-\gamma+\int_0^\infty
+\frac{2e^{-2u}-2e^{-5u/2}\cos(Tu)}{1-e^{-2u}}\,du.
+\]">\[
+\Re\psi_\Gamma(5/4+iT/2)
+=-\gamma+\int_0^\infty
+\frac{2e^{-2u}-2e^{-5u/2}\cos(Tu)}{1-e^{-2u}}\,du.
+\]</span>
+<p>Frullani's integral, with a small exponential damping and then its limit, gives
+<span class="math" data-tex="\(\log(T/2)=\int_0^\infty(e^{-2u}-\cos(Tu))/u\,du\)">\(\log(T/2)=\int_0^\infty(e^{-2u}-\cos(Tu))/u\,du\)</span>.
+The constant integral
+<span class="math" data-tex="\(\int_0^\infty(2e^{-2u}/(1-e^{-2u})-e^{-2u}/u)\,du=\gamma\)">\(\int_0^\infty(2e^{-2u}/(1-e^{-2u})-e^{-2u}/u)\,du=\gamma\)</span>
+cancels the remaining <span class="math" data-tex="\(-\gamma\)">\(-\gamma\)</span>. This leaves exactly the differentiated kernel in (5.9).</p>
+<p>Logarithmic differentiation of gamma duplication and reflection yields</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Re\psi_\Gamma(5/4+iT/2)
+={}&amp;\Re\psi_\Gamma(1/2+iT)-\log2\\
+&amp;-\frac{\pi}{2\cosh(\pi T)}+\frac4{1+4T^2}.
+\end{aligned}
+\tag{5.12}
+\]">\[
+\begin{aligned}
+\Re\psi_\Gamma(5/4+iT/2)
+={}&amp;\Re\psi_\Gamma(1/2+iT)-\log2\\
+&amp;-\frac{\pi}{2\cosh(\pi T)}+\frac4{1+4T^2}.
+\end{aligned}
+\tag{5.12}
+\]</span>
+<p>Explicitly, recurrence first subtracts the last rational term and changes <span class="math" data-tex="\(5/4\)">\(5/4\)</span> to <span class="math" data-tex="\(1/4\)">\(1/4\)</span>. Duplication adds the <span class="math" data-tex="\(1/4\)">\(1/4\)</span> and <span class="math" data-tex="\(3/4\)">\(3/4\)</span> real parts. Reflection subtracts them, giving <span class="math" data-tex="\(\Re(\pi\cot(\pi/4+i\pi T/2))=\pi/\cosh(\pi T)\)">\(\Re(\pi\cot(\pi/4+i\pi T/2))=\pi/\cosh(\pi T)\)</span>. Solving these two linear equations gives (5.12). The gamma identities are the ones taught in the internal gamma prerequisite of the zeta course: reflection follows from the beta integral evaluated by a keyhole contour, and duplication from its substitution into the double gamma integral.</p>
+<p>Combining (5.11)–(5.12), and integrating from zero, gives</p>
+<span class="math math-display" data-tex="\[
+j(T)=\frac12\{\arg\Gamma(1/2+iT)-T\log T+T\}
++\arctan(2T)-\frac14\arctan(\sinh(\pi T)).
+\tag{5.13}
+\]">\[
+j(T)=\frac12\{\arg\Gamma(1/2+iT)-T\log T+T\}
++\arctan(2T)-\frac14\arctan(\sinh(\pi T)).
+\tag{5.13}
+\]</span>
+<p>Both sides tend to zero as <span class="math" data-tex="\(T\downarrow0\)">\(T\downarrow0\)</span>. For the integral side, split at <span class="math" data-tex="\(u=1/T\)">\(u=1/T\)</span>; boundedness of the kernel near zero and its <span class="math" data-tex="\(1/u\)">\(1/u\)</span> tail give <span class="math" data-tex="\(O(T(1+|\log T|))\)">\(O(T(1+|\log T|))\)</span>. The gamma side is continuous and has the same limit. Substitute (5.13) into (5.10). This proves (5.2), including its half weights at zero ordinates. ∎</p>
+<p>This proof uses the real ordinates to obtain the interval limit (5.5) with a summable majorant. Without RH, the full holomorphic formula (2.2) still holds, but this sharp real-interval counting argument is not available.</p>
+<h2 id="6-exercises-with-solutions">6. Exercises with solutions</h2>
+<h3 id="1-the-self-transforming-gaussian">1. The self-transforming Gaussian</h3>
+<p>Prove that <span class="math" data-tex="\(e^{-t^2/2}\)">\(e^{-t^2/2}\)</span> is its own cosine transform with the factor <span class="math" data-tex="\(\sqrt{2/\pi}\)">\(\sqrt{2/\pi}\)</span>.</p>
+<p><strong>Solution.</strong> The Fourier integral satisfies <span class="math" data-tex="\(Q&#x27;=-zQ\)">\(Q&#x27;=-zQ\)</span> by integration by parts and <span class="math" data-tex="\(Q(0)=\sqrt{2\pi}\)">\(Q(0)=\sqrt{2\pi}\)</span> by the polar-coordinate Gaussian integral. Thus <span class="math" data-tex="\(Q(z)=\sqrt{2\pi}e^{-z^2/2}\)">\(Q(z)=\sqrt{2\pi}e^{-z^2/2}\)</span>. The cosine integral on the half-line is <span class="math" data-tex="\(Q(z)/2\)">\(Q(z)/2\)</span>. Multiplication by <span class="math" data-tex="\(\sqrt{2/\pi}\)">\(\sqrt{2/\pi}\)</span> gives <span class="math" data-tex="\(e^{-z^2/2}\)">\(e^{-z^2/2}\)</span>, including complex <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<h3 id="2-complex-ordinates-and-reflection">2. Complex ordinates and reflection</h3>
+<p>Derive the unconditional formula and explain why a sum over positive real ordinates cannot simply be retained when RH is removed.</p>
+<p><strong>Solution.</strong> Use (2.6)–(2.7): <span class="math" data-tex="\(H(\rho)=\sqrt{2\pi}g(z_\rho)\)">\(H(\rho)=\sqrt{2\pi}g(z_\rho)\)</span>. The functional equation pairs <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with <span class="math" data-tex="\(1-\rho\)">\(1-\rho\)</span>; their <span class="math" data-tex="\(z\)">\(z\)</span>-parameters are negatives, and <span class="math" data-tex="\(g\)">\(g\)</span> is even. Thus the full zero sum is twice the sum over <span class="math" data-tex="\(\Im\rho&gt;0\)">\(\Im\rho&gt;0\)</span>. The archimedean calculation (2.8)–(2.11) does not use RH, proving (2.2). For an off-line zero, <span class="math" data-tex="\(z_\rho\)">\(z_\rho\)</span> has nonzero imaginary part. Replacing it by <span class="math" data-tex="\(\Im\rho\)">\(\Im\rho\)</span> changes the evaluation of an entire function and generally changes the sum.</p>
+<h3 id="3-the-pole-and-zero-density-terms">3. The pole and zero-density terms</h3>
+<p>Identify both background terms and explain the coefficient of the zero-density integral.</p>
+<p><strong>Solution.</strong> The Mellin poles produce <span class="math" data-tex="\(H(0)+H(1)=4\int F\cosh(t/2)\,dt\)">\(H(0)+H(1)=4\int F\cosh(t/2)\,dt\)</span>. Division by two, followed by (2.11), places <span class="math" data-tex="\(I(F)=\int F e^{t/2}\)">\(I(F)=\int F e^{t/2}\)</span> on the prime side. The integral of the zero comparison density is <span class="math" data-tex="\(M(T)\)">\(M(T)\)</span>, since <span class="math" data-tex="\(M&#x27;(T)=\log(T/(2\pi))/(2\pi)\)">\(M&#x27;(T)=\log(T/(2\pi))/(2\pi)\)</span>. Multiplying its pairing with <span class="math" data-tex="\(g\)">\(g\)</span> by <span class="math" data-tex="\(\sqrt{2\pi}\)">\(\sqrt{2\pi}\)</span> gives <span class="math" data-tex="\((1/\sqrt{2\pi})\int g\log(t/(2\pi))dt=D(g)\)">\((1/\sqrt{2\pi})\int g\log(t/(2\pi))dt=D(g)\)</span>, the exact coefficient in (2.2).</p>
+<h3 id="4-every-cutoff-sequence">4. Every cutoff sequence</h3>
+<p>Prove the limiting form (2.3) for the stated class, including tests with derivative jumps.</p>
+<p><strong>Solution.</strong> From (1.2),
+<span class="math" data-tex="\(\sum_{n\geq2}\Lambda(n)n^{-1/2}|F(\log n)|
+\leq C\sum_{n\geq2}(\log n)n^{-1-\delta}&lt;\infty\)">\(\sum_{n\geq2}\Lambda(n)n^{-1/2}|F(\log n)|
+\leq C\sum_{n\geq2}(\log n)n^{-1-\delta}&lt;\infty\)</span>.
+The pole integral has an exponentially decaying tail. Two integrations by parts, treating the finitely many jumps of <span class="math" data-tex="\(F&#x27;\)">\(F&#x27;\)</span> as atoms, prove (1.3), so the zero count gives absolute convergence of the zero sum. Near zero <span class="math" data-tex="\(g\)">\(g\)</span> is bounded, and at infinity <span class="math" data-tex="\(g(t)\log t=O(\log t/t^2)\)">\(g(t)\log t=O(\log t/t^2)\)</span>; the density integral is absolutely convergent as well. Hence each cutoff converges for arbitrary <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>. At a prime-power cutoff an omitted endpoint term tends to zero, and the same is true at a zero cutoff by (1.3). Applying Theorem 2.1 yields the stated limits with no selected-height convention. The remainder proof uses the continuous endpoint test (5.3), whose derivative jump satisfies precisely these hypotheses.</p>
+<h2 id="7-proof-scope-and-references">7. Proof scope and references</h2>
+<p>Guinand's formula is proved for the explicitly stated class, including its unconditional complex-ordinate form. The remainder formula (5.2) is proved under RH, with its boundary term and half weights. The inherited zeta analytic continuation, functional equation, gamma identities and zero-count inputs have the existing planned internal providers specified in the first lesson; a public proof version of those providers is not claimed here.</p>
+<p>The summation formula (2.2) and the remainder formula (5.2) are due to A. P. Guinand (1948). Lemma 4 of E. Carneiro and M. B. Milinovich, <a href="https://arxiv.org/pdf/2403.17803"><em>On Littlewood's estimate for the modulus of the zeta function on the critical line</em></a>, states the summation formula in the Guinand–Weil normalization, for test functions holomorphic in a strip; P. Garrett, <a href="https://www-users.cse.umn.edu/~garrett/m/mfms/notes_2019-20/04_Guinand_explicit_fml.pdf"><em>Guinand's explicit formula</em></a>, derives it for compactly supported smooth test functions by moving a contour of integration. E. Bombieri, <a href="https://www.claymath.org/wp-content/uploads/2022/05/riemann.pdf"><em>Problems of the Millennium: the Riemann Hypothesis</em></a>, §V, and A. Connes, <a href="https://arxiv.org/pdf/1509.05576"><em>An essay on the Riemann Hypothesis</em></a>, subsection <em>The case of zeta</em>, give complementary explicit-formula viewpoints.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="NT-EXPF-02.html">← Explicit formulas for Dirichlet L-functions and primes in progressions</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NT-EXPF-04.html">Weil&#x27;s positivity criterion →</a></span></nav>
+<p class="small source-link"><a href="src/NT-EXPF-03.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NT-EXPF">Repository</a></nav>
+</footer>
+</body>
+</html>

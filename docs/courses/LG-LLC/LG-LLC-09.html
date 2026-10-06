@@ -1,0 +1,496 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modular forms, elliptic curves and local–global compatibility · The local Langlands correspondence for GL_n</title>
+<meta name="description" content="A lesson of the course The local Langlands correspondence for GL_n. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/LG-LLC/LG-LLC-09.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">The local Langlands correspondence for GL_n</a> <span aria-hidden="true">›</span> <span>Lesson 8 of 12</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Authorship and checks are stated at the start of the lesson.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="modular-forms-elliptic-curves-and-local-global-compatibility">Modular forms, elliptic curves and local–global compatibility</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>A newform has a local representation at every prime, and its Galois representation has a local Weil–Deligne parameter there. Local–global compatibility identifies them. At a good prime, the identification compares two quadratic polynomials. At a multiplicative prime, it compares a monodromy block and a linear factor. At a wild additive prime, the conductor and a ramified inducing character carry information that the vanishing Hecke coefficient does not record.</p>
+<p>We state Carayol's theorem and prove its normalization checks and the consequences for bad-prime coefficients and representation types. The elliptic-curve reduction calculations are imported from <a href="../LG-GAL/elliptic-curves-over-local-fields.html"><em>Elliptic curves over local fields and their Weil–Deligne representations</em></a>, particularly Theorems 4.1–5.1 and Examples 6.1–6.3. We then identify explicit local characters for the complex-multiplication forms of levels 27 and 32. Our basic references are [Carayol 1986], [Deligne 1973] and [Jacquet–Langlands 1970].</p>
+<h2 id="1-fixing-all-three-normalizations">1. Fixing all three normalizations</h2>
+<p>Let
+<span class="math math-display" data-tex="\[
+f(z)=\sum_{n\ge1}a_n e^{2\pi inz}
+\]">\[
+f(z)=\sum_{n\ge1}a_n e^{2\pi inz}
+\]</span>
+be a normalized cuspidal newform of weight <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, level <span class="math" data-tex="\(N_f\)">\(N_f\)</span> and nebentype <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Choose a coefficient-field place <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of residue characteristic <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Use the arithmetic Galois representation <span class="math" data-tex="\(\rho_{f,\lambda}\)">\(\rho_{f,\lambda}\)</span>: at <span class="math" data-tex="\(p\nmid N_f\ell\)">\(p\nmid N_f\ell\)</span>, arithmetic Frobenius has characteristic polynomial
+<span class="math math-display" data-tex="\[
+T^2-a_pT+\varepsilon(p)p^{k-1}.
+\tag{1.1}
+\]">\[
+T^2-a_pT+\varepsilon(p)p^{k-1}.
+\tag{1.1}
+\]</span>
+Existence with this characterization is the Deligne newform prerequisite; [Taylor 2004, §3, Theorem 3.6] describes the Galois construction and its compatibility framework. We specify (1.1) because another standard convention uses the dual representation.</p>
+<p>Let <span class="math" data-tex="\(\pi_f=\bigotimes_v\pi_{f,v}\)">\(\pi_f=\bigotimes_v\pi_{f,v}\)</span> be the <strong>unitary</strong> automorphic representation attached to <span class="math" data-tex="\(f\)">\(f\)</span>. Its local Satake values at a good prime are the two roots of (1.1), divided by <span class="math" data-tex="\(p^{(k-1)/2}\)">\(p^{(k-1)/2}\)</span>. Its central character is the finite-order nebentype character in this automorphic convention. Write <span class="math" data-tex="\(\nu_p=|\cdot|_{\mathbb Q_p}\)">\(\nu_p=|\cdot|_{\mathbb Q_p}\)</span>, and transport it to the Weil group by geometric reciprocity. Thus
+<span class="math math-display" data-tex="\[
+\operatorname{Art}_p(p)=\Phi_p,
+\qquad \|\Phi_p\|=p^{-1},
+\qquad \Phi_p=\operatorname{Frob}_{p,\mathrm{arith}}^{-1}.
+\tag{1.2}
+\]">\[
+\operatorname{Art}_p(p)=\Phi_p,
+\qquad \|\Phi_p\|=p^{-1},
+\qquad \Phi_p=\operatorname{Frob}_{p,\mathrm{arith}}^{-1}.
+\tag{1.2}
+\]</span>
+Fix a coefficient identification with <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> for writing the parameters; equalities mean isomorphisms of complex Weil–Deligne pairs after that identification.</p>
+<p><strong>Theorem 1.1 (local–global compatibility, stated).</strong> For every <span class="math" data-tex="\(p\ne\ell\)">\(p\ne\ell\)</span>, including primes dividing <span class="math" data-tex="\(N_f\)">\(N_f\)</span>,
+<span class="math math-display" data-tex="\[
+\operatorname{rec}_p(\pi_{f,p})
+\simeq
+\operatorname{WD}\bigl(\rho_{f,\lambda}^{\vee}|_{G_{\mathbb Q_p}}\bigr)^{\mathrm{F\text{-}ss}}
+\otimes\|\cdot\|^{(k-1)/2}.
+\tag{1.3}
+\]">\[
+\operatorname{rec}_p(\pi_{f,p})
+\simeq
+\operatorname{WD}\bigl(\rho_{f,\lambda}^{\vee}|_{G_{\mathbb Q_p}}\bigr)^{\mathrm{F\text{-}ss}}
+\otimes\|\cdot\|^{(k-1)/2}.
+\tag{1.3}
+\]</span>
+Only Frobenius is semisimplified here. The monodromy operator is retained.</p>
+<p>This is [Carayol 1986, Introduction, Theorem (A), §§0.4–0.8], expressed in our conventions. The original paper defines its Hecke correspondence separately in §0.5, with a contragredient and a half norm twist. Its hypotheses in §0.3 include holomorphic weights at least two, and a finite discrete-series place when the totally real field has even degree. For the rational field in this lesson the degree is one, so that extra condition does not arise. [Blasius 2006, §§2.3–2.4] discusses the compatibility and weight–monodromy formulations; [Taylor 2004, §3] distinguishes the local correspondence from the global assertion. These are statements of deep theorems, not substitutes for the deductions below.</p>
+<p><strong>Proposition 1.2 (the unramified check).</strong> Formula (1.3) has the required Satake values and determinant at every good prime.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(A_p,B_p\)">\(A_p,B_p\)</span> be the roots of (1.1). Arithmetic Frobenius on <span class="math" data-tex="\(\rho_{f,\lambda}\)">\(\rho_{f,\lambda}\)</span> has these eigenvalues. Geometric Frobenius on its dual has matrix the transpose of arithmetic Frobenius on the original representation, hence again has eigenvalues <span class="math" data-tex="\(A_p,B_p\)">\(A_p,B_p\)</span>. The norm twist in (1.3) multiplies them by <span class="math" data-tex="\(p^{-(k-1)/2}\)">\(p^{-(k-1)/2}\)</span>. Thus the parameter has
+<span class="math math-display" data-tex="\[
+\alpha_p=A_p p^{-(k-1)/2},\quad
+\beta_p=B_p p^{-(k-1)/2},\quad
+\alpha_p\beta_p=\varepsilon(p),\quad
+\alpha_p+\beta_p=a_p p^{-(k-1)/2}.
+\tag{1.4}
+\]">\[
+\alpha_p=A_p p^{-(k-1)/2},\quad
+\beta_p=B_p p^{-(k-1)/2},\quad
+\alpha_p\beta_p=\varepsilon(p),\quad
+\alpha_p+\beta_p=a_p p^{-(k-1)/2}.
+\tag{1.4}
+\]</span>
+Inertia is trivial, monodromy is zero, and its factor is
+<span class="math math-display" data-tex="\[
+\frac{1}{1-a_p p^{-s-(k-1)/2}+\varepsilon(p)p^{-2s}}
+=L_p\bigl(f,s+(k-1)/2\bigr).
+\tag{1.5}
+\]">\[
+\frac{1}{1-a_p p^{-s-(k-1)/2}+\varepsilon(p)p^{-2s}}
+=L_p\bigl(f,s+(k-1)/2\bigr).
+\tag{1.5}
+\]</span>
+This is exactly the unitary local factor. Its determinant at <span class="math" data-tex="\(\Phi_p\)">\(\Phi_p\)</span> is <span class="math" data-tex="\(\varepsilon(p)\)">\(\varepsilon(p)\)</span>, agreeing with the central character at <span class="math" data-tex="\(p\)">\(p\)</span>. ∎</p>
+<p>Using <span class="math" data-tex="\(\rho\)">\(\rho\)</span> without dualizing would instead leave inverse eigenvalues at geometric Frobenius. Using the dual but omitting the norm twist would leave the classical weight in the Satake values. Both choices change the displayed factor. Equations (1.1)–(1.5) determine our convention before any bad-prime calculation.</p>
+<p>The arithmetic local factor at every prime is consequently
+<span class="math math-display" data-tex="\[
+L_p(f,u)=L_p\bigl(u,\operatorname{WD}(\rho_{f,\lambda}^{\vee})^{\mathrm{F\text{-}ss}}\bigr)
+=L_p\bigl(u-(k-1)/2,\pi_{f,p}\bigr).
+\tag{1.6}
+\]">\[
+L_p(f,u)=L_p\bigl(u,\operatorname{WD}(\rho_{f,\lambda}^{\vee})^{\mathrm{F\text{-}ss}}\bigr)
+=L_p\bigl(u-(k-1)/2,\pi_{f,p}\bigr).
+\tag{1.6}
+\]</span>
+The first identity at bad primes uses the theorem. It is not inferred from equality at almost all primes.</p>
+<h2 id="2-conductors-and-the-bad-prime-coefficient">2. Conductors and the bad-prime coefficient</h2>
+<p>Write <span class="math" data-tex="\(r_p=v_p(N_f)\)">\(r_p=v_p(N_f)\)</span>. The newform dictionary identifies <span class="math" data-tex="\(r_p\)">\(r_p\)</span> with the generic newvector conductor of <span class="math" data-tex="\(\pi_{f,p}\)">\(\pi_{f,p}\)</span>. Cuspidal automorphic representations of <span class="math" data-tex="\(\mathrm{GL}_2\)">\(\mathrm{GL}_2\)</span> are generic: the nonzero Fourier coefficient of the normalized form supplies the global Whittaker functional and its local components. The newform and local-factor inputs are [Jacquet–Langlands 1970, §§2 and 11] and [Getz–Hahn 2022, §11.5, particularly Proposition 11.5.1 and Theorem 11.5.6]. In particular the generic hypothesis excludes determinant characters.</p>
+<p><strong>Proposition 2.1.</strong> For <span class="math" data-tex="\(p\ne\ell\)">\(p\ne\ell\)</span>, the Artin conductor of <span class="math" data-tex="\(\rho_{f,\lambda}|_{G_{\mathbb Q_p}}\)">\(\rho_{f,\lambda}|_{G_{\mathbb Q_p}}\)</span> has exponent <span class="math" data-tex="\(r_p\)">\(r_p\)</span>.</p>
+<p><strong>Proof.</strong> Twisting a Weil–Deligne pair by an unramified norm power does not change its inertia action or invariant monodromy rank, hence does not change its conductor. Dualization also leaves the conductor unchanged. Indeed invariant dimensions for a finite ramification-group image agree in a representation and its dual, by averaging; this proves equality of the Swan terms. On inertia invariants the ranks of <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(-N^{\mathsf T}\)">\(-N^{\mathsf T}\)</span> agree. The formula
+<span class="math math-display" data-tex="\[
+a(r,N)=a(r)+\dim V^I-\dim(\ker N)^I
+\]">\[
+a(r,N)=a(r)+\dim V^I-\dim(\ker N)^I
+\]</span>
+therefore gives the same value for the dual. Apply (1.3), the correspondence's conductor preservation, and the generic newvector theorem to get
+<span class="math math-display" data-tex="\[
+a\bigl(\rho_{f,\lambda}|_{G_{\mathbb Q_p}}\bigr)
+=a\bigl(\operatorname{rec}\pi_{f,p}\bigr)
+=a_{\mathrm{new}}(\pi_{f,p})=r_p.
+\tag{2.1}
+\]">\[
+a\bigl(\rho_{f,\lambda}|_{G_{\mathbb Q_p}}\bigr)
+=a\bigl(\operatorname{rec}\pi_{f,p}\bigr)
+=a_{\mathrm{new}}(\pi_{f,p})=r_p.
+\tag{2.1}
+\]</span>
+The conductor of an <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adic representation here is that of its associated Weil–Deligne pair. ∎</p>
+<p>For a fixed <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, (2.1) asserts equality only away from <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. To determine every prime of the level by this argument, choose a different coefficient place at the prime being computed. No assertion about the usual finite-inertia Artin conductor at <span class="math" data-tex="\(p=\ell\)">\(p=\ell\)</span> is implicit.</p>
+<p>Assume for the rest of this section that the nebentype is trivial. Then the local central character is trivial.</p>
+<p><strong>Theorem 2.2 (bad-prime coefficients and the Steinberg check).</strong> If <span class="math" data-tex="\(p\parallel N_f\)">\(p\parallel N_f\)</span>, then
+<span class="math math-display" data-tex="\[
+\pi_{f,p}=\mathrm{St}_2\otimes(\chi_p\circ\det),
+\qquad \chi_p\text{ unramified},\quad \chi_p(p)=b_p\in\{1,-1\},
+\tag{2.2}
+\]">\[
+\pi_{f,p}=\mathrm{St}_2\otimes(\chi_p\circ\det),
+\qquad \chi_p\text{ unramified},\quad \chi_p(p)=b_p\in\{1,-1\},
+\tag{2.2}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+a_p=b_p p^{k/2-1}.
+\tag{2.3}
+\]">\[
+a_p=b_p p^{k/2-1}.
+\tag{2.3}
+\]</span>
+If <span class="math" data-tex="\(p^2\mid N_f\)">\(p^2\mid N_f\)</span>, then <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span> and <span class="math" data-tex="\(L_p(f,u)=1\)">\(L_p(f,u)=1\)</span>.</p>
+<p><strong>Proof.</strong> A supercuspidal parameter is an irreducible two-dimensional Weil representation with zero monodromy. Its inertia invariants vanish, so its conductor is <span class="math" data-tex="\(2+\mathrm{Sw}\ge2\)">\(2+\mathrm{Sw}\ge2\)</span>. Thus a conductor-one representation is not supercuspidal. For a principal series of central character one, its labels are <span class="math" data-tex="\(\mu,\mu^{-1}\)">\(\mu,\mu^{-1}\)</span>. Its conductor is <span class="math" data-tex="\(2a(\mu)\)">\(2a(\mu)\)</span>, which is even. A special representation <span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span> has conductor one if <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is unramified and conductor <span class="math" data-tex="\(2a(\chi)\)">\(2a(\chi)\)</span> otherwise. These are the proved non-supercuspidal conductor formulas. Genericity excludes the remaining one-dimensional type, so exponent one forces (2.2). Its central character is <span class="math" data-tex="\(\chi_p^2\)">\(\chi_p^2\)</span>; consequently <span class="math" data-tex="\(b_p^2=1\)">\(b_p^2=1\)</span>.</p>
+<p>The centered special parameter is <span class="math" data-tex="\(\chi_p S_2\)">\(\chi_p S_2\)</span>, with Weil lines of weights <span class="math" data-tex="\(-1/2,+1/2\)">\(-1/2,+1/2\)</span> and monodromy from the first to the second. Its kernel therefore has Frobenius value <span class="math" data-tex="\(b_p p^{-1/2}\)">\(b_p p^{-1/2}\)</span>, giving
+<span class="math math-display" data-tex="\[
+L_p(s,\pi_{f,p})=(1-b_p p^{-s-1/2})^{-1}.
+\tag{2.4}
+\]">\[
+L_p(s,\pi_{f,p})=(1-b_p p^{-s-1/2})^{-1}.
+\tag{2.4}
+\]</span>
+Undo the norm twist in (1.3). On the invariant kernel of <span class="math" data-tex="\(\operatorname{WD}(\rho_{f,\lambda}^{\vee})\)">\(\operatorname{WD}(\rho_{f,\lambda}^{\vee})\)</span>, geometric Frobenius has value
+<span class="math math-display" data-tex="\[
+b_p p^{-1/2}p^{(k-1)/2}=b_p p^{k/2-1}.
+\tag{2.5}
+\]">\[
+b_p p^{-1/2}p^{(k-1)/2}=b_p p^{k/2-1}.
+\tag{2.5}
+\]</span>
+Equation (1.6) makes this the coefficient in the classical linear local factor <span class="math" data-tex="\((1-a_p p^{-u})^{-1}\)">\((1-a_p p^{-u})^{-1}\)</span>. This proves (2.3) and the Steinberg normalization check.</p>
+<p>Now suppose <span class="math" data-tex="\(r_p\ge2\)">\(r_p\ge2\)</span>. A supercuspidal has local factor one. A principal series has the inverse labels <span class="math" data-tex="\(\mu,\mu^{-1}\)">\(\mu,\mu^{-1}\)</span>; a positive conductor forces both ramified, so both Tate factors are one. A special representation at this level has ramified <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, again giving factor one. All cases have <span class="math" data-tex="\(L_p(f,u)=1\)">\(L_p(f,u)=1\)</span> by (1.6). The newform Euler product identifies its bad-prime factor with <span class="math" data-tex="\((1-a_p p^{-u})^{-1}\)">\((1-a_p p^{-u})^{-1}\)</span>, hence <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span>. ∎</p>
+<p>The trivial-character condition matters. With ramified nebentype a principal series can have one ramified label and one unramified label, and a nontrivial linear factor even at a higher level.</p>
+<p><strong>Corollary 2.3.</strong> With trivial central character, an odd conductor exponent at least three forces a supercuspidal representation.</p>
+<p><strong>Proof.</strong> Principal-series conductors are even. A special conductor is either one or even. These exhaust the nonsupercuspidal generic types, so neither can have the specified exponent. ∎</p>
+<p>Even exponents do not determine a type. A ramified principal series, a ramified special twist and a supercuspidal can all have even conductor. The assertions <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span> and <span class="math" data-tex="\(r_p\ge2\)">\(r_p\ge2\)</span> do not alone distinguish them.</p>
+<h2 id="3-reading-the-reduction-of-an-elliptic-curve">3. Reading the reduction of an elliptic curve</h2>
+<p>Let <span class="math" data-tex="\(E/\mathbb Q\)">\(E/\mathbb Q\)</span> be an elliptic curve. We use the modularity theorem as an input: there is a weight-two rational newform whose Galois representation in convention (1.1) is <span class="math" data-tex="\(V_\ell E\)">\(V_\ell E\)</span>. The published elliptic-curve prerequisite uses
+<span class="math math-display" data-tex="\[
+H_\ell(E)=(V_\ell E)^\vee,
+\qquad L_p(E,u)=L\bigl(u,\operatorname{WD}(H_\ell(E))\bigr).
+\]">\[
+H_\ell(E)=(V_\ell E)^\vee,
+\qquad L_p(E,u)=L\bigl(u,\operatorname{WD}(H_\ell(E))\bigr).
+\]</span>
+Thus (1.3) becomes
+<span class="math math-display" data-tex="\[
+\operatorname{rec}(\pi_{E,p})
+=\operatorname{WD}(H_\ell(E))^{\mathrm{F\text{-}ss}}\otimes\|\cdot\|^{1/2}.
+\tag{3.1}
+\]">\[
+\operatorname{rec}(\pi_{E,p})
+=\operatorname{WD}(H_\ell(E))^{\mathrm{F\text{-}ss}}\otimes\|\cdot\|^{1/2}.
+\tag{3.1}
+\]</span>
+Carayol's corollary in §0.8 gives equality of the curve's conductor with the associated newform's level and equality of their factors. Modularity supplies the newform for every elliptic curve; [Breuil–Conrad–Diamond–Taylor 2001, Theorem A] is the general theorem.</p>
+<p>The following table is an application of the prerequisite's reduction/parameter results, with the extra half twist performed in (3.1).</p>
+<table>
+<thead>
+<tr>
+<th>Reduction</th>
+<th>Unitary parameter</th>
+<th>Local representation</th>
+<th style="text-align:right">Conductor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Good</td>
+<td>unramified <span class="math" data-tex="\(r\)">\(r\)</span>, <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, roots of <span class="math" data-tex="\(T^2-a_p p^{-1/2}T+1\)">\(T^2-a_p p^{-1/2}T+1\)</span></td>
+<td>unramified principal series</td>
+<td style="text-align:right">0</td>
+</tr>
+<tr>
+<td>Split multiplicative</td>
+<td><span class="math" data-tex="\(S_2\)">\(S_2\)</span></td>
+<td><span class="math" data-tex="\(\mathrm{St}_2\)">\(\mathrm{St}_2\)</span></td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>Nonsplit multiplicative</td>
+<td><span class="math" data-tex="\(\eta_{\mathrm{ur}}S_2\)">\(\eta_{\mathrm{ur}}S_2\)</span></td>
+<td><span class="math" data-tex="\(\mathrm{St}_{\eta_{\mathrm{ur}}}\)">\(\mathrm{St}_{\eta_{\mathrm{ur}}}\)</span></td>
+<td style="text-align:right">1</td>
+</tr>
+<tr>
+<td>Additive potentially multiplicative</td>
+<td><span class="math" data-tex="\(\chi S_2\)">\(\chi S_2\)</span>, <span class="math" data-tex="\(\chi\)">\(\chi\)</span> ramified quadratic</td>
+<td><span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span></td>
+<td style="text-align:right"><span class="math" data-tex="\(2a(\chi)\)">\(2a(\chi)\)</span></td>
+</tr>
+<tr>
+<td>Additive potentially good</td>
+<td><span class="math" data-tex="\((r,0)\)">\((r,0)\)</span>, finite nontrivial inertia, no fixed vector</td>
+<td>principal series or supercuspidal</td>
+<td style="text-align:right"><span class="math" data-tex="\(2+\mathrm{Sw}(r)\)">\(2+\mathrm{Sw}(r)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The potentially good case is principal series precisely when the Weil representation splits into two characters; it is supercuspidal when that representation is irreducible. Inertia characters alone need not settle this: Frobenius can interchange their two eigenspaces. For tame potentially good inertia of order <span class="math" data-tex="\(e&gt;2\)">\(e&gt;2\)</span>, its characters are inverse faithful characters. If <span class="math" data-tex="\(p\equiv1\pmod e\)">\(p\equiv1\pmod e\)</span>, Frobenius preserves the two distinct eigenspaces, so the Weil representation splits. If <span class="math" data-tex="\(p\equiv-1\pmod e\)">\(p\equiv-1\pmod e\)</span>, it interchanges them, so no line is invariant under both inertia and Frobenius and the representation is irreducible. Scalar inertia of order two gives a split Weil representation after diagonalizing Frobenius. These deductions use the prerequisite's explicit tame matrices; they are not a classification of wild inertia.</p>
+<p><strong>Example 3.1 (level eleven).</strong> Take <span class="math" data-tex="\(E:y^2+y=x^3-x^2-10x-20\)">\(E:y^2+y=x^3-x^2-10x-20\)</span>, the curve used in the non-supercuspidal lesson. Its discriminant is <span class="math" data-tex="\(-11^5\)">\(-11^5\)</span> and <span class="math" data-tex="\(c_4=496\)">\(c_4=496\)</span>. The reduction at 11 is split multiplicative; the node's tangent cone is <span class="math" data-tex="\(Y^2-3X^2=(Y-5X)(Y+5X)\)">\(Y^2-3X^2=(Y-5X)(Y+5X)\)</span>. Thus <span class="math" data-tex="\(a_{11}=1\)">\(a_{11}=1\)</span>, <span class="math" data-tex="\(\pi_{E,11}=\mathrm{St}_2\)">\(\pi_{E,11}=\mathrm{St}_2\)</span>, and (3.1) gives <span class="math" data-tex="\(S_2\)">\(S_2\)</span>. The geometric-Frobenius value on its kernel is <span class="math" data-tex="\(11^{-1/2}\)">\(11^{-1/2}\)</span>, while the arithmetic elliptic-curve factor is <span class="math" data-tex="\((1-11^{-u})^{-1}\)">\((1-11^{-u})^{-1}\)</span>. Both statements have the same sign and different, specified centers. The epsilon factor for conductor-zero additive character is <span class="math" data-tex="\(-11^{1/2-s}\)">\(-11^{1/2-s}\)</span>.</p>
+<p>At 2 the point count gives <span class="math" data-tex="\(a_2=-2\)">\(a_2=-2\)</span>; at 3 it gives <span class="math" data-tex="\(a_3=-1\)">\(a_3=-1\)</span>. Formula (1.4) gives the unitary Frobenius pairs <span class="math" data-tex="\((-1\pm i)/\sqrt2\)">\((-1\pm i)/\sqrt2\)</span> and <span class="math" data-tex="\((-1\pm i\sqrt{11})/(2\sqrt3)\)">\((-1\pm i\sqrt{11})/(2\sqrt3)\)</span>. Their products are one. At a good prime the classical determinant is instead <span class="math" data-tex="\(p\)">\(p\)</span>; its removal is the purpose of the half twist.</p>
+<h2 id="4-a-fully-labeled-dihedral-component-at-three">4. A fully labeled dihedral component at three</h2>
+<p>For
+<span class="math math-display" data-tex="\[
+E_{27}:y^2+y=x^3-7,
+\]">\[
+E_{27}:y^2+y=x^3-7,
+\]</span>
+the prerequisite's Example 6.2 computes <span class="math" data-tex="\(\Delta=-3^9\)">\(\Delta=-3^9\)</span>, <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, Kodaira type <span class="math" data-tex="\(IV^*\)">\(IV^*\)</span>, seven geometric components and
+<span class="math math-display" data-tex="\[
+f_3(E_{27})=9+1-7=3.
+\tag{4.1}
+\]">\[
+f_3(E_{27})=9+1-7=3.
+\tag{4.1}
+\]</span>
+The model is minimal. It is additive potentially good, so <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, <span class="math" data-tex="\(L_3=1\)">\(L_3=1\)</span> and Swan conductor one. Compatibility and Corollary 2.3 therefore make its local representation supercuspidal. Its CM field is <span class="math" data-tex="\(K=\mathbb Q(\zeta)\)">\(K=\mathbb Q(\zeta)\)</span>, <span class="math" data-tex="\(\zeta=e^{2\pi i/3}\)">\(\zeta=e^{2\pi i/3}\)</span>; the automorphism <span class="math" data-tex="\((x,y)\mapsto(\zeta x,y)\)">\((x,y)\mapsto(\zeta x,y)\)</span> supplies the nontrivial complex multiplication.</p>
+<p>We now determine the actual inducing character. This requires more than the words “CM by <span class="math" data-tex="\(K\)">\(K\)</span>.” Set
+<span class="math math-display" data-tex="\[
+\lambda=1-\zeta,\qquad
+\lambda^2=-3\zeta,\qquad N_{K/\mathbb Q}(\lambda)=3.
+\]">\[
+\lambda=1-\zeta,\qquad
+\lambda^2=-3\zeta,\qquad N_{K/\mathbb Q}(\lambda)=3.
+\]</span>
+The ring <span class="math" data-tex="\(\mathbb Z[\zeta]\)">\(\mathbb Z[\zeta]\)</span> is norm Euclidean: a point of the complex plane differs from an Eisenstein lattice point by a number of absolute value at most <span class="math" data-tex="\(1/\sqrt3&lt;1\)">\(1/\sqrt3&lt;1\)</span>. Division with decreasing norm proves that every ideal is principal. The six units <span class="math" data-tex="\(\mu_6\)">\(\mu_6\)</span> map bijectively to <span class="math" data-tex="\((\mathbb Z[\zeta]/3)^\times\)">\((\mathbb Z[\zeta]/3)^\times\)</span>. Indeed the quotient has nine elements and six units; <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> has order three in it and <span class="math" data-tex="\(-1\)">\(-1\)</span> has order two. Consequently every ideal prime to 3 has a <strong>unique</strong> generator congruent to one modulo 3.</p>
+<p>Define an ideal Hecke character by
+<span class="math math-display" data-tex="\[
+\Psi(\mathfrak a)=\text{the generator of }\mathfrak a\text{ congruent to }1\pmod3.
+\tag{4.2}
+\]">\[
+\Psi(\mathfrak a)=\text{the generator of }\mathfrak a\text{ congruent to }1\pmod3.
+\tag{4.2}
+\]</span>
+Uniqueness proves multiplicativity. It has infinity type one and conductor <span class="math" data-tex="\((3)=(\lambda^2)\)">\((3)=(\lambda^2)\)</span>: on principal ideals with generator congruent to one modulo 3 its value is that generator. Its finite local unit character is nontrivial at <span class="math" data-tex="\(\zeta\in1+\lambda\mathcal O_{K_3}\)">\(\zeta\in1+\lambda\mathcal O_{K_3}\)</span>, and trivial on <span class="math" data-tex="\(1+\lambda^2\mathcal O_{K_3}\)">\(1+\lambda^2\mathcal O_{K_3}\)</span>, proving the exact exponent two.</p>
+<p>The theta-series identity
+<span class="math math-display" data-tex="\[
+\eta(3z)^2\eta(9z)^2
+=\sum_{\substack{\mathfrak a\subset\mathbb Z[\zeta]\\(\mathfrak a,3)=1}}
+\Psi(\mathfrak a)e^{2\pi i z N\mathfrak a}
+\tag{4.3}
+\]">\[
+\eta(3z)^2\eta(9z)^2
+=\sum_{\substack{\mathfrak a\subset\mathbb Z[\zeta]\\(\mathfrak a,3)=1}}
+\Psi(\mathfrak a)e^{2\pi i z N\mathfrak a}
+\tag{4.3}
+\]</span>
+is a stated input [Huber–Liu–McLaughlin–Ye–Yuan–Zhang, Lemma 2.1, equation (2.2), and Table 1]. The expression there sums over elements <span class="math" data-tex="\(1+3m+3n\zeta\)">\(1+3m+3n\zeta\)</span>; the unique-generator argument turns it into (4.3).</p>
+<p>To identify the curve's precise CM character, use the classical CM theorem of Deuring [Conrad CM, Theorems 3.5, 3.7 and 4.1]. At a good prime ideal it gives a generator of that ideal acting as its arithmetic Frobenius on torsion. The curve has all its 3-torsion over <span class="math" data-tex="\(K\)">\(K\)</span>. Indeed, in the equation <span class="math" data-tex="\(Y^2=x^3-27/4\)">\(Y^2=x^3-27/4\)</span>, the third division polynomial is <span class="math" data-tex="\(3x(x^3-27)\)">\(3x(x^3-27)\)</span>. Its eight finite torsion points have <span class="math" data-tex="\(x=0,Y=\pm3\sqrt{-3}/2\)">\(x=0,Y=\pm3\sqrt{-3}/2\)</span>, or <span class="math" data-tex="\(x=3,3\zeta,3\zeta^2\)">\(x=3,3\zeta,3\zeta^2\)</span> and <span class="math" data-tex="\(Y=\pm9/2\)">\(Y=\pm9/2\)</span>. All lie in <span class="math" data-tex="\(K\)">\(K\)</span>. By [Milne CM, Remark 7.6], as a CM module its 3-torsion is <span class="math" data-tex="\(\mathbb Z[\zeta]/3\)">\(\mathbb Z[\zeta]/3\)</span>, so Frobenius at every good prime away from 3 is congruent to one modulo 3. Its CM generator is therefore the unique one in (4.2). This fixes the curve's Hecke character and identifies (4.3) with its associated newform; a possible conjugate choice gives the same theta series.</p>
+<p>Some coefficient checks make the label concrete: there is no ideal of norm 2, the ideal of norm 4 has normalized generator <span class="math" data-tex="\(-2\)">\(-2\)</span>, and the two ideals of norm 7 have generators <span class="math" data-tex="\(1+3\zeta\)">\(1+3\zeta\)</span> and its conjugate. Hence
+<span class="math math-display" data-tex="\[
+a_2=0,\quad a_4=-2,\quad a_7=-1,\quad a_{13}=5.
+\tag{4.4}
+\]">\[
+a_2=0,\quad a_4=-2,\quad a_7=-1,\quad a_{13}=5.
+\tag{4.4}
+\]</span>
+For 13 use <span class="math" data-tex="\(4+3\zeta\)">\(4+3\zeta\)</span>, whose norm is 13 and trace is 5. Direct point counts on <span class="math" data-tex="\(E_{27}\)">\(E_{27}\)</span> give the same prime coefficients. These checks illustrate the exact identity, rather than being used to prove it from finitely many terms.</p>
+<p>Put <span class="math" data-tex="\(E=K_3=\mathbb Q_3(\sqrt{-3})\)">\(E=K_3=\mathbb Q_3(\sqrt{-3})\)</span>. For each local unit <span class="math" data-tex="\(u\)">\(u\)</span>, let <span class="math" data-tex="\(\epsilon_3(u)\in\mu_6\)">\(\epsilon_3(u)\in\mu_6\)</span> be its unique unit representative modulo <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span>. Define
+<span class="math math-display" data-tex="\[
+\boxed{\quad
+\theta(u)=\epsilon_3(u),\qquad
+\theta(\lambda)=\frac{1-\zeta}{\sqrt3}=e^{-\pi i/6}.
+\quad}
+\tag{4.5}
+\]">\[
+\boxed{\quad
+\theta(u)=\epsilon_3(u),\qquad
+\theta(\lambda)=\frac{1-\zeta}{\sqrt3}=e^{-\pi i/6}.
+\quad}
+\tag{4.5}
+\]</span>
+Every element of <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span> is <span class="math" data-tex="\(\lambda^m u\)">\(\lambda^m u\)</span>, so these data define the entire smooth unitary character. The residue-unit lift is multiplicative because <span class="math" data-tex="\(\mu_6\to(\mathcal O_E/\lambda^2)^\times\)">\(\mu_6\to(\mathcal O_E/\lambda^2)^\times\)</span> is an isomorphism. Its conductor is exactly two, and <span class="math" data-tex="\(\theta(\zeta)=\zeta\)">\(\theta(\zeta)=\zeta\)</span>.</p>
+<p>Here is why (4.5) is the local label, including its uniformizer phase. Unitarize (4.2), so its value on an ideal is <span class="math" data-tex="\(\Psi(\mathfrak a)/\sqrt{N\mathfrak a}\)">\(\Psi(\mathfrak a)/\sqrt{N\mathfrak a}\)</span>, and take its archimedean idele character to be <span class="math" data-tex="\((z/|z|)^{-1}\)">\((z/|z|)^{-1}\)</span>. For a global number <span class="math" data-tex="\(a\)">\(a\)</span> prime to 3, the prime-to-3 ideal product is
+<span class="math" data-tex="\((a/|a|)\epsilon_3(a)^{-1}\)">\((a/|a|)\epsilon_3(a)^{-1}\)</span>. Triviality on principal ideles then forces the local value <span class="math" data-tex="\(\epsilon_3(a)\)">\(\epsilon_3(a)\)</span>. Such numbers are dense in the local unit group, giving the first identity in (4.5). For the principal idele <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> there are no other finite valuations, and its archimedean phase is <span class="math" data-tex="\(((1-\zeta)/\sqrt3)^{-1}\)">\(((1-\zeta)/\sqrt3)^{-1}\)</span>. This forces the second identity. Thus the sign of the square root is determined, rather than left as an arbitrary unramified twist.</p>
+<p>The global quadratic automorphic-induction theorem [Jacquet–Langlands 1970, Proposition 12.1] says that these local Weil-construction representations form the cuspidal representation attached to the Hecke theta series. The character is not invariant under conjugation, as is already visible at infinity. Its local representation at three is therefore
+<span class="math math-display" data-tex="\[
+\pi_{f,3}=\Pi_E(\theta),\qquad
+\operatorname{rec}(\pi_{f,3})
+=\operatorname{Ind}_{W_E}^{W_{\mathbb Q_3}}\widehat\theta,
+\qquad N=0.
+\tag{4.6}
+\]">\[
+\pi_{f,3}=\Pi_E(\theta),\qquad
+\operatorname{rec}(\pi_{f,3})
+=\operatorname{Ind}_{W_E}^{W_{\mathbb Q_3}}\widehat\theta,
+\qquad N=0.
+\tag{4.6}
+\]</span>
+This uses the Weil-construction label of the dihedral lesson, not a depth-zero finite-field label. The character has positive depth; no depth-zero rectifier is inserted.</p>
+<p>We can check every identifying invariant. Conjugation sends <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> to <span class="math" data-tex="\(\zeta^2\)">\(\zeta^2\)</span>, so <span class="math" data-tex="\(\theta\ne\theta^\sigma\)">\(\theta\ne\theta^\sigma\)</span> and induction is irreducible. The extension is tame ramified quadratic: <span class="math" data-tex="\(e=2,f=1,d=1\)">\(e=2,f=1,d=1\)</span>. The conductor formula from the dihedral lesson gives
+<span class="math math-display" data-tex="\[
+a(\operatorname{Ind}\theta)=1\cdot(2+1)=3.
+\tag{4.7}
+\]">\[
+a(\operatorname{Ind}\theta)=1\cdot(2+1)=3.
+\tag{4.7}
+\]</span>
+Its standard factor is one. On rational units <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is the quadratic character modulo 3. Moreover
+<span class="math math-display" data-tex="\[
+\theta(3)=\theta(-1)\theta(\zeta)^{-1}\theta(\lambda)^2
+=(-1)\zeta^{-1}(-\zeta)=1.
+\]">\[
+\theta(3)=\theta(-1)\theta(\zeta)^{-1}\theta(\lambda)^2
+=(-1)\zeta^{-1}(-\zeta)=1.
+\]</span>
+These are exactly the values of <span class="math" data-tex="\(\eta_{E/\mathbb Q_3}\)">\(\eta_{E/\mathbb Q_3}\)</span>: its unit restriction is the nontrivial residue quadratic character, and <span class="math" data-tex="\(3=N\lambda\)">\(3=N\lambda\)</span> has value one. Hence <span class="math" data-tex="\(\theta|_{\mathbb Q_3^\times}\eta_{E/\mathbb Q_3}=1\)">\(\theta|_{\mathbb Q_3^\times}\eta_{E/\mathbb Q_3}=1\)</span>, verifying the trivial central character and determinant. Finally, for any additive character <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, its epsilon factor is the completely specified value
+<span class="math math-display" data-tex="\[
+\epsilon(s,\pi_{f,3},\psi)
+=\lambda(E/\mathbb Q_3,\psi)
+\epsilon_E(s,\theta,\psi\circ\operatorname{Tr}).
+\tag{4.8}
+\]">\[
+\epsilon(s,\pi_{f,3},\psi)
+=\lambda(E/\mathbb Q_3,\psi)
+\epsilon_E(s,\theta,\psi\circ\operatorname{Tr}).
+\tag{4.8}
+\]</span>
+Both the character and the induction constant's normalization were specified; the conductor exponent of (4.8) is three for conductor-zero <span class="math" data-tex="\(\psi\)">\(\psi\)</span>.</p>
+<h2 id="5-the-wild-prime-in-the-level-32-example">5. The wild prime in the level-32 example</h2>
+<p>Take <span class="math" data-tex="\(E_{32}:y^2=x^3-x\)">\(E_{32}:y^2=x^3-x\)</span>. The elliptic-curve prerequisite's Example 6.3 gives <span class="math" data-tex="\(\Delta=64\)">\(\Delta=64\)</span>, <span class="math" data-tex="\(j=1728\)">\(j=1728\)</span>, type III with two geometric components, and
+<span class="math math-display" data-tex="\[
+f_2(E_{32})=6+1-2=5.
+\tag{5.1}
+\]">\[
+f_2(E_{32})=6+1-2=5.
+\tag{5.1}
+\]</span>
+Thus <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, the Swan term is three and <span class="math" data-tex="\(\pi_{f,2}\)">\(\pi_{f,2}\)</span> is supercuspidal. The form is
+<span class="math math-display" data-tex="\[
+f_{32}(z)=\eta(4z)^2\eta(8z)^2
+=q-2q^5-3q^9+6q^{13}+\cdots,
+\]">\[
+f_{32}(z)=\eta(4z)^2\eta(8z)^2
+=q-2q^5-3q^9+6q^{13}+\cdots,
+\]</span>
+as recorded in [LMFDB, newform orbit 32.2.a.a] and [Huber–Liu–McLaughlin–Ye–Yuan–Zhang, Table 1 and Lemma 2.1, equation (2.3)]. Its CM field is <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span>, as is also seen on the curve from <span class="math" data-tex="\((x,y)\mapsto(-x,iy)\)">\((x,y)\mapsto(-x,iy)\)</span>.</p>
+<p>There is an explicit local label here too. Set <span class="math" data-tex="\(E=\mathbb Q_2(i)\)">\(E=\mathbb Q_2(i)\)</span>, <span class="math" data-tex="\(\varpi=1+i\)">\(\varpi=1+i\)</span>. The four units <span class="math" data-tex="\(\mu_4\)">\(\mu_4\)</span> map bijectively to <span class="math" data-tex="\((\mathcal O_E/\varpi^3)^\times\)">\((\mathcal O_E/\varpi^3)^\times\)</span>, a group of order four. Their distinctness follows from <span class="math" data-tex="\(v_E(i-1)=1\)">\(v_E(i-1)=1\)</span> and <span class="math" data-tex="\(v_E(-1-1)=2\)">\(v_E(-1-1)=2\)</span>. Let <span class="math" data-tex="\(\epsilon_2(u)\)">\(\epsilon_2(u)\)</span> be the unique representative, and define
+<span class="math math-display" data-tex="\[
+\theta_2(u)=\epsilon_2(u),\qquad
+\theta_2(1+i)=\frac{1+i}{\sqrt2}.
+\tag{5.2}
+\]">\[
+\theta_2(u)=\epsilon_2(u),\qquad
+\theta_2(1+i)=\frac{1+i}{\sqrt2}.
+\tag{5.2}
+\]</span>
+Its conductor is exactly three: it is trivial on <span class="math" data-tex="\(1+\varpi^3\mathcal O_E\)">\(1+\varpi^3\mathcal O_E\)</span>, while <span class="math" data-tex="\(-1\in1+\varpi^2\mathcal O_E\)">\(-1\in1+\varpi^2\mathcal O_E\)</span> has value minus one. The different exponent of <span class="math" data-tex="\(\mathbb Q_2(i)/\mathbb Q_2\)">\(\mathbb Q_2(i)/\mathbb Q_2\)</span> is two, from its integral basis discriminant <span class="math" data-tex="\(-4\)">\(-4\)</span>. Thus
+<span class="math math-display" data-tex="\[
+a(\operatorname{Ind}\theta_2)=3+2=5.
+\tag{5.3}
+\]">\[
+a(\operatorname{Ind}\theta_2)=3+2=5.
+\tag{5.3}
+\]</span>
+Conjugation changes its value on <span class="math" data-tex="\(i\)">\(i\)</span>, so induction is irreducible. Since <span class="math" data-tex="\((1+i)^2=2i\)">\((1+i)^2=2i\)</span>, we have <span class="math" data-tex="\(\theta_2(2)=1\)">\(\theta_2(2)=1\)</span>. On rational odd units it is the character modulo 4, the unit restriction of <span class="math" data-tex="\(\eta_{E/\mathbb Q_2}\)">\(\eta_{E/\mathbb Q_2}\)</span>. The determinant is again trivial.</p>
+<p>To identify this label, the Gaussian integers are norm Euclidean and every ideal prime to 2 has a unique generator congruent to one modulo <span class="math" data-tex="\((1+i)^3\)">\((1+i)^3\)</span>. Writing that generator as <span class="math" data-tex="\(a+bi\)">\(a+bi\)</span>, the condition is
+<span class="math math-display" data-tex="\[
+a\text{ odd},\qquad b\text{ even},\qquad a+b\equiv1\pmod4.
+\]">\[
+a\text{ odd},\qquad b\text{ even},\qquad a+b\equiv1\pmod4.
+\]</span>
+The parametrization <span class="math" data-tex="\(a=2m-2n+1,b=2m+2n\)">\(a=2m-2n+1,b=2m+2n\)</span> in the cited theta identity is exactly this condition. To fix the curve's CM character, its <span class="math" data-tex="\((1+i)^3\)">\((1+i)^3\)</span>-torsion is all defined over <span class="math" data-tex="\(\mathbb Q(i)\)">\(\mathbb Q(i)\)</span>. Its kernel consists of the four 2-torsion points, together with <span class="math" data-tex="\((i,\pm(1-i))\)">\((i,\pm(1-i))\)</span> and <span class="math" data-tex="\((-i,\pm(1+i))\)">\((-i,\pm(1+i))\)</span>. The latter four double to <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>, which is the kernel of <span class="math" data-tex="\([1+i]\)">\([1+i]\)</span>; since <span class="math" data-tex="\((1+i)^2=2i\)">\((1+i)^2=2i\)</span>, all eight are killed by <span class="math" data-tex="\((1+i)^3\)">\((1+i)^3\)</span>. For example, doubling <span class="math" data-tex="\((i,1-i)\)">\((i,1-i)\)</span> has tangent slope <span class="math" data-tex="\(-1-i\)">\(-1-i\)</span>, giving doubled coordinates <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>. These are eight distinct points, the degree of that CM endomorphism, so they exhaust its kernel. The CM Frobenius theorem now forces every good-prime ideal generator to be congruent to one modulo <span class="math" data-tex="\((1+i)^3\)">\((1+i)^3\)</span>, as required. The same principal-idele calculation as in Section 4 gives (5.2), and quadratic automorphic induction gives <span class="math" data-tex="\(\pi_{f,2}=\Pi_E(\theta_2)\)">\(\pi_{f,2}=\Pi_E(\theta_2)\)</span>.</p>
+<p>In particular this dyadic supercuspidal is dihedral, even though primitive parameters are possible at two. Good-prime checks use the primary generators <span class="math" data-tex="\(-1+2i\)">\(-1+2i\)</span> of norm 5 and <span class="math" data-tex="\(3+2i\)">\(3+2i\)</span> of norm 13, giving traces <span class="math" data-tex="\(-2\)">\(-2\)</span> and 6, respectively. At 5 the unitary Satake values are <span class="math" data-tex="\((-1\pm2i)/\sqrt5\)">\((-1\pm2i)/\sqrt5\)</span>, with determinant one. At 2 the factor is one and <span class="math" data-tex="\(a_2=0\)">\(a_2=0\)</span>.</p>
+<h2 id="6-the-atkin-lehner-sign-at-a-multiplicative-prime">6. The Atkin–Lehner sign at a multiplicative prime</h2>
+<p>For trivial nebentype and <span class="math" data-tex="\(p\parallel N_f\)">\(p\parallel N_f\)</span>, use the normalized local Atkin–Lehner operator represented by
+<span class="math math-display" data-tex="\[
+A_p=\begin{pmatrix}0&amp;1\\-p&amp;0\end{pmatrix}.
+\tag{6.1}
+\]">\[
+A_p=\begin{pmatrix}0&amp;1\\-p&amp;0\end{pmatrix}.
+\tag{6.1}
+\]</span>
+Its square is the central matrix <span class="math" data-tex="\(-p\)">\(-p\)</span>, which acts trivially, so its eigenvalue on the newvector line is <span class="math" data-tex="\(w_p\in\{1,-1\}\)">\(w_p\in\{1,-1\}\)</span>. The usual classical slash normalization gives this same involution; the sign change to <span class="math" data-tex="\(\left(\begin{smallmatrix}0&amp;-1\\p&amp;0\end{smallmatrix}\right)\)">\(\left(\begin{smallmatrix}0&amp;-1\\p&amp;0\end{smallmatrix}\right)\)</span> is central and has no effect here [Stein, §10.5]. This convention for <span class="math" data-tex="\(w_p\)">\(w_p\)</span> is part of the assertion.</p>
+<p><strong>Proposition 6.1.</strong> With (6.1),
+<span class="math math-display" data-tex="\[
+w_p=-b_p,\qquad a_p=-w_p p^{k/2-1}.
+\tag{6.2}
+\]">\[
+w_p=-b_p,\qquad a_p=-w_p p^{k/2-1}.
+\tag{6.2}
+\]</span>
+For an elliptic curve this gives <span class="math" data-tex="\(w_p=-1\)">\(w_p=-1\)</span> in the split multiplicative case and <span class="math" data-tex="\(w_p=1\)">\(w_p=1\)</span> in the nonsplit case.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(a_r=\operatorname{diag}(p^r,1)\)">\(a_r=\operatorname{diag}(p^r,1)\)</span> and <span class="math" data-tex="\(w=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)">\(w=\left(\begin{smallmatrix}0&amp;1\\-1&amp;0\end{smallmatrix}\right)\)</span>. The Steinberg Iwahori newvector, normalized by <span class="math" data-tex="\(W(1)=1\)">\(W(1)=1\)</span>, satisfies
+<span class="math math-display" data-tex="\[
+W(a_r w)=-p^{-r-1}\quad(r\ge-1),
+\tag{6.3}
+\]">\[
+W(a_r w)=-p^{-r-1}\quad(r\ge-1),
+\tag{6.3}
+\]</span>
+as proved in the local-factor lesson, Section 6, equation (5.4). In particular <span class="math" data-tex="\(W(a_{-1}w)=-1\)">\(W(a_{-1}w)=-1\)</span>. For <span class="math" data-tex="\(\mathrm{St}_{\chi_p}\)">\(\mathrm{St}_{\chi_p}\)</span>, twist this function by <span class="math" data-tex="\(\chi_p\circ\det\)">\(\chi_p\circ\det\)</span>. Because
+<span class="math math-display" data-tex="\[
+A_p=pI_2\,a_{-1}w,
+\]">\[
+A_p=pI_2\,a_{-1}w,
+\]</span>
+the central factor is <span class="math" data-tex="\(\chi_p(p)^2=1\)">\(\chi_p(p)^2=1\)</span>, while the determinant twist at <span class="math" data-tex="\(a_{-1}w\)">\(a_{-1}w\)</span> is <span class="math" data-tex="\(\chi_p(p^{-1})=b_p\)">\(\chi_p(p^{-1})=b_p\)</span>. Thus <span class="math" data-tex="\(W_{\chi_p}(A_p)=-b_p\)">\(W_{\chi_p}(A_p)=-b_p\)</span>. The operator normalizes the Iwahori subgroup and preserves its one-dimensional fixed space; evaluating its scalar action at the identity gives <span class="math" data-tex="\(w_p=-b_p\)">\(w_p=-b_p\)</span>. Combine with (2.3).</p>
+<p>For a Tate curve the prerequisite gives the covariant pair <span class="math" data-tex="\(\chi_p\mathrm{Sp}(2)\)">\(\chi_p\mathrm{Sp}(2)\)</span>, with <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> the unramified splitting character. Dualizing and taking the half norm twist gives <span class="math" data-tex="\(\chi_p S_2\)">\(\chi_p S_2\)</span> in (3.1). Its kernel before unitarization has value <span class="math" data-tex="\(\chi_p(\Phi_p)=1\)">\(\chi_p(\Phi_p)=1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>, so <span class="math" data-tex="\(a_p=b_p\)">\(a_p=b_p\)</span> in weight two. The calculation just made yields the two stated Atkin–Lehner signs. ∎</p>
+<p>This proof retains the Tate curve's nonzero monodromy. Taking the full semisimplification of its Galois representation would destroy the kernel calculation that gives both the linear factor and the conductor one.</p>
+<h2 id="7-history-and-the-role-of-the-theorem">7. History and the role of the theorem</h2>
+<p>Langlands' Antwerp work and Deligne's 1973 letter treated bad-prime representations through modular-curve geometry. The letter's opening records an exception at two; part (B), “The fundamental local construction,” organizes a local construction from supersingular elliptic curves, formal groups and level data. That source is a historical precursor, not a theorem establishing all the cases in (1.3). Deligne's <em>Formes modulaires et représentations de GL(2)</em>, §3.2.7, explicitly relates the local correspondence to the elliptic-curve representation and distinguishes its Hecke convention.</p>
+<p>Carayol's Theorem (A) determines the local representation at every finite prime distinct from the coefficient characteristic, including the exceptional primitive cases. Its introduction separates a geometric intermediate Theorem (B) from the final base-change argument. The theorem is proved using Shimura-curve cohomology, vanishing cycles and local representation theory. Our computations use the resulting identification; they do not prove that geometric compatibility. The later course lessons explain the higher-rank existence methods.</p>
+<h2 id="8-exercises-and-complete-solutions">8. Exercises and complete solutions</h2>
+<p><strong>Exercise 8.1 (easy).</strong> For an elliptic curve with multiplicative reduction at <span class="math" data-tex="\(p\)">\(p\)</span>, determine <span class="math" data-tex="\(a_p\)">\(a_p\)</span> and its sign from the Weil–Deligne pair.</p>
+<p><strong>Solution.</strong> The covariant pair is <span class="math" data-tex="\(\chi\mathrm{Sp}(2)\)">\(\chi\mathrm{Sp}(2)\)</span>, with <span class="math" data-tex="\(\chi\)">\(\chi\)</span> trivial in the split case and unramified quadratic in the nonsplit case. The dual pair is <span class="math" data-tex="\(\chi\nu_p^{-1}\mathrm{Sp}(2)\)">\(\chi\nu_p^{-1}\mathrm{Sp}(2)\)</span>; its kernel has character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, hence eigenvalue <span class="math" data-tex="\(b=\chi(p)\)">\(b=\chi(p)\)</span>. Its arithmetic factor is <span class="math" data-tex="\((1-bp^{-u})^{-1}\)">\((1-bp^{-u})^{-1}\)</span>, so <span class="math" data-tex="\(a_p=b=1\)">\(a_p=b=1\)</span> for split reduction and <span class="math" data-tex="\(-1\)">\(-1\)</span> for nonsplit reduction. The unitary parameter is <span class="math" data-tex="\(\chi S_2\)">\(\chi S_2\)</span>; its kernel has eigenvalue <span class="math" data-tex="\(bp^{-1/2}\)">\(bp^{-1/2}\)</span>, giving the same factor after <span class="math" data-tex="\(u=s+1/2\)">\(u=s+1/2\)</span>. Its conductor is one, since inertia invariants have dimension two and the invariant kernel has dimension one.</p>
+<p><strong>Exercise 8.2 (medium).</strong> Prove that an odd conductor exponent at least three with trivial central character forces a supercuspidal local component.</p>
+<p><strong>Solution.</strong> The component of a cuspidal newform is generic, so it is principal series, special or supercuspidal. Trivial central character gives inverse principal-series labels and conductor <span class="math" data-tex="\(2a(\mu)\)">\(2a(\mu)\)</span>. For a special twist the conductor is one if its character is unramified and <span class="math" data-tex="\(2a(\chi)\)">\(2a(\chi)\)</span> otherwise. Both exclude odd exponents at least three. Hence the component must be supercuspidal. This argument does not prove the converse and does not classify components of even conductor.</p>
+<p><strong>Exercise 8.3 (medium).</strong> Determine the component at three of the level-27 form as a Weil-constructed representation <span class="math" data-tex="\(\Pi_E(\theta)\)">\(\Pi_E(\theta)\)</span>.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(E=\mathbb Q_3(\zeta)\)">\(E=\mathbb Q_3(\zeta)\)</span>, <span class="math" data-tex="\(\lambda=1-\zeta\)">\(\lambda=1-\zeta\)</span>. On <span class="math" data-tex="\(\mathcal O_E^\times\)">\(\mathcal O_E^\times\)</span>, take <span class="math" data-tex="\(\theta(u)\)">\(\theta(u)\)</span> to be the unique sixth root of unity congruent to <span class="math" data-tex="\(u\)">\(u\)</span> modulo <span class="math" data-tex="\(\lambda^2\)">\(\lambda^2\)</span>, and set <span class="math" data-tex="\(\theta(\lambda)=(1-\zeta)/\sqrt3\)">\(\theta(\lambda)=(1-\zeta)/\sqrt3\)</span>. The local unit quotient has six elements and is identified with <span class="math" data-tex="\(\mu_6\)">\(\mu_6\)</span>, so these values define a smooth character of all <span class="math" data-tex="\(E^\times\)">\(E^\times\)</span>. It is trivial on <span class="math" data-tex="\(1+\lambda^2\mathcal O_E\)">\(1+\lambda^2\mathcal O_E\)</span> and has <span class="math" data-tex="\(\theta(\zeta)=\zeta\ne1\)">\(\theta(\zeta)=\zeta\ne1\)</span>, with <span class="math" data-tex="\(\zeta\in1+\lambda\mathcal O_E\)">\(\zeta\in1+\lambda\mathcal O_E\)</span>; thus its conductor is two. Conjugation changes that value to <span class="math" data-tex="\(\zeta^2\)">\(\zeta^2\)</span>, proving regularity. The different exponent is one, so induction has conductor three. On rational units it equals the quadratic residue character, and <span class="math" data-tex="\(\theta(3)=1\)">\(\theta(3)=1\)</span>; these give <span class="math" data-tex="\(\theta|_{\mathbb Q_3^\times}\eta=1\)">\(\theta|_{\mathbb Q_3^\times}\eta=1\)</span>, the required central character. The exact theta identity (4.3) identifies the global Hecke character, its principal-idele relation fixes the displayed uniformizer value, and Jacquet–Langlands Proposition 12.1 identifies the local component with <span class="math" data-tex="\(\Pi_E(\theta)\)">\(\Pi_E(\theta)\)</span>. Its parameter is <span class="math" data-tex="\(\operatorname{Ind}\widehat\theta\)">\(\operatorname{Ind}\widehat\theta\)</span>, with zero monodromy, factor one and conductor three. The character is specified completely, rather than only up to an unramified twist.</p>
+<p><strong>Exercise 8.4 (hard).</strong> Use the Tate-curve parameter and the normalized Atkin–Lehner operator to derive <span class="math" data-tex="\(a_p=-w_p\)">\(a_p=-w_p\)</span> in weight two.</p>
+<p><strong>Solution.</strong> The Tate parameter is <span class="math" data-tex="\(\chi\mathrm{Sp}(2)\)">\(\chi\mathrm{Sp}(2)\)</span> on the covariant module. Dualization gives kernel character <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, so <span class="math" data-tex="\(a_p=\chi(p)=b\)">\(a_p=\chi(p)=b\)</span>. The half norm twist gives <span class="math" data-tex="\(\chi S_2\)">\(\chi S_2\)</span>, corresponding to <span class="math" data-tex="\(\mathrm{St}_\chi\)">\(\mathrm{St}_\chi\)</span>. Its normalized Iwahori newvector has <span class="math" data-tex="\(W(a_{-1}w)=-1\)">\(W(a_{-1}w)=-1\)</span>, and twisting multiplies this by <span class="math" data-tex="\(\chi(p^{-1})=b\)">\(\chi(p^{-1})=b\)</span>. Since <span class="math" data-tex="\(A_p=pI_2a_{-1}w\)">\(A_p=pI_2a_{-1}w\)</span> and the central character is trivial, <span class="math" data-tex="\(W(A_p)=-b\)">\(W(A_p)=-b\)</span>. The one-dimensional newvector line makes this value its Atkin–Lehner eigenvalue <span class="math" data-tex="\(w_p\)">\(w_p\)</span>. Hence <span class="math" data-tex="\(a_p=b=-w_p\)">\(a_p=b=-w_p\)</span>. Split and nonsplit multiplicative reduction give <span class="math" data-tex="\((a_p,w_p)=(1,-1)\)">\((a_p,w_p)=(1,-1)\)</span> and <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>. The same local calculation combined with (2.5) gives <span class="math" data-tex="\(a_p=-w_pp^{k/2-1}\)">\(a_p=-w_pp^{k/2-1}\)</span> in general weight.</p>
+<h2 id="what-this-lesson-does-not-prove">What this lesson does not prove</h2>
+<p>Deligne's construction of newform Galois representations and their good-prime Frobenius polynomial are prerequisites; [Taylor 2004, §3, Theorem 3.6] gives the compatibility framework. The local–global theorem itself is [Carayol 1986, Theorem (A), §§0.3–0.8], with the rational-field specialization and our conventions stated in (1.3). Frobenius and dual normalization checks, the conductor deduction, bad-prime coefficient formulas and the odd-conductor type criterion were proved here. The weight-two modularity theorem is [Breuil–Conrad–Diamond–Taylor 2001, Theorem A].</p>
+<p>The adelic newform dictionary, genericity and Euler factors are [Jacquet–Langlands 1970, §§2 and 11]; the generic newvector theorem is [Getz–Hahn 2022, §11.5, Proposition 11.5.1 and Theorem 11.5.6]. The classification and all non-supercuspidal factor/conductor formulas, the supercuspidal vanishing of standard factors and the explicit Steinberg Iwahori function are earlier proved course results. Their generic hypotheses are retained. The Atkin–Lehner normalization is [Stein, §10.5], and its local scalar and the resulting sign formula were computed in Section 6.</p>
+<p>The reduction, Tate-module extension, conductor formulas and actual Tate-algorithm branches for the three curves are the published elliptic-curve prerequisite, Theorems 4.1–5.1 and Examples 6.1–6.3. Their external geometric inputs include [Milne EC2, Chapter II, §§3–4 and 7–8; Chapter III, §3; Chapter IV, §10] and the specified branches of Cremona's algorithm. Those geometric results are not re-proved here. The tame inertia matrices are that prerequisite's Proposition 2.2; we deduced their local representation types.</p>
+<p>The CM curve/Hecke-character theory is [Conrad CM, Theorems 3.5, 3.7 and 4.1] and [Milne CM, Remark 7.6]. The two exact eta/theta identities are [Huber–Liu–McLaughlin–Ye–Yuan–Zhang, Lemma 2.1, equations (2.2)–(2.3), Table 1]. Quadratic global automorphic induction with its local components is [Jacquet–Langlands 1970, Proposition 12.1]. The ideal generators, complete local unit/uniformizer labels, regularity, determinants and conductor calculations were given explicitly. The ideal norm and different formulas use local class field and ramification prerequisites. No reconstruction of a ramified local character from the single value <span class="math" data-tex="\(a_p=0\)">\(a_p=0\)</span> is asserted.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[Carayol 1986] Henri Carayol, <a href="https://www.numdam.org/item/ASENS_1986_4_19_3_409_0/">“Sur les représentations <span class="math" data-tex="\(\ell\)">\(\ell\)</span>-adiques associées aux formes modulaires de Hilbert”</a>, <em>Annales scientifiques de l'École Normale Supérieure</em> 19 (1986), 409–468, Introduction §§0.3–0.11, Theorems (A) and (B), and §0.8 corollary.</li>
+<li>[Deligne 1973] Pierre Deligne, <a href="https://publications.ias.edu/sites/default/files/Number21.pdf"><em>Formes modulaires et représentations de GL(2)</em></a>, in <em>Modular Functions of One Variable II</em>, Lecture Notes in Mathematics 349, Springer, 1973, 55–105, §§3.2.3–3.2.7.</li>
+<li>[Deligne 1973 letter] Pierre Deligne, <a href="https://publications.ias.edu/sites/default/files/deligne73.pdf">letter to Ilya Piatetski-Shapiro</a>, 25 March 1973, opening and part (B), “The fundamental local construction.”</li>
+<li>[Taylor 2004] Richard Taylor, <a href="https://www.numdam.org/item/AFST_2004_6_13_1_73_0/">“Galois representations”</a>, <em>Annales de la faculté des sciences de Toulouse</em> 13 (2004), 73–119, §3 and Theorem 3.6.</li>
+<li>[Blasius 2006] Don Blasius, <a href="https://arxiv.org/abs/math/0511007"><em>Hilbert Modular Forms and the Ramanujan Conjecture</em></a>, in <em>Noncommutative Geometry and Number Theory</em>, Vieweg, 2006, §§2.3–2.4.</li>
+<li>[Jacquet–Langlands 1970] Hervé Jacquet and Robert P. Langlands, <a href="https://publications.ias.edu/sites/default/files/Automorphic-forms-on-GL2.pdf"><em>Automorphic Forms on GL(2)</em></a>, Lecture Notes in Mathematics 114, Springer, 1970, §§2 and 11, and Proposition 12.1.</li>
+<li>[Getz–Hahn 2022] Jayce R. Getz and Heekyoung Hahn, <a href="https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf"><em>An Introduction to Automorphic Representations, with a View toward Trace Formulae</em></a>, draft of 22 April 2022, §11.5.</li>
+<li>[Milne EC2] J. S. Milne, <a href="https://www.jmilne.org/math/Books/EC2.pdf"><em>Elliptic Curves</em></a>, second edition, World Scientific, 2020, Chapter II, §§3–4 and 7–8, Chapter III, §3, and Chapter IV, §10.</li>
+<li>[Conrad CM] Brian Conrad, <a href="https://math.stanford.edu/~conrad/vigregroup/vigre04/mainthm.pdf"><em>Main theorem of complex multiplication</em></a>, seminar notes, §§3–4, Theorems 3.5, 3.7 and 4.1.</li>
+<li>[Milne CM] J. S. Milne, <a href="https://www.jmilne.org/math/CourseNotes/CM.pdf"><em>Complex Multiplication</em></a>, course notes, version of 14 July 2020, Remark 7.6.</li>
+<li>[Huber–Liu–McLaughlin–Ye–Yuan–Zhang] Tim Huber, Chang Liu, James McLaughlin, Dongxi Ye, Miaodan Yuan and Sumeng Zhang, <a href="https://www.wcupa.edu/sciences-mathematics/mathematics/jMcLaughlin/documents/Huber_Liu_McLaughlin_Ye_Yuan_Zhang_CM_eta_quotients_r2.pdf"><em>On the Vanishing of the Coefficients of CM Eta Quotients</em></a>, author version, Table 1 and §2.1, Lemma 2.1, equations (2.2)–(2.3).</li>
+<li>[LMFDB] <a href="https://www.lmfdb.org/ModularForm/GL2/Q/holomorphic/32/2/a/a/">Newform orbit 32.2.a.a</a>, properties, eta expression and q-expansion.</li>
+<li>[Stein] William A. Stein, <a href="https://www.wstein.org/msri06/refs/stein-book-on-modular-forms.pdf"><em>Explicitly Computing Modular Forms</em></a>, §10.5, the normalization of the Atkin–Lehner operator.</li>
+<li>[Breuil–Conrad–Diamond–Taylor 2001] Christophe Breuil, Brian Conrad, Fred Diamond and Richard Taylor, <a href="https://math.stanford.edu/~conrad/papers/tswfinal.pdf">“On the Modularity of Elliptic Curves over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>: Wild 3-adic Exercises”</a>, <em>Journal of the American Mathematical Society</em> 14 (2001), 843–939, Theorem A.</li>
+</ul>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="LG-LLC-08.html">← Dihedral supercuspidals, rectifiers and rank-two characterization</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="LG-LLC-10.html">Jacquet–Langlands: elliptic classes and division-algebra representations →</a></span></nav>
+<p class="small source-link"><a href="src/LG-LLC-09.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
+<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/LG-LLC">Repository</a></nav>
+</footer>
+</body>
+</html>

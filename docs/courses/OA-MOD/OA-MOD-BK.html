@@ -1,0 +1,370 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A bounded-operator kernel for weight arguments · Modular theory and weights</title>
+<meta name="description" content="A lesson of the course Modular theory and weights. Draft, written by AI; English only for now.">
+<meta name="color-scheme" content="light dark">
+<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/OA-MOD-BK.html">
+<link rel="stylesheet" href="../../assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="../../assets/mathjax/tex-chtml-full.js"></script>
+<link rel="stylesheet" href="reader.css">
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Mathematics Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../#catalogue">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Modular theory and weights</a> <span aria-hidden="true">›</span> <span>Lesson 5 of 136</span></nav>
+<aside class="notice" aria-label="About this lesson">
+<p><strong>Draft lesson, written by AI.</strong> Written and self-checked by GPT-6 Astra and GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Draft under review; human review and formal verification are not claimed.</p>
+<p class="small">English only for now</p>
+</aside>
+<article class="lesson">
+<h1 id="bounded-operators-needed-for-comparing-weights">Bounded operators needed for comparing weights</h1>
+
+<p>We construct the bounded facts needed for weight comparisons: the bicommutant, order limits, supports, inverses and polar factors. The Hilbert spaces may have arbitrary dimension, and the convergence assertions allow arbitrary directed nets.</p>
+<p>The free human source for the finite-vector commutant argument is Jacob Lurie's <a href="https://people.math.harvard.edu/~lurie/261ynotes/lecture5.pdf"><em>Math 261y, Lecture 5</em>, Theorem 4 and Proposition 5, pages 1–2</a>. Its topology definitions on pages 1 and 3 also motivate the coefficient tests below. The earlier written <a href="notes/real-coercivity/real-coercive-equations.html">real Hilbert-space proof</a>, first section, and <a href="notes/real-coercivity/bounded-right-multiplier.html">bounded Bernstein-calculus proof GP0</a> provide the elementary constructions used here. Each further assertion is proved below; none is supplied by a citation alone.</p>
+<h2 id="the-bounded-prerequisite-boundary"><span id="oa-mod-bk-01"></span><span id="OA-MOD-BK-01"></span>The bounded prerequisite boundary</h2>
+<p>Inner products are linear in the first variable. A Hilbert space is a complete complex inner-product space; scalar completeness and the inner-product axioms are entry assumptions. For a bounded self-adjoint operator <span class="math" data-tex="\(a\)">\(a\)</span>, write <span class="math" data-tex="\(a\geq0\)">\(a\geq0\)</span> when <span class="math" data-tex="\(\langle a\xi,\xi\rangle\geq0\)">\(\langle a\xi,\xi\rangle\geq0\)</span> for all <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. All operators in this lesson have full Hilbert-space domains.</p>
+<p>We first discharge the two bounded contracts used in later sections: Hilbert projection, representation and adjoints; and the full continuous calculus for a bounded self-adjoint element in a unital norm-closed *-algebra. The zero Hilbert space satisfies all ensuing operator statements trivially; statements about nonempty spectra below concern nonzero spaces.</p>
+<p><strong>Hilbert representation and bounded operators.</strong> The preceding real Hilbert proof constructs orthogonal projections by a minimizing sequence and the parallelogram identity, and proves the real Riesz representation theorem. Apply it to the real Hilbert space with inner product <span class="math" data-tex="\(\operatorname{Re}\langle\cdot,\cdot\rangle\)">\(\operatorname{Re}\langle\cdot,\cdot\rangle\)</span>. For a complex closed subspace, testing orthogonality against <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and <span class="math" data-tex="\(i\eta\)">\(i\eta\)</span> makes its real projection the complex orthogonal projection. For a bounded complex-linear functional <span class="math" data-tex="\(L\)">\(L\)</span>, represent <span class="math" data-tex="\(\operatorname{Re}L(\xi)\)">\(\operatorname{Re}L(\xi)\)</span> as <span class="math" data-tex="\(\operatorname{Re}\langle\xi,v\rangle\)">\(\operatorname{Re}\langle\xi,v\rangle\)</span>. Evaluation at <span class="math" data-tex="\(i\xi\)">\(i\xi\)</span> identifies the imaginary parts as well, so <span class="math" data-tex="\(L(\xi)=\langle\xi,v\rangle\)">\(L(\xi)=\langle\xi,v\rangle\)</span>, with the same norm.</p>
+<p>If a bounded form <span class="math" data-tex="\(b(\xi,\eta)\)">\(b(\xi,\eta)\)</span> is linear in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and conjugate-linear in <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, apply this result to <span class="math" data-tex="\(\eta\mapsto\overline{b(\xi,\eta)}\)">\(\eta\mapsto\overline{b(\xi,\eta)}\)</span>, at each fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Its representing vector <span class="math" data-tex="\(T\xi\)">\(T\xi\)</span> satisfies
+<span class="math" data-tex="\(b(\xi,\eta)=\langle T\xi,\eta\rangle\)">\(b(\xi,\eta)=\langle T\xi,\eta\rangle\)</span> and <span class="math" data-tex="\(\|T\xi\|\leq C\|\xi\|\)">\(\|T\xi\|\leq C\|\xi\|\)</span>. Uniqueness proves linearity and uniqueness of <span class="math" data-tex="\(T\)">\(T\)</span>. The same argument applied to <span class="math" data-tex="\(\langle T\xi,\eta\rangle\)">\(\langle T\xi,\eta\rangle\)</span>, for <span class="math" data-tex="\(T:H\to K\)">\(T:H\to K\)</span>, constructs <span class="math" data-tex="\(T^*:K\to H\)">\(T^*:K\to H\)</span>. Testing pairings proves the adjoint sum and product rules and <span class="math" data-tex="\(\|T^*\|=\|T\|\)">\(\|T^*\|=\|T\|\)</span>. Also
+<span class="math" data-tex="\(\|T^*T\|=\|T\|^2\)">\(\|T^*T\|=\|T\|^2\)</span>, by <span class="math" data-tex="\(\|T\xi\|^2=\langle T^*T\xi,\xi\rangle\)">\(\|T\xi\|^2=\langle T^*T\xi,\xi\rangle\)</span> and the reverse operator-norm inequality.</p>
+<p>Bounded maps on a dense subspace extend uniquely by norm limits: the bound makes images of a Cauchy sequence Cauchy and makes the limit independent of the approximating sequence. If a pre-Hilbert space is initially given, its completion is constructed from Cauchy sequences modulo sequences tending to zero. Termwise addition and scalar multiplication descend; the inner product is the limit of the original pairings, which exists and is representative-independent by Cauchy–Schwarz. Constant sequences embed isometrically and densely. For a Cauchy sequence of classes, choose representatives within <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span> at the <span class="math" data-tex="\(n\)">\(n\)</span>-th step after taking a subsequence with successive class errors at most <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>; the chosen representative points are Cauchy and give its limit. The original Cauchy sequence converges to that limit as well. This proves completeness.</p>
+<p>For later nets, sequential completeness also gives a limit for every Cauchy net: choose increasing indices whose subsequent pairwise errors are at most <span class="math" data-tex="\(2^{-n}\)">\(2^{-n}\)</span>. Their values form a Cauchy sequence with a limit, and the same tail estimates prove convergence of the original net to that limit. GP0 also proves completeness of <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> in operator norm, by taking limits on each vector, and proves Cauchy–Schwarz for positive semidefinite forms. In particular, for bounded positive <span class="math" data-tex="\(a\)">\(a\)</span>,
+<span class="math" data-tex="\(\|a\|=\sup_{\|\xi\|=1}\langle a\xi,\xi\rangle\)">\(\|a\|=\sup_{\|\xi\|=1}\langle a\xi,\xi\rangle\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\|d\xi\|^2\leq C\langle d\xi,\xi\rangle
+\quad\hbox{if }0\leq d\leq CI.
+\tag{BK.1}
+\]">\[
+\|d\xi\|^2\leq C\langle d\xi,\xi\rangle
+\quad\hbox{if }0\leq d\leq CI.
+\tag{BK.1}
+\]</span>
+<p>For <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>, this follows from GP0 applied to <span class="math" data-tex="\(d/C\)">\(d/C\)</span>; for <span class="math" data-tex="\(C=0\)">\(C=0\)</span>, polarization gives <span class="math" data-tex="\(d=0\)">\(d=0\)</span>.</p>
+<p><strong>The interval calculus.</strong> GP0 constructs the calculus for a positive contraction from Bernstein polynomials. Its polynomial norm bound, uniform approximation, positivity and commutation proofs are all given there. For self-adjoint <span class="math" data-tex="\(T\)">\(T\)</span>, take <span class="math" data-tex="\(C=\|T\|&gt;0\)">\(C=\|T\|&gt;0\)</span> and apply that construction to <span class="math" data-tex="\((T+CI)/(2C)\)">\((T+CI)/(2C)\)</span>. We obtain a unital *-homomorphism
+<span class="math" data-tex="\(f\mapsto f(T)\)">\(f\mapsto f(T)\)</span> from <span class="math" data-tex="\(C([-C,C])\)">\(C([-C,C])\)</span>, with
+<span class="math" data-tex="\(\|f(T)\|\leq\|f\|_\infty\)">\(\|f(T)\|\leq\|f\|_\infty\)</span>, preservation of order, and polynomial approximation in operator norm. If <span class="math" data-tex="\(C=0\)">\(C=0\)</span>, use <span class="math" data-tex="\(f(T)=f(0)I\)">\(f(T)=f(0)I\)</span>. Thus every resulting operator belongs to any unital norm-closed *-algebra containing <span class="math" data-tex="\(T\)">\(T\)</span>, and commutes with every operator commuting with <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For completeness, we now pass from the containing interval to the actual spectrum, rather than assume its norm and inverse properties. Define <span class="math" data-tex="\(\sigma(T)\)">\(\sigma(T)\)</span> as the complex numbers <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> for which <span class="math" data-tex="\(T-\lambda I\)">\(T-\lambda I\)</span> has no bounded two-sided inverse on <span class="math" data-tex="\(H\)">\(H\)</span>. Norm completeness and the geometric series prove that the resolvent set is open: perturb an invertible operator by an error smaller than the reciprocal inverse norm. The same series excludes <span class="math" data-tex="\(|\lambda|&gt;C\)">\(|\lambda|&gt;C\)</span>. For <span class="math" data-tex="\(\operatorname{Im}\lambda\ne0\)">\(\operatorname{Im}\lambda\ne0\)</span>, the imaginary part of the quadratic pairing gives
+<span class="math" data-tex="\(\|(T-\lambda)\xi\|\geq|\operatorname{Im}\lambda|\|\xi\|\)">\(\|(T-\lambda)\xi\|\geq|\operatorname{Im}\lambda|\|\xi\|\)</span>.
+Its range is closed, and its orthogonal complement is
+<span class="math" data-tex="\(\ker(T-\overline\lambda)=0\)">\(\ker(T-\overline\lambda)=0\)</span>; hence it is onto and has bounded inverse. Consequently <span class="math" data-tex="\(\sigma(T)\)">\(\sigma(T)\)</span> is a compact subset of <span class="math" data-tex="\([-C,C]\)">\([-C,C]\)</span>.</p>
+<p>It is nonempty. Set <span class="math" data-tex="\(B=T+CI\geq0\)">\(B=T+CI\geq0\)</span> and <span class="math" data-tex="\(m=\|B\|\)">\(m=\|B\|\)</span>. If <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, <span class="math" data-tex="\(T=-CI\)">\(T=-CI\)</span>, whose spectrum is <span class="math" data-tex="\(\{-C\}\)">\(\{-C\}\)</span>. Otherwise take unit <span class="math" data-tex="\(\xi_n\)">\(\xi_n\)</span> with <span class="math" data-tex="\(\langle B\xi_n,\xi_n\rangle\to m\)">\(\langle B\xi_n,\xi_n\rangle\to m\)</span>. The inequality <span class="math" data-tex="\(B^2\leq mB\)">\(B^2\leq mB\)</span>, proved in GP0, gives
+<span class="math" data-tex="\(\|(B-mI)\xi_n\|^2\leq m(m-\langle B\xi_n,\xi_n\rangle)\to0\)">\(\|(B-mI)\xi_n\|^2\leq m(m-\langle B\xi_n,\xi_n\rangle)\to0\)</span>.
+A bounded inverse is therefore impossible, so <span class="math" data-tex="\(m-C\in\sigma(T)\)">\(m-C\in\sigma(T)\)</span>.
+More generally, each real <span class="math" data-tex="\(\lambda\in\sigma(T)\)">\(\lambda\in\sigma(T)\)</span> has unit approximate eigenvectors. Otherwise <span class="math" data-tex="\(T-\lambda\)">\(T-\lambda\)</span> is bounded below, hence injective with closed range; the range-kernel identity for its self-adjoint adjoint makes that range dense, so it would have a bounded inverse.</p>
+<p><strong>Restriction to the spectrum.</strong> If <span class="math" data-tex="\(h\in C([-C,C])\)">\(h\in C([-C,C])\)</span> vanishes on <span class="math" data-tex="\(\sigma(T)\)">\(\sigma(T)\)</span>, then <span class="math" data-tex="\(h(T)=0\)">\(h(T)=0\)</span>. First suppose its support is a compact subset of the complement of the spectrum. Around each point <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of that support choose an interval of radius <span class="math" data-tex="\(\delta\)">\(\delta\)</span> with
+<span class="math" data-tex="\(\delta\|(T-\lambda)^{-1}\|&lt;1\)">\(\delta\|(T-\lambda)^{-1}\|&lt;1\)</span>.
+A finite such cover splits <span class="math" data-tex="\(h\)">\(h\)</span> into finitely many continuous functions <span class="math" data-tex="\(h_j\)">\(h_j\)</span> supported in those intervals. Explicitly, choose slightly smaller intervals still covering the support, use their distance-to-complement functions, divide by their positive sum on the support, and multiply by <span class="math" data-tex="\(h\)">\(h\)</span>, extending by zero elsewhere. The extension is continuous because the compact support lies inside the set where the denominator is positive.</p>
+<p>For the center <span class="math" data-tex="\(\lambda_j\)">\(\lambda_j\)</span> and radius <span class="math" data-tex="\(\delta_j\)">\(\delta_j\)</span>, multiplicativity and the interval norm bound give</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|h_j(T)\|
+&amp;\leq\|(T-\lambda_j)^{-1}\|^n
+\|[(t-\lambda_j)^nh_j(t)](T)\|\\
+&amp;\leq\bigl(\delta_j\|(T-\lambda_j)^{-1}\|\bigr)^n
+\|h_j\|_\infty .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|h_j(T)\|
+&amp;\leq\|(T-\lambda_j)^{-1}\|^n
+\|[(t-\lambda_j)^nh_j(t)](T)\|\\
+&amp;\leq\bigl(\delta_j\|(T-\lambda_j)^{-1}\|\bigr)^n
+\|h_j\|_\infty .
+\end{aligned}
+\]</span>
+<p>Let <span class="math" data-tex="\(n\to\infty\)">\(n\to\infty\)</span>; each <span class="math" data-tex="\(h_j(T)\)">\(h_j(T)\)</span> is zero. For a general <span class="math" data-tex="\(h\)">\(h\)</span> vanishing on the spectrum, multiply it by continuous distance cutoffs which vanish within distance <span class="math" data-tex="\(1/n\)">\(1/n\)</span> of the spectrum and equal one beyond distance <span class="math" data-tex="\(2/n\)">\(2/n\)</span>. The products converge uniformly to <span class="math" data-tex="\(h\)">\(h\)</span>, since <span class="math" data-tex="\(h\)">\(h\)</span> vanishes on that compact set. The preceding case and the norm bound prove <span class="math" data-tex="\(h(T)=0\)">\(h(T)=0\)</span>.</p>
+<p>Every continuous complex <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\sigma(T)\)">\(\sigma(T)\)</span> extends continuously to <span class="math" data-tex="\([-C,C]\)">\([-C,C]\)</span>, with the same supremum norm: interpolate linearly across each complementary interval and keep the value constant beyond the extreme spectral points. To check continuity at the spectral set, small complementary intervals have both endpoints close, so uniform continuity of <span class="math" data-tex="\(f\)">\(f\)</span> controls their interpolates. For intervals longer than a fixed positive length there are only finitely many, and the interpolation is continuous at each endpoint. These two observations give continuity everywhere. Convexity of a closed complex disc gives the norm bound, and a real nonnegative <span class="math" data-tex="\(f\)">\(f\)</span> has a real nonnegative extension.</p>
+<p>The vanishing result makes the value of <span class="math" data-tex="\(f(T)\)">\(f(T)\)</span> independent of that extension. It yields a unital *-homomorphism on <span class="math" data-tex="\(C(\sigma(T))\)">\(C(\sigma(T))\)</span>, positive and contractive. For <span class="math" data-tex="\(\lambda\in\sigma(T)\)">\(\lambda\in\sigma(T)\)</span>, let <span class="math" data-tex="\(\xi_n\)">\(\xi_n\)</span> be its unit approximate eigenvectors. Factoring <span class="math" data-tex="\(p(t)-p(\lambda)\)">\(p(t)-p(\lambda)\)</span> proves
+<span class="math" data-tex="\(\|(p(T)-p(\lambda))\xi_n\|\to0\)">\(\|(p(T)-p(\lambda))\xi_n\|\to0\)</span> for polynomials. Uniform approximation on the containing interval proves the same assertion for continuous <span class="math" data-tex="\(f\)">\(f\)</span>. Hence
+<span class="math" data-tex="\(\|f(T)\|\geq|f(\lambda)|\)">\(\|f(T)\|\geq|f(\lambda)|\)</span>, and therefore</p>
+<span class="math math-display" data-tex="\[
+\|f(T)\|=\max_{\lambda\in\sigma(T)}|f(\lambda)|.
+\]">\[
+\|f(T)\|=\max_{\lambda\in\sigma(T)}|f(\lambda)|.
+\]</span>
+<p>If <span class="math" data-tex="\(\mu\notin f(\sigma(T))\)">\(\mu\notin f(\sigma(T))\)</span>, applying the calculus to <span class="math" data-tex="\(1/(f-\mu)\)">\(1/(f-\mu)\)</span> gives an inverse for <span class="math" data-tex="\(f(T)-\mu I\)">\(f(T)-\mu I\)</span>. If <span class="math" data-tex="\(\mu=f(\lambda)\)">\(\mu=f(\lambda)\)</span>, the approximate eigenvectors rule out such an inverse. Thus spectral mapping, including complex-valued <span class="math" data-tex="\(f\)">\(f\)</span>, is proved. Inverses produced by the calculus belong to every unital norm-closed *-algebra containing <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><strong>Positivity, square roots and lower bounds.</strong> A bounded positive <span class="math" data-tex="\(a\)">\(a\)</span> has no negative spectral value: for <span class="math" data-tex="\(\lambda&lt;0\)">\(\lambda&lt;0\)</span>,
+<span class="math" data-tex="\(\|(a-\lambda)\xi\|\geq-\lambda\|\xi\|\)">\(\|(a-\lambda)\xi\|\geq-\lambda\|\xi\|\)</span>, and the same closed-range and adjoint argument proves invertibility. Hence <span class="math" data-tex="\(\sigma(a)\subset[0,\|a\|]\)">\(\sigma(a)\subset[0,\|a\|]\)</span>, and the calculus gives <span class="math" data-tex="\(c=\sqrt a\geq0\)">\(c=\sqrt a\geq0\)</span>, <span class="math" data-tex="\(c^2=a\)">\(c^2=a\)</span>.
+If another positive <span class="math" data-tex="\(b\)">\(b\)</span> satisfies <span class="math" data-tex="\(b^2=a\)">\(b^2=a\)</span>, it commutes with <span class="math" data-tex="\(a\)">\(a\)</span>, hence with <span class="math" data-tex="\(c\)">\(c\)</span> by polynomial approximation. Then <span class="math" data-tex="\((b-c)(b+c)=0\)">\((b-c)(b+c)=0\)</span>. Positivity and (BK.1) show
+<span class="math" data-tex="\(\ker(b+c)=\ker b\cap\ker c=\ker a\)">\(\ker(b+c)=\ker b\cap\ker c=\ker a\)</span>.
+The range of the self-adjoint <span class="math" data-tex="\(b+c\)">\(b+c\)</span> is dense in <span class="math" data-tex="\((\ker a)^\perp\)">\((\ker a)^\perp\)</span>, so <span class="math" data-tex="\(b-c\)">\(b-c\)</span> vanishes there and also on <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span>. Thus <span class="math" data-tex="\(b=c\)">\(b=c\)</span>. This proves uniqueness without an unbounded spectral or polar theorem.</p>
+<p>The identity <span class="math" data-tex="\(\langle a\xi,\xi\rangle=\|a^{1/2}\xi\|^2\)">\(\langle a\xi,\xi\rangle=\|a^{1/2}\xi\|^2\)</span> gives
+<span class="math" data-tex="\(\ker a=\ker a^{1/2}\)">\(\ker a=\ker a^{1/2}\)</span>. If <span class="math" data-tex="\(a\geq mI\)">\(a\geq mI\)</span>, <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, applying the negative-value argument to <span class="math" data-tex="\(a-mI\)">\(a-mI\)</span> gives <span class="math" data-tex="\(\sigma(a)\subset[m,\|a\|]\)">\(\sigma(a)\subset[m,\|a\|]\)</span>; its continuous inverse and inverse square root are consequently available in the algebra. Finally, for any bounded map <span class="math" data-tex="\(T:H\to K\)">\(T:H\to K\)</span>,
+<span class="math" data-tex="\(\overline{\operatorname{ran}T}=(\ker T^*)^\perp\)">\(\overline{\operatorname{ran}T}=(\ker T^*)^\perp\)</span>:
+orthogonality to every <span class="math" data-tex="\(T\xi\)">\(T\xi\)</span> is equivalent to <span class="math" data-tex="\(T^*\eta=0\)">\(T^*\eta=0\)</span>. This is the range-kernel identity used above and below.</p>
+<figure><img src="../../audit/real-coercivity/figures/bounded-spectrum-restriction.svg" alt="A function away from the spectrum vanishes in the calculus; the geometric curve is its proved upper bound." loading="lazy" style="max-width:100%;height:auto"></figure>
+<p><strong>Figure.</strong> In the displayed matrix example, <span class="math" data-tex="\(\lambda=-1/2\)">\(\lambda=-1/2\)</span>, <span class="math" data-tex="\(\delta=1/5\)">\(\delta=1/5\)</span>, and <span class="math" data-tex="\(\|(T-\lambda I)^{-1}\|=2\)">\(\|(T-\lambda I)^{-1}\|=2\)</span>. The function vanishes on <span class="math" data-tex="\(\sigma(T)=\{0,1\}\)">\(\sigma(T)=\{0,1\}\)</span>, so its actual operator norm is zero. The right-hand curve shows the upper bounds <span class="math" data-tex="\((2/5)^n\)">\((2/5)^n\)</span> from the arbitrary-dimensional argument above. The proof uses their decay to establish that vanishing result before passing to the norm on the spectrum. Reproducible figure source.</p>
+<h2 id="finite-vector-approximation-and-the-bicommutant"><span id="oa-mod-bk-02"></span><span id="OA-MOD-BK-02"></span>Finite-vector approximation and the bicommutant</h2>
+<p>For <span class="math" data-tex="\(S\subset B(H)\)">\(S\subset B(H)\)</span>, let <span class="math" data-tex="\(S&#x27;=\{r:rs=sr\ \text{for all }s\in S\}\)">\(S&#x27;=\{r:rs=sr\ \text{for all }s\in S\}\)</span>.
+Strong convergence means norm convergence on each fixed Hilbert vector; weak operator convergence means convergence of every matrix coefficient. Cauchy–Schwarz gives strong implies weak. Fixed left and right multiplication are continuous for both topologies: for strong convergence test
+<span class="math" data-tex="\(r(x_i-x)\xi\)">\(r(x_i-x)\xi\)</span> and <span class="math" data-tex="\((x_i-x)r\xi\)">\((x_i-x)r\xi\)</span>; for weak convergence move <span class="math" data-tex="\(r\)">\(r\)</span> to <span class="math" data-tex="\(r^*\eta\)">\(r^*\eta\)</span> in the first coefficient and to <span class="math" data-tex="\(r\xi\)">\(r\xi\)</span> in the second. Thus a commutant is weakly closed. If <span class="math" data-tex="\(S\)">\(S\)</span> is *-closed, taking adjoints of its commutation equations also makes <span class="math" data-tex="\(S&#x27;\)">\(S&#x27;\)</span> a unital *-algebra.</p>
+<p><strong>Theorem.</strong> Every unital *-subalgebra <span class="math" data-tex="\(\mathcal B\subset B(H)\)">\(\mathcal B\subset B(H)\)</span>, whether or not norm closed, satisfies</p>
+<span class="math math-display" data-tex="\[
+\overline{\mathcal B}^{\mathrm{SOT}}
+=\overline{\mathcal B}^{\mathrm{WOT}}=\mathcal B&#x27;&#x27;.
+\tag{BK.2}
+\]">\[
+\overline{\mathcal B}^{\mathrm{SOT}}
+=\overline{\mathcal B}^{\mathrm{WOT}}=\mathcal B&#x27;&#x27;.
+\tag{BK.2}
+\]</span>
+<p>Only the inclusion from right to left needs proof. Fix <span class="math" data-tex="\(T\in\mathcal B&#x27;&#x27;\)">\(T\in\mathcal B&#x27;&#x27;\)</span>, a finite list <span class="math" data-tex="\(\xi_1,\ldots,\xi_n\)">\(\xi_1,\ldots,\xi_n\)</span>, and an error <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. On <span class="math" data-tex="\(H^n\)">\(H^n\)</span>, let <span class="math" data-tex="\(D(b)\)">\(D(b)\)</span> act diagonally and put</p>
+<span class="math math-display" data-tex="\[
+\Xi=(\xi_1,\ldots,\xi_n),\qquad
+L=\overline{\{D(b)\Xi:b\in\mathcal B\}}.
+\]">\[
+\Xi=(\xi_1,\ldots,\xi_n),\qquad
+L=\overline{\{D(b)\Xi:b\in\mathcal B\}}.
+\]</span>
+<p>This is a closed linear subspace invariant under <span class="math" data-tex="\(D(\mathcal B)\)">\(D(\mathcal B)\)</span> and their adjoints. Its orthogonal complement is also invariant, by the adjoint pairing; hence its orthogonal projection <span class="math" data-tex="\(P\)">\(P\)</span> commutes with every <span class="math" data-tex="\(D(b)\)">\(D(b)\)</span>. In block matrix entries this says <span class="math" data-tex="\(P_{jk}\in\mathcal B&#x27;\)">\(P_{jk}\in\mathcal B&#x27;\)</span>.
+Consequently <span class="math" data-tex="\(D(T)P=PD(T)\)">\(D(T)P=PD(T)\)</span>. Unitality puts <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span>, so
+<span class="math" data-tex="\(PD(T)\Xi=D(T)\Xi\)">\(PD(T)\Xi=D(T)\Xi\)</span>. Membership of <span class="math" data-tex="\(D(T)\Xi\)">\(D(T)\Xi\)</span> in <span class="math" data-tex="\(L\)">\(L\)</span> supplies one <span class="math" data-tex="\(b\in\mathcal B\)">\(b\in\mathcal B\)</span> with
+<span class="math" data-tex="\(\sum_j\|(b-T)\xi_j\|^2&lt;\varepsilon^2\)">\(\sum_j\|(b-T)\xi_j\|^2&lt;\varepsilon^2\)</span>.
+These simultaneous finite-vector conditions are exactly a neighborhood basis for the strong topology, proving <span class="math" data-tex="\(T\)">\(T\)</span> belongs to the strong closure. The other inclusions follow from weak closedness of <span class="math" data-tex="\(\mathcal B&#x27;&#x27;\)">\(\mathcal B&#x27;&#x27;\)</span>.</p>
+<p>Selecting approximants with finite sets increasing and error decreasing gives a directed net; this argument supplies no uniform norm bound and requires no countable cofinal set. We have explicitly used <span class="math" data-tex="\(I\in\mathcal B\)">\(I\in\mathcal B\)</span>. Without it, the zero algebra on a nonzero space is already a counterexample to (BK.2).</p>
+<p>A concrete von Neumann algebra is therefore equivalently a unital *-algebra <span class="math" data-tex="\(M=M&#x27;&#x27;\)">\(M=M&#x27;&#x27;\)</span>, a strongly closed unital *-algebra, or a weakly closed one. It is norm closed, and the calculus constructed in BK-01 stays inside it.</p>
+<h2 id="the-ultraweak-convergence-needed-by-finite-cutoffs"><span id="oa-mod-bk-03"></span><span id="OA-MOD-BK-03"></span>The ultraweak convergence needed by finite cutoffs</h2>
+<p>The ultraweak topology is defined by the coefficient sums</p>
+<span class="math math-display" data-tex="\[
+\omega_{\xi,\eta}(x)=\sum_{n=1}^{\infty}\langle x\xi_n,\eta_n\rangle,
+\qquad
+\sum_n\|\xi_n\|^2&lt;\infty,\quad
+\sum_n\|\eta_n\|^2&lt;\infty .
+\tag{BK.3}
+\]">\[
+\omega_{\xi,\eta}(x)=\sum_{n=1}^{\infty}\langle x\xi_n,\eta_n\rangle,
+\qquad
+\sum_n\|\xi_n\|^2&lt;\infty,\quad
+\sum_n\|\eta_n\|^2&lt;\infty .
+\tag{BK.3}
+\]</span>
+<p>They converge absolutely by Cauchy–Schwarz, with norm bound
+<span class="math" data-tex="\(\|x\|(\sum\|\xi_n\|^2)^{1/2}(\sum\|\eta_n\|^2)^{1/2}\)">\(\|x\|(\sum\|\xi_n\|^2)^{1/2}(\sum\|\eta_n\|^2)^{1/2}\)</span>.
+This definition permits nonseparable <span class="math" data-tex="\(H\)">\(H\)</span>; the sequences belong to each individual test, not to a chosen basis.</p>
+<p>If <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span> weakly and <span class="math" data-tex="\(\sup_i\|x_i\|&lt;\infty\)">\(\sup_i\|x_i\|&lt;\infty\)</span>, then <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span> ultraweakly. Indeed set <span class="math" data-tex="\(D=\sup_i\|x_i\|+\|x\|\)">\(D=\sup_i\|x_i\|+\|x\|\)</span>. The coefficient tail after <span class="math" data-tex="\(N\)">\(N\)</span>, evaluated at <span class="math" data-tex="\(x_i-x\)">\(x_i-x\)</span>, is bounded uniformly by</p>
+<span class="math math-display" data-tex="\[
+D\left(\sum_{n&gt;N}\|\xi_n\|^2\right)^{1/2}
+\left(\sum_{n&gt;N}\|\eta_n\|^2\right)^{1/2}.
+\]">\[
+D\left(\sum_{n&gt;N}\|\xi_n\|^2\right)^{1/2}
+\left(\sum_{n&gt;N}\|\eta_n\|^2\right)^{1/2}.
+\]</span>
+<p>Choose <span class="math" data-tex="\(N\)">\(N\)</span> for the tail, then a common directed tail for the finitely many leading coefficients. This proves convergence of the whole sum. Bounded strong convergence is a special case.</p>
+<p>Fixed multiplication is ultraweakly continuous without a bound on the varying net: testing <span class="math" data-tex="\(rx\)">\(rx\)</span> replaces <span class="math" data-tex="\(\eta_n\)">\(\eta_n\)</span> by <span class="math" data-tex="\(r^*\eta_n\)">\(r^*\eta_n\)</span>, while testing <span class="math" data-tex="\(xr\)">\(xr\)</span> replaces <span class="math" data-tex="\(\xi_n\)">\(\xi_n\)</span> by <span class="math" data-tex="\(r\xi_n\)">\(r\xi_n\)</span>; both replacement sequences are square summable. Single-term sequences show that ultraweak convergence implies weak operator convergence. In particular a weakly closed <span class="math" data-tex="\(M\)">\(M\)</span> is ultraweakly closed. These arguments do not identify the topologies on unbounded sets or prove a general characterization of normal maps.</p>
+<h2 id="bounded-increasing-positive-nets-have-strong-suprema"><span id="oa-mod-bk-04"></span><span id="OA-MOD-BK-04"></span>Bounded increasing positive nets have strong suprema</h2>
+<p>Let <span class="math" data-tex="\(a_i\in M_+\)">\(a_i\in M_+\)</span> be increasing on a nonempty directed set and <span class="math" data-tex="\(a_i\leq CI\)">\(a_i\leq CI\)</span>, <span class="math" data-tex="\(C&lt;\infty\)">\(C&lt;\infty\)</span>. Then there is <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\langle a\xi,\xi\rangle=\sup_i\langle a_i\xi,\xi\rangle,
+\qquad a_i\longrightarrow a\quad\text{strongly and ultraweakly}.
+\tag{BK.4}
+\]">\[
+\langle a\xi,\xi\rangle=\sup_i\langle a_i\xi,\xi\rangle,
+\qquad a_i\longrightarrow a\quad\text{strongly and ultraweakly}.
+\tag{BK.4}
+\]</span>
+<p>It is the least upper bound even in <span class="math" data-tex="\(B(H)_{\rm sa}\)">\(B(H)_{\rm sa}\)</span>.</p>
+<p>Here is a construction avoiding a representation theorem for an unverified quadratic supremum. The case <span class="math" data-tex="\(C=0\)">\(C=0\)</span> is immediate. For <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>, if <span class="math" data-tex="\(j\geq i\)">\(j\geq i\)</span>, apply (BK.1) to <span class="math" data-tex="\(a_j-a_i\)">\(a_j-a_i\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\|(a_j-a_i)\xi\|^2
+\leq C\bigl(\langle a_j\xi,\xi\rangle-\langle a_i\xi,\xi\rangle\bigr).
+\]">\[
+\|(a_j-a_i)\xi\|^2
+\leq C\bigl(\langle a_j\xi,\xi\rangle-\langle a_i\xi,\xi\rangle\bigr).
+\]</span>
+<p>The scalar increasing bounded net has a supremum. Given two sufficiently late indices, choose a common upper index and use the displayed estimate twice and the triangle inequality. This proves that <span class="math" data-tex="\(a_i\xi\)">\(a_i\xi\)</span> is Cauchy for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Completeness yields a limit <span class="math" data-tex="\(a\xi\)">\(a\xi\)</span>. Passing to limits proves linearity and <span class="math" data-tex="\(\|a\|\leq C\)">\(\|a\|\leq C\)</span>; passing to adjoint pairings proves self-adjointness. Its diagonal is the stated supremum, so <span class="math" data-tex="\(0\leq a\leq CI\)">\(0\leq a\leq CI\)</span> and <span class="math" data-tex="\(a\geq a_i\)">\(a\geq a_i\)</span>. Any self-adjoint upper bound dominates this diagonal, hence dominates <span class="math" data-tex="\(a\)">\(a\)</span>. Strong closedness gives <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, and BK-03 gives ultraweak convergence.</p>
+<p>If the original upper bound is <span class="math" data-tex="\(b\in M_+\)">\(b\in M_+\)</span>, use <span class="math" data-tex="\(C=\|b\|\)">\(C=\|b\|\)</span>; leastness gives <span class="math" data-tex="\(a\leq b\)">\(a\leq b\)</span>. Applying the result to <span class="math" data-tex="\(CI-a_i\)">\(CI-a_i\)</span> proves the decreasing-net version. Also, for fixed <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>,</p>
+<span class="math math-display" data-tex="\[
+a_i\uparrow a\quad\Longrightarrow\quad x^*a_ix\uparrow x^*ax.
+\tag{BK.5}
+\]">\[
+a_i\uparrow a\quad\Longrightarrow\quad x^*a_ix\uparrow x^*ax.
+\tag{BK.5}
+\]</span>
+<p>The congruences are positive and increasing, and fixed multiplication preserves their strong limit. The theorem then identifies that limit with their supremum. No commutation between <span class="math" data-tex="\(x\)">\(x\)</span> and the net is required.</p>
+<h2 id="inversion-reverses-order"><span id="oa-mod-bk-05"></span><span id="OA-MOD-BK-05"></span>Inversion reverses order</h2>
+<p>If <span class="math" data-tex="\(a,b\in M_+\)">\(a,b\in M_+\)</span> and <span class="math" data-tex="\(mI\leq a\leq b\)">\(mI\leq a\leq b\)</span>, <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>, the calculus in BK-01 gives their inverses and inverse square roots in <span class="math" data-tex="\(M\)">\(M\)</span>. We prove</p>
+<span class="math math-display" data-tex="\[
+0\leq b^{-1}\leq a^{-1}.
+\tag{BK.6}
+\]">\[
+0\leq b^{-1}\leq a^{-1}.
+\tag{BK.6}
+\]</span>
+<p>Let <span class="math" data-tex="\(c=a^{-1/2}ba^{-1/2}\)">\(c=a^{-1/2}ba^{-1/2}\)</span>. Testing quadratic forms gives <span class="math" data-tex="\(c\geq I\)">\(c\geq I\)</span>, so its one-operator calculus gives <span class="math" data-tex="\(0\leq c^{-1}\leq I\)">\(0\leq c^{-1}\leq I\)</span>. Direct multiplication verifies
+<span class="math" data-tex="\(b^{-1}=a^{-1/2}c^{-1}a^{-1/2}\)">\(b^{-1}=a^{-1/2}c^{-1}a^{-1/2}\)</span>.
+Congruence of the last order inequality by <span class="math" data-tex="\(a^{-1/2}\)">\(a^{-1/2}\)</span> proves the claim. The proof applies to noncommuting <span class="math" data-tex="\(a,b\)">\(a,b\)</span>.</p>
+<p>For <span class="math" data-tex="\(0\leq a\leq b\)">\(0\leq a\leq b\)</span> and <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, add <span class="math" data-tex="\(\lambda I\)">\(\lambda I\)</span>, apply (BK.6), and subtract the scaled inverses from <span class="math" data-tex="\(I\)">\(I\)</span>:</p>
+<span class="math math-display" data-tex="\[
+a(a+\lambda I)^{-1}
+=I-\lambda(a+\lambda I)^{-1}
+\leq I-\lambda(b+\lambda I)^{-1}
+=b(b+\lambda I)^{-1}.
+\tag{BK.7}
+\]">\[
+a(a+\lambda I)^{-1}
+=I-\lambda(a+\lambda I)^{-1}
+\leq I-\lambda(b+\lambda I)^{-1}
+=b(b+\lambda I)^{-1}.
+\tag{BK.7}
+\]</span>
+<p>Injectivity alone supplies no positive lower bound; BK-09 gives an injective positive operator with unbounded inverse.</p>
+<h2 id="supports-from-bounded-resolvent-cutoffs"><span id="oa-mod-bk-06"></span><span id="OA-MOD-BK-06"></span>Supports from bounded resolvent cutoffs</h2>
+<p>For <span class="math" data-tex="\(a\in M_+\)">\(a\in M_+\)</span>, let <span class="math" data-tex="\(p\)">\(p\)</span> project onto
+<span class="math" data-tex="\((\ker a)^\perp=\overline{aH}\)">\((\ker a)^\perp=\overline{aH}\)</span>. Then <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span>, <span class="math" data-tex="\(pa=ap=a\)">\(pa=ap=a\)</span>, and, as <span class="math" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+f_\varepsilon=a(a+\varepsilon I)^{-1}\uparrow p
+\quad\text{strongly and ultraweakly}.
+\tag{BK.8}
+\]">\[
+f_\varepsilon=a(a+\varepsilon I)^{-1}\uparrow p
+\quad\text{strongly and ultraweakly}.
+\tag{BK.8}
+\]</span>
+<p>Indeed the scalar functions <span class="math" data-tex="\(t/(t+\varepsilon)\)">\(t/(t+\varepsilon)\)</span> make <span class="math" data-tex="\(f_\varepsilon\)">\(f_\varepsilon\)</span> positive contractions, increasing as <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decreases. They vanish on <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span>. On <span class="math" data-tex="\(aH\)">\(aH\)</span>,</p>
+<span class="math math-display" data-tex="\[
+(I-f_\varepsilon)a\xi
+=\varepsilon a(a+\varepsilon I)^{-1}\xi,\qquad
+\|(I-f_\varepsilon)a\xi\|\leq\varepsilon\|\xi\|.
+\tag{BK.9}
+\]">\[
+(I-f_\varepsilon)a\xi
+=\varepsilon a(a+\varepsilon I)^{-1}\xi,\qquad
+\|(I-f_\varepsilon)a\xi\|\leq\varepsilon\|\xi\|.
+\tag{BK.9}
+\]</span>
+<p>This proves convergence to the identity on a dense subset of <span class="math" data-tex="\(pH\)">\(pH\)</span>. The contraction bound extends it to that whole space: approximate <span class="math" data-tex="\(\zeta\in pH\)">\(\zeta\in pH\)</span> by <span class="math" data-tex="\(a\xi\)">\(a\xi\)</span> and bound the error by <span class="math" data-tex="\(2\|\zeta-a\xi\|+\varepsilon\|\xi\|\)">\(2\|\zeta-a\xi\|+\varepsilon\|\xi\|\)</span>. On its orthogonal complement all cutoffs are zero, proving the strong limit. BK-02 gives membership <span class="math" data-tex="\(p\in M\)">\(p\in M\)</span>; BK-03 and BK-04 give the ultraweak limit and the supremum assertion.</p>
+<p>Any projection <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(qa=a\)">\(qa=a\)</span> has closed range containing <span class="math" data-tex="\(aH\)">\(aH\)</span>, hence contains <span class="math" data-tex="\(pH\)">\(pH\)</span>. Thus <span class="math" data-tex="\(p\)">\(p\)</span> is the smallest such projection, called <span class="math" data-tex="\(s(a)\)">\(s(a)\)</span>. The equality <span class="math" data-tex="\(\ker a=\ker a^{1/2}\)">\(\ker a=\ker a^{1/2}\)</span> proves <span class="math" data-tex="\(s(a)=s(a^{1/2})\)">\(s(a)=s(a^{1/2})\)</span>. Reparameterizing gives <span class="math" data-tex="\(ta(I+ta)^{-1}\uparrow s(a)\)">\(ta(I+ta)^{-1}\uparrow s(a)\)</span>.</p>
+<p>A useful domination consequence needs no commutation assumption: if <span class="math" data-tex="\(p\leq e\leq I\)">\(p\leq e\leq I\)</span> and <span class="math" data-tex="\(p\)">\(p\)</span> is a projection, then <span class="math" data-tex="\(ep=pe=p\)">\(ep=pe=p\)</span>. Indeed <span class="math" data-tex="\(0\leq p(I-e)p\leq p(I-p)p=0\)">\(0\leq p(I-e)p\leq p(I-p)p=0\)</span>, so
+<span class="math" data-tex="\(\|(I-e)^{1/2}p\xi\|^2=0\)">\(\|(I-e)^{1/2}p\xi\|^2=0\)</span> for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Hence <span class="math" data-tex="\((I-e)p=0\)">\((I-e)p=0\)</span>, and its adjoint gives the other equality.</p>
+<h2 id="polar-decomposition-and-its-regularized-limit"><span id="oa-mod-bk-07"></span><span id="OA-MOD-BK-07"></span>Polar decomposition and its regularized limit</h2>
+<p>For <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, put <span class="math" data-tex="\(a=|x|=(x^*x)^{1/2}\)">\(a=|x|=(x^*x)^{1/2}\)</span>. There is a unique partial isometry <span class="math" data-tex="\(u\in M\)">\(u\in M\)</span> with</p>
+<span class="math math-display" data-tex="\[
+x=u|x|,\qquad\ker u=\ker x.
+\tag{BK.10}
+\]">\[
+x=u|x|,\qquad\ker u=\ker x.
+\tag{BK.10}
+\]</span>
+<p>A partial isometry here is zero on its kernel and isometric on its orthogonal complement. Its initial and final projections are
+<span class="math" data-tex="\(u^*u=s(|x|)\)">\(u^*u=s(|x|)\)</span> and <span class="math" data-tex="\(uu^*=s(|x^*|)\)">\(uu^*=s(|x^*|)\)</span>. Its bounded regularizations
+<span class="math" data-tex="\(u_\varepsilon=x(|x|+\varepsilon I)^{-1}\)">\(u_\varepsilon=x(|x|+\varepsilon I)^{-1}\)</span>
+are contractions and converge strongly* to <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p>To construct it, <span class="math" data-tex="\(\|x\xi\|=\|a\xi\|\)">\(\|x\xi\|=\|a\xi\|\)</span> shows that
+<span class="math" data-tex="\(a\xi\mapsto x\xi\)">\(a\xi\mapsto x\xi\)</span> is a well-defined isometry on <span class="math" data-tex="\(aH\)">\(aH\)</span>. Extend it to an isometry <span class="math" data-tex="\(\overline{aH}\to\overline{xH}\)">\(\overline{aH}\to\overline{xH}\)</span>, and let it vanish on <span class="math" data-tex="\(\ker a\)">\(\ker a\)</span>. This defines <span class="math" data-tex="\(u\)">\(u\)</span> on all of <span class="math" data-tex="\(H\)">\(H\)</span>, with <span class="math" data-tex="\(ua=x\)">\(ua=x\)</span>. Its initial and final projections are the projections onto these two closed ranges. The range-kernel identity and <span class="math" data-tex="\(\ker|x^*|=\ker x^*\)">\(\ker|x^*|=\ker x^*\)</span> identify the second as <span class="math" data-tex="\(s(|x^*|)\)">\(s(|x^*|)\)</span>.</p>
+<p>Although <span class="math" data-tex="\(u\)">\(u\)</span> was constructed as a bounded map on <span class="math" data-tex="\(H\)">\(H\)</span>, it belongs to the algebra. The calculus places <span class="math" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> in <span class="math" data-tex="\(M\)">\(M\)</span>, and
+<span class="math" data-tex="\(u_\varepsilon=u f_\varepsilon\)">\(u_\varepsilon=u f_\varepsilon\)</span>, where <span class="math" data-tex="\(f_\varepsilon\)">\(f_\varepsilon\)</span> is the cutoff of <span class="math" data-tex="\(a\)">\(a\)</span>. Since <span class="math" data-tex="\(f_\varepsilon\to p=s(a)\)">\(f_\varepsilon\to p=s(a)\)</span> strongly and <span class="math" data-tex="\(up=u\)">\(up=u\)</span>, these contractions converge strongly to <span class="math" data-tex="\(u\)">\(u\)</span>; strong closedness gives <span class="math" data-tex="\(u\in M\)">\(u\in M\)</span>. For adjoints use the separate calculation
+<span class="math" data-tex="\(u_\varepsilon^*=f_\varepsilon u^*\to pu^*=u^*\)">\(u_\varepsilon^*=f_\varepsilon u^*\to pu^*=u^*\)</span>;
+taking adjoints of an arbitrary strong limit would not be valid. A second partial isometry satisfying (BK.10) agrees on <span class="math" data-tex="\(aH\)">\(aH\)</span>, hence its closure, and is zero on the same orthogonal complement. This proves uniqueness.</p>
+<p>For <span class="math" data-tex="\(C:H\to K\)">\(C:H\to K\)</span>, the identical construction gives <span class="math" data-tex="\(C=U|C|\)">\(C=U|C|\)</span> between two possibly different Hilbert spaces. Here <span class="math" data-tex="\(U\)">\(U\)</span> is zero on <span class="math" data-tex="\(\ker C\)">\(\ker C\)</span> and unitary from <span class="math" data-tex="\((\ker C)^\perp\)">\((\ker C)^\perp\)</span> onto <span class="math" data-tex="\(\overline{\operatorname{ran}C}\)">\(\overline{\operatorname{ran}C}\)</span>. The operators <span class="math" data-tex="\(C(|C|+\varepsilon I_H)^{-1}\)">\(C(|C|+\varepsilon I_H)^{-1}\)</span> and their adjoints converge strongly to <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(U^*\)">\(U^*\)</span> in the respective directions. There is also the left factorization</p>
+<span class="math math-display" data-tex="\[
+C=|C^*|U,\qquad |C^*|=(CC^*)^{1/2}.
+\tag{BK.11}
+\]">\[
+C=|C^*|U,\qquad |C^*|=(CC^*)^{1/2}.
+\tag{BK.11}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(U|C|U^*\)">\(U|C|U^*\)</span> is positive and has square <span class="math" data-tex="\(U|C|^2U^*=CC^*\)">\(U|C|^2U^*=CC^*\)</span>, since <span class="math" data-tex="\(U^*U\)">\(U^*U\)</span> is the support of <span class="math" data-tex="\(|C|\)">\(|C|\)</span>. Positive-square-root uniqueness from BK-01 gives
+<span class="math" data-tex="\(|C^*|=U|C|U^*\)">\(|C^*|=U|C|U^*\)</span>, and multiplication by <span class="math" data-tex="\(U\)">\(U\)</span> proves (BK.11).
+If <span class="math" data-tex="\(C\)">\(C\)</span> is injective with dense range, the initial and final spaces are all of <span class="math" data-tex="\(H,K\)">\(H,K\)</span>; thus <span class="math" data-tex="\(U:H\to K\)">\(U:H\to K\)</span> is unitary.</p>
+<h2 id="testing-commutation-on-unitaries"><span id="oa-mod-bk-08"></span><span id="OA-MOD-BK-08"></span>Testing commutation on unitaries</h2>
+<p>Every element of a unital norm-closed *-algebra is a complex linear combination of at most four unitaries. For a self-adjoint contraction <span class="math" data-tex="\(b\)">\(b\)</span>, the calculus gives
+<span class="math" data-tex="\(c=(I-b^2)^{1/2}\)">\(c=(I-b^2)^{1/2}\)</span> commuting with <span class="math" data-tex="\(b\)">\(b\)</span>. Thus</p>
+<span class="math math-display" data-tex="\[
+v=b+ic,\qquad v^*v=vv^*=I,\qquad b=(v+v^*)/2.
+\]">\[
+v=b+ic,\qquad v^*v=vv^*=I,\qquad b=(v+v^*)/2.
+\]</span>
+<p>Scale any nonzero self-adjoint element to a contraction. Then decompose a general <span class="math" data-tex="\(z\)">\(z\)</span> as
+<span class="math" data-tex="\((z+z^*)/2+i(z-z^*)/(2i)\)">\((z+z^*)/2+i(z-z^*)/(2i)\)</span>, two self-adjoint parts, obtaining at most four unitaries. Zero parts can be omitted.</p>
+<p>Commuting with all unitaries therefore implies commuting with every element of the algebra. In particular a bounded map commuting with every unitary in <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> belongs to <span class="math" data-tex="\(M&#x27;&#x27;=M\)">\(M&#x27;&#x27;=M\)</span>. This proves the algebra-membership test used for contractions first constructed on closures of operator ranges.</p>
+<h2 id="problems-and-worked-solutions">Problems and worked solutions</h2>
+<p><strong>Problem 1: nets on a nonseparable Hilbert space.</strong> Let <span class="math" data-tex="\(J\)">\(J\)</span> be uncountable and <span class="math" data-tex="\(P_F\)">\(P_F\)</span> the coordinate projection for a finite <span class="math" data-tex="\(F\subset J\)">\(F\subset J\)</span> in <span class="math" data-tex="\(\ell^2(J)\)">\(\ell^2(J)\)</span>. Determine its increasing strong limit and its norm distance to that limit. Can a sequence of these projections have the same strong limit?</p>
+<p><strong>Solution.</strong> For a fixed vector, the squared norm is the supremum of its finite coordinate sums. Choosing a finite set which captures all but a prescribed error proves <span class="math" data-tex="\(P_F\xi\to\xi\)">\(P_F\xi\to\xi\)</span> as <span class="math" data-tex="\(F\)">\(F\)</span> increases. Thus <span class="math" data-tex="\(P_F\uparrow I\)">\(P_F\uparrow I\)</span>. But <span class="math" data-tex="\(\|I-P_F\|=1\)">\(\|I-P_F\|=1\)</span>: it is a contraction and fixes a unit coordinate outside <span class="math" data-tex="\(F\)">\(F\)</span>. For any sequence <span class="math" data-tex="\(F_n\)">\(F_n\)</span>, the union is countable; a coordinate outside that union is annihilated by every <span class="math" data-tex="\(P_{F_n}\)">\(P_{F_n}\)</span>. Such a sequence cannot converge strongly to <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><strong>Problem 2: a polar limit with constant norm error.</strong> On <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span>, let <span class="math" data-tex="\(x\delta_n=n^{-1}\delta_n\)">\(x\delta_n=n^{-1}\delta_n\)</span>. Find its polar factor and <span class="math" data-tex="\(\|x(x+\varepsilon I)^{-1}-u\|\)">\(\|x(x+\varepsilon I)^{-1}-u\|\)</span>.</p>
+<p><strong>Solution.</strong> Positivity and injectivity give <span class="math" data-tex="\(|x|=x\)">\(|x|=x\)</span>. Its range contains every finite-support vector and is dense, so <span class="math" data-tex="\(u=s(x)=I\)">\(u=s(x)=I\)</span>. The cutoff coefficients are <span class="math" data-tex="\(1/(1+\varepsilon n)\)">\(1/(1+\varepsilon n)\)</span>, giving</p>
+<span class="math math-display" data-tex="\[
+\|x(x+\varepsilon I)^{-1}-I\|
+=\sup_{n\geq1}\frac{\varepsilon n}{1+\varepsilon n}=1.
+\]">\[
+\|x(x+\varepsilon I)^{-1}-I\|
+=\sup_{n\geq1}\frac{\varepsilon n}{1+\varepsilon n}=1.
+\]</span>
+<p>Convergence on finite-support vectors and the common contraction bound still prove strong convergence. The inverse sends <span class="math" data-tex="\(\delta_n\)">\(\delta_n\)</span> to <span class="math" data-tex="\(n\delta_n\)">\(n\delta_n\)</span>, so it has no bounded extension; this explains the strict lower-bound hypothesis in BK-05.</p>
+<p><strong>Problem 3: supports without commuting projections.</strong> For <span class="math" data-tex="\(a,b\in M_+\)">\(a,b\in M_+\)</span>, prove
+<span class="math" data-tex="\(\ker(a+b)=\ker a\cap\ker b\)">\(\ker(a+b)=\ker a\cap\ker b\)</span> and
+<span class="math" data-tex="\(s(a+b)H=\overline{s(a)H+s(b)H}\)">\(s(a+b)H=\overline{s(a)H+s(b)H}\)</span>.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\((a+b)\xi=0\)">\((a+b)\xi=0\)</span>, its pairing with <span class="math" data-tex="\(\xi\)">\(\xi\)</span> is
+<span class="math" data-tex="\(\|a^{1/2}\xi\|^2+\|b^{1/2}\xi\|^2=0\)">\(\|a^{1/2}\xi\|^2+\|b^{1/2}\xi\|^2=0\)</span>.
+Both vectors vanish; hence <span class="math" data-tex="\(a\xi=b\xi=0\)">\(a\xi=b\xi=0\)</span>. The reverse inclusion is immediate. Orthogonality to a sum of two subspaces is exactly orthogonality to both, so taking orthogonal complements of this kernel identity proves the support formula. Its projection belongs to <span class="math" data-tex="\(M\)">\(M\)</span> because it is <span class="math" data-tex="\(s(a+b)\)">\(s(a+b)\)</span>. Products of the separate support projections need not themselves be projections.</p>
+<h2 id="exact-uses-and-the-remaining-boundary">Exact uses and the remaining boundary</h2>
+<p>The proofs retain every bounded conclusion needed by the downstream lessons:</p>
+<table>
+<thead>
+<tr>
+<th>Consumer</th>
+<th>Written bounded input</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DW-02, range contraction in <span class="math" data-tex="\(M\)">\(M\)</span></td>
+<td>Bicommutant BK-02 and four-unitary test BK-08</td>
+</tr>
+<tr>
+<td>DW-03, diagonal pairing for <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span></td>
+<td>Polar factor and initial support BK-07</td>
+</tr>
+<tr>
+<td>DW-04 and QF-03</td>
+<td>Rectangular and left polar factorizations BK-07</td>
+</tr>
+<tr>
+<td>DW-05 and QF-07</td>
+<td>Increasing and decreasing bounded nets BK-04</td>
+</tr>
+<tr>
+<td>WG-007</td>
+<td>Congruence preserves bounded increasing suprema, BK-04</td>
+</tr>
+<tr>
+<td>WG-008</td>
+<td>Inverse order BK-05, supports and projection domination BK-06</td>
+</tr>
+<tr>
+<td>WG-008, ultraweak density</td>
+<td>Bounded weak-to-ultraweak convergence and fixed multiplication BK-03</td>
+</tr>
+<tr>
+<td>SK-08</td>
+<td>Algebra membership of bounded calculi, BK-02 and BK-08</td>
+</tr>
+</tbody>
+</table>
+<p>The earlier RC Hilbert proof and GP0 Bernstein proof, together with the extensions written in BK-01, discharge this lesson's Hilbert and self-adjoint continuous-calculus contracts. The arguments construct the spectrum restriction, its exact norm, inverse and order rules, and square-root uniqueness before using them in subsequent sections. They do not require an unbounded spectral theorem.</p>
+<p>Borel calculus, unbounded polar decomposition, normal-map characterization, weight-map closability and modular derivatives are separate theorems with separate proofs. The parent course's full source and transitive-proof audit remains unfinished.</p>
+
+</article>
+
+<nav class="pager" aria-label="Lessons"><span class="pager-prev"><a rel="prev" href="OA-MOD-DW.html">← Comparing weights through finite-energy vectors</a></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="OA-MOD-WS.html">Finite domains, null directions, and support corners →</a></span></nav>
+<p class="small source-link"><a href="src/bounded-operator-kernel.md" download>Editable Markdown source of this lesson</a></p>
+</main>
+<footer class="site-footer">
+<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless a lesson states other terms; see LICENSING.md.</p>
+<nav aria-label="Elsewhere"><span class="unlinked">Course sources</span><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/OA-MOD">Repository</a></nav>
+</footer>
+</body>
+</html>
