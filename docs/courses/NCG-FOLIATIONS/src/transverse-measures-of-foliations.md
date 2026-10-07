@@ -2140,6 +2140,262 @@ l'intégration*, Section III, Definition 6 and Proposition 9; the author-hosted 
 [Connes 1994], *Noncommutative Geometry*, Appendix B, pages 78–79 and
 reference [95], for the repeated abstract presentation formulation.
 
+### 5.35. A covariant criterion on the given presentation objects
+
+The countable-section theorem, presentation collection and intrinsic pullback construction used below are proved in Transverse measures of foliations, Theorem 5.4, Proposition 5.9, Definition 5.10 and Theorem 5.11. The source relation is the principal equal-leaf relation; the formulas retain the target presentation point and every full measure value, including infinity.
+
+Let \(Q_i\) be two foliation leaf sets with their maximal compatible collections
+\(\mathcal B_i\) of countable standard Borel presentations. Choose complete standard
+Borel transversals \(N_i\), projections \(q_i\):\(N_i\)->\(Q_i\) and countable equal-leaf
+relations \(E_i\) as in Proposition 5.9. All measures below are additive invariant
+presentation measures, with their complete values in \([0,\infty]\). No local
+finiteness of their images is presumed.
+
+Call a set map h:\(Q_1\)->\(Q_2\) presentation-object preserving if postcomposition
+keeps every source presentation admissible:
+
+\[
+(Y,p)\in\mathcal B_1\quad\Longrightarrow\quad(Y,h\circ p)\in\mathcal B_2.
+\tag{CP.1}
+\]
+
+This is a condition on the underlying map and the two specified collections;
+it supplies no arrow functor or holonomy lift. The standard Borel structure
+on Y stays the same. In particular the countable-fibre requirement for h p
+is part of admissibility, rather than a new Borel structure chosen on Y.
+
+**Theorem 5.35.** Condition (CP.1) is equivalent to both
+
+\[
+\begin{gathered}R_h=\{(a,b)\in N_1\times N_2:h(q_1(a))=q_2(b)\}\text{ is Borel},\\h^{-1}\{q\}\text{ is countable for every }q\in Q_2.\end{gathered}
+\tag{CP.2}
+\]
+
+The equivalence is independent of the complete transversals. Its maps form
+a category under ordinary set-map composition. They include identity maps
+even when \(Q_i\) is not a standard Borel space.
+
+**Proof.** If (CP.1) holds, apply it to (\(N_1\),\(q_1\)). The target presentation
+(\(N_1\),h \(q_1\)) has countable fibres and is compatible with (\(N_2\),\(q_2\)), proving
+the Borel graph relation. Over q in \(Q_2\) its countable fibre consists of all
+a with h(\(q_1\)(a))=q. Its \(q_1\) image is exactly h^(-1){q}, since \(N_1\) meets
+every source leaf. An image of a countable set is countable. This proves
+both conditions without choosing Borel representatives of source leaves.
+
+Conversely assume (CP.2), and let \((Y,p)\) be an arbitrary source presentation.
+The fibre of h p over q is the union, over the countable set h^(-1){q}, of
+the countable fibres of p. It is countable. The incidence with the target
+complete transversal is
+
+\[
+h(p(y))=q_2(b)\quad\Longleftrightarrow\quad\exists a\in N_1:\ p(y)=q_1(a),\ (a,b)\in R_h.
+\tag{CP.3}
+\]
+
+The triple relation is Borel, by source compatibility and the weak graph
+condition. For each (y,b) its possible a are contained in \(N_1\)'s intersection
+with p(y), a countable set. The countable-section projection theorem 5.4
+makes (CP.3) Borel. Proposition 5.9's collection criterion then makes
+(Y,h p) an admissible target presentation. This proves (CP.1).
+The collection condition is intrinsic, so the equivalent transversal test
+is independent of their choice. Identity and composition preserve every
+presentation directly. Alternatively composite coarse fibres are countable
+unions of countable fibres, and their graph relation is the countable-section
+projection through the intermediate complete transversal. Both descriptions
+give the same category. No smoothness of the whole leaf quotient is used.
+
+### 5.36. The least-index code for the actual pullback
+
+**Theorem 5.36.** Every map in Theorem 5.35 is presentation Borel in the
+pullback sense of Definition 5.10. Its pullback of \(N_2\) has an explicit
+standard Borel model in \(N_2\) times N, and its principal source action admits
+a normalized Borel cutoff. The target transversal point is retained.
+
+**Proof.** For fixed b, the section
+{a:h(\(q_1\)(a))=\(q_2\)(b)} is a union of countably many source \(E_1\) classes, since
+the coarse fibre is countable. Each class is countable. Thus the Borel
+relation \(R_h\) has countable sections over \(N_2\), as well as countable sections
+over \(N_1\). Here \(\mathbb N=\{0,1,2,\ldots\}\). Theorem 5.4 supplies Borel partial maps \(\sigma_j\):\(D_j\)->\(N_1\),
+j in N, whose graphs enumerate \(R_h\) over b. Repetitions are harmless; one
+may remove them successively by Borel equality tests if desired.
+
+For (a,b) in \(R_h\) define
+
+\[
+m(a,b)=\min\{j:b\in D_j,\ \sigma_j(b)E_1a\},\qquad\beta(a,b)=(b,m(a,b)).
+\tag{CP.4}
+\]
+
+The set minimized is nonempty, because some \(\sigma_j\)(b)=a. The inverse
+image of each possible index is a Borel condition with only finitely many
+excluded smaller indices. Hence m and \(\beta\) are Borel. Two points have
+the same \(\beta\) exactly when they have the same b and their a belong to the
+same \(E_1\) class: equivalent a give the same admissible index set, while a
+common least index makes both equivalent to its sigma value. Therefore
+\(\beta\) classifies precisely the relation (5) of Proposition 5.12.
+
+There is a concrete Borel image, so no quotient regularity is implicit:
+
+\[
+\begin{gathered}C=\{(b,j):b\in D_j,\ \nexists i<j\text{ with }b\in D_i,\ \sigma_i(b)E_1\sigma_j(b)\},\\t(b,j)=(\sigma_j(b),b),\quad r(b,j)=q_1(\sigma_j(b)),\quad\pi(b,j)=b.\end{gathered}
+\tag{CP.5}
+\]
+
+For each j the excluded conditions are a finite union of Borel sets;
+C is a Borel subset of \(N_2\) times N. It is exactly \(\beta\)(\(R_h\)). Indeed a
+least admissible index belongs to C, and every point of C is \(\beta\) of
+its displayed representative. The two maps \(\beta\) and t are mutually
+inverse after passing to source \(E_1\) classes at fixed b.
+
+C identifies with h^*\(N_2\) as a set by (b,j)->(r(b,j),b). Its source fibres
+are indexed by the countable transversal points b on h(\(q_1\)(a)). Its
+incidence with a source a is a \(E_1\) \(\sigma_j\)(b), which is Borel; Proposition
+5.9 makes (C,r) an admissible source presentation. The map \(\pi\) is Borel.
+Thus this is exactly the standard structure required by Definition 5.10.
+In fact \(\pi\) also has countable fibres, since there is one code for each
+source leaf in the countable coarse fibre over \(q_2\)(b).
+
+The normalized principal cutoff is
+
+\[
+c(a,b)=\mathbf 1_{\{a=\sigma_{m(a,b)}(b)\}},\qquad\sum_{a^{\prime}E_1a}c(a^{\prime},b)=1\quad((a,b)\in R_h).
+\tag{CP.6}
+\]
+
+For each fixed b and source class, the least-index value chooses exactly
+one actual a. This proves both the Borel condition and the sum-one equation.
+The source relation groupoid has one transporter per pair of equivalent
+units; no holonomy isotropy multiplicity is silently removed from a full
+groupoid functor image. The assertion is about the intrinsic presentation
+pullback and its principal relation, not an unspecified full-arrow lift.
+
+For an arbitrary target presentation \((Y,p)\), choose a Borel
+s:Y->\(N_2\) with \(q_2\) s=p by Theorem 5.4 and compatibility. Then
+
+\[
+C_Y=\{(z,y)\in C\times Y:\pi(z)=s(y)\},\qquad r_Y(z,y)=r(z),\quad\pi_Y(z,y)=y.
+\tag{CP.7}
+\]
+
+is a Borel subset of a standard Borel product. For each abstract pair
+(q,y) with h(q)=p(y), there is exactly one code z above b=s(y) for q.
+Consequently \(C_Y\) is the required set pullback. Its source projection has
+countable fibres because p does. Its incidence with \(N_1\) is
+a \(E_1\) \(\sigma_j\)(s(y)), a Borel condition on the indicated code; it is
+admissible. Its target projection is Borel, and also countable to one in
+this countable-coarse class. This proves Definition 5.10 on every target
+presentation, not only on the selected complete transversal.
+
+The retained b matters. For the identity of a nonsmooth leaf quotient,
+C represents its complete transversal, not the quotient itself. Forgetting
+b would again attempt to choose one representative of each entire source
+leaf. The least-index construction makes no such assertion.
+
+### 5.37. The full image measure and the two intrinsic map classes
+
+**Corollary 5.37.** The category of presentation-object preserving maps
+embeds in the category of presentation Borel maps. For its maps the full
+image on every target presentation is
+
+\[
+(h_*\Lambda_1)(Y,p)=\Lambda_1(C_Y,r_Y).
+\tag{CP.8}
+\]
+
+It is independent of every code, enumeration and target representative
+selection. Identities and compositions have their usual image laws. The
+category inclusion is strict already for ordinary standard Borel spaces.
+On those spaces presentation-object preservation means an ordinary Borel
+map with countable fibres, whereas presentation Borelness allows every
+ordinary Borel map.
+
+**Proof.** Theorem 5.36 supplies all the pullbacks. The identity Borel
+isomorphism between any two permitted structures is proved in Definition
+5.10, using the two coordinates of each pullback point. Thus the chosen
+\(C_Y\) structure gives exactly the intrinsic pullback, independently of its
+coordinates. Theorem 5.11 proves additivity, invariance and the full image
+and composition laws, with no cancellation of infinite measures.
+
+One can also compute (CP.8) directly when \(\Lambda_1\) comes from an invariant
+measure \(\mu_1\) on \(N_1\). The map
+\(\tau\)(z,y)=\(\sigma_j\)(s(y)), for z=(s(y),j), is Borel and satisfies
+\(q_1\) \(\tau\)=\(r_Y\). Its fibres are countable: all corresponding y lie in the
+single countable fibre p^(-1){h(\(q_1\)(\(\tau\)))}. Theorem 5.4 partitions
+\(C_Y\) into Borel pieces \(Z_\ell\) on which \(\tau\) is injective, with Borel images.
+Proposition 5.9 then gives the complete formula
+
+\[
+(h_*\Lambda_1)(Y,p)=\sum_{\ell}\mu_1(\tau(Z_\ell)).
+\tag{CP.9}
+\]
+
+Refining two such partitions produces partial source leaf-preserving Borel
+bijections. Theorem 5.6 equates their measures; countable additivity proves
+independence including infinite values. This is a value on every presentation,
+not only on the singleton or on finite transversals.
+
+For ordinary standard Borel bases, apply (CP.1) to the admissible identity
+presentation of the source: (\(Q_1\),h) must be a Borel countable presentation
+over \(Q_2\), so h is ordinary Borel with countable fibres. Conversely such a
+map postcomposes each ordinary Borel countable presentation to another one,
+by the countable-union fibre argument. Theorem 5.11 already proves that
+every ordinary Borel map is presentation Borel in the pullback sense.
+The constant map from the standard Borel circle to a point is therefore
+in the larger category but not the smaller one; postcomposing the circle's
+identity presentation would give an uncountable fibre over that point.
+Its pullback of a countable target set Y is circle times Y and its image
+of probability Lebesgue measure has the full values
+
+\[
+(h_*\Lambda_\lambda)(Y)=\#Y\in[0,\infty].
+\tag{CP.10}
+\]
+
+with value infinity for an infinite Y. This verifies strictness without
+claiming that the smaller category contains every ordinary Borel map.
+
+The proper quotient from the standard transversal circle to the irrational
+flow leaf set is in the smaller category: each coarse fibre is one countable
+rotation orbit, and its incidence is the Borel orbit relation. Its image
+can still lose scale and fail local finiteness, as Theorem 5.19 proves on
+every target presentation. The constant map from that nonsmooth leaf set
+to a point is in neither category, by Example 5.13 and (CP.2). In contrast
+the identity of that same nonsmooth leaf set is in both categories.
+These statements concern the two specified map notions. A functorial
+image assertion must specify its permitted map category.
+
+### 5.38. An exact finite presentation model
+
+Let \(N_1\)={0,1,2,3,4,5}, with source classes
+\(C_0\)={0,3}, \(C_1\)={1,2,5}, \(C_2\)={4}. Let \(N_2\)={\(b_0\),\(b_1\),\(b_2\)} have one target
+class. The coarse map sends all three source leaves to that one target leaf.
+Use invariant source-unit weights 2 on \(C_0\), 3 on \(C_1\) and 5 on \(C_2\).
+Its complete-transversal mass is 18; its one-point-per-source-leaf
+presentation has mass 2+3+5=10.
+
+Take the target-row enumerations
+
+\[
+\sigma(b_0)=(0,1,2,3,4,5),\quad\sigma(b_1)=(5,4,3,2,1,0),\quad\sigma(b_2)=(2,0,4,5,3,1).
+\tag{CP.11}
+\]
+
+The least-index representatives are respectively (0,1,4), (5,4,3) and
+(2,0,4), in their encountered class order. There are nine codes in C,
+one for each source class and retained target point. The source action
+sum of their indicator is one on every class at every target point.
+The integral is 10 at each b and 30 on the full three-point target
+presentation. Putting weight one on every incidence pair instead would
+give 3 times18=54 and fail the normalization on classes of size 2 or 3.
+The alternative cutoff assigning 1/|C_i| to each source point in C_i at
+each b also integrates to 30. These exact values illustrate (CP.6)–(CP.9).
+They are a finite standard Borel model, not a picture or parametrization
+of the nonsmooth irrational quotient.
+
+![Countable presentation maps, the retained target point and the exact normalized image](../figures/countable-probe-maps.png)
+
+**Figure 5.38.1.** Theorems 5.35–5.36 and Corollary 5.37, CP.4–CP.11. Each column retains its target point and selects one member of each source class. The source transversal mass is 18, the normalized mass is 10 at each target point, and the full target presentation has image 30. The uniform cutoff gives the same value. Raw incidence gives 54 and fails the class normalization. The lower panels show the standard Borel code and the strict inclusion of the two intrinsic map categories. This finite example does not parametrize a nonsmooth quotient. Human context: [Connes, A survey of foliations and operator algebras](https://alainconnes.org/wp-content/uploads/foliationsfine.pdf#page=9), Section 2. [Vector figure](../figures/countable-probe-maps.svg) · [Generator](../reproduction/countable-probe-maps/draw_countable_probe_maps.py) · [Exact finite checks](../reproduction/countable-probe-maps/COUNTABLE-PROBE-CHECKS.json) · [Reproduction](../reproduction/countable-probe-maps/REPRODUCTION.md) · [Component terms](../reproduction/countable-probe-maps/COMPONENT-TERMS.md).
+
 ## 6. A cocycle and a twisted conservation law
 
 Let \(G\) be the holonomy groupoid, and let \(\delta:G\to(0,\infty)\) be a continuous positive multiplicative cocycle. An arrow \(\gamma:x\to y\) has source \(x\) and range \(y\). On a local holonomy map \(h:N\to N'\), use the convention
@@ -2832,6 +3088,53 @@ does not explicitly identify its leaf-space maps with all these
 functors. The counterexample rules out that proposed interpretation,
 not every possible historically intended stronger map definition.
 \(\square\)
+
+### Exercises 31–32. Countable presentation maps (20 points)
+
+**Exercise 31 (10 points).** In the finite model, compute the source
+complete-transversal mass, all nine least-index codes, every class
+normalization sum and the two normalized integrals. Explain why the raw
+incidence integral is not the presentation image. (6 points)
+Then distinguish the two map categories for the ordinary circle-to-point
+constant map and give its full image on every admitted target presentation.
+(4 points)
+
+**Solution.** The source-unit mass is 2 times2+3 times3+5=18.
+The codes are (\(b_0\),0),(\(b_0\),1),(\(b_0\),4),
+(\(b_1\),0),(\(b_1\),1),(\(b_1\),2), and (\(b_2\),0),(\(b_2\),1),(\(b_2\),2).
+Each selects exactly one member of each source class in its column, so
+every class sum is one and its weighted integral is 2+3+5=10. There are
+three target points, giving 30. The uniform cutoff gives
+2(2/2)+3(3/3)+5=10 per column as well. The raw incidence sum gives 54,
+but its source action sums are 2,3,1, rather than all one; it does not
+integrate one point per source leaf at a fixed target label (6 points).
+The ordinary constant map is presentation Borel because its pullbacks
+circle timesY are standard and have countable source fibres. It is not
+presentation-object preserving because the image of the identity circle
+presentation has an uncountable fibre. For probability Lebesgue measure
+its value at Y is #Y, including infinity if Y is infinite (4 points).
+
+**Exercise 32 (10 points).** Prove that (CP.4) is Borel and classifies the
+source relation at fixed target point, including an explicit Borel
+description of its image. (6 points) Explain why the target point cannot
+be discarded, how an arbitrary target presentation is pulled back, and
+why the two intrinsic map categories are different. (4 points)
+
+**Solution.** For index j, the candidate condition is b inD_j and
+\(\sigma_j\)(b) \(E_1\) a. Remove the finite union of its candidates with i<j;
+this gives the Borel level set m=j. Equivalent source a at the same b
+have the same candidate set, and equality of the chosen code puts both
+in the class of \(\sigma_j\)(b). The image is exactly C in (CP.5), whose
+slice at j is the Borel domain \(D_j\) minus the finitely many smaller
+equivalent candidate domains. This proves the exact class code and
+standard model, not only existence of a numerical label (6 points).
+Discarding b would require a global source-leaf representative and
+would incorrectly smooth the irrational quotient for its identity map.
+For \((Y,p)\), the Borel selector s(y) lies on the target leaf p(y);
+the fibre product (CP.7) retains one code per source leaf and that y,
+giving the entire admitted pullback and formula (CP.8). The ordinary
+circle-to-point map is pullback Borel but does not preserve every source
+presentation, proving that the two intrinsic categories differ (4 points).
 
 ## References
 

@@ -2,11 +2,11 @@
 
 A characteristic cycle is a trace of the identity after its directional information has been retained. The trace takes values in a dualizing coefficient and carries a support condition. Forgetting that condition too early can erase a nonzero cycle. We construct the actual supported map, prove its product formula and microlocal invariance, and calculate its normalization for finite complexes at a point.
 
-*Original text by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Use Constructible traces and local Euler indices for the diagonal external-Hom map, its ordinary restriction and the graded contraction. Perfect operations and finite microlocal coefficients supplies bounded constructible microlocal Hom. Lagrangian cycles and proper cotangent images supplies its cycle coefficient and the lowest supported dualizing sheaf. The exact current SH-02 prerequisites are ordinary microlocal-Hom recovery, its kernel unit and two commuting actions, the external microlocal product, the point-localized morphism theorem and the proper cone-cutoff kernel.
+Use Constructible traces and local Euler indices for the diagonal external-Hom map, its ordinary restriction and the graded contraction. Perfect operations and finite microlocal coefficients supplies bounded constructible microlocal Hom. Lagrangian cycles and proper cotangent images supplies its cycle coefficient and the lowest supported dualizing sheaf. The operation proofs used below are ordinary microlocal-Hom recovery, its actual kernel unit and composition, external microlocalization, point-localized morphisms, and the cone-topology kernel. The cutoff kernel initially uses ordinary direct image; its properness for the compactly supported input in this lesson is proved below.
 
-This lesson treats the definition of characteristic cycles through supported microlocal identities, the product formula, microlocal invariance and the cycle of a point; the characteristic cycle of a constructible sheaf goes back to M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985). The closed-point calculation below is an application of the normalized closed trace. Cotangent transport, the general conormal normalization, antipodal duality, integrality, additivity and the half-line and Lorentz-cone examples are treated in later lessons.
+The characteristic cycle of a constructible sheaf goes back to M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§3.1–3.4, pp. 197–199. That paper defines its local multiplicities through Euler characteristics. This lesson constructs a supported microlocal identity and its evaluated trace, then proves the product formula, microlocal invariance and the closed-point coefficient. The closed-point calculation below is an application of the normalized closed trace. Cotangent transport, the general conormal normalization, antipodal duality, integrality, additivity and the half-line and Lorentz-cone examples are treated in later lessons.
 
 ## The coefficient and the supported identity
 
@@ -19,7 +19,7 @@ Fix a field \(k\) of characteristic zero. The chain and Lagrangian-cycle constru
  \qquad\text{(1)}
 \]
 
-Constructibility includes finite perfect stalks. Its previously proved geometric criterion makes \(\Lambda\) a closed conic subanalytic isotropic carrier. Thus supported degree-zero classes with coefficient \(E_X\) give sections of \(\mathcal L_X\). We do not infer the support of the final cycle is all of \(\Lambda\).
+Constructibility includes finite perfect stalks and a uniform bounded cohomological range. Over the field fixed here, stalk perfection follows from finite-dimensional stalk cohomology; the uniform range is a separate part of the bounded hypothesis. The constructible geometric criterion makes \(\Lambda\) a closed conic subanalytic isotropic carrier. Thus supported degree-zero classes with coefficient \(E_X\) give sections of \(\mathcal L_X\). We do not infer the support of the final cycle is all of \(\Lambda\).
 
 Let \(\delta:X\hookrightarrow X^2\) be the closed diagonal. With projections \(q_1,q_2\), put
 
@@ -34,7 +34,7 @@ The diagonal conormal is identified by
 \((x,x;\xi,-\xi)\mapsto(x;\xi)\).
 The actual constructible external-Hom comparison identifies
 \(K_F\) with the Hom kernel in (2). Its exceptional diagonal restriction identifies
-\(\delta^!K_F\) with \(R\mathcal Hom(F,F)\), since both projection–diagonal composites are the identity.
+\(\delta^!K_F\) with \(R\mathcal Hom(F,F)\). Indeed, the exceptional internal-Hom isomorphism changes the first Hom input by \(\delta^{-1}\) and the second by \(\delta^!\); it applies because \(q_2^{-1}F\) is bounded and \(q_1^!F\) is bounded below. The identities \(q_2\delta=q_1\delta=\mathrm{id}_X\), with the actual exceptional-composition isomorphism for the second, give precisely the two arguments \(F,F\). The relative orientation and shift of \(q_1^!\) are already included in this composition. They cannot be removed by replacing \(\delta^!\) with ordinary restriction.
 
 The identity of \(F\), under these actual adjunctions, gives a kernel morphism
 
@@ -58,7 +58,7 @@ Ordinary recovery \(R\pi_{X*}\mathsf M(F,F)\simeq R\mathcal Hom(F,F)\) carries (
 
 The support estimate gives
 \(\operatorname{supp}\mathsf M(F,F)\subset\Lambda\).
-In fact the canonical unit detects the whole microsupport: if its germ at \(p\) is zero, the point-localized morphism theorem says the identity of \(F\) is zero in \(D^b(k_X;p)\). The object is then zero in that category, equivalently \(p\notin\operatorname{SS}(F)\). Only after the trace below can cancellation reduce the support.
+In fact the canonical unit detects the whole microsupport: if its germ at \(p\) is zero, the point-localized morphism theorem says the identity of \(F\) is zero in \(D^b(k_X;p)\). The object is then zero in that category, equivalently \(p\notin\operatorname{SS}(F)\). Only after the trace below can cancellation reduce the support. In detail, an object whose identity is zero in an additive category is isomorphic to the zero object: its unique maps to and from zero compose to its identity and to the identity of zero. The thick quotient and saturation statement identifies the objects killed by the point localization with those whose microsupport avoids \(p\). This argument uses the point-localized identity, rather than treating \(R\pi_{X*}\) as a conservative functor.
 
 ## Ordinary restriction and the unique supported trace
 
@@ -94,7 +94,12 @@ Consequently (6) gives \(T_F:\mathsf M(F,F)\to E_X\). The source is supported on
  \qquad\text{(7)}
 \]
 
-This is the unique lift of \(T_F\) from a source supported on \(\Lambda\). Uniqueness uses the right-adjoint support functor and that supported source. Vanishing of a map outside \(\Lambda\), without such a source, would not by itself provide a unique lift.
+This is the unique lift of \(T_F\) from a source supported on \(\Lambda\). To see the adjunction explicitly, let \(A\) be any complex supported on \(\Lambda\). The support triangle for \(E_X\) has third term \(Rj_*j^{-1}E_X\), where \(j\) is the complementary open inclusion. For every integer \(r\),
+\(\operatorname{Hom}(A,Rj_*j^{-1}E_X[r])
+=\operatorname{Hom}(j^{-1}A,j^{-1}E_X[r])=0\).
+Applying \(\operatorname{Hom}(A,-)\) to that triangle therefore gives the bijection
+\(\operatorname{Hom}(A,R\Gamma_\Lambda E_X)\simeq
+\operatorname{Hom}(A,E_X)\), induced by the support counit. Taking \(A=\mathsf M(F,F)\) proves existence and uniqueness of the lift in (7). Vanishing of a map outside \(\Lambda\), without such a source, would not by itself provide a unique lift.
 
 Define
 
@@ -148,7 +153,7 @@ The external microlocal comparison
  \qquad\text{(11)}
 \]
 
-comes from the product normal deformation, its two independent positive scalings and the Fourier product kernel. On the center-supported unit kernels, its map sends \(1\otimes1\) to \(1\): both zero-normal kernel projections are identities. Thus (11), followed by the actual external-Hom comparison, carries \(e_F\boxtimes e_G\) to \(e_{F\boxtimes G}\).
+comes from the product normal deformation, its two independent positive scalings and the Fourier product kernel. On the center-supported unit kernels, its map sends \(1\otimes1\) to \(1\): both zero-normal kernel projections are identities. Thus (11), followed by the actual external-Hom comparison, carries \(e_F\boxtimes e_G\) to \(e_{F\boxtimes G}\). One can verify the selected comparison before applying Fourier: the specialization external map is adjoint to the identity on the two positive chambers, and its restriction to equal deformation parameters is ordinary base exchange. Precomposing with the two ordinary units leaves the single product unit by naturality and the counit triangles. This is the zero-section identity P19 in the product-normalization proof. On zero-normal supported inputs the remaining Fourier correspondence has no fibre to integrate, so its product map is the ordered tensor identity. This checks the unit map itself without inferring equality from its ordinary direct image.
 
 Ordinary diagonal restriction is compatible with products. Tensor the evaluations in (5), permute the factors to the displayed product order and use
 \(\omega_X\boxtimes\omega_Y\simeq\omega_{X\times Y}\).
@@ -180,7 +185,7 @@ Precomposition acts on the first argument; postcomposition acts on the second. T
  \qquad\text{(13)}
 \]
 
-Both statements follow before microlocalization from pre- and postcomposition of the actual Hom kernels. The equality for the units is the fact that both sides represent \(h\).
+Both statements follow before microlocalization from pre- and postcomposition of the actual Hom kernels. For the upper-right and lower-left routes, applying a map to the second Hom argument commutes with applying a map contravariantly to the first; these are degree-zero maps, so their interchange introduces no graded sign. The two maps from \(k_{\Delta_X}\) in the unit equality are adjoint to \(h\circ\mathrm{id}_F\) and \(\mathrm{id}_G\circ h\), respectively. They are equal under the same kernel adjunction used in (3); applying microlocalization proves the asserted equality of units.
 
 There is also an equality of trace maps from \(A\). Its constructible kernel is \(F\boxtimes D_XG\). The two routes apply \(h\) to the first factor or \(D_Xh\) to the second. On the diagonal, naturality of Verdier evaluation gives
 
@@ -192,7 +197,7 @@ There is also an equality of trace maps from \(A\). Its constructible kernel is 
 
 The same ordinary diagonal restriction precedes both maps. Apply microlocalization and lift to a common allowed carrier
 \(\Lambda_0=\operatorname{SS}(F)\cup\operatorname{SS}(G)\).
-The cross source \(A\) is supported there, so uniqueness of the supported lift gives
+The carrier \(\Lambda_0\) is allowed: the finite union is closed, conic and subanalytic, and a common stratification refines its two isotropic carriers into isotropic strata. The cross source \(A\) has support inside \(\operatorname{SS}(F)\cap\operatorname{SS}(G)\), hence inside \(\Lambda_0\). The adjunction just proved for (7), applied to this cross source, therefore lifts the equality of the evaluated kernel maps uniquely and gives
 
 \[
  \kappa_G^{\Lambda_0}(\mathrm{post}\,h)
@@ -228,9 +233,10 @@ Fix \(p\in\Omega\) with nonzero covector, and work in a vector-space chart. The 
 
 where \(a\) is a \(p\)-denominator and
 \(P_\gamma=\phi_\gamma^{-1}R\phi_{\gamma*}\).
-Choose relatively compact subanalytic \(U\) and a closed proper polyhedral cone \(\gamma\), with the chosen covector strictly negative on its nonzero vectors. These choices suffice in the cone-stalk system: compact unit directions permit a finite polyhedral enlargement of a permitted cone while retaining strict negativity; its polar is the corresponding angular refinement. Shrinking \(U\) gives the required simultaneous refinements.
+Choose relatively compact subanalytic \(U\) and a closed proper polyhedral cone \(\gamma\), with the chosen covector strictly negative on its nonzero vectors. These choices are cofinal in the cone-stalk system. If the admissible cone is \(\gamma_0=\{0\}\), retain it: it is already closed, proper and polyhedral. For any other admissible closed cone \(\gamma_0\), take the nonempty compact convex section
+\(B=\{v\in\gamma_0:-\xi(v)=1\}\). A sufficiently close outer polytope in the affine hyperplane \(-\xi=1\) contains \(B\): choose a finite sufficiently fine grid covering a small convex thickening of \(B\), and take the convex hull of the grid cubes meeting \(B\). Its distance from \(B\) can be made arbitrarily small. The positive cone over this polytope is closed, proper and polyhedral, contains \(\gamma_0\), and stays in any prescribed angular enlargement of it. The functional \(\xi\) remains strictly negative on every nonzero vector, because its value is \(-1\) on the section. Polarity gives the required angular refinement in the cone-stalk system. Relatively compact subanalytic balls are cofinal ordinary neighborhoods, so shrinking \(U\) gives simultaneous refinements. Thus the representation in (17) can be chosen with both of these properties; no cycle is assigned to a nonconstructible intermediate object.
 
-The object in the middle of (17) is constructible. To check the nonproper operation, use its actual difference kernel
+The object in the middle of (17) is constructible. To check the nonproper operation, use G10, the cone-topology projector. In its incidence coordinates \(z-x\in\gamma\), put \(v=z-x\); projection to \(x\) becomes \(d(v,z)=z-v\). This invertible coordinate change gives its actual difference kernel
 
 \[
  P_\gamma(F_U)=Rd_*(k_\gamma\boxtimes F_U),
@@ -265,13 +271,24 @@ For \(X=\mathrm{pt}\), all diagonal and microlocal operations in (3)–(8) are i
  \qquad\text{(20)}
 \]
 
-The dual differential makes this a chain map. For homogeneous bases \(e_{r,s}\) of \(P^r\), its inverse carries the identity to
+For a homogeneous functional \(\varphi\) of degree \(b\), the dual differential is
+\(d^\vee\varphi=-(-1)^b\varphi d_P\).
+If \(p\) has degree \(a\), the tensor differential sends \(p\otimes\varphi\) to
+\(d_Pp\otimes\varphi+(-1)^a p\otimes d^\vee\varphi\).
+Applying (20) gives the two terms \(d_PT-(-1)^{a+b}Td_P\), which are exactly the Hom differential of the degree-\(a+b\) map \(T\). Thus (20) is a chain map. In each degree its basis tensors are the corresponding matrix units; bounded finite dimensionality makes their total sum finite, so it is an isomorphism of complexes. For homogeneous bases \(e_{r,s}\) of \(P^r\), its inverse carries the identity to
 \(\sum_{r,s}e_{r,s}\otimes e_{r,s}^*\).
 The symmetry in (5) contributes
 \((-1)^{r(-r)}=(-1)^r\).
 Evaluation therefore gives
 \(\sum_r(-1)^r\dim P^r\).
-The finite exact sequences for boundaries, cycles and cohomology cancel each boundary in two consecutive degrees, proving
+Write \(Z^r=\ker(d:P^r\to P^{r+1})\) and
+\(B^r=\operatorname{im}(d:P^{r-1}\to P^r)\).
+The exact sequences
+\(0\to Z^r\to P^r\to B^{r+1}\to0\) and
+\(0\to B^r\to Z^r\to H^r(P)\to0\)
+give
+\(\dim P^r=\dim H^r(P)+\dim B^r+\dim B^{r+1}\).
+In the finite alternating sum the two boundary sums cancel after shifting the index by one. Consequently the evaluated identity depends only on cohomology and gives
 
 \[
  \operatorname{CC}(V)=\chi(V)[\mathrm{pt}],
@@ -353,3 +370,9 @@ At points take \(P=k^2\oplus k[-1]\) and \(Q=k^2[1]\oplus k[-2]\), with zero dif
  \qquad\text{(23)}
 \]
 Thus the product cycle is \(-[\mathrm{pt}]\), as (10) predicts. In the kernel product proof, the permutation grouping the two identity tensors and the permutation in their graded evaluation retain the same tensor degree signs. An ungraded contraction would instead count all \(9\) tensor basis vectors and fail this calculation.
+
+## Mathematical sources
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§3.1–3.4, pp. 197–199, works with bounded constructible complexes over a field, uses their microlocal local models, and defines conormal multiplicities by Euler characteristics. This is credit for the characteristic-cycle framework. The supported identity construction (3)–(8), its evaluated product square, the constructible-roof argument, and the explicit point supertrace are proved above from the indicated programme operations. The paper's conormal orientation and index-intersection convention must be compared before identifying its generators with a differently normalized graph construction.
+
+P. Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=95), edition dated 01/08/2026, Corollary 4.6.2, Propositions 4.6.4–4.6.8 and §4.7, pp. 95–97, supplies the exceptional composition, tensor, internal-Hom, closed-support and diagonal identities. In particular Proposition 4.6.8 explains the exceptional diagonal recovery; ordinary restriction is the separate evaluation step in (6). The present teaching order follows the maps needed to keep support, then tests loss of support, naturality without invertibility, compact cutoff representatives and graded cancellation in six solved examples. The human texts retain their authorship and their own terms.

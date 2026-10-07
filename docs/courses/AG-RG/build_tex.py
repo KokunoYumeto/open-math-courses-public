@@ -86,9 +86,9 @@ def convert(text):
     # Section headings already prohibit a break before the attribution.
     converted=re.sub(r'(\\emph\{Adapted from the Stacks project,[^\n]*\}\n)\n',
                      lambda m:m[1]+r'\nopagebreak[4]'+'\n\n',result.stdout)
-    # This paragraph can acquire an invalid glyph offset from font expansion
+    # These paragraphs can acquire an invalid glyph offset from font expansion
     # in the collected edition. Keep its exact text and use ordinary spacing.
-    converted=re.sub(r'^(For completeness, this list follows from the reflection axioms,[^\n]+)$',
+    converted=re.sub(r'^((?:For completeness, this list follows from the reflection axioms,|Over [^\n]+?, it is useful initially to allow a smooth affine monomorphism)[^\n]+)$',
                      lambda m:r'\begingroup\microtypesetup{expansion=false,protrusion=false}'+'\n'+m[1]+'\n'+r'\par\endgroup',
                      converted,flags=re.M)
     return converted

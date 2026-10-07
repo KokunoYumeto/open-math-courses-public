@@ -2,11 +2,12 @@
 
 A smooth cone boundary has an inward and an outward conormal. At its vertex, those conormals acquire additional fibre pieces. The distinction between a closed cone, its open interior and its punctured boundary changes both the pieces and their coefficients. We calculate these cycles from actual local support tests, duality and support triangles, including the dimension-dependent vertex signs.
 
-Use Directional tests at a constructible boundary for the neighborhood definition of microsupport, Constructible costalks and Verdier duality for the natural costalk-to-dual-stalk pairing, and Antipodal duality and half-line characteristic cycles for the supported antipodal operation and its actual unit/evaluation compatibility. Integer coefficients and additive characteristic cycles supplies normalized conormals, integral dense-piece determination and additivity. The exact constant-interval and closed-cover prerequisites are SH02-CA-CONSTANT and SH02-CA-CLOSED-MV; the proper-support comparison is SH02-EX-BASECHANGE-BRIDGE. Their lower and transitive foundations remain open. We prove the special contraction and convex-vertex arguments needed here rather than importing a general cone computation.
+Use Directional tests at a constructible boundary for the neighborhood definition of microsupport, Constructible costalks and Verdier duality for the natural costalk-to-dual-stalk pairing, and Antipodal duality and half-line characteristic cycles for the supported antipodal operation and its actual unit/evaluation compatibility. Integer coefficients and additive characteristic cycles supplies integral dense-piece determination and additivity. The precise topological inputs are constant-interval acyclicity, constant coefficients on locally closed convex sets, closed-cover cohomology, and proper-support base change. We derive the contraction and the uniform convex-vertex tests from those maps.
 
-Let \(k\) be a field of characteristic zero. Set \(d=n+1\), with \(n\geq0\), and work on the real analytic manifold \(X=\mathbb R_t\times\mathbb R_x^n\), with its standard orientation. Every sheaf below is the indicated constant coefficient extended by zero; it lies in \(D^b_{\mathbb R\text{-}c}(k_X)\) with finite perfect stalks. Cycle normalizations and orientation coefficients are those of the linked lessons.
+Let \(k\) be a field of characteristic zero. Set \(d=n+1\), with \(n\geq0\), and work on the real analytic manifold \(X=\mathbb R_t\times\mathbb R_x^n\), with its standard orientation. Every sheaf below is the indicated constant coefficient extended by zero; it lies in \(D^b_{\mathbb R\text{-}c}(k_X)\) with finite perfect stalks. Cycle normalizations and orientation coefficients are those of the linked lessons. In particular, the graph-normalized conormal formula is
+\(CC(k_M)=(-1)^{\dim M}[T_M^*X]\) for a closed smooth \(M\), and the same equality holds locally for a locally closed smooth piece. The point coefficient is \(+1\). We retain this distinction between the normalized geometric bracket and the characteristic cycle of the constant sheaf throughout.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 2 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
 ## Open pieces and closed carriers
 
@@ -37,7 +38,7 @@ Write \((t,x;\tau,\xi)\) for cotangent coordinates. Define the trimmed normalize
 
 The first sign of \(\tau\) labels the base hypersurface; its second sign labels the time component of the covector. The \(\gamma_\pm\) restrictions are **strict** timelike regions. Their closed carriers include the light boundary \(\pm\tau=|\xi|\). A restriction in (2) is a chain with its frontier germs retained, not an independently closed cycle. The sums proved below have the required frontier cancellation.
 
-These pieces partition the dense top-dimensional parts of the relevant conormals. Missing zero-section cone boundaries and missing light directions in the point fibre have dimension at most \(d-1\). The integral top-chain injection therefore gives
+These pieces partition the dense top-dimensional parts of the relevant conormals. Missing zero-section cone boundaries and missing light directions in the point fibre have dimension at most \(d-1\). These are statements about geometric brackets, before multiplying by the constant-sheaf dimension factor. The integral top-chain injection therefore gives
 
 \[
 [T_X^*X]=\sigma_++\sigma_0+\sigma_-,\qquad
@@ -58,7 +59,7 @@ k_Y\longrightarrow Rp_*k_{Y\times[0,1]}
 \qquad\text{(4)}
 \]
 
-with \(k\to R\Gamma([0,1];k)\), the constant-section isomorphism. Thus (4) is an isomorphism. On derived global sections, both endpoint restrictions are inverses of the same projection pullback. For any homotopy \(H:Y\times[0,1]\to Y\), the two end maps therefore induce the same map on \(R\Gamma(Y;k)\), by composing their endpoint restrictions with \(H^*\).
+with \(k\to R\Gamma([0,1];k)\), the constant-section isomorphism. Thus (4) is an isomorphism. For either endpoint inclusion \(i_\epsilon:Y\to Y\times[0,1]\), the equality \(p i_\epsilon=\operatorname{id}_Y\) makes its restriction a left inverse of the projection pullback on derived global sections. Since that pullback is an isomorphism by (4), both endpoint restrictions are its inverse. For any homotopy \(H:Y\times[0,1]\to Y\), the two end maps therefore induce the same map on \(R\Gamma(Y;k)\), by composing their endpoint restrictions with \(H^*\).
 
 Apply this to a contraction from the identity to the constant map through a chosen point. The latter map factors through \(R\Gamma(\{\mathrm{pt}\};k)=k\). Point restriction and the constant-section map have both composites equal to the identity, the second by the homotopy argument. Consequently
 
@@ -138,7 +139,7 @@ k_A\longrightarrow k_C\xrightarrow{r}k_o\xrightarrow{+1}.
 \qquad\text{(13)}
 \]
 
-For \(q\) strictly inside (6), there is \(b>0\) with \(q(z)\geq b|z|\) on \(C\). One may take any \(b<(\tau-|\xi|)/\sqrt2\). This strict inequality persists for nearby covectors. For every \(C^1\) test with such differential at \(o\), the mean-value estimate along the segment from \(o\) to \(z\in C\) gives \(\varphi(z)-\varphi(o)>0\) for all sufficiently small nonzero \(z\in C\). The local support of \(k_A\) is entirely in the closed test cut, so its support-test stalk equals its zero stalk at \(o\).
+For \(q\) strictly inside (6), there is \(b>0\) with \(q(z)\geq b|z|\) on \(C\). One may take any \(b<(\tau-|\xi|)/\sqrt2\). This strict inequality persists for nearby covectors. For every \(C^1\) test with such differential at \(o\), the mean-value estimate along the segment from \(o\) to \(z\in C\) gives \(\varphi(z)-\varphi(o)>0\) for all sufficiently small nonzero \(z\in C\). On a sufficiently small neighborhood the restriction of \(k_A\) to the open lower test cut is zero. The localization triangle therefore identifies its sections with closed test support with \(k_A\) itself on that neighborhood. Its stalk at \(o\) is zero, proving the required test vanishing there.
 
 At nearby nonvertex points, \(k_A=k_C\), whose nonzero boundary normals have \(|\tau|=|\xi|\), and whose interiors are constant. They avoid the same strict timelike cotangent neighborhood. Thus \(SS(k_A)\) misses that neighborhood and (13) makes the actual restriction \(r\) a microlocal isomorphism there:
 
@@ -148,10 +149,10 @@ At nearby nonvertex points, \(k_A=k_C\), whose nonzero boundary normals have \(|
 \qquad\text{(14)}
 \]
 
-This is an isomorphism in the point-localized derived category, not equality of ordinary stalk ranks. At a positive conormal over \(S_+\), the support triangle for the local closed half-space identifies its sheaf with \(k_{S_+}\), since the open half-space is invisible in the inward direction. Normalized conormal cycles and microlocal invariance now give coefficient \(+1\) on \(\tau_{+,+}\) and \(\gamma_+\); the interior constant coefficient gives \(+1\) on \(\sigma_+\). The microsupport calculation excludes other top-dimensional pieces. Integral dense-piece determination, including frontier germs, proves
+This is an isomorphism in the point-localized derived category, not equality of ordinary stalk ranks. At a positive conormal over \(S_+\), the support triangle for the local closed half-space identifies its sheaf with \(k_{S_+}\), since the open half-space is invisible in the inward direction. The smooth support \(S_+\) has dimension \(n\), so its constant sheaf has coefficient \((-1)^n\) in the normalized bracket \(\tau_{+,+}\). At a positive timelike vertex covector, (14) instead gives the point model and coefficient \(+1\) on \(\gamma_+\). In the interior the constant sheaf lives on dimension \(d\) and gives coefficient \((-1)^d\) on \(\sigma_+\). These are coefficients of the actual localized objects, not ordinary vertex stalk ranks. The microsupport calculation excludes other top-dimensional pieces. Integral dense-piece determination, including frontier germs, proves
 
 \[
-CC(k_{Z_\pm})=\sigma_\pm+\tau_{\pm,\pm}+\gamma_\pm.
+CC(k_{Z_\pm})=(-1)^d\sigma_\pm+(-1)^n\tau_{\pm,\pm}+\gamma_\pm.
 \qquad\text{(15)}
 \]
 
@@ -190,15 +191,15 @@ The supported antipode acts on the trimmed normalized pieces by
 \qquad\text{(18)}
 \]
 
-These signs use the base dimensions \(d,n,0\) of the corresponding conormals and their orientation coefficients. Combining (15), (17), actual antipodal duality and the shift rule gives
+These signs use the base dimensions \(d,n,0\) of the corresponding conormals and their orientation coefficients. Combining (15), (17), actual antipodal duality and the shift rule gives the formula below. Indeed, the antipode changes the first coefficient by \((-1)^d\), the second by \((-1)^n\), and exchanges the point pieces with no sign. Applied to (15), its three resulting coefficients are all \(+1\). To recover the open sheaf from its shift by \([d]\), multiply the entire result by \((-1)^d\). Thus
 
 \[
 CC(k_{U_\pm})
-=\sigma_\pm-\tau_{\pm,\mp}+(-1)^{n+1}\gamma_\mp.
+=(-1)^d\bigl(\sigma_\pm+\tau_{\pm,\mp}+\gamma_\mp\bigr).
 \qquad\text{(19)}
 \]
 
-The smooth open-boundary coefficient is always \(-1\): its sign is \((-1)^{d+n}=-1\). The vertex coefficient instead has sign \((-1)^d\). These two signs have different origins.
+The open smooth-boundary coefficient in the normalized bracket is \((-1)^d=-(-1)^n\). It is the negative of the closed smooth-boundary coefficient, after reversing the ray. That relative minus sign is dimension independent; the absolute coefficient is not. The open vertex coefficient is \((-1)^d\), obtained from the ambient duality shift acting on the positive point coefficient.
 
 ## Support triangles calculate both middle regions and the boundaries
 
@@ -225,18 +226,18 @@ Finally let \(B_\pm=Z_\pm\setminus U_\pm=S_\pm\cup\{o\}\). Two support triangles
 
 | Sheaf &emsp; | Integral characteristic cycle |
 | --- | --- |
-| \(k_X\) | \(\sigma_++\sigma_0+\sigma_-\) |
+| \(k_X\) | \((-1)^d(\sigma_++\sigma_0+\sigma_-)\) |
 | \(k_o\) | \(\gamma_++\gamma_0+\gamma_-\) |
-| \(k_{Z_\pm}\) | \(\sigma_\pm+\tau_{\pm,\pm}+\gamma_\pm\) |
-| \(k_{U_\pm}\) | \(\sigma_\pm-\tau_{\pm,\mp}+(-1)^{n+1}\gamma_\mp\) |
-| \(k_{Z_0}\) | \(\sigma_0+\tau_{+,-}+\tau_{-,+}+(-1)^n(\gamma_++\gamma_-)\) |
-| \(k_{U_0}\) | \(\sigma_0-\tau_{+,+}-\tau_{-,-}+\gamma_0\) |
-| \(k_{S_\pm}\) | \(\tau_{\pm,+}+\tau_{\pm,-}-\gamma_0+\bigl((-1)^n-1\bigr)\gamma_\mp\) |
+| \(k_{Z_\pm}\) | \((-1)^d\sigma_\pm+(-1)^n\tau_{\pm,\pm}+\gamma_\pm\) |
+| \(k_{U_\pm}\) | \((-1)^d(\sigma_\pm+\tau_{\pm,\mp}+\gamma_\mp)\) |
+| \(k_{Z_0}\) | \((-1)^d\sigma_0+(-1)^n(\tau_{+,-}+\tau_{-,+}+\gamma_++\gamma_-)\) |
+| \(k_{U_0}\) | \((-1)^d(\sigma_0+\tau_{+,+}+\tau_{-,-})+\gamma_0\) |
+| \(k_{S_\pm}\) | \((-1)^n(\tau_{\pm,+}+\tau_{\pm,-})-\gamma_0+\bigl((-1)^n-1\bigr)\gamma_\mp\) |
 
 For example, (21) and the complement triangle give
 \(CC(k_{U_0})=CC(k_X)-CC(k_{Z_+})-CC(k_{Z_-})+CC(k_o)\).
-For \(S_+\), the \(\gamma_+\) coefficients cancel, whereas the remaining opposite timelike coefficient is
-\(-(-1)^{n+1}-1=(-1)^n-1\). These computations explain the displayed covector signs and the coefficient \(-2\) that occurs in odd spatial dimension. All lower-dimensional frontier terms cancel because the equations were obtained by the characteristic-cycle map on genuine sheaf triangles.
+The zero-section contributions leave \((-1)^d\sigma_0\), the two same-sign boundary contributions have coefficient \(-(-1)^n=(-1)^d\), and the point contributions leave \(\gamma_0\). For \(S_+\), the \(\gamma_+\) coefficients cancel, whereas the remaining opposite timelike coefficient is
+\(-(-1)^{n+1}-1=(-1)^n-1\). Both smooth conormal rays have coefficient \((-1)^n\). These computations explain the displayed covector signs and the coefficient \(-2\) that occurs in odd spatial dimension. All lower-dimensional frontier terms cancel because the equations were obtained by the characteristic-cycle map on genuine sheaf triangles.
 
 ## Exercises with complete solutions
 
@@ -260,9 +261,9 @@ Assume \(n\geq1\) and test \(k_{Z_+}\) at \(o\) with \(\varphi(t,x)=x_1+t^2\). D
 
 *Difficulty: Intermediate.*
 
-Compare \(n=1\) and \(n=2\) in the open future cone, closed middle and punctured future boundary formulas. Which smooth-boundary coefficient is independent of this parity?
+Compare \(n=1\) and \(n=2\) in the open future cone, closed middle and punctured future boundary formulas. Which comparison of the open and closed smooth-boundary coefficients is independent of this parity?
 
-**Solution.** For \(n=1\), the open future vertex coefficient is \(+\gamma_-\); the closed middle has \(-\gamma_+-\gamma_-\); and the punctured future boundary has opposite timelike coefficient \(-2\gamma_-\), besides \(-\gamma_0\) and its two boundary conormals. For \(n=2\), those three coefficients become \(-\gamma_-\), \(+\gamma_++\gamma_-\), and zero on \(\gamma_-\), respectively. The open smooth-boundary coefficient is \(-\tau_{+,-}\) in both cases, since its antipodal conormal sign \((-1)^n\) combines with the ambient duality shift \((-1)^{n+1}\). Using the ambient dimension for both signs would give the wrong boundary answer.
+**Solution.** For \(n=1\), the open future vertex coefficient is \(+\gamma_-\); the closed middle has \(-\gamma_+-\gamma_-\); and the punctured future boundary has opposite timelike coefficient \(-2\gamma_-\), besides \(-\gamma_0\) and its two boundary conormals. For \(n=2\), those three coefficients become \(-\gamma_-\), \(+\gamma_++\gamma_-\), and zero on \(\gamma_-\), respectively. The open smooth-boundary terms are \(+\tau_{+,-}\) when \(n=1\) and \(-\tau_{+,-}\) when \(n=2\); the corresponding interior terms are \(+\sigma_+\) and \(-\sigma_+\). The closed smooth-boundary coefficient is \((-1)^n\), so in both dimensions the open coefficient is its negative on the opposite ray. The ambient shift, the antipodal conormal sign, and the original closed coefficient all enter: \((-1)^{n+1}(-1)^n(-1)^n=(-1)^{n+1}\). Omitting the original coefficient or using the ambient dimension twice loses the stated convention.
 
 ### The zero-spatial-dimension specialization
 
@@ -270,7 +271,7 @@ Compare \(n=1\) and \(n=2\) in the open future cone, closed middle and punctured
 
 Set \(n=0\). Reduce all seven rows to the line formulas, including the middle regions and the punctured boundaries.
 
-**Solution.** There are no \(\tau\) chains, \(\sigma_0=\gamma_0=0\), \(Z_0=\{o\}\), and \(U_0=S_+=S_-=\varnothing\). The two \(\sigma\) chains are the positive and negative zero-section rays, while \(\gamma_\pm\) are the corresponding point-fibre rays. The first two rows give their full sums. Closed half-lines give \(\sigma_\pm+\gamma_\pm\), and open half-lines give \(\sigma_\pm-\gamma_\mp\), since \((-1)^{n+1}=-1\). The closed-middle row is \(\gamma_++\gamma_-\), the point cycle. The open-middle row is zero. In the boundary row, \((-1)^n-1=0\) and all other terms vanish, as required for the empty sheaves. No connectedness assumption on a spacelike region was needed.
+**Solution.** There are no \(\tau\) chains, \(\sigma_0=\gamma_0=0\), \(Z_0=\{o\}\), and \(U_0=S_+=S_-=\varnothing\). The two \(\sigma\) chains are the positive and negative zero-section rays, while \(\gamma_\pm\) are the corresponding point-fibre rays. The constant line has cycle \(-\sigma_+-\sigma_-\), whereas the point has cycle \(\gamma_++\gamma_-\). Closed half-lines give \(-\sigma_\pm+\gamma_\pm\), and open half-lines give \(-\sigma_\pm-\gamma_\mp\), because \(d=1\). These are exactly the four-ray formulas with the graph-normalized zero-section bracket; replacing that bracket by the positive fibre Thom unit would change the meaning of each \(\sigma\). The closed-middle row is \(\gamma_++\gamma_-\), the point cycle. The open-middle row is zero. In the boundary row, \((-1)^n-1=0\) and all other terms vanish, as required for the empty sheaves. No connectedness assumption on a spacelike region was needed.
 
 ### A zero vertex stalk can carry a nonzero vertex cycle
 
@@ -286,7 +287,7 @@ Assume \(n\geq1\) and take a nonzero spacelike covector \(p=(o;\tau,\xi)\) with 
 
 Take \(n=2\), and let \(P=k\oplus k^2[1]\). Calculate the cycles of \(P_{Z_+}\) and its Verdier dual, and verify antipodal compatibility. What changes for \(Q=k\oplus k[1]\)?
 
-**Solution.** The Euler weight is \(\chi(P)=1-2=-1\), so the first cycle is \(-\sigma_+-\tau_{+,+}-\gamma_+\). Its dual is \(P^\vee_{U_+}[3]\), with Euler weight \((-1)^3\chi(P^\vee)=1\). The open-cone formula gives \(\sigma_+-\tau_{+,-}-\gamma_-\). Applying (18) to the first cycle gives exactly that result: the zero-section sign is \(-1\), the smooth hypersurface sign is \(+1\), and the point pieces are exchanged with sign \(+1\). For \(Q\), the Euler weight is zero, so both cycles vanish. The coefficient complexes and their sheaves remain nonzero, and their microsupport still records the cone directions: direct summands with nonzero tests cannot disappear by an Euler cancellation. Characteristic cycles forget that cancellation's graded constituents.
+**Solution.** Here \(d=3\) and \(n=2\), so the unweighted closed-cone cycle is \(-\sigma_++\tau_{+,+}+\gamma_+\). The Euler weight is \(\chi(P)=1-2=-1\), making \(CC(P_{Z_+})=\sigma_+-\tau_{+,+}-\gamma_+\). Its dual is \(P^\vee_{U_+}[3]\), with Euler weight \((-1)^3\chi(P^\vee)=1\). The open-cone formula gives \(-\sigma_+-\tau_{+,-}-\gamma_-\). Applying (18) to the first cycle gives exactly that result: the zero-section sign is \(-1\), the smooth hypersurface sign is \(+1\), and the point pieces are exchanged with sign \(+1\). For \(Q\), the Euler weight is zero, so both cycles vanish. The coefficient complexes and their sheaves remain nonzero, and their microsupport still records the cone directions: direct summands with nonzero tests cannot disappear by an Euler cancellation. Characteristic cycles forget that cancellation's graded constituents.
 
 ### A distant cap changes the compact index
 
@@ -306,7 +307,7 @@ Explain why the last two have identical vertex-cycle germs despite different com
 Assume \(n\geq1\). Compute the point costalk of \(k_{Z_0}\) and the vertex stalk of its Verdier dual. Can \(D_Xk_{Z_0}\) equal \(k_{U_0}[d]\), as it does for the two convex closed cones? Compare their cycles.
 
 **Solution.** The unpunctured middle cone in a small ball contracts to its vertex, so its ordinary cohomology is \(k\) by (5). Its link on the unit sphere is described by
-\(t\in[-1/\sqrt2,1/\sqrt2]\) and \(x=\sqrt{1-t^2}\,u\), with \(u\in S^{n-1}\). Thus it is an interval times \(S^{n-1}\), and the punctured middle cone retracts to that sphere. For \(n=1\), it has two components and the actual restriction is diagonal \(k\to k^2\); its fibre is \(k[-1]\). For \(n\geq2\), the sphere has cohomology \(k\) in degree zero and \(k\) in degree \(n-1\). This follows inductively from the closed upper/lower hemisphere sequence: each hemisphere is a contractible compact ball and their intersection is the sphere of one lower dimension. The restriction from the cone is the constant-section isomorphism in degree zero. Its fibre therefore has a single cohomology group \(k\) in degree \(n\), namely \(i_o^!k_{Z_0}\simeq k[-n]\), with the spatial orientation fixing a generator. Natural costalk duality gives \((D_Xk_{Z_0})_o\simeq k[n]\). The open-middle extension has zero stalk at \(o\), even after shift, so the proposed isomorphism fails.
+\(t\in[-1/\sqrt2,1/\sqrt2]\) and \(x=\sqrt{1-t^2}\,u\), with \(u\in S^{n-1}\). Thus it is an interval times \(S^{n-1}\), and the punctured middle cone retracts to that sphere. For \(n=1\), it has two components and the actual restriction is diagonal \(k\to k^2\); its fibre is \(k[-1]\). For \(n\geq2\), the sphere has cohomology \(k\) in degree zero and \(k\) in degree \(n-1\). Here is the closed-cover induction, including the small dimension. For \(S^0\) there are two points. For \(S^1\), its two closed semicircles are acyclic and their intersection is \(S^0\); the difference of restrictions \(k^2\to k^2\) has image the diagonal, so its kernel and cokernel are each \(k\), in degrees zero and one. For \(S^r\) with \(r\geq2\), the closed hemispheres are contractible compact balls and their intersection is connected \(S^{r-1}\). The degree-zero difference \(k^2\to k\) is onto with kernel \(k\). The remaining part of the closed-cover exact sequence shifts the reduced cohomology of \(S^{r-1}\) up by one. Induction gives exactly the asserted groups. The restriction from the cone is the constant-section isomorphism in degree zero. Its fibre therefore has a single cohomology group \(k\) in degree \(n\), namely \(i_o^!k_{Z_0}\simeq k[-n]\), with the spatial orientation fixing a generator. Natural costalk duality gives \((D_Xk_{Z_0})_o\simeq k[n]\). The open-middle extension has zero stalk at \(o\), even after shift, so the proposed isomorphism fails.
 
 Applying (18) to the closed-middle row and comparing the open-middle row gives precisely
 
@@ -319,4 +320,6 @@ The additional point-cycle coefficient agrees with the Euler weight of the nonze
 
 ## References
 
-The characteristic cycle at the vertex of a Lorentz cone is a basic example in the theory of characteristic cycles of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985). The polar, the uniform epigraph test, the proper-interval contraction, the vertex restriction, the costalk duality calculation and the support-triangle derivations are proved above, with the prerequisite lessons linked.
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.5–3.4, pp. 196–199, provides coefficient-valued chains, an explicit twisted conormal orientation and the generic local Euler-multiplicity construction. The normalization of a conormal generator must be compared before transferring a coefficient between conventions. The present cone calculation uses the graph-normalized brackets and the evaluated characteristic-cycle construction in the programme lessons linked above.
+
+The polar, uniform epigraph tests, proper-interval contraction, point-localized vertex restriction, costalk calculation and seven-row support-triangle table are proved here. The worked examples distinguish the dimensions of the smooth base pieces from the ambient duality shift, and local vertex data from a compact index. The seven-row table follows from these local tests and support triangles.

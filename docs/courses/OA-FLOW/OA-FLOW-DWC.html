@@ -1,0 +1,1018 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dominant weights and inner comparison · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-RCC.html">Previous lesson</a><a href="OA-FLOW-CST.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-DWC.md">Lesson source</a></nav><h1 id="OA-FLOW.DWC.SETTING">Dominant weights and inner comparison</h1>
+<p>Two faithful weights can have the same modular automorphisms and still assign different values to positive elements. A comparison of weights must retain those values, including infinity. We construct the implementing unitary through a scalar regular representation and then remove that auxiliary Hilbert space by an explicit centralizer calculation.</p>
+<p>The argument uses continuous families of modular eigenunitaries. Those families are already present for the dual trace weight of a trace-scaling crossed product and for each of its automorphic images. They let us compare these weights without a separability hypothesis or a selection of unitaries from pointwise existence statements.</p>
+<p><em>Original exposition, examples, figures, data and reproducible drawing code in this lesson are dedicated to CC0-1.0. Source publications and font components retain their own terms.</em></p>
+<p><a id="dwc-setting"></a></p>
+<h2 id="weights-continuous-eigenfields-and-exact-comparison">Weights, continuous eigenfields and exact comparison</h2>
+<p>Let <span class="math" data-tex="\(B\ne0\)">\(B\ne0\)</span> be a von Neumann algebra, and let <span class="math" data-tex="\(\chi_1,\chi_2\)">\(\chi_1,\chi_2\)</span> be faithful normal semifinite weights. Write
+<span class="math math-display" data-tex="\[
+ B_{\chi_j}=\{x\in B:\sigma_t^{\chi_j}(x)=x
+                              \text{ for every }t\in\mathbb R\}.
+ \tag{DWC0.a}
+\]">\[
+ B_{\chi_j}=\{x\in B:\sigma_t^{\chi_j}(x)=x
+                              \text{ for every }t\in\mathbb R\}.
+ \tag{DWC0.a}
+\]</span>
+For the main comparison theorem, assume that each centralizer is properly infinite. Here a unital algebra is <strong>properly infinite</strong> when its identity contains two orthogonal subprojections each equivalent to the identity; the projection arguments in <a href="OA-FLOW-PC.html#pc-5">PC5</a> supply the countable isometry families used below.</p>
+<p>Suppose also that we are given strongly continuous maps
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ X_j:\mathbb R\longrightarrow\mathcal U(B),\\
+ \sigma_t^{\chi_j}(X_j(r))=e^{irt}X_j(r)
+                       \qquad(r,t\in\mathbb R,\ j=1,2).
+ \end{gathered}
+ \tag{DWC0.b}
+\]">\[
+ \begin{gathered}
+ X_j:\mathbb R\longrightarrow\mathcal U(B),\\
+ \sigma_t^{\chi_j}(X_j(r))=e^{irt}X_j(r)
+                       \qquad(r,t\in\mathbb R,\ j=1,2).
+ \end{gathered}
+ \tag{DWC0.b}
+\]</span>
+No group law in <span class="math" data-tex="\(r\)">\(r\)</span> is required. Continuity means strong continuity in a faithful normal representation; for unitary fields it also gives strong continuity of the adjoints, and <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST2</a> makes the condition independent of the faithful normal representation. The theorem proved below is
+<span class="math math-display" data-tex="\[
+ \boxed{\quad
+ \chi_2(x)=\chi_1(wxw^*)\quad(x\in B_+)
+ \quad\text{for some }w\in\mathcal U(B).
+ \quad}
+ \tag{DWC0.c}
+\]">\[
+ \boxed{\quad
+ \chi_2(x)=\chi_1(wxw^*)\quad(x\in B_+)
+ \quad\text{for some }w\in\mathcal U(B).
+ \quad}
+ \tag{DWC0.c}
+\]</span>
+There is no restriction on the center, the predual or the dimension of a faithful representation. Faithfulness, the properly infinite centralizers and the supplied continuous fields are actual hypotheses.</p>
+<p>The intermediate results have their own wider scope. Section 1 treats an arbitrary continuous action and its unitary cocycles. The regularized-weight comparison in the first part of Section 2 applies to every pair of faithful normal semifinite weights, without the centralizer or eigenfield assumptions. Those assumptions enter only where the proof removes the regularization and the amplification.</p>
+<p>The main application starts with a specified faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span> on <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> and a normal strongly continuous action <span class="math" data-tex="\(\theta\)">\(\theta\)</span> such that
+<span class="math math-display" data-tex="\[
+ \tau\circ\theta_s=e^{-s}\tau,\qquad
+ P=N\rtimes_\theta\mathbb R,\qquad \Phi=\widetilde\tau .
+ \tag{DWC0.d}
+\]">\[
+ \tau\circ\theta_s=e^{-s}\tau,\qquad
+ P=N\rtimes_\theta\mathbb R,\qquad \Phi=\widetilde\tau .
+ \tag{DWC0.d}
+\]</span>
+If <span class="math" data-tex="\(N\)">\(N\)</span> is properly infinite, then every normal automorphism <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \boxed{\quad \Phi\circ\alpha=\Phi\circ\operatorname{Ad}(w)
+        \quad\text{for some }w\in\mathcal U(P).\quad}
+ \tag{DWC0.e}
+\]">\[
+ \boxed{\quad \Phi\circ\alpha=\Phi\circ\operatorname{Ad}(w)
+        \quad\text{for some }w\in\mathcal U(P).\quad}
+ \tag{DWC0.e}
+\]</span>
+Our convention is <span class="math" data-tex="\(\operatorname{Ad}(w)(x)=wxw^*\)">\(\operatorname{Ad}(w)(x)=wxw^*\)</span>. Section 4 also states the corresponding weight-preserving normalization with its composition order. <a href="OA-FLOW-L18.html#l18-8">L18's central type analysis</a> proves the required proper infiniteness of <span class="math" data-tex="\(N\)">\(N\)</span> when <span class="math" data-tex="\(P\)">\(P\)</span> is type III, without assuming that it is a factor.</p>
+<p>The earlier full <a href="OA-FLOW-TW.html#tw-2">tensor trace construction</a>, <a href="OA-FLOW-TW.html#tw-5">tensor modular action</a> and <a href="OA-FLOW-TW.html#tw-6">tensor cocycle normalization</a> are used only for tensoring with the usual operator trace. Centralizer densities are constructed by <a href="OA-FLOW-CZ.html#cz-2">CZ</a>; the exact weight comparisons use the <a href="OA-FLOW-BC.html#bc-4">balanced cocycle rules</a>, <a href="OA-FLOW-GDA.html#gda-7">fixed-reference injectivity</a> and <a href="OA-FLOW-GDA.html#gda-8">inner transport formula</a>. All other inputs are linked at the point of use.</p>
+<p>The zero algebra has the unique zero-algebra interpretation and is omitted from the nonzero proof. Assertions about positive weights always include extended values in <span class="math" data-tex="\([0,\infty]\)">\([0,\infty]\)</span>.</p>
+<p><span id="OA-FLOW.DWC.1"></span><a id="dwc-1"></a></p>
+<h2 id="1-regular-cocycle-absorption-on-the-full-tensor-algebra">1. Regular cocycle absorption on the full tensor algebra</h2>
+<p>Let <span class="math" data-tex="\(B\subseteq B(H)\)">\(B\subseteq B(H)\)</span> be a faithful normal representation, with <span class="math" data-tex="\(H\)">\(H\)</span> arbitrary, and put <span class="math" data-tex="\(K=L^2(\mathbb R,dq)\)">\(K=L^2(\mathbb R,dq)\)</span>. All tensor products of algebras below are spatial von Neumann tensor products. We use <span class="math" data-tex="\(\operatorname{Ad}v(x)=vxv^*\)">\(\operatorname{Ad}v(x)=vxv^*\)</span>.</p>
+<p>We first explain the multiplication operators used in the proof. If <span class="math" data-tex="\(a:\mathbb R\to\mathcal U(B)\)">\(a:\mathbb R\to\mathcal U(B)\)</span> is strongly continuous, then
+<span class="math math-display" data-tex="\[
+ (M_a\xi)(r)=a(r)\xi(r)
+ \quad\text{on }L^2(\mathbb R,H),\qquad
+ M_a\in B\bar\otimes B(K).
+ \tag{DWC1.a}
+\]">\[
+ (M_a\xi)(r)=a(r)\xi(r)
+ \quad\text{on }L^2(\mathbb R,H),\qquad
+ M_a\in B\bar\otimes B(K).
+ \tag{DWC1.a}
+\]</span>
+For each fixed vector, its image under <span class="math" data-tex="\(a\)">\(a\)</span> has separable range: restrict to a compact interval, take the image of a countable dense subset, and then take the union over integer intervals. The orbit is therefore strongly measurable. Approximation of a Bochner measurable field by simple fields proves measurability of the displayed product. Its pointwise norm equals <span class="math" data-tex="\(\|\xi(r)\|\)">\(\|\xi(r)\|\)</span>. The adjoint field <span class="math" data-tex="\(a(r)^*\)">\(a(r)^*\)</span> is strongly continuous, since
+<span class="math" data-tex="\(\|(a(r)^*-a(r_0)^*)\eta\|=\|(a(r_0)-a(r))a(r_0)^*\eta\|\)">\(\|(a(r)^*-a(r_0)^*)\eta\|=\|(a(r_0)-a(r))a(r_0)^*\eta\|\)</span>.
+It gives the inverse multiplication operator. Thus <span class="math" data-tex="\(M_a\)">\(M_a\)</span> is a unitary on the entire Hilbert space. It commutes with <span class="math" data-tex="\(B'\otimes1\)">\(B'\otimes1\)</span>, so the full tensor commutant identity <a href="OA-FLOW-TW.html#tw-1">TW1</a> puts it in the stated algebra.</p>
+<p>This construction is compatible with every normal automorphism <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>:
+<span class="math math-display" data-tex="\[
+ (\gamma\bar\otimes\mathrm{id})(M_a)=M_{\gamma\circ a}.
+ \tag{DWC1.b}
+\]">\[
+ (\gamma\bar\otimes\mathrm{id})(M_a)=M_{\gamma\circ a}.
+ \tag{DWC1.b}
+\]</span>
+Here normal isomorphisms preserve strong* convergence on bounded sets by <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST2</a>, so the right side is defined. To check the formula on the full algebra, take any scalar orthonormal basis <span class="math" data-tex="\((e_i)\)">\((e_i)\)</span> of <span class="math" data-tex="\(K\)">\(K\)</span>. The <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span>-entry of <span class="math" data-tex="\(M_a\)">\(M_a\)</span> is the weak-star integral
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}a(r)e_j(r)\overline{e_i(r)}\,dr.
+ \tag{DWC1.c}
+\]">\[
+ \int_{\mathbb R}a(r)e_j(r)\overline{e_i(r)}\,dr.
+ \tag{DWC1.c}
+\]</span>
+The scalar coefficient is integrable by Cauchy–Schwarz. Predual evaluation defines a bounded functional on <span class="math" data-tex="\(B_*\)">\(B_*\)</span>, hence an element of <span class="math" data-tex="\(B\)">\(B\)</span> by <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a>. Normality of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> passes it through this integral. Equality of all entries proves (DWC1.b), using the normal amplification and bounded-matrix description in TW1. In particular, the argument does not require a measurable decomposition of the arbitrary Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\alpha:\mathbb R\to\operatorname{Aut}(B)\)">\(\alpha:\mathbb R\to\operatorname{Aut}(B)\)</span> be a point-ultraweakly continuous action, and let <span class="math" data-tex="\(c_t\)">\(c_t\)</span> be a strongly continuous unitary <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>-cocycle:
+<span class="math math-display" data-tex="\[
+ c_{s+t}=c_s\alpha_s(c_t).
+ \tag{DWC1.d}
+\]">\[
+ c_{s+t}=c_s\alpha_s(c_t).
+ \tag{DWC1.d}
+\]</span>
+On the scalar space write
+<span class="math math-display" data-tex="\[
+ (\lambda_t f)(r)=f(r-t),\qquad
+ (Qf)(q)=qf(q),\qquad V_t=e^{itQ}.
+\]">\[
+ (\lambda_t f)(r)=f(r-t),\qquad
+ (Qf)(q)=qf(q),\qquad V_t=e^{itQ}.
+\]</span>
+Set <span class="math" data-tex="\(V=M_{r\mapsto c_r}\)">\(V=M_{r\mapsto c_r}\)</span>. Formula (DWC1.b) and the translation formula give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \bigl[V(\alpha_t\bar\otimes\operatorname{Ad}\lambda_t)(V^*)\bigr](r)
+ &amp;=c_r\alpha_t(c_{r-t}^*)\\
+ &amp;=c_t.
+ \end{aligned}
+ \tag{DWC1.e}
+\]">\[
+ \begin{aligned}
+ \bigl[V(\alpha_t\bar\otimes\operatorname{Ad}\lambda_t)(V^*)\bigr](r)
+ &amp;=c_r\alpha_t(c_{r-t}^*)\\
+ &amp;=c_t.
+ \end{aligned}
+ \tag{DWC1.e}
+\]</span>
+The last equality is precisely <span class="math" data-tex="\(c_r=c_t\alpha_t(c_{r-t})\)">\(c_r=c_t\alpha_t(c_{r-t})\)</span>. Thus (DWC1.e) is an identity of bounded operators on all of <span class="math" data-tex="\(L^2(\mathbb R,H)\)">\(L^2(\mathbb R,H)\)</span>.</p>
+<p>Use the unitary scalar Fourier transform from <a href="OA-FLOW-FF.html#oa-flow.ff.3">FF2</a>, with the sign and normalization
+<span class="math math-display" data-tex="\[
+ (\mathcal F_-f)(r)=(2\pi)^{-1/2}
+                 \int_{\mathbb R}e^{-irq}f(q)\,dq,\qquad
+ \mathcal F_-V_t\mathcal F_-^*=\lambda_t.
+ \tag{DWC1.f}
+\]">\[
+ (\mathcal F_-f)(r)=(2\pi)^{-1/2}
+                 \int_{\mathbb R}e^{-irq}f(q)\,dq,\qquad
+ \mathcal F_-V_t\mathcal F_-^*=\lambda_t.
+ \tag{DWC1.f}
+\]</span>
+The second formula follows first for compactly supported integrable square-integrable functions by substituting in the integral, and then on <span class="math" data-tex="\(K\)">\(K\)</span> by density and boundedness. Its amplification by <span class="math" data-tex="\(1_H\)">\(1_H\)</span> is a unitary for arbitrary <span class="math" data-tex="\(H\)">\(H\)</span>, as is seen on finite Hilbert tensors and their dense span. Define
+<span class="math math-display" data-tex="\[
+ v=(1\otimes\mathcal F_-^*)V(1\otimes\mathcal F_-)
+       \in B\bar\otimes B(K).
+\]">\[
+ v=(1\otimes\mathcal F_-^*)V(1\otimes\mathcal F_-)
+       \in B\bar\otimes B(K).
+\]</span>
+Conjugating (DWC1.e) by this scalar Fourier transform and multiplying on the right by <span class="math" data-tex="\(1\otimes V_t\)">\(1\otimes V_t\)</span> proves the absorption identity
+<span class="math math-display" data-tex="\[
+ \boxed{\;
+ c_t\otimes V_t
+   =v(1\otimes V_t)(\alpha_t\bar\otimes\mathrm{id})(v^*).
+ \;}
+ \tag{DWC1.g}
+\]">\[
+ \boxed{\;
+ c_t\otimes V_t
+   =v(1\otimes V_t)(\alpha_t\bar\otimes\mathrm{id})(v^*).
+ \;}
+ \tag{DWC1.g}
+\]</span>
+Every factor and its order will be used below.</p>
+<p><span id="OA-FLOW.DWC.2"></span><a id="dwc-2"></a></p>
+<h2 id="2-exact-weight-comparison-after-amplification">2. Exact weight comparison after amplification</h2>
+<p>Let <span class="math" data-tex="\(B\)">\(B\)</span> be arbitrary and let <span class="math" data-tex="\(\chi_1,\chi_2\)">\(\chi_1,\chi_2\)</span> be faithful normal semifinite weights on <span class="math" data-tex="\(B\)">\(B\)</span>. These are the only hypotheses for the first result of this section: the properly infinite centralizers and continuous eigenfields assumed in the main theorem are not assumed here. With <span class="math" data-tex="\(K,Q\)">\(K,Q\)</span> as in Section 1, form the regularized weights
+<span class="math" data-tex="\(\eta_j=(\chi_j\bar\otimes\operatorname{Tr})_{1\otimes e^Q}\)">\(\eta_j=(\chi_j\bar\otimes\operatorname{Tr})_{1\otimes e^Q}\)</span>
+by the construction below. Then there is a unitary <span class="math" data-tex="\(v\in B\bar\otimes B(K)\)">\(v\in B\bar\otimes B(K)\)</span> such that
+<span class="math math-display" data-tex="\[
+ \boxed{\ \eta_2=\eta_1\circ\operatorname{Ad}v^*
+       \quad\text{on }(B\bar\otimes B(K))_+.\ }
+ \tag{DWC2.a}
+\]">\[
+ \boxed{\ \eta_2=\eta_1\circ\operatorname{Ad}v^*
+       \quad\text{on }(B\bar\otimes B(K))_+.\ }
+ \tag{DWC2.a}
+\]</span>
+Thus the regularized weights of any two faithful normal semifinite weights are inner conjugate, with their complete normalizations retained.</p>
+<p>To construct them, set
+<span class="math math-display" data-tex="\[
+ A=B\bar\otimes B(K),\qquad
+ \Omega_j=\chi_j\bar\otimes\operatorname{Tr},
+ \tag{DWC2.b}
+\]">\[
+ A=B\bar\otimes B(K),\qquad
+ \Omega_j=\chi_j\bar\otimes\operatorname{Tr},
+ \tag{DWC2.b}
+\]</span>
+where <span class="math" data-tex="\(\operatorname{Tr}\)">\(\operatorname{Tr}\)</span> is the usual trace on <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span>, normalized to take value one on a rank-one projection. <a href="OA-FLOW-TW.html#tw-2">TW2</a> constructs these faithful normal semifinite weights on the whole positive cone. <a href="OA-FLOW-TW.html#tw-5">TW5</a> and <a href="OA-FLOW-TW.html#tw-6">TW6</a> prove, with the balanced-weight normalization,
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\Omega_j}=\sigma_t^{\chi_j}\bar\otimes\mathrm{id},
+ \qquad
+ [D\Omega_2:D\Omega_1]_t=c_t\otimes1,
+ \qquad c_t=[D\chi_2:D\chi_1]_t.
+ \tag{DWC2.c}
+\]">\[
+ \sigma_t^{\Omega_j}=\sigma_t^{\chi_j}\bar\otimes\mathrm{id},
+ \qquad
+ [D\Omega_2:D\Omega_1]_t=c_t\otimes1,
+ \qquad c_t=[D\chi_2:D\chi_1]_t.
+ \tag{DWC2.c}
+\]</span></p>
+<p>The positive nonsingular operator <span class="math" data-tex="\(k=1\otimes e^Q\)">\(k=1\otimes e^Q\)</span> is affiliated with the centralizer of each <span class="math" data-tex="\(\Omega_j\)">\(\Omega_j\)</span>. Define the perturbed weights by the actual centralizer construction <a href="OA-FLOW-CZ.html#cz-2">CZ2</a>:
+<span class="math math-display" data-tex="\[
+ \eta_j=(\Omega_j)_k,\qquad
+ \eta_j(Y)=\sup_{\varepsilon&gt;0}
+       \Omega_j(k_\varepsilon^{1/2}Yk_\varepsilon^{1/2}),
+ \qquad k_\varepsilon=k(1+\varepsilon k)^{-1}.
+ \tag{DWC2.d}
+\]">\[
+ \eta_j=(\Omega_j)_k,\qquad
+ \eta_j(Y)=\sup_{\varepsilon&gt;0}
+       \Omega_j(k_\varepsilon^{1/2}Yk_\varepsilon^{1/2}),
+ \qquad k_\varepsilon=k(1+\varepsilon k)^{-1}.
+ \tag{DWC2.d}
+\]</span>
+The supremum increases as <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> decreases to zero. This definition applies to every <span class="math" data-tex="\(Y\in A_+\)">\(Y\in A_+\)</span>, with infinite values allowed. The operator <span class="math" data-tex="\(k\)">\(k\)</span> has no kernel and has dense domain. The full construction in <a href="OA-FLOW-CZ.html#cz-5">CZ5–6</a> consequently makes <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> faithful normal semifinite and gives
+<span class="math math-display" data-tex="\[
+ [D\eta_j:D\Omega_j]_t=k^{it}=1\otimes V_t.
+ \tag{DWC2.e}
+\]">\[
+ [D\eta_j:D\Omega_j]_t=k^{it}=1\otimes V_t.
+ \tag{DWC2.e}
+\]</span>
+Only the already constructed tensor product with the usual trace has been used.</p>
+<p>The exact chain rule <a href="OA-FLOW-BC.html#bc-4">BC4</a> now yields
+<span class="math math-display" data-tex="\[
+ [D\eta_2:D\Omega_1]_t
+   =(1\otimes V_t)(c_t\otimes1)=c_t\otimes V_t.
+ \tag{DWC2.f}
+\]">\[
+ [D\eta_2:D\Omega_1]_t
+   =(1\otimes V_t)(c_t\otimes1)=c_t\otimes V_t.
+ \tag{DWC2.f}
+\]</span>
+Apply Section 1 to <span class="math" data-tex="\(\alpha=\sigma^{\chi_1}\)">\(\alpha=\sigma^{\chi_1}\)</span> and its cocycle <span class="math" data-tex="\(c\)">\(c\)</span>. The resulting unitary <span class="math" data-tex="\(v\in A\)">\(v\in A\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ [D\eta_2:D\Omega_1]_t
+   =v(1\otimes V_t)\sigma_t^{\Omega_1}(v^*).
+ \tag{DWC2.g}
+\]">\[
+ [D\eta_2:D\Omega_1]_t
+   =v(1\otimes V_t)\sigma_t^{\Omega_1}(v^*).
+ \tag{DWC2.g}
+\]</span></p>
+<p>For clarity, the inner-change formula with an arbitrary reference weight is
+<span class="math math-display" data-tex="\[
+ [D(\eta\circ\operatorname{Ad}z):D\Omega]_t
+   =z^*[D\eta:D\Omega]_t\,\sigma_t^\Omega(z)
+ \quad(z\text{ unitary}).
+ \tag{DWC2.h}
+\]">\[
+ [D(\eta\circ\operatorname{Ad}z):D\Omega]_t
+   =z^*[D\eta:D\Omega]_t\,\sigma_t^\Omega(z)
+ \quad(z\text{ unitary}).
+ \tag{DWC2.h}
+\]</span>
+Indeed <a href="OA-FLOW-GDA.html#gda-8">GDA8, equation GDA34</a> gives the inner cocycle
+<span class="math" data-tex="\(z^*\sigma_t^\eta(z)\)">\(z^*\sigma_t^\eta(z)\)</span> relative to <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. Multiply it on the right by
+<span class="math" data-tex="\(d_t=[D\eta:D\Omega]_t\)">\(d_t=[D\eta:D\Omega]_t\)</span>, using BC4's chain rule, and use
+<span class="math" data-tex="\(\sigma_t^\eta(z)=d_t\sigma_t^\Omega(z)d_t^*\)">\(\sigma_t^\eta(z)=d_t\sigma_t^\Omega(z)d_t^*\)</span>.
+Taking <span class="math" data-tex="\(\eta=\eta_1\)">\(\eta=\eta_1\)</span> and <span class="math" data-tex="\(z=v^*\)">\(z=v^*\)</span>, equations (DWC2.e) and (DWC2.g) show equality of the two normalized cocycles relative to <span class="math" data-tex="\(\Omega_1\)">\(\Omega_1\)</span>. Fixed-reference injectivity in <a href="OA-FLOW-GDA.html#gda-7">GDA7</a> proves
+<span class="math math-display" data-tex="\[
+ \eta_2=\eta_1\circ\operatorname{Ad}v^*
+       \quad\text{on }A_+.
+ \tag{DWC2.i}
+\]">\[
+ \eta_2=\eta_1\circ\operatorname{Ad}v^*
+       \quad\text{on }A_+.
+ \tag{DWC2.i}
+\]</span>
+This proves the unconditional regularized comparison (DWC2.a), including the scalar normalization of each weight.</p>
+<p>For the subsequent comparison of <span class="math" data-tex="\(\Omega_1,\Omega_2\)">\(\Omega_1,\Omega_2\)</span>, now assume additionally that for each <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span> there is a strongly continuous field <span class="math" data-tex="\(X_j:\mathbb R\to\mathcal U(B)\)">\(X_j:\mathbb R\to\mathcal U(B)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\chi_j}(X_j(r))=e^{irt}X_j(r)
+ \qquad(r,t\in\mathbb R).
+\]">\[
+ \sigma_t^{\chi_j}(X_j(r))=e^{irt}X_j(r)
+ \qquad(r,t\in\mathbb R).
+\]</span>
+There is no group-law assumption on <span class="math" data-tex="\(r\mapsto X_j(r)\)">\(r\mapsto X_j(r)\)</span>, and proper infiniteness of the centralizers is still unnecessary in this section. Put <span class="math" data-tex="\(\mathfrak X_j=M_{q\mapsto X_j(q)}\in A\)">\(\mathfrak X_j=M_{q\mapsto X_j(q)}\in A\)</span>. The normal field transport in Section 1 and this eigenfield identity give
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\Omega_j}(\mathfrak X_j)
+       =\mathfrak X_j(1\otimes V_t),\qquad
+ \mathfrak X_j^*\sigma_t^{\Omega_j}(\mathfrak X_j)=1\otimes V_t.
+ \tag{DWC2.j}
+\]">\[
+ \sigma_t^{\Omega_j}(\mathfrak X_j)
+       =\mathfrak X_j(1\otimes V_t),\qquad
+ \mathfrak X_j^*\sigma_t^{\Omega_j}(\mathfrak X_j)=1\otimes V_t.
+ \tag{DWC2.j}
+\]</span>
+The inner formula GDA34, (DWC2.e), and fixed-reference injectivity again imply
+<span class="math math-display" data-tex="\[
+ \Omega_j\circ\operatorname{Ad}\mathfrak X_j=\eta_j.
+ \tag{DWC2.k}
+\]">\[
+ \Omega_j\circ\operatorname{Ad}\mathfrak X_j=\eta_j.
+ \tag{DWC2.k}
+\]</span>
+Combining this identity for <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span> with (DWC2.i), in the stated order, gives a unitary
+<span class="math math-display" data-tex="\[
+ U=\mathfrak X_1v^*\mathfrak X_2^*,
+ \qquad
+ \boxed{\ \Omega_2=\Omega_1\circ\operatorname{Ad}U\text{ on }A_+.\ }
+ \tag{DWC2.l}
+\]">\[
+ U=\mathfrak X_1v^*\mathfrak X_2^*,
+ \qquad
+ \boxed{\ \Omega_2=\Omega_1\circ\operatorname{Ad}U\text{ on }A_+.\ }
+ \tag{DWC2.l}
+\]</span>
+All equalities used to obtain (DWC2.l) are whole-cone equalities of constructed faithful normal semifinite weights. In particular,
+<span class="math math-display" data-tex="\[
+ \operatorname{Ad}U(\mathfrak n_{\Omega_2})
+       =\mathfrak n_{\Omega_1},\qquad
+ \operatorname{Ad}U(\mathfrak m_{\Omega_2})
+       =\mathfrak m_{\Omega_1}.
+ \tag{DWC2.m}
+\]">\[
+ \operatorname{Ad}U(\mathfrak n_{\Omega_2})
+       =\mathfrak n_{\Omega_1},\qquad
+ \operatorname{Ad}U(\mathfrak m_{\Omega_2})
+       =\mathfrak m_{\Omega_1}.
+ \tag{DWC2.m}
+\]</span>
+The first follows by evaluating <span class="math" data-tex="\((UxU^*)^*(UxU^*)\)">\((UxU^*)^*(UxU^*)\)</span>; the inverse follows by conjugating with <span class="math" data-tex="\(U^*\)">\(U^*\)</span>. The second follows by taking spans of products <span class="math" data-tex="\(y^*x\)">\(y^*x\)</span>. This also transports both finite-star domains.</p>
+<p><span id="OA-FLOW.DWC.3"></span><a id="dwc-3"></a></p>
+<h2 id="3-cancellation-by-centralizer-rows">3. Cancellation by centralizer rows</h2>
+<p>We now assume that the continuous eigenfields introduced in Section 2 are given and that each centralizer <span class="math" data-tex="\(B_{\chi_j}\)">\(B_{\chi_j}\)</span> is properly infinite. We prove that there is a unitary <span class="math" data-tex="\(w\in B\)">\(w\in B\)</span> such that
+<span class="math math-display" data-tex="\[
+ \boxed{\ \chi_2(x)=\chi_1(wxw^*)\quad(x\in B_+).\ }
+ \tag{DWC3.a}
+\]">\[
+ \boxed{\ \chi_2(x)=\chi_1(wxw^*)\quad(x\in B_+).\ }
+ \tag{DWC3.a}
+\]</span>
+The assertion for the zero algebra is the unique zero version. In the proof below <span class="math" data-tex="\(B\ne0\)">\(B\ne0\)</span>; its representation, center and predual remain unrestricted.</p>
+<p>The scalar Hilbert space <span class="math" data-tex="\(K\)">\(K\)</span> has a countably infinite orthonormal basis. Here is the countability argument needed for the rows. The scalar density proof in <a href="OA-FLOW-FF.html#oa-flow.ff.2">FF1</a> gives density of compactly supported continuous functions in <span class="math" data-tex="\(L^2(\mathbb R)\)">\(L^2(\mathbb R)\)</span>. Uniform continuity on a bounded interval approximates any such function in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> by step functions with rational interval endpoints and rational complex values. There are countably many such step functions. Gram–Schmidt applied to an enumeration of them, omitting zero remainders, gives a complete orthonormal sequence. The sequence is infinite because the indicators of the disjoint unit intervals form an infinite orthonormal family. Fix a basis <span class="math" data-tex="\((e_n)_{n\ge1}\)">\((e_n)_{n\ge1}\)</span>, and write <span class="math" data-tex="\(e_{mn}\)">\(e_{mn}\)</span> for its matrix units. No basis of <span class="math" data-tex="\(H\)">\(H\)</span> has been restricted.</p>
+<p>The filling-family theorem <a href="OA-FLOW-PC.html#oa-flow.pc.5">PC5</a> supplies isometries <span class="math" data-tex="\(r_{jn}\in B_{\chi_j}\)">\(r_{jn}\in B_{\chi_j}\)</span> such that
+<span class="math math-display" data-tex="\[
+ r_{jn}^*r_{jm}=\delta_{nm}1,\qquad
+ \sum_{n\ge1}r_{jn}r_{jn}^*=1
+       \quad\text{strongly}.
+ \tag{DWC3.b}
+\]">\[
+ r_{jn}^*r_{jm}=\delta_{nm}1,\qquad
+ \sum_{n\ge1}r_{jn}r_{jn}^*=1
+       \quad\text{strongly}.
+ \tag{DWC3.b}
+\]</span>
+This is a filling family, including its strong-sum assertion. Define
+<span class="math math-display" data-tex="\[
+ R_j=\sum_{n\ge1}r_{jn}\otimes e_{1n},
+ \qquad e=1\otimes e_{11}.
+ \tag{DWC3.c}
+\]">\[
+ R_j=\sum_{n\ge1}r_{jn}\otimes e_{1n},
+ \qquad e=1\otimes e_{11}.
+ \tag{DWC3.c}
+\]</span>
+For a vector with coordinates <span class="math" data-tex="\((\xi_n)\)">\((\xi_n)\)</span>, the series
+<span class="math" data-tex="\(\sum_n r_{jn}\xi_n\)">\(\sum_n r_{jn}\xi_n\)</span> converges because its summands are orthogonal and
+<span class="math" data-tex="\(\sum_n\|\xi_n\|^2&lt;\infty\)">\(\sum_n\|\xi_n\|^2&lt;\infty\)</span>. Thus the finite rows converge strongly and have norm at most one. Their adjoints converge strongly too: on the first coordinate the squared tail norm is
+<span class="math" data-tex="\(\sum_{n&gt;m}\|r_{jn}^*\xi\|^2\)">\(\sum_{n&gt;m}\|r_{jn}^*\xi\|^2\)</span>, which decreases to zero by (DWC3.b), and the other coordinates are annihilated. The strong limit is in <span class="math" data-tex="\(A\)">\(A\)</span>, and direct multiplication gives
+<span class="math math-display" data-tex="\[
+ R_j^*R_j=1,\qquad R_jR_j^*=e.
+ \tag{DWC3.d}
+\]">\[
+ R_j^*R_j=1,\qquad R_jR_j^*=e.
+ \tag{DWC3.d}
+\]</span>
+Each finite row is fixed by <span class="math" data-tex="\(\sigma^{\Omega_j}\)">\(\sigma^{\Omega_j}\)</span>. The fixed algebra is strongly closed on bounded sets, or equivalently one can use normality and the strong* limit, so <span class="math" data-tex="\(R_j\in A_{\Omega_j}\)">\(R_j\in A_{\Omega_j}\)</span>.</p>
+<p>We record the full weight calculation for such a row. Let <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> be faithful normal semifinite, <span class="math" data-tex="\(R\in A_\Omega\)">\(R\in A_\Omega\)</span>, <span class="math" data-tex="\(R^*R=1\)">\(R^*R=1\)</span>, and <span class="math" data-tex="\(RR^*=e\)">\(RR^*=e\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \Theta_R:A\longrightarrow eAe,\qquad
+ \Theta_R(x)=RxR^*,\qquad
+ \Theta_R^{-1}(y)=R^*yR
+ \tag{DWC3.e}
+\]">\[
+ \Theta_R:A\longrightarrow eAe,\qquad
+ \Theta_R(x)=RxR^*,\qquad
+ \Theta_R^{-1}(y)=R^*yR
+ \tag{DWC3.e}
+\]</span>
+are mutually inverse normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphisms. Multiplicativity follows from <span class="math" data-tex="\(R^*R=1\)">\(R^*R=1\)</span>; the identities on the corner follow from <span class="math" data-tex="\(y=eye\)">\(y=eye\)</span>. Compression by a fixed bounded operator is normal, as can be checked on each bounded increasing positive net or on normal vector functionals, so both maps are normal.</p>
+<p>For <span class="math" data-tex="\(x\in A_+\)">\(x\in A_+\)</span> with <span class="math" data-tex="\(\Omega(x)&lt;\infty\)">\(\Omega(x)&lt;\infty\)</span>, left and right multiplication by <span class="math" data-tex="\(R,R^*\)">\(R,R^*\)</span> preserve <span class="math" data-tex="\(\mathfrak m_\Omega\)">\(\mathfrak m_\Omega\)</span>, by <a href="OA-FLOW-CZ.html#cz-0">CZ0</a>. Its finite linear extension is cyclic against a centralizer element. Consequently
+<span class="math math-display" data-tex="\[
+ \Omega(RxR^*)=\Omega_0(xR^*R)=\Omega(x)&lt;\infty.
+\]">\[
+ \Omega(RxR^*)=\Omega_0(xR^*R)=\Omega(x)&lt;\infty.
+\]</span>
+Conversely, if <span class="math" data-tex="\(y=RxR^*\)">\(y=RxR^*\)</span> has finite weight, the same ideal stability puts <span class="math" data-tex="\(R^*yR=x\)">\(R^*yR=x\)</span> in <span class="math" data-tex="\(\mathfrak m_\Omega\)">\(\mathfrak m_\Omega\)</span>, and cyclicity gives
+<span class="math" data-tex="\(\Omega(x)=\Omega_0(yRR^*)=\Omega(y)\)">\(\Omega(x)=\Omega_0(yRR^*)=\Omega(y)\)</span>.
+Thus finiteness holds in both directions, with equal values. If either value is infinite, the other cannot be finite by these two implications. We have proved
+<span class="math math-display" data-tex="\[
+ \Omega(RxR^*)=\Omega(x)\quad(x\in A_+),\qquad
+ \Omega(R^*yR)=\Omega(y)\quad(y\in(eAe)_+).
+ \tag{DWC3.f}
+\]">\[
+ \Omega(RxR^*)=\Omega(x)\quad(x\in A_+),\qquad
+ \Omega(R^*yR)=\Omega(y)\quad(y\in(eAe)_+).
+ \tag{DWC3.f}
+\]</span>
+In particular, writing <span class="math" data-tex="\(\Omega^e=\Omega|_{(eAe)_+}\)">\(\Omega^e=\Omega|_{(eAe)_+}\)</span>, the corner map and its inverse transport the complete finite ideals:
+<span class="math math-display" data-tex="\[
+ \Theta_R(\mathfrak n_\Omega)=\mathfrak n_{\Omega^e},
+ \qquad
+ \Theta_R(\mathfrak m_\Omega)=\mathfrak m_{\Omega^e}.
+ \tag{DWC3.g}
+\]">\[
+ \Theta_R(\mathfrak n_\Omega)=\mathfrak n_{\Omega^e},
+ \qquad
+ \Theta_R(\mathfrak m_\Omega)=\mathfrak m_{\Omega^e}.
+ \tag{DWC3.g}
+\]</span>
+For the first identity apply (DWC3.f) to <span class="math" data-tex="\(x^*x\)">\(x^*x\)</span> and use multiplicativity; applying the inverse gives the reverse inclusion. Taking adjoints and spans gives the finite-star and finite-algebra statements. This proof did not require <span class="math" data-tex="\(\Omega(e)&lt;\infty\)">\(\Omega(e)&lt;\infty\)</span>.</p>
+<p>Let <span class="math" data-tex="\(U\)">\(U\)</span> be the unitary from (DWC2.l), and put
+<span class="math math-display" data-tex="\[
+ a=R_1UR_2^*\in eAe.
+\]">\[
+ a=R_1UR_2^*\in eAe.
+\]</span>
+Equations (DWC3.d) show <span class="math" data-tex="\(a^*a=aa^*=e\)">\(a^*a=aa^*=e\)</span>. For every <span class="math" data-tex="\(y\in(eAe)_+\)">\(y\in(eAe)_+\)</span>, the whole-cone row identities give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \Omega_1(aya^*)
+ &amp;=\Omega_1(UR_2^*yR_2U^*)\\
+ &amp;=\Omega_2(R_2^*yR_2)\\
+ &amp;=\Omega_2(y).
+ \end{aligned}
+ \tag{DWC3.h}
+\]">\[
+ \begin{aligned}
+ \Omega_1(aya^*)
+ &amp;=\Omega_1(UR_2^*yR_2U^*)\\
+ &amp;=\Omega_2(R_2^*yR_2)\\
+ &amp;=\Omega_2(y).
+ \end{aligned}
+ \tag{DWC3.h}
+\]</span>
+All three expressions may be infinite; each equality has already been proved on its entire positive cone. Finally the normal rank-one corner identification
+<span class="math" data-tex="\(B\to eAe,\ x\mapsto x\otimes e_{11}\)">\(B\to eAe,\ x\mapsto x\otimes e_{11}\)</span>
+writes <span class="math" data-tex="\(a=w\otimes e_{11}\)">\(a=w\otimes e_{11}\)</span> for a unique unitary <span class="math" data-tex="\(w\in B\)">\(w\in B\)</span>. The normalization in <a href="OA-FLOW-TW.html#tw-2">TW2</a> is
+<span class="math math-display" data-tex="\[
+ \Omega_j(x\otimes e_{11})=\chi_j(x)
+       \quad(x\in B_+).
+ \tag{DWC3.i}
+\]">\[
+ \Omega_j(x\otimes e_{11})=\chi_j(x)
+       \quad(x\in B_+).
+ \tag{DWC3.i}
+\]</span>
+Substituting <span class="math" data-tex="\(y=x\otimes e_{11}\)">\(y=x\otimes e_{11}\)</span> in (DWC3.h) proves (DWC3.a). This completes the comparison theorem with its prescribed continuous eigenfields.</p>
+<p><span id="OA-FLOW.DWC.4"></span><a id="dwc-4"></a></p>
+<h2 id="4-dominant-dual-weights-and-normal-automorphisms">4. Dominant dual weights and normal automorphisms</h2>
+<p>Let <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> be a properly infinite von Neumann algebra with a faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Let <span class="math" data-tex="\(\theta:\mathbb R\to\operatorname{Aut}(N)\)">\(\theta:\mathbb R\to\operatorname{Aut}(N)\)</span> be point-ultraweakly continuous and satisfy
+<span class="math math-display" data-tex="\[
+ \tau\circ\theta_s=e^{-s}\tau
+       \quad\text{on }N_+.
+ \tag{DWC4.a}
+\]">\[
+ \tau\circ\theta_s=e^{-s}\tau
+       \quad\text{on }N_+.
+ \tag{DWC4.a}
+\]</span>
+Use the crossed product <span class="math" data-tex="\(P=N\rtimes_\theta\mathbb R\)">\(P=N\rtimes_\theta\mathbb R\)</span>, with <span class="math" data-tex="\(u_sxu_s^*=\theta_s(x)\)">\(u_sxu_s^*=\theta_s(x)\)</span>. Fix Haar measure <span class="math" data-tex="\(ds\)">\(ds\)</span> on the original group, <span class="math" data-tex="\(dt/(2\pi)\)">\(dt/(2\pi)\)</span> on its dual, and the negative dual action
+<span class="math math-display" data-tex="\[
+ \delta_t(x)=x\quad(x\in N),\qquad
+ \delta_t(u_s)=e^{-ist}u_s.
+ \tag{DWC4.b}
+\]">\[
+ \delta_t(x)=x\quad(x\in N),\qquad
+ \delta_t(u_s)=e^{-ist}u_s.
+ \tag{DWC4.b}
+\]</span>
+Let <span class="math" data-tex="\(\Phi=\widetilde\tau\)">\(\Phi=\widetilde\tau\)</span> be the full dual weight. The precise modular and fixed-algebra calculation in <a href="OA-FLOW-L18.html#l18-1">L18, Section 1</a> gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^\Phi=\delta_t,\qquad P_\Phi=N.
+ \tag{DWC4.c}
+\]">\[
+ \sigma_t^\Phi=\delta_t,\qquad P_\Phi=N.
+ \tag{DWC4.c}
+\]</span>
+In particular <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> is faithful normal semifinite and its centralizer is properly infinite.</p>
+<p>There is also a whole-cone scalar equivalence:
+<span class="math math-display" data-tex="\[
+ \Phi\circ\operatorname{Ad}u_s=e^{-s}\Phi.
+ \tag{DWC4.d}
+\]">\[
+ \Phi\circ\operatorname{Ad}u_s=e^{-s}\Phi.
+ \tag{DWC4.d}
+\]</span>
+To verify its normalization directly, let
+<span class="math" data-tex="\(T:P_+\to\widehat N_+\)">\(T:P_+\to\widehat N_+\)</span> be the dual-action average with measure <span class="math" data-tex="\(dt/(2\pi)\)">\(dt/(2\pi)\)</span>, constructed on the whole cone in <a href="OA-FLOW-DA.html#da-positive">DA</a>. <a href="OA-FLOW-GDA.html#gda-8">GDA8</a> identifies
+<span class="math" data-tex="\(\Phi=\widehat\tau\circ T\)">\(\Phi=\widehat\tau\circ T\)</span>.
+For <span class="math" data-tex="\(Y\ge0\)">\(Y\ge0\)</span>, the scalar phases in (DWC4.b) cancel in conjugation, so
+<span class="math math-display" data-tex="\[
+ \delta_t(u_sYu_s^*)=u_s\delta_t(Y)u_s^*.
+\]">\[
+ \delta_t(u_sYu_s^*)=u_s\delta_t(Y)u_s^*.
+\]</span>
+Integrating on bounded intervals, and then taking the increasing extended-positive supremum, gives
+<span class="math math-display" data-tex="\[
+ T(u_sYu_s^*)=\widehat{\theta_s}(T(Y)).
+ \tag{DWC4.e}
+\]">\[
+ T(u_sYu_s^*)=\widehat{\theta_s}(T(Y)).
+ \tag{DWC4.e}
+\]</span>
+The extended-positive functorial calculus and increasing bounded spectral approximations in <a href="OA-FLOW-EP.html#oa-flow.ep.4">EP4–6</a> extend (DWC4.a) to
+<span class="math" data-tex="\(\widehat\tau\circ\widehat{\theta_s}=e^{-s}\widehat\tau\)">\(\widehat\tau\circ\widehat{\theta_s}=e^{-s}\widehat\tau\)</span>, including the infinite part. Composing this equality with (DWC4.e) proves (DWC4.d).</p>
+<p>Thus <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> has the two usual dominance properties relevant here: a properly infinite centralizer and inner equivalence to every positive scalar multiple. The comparison below uses the explicit continuous eigenfields supplied by the crossed-product unitaries.</p>
+<p>Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be any normal automorphism of <span class="math" data-tex="\(P\)">\(P\)</span>, and set
+<span class="math" data-tex="\(\chi_1=\Phi\)">\(\chi_1=\Phi\)</span>, <span class="math" data-tex="\(\chi_2=\Phi\circ\alpha\)">\(\chi_2=\Phi\circ\alpha\)</span>.
+Normal transport of modular groups, as in <a href="OA-FLOW-BC.html#bc-5">BC5</a>, gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\chi_2}=\alpha^{-1}\circ\delta_t\circ\alpha,
+ \qquad P_{\chi_2}=\alpha^{-1}(N).
+ \tag{DWC4.f}
+\]">\[
+ \sigma_t^{\chi_2}=\alpha^{-1}\circ\delta_t\circ\alpha,
+ \qquad P_{\chi_2}=\alpha^{-1}(N).
+ \tag{DWC4.f}
+\]</span>
+Its centralizer is therefore properly infinite as well. The required strongly continuous fields are already present:
+<span class="math math-display" data-tex="\[
+ X_1(r)=u_{-r},\qquad X_2(r)=\alpha^{-1}(u_{-r}).
+ \tag{DWC4.g}
+\]">\[
+ X_1(r)=u_{-r},\qquad X_2(r)=\alpha^{-1}(u_{-r}).
+ \tag{DWC4.g}
+\]</span>
+Strong continuity of <span class="math" data-tex="\(X_2\)">\(X_2\)</span> follows from normal-isomorphism transport on bounded sets <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST2</a>. Equations (DWC4.b) and (DWC4.f) give exactly
+<span class="math math-display" data-tex="\[
+ \sigma_t^{\chi_j}(X_j(r))=e^{irt}X_j(r).
+ \tag{DWC4.h}
+\]">\[
+ \sigma_t^{\chi_j}(X_j(r))=e^{irt}X_j(r).
+ \tag{DWC4.h}
+\]</span>
+Section 3 applies and produces a unitary <span class="math" data-tex="\(w\in P\)">\(w\in P\)</span> with
+<span class="math math-display" data-tex="\[
+ \boxed{\begin{gathered}
+ \Phi\circ\alpha=\Phi\circ\operatorname{Ad}w
+       \quad\text{on }P_+,\\
+ \gamma=\alpha\circ\operatorname{Ad}w^*,\\
+ \Phi\circ\gamma=\Phi.
+ \end{gathered}}
+ \tag{DWC4.i}
+\]">\[
+ \boxed{\begin{gathered}
+ \Phi\circ\alpha=\Phi\circ\operatorname{Ad}w
+       \quad\text{on }P_+,\\
+ \gamma=\alpha\circ\operatorname{Ad}w^*,\\
+ \Phi\circ\gamma=\Phi.
+ \end{gathered}}
+ \tag{DWC4.i}
+\]</span>
+The composition order in the definition of <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> follows by composing the weight equality on the right with <span class="math" data-tex="\(\operatorname{Ad}w^*\)">\(\operatorname{Ad}w^*\)</span>. It gives a normal weight-preserving automorphism in the same outer class as <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The normalized derivative is correspondingly
+<span class="math math-display" data-tex="\[
+ [D(\Phi\circ\alpha):D\Phi]_t=w^*\sigma_t^\Phi(w),
+ \tag{DWC4.j}
+\]">\[
+ [D(\Phi\circ\alpha):D\Phi]_t=w^*\sigma_t^\Phi(w),
+ \tag{DWC4.j}
+\]</span>
+by GDA34.</p>
+<p>Finally, suppose a trace-scaling decomposition <span class="math" data-tex="\(P=N\rtimes_\theta\mathbb R\)">\(P=N\rtimes_\theta\mathbb R\)</span> has type III output, where type III means that there is no nonzero finite projection. The arbitrary-algebra reduction in <a href="OA-FLOW-L18.html#l18-8">L18, Section 8</a> proves that its semifinite coefficient algebra <span class="math" data-tex="\(N\)">\(N\)</span> is of type <span class="math" data-tex="\(\mathrm{II}_\infty\)">\(\mathrm{II}_\infty\)</span>, including the absence of a nonzero finite central summand. <a href="OA-FLOW-PC.html#oa-flow.pc.5">PC5</a> then gives proper infiniteness of <span class="math" data-tex="\(N\)">\(N\)</span>. Hence (DWC4.i) applies to every normal automorphism of this <span class="math" data-tex="\(P\)">\(P\)</span>, with no factor, state, countable-decomposability or separable-predual assumption.</p>
+<p><span id="OA-FLOW.DWC.5"></span><a id="dwc-5"></a></p>
+<h2 id="5-translation-densities-matrix-phases-and-centralizer-rows">5. Translation densities, matrix phases and centralizer rows</h2>
+<p>The two hypotheses in the comparison theorem have different roles. The real eigenunitaries allow a weight to absorb scalar spectral motion. Proper infiniteness of its centralizer allows the trace amplification to be removed. The following models compute both features on the full algebra.</p>
+<p><strong>A density with arbitrary infinite Hilbert multiplicity.</strong> Let <span class="math" data-tex="\(K\)">\(K\)</span> be any infinite-dimensional Hilbert space, let <span class="math" data-tex="\(L=L^2(\mathbb R,dq)\)">\(L=L^2(\mathbb R,dq)\)</span>, and put
+<span class="math math-display" data-tex="\[
+ \mathcal H=K\otimes L,\qquad B=B(\mathcal H),\qquad
+ D=1_K\otimes e^Q,
+ \tag{DWC5.a}
+\]">\[
+ \mathcal H=K\otimes L,\qquad B=B(\mathcal H),\qquad
+ D=1_K\otimes e^Q,
+ \tag{DWC5.a}
+\]</span>
+where <span class="math" data-tex="\(Q\)">\(Q\)</span> is scalar multiplication by <span class="math" data-tex="\(q\)">\(q\)</span>. The spectral projections of <span class="math" data-tex="\(D\)">\(D\)</span> are tensor products of <span class="math" data-tex="\(1_K\)">\(1_K\)</span> with scalar multiplication projections. They define a positive injective self-adjoint operator. In the tensor identification with <span class="math" data-tex="\(L^2(\mathbb R,K)\)">\(L^2(\mathbb R,K)\)</span>, its powers have the exact domains
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (D^a\xi)(q)&amp;=e^{aq}\xi(q),\\
+ \mathcal D(D^a)&amp;=
+   \left\{\xi\in L^2(\mathbb R,K):
+      \int_{\mathbb R}e^{2aq}\|\xi(q)\|^2\,dq&lt;\infty\right\}
+       \qquad(a\in\mathbb R).
+ \end{aligned}
+ \tag{DWC5.b}
+\]">\[
+ \begin{aligned}
+ (D^a\xi)(q)&amp;=e^{aq}\xi(q),\\
+ \mathcal D(D^a)&amp;=
+   \left\{\xi\in L^2(\mathbb R,K):
+      \int_{\mathbb R}e^{2aq}\|\xi(q)\|^2\,dq&lt;\infty\right\}
+       \qquad(a\in\mathbb R).
+ \end{aligned}
+ \tag{DWC5.b}
+\]</span>
+Indeed the scalar spectral measure of a vector assigns to a Borel set <span class="math" data-tex="\(E\subset(0,\infty)\)">\(E\subset(0,\infty)\)</span> the integral of <span class="math" data-tex="\(\|\xi(q)\|^2\)">\(\|\xi(q)\|^2\)</span> over <span class="math" data-tex="\(\{q:e^q\in E\}\)">\(\{q:e^q\in E\}\)</span>. Integrating the squared multiplier against this measure gives (DWC5.b). The tensor identification is isometric on elementary tensors and onto by density of finite simple vector functions. It asserts no decomposition theorem for arbitrary operator-valued fields.</p>
+<p>Use the usual faithful normal semifinite trace <span class="math" data-tex="\(\operatorname{Tr}_{\mathcal H}\)">\(\operatorname{Tr}_{\mathcal H}\)</span>, with the arbitrary-basis construction and rank-one normalization in <a href="OA-FLOW-TW.html#tw-1">TW1</a>. Define the weight by the actual centralizer perturbation of that trace:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ D_m&amp;=D(1+D/m)^{-1},\\
+ \chi(a)&amp;=(\operatorname{Tr}_{\mathcal H})_D(a)
+       =\sup_{m\ge1}
+          \operatorname{Tr}_{\mathcal H}(D_m^{1/2}aD_m^{1/2})
+             \qquad(a\in B_+).
+ \end{aligned}
+ \tag{DWC5.c}
+\]">\[
+ \begin{aligned}
+ D_m&amp;=D(1+D/m)^{-1},\\
+ \chi(a)&amp;=(\operatorname{Tr}_{\mathcal H})_D(a)
+       =\sup_{m\ge1}
+          \operatorname{Tr}_{\mathcal H}(D_m^{1/2}aD_m^{1/2})
+             \qquad(a\in B_+).
+ \end{aligned}
+ \tag{DWC5.c}
+\]</span>
+Each <span class="math" data-tex="\(D_m\)">\(D_m\)</span> is bounded. The supremum is the construction in <a href="OA-FLOW-CZ.html#cz-1">CZ1–2</a>; CZ2 proves faithfulness, normality and semifiniteness on all of <span class="math" data-tex="\(B_+\)">\(B_+\)</span>. The modular group of the base trace is trivial by <a href="OA-FLOW-TD.html#td-1">TD1</a>, and <a href="OA-FLOW-CZ.html#cz-5">CZ5</a> therefore gives
+<span class="math math-display" data-tex="\[
+ \sigma_t^\chi(a)=D^{it}aD^{-it}\qquad(a\in B).
+ \tag{DWC5.d}
+\]">\[
+ \sigma_t^\chi(a)=D^{it}aD^{-it}\qquad(a\in B).
+ \tag{DWC5.d}
+\]</span>
+This constructs the weight without a tensor-product theorem for two arbitrary weights.</p>
+<p>For any <span class="math" data-tex="\(\xi\in\mathcal H\)">\(\xi\in\mathcal H\)</span>, let <span class="math" data-tex="\(\theta_{\xi,\xi}\eta=\langle\eta,\xi\rangle\xi\)">\(\theta_{\xi,\xi}\eta=\langle\eta,\xi\rangle\xi\)</span>. The bounded trace in (DWC5.c) is <span class="math" data-tex="\(\|D_m^{1/2}\xi\|^2\)">\(\|D_m^{1/2}\xi\|^2\)</span>, by TW1's rank-one identity. Scalar monotone convergence proves the full formula
+<span class="math math-display" data-tex="\[
+ \chi(\theta_{\xi,\xi})
+   =\int_{\mathbb R}e^q\|\xi(q)\|^2\,dq
+   \in[0,\infty].
+ \tag{DWC5.e}
+\]">\[
+ \chi(\theta_{\xi,\xi})
+   =\int_{\mathbb R}e^q\|\xi(q)\|^2\,dq
+   \in[0,\infty].
+ \tag{DWC5.e}
+\]</span>
+In particular its value is finite exactly when <span class="math" data-tex="\(\xi\in\mathcal D(D^{1/2})\)">\(\xi\in\mathcal D(D^{1/2})\)</span>. This formula includes vectors outside that domain through the value infinity; it does not apply an undefined unbounded sandwich to them.</p>
+<p>Let <span class="math" data-tex="\(L_r f(q)=f(q-r)\)">\(L_r f(q)=f(q-r)\)</span> and <span class="math" data-tex="\(X(r)=1_K\otimes L_r\)">\(X(r)=1_K\otimes L_r\)</span>. Scalar translation continuity in <a href="OA-FLOW-FF.html#oa-flow.ff.2">FF1</a> extends to every tensor vector: first use a finite sum of elementary tensors and then the common unitary bound. Thus <span class="math" data-tex="\(X(r)\)">\(X(r)\)</span> is a strongly continuous unitary group on all of <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span>. Direct multiplication gives the required eigenfield and the precise scalar rescaling:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ D^{it}X(r)D^{-it}&amp;=e^{irt}X(r),\\
+ X(r)^*DX(r)&amp;=e^rD,\\
+ \chi\circ\operatorname{Ad}X(r)&amp;=e^r\chi
+        \quad\hbox{on }B_+.
+ \end{aligned}
+ \tag{DWC5.f}
+\]">\[
+ \begin{aligned}
+ D^{it}X(r)D^{-it}&amp;=e^{irt}X(r),\\
+ X(r)^*DX(r)&amp;=e^rD,\\
+ \chi\circ\operatorname{Ad}X(r)&amp;=e^r\chi
+        \quad\hbox{on }B_+.
+ \end{aligned}
+ \tag{DWC5.f}
+\]</span>
+The second equality is equality of spectral operators with transported domains: substitution <span class="math" data-tex="\(q\mapsto q+r\)">\(q\mapsto q+r\)</span> in (DWC5.b) gives both the action and the domain. For the last equality, usual-trace invariance under unitary conjugation and <a href="OA-FLOW-CZ.html#cz-7">CZ7's full-cone covariance</a> give
+<span class="math" data-tex="\((\operatorname{Tr}_{\mathcal H})_D\circ\operatorname{Ad}X(r)
+ =(\operatorname{Tr}_{\mathcal H})_{X(r)^*DX(r)}
+ =e^r\chi\)">\((\operatorname{Tr}_{\mathcal H})_D\circ\operatorname{Ad}X(r)
+ =(\operatorname{Tr}_{\mathcal H})_{X(r)^*DX(r)}
+ =e^r\chi\)</span>.
+Thus for every <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, the unitary <span class="math" data-tex="\(X(\log c)\)">\(X(\log c)\)</span> implements <span class="math" data-tex="\(c\chi\)">\(c\chi\)</span> with the displayed orientation. For a unit <span class="math" data-tex="\(\eta\in K\)">\(\eta\in K\)</span> and <span class="math" data-tex="\(\xi(q)=1_{[0,1]}(q)\eta\)">\(\xi(q)=1_{[0,1]}(q)\eta\)</span>, this equality has the finite nonzero test
+<span class="math math-display" data-tex="\[
+ \chi(\theta_{\xi,\xi})=e-1,\qquad
+ (\chi\circ\operatorname{Ad}X(\log c))(\theta_{\xi,\xi})
+       =c(e-1).
+ \tag{DWC5.g}
+\]">\[
+ \chi(\theta_{\xi,\xi})=e-1,\qquad
+ (\chi\circ\operatorname{Ad}X(\log c))(\theta_{\xi,\xi})
+       =c(e-1).
+ \tag{DWC5.g}
+\]</span></p>
+<p>The centralizer is the whole tensor algebra
+<span class="math math-display" data-tex="\[
+ B_\chi
+   =\{1_K\otimes e^{itQ}:t\in\mathbb R\}'
+   =B(K)\,\overline\otimes\,L^\infty(\mathbb R_q).
+ \tag{DWC5.h}
+\]">\[
+ B_\chi
+   =\{1_K\otimes e^{itQ}:t\in\mathbb R\}'
+   =B(K)\,\overline\otimes\,L^\infty(\mathbb R_q).
+ \tag{DWC5.h}
+\]</span>
+The characters generate the scalar multiplication algebra by <a href="OA-FLOW-ND.html#nd-weyl-proof">ND's character-generation proof</a>. <a href="OA-FLOW-ND.html#nd-multiplication">ND's multiplication proof</a> shows that this algebra is its own commutant. Apply <a href="OA-FLOW-ND.html#nd-tensor">ND's arbitrary-Hilbert-space tensor commutant proof</a>, with the factors interchanged, to obtain the last equality. In particular this is an identification of all bounded operators in the centralizer.</p>
+<p>It is properly infinite for every infinite <span class="math" data-tex="\(K\)">\(K\)</span>. To check the premise without a countable-basis assumption, choose a countably infinite orthonormal sequence in <span class="math" data-tex="\(K\)">\(K\)</span>. The unilateral shift on its closed span, extended by the identity on the orthogonal complement, is an isometry whose range omits the first sequence vector. Thus <span class="math" data-tex="\(1_{B(K)}\)">\(1_{B(K)}\)</span> is infinite. The center of <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span> is scalar, as follows by commuting with every rank-one matrix unit. It has no nonzero finite central summand, so <a href="OA-FLOW-PC.html#pc-5">PC5</a> provides two orthogonal copies of its unit and, more generally, a countable filling family of isometries. Tensor these with <span class="math" data-tex="\(1_L\)">\(1_L\)</span>. They lie in (DWC5.h) and establish proper infiniteness there.</p>
+<p>For comparison, if <span class="math" data-tex="\(K=\mathbb C\)">\(K=\mathbb C\)</span>, the same construction on <span class="math" data-tex="\(B(L)\)">\(B(L)\)</span> still has the exact continuous eigenfield <span class="math" data-tex="\(L_r\)">\(L_r\)</span>, but its centralizer is just <span class="math" data-tex="\(L^\infty(\mathbb R)\)">\(L^\infty(\mathbb R)\)</span>. Every isometry in an abelian algebra is unitary, since <span class="math" data-tex="\(v^*v=vv^*\)">\(v^*v=vv^*\)</span>. Its unit is finite. This model therefore fails the properly infinite centralizer hypothesis, even though every positive scalar multiple of its weight is still obtained by translation. Scalar rescaling by itself does not supply the missing hypothesis.</p>
+<p><strong>A finite-matrix cocycle whose phase and factor order both matter.</strong> In <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, put
+<span class="math math-display" data-tex="\[
+ h=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+ R=\frac1{\sqrt2}\begin{pmatrix}1&amp;-1\\1&amp;1\end{pmatrix},
+ \qquad k=2RhR^*=\begin{pmatrix}5&amp;-3\\-3&amp;5\end{pmatrix}.
+ \tag{DWC5.i}
+\]">\[
+ h=\begin{pmatrix}1&amp;0\\0&amp;4\end{pmatrix},\qquad
+ R=\frac1{\sqrt2}\begin{pmatrix}1&amp;-1\\1&amp;1\end{pmatrix},
+ \qquad k=2RhR^*=\begin{pmatrix}5&amp;-3\\-3&amp;5\end{pmatrix}.
+ \tag{DWC5.i}
+\]</span>
+Let <span class="math" data-tex="\(\varphi_h(a)=\operatorname{Tr}(ha)\)">\(\varphi_h(a)=\operatorname{Tr}(ha)\)</span>, <span class="math" data-tex="\(\varphi_k(a)=\operatorname{Tr}(ka)\)">\(\varphi_k(a)=\operatorname{Tr}(ka)\)</span>, and <span class="math" data-tex="\(a_t=\operatorname{Ad}(h^{it})\)">\(a_t=\operatorname{Ad}(h^{it})\)</span>. The weighted-trace GNS and balanced-matrix calculation in <a href="OA-FLOW-BC.html#bc-6">BC6</a> gives, for these positive definite densities,
+<span class="math math-display" data-tex="\[
+ c_t=[D\varphi_k:D\varphi_h]_t
+      =k^{it}h^{-it}
+      =2^{it}Rh^{it}R^*h^{-it}.
+ \tag{DWC5.j}
+\]">\[
+ c_t=[D\varphi_k:D\varphi_h]_t
+      =k^{it}h^{-it}
+      =2^{it}Rh^{it}R^*h^{-it}.
+ \tag{DWC5.j}
+\]</span>
+All fields here are norm continuous. Direct cancellation in the indicated order gives
+<span class="math math-display" data-tex="\[
+ c_s a_s(c_t)
+ =k^{is}h^{-is}h^{is}(k^{it}h^{-it})h^{-is}
+ =k^{i(s+t)}h^{-i(s+t)}
+ =c_{s+t}.
+ \tag{DWC5.k}
+\]">\[
+ c_s a_s(c_t)
+ =k^{is}h^{-is}h^{is}(k^{it}h^{-it})h^{-is}
+ =k^{i(s+t)}h^{-i(s+t)}
+ =c_{s+t}.
+ \tag{DWC5.k}
+\]</span>
+Neither <span class="math" data-tex="\(h\)">\(h\)</span> nor <span class="math" data-tex="\(k\)">\(k\)</span> commutes with the other. Write
+<span class="math math-display" data-tex="\[
+ t_0=\frac{\pi}{2\log2},\qquad
+ Z=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ Y=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix}.
+ \tag{DWC5.l}
+\]">\[
+ t_0=\frac{\pi}{2\log2},\qquad
+ Z=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ Y=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix}.
+ \tag{DWC5.l}
+\]</span>
+Then <span class="math" data-tex="\(h^{it_0}=Z\)">\(h^{it_0}=Z\)</span>, <span class="math" data-tex="\(2^{it_0}=i\)">\(2^{it_0}=i\)</span>, <span class="math" data-tex="\(c_{t_0}=Y\)">\(c_{t_0}=Y\)</span>, and <span class="math" data-tex="\(c_{2t_0}=-1\)">\(c_{2t_0}=-1\)</span>. Thus <span class="math" data-tex="\(c_{t_0}^2=1\ne c_{2t_0}\)">\(c_{t_0}^2=1\ne c_{2t_0}\)</span>; the twisted product is <span class="math" data-tex="\(Y(ZYZ)=-1\)">\(Y(ZYZ)=-1\)</span>, as (DWC5.k) requires. Omitting <span class="math" data-tex="\(2^{it}\)">\(2^{it}\)</span> in (DWC5.j) would replace the actual numerator weight by the one with density <span class="math" data-tex="\(RhR^*\)">\(RhR^*\)</span>. Indeed <span class="math" data-tex="\(\varphi_k(1)=10\)">\(\varphi_k(1)=10\)</span>, whereas that other weight and <span class="math" data-tex="\(\varphi_h\)">\(\varphi_h\)</span> both have value <span class="math" data-tex="\(5\)">\(5\)</span> on <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>The regular absorption is an identity on the entire tensor algebra. On <span class="math" data-tex="\(L^2(\mathbb R_r,\mathbb C^2)\)">\(L^2(\mathbb R_r,\mathbb C^2)\)</span>, let <span class="math" data-tex="\(\lambda_t\xi(r)=\xi(r-t)\)">\(\lambda_t\xi(r)=\xi(r-t)\)</span> and <span class="math" data-tex="\(V\xi(r)=c_r\xi(r)\)">\(V\xi(r)=c_r\xi(r)\)</span>. The continuous matrix field is unitary, and the field <span class="math" data-tex="\(c_r^*\)">\(c_r^*\)</span> is its inverse. Both define isometries on all <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, not just on compactly supported vectors. Its four scalar multiplication entries put <span class="math" data-tex="\(V\)">\(V\)</span> in <span class="math" data-tex="\(M_2\overline\otimes B(L^2(\mathbb R))\)">\(M_2\overline\otimes B(L^2(\mathbb R))\)</span>. The cocycle law with <span class="math" data-tex="\(r=t+(r-t)\)">\(r=t+(r-t)\)</span> gives
+<span class="math math-display" data-tex="\[
+ \bigl[V(a_t\otimes\operatorname{Ad}\lambda_t)(V^*)\bigr](r)
+      =c_r a_t(c_{r-t}^*)=c_t.
+ \tag{DWC5.m}
+\]">\[
+ \bigl[V(a_t\otimes\operatorname{Ad}\lambda_t)(V^*)\bigr](r)
+      =c_r a_t(c_{r-t}^*)=c_t.
+ \tag{DWC5.m}
+\]</span>
+For an exact check of the order, set <span class="math" data-tex="\(r=t_0/2\)">\(r=t_0/2\)</span>, <span class="math" data-tex="\(t=t_0\)">\(t=t_0\)</span>. The two factors are
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ A=c_{t_0/2}=\frac1{\sqrt2}\begin{pmatrix}i&amp;-i\\1&amp;1\end{pmatrix},\\
+ B_0=a_{t_0}(c_{-t_0/2}^*)
+       =\frac1{\sqrt2}\begin{pmatrix}i&amp;-1\\i&amp;1\end{pmatrix},\\
+ AB_0=Y,\qquad B_0A=-Z.
+ \end{gathered}
+ \tag{DWC5.n}
+\]">\[
+ \begin{gathered}
+ A=c_{t_0/2}=\frac1{\sqrt2}\begin{pmatrix}i&amp;-i\\1&amp;1\end{pmatrix},\\
+ B_0=a_{t_0}(c_{-t_0/2}^*)
+       =\frac1{\sqrt2}\begin{pmatrix}i&amp;-1\\i&amp;1\end{pmatrix},\\
+ AB_0=Y,\qquad B_0A=-Z.
+ \end{gathered}
+ \tag{DWC5.n}
+\]</span>
+The reversed factors do not give the cocycle at <span class="math" data-tex="\(t_0\)">\(t_0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathcal F_-\)">\(\mathcal F_-\)</span> be the scalar negative Fourier unitary from <a href="OA-FLOW-FF.html#oa-flow.ff.3">FF2</a>, now mapping the <span class="math" data-tex="\(q\)">\(q\)</span>-coordinate to <span class="math" data-tex="\(r\)">\(r\)</span>. Substitution gives
+<span class="math" data-tex="\(\mathcal F_-e^{itQ}\mathcal F_-^*=\lambda_t\)">\(\mathcal F_-e^{itQ}\mathcal F_-^*=\lambda_t\)</span>.
+Putting <span class="math" data-tex="\(v=(1\otimes\mathcal F_-^*)V(1\otimes\mathcal F_-)\)">\(v=(1\otimes\mathcal F_-^*)V(1\otimes\mathcal F_-)\)</span>, multiply (DWC5.m) on the right by <span class="math" data-tex="\(1\otimes\lambda_t\)">\(1\otimes\lambda_t\)</span> and conjugate to obtain
+<span class="math math-display" data-tex="\[
+ c_t\otimes e^{itQ}
+   =v(1\otimes e^{itQ})(a_t\otimes\operatorname{id})(v^*).
+ \tag{DWC5.o}
+\]">\[
+ c_t\otimes e^{itQ}
+   =v(1\otimes e^{itQ})(a_t\otimes\operatorname{id})(v^*).
+ \tag{DWC5.o}
+\]</span>
+The factors <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(1\otimes e^{itQ}\)">\(1\otimes e^{itQ}\)</span>, and the amplified image of <span class="math" data-tex="\(v^*\)">\(v^*\)</span> remain in this order. Their unitaries act on the whole Hilbert tensor product. This example illustrates the absorption in <a href="#dwc-1">Section 1</a>; its finite-dimensional coefficient centralizers do not satisfy the cancellation hypothesis in <a href="#dwc-3">Section 3</a>.</p>
+<p><strong>Exact centralizer rows and their whole-cone cancellation.</strong> Return to (DWC5.a). Choose the countable filling family <span class="math" data-tex="\(s_n\in B(K)\)">\(s_n\in B(K)\)</span> supplied above, and put <span class="math" data-tex="\(r_n=s_n\otimes1_L\in B_\chi\)">\(r_n=s_n\otimes1_L\in B_\chi\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ r_n^*r_m=\delta_{nm}1,\qquad
+ \sum_{n\ge0}r_nr_n^*=1
+ \quad\hbox{strongly}.
+ \tag{DWC5.p}
+\]">\[
+ r_n^*r_m=\delta_{nm}1,\qquad
+ \sum_{n\ge0}r_nr_n^*=1
+ \quad\hbox{strongly}.
+ \tag{DWC5.p}
+\]</span>
+There is also an explicit version at every multiplicity <span class="math" data-tex="\(K_0\ne0\)">\(K_0\ne0\)</span>. Take <span class="math" data-tex="\(K=\ell^2(\mathbb N_0)\otimes K_0\)">\(K=\ell^2(\mathbb N_0)\otimes K_0\)</span> and define
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \nu(n,j)&amp;=\frac{(n+j)(n+j+1)}2+n,\\
+ s_n(e_j\otimes\eta)&amp;=e_{\nu(n,j)}\otimes\eta.
+ \end{aligned}
+ \tag{DWC5.q}
+\]">\[
+ \begin{aligned}
+ \nu(n,j)&amp;=\frac{(n+j)(n+j+1)}2+n,\\
+ s_n(e_j\otimes\eta)&amp;=e_{\nu(n,j)}\otimes\eta.
+ \end{aligned}
+ \tag{DWC5.q}
+\]</span>
+The map <span class="math" data-tex="\(\nu:\mathbb N_0^2\to\mathbb N_0\)">\(\nu:\mathbb N_0^2\to\mathbb N_0\)</span> is a bijection. Given <span class="math" data-tex="\(m\)">\(m\)</span>, there is a unique integer <span class="math" data-tex="\(d\ge0\)">\(d\ge0\)</span> with <span class="math" data-tex="\(d(d+1)/2\le m&lt;(d+1)(d+2)/2\)">\(d(d+1)/2\le m&lt;(d+1)(d+2)/2\)</span>; then <span class="math" data-tex="\(n=m-d(d+1)/2\)">\(n=m-d(d+1)/2\)</span> and <span class="math" data-tex="\(j=d-n\)">\(j=d-n\)</span> are its unique preimage. For fixed <span class="math" data-tex="\(n\)">\(n\)</span>, (DWC5.q) preserves inner products on finite coordinate vectors, so it extends to an isometry on all of <span class="math" data-tex="\(K\)">\(K\)</span>. Distinct ranges are orthogonal and their finite partial sums fill <span class="math" data-tex="\(K\)">\(K\)</span>, since every basis coordinate occurs. Tensor density proves these assertions for arbitrary <span class="math" data-tex="\(K_0\)">\(K_0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(E=\ell^2(\mathbb N_0)\)">\(E=\ell^2(\mathbb N_0)\)</span>, write <span class="math" data-tex="\(E_{ij}\)">\(E_{ij}\)</span> for its matrix units, and define
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \mathcal A&amp;=B\overline\otimes B(E),&amp;
+ \Omega&amp;=\chi\otimes\operatorname{Tr}_E,&amp;
+ e&amp;=1_B\otimes E_{00},\\
+ R_m&amp;=\sum_{0\le n&lt;m}r_n\otimes E_{0n},&amp;
+ R&amp;=\operatorname*{s^*\!-\!lim}_{m\to\infty}R_m.
+ \end{aligned}
+ \tag{DWC5.r}
+\]">\[
+ \begin{aligned}
+ \mathcal A&amp;=B\overline\otimes B(E),&amp;
+ \Omega&amp;=\chi\otimes\operatorname{Tr}_E,&amp;
+ e&amp;=1_B\otimes E_{00},\\
+ R_m&amp;=\sum_{0\le n&lt;m}r_n\otimes E_{0n},&amp;
+ R&amp;=\operatorname*{s^*\!-\!lim}_{m\to\infty}R_m.
+ \end{aligned}
+ \tag{DWC5.r}
+\]</span>
+Here the tensor weight is precisely <a href="OA-FLOW-TW.html#tw-2">TW2's whole-cone usual-trace construction</a>. The claimed limit follows explicitly. On a vector <span class="math" data-tex="\(\zeta=(\zeta_n)_{n\ge0}\in\bigoplus_n\mathcal H\)">\(\zeta=(\zeta_n)_{n\ge0}\in\bigoplus_n\mathcal H\)</span>, <span class="math" data-tex="\(R_m\zeta\)">\(R_m\zeta\)</span> has only its zeroth coordinate nonzero, equal to <span class="math" data-tex="\(\sum_{n&lt;m}r_n\zeta_n\)">\(\sum_{n&lt;m}r_n\zeta_n\)</span>. Orthogonality in (DWC5.p) makes these sums converge with squared norm <span class="math" data-tex="\(\sum_n\|\zeta_n\|^2\)">\(\sum_n\|\zeta_n\|^2\)</span>. The adjoint limit sends <span class="math" data-tex="\(\eta\)">\(\eta\)</span> to <span class="math" data-tex="\((r_n^*\eta_0)_n\)">\((r_n^*\eta_0)_n\)</span>; its square-summable tail tends to zero because the range projections in (DWC5.p) fill <span class="math" data-tex="\(1\)">\(1\)</span>. Thus both operators converge strongly, with norms at most one. The full identities are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ R_m^*R_m&amp;=1_B\otimes\sum_{n&lt;m}E_{nn},&amp;
+ R_mR_m^*&amp;=\left(\sum_{n&lt;m}r_nr_n^*\right)\otimes E_{00},\\
+ R^*R&amp;=1_{\mathcal A},&amp;
+ RR^*&amp;=e.
+ \end{aligned}
+ \tag{DWC5.s}
+\]">\[
+ \begin{aligned}
+ R_m^*R_m&amp;=1_B\otimes\sum_{n&lt;m}E_{nn},&amp;
+ R_mR_m^*&amp;=\left(\sum_{n&lt;m}r_nr_n^*\right)\otimes E_{00},\\
+ R^*R&amp;=1_{\mathcal A},&amp;
+ RR^*&amp;=e.
+ \end{aligned}
+ \tag{DWC5.s}
+\]</span>
+In particular <span class="math" data-tex="\(R\)">\(R\)</span> is an isometry of the full Hilbert space onto the corner space <span class="math" data-tex="\(e(\mathcal H\otimes E)\)">\(e(\mathcal H\otimes E)\)</span>. It is not a unitary of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. The limit lies in the full tensor von Neumann algebra. By <a href="OA-FLOW-TW.html#tw-5">TW5's full modular formula</a>, every finite row is fixed by <span class="math" data-tex="\(\sigma^\Omega\)">\(\sigma^\Omega\)</span>; bounded strong convergence and normality give <span class="math" data-tex="\(R\in\mathcal A_\Omega\)">\(R\in\mathcal A_\Omega\)</span>.</p>
+<p>The weight identity includes every infinite value:
+<span class="math math-display" data-tex="\[
+ \Omega(RaR^*)=\Omega(a)\qquad(a\in\mathcal A_+).
+ \tag{DWC5.t}
+\]">\[
+ \Omega(RaR^*)=\Omega(a)\qquad(a\in\mathcal A_+).
+ \tag{DWC5.t}
+\]</span>
+Here is the finite-domain argument in both directions. If <span class="math" data-tex="\(\Omega(a)&lt;\infty\)">\(\Omega(a)&lt;\infty\)</span>, <a href="OA-FLOW-CZ.html#cz-0">CZ0</a> makes left and right multiplication by <span class="math" data-tex="\(R,R^*\)">\(R,R^*\)</span> preserve <span class="math" data-tex="\(\mathfrak m_\Omega\)">\(\mathfrak m_\Omega\)</span>, and its finite cyclic identity gives
+<span class="math" data-tex="\(\Omega(RaR^*)=\Omega_0(aR^*R)=\Omega(a)\)">\(\Omega(RaR^*)=\Omega_0(aR^*R)=\Omega(a)\)</span>.
+Conversely, if <span class="math" data-tex="\(b=RaR^*\)">\(b=RaR^*\)</span> has finite weight, the same domain stability gives <span class="math" data-tex="\(a=R^*bR\in\mathfrak m_\Omega\)">\(a=R^*bR\in\mathfrak m_\Omega\)</span>. Since <span class="math" data-tex="\(b=ebe\)">\(b=ebe\)</span>, cyclicity gives
+<span class="math" data-tex="\(\Omega(a)=\Omega_0(bRR^*)=\Omega(b)\)">\(\Omega(a)=\Omega_0(bRR^*)=\Omega(b)\)</span>.
+Consequently an infinite value on either side cannot become finite on the other. This proves (DWC5.t) on the whole cone.</p>
+<p>For the scalar rescaling <span class="math" data-tex="\(\chi_c=c\chi\)">\(\chi_c=c\chi\)</span>, put <span class="math" data-tex="\(\Omega_c=\chi_c\otimes\operatorname{Tr}_E\)">\(\Omega_c=\chi_c\otimes\operatorname{Tr}_E\)</span> and <span class="math" data-tex="\(U=X(\log c)\otimes1_E\)">\(U=X(\log c)\otimes1_E\)</span>. TW2's diagonal formula and (DWC5.f) give <span class="math" data-tex="\(\Omega_c=\Omega\circ\operatorname{Ad}U\)">\(\Omega_c=\Omega\circ\operatorname{Ad}U\)</span> on all positive elements. The same row <span class="math" data-tex="\(R\)">\(R\)</span> centralizes both weights. It commutes with <span class="math" data-tex="\(U\)">\(U\)</span>, because its <span class="math" data-tex="\(r_n\)">\(r_n\)</span> act on the <span class="math" data-tex="\(K\)">\(K\)</span>-factor, while <span class="math" data-tex="\(X\)">\(X\)</span> acts on <span class="math" data-tex="\(L\)">\(L\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ RUR^*=X(\log c)\otimes E_{00},\qquad
+ \Omega(a\otimes E_{00})=\chi(a).
+ \tag{DWC5.u}
+\]">\[
+ RUR^*=X(\log c)\otimes E_{00},\qquad
+ \Omega(a\otimes E_{00})=\chi(a).
+ \tag{DWC5.u}
+\]</span>
+The second identity is <a href="OA-FLOW-TW.html#tw-3">TW3's rank-one normalization</a>, including infinity. The corner removes the amplification with exactly the original factor <span class="math" data-tex="\(c\)">\(c\)</span>, recovering <span class="math" data-tex="\(\chi_c=\chi\circ\operatorname{Ad}X(\log c)\)">\(\chi_c=\chi\circ\operatorname{Ad}X(\log c)\)</span>.</p>
+<p><strong>A normalization obstruction with a properly infinite centralizer.</strong> Let <span class="math" data-tex="\(\rho=\operatorname{Tr}_{K}\)">\(\rho=\operatorname{Tr}_{K}\)</span> on any infinite-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>. Both <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and <span class="math" data-tex="\(2\rho\)">\(2\rho\)</span> have trivial modular group and centralizer <span class="math" data-tex="\(B(K)\)">\(B(K)\)</span>, which is properly infinite. They cannot be inner conjugate:
+<span class="math math-display" data-tex="\[
+ \rho(\operatorname{Ad}u(p))=1,\qquad (2\rho)(p)=2
+ \tag{DWC5.v}
+\]">\[
+ \rho(\operatorname{Ad}u(p))=1,\qquad (2\rho)(p)=2
+ \tag{DWC5.v}
+\]</span>
+for any unitary <span class="math" data-tex="\(u\)">\(u\)</span> and any rank-one projection <span class="math" data-tex="\(p\)">\(p\)</span>. Unit conjugation preserves rank one, and TW1 fixes its usual trace at one. Equivalently the trace is invariant under every inner automorphism. The normalized derivative still detects the distinction:
+<span class="math math-display" data-tex="\[
+ [D(2\rho):D\rho]_t=2^{it}1,
+ \tag{DWC5.w}
+\]">\[
+ [D(2\rho):D\rho]_t=2^{it}1,
+ \tag{DWC5.w}
+\]</span>
+by <a href="OA-FLOW-BC.html#bc-5">BC5</a>. These weights have no full real eigenunitary field. Triviality of the modular action would force <span class="math" data-tex="\(X(r)=e^{irt}X(r)\)">\(X(r)=e^{irt}X(r)\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>, impossible for a unitary when <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>. Thus this example satisfies the centralizer hypothesis and fails the other one.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Four exact models for dominant-weight comparison: exponential density and translation, ordered matrix cocycle absorption, centralizer-row coordinates, and the two separate hypotheses" src="assets/dominant-weight-comparison/dwc-models.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p>The density panel draws the exact functions <span class="math" data-tex="\(e^q\)">\(e^q\)</span> and <span class="math" data-tex="\(2e^q\)">\(2e^q\)</span> on a finite coordinate window; (DWC5.c) and (DWC5.f) prove the weight identity on the whole positive cone. The matrix panel gives the exact products in (DWC5.n). The row panel displays only twelve values of the bijection (DWC5.q); its infinite row is justified by (DWC5.p)–(DWC5.t). The final panel distinguishes the centralizer and eigenfield hypotheses and records the rank-one obstruction (DWC5.v). The <a href="assets/dominant-weight-comparison/render.py">drawing source</a>, <a href="assets/dominant-weight-comparison/data.json">exact data</a> and <a href="assets/dominant-weight-comparison/dwc-models.svg">SVG</a> make the figure reproducible. The original figure and source are CC0; the <a href="assets/dominant-weight-comparison/FONT-LICENSE.txt">DejaVu font terms</a> remain separate.</p>
+<p><span id="OA-FLOW.DWC.6"></span><a id="dwc-6"></a></p>
+<h2 id="6-five-solved-diagnostics">6. Five solved diagnostics</h2>
+<p><strong>Diagnostic A: the sign, the domain and the missing hypothesis.</strong> For <span class="math" data-tex="\(D=1_K\otimes e^Q\)">\(D=1_K\otimes e^Q\)</span>, compute the modular eigenvalue of <span class="math" data-tex="\(X(r)=1_K\otimes L_r\)">\(X(r)=1_K\otimes L_r\)</span>, the unitary implementing <span class="math" data-tex="\(c\chi\)">\(c\chi\)</span>, and the domain tested by a finite rank-one weight. What changes when <span class="math" data-tex="\(K=\mathbb C\)">\(K=\mathbb C\)</span>?</p>
+<p><strong>Solution.</strong> On each vector,
+<span class="math math-display" data-tex="\[
+ e^{itq}e^{-it(q-r)}=e^{irt};
+ \qquad X(r)^*DX(r)=e^rD.
+ \tag{DWC6.a}
+\]">\[
+ e^{itq}e^{-it(q-r)}=e^{irt};
+ \qquad X(r)^*DX(r)=e^rD.
+ \tag{DWC6.a}
+\]</span>
+Thus <span class="math" data-tex="\(c\chi=\chi\circ\operatorname{Ad}X(\log c)\)">\(c\chi=\chi\circ\operatorname{Ad}X(\log c)\)</span>; using <span class="math" data-tex="\(-\log c\)">\(-\log c\)</span> would give <span class="math" data-tex="\(c^{-1}\chi\)">\(c^{-1}\chi\)</span>. Equation (DWC5.e) shows that the rank-one value is finite exactly when
+<span class="math" data-tex="\(\int e^q\|\xi(q)\|^2\,dq&lt;\infty\)">\(\int e^q\|\xi(q)\|^2\,dq&lt;\infty\)</span>, which is the full domain of <span class="math" data-tex="\(D^{1/2}\)">\(D^{1/2}\)</span>, not of <span class="math" data-tex="\(D\)">\(D\)</span>. For example, with a unit <span class="math" data-tex="\(\eta\in K\)">\(\eta\in K\)</span>, the vector <span class="math" data-tex="\(\xi(q)=e^{-3q/4}1_{[0,\infty)}(q)\eta\)">\(\xi(q)=e^{-3q/4}1_{[0,\infty)}(q)\eta\)</span> belongs to <span class="math" data-tex="\(L^2\)">\(L^2\)</span> and to <span class="math" data-tex="\(\mathcal D(D^{1/2})\)">\(\mathcal D(D^{1/2})\)</span>, because the respective integrals are <span class="math" data-tex="\(2/3\)">\(2/3\)</span> and <span class="math" data-tex="\(2\)">\(2\)</span>, but does not belong to <span class="math" data-tex="\(\mathcal D(D)\)">\(\mathcal D(D)\)</span>, since <span class="math" data-tex="\(\int_0^\infty e^{q/2}\,dq=\infty\)">\(\int_0^\infty e^{q/2}\,dq=\infty\)</span>. When <span class="math" data-tex="\(K=\mathbb C\)">\(K=\mathbb C\)</span>, all these formulas still hold. The exact centralizer is then the abelian multiplication algebra, whose isometries are unitaries, so proper infiniteness fails.</p>
+<p><strong>Diagnostic B: can one reverse the two absorption factors?</strong> Use the matrices <span class="math" data-tex="\(A,B_0\)">\(A,B_0\)</span> in (DWC5.n). Compute both orders, and explain why an ordinary representation law for <span class="math" data-tex="\(c_t\)">\(c_t\)</span> would also give the wrong answer.</p>
+<p><strong>Solution.</strong> Multiplication gives
+<span class="math math-display" data-tex="\[
+ AB_0=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix}=Y,\qquad
+ B_0A=\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix}=-Z.
+ \tag{DWC6.b}
+\]">\[
+ AB_0=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix}=Y,\qquad
+ B_0A=\begin{pmatrix}-1&amp;0\\0&amp;1\end{pmatrix}=-Z.
+ \tag{DWC6.b}
+\]</span>
+The first equals <span class="math" data-tex="\(c_{t_0}\)">\(c_{t_0}\)</span>, as required by <span class="math" data-tex="\(c_r a_t(c_{r-t}^*)=c_t\)">\(c_r a_t(c_{r-t}^*)=c_t\)</span>; the second does not. Moreover <span class="math" data-tex="\(c_{t_0}^2=Y^2=1\)">\(c_{t_0}^2=Y^2=1\)</span>, while <span class="math" data-tex="\(c_{2t_0}=-1\)">\(c_{2t_0}=-1\)</span>. The correct twisted law inserts <span class="math" data-tex="\(a_{t_0}(Y)=ZYZ=-Y\)">\(a_{t_0}(Y)=ZYZ=-Y\)</span>, and <span class="math" data-tex="\(Y(-Y)=-1\)">\(Y(-Y)=-1\)</span>. The scalar factor <span class="math" data-tex="\(2^{it}\)">\(2^{it}\)</span> is also essential: deleting it changes the density from <span class="math" data-tex="\(k\)">\(k\)</span> to <span class="math" data-tex="\(k/2\)">\(k/2\)</span>, changing the weight's value at <span class="math" data-tex="\(1\)">\(1\)</span> from <span class="math" data-tex="\(10\)">\(10\)</span> to <span class="math" data-tex="\(5\)">\(5\)</span>. Neither reversing factors nor discarding a scalar phase is a harmless change of implementation.</p>
+<p><strong>Diagnostic C: why is the limiting row indispensable?</strong> Can a finite row <span class="math" data-tex="\(R_m\)">\(R_m\)</span> cancel the amplification on the whole Hilbert space? State the precise general corner formula when <span class="math" data-tex="\(\Omega_2=\Omega_1\circ\operatorname{Ad}U\)">\(\Omega_2=\Omega_1\circ\operatorname{Ad}U\)</span> and each centralizer supplies a full row <span class="math" data-tex="\(R_j\)">\(R_j\)</span> with <span class="math" data-tex="\(R_j^*R_j=1\)">\(R_j^*R_j=1\)</span>, <span class="math" data-tex="\(R_jR_j^*=e\)">\(R_jR_j^*=e\)</span>.</p>
+<p><strong>Solution.</strong> A vector concentrated in coordinate <span class="math" data-tex="\(n\ge m\)">\(n\ge m\)</span> is killed by <span class="math" data-tex="\(R_m\)">\(R_m\)</span>, whereas <span class="math" data-tex="\(R\)">\(R\)</span> preserves its norm. In particular
+<span class="math math-display" data-tex="\[
+ R_m^*R_m=1\otimes\sum_{n&lt;m}E_{nn}\ne1,\qquad
+ \|R-R_m\|=1\quad(m&lt;\infty).
+ \tag{DWC6.c}
+\]">\[
+ R_m^*R_m=1\otimes\sum_{n&lt;m}E_{nn}\ne1,\qquad
+ \|R-R_m\|=1\quad(m&lt;\infty).
+ \tag{DWC6.c}
+\]</span>
+The upper norm bound follows from the orthogonal tail formula for <span class="math" data-tex="\(R-R_m\)">\(R-R_m\)</span>, and a unit vector in coordinate <span class="math" data-tex="\(m\)">\(m\)</span> gives equality. The row converges strongly and strongly in adjoint, not in operator norm.</p>
+<p>For full rows, <span class="math" data-tex="\(a=R_1UR_2^*\)">\(a=R_1UR_2^*\)</span> is a unitary of <span class="math" data-tex="\(e\mathcal Ae\)">\(e\mathcal Ae\)</span>, since direct multiplication gives <span class="math" data-tex="\(a^*a=aa^*=e\)">\(a^*a=aa^*=e\)</span>. For <span class="math" data-tex="\(y\in(e\mathcal Ae)_+\)">\(y\in(e\mathcal Ae)_+\)</span>, the two-direction finite-domain argument proving (DWC5.t) applies separately to <span class="math" data-tex="\(\Omega_j,R_j\)">\(\Omega_j,R_j\)</span>, and yields
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \Omega_1(aya^*)
+   &amp;=\Omega_1(UR_2^*yR_2U^*)\\
+   &amp;=\Omega_2(R_2^*yR_2)
+    =\Omega_2(y).
+ \end{aligned}
+ \tag{DWC6.d}
+\]">\[
+ \begin{aligned}
+ \Omega_1(aya^*)
+   &amp;=\Omega_1(UR_2^*yR_2U^*)\\
+   &amp;=\Omega_2(R_2^*yR_2)
+    =\Omega_2(y).
+ \end{aligned}
+ \tag{DWC6.d}
+\]</span>
+If <span class="math" data-tex="\(\Omega_j=\chi_j\otimes\operatorname{Tr}_E\)">\(\Omega_j=\chi_j\otimes\operatorname{Tr}_E\)</span>, write <span class="math" data-tex="\(a=w\otimes E_{00}\)">\(a=w\otimes E_{00}\)</span> in the full rank-one corner. TW3 then gives <span class="math" data-tex="\(\chi_2(x)=\chi_1(wxw^*)\)">\(\chi_2(x)=\chi_1(wxw^*)\)</span> for every positive <span class="math" data-tex="\(x\)">\(x\)</span>, including infinite values. Centralizer membership is essential: the flip unitary in <span class="math" data-tex="\(M_2\)">\(M_2\)</span> has initial projection <span class="math" data-tex="\(1\)">\(1\)</span> but sends <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span> to <span class="math" data-tex="\(E_{22}\)">\(E_{22}\)</span>, changing the weight with density <span class="math" data-tex="\(\operatorname{diag}(1,4)\)">\(\operatorname{diag}(1,4)\)</span> from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(4\)">\(4\)</span>. Its isometry identity alone is insufficient.</p>
+<p><strong>Diagnostic D: do equal modular groups determine the weight?</strong> For <span class="math" data-tex="\(\rho=\operatorname{Tr}_{K}\)">\(\rho=\operatorname{Tr}_{K}\)</span> on infinite-dimensional <span class="math" data-tex="\(K\)">\(K\)</span>, compare <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and <span class="math" data-tex="\(2\rho\)">\(2\rho\)</span>. Both take the value infinity at <span class="math" data-tex="\(1\)">\(1\)</span>. Does that remove the normalization obstruction?</p>
+<p><strong>Solution.</strong> Both modular groups are the identity by the full trace GNS computation, so their equality provides no scalar information. Equality at <span class="math" data-tex="\(1\)">\(1\)</span> also provides none: both values are infinite. A rank-one projection <span class="math" data-tex="\(p\)">\(p\)</span> has <span class="math" data-tex="\(\rho(p)=1\)">\(\rho(p)=1\)</span> and <span class="math" data-tex="\((2\rho)(p)=2\)">\((2\rho)(p)=2\)</span>, and any unitary conjugate of <span class="math" data-tex="\(p\)">\(p\)</span> still has rank one. Therefore no unitary <span class="math" data-tex="\(w\)">\(w\)</span> can satisfy <span class="math" data-tex="\(2\rho=\rho\circ\operatorname{Ad}w\)">\(2\rho=\rho\circ\operatorname{Ad}w\)</span>. The normalized derivative <span class="math" data-tex="\(2^{it}1\)">\(2^{it}1\)</span> records precisely the missing scalar. This does not contradict the comparison theorem: trivial modular action cannot have a unitary eigenvector with frequency <span class="math" data-tex="\(r\ne0\)">\(r\ne0\)</span>, since choosing <span class="math" data-tex="\(t=\pi/r\)">\(t=\pi/r\)</span> would force <span class="math" data-tex="\(X(r)=-X(r)\)">\(X(r)=-X(r)\)</span>.</p>
+<p><strong>Diagnostic E: on which side should one normalize an automorphism?</strong> Suppose <span class="math" data-tex="\(\Phi\circ\alpha=\Phi\circ\operatorname{Ad}w\)">\(\Phi\circ\alpha=\Phi\circ\operatorname{Ad}w\)</span> on the whole positive cone. Which composition is guaranteed to preserve <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>? Give an exact finite-matrix example showing that the order matters.</p>
+<p><strong>Solution.</strong> The composition justified by the stated equality is
+<span class="math math-display" data-tex="\[
+ \beta=\alpha\circ\operatorname{Ad}w^*,\qquad
+ \Phi\circ\beta
+ =\Phi\circ\operatorname{Ad}w\circ\operatorname{Ad}w^*
+ =\Phi.
+ \tag{DWC6.e}
+\]">\[
+ \beta=\alpha\circ\operatorname{Ad}w^*,\qquad
+ \Phi\circ\beta
+ =\Phi\circ\operatorname{Ad}w\circ\operatorname{Ad}w^*
+ =\Phi.
+ \tag{DWC6.e}
+\]</span>
+Equivalently <span class="math" data-tex="\(\beta=\operatorname{Ad}(\alpha(w^*))\circ\alpha\)">\(\beta=\operatorname{Ad}(\alpha(w^*))\circ\alpha\)</span>. An inner adjustment on the other side must use this transported unitary.</p>
+<p>For a counterexample to simply interchanging the factors, use <span class="math" data-tex="\(\Phi(a)=\operatorname{Tr}(ha)\)">\(\Phi(a)=\operatorname{Tr}(ha)\)</span> with <span class="math" data-tex="\(h,R,Z\)">\(h,R,Z\)</span> from (DWC5.i)–(DWC5.l), let <span class="math" data-tex="\(\alpha=\operatorname{Ad}R\)">\(\alpha=\operatorname{Ad}R\)</span>, and put <span class="math" data-tex="\(w=ZR\)">\(w=ZR\)</span>. Since <span class="math" data-tex="\(Z\)">\(Z\)</span> commutes with <span class="math" data-tex="\(h\)">\(h\)</span>, its inner automorphism preserves <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>, so <span class="math" data-tex="\(\Phi\circ\operatorname{Ad}w=\Phi\circ\alpha\)">\(\Phi\circ\operatorname{Ad}w=\Phi\circ\alpha\)</span>. But
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \alpha\circ\operatorname{Ad}w^*&amp;=\operatorname{Ad}Z,\\
+ \operatorname{Ad}w^*\circ\alpha
+    &amp;=\operatorname{Ad}(R^*ZR),\qquad
+ R^*ZR=\begin{pmatrix}0&amp;-1\\-1&amp;0\end{pmatrix}.
+ \end{aligned}
+ \tag{DWC6.f}
+\]">\[
+ \begin{aligned}
+ \alpha\circ\operatorname{Ad}w^*&amp;=\operatorname{Ad}Z,\\
+ \operatorname{Ad}w^*\circ\alpha
+    &amp;=\operatorname{Ad}(R^*ZR),\qquad
+ R^*ZR=\begin{pmatrix}0&amp;-1\\-1&amp;0\end{pmatrix}.
+ \end{aligned}
+ \tag{DWC6.f}
+\]</span>
+The first preserves <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. The second sends <span class="math" data-tex="\(E_{11}\)">\(E_{11}\)</span> to <span class="math" data-tex="\(E_{22}\)">\(E_{22}\)</span>, changing its weight from <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(4\)">\(4\)</span>. This finite example tests only the normalization algebra, which applies whenever the displayed weight equality has been obtained; it is not an additional instance of the dominant-weight hypotheses.</p>
+<p><span id="OA-FLOW.DWC.READING"></span><a id="dwc-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>M. Takesaki, <em>Theory of Operator Algebras II</em>, Chapter XII, Theorem 4.18(i)–(ii), printed p. 417, and Lemma 4.19, printed p. 418, treat scalar absorption and the comparison of dominant weights. Definition 4.20(ii), on p. 418, gives the dominant-weight terminology. The comparison theorem here starts from specified continuous eigenunitary fields, applies on arbitrary Hilbert multiplicity, and keeps the normalization on the whole positive cone explicit. It does not infer such fields from pointwise scalar equivalence.</p>
+<p>The local construction also separates tensoring with the usual trace from perturbing by its unbounded centralizer density. <a href="OA-FLOW-TW.html#tw-2">TW</a> proves the former, and <a href="OA-FLOW-CZ.html#cz-2">CZ</a> proves the latter. The preceding lesson on <a href="OA-FLOW-RCC.html#rcc-6">relative commutants and central cocycles</a> concerns automorphisms fixing the coefficient algebra; the present comparison applies to arbitrary normal automorphisms under (DWC0.d) and the stated proper-infiniteness hypothesis.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-RCC.html">Previous lesson</a><a href="OA-FLOW-CST.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-DWC.md">Lesson source</a></nav></main></body></html>

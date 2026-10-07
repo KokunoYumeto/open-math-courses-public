@@ -1,6 +1,6 @@
 # Finite composition and adjoints with spatial weights
 
-*Written by GPT-6 Astra (OpenAI). Original exposition: CC0.*
+*Written by GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0.*
 
 This reading proves the finite calculus for the metrics actually used in the weighted Sobolev and resolvent lessons. The general quantization and product formulas are presented in Nicolas Lerner's freely accessible [author Chapter 2, Lemma 2.3.12 and Theorems 2.3.18–2.3.19](https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf). Here the needed symbol estimates, finite remainders and operator identities are proved directly. No general admissible-metric composition theorem is assumed.
 
@@ -48,6 +48,7 @@ Define $S(w,G_\gamma)$ by the seminorms
 \]
 Every assertion below controls each output seminorm by finitely many input seminorms and the displayed structural constants. In particular it is uniform for families sharing those constants. This includes admissible families of truncated weights, without a uniform global upper bound on the weights themselves.
 
+<a id="symbol-completeness-and-reciprocal"></a>
 These symbol spaces are complete for their displayed countable seminorms. Indeed a Cauchy sequence and each of its derivatives converge uniformly on compact sets, since the weight and its reciprocal are bounded there. Integrating derivatives along line segments shows successively that these limits are the derivatives of one smooth function. Passing to the pointwise limit in each normalized uniform bound, including the bounds for differences, proves convergence in every symbol seminorm. For a symbol with $|a|\ge cw$, its reciprocal is in $S(w^{-1},G_\gamma)$. Starting from $|a^{-1}|\le c^{-1}w^{-1}$, differentiation of $aa^{-1}=1$ gives, for a nonzero phase-space multi-index $\nu$,
 \[
  \partial^\nu(a^{-1})=-a^{-1}
@@ -212,6 +213,7 @@ Conjugating the left kernel and interchanging input and output makes it the righ
 <a id="operator-identities"></a>
 ## 5. Schwartz functions, distributions and exact operator identities
 
+<a id="weighted-schwartz-action"></a>
 First every symbol in (C4) defines a continuous map $A:\mathcal S\to\mathcal S$ by
 \[
  Au(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}a(x,\xi)\widehat u(\xi)\,d\xi.
@@ -221,6 +223,7 @@ To prove it, bound $w$ by a fixed polynomial, as in Section 1. Differentiating i
 
 For completeness, distribution actions here use the bilinear pairing with Schwartz tests. The transpose kernel is the right kernel of $\widetilde a(x,\xi)=a(x,-\xi)$, and its left symbol is $T_1\widetilde a$. Reflection preserves admissibility of the reflected weight, so Theorem 3.1 and (C20) make this transpose a continuous map $\mathcal S\to\mathcal S$. Define $A$ on $\mathcal S'$ by $\langle Au,v\rangle=\langle u,A^{\mathrm{tr}}v\rangle$. The definition is continuous and agrees with (C20) on Schwartz functions. Partial Fourier transformations and multiplication used above have the same distributional meaning, so the kernel and quantization identities already proved agree with these actions.
 
+<a id="weighted-exact-composition"></a>
 We now justify that (C16) is actual operator composition. For compactly supported smooth symbols $a,b$, substitute their two kernels. Put the intermediate position $z=x+y$, the first frequency equal to $\xi+\eta$, and keep $\xi$ as the second frequency. The phase becomes $(x-v)\cdot\xi-y\cdot\eta$, where $v$ is the final input. Fubini is legitimate: the intermediate position and both frequencies have bounded supports, and the input is integrable. The resulting kernel is exactly that of $I_1(a,b)$.
 
 For general symbols set $a_L=a\chi(x/L)\chi(\xi/L)$, and likewise $b_L$. Their symbol seminorms are uniformly bounded as observed in Section 3. Moreover
@@ -247,6 +250,7 @@ If $a\in S(1,G_\gamma)$, all the coordinate derivatives required by the earlier 
 \]
 for a fixed finite $k$ depending on dimension. Theorem 3.1 gives the same conclusion for Weyl or other fixed quantization, since $T_ta\in S(1,G_\gamma)$ with finite-seminorm control. These bounded extensions agree with the distribution actions on $L^2$: approximate by Schwartz functions, use the continuous embedding $L^2\subset\mathcal S'$ from Cauchy–Schwarz, and pass to the limit in both pairings.
 
+<a id="weighted-sobolev-mapping"></a>
 In particular the power multipliers $M_t=\langle x\rangle^t$ and $J_s=\langle D\rangle^s$ have weights $X^t$ and $\Xi^s$ for all real $s,t$. Theorem 4.1 makes the symbols of
 $J_sM_tJ_{-s}M_{-t}$ and $M_tJ_sM_{-t}J_{-s}$ members of $S(1,G_\gamma)$. Equation (C22) bounds both. The exact distribution identities then give both inequalities between $\|J_sM_tu\|_2$ and $\|M_tJ_su\|_2$, including both finite-norm implications. Likewise, for $a\in S(X^\tau\Xi^\mu,G_\gamma)$, the conjugate
 \[
@@ -296,6 +300,7 @@ for every positive integer $K$, where $D_z=-i\partial_z$. Operators and adjoints
 \]
 uniformly in $s$. The bounded adjoint agrees with the formal adjoint when these operators are bounded. We prove all three assertions; (M4) is not an input to the symbolic proof.
 
+<a id="moving-oscillatory-estimate"></a>
 ### The oscillatory estimate at a fixed output point
 
 For $|t|\le1$ define
@@ -345,6 +350,7 @@ $2(1-c)L>B_{2J_0}+d$. Both scalar integrals converge. This order of choices is e
 
 For a precise meaning of $\operatorname{Os}$, insert smooth cutoffs $\chi(\varepsilon u)\chi(\varepsilon v)$, equal to one near zero and of compact support. Their derivatives are bounded uniformly and tend pointwise to zero when a derivative has fallen on a cutoff. The same integrable majorant, with $L$ enlarged if necessary, bounds every term in (M9). Dominated convergence proves existence, independence of the cutoffs and equality with (M9). Different choices of $J_0,L$ give the same limit. Cutoffs in the unscaled variables have the same limit after (M6), for each fixed output point. Differentiating the original integrands with respect to $z,\eta$ first yields a finite sum of the same integrals with differentiated symbols. Apply (M6) only afterwards. The derivative weights in (M2) multiply to the required output weight; (M7) handles each translated weight. Formula (M9) gives convergence locally uniformly with all these derivatives. This proves smoothness and every asserted symbol seminorm bound for (M5), without differentiating a frozen scale incorrectly.
 
+<a id="moving-finite-formulas"></a>
 ### Finite Taylor formulas and exact operators
 
 Taylor's formula with integral remainder gives
@@ -371,10 +377,12 @@ The adjoint kernel has right symbol $\overline f$, and conversion of that right 
 \]
 Each input has weight $w_fh^K$, proving the second expansion of (M3). Applying (M10) with $ty$ also proves the finite quantization-change expansion of $T_t$ with coefficient $t^{|\alpha|}$ and the same order of remainder for bounded $t$.
 
+<a id="moving-exact-operators"></a>
 Here are the operator-domain details. At fixed $s$, the operator integral against a Schwartz Fourier transform is absolutely convergent in $\eta$. After integration by parts $2N$ times in $\eta$, the cost from a differentiated symbol is at most $X^{b+2cN}$ and the gain is $\langle z\rangle^{-2N}$. Since $c<1$ and $X$ is comparable to $\langle z\rangle$ at fixed $s$, this proves arbitrary output decay. Output derivatives introduce only finitely many powers of $\eta$ and symbol derivatives, absorbed by Schwartz seminorms. It proves continuous preservation of Schwartz space. The symbols $T_1\overline f$ and $T_1(f(z,-\eta))$ satisfy the same bounds, so the adjoint and bilinear transpose have this property as well.
 
 To justify the kernel identities, first take compactly supported smooth symbols. Substitution of their kernels and Fubini give $f\circ_Lq=I_1(f,q)$ by the change of variables used in Section 5; exchanging the kernel variables gives the right-to-left adjoint formula just used. For general symbols insert $\chi(z/R)\chi(\eta/R)$ and let $R\to\infty$. For each fixed $s$ their symbol seminorms are bounded independently of $R\ge1$. For the position cutoff this follows on $|z|\asymp R$ from $X^r/R\le C_s$; for the frequency cutoff use $R^{-1}\le X^c$. The cutoff operators are $\chi(z/R)\operatorname{Op}_L(f)\chi(D/R)$, and converge on Schwartz space, with uniformly bounded Schwartz seminorm estimates. The estimates (M7)–(M9) give locally uniform convergence of every product-symbol derivative and polynomial bounds independent of $R$ at this fixed $s$. In a pairing with two Schwartz functions those bounds allow dominated convergence, proving the exact composition and adjoint identities. Bilinear transposition then defines the operators on $\mathcal S'$ and gives their exact composition there. Uniformity in $s$ for the symbol formulas comes from (M7)–(M12), not from these auxiliary fixed-$s$ cutoffs.
 
+<a id="moving-position-partition"></a>
 ### Uniform boundedness by a position partition
 
 We use only the previously proved [finite-derivative $L^2$ estimate](finite-derivative-l2.md) and its unitary dilation identity. Let $\phi$ be smooth, nonincreasing, equal to one on $[0,1]$ and zero on $[2,\infty)$. Such a function is obtained by integrating and normalizing a nonnegative smooth bump supported in $(1,2)$. Put $R_j=2^j$ and
@@ -401,6 +409,7 @@ Under the unitary dilation with position scale $R_j^c$, the transformed symbol i
 \]
 The series converges in $L^2$: the same bound on its tails and scalar dominated convergence apply to the locally finite input cutoffs.
 
+<a id="moving-far-input"></a>
 It remains to sum $F_j(1-\widetilde\chi_j)$, for which pointwise kernel estimates at bounded frequencies would be insufficient. Write $\psi_j=1-\widetilde\chi_j$. Every finite Taylor coefficient in the exact symbol of $F_j\psi_j$ is zero, since all derivatives of $\psi_j$ vanish on a neighbourhood of $\operatorname{supp} f_j$. In the remainder (M11), use the fixed scale $y=R_j^cu$, $\theta=R_j^{-c}v$. All derivatives of $\psi_j$ have the global bounds $|\partial_z^\beta\psi_j|\le C_\beta R_j^{-|\beta|}$. Thus $\partial_\eta^\alpha f_j$ for $|\alpha|=K$ contributes $R_j^{cK}$ and $D_z^\alpha\psi_j$ contributes $R_j^{-K}$. After factoring out $R_j^{-(1-c)K}=R_j^{-rK}$, every $u,v$ derivative of the normalized amplitude is uniformly bounded. The integration by parts (M9), now with bounded amplitudes and no translated variable weight, proves for the exact remainder symbol $e_j$ that
 \[
  |\partial_\eta^\alpha\partial_z^\beta e_j|
@@ -410,8 +419,11 @@ It remains to sum $F_j(1-\widetilde\chi_j)$, for which pointwise kernel estimate
 \]
 For output derivatives on $\psi_j$, its stronger gain $R_j^{-1}$ is at most $R_j^{-r}$; for frequency derivatives all the differentiation is on $f_j$. This verifies the displayed exponents for every derivative, not just the size of the amplitude. All integrands retain the output support of $f_j$. Applying the same dilation and the finite-derivative theorem gives
 $\|F_j\psi_j\|\le C_K R_j^{-rK}$.
+
+<a id="moving-uniform-bound"></a>
 Since $r>0$, even $K=1$ makes $\sum_{j\ge0}R_j^{-rK}$ finite. The far-input series therefore converges in operator norm with a uniform bound. Together with (M15) it proves (M4). On Schwartz functions the sum equals $\operatorname{Op}_L(f)$, by the locally finite output partition, so this bounded operator is the required extension. There is no appeal here to a variable-metric boundedness theorem.
 
+<a id="moving-integrable-tail"></a>
 Finally, $q\in S(s^{-\delta}X^{-1},g_s)$ with $\delta=r-c$ satisfies $s^{1+\delta}q\in S(1,g_s)$ because $s/X\le1$. We have proved
 \[
  \|\operatorname{Op}_L(q_s)\|\le C s^{-1-\delta}.

@@ -6,7 +6,7 @@
 
 Changing the highest derivatives of an operator need not change its domain. The difficult point is to prove this when the leading coefficients are merely continuous and the lower coefficients may be unbounded. A symmetric smooth approximation supplies a known domain, but a bound whose constant grows arbitrarily during smoothing would not transfer that domain back to the original expression. We obtain a constant controlled by the fixed coefficient class, its continuity modulus and principal ellipticity. No derivative of an approximating leading coefficient enters that constant.
 
-Read [Admissible differential perturbations](admissible-differential-perturbations.md) for the local coefficient exponents and the global multiplier estimate. The smooth-reference argument uses the complete programme proof [Finite composition and adjoints with spatial weights](../providers/analysis/finite-weighted-calculus.md#finite-composition). Its hypotheses apply because the reference coefficients are smooth and compactly supported, as checked in Section 4. The high-frequency norm is proved by [the Gaussian-packet norm theorem](../providers/analysis/weighted-positivity.md#high-frequency-norm). Lerner [L] supplies the freely accessible construction correspondence. The uniform estimate for rough coefficients is proved here by local freezing and the coefficient multiplication estimate; it uses no sharp positivity theorem. Fourier inversion and Plancherel are proved in [the Fourier reading](../providers/analysis/finite-derivative-l2.md#fourier-normalization). [Approximation, convolution and integer Sobolev density](../providers/analysis/euclidean-approximation-and-convolution.md) proves the compact smooth density, finite \(L^p\) translation and convolution limits, and the continuous Hilbert-space average used in (15). Hilbert-space adjoint facts are identified in Section 4 below. Teschl [T] provides freely accessible background on adjoints and resolvents.
+Read [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-global-mapping) for the local coefficient exponents and the global multiplier estimate. The smooth-reference argument uses the complete programme proof [Finite composition and adjoints with spatial weights](../providers/analysis/finite-weighted-calculus.md#finite-composition). Its hypotheses apply because the reference coefficients are smooth and compactly supported, as checked in Section 4. The high-frequency norm is proved by [the Gaussian-packet norm theorem](../providers/analysis/weighted-positivity.md#high-frequency-norm). Lerner [L] supplies the freely accessible construction correspondence. The uniform estimate for rough coefficients is proved here by local freezing and the coefficient multiplication estimate; it uses no sharp positivity theorem. Fourier inversion and Plancherel are proved in [the Fourier reading](../providers/analysis/finite-derivative-l2.md#fourier-normalization). [Approximation, convolution and integer Sobolev density](../providers/analysis/euclidean-approximation-and-convolution.md) proves the compact smooth density, finite \(L^p\) translation and convolution limits, and the continuous Hilbert-space average used in (15). Hilbert-space adjoint facts are identified in Section 4 below. Teschl [T] provides freely accessible background on adjoints and resolvents.
 
 Throughout, \(n,m\geq1\) are integers, \(D_j=-i\partial_j\), and \(\langle\xi\rangle=(1+|\xi|^2)^{1/2}\). The \(L^2\) inner product is linear in its first variable, and
 
@@ -17,6 +17,7 @@ Throughout, \(n,m\geq1\) are integers, \(D_j=-i\partial_j\), and \(\langle\xi\ra
 
 All operators below are scalar. Ellipticity means nonvanishing of the principal symbol for every nonzero real covector; it does not require that symbol to be positive.
 
+<a id="domain-theorem"></a>
 ## 1. The domain theorem and its coefficient hypotheses
 
 Let \(P_0(D)\) have real constant coefficients and elliptic principal polynomial \(p_m(\xi)\), of degree \(m\). Consider
@@ -73,6 +74,7 @@ The local membership is part of the theorem: an integral that vanishes for all s
 
 We prove the theorem in stages. Sections 2–3 construct the smooth approximation. Sections 4–5 obtain an imaginary-axis inverse and a graph bound uniform under this approximation. Section 6 transfers the domain.
 
+<a id="domain-coefficient-norm"></a>
 ## 2. A norm in which symmetry can be approximated
 
 We first make the exponents compatible with localization. Regard a highest-order coefficient as having exponent \(p_\alpha=\infty\). At a critical degree \(m-|\alpha|=n/2\), replace all the given exponents by one common finite exponent greater than 2, no larger than any given exponent at that degree or any exponent at a higher degree. Such a choice exists: every finite exponent at a higher degree is strictly greater than 2, and there are finitely many degrees. Inclusion of \(L^p\) spaces on unit balls preserves both local membership and (4). With this choice,
@@ -96,7 +98,7 @@ For any differential expression \(W=\sum b_\alpha D^\alpha\), define
 
 The hypotheses imply that \(\|V\|_{\mathrm{coef}}<\infty\). For lower coefficients, local membership bounds the norms at centers in any bounded set by one larger bounded region; (4) bounds the remaining centers. The continuous leading coefficients are bounded by the same compact-region and tail argument.
 
-Proposition 2.1 of [Admissible differential perturbations](admissible-differential-perturbations.md) gives a fixed constant \(C_0\) such that
+Proposition 2.1 of [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-global-mapping) gives a fixed constant \(C_0\) such that
 
 \[
  \|Wu\|_2\leq C_0\|W\|_{\mathrm{coef}}\|u\|_{H^m}.
@@ -105,6 +107,7 @@ Proposition 2.1 of [Admissible differential perturbations](admissible-differenti
 
 It depends on \(n,m\) and the chosen exponents, rather than the coefficients. The extension agrees with the actual coefficient products. Hence \(P:H^m\to L^2\) is bounded, and symmetry extends from compact tests to \(H^m\) by Sobolev density.
 
+<a id="domain-symmetric-smoothing"></a>
 **Lemma 2.1.** For every \(\eta>0\), there is a symmetric differential expression \(V_0\) with smooth compactly supported coefficients such that
 
 \[
@@ -161,6 +164,7 @@ For compact smooth \(u\), the integral exists in \(L^2\), by (9) and translation
 
 The averaging in (15) explains why coefficient smoothing preserves symmetry here. It smooths the entire localized operator, including every term in (12); it does not impose separate reality conditions on the lower coefficients.
 
+<a id="domain-principal-ellipticity"></a>
 ## 3. Uniform principal ellipticity
 
 **Lemma 3.1.** The symbol \(A_m\) in (5) is real, and there is \(c_*>0\) such that
@@ -219,6 +223,7 @@ Fix an approximation satisfying (17), and write
 
 Its left symbol \(a_0(x,\xi)\) is in the global classical class \(S^m_{1,0}\): all coefficient derivatives are bounded and frequency differentiation lowers polynomial degree. More precisely it belongs to \(S(\langle\xi\rangle^m,G_1)\) in the linked programme calculus proof. Every positive position derivative is supported in the fixed compact coefficient support, where multiplying by any fixed power of \(\langle x\rangle\) changes only its finite bound. The constant-coefficient part has no positive position derivatives. Thus the stronger spatial derivative factors required by \(G_1\) hold for this fixed reference; their constants may depend on that reference. For sufficiently large frequency its modulus is at least \(c\langle\xi\rangle^m\), uniformly in position. The lower coefficients can be complex; this modulus bound follows from (17) by subtracting their order-\(m-1\) bound.
 
+<a id="domain-hilbert-tools"></a>
 The Hilbert-space facts used in this domain argument can be proved here. First, in a complete Hilbert space every closed subspace \(N\) has an orthogonal projection. For a fixed \(u\), take \(v_j\in N\) with \(\|u-v_j\|\) tending to its infimum \(d\). The parallelogram identity gives
 
 \[
@@ -246,6 +251,7 @@ Indeed orthogonality says \((Av,u)=z(v,u)=(v,\overline z\,u)\), which is exactly
 
 We will also use the geometric inverse for a bounded operator \(K\) with \(\|K\|<1\). Its finite sums \(\sum_{j=0}^N(-K)^j\) are Cauchy in operator norm by the scalar geometric series. Their values converge on every vector in the complete Hilbert space, defining a bounded operator with the same norm limit. Multiplication by \(I+K\) on either side of the finite sums leaves \(I-(-K)^{N+1}\). Passing to the limit proves the two-sided inverse and the norm bound \((1-\|K\|)^{-1}\). Thus the Neumann step in Section 6 is also a proved input.
 
+<a id="domain-smooth-reference"></a>
 **Lemma 4.1.** \(A_0\) is self-adjoint on \(H^m\), and, for every nonzero real \(t\),
 
 \[
@@ -253,13 +259,14 @@ We will also use the geometric inverse for a bounded operator \(K\) with \(\|K\|
  \tag{22}
 \]
 
+<a id="domain-parametrix"></a>
 **Proof.** Here is the smooth parametrix needed for the domain argument. Choose a frequency cutoff equal to one at sufficiently large frequency and zero where the preceding modulus bound has not been established. Its product with \(a_0^{-1}\) is a symbol \(e\in S^{-m}_{1,0}\). The proved finite left product gives
 
 \[
  e(x,D)A_0=I+R,\qquad R\in\operatorname{Op}S^{-1}_{1,0}.
 \]
 
-The compact-frequency discrepancy belongs to every negative frequency order. The exact symbols of \((-R)^j e(x,D)\) belong to \(S(\langle\xi\rangle^{-m-j},G_1)\). The reciprocal estimates and composition follow from Sections 1 and 4 of the linked programme proof; the compact-frequency discrepancy belongs to every negative frequency weight for \(G_1\), even though it need not decrease in position. Form their asymptotic sum by multiplying its successive terms by frequency cutoffs zero below radii tending sufficiently rapidly to infinity. At each stage choose the radius so that the finitely many earlier seminorms of the tail are at most \(2^{-j}\). The product rule and \(\langle\xi\rangle^{-j+N}\to0\) give convergence in each required symbol seminorm. For each fixed \(N\), the summed symbol minus its first \(N\) terms belongs to \(S(\langle\xi\rangle^{-m-N},G_1)\). Multiplying by \(A_0\) puts this error in \(S(\langle\xi\rangle^{-N},G_1)\), while the exact finite product is \(\sum_{j<N}(-R)^j(I+R)=I-(-R)^N\). Uniqueness of the left symbol, proved in Section 5 of that programme reading, makes these all estimates for one exact residual. Thus finite telescoping gives
+The compact-frequency discrepancy belongs to every negative frequency order. The exact symbols of \((-R)^j e(x,D)\) belong to \(S(\langle\xi\rangle^{-m-j},G_1)\). The reciprocal estimates and composition follow from Sections 1 and 4 of the linked programme proof; the compact-frequency discrepancy belongs to every negative frequency weight for \(G_1\), even though it need not decrease in position. Write these exact symbols as \(b_j\), and choose a smooth frequency cutoff \(\theta\) that is zero on the unit ball and one outside the ball of radius two. For \(j\geq1\), choose \(R_j\geq j\) so large that \(\theta(\xi/R_j)b_j\) has every seminorm of derivative order at most \(j\) in \(S(\langle\xi\rangle^{-m-N},G_1)\) at most \(2^{-j}\), simultaneously for the finitely many integers \(0\leq N<j\). This is possible: the product rule bounds each such seminorm by a fixed constant times \(R_j^{N-j}\); derivatives of the cutoff have the same frequency gains on their annular support. Choose any sufficiently large \(R_0\). For each fixed \(N\), the series with \(j>N\) now converges in every seminorm of \(S(\langle\xi\rangle^{-m-N},G_1)\). The term with \(j=N\) already has that order, and the finitely many differences \((\theta(\xi/R_j)-1)b_j\) with \(j<N\) have compact frequency support and belong to every negative frequency order. Completeness, proved in [the symbol-space argument](../providers/analysis/finite-weighted-calculus.md#symbol-completeness-and-reciprocal), therefore makes \(b=\sum_{j\geq0}\theta(\xi/R_j)b_j\) a symbol of order \(-m\), with \(b-\sum_{j<N}b_j\in S(\langle\xi\rangle^{-m-N},G_1)\) for every \(N\). Multiplying by \(A_0\) puts this error in \(S(\langle\xi\rangle^{-N},G_1)\), while the exact finite product is \(\sum_{j<N}(-R)^j(I+R)=I-(-R)^N\). Uniqueness of the left symbol, proved in Section 5 of that programme reading, makes these all estimates for one exact residual. Thus finite telescoping gives
 
 \[
  BA_0=I+S,\qquad B\in\operatorname{Op}S^{-m}_{1,0},
@@ -298,6 +305,7 @@ For sufficiently large \(|t|\), put
 
 The principal symbol is real, but the full left symbol may have complex lower-order terms. We check their effect before using (26).
 
+<a id="domain-parameter-symbol"></a>
 **Lemma 5.1.** There are \(c,M>0\), controlled by \(c_*,m\), and thresholds depending on the fixed approximation, such that for both signs of large \(t\),
 
 \[
@@ -331,6 +339,7 @@ For the differentiated estimates, each derivative of \((a_0+it)^{-1}\) is a fini
 
 Every factor in the product is bounded by \(C\langle\xi\rangle^{m-|\alpha_j|}\). Equation (27) bounds (29) by \(C\langle\xi\rangle^{-m-|\alpha|}\), uniformly in \(t\). The product rule with the numerator in (26) gives all the \(S^0\) bounds. The positive position derivatives are supported in the same fixed compact set as before, so the family also has uniform \(S(1,G_1)\) seminorms. The constants use coefficient derivatives and support bounds of this fixed \(V_0\). \(\square\)
 
+<a id="domain-uniform-operator-norm"></a>
 **Lemma 5.2.** There is a constant \(C_1\), independent of small \(\eta\), such that
 
 \[
@@ -376,6 +385,7 @@ Choose \(R\), after fixing \(V_0\), to make the last term at most one. For this 
 
 Make it at most one by increasing the threshold. Thus \(C_1=M+2\) works for every sufficiently accurate approximation. Only the threshold depends on its derivative bounds. \(\square\)
 
+<a id="domain-sobolev-resolvent"></a>
 **Proposition 5.3.** A fixed constant \(K\), independent of small \(\eta\), satisfies
 
 \[
@@ -424,6 +434,7 @@ The quantifier order in (34) is decisive: first fix \(K\), then choose a suffici
 
 All constants in this additional argument refer to the fixed original expression \(P\). They are independent of derivatives introduced during smoothing. We prove the estimate for any coefficient approximation \(Q=P_0+\sum q_\alpha D^\alpha\) sufficiently close to \(P\) in (8), whether or not \(Q\) is symmetric.
 
+<a id="domain-lower-part"></a>
 **Lower-part estimate.** The original lower-order part \(P_{<m}\), including the lower terms of \(P_0\), satisfies, for every \(a>0\),
 
 \[
@@ -443,6 +454,7 @@ Choose the finitely many approximations so that their combined multiplier error 
 
 Choose \(C_hb\leq a/2\). This proves the lower-part estimate. Coefficient proximity and (9) add at most \(a\|v\|_{H^m}\) to it. For \(m=1\), the bounded approximating lower part already acts on \(L^2\). \(\square\)
 
+<a id="domain-local-freezing"></a>
 **Uniform freezing estimate.** There are \(\eta_0>0\) and \(C_g\), depending only on the fixed coefficients of \(P\), such that
 
 \[
@@ -472,6 +484,7 @@ where \(\omega(r)\to0\) is a common modulus of continuity for the finitely many 
 
 with common constants for all centers and all sufficiently close \(Q\).
 
+<a id="domain-global-freezing"></a>
 Choose one nonzero real \(\zeta\in C_c^\infty(B(0,r))\), and put \(\zeta_y(x)=\zeta(x-y)\). Integer Sobolev localization gives
 
 \[
@@ -495,6 +508,7 @@ Thus the same local coefficient exponent suffices by finite-volume inclusion and
 
 uniformly over the approximations. For \(m=1\) only bounded first-order coefficients occur in this commutator. Apply the local estimate to \(\zeta_yv\), square, integrate, and use \(Q\zeta_yv=\zeta_yQv+[Q,\zeta_y]v\), the localization identity, and the cutoff commutator bound. The result bounds \(\|v\|_{H^m}\) by a fixed constant times \(\|Qv\|_2+\|v\|_{H^{m-1}}+\|v\|_2\). Absorb the middle norm by the Fourier interpolation inequality. This proves the uniform graph estimate. Compact smooth approximation extends all identities to \(H^m\). \(\square\)
 
+<a id="domain-graph-resolvent"></a>
 **Graph-resolvent consequence.** There is a fixed \(K_g\), independent of sufficiently small approximation error, such that
 
 \[
@@ -515,6 +529,7 @@ The order of choices is now explicit: first obtain \(\eta_0,C_g,K_g\) from the o
 
 The constant \(K_g\) here may depend on the original continuity modulus and lower coefficients. This additional estimate supplies the fixed threshold \(|t|\geq1\); it is distinct from the principal-ellipticity-controlled constant \(K=3C_1\) in (34), whose threshold may depend on the approximation. Both routes retain independence from the approximation accuracy and both resolvent signs.
 
+<a id="domain-transfer"></a>
 ## 6. Transferring the domain and finding a core
 
 **Proof of Theorem 1.1.** Choose \(\eta<\eta_0\) small enough for (17) and \(C_0K_g\eta<1/2\). Lemma 2.1 supplies \(V_0\); let \(W=V-V_0\). Equation (9) and the graph-resolvent consequence of the additional freezing argument imply, for both signs and \(|t|\geq1\),
@@ -549,6 +564,7 @@ Then \(u-v\in\ker(P^*-it)\). The adjoint range identity and the opposite surject
 
 Thus \(u=v\in H^m\), proving \(\mathcal D(P^*)=H^m\) and \(P=P^*\).
 
+<a id="domain-graph-core"></a>
 Equation (40) also provides a bounded inverse from \(L^2\) to \(H^m\) at this fixed \(t\). Applied to \((P+it)u\), it bounds \(\|u\|_{H^m}\) by a constant times \(\|Pu\|_2+\|u\|_2\). The reverse bound follows from (9) and the constant-coefficient multiplier bound. This proves (6).
 
 For \(u\in H^m\), take \(u_j\in C_c^\infty\) converging in \(H^m\). Boundedness \(P:H^m\to L^2\) gives \(Pu_j\to Pu\) in \(L^2\), so the convergence is in graph norm. Therefore \(C_c^\infty\) is a core. The intermediate domain \(\mathcal S\subset H^m\), which contains that core, is a core too. \(\square\)
@@ -586,6 +602,7 @@ Check the coefficient hypotheses of Theorem 1.1 and prove symmetry on compact te
 
 Assign arbitrary values at zero. Prove that \(-\Delta+a\) is symmetric and maps compact smooth tests into \(L^2\), and that the translated coefficient integrals of exponent \(5/2\) vanish for all sufficiently distant centers. Nevertheless show that \(u\in H^2\) and \(au\notin L^2\). Include justification of the weak derivatives at the origin. What fails in the hypotheses of Theorem 1.1?
 
+<a id="domain-solutions"></a>
 ## 8. Complete solutions
 
 **Solution 1.** The bound on the perturbation factor is only \(C_0\eta C_\eta\). For example, the permitted estimates could have \(C_\eta=\eta^{-2}\), making this bound \(C_0/\eta\). It cannot certify invertibility as \(\eta\to0\). The sufficient statement is: there exists \(K\) independent of \(\eta\), and for each sufficiently small \(\eta\) there exists a threshold \(T_\eta\) such that the Sobolev resolvent norm is at most \(K\) for both signs of \(|t|\geq T_\eta\). Choose \(C_0K\eta<1/2\) first, then the approximation, then \(t\). With \(Q=W(A_0+it)^{-1}\),
@@ -680,4 +697,4 @@ It is not in \(L^2\), while \(-\Delta u\in L^2\). Their sum cannot belong to \(L
 
 [T] Gerald Teschl, [*Mathematical Methods in Quantum Mechanics*](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe.pdf), §§2.2 and 2.4, provides adjoint and resolvent background; §6.1 treats relative operator bounds and the Kato–Rellich theorem. That abstract theorem is useful once a relative bound smaller than one is known. Here the small bound is produced against a suitably chosen smooth reference, with ellipticity controlling the constant.
 
-For practice, compare the compactly supported leading perturbation from [Admissible differential perturbations](admissible-differential-perturbations.md), Problem 3, with the domain theorem: failure of relative compactness does not prevent the \(H^m\) domain conclusion. A further question is whether less leading regularity or a different lower-coefficient endpoint can be handled. Such changes require additional estimates; neither the smooth parametrix nor the critical finite-\(p\) multiplier statement alone proves them. Weighted resolvent estimates and boundary values require further analysis after the domain has been identified.
+For practice, compare the compactly supported leading perturbation from [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-global-mapping), Problem 3, with the domain theorem: failure of relative compactness does not prevent the \(H^m\) domain conclusion. A further question is whether less leading regularity or a different lower-coefficient endpoint can be handled. Such changes require additional estimates; neither the smooth parametrix nor the critical finite-\(p\) multiplier statement alone proves them. Weighted resolvent estimates and boundary values require further analysis after the domain has been identified.

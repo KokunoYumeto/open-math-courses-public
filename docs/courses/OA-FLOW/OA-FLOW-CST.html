@@ -1,0 +1,1279 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Trace-scaling cocycles and fixed corners · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-DWC.html">Previous lesson</a><a href="OA-FLOW-L121.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CST.md">Lesson source</a></nav><h1 id="OA-FLOW.CST.SETTING">Trace-scaling cocycles and fixed corners</h1>
+<p>A unitary cocycle changes an action by a moving inner automorphism. For a real action that scales a faithful trace, this moving change comes from a single unitary. We prove that assertion by placing the original and perturbed actions in two corners of one matrix algebra.</p>
+<p>The fixed algebra of that matrix action contains the desired unitary as an off-diagonal entry. Scalar Fourier averages detect both supports of that corner. Traces on central pieces then resolve the finite part of the comparison, while countable amplification handles the properly infinite part. These two arguments cover an arbitrary von Neumann algebra.</p>
+<p><em>Original exposition, examples, figures, data and reproducible drawing code in this lesson are dedicated to CC0-1.0. Source publications and font components retain their own terms.</em></p>
+<p><a id="cst-setting"></a></p>
+<h2 id="the-action-the-cocycle-and-the-conclusion">The action, the cocycle and the conclusion</h2>
+<p>Let <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> be a von Neumann algebra with a faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Let <span class="math" data-tex="\(\theta:\mathbb R\to\operatorname{Aut}(N)\)">\(\theta:\mathbb R\to\operatorname{Aut}(N)\)</span> be a normal point-ultraweakly continuous action satisfying
+<span class="math math-display" data-tex="\[
+ \tau(\theta_s(x))=e^{-s}\tau(x)
+       \qquad(s\in\mathbb R,\ x\in N_+).
+ \tag{CST0.a}
+\]">\[
+ \tau(\theta_s(x))=e^{-s}\tau(x)
+       \qquad(s\in\mathbb R,\ x\in N_+).
+ \tag{CST0.a}
+\]</span>
+The equality includes infinite values. By <a href="OA-FLOW-AT.html#oa-flow.at.1">AT1</a>, the action is also point-strong-star continuous. Let <span class="math" data-tex="\(c:\mathbb R\to\mathcal U(N)\)">\(c:\mathbb R\to\mathcal U(N)\)</span> be strongly continuous and satisfy
+<span class="math math-display" data-tex="\[
+ c_{s+t}=c_s\theta_s(c_t)
+       \qquad(s,t\in\mathbb R).
+ \tag{CST0.b}
+\]">\[
+ c_{s+t}=c_s\theta_s(c_t)
+       \qquad(s,t\in\mathbb R).
+ \tag{CST0.b}
+\]</span>
+This identity forces <span class="math" data-tex="\(c_0=1\)">\(c_0=1\)</span>. Strong continuity of unitary fields also gives strong continuity of their adjoints; <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST2</a> identifies this bounded topology intrinsically, so the condition does not depend on the chosen faithful normal representation.</p>
+<p>We prove that there is a single <span class="math" data-tex="\(v\in\mathcal U(N)\)">\(v\in\mathcal U(N)\)</span> with
+<span class="math math-display" data-tex="\[
+ \boxed{\ c_s=v^*\theta_s(v)\quad(s\in\mathbb R).\ }
+ \tag{CST0.c}
+\]">\[
+ \boxed{\ c_s=v^*\theta_s(v)\quad(s\in\mathbb R).\ }
+ \tag{CST0.c}
+\]</span>
+Thus the perturbed action <span class="math" data-tex="\(\theta_s^c=\operatorname{Ad}(c_s)\theta_s\)">\(\theta_s^c=\operatorname{Ad}(c_s)\theta_s\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \boxed{\ \theta_s^c
+   =\operatorname{Ad}(v^*)\,\theta_s\,\operatorname{Ad}(v).\ }
+ \tag{CST0.d}
+\]">\[
+ \boxed{\ \theta_s^c
+   =\operatorname{Ad}(v^*)\,\theta_s\,\operatorname{Ad}(v).\ }
+ \tag{CST0.d}
+\]</span>
+Here <span class="math" data-tex="\(\operatorname{Ad}(v)(x)=vxv^*\)">\(\operatorname{Ad}(v)(x)=vxv^*\)</span>, and products of maps mean composition with the rightmost map applied first. If one implementer <span class="math" data-tex="\(v\)">\(v\)</span> has been chosen, the complete set of implementers is
+<span class="math math-display" data-tex="\[
+ \{\,hv:h\in\mathcal U(N^\theta)\,\},
+ \qquad
+ N^\theta=\{x:\theta_s(x)=x\text{ for every }s\}.
+ \tag{CST0.e}
+\]">\[
+ \{\,hv:h\in\mathcal U(N^\theta)\,\},
+ \qquad
+ N^\theta=\{x:\theta_s(x)=x\text{ for every }s\}.
+ \tag{CST0.e}
+\]</span></p>
+<p>The cocycle need not be central or commutative. There is no assumption that <span class="math" data-tex="\(N\)">\(N\)</span> is a factor, properly infinite, type III, countably decomposable, or has a separable predual. A faithful normal state is not needed. The fixed algebra introduced in Section 1 may have both semifinite and type III central parts.</p>
+<p>Throughout this proof the action integral uses ordinary Lebesgue measure <span class="math" data-tex="\(ds\)">\(ds\)</span>. The scalar Fourier transform of an integrable function is <span class="math" data-tex="\(\widehat f(r)=\int e^{-irs}f(s)\,ds\)">\(\widehat f(r)=\int e^{-irs}f(s)\,ds\)</span>; only its uniqueness and continuity are used. No <span class="math" data-tex="\(1/(2\pi)\)">\(1/(2\pi)\)</span> is inserted into the action average.</p>
+<p>The proof uses the full <a href="OA-FLOW-L19.html#l19-1">trace-scaling action integral</a>, <a href="OA-FLOW-EP.html#oa-flow.ep.6">composition of normal operator-valued weights</a>, <a href="OA-FLOW-TD.html#oa-flow.td.4">tracial densities</a>, <a href="OA-FLOW-OT.html#oa-flow.ot.5">modular restriction</a>, <a href="OA-FLOW-FF.html#oa-flow.ff.3">scalar Fourier uniqueness</a>, and <a href="OA-FLOW-PC.html#oa-flow.pc.2">projection comparison</a>. The <a href="OA-FLOW-L18.html#l18-7">finite-center trace argument</a> supplies the precise localization needed when total trace values are infinite. Their proofs occur earlier, and the point of use below specifies the required conclusion.</p>
+<p>The zero algebra has its unique zero-algebra interpretation. None of the statements makes a measurable or continuous choice of <span class="math" data-tex="\(v\)">\(v\)</span> as the cocycle <span class="math" data-tex="\(c\)">\(c\)</span> varies.</p>
+<p><span id="OA-FLOW.CST.1"></span><a id="cst-1"></a></p>
+<h2 id="1-put-the-cocycle-between-two-fixed-corners">1. Put the cocycle between two fixed corners</h2>
+<p>Let <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span> have a faithful normal semifinite trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, and let <span class="math" data-tex="\(\theta:\mathbb R\to\operatorname{Aut}(N)\)">\(\theta:\mathbb R\to\operatorname{Aut}(N)\)</span> be a normal strongly continuous action satisfying <span class="math" data-tex="\(\tau\circ\theta_s=e^{-s}\tau\)">\(\tau\circ\theta_s=e^{-s}\tau\)</span> on <span class="math" data-tex="\(N_+\)">\(N_+\)</span>. Fix a strongly continuous unitary cocycle <span class="math" data-tex="\(c_{s+t}=c_s\theta_s(c_t)\)">\(c_{s+t}=c_s\theta_s(c_t)\)</span>. Its values need not commute. All assertions below allow an arbitrary center and arbitrary Hilbert multiplicity.</p>
+<p>We use <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span> for the standard matrix units in <span class="math" data-tex="\(M_2(N)\)">\(M_2(N)\)</span>, with their nonzero entry equal to <span class="math" data-tex="\(1_N\)">\(1_N\)</span>. Define
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ A=M_2(N),\qquad T(X)=\tau(X_{11})+\tau(X_{22})\quad(X\in A_+),\\
+ d_s=\begin{pmatrix}1&amp;0\\0&amp;c_s\end{pmatrix},\qquad
+ \alpha_s=\operatorname{Ad}(d_s)\circ(\operatorname{id}_2\otimes\theta_s),\\
+ F=A^\alpha,\qquad p=e_{11},\quad q=e_{22}.
+ \end{gathered}                                                   \tag{CST1.a}
+\]">\[
+ \begin{gathered}
+ A=M_2(N),\qquad T(X)=\tau(X_{11})+\tau(X_{22})\quad(X\in A_+),\\
+ d_s=\begin{pmatrix}1&amp;0\\0&amp;c_s\end{pmatrix},\qquad
+ \alpha_s=\operatorname{Ad}(d_s)\circ(\operatorname{id}_2\otimes\theta_s),\\
+ F=A^\alpha,\qquad p=e_{11},\quad q=e_{22}.
+ \end{gathered}                                                   \tag{CST1.a}
+\]</span>
+Here and throughout, <span class="math" data-tex="\(\operatorname{Ad}(u)(x)=uxu^*\)">\(\operatorname{Ad}(u)(x)=uxu^*\)</span>. The identity
+<span class="math" data-tex="\(d_{s+t}=d_s(\operatorname{id}_2\otimes\theta_s)(d_t)\)">\(d_{s+t}=d_s(\operatorname{id}_2\otimes\theta_s)(d_t)\)</span>
+proves <span class="math" data-tex="\(\alpha_{s+t}=\alpha_s\alpha_t\)">\(\alpha_{s+t}=\alpha_s\alpha_t\)</span>. Also <span class="math" data-tex="\(c_0=1\)">\(c_0=1\)</span>, so <span class="math" data-tex="\(\alpha_0=\operatorname{id}\)">\(\alpha_0=\operatorname{id}\)</span> and <span class="math" data-tex="\(\alpha_{-s}\)">\(\alpha_{-s}\)</span> is the inverse of <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span>. Normality follows entrywise and from bounded conjugation. Strong continuity of a unitary path implies strong continuity of its adjoint, since
+<span class="math" data-tex="\(\|(c_s^*-c_t^*)\xi\|=\|(c_t-c_s)c_t^*\xi\|\)">\(\|(c_s^*-c_t^*)\xi\|=\|(c_t-c_s)c_t^*\xi\|\)</span>.
+Bounded strong-star multiplication and <a href="OA-FLOW-AT.html#oa-flow.at.1">AT1</a>, <a href="OA-FLOW-AT.html#oa-flow.at.4">AT4</a> therefore give point-strong-star, and hence point-ultraweak, continuity of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. This is the continuity hypothesis of the action-integral theorem.</p>
+<p>The full-cone construction in <a href="OA-FLOW-TW.html#tw-2">TW2</a>, with the two-dimensional usual trace, makes <span class="math" data-tex="\(T\)">\(T\)</span> faithful normal semifinite. It is a trace: for <span class="math" data-tex="\(Y=(y_{ij})\)">\(Y=(y_{ij})\)</span>,
+<span class="math math-display" data-tex="\[
+ T(Y^*Y)=\sum_{i,j=1}^2\tau(y_{ij}^*y_{ij})
+         =\sum_{i,j=1}^2\tau(y_{ij}y_{ij}^*)=T(YY^*).
+\]">\[
+ T(Y^*Y)=\sum_{i,j=1}^2\tau(y_{ij}^*y_{ij})
+         =\sum_{i,j=1}^2\tau(y_{ij}y_{ij}^*)=T(YY^*).
+\]</span>
+Every sum here is nonnegative, so infinite values are retained. Tracial invariance under <span class="math" data-tex="\(d_s\)">\(d_s\)</span>, followed by the given scaling, gives
+<span class="math math-display" data-tex="\[
+ T\circ\alpha_s=e^{-s}T,\qquad
+ \alpha_s(p)=p,\quad\alpha_s(q)=q.                         \tag{CST1.b}
+\]">\[
+ T\circ\alpha_s=e^{-s}T,\qquad
+ \alpha_s(p)=p,\quad\alpha_s(q)=q.                         \tag{CST1.b}
+\]</span>
+The fixed algebra <span class="math" data-tex="\(F\)">\(F\)</span> is a von Neumann algebra, since it is the intersection of the ultraweakly closed fixed spaces of the normal maps <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span>.</p>
+<p>Why use these particular diagonal positions? Every <span class="math" data-tex="\(w\in pAq\)">\(w\in pAq\)</span> is uniquely <span class="math" data-tex="\(w=e_{12}v\)">\(w=e_{12}v\)</span>, with <span class="math" data-tex="\(v\in N\)">\(v\in N\)</span>. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+ \alpha_s(e_{12}v)=e_{12}\theta_s(v)c_s^*.
+\]">\[
+ \alpha_s(e_{12}v)=e_{12}\theta_s(v)c_s^*.
+\]</span>
+Consequently,
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ w\in pFq,\qquad ww^*=p,\quad w^*w=q\\
+ \Longrightarrow\quad v\in\mathcal U(N),\qquad
+ \theta_s(v)c_s^*=v,\qquad c_s=v^*\theta_s(v).
+ \end{gathered}                                                   \tag{CST1.c}
+\]">\[
+ \begin{gathered}
+ w\in pFq,\qquad ww^*=p,\quad w^*w=q\\
+ \Longrightarrow\quad v\in\mathcal U(N),\qquad
+ \theta_s(v)c_s^*=v,\qquad c_s=v^*\theta_s(v).
+ \end{gathered}                                                   \tag{CST1.c}
+\]</span>
+Conversely any unitary satisfying the last identity gives such a <span class="math" data-tex="\(w\)">\(w\)</span>. Thus the cocycle problem is exactly the equivalence of <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> inside <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>By <a href="OA-FLOW-L19.html#l19-1">L19, Section 1</a> and <a href="OA-FLOW-L19.html#l19-2">Section 2</a>, the scaled trace in (CST1.b) supplies the faithful normal semifinite operator-valued weight
+<span class="math math-display" data-tex="\[
+ E:A_+\longrightarrow\widehat F_+,\qquad
+ E(x)=\int_{\mathbb R}\alpha_s(x)\,ds
+     =\sup_{m\ge1}\int_{-m}^m\alpha_s(x)\,ds.             \tag{CST1.d}
+\]">\[
+ E:A_+\longrightarrow\widehat F_+,\qquad
+ E(x)=\int_{\mathbb R}\alpha_s(x)\,ds
+     =\sup_{m\ge1}\int_{-m}^m\alpha_s(x)\,ds.             \tag{CST1.d}
+\]</span>
+The supremum is in the extended positive cone. More explicitly, for every <span class="math" data-tex="\(\rho\in A_*^+\)">\(\rho\in A_*^+\)</span>,
+<span class="math math-display" data-tex="\[
+ E(x)(\rho)=\int_{\mathbb R}\rho(\alpha_s(x))\,ds.
+\]">\[
+ E(x)(\rho)=\int_{\mathbb R}\rho(\alpha_s(x))\,ds.
+\]</span>
+Its finite spectral projections belong to <span class="math" data-tex="\(F\)">\(F\)</span>; this is the meaning of its target <span class="math" data-tex="\(\widehat F_+\)">\(\widehat F_+\)</span>. It satisfies
+<span class="math" data-tex="\(E\alpha_t=E\)">\(E\alpha_t=E\)</span> and <span class="math" data-tex="\(E(b^*xb)=b^*E(x)b\)">\(E(b^*xb)=b^*E(x)b\)</span> for <span class="math" data-tex="\(b\in F\)">\(b\in F\)</span>.
+The cited proof first constructs the normal compact-interval maps, and then proves semifiniteness from an arbitrary-cardinality wandering partition. Thus no faithful normal state or countable decomposition of <span class="math" data-tex="\(N\)">\(N\)</span> is being used. The measure in (CST1.d) is exactly Lebesgue measure <span class="math" data-tex="\(ds\)">\(ds\)</span>.</p>
+<p><span id="OA-FLOW.CST.2"></span><a id="cst-2"></a></p>
+<h2 id="2-an-invariant-density-generates-the-whole-linking-algebra">2. An invariant density generates the whole linking algebra</h2>
+<p>Choose any faithful normal semifinite weight <span class="math" data-tex="\(\omega\)">\(\omega\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span>, whose existence at this scope is proved in <a href="OA-FLOW-FR.html#oa-flow.fr.1">FR1</a>. The extension in <a href="OA-FLOW-EP.html#oa-flow.ep.5">EP5</a> and composition theorem <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6</a> make
+<span class="math math-display" data-tex="\[
+ \Psi=\widehat\omega\circ E
+\]">\[
+ \Psi=\widehat\omega\circ E
+\]</span>
+a faithful normal semifinite weight on <span class="math" data-tex="\(A\)">\(A\)</span>, invariant under every <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span>. By <a href="OA-FLOW-TD.html#oa-flow.td.4">TD4–6</a> it has a unique nonsingular positive self-adjoint density <span class="math" data-tex="\(H\)">\(H\)</span> affiliated with <span class="math" data-tex="\(A\)">\(A\)</span>, characterized on the entire positive cone by
+<span class="math math-display" data-tex="\[
+ \Psi(x)=T_H(x)
+   =\sup_{n\ge1}T\bigl(x^{1/2}(H\wedge n)x^{1/2}\bigr).
+                                                                  \tag{CST2.a}
+\]">\[
+ \Psi(x)=T_H(x)
+   =\sup_{n\ge1}T\bigl(x^{1/2}(H\wedge n)x^{1/2}\bigr).
+                                                                  \tag{CST2.a}
+\]</span>
+<a href="OA-FLOW-TD.html#oa-flow.td.6">TD6</a> proves that semifiniteness removes an infinite-value spectral summand and faithfulness removes the kernel. Neither centrality nor trace-measurability of <span class="math" data-tex="\(H\)">\(H\)</span> is required.</p>
+<p>For a normal automorphism <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with <span class="math" data-tex="\(T\circ\beta=aT\)">\(T\circ\beta=aT\)</span>, <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, normal transport of the bounded spectral cutoffs gives
+<span class="math" data-tex="\(T_H\circ\beta=T_{a\beta^{-1}(H)}\)">\(T_H\circ\beta=T_{a\beta^{-1}(H)}\)</span> on all positives. This is the full-cone calculation of <a href="OA-FLOW-L19.html#l19-3">L19, Section 3</a>. Apply it to <span class="math" data-tex="\(\alpha_s\)">\(\alpha_s\)</span>, use invariance of <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>, and invoke <a href="OA-FLOW-TD.html#oa-flow.td.5">TD5's uniqueness</a>. It follows that
+<span class="math math-display" data-tex="\[
+ \alpha_s(H)=e^{-s}H,\qquad P=\log H,\qquad
+ \alpha_s(P)=P-s1.                                      \tag{CST2.b}
+\]">\[
+ \alpha_s(H)=e^{-s}H,\qquad P=\log H,\qquad
+ \alpha_s(P)=P-s1.                                      \tag{CST2.b}
+\]</span>
+The logarithm and this transported equality have their full affiliated-operator meaning from <a href="OA-FLOW-SF.html#oa-flow.sf1.spectral-calculus">SF's spectral calculus</a>.</p>
+<p>The modular group of <span class="math" data-tex="\(T\)">\(T\)</span> is trivial by the <a href="OA-FLOW-KT.html#oa-flow.kt.5">whole-cone trace criterion</a>. The unbounded density formula <a href="OA-FLOW-CZ.html#cz-5">CZ5</a> and the operator-valued modular restriction <a href="OA-FLOW-OT.html#oa-flow.ot.5">OT5</a> therefore give
+<span class="math math-display" data-tex="\[
+ \sigma_t^\Psi(x)=H^{it}xH^{-it}\quad(x\in A),\qquad
+ H^{it}yH^{-it}=\sigma_t^\omega(y)\quad(y\in F).           \tag{CST2.c}
+\]">\[
+ \sigma_t^\Psi(x)=H^{it}xH^{-it}\quad(x\in A),\qquad
+ H^{it}yH^{-it}=\sigma_t^\omega(y)\quad(y\in F).           \tag{CST2.c}
+\]</span>
+We next prove directly that <span class="math" data-tex="\(F\)">\(F\)</span> together with these imaginary powers generates <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><strong>An integrable spectral sandwich.</strong> Set
+<span class="math math-display" data-tex="\[
+ k(r)=\frac1{\sqrt{\pi(1+r^2)}},\qquad
+ K_s=k(P-s1).
+\]">\[
+ k(r)=\frac1{\sqrt{\pi(1+r^2)}},\qquad
+ K_s=k(P-s1).
+\]</span>
+The scalar function <span class="math" data-tex="\(k\)">\(k\)</span> is strictly positive, belongs to <span class="math" data-tex="\(C_0(\mathbb R)\)">\(C_0(\mathbb R)\)</span>, and satisfies <span class="math" data-tex="\(\int_{\mathbb R}k(r)^2\,dr=1\)">\(\int_{\mathbb R}k(r)^2\,dr=1\)</span>. For any positive normal functional <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, its finite spectral measure <span class="math" data-tex="\(\mu_\rho(B)=\rho(1_B(P))\)">\(\mu_\rho(B)=\rho(1_B(P))\)</span> and <a href="OA-FLOW-FF.html#oa-flow.ff.1">scalar Tonelli</a> give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_{\mathbb R}\rho(K_s^2)\,ds
+ &amp;=\int_{\mathbb R}\int_{\mathbb R}k(r-s)^2\,ds\,d\mu_\rho(r)\\
+ &amp;=\rho(1).
+ \end{aligned}                                                   \tag{CST2.d}
+\]">\[
+ \begin{aligned}
+ \int_{\mathbb R}\rho(K_s^2)\,ds
+ &amp;=\int_{\mathbb R}\int_{\mathbb R}k(r-s)^2\,ds\,d\mu_\rho(r)\\
+ &amp;=\rho(1).
+ \end{aligned}                                                   \tag{CST2.d}
+\]</span>
+In particular, in any faithful normal representation of <span class="math" data-tex="\(A\)">\(A\)</span> on a Hilbert space <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span>,
+<span class="math" data-tex="\(\int\|K_s\xi\|^2ds=\|\xi\|^2\)">\(\int\|K_s\xi\|^2ds=\|\xi\|^2\)</span>.</p>
+<p>For <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>, put
+<span class="math math-display" data-tex="\[
+ b_s=K_s\alpha_s(x)K_s
+     =\alpha_s(k(P)xk(P)).                              \tag{CST2.e}
+\]">\[
+ b_s=K_s\alpha_s(x)K_s
+     =\alpha_s(k(P)xk(P)).                              \tag{CST2.e}
+\]</span>
+Uniform continuity of <span class="math" data-tex="\(k\)">\(k\)</span> makes <span class="math" data-tex="\(s\mapsto K_s\)">\(s\mapsto K_s\)</span> norm continuous, and the action is point-strong-star continuous. Thus <span class="math" data-tex="\(b_s\)">\(b_s\)</span> is a bounded strongly-star continuous path. For every interval <span class="math" data-tex="\(J\subset\mathbb R\)">\(J\subset\mathbb R\)</span>, finite or infinite, vector Cauchy–Schwarz gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_J|\langle b_s\xi,\eta\rangle|\,ds
+ &amp;\le\|x\|
+       \left(\int_J\|K_s\xi\|^2ds\right)^{1/2}
+       \left(\int_J\|K_s\eta\|^2ds\right)^{1/2}\\
+ &amp;\le\|x\|\,\|\xi\|\,\|\eta\|.
+ \end{aligned}                                                   \tag{CST2.f}
+\]">\[
+ \begin{aligned}
+ \int_J|\langle b_s\xi,\eta\rangle|\,ds
+ &amp;\le\|x\|
+       \left(\int_J\|K_s\xi\|^2ds\right)^{1/2}
+       \left(\int_J\|K_s\eta\|^2ds\right)^{1/2}\\
+ &amp;\le\|x\|\,\|\xi\|\,\|\eta\|.
+ \end{aligned}                                                   \tag{CST2.f}
+\]</span>
+The first inequality follows from the pointwise bound
+<span class="math" data-tex="\(|\langle\alpha_s(x)K_s\xi,K_s\eta\rangle|
+\le\|x\|\|K_s\xi\|\|K_s\eta\|\)">\(|\langle\alpha_s(x)K_s\xi,K_s\eta\rangle|
+\le\|x\|\|K_s\xi\|\|K_s\eta\|\)</span>.</p>
+<p>For fixed <span class="math" data-tex="\(r\in\mathbb R\)">\(r\in\mathbb R\)</span>, the identical estimate holds for each of
+<span class="math math-display" data-tex="\[
+ e^{-irs}b_s,\qquad e^{ir(P-s1)}b_s,\qquad
+ b_s e^{ir(P-s1)}.                                      \tag{CST2.g}
+\]">\[
+ e^{-irs}b_s,\qquad e^{ir(P-s1)}b_s,\qquad
+ b_s e^{ir(P-s1)}.                                      \tag{CST2.g}
+\]</span>
+Indeed the inserted unitary commutes with <span class="math" data-tex="\(K_s\)">\(K_s\)</span>. On the left it changes <span class="math" data-tex="\(K_s\eta\)">\(K_s\eta\)</span> to <span class="math" data-tex="\(e^{-ir(P-s1)}K_s\eta\)">\(e^{-ir(P-s1)}K_s\eta\)</span>; on the right it changes <span class="math" data-tex="\(K_s\xi\)">\(K_s\xi\)</span> to <span class="math" data-tex="\(e^{ir(P-s1)}K_s\xi\)">\(e^{ir(P-s1)}K_s\xi\)</span>. The relevant norms do not change. This observation does not require that the unitary commute with <span class="math" data-tex="\(\alpha_s(x)\)">\(\alpha_s(x)\)</span>.</p>
+<p>Here are the precise integral consequences. By <a href="OA-FLOW-CP.html#oa-flow.cp.4">CP4</a> and <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a>, every <span class="math" data-tex="\(\varphi\in A_*\)">\(\varphi\in A_*\)</span> is a series
+<span class="math" data-tex="\(\varphi(a)=\sum_j\langle a\xi_j,\eta_j\rangle\)">\(\varphi(a)=\sum_j\langle a\xi_j,\eta_j\rangle\)</span>
+with <span class="math" data-tex="\(\sum_j\|\xi_j\|\|\eta_j\|&lt;\infty\)">\(\sum_j\|\xi_j\|\|\eta_j\|&lt;\infty\)</span>. Applying (CST2.f) termwise, and then scalar nonnegative interchange, proves absolute integrability of every normal-functional test of each path in (CST2.g), as well as of <span class="math" data-tex="\(b_s\)">\(b_s\)</span>. The test functions are continuous: a finite part of the vector series is continuous, and its tail is uniformly small by the common operator bound.</p>
+<p>On a compact interval, scalar integration defines a bounded functional on <span class="math" data-tex="\(A_*\)">\(A_*\)</span>, and hence an actual element of <span class="math" data-tex="\(A=(A_*)^*\)">\(A=(A_*)^*\)</span>, by <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a>. Vector testing and (CST2.f) improve its norm bound to <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>, independently of the interval. The absolutely convergent scalar limits over <span class="math" data-tex="\([-m,m]\)">\([-m,m]\)</span> therefore give a bounded functional of norm at most <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span> on <span class="math" data-tex="\(A_*\)">\(A_*\)</span>, hence again an element of <span class="math" data-tex="\(A\)">\(A\)</span>. These are the weak-star integrals used below. In particular, their construction uses neither a Bochner integral in the operator norm nor a separability assumption on <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> or <span class="math" data-tex="\(A_*\)">\(A_*\)</span>. Every normal bounded linear map passes through these integrals, since its preadjoint changes only the normal functional being tested.</p>
+<p><strong>Two different modulations.</strong> Define
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \widehat b(r)&amp;=\int_{\mathbb R}e^{-irs}b_s\,ds,\\
+ L_r(x)&amp;=\int_{\mathbb R}
+       \alpha_s(e^{irP}k(P)xk(P))\,ds,\\
+ R_r(x)&amp;=\int_{\mathbb R}
+       \alpha_s(k(P)xk(P)e^{irP})\,ds.
+ \end{aligned}                                                   \tag{CST2.h}
+\]">\[
+ \begin{aligned}
+ \widehat b(r)&amp;=\int_{\mathbb R}e^{-irs}b_s\,ds,\\
+ L_r(x)&amp;=\int_{\mathbb R}
+       \alpha_s(e^{irP}k(P)xk(P))\,ds,\\
+ R_r(x)&amp;=\int_{\mathbb R}
+       \alpha_s(k(P)xk(P)e^{irP})\,ds.
+ \end{aligned}                                                   \tag{CST2.h}
+\]</span>
+These expressions mean the weak-star integrals just constructed. They need not be written as the value of the positive-cone map <span class="math" data-tex="\(E\)">\(E\)</span> at a nonpositive argument. Translation of <span class="math" data-tex="\(s\)">\(s\)</span> in each scalar test, together with the action law, shows that <span class="math" data-tex="\(L_r(x)\)">\(L_r(x)\)</span> and <span class="math" data-tex="\(R_r(x)\)">\(R_r(x)\)</span> are fixed by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Covariance (CST2.b) gives their exact factor orders:
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ L_r(x),R_r(x)\in F,\qquad
+ \|L_r(x)\|,\|R_r(x)\|,\|\widehat b(r)\|\le\|x\|,\\
+ L_r(x)=e^{irP}\widehat b(r),\qquad
+ R_r(x)=\widehat b(r)e^{irP}.
+ \end{gathered}                                                   \tag{CST2.i}
+\]">\[
+ \begin{gathered}
+ L_r(x),R_r(x)\in F,\qquad
+ \|L_r(x)\|,\|R_r(x)\|,\|\widehat b(r)\|\le\|x\|,\\
+ L_r(x)=e^{irP}\widehat b(r),\qquad
+ R_r(x)=\widehat b(r)e^{irP}.
+ \end{gathered}                                                   \tag{CST2.i}
+\]</span>
+For example, the integrand of <span class="math" data-tex="\(L_r(x)\)">\(L_r(x)\)</span> is
+<span class="math" data-tex="\(e^{ir(P-s1)}b_s=e^{-irs}e^{irP}b_s\)">\(e^{ir(P-s1)}b_s=e^{-irs}e^{irP}b_s\)</span>.
+Moving its constant left factor out of the weak-star integral proves the first identity. For <span class="math" data-tex="\(R_r(x)\)">\(R_r(x)\)</span> the constant factor stays on the right.</p>
+<p><strong>Generation by scalar Fourier uniqueness.</strong> Put
+<span class="math math-display" data-tex="\[
+ B_0=W^*(F,H^{it}:t\in\mathbb R).
+\]">\[
+ B_0=W^*(F,H^{it}:t\in\mathbb R).
+\]</span>
+All bounded spectral functions of <span class="math" data-tex="\(P\)">\(P\)</span> lie in <span class="math" data-tex="\(B_0\)">\(B_0\)</span>. One way to see the affiliation explicitly is <a href="OA-FLOW-RF.html#oa-flow.rf.5">RF5's generator construction</a>: the Laplace integral of <span class="math" data-tex="\(e^{itP}\)">\(e^{itP}\)</span> belongs to <span class="math" data-tex="\(B_0\)">\(B_0\)</span>, and recovers the resolvent and its unique self-adjoint generator. <a href="OA-FLOW-SF.html#oa-flow.sf1.affiliation">SF</a> then puts every bounded spectral function there. From (CST2.i), <span class="math" data-tex="\(\widehat b(r)=e^{-irP}L_r(x)\in B_0\)">\(\widehat b(r)=e^{-irP}L_r(x)\in B_0\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(\varphi\in A_*\)">\(\varphi\in A_*\)</span> vanishes on <span class="math" data-tex="\(B_0\)">\(B_0\)</span>. The continuous function
+<span class="math" data-tex="\(f_\varphi(s)=\varphi(b_s)\)">\(f_\varphi(s)=\varphi(b_s)\)</span> is in <span class="math" data-tex="\(L^1(\mathbb R)\)">\(L^1(\mathbb R)\)</span>, and
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}e^{-irs}f_\varphi(s)\,ds
+     =\varphi(\widehat b(r))=0\quad(r\in\mathbb R).
+\]">\[
+ \int_{\mathbb R}e^{-irs}f_\varphi(s)\,ds
+     =\varphi(\widehat b(r))=0\quad(r\in\mathbb R).
+\]</span>
+<a href="OA-FLOW-FF.html#oa-flow.ff.3">Scalar Fourier uniqueness</a> makes <span class="math" data-tex="\(f_\varphi\)">\(f_\varphi\)</span> zero almost everywhere. Its continuity makes it zero everywhere, in particular at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. The <a href="OA-FLOW-CP.html#oa-flow.cp.5">predual annihilator identity</a> now gives
+<span class="math" data-tex="\(k(P)xk(P)\in B_0\)">\(k(P)xk(P)\in B_0\)</span>.</p>
+<p>To remove the sandwich, use the bounded spectral operators
+<span class="math math-display" data-tex="\[
+ f_n=1_{[1/n,\infty)}(k(P)),\qquad
+ l_n=k(P)^{-1}f_n,\qquad \|l_n\|\le n.
+\]">\[
+ f_n=1_{[1/n,\infty)}(k(P)),\qquad
+ l_n=k(P)^{-1}f_n,\qquad \|l_n\|\le n.
+\]</span>
+The inverse in this expression is restricted to <span class="math" data-tex="\(f_n\)">\(f_n\)</span>; thus <span class="math" data-tex="\(l_n\in B_0\)">\(l_n\in B_0\)</span> is bounded. Since <span class="math" data-tex="\(k\)">\(k\)</span> is everywhere strictly positive, <span class="math" data-tex="\(f_n\uparrow1\)">\(f_n\uparrow1\)</span>. For every <span class="math" data-tex="\(x\in A\)">\(x\in A\)</span>,
+<span class="math math-display" data-tex="\[
+ l_n[k(P)xk(P)]l_n=f_nxf_n\in B_0,
+ \qquad f_nxf_n\longrightarrow x\quad\text{strongly-star}.
+\]">\[
+ l_n[k(P)xk(P)]l_n=f_nxf_n\in B_0,
+ \qquad f_nxf_n\longrightarrow x\quad\text{strongly-star}.
+\]</span>
+The approximants have norm at most <span class="math" data-tex="\(\|x\|\)">\(\|x\|\)</span>. Their bounded strong-star convergence is ultraweak convergence by <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST2</a>, so the von Neumann algebra <span class="math" data-tex="\(B_0\)">\(B_0\)</span> contains their limit. We have proved
+<span class="math math-display" data-tex="\[
+ A=W^*(F,H^{it}:t\in\mathbb R).                          \tag{CST2.j}
+\]">\[
+ A=W^*(F,H^{it}:t\in\mathbb R).                          \tag{CST2.j}
+\]</span>
+Only scalar Fourier uniqueness was applied. Each normal functional was treated separately, and continuity supplied equality at the single required time; no common exceptional null set for an uncountable family of tests was chosen.</p>
+<p><strong>The center of the fixed algebra is central upstairs.</strong> The proof in <a href="OA-FLOW-NC.html#oa-flow.nc.4">NC4</a> shows that central elements commute with the full modular operator, so <span class="math" data-tex="\(\sigma_t^\omega(z)=z\)">\(\sigma_t^\omega(z)=z\)</span> for <span class="math" data-tex="\(z\in Z(F)\)">\(z\in Z(F)\)</span>. Equation (CST2.c) makes <span class="math" data-tex="\(z\)">\(z\)</span> commute with every <span class="math" data-tex="\(H^{it}\)">\(H^{it}\)</span>. It already commutes with <span class="math" data-tex="\(F\)">\(F\)</span>, and (CST2.j) consequently gives
+<span class="math math-display" data-tex="\[
+ Z(F)\subseteq Z(A).                                    \tag{CST2.k}
+\]">\[
+ Z(F)\subseteq Z(A).                                    \tag{CST2.k}
+\]</span>
+In particular, any central projection used to decompose <span class="math" data-tex="\(F\)">\(F\)</span> commutes with the original matrix units of <span class="math" data-tex="\(A\)">\(A\)</span>.</p>
+<p><span id="OA-FLOW.CST.3"></span><a id="cst-3"></a></p>
+<h2 id="3-countable-support-bounds-for-the-two-fixed-corners">3. Countable support bounds for the two fixed corners</h2>
+<p>We now choose the reference weight in Section 2 so that its density respects the two corners. Choose faithful normal semifinite weights <span class="math" data-tex="\(\omega_p\)">\(\omega_p\)</span> on <span class="math" data-tex="\(pFp\)">\(pFp\)</span> and <span class="math" data-tex="\(\omega_q\)">\(\omega_q\)</span> on <span class="math" data-tex="\(qFq\)">\(qFq\)</span>, by <a href="OA-FLOW-FR.html#oa-flow.fr.1">FR1</a>, and set
+<span class="math math-display" data-tex="\[
+ \omega(y)=\omega_p(pyp)+\omega_q(qyq)\quad(y\in F_+).
+                                                                  \tag{CST3.a}
+\]">\[
+ \omega(y)=\omega_p(pyp)+\omega_q(qyq)\quad(y\in F_+).
+                                                                  \tag{CST3.a}
+\]</span>
+To check semifiniteness without a countability assumption, let <span class="math" data-tex="\(D=pFp\oplus qFq\)">\(D=pFp\oplus qFq\)</span> and consider <span class="math" data-tex="\(\Delta:F\to D\)">\(\Delta:F\to D\)</span>, <span class="math" data-tex="\(\Delta(y)=pyp+qyq\)">\(\Delta(y)=pyp+qyq\)</span>. This is a bounded normal positive <span class="math" data-tex="\(D\)">\(D\)</span>-bimodule map, fixes <span class="math" data-tex="\(D\)">\(D\)</span>, and is faithful: if <span class="math" data-tex="\(y\ge0\)">\(y\ge0\)</span> and both diagonal compressions vanish, then <span class="math" data-tex="\(y^{1/2}p=y^{1/2}q=0\)">\(y^{1/2}p=y^{1/2}q=0\)</span>, hence <span class="math" data-tex="\(y=0\)">\(y=0\)</span>. Its operator-valued finite ideal is all of <span class="math" data-tex="\(F\)">\(F\)</span>. The direct-sum weight on <span class="math" data-tex="\(D\)">\(D\)</span> is faithful normal semifinite, since the two finite ideals are dense in their respective corners. Thus <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6</a> proves that (CST3.a) is faithful normal semifinite on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Let <span class="math" data-tex="\(H\)">\(H\)</span> be the density of <span class="math" data-tex="\(\Psi=\widehat\omega\circ E\)">\(\Psi=\widehat\omega\circ E\)</span> for this choice. The self-adjoint unitary <span class="math" data-tex="\(j=p-q\)">\(j=p-q\)</span> belongs to <span class="math" data-tex="\(F\)">\(F\)</span>. The diagonal formula makes <span class="math" data-tex="\(\omega\circ\operatorname{Ad}(j)=\omega\)">\(\omega\circ\operatorname{Ad}(j)=\omega\)</span>, and bimodularity of <span class="math" data-tex="\(E\)">\(E\)</span> makes <span class="math" data-tex="\(\Psi\circ\operatorname{Ad}(j)=\Psi\)">\(\Psi\circ\operatorname{Ad}(j)=\Psi\)</span>. Since <span class="math" data-tex="\(T\circ\operatorname{Ad}(j)=T\)">\(T\circ\operatorname{Ad}(j)=T\)</span>, the full-cone density covariance and uniqueness used in (CST2.b) give <span class="math" data-tex="\(jHj=H\)">\(jHj=H\)</span>. Hence <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> reduce all its spectral projections, and
+<span class="math math-display" data-tex="\[
+ H=\begin{pmatrix}h_1&amp;0\\0&amp;h_2\end{pmatrix},\qquad
+ P=\begin{pmatrix}P_1&amp;0\\0&amp;P_2\end{pmatrix},\qquad
+ P_i=\log h_i.                                          \tag{CST3.b}
+\]">\[
+ H=\begin{pmatrix}h_1&amp;0\\0&amp;h_2\end{pmatrix},\qquad
+ P=\begin{pmatrix}P_1&amp;0\\0&amp;P_2\end{pmatrix},\qquad
+ P_i=\log h_i.                                          \tag{CST3.b}
+\]</span>
+Here <span class="math" data-tex="\(h_1,h_2\)">\(h_1,h_2\)</span> are nonsingular positive self-adjoint operators affiliated with <span class="math" data-tex="\(N\)">\(N\)</span>. They act in the same faithful representation of <span class="math" data-tex="\(N\)">\(N\)</span>, but need not commute with one another.</p>
+<p>Apply (CST2.e)–(CST2.i) to <span class="math" data-tex="\(x=e_{12}\)">\(x=e_{12}\)</span>. Because <span class="math" data-tex="\(p,q\)">\(p,q\)</span> are fixed and commute with the spectral functions of <span class="math" data-tex="\(P\)">\(P\)</span>, all <span class="math" data-tex="\(b_s,L_r(x),R_r(x)\)">\(b_s,L_r(x),R_r(x)\)</span> belong to <span class="math" data-tex="\(pAq\)">\(pAq\)</span>, and the last two belong to <span class="math" data-tex="\(pFq\)">\(pFq\)</span>. At <span class="math" data-tex="\(s=0\)">\(s=0\)</span> the upper-right entry is exactly
+<span class="math math-display" data-tex="\[
+ b_0=e_{12}k(P_1)k(P_2).                                \tag{CST3.c}
+\]">\[
+ b_0=e_{12}k(P_1)k(P_2).                                \tag{CST3.c}
+\]</span>
+Each <span class="math" data-tex="\(k(P_i)\)">\(k(P_i)\)</span> is bounded, self-adjoint and injective: its kernel is the spectral projection of the empty zero set of <span class="math" data-tex="\(k\)">\(k\)</span>. Thus <span class="math" data-tex="\(k(P_1)k(P_2)\)">\(k(P_1)k(P_2)\)</span> is injective. Its adjoint <span class="math" data-tex="\(k(P_2)k(P_1)\)">\(k(P_2)k(P_1)\)</span> is also injective, which makes its range dense. In corner language, the right support of <span class="math" data-tex="\(b_0\)">\(b_0\)</span> is <span class="math" data-tex="\(q\)">\(q\)</span> and its left support is <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p>For an operator <span class="math" data-tex="\(a\)">\(a\)</span>, write <span class="math" data-tex="\(s_r(a)\)">\(s_r(a)\)</span> and <span class="math" data-tex="\(s_l(a)\)">\(s_l(a)\)</span> for the initial and final projections of its polar part, respectively. Their existence in the same von Neumann algebra is <a href="OA-FLOW-PC.html#oa-flow.pc.1">PC1</a>. We claim
+<span class="math math-display" data-tex="\[
+ \bigvee_{r\in\mathbb Q}s_r(L_r(e_{12}))=q,\qquad
+ \bigvee_{r\in\mathbb Q}s_l(R_r(e_{12}))=p.               \tag{CST3.d}
+\]">\[
+ \bigvee_{r\in\mathbb Q}s_r(L_r(e_{12}))=q,\qquad
+ \bigvee_{r\in\mathbb Q}s_l(R_r(e_{12}))=p.               \tag{CST3.d}
+\]</span>
+For the first assertion let <span class="math" data-tex="\(a\le q\)">\(a\le q\)</span> be the complement in <span class="math" data-tex="\(q\)">\(q\)</span> of the displayed join. Then <span class="math" data-tex="\(L_r(e_{12})a=0\)">\(L_r(e_{12})a=0\)</span> for every rational <span class="math" data-tex="\(r\)">\(r\)</span>. The first factorization in (CST2.i) permits multiplication by <span class="math" data-tex="\(e^{-irP}\)">\(e^{-irP}\)</span> on the left, giving <span class="math" data-tex="\(\widehat b(r)a=0\)">\(\widehat b(r)a=0\)</span>.</p>
+<p>For each <span class="math" data-tex="\(\varphi\in A_*\)">\(\varphi\in A_*\)</span>, the scalar function <span class="math" data-tex="\(s\mapsto\varphi(b_sa)\)">\(s\mapsto\varphi(b_sa)\)</span> is continuous and integrable: right multiplication by <span class="math" data-tex="\(a\)">\(a\)</span> is normal, so it is another test of the integrable path already proved. Its Fourier transform is <span class="math" data-tex="\(\varphi(\widehat b(r)a)\)">\(\varphi(\widehat b(r)a)\)</span>. This transform is continuous in <span class="math" data-tex="\(r\)">\(r\)</span>, by scalar dominated convergence, and vanishes on the dense set <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. It therefore vanishes on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Fourier uniqueness followed by time continuity gives <span class="math" data-tex="\(\varphi(b_0a)=0\)">\(\varphi(b_0a)=0\)</span>. Normal functionals separate <span class="math" data-tex="\(A\)">\(A\)</span>, so <span class="math" data-tex="\(b_0a=0\)">\(b_0a=0\)</span>; the right support in (CST3.c) forces <span class="math" data-tex="\(a=0\)">\(a=0\)</span>.</p>
+<p>For the second assertion let <span class="math" data-tex="\(a\le p\)">\(a\le p\)</span> be the complement of the left-support join. Now <span class="math" data-tex="\(aR_r(e_{12})=0\)">\(aR_r(e_{12})=0\)</span>. The second factorization in (CST2.i) permits cancellation of <span class="math" data-tex="\(e^{irP}\)">\(e^{irP}\)</span> on the right, giving <span class="math" data-tex="\(a\widehat b(r)=0\)">\(a\widehat b(r)=0\)</span> for rational <span class="math" data-tex="\(r\)">\(r\)</span>. Apply the same scalar argument to <span class="math" data-tex="\(s\mapsto\varphi(ab_s)\)">\(s\mapsto\varphi(ab_s)\)</span>. It gives <span class="math" data-tex="\(ab_0=0\)">\(ab_0=0\)</span>, and the dense range in (CST3.c) forces <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. This is why the left and right modulations were both constructed. Cancelling the left unitary after an arbitrary left annihilator, or the right unitary before an arbitrary right annihilator, would have required an unavailable commutation relation.</p>
+<p><strong>Turn support joins into actual comparisons.</strong> Enumerate <span class="math" data-tex="\(\mathbb Q=\{r_n:n\ge1\}\)">\(\mathbb Q=\{r_n:n\ge1\}\)</span>. Let <span class="math" data-tex="\((\varepsilon_{ij})\)">\((\varepsilon_{ij})\)</span> be the standard matrix units of <span class="math" data-tex="\(B(\ell^2(\mathbb N))\)">\(B(\ell^2(\mathbb N))\)</span>, distinct from the linking matrix units <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span>. In
+<span class="math" data-tex="\(\mathscr M=F\bar\otimes B(\ell^2(\mathbb N))\)">\(\mathscr M=F\bar\otimes B(\ell^2(\mathbb N))\)</span>, form
+<span class="math math-display" data-tex="\[
+ C_L=\sum_{n\ge1}2^{-n}L_{r_n}(e_{12})\otimes\varepsilon_{n1},
+ \qquad
+ C_R=\sum_{n\ge1}2^{-n}R_{r_n}(e_{12})^*\otimes\varepsilon_{n1}.
+                                                                  \tag{CST3.e}
+\]">\[
+ C_L=\sum_{n\ge1}2^{-n}L_{r_n}(e_{12})\otimes\varepsilon_{n1},
+ \qquad
+ C_R=\sum_{n\ge1}2^{-n}R_{r_n}(e_{12})^*\otimes\varepsilon_{n1}.
+                                                                  \tag{CST3.e}
+\]</span>
+The tails of these series have norm at most <span class="math" data-tex="\((\sum_{n&gt;m}4^{-n})^{1/2}\)">\((\sum_{n&gt;m}4^{-n})^{1/2}\)</span>, since the entries have norm at most one by (CST2.i). They therefore define actual elements of the normal matrix amplification, whose arbitrary-H construction is <a href="OA-FLOW-TW.html#tw-1">TW1</a>.</p>
+<p>The operator <span class="math" data-tex="\(C_L\)">\(C_L\)</span> has right support <span class="math" data-tex="\(q\otimes\varepsilon_{11}\)">\(q\otimes\varepsilon_{11}\)</span>. Indeed its kernel on that input corner is the common kernel of the <span class="math" data-tex="\(L_{r_n}(e_{12})\)">\(L_{r_n}(e_{12})\)</span>, which is zero by (CST3.d); it vanishes on the complementary input corner. Its left support is at most <span class="math" data-tex="\(p\otimes1\)">\(p\otimes1\)</span>. The polar decomposition in <span class="math" data-tex="\(\mathscr M\)">\(\mathscr M\)</span> therefore gives the first comparison below. Applying the same argument to <span class="math" data-tex="\(C_R\)">\(C_R\)</span> gives the second:
+<span class="math math-display" data-tex="\[
+ q\otimes\varepsilon_{11}\precsim p\otimes1,
+ \qquad p\otimes\varepsilon_{11}\precsim q\otimes1
+ \quad\text{inside }\mathscr M.                          \tag{CST3.f}
+\]">\[
+ q\otimes\varepsilon_{11}\precsim p\otimes1,
+ \qquad p\otimes\varepsilon_{11}\precsim q\otimes1
+ \quad\text{inside }\mathscr M.                          \tag{CST3.f}
+\]</span>
+These are countable amplification bounds. They do not assert that either <span class="math" data-tex="\(p\)">\(p\)</span> or <span class="math" data-tex="\(q\)">\(q\)</span> is countably decomposable.</p>
+<p>Both corners also have full central support in <span class="math" data-tex="\(F\)">\(F\)</span>. For example, if <span class="math" data-tex="\(z\in Z(F)\)">\(z\in Z(F)\)</span> is a projection and <span class="math" data-tex="\(zp=0\)">\(zp=0\)</span>, then <span class="math" data-tex="\(zL_r(e_{12})=0\)">\(zL_r(e_{12})=0\)</span>. Centrality in <span class="math" data-tex="\(F\)">\(F\)</span> gives <span class="math" data-tex="\(L_r(e_{12})zq=0\)">\(L_r(e_{12})zq=0\)</span>, and the first support join in (CST3.d) implies <span class="math" data-tex="\(zq=0\)">\(zq=0\)</span>. Since <span class="math" data-tex="\(p+q=1\)">\(p+q=1\)</span>, this forces <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. The other side follows using the second join. Thus
+<span class="math math-display" data-tex="\[
+ c_F(p)=c_F(q)=1.                                      \tag{CST3.g}
+\]">\[
+ c_F(p)=c_F(q)=1.                                      \tag{CST3.g}
+\]</span>
+Multiplying the operators in (CST3.e) by any central projection <span class="math" data-tex="\(z\)">\(z\)</span> preserves the support identities in the algebra <span class="math" data-tex="\(Fz\)">\(Fz\)</span>. Hence (CST3.f) and fullness hold on every nonzero central portion.</p>
+<p><strong>Properly infinite portions.</strong> Suppose <span class="math" data-tex="\(z\in Z(F)\)">\(z\in Z(F)\)</span> and both <span class="math" data-tex="\(pz\)">\(pz\)</span> and <span class="math" data-tex="\(qz\)">\(qz\)</span> are properly infinite. For the following construction work in <span class="math" data-tex="\(Fz\)">\(Fz\)</span>, temporarily writing <span class="math" data-tex="\(p,q\)">\(p,q\)</span> for <span class="math" data-tex="\(pz,qz\)">\(pz,qz\)</span> and using the centrally compressed columns. The filling-family theorem <a href="OA-FLOW-PC.html#oa-flow.pc.5">PC5</a> gives <span class="math" data-tex="\(v_n\in pFp\)">\(v_n\in pFp\)</span> such that
+<span class="math math-display" data-tex="\[
+ v_n^*v_m=\delta_{nm}p,\qquad
+ \sum_{n\ge1}v_nv_n^*=p.
+\]">\[
+ v_n^*v_m=\delta_{nm}p,\qquad
+ \sum_{n\ge1}v_nv_n^*=p.
+\]</span>
+The row
+<span class="math math-display" data-tex="\[
+ S_p=\sum_{n\ge1}v_n\otimes\varepsilon_{1n}
+\]">\[
+ S_p=\sum_{n\ge1}v_n\otimes\varepsilon_{1n}
+\]</span>
+converges strongly together with its adjoints. For the row, orthogonality bounds the tail on a vector by its <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> input-coordinate tail; for the adjoint, the filling identity bounds it by the tail of <span class="math" data-tex="\(\sum_n\|v_n^*\xi\|^2=\|p\xi\|^2\)">\(\sum_n\|v_n^*\xi\|^2=\|p\xi\|^2\)</span>. Its initial and final projections are
+<span class="math math-display" data-tex="\[
+ S_p^*S_p=p\otimes1,\qquad S_pS_p^*=p\otimes\varepsilon_{11}.
+                                                                  \tag{CST3.h}
+\]">\[
+ S_p^*S_p=p\otimes1,\qquad S_pS_p^*=p\otimes\varepsilon_{11}.
+                                                                  \tag{CST3.h}
+\]</span>
+Composing <span class="math" data-tex="\(S_p\)">\(S_p\)</span> with the polar part of <span class="math" data-tex="\(C_L\)">\(C_L\)</span> yields a partial isometry with initial projection <span class="math" data-tex="\(q\otimes\varepsilon_{11}\)">\(q\otimes\varepsilon_{11}\)</span> and final projection at most <span class="math" data-tex="\(p\otimes\varepsilon_{11}\)">\(p\otimes\varepsilon_{11}\)</span>. It lies in the <span class="math" data-tex="\(\varepsilon_{11}\)">\(\varepsilon_{11}\)</span> corner and thus corresponds to an element of <span class="math" data-tex="\(Fz\)">\(Fz\)</span>; this proves <span class="math" data-tex="\(q\precsim p\)">\(q\precsim p\)</span> in <span class="math" data-tex="\(Fz\)">\(Fz\)</span> itself. The filling row for <span class="math" data-tex="\(q\)">\(q\)</span>, composed with the polar part of <span class="math" data-tex="\(C_R\)">\(C_R\)</span>, proves <span class="math" data-tex="\(p\precsim q\)">\(p\precsim q\)</span>. Applying <a href="OA-FLOW-PC.html#oa-flow.pc.3">PC3's mutual-subequivalence theorem</a> and restoring the original notation gives
+<span class="math math-display" data-tex="\[
+ pz\sim qz\quad\text{whenever both }pz\text{ and }qz
+       \text{ are properly infinite}.                  \tag{CST3.i}
+\]">\[
+ pz\sim qz\quad\text{whenever both }pz\text{ and }qz
+       \text{ are properly infinite}.                  \tag{CST3.i}
+\]</span>
+By <a href="OA-FLOW-PC.html#oa-flow.pc.8">PC8</a>, every nonzero projection in a type III algebra is properly infinite, so this includes every type III central portion of <span class="math" data-tex="\(F\)">\(F\)</span>. The countable bounds (CST3.f), rather than fullness alone, justify the absorption at arbitrary cardinality. The remaining central portions require a finite-corner comparison, to which we now turn.</p>
+<p><span id="OA-FLOW.CST.4"></span><a id="cst-4"></a></p>
+<h2 id="4-equal-trace-values-on-every-semifinite-central-piece">4. Equal trace values on every semifinite central piece</h2>
+<p>Retain the linking algebra and fixed algebra of <a href="#cst-1">Section 1</a>:
+<span class="math math-display" data-tex="\[
+ A=M_2(N),\qquad F=A^\alpha,\qquad
+ p=e_{11},\quad q=e_{22},\qquad
+ E(x)=\int_{\mathbb R}\alpha_s(x)\,ds.
+\]">\[
+ A=M_2(N),\qquad F=A^\alpha,\qquad
+ p=e_{11},\quad q=e_{22},\qquad
+ E(x)=\int_{\mathbb R}\alpha_s(x)\,ds.
+\]</span>
+Here <span class="math" data-tex="\(N\ne0\)">\(N\ne0\)</span>, the trace <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is faithful normal semifinite, and the normal continuous action satisfies <span class="math" data-tex="\(\tau\circ\theta_s=e^{-s}\tau\)">\(\tau\circ\theta_s=e^{-s}\tau\)</span>. The strongly continuous unitary cocycle may be noncentral. The matrix trace is <span class="math" data-tex="\(T=\operatorname{Tr}_2\otimes\tau\)">\(T=\operatorname{Tr}_2\otimes\tau\)</span>, and <span class="math" data-tex="\(T\circ\alpha_s=e^{-s}T\)">\(T\circ\alpha_s=e^{-s}T\)</span>. The integral uses the fixed Lebesgue measure <span class="math" data-tex="\(ds\)">\(ds\)</span>.</p>
+<p>We will prove
+<span class="math math-display" data-tex="\[
+ \boxed{\ \rho(pz)=\rho(qz)\ }
+ \quad\begin{gathered}
+ z\in Z(F)\text{ a projection with }Fz\text{ semifinite},\\
+ \rho\text{ any faithful normal semifinite trace on }Fz.
+ \end{gathered}
+ \tag{CST4.1}
+\]">\[
+ \boxed{\ \rho(pz)=\rho(qz)\ }
+ \quad\begin{gathered}
+ z\in Z(F)\text{ a projection with }Fz\text{ semifinite},\\
+ \rho\text{ any faithful normal semifinite trace on }Fz.
+ \end{gathered}
+ \tag{CST4.1}
+\]</span>
+All values are allowed to be infinite. The quantifiers over both the central piece and the trace will be needed: an equality only at the original unit would not detect a strict comparison hidden in a finite central cut.</p>
+<p>Take a nonzero such <span class="math" data-tex="\(z\)">\(z\)</span>. By the center inclusion proved in <a href="#cst-2">Section 2</a>, <span class="math" data-tex="\(z\in Z(A)\)">\(z\in Z(A)\)</span>, and it is fixed by <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Thus <span class="math" data-tex="\(A_z=Az\)">\(A_z=Az\)</span> has unit <span class="math" data-tex="\(z\)">\(z\)</span>, restricted action <span class="math" data-tex="\(\alpha^z\)">\(\alpha^z\)</span>, fixed algebra <span class="math" data-tex="\(Fz\)">\(Fz\)</span>, and faithful normal semifinite trace <span class="math" data-tex="\(T_z=T|_{Az}\)">\(T_z=T|_{Az}\)</span>. The restricted action integral
+<span class="math math-display" data-tex="\[
+ E_z:(Az)_+\longrightarrow\widehat{Fz}_+,
+ \qquad E_z(x)=E(x),
+\]">\[
+ E_z:(Az)_+\longrightarrow\widehat{Fz}_+,
+ \qquad E_z(x)=E(x),
+\]</span>
+is faithful normal semifinite by the <a href="OA-FLOW-L19.html#l19-1">action-integral construction in L19, Sections 1–2</a>, applied to <span class="math" data-tex="\((Az,T_z,\alpha^z)\)">\((Az,T_z,\alpha^z)\)</span>. Trace restriction to a corner is semifinite by the compression argument in <a href="OA-FLOW-L18.html#l18-7">L18, Section 7</a>.</p>
+<p>Compose the chosen trace with this integral:
+<span class="math math-display" data-tex="\[
+ \Psi_\rho=\widehat\rho\circ E_z=(T_z)_{H_\rho},
+ \qquad P_\rho=\log H_\rho.
+ \tag{CST4.2}
+\]">\[
+ \Psi_\rho=\widehat\rho\circ E_z=(T_z)_{H_\rho},
+ \qquad P_\rho=\log H_\rho.
+ \tag{CST4.2}
+\]</span>
+The hat denotes the extension of a normal weight to the full extended positive cone. <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6</a> makes <span class="math" data-tex="\(\Psi_\rho\)">\(\Psi_\rho\)</span> faithful normal semifinite, and <a href="OA-FLOW-TD.html#oa-flow.td.4">TD4–6</a> give its unique nonsingular positive self-adjoint density <span class="math" data-tex="\(H_\rho\)">\(H_\rho\)</span> affiliated with <span class="math" data-tex="\(Az\)">\(Az\)</span>. Apply the invariant-density and generation argument of <a href="#cst-2">Section 2</a>, now with the reference weight <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(Fz\)">\(Fz\)</span>. It gives
+<span class="math math-display" data-tex="\[
+ \alpha_s^z(H_\rho)=e^{-s}H_\rho,\qquad
+ \alpha_s^z(P_\rho)=P_\rho-sz,\qquad
+ Az=W^*(Fz,H_\rho^{it}:t\in\mathbb R).
+ \tag{CST4.3}
+\]">\[
+ \alpha_s^z(H_\rho)=e^{-s}H_\rho,\qquad
+ \alpha_s^z(P_\rho)=P_\rho-sz,\qquad
+ Az=W^*(Fz,H_\rho^{it}:t\in\mathbb R).
+ \tag{CST4.3}
+\]</span>
+This use of generation is valid for each new reference weight; it does not assert that densities for different traces coincide.</p>
+<p>Since <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is a trace, its modular group is trivial. The <a href="OA-FLOW-OT.html#oa-flow.ot.5">operator-valued-weight modular restriction</a> and the <a href="OA-FLOW-CZ.html#oa-flow.cz.5">tracial density modular formula</a> therefore imply
+<span class="math math-display" data-tex="\[
+ H_\rho^{it}xH_\rho^{-it}=x\qquad(x\in Fz).
+ \tag{CST4.4}
+\]">\[
+ H_\rho^{it}xH_\rho^{-it}=x\qquad(x\in Fz).
+ \tag{CST4.4}
+\]</span>
+Each <span class="math" data-tex="\(H_\rho^{it}\)">\(H_\rho^{it}\)</span> also commutes with every <span class="math" data-tex="\(H_\rho^{iu}\)">\(H_\rho^{iu}\)</span>. By the generation in (CST4.3), it is central in <span class="math" data-tex="\(Az\)">\(Az\)</span>. The <a href="OA-FLOW-RF.html#oa-flow.rf.5">spectral recovery from the imaginary-power group</a> then puts every spectral projection of <span class="math" data-tex="\(P_\rho\)">\(P_\rho\)</span>, and of <span class="math" data-tex="\(H_\rho\)">\(H_\rho\)</span>, in <span class="math" data-tex="\(Z(Az)\)">\(Z(Az)\)</span>. Thus both operators are affiliated with that center. The same modular formula makes <span class="math" data-tex="\(\sigma^{\Psi_\rho}\)">\(\sigma^{\Psi_\rho}\)</span> trivial on all of <span class="math" data-tex="\(Az\)">\(Az\)</span>; the <a href="OA-FLOW-KT.html#oa-flow.kt.5">whole-cone trace criterion</a> proves
+<span class="math math-display" data-tex="\[
+ \Psi_\rho(a^*a)=\Psi_\rho(aa^*)\qquad(a\in Az),
+ \tag{CST4.5}
+\]">\[
+ \Psi_\rho(a^*a)=\Psi_\rho(aa^*)\qquad(a\in Az),
+ \tag{CST4.5}
+\]</span>
+including infinite values.</p>
+<p>There is a bounded spectral window whose action integral is exactly the unit. Put
+<span class="math math-display" data-tex="\[
+ f=1_{[0,1]},\qquad g=f(P_\rho)\in Z(Az).
+\]">\[
+ f=1_{[0,1]},\qquad g=f(P_\rho)\in Z(Az).
+\]</span>
+The spectral measure <span class="math" data-tex="\(D_\rho\)">\(D_\rho\)</span> of <span class="math" data-tex="\(P_\rho\)">\(P_\rho\)</span> has total mass <span class="math" data-tex="\(z\)">\(z\)</span>. For any positive normal functional <span class="math" data-tex="\(\eta\)">\(\eta\)</span> on <span class="math" data-tex="\(Az\)">\(Az\)</span>, scalar spectral integration and Tonelli give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_{\mathbb R}\eta(\alpha_s^z(g))\,ds
+ &amp;=\int_{\mathbb R}\int_{\mathbb R}
+       1_{[0,1]}(r-s)\,d\eta(D_\rho(r))\,ds\\
+ &amp;=\int_{\mathbb R}
+       \left(\int_{\mathbb R}1_{[0,1]}(r-s)\,ds\right)
+       d\eta(D_\rho(r))
+ =\eta(z).
+ \end{aligned}
+ \tag{CST4.6}
+\]">\[
+ \begin{aligned}
+ \int_{\mathbb R}\eta(\alpha_s^z(g))\,ds
+ &amp;=\int_{\mathbb R}\int_{\mathbb R}
+       1_{[0,1]}(r-s)\,d\eta(D_\rho(r))\,ds\\
+ &amp;=\int_{\mathbb R}
+       \left(\int_{\mathbb R}1_{[0,1]}(r-s)\,ds\right)
+       d\eta(D_\rho(r))
+ =\eta(z).
+ \end{aligned}
+ \tag{CST4.6}
+\]</span>
+The inner integral is one for every <span class="math" data-tex="\(r\)">\(r\)</span>. Endpoint choices do not change its Lebesgue value. The defining increasing bounded-interval integrals therefore have extended supremum equal to the bounded element <span class="math" data-tex="\(z\)">\(z\)</span>. Bimodularity of <span class="math" data-tex="\(E_z\)">\(E_z\)</span>, with <span class="math" data-tex="\(pz,qz\in Fz\)">\(pz,qz\in Fz\)</span>, gives the exact identities
+<span class="math math-display" data-tex="\[
+ E_z(g)=z,\qquad E_z(pzg)=pz,\qquad E_z(qzg)=qz.
+ \tag{CST4.7}
+\]">\[
+ E_z(g)=z,\qquad E_z(pzg)=pz,\qquad E_z(qzg)=qz.
+ \tag{CST4.7}
+\]</span>
+For example, <span class="math" data-tex="\(pzg=(pz)g(pz)\)">\(pzg=(pz)g(pz)\)</span> because <span class="math" data-tex="\(g\)">\(g\)</span> is central. These equalities retain the measure <span class="math" data-tex="\(ds\)">\(ds\)</span> used throughout the proof.</p>
+<p>Now take the bounded element <span class="math" data-tex="\(a=ze_{12}g\in Az\)">\(a=ze_{12}g\in Az\)</span>. Centrality and <span class="math" data-tex="\(g^2=g\)">\(g^2=g\)</span> give
+<span class="math math-display" data-tex="\[
+ aa^*=pzg,\qquad a^*a=qzg.
+\]">\[
+ aa^*=pzg,\qquad a^*a=qzg.
+\]</span>
+Equations (CST4.2), (CST4.5), and (CST4.7) yield
+<span class="math math-display" data-tex="\[
+ \rho(pz)
+ =\Psi_\rho(aa^*)
+ =\Psi_\rho(a^*a)
+ =\rho(qz).
+ \tag{CST4.8}
+\]">\[
+ \rho(pz)
+ =\Psi_\rho(aa^*)
+ =\Psi_\rho(a^*a)
+ =\rho(qz).
+ \tag{CST4.8}
+\]</span>
+This proves (CST4.1) for the arbitrary chosen pair <span class="math" data-tex="\((z,\rho)\)">\((z,\rho)\)</span>; the zero piece gives the zero equality. In particular, it applies again to every further central cut and the restriction of any such trace. No infinite trace values have been subtracted.</p>
+<p><span id="OA-FLOW.CST.5"></span><a id="cst-5"></a></p>
+<h2 id="5-central-comparison-the-implementing-unitary-and-all-its-choices">5. Central comparison, the implementing unitary, and all its choices</h2>
+<p>The countable support comparisons of <a href="#cst-3">Section 3</a> show that <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> have central support one in <span class="math" data-tex="\(F\)">\(F\)</span>, and already give their equivalence wherever both are properly infinite. To treat the remaining pieces, we need a finite value on a suitable central cut. Finiteness of a projection alone does not say that a given semifinite trace has a finite value on it.</p>
+<p><strong>Finite-center restriction.</strong> Let <span class="math" data-tex="\(D\)">\(D\)</span> be a nonzero finite von Neumann algebra with a faithful normal semifinite trace <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \lambda|_{Z(D)}\text{ is faithful normal semifinite}.
+ \tag{CST5.1}
+\]">\[
+ \lambda|_{Z(D)}\text{ is faithful normal semifinite}.
+ \tag{CST5.1}
+\]</span>
+Here is the full argument from <a href="OA-FLOW-L18.html#l18-7">L18, Section 7</a>, with the ingredients displayed. <a href="OA-FLOW-FCT.html#oa-flow.fct.6">FCT6–7</a> constructs the normalized faithful normal center-valued trace <span class="math" data-tex="\(\mathcal T_D:D\to Z(D)\)">\(\mathcal T_D:D\to Z(D)\)</span>. Choose a faithful normal semifinite weight <span class="math" data-tex="\(\nu\)">\(\nu\)</span> on <span class="math" data-tex="\(Z(D)\)">\(Z(D)\)</span>, using the arbitrary-algebra construction <a href="OA-FLOW-FR.html#oa-flow.fr.1">FR1</a>. Because the center is commutative, <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is tracial. The map <span class="math" data-tex="\(\mathcal T_D\)">\(\mathcal T_D\)</span>, viewed as an operator-valued weight, is faithful normal and semifinite: it is bounded, its bounded-value ideal is all of <span class="math" data-tex="\(D\)">\(D\)</span>, and its center-module law is the required bimodularity. Thus <a href="OA-FLOW-EP.html#oa-flow.ep.6">EP6</a> proves that
+<span class="math math-display" data-tex="\[
+ \lambda_0=\nu\circ\mathcal T_D
+\]">\[
+ \lambda_0=\nu\circ\mathcal T_D
+\]</span>
+is faithful normal semifinite. It is a trace on the entire positive cone because <span class="math" data-tex="\(\mathcal T_D(x^*x)=\mathcal T_D(xx^*)\)">\(\mathcal T_D(x^*x)=\mathcal T_D(xx^*)\)</span>.</p>
+<p>The <a href="OA-FLOW-TD.html#oa-flow.td.4">full tracial density theorem</a> supplies a unique nonsingular affiliated <span class="math" data-tex="\(h\)">\(h\)</span> with <span class="math" data-tex="\(\lambda=(\lambda_0)_h\)">\(\lambda=(\lambda_0)_h\)</span>. Both traces have trivial modular groups, so the <a href="OA-FLOW-CZ.html#oa-flow.cz.5">modular formula</a> makes every <span class="math" data-tex="\(h^{it}\)">\(h^{it}\)</span> central. Spectral recovery makes <span class="math" data-tex="\(h\)">\(h\)</span> affiliated with <span class="math" data-tex="\(Z(D)\)">\(Z(D)\)</span>, exactly as in the <a href="OA-FLOW-L18.html#l18-2">central trace-density proof</a>. For <span class="math" data-tex="\(x\in Z(D)_+\)">\(x\in Z(D)_+\)</span>, put <span class="math" data-tex="\(h_n=h\wedge n\)">\(h_n=h\wedge n\)</span>. The whole-cone cutoff formula, centrality, and the normalization <span class="math" data-tex="\(\mathcal T_D|_{Z(D)}=\mathrm{id}\)">\(\mathcal T_D|_{Z(D)}=\mathrm{id}\)</span> give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \lambda(x)
+ &amp;=\sup_n\lambda_0(h_n^{1/2}xh_n^{1/2})\\
+ &amp;=\sup_n\nu\bigl(\mathcal T_D(h_nx)\bigr)
+ =\sup_n\nu(h_nx)=\nu_h(x).
+ \end{aligned}
+ \tag{CST5.2}
+\]">\[
+ \begin{aligned}
+ \lambda(x)
+ &amp;=\sup_n\lambda_0(h_n^{1/2}xh_n^{1/2})\\
+ &amp;=\sup_n\nu\bigl(\mathcal T_D(h_nx)\bigr)
+ =\sup_n\nu(h_nx)=\nu_h(x).
+ \end{aligned}
+ \tag{CST5.2}
+\]</span>
+The density <span class="math" data-tex="\(h\)">\(h\)</span> is an ordinary nonsingular self-adjoint operator, so <a href="OA-FLOW-TD.html#oa-flow.td.6">TD6</a>, now on the commutative algebra <span class="math" data-tex="\(Z(D)\)">\(Z(D)\)</span>, proves that <span class="math" data-tex="\(\nu_h\)">\(\nu_h\)</span> is faithful normal semifinite. This proves (CST5.1), with all extended values retained. The argument uses the constructed center-valued trace and density theorem; it needs no norm-closed unitary-orbit averaging theorem.</p>
+<p><strong>Strict comparison has a finite central witness.</strong> Let <span class="math" data-tex="\(B\)">\(B\)</span> be a nonzero semifinite von Neumann algebra, let <span class="math" data-tex="\(a\)">\(a\)</span> be a finite projection with <span class="math" data-tex="\(c_B(a)=1\)">\(c_B(a)=1\)</span>, and let <span class="math" data-tex="\(b\)">\(b\)</span> be a projection satisfying <span class="math" data-tex="\(a\precsim b\)">\(a\precsim b\)</span> but <span class="math" data-tex="\(a\not\sim b\)">\(a\not\sim b\)</span>. For every faithful normal semifinite trace <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(B\)">\(B\)</span>, there is a nonzero central projection <span class="math" data-tex="\(z_0\)">\(z_0\)</span> such that
+<span class="math math-display" data-tex="\[
+ \rho(az_0)&lt;\infty,\qquad \rho(bz_0)&gt;\rho(az_0).
+ \tag{CST5.3}
+\]">\[
+ \rho(az_0)&lt;\infty,\qquad \rho(bz_0)&gt;\rho(az_0).
+ \tag{CST5.3}
+\]</span>
+To prove this, choose <span class="math" data-tex="\(u\in B\)">\(u\in B\)</span> with
+<span class="math math-display" data-tex="\[
+ u^*u=a,\qquad a'=uu^*\le b,\qquad
+ r=b-a'\ne0,\qquad t=c_B(r).
+\]">\[
+ u^*u=a,\qquad a'=uu^*\le b,\qquad
+ r=b-a'\ne0,\qquad t=c_B(r).
+\]</span>
+The residual is nonzero because otherwise <span class="math" data-tex="\(u\)">\(u\)</span> would implement <span class="math" data-tex="\(a\sim b\)">\(a\sim b\)</span>. The restriction <span class="math" data-tex="\(\rho_a=\rho|_{aBa}\)">\(\rho_a=\rho|_{aBa}\)</span> is faithful normal semifinite. In detail, if <span class="math" data-tex="\(y\in B_+\)">\(y\in B_+\)</span> and <span class="math" data-tex="\(\rho(y)&lt;\infty\)">\(\rho(y)&lt;\infty\)</span>, the trace identity and order give
+<span class="math math-display" data-tex="\[
+ \rho(aya)=\rho(y^{1/2}ay^{1/2})\le\rho(y)&lt;\infty.
+ \tag{CST5.4}
+\]">\[
+ \rho(aya)=\rho(y^{1/2}ay^{1/2})\le\rho(y)&lt;\infty.
+ \tag{CST5.4}
+\]</span>
+The finite positive cone of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> has ultraweakly dense linear span. Normal compression by <span class="math" data-tex="\(a\)">\(a\)</span> makes the span of these finite positive compressions dense in <span class="math" data-tex="\(aBa\)">\(aBa\)</span>. Hence the <a href="OA-FLOW-GW.html#oa-flow.gw.4">finite-cone criterion GW4</a> proves semifiniteness of <span class="math" data-tex="\(\rho_a\)">\(\rho_a\)</span>; normality and faithfulness are inherited.</p>
+<p>The algebra <span class="math" data-tex="\(aBa\)">\(aBa\)</span> is finite, so (CST5.1) makes <span class="math" data-tex="\(\rho_a\)">\(\rho_a\)</span> semifinite on <span class="math" data-tex="\(Z(aBa)\)">\(Z(aBa)\)</span>. Fullness of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(t\ne0\)">\(t\ne0\)</span> give <span class="math" data-tex="\(at\ne0\)">\(at\ne0\)</span>. Consequently there is a nonzero positive <span class="math" data-tex="\(x\in Z(aBa)\)">\(x\in Z(aBa)\)</span>, supported on <span class="math" data-tex="\(at\)">\(at\)</span>, with <span class="math" data-tex="\(\rho(x)&lt;\infty\)">\(\rho(x)&lt;\infty\)</span>. Indeed the finite positive cone on the center has dense span, and compression by the nonzero central projection <span class="math" data-tex="\(at\)">\(at\)</span> cannot annihilate that span. Choose <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> with
+<span class="math math-display" data-tex="\[
+ e=1_{[\delta,\infty)}(x)\ne0.
+\]">\[
+ e=1_{[\delta,\infty)}(x)\ne0.
+\]</span>
+Then <span class="math" data-tex="\(e\in Z(aBa)\)">\(e\in Z(aBa)\)</span>, <span class="math" data-tex="\(e\le at\)">\(e\le at\)</span>, and <span class="math" data-tex="\(\rho(e)\le\delta^{-1}\rho(x)&lt;\infty\)">\(\rho(e)\le\delta^{-1}\rho(x)&lt;\infty\)</span>.</p>
+<p>The <a href="OA-FLOW-PC.html#oa-flow.pc.4">normal center isomorphism for a full corner, PC4</a>, writes <span class="math" data-tex="\(e=az_0\)">\(e=az_0\)</span> for a unique nonzero <span class="math" data-tex="\(z_0\in Z(B)\)">\(z_0\in Z(B)\)</span>, with <span class="math" data-tex="\(z_0\le t\)">\(z_0\le t\)</span>. The inequality follows because that isomorphism preserves order and takes <span class="math" data-tex="\(t\)">\(t\)</span> to <span class="math" data-tex="\(at\)">\(at\)</span>. Also <span class="math" data-tex="\(rz_0\ne0\)">\(rz_0\ne0\)</span>: a central projection annihilating <span class="math" data-tex="\(r\)">\(r\)</span> is orthogonal to <span class="math" data-tex="\(c_B(r)=t\)">\(c_B(r)=t\)</span>, whereas <span class="math" data-tex="\(0\ne z_0\le t\)">\(0\ne z_0\le t\)</span>. Compressing <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(z_0\)">\(z_0\)</span> gives <span class="math" data-tex="\(az_0\sim a'z_0\)">\(az_0\sim a'z_0\)</span>, and therefore
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \rho(bz_0)
+ &amp;=\rho(a'z_0)+\rho(rz_0)\\
+ &amp;=\rho(az_0)+\rho(rz_0)&gt;\rho(az_0),
+ \qquad \rho(az_0)&lt;\infty.
+ \end{aligned}
+ \tag{CST5.5}
+\]">\[
+ \begin{aligned}
+ \rho(bz_0)
+ &amp;=\rho(a'z_0)+\rho(rz_0)\\
+ &amp;=\rho(az_0)+\rho(rz_0)&gt;\rho(az_0),
+ \qquad \rho(az_0)&lt;\infty.
+ \end{aligned}
+ \tag{CST5.5}
+\]</span>
+Faithfulness gives <span class="math" data-tex="\(\rho(rz_0)&gt;0\)">\(\rho(rz_0)&gt;0\)</span>. Its value may be infinite; adding it to the finite value <span class="math" data-tex="\(\rho(az_0)\)">\(\rho(az_0)\)</span> still gives the stated strict inequality. This proves (CST5.3) without canceling infinite values.</p>
+<p><strong>Refine the fixed algebra by its central pieces.</strong> The <a href="OA-FLOW-L18.html#l18-6">semifinite/type III construction in L18, Section 6</a> gives a central projection <span class="math" data-tex="\(z_{\mathrm{sf}}\in F\)">\(z_{\mathrm{sf}}\in F\)</span> such that <span class="math" data-tex="\(Fz_{\mathrm{sf}}\)">\(Fz_{\mathrm{sf}}\)</span> admits a faithful normal semifinite trace and <span class="math" data-tex="\(F(1-z_{\mathrm{sf}})\)">\(F(1-z_{\mathrm{sf}})\)</span> has no nonzero finite projections. The construction uses arbitrary orthogonal families of central pieces and finite-corner traces; it does not assume a faithful normal state on <span class="math" data-tex="\(F\)">\(F\)</span>. On the type III piece every nonzero projection is properly infinite by <a href="OA-FLOW-PC.html#oa-flow.pc.8">PC8</a>. Thus <a href="#cst-3">Section 3</a> already gives
+<span class="math math-display" data-tex="\[
+ p(1-z_{\mathrm{sf}})\sim q(1-z_{\mathrm{sf}})
+ \quad\text{inside }F(1-z_{\mathrm{sf}}).
+ \tag{CST5.6}
+\]">\[
+ p(1-z_{\mathrm{sf}})\sim q(1-z_{\mathrm{sf}})
+ \quad\text{inside }F(1-z_{\mathrm{sf}}).
+ \tag{CST5.6}
+\]</span></p>
+<p>Both <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> have full central support in <span class="math" data-tex="\(F\)">\(F\)</span>. Apply <a href="OA-FLOW-PC.html#oa-flow.pc.5">PC5's finite/properly infinite decomposition</a> to each corner <span class="math" data-tex="\(pFp\)">\(pFp\)</span> and <span class="math" data-tex="\(qFq\)">\(qFq\)</span>. By <a href="OA-FLOW-PC.html#oa-flow.pc.4">PC4</a>, their central decompositions lift to central projections <span class="math" data-tex="\(z_p,z_q\in Z(F)\)">\(z_p,z_q\in Z(F)\)</span> with
+<span class="math math-display" data-tex="\[
+ \begin{array}{ll}
+ pz_p\text{ finite},&amp;p(1-z_p)\text{ properly infinite if nonzero},\\
+ qz_q\text{ finite},&amp;q(1-z_q)\text{ properly infinite if nonzero}.
+ \end{array}
+ \tag{CST5.7}
+\]">\[
+ \begin{array}{ll}
+ pz_p\text{ finite},&amp;p(1-z_p)\text{ properly infinite if nonzero},\\
+ qz_q\text{ finite},&amp;q(1-z_q)\text{ properly infinite if nonzero}.
+ \end{array}
+ \tag{CST5.7}
+\]</span>
+Intersect these two decompositions with <span class="math" data-tex="\(z_{\mathrm{sf}}\)">\(z_{\mathrm{sf}}\)</span>. On <span class="math" data-tex="\(z_{\mathrm{sf}}(1-z_p)(1-z_q)\)">\(z_{\mathrm{sf}}(1-z_p)(1-z_q)\)</span>, both sides are properly infinite, and Section 3 gives their equivalence. Each of the other three central pieces has at least one finite side. Every nonzero central compression of <span class="math" data-tex="\(p\)">\(p\)</span> or <span class="math" data-tex="\(q\)">\(q\)</span> is still full in the compressed algebra: a central subprojection annihilating that compression would annihilate the original full projection on that subpiece.</p>
+<p>Fix one of these remaining nonzero pieces <span class="math" data-tex="\(y\)">\(y\)</span>, and put <span class="math" data-tex="\(B=Fy\)">\(B=Fy\)</span>. By <a href="OA-FLOW-PC.html#oa-flow.pc.2">PC2's central comparison</a>, there is a central projection <span class="math" data-tex="\(e\le y\)">\(e\le y\)</span> such that <span class="math" data-tex="\(pe\precsim qe\)">\(pe\precsim qe\)</span> and <span class="math" data-tex="\(q(y-e)\precsim p(y-e)\)">\(q(y-e)\precsim p(y-e)\)</span>. Consider either nonzero comparison part, with unit <span class="math" data-tex="\(y'\)">\(y'\)</span>. Call the smaller projection <span class="math" data-tex="\(a\)">\(a\)</span>, the larger <span class="math" data-tex="\(b\)">\(b\)</span>. Both are full in <span class="math" data-tex="\(Fy'\)">\(Fy'\)</span>. At least one is finite; if it is the larger one, the smaller one is finite too, because finiteness passes through equivalence and to subprojections by <a href="OA-FLOW-PC.html#oa-flow.pc.5">PC5</a>. Thus in either case <span class="math" data-tex="\(a\)">\(a\)</span> is finite.</p>
+<p>Choose a faithful normal semifinite trace <span class="math" data-tex="\(\rho\)">\(\rho\)</span> on <span class="math" data-tex="\(Fy'\)">\(Fy'\)</span>, for example the restriction of one on <span class="math" data-tex="\(Fz_{\mathrm{sf}}\)">\(Fz_{\mathrm{sf}}\)</span>. If <span class="math" data-tex="\(a\not\sim b\)">\(a\not\sim b\)</span>, (CST5.3) supplies a nonzero central <span class="math" data-tex="\(z_0\le y'\)">\(z_0\le y'\)</span> with <span class="math" data-tex="\(\rho(az_0)&lt;\rho(bz_0)\)">\(\rho(az_0)&lt;\rho(bz_0)\)</span>. But <span class="math" data-tex="\(\{az_0,bz_0\}=\{pz_0,qz_0\}\)">\(\{az_0,bz_0\}=\{pz_0,qz_0\}\)</span>. The restricted trace on <span class="math" data-tex="\(Fz_0\)">\(Fz_0\)</span> is faithful normal semifinite, so <a href="#cst-4">Section 4</a> gives <span class="math" data-tex="\(\rho(pz_0)=\rho(qz_0)\)">\(\rho(pz_0)=\rho(qz_0)\)</span>, a contradiction. Therefore the two projections are equivalent on every comparison part. This also rules out any nonzero mixed finite/properly infinite piece, since equivalence preserves finiteness.</p>
+<p>We have obtained <span class="math" data-tex="\(pz_j\sim qz_j\)">\(pz_j\sim qz_j\)</span> on an orthogonal central partition <span class="math" data-tex="\((z_j)\)">\((z_j)\)</span> of the unit of <span class="math" data-tex="\(F\)">\(F\)</span>. Each comparison and decomposition theorem used here holds at arbitrary cardinality. For clarity, the final assembly works for an arbitrary index set: choose <span class="math" data-tex="\(w_j\in pFq\)">\(w_j\in pFq\)</span> with
+<span class="math math-display" data-tex="\[
+ w_j^*w_j=qz_j,\qquad w_jw_j^*=pz_j.
+\]">\[
+ w_j^*w_j=qz_j,\qquad w_jw_j^*=pz_j.
+\]</span>
+For any finite set <span class="math" data-tex="\(J\)">\(J\)</span> of indices and any vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> in the concrete Hilbert space of <span class="math" data-tex="\(A\)">\(A\)</span>,
+<span class="math math-display" data-tex="\[
+ \left\|\sum_{j\in J}w_j\xi\right\|^2
+ =\sum_{j\in J}\|qz_j\xi\|^2\le\|\xi\|^2.
+\]">\[
+ \left\|\sum_{j\in J}w_j\xi\right\|^2
+ =\sum_{j\in J}\|qz_j\xi\|^2\le\|\xi\|^2.
+\]</span>
+The supremum of these finite sums of nonnegative real numbers has arbitrarily small complementary finite tails; hence the vector sums are Cauchy. The same argument applies to adjoints, using <span class="math" data-tex="\(pz_j\)">\(pz_j\)</span>. The <a href="OA-FLOW-PC.html#oa-flow.pc.1">arbitrary orthogonal-sum proof PC1</a> gives a strong-star sum in <span class="math" data-tex="\(F\)">\(F\)</span>:
+<span class="math math-display" data-tex="\[
+ w=\sum_jw_j\in pFq,\qquad
+ w^*w=\sum_jqz_j=q,\qquad
+ ww^*=\sum_jpz_j=p.
+ \tag{CST5.8}
+\]">\[
+ w=\sum_jw_j\in pFq,\qquad
+ w^*w=\sum_jqz_j=q,\qquad
+ ww^*=\sum_jpz_j=p.
+ \tag{CST5.8}
+\]</span>
+No countable decomposition of the algebra has been chosen. On properly infinite pieces the crucial input was the two actual countable amplification comparisons of Section 3, followed by <a href="OA-FLOW-PC.html#oa-flow.pc.5">PC5's filling copies</a> and <a href="OA-FLOW-PC.html#oa-flow.pc.3">PC3's mutual-subequivalence theorem</a>. Full central support by itself was never used to identify arbitrary properly infinite projections.</p>
+<p><strong>Read the upper-right entry.</strong> Since <span class="math" data-tex="\(w\in pAq\)">\(w\in pAq\)</span>, write
+<span class="math math-display" data-tex="\[
+ w=\begin{pmatrix}0&amp;v\\0&amp;0\end{pmatrix},\qquad v\in N.
+\]">\[
+ w=\begin{pmatrix}0&amp;v\\0&amp;0\end{pmatrix},\qquad v\in N.
+\]</span>
+The initial and final projections in (CST5.8) give <span class="math" data-tex="\(v^*v=vv^*=1\)">\(v^*v=vv^*=1\)</span>, so <span class="math" data-tex="\(v\)">\(v\)</span> is unitary. The linking action is
+<span class="math math-display" data-tex="\[
+ \alpha_s=\operatorname{Ad}\!\begin{pmatrix}1&amp;0\\0&amp;c_s\end{pmatrix}
+               \circ(\operatorname{id}_2\otimes\theta_s).
+\]">\[
+ \alpha_s=\operatorname{Ad}\!\begin{pmatrix}1&amp;0\\0&amp;c_s\end{pmatrix}
+               \circ(\operatorname{id}_2\otimes\theta_s).
+\]</span>
+Its upper-right entry at <span class="math" data-tex="\(w\)">\(w\)</span> is <span class="math" data-tex="\(\theta_s(v)c_s^*\)">\(\theta_s(v)c_s^*\)</span>. As <span class="math" data-tex="\(w\in F\)">\(w\in F\)</span>, this equals <span class="math" data-tex="\(v\)">\(v\)</span>, and therefore
+<span class="math math-display" data-tex="\[
+ \boxed{\ c_s=v^*\theta_s(v)\qquad(s\in\mathbb R).\ }
+ \tag{CST5.9}
+\]">\[
+ \boxed{\ c_s=v^*\theta_s(v)\qquad(s\in\mathbb R).\ }
+ \tag{CST5.9}
+\]</span>
+This proves stability for every strongly continuous unitary cocycle under the stated trace-scaling hypothesis, with no centrality, proper-infiniteness, factor, separability, countable-decomposability, or faithful-state assumption on <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p>The cocycle perturbation <span class="math" data-tex="\(\theta_s^c=\operatorname{Ad}(c_s)\circ\theta_s\)">\(\theta_s^c=\operatorname{Ad}(c_s)\circ\theta_s\)</span> is consequently inner conjugate to the original action. With the convention <span class="math" data-tex="\(\operatorname{Ad}(u)(x)=uxu^*\)">\(\operatorname{Ad}(u)(x)=uxu^*\)</span>, for every <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \theta_s^c(x)
+ &amp;=v^*\theta_s(v)\theta_s(x)\theta_s(v^*)v\\
+ &amp;=v^*\theta_s(vxv^*)v.
+ \end{aligned}
+\]">\[
+ \begin{aligned}
+ \theta_s^c(x)
+ &amp;=v^*\theta_s(v)\theta_s(x)\theta_s(v^*)v\\
+ &amp;=v^*\theta_s(vxv^*)v.
+ \end{aligned}
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+ \boxed{\ \theta_s^c
+ =\operatorname{Ad}(v^*)\circ\theta_s\circ\operatorname{Ad}(v).\ }
+ \tag{CST5.10}
+\]">\[
+ \boxed{\ \theta_s^c
+ =\operatorname{Ad}(v^*)\circ\theta_s\circ\operatorname{Ad}(v).\ }
+ \tag{CST5.10}
+\]</span>
+The two inner automorphisms have this order; equivalently <span class="math" data-tex="\(\operatorname{Ad}(v)\circ\theta_s^c=\theta_s\circ\operatorname{Ad}(v)\)">\(\operatorname{Ad}(v)\circ\theta_s^c=\theta_s\circ\operatorname{Ad}(v)\)</span>.</p>
+<p><strong>All implementing unitaries.</strong> Define the fixed algebra
+<span class="math math-display" data-tex="\[
+ N^\theta=\{x\in N:\theta_s(x)=x\text{ for every }s\in\mathbb R\}.
+\]">\[
+ N^\theta=\{x\in N:\theta_s(x)=x\text{ for every }s\in\mathbb R\}.
+\]</span>
+Once one <span class="math" data-tex="\(v\)">\(v\)</span> satisfying (CST5.9) is chosen, the full set of solutions is the left coset
+<span class="math math-display" data-tex="\[
+ \boxed{\ 
+ \{u\in\mathcal U(N):c_s=u^*\theta_s(u)\text{ for all }s\}
+ =\mathcal U(N^\theta)\,v.
+ \ }
+ \tag{CST5.11}
+\]">\[
+ \boxed{\ 
+ \{u\in\mathcal U(N):c_s=u^*\theta_s(u)\text{ for all }s\}
+ =\mathcal U(N^\theta)\,v.
+ \ }
+ \tag{CST5.11}
+\]</span>
+Indeed, if <span class="math" data-tex="\(h\in\mathcal U(N^\theta)\)">\(h\in\mathcal U(N^\theta)\)</span>, then
+<span class="math math-display" data-tex="\[
+ (hv)^*\theta_s(hv)
+ =v^*h^*\theta_s(h)\theta_s(v)
+ =v^*\theta_s(v)=c_s.
+\]">\[
+ (hv)^*\theta_s(hv)
+ =v^*h^*\theta_s(h)\theta_s(v)
+ =v^*\theta_s(v)=c_s.
+\]</span>
+Conversely, if <span class="math" data-tex="\(u\)">\(u\)</span> is another solution, then <span class="math" data-tex="\(\theta_s(u)=uc_s\)">\(\theta_s(u)=uc_s\)</span> and <span class="math" data-tex="\(\theta_s(v)=vc_s\)">\(\theta_s(v)=vc_s\)</span>. The unitary <span class="math" data-tex="\(h=uv^*\)">\(h=uv^*\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \theta_s(h)=uc_s(vc_s)^*=uv^*=h,
+\]">\[
+ \theta_s(h)=uc_s(vc_s)^*=uv^*=h,
+\]</span>
+so <span class="math" data-tex="\(h\in\mathcal U(N^\theta)\)">\(h\in\mathcal U(N^\theta)\)</span> and <span class="math" data-tex="\(u=hv\)">\(u=hv\)</span>. Each such <span class="math" data-tex="\(h\)">\(h\)</span> is uniquely determined by <span class="math" data-tex="\(u\)">\(u\)</span> and the chosen <span class="math" data-tex="\(v\)">\(v\)</span>.</p>
+<p>For <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, the unit is <span class="math" data-tex="\(0\)">\(0\)</span>, its unitary group has its unique element, and the action, cocycle, implementer, and inner conjugacy all have their unique zero-algebra interpretation. Thus the conclusion includes that case as well.</p>
+<p><span id="OA-FLOW.CST.6"></span><a id="cst-6"></a></p>
+<h2 id="6-exact-models-and-the-boundaries-of-the-argument">6. Exact models and the boundaries of the argument</h2>
+<p>The theorem allows a finite von Neumann algebra with an infinite trace, noncommuting cocycle values, and an uncountable family of central summands. The following models separate these possibilities. Throughout the translation examples, the real variable is <span class="math" data-tex="\(q\)">\(q\)</span>, the action parameter is <span class="math" data-tex="\(s\)">\(s\)</span>, and the action integral uses <span class="math" data-tex="\(ds\)">\(ds\)</span>.</p>
+<h3 id="translation-its-full-trace-and-scalar-phases">Translation, its full trace, and scalar phases</h3>
+<p>For a positive integer <span class="math" data-tex="\(n\)">\(n\)</span>, let
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ N_n&amp;=L^\infty(\mathbb R,e^q\,dq)\,\overline\otimes\,M_n(\mathbb C),\\
+ (\theta_s x)(q)&amp;=x(q+s),\qquad
+ \tau_n(x)=\int_{\mathbb R}e^q\operatorname{Tr}_n(x(q))\,dq
+ \quad(x\in(N_n)_+).
+ \end{aligned}                                                    \tag{CST6.1}
+\]">\[
+ \begin{aligned}
+ N_n&amp;=L^\infty(\mathbb R,e^q\,dq)\,\overline\otimes\,M_n(\mathbb C),\\
+ (\theta_s x)(q)&amp;=x(q+s),\qquad
+ \tau_n(x)=\int_{\mathbb R}e^q\operatorname{Tr}_n(x(q))\,dq
+ \quad(x\in(N_n)_+).
+ \end{aligned}                                                    \tag{CST6.1}
+\]</span>
+Here <span class="math" data-tex="\(\operatorname{Tr}_n(I_n)=n\)">\(\operatorname{Tr}_n(I_n)=n\)</span>. The measure <span class="math" data-tex="\(e^q\,dq\)">\(e^q\,dq\)</span> has the same null sets as Lebesgue measure, so translation is well defined on equivalence classes. Represent <span class="math" data-tex="\(N_n\)">\(N_n\)</span> by multiplication on <span class="math" data-tex="\(\mathcal H_n=L^2(\mathbb R,e^q\,dq;\mathbb C^n)\)">\(\mathcal H_n=L^2(\mathbb R,e^q\,dq;\mathbb C^n)\)</span>. The operators
+<span class="math math-display" data-tex="\[
+ (U_s\xi)(q)=e^{s/2}\xi(q+s),\qquad
+ U_sM_xU_s^*=M_{\theta_s x}                                  \tag{CST6.2}
+\]">\[
+ (U_s\xi)(q)=e^{s/2}\xi(q+s),\qquad
+ U_sM_xU_s^*=M_{\theta_s x}                                  \tag{CST6.2}
+\]</span>
+are unitaries: the substitution <span class="math" data-tex="\(u=q+s\)">\(u=q+s\)</span> proves equality of squared norms, and <span class="math" data-tex="\(U_{-s}\)">\(U_{-s}\)</span> is the inverse. On continuous compactly supported vectors they are norm continuous in <span class="math" data-tex="\(s\)">\(s\)</span>, by dominated convergence on a common compact interval; those vectors are dense, and the uniform unitary bound proves strong continuity on all of <span class="math" data-tex="\(\mathcal H_n\)">\(\mathcal H_n\)</span>. Spatial conjugation is normal. For each bounded <span class="math" data-tex="\(x\)">\(x\)</span>, strong continuity of <span class="math" data-tex="\(U_s\)">\(U_s\)</span> and <span class="math" data-tex="\(U_s^*\)">\(U_s^*\)</span> proves point-strong-star continuity of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. In particular this is a normal continuous action, with the topology of <a href="OA-FLOW-AT.html#oa-flow.at.1">AT1</a>.</p>
+<p>Each bounded-interval restriction of <span class="math" data-tex="\(\tau_n\)">\(\tau_n\)</span> is a normal positive functional: its scalar matrix coefficients are integrable against <span class="math" data-tex="\(e^q\,dq\)">\(e^q\,dq\)</span>. Their increasing supremum is <span class="math" data-tex="\(\tau_n\)">\(\tau_n\)</span>, so it is normal, also for bounded increasing nets, by interchanging the two numerical suprema. Positivity of <span class="math" data-tex="\(e^q\)">\(e^q\)</span> and faithfulness of the finite matrix trace prove faithfulness. The central projections <span class="math" data-tex="\(f_m=1_{[-m,m]}I_n\)">\(f_m=1_{[-m,m]}I_n\)</span> increase to <span class="math" data-tex="\(1\)">\(1\)</span>, and
+<span class="math" data-tex="\(\tau_n(f_mxf_m)\le n\|x\|(e^m-e^{-m})&lt;\infty\)">\(\tau_n(f_mxf_m)\le n\|x\|(e^m-e^{-m})&lt;\infty\)</span>.
+These increasing compressions prove semifiniteness. Pointwise matrix cyclicity gives <span class="math" data-tex="\(\tau_n(a^*a)=\tau_n(aa^*)\)">\(\tau_n(a^*a)=\tau_n(aa^*)\)</span>, including infinity. Finally, for every bounded positive <span class="math" data-tex="\(x\)">\(x\)</span>, scalar substitution gives the full equality
+<span class="math math-display" data-tex="\[
+ \tau_n(\theta_s x)
+   =\int_{\mathbb R}e^{u-s}\operatorname{Tr}_n(x(u))\,du
+   =e^{-s}\tau_n(x).                                      \tag{CST6.3}
+\]">\[
+ \tau_n(\theta_s x)
+   =\int_{\mathbb R}e^{u-s}\operatorname{Tr}_n(x(u))\,du
+   =e^{-s}\tau_n(x).                                      \tag{CST6.3}
+\]</span>
+No finiteness of either integral is needed. In fact <span class="math" data-tex="\(\tau_n(1)=\infty\)">\(\tau_n(1)=\infty\)</span>, while <span class="math" data-tex="\(N_n\)">\(N_n\)</span> is finite in the projection sense: a pointwise isometry in <span class="math" data-tex="\(M_n\)">\(M_n\)</span> is pointwise unitary, so an isometry in <span class="math" data-tex="\(N_n\)">\(N_n\)</span> cannot have a proper final projection. Thus proper infiniteness of <span class="math" data-tex="\(N\)">\(N\)</span> is not a premise of the theorem.</p>
+<p>For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, fix <span class="math" data-tex="\(a,b\in\mathbb R\)">\(a,b\in\mathbb R\)</span> and put
+<span class="math math-display" data-tex="\[
+ v(q)=\exp\!\left(i\left(\tfrac a2 q^2+bq\right)\right),\qquad
+ c_s(q)=\exp\!\left(i\left(aqs+\tfrac a2s^2+bs\right)\right).
+                                                                  \tag{CST6.4}
+\]">\[
+ v(q)=\exp\!\left(i\left(\tfrac a2 q^2+bq\right)\right),\qquad
+ c_s(q)=\exp\!\left(i\left(aqs+\tfrac a2s^2+bs\right)\right).
+                                                                  \tag{CST6.4}
+\]</span>
+Then <span class="math" data-tex="\(c_s=\overline v\,\theta_s(v)\)">\(c_s=\overline v\,\theta_s(v)\)</span>. Expanding the exponent verifies
+<span class="math math-display" data-tex="\[
+ c_s(q)c_t(q+s)
+ =\exp\!\left(i\left(aq(s+t)+\tfrac a2(s+t)^2+b(s+t)\right)\right)
+ =c_{s+t}(q).                                                \tag{CST6.5}
+\]">\[
+ c_s(q)c_t(q+s)
+ =\exp\!\left(i\left(aq(s+t)+\tfrac a2(s+t)^2+b(s+t)\right)\right)
+ =c_{s+t}(q).                                                \tag{CST6.5}
+\]</span>
+For each vector <span class="math" data-tex="\(\xi\in\mathcal H_1\)">\(\xi\in\mathcal H_1\)</span>, pointwise continuity and the bound <span class="math" data-tex="\(4|\xi(q)|^2\)">\(4|\xi(q)|^2\)</span> for the squared difference prove strong continuity of the multiplying unitaries <span class="math" data-tex="\(c_s\)">\(c_s\)</span>. The same argument applies to their adjoints. Uniform continuity of <span class="math" data-tex="\(v\)">\(v\)</span> on the entire line is unnecessary.</p>
+<p>The fixed algebra of translation is the constant matrices. One way to respect the equivalence-class issue is to convolve each bounded scalar entry with a smooth compactly supported approximate identity. Invariance under every translation in <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> makes each convolution a continuous translation-invariant function, hence constant. The convolutions converge locally in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> to the entry; their constants converge on any interval of positive finite length, so the entry is constant almost everywhere. This is also the fixed-algebra conclusion in the <a href="OA-FLOW-L19.html#l19-5">earlier translation model</a>. Consequently all scalar implementers in (CST6.4) are exactly <span class="math" data-tex="\(\lambda v\)">\(\lambda v\)</span>, <span class="math" data-tex="\(|\lambda|=1\)">\(|\lambda|=1\)</span>, in agreement with <a href="#cst-5">Section 5</a>.</p>
+<h3 id="a-cocycle-whose-values-do-not-commute">A cocycle whose values do not commute</h3>
+<p>In <span class="math" data-tex="\(N_2\)">\(N_2\)</span> use the Pauli matrices
+<span class="math math-display" data-tex="\[
+ X=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\quad
+ Y=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\quad
+ Z=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ v(q)=e^{iqX}e^{iqZ}.                                       \tag{CST6.6}
+\]">\[
+ X=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\quad
+ Y=\begin{pmatrix}0&amp;-i\\i&amp;0\end{pmatrix},\quad
+ Z=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+ v(q)=e^{iqX}e^{iqZ}.                                       \tag{CST6.6}
+\]</span>
+They satisfy <span class="math" data-tex="\(X^2=Y^2=Z^2=I_2\)">\(X^2=Y^2=Z^2=I_2\)</span> and <span class="math" data-tex="\(XZ=-iY\)">\(XZ=-iY\)</span>. Define
+<span class="math math-display" data-tex="\[
+ c_s(q)=v(q)^*v(q+s)
+       =e^{-iqZ}\bigl(e^{isX}e^{isZ}\bigr)e^{iqZ}.           \tag{CST6.7}
+\]">\[
+ c_s(q)=v(q)^*v(q+s)
+       =e^{-iqZ}\bigl(e^{isX}e^{isZ}\bigr)e^{iqZ}.           \tag{CST6.7}
+\]</span>
+The second formula follows by cancelling the adjacent <span class="math" data-tex="\(X\)">\(X\)</span>-exponentials and then combining the <span class="math" data-tex="\(Z\)">\(Z\)</span>-exponentials; it does not commute an <span class="math" data-tex="\(X\)">\(X\)</span>-factor past a <span class="math" data-tex="\(Z\)">\(Z\)</span>-factor. Cancellation in the original formula gives the ordered cocycle identity
+<span class="math math-display" data-tex="\[
+ c_s(q)c_t(q+s)
+  =v(q)^*v(q+s)v(q+s)^*v(q+s+t)=c_{s+t}(q).                 \tag{CST6.8}
+\]">\[
+ c_s(q)c_t(q+s)
+  =v(q)^*v(q+s)v(q+s)^*v(q+s+t)=c_{s+t}(q).                 \tag{CST6.8}
+\]</span>
+These are continuous unitary fields, so dominated convergence on every <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector proves strong-star continuity in <span class="math" data-tex="\(s\)">\(s\)</span>. Normality, semifiniteness and the precise trace scaling have already been proved for <span class="math" data-tex="\(N_2\)">\(N_2\)</span> in (CST6.1)–(CST6.3).</p>
+<p>At <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, the two particular values and their commutator are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ c_{\pi/2}(0)&amp;=iY,&amp;
+ c_{\pi/4}(0)&amp;=\tfrac12(I_2+iX+iY+iZ),\\
+ [c_{\pi/2}(0),c_{\pi/4}(0)]&amp;=i(Z-X),&amp;
+ \|[c_{\pi/2}(0),c_{\pi/4}(0)]\|&amp;=\sqrt2.
+ \end{aligned}                                               \tag{CST6.9}
+\]">\[
+ \begin{aligned}
+ c_{\pi/2}(0)&amp;=iY,&amp;
+ c_{\pi/4}(0)&amp;=\tfrac12(I_2+iX+iY+iZ),\\
+ [c_{\pi/2}(0),c_{\pi/4}(0)]&amp;=i(Z-X),&amp;
+ \|[c_{\pi/2}(0),c_{\pi/4}(0)]\|&amp;=\sqrt2.
+ \end{aligned}                                               \tag{CST6.9}
+\]</span>
+Indeed <span class="math" data-tex="\((Z-X)^2=2I_2\)">\((Z-X)^2=2I_2\)</span>. Formula (CST6.7) conjugates both displayed values by the same <span class="math" data-tex="\(e^{-iqZ}\)">\(e^{-iqZ}\)</span>. Thus the commutator norm is <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> at <strong>every</strong> <span class="math" data-tex="\(q\)">\(q\)</span>. This proves noncommutativity as elements of <span class="math" data-tex="\(N_2\)">\(N_2\)</span>, rather than detecting a difference only at a null-set point. All implementers of this cocycle are <span class="math" data-tex="\(hv\)">\(hv\)</span>, where <span class="math" data-tex="\(h\)">\(h\)</span> is one constant unitary matrix; the side of this multiplication matters.</p>
+<h3 id="the-linking-algebra-can-be-solved-completely-in-this-model">The linking algebra can be solved completely in this model</h3>
+<p>For either translation model and its displayed implementer <span class="math" data-tex="\(v\)">\(v\)</span>, put
+<span class="math math-display" data-tex="\[
+ A=M_2(N_n),\quad D(q)=\begin{pmatrix}I_n&amp;0\\0&amp;v(q)\end{pmatrix},\quad
+ d_s(q)=D(q)^*D(q+s),\quad \beta_s=\operatorname{id}_2\otimes\theta_s.
+                                                                  \tag{CST6.10}
+\]">\[
+ A=M_2(N_n),\quad D(q)=\begin{pmatrix}I_n&amp;0\\0&amp;v(q)\end{pmatrix},\quad
+ d_s(q)=D(q)^*D(q+s),\quad \beta_s=\operatorname{id}_2\otimes\theta_s.
+                                                                  \tag{CST6.10}
+\]</span>
+Thus <span class="math" data-tex="\(d_s=\operatorname{diag}(I_n,c_s)\)">\(d_s=\operatorname{diag}(I_n,c_s)\)</span>. With the convention <span class="math" data-tex="\(\operatorname{Ad}(u)(x)=uxu^*\)">\(\operatorname{Ad}(u)(x)=uxu^*\)</span>, direct multiplication gives
+<span class="math math-display" data-tex="\[
+ \alpha_s=\operatorname{Ad}(d_s)\beta_s
+          =\operatorname{Ad}(D^*)\,\beta_s\,\operatorname{Ad}(D),
+ \qquad
+ F=A^\alpha=\{D^*KD:K\in M_{2n}(\mathbb C)\}.              \tag{CST6.11}
+\]">\[
+ \alpha_s=\operatorname{Ad}(d_s)\beta_s
+          =\operatorname{Ad}(D^*)\,\beta_s\,\operatorname{Ad}(D),
+ \qquad
+ F=A^\alpha=\{D^*KD:K\in M_{2n}(\mathbb C)\}.              \tag{CST6.11}
+\]</span>
+The conjugating field is a unitary multiplier, so the equality identifies normal actions and fixed algebras. For <span class="math" data-tex="\(p=e_{11}\otimes I_n\)">\(p=e_{11}\otimes I_n\)</span>, <span class="math" data-tex="\(q_0=e_{22}\otimes I_n\)">\(q_0=e_{22}\otimes I_n\)</span>, the fixed partial isometry is
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ w=D^*(e_{12}\otimes I_n)D=e_{12}\otimes v,\\
+ ww^*=p,\qquad w^*w=q_0,\\
+ \alpha_s(w)=e_{12}\otimes\bigl(\theta_s(v)c_s^*\bigr)=w.
+ \end{gathered}
+                                                                  \tag{CST6.12}
+\]">\[
+ \begin{gathered}
+ w=D^*(e_{12}\otimes I_n)D=e_{12}\otimes v,\\
+ ww^*=p,\qquad w^*w=q_0,\\
+ \alpha_s(w)=e_{12}\otimes\bigl(\theta_s(v)c_s^*\bigr)=w.
+ \end{gathered}
+                                                                  \tag{CST6.12}
+\]</span>
+The variable <span class="math" data-tex="\(q_0\)">\(q_0\)</span> denotes a projection here; <span class="math" data-tex="\(q\)">\(q\)</span> still denotes the real coordinate. The upper-right entry is <span class="math" data-tex="\(v\)">\(v\)</span>, and fixedness yields <span class="math" data-tex="\(c_s=v^*\theta_s(v)\)">\(c_s=v^*\theta_s(v)\)</span>. This is the orientation used in <a href="#cst-1">Section 1</a>.</p>
+<p>The complete positive average is explicit as well:
+<span class="math math-display" data-tex="\[
+ E(x)(q)=D(q)^*
+       \left(\int_{\mathbb R}D(u)x(u)D(u)^*\,du\right)D(q).
+                                                                  \tag{CST6.13}
+\]">\[
+ E(x)(q)=D(q)^*
+       \left(\int_{\mathbb R}D(u)x(u)D(u)^*\,du\right)D(q).
+                                                                  \tag{CST6.13}
+\]</span>
+The parenthesized integral is an extended positive matrix, defined by increasing compact-interval integrals and positive vector tests. To verify the formula, insert (CST6.11) into <span class="math" data-tex="\(\int\alpha_s(x)\,ds\)">\(\int\alpha_s(x)\,ds\)</span>, substitute <span class="math" data-tex="\(u=q+s\)">\(u=q+s\)</span>, and use nonnegative scalar interchange. This argument retains infinite values. It is the matrix version of the <a href="OA-FLOW-L19.html#l19-5">full scalar average</a>, not a normalized probability expectation.</p>
+<p>For any fixed strictly positive <span class="math" data-tex="\(K\in M_{2n}(\mathbb C)\)">\(K\in M_{2n}(\mathbb C)\)</span>, give <span class="math" data-tex="\(F\)">\(F\)</span> the faithful finite weight
+<span class="math" data-tex="\(\omega(D^*CD)=\operatorname{Tr}_{2n}(KC)\)">\(\omega(D^*CD)=\operatorname{Tr}_{2n}(KC)\)</span>.
+Its composition with (CST6.13) has the affiliated density
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ H(q)=e^{-q}D(q)^*KD(q),\\
+ P(q)=\log H(q)=-qI_{2n}+D(q)^*(\log K)D(q),\\
+ \alpha_s(H)=e^{-s}H.
+ \end{gathered}                                    \tag{CST6.14}
+\]">\[
+ \begin{gathered}
+ H(q)=e^{-q}D(q)^*KD(q),\\
+ P(q)=\log H(q)=-qI_{2n}+D(q)^*(\log K)D(q),\\
+ \alpha_s(H)=e^{-s}H.
+ \end{gathered}                                    \tag{CST6.14}
+\]</span>
+For completeness, the eigenvalues of <span class="math" data-tex="\(H(q)\)">\(H(q)\)</span> are <span class="math" data-tex="\(e^{-q}\)">\(e^{-q}\)</span> times the positive eigenvalues of <span class="math" data-tex="\(K\)">\(K\)</span>. Its measurable spectral projections lie in <span class="math" data-tex="\(A\)">\(A\)</span>; it is a nonsingular self-adjoint multiplication operator, with compactly supported vectors as a core. For <span class="math" data-tex="\(x\ge0\)">\(x\ge0\)</span>, pointwise finite-dimensional spectral truncation and monotone convergence give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;\sup_m\int e^q\operatorname{Tr}_{2n}
+    \bigl(x(q)^{1/2}(H(q)\wedge m)x(q)^{1/2}\bigr)\,dq\\
+ &amp;\qquad=\int\operatorname{Tr}_{2n}\bigl(KD(q)x(q)D(q)^*\bigr)\,dq\\
+ &amp;\qquad=\widehat\omega(E(x)).
+ \end{aligned}                                    \tag{CST6.15}
+\]">\[
+ \begin{aligned}
+ &amp;\sup_m\int e^q\operatorname{Tr}_{2n}
+    \bigl(x(q)^{1/2}(H(q)\wedge m)x(q)^{1/2}\bigr)\,dq\\
+ &amp;\qquad=\int\operatorname{Tr}_{2n}\bigl(KD(q)x(q)D(q)^*\bigr)\,dq\\
+ &amp;\qquad=\widehat\omega(E(x)).
+ \end{aligned}                                    \tag{CST6.15}
+\]</span>
+This proves the density equality on the whole cone, in the convention of <a href="OA-FLOW-L19.html#l19-3">L19, Section 3</a>. If <span class="math" data-tex="\(K\)">\(K\)</span> is block diagonal, so is <span class="math" data-tex="\(H\)">\(H\)</span>; the two diagonal blocks need not commute after their identification with <span class="math" data-tex="\(N_n\)">\(N_n\)</span>.</p>
+<h3 id="distinct-modulation-sides-are-visible-before-integration">Distinct modulation sides are visible before integration</h3>
+<p>Even the identity cocycle <span class="math" data-tex="\(c_s=1\)">\(c_s=1\)</span> permits noncommuting blocks of the diagonal density. In <span class="math" data-tex="\(M_2(N_2)\)">\(M_2(N_2)\)</span> take
+<span class="math math-display" data-tex="\[
+ A_1=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix},\qquad
+ A_2=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},\qquad
+ K=\operatorname{diag}(e^{A_1},e^{A_2}),\qquad
+ P_i(q)=A_i-qI_2.                                         \tag{CST6.16}
+\]">\[
+ A_1=\begin{pmatrix}0&amp;0\\0&amp;1\end{pmatrix},\qquad
+ A_2=\begin{pmatrix}1&amp;1\\1&amp;1\end{pmatrix},\qquad
+ K=\operatorname{diag}(e^{A_1},e^{A_2}),\qquad
+ P_i(q)=A_i-qI_2.                                         \tag{CST6.16}
+\]</span>
+This is (CST6.14) with <span class="math" data-tex="\(D=1\)">\(D=1\)</span>, so it is an actual invariant-density model. For <span class="math" data-tex="\(k(t)=[\pi(1+t^2)]^{-1/2}\)">\(k(t)=[\pi(1+t^2)]^{-1/2}\)</span> and <span class="math" data-tex="\(x=e_{12}\otimes I_2\)">\(x=e_{12}\otimes I_2\)</span>, the upper-right entry of the unmodulated integrand in <a href="#cst-2">Section 2</a> is
+<span class="math math-display" data-tex="\[
+ b_s(q)_{12}=k(A_1-(q+s)I_2)\,k(A_2-(q+s)I_2).            \tag{CST6.17}
+\]">\[
+ b_s(q)_{12}=k(A_1-(q+s)I_2)\,k(A_2-(q+s)I_2).            \tag{CST6.17}
+\]</span>
+Write <span class="math" data-tex="\(a=1/\sqrt\pi\)">\(a=1/\sqrt\pi\)</span>, <span class="math" data-tex="\(b=1/\sqrt{2\pi}\)">\(b=1/\sqrt{2\pi}\)</span>, and <span class="math" data-tex="\(d=1/\sqrt{5\pi}\)">\(d=1/\sqrt{5\pi}\)</span>. At <span class="math" data-tex="\(q=s=0\)">\(q=s=0\)</span> it equals
+<span class="math math-display" data-tex="\[
+ B=k(A_1)k(A_2)
+ =\frac12\begin{pmatrix}a(a+d)&amp;a(d-a)\\b(d-a)&amp;b(a+d)\end{pmatrix}.
+                                                                  \tag{CST6.18}
+\]">\[
+ B=k(A_1)k(A_2)
+ =\frac12\begin{pmatrix}a(a+d)&amp;a(d-a)\\b(d-a)&amp;b(a+d)\end{pmatrix}.
+                                                                  \tag{CST6.18}
+\]</span>
+Both off-diagonal entries are nonzero and unequal; the product is invertible but is not self-adjoint. For the exact frequency <span class="math" data-tex="\(r=\pi\)">\(r=\pi\)</span>, the two modulated integrands there are
+<span class="math math-display" data-tex="\[
+ e^{i\pi A_1}B=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}B,
+ \qquad
+ Be^{i\pi A_2}=B,                                         \tag{CST6.19}
+\]">\[
+ e^{i\pi A_1}B=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix}B,
+ \qquad
+ Be^{i\pi A_2}=B,                                         \tag{CST6.19}
+\]</span>
+because the eigenvalues of <span class="math" data-tex="\(A_2\)">\(A_2\)</span> are <span class="math" data-tex="\(0,2\)">\(0,2\)</span>. Thus the two formulas cannot be identified even in this finite-matrix translation system. The pointwise integrands in (CST6.19) are not being presented as the integrated Fourier coefficients.</p>
+<p>After integration the general formulas remain
+<span class="math" data-tex="\(L_r=e^{irP}\widehat b(r)\)">\(L_r=e^{irP}\widehat b(r)\)</span> and <span class="math" data-tex="\(R_r=\widehat b(r)e^{irP}\)">\(R_r=\widehat b(r)e^{irP}\)</span>.
+A right annihilator of <span class="math" data-tex="\(L_r\)">\(L_r\)</span> allows cancellation of the <strong>left</strong> unitary; a left annihilator of <span class="math" data-tex="\(R_r\)">\(R_r\)</span> allows cancellation of the <strong>right</strong> unitary. No commutation with an arbitrary annihilator is available. <a href="#cst-7">Diagnostic 3</a> supplies an exact two-by-two test of the invalid cancellations. This explains why <a href="#cst-3">Section 3</a> uses both families.</p>
+<h3 id="finite-central-cuts-retain-information-lost-by-an-infinite-total">Finite central cuts retain information lost by an infinite total</h3>
+<p>Consider the auxiliary semifinite algebra and its trace
+<span class="math math-display" data-tex="\[
+ B_\mathrm{loc}=\prod_{j\ge1}M_2(\mathbb C),\qquad
+ \rho(x)=\sum_{j\ge1}\operatorname{Tr}_2(x_j),\qquad
+ a=(e_{11})_j,\quad b=(I_2)_j.                             \tag{CST6.20}
+\]">\[
+ B_\mathrm{loc}=\prod_{j\ge1}M_2(\mathbb C),\qquad
+ \rho(x)=\sum_{j\ge1}\operatorname{Tr}_2(x_j),\qquad
+ a=(e_{11})_j,\quad b=(I_2)_j.                             \tag{CST6.20}
+\]</span>
+The trace is faithful and normal, being the supremum of finite sums of normal coordinate functionals. Finite-coordinate cutoffs prove semifiniteness. Both <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are finite projections: a partial isometry witnessing a proper self-subequivalence would do so in at least one finite matrix coordinate. Both have full central support. Their total traces coincide at infinity, but their ranks differ at every coordinate, so <span class="math" data-tex="\(a\not\sim b\)">\(a\not\sim b\)</span>. For the central coordinate projection <span class="math" data-tex="\(z_j\)">\(z_j\)</span>,
+<span class="math math-display" data-tex="\[
+ \rho(a)=\rho(b)=\infty,\qquad
+ \rho(az_j)=1&lt;2=\rho(bz_j),\qquad
+ \rho((b-a)z_j)=1.                                        \tag{CST6.21}
+\]">\[
+ \rho(a)=\rho(b)=\infty,\qquad
+ \rho(az_j)=1&lt;2=\rho(bz_j),\qquad
+ \rho((b-a)z_j)=1.                                        \tag{CST6.21}
+\]</span>
+The local strict inequality is precisely the information needed in <a href="#cst-5">Section 5</a>. The general proof obtains its finite central cut from the <a href="OA-FLOW-L18.html#l18-7">finite-center restriction theorem</a> and the <a href="OA-FLOW-PC.html#oa-flow.pc.4">full-corner center correspondence</a>. This auxiliary pair is not a counterexample to the linking theorem: it fails the equality on every semifinite central piece established in <a href="#cst-4">Section 4</a>.</p>
+<h3 id="cardinality-and-central-cohomology-are-separate-boundaries">Cardinality and central cohomology are separate boundaries</h3>
+<p>Let <span class="math" data-tex="\(\mathcal K=\ell^2(I)\)">\(\mathcal K=\ell^2(I)\)</span> with <span class="math" data-tex="\(I\)">\(I\)</span> uncountable, and choose a countably infinite subset <span class="math" data-tex="\(J\subset I\)">\(J\subset I\)</span>. In <span class="math" data-tex="\(B(\mathcal K)\)">\(B(\mathcal K)\)</span>, let <span class="math" data-tex="\(p\)">\(p\)</span> project onto <span class="math" data-tex="\(\ell^2(J)\)">\(\ell^2(J)\)</span> and let <span class="math" data-tex="\(q_1=1\)">\(q_1=1\)</span>. Both are properly infinite: partition either infinite basis into two subsets of its own cardinality and use the corresponding basis isometries. Both have central support <span class="math" data-tex="\(1\)">\(1\)</span>, since the center of <span class="math" data-tex="\(B(\mathcal K)\)">\(B(\mathcal K)\)</span> consists of scalars. In comparisons with a countable amplification, an unamplified projection is placed in the first scalar matrix corner. Nevertheless
+<span class="math math-display" data-tex="\[
+ p\not\sim q_1,\qquad q_1\not\precsim p\otimes1_{\ell^2}.
+                                                                  \tag{CST6.22}
+\]">\[
+ p\not\sim q_1,\qquad q_1\not\precsim p\otimes1_{\ell^2}.
+                                                                  \tag{CST6.22}
+\]</span>
+The ranges of <span class="math" data-tex="\(p\)">\(p\)</span> and its countable amplification are separable. An isometry from <span class="math" data-tex="\(q_1\mathcal K\)">\(q_1\mathcal K\)</span> into either would put an uncountable orthonormal set in a separable Hilbert space, which is impossible: pairwise disjoint radius-<span class="math" data-tex="\(1/3\)">\(1/3\)</span> balls around an orthonormal set each contain a different point of a countable dense set. Thus full support and proper infiniteness alone do not prove equivalence. The additional two countable comparisons proved in <a href="#cst-3">Section 3</a>, followed by <a href="OA-FLOW-PC.html#oa-flow.pc.5">PC5's filling copies</a> and <a href="OA-FLOW-PC.html#oa-flow.pc.3">PC3</a>, exclude exactly this obstruction.</p>
+<p>There are trace-scaling models without a faithful normal state. For an uncountable set <span class="math" data-tex="\(I\)">\(I\)</span>, take <span class="math" data-tex="\(N=\prod_{j\in I}N_2\)">\(N=\prod_{j\in I}N_2\)</span>, the coordinatewise translation action, and
+<span class="math" data-tex="\(\tau(x)=\sup_{J\subset I\text{ finite}}\sum_{j\in J}\tau_2(x_j)\)">\(\tau(x)=\sup_{J\subset I\text{ finite}}\sum_{j\in J}\tau_2(x_j)\)</span>.
+Finite-coordinate, finite-interval restrictions are normal functionals whose supremum is <span class="math" data-tex="\(\tau\)">\(\tau\)</span>; their central cutoffs increase to <span class="math" data-tex="\(1\)">\(1\)</span>, proving normality, faithfulness and semifiniteness. Equation (CST6.3) passes through the finite-subsums supremum. On the Hilbert direct sum of the <span class="math" data-tex="\(\mathcal H_2\)">\(\mathcal H_2\)</span>, the action's implementing unitaries are strongly continuous: a finite set of coordinates controls any vector up to a uniformly small squared-norm tail. The same argument proves continuity of the product of the cocycles (CST6.7), implemented by the coordinatewise product of <span class="math" data-tex="\(v\)">\(v\)</span>. A normal state can be positive on only countably many of the mutually orthogonal coordinate units, so it cannot be faithful. This realizes an actual non-countably-decomposable case of the theorem.</p>
+<p>Finally, a <strong>central coboundary</strong> requires <span class="math" data-tex="\(c_s=z^*\theta_s(z)\)">\(c_s=z^*\theta_s(z)\)</span> with <span class="math" data-tex="\(z\in\mathcal U(Z(N))\)">\(z\in\mathcal U(Z(N))\)</span>. The conclusion here permits <span class="math" data-tex="\(v\in\mathcal U(N)\)">\(v\in\mathcal U(N)\)</span>. It therefore does not identify these two equivalence relations, or assert vanishing of central first cohomology. The translation models above happen to have a central spectral coordinate; they do not demonstrate nontrivial central cohomology. An exact auxiliary example distinguishing the two notions is given in Diagnostic 8, where the action preserves its trace. Its different scaling rate is explicitly part of that example.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Four exact views of trace-scaling cocycle stability: weighted translation, a nonzero matrix commutator, different modulation sides, and finite central trace cuts" src="assets/trace-scaling-cocycle-stability/cst-models.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><strong>Figure.</strong> Panel A plots the weighted indicator <span class="math" data-tex="\(e^q1_{[0,1]}(q)\)">\(e^q1_{[0,1]}(q)\)</span> and its translate <span class="math" data-tex="\(e^q1_{[-\log2,1-\log2]}(q)\)">\(e^q1_{[-\log2,1-\log2]}(q)\)</span>; their exact areas are <span class="math" data-tex="\(e-1\)">\(e-1\)</span> and <span class="math" data-tex="\((e-1)/2\)">\((e-1)/2\)</span>, by (CST6.3). Panel B displays the imaginary coefficients of the exact commutator <span class="math" data-tex="\(i(Z-X)\)">\(i(Z-X)\)</span> in (CST6.9); its operator norm is <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> on the entire real line by common unitary conjugation. Panel C displays the two real matrices in (CST6.19), evaluated before integration at <span class="math" data-tex="\(q=s=0,r=\pi\)">\(q=s=0,r=\pi\)</span>; it records the factor order and does not identify those samples with <span class="math" data-tex="\(L_r\)">\(L_r\)</span> or <span class="math" data-tex="\(R_r\)">\(R_r\)</span>. Panel D displays four of the countably many central cuts in (CST6.21). The ellipsis is essential: the full totals are infinite, while every displayed coordinate distinguishes the projections. Proof locators are (CST6.3), (CST6.9), (CST6.16)–(CST6.21), and Diagnostics 3, 5 and 6. Human-source context for the trace-scaling coordinate is Takesaki, <em>Theory of Operator Algebras II</em>, XII.1, Lemma 1.2, printed pp.366–367, as recorded in <a href="OA-FLOW-L19.html#l19-reading">L19's further reading</a>; <a href="#cst-reading">this lesson's further reading</a> supplies the wider stability context. The calculations and figure are original. <a href="assets/trace-scaling-cocycle-stability/cst-models.svg">SVG</a>, <a href="assets/trace-scaling-cocycle-stability/data.json">exact data and conventions</a>, <a href="assets/trace-scaling-cocycle-stability/render.py">renderer</a>, <a href="assets/trace-scaling-cocycle-stability/TERMS.md">terms</a>, and <a href="assets/trace-scaling-cocycle-stability/FONT-LICENSE.txt">font license</a> are included.</p>
+<p><span id="OA-FLOW.CST.7"></span><a id="cst-7"></a></p>
+<h2 id="7-eleven-diagnostics-with-complete-solutions">7. Eleven diagnostics with complete solutions</h2>
+<h3 id="1-recover-the-phase-and-every-implementer">1. Recover the phase and every implementer</h3>
+<p>In the scalar translation model, take <span class="math" data-tex="\(c_s(q)=e^{i(2qs+s^2-3s)}\)">\(c_s(q)=e^{i(2qs+s^2-3s)}\)</span>. Find an implementing unitary, verify the cocycle law, and determine every implementing unitary.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(v(q)=e^{i(q^2-3q)}\)">\(v(q)=e^{i(q^2-3q)}\)</span>. Then
+<span class="math math-display" data-tex="\[
+ \overline{v(q)}v(q+s)=e^{i(2qs+s^2-3s)}=c_s(q).
+                                                                  \tag{CST7.1}
+\]">\[
+ \overline{v(q)}v(q+s)=e^{i(2qs+s^2-3s)}=c_s(q).
+                                                                  \tag{CST7.1}
+\]</span>
+The exponent in <span class="math" data-tex="\(c_s(q)c_t(q+s)\)">\(c_s(q)c_t(q+s)\)</span> is
+<span class="math" data-tex="\(2q(s+t)+s^2+2st+t^2-3(s+t)\)">\(2q(s+t)+s^2+2st+t^2-3(s+t)\)</span>, exactly the exponent of <span class="math" data-tex="\(c_{s+t}(q)\)">\(c_{s+t}(q)\)</span>. Strong continuity follows by the vector dominated-convergence argument following (CST6.5). If <span class="math" data-tex="\(u\)">\(u\)</span> is another implementer, <span class="math" data-tex="\(\theta_s(u)=u c_s\)">\(\theta_s(u)=u c_s\)</span> and <span class="math" data-tex="\(\theta_s(v)=v c_s\)">\(\theta_s(v)=v c_s\)</span>, whence <span class="math" data-tex="\(\theta_s(uv^*)=uv^*\)">\(\theta_s(uv^*)=uv^*\)</span>. The fixed multipliers are constants by the convolution argument in Section 6. Thus <span class="math" data-tex="\(u=\lambda v\)">\(u=\lambda v\)</span>, <span class="math" data-tex="\(|\lambda|=1\)">\(|\lambda|=1\)</span>, and every such <span class="math" data-tex="\(u\)">\(u\)</span> works. No value of <span class="math" data-tex="\(c_s\)">\(c_s\)</span> at a chosen point was used to select a representative of a general measurable cocycle.</p>
+<h3 id="2-find-the-correct-linking-entry">2. Find the correct linking entry</h3>
+<p>For the noncommuting cocycle (CST6.7), compute <span class="math" data-tex="\(\alpha_s(e_{12}\otimes a)\)">\(\alpha_s(e_{12}\otimes a)\)</span> for an arbitrary <span class="math" data-tex="\(a\in N_2\)">\(a\in N_2\)</span>. Which of <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(v^*\)">\(v^*\)</span> is the upper-right entry that the displayed coboundary supplies? Verify both support projections.</p>
+<p><strong>Solution.</strong> Multiplication by <span class="math" data-tex="\(\operatorname{diag}(1,c_s)\)">\(\operatorname{diag}(1,c_s)\)</span> on the left and its adjoint on the right gives
+<span class="math math-display" data-tex="\[
+ \alpha_s(e_{12}\otimes a)=e_{12}\otimes\theta_s(a)c_s^*.
+                                                                  \tag{CST7.2}
+\]">\[
+ \alpha_s(e_{12}\otimes a)=e_{12}\otimes\theta_s(a)c_s^*.
+                                                                  \tag{CST7.2}
+\]</span>
+For <span class="math" data-tex="\(a=v\)">\(a=v\)</span>, use <span class="math" data-tex="\(c_s^*=\theta_s(v^*)v\)">\(c_s^*=\theta_s(v^*)v\)</span> to get <span class="math" data-tex="\(\theta_s(v)c_s^*=v\)">\(\theta_s(v)c_s^*=v\)</span>. Hence <span class="math" data-tex="\(w=e_{12}\otimes v\)">\(w=e_{12}\otimes v\)</span> is fixed. Its products are
+<span class="math" data-tex="\(ww^*=e_{11}\otimes vv^*=p\)">\(ww^*=e_{11}\otimes vv^*=p\)</span> and
+<span class="math" data-tex="\(w^*w=e_{22}\otimes v^*v=q_0\)">\(w^*w=e_{22}\otimes v^*v=q_0\)</span>.
+Conversely a fixed upper-right unitary entry <span class="math" data-tex="\(a\)">\(a\)</span> satisfies <span class="math" data-tex="\(\theta_s(a)c_s^*=a\)">\(\theta_s(a)c_s^*=a\)</span>, which gives <span class="math" data-tex="\(c_s=a^*\theta_s(a)\)">\(c_s=a^*\theta_s(a)\)</span> after multiplying on the left by <span class="math" data-tex="\(a^*\)">\(a^*\)</span> and on the right by <span class="math" data-tex="\(c_s\)">\(c_s\)</span>. There is no step producing <span class="math" data-tex="\(\theta_s(a)a^*\)">\(\theta_s(a)a^*\)</span>. The given <span class="math" data-tex="\(v^*\)">\(v^*\)</span> is generally not that entry: at <span class="math" data-tex="\(q=0,s=\pi/2\)">\(q=0,s=\pi/2\)</span>, one has <span class="math" data-tex="\(\theta_s(v^*)c_s^*=(-iY)^2=-I_2\)">\(\theta_s(v^*)c_s^*=(-iY)^2=-I_2\)</span>, whereas <span class="math" data-tex="\(v(0)^*=I_2\)">\(v(0)^*=I_2\)</span>. The difference persists on a neighborhood by continuity.</p>
+<h3 id="3-cancel-a-unitary-only-on-its-actual-side">3. Cancel a unitary only on its actual side</h3>
+<p>Let <span class="math" data-tex="\(B,a\)">\(B,a\)</span> be matrices and <span class="math" data-tex="\(U,V\)">\(U,V\)</span> unitaries. Which implications follow from <span class="math" data-tex="\((UB)a=0\)">\((UB)a=0\)</span> and <span class="math" data-tex="\(a(BV)=0\)">\(a(BV)=0\)</span>? Show why the corresponding implications fail for <span class="math" data-tex="\((BV)a=0\)">\((BV)a=0\)</span> and <span class="math" data-tex="\(a(UB)=0\)">\(a(UB)=0\)</span>.</p>
+<p><strong>Solution.</strong> Multiplication on the left by <span class="math" data-tex="\(U^*\)">\(U^*\)</span> gives <span class="math" data-tex="\((UB)a=0\Rightarrow Ba=0\)">\((UB)a=0\Rightarrow Ba=0\)</span>. Multiplication on the right by <span class="math" data-tex="\(V^*\)">\(V^*\)</span> gives <span class="math" data-tex="\(a(BV)=0\Rightarrow aB=0\)">\(a(BV)=0\Rightarrow aB=0\)</span>. To disprove the other implications, take
+<span class="math math-display" data-tex="\[
+ B=a=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},\qquad
+ U=V=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+                                                                  \tag{CST7.3}
+\]">\[
+ B=a=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix},\qquad
+ U=V=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+                                                                  \tag{CST7.3}
+\]</span>
+Then <span class="math" data-tex="\((BV)a=0\)">\((BV)a=0\)</span> and <span class="math" data-tex="\(a(UB)=0\)">\(a(UB)=0\)</span>, but <span class="math" data-tex="\(Ba=aB=B\ne0\)">\(Ba=aB=B\ne0\)</span>. Cancellation from <span class="math" data-tex="\(BVa=0\)">\(BVa=0\)</span> would move <span class="math" data-tex="\(V\)">\(V\)</span> through <span class="math" data-tex="\(a\)">\(a\)</span>, and these matrices do not commute. Thus right supports are controlled using <span class="math" data-tex="\(L_r=e^{irP}\widehat b(r)\)">\(L_r=e^{irP}\widehat b(r)\)</span>; left supports are controlled using <span class="math" data-tex="\(R_r=\widehat b(r)e^{irP}\)">\(R_r=\widehat b(r)e^{irP}\)</span>. The toy matrices test cancellation only; the actual distinct modulation integrands are supplied by (CST6.16)–(CST6.19).</p>
+<h3 id="4-dense-range-does-not-require-commuting-spectral-factors">4. Dense range does not require commuting spectral factors</h3>
+<p>Suppose <span class="math" data-tex="\(S,T\)">\(S,T\)</span> are bounded, positive, injective operators on an arbitrary Hilbert space. Prove that <span class="math" data-tex="\(ST\)">\(ST\)</span> is injective with dense range. Apply this to <span class="math" data-tex="\(S=k(P_1)\)">\(S=k(P_1)\)</span>, <span class="math" data-tex="\(T=k(P_2)\)">\(T=k(P_2)\)</span>, and explain why rational frequencies suffice in the support argument.</p>
+<p><strong>Solution.</strong> If <span class="math" data-tex="\(ST\xi=0\)">\(ST\xi=0\)</span>, injectivity of <span class="math" data-tex="\(S\)">\(S\)</span> gives <span class="math" data-tex="\(T\xi=0\)">\(T\xi=0\)</span>, then injectivity of <span class="math" data-tex="\(T\)">\(T\)</span> gives <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span>. Since <span class="math" data-tex="\((ST)^*=TS\)">\((ST)^*=TS\)</span>, the same argument shows <span class="math" data-tex="\(\ker(ST)^*=0\)">\(\ker(ST)^*=0\)</span>. The elementary identity <span class="math" data-tex="\(\overline{\operatorname{ran}(ST)}=(\ker(ST)^*)^\perp\)">\(\overline{\operatorname{ran}(ST)}=(\ker(ST)^*)^\perp\)</span> gives dense range. Positivity of the two factors does not assert positivity of their product; (CST6.18) exhibits a non-self-adjoint product.</p>
+<p>For the spectral factors, <span class="math" data-tex="\(k(t)&gt;0\)">\(k(t)&gt;0\)</span> at every finite real <span class="math" data-tex="\(t\)">\(t\)</span>, so spectral calculus gives zero kernel for each <span class="math" data-tex="\(k(P_i)\)">\(k(P_i)\)</span>. If a projection <span class="math" data-tex="\(a\le q_0\)">\(a\le q_0\)</span> annihilates <span class="math" data-tex="\(L_r\)">\(L_r\)</span> on the right for every rational <span class="math" data-tex="\(r\)">\(r\)</span>, Diagnostic 3 gives <span class="math" data-tex="\(\widehat b(r)a=0\)">\(\widehat b(r)a=0\)</span> at those frequencies. For each normal functional <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, the scalar function <span class="math" data-tex="\(s\mapsto\varphi(b_sa)\)">\(s\mapsto\varphi(b_sa)\)</span> is continuous and integrable by the estimates in <a href="#cst-2">Section 2</a>. Its Fourier transform is continuous, so rational vanishing implies vanishing on all of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Scalar Fourier uniqueness gives zero almost everywhere, and time continuity gives zero at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>. Normal functionals separate operators, hence <span class="math" data-tex="\(b_0a=0\)">\(b_0a=0\)</span>; injectivity on the right corner <span class="math" data-tex="\(q_0\mathcal H\)">\(q_0\mathcal H\)</span> forces <span class="math" data-tex="\(a=0\)">\(a=0\)</span>. On the left take a projection <span class="math" data-tex="\(a\le p\)">\(a\le p\)</span> annihilating every <span class="math" data-tex="\(R_r\)">\(R_r\)</span>, and use the dense range of <span class="math" data-tex="\(b_0\)">\(b_0\)</span> in <span class="math" data-tex="\(p\mathcal H\)">\(p\mathcal H\)</span>. These corner restrictions are essential, since the complementary corner is already annihilated by <span class="math" data-tex="\(b_0\)">\(b_0\)</span>. Each scalar test is settled before the operator equality is concluded at the fixed time zero. There is no intersection of uncountably many conull sets, and no separability assumption on the Hilbert space.</p>
+<h3 id="5-keep-the-length-of-the-spectral-window-and-the-haar-factor">5. Keep the length of the spectral window and the Haar factor</h3>
+<p>Suppose <span class="math" data-tex="\(\alpha_s(P)=P-s1\)">\(\alpha_s(P)=P-s1\)</span>, and let <span class="math" data-tex="\(E_m(x)=m\int\alpha_s(x)\,ds\)">\(E_m(x)=m\int\alpha_s(x)\,ds\)</span> for a fixed <span class="math" data-tex="\(m&gt;0\)">\(m&gt;0\)</span>. For <span class="math" data-tex="\(\ell&gt;0\)">\(\ell&gt;0\)</span>, evaluate <span class="math" data-tex="\(E_m(1_{[0,\ell]}(P))\)">\(E_m(1_{[0,\ell]}(P))\)</span>. Choose a bounded positive spectral function <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(E_m(f(P))=1\)">\(E_m(f(P))=1\)</span>, and identify the off-diagonal element to use when <span class="math" data-tex="\(P\)">\(P\)</span> is central.</p>
+<p><strong>Solution.</strong> For every real <span class="math" data-tex="\(t\)">\(t\)</span>, <span class="math" data-tex="\(\int1_{[0,\ell]}(t-s)\,ds=\ell\)">\(\int1_{[0,\ell]}(t-s)\,ds=\ell\)</span>. Testing the spectral calculus against positive normal functionals and applying nonnegative scalar interchange gives
+<span class="math math-display" data-tex="\[
+ E_m(1_{[0,\ell]}(P))=m\ell\,1,\qquad
+ f(t)=\frac{1}{m\ell}1_{[0,\ell]}(t),\qquad E_m(f(P))=1.
+                                                                  \tag{CST7.4}
+\]">\[
+ E_m(1_{[0,\ell]}(P))=m\ell\,1,\qquad
+ f(t)=\frac{1}{m\ell}1_{[0,\ell]}(t),\qquad E_m(f(P))=1.
+                                                                  \tag{CST7.4}
+\]</span>
+When <span class="math" data-tex="\(P\)">\(P\)</span> is central in the linking algebra, take <span class="math" data-tex="\(a=e_{12}f(P)^{1/2}\)">\(a=e_{12}f(P)^{1/2}\)</span>. Then <span class="math" data-tex="\(aa^*=pf(P)\)">\(aa^*=pf(P)\)</span> and <span class="math" data-tex="\(a^*a=q_0f(P)\)">\(a^*a=q_0f(P)\)</span>, so their averages are <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(q_0\)">\(q_0\)</span>. Using <span class="math" data-tex="\(e_{12}f(P)\)">\(e_{12}f(P)\)</span> instead would square the normalization constant and is correct only when <span class="math" data-tex="\(f\)">\(f\)</span> is a projection. The present lesson uses <span class="math" data-tex="\(m=1,\ell=1\)">\(m=1,\ell=1\)</span>; then <span class="math" data-tex="\(f=1_{[0,1]}\)">\(f=1_{[0,1]}\)</span>. With <span class="math" data-tex="\(m=1/(2\pi),\ell=1\)">\(m=1/(2\pi),\ell=1\)</span>, the function would be <span class="math" data-tex="\(2\pi1_{[0,1]}\)">\(2\pi1_{[0,1]}\)</span> and its square root <span class="math" data-tex="\(\sqrt{2\pi}1_{[0,1]}\)">\(\sqrt{2\pi}1_{[0,1]}\)</span>. In the scalar translation model <span class="math" data-tex="\(P(q)=-q\)">\(P(q)=-q\)</span>, the present unit window is the interval <span class="math" data-tex="\([-1,0]\)">\([-1,0]\)</span> in the <span class="math" data-tex="\(q\)">\(q\)</span>-coordinate.</p>
+<h3 id="6-localize-before-comparing-infinite-trace-values">6. Localize before comparing infinite trace values</h3>
+<p>For (CST6.20), verify all hypotheses needed to call <span class="math" data-tex="\(a\)">\(a\)</span> a finite full projection and exhibit a strict trace comparison on a nonzero central piece. Why does the equality of the total traces not establish equivalence?</p>
+<p><strong>Solution.</strong> A central projection in <span class="math" data-tex="\(B_\mathrm{loc}\)">\(B_\mathrm{loc}\)</span> is a sequence whose entries are either <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(I_2\)">\(I_2\)</span>. Since every entry of <span class="math" data-tex="\(a\)">\(a\)</span> is nonzero, the only central projection dominating <span class="math" data-tex="\(a\)">\(a\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(a\)">\(a\)</span> is full. If <span class="math" data-tex="\(u^*u=a\)">\(u^*u=a\)</span> and <span class="math" data-tex="\(uu^*\le a\)">\(uu^*\le a\)</span>, every coordinate final projection has rank one and lies under the rank-one <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span>, so it equals <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span>; therefore <span class="math" data-tex="\(uu^*=a\)">\(uu^*=a\)</span>. This proves finiteness. The same rank argument proves that <span class="math" data-tex="\(b\)">\(b\)</span> is finite and that <span class="math" data-tex="\(a\not\sim b\)">\(a\not\sim b\)</span>. The inclusion <span class="math" data-tex="\(a\le b\)">\(a\le b\)</span> has nonzero residual <span class="math" data-tex="\(r=b-a=(e_{22})_j\)">\(r=b-a=(e_{22})_j\)</span>. On <span class="math" data-tex="\(z_1=(I_2,0,0,\ldots)\)">\(z_1=(I_2,0,0,\ldots)\)</span>,
+<span class="math math-display" data-tex="\[
+ \rho(az_1)=1,\qquad \rho(rz_1)=1,\qquad
+ \rho(bz_1)=\rho(az_1)+\rho(rz_1)=2&gt;1.                    \tag{CST7.5}
+\]">\[
+ \rho(az_1)=1,\qquad \rho(rz_1)=1,\qquad
+ \rho(bz_1)=\rho(az_1)+\rho(rz_1)=2&gt;1.                    \tag{CST7.5}
+\]</span>
+Globally both trace series diverge, so their equal value <span class="math" data-tex="\(\infty\)">\(\infty\)</span> discards all this information. The proof in Section 5 obtains a finite central cut of the smaller finite full corner before adding the faithful positive residual value. It never subtracts <span class="math" data-tex="\(\infty-\infty\)">\(\infty-\infty\)</span>.</p>
+<h3 id="7-identify-the-missing-comparison-at-uncountable-dimension">7. Identify the missing comparison at uncountable dimension</h3>
+<p>For the projections <span class="math" data-tex="\(p,q_1\)">\(p,q_1\)</span> of (CST6.22), determine which of
+<span class="math" data-tex="\(p\precsim q_1\otimes1_{\ell^2}\)">\(p\precsim q_1\otimes1_{\ell^2}\)</span> and
+<span class="math" data-tex="\(q_1\precsim p\otimes1_{\ell^2}\)">\(q_1\precsim p\otimes1_{\ell^2}\)</span> holds. Explain why the example does not undermine the properly infinite part of the theorem.</p>
+<p><strong>Solution.</strong> The first holds: include the separable range of <span class="math" data-tex="\(p\)">\(p\)</span> in <span class="math" data-tex="\(q_1\mathcal K\)">\(q_1\mathcal K\)</span> and then in the first scalar amplification coordinate. The second fails, because <span class="math" data-tex="\(p\mathcal K\otimes\ell^2\)">\(p\mathcal K\otimes\ell^2\)</span> has a countable orthonormal basis indexed by <span class="math" data-tex="\(J\times\mathbb N\)">\(J\times\mathbb N\)</span>, while <span class="math" data-tex="\(q_1\mathcal K\)">\(q_1\mathcal K\)</span> has an uncountable orthonormal basis. The disjoint-ball argument in Section 6 rules out the required isometry. The theorem's linking projections satisfy <strong>both</strong> countable comparisons by the two Fourier families. Proper infiniteness then absorbs each countable amplification by actual filling copies, and mutual subequivalence gives equivalence. This example lacks one of the proved comparisons; full central support cannot replace it.</p>
+<h3 id="8-distinguish-central-and-unrestricted-coboundaries">8. Distinguish central and unrestricted coboundaries</h3>
+<p>On <span class="math" data-tex="\(\mathcal K=\ell^2(\mathbb Z)\)">\(\mathcal K=\ell^2(\mathbb Z)\)</span>, write <span class="math" data-tex="\((e_j)_{j\in\mathbb Z}\)">\((e_j)_{j\in\mathbb Z}\)</span> for its standard basis. Let
+<span class="math" data-tex="\(D_s e_j=e^{ijs}e_j\)">\(D_s e_j=e^{ijs}e_j\)</span>, <span class="math" data-tex="\(\gamma_s=\operatorname{Ad}(D_s)\)">\(\gamma_s=\operatorname{Ad}(D_s)\)</span>, and <span class="math" data-tex="\(Ve_j=e_{j+1}\)">\(Ve_j=e_{j+1}\)</span>. Show that <span class="math" data-tex="\(c_s=e^{is}1\)">\(c_s=e^{is}1\)</span> is an unrestricted coboundary but not a central coboundary. State precisely why this is an auxiliary example rather than an instance of the trace-scaling hypothesis.</p>
+<p><strong>Solution.</strong> The diagonal unitaries <span class="math" data-tex="\(D_s\)">\(D_s\)</span> are strongly continuous: truncate the squared-summable coordinates of a vector, use continuity on the finite truncation, and bound the remaining squared difference by four times the tail. Thus <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is a normal point-strong-star continuous action. On each basis vector,
+<span class="math math-display" data-tex="\[
+ \gamma_s(V)e_j=e^{is}Ve_j,\qquad
+ V^*\gamma_s(V)=e^{is}1=c_s.                              \tag{CST7.6}
+\]">\[
+ \gamma_s(V)e_j=e^{is}Ve_j,\qquad
+ V^*\gamma_s(V)=e^{is}1=c_s.                              \tag{CST7.6}
+\]</span>
+The scalar character is a strongly continuous central cocycle, and <span class="math" data-tex="\(V\)">\(V\)</span> is a unitary implementer in <span class="math" data-tex="\(B(\mathcal K)\)">\(B(\mathcal K)\)</span>. The center of <span class="math" data-tex="\(B(\mathcal K)\)">\(B(\mathcal K)\)</span> is <span class="math" data-tex="\(\mathbb C1\)">\(\mathbb C1\)</span>, on which <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is trivial. Every central unitary <span class="math" data-tex="\(z\)">\(z\)</span> therefore gives <span class="math" data-tex="\(z^*\gamma_s(z)=1\)">\(z^*\gamma_s(z)=1\)</span>. Since <span class="math" data-tex="\(e^{is}\)">\(e^{is}\)</span> is not identically one, this cocycle is not a central coboundary. The usual faithful normal semifinite trace is preserved by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, so its scale is <span class="math" data-tex="\(1\)">\(1\)</span>, not <span class="math" data-tex="\(e^{-s}\)">\(e^{-s}\)</span>. This example proves that the two coboundary notions differ; it asserts no counterexample to trace-scaling stability. In the even simpler zero-rate example <span class="math" data-tex="\(N=\mathbb C\)">\(N=\mathbb C\)</span> with the trivial action, the same character is not a coboundary at all. Thus the nonzero trace-scaling rate is a substantive hypothesis, while the general theorem's implementer is allowed to be noncentral.</p>
+<h3 id="9-rescale-time-including-a-negative-exponent">9. Rescale time, including a negative exponent</h3>
+<p>Suppose <span class="math" data-tex="\(\tau\theta_s=e^{-\lambda s}\tau\)">\(\tau\theta_s=e^{-\lambda s}\tau\)</span> on the whole positive cone, where <span class="math" data-tex="\(\lambda\in\mathbb R\setminus\{0\}\)">\(\lambda\in\mathbb R\setminus\{0\}\)</span>, and <span class="math" data-tex="\(c\)">\(c\)</span> is a strongly continuous <span class="math" data-tex="\(\theta\)">\(\theta\)</span>-cocycle. Reduce its stability to the theorem with exponent one. Does the argument require <span class="math" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>?</p>
+<p><strong>Solution.</strong> Put <span class="math" data-tex="\(\eta_t=\theta_{t/\lambda}\)">\(\eta_t=\theta_{t/\lambda}\)</span> and <span class="math" data-tex="\(d_t=c_{t/\lambda}\)">\(d_t=c_{t/\lambda}\)</span>. These are a normal continuous action and a strongly continuous cocycle for it, because substitution into the original cocycle identity gives
+<span class="math math-display" data-tex="\[
+ d_{t+u}=d_t\eta_t(d_u),\qquad \tau\eta_t=e^{-t}\tau.
+                                                                  \tag{CST7.7}
+\]">\[
+ d_{t+u}=d_t\eta_t(d_u),\qquad \tau\eta_t=e^{-t}\tau.
+                                                                  \tag{CST7.7}
+\]</span>
+The theorem supplies <span class="math" data-tex="\(v\in\mathcal U(N)\)">\(v\in\mathcal U(N)\)</span> with <span class="math" data-tex="\(d_t=v^*\eta_t(v)\)">\(d_t=v^*\eta_t(v)\)</span>. Set <span class="math" data-tex="\(t=\lambda s\)">\(t=\lambda s\)</span> to obtain <span class="math" data-tex="\(c_s=v^*\theta_s(v)\)">\(c_s=v^*\theta_s(v)\)</span>. Multiplication by a negative <span class="math" data-tex="\(1/\lambda\)">\(1/\lambda\)</span> is still a continuous group automorphism of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>; it merely reverses time. Thus every nonzero real exponent works. At <span class="math" data-tex="\(\lambda=0\)">\(\lambda=0\)</span>, this reparametrization is unavailable, and Diagnostic 8's trivial action on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> gives an actual failure of stability.</p>
+<h3 id="10-why-scalar-estimates-replace-a-norm-integral">10. Why scalar estimates replace a norm integral</h3>
+<p>Disprove the proposed operator inequality <span class="math" data-tex="\(|axa|\le\|x\|a^2\)">\(|axa|\le\|x\|a^2\)</span> for positive <span class="math" data-tex="\(a\)">\(a\)</span>. In the scalar translation model with <span class="math" data-tex="\(P(q)=-q\)">\(P(q)=-q\)</span>, show that <span class="math" data-tex="\(s\mapsto k(P-s)^2\)">\(s\mapsto k(P-s)^2\)</span> has weak-star integral <span class="math" data-tex="\(1\)">\(1\)</span> although its norm integral is infinite. Explain which estimate the Fourier argument can use.</p>
+<p><strong>Solution.</strong> Take
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ a=\begin{pmatrix}2&amp;0\\0&amp;1\end{pmatrix},\qquad
+ x=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\\
+ axa=2x,\qquad |axa|=2I_2,\qquad
+ \|x\|a^2-2I_2=\begin{pmatrix}2&amp;0\\0&amp;-1\end{pmatrix}.
+ \end{gathered}
+                                                                  \tag{CST7.8}
+\]">\[
+ \begin{gathered}
+ a=\begin{pmatrix}2&amp;0\\0&amp;1\end{pmatrix},\qquad
+ x=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix},\\
+ axa=2x,\qquad |axa|=2I_2,\qquad
+ \|x\|a^2-2I_2=\begin{pmatrix}2&amp;0\\0&amp;-1\end{pmatrix}.
+ \end{gathered}
+                                                                  \tag{CST7.8}
+\]</span>
+The last matrix is not positive, so the claimed operator inequality fails. For the scalar model,
+<span class="math math-display" data-tex="\[
+ k(P-s)^2(q)=\frac1{\pi(1+(q+s)^2)},\qquad
+ \|k(P-s)^2\|=\frac1\pi\quad(s\in\mathbb R).
+                                                                  \tag{CST7.9}
+\]">\[
+ k(P-s)^2(q)=\frac1{\pi(1+(q+s)^2)},\qquad
+ \|k(P-s)^2\|=\frac1\pi\quad(s\in\mathbb R).
+                                                                  \tag{CST7.9}
+\]</span>
+Consequently its integral of norms is infinite. Yet, for every <span class="math" data-tex="\(q\)">\(q\)</span>, its nonnegative scalar integral over <span class="math" data-tex="\(s\)">\(s\)</span> is one. Positive normal-functional testing and scalar interchange therefore give <span class="math" data-tex="\(\int k(P-s)^2\,ds=1\)">\(\int k(P-s)^2\,ds=1\)</span> in the weak-star sense. This is not an operator-norm Bochner integral. The identity is equally visible with the length-one spectral window <span class="math" data-tex="\(1_{[0,1]}(P-s)\)">\(1_{[0,1]}(P-s)\)</span>, whose norm is one at every time while its positive action integral is one.</p>
+<p>For <span class="math" data-tex="\(b_s=k(P-s)\alpha_s(x)k(P-s)\)">\(b_s=k(P-s)\alpha_s(x)k(P-s)\)</span>, the valid vector estimate is
+<span class="math math-display" data-tex="\[
+ \int |\langle b_s\xi,\eta\rangle|\,ds
+ \le\|x\|
+   \left(\int\|k(P-s)\xi\|^2ds\right)^{1/2}
+   \left(\int\|k(P-s)\eta\|^2ds\right)^{1/2}
+ =\|x\|\|\xi\|\|\eta\|.                                  \tag{CST7.10}
+\]">\[
+ \int |\langle b_s\xi,\eta\rangle|\,ds
+ \le\|x\|
+   \left(\int\|k(P-s)\xi\|^2ds\right)^{1/2}
+   \left(\int\|k(P-s)\eta\|^2ds\right)^{1/2}
+ =\|x\|\|\xi\|\|\eta\|.                                  \tag{CST7.10}
+\]</span>
+It follows first from the pointwise operator-norm bound on <span class="math" data-tex="\(\alpha_s(x)\)">\(\alpha_s(x)\)</span>, then from scalar Cauchy–Schwarz in <span class="math" data-tex="\(s\)">\(s\)</span>. A spectral unitary inserted on either side preserves the corresponding vector norm because it commutes with <span class="math" data-tex="\(k(P-s)\)">\(k(P-s)\)</span>. These estimates give the bounded weak-star integrals and scalar absolute convergence needed in Section 2 without either false assertion.</p>
+<h3 id="11-twisted-fixed-algebras-and-noncentral-multiplication">11. Twisted fixed algebras and noncentral multiplication</h3>
+<p>Suppose <span class="math" data-tex="\(c_s=v^*\theta_s(v)\)">\(c_s=v^*\theta_s(v)\)</span>, and set <span class="math" data-tex="\(\theta_s^c=\operatorname{Ad}(c_s)\theta_s\)">\(\theta_s^c=\operatorname{Ad}(c_s)\theta_s\)</span>. Identify its fixed algebra and both descriptions of the set of implementers of <span class="math" data-tex="\(c\)">\(c\)</span>. Compute the effect of replacing <span class="math" data-tex="\(v\)">\(v\)</span> by <span class="math" data-tex="\(vb\)">\(vb\)</span>, and test whether products of noncentral cocycles have a pointwise group law.</p>
+<p><strong>Solution.</strong> For every <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, direct substitution gives
+<span class="math math-display" data-tex="\[
+ \theta_s^c(x)=v^*\theta_s(vxv^*)v,\qquad
+ N^{\theta^c}=v^*N^\theta v.                              \tag{CST7.11}
+\]">\[
+ \theta_s^c(x)=v^*\theta_s(vxv^*)v,\qquad
+ N^{\theta^c}=v^*N^\theta v.                              \tag{CST7.11}
+\]</span>
+If <span class="math" data-tex="\(u\)">\(u\)</span> is another implementer, <span class="math" data-tex="\(\theta_s(uv^*)=uv^*\)">\(\theta_s(uv^*)=uv^*\)</span>, as in Diagnostic 1. Conversely every <span class="math" data-tex="\(hv\)">\(hv\)</span>, <span class="math" data-tex="\(h\in\mathcal U(N^\theta)\)">\(h\in\mathcal U(N^\theta)\)</span>, implements <span class="math" data-tex="\(c\)">\(c\)</span>. Moving <span class="math" data-tex="\(h\)">\(h\)</span> through <span class="math" data-tex="\(v\)">\(v\)</span> by the displayed fixed-algebra identification yields the exact two descriptions
+<span class="math math-display" data-tex="\[
+ \{u\in\mathcal U(N):u^*\theta_s(u)=c_s\text{ for all }s\}
+ =\mathcal U(N^\theta)v
+ =v\mathcal U(N^{\theta^c}).                              \tag{CST7.12}
+\]">\[
+ \{u\in\mathcal U(N):u^*\theta_s(u)=c_s\text{ for all }s\}
+ =\mathcal U(N^\theta)v
+ =v\mathcal U(N^{\theta^c}).                              \tag{CST7.12}
+\]</span>
+For an arbitrary unitary <span class="math" data-tex="\(b\)">\(b\)</span>, with no fixedness assumption,
+<span class="math math-display" data-tex="\[
+ (vb)^*\theta_s(vb)=b^*c_s\theta_s(b).
+                                                                  \tag{CST7.13}
+\]">\[
+ (vb)^*\theta_s(vb)=b^*c_s\theta_s(b).
+                                                                  \tag{CST7.13}
+\]</span>
+This equals <span class="math" data-tex="\(c_s\)">\(c_s\)</span> exactly when <span class="math" data-tex="\(\theta_s^c(b)=b\)">\(\theta_s^c(b)=b\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>. If <span class="math" data-tex="\(\delta(u)_s=u^*\theta_s(u)\)">\(\delta(u)_s=u^*\theta_s(u)\)</span>, then
+<span class="math math-display" data-tex="\[
+ \delta(uv)_s=v^*\delta(u)_s v\,\delta(v)_s.               \tag{CST7.14}
+\]">\[
+ \delta(uv)_s=v^*\delta(u)_s v\,\delta(v)_s.               \tag{CST7.14}
+\]</span>
+The conjugation factor cannot be omitted. For a direct failure of pointwise multiplication, in the matrix translation system take the two constant-in-<span class="math" data-tex="\(q\)">\(q\)</span> cocycles <span class="math" data-tex="\(a_s=e^{isX}\)">\(a_s=e^{isX}\)</span> and <span class="math" data-tex="\(b_s=e^{isZ}\)">\(b_s=e^{isZ}\)</span>. Each is a cocycle because it is a one-parameter group of constant matrices; each is a coboundary, implemented respectively by <span class="math" data-tex="\(e^{iqX}\)">\(e^{iqX}\)</span> and <span class="math" data-tex="\(e^{iqZ}\)">\(e^{iqZ}\)</span>. Their pointwise product <span class="math" data-tex="\(f_s=e^{isX}e^{isZ}\)">\(f_s=e^{isX}e^{isZ}\)</span> obeys
+<span class="math math-display" data-tex="\[
+ f_\pi=I_2,\qquad f_{\pi/2}=iY,\qquad
+ f_{\pi/2}\theta_{\pi/2}(f_{\pi/2})=(iY)^2=-I_2\ne f_\pi.
+                                                                  \tag{CST7.15}
+\]">\[
+ f_\pi=I_2,\qquad f_{\pi/2}=iY,\qquad
+ f_{\pi/2}\theta_{\pi/2}(f_{\pi/2})=(iY)^2=-I_2\ne f_\pi.
+                                                                  \tag{CST7.15}
+\]</span>
+Thus even for this trace-scaling action, the product of two noncentral cocycles need not be a cocycle. Central cohomology has its abelian pointwise law because all relevant values and implementing unitaries are central; the unrestricted stability theorem does not supply that law for noncentral cocycles.</p>
+<p><span id="OA-FLOW.CST.READING"></span><a id="cst-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>M. Takesaki, <em>Theory of Operator Algebras II</em>, Theorem XII.1.11, printed pp. 378–379, states stability of a real trace-scaling action and inner conjugacy of its unitary cocycle perturbations. The proof here uses a linking algebra, two different scalar modulations, support comparison and finite central trace localization.</p>
+<p>For the action integral and its density covariance, see <a href="OA-FLOW-L19.html#l19-3">L19</a>. The full <a href="OA-FLOW-PC.html#oa-flow.pc.2">projection comparison proofs</a> and <a href="OA-FLOW-L18.html#l18-7">finite-center trace construction</a> give the comparison inputs with arbitrary centers and Hilbert multiplicities. <a href="OA-FLOW-RCC.html#rcc-6">Relative commutants and central cocycles</a> treats the different question in which coboundaries are required to have central implementers.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-DWC.html">Previous lesson</a><a href="OA-FLOW-L121.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-CST.md">Lesson source</a></nav></main></body></html>

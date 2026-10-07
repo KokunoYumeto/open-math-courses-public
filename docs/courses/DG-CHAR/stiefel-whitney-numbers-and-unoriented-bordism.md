@@ -793,6 +793,125 @@ The polynomial map in (N.4) sending a variable to its indicated manifold sends i
 
 Thom’s polynomial-ring theorem and product consequence appear in [his 1954 paper](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/thomcob.pdf), ChapterIV. Dold’s explicit quotient representatives and their characteristic classes are developed in [Junzhi Huang’s account](https://math.uchicago.edu/~may/REU2021/REUPapers/Huang%2CJunzhi.pdf), Sections3–5. The proof above supplies the cohomology relations, corrected Newton initial values and the general product independence argument.
 
+### N.3. What forgetting orientation loses
+
+Unoriented bounding need not extend a specified orientation. Write
+\(\Omega_n^{SO}\) for the smooth oriented bordism group, with outward-normal-first boundary convention, and
+\[
+ F_n:\Omega_n^{SO}\longrightarrow\mathcal N_n
+\]
+for the homomorphism which forgets the orientation. The group and smooth gluing constructions are supplied in [the oriented bordism chapter](the-oriented-cobordism-ring.md), Sections 1–4. We prove the precise relation
+\[
+ \ker F_n=2\Omega_n^{SO}.                                      \tag{N.10}
+\]
+In particular, an unoriented filling does not alone prove that an oriented class is zero: it proves that the class is divisible by two. All manifolds below may be disconnected; a two-sheeted covering need not be connected.
+
+**Lemma N.2 — An oriented twofold cover represents twice its base.** Let \(p:\widetilde M\to M\) be a smooth two-sheeted covering of a closed oriented smooth \(n\)-manifold. Give \(\widetilde M\) the pullback orientation. Then
+\[
+ [\widetilde M]=2[M]\quad\hbox{in }\Omega_n^{SO}.                \tag{N.11}
+\]
+
+**Proof.** For \(n=0\) each signed point has two preimages with the same sign, which gives the assertion. Suppose \(n\geq1\). Let \(\tau\) exchange the two sheets and form the smooth real line bundle
+\[
+ L=(\widetilde M\times\mathbb R)/((u,a)\sim(\tau u,-a))
+       \longrightarrow M.
+\]
+Covering charts trivialize this bundle. Its unit sphere bundle is the original covering, by the fibrewise bijection \(u\mapsto[u,1]\).
+
+Choose a smooth section \(s\) transverse to zero and put \(V=s^{-1}(0)\). Here is the exact transversality input. On finitely many bundle charts covering its compact zero set, the local fibre coordinates of a section are smooth real functions. The compactly supported perturbation of [Lemma E.2 in the geometric Thom chapter](thom-spaces-and-the-pontryagin-thom-construction.md#DG-CHAR-13.lemma-E.2) changes those functions without changing the base point. Successively preserve regularity on the previously treated compact sets, as in [its Lemma G.2](thom-spaces-and-the-pontryagin-thom-construction.md#DG-CHAR-13.lemma-G.2). Choose the sum of the perturbation sizes below the positive minimum of the original section norm outside a fixed neighbourhood of its zeros. No new zeros appear there. This gives a transverse section, and [Lemma G.1](thom-spaces-and-the-pontryagin-thom-construction.md#DG-CHAR-13.lemma-G.1) identifies its normal line with \(L|_V\) through the normal derivative of \(s\). The same argument on charts in the interior of a compact manifold with boundary preserves any prescribed nonvanishing section on a boundary collar.
+
+If \(V\) is empty, \(s/|s|\) trivializes the covering, so two product cylinders give the asserted bordism. Otherwise a closed tubular neighbourhood \(T\) of \(V\) is the unit interval bundle of its normal line. To use coordinates, choose a local unit frame \(v\) of \(L|_V\) and write \(t\in[-1,1]\) for the corresponding normal coordinate. Extend each unit frame along the radial intervals of the tube by the unique lift to the unit-frame covering. This lift is constructed through finitely many covering charts on each compact interval; the local sheet labels are constant, so uniqueness patches the lifts and shows smooth dependence on the initial point and interval parameter. It gives an isometric identification of the line over the tube with the pullback of \(L|_V\). Choose the normal identification so that \(s\) has the sign of \(t v\) off zero. This can be done uniformly on the compact \(V\): the derivative of the fibre coordinate at zero is invertible, so the inverse-function theorem reparametrizes each normal interval by that coordinate. Shrink to a common positive width and rescale. Changing the unit frame to \(-v\) changes \(t\) to \(-t\). Put \(Q=M\setminus\operatorname{int}T\). The nonvanishing section trivializes \(p\) over \(Q\).
+
+An orientation \(o_V\) in such a chart is fixed by requiring \(dt\wedge o_V\) to be the orientation of \(M\). Replacing \(v\) by \(-v\) also replaces \(o_V\) by \(-o_V\). No global orientation of \(V\) is being assumed.
+
+Use the following compact saddle surface with corners, displayed by its coordinates rather than by an unspecified surgery:
+\[
+ K=\{(x,y,z)\in\mathbb R^3:z=x^2-y^2,\ |x|\leq2,\ |z|\leq1\}.
+                                                               \tag{N.12}
+\]
+Its orientation is \(dx\wedge dy\), using its projection to the \((x,y)\)-plane. The involution
+\(\lambda(x,y,z)=(-x,y,z)\) reverses this orientation. Associate \(K\) to the unit-frame double cover of \(L|_V\), using \(\lambda\) when the frame is reversed. The resulting bundle \(E\to V\) is an \((n+1)\)-manifold with corners. Its local orientation
+\(dx\wedge dy\wedge o_V\) is globally consistent: the two sign changes cancel.
+
+The upper and lower boundaries have the following explicit coordinates. At \(z=1\), let \(\epsilon=\operatorname{sign}x\); at \(z=-1\), let \(\delta=\operatorname{sign}y\). The three columns after the boundary level give its interval coordinate, its frame reversal, and its induced orientation:
+\[
+\begin{array}{c|c|c|c}
+ z=1&t=\epsilon y/\sqrt3&(t,\epsilon)\mapsto(-t,-\epsilon)&dt\wedge o_V\\
+ z=-1&t=\delta x/2&(t,\delta)\mapsto(-t,\delta)&-dt\wedge o_V.
+\end{array}                                                    \tag{N.13}
+\]
+The first row is exactly the covering of the interval bundle \(T\). The second is two copies of \(T\), indexed by the unchanged sign \(\delta\), both with negative boundary orientation. The factor \(\delta\) in the lower coordinate is essential for both these statements.
+
+For completeness the boundary signs follow directly in the plane. On \(z=1\), an outward vector is a positive multiple of \((2x,-2y)\); the tangent parametrized by \(y\) is \((y/x,1)\). Their determinant has sign \(\epsilon\), so the boundary orientation is \(\epsilon\,dy\), the positive orientation of \(t\). On \(z=-1\) use the outward vector \((-2x,2y)\) and tangent \((1,x/y)\); their determinant has sign \(-\delta\). The induced orientation is \(-\delta\,dx\), hence \(-dt\). These computations include the unchanged \(o_V\) factor.
+
+It remains to attach the complement, since a saddle over \(V\) alone is not the required bordism. Each of its side arcs has
+\[
+ x=2\epsilon,\qquad y=\delta\sqrt{4-z},\qquad -1\leq z\leq1.
+\]
+At both ends the interval endpoint in (N.13) is
+\(t=\sigma=\epsilon\delta\). Over that endpoint the covering sheet \(\epsilon v\), expressed in the section trivialization \(s/|s|=\sigma v\), has label \(\epsilon/\sigma=\delta\). Thus attach one copy of \([-1,1]\times Q\) for each \(\delta\), using this side coordinate \(z\) and the same point of \(\partial T\). Frame reversal sends \(\epsilon\) and \(\sigma\) to their negatives and leaves \(\delta\) fixed, so these attachments agree between charts.
+
+Orient each complement cylinder by \(dz\wedge o_M\). On a saddle side, the determinant of its outward vector \((\epsilon,0)\) and its \(z\)-tangent is of sign \(-\epsilon\delta=-\sigma\); its boundary orientation is therefore \(-\sigma\,dz\wedge o_V\). The outward normal to \(Q\) at \(t=\sigma\) points in direction \(-\sigma\partial_t\). With the time-first cylinder orientation its side orientation is \(+\sigma\,dz\wedge o_V\). The attaching diffeomorphism reverses boundary orientations, as required for an oriented gluing.
+
+The collar gluing and corner rounding from Sections 2 and 4 of the oriented bordism chapter give a compact smooth oriented manifold \(W\). They apply in the product of each side's collar coordinates with its base coordinates; the rounding can be the same function in every chart because the side parameters \(z\) and inward collar distances are invariant. Near the remaining boundary the usual collar-stretching identifies the rounded boundary with the original glued \(T\)-and-\(Q\) manifold. Thus rounding does not change the boundary diffeomorphism types or their orientations. The coordinate identifications above give
+\[
+ \partial W\cong\widetilde M\ \sqcup\ (-M)\ \sqcup\ (-M)
+                                                               \tag{N.14}
+\]
+orientation-preservingly. This proves (N.11). Every construction works componentwise, including any component on which the covering is trivial. ∎
+
+**Theorem N.3 — Kernel of forgetting orientation.** For every \(n\geq0\), (N.10) holds.
+
+**Proof.** Forgetting orientation makes the boundary of \([0,1]\times M\) two unoriented copies of \(M\). Thus \(2\Omega_n^{SO}\subseteq\ker F_n\).
+
+For the converse let a closed oriented \(M^n\) bound a compact smooth manifold \(B^{n+1}\) without a prescribed orientation. On a boundary collar, the outward-normal-first convention and the given orientation of \(M\) specify a nonzero section of the determinant line \(L=\det TB\). Extend this section to \(B\) by a partition of unity and then make it transverse to zero, fixing a smaller boundary collar, by the relative construction in the proof of Lemma N.2. Its zero set \(N\) is a closed smooth hypersurface contained in the interior of \(B\), and its normal derivative identifies \(\nu_N\cong L|_N\).
+
+This \(N\) is oriented, even when \(B\) is not. To check the orientation without cancelling unnamed signs, choose a local nonzero generator \(v\) of the determinant line and a normal vector \(e\) with \(ds(e)=v\). Orient \(TN\) by requiring \(e\wedge o_N\) to represent \(v\) in \(\det TB\). Replacing \(v\) by \(-v\) reverses both \(e\) and the chosen ambient determinant orientation, and leaves \(o_N\) unchanged. Positive changes of scale also leave it unchanged. This defines a global orientation of \(N\).
+
+Remove a small open normal tube of \(N\). On the complement \(B'\), the nonzero section \(s\) orients \(TB'\). The new inner boundary is the unit normal sphere bundle
+\(q:S(\nu_N)\to N\), a twofold covering. Its orientation in \(\partial B'\) is *minus* the orientation pulled back from \(N\). Indeed in a local tube write \(s=t v\) and \(\nu_N\) with coordinate \(t\), as in Lemma N.2. For \(t>0\) the ambient orientation is \(dt\wedge o_N\) and the inner outward normal is \(-\partial_t\); for \(t<0\) they are \(-dt\wedge o_N\) and \(+\partial_t\). Both give boundary orientation \(-o_N\). Hence
+\[
+ \begin{aligned}
+ \partial B'&=M\sqcup(-S(\nu_N)),\\
+ [M]&=[S(\nu_N)]=2[N],
+ \end{aligned}                                                \tag{N.15}
+\]
+where the last equality is Lemma N.2 applied to the oriented \(N\). If the section has no zeros, \(B\) itself is an oriented filling and the same conclusion holds with \(N\) empty. This proves the opposite inclusion and the theorem. ∎
+
+**Corollary N.4 — The two-primary obstruction vanishes in dimension seven.** The finite group \(\Omega_7^{SO}\) has odd order.
+
+**Proof.** The polynomial presentation (N.4) has exactly one monomial in degree seven, \(z_2z_5\). Its geometric representative is
+\[
+ X=\mathbb{RP}^2\times P(1,2).
+\]
+The cohomology and tangent calculations (N.7)–(N.8) give
+\[
+ \begin{aligned}
+ H^*(X;F)&=F[a,c,d]/(a^3,c^2,d^3),\\
+ |a|=|c|&=1,\quad |d|=2,\\
+ \langle a^2cd^2,[X]_2\rangle&=1.
+ \end{aligned}
+\]
+The two total tangent classes are \((1+a)^3=1+a+a^2\) and
+\((1+c)(1+c+d)^3=1+d+cd+d^2\). Their product therefore gives
+\[
+ \begin{aligned}
+ w_1(X)&=a,\\
+ w_2(X)&=a^2+d,\\
+ w_3(X)&=ad+cd,\\
+ w_1(X)^2w_2(X)w_3(X)&=a^2cd^2.
+ \end{aligned}                                                \tag{N.16}
+\]
+Thus the number \(w_1^2w_2w_3\) detects the unique nonzero class of \(\mathcal N_7\). For an oriented manifold \(w_1=0\), so its image under \(F_7\) is zero. Theorem N.3 consequently implies
+\[
+ \Omega_7^{SO}=2\Omega_7^{SO}.                                \tag{N.17}
+\]
+[Theorem J.5 of the rational bordism chapter](rational-oriented-bordism-and-projective-generators.md#DG-CHAR-13D.theorem-J.5) proves finite generation and rational rank zero in this dimension, hence finiteness of this integral group. On a finite group a surjective endomorphism is injective, so (N.17) implies that multiplication by two has trivial kernel. Pairing each element with its inverse now leaves only the zero element unpaired; the order of the group is odd. ∎
+
+This conclusion excludes two-primary torsion, not odd-primary torsion. For example a cyclic group of order three is finite and multiplication by two is a bijection. A proof that \(\Omega_7^{SO}=0\), or equivalently that every closed oriented seven-manifold bounds an oriented eight-manifold, must additionally eliminate all odd-primary parts. The rational result and the unoriented detection theorem do not eliminate them. The explicit disk-bundle fillings in the seven-sphere chapter are actual oriented fillings and do not depend on this additional general assertion.
+
+The twofold-cover and kernel results are due to Albrecht Dold; see [*Démonstration élémentaire de deux résultats du cobordisme*](https://www.numdam.org/item/SE_1958-1960__2__A4_0.pdf), pp. 1–5. The constructions above give the saddle coordinates, global gluing, and induced boundary orientations explicitly.
+
 ## O. Exercises with complete solutions
 
 **Exercise O.1 — Easy.** Recover the first four normal classes from the tangent classes. Compute both lists on \(\mathbb{RP}^4\), and explain why vanishing of the fourth normal class would not establish a boundary.
@@ -853,4 +972,4 @@ The complete geometric correspondence, rank-controlled embeddings and normal col
 
 The square-algebra, module-coalgebra and Thom-module arguments are developed in [Haynes Miller’s *Notes on Cobordism*](https://math.mit.edu/~hrm/papers/cobordism.pdf), Sections9–12, based on his lectures and typed by Dan Christensen and Gerd Laures. The one-group, simple-generator and comparison calculations are also presented in [Allen Hatcher’s *Spectral Sequences*](https://pi.math.cornell.edu/~hatcher/SSAT/SSch1.pdf), Section1.3. The detection and polynomial-ring theorems originate in [René Thom’s paper](https://webhomes.maths.ed.ac.uk/~v1ranick/papers/thomcob.pdf), ChapterIV; [John Milnor’s survey](https://www.e-periodica.ch/digbib/view?pid=ens-001:1962:8::12), Section1, records these conclusions and Dold’s representatives. Section N.2 gives their complete calculation using the established finite comparison.
 
-The detection and product calculations hold for closed smooth manifolds in every nonnegative dimension. The representing-space splitting depends on chosen lifts and bases; the explicit polynomial generators give the ring presentation (N.4). The proof and solutions here are authored by the writing AI; any independent review remains separate.
+The detection and product calculations hold for closed smooth manifolds in every nonnegative dimension. The representing-space splitting depends on chosen lifts and bases; the explicit polynomial generators give the ring presentation (N.4). The proof and solutions here are authored by the writing AI. Section N.3 was independently written by GPT-6 Astra (OpenAI) in Codex at Ultra. Independent review remains separate.

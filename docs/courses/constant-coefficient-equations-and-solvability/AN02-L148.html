@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Complex Fourier estimates and weak exponential representations</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L147.html">Previous lesson</a> · <a href="#cf4-the-full-complex-volume-estimate">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#exercises-with-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="working-with-complex-frequencies-and-weak-exponential-integrals">Working with complex frequencies and weak exponential integrals</h1>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. CC0.</em></p>
+<p>The <a href="#complete-proof">formal proof</a> distinguishes three operations: moving the Fourier transform to an imaginary plane, multiplying the original distribution by a cutoff, and integrating exponential solutions against a measure. This companion develops four concrete models and ten exercises with complete solutions.</p>
+<p>Use <span class="math" data-index="0" data-tex="\(\widehat u(\xi)=\int e^{-ix\xi}u(x)\,dx\)">\(\widehat u(\xi)=\int e^{-ix\xi}u(x)\,dx\)</span>, with inverse factor <span class="math" data-index="1" data-tex="\((2\pi)^{-1}\)">\((2\pi)^{-1}\)</span> in one dimension. Pairings are complex-linear and bilinear: there is no conjugation in <span class="math" data-index="2" data-tex="\(\langle v,u\rangle\)">\(\langle v,u\rangle\)</span>. A weight <span class="math" data-index="3" data-tex="\(k\)">\(k\)</span> obeys <span class="math" data-index="4" data-tex="\(k(\xi+h)\le(1+C|h|)^Nk(\xi)\)">\(k(\xi+h)\le(1+C|h|)^Nk(\xi)\)</span>, and its reflected weight is <span class="math" data-index="5" data-tex="\(\check k(\xi)=k(-\xi)\)">\(\check k(\xi)=k(-\xi)\)</span>.</p>
+<h2 id="worked-example-1-an-interval-on-every-imaginary-plane">Worked example 1. An interval on every imaginary plane</h2>
+<p>Let <span class="math" data-index="6" data-tex="\(u=1_{[-a,a]}\)">\(u=1_{[-a,a]}\)</span>, <span class="math" data-index="7" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and <span class="math" data-index="8" data-tex="\(k=1\)">\(k=1\)</span>. Its support is <span class="math" data-index="9" data-tex="\(K=[-a,a]\)">\(K=[-a,a]\)</span>, its squared <span class="math" data-index="10" data-tex="\(B_{2,1}\)">\(B_{2,1}\)</span> norm is <span class="math" data-index="11" data-tex="\(2a\)">\(2a\)</span>, and</p>
+<span class="math math-display" id="eq-L148.1" data-index="12" data-tex="\[
+F_u(z)=\frac{2\sin(az)}{z},\qquad F_u(0)=2a,\qquad
+H_K(\eta)=a|\eta|.
+\tag{L148.1}
+\]">\[
+F_u(z)=\frac{2\sin(az)}{z},\qquad F_u(0)=2a,\qquad
+H_K(\eta)=a|\eta|.
+\tag{L148.1}
+\]</span>
+<p>The removable value at zero follows from the sine power series, or directly by integrating the constant function over the interval.</p>
+<p>Multiplication by <span class="math" data-index="13" data-tex="\(e^{\eta x}\)">\(e^{\eta x}\)</span> moves the Fourier transform to <span class="math" data-index="14" data-tex="\(\xi+i\eta\)">\(\xi+i\eta\)</span>. The unweighted Plancherel extension proved in CF1 therefore gives the exact plane energy</p>
+<span class="math math-display" id="eq-L148.2" data-index="15" data-tex="\[
+I_a(\eta)=\int_{\mathbb R}|F_u(\xi+i\eta)|^2\,d\xi
+=2\pi\int_{-a}^{a}e^{2\eta x}\,dx
+=
+\begin{cases}
+2\pi\,\sinh(2a\eta)/\eta,&amp;\eta\ne0,\\
+4\pi a,&amp;\eta=0.
+\end{cases}
+\tag{L148.2}
+\]">\[
+I_a(\eta)=\int_{\mathbb R}|F_u(\xi+i\eta)|^2\,d\xi
+=2\pi\int_{-a}^{a}e^{2\eta x}\,dx
+=
+\begin{cases}
+2\pi\,\sinh(2a\eta)/\eta,&amp;\eta\ne0,\\
+4\pi a,&amp;\eta=0.
+\end{cases}
+\tag{L148.2}
+\]</span>
+<p>This is even in <span class="math" data-index="16" data-tex="\(\eta\)">\(\eta\)</span>. The support factor removes its exponential growth:</p>
+<span class="math math-display" id="eq-L148.3" data-index="17" data-tex="\[
+e^{-2a|\eta|}I_a(\eta)
+=\pi\,\frac{1-e^{-4a|\eta|}}{|\eta|}\quad(\eta\ne0),
+\qquad
+0&lt;e^{-2a|\eta|}I_a(\eta)\le4\pi a.
+\tag{L148.3}
+\]">\[
+e^{-2a|\eta|}I_a(\eta)
+=\pi\,\frac{1-e^{-4a|\eta|}}{|\eta|}\quad(\eta\ne0),
+\qquad
+0&lt;e^{-2a|\eta|}I_a(\eta)\le4\pi a.
+\tag{L148.3}
+\]</span>
+<p>The limit at zero is <span class="math" data-index="18" data-tex="\(4\pi a\)">\(4\pi a\)</span>. The last inequality also follows without evaluating the integral: <span class="math" data-index="19" data-tex="\(e^{2\eta x-2a|\eta|}\le1\)">\(e^{2\eta x-2a|\eta|}\le1\)</span> for <span class="math" data-index="20" data-tex="\(x\in[-a,a]\)">\(x\in[-a,a]\)</span>.</p>
+<p>For <span class="math" data-index="21" data-tex="\(a=1\)">\(a=1\)</span>, choose the valid weight exponent <span class="math" data-index="22" data-tex="\(N=1\)">\(N=1\)</span>, so the complex-volume damping is <span class="math" data-index="23" data-tex="\((1+\eta^2)^{-3}\)">\((1+\eta^2)^{-3}\)</span>. The full integral in CF17 becomes</p>
+<span class="math math-display" id="eq-L148.4" data-index="24" data-tex="\[
+2\pi\int_0^\infty
+\frac{1-e^{-4\eta}}{\eta(1+\eta^2)^3}\,d\eta.
+\tag{L148.4}
+\]">\[
+2\pi\int_0^\infty
+\frac{1-e^{-4\eta}}{\eta(1+\eta^2)^3}\,d\eta.
+\tag{L148.4}
+\]</span>
+<p>The quotient tends to four at zero and decays as <span class="math" data-index="25" data-tex="\(\eta^{-7}\)">\(\eta^{-7}\)</span> at infinity. This sharper example does not reduce the exponent required for arbitrary <span class="math" data-index="26" data-tex="\(k\)">\(k\)</span> and arbitrary compact distributions in CF18.</p>
+<p>For independent numerical checks there is a stable formula, with no exponentially large sine evaluation:</p>
+<span class="math math-display" id="eq-L148.5" data-index="27" data-tex="\[
+e^{-2a|\eta|}|F_u(\xi+i\eta)|^2
+=\frac{1+e^{-4a|\eta|}-2e^{-2a|\eta|}\cos(2a\xi)}
+{\xi^2+\eta^2}.
+\tag{L148.5}
+\]">\[
+e^{-2a|\eta|}|F_u(\xi+i\eta)|^2
+=\frac{1+e^{-4a|\eta|}-2e^{-2a|\eta|}\cos(2a\xi)}
+{\xi^2+\eta^2}.
+\tag{L148.5}
+\]</span>
+<p>At <span class="math" data-index="28" data-tex="\((0,0)\)">\((0,0)\)</span> its limiting value is <span class="math" data-index="29" data-tex="\(4a^2\)">\(4a^2\)</span>. When <span class="math" data-index="30" data-tex="\(\eta=0\)">\(\eta=0\)</span> use <span class="math" data-index="31" data-tex="\(4\sin^2(a\xi)/\xi^2\)">\(4\sin^2(a\xi)/\xi^2\)</span>. Formula L148.5 follows from
+<span class="math" data-index="32" data-tex="\(|\sin(s+it)|^2=\sin^2s+\sinh^2t\)">\(|\sin(s+it)|^2=\sin^2s+\sinh^2t\)</span>, then elementary exponential algebra.</p>
+<figure><img class="course-figure" width="2376" height="846" src="reproduce/L148/figures/complex-planes-and-support-damping.png" alt="Interval support, the support-damped transform, and the exact imaginary-plane energy." /><figcaption class="native"><a href="reproduce/L148/figures/complex-planes-and-support-damping.png">Open full-size PNG</a> · <a href="reproduce/L148/figures/complex-planes-and-support-damping.svg">Open SVG</a></figcaption></figure>
+<p>The plane-energy curve is normalized by <span class="math" data-index="33" data-tex="\(I_1(0)=4\pi\)">\(I_1(0)=4\pi\)</span>. Its ceiling one is specific to this interval model; CF18 gives the general estimate with the displayed polynomial loss.</p>
+<h2 id="worked-example-2-two-genuinely-complex-exponential-modes">Worked example 2. Two genuinely complex exponential modes</h2>
+<p>Let <span class="math" data-index="34" data-tex="\(X=(-2,2)\)">\(X=(-2,2)\)</span>, <span class="math" data-index="35" data-tex="\(k=1\)">\(k=1\)</span>, and <span class="math" data-index="36" data-tex="\(\phi(\xi+i\eta)=2\sqrt{1+\eta^2}\)">\(\phi(\xi+i\eta)=2\sqrt{1+\eta^2}\)</span>. These satisfy CF27–CF28: every compact <span class="math" data-index="37" data-tex="\(L\Subset X\)">\(L\Subset X\)</span> has <span class="math" data-index="38" data-tex="\(H_L(\eta)\le2|\eta|\)">\(H_L(\eta)\le2|\eta|\)</span>, and <span class="math" data-index="39" data-tex="\(|\nabla\phi|\le2\)">\(|\nabla\phi|\le2\)</span>. Put</p>
+<span class="math math-display" id="eq-L148.6" data-index="40" data-tex="\[
+\mu=\delta_{1+i}+\delta_{-2-i/2},\qquad
+V(1+i)=1,\quad V(-2-i/2)=i/2.
+\tag{L148.6}
+\]">\[
+\mu=\delta_{1+i}+\delta_{-2-i/2},\qquad
+V(1+i)=1,\quad V(-2-i/2)=i/2.
+\tag{L148.6}
+\]</span>
+<p>The atoms are more than two apart, so each open complex unit ball contains at most one. The total variation bound is <span class="math" data-index="41" data-tex="\(M=1\)">\(M=1\)</span>, and the data norm is the finite number</p>
+<span class="math math-display" id="eq-L148.7" data-index="42" data-tex="\[
+Q^2=e^{4\sqrt2}+\tfrac14 e^{4\sqrt{5/4}}.
+\tag{L148.7}
+\]">\[
+Q^2=e^{4\sqrt2}+\tfrac14 e^{4\sqrt{5/4}}.
+\tag{L148.7}
+\]</span>
+<p>Here the coefficient <span class="math" data-index="43" data-tex="\(i/2\)">\(i/2\)</span> belongs to <span class="math" data-index="44" data-tex="\(V\)">\(V\)</span>; <span class="math" data-index="45" data-tex="\(\mu\)">\(\mu\)</span> has two positive unit masses. The represented function is</p>
+<span class="math math-display" id="eq-L148.8" data-index="46" data-tex="\[
+v(x)=e^{ix-x}+\frac i2 e^{-2ix+x/2}.
+\tag{L148.8}
+\]">\[
+v(x)=e^{ix-x}+\frac i2 e^{-2ix+x/2}.
+\tag{L148.8}
+\]</span>
+<p>It is smooth, and multiplying by any compact smooth cutoff gives a Schwartz function, so its local <span class="math" data-index="47" data-tex="\(B_{2,1}\)">\(B_{2,1}\)</span> membership is explicit.</p>
+<p>To check the sign, use the shifted triangular test</p>
+<span class="math math-display" id="eq-L148.9" data-index="48" data-tex="\[
+u(x)=\left(1-\frac{|x-b|}{r}\right)_+,\qquad b=\tfrac14,\quad r=\tfrac12.
+\tag{L148.9}
+\]">\[
+u(x)=\left(1-\frac{|x-b|}{r}\right)_+,\qquad b=\tfrac14,\quad r=\tfrac12.
+\tag{L148.9}
+\]</span>
+<p>Its support is <span class="math" data-index="49" data-tex="\([-1/4,3/4]\Subset X\)">\([-1/4,3/4]\Subset X\)</span>, and <span class="math" data-index="50" data-tex="\(\|u\|_2^2=2r/3=1/3\)">\(\|u\|_2^2=2r/3=1/3\)</span>. The triangle is the convolution of two interval indicators divided by <span class="math" data-index="51" data-tex="\(r\)">\(r\)</span>, followed by translation. Consequently</p>
+<span class="math math-display" id="eq-L148.10" data-index="52" data-tex="\[
+F_u(z)=e^{-ibz}\frac{2(1-\cos(rz))}{rz^2},\qquad
+F_u(0)=r.
+\tag{L148.10}
+\]">\[
+F_u(z)=e^{-ibz}\frac{2(1-\cos(rz))}{rz^2},\qquad
+F_u(0)=r.
+\tag{L148.10}
+\]</span>
+<p>The formula also follows by integrating the two linear sides of the triangle. Thus</p>
+<span class="math math-display" id="eq-L148.11" data-index="53" data-tex="\[
+\int v(x)u(x)\,dx
+=F_u(-1-i)+\frac i2F_u(2+i/2).
+\tag{L148.11}
+\]">\[
+\int v(x)u(x)\,dx
+=F_u(-1-i)+\frac i2F_u(2+i/2).
+\tag{L148.11}
+\]</span>
+<p>The shift <span class="math" data-index="54" data-tex="\(b\ne0\)">\(b\ne0\)</span> makes the negative-frequency sign observable. Neither the atoms nor the coefficients are complex-conjugated. There is no inverse-Fourier factor in L148.8: this is an exponential-mode measure, not an unnormalized Fourier density.</p>
+<h2 id="worked-example-3-a-nonsymmetric-weight-reveals-the-dual">Worked example 3. A nonsymmetric weight reveals the dual</h2>
+<p>Take <span class="math" data-index="55" data-tex="\(k(\xi)=(1+\max(\xi,0))^2\)">\(k(\xi)=(1+\max(\xi,0))^2\)</span>. The inequality
+<span class="math" data-index="56" data-tex="\(1+\max(\xi+h,0)\le(1+|h|)(1+\max(\xi,0))\)">\(1+\max(\xi+h,0)\le(1+|h|)(1+\max(\xi,0))\)</span>
+shows that <span class="math" data-index="57" data-tex="\(C=1,N=2\)">\(C=1,N=2\)</span> work. Define tempered distributions by their Fourier functions:</p>
+<span class="math math-display" id="eq-L148.12" data-index="58" data-tex="\[
+\widehat w(\xi)=1_{\{\xi&lt;-1\}}(1+|\xi|),\qquad
+\widehat u(\xi)=1_{\{\xi&gt;1\}}(1+\xi)^{-3}.
+\tag{L148.12}
+\]">\[
+\widehat w(\xi)=1_{\{\xi&lt;-1\}}(1+|\xi|),\qquad
+\widehat u(\xi)=1_{\{\xi&gt;1\}}(1+\xi)^{-3}.
+\tag{L148.12}
+\]</span>
+<p>They are tempered because these functions have polynomial growth. On the negative half-line the reciprocal reflected weight is <span class="math" data-index="59" data-tex="\((1+|\xi|)^{-2}\)">\((1+|\xi|)^{-2}\)</span>. Hence</p>
+<span class="math math-display" id="eq-L148.13" data-index="60" data-tex="\[
+\|w\|_{2,1/\check k}^2
+=\frac1{2\pi}\int_1^\infty(1+t)^{-2}\,dt
+=\frac1{4\pi}.
+\tag{L148.13}
+\]">\[
+\|w\|_{2,1/\check k}^2
+=\frac1{2\pi}\int_1^\infty(1+t)^{-2}\,dt
+=\frac1{4\pi}.
+\tag{L148.13}
+\]</span>
+<p>In contrast, <span class="math" data-index="61" data-tex="\(1/k=1\)">\(1/k=1\)</span> on that half-line, and the corresponding norm of <span class="math" data-index="62" data-tex="\(w\)">\(w\)</span> diverges. The test <span class="math" data-index="63" data-tex="\(u\)">\(u\)</span> has</p>
+<span class="math math-display" id="eq-L148.14" data-index="64" data-tex="\[
+\|u\|_{2,k}^2=\frac1{4\pi},\qquad
+\mathcal B(w,u)=\frac1{2\pi}\int_1^\infty(1+t)^{-2}\,dt
+=\frac1{4\pi}.
+\tag{L148.14}
+\]">\[
+\|u\|_{2,k}^2=\frac1{4\pi},\qquad
+\mathcal B(w,u)=\frac1{2\pi}\int_1^\infty(1+t)^{-2}\,dt
+=\frac1{4\pi}.
+\tag{L148.14}
+\]</span>
+<p>It attains equality in the bilinear norm estimate. These are global weighted distributions used to expose the dual convention; no compact support of either is asserted. The local representation theorem obtains this same reflected weight after multiplication by cutoffs.</p>
+<h2 id="worked-example-4-a-weak-integral-with-infinite-absolute-mass">Worked example 4. A weak integral with infinite absolute mass</h2>
+<p>Keep <span class="math" data-index="65" data-tex="\(X,k,\phi\)">\(X,k,\phi\)</span> from example 2, but let <span class="math" data-index="66" data-tex="\(\mu\)">\(\mu\)</span> be Lebesgue measure on the real axis inside the complex plane, and set</p>
+<span class="math math-display" id="eq-L148.15" data-index="67" data-tex="\[
+V(\xi)=(1+\xi^2)^{-3/8}.
+\tag{L148.15}
+\]">\[
+V(\xi)=(1+\xi^2)^{-3/8}.
+\tag{L148.15}
+\]</span>
+<p>An open unit ball centered at <span class="math" data-index="68" data-tex="\(\alpha+i\beta\)">\(\alpha+i\beta\)</span> cuts out an interval of length
+<span class="math" data-index="69" data-tex="\(2\sqrt{1-\beta^2}\)">\(2\sqrt{1-\beta^2}\)</span> when <span class="math" data-index="70" data-tex="\(|\beta|&lt;1\)">\(|\beta|&lt;1\)</span>, and has zero real-axis mass when <span class="math" data-index="71" data-tex="\(|\beta|\ge1\)">\(|\beta|\ge1\)</span>. Thus <span class="math" data-index="72" data-tex="\(M=2\)">\(M=2\)</span> works although this measure has no two-dimensional Lebesgue density.</p>
+<p>The reflected data norm is</p>
+<span class="math math-display" id="eq-L148.16" data-index="73" data-tex="\[
+Q^2=e^4\int_{\mathbb R}(1+\xi^2)^{-3/4}\,d\xi.
+\tag{L148.16}
+\]">\[
+Q^2=e^4\int_{\mathbb R}(1+\xi^2)^{-3/4}\,d\xi.
+\tag{L148.16}
+\]</span>
+<p>It is finite by the tail estimate in CF45. But the proposed pointwise absolute integral has modulus integrand <span class="math" data-index="74" data-tex="\(V(\xi)\)">\(V(\xi)\)</span>, independent of <span class="math" data-index="75" data-tex="\(x\)">\(x\)</span>, whose tail decays only as <span class="math" data-index="76" data-tex="\(|\xi|^{-3/4}\)">\(|\xi|^{-3/4}\)</span>. CF46 proves that its total integral diverges. At <span class="math" data-index="77" data-tex="\(x=0\)">\(x=0\)</span> all terms are positive, so there is no cancellation even for a symmetric cutoff.</p>
+<p>This does not prevent distributional integration. For a compact smooth <span class="math" data-index="78" data-tex="\(u\)">\(u\)</span>, its transform decays faster than any power on the real line, and <span class="math" data-index="79" data-tex="\(\int V(\xi)F_u(-\xi)\,d\xi\)">\(\int V(\xi)F_u(-\xi)\,d\xi\)</span> converges. CF39–CF43 extend that action to every compact weighted test, not just smooth ones. Globally the inverse transform of <span class="math" data-index="80" data-tex="\(2\pi V\)">\(2\pi V\)</span> is an <span class="math" data-index="81" data-tex="\(L^2\)">\(L^2\)</span> distribution; its restriction to <span class="math" data-index="82" data-tex="\(X\)">\(X\)</span> is exactly this weak representation.</p>
+<figure><img class="course-figure" width="2196" height="990" src="reproduce/L148/figures/singular-measure-and-weak-integral.png" alt="Real-axis unit-ball mass and finite squared data beside a divergent absolute integral." /><figcaption class="native"><a href="reproduce/L148/figures/singular-measure-and-weak-integral.png">Open full-size PNG</a> · <a href="reproduce/L148/figures/singular-measure-and-weak-integral.svg">Open SVG</a></figcaption></figure>
+<p>The squared-data plot omits the fixed multiplier <span class="math" data-index="83" data-tex="\(e^4\)">\(e^4\)</span>. Its finite tails and the divergence lower bound are established analytically in CF45–CF46; the curves visualize those arguments.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1 — entry: the support-function sign.</strong> For <span class="math" data-index="84" data-tex="\(K=[-3/2,1/2]\)">\(K=[-3/2,1/2]\)</span>, calculate <span class="math" data-index="85" data-tex="\(H_K(\eta)\)">\(H_K(\eta)\)</span> and <span class="math" data-index="86" data-tex="\(H_K(-\eta)\)">\(H_K(-\eta)\)</span>, and explain why they cannot be interchanged in the cutoff estimate.</p>
+<p><strong>Solution 1.</strong> Maximizing <span class="math" data-index="87" data-tex="\(x\eta\)">\(x\eta\)</span> gives <span class="math" data-index="88" data-tex="\(H_K(\eta)=\eta/2\)">\(H_K(\eta)=\eta/2\)</span> for <span class="math" data-index="89" data-tex="\(\eta\ge0\)">\(\eta\ge0\)</span> and <span class="math" data-index="90" data-tex="\(-3\eta/2\)">\(-3\eta/2\)</span> for <span class="math" data-index="91" data-tex="\(\eta&lt;0\)">\(\eta&lt;0\)</span>. Therefore <span class="math" data-index="92" data-tex="\(H_K(-\eta)=3\eta/2\)">\(H_K(-\eta)=3\eta/2\)</span> for <span class="math" data-index="93" data-tex="\(\eta\ge0\)">\(\eta\ge0\)</span> and <span class="math" data-index="94" data-tex="\(-\eta/2\)">\(-\eta/2\)</span> for <span class="math" data-index="95" data-tex="\(\eta&lt;0\)">\(\eta&lt;0\)</span>. The shifted distribution is <span class="math" data-index="96" data-tex="\(e^{x\eta}u\)">\(e^{x\eta}u\)</span>; recovering <span class="math" data-index="97" data-tex="\(\psi u\)">\(\psi u\)</span> multiplies it by <span class="math" data-index="98" data-tex="\(\psi e^{-x\eta}\)">\(\psi e^{-x\eta}\)</span>. The modulus of this multiplier's exponential is controlled by the maximum of <span class="math" data-index="99" data-tex="\(-x\eta\)">\(-x\eta\)</span> on <span class="math" data-index="100" data-tex="\(K\)">\(K\)</span>, hence by <span class="math" data-index="101" data-tex="\(H_K(-\eta)\)">\(H_K(-\eta)\)</span>. For <span class="math" data-index="102" data-tex="\(\eta=1\)">\(\eta=1\)</span> the two maxima are <span class="math" data-index="103" data-tex="\(1/2\)">\(1/2\)</span> and <span class="math" data-index="104" data-tex="\(3/2\)">\(3/2\)</span>, respectively. The minus sign records the operation being performed.</p>
+<p><strong>Exercise 2 — entry: exact normalizations.</strong> In one dimension take <span class="math" data-index="105" data-tex="\(k=1\)">\(k=1\)</span> and <span class="math" data-index="106" data-tex="\(u=1_{[-1,1]}\)">\(u=1_{[-1,1]}\)</span>. Compute <span class="math" data-index="107" data-tex="\(\|u\|_{2,k}^2\)">\(\|u\|_{2,k}^2\)</span>, <span class="math" data-index="108" data-tex="\(I_1(0)\)">\(I_1(0)\)</span>, and the ratio between them.</p>
+<p><strong>Solution 2.</strong> CF1 gives the equal physical and weighted squared norm <span class="math" data-index="109" data-tex="\(\int_{-1}^1 1\,dx=2\)">\(\int_{-1}^1 1\,dx=2\)</span>. Formula L148.2 at zero gives <span class="math" data-index="110" data-tex="\(I_1(0)=4\pi\)">\(I_1(0)=4\pi\)</span>. The ratio is <span class="math" data-index="111" data-tex="\(2\pi\)">\(2\pi\)</span>, exactly the inverse of the factor <span class="math" data-index="112" data-tex="\((2\pi)^{-1}\)">\((2\pi)^{-1}\)</span> in the squared norm CF4. The undivided real Fourier integral is not itself the squared <span class="math" data-index="113" data-tex="\(B_{2,1}\)">\(B_{2,1}\)</span> norm.</p>
+<p><strong>Exercise 3 — intermediate: the full imaginary exponent.</strong> Starting from CF18, show why the damper <span class="math" data-index="114" data-tex="\((1+|\eta|^2)^{-N-2n}\)">\((1+|\eta|^2)^{-N-2n}\)</span> is integrable after the plane estimate. What goes wrong if it is replaced by <span class="math" data-index="115" data-tex="\((1+|\eta|^2)^{-N-n}\)">\((1+|\eta|^2)^{-N-n}\)</span>?</p>
+<p><strong>Solution 3.</strong> Since <span class="math" data-index="116" data-tex="\((1+r)^2\le2(1+r^2)\)">\((1+r)^2\le2(1+r^2)\)</span>, the squared plane power <span class="math" data-index="117" data-tex="\((1+r)^{2(N+n)}\)">\((1+r)^{2(N+n)}\)</span> is at most <span class="math" data-index="118" data-tex="\(2^{N+n}(1+r^2)^{N+n}\)">\(2^{N+n}(1+r^2)^{N+n}\)</span>. The correct damper leaves <span class="math" data-index="119" data-tex="\((1+r^2)^{-n}\)">\((1+r^2)^{-n}\)</span>. In real dimension <span class="math" data-index="120" data-tex="\(n\)">\(n\)</span>, its tail is bounded by <span class="math" data-index="121" data-tex="\(r^{-2n}\)">\(r^{-2n}\)</span>, and the radial volume factor is <span class="math" data-index="122" data-tex="\(r^{n-1}\)">\(r^{n-1}\)</span>, leaving the integrable <span class="math" data-index="123" data-tex="\(r^{-n-1}\)">\(r^{-n-1}\)</span>. With the proposed replacement the powers cancel completely, leaving only a constant upper bound. Integrating that bound over <span class="math" data-index="124" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> gives infinity. This shows the proposed deduction fails; it does not assert that every individual transform has an infinite integral for that weaker damper.</p>
+<p><strong>Exercise 4 — intermediate: a thin support.</strong> Verify CF12–CF13 when <span class="math" data-index="125" data-tex="\(K=\{0\}\subset\mathbb R^n\)">\(K=\{0\}\subset\mathbb R^n\)</span>. Why is an indicator of <span class="math" data-index="126" data-tex="\(K\)">\(K\)</span> itself unsuitable?</p>
+<p><strong>Solution 4.</strong> The indicator in CF12 is that of <span class="math" data-index="127" data-tex="\(B(0,\delta/2)\)">\(B(0,\delta/2)\)</span>, not that of <span class="math" data-index="128" data-tex="\(K\)">\(K\)</span>. Convolution with the probability bump of radius <span class="math" data-index="129" data-tex="\(\delta/4\)">\(\delta/4\)</span> is one on <span class="math" data-index="130" data-tex="\(B(0,\delta/4)\)">\(B(0,\delta/4)\)</span>, and its support is contained in <span class="math" data-index="131" data-tex="\(\overline B(0,3\delta/4)\)">\(\overline B(0,3\delta/4)\)</span>. Derivatives fall on the bump. Its derivative <span class="math" data-index="132" data-tex="\(L^1\)">\(L^1\)</span> norms scale as <span class="math" data-index="133" data-tex="\((\delta/4)^{-|\alpha|}\)">\((\delta/4)^{-|\alpha|}\)</span>, while the indicator has volume <span class="math" data-index="134" data-tex="\(b_n(\delta/2)^n\)">\(b_n(\delta/2)^n\)</span>. The convolution bound yields the stronger <span class="math" data-index="135" data-tex="\(O(\delta^{n-|\alpha|})\)">\(O(\delta^{n-|\alpha|})\)</span> estimate, which implies CF13 for <span class="math" data-index="136" data-tex="\(0&lt;\delta\le1\)">\(0&lt;\delta\le1\)</span>. An indicator of the point has zero Lebesgue measure, so its convolution would be identically zero and could not equal one near the support.</p>
+<p><strong>Exercise 5 — intermediate: detect the reflected dual by integration.</strong> Verify both finite quantities in L148.14, and show directly that <span class="math" data-index="137" data-tex="\(w\notin B_{2,1/k}\)">\(w\notin B_{2,1/k}\)</span>.</p>
+<p><strong>Solution 5.</strong> On <span class="math" data-index="138" data-tex="\(\xi&gt;1\)">\(\xi&gt;1\)</span>, <span class="math" data-index="139" data-tex="\(k^2|\widehat u|^2=(1+\xi)^4(1+\xi)^{-6}=(1+\xi)^{-2}\)">\(k^2|\widehat u|^2=(1+\xi)^4(1+\xi)^{-6}=(1+\xi)^{-2}\)</span>. Its integral from one to infinity is <span class="math" data-index="140" data-tex="\(1/2\)">\(1/2\)</span>, giving <span class="math" data-index="141" data-tex="\(\|u\|_{2,k}^2=1/(4\pi)\)">\(\|u\|_{2,k}^2=1/(4\pi)\)</span>. In the bilinear pairing <span class="math" data-index="142" data-tex="\(\widehat w(-\xi)\widehat u(\xi)\)">\(\widehat w(-\xi)\widehat u(\xi)\)</span> is zero unless <span class="math" data-index="143" data-tex="\(\xi&gt;1\)">\(\xi&gt;1\)</span>; there it is <span class="math" data-index="144" data-tex="\((1+\xi)(1+\xi)^{-3}=(1+\xi)^{-2}\)">\((1+\xi)(1+\xi)^{-3}=(1+\xi)^{-2}\)</span>, giving the identical result. On <span class="math" data-index="145" data-tex="\(\xi&lt;-1\)">\(\xi&lt;-1\)</span>, <span class="math" data-index="146" data-tex="\(1/k(\xi)=1\)">\(1/k(\xi)=1\)</span>, so its proposed squared weighted integrand is <span class="math" data-index="147" data-tex="\((1+|\xi|)^2\)">\((1+|\xi|)^2\)</span>, whose integral diverges. The finite norm in L148.13 instead uses <span class="math" data-index="148" data-tex="\(1/k(-\xi)\)">\(1/k(-\xi)\)</span>.</p>
+<p><strong>Exercise 6 — advanced: a different logarithmic coefficient.</strong> Suppose CF28 has <span class="math" data-index="149" data-tex="\(A\log(1+|\eta|)\)">\(A\log(1+|\eta|)\)</span>, with <span class="math" data-index="150" data-tex="\(A\ge0\)">\(A\ge0\)</span>, in place of its logarithm. Find the polynomial loss in CF33 and decide whether CF39 still follows.</p>
+<p><strong>Solution 6.</strong> The segment argument gives <span class="math" data-index="151" data-tex="\(e^{-2\phi(z)}\le e^{2C_\phi}(2+|\operatorname{Im}w|)^{2A}e^{-2\phi(w)}\)">\(e^{-2\phi(z)}\le e^{2C_\phi}(2+|\operatorname{Im}w|)^{2A}e^{-2\phi(w)}\)</span> on a unit ball. Since <span class="math" data-index="152" data-tex="\(2+r\le2(1+r)\)">\(2+r\le2(1+r)\)</span>, the loss is <span class="math" data-index="153" data-tex="\((1+r)^{2A}\)">\((1+r)^{2A}\)</span>, with constant <span class="math" data-index="154" data-tex="\(2^{2A}e^{2C_\phi}\)">\(2^{2A}e^{2C_\phi}\)</span>. The unit-ball variation proof is otherwise identical. Enlarge the support as in CF36. The required supremum becomes <span class="math" data-index="155" data-tex="\(e^{-2\rho r}(1+r)^{2A}(1+r^2)^{N+2n}\)">\(e^{-2\rho r}(1+r)^{2A}(1+r^2)^{N+2n}\)</span>, still finite. Thus the conditional representation remains valid with adjusted constants. The exact source hypothesis has <span class="math" data-index="156" data-tex="\(A=1\)">\(A=1\)</span>, producing the power two in CF33.</p>
+<p><strong>Exercise 7 — advanced: two kinds of measure.</strong> Show that <span class="math" data-index="157" data-tex="\(\sum_{(m,l)\in\mathbb Z^2}\delta_{2m+2il}\)">\(\sum_{(m,l)\in\mathbb Z^2}\delta_{2m+2il}\)</span> obeys the unit-ball bound with <span class="math" data-index="158" data-tex="\(M=1\)">\(M=1\)</span>. Contrast the proof of CF35 for this measure and for real-axis Lebesgue measure.</p>
+<p><strong>Solution 7.</strong> Distinct atoms have distance at least two. Two points in an open unit ball have distance strictly less than two by the triangle inequality; therefore such a ball contains at most one atom, including when its center is not a lattice point. For the lattice, the left side of CF35 is a nonnegative sum of Lebesgue integrals, so Tonelli interchanges the sum and integral. For real-axis measure it is a nonnegative product integral of one-dimensional measure and two-dimensional Lebesgue measure. In both cases translating the inner Lebesgue variable produces the indicator <span class="math" data-index="159" data-tex="\(|w-z|&lt;1\)">\(|w-z|&lt;1\)</span>, and integrating <span class="math" data-index="160" data-tex="\(z\)">\(z\)</span> produces exactly <span class="math" data-index="161" data-tex="\(\nu(B(w,1))\)">\(\nu(B(w,1))\)</span>. Neither measure needs a density in the complex plane.</p>
+<p><strong>Exercise 8 — advanced: all weighted tests, not just smooth ones.</strong> Let a compactly supported <span class="math" data-index="162" data-tex="\(u\in B_{2,k}\)">\(u\in B_{2,k}\)</span> have support inside <span class="math" data-index="163" data-tex="\(X\)">\(X\)</span>. Prove that mollification preserves a common compact support neighborhood and converges in the norm needed for CF31.</p>
+<p><strong>Solution 8.</strong> A compact subset of the open <span class="math" data-index="164" data-tex="\(X\)">\(X\)</span> has positive distance from its complement. Choose <span class="math" data-index="165" data-tex="\(\varepsilon_0&gt;0\)">\(\varepsilon_0&gt;0\)</span> so that its closed <span class="math" data-index="166" data-tex="\(\varepsilon_0\)">\(\varepsilon_0\)</span>-neighborhood is compactly contained in <span class="math" data-index="167" data-tex="\(X\)">\(X\)</span>. For a mollifier supported in the unit ball, the support of <span class="math" data-index="168" data-tex="\(u*\rho_\varepsilon\)">\(u*\rho_\varepsilon\)</span> is inside the <span class="math" data-index="169" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-neighborhood of that support, hence inside the fixed one when <span class="math" data-index="170" data-tex="\(\varepsilon\le\varepsilon_0\)">\(\varepsilon\le\varepsilon_0\)</span>. Distributional differentiation of the mollifier gives a smooth compact function. Its transform is <span class="math" data-index="171" data-tex="\(\widehat u(\xi)\widehat\rho(\varepsilon\xi)\)">\(\widehat u(\xi)\widehat\rho(\varepsilon\xi)\)</span>. The latter multiplier tends to one and is bounded by <span class="math" data-index="172" data-tex="\(\|\rho\|_1\)">\(\|\rho\|_1\)</span>, independent of <span class="math" data-index="173" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Dominated convergence against <span class="math" data-index="174" data-tex="\(|k\widehat u|^2\)">\(|k\widehat u|^2\)</span> proves norm convergence. CF40 controls the difference of the measure integrals using this common neighborhood, while the global reflected dual norm of <span class="math" data-index="175" data-tex="\(\chi v\)">\(\chi v\)</span> controls the pairings on the left. Thus both sides pass to the original <span class="math" data-index="176" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>Exercise 9 — advanced: finite data, divergent values.</strong> For example 4 prove the squared-data tail bound and the divergence lower bound, keeping both half-lines.</p>
+<p><strong>Solution 9.</strong> For <span class="math" data-index="177" data-tex="\(T\ge1\)">\(T\ge1\)</span>, <span class="math" data-index="178" data-tex="\((1+\xi^2)^{-3/4}\le|\xi|^{-3/2}\)">\((1+\xi^2)^{-3/4}\le|\xi|^{-3/2}\)</span> on <span class="math" data-index="179" data-tex="\(|\xi|&gt;T\)">\(|\xi|&gt;T\)</span>. The two tails have total integral at most <span class="math" data-index="180" data-tex="\(2\int_T^\infty t^{-3/2}\,dt=4T^{-1/2}\)">\(2\int_T^\infty t^{-3/2}\,dt=4T^{-1/2}\)</span>; the actual data norm multiplies this by <span class="math" data-index="181" data-tex="\(e^4\)">\(e^4\)</span>. On <span class="math" data-index="182" data-tex="\([1,T]\)">\([1,T]\)</span>, <span class="math" data-index="183" data-tex="\(1+t^2\le2t^2\)">\(1+t^2\le2t^2\)</span> yields <span class="math" data-index="184" data-tex="\((1+t^2)^{-3/8}\ge2^{-3/8}t^{-3/4}\)">\((1+t^2)^{-3/8}\ge2^{-3/8}t^{-3/4}\)</span>. Integrating and doubling gives <span class="math" data-index="185" data-tex="\(8\,2^{-3/8}(T^{1/4}-1)\)">\(8\,2^{-3/8}(T^{1/4}-1)\)</span>. The omitted interval <span class="math" data-index="186" data-tex="\([0,1]\)">\([0,1]\)</span> only increases the positive integral. Hence the squared data converge and the absolute value integral diverges. No oscillatory argument is required.</p>
+<p><strong>Exercise 10 — synthesis: a lattice representation which does converge pointwise.</strong> Use <span class="math" data-index="187" data-tex="\(X=(-2,2)\)">\(X=(-2,2)\)</span>, <span class="math" data-index="188" data-tex="\(\phi(\xi+i\eta)=2\sqrt{1+\eta^2}\)">\(\phi(\xi+i\eta)=2\sqrt{1+\eta^2}\)</span>, and the lattice measure of exercise 7. Set</p>
+<span class="math math-display" id="eq-L148.17" data-index="189" data-tex="\[
+V(2m+2il)=\frac{e^{-2\sqrt{1+4l^2}}}{1+4m^2+4l^2}.
+\tag{L148.17}
+\]">\[
+V(2m+2il)=\frac{e^{-2\sqrt{1+4l^2}}}{1+4m^2+4l^2}.
+\tag{L148.17}
+\]</span>
+<p>Prove the reflected data condition and absolute, locally uniform convergence of its exponential series in <span class="math" data-index="190" data-tex="\(X\)">\(X\)</span>.</p>
+<p><strong>Solution 10.</strong> The data condition cancels the exponential and becomes <span class="math" data-index="191" data-tex="\(\sum_{m,l}(1+4m^2+4l^2)^{-2}&lt;\infty\)">\(\sum_{m,l}(1+4m^2+4l^2)^{-2}&lt;\infty\)</span>. On the square shell <span class="math" data-index="192" data-tex="\(\max(|m|,|l|)=j\ge1\)">\(\max(|m|,|l|)=j\ge1\)</span> there are exactly <span class="math" data-index="193" data-tex="\(8j\)">\(8j\)</span> lattice points, and each summand is at most <span class="math" data-index="194" data-tex="\((1+4j^2)^{-2}\le(16j^4)^{-1}\)">\((1+4j^2)^{-2}\le(16j^4)^{-1}\)</span>. The shell sum is at most <span class="math" data-index="195" data-tex="\(\tfrac12j^{-3}\)">\(\tfrac12j^{-3}\)</span>, which is summable; the origin is finite. For a compact set <span class="math" data-index="196" data-tex="\(|x|\le a&lt;2\)">\(|x|\le a&lt;2\)</span>, each mode has modulus at most</p>
+<span class="math math-display" id="eq-L148.18" data-index="197" data-tex="\[
+\frac{e^{-2\sqrt{1+4l^2}-2lx}}{1+4m^2+4l^2}
+\le \frac{e^{-(4-2a)|l|}}{1+4m^2}.
+\tag{L148.18}
+\]">\[
+\frac{e^{-2\sqrt{1+4l^2}-2lx}}{1+4m^2+4l^2}
+\le \frac{e^{-(4-2a)|l|}}{1+4m^2}.
+\tag{L148.18}
+\]</span>
+<p>The sum over <span class="math" data-index="198" data-tex="\(m\)">\(m\)</span> is finite by comparison with <span class="math" data-index="199" data-tex="\(m^{-2}\)">\(m^{-2}\)</span>, and the sum over <span class="math" data-index="200" data-tex="\(l\)">\(l\)</span> is a geometric series. The bound is independent of <span class="math" data-index="201" data-tex="\(x\)">\(x\)</span> in that compact set, so the tails tend uniformly to zero there and the series is absolutely and locally uniformly convergent. Its sum is continuous. Integrating it against a compact smooth test is justified by that uniform absolute bound on the support, and gives CF31. Uniqueness identifies it with the theorem's distribution. This extra decay proves a pointwise representation in this example; CF30 by itself did not prove one in example 4.</p>
+<h2 id="what-the-computations-check">What the computations check</h2>
+<p>The reproducible calculations evaluate physical integrals independently of the displayed Fourier formulas, verify the shifted triangle's complex signs, compare truncated Fourier-plane integrals with the exact plane energy and a rigorous tail bound, and check the data-tail and divergence inequalities. They also verify the nonsymmetric dual norm and lattice shell count. These checks are supplements to CF1–CF12, not substitutes for the proofs.</p>
+<p>The formal companion supplies the exact source-statement map and references. The complete course still has separate mathematical and prerequisite targets beyond this lesson.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p><em>Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proofs and figures: CC0.</em></p>
+<p>A compactly supported distribution has an entire Fourier transform. Its values off the real frequency space can grow exponentially, but the supporting function of its support removes that growth. We prove three weighted estimates, then use them to integrate exponential solutions against a measure which may be singular. The resulting integral defines a distribution; it need not define a value at each point.</p>
+<p>This lesson reconstructs the full statements of Hörmander [H-II], Lemma 15.2.2 and Theorem 15.2.4. The existence of the four-condition weight in his Theorem 15.2.1 and its auxiliary Lemma 15.2.3 are separate targets. Here the representation assumes only the two explicitly stated conditions on the weight function.</p>
+<p>The received prerequisites are <a href="AN02-L002.html">weighted Fourier spaces</a>, especially Theorems 3.1, 4.1 and 4.3; <a href="AN02-L043.html">Hilbert representation</a>, Lemma 1.1; and <a href="prerequisites/prerequisite-bridges.html#AN03-DEP-001">Schwartz Fourier inversion</a>, Theorem 1.1 and its two-sided inverse bridge. The integration, completeness and smooth-density inputs are proved in <a href="prerequisites/banach-foundation-bridges.html#section-15-3">the Lebesgue foundation</a>. We spell out the weighted Hilbert adapter and the estimates used in this lesson rather than changing their conventions.</p>
+<h2 id="cf1-conventions-and-the-weighted-hilbert-space">CF1. Conventions and the weighted Hilbert space</h2>
+<p>Let <span class="math" data-index="202" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and use complex-linear distribution pairings. For real frequencies,</p>
+<span class="math math-display" id="eq-CF1" data-index="203" data-tex="\[
+\widehat f(\xi)=\int_{\mathbb R^n}e^{-ix\cdot\xi}f(x)\,dx,\qquad
+f(x)=(2\pi)^{-n}\int_{\mathbb R^n}e^{ix\cdot\xi}\widehat f(\xi)\,d\xi.
+\tag{CF1}
+\]">\[
+\widehat f(\xi)=\int_{\mathbb R^n}e^{-ix\cdot\xi}f(x)\,dx,\qquad
+f(x)=(2\pi)^{-n}\int_{\mathbb R^n}e^{ix\cdot\xi}\widehat f(\xi)\,d\xi.
+\tag{CF1}
+\]</span>
+<p>Let <span class="math" data-index="204" data-tex="\(k:\mathbb R^n\to(0,\infty)\)">\(k:\mathbb R^n\to(0,\infty)\)</span> satisfy, for fixed <span class="math" data-index="205" data-tex="\(C,N&gt;0\)">\(C,N&gt;0\)</span>,</p>
+<span class="math math-display" id="eq-CF2" data-index="206" data-tex="\[
+k(\xi+h)\le(1+C|h|)^N k(\xi).
+\tag{CF2}
+\]">\[
+k(\xi+h)\le(1+C|h|)^N k(\xi).
+\tag{CF2}
+\]</span>
+<p>There is no additional constant multiplying the right side. Reversing the shift proves the reciprocal ratio bound. In particular <span class="math" data-index="207" data-tex="\(k\)">\(k\)</span> is continuous, <span class="math" data-index="208" data-tex="\(k\)">\(k\)</span> and <span class="math" data-index="209" data-tex="\(1/k\)">\(1/k\)</span> have polynomial growth, and</p>
+<span class="math math-display" id="eq-CF3" data-index="210" data-tex="\[
+|\log k(\xi+h)-\log k(\xi)|\le N\log(1+C|h|)\le NC|h|.
+\tag{CF3}
+\]">\[
+|\log k(\xi+h)-\log k(\xi)|\le N\log(1+C|h|)\le NC|h|.
+\tag{CF3}
+\]</span>
+<p>The exponent <span class="math" data-index="211" data-tex="\(N\)">\(N\)</span> need not be an integer. Write <span class="math" data-index="212" data-tex="\(\check k(\xi)=k(-\xi)\)">\(\check k(\xi)=k(-\xi)\)</span>, <span class="math" data-index="213" data-tex="\(c_n=(2\pi)^{-n/2}\)">\(c_n=(2\pi)^{-n/2}\)</span>, and</p>
+<span class="math math-display" id="eq-CF4" data-index="214" data-tex="\[
+B_{2,k}=\{u\in\mathcal S&#x27;:\widehat u\text{ is a function},\ k\widehat u\in L^2\},
+\qquad \|u\|_{2,k}=c_n\|k\widehat u\|_2.
+\tag{CF4}
+\]">\[
+B_{2,k}=\{u\in\mathcal S&#x27;:\widehat u\text{ is a function},\ k\widehat u\in L^2\},
+\qquad \|u\|_{2,k}=c_n\|k\widehat u\|_2.
+\tag{CF4}
+\]</span>
+<p>If <span class="math" data-index="215" data-tex="\(U\)">\(U\)</span> has <span class="math" data-index="216" data-tex="\(kU\in L^2\)">\(kU\in L^2\)</span>, it defines a tempered distribution: Cauchy–Schwarz bounds <span class="math" data-index="217" data-tex="\(\int Uq\)">\(\int Uq\)</span> by <span class="math" data-index="218" data-tex="\(\|kU\|_2\|q/k\|_2\)">\(\|kU\|_2\|q/k\|_2\)</span>, and the latter is controlled by Schwartz seminorms. Its inverse transform is, explicitly,</p>
+<span class="math math-display" id="eq-CF5" data-index="219" data-tex="\[
+\langle u,q\rangle=(2\pi)^{-n}\int U(\xi)\widehat q(-\xi)\,d\xi.
+\tag{CF5}
+\]">\[
+\langle u,q\rangle=(2\pi)^{-n}\int U(\xi)\widehat q(-\xi)\,d\xi.
+\tag{CF5}
+\]</span>
+<p>Schwartz inversion proves that <span class="math" data-index="220" data-tex="\(\widehat u=U\)">\(\widehat u=U\)</span>. Thus <span class="math" data-index="221" data-tex="\(J_ku=c_n k\widehat u\)">\(J_ku=c_n k\widehat u\)</span> is an onto isometry to <span class="math" data-index="222" data-tex="\(L^2\)">\(L^2\)</span>, and <span class="math" data-index="223" data-tex="\(B_{2,k}\)">\(B_{2,k}\)</span> is Hilbert.</p>
+<p>Schwartz functions are dense in this space. Indeed, truncate a weighted Fourier function to bounded sets, then approximate it by smooth functions of compact support in frequency. On a bounded set the continuous positive <span class="math" data-index="224" data-tex="\(k\)">\(k\)</span> has finite upper and positive lower bounds, so ordinary smooth <span class="math" data-index="225" data-tex="\(L^2\)">\(L^2\)</span> approximation is also weighted approximation. The inverse transforms are Schwartz functions. Multiplying a Schwartz function by expanding physical cutoffs converges in all its Schwartz seminorms. Hence physical <span class="math" data-index="226" data-tex="\(C_c^\infty\)">\(C_c^\infty\)</span> functions are dense as well.</p>
+<p>For later examples <span class="math" data-index="227" data-tex="\(B_{2,1}=L^2\)">\(B_{2,1}=L^2\)</span> with equal norms. The Schwartz Plancherel identity follows from CF1 and Fubini applied to <span class="math" data-index="228" data-tex="\(\int f\overline g\)">\(\int f\overline g\)</span>. Approximation by Schwartz functions in physical <span class="math" data-index="229" data-tex="\(L^2\)">\(L^2\)</span> extends that isometry to all <span class="math" data-index="230" data-tex="\(L^2\)">\(L^2\)</span>. Its image is all frequency <span class="math" data-index="231" data-tex="\(L^2\)">\(L^2\)</span>, because it already contains the dense Schwartz space and is closed. Hölder implies that both limits agree with their tempered-distribution limits. This proves the assertion with the factor in CF4.</p>
+<h2 id="cf2-multipliers-and-the-reflected-bilinear-dual">CF2. Multipliers and the reflected bilinear dual</h2>
+<p>Set <span class="math" data-index="232" data-tex="\(M_k(h)=\sup_\xi k(\xi+h)/k(\xi)\)">\(M_k(h)=\sup_\xi k(\xi+h)/k(\xi)\)</span>, so <span class="math" data-index="233" data-tex="\(M_k(h)\le(1+C|h|)^N\)">\(M_k(h)\le(1+C|h|)^N\)</span>. For <span class="math" data-index="234" data-tex="\(a\in\mathcal S\)">\(a\in\mathcal S\)</span>,</p>
+<span class="math math-display" id="eq-CF6" data-index="235" data-tex="\[
+\|au\|_{2,k}\le A_k(a)\|u\|_{2,k},\qquad
+A_k(a)=(2\pi)^{-n}\int|\widehat a(h)|M_k(h)\,dh.
+\tag{CF6}
+\]">\[
+\|au\|_{2,k}\le A_k(a)\|u\|_{2,k},\qquad
+A_k(a)=(2\pi)^{-n}\int|\widehat a(h)|M_k(h)\,dh.
+\tag{CF6}
+\]</span>
+<p>To prove this first take <span class="math" data-index="236" data-tex="\(u\in\mathcal S\)">\(u\in\mathcal S\)</span>. The product formula and CF2 give</p>
+<span class="math math-display" id="eq-CF7" data-index="237" data-tex="\[
+k(\xi)|\widehat{au}(\xi)|
+\le(2\pi)^{-n}\int|\widehat a(h)|M_k(h)
+             k(\xi-h)|\widehat u(\xi-h)|\,dh.
+\tag{CF7}
+\]">\[
+k(\xi)|\widehat{au}(\xi)|
+\le(2\pi)^{-n}\int|\widehat a(h)|M_k(h)
+             k(\xi-h)|\widehat u(\xi-h)|\,dh.
+\tag{CF7}
+\]</span>
+<p>The <span class="math" data-index="238" data-tex="\(L^1*L^2\)">\(L^1*L^2\)</span> inequality proves CF6. For general <span class="math" data-index="239" data-tex="\(u\)">\(u\)</span>, use the density just proved. The products converge in <span class="math" data-index="240" data-tex="\(\mathcal S&#x27;\)">\(\mathcal S&#x27;\)</span> as well as in the displayed weighted space, so their limits are the actual distributional product.</p>
+<p>Every continuous complex-linear functional <span class="math" data-index="241" data-tex="\(L\)">\(L\)</span> on <span class="math" data-index="242" data-tex="\(B_{2,k}\)">\(B_{2,k}\)</span> has a unique <span class="math" data-index="243" data-tex="\(w\in B_{2,1/\check k}\)">\(w\in B_{2,1/\check k}\)</span> such that</p>
+<span class="math math-display" id="eq-CF8" data-index="244" data-tex="\[
+L(u)=\mathcal B(w,u):=(2\pi)^{-n}
+           \int\widehat w(-\xi)\widehat u(\xi)\,d\xi,
+\qquad \|L\|=\|w\|_{2,1/\check k}.
+\tag{CF8}
+\]">\[
+L(u)=\mathcal B(w,u):=(2\pi)^{-n}
+           \int\widehat w(-\xi)\widehat u(\xi)\,d\xi,
+\qquad \|L\|=\|w\|_{2,1/\check k}.
+\tag{CF8}
+\]</span>
+<p>In fact Hilbert representation, with the inner product linear in its first entry, gives a <span class="math" data-index="245" data-tex="\(g\in L^2\)">\(g\in L^2\)</span> with <span class="math" data-index="246" data-tex="\(L(u)=\int J_ku\,\overline g\)">\(L(u)=\int J_ku\,\overline g\)</span> and <span class="math" data-index="247" data-tex="\(\|g\|_2=\|L\|\)">\(\|g\|_2=\|L\|\)</span>. Define</p>
+<span class="math math-display" id="eq-CF9" data-index="248" data-tex="\[
+\widehat w(s)=c_n^{-1}k(-s)\overline{g(-s)}.
+\tag{CF9}
+\]">\[
+\widehat w(s)=c_n^{-1}k(-s)\overline{g(-s)}.
+\tag{CF9}
+\]</span>
+<p>The polynomial bound and Cauchy–Schwarz make this a tempered function. Substituting CF9 gives CF8 exactly, and its reciprocal reflected weighted norm is <span class="math" data-index="249" data-tex="\(\|g\|_2\)">\(\|g\|_2\)</span>. On Schwartz tests CF5 shows that <span class="math" data-index="250" data-tex="\(\mathcal B(w,u)\)">\(\mathcal B(w,u)\)</span> is the distribution pairing <span class="math" data-index="251" data-tex="\(\langle w,u\rangle\)">\(\langle w,u\rangle\)</span>. Uniqueness follows from Schwartz density, or from uniqueness of <span class="math" data-index="252" data-tex="\(g\)">\(g\)</span>. In particular the reflected weight cannot be replaced by <span class="math" data-index="253" data-tex="\(1/k\)">\(1/k\)</span> for a nonsymmetric <span class="math" data-index="254" data-tex="\(k\)">\(k\)</span>.</p>
+<h2 id="cf3-entire-transforms-and-shrinking-cutoffs">CF3. Entire transforms and shrinking cutoffs</h2>
+<p>For a distribution <span class="math" data-index="255" data-tex="\(u\)">\(u\)</span> of compact support, define</p>
+<span class="math math-display" id="eq-CF10" data-index="256" data-tex="\[
+F_u(z)=\langle u,e^{-ix\cdot z}\rangle,\qquad z=\xi+i\eta\in\mathbb C^n.
+\tag{CF10}
+\]">\[
+F_u(z)=\langle u,e^{-ix\cdot z}\rangle,\qquad z=\xi+i\eta\in\mathbb C^n.
+\tag{CF10}
+\]</span>
+<p>A cutoff equal to one near the support makes this pairing precise and makes it independent of the cutoff. Continuity of a compactly supported distribution bounds it by finitely many derivatives on a fixed compact neighborhood. The exponential and all these derivatives admit locally uniformly convergent power series in <span class="math" data-index="257" data-tex="\(z\)">\(z\)</span>; applying <span class="math" data-index="258" data-tex="\(u\)">\(u\)</span> therefore proves that <span class="math" data-index="259" data-tex="\(F_u\)">\(F_u\)</span> is entire. It restricts to <span class="math" data-index="260" data-tex="\(\widehat u\)">\(\widehat u\)</span> on real frequencies, and</p>
+<span class="math math-display" id="eq-CF11" data-index="261" data-tex="\[
+\widehat{e^{x\cdot\eta}u}(\xi)=F_u(\xi+i\eta).
+\tag{CF11}
+\]">\[
+\widehat{e^{x\cdot\eta}u}(\xi)=F_u(\xi+i\eta).
+\tag{CF11}
+\]</span>
+<p>These statements include complex-valued distributions and arbitrary finite order.</p>
+<p>Let <span class="math" data-index="262" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span> be nonempty, compact and convex, with
+<span class="math" data-index="263" data-tex="\(H_K(\eta)=\sup_{x\in K}x\cdot\eta\)">\(H_K(\eta)=\sup_{x\in K}x\cdot\eta\)</span>. Choose a nonnegative smooth <span class="math" data-index="264" data-tex="\(\rho\)">\(\rho\)</span> supported in the open unit ball with integral one. For <span class="math" data-index="265" data-tex="\(0&lt;\delta\le1\)">\(0&lt;\delta\le1\)</span>, put</p>
+<span class="math math-display" id="eq-CF12" data-index="266" data-tex="\[
+\chi_\delta=1_{K+B(0,\delta/2)}*\rho_{\delta/4}.
+\tag{CF12}
+\]">\[
+\chi_\delta=1_{K+B(0,\delta/2)}*\rho_{\delta/4}.
+\tag{CF12}
+\]</span>
+<p>Then <span class="math" data-index="267" data-tex="\(0\le\chi_\delta\le1\)">\(0\le\chi_\delta\le1\)</span>, it is one when the distance to <span class="math" data-index="268" data-tex="\(K\)">\(K\)</span> is less than <span class="math" data-index="269" data-tex="\(\delta/4\)">\(\delta/4\)</span>, and its support is contained in <span class="math" data-index="270" data-tex="\(K+\overline B(0,3\delta/4)\)">\(K+\overline B(0,3\delta/4)\)</span>. Differentiating the smooth factor in the convolution gives</p>
+<span class="math math-display" id="eq-CF13" data-index="271" data-tex="\[
+\|\partial^\alpha\chi_\delta\|_1
+\le C_{K,\alpha,\rho}\delta^{-|\alpha|}.
+\tag{CF13}
+\]">\[
+\|\partial^\alpha\chi_\delta\|_1
+\le C_{K,\alpha,\rho}\delta^{-|\alpha|}.
+\tag{CF13}
+\]</span>
+<p>Here the volume of <span class="math" data-index="272" data-tex="\(K+B(0,\delta/2)\)">\(K+B(0,\delta/2)\)</span> is uniformly bounded by that of <span class="math" data-index="273" data-tex="\(K+B(0,1)\)">\(K+B(0,1)\)</span>. Thus CF12 works even when <span class="math" data-index="274" data-tex="\(K\)">\(K\)</span> has empty interior.</p>
+<p>For every integer <span class="math" data-index="275" data-tex="\(m\ge0\)">\(m\ge0\)</span> these cutoffs satisfy</p>
+<span class="math math-display" id="eq-CF14" data-index="276" data-tex="\[
+|\widehat{\chi_\delta}(\xi+i\eta)|
+\le D_m e^{H_K(\eta)+\delta|\eta|}
+                (1+\delta|\xi+i\eta|)^{-m}.
+\tag{CF14}
+\]">\[
+|\widehat{\chi_\delta}(\xi+i\eta)|
+\le D_m e^{H_K(\eta)+\delta|\eta|}
+                (1+\delta|\xi+i\eta|)^{-m}.
+\tag{CF14}
+\]</span>
+<p>The estimate of order zero follows by integrating the modulus of the exponential over the support. If <span class="math" data-index="277" data-tex="\(z\ne0\)">\(z\ne0\)</span>, choose a coordinate with <span class="math" data-index="278" data-tex="\(|z_j|\ge|z|/\sqrt n\)">\(|z_j|\ge|z|/\sqrt n\)</span>. Integration by parts <span class="math" data-index="279" data-tex="\(m\)">\(m\)</span> times in that coordinate, keeping the complex frequency in the exponential, gives</p>
+<span class="math math-display" id="eq-CF15" data-index="280" data-tex="\[
+|z_j|^m|\widehat{\chi_\delta}(z)|
+\le e^{H_K(\eta)+\delta|\eta|}
+                     \|\partial_j^m\chi_\delta\|_1.
+\tag{CF15}
+\]">\[
+|z_j|^m|\widehat{\chi_\delta}(z)|
+\le e^{H_K(\eta)+\delta|\eta|}
+                     \|\partial_j^m\chi_\delta\|_1.
+\tag{CF15}
+\]</span>
+<p>The derivatives of <span class="math" data-index="281" data-tex="\(\chi_\delta\)">\(\chi_\delta\)</span>, rather than derivatives of <span class="math" data-index="282" data-tex="\(e^{x\cdot\eta}\)">\(e^{x\cdot\eta}\)</span>, occur in CF15. Combining this bound with the order-zero bound gives CF14, after increasing <span class="math" data-index="283" data-tex="\(D_m\)">\(D_m\)</span>, also at <span class="math" data-index="284" data-tex="\(z=0\)">\(z=0\)</span>.</p>
+<p>Take an integer <span class="math" data-index="285" data-tex="\(m&gt;N+n\)">\(m&gt;N+n\)</span>. Since <span class="math" data-index="286" data-tex="\(|\xi+i\eta|\ge|\xi|\)">\(|\xi+i\eta|\ge|\xi|\)</span>, substitute <span class="math" data-index="287" data-tex="\(s=\delta\xi\)">\(s=\delta\xi\)</span> into CF14 to obtain</p>
+<span class="math math-display" id="eq-CF16" data-index="288" data-tex="\[
+\int|\widehat{\chi_\delta}(\xi+i\eta)|(1+C|\xi|)^N\,d\xi
+\le D e^{H_K(\eta)+\delta|\eta|}\delta^{-N-n}.
+\tag{CF16}
+\]">\[
+\int|\widehat{\chi_\delta}(\xi+i\eta)|(1+C|\xi|)^N\,d\xi
+\le D e^{H_K(\eta)+\delta|\eta|}\delta^{-N-n}.
+\tag{CF16}
+\]</span>
+<p>Indeed <span class="math" data-index="289" data-tex="\((1+C|s|/\delta)^N\le\delta^{-N}(1+C|s|)^N\)">\((1+C|s|/\delta)^N\le\delta^{-N}(1+C|s|)^N\)</span>, and the remaining integral of <span class="math" data-index="290" data-tex="\((1+|s|)^{N-m}\)">\((1+|s|)^{N-m}\)</span> is finite. All constants here are independent of <span class="math" data-index="291" data-tex="\(\delta\)">\(\delta\)</span> and <span class="math" data-index="292" data-tex="\(\eta\)">\(\eta\)</span>.</p>
+<h2 id="cf4-the-full-complex-volume-estimate">CF4. The full complex-volume estimate</h2>
+<p><strong>Theorem CF4.</strong> If <span class="math" data-index="293" data-tex="\(\operatorname{supp}u\subset K\)">\(\operatorname{supp}u\subset K\)</span> and <span class="math" data-index="294" data-tex="\(u\in B_{2,k}\)">\(u\in B_{2,k}\)</span>, then</p>
+<span class="math math-display" id="eq-CF17" data-index="295" data-tex="\[
+\int_{\mathbb C^n}|F_u(z)|^2e^{-2H_K(\operatorname{Im}z)}
+ k(\operatorname{Re}z)^2
+ (1+|\operatorname{Im}z|^2)^{-N-2n}\,dV(z)
+\le C_{K,k}\|u\|_{2,k}^2.
+\tag{CF17}
+\]">\[
+\int_{\mathbb C^n}|F_u(z)|^2e^{-2H_K(\operatorname{Im}z)}
+ k(\operatorname{Re}z)^2
+ (1+|\operatorname{Im}z|^2)^{-N-2n}\,dV(z)
+\le C_{K,k}\|u\|_{2,k}^2.
+\tag{CF17}
+\]</span>
+<p><strong>Proof.</strong> The function <span class="math" data-index="296" data-tex="\(a_\eta(x)=\chi_\delta(x)e^{x\cdot\eta}\)">\(a_\eta(x)=\chi_\delta(x)e^{x\cdot\eta}\)</span> is a smooth compact multiplier, and <span class="math" data-index="297" data-tex="\(a_\eta u=e^{x\cdot\eta}u\)">\(a_\eta u=e^{x\cdot\eta}u\)</span>. Its real Fourier transform is <span class="math" data-index="298" data-tex="\(\widehat{\chi_\delta}(\xi+i\eta)\)">\(\widehat{\chi_\delta}(\xi+i\eta)\)</span>. Apply CF6 and CF16 with
+<span class="math" data-index="299" data-tex="\(\delta=(1+|\eta|)^{-1}\)">\(\delta=(1+|\eta|)^{-1}\)</span>. Since <span class="math" data-index="300" data-tex="\(\delta|\eta|\le1\)">\(\delta|\eta|\le1\)</span>, CF11 gives</p>
+<span class="math math-display" id="eq-CF18" data-index="301" data-tex="\[
+\int_{\mathbb R^n}|F_u(\xi+i\eta)|^2k(\xi)^2\,d\xi
+\le D_{K,k} e^{2H_K(\eta)}
+                (1+|\eta|)^{2(N+n)}\|u\|_{2,k}^2.
+\tag{CF18}
+\]">\[
+\int_{\mathbb R^n}|F_u(\xi+i\eta)|^2k(\xi)^2\,d\xi
+\le D_{K,k} e^{2H_K(\eta)}
+                (1+|\eta|)^{2(N+n)}\|u\|_{2,k}^2.
+\tag{CF18}
+\]</span>
+<p>This also proves that every shifted plane has a finite weighted integral. Multiply by the weight in CF17 and integrate <span class="math" data-index="302" data-tex="\(\eta\)">\(\eta\)</span>. The remaining factor is bounded by a constant times</p>
+<span class="math math-display" id="eq-CF19" data-index="303" data-tex="\[
+(1+|\eta|^2)^{N+n}(1+|\eta|^2)^{-N-2n}
+=(1+|\eta|^2)^{-n}.
+\tag{CF19}
+\]">\[
+(1+|\eta|^2)^{N+n}(1+|\eta|^2)^{-N-2n}
+=(1+|\eta|^2)^{-n}.
+\tag{CF19}
+\]</span>
+<p>It is integrable in real dimension <span class="math" data-index="304" data-tex="\(n\)">\(n\)</span>: outside the unit ball its polar integral is bounded by a constant times <span class="math" data-index="305" data-tex="\(\int_1^\infty r^{-n-1}\,dr\)">\(\int_1^\infty r^{-n-1}\,dr\)</span>. Tonelli justifies all integrals, including a priori infinite ones. This proves CF17. The exponent is <span class="math" data-index="306" data-tex="\(N+2n\)">\(N+2n\)</span>; the plane estimate CF18 alone would not justify replacing it by <span class="math" data-index="307" data-tex="\(N+n\)">\(N+n\)</span>. <span class="math" data-index="308" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="cf5-a-fixed-cutoff-recovers-a-real-norm">CF5. A fixed cutoff recovers a real norm</h2>
+<p><strong>Theorem CF5.</strong> Let <span class="math" data-index="309" data-tex="\(\psi\in C_c^\infty(\mathbb R^n)\)">\(\psi\in C_c^\infty(\mathbb R^n)\)</span> be supported in <span class="math" data-index="310" data-tex="\(K\)">\(K\)</span>. For every compactly supported <span class="math" data-index="311" data-tex="\(u\in B_{2,k}\)">\(u\in B_{2,k}\)</span> and every real <span class="math" data-index="312" data-tex="\(\eta\)">\(\eta\)</span>,</p>
+<span class="math math-display" id="eq-CF20" data-index="313" data-tex="\[
+\|\psi u\|_{2,k}^2
+\le C_{k,\psi}e^{2H_K(-\eta)}
+            \int|F_u(\xi+i\eta)|^2k(\xi)^2\,d\xi.
+\tag{CF20}
+\]">\[
+\|\psi u\|_{2,k}^2
+\le C_{k,\psi}e^{2H_K(-\eta)}
+            \int|F_u(\xi+i\eta)|^2k(\xi)^2\,d\xi.
+\tag{CF20}
+\]</span>
+<p>Here <span class="math" data-index="314" data-tex="\(\psi u\)">\(\psi u\)</span> is pointwise multiplication, not convolution; the support of <span class="math" data-index="315" data-tex="\(u\)">\(u\)</span> need not lie in <span class="math" data-index="316" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Proof.</strong> Apply CF18 with a large compact convex ball containing the support of <span class="math" data-index="317" data-tex="\(u\)">\(u\)</span>; hence <span class="math" data-index="318" data-tex="\(v_\eta=e^{x\cdot\eta}u\)">\(v_\eta=e^{x\cdot\eta}u\)</span> belongs to <span class="math" data-index="319" data-tex="\(B_{2,k}\)">\(B_{2,k}\)</span>. Now <span class="math" data-index="320" data-tex="\(\psi u=(\psi e^{-x\cdot\eta})v_\eta\)">\(\psi u=(\psi e^{-x\cdot\eta})v_\eta\)</span>. For a fixed <span class="math" data-index="321" data-tex="\(\psi\)">\(\psi\)</span>, the same complex-coordinate integration by parts as CF15 gives, for every integer <span class="math" data-index="322" data-tex="\(m\)">\(m\)</span>,</p>
+<span class="math math-display" id="eq-CF21" data-index="323" data-tex="\[
+|\widehat\psi(\xi-i\eta)|
+\le D_{m,\psi}e^{H_K(-\eta)}(1+|\xi-i\eta|)^{-m}.
+\tag{CF21}
+\]">\[
+|\widehat\psi(\xi-i\eta)|
+\le D_{m,\psi}e^{H_K(-\eta)}(1+|\xi-i\eta|)^{-m}.
+\tag{CF21}
+\]</span>
+<p>There is no shrinking derivative scale in CF21. Choosing <span class="math" data-index="324" data-tex="\(m&gt;N+n\)">\(m&gt;N+n\)</span> and using <span class="math" data-index="325" data-tex="\(|\xi-i\eta|\ge|\xi|\)">\(|\xi-i\eta|\ge|\xi|\)</span> bounds the multiplier constant of <span class="math" data-index="326" data-tex="\(\psi e^{-x\cdot\eta}\)">\(\psi e^{-x\cdot\eta}\)</span> by <span class="math" data-index="327" data-tex="\(D_{k,\psi}e^{H_K(-\eta)}\)">\(D_{k,\psi}e^{H_K(-\eta)}\)</span>. CF6 and CF11 prove CF20, with the factor <span class="math" data-index="328" data-tex="\((2\pi)^{-n}\)">\((2\pi)^{-n}\)</span> incorporated into <span class="math" data-index="329" data-tex="\(C_{k,\psi}\)">\(C_{k,\psi}\)</span>. <span class="math" data-index="330" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="cf6-a-unit-strip-controls-the-real-norm">CF6. A unit strip controls the real norm</h2>
+<p><strong>Theorem CF6.</strong> For every compactly supported <span class="math" data-index="331" data-tex="\(u\in B_{2,k}\)">\(u\in B_{2,k}\)</span>,</p>
+<span class="math math-display" id="eq-CF22" data-index="332" data-tex="\[
+\|u\|_{2,k}^2
+\le C_k\int_{|\operatorname{Im}z|&lt;1}|F_u(z)|^2
+                                  k(\operatorname{Re}z)^2\,dV(z).
+\tag{CF22}
+\]">\[
+\|u\|_{2,k}^2
+\le C_k\int_{|\operatorname{Im}z|&lt;1}|F_u(z)|^2
+                                  k(\operatorname{Re}z)^2\,dV(z).
+\tag{CF22}
+\]</span>
+<p>One possible constant is</p>
+<span class="math math-display" id="eq-CF23" data-index="333" data-tex="\[
+C_k=(2\pi)^{-n}(1+C)^{2N}\frac{b_n}{b_{2n}},
+\tag{CF23}
+\]">\[
+C_k=(2\pi)^{-n}(1+C)^{2N}\frac{b_n}{b_{2n}},
+\tag{CF23}
+\]</span>
+<p>where <span class="math" data-index="334" data-tex="\(b_d\)">\(b_d\)</span> is the volume of the real <span class="math" data-index="335" data-tex="\(d\)">\(d\)</span>-dimensional unit ball.</p>
+<p><strong>Proof.</strong> If <span class="math" data-index="336" data-tex="\(F\)">\(F\)</span> is entire, real differentiation gives
+<span class="math" data-index="337" data-tex="\(\Delta|F|^2=4\sum_j|\partial F/\partial z_j|^2\ge0\)">\(\Delta|F|^2=4\sum_j|\partial F/\partial z_j|^2\ge0\)</span>.
+For a smooth function <span class="math" data-index="338" data-tex="\(g\)">\(g\)</span> with <span class="math" data-index="339" data-tex="\(\Delta g\ge0\)">\(\Delta g\ge0\)</span>, the derivative of its spherical mean about a point is</p>
+<span class="math math-display" id="eq-CF24" data-index="340" data-tex="\[
+\frac{d}{dr}\frac1{\sigma_{d-1}}\int_{S^{d-1}}g(z+r\omega)\,d\omega
+=\frac1{\sigma_{d-1}r^{d-1}}\int_{B(z,r)}\Delta g\,dV\ge0.
+\tag{CF24}
+\]">\[
+\frac{d}{dr}\frac1{\sigma_{d-1}}\int_{S^{d-1}}g(z+r\omega)\,d\omega
+=\frac1{\sigma_{d-1}r^{d-1}}\int_{B(z,r)}\Delta g\,dV\ge0.
+\tag{CF24}
+\]</span>
+<p>The divergence theorem proves the equality. The limit at zero is <span class="math" data-index="341" data-tex="\(g(z)\)">\(g(z)\)</span>; integrating spherical means radially proves the ball submean inequality. Thus</p>
+<span class="math math-display" id="eq-CF25" data-index="342" data-tex="\[
+|F(\xi)|^2\le b_{2n}^{-1}\int_{|\theta|&lt;1}|F(\xi+\theta)|^2\,dV(\theta).
+\tag{CF25}
+\]">\[
+|F(\xi)|^2\le b_{2n}^{-1}\int_{|\theta|&lt;1}|F(\xi+\theta)|^2\,dV(\theta).
+\tag{CF25}
+\]</span>
+<p>Multiply by <span class="math" data-index="343" data-tex="\(k(\xi)^2\)">\(k(\xi)^2\)</span>, integrate <span class="math" data-index="344" data-tex="\(\xi\)">\(\xi\)</span>, and write <span class="math" data-index="345" data-tex="\(\theta=h+i\eta\)">\(\theta=h+i\eta\)</span>. CF2 gives
+<span class="math" data-index="346" data-tex="\(k(\xi)\le(1+C)^N k(\xi+h)\)">\(k(\xi)\le(1+C)^N k(\xi+h)\)</span> for <span class="math" data-index="347" data-tex="\(|h|&lt;1\)">\(|h|&lt;1\)</span>. Translate the real <span class="math" data-index="348" data-tex="\(\xi\)">\(\xi\)</span>-integral. For each <span class="math" data-index="349" data-tex="\(|\eta|&lt;1\)">\(|\eta|&lt;1\)</span>, the allowed <span class="math" data-index="350" data-tex="\(h\)">\(h\)</span> have volume
+<span class="math" data-index="351" data-tex="\(b_n(1-|\eta|^2)^{n/2}\le b_n\)">\(b_n(1-|\eta|^2)^{n/2}\le b_n\)</span>. Tonelli then proves CF22–CF23. If the right side is infinite the inequality is still valid; no unproved finiteness is used. <span class="math" data-index="352" data-tex="\(\square\)">\(\square\)</span></p>
+<figure><img class="course-figure" width="2376" height="846" src="reproduce/L148/figures/complex-planes-and-support-damping.png" alt="The indicator of an interval and its complex-plane Fourier energy." /><figcaption class="native"><a href="reproduce/L148/figures/complex-planes-and-support-damping.png">Open full-size PNG</a> · <a href="reproduce/L148/figures/complex-planes-and-support-damping.svg">Open SVG</a></figcaption></figure>
+<p>The figure uses the exact interval model in the learner material: the support factor removes exponential growth on imaginary shifts. CF18 allows a polynomial factor for general weights and distributions. The interval model has a sharper bound which is specific to that model.</p>
+<h2 id="cf7-the-two-hypotheses-for-a-weak-representation">CF7. The two hypotheses for a weak representation</h2>
+<p>Let <span class="math" data-index="353" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open and convex. Define</p>
+<span class="math math-display" id="eq-CF26" data-index="354" data-tex="\[
+\mathcal B_{2,k}^{\,c}(X)
+=\bigcup_{K\Subset X}\bigl(\mathcal E&#x27;(K)\cap B_{2,k}\bigr).
+\tag{CF26}
+\]">\[
+\mathcal B_{2,k}^{\,c}(X)
+=\bigcup_{K\Subset X}\bigl(\mathcal E&#x27;(K)\cap B_{2,k}\bigr).
+\tag{CF26}
+\]</span>
+<p>This is the space of compactly supported weighted tests in <span class="math" data-index="355" data-tex="\(X\)">\(X\)</span>, not a claim that all these distributions are smooth. Write <span class="math" data-index="356" data-tex="\(B_{2,1/\check k}^{\rm loc}(X)\)">\(B_{2,1/\check k}^{\rm loc}(X)\)</span> for distributions <span class="math" data-index="357" data-tex="\(v\)">\(v\)</span> such that <span class="math" data-index="358" data-tex="\(\chi v\in B_{2,1/\check k}\)">\(\chi v\in B_{2,1/\check k}\)</span> for every <span class="math" data-index="359" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span>.</p>
+<p>Assume a finite real function <span class="math" data-index="360" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-index="361" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> has the following properties:</p>
+<ol>
+<li>For every nonempty compact convex <span class="math" data-index="362" data-tex="\(L\Subset X\)">\(L\Subset X\)</span>, there is <span class="math" data-index="363" data-tex="\(A_L&lt;\infty\)">\(A_L&lt;\infty\)</span> such that</li>
+</ol>
+<span class="math math-display" id="eq-CF27" data-index="364" data-tex="\[
+e^{-\phi(\xi+i\eta)}\le A_L e^{-H_L(\eta)}k(\xi).
+\tag{CF27}
+\]">\[
+e^{-\phi(\xi+i\eta)}\le A_L e^{-H_L(\eta)}k(\xi).
+\tag{CF27}
+\]</span>
+<ol start="2">
+<li>It is locally Lipschitz, and its real weak gradient obeys</li>
+</ol>
+<span class="math math-display" id="eq-CF28" data-index="365" data-tex="\[
+|\nabla\phi(\xi+i\eta)|\le C_\phi+\log(1+|\eta|)
+\quad\text{almost everywhere}.
+\tag{CF28}
+\]">\[
+|\nabla\phi(\xi+i\eta)|\le C_\phi+\log(1+|\eta|)
+\quad\text{almost everywhere}.
+\tag{CF28}
+\]</span>
+<p>These are precisely the growth and gradient conditions needed below. Neither plurisubharmonicity nor a strictly positive Levi lower bound is an additional assumption here.</p>
+<p>Let <span class="math" data-index="366" data-tex="\(\mu\)">\(\mu\)</span> be a complex measure on <span class="math" data-index="367" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, with locally finite total variation and</p>
+<span class="math math-display" id="eq-CF29" data-index="368" data-tex="\[
+|\mu|(B(z,1))\le M\quad(z\in\mathbb C^n).
+\tag{CF29}
+\]">\[
+|\mu|(B(z,1))\le M\quad(z\in\mathbb C^n).
+\tag{CF29}
+\]</span>
+<p>Its variation is sigma finite, by a countable cover by unit balls. Let <span class="math" data-index="369" data-tex="\(V\)">\(V\)</span> be <span class="math" data-index="370" data-tex="\(\mu\)">\(\mu\)</span>-measurable and suppose</p>
+<span class="math math-display" id="eq-CF30" data-index="371" data-tex="\[
+Q^2=\int|V(z)|^2e^{2\phi(-z)}\,d|\mu|(z)&lt;\infty.
+\tag{CF30}
+\]">\[
+Q^2=\int|V(z)|^2e^{2\phi(-z)}\,d|\mu|(z)&lt;\infty.
+\tag{CF30}
+\]</span>
+<p><strong>Theorem CF7.</strong> There is exactly one <span class="math" data-index="372" data-tex="\(v\in B_{2,1/\check k}^{\rm loc}(X)\)">\(v\in B_{2,1/\check k}^{\rm loc}(X)\)</span> such that, for every <span class="math" data-index="373" data-tex="\(u\in\mathcal B_{2,k}^{\,c}(X)\)">\(u\in\mathcal B_{2,k}^{\,c}(X)\)</span>,</p>
+<span class="math math-display" id="eq-CF31" data-index="374" data-tex="\[
+\langle v,u\rangle=\int V(z)F_u(-z)\,d\mu(z).
+\tag{CF31}
+\]">\[
+\langle v,u\rangle=\int V(z)F_u(-z)\,d\mu(z).
+\tag{CF31}
+\]</span>
+<p>The right side is absolutely convergent. The left side has the canonical compact weighted pairing defined in CF11 below. The notation</p>
+<span class="math math-display" id="eq-CF32" data-index="375" data-tex="\[
+v(x)=\int V(z)e^{ix\cdot z}\,d\mu(z)
+\tag{CF32}
+\]">\[
+v(x)=\int V(z)e^{ix\cdot z}\,d\mu(z)
+\tag{CF32}
+\]</span>
+<p>is consequently a weak formula. It is not an assertion of pointwise absolute convergence.</p>
+<h2 id="cf8-a-direct-estimate-for-singular-measures">CF8. A direct estimate for singular measures</h2>
+<p>Reflect the variation: <span class="math" data-index="376" data-tex="\(\nu(E)=|\mu|(-E)\)">\(\nu(E)=|\mu|(-E)\)</span>. It also satisfies CF29. For any entire <span class="math" data-index="377" data-tex="\(F\)">\(F\)</span>,</p>
+<span class="math math-display" id="eq-CF33" data-index="378" data-tex="\[
+\int|F(z)|^2e^{-2\phi(z)}\,d\nu(z)
+\le\frac{4e^{2C_\phi}M}{b_{2n}}
+ \int|F(w)|^2e^{-2\phi(w)}
+                   (1+|\operatorname{Im}w|)^2\,dV(w).
+\tag{CF33}
+\]">\[
+\int|F(z)|^2e^{-2\phi(z)}\,d\nu(z)
+\le\frac{4e^{2C_\phi}M}{b_{2n}}
+ \int|F(w)|^2e^{-2\phi(w)}
+                   (1+|\operatorname{Im}w|)^2\,dV(w).
+\tag{CF33}
+\]</span>
+<p>Both sides may initially be infinite.</p>
+<p>To prove this, when <span class="math" data-index="379" data-tex="\(|z-w|&lt;1\)">\(|z-w|&lt;1\)</span>, integrate the gradient bound along their segment to obtain</p>
+<span class="math math-display" id="eq-CF34" data-index="380" data-tex="\[
+|\phi(z)-\phi(w)|\le C_\phi+\log(2+|\operatorname{Im}w|).
+\tag{CF34}
+\]">\[
+|\phi(z)-\phi(w)|\le C_\phi+\log(2+|\operatorname{Im}w|).
+\tag{CF34}
+\]</span>
+<p>For completeness CF28 holds almost everywhere, whereas a prescribed segment could meet an exceptional set. Smooth <span class="math" data-index="381" data-tex="\(\phi\)">\(\phi\)</span> on a neighborhood of that compact segment by convolution. Its gradient is bounded there by
+<span class="math" data-index="382" data-tex="\(C_\phi+\log(2+|\operatorname{Im}w|+\varepsilon)\)">\(C_\phi+\log(2+|\operatorname{Im}w|+\varepsilon)\)</span>.
+Integrate the smooth bound along the segment and pass to the locally uniform limit of these convolutions. Local Lipschitz continuity gives that uniform convergence. Let <span class="math" data-index="383" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>; this proves CF34 for every segment of length less than one.</p>
+<p>CF34 implies
+<span class="math" data-index="384" data-tex="\(e^{-2\phi(z)}\le4e^{2C_\phi}(1+|\operatorname{Im}w|)^2e^{-2\phi(w)}\)">\(e^{-2\phi(z)}\le4e^{2C_\phi}(1+|\operatorname{Im}w|)^2e^{-2\phi(w)}\)</span>.
+Apply the ball submean inequality CF25 at <span class="math" data-index="385" data-tex="\(z\)">\(z\)</span>, multiply by this weight, and integrate <span class="math" data-index="386" data-tex="\(z\)">\(z\)</span> against <span class="math" data-index="387" data-tex="\(\nu\)">\(\nu\)</span>. For the resulting nonnegative integrand the exact translation and interchange are</p>
+<span class="math math-display" id="eq-CF35" data-index="388" data-tex="\[
+\begin{aligned}
+&amp;\int d\nu(z)\int_{|\theta|&lt;1}
+ |F(z+\theta)|^2e^{-2\phi(z+\theta)}
+                  (1+|\operatorname{Im}(z+\theta)|)^2\,dV(\theta)\\
+&amp;=\int |F(w)|^2e^{-2\phi(w)}
+       (1+|\operatorname{Im}w|)^2
+       \nu(B(w,1))\,dV(w).
+\end{aligned}
+\tag{CF35}
+\]">\[
+\begin{aligned}
+&amp;\int d\nu(z)\int_{|\theta|&lt;1}
+ |F(z+\theta)|^2e^{-2\phi(z+\theta)}
+                  (1+|\operatorname{Im}(z+\theta)|)^2\,dV(\theta)\\
+&amp;=\int |F(w)|^2e^{-2\phi(w)}
+       (1+|\operatorname{Im}w|)^2
+       \nu(B(w,1))\,dV(w).
+\end{aligned}
+\tag{CF35}
+\]</span>
+<p>For each fixed <span class="math" data-index="389" data-tex="\(z\)">\(z\)</span>, substitute <span class="math" data-index="390" data-tex="\(w=z+\theta\)">\(w=z+\theta\)</span> in Lebesgue measure, then use Tonelli on <span class="math" data-index="391" data-tex="\(d\nu(z)dV(w)\)">\(d\nu(z)dV(w)\)</span>. This proves CF35 even when <span class="math" data-index="392" data-tex="\(\nu\)">\(\nu\)</span> is atomic or supported on a lower-dimensional set. CF29 now proves CF33; a smooth-density approximation of the measure is unnecessary. The power two comes from the coefficient one of the logarithm in CF28.</p>
+<h2 id="cf9-enlarging-a-support-inside-a-convex-domain">CF9. Enlarging a support inside a convex domain</h2>
+<p>If <span class="math" data-index="393" data-tex="\(S\Subset X\)">\(S\Subset X\)</span>, its convex hull <span class="math" data-index="394" data-tex="\(K=\operatorname{conv}S\)">\(K=\operatorname{conv}S\)</span> is compact and contained in <span class="math" data-index="395" data-tex="\(X\)">\(X\)</span>. Here is the finite-dimensional justification. Every finite convex combination of more than <span class="math" data-index="396" data-tex="\(n+1\)">\(n+1\)</span> points can be shortened: the augmented vectors <span class="math" data-index="397" data-tex="\((x_j,1)\)">\((x_j,1)\)</span> are linearly dependent, so change the nonnegative coefficients along a nonzero dependence until one becomes zero, keeping their sum and the represented point fixed. Iterate. Thus the hull is the continuous image of the compact set <span class="math" data-index="398" data-tex="\(S^{n+1}\times\Delta_n\)">\(S^{n+1}\times\Delta_n\)</span>; convexity puts all its points in <span class="math" data-index="399" data-tex="\(X\)">\(X\)</span>. Compactness and openness then give a <span class="math" data-index="400" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> for which</p>
+<span class="math math-display" id="eq-CF36" data-index="401" data-tex="\[
+L=K+\overline B(0,\rho)\Subset X,\qquad
+H_L(\eta)=H_K(\eta)+\rho|\eta|.
+\tag{CF36}
+\]">\[
+L=K+\overline B(0,\rho)\Subset X,\qquad
+H_L(\eta)=H_K(\eta)+\rho|\eta|.
+\tag{CF36}
+\]</span>
+<p>The support identity follows by maximizing the two summands separately. One may decrease <span class="math" data-index="402" data-tex="\(\rho\)">\(\rho\)</span> when a larger fixed neighborhood is needed.</p>
+<p>Apply CF27 to this <span class="math" data-index="403" data-tex="\(L\)">\(L\)</span>, and CF17 to <span class="math" data-index="404" data-tex="\(u\)">\(u\)</span> supported in <span class="math" data-index="405" data-tex="\(K\)">\(K\)</span>. Since</p>
+<span class="math math-display" id="eq-CF37" data-index="406" data-tex="\[
+\sup_{r\ge0} e^{-2\rho r}(1+r)^2(1+r^2)^{N+2n}&lt;\infty,
+\tag{CF37}
+\]">\[
+\sup_{r\ge0} e^{-2\rho r}(1+r)^2(1+r^2)^{N+2n}&lt;\infty,
+\tag{CF37}
+\]</span>
+<p>we obtain</p>
+<span class="math math-display" id="eq-CF38" data-index="407" data-tex="\[
+\int |F_u(w)|^2e^{-2\phi(w)}
+                 (1+|\operatorname{Im}w|)^2\,dV(w)
+\le D_{S,\phi,k}\|u\|_{2,k}^2.
+\tag{CF38}
+\]">\[
+\int |F_u(w)|^2e^{-2\phi(w)}
+                 (1+|\operatorname{Im}w|)^2\,dV(w)
+\le D_{S,\phi,k}\|u\|_{2,k}^2.
+\tag{CF38}
+\]</span>
+<p>The supremum is finite by continuity on bounded intervals and exponential decay against every fixed polynomial at infinity. The additional imaginary damping in CF36 is essential to this deduction. Combining CF33 and CF38 gives</p>
+<span class="math math-display" id="eq-CF39" data-index="408" data-tex="\[
+\int|F_u(z)|^2e^{-2\phi(z)}\,d|\mu|(-z)
+\le E_{S,\phi,k}M\|u\|_{2,k}^2.
+\tag{CF39}
+\]">\[
+\int|F_u(z)|^2e^{-2\phi(z)}\,d|\mu|(-z)
+\le E_{S,\phi,k}M\|u\|_{2,k}^2.
+\tag{CF39}
+\]</span>
+<p>These constants depend on the fixed compact support neighborhood, not on <span class="math" data-index="409" data-tex="\(u\)">\(u\)</span>.</p>
+<h2 id="cf10-constructing-the-distribution-and-its-local-weight">CF10. Constructing the distribution and its local weight</h2>
+<p>Cauchy–Schwarz in <span class="math" data-index="410" data-tex="\(d|\mu|\)">\(d|\mu|\)</span>, using CF30 and CF39, gives</p>
+<span class="math math-display" id="eq-CF40" data-index="411" data-tex="\[
+\int|V(z)F_u(-z)|\,d|\mu|(z)
+\le Q\bigl(E_{S,\phi,k}M\bigr)^{1/2}\|u\|_{2,k}.
+\tag{CF40}
+\]">\[
+\int|V(z)F_u(-z)|\,d|\mu|(z)
+\le Q\bigl(E_{S,\phi,k}M\bigr)^{1/2}\|u\|_{2,k}.
+\tag{CF40}
+\]</span>
+<p>This proves absolute convergence of the complex measure integral and its weighted norm bound for every compact weighted <span class="math" data-index="412" data-tex="\(u\)">\(u\)</span> with support in <span class="math" data-index="413" data-tex="\(S\)">\(S\)</span>.</p>
+<p>Initially define <span class="math" data-index="414" data-tex="\(v\)">\(v\)</span> on smooth compact tests by that integral. It is complex-linear. On a fixed compact support neighborhood <span class="math" data-index="415" data-tex="\(S\)">\(S\)</span>, integration by parts in a largest real frequency coordinate gives, for every integer <span class="math" data-index="416" data-tex="\(m\)">\(m\)</span>,</p>
+<span class="math math-display" id="eq-CF41" data-index="417" data-tex="\[
+|\widehat u(\xi)|\le D_{S,m}
+ \max_{|\alpha|\le m}\|\partial^\alpha u\|_\infty(1+|\xi|)^{-m}.
+\tag{CF41}
+\]">\[
+|\widehat u(\xi)|\le D_{S,m}
+ \max_{|\alpha|\le m}\|\partial^\alpha u\|_\infty(1+|\xi|)^{-m}.
+\tag{CF41}
+\]</span>
+<p>Choose <span class="math" data-index="418" data-tex="\(m&gt;N+n/2\)">\(m&gt;N+n/2\)</span>. The polynomial upper bound on <span class="math" data-index="419" data-tex="\(k\)">\(k\)</span> makes CF41 integrable in the squared weighted norm. Thus CF40 is bounded by a finite smooth test seminorm on every such <span class="math" data-index="420" data-tex="\(S\)">\(S\)</span>, which is the required distribution continuity.</p>
+<p>For any <span class="math" data-index="421" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span>, consider <span class="math" data-index="422" data-tex="\(h\mapsto\langle v,\chi h\rangle\)">\(h\mapsto\langle v,\chi h\rangle\)</span> first on <span class="math" data-index="423" data-tex="\(\mathcal S(\mathbb R^n)\)">\(\mathcal S(\mathbb R^n)\)</span>. Its support stays in <span class="math" data-index="424" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span>. CF40 and CF6 bound it by a constant times <span class="math" data-index="425" data-tex="\(\|h\|_{2,k}\)">\(\|h\|_{2,k}\)</span>. Density extends it to a functional on <span class="math" data-index="426" data-tex="\(B_{2,k}\)">\(B_{2,k}\)</span>. CF8 represents this functional by a unique <span class="math" data-index="427" data-tex="\(w_\chi\in B_{2,1/\check k}\)">\(w_\chi\in B_{2,1/\check k}\)</span>, and on smooth compact tests <span class="math" data-index="428" data-tex="\(w_\chi=\chi v\)">\(w_\chi=\chi v\)</span>. Consequently <span class="math" data-index="429" data-tex="\(\chi v\)">\(\chi v\)</span> really has the stated global weighted membership. This proves <span class="math" data-index="430" data-tex="\(v\in B_{2,1/\check k}^{\rm loc}(X)\)">\(v\in B_{2,1/\check k}^{\rm loc}(X)\)</span>.</p>
+<h2 id="cf11-the-pairing-for-every-compact-weighted-test">CF11. The pairing for every compact weighted test</h2>
+<p>For <span class="math" data-index="431" data-tex="\(u\in\mathcal B_{2,k}^{\,c}(X)\)">\(u\in\mathcal B_{2,k}^{\,c}(X)\)</span>, choose <span class="math" data-index="432" data-tex="\(\chi\in C_c^\infty(X)\)">\(\chi\in C_c^\infty(X)\)</span> equal to one on a neighborhood of its support, and define</p>
+<span class="math math-display" id="eq-CF42" data-index="433" data-tex="\[
+\langle v,u\rangle=\mathcal B(\chi v,u).
+\tag{CF42}
+\]">\[
+\langle v,u\rangle=\mathcal B(\chi v,u).
+\tag{CF42}
+\]</span>
+<p>This definition extends ordinary smooth test pairing and is independent of <span class="math" data-index="434" data-tex="\(\chi\)">\(\chi\)</span>.</p>
+<p>To prove the assertions without assuming that <span class="math" data-index="435" data-tex="\(u\)">\(u\)</span> is smooth, choose a compact smooth mollifier of integral one and set <span class="math" data-index="436" data-tex="\(u_\varepsilon=u*\rho_\varepsilon\)">\(u_\varepsilon=u*\rho_\varepsilon\)</span>. Differentiating the translated mollifier under the distribution shows that <span class="math" data-index="437" data-tex="\(u_\varepsilon\in C_c^\infty\)">\(u_\varepsilon\in C_c^\infty\)</span>, supported in a fixed small compact neighborhood of <span class="math" data-index="438" data-tex="\(\operatorname{supp}u\)">\(\operatorname{supp}u\)</span> inside <span class="math" data-index="439" data-tex="\(X\)">\(X\)</span>. On real frequencies</p>
+<span class="math math-display" id="eq-CF43" data-index="440" data-tex="\[
+\widehat{u_\varepsilon}(\xi)=\widehat u(\xi)\widehat\rho(\varepsilon\xi)
+\longrightarrow\widehat u(\xi),\qquad
+\|u_\varepsilon-u\|_{2,k}\longrightarrow0.
+\tag{CF43}
+\]">\[
+\widehat{u_\varepsilon}(\xi)=\widehat u(\xi)\widehat\rho(\varepsilon\xi)
+\longrightarrow\widehat u(\xi),\qquad
+\|u_\varepsilon-u\|_{2,k}\longrightarrow0.
+\tag{CF43}
+\]</span>
+<p>The norm limit follows by dominated convergence, since <span class="math" data-index="441" data-tex="\(\widehat\rho(\varepsilon\xi)\)">\(\widehat\rho(\varepsilon\xi)\)</span> is uniformly bounded and tends to one. If <span class="math" data-index="442" data-tex="\(\chi_1,\chi_2\)">\(\chi_1,\chi_2\)</span> are two admissible cutoffs, both are one on the support of <span class="math" data-index="443" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> for small <span class="math" data-index="444" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Their distribution pairings with this smooth test are therefore equal. Their difference belongs to the global dual space by CF10, so CF8 and CF43 pass that equality to <span class="math" data-index="445" data-tex="\(u\)">\(u\)</span>. This proves independence in CF42.</p>
+<p>For one such cutoff, CF8 and CF43 also pass the already proved identity CF31 for <span class="math" data-index="446" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> to the left side CF42. CF40, applied to <span class="math" data-index="447" data-tex="\(u_\varepsilon-u\)">\(u_\varepsilon-u\)</span> in their common fixed compact neighborhood, passes the integrals on the right to the integral for <span class="math" data-index="448" data-tex="\(u\)">\(u\)</span>. Thus CF31 holds for all of CF26, not only its smooth tests. Any other <span class="math" data-index="449" data-tex="\(v\)">\(v\)</span> satisfying it has the same action on <span class="math" data-index="450" data-tex="\(C_c^\infty(X)\)">\(C_c^\infty(X)\)</span> and hence is the same distribution. This completes Theorem CF7, including its uniqueness, absolute integral and local reflected weight. If <span class="math" data-index="451" data-tex="\(X\)">\(X\)</span> is empty, its test and distribution spaces are zero and the conclusion is immediate. <span class="math" data-index="452" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="cf12-a-weak-formula-which-is-not-a-pointwise-integral">CF12. A weak formula which is not a pointwise integral</h2>
+<p>Take <span class="math" data-index="453" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-index="454" data-tex="\(X=(-2,2)\)">\(X=(-2,2)\)</span>, <span class="math" data-index="455" data-tex="\(k=1\)">\(k=1\)</span>, and</p>
+<span class="math math-display" id="eq-CF44" data-index="456" data-tex="\[
+\phi(\xi+i\eta)=2\sqrt{1+\eta^2},\qquad
+d\mu(\xi+i\eta)=d\xi\text{ on the real axis},\qquad
+V(\xi)=(1+\xi^2)^{-3/8}.
+\tag{CF44}
+\]">\[
+\phi(\xi+i\eta)=2\sqrt{1+\eta^2},\qquad
+d\mu(\xi+i\eta)=d\xi\text{ on the real axis},\qquad
+V(\xi)=(1+\xi^2)^{-3/8}.
+\tag{CF44}
+\]</span>
+<p>Every compact <span class="math" data-index="457" data-tex="\(L\Subset X\)">\(L\Subset X\)</span> has <span class="math" data-index="458" data-tex="\(H_L(\eta)\le2|\eta|\)">\(H_L(\eta)\le2|\eta|\)</span>, so CF27 holds with <span class="math" data-index="459" data-tex="\(A_L=1\)">\(A_L=1\)</span>. The gradient of <span class="math" data-index="460" data-tex="\(\phi\)">\(\phi\)</span> has magnitude at most two, so CF28 holds with <span class="math" data-index="461" data-tex="\(C_\phi=2\)">\(C_\phi=2\)</span>. A complex open unit ball cuts out a real interval of length at most two, giving <span class="math" data-index="462" data-tex="\(M=2\)">\(M=2\)</span>. The data norm is finite:</p>
+<span class="math math-display" id="eq-CF45" data-index="463" data-tex="\[
+Q^2=e^4\int_{\mathbb R}(1+\xi^2)^{-3/4}\,d\xi&lt;\infty.
+\tag{CF45}
+\]">\[
+Q^2=e^4\int_{\mathbb R}(1+\xi^2)^{-3/4}\,d\xi&lt;\infty.
+\tag{CF45}
+\]</span>
+<p>Indeed its tail beyond <span class="math" data-index="464" data-tex="\(T\ge1\)">\(T\ge1\)</span> is at most <span class="math" data-index="465" data-tex="\(4e^4T^{-1/2}\)">\(4e^4T^{-1/2}\)</span>. Yet
+<span class="math" data-index="466" data-tex="\(\int_{\mathbb R}|V(\xi)e^{ix\xi}|\,d\xi=\infty\)">\(\int_{\mathbb R}|V(\xi)e^{ix\xi}|\,d\xi=\infty\)</span> for every real <span class="math" data-index="467" data-tex="\(x\)">\(x\)</span>. For example, its truncated positive integral obeys</p>
+<span class="math math-display" id="eq-CF46" data-index="468" data-tex="\[
+2\int_0^T(1+\xi^2)^{-3/8}\,d\xi
+\ge8\,2^{-3/8}(T^{1/4}-1),\qquad T\ge1.
+\tag{CF46}
+\]">\[
+2\int_0^T(1+\xi^2)^{-3/8}\,d\xi
+\ge8\,2^{-3/8}(T^{1/4}-1),\qquad T\ge1.
+\tag{CF46}
+\]</span>
+<p>This follows by integrating <span class="math" data-index="469" data-tex="\((1+\xi^2)^{-3/8}\ge2^{-3/8}\xi^{-3/4}\)">\((1+\xi^2)^{-3/8}\ge2^{-3/8}\xi^{-3/4}\)</span> on <span class="math" data-index="470" data-tex="\([1,T]\)">\([1,T]\)</span>. At <span class="math" data-index="471" data-tex="\(x=0\)">\(x=0\)</span> even the unmodulated integral diverges positively. Nevertheless CF31 defines a unique local <span class="math" data-index="472" data-tex="\(L^2\)">\(L^2\)</span> distribution. Globally it is the <span class="math" data-index="473" data-tex="\(L^2\)">\(L^2\)</span> inverse transform of <span class="math" data-index="474" data-tex="\(2\pi V\)">\(2\pi V\)</span>, by CF1; its weak pairing has exactly the normalization in CF31.</p>
+<figure><img class="course-figure" width="2196" height="990" src="reproduce/L148/figures/singular-measure-and-weak-integral.png" alt="A singular real-axis measure and the finite data norm beside the divergent pointwise integral." /><figcaption class="native"><a href="reproduce/L148/figures/singular-measure-and-weak-integral.png">Open full-size PNG</a> · <a href="reproduce/L148/figures/singular-measure-and-weak-integral.svg">Open SVG</a></figcaption></figure>
+<p>The data curve omits the constant factor <span class="math" data-index="475" data-tex="\(e^4\)">\(e^4\)</span>, which is stated on the figure. The divergence curve and the proved lower bound illustrate CF45–CF46; they are not a claim that numerical sampling proves the theorem.</p>
+<h2 id="exact-statement-map-and-references">Exact statement map and references</h2>
+<ul>
+<li>H-II Lemma 15.2.2, first estimate: CF3–CF4, especially CF17–CF19; nonempty compact convex support, real weight exponent <span class="math" data-index="476" data-tex="\(N\)">\(N\)</span>, complex damping exponent <span class="math" data-index="477" data-tex="\(N+2n\)">\(N+2n\)</span>.</li>
+<li>Its second estimate: CF5, CF20–CF21; multiplication by a fixed supported cutoff, arbitrary compactly supported <span class="math" data-index="478" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-index="479" data-tex="\(H_K(-\eta)\)">\(H_K(-\eta)\)</span>.</li>
+<li>Its third estimate: CF6, CF22–CF25; the unit imaginary strip and an explicit support-independent constant.</li>
+<li>H-II Theorem 15.2.4: CF7–CF11; CF27–CF30 are the precise assumptions; CF31 and CF42 give the full compact-test action; CF8–CF9 give the reflected dual. CF12 is an additional counterexample to a pointwise reading.</li>
+<li>No assertion here completes H-II Theorem 15.2.1, Lemma 15.2.3, the intervening inductive-topology discussion, or the entire AN-02 course.</li>
+</ul>
+<p>[H-II] Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Springer, 2005, Lemma 15.2.2, pp. 280–281, and Theorem 15.2.4, pp. 286–287. This lesson contains original arguments and original illustrations, with ordinary source attribution.</p>
+<p>The internal Fourier inversion, weighted completeness, multiplier, density and Hilbert proofs linked at the beginning are the actual mathematical inputs. The full course retains its separate recursive prerequisite-closure audit.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/complex-fourier-estimates-and-weak-exponential-representations.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L148/complex-fourier-estimates-formal.md" download>complex-fourier-estimates-formal.md</a></li><li><a href="reproduce/L148/complex-fourier-estimates-learner.md" download>complex-fourier-estimates-learner.md</a></li><li><a href="reproduce/L148/make_figures157.py" download>make_figures157.py</a></li><li><a href="reproduce/L148/check_examples157.py" download>check_examples157.py</a></li><li><a href="reproduce/L148/independent-example-checks157.json" download>independent-example-checks157.json</a></li><li><a href="reproduce/L148/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L148/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L148/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L148/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L148/figures/complex-planes-and-support-damping.png" download>figures/complex-planes-and-support-damping.png</a></li><li><a href="reproduce/L148/figures/complex-planes-and-support-damping.svg" download>figures/complex-planes-and-support-damping.svg</a></li><li><a href="reproduce/L148/figures/singular-measure-and-weak-integral.png" download>figures/singular-measure-and-weak-integral.png</a></li><li><a href="reproduce/L148/figures/singular-measure-and-weak-integral.svg" download>figures/singular-measure-and-weak-integral.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

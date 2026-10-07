@@ -1,6 +1,6 @@
 # The random matrix predictions and their evidence
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Original exposition: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), with contributions by GPT-6 Astra (OpenAI), in Codex at Ultra, October 2026. Original exposition: public domain (CC0).*
 
 Two different comparisons with unitary matrices concern the zeta function. One predicts the arrangement of its zeros after rescaling to mean spacing one. The other predicts the growth of its moments on the critical line. The first comparison is local in the zeros; the second includes an arithmetic factor built from primes. Their agreement in several proved cases is evidence for the predictions, rather than a proof of all of them.
 
@@ -8,7 +8,7 @@ We use the Fourier convention \(\widehat r(\alpha)=\int_{\mathbb R}r(u)e^{-2\pi 
 \[
 K(u)=\frac{\sin\pi u}{\pi u},\qquad K(0)=1.
 \]
-The preceding lesson supplies Montgomery's theorem and its precise conjectural extensions. The exact second and fourth moments of zeta are inputs from *Mean values of Dirichlet polynomials and of zeta on the critical line*. For the matrix calculation we use the \(U(N)\) specialization of *The Weyl integration formula*, an existing planned lesson of *Representations of compact groups*: the joint density of labelled eigenangles is
+The preceding lesson supplies Montgomery's theorem and its precise conjectural extensions. [Section 8.1](#8-1-the-second-moment-with-its-constant-term) proves the second moment, including its constant term. The fourth moment is [Theorem 6.1 of *Mean values of Dirichlet polynomials and zeta*](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-16.html#6-ingham-s-fourth-moment). For the matrix calculation we use the \(U(N)\) specialization of *The Weyl integration formula*, an existing planned lesson of *Representations of compact groups*: the joint density of labelled eigenangles is
 \[
 \frac1{N!(2\pi)^N}\prod_{i<j}|e^{i\theta_i}-e^{i\theta_j}|^2.
 \tag{0.1}
@@ -432,7 +432,7 @@ The exact rational values from (7.4) are
 
 For example the third denominator is \(3!\,4!\,5!/(0!\,1!\,2!)=8640\), and the fourth is \(4!\,5!\,6!\,7!/(0!\,1!\,2!\,3!)=870912000\). Division of \(9!\) and \(16!\) by these denominators gives \(42\) and \(24024\). These agree with the sixth- and eighth-moment constants proposed by Conrey–Ghosh and Conrey–Gonek before the general matrix prediction.
 
-The cases \(k=1,2\) of (8.2) are theorems. The existing planned lesson *Mean values of Dirichlet polynomials and of zeta on the critical line* proves the unnormalized statements
+The cases \(k=1,2\) of (8.2) are theorems. Their unnormalized statements are
 \[
 \int_0^T|\zeta(1/2+it)|^2\,dt
 =T\log(T/2\pi)+(2\gamma-1)T+o(T),
@@ -444,7 +444,53 @@ and
 =\frac{T}{2\pi^2}\log^4T+O(T\log^3T).
 \tag{8.5}
 \]
-Their leading terms match (8.2). The general conjecture does not follow by interpolation from these two values or from the exact matrix formula.
+### 8.1. The second moment with its constant term
+
+We prove the stronger second-moment statement (8.4) here. The written [Riemann–Siegel expansion](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-17.html#5-5-completing-the-expansion), Theorem 5.4 and its uniform remainder in Lemma 5.3, gives, for sufficiently large \(t\),
+\[
+\begin{aligned}
+\zeta(1/2+it)&=P(t)+e^{-2i\vartheta(t)}\overline{P(t)}+O(t^{-1/4}),\\
+P(t)&=\sum_{n\leq\sqrt{t/(2\pi)}}n^{-1/2-it}.
+\end{aligned}
+\tag{8.6}
+\]
+Its bounded correction coefficient is absorbed by the displayed error; its removable endpoint values are included in that theorem. Write
+\(\varphi(t)=\tfrac t2\log(t/(2\pi))-\tfrac t2-\pi/8\).
+The proved gamma phase estimate, [The Gamma function and Stirling's formula](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-03.html#logarithmic-derivatives-and-a-continuous-phase), Proposition 5.3, says \(\vartheta(t)-\varphi(t)=O(t^{-1})\).
+
+First integrate \(|P(t)|^2\) on \([t_*,T]\), with fixed sufficiently large \(t_*\). A pair \((m,n)\) occurs for \(t\geq\max(t_*,2\pi m^2,2\pi n^2)\). If \(m<n\), its oscillatory integral has magnitude at most \(2/\log(n/m)\). Put \(M=\lfloor\sqrt{T/(2\pi)}\rfloor\). The sum of these bounds with coefficients is \(O(M\log(2M))\): for \(n/2\leq m<n\), use \(\log(n/m)\geq(n-m)/n\) and \((mn)^{-1/2}\leq\sqrt2/n\); for \(m<n/2\), use \(\log(n/m)\geq\log2\) and \(\sum_{m<n/2}m^{-1/2}\ll\sqrt n\). Thus
+\[
+\begin{aligned}
+2\int_{t_*}^T|P(t)|^2dt
+&=2\int_{t_*}^T H_{\lfloor\sqrt{t/(2\pi)}\rfloor}\,dt+O(\sqrt T\log T)\\
+&=T\log(T/(2\pi))+(2\gamma-1)T+O(\sqrt T\log T).
+\end{aligned}
+\tag{8.7}
+\]
+because \(H_{\lfloor\sqrt{t/(2\pi)}\rfloor}=\tfrac12\log(t/(2\pi))+\gamma+O(t^{-1/2})\).
+
+The cross term in the square of (8.6) is also \(o(T)\). Replace \(e^{2i\vartheta(t)}\) by \(e^{2i\varphi(t)}\); the resulting integral error is at most \(C\int_{t_*}^T|P(t)|^2/t\,dt=O(\log^2 T)\), by (8.7) on dyadic blocks and summation. The phase attached to \((m,n)\) is
+\[
+\begin{aligned}
+f_{mn}(t)&=2\varphi(t)-t\log(mn),\\
+f_{mn}'(t)&=\log\frac{t}{2\pi mn},\\
+f_{mn}''(t)&=1/t.
+\end{aligned}
+\]
+Let \(f\) be a real twice continuously differentiable phase whose derivative is monotone and satisfies \(f^{\prime}\geq\lambda>0\). Integration by parts gives
+\[
+\begin{aligned}
+\int_a^b e^{if(t)}dt&=\left[\frac{e^{if(t)}}{if^{\prime}(t)}\right]_a^b\\
+&\quad+\int_a^b\frac{e^{if(t)}f^{\prime\prime}(t)}{i(f^{\prime}(t))^2}dt.
+\end{aligned}
+\]
+The endpoint terms are at most \(2/\lambda\), and monotonicity bounds the integral of \(|f^{\prime\prime}|/(f^{\prime})^2\) by \(1/\lambda\). The same bound applies to a negative monotone derivative bounded away from zero by changing \(f\) to \(-f\).
+
+For \(m<n\), its interval begins at \(t\geq2\pi n^2\), so \(f_{mn}'\geq\log(n/m)>0\). Integration by parts, using the monotonicity of this derivative, gives \(O(1/\log(n/m))\). The same coefficient sum as before is \(O(\sqrt T\log T)\). For \(m=n\), the second-derivative integral test gives \(O(\sqrt T)\), since \(f_{nn}''\geq1/T\). This test follows by bounding the interval where \(|f'|\leq T^{-1/2}\) by its length \(2\sqrt T\) and applying the first-derivative test on its at most two complementary intervals. Summing the diagonal coefficients \(1/n\) gives \(O(\sqrt T\log T)\). Hence the whole cross term has that order.
+
+Finally the error in (8.6) has squared integral \(O(\sqrt T)\). The other two terms have squared norm \(O(T\log T)\), by (8.7) and the preceding cross-term bound. Cauchy–Schwarz therefore bounds the change of squared norms by \(O(T^{3/4}\sqrt{\log T}+\sqrt T)=o(T)\). The fixed initial interval has finite integral. Combining this with (8.7) proves (8.4), with its constant term. The proof uses only the already written Riemann–Siegel argument and gamma phase; no mollifier or spectral prerequisite from the later sections of that lesson is involved.
+
+The fourth-moment formula (8.5) is [Theorem 6.1 of the mean-value lesson](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-16.html#6-ingham-s-fourth-moment). Its contour decomposition, averaged remainder bounds and cross-term estimate are supplied there. Both leading terms match (8.2). The general conjecture does not follow by interpolation from these two values or from the exact matrix formula.
 
 ## 9. Restricted higher correlations of zeta zeros
 
@@ -782,9 +828,11 @@ Thus \(g_3=9!/8640=42\) and \(g_4=16!/870912000=24024\). The factorial in \(g_k\
 
 The results proved here are the distributional Fourier identity; the finite CUE correlations and their sine limit; the GUE bulk limit; the Fredholm gap law; all CUE characteristic-polynomial moments in their integrability range; the Barnes asymptotic and arithmetic factors; restricted zeta \(n\)-level and triple correlations; and the finite-field equidistribution argument and worked pencil family. Assertions labelled conjectures are left conjectural.
 
+The second-moment proof in [Section 8.1](#8-1-the-second-moment-with-its-constant-term) uses the uniform [Riemann–Siegel formula, Theorem 5.4 and Lemma 5.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-17.html#5-5-completing-the-expansion), and [the continuous gamma phase, Proposition 5.3](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-ZETA/NT-ZETA-03.html#logarithmic-derivatives-and-a-continuous-phase). These are written programme proofs, including the integer-cutoff endpoints.
+
 Some foundation results are supplied by exact existing planned lessons. Their planned state is not a claim that their public proofs have already appeared:
 
-- *Dirichlet series and Euler products*, *The Gamma function*, *The Riemann–von Mangoldt formula*, *The prime number theorem with its classical error term*, and *Mean values of Dirichlet polynomials and of zeta on the critical line* in **The Riemann zeta function**, lessons 1, 3, 10, 12 and 16: absolute Euler products; Stirling and differentiated gamma estimates; the zero count and unit-interval bound; the prime number theorem for partial summation; the polarized mean-value inequality and the exact second/fourth leading moment terms (8.4)–(8.5).
+- *Dirichlet series and Euler products*, *The Gamma function*, *The Riemann–von Mangoldt formula*, *The prime number theorem with its classical error term*, and *Mean values of Dirichlet polynomials and of zeta on the critical line* in **The Riemann zeta function**, lessons 1, 3, 10, 12 and 16: absolute Euler products; Stirling and differentiated gamma estimates; the zero count and unit-interval bound; the prime number theorem for partial summation; the polarized mean-value inequality and the fourth-moment term (8.5). The second-moment formula (8.4) is proved in Section 8.1 above.
 - *The symmetric groups III: characters and symmetric functions* in **Representations of finite groups**, lesson 15: the Frobenius characteristic map, power-sum expansion and character column orthogonality used in (9.3).
 - *Fourier analysis and class functions on compact groups*, *The Weyl integration formula*, *The unitary groups: Weyl's character formula for \(U(n)\)*, and *The Weyl character formula for compact connected Lie groups* in **Representations of compact groups**, lessons 3, 8, 9 and 11: approximation by characters; normalized Weyl densities for \(U(N)\), \(USp(2g)\) and the orthogonal groups; Schur characters and their orthogonality; and algebraic characters of the symplectic group used in the tensor construction.
 - *Poincaré duality for smooth varieties* in **Étale cohomology**, lesson 18: top compactly supported cohomology of a smooth connected variety with a lisse sheaf equals its geometric coinvariants with twist \((-d)\); proper and smooth base change from lessons 13 and 15 provide the sheaves in the family.

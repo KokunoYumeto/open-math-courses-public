@@ -21789,6 +21789,363 @@ Proposition 1.16's actual rank-one Fourier calculation identifies
 the matrix exponent with that same number, including the unramified
 case. This proves (2.40z) in rank one. \(\square\)
 
+### Constructed finite-place parameters and their exact constants
+
+For a nonarchimedean local field \(F\), of either characteristic, write
+\(q=|\mathcal O_F/\mathfrak p_F|\) and \(X=q^{-s}\).
+Arithmetic reciprocity sends a uniformizer to arithmetic Frobenius.
+Geometric reciprocity is
+\[
+ \operatorname{Art}_{\mathrm{geo}}(x)
+     =\operatorname{rec}_{\mathrm{ar}}(x)^{-1},
+ \qquad
+ R_\chi(\operatorname{Art}_{\mathrm{geo}}(x))=\chi(x).
+ \tag{2.41a}
+\]
+The inverse in the first formula is the inverse of the image element.
+The topological Weil reciprocity proof in
+Weil groups and one-dimensional representations, Theorem 12.2
+constructs this map. Its conductor comparison is Proposition 12.3.
+Thus \(R_\chi(\operatorname{rec}_{\mathrm{ar}}(x))=\chi(x)^{-1}\).
+The dual of a covariant Galois character with arithmetic eigenvalue
+\(\chi(\varpi)\) has geometric eigenvalue \(\chi(\varpi)\).
+
+Take \(\psi_0\) with annihilator \(\mathcal O_F\), additive self-dual
+measure of integral-ring mass one, and multiplicative unit mass one.
+The constants constructed in
+Local L-factors and epsilon factors, Theorem 3.0, Sections 3A--3D
+have, by its Theorem 4.1,
+\[
+ \epsilon_F(s,R,\psi_0)
+   =w_F(R,\psi_0)q^{-a(R)(s-1/2)},\qquad
+ w_F(R,\psi_0)=\epsilon_F(1/2,R,\psi_0)\ne0.
+ \tag{2.41b}
+\]
+Its Section 5 proves \(|w_F(R,\psi_0)|=1\) for unitary \(R\).
+The conductor and the constant are separate pieces of data.
+
+**Theorem 2.3dh (rank one, including the canonical constant).**
+Geometric reciprocity gives a bijection between smooth characters
+\(\chi:F^\times\to\mathbb C^\times\) and smooth one-dimensional
+Weil representations. For this bijection,
+\[
+ L_{\mathrm{mat}}(s,\chi)=L_F(s,R_\chi),\qquad
+ a_{\mathrm{mat}}(\chi)=a(R_\chi)=c(\chi),
+ \tag{2.41c}
+\]
+\[
+ \epsilon_{\mathrm{mat}}(s,\chi,\psi_0)
+     =\epsilon_F(s,R_\chi,\psi_0).
+ \tag{2.41d}
+\]
+Here \(c(\chi)=\min\{c\geq0:\chi(U_F^c)=1\}\), with
+\(U_F^0=\mathcal O_F^\times\) and \(U_F^c=1+\mathfrak p_F^c\) for \(c>0\).
+
+**Proof.** An irreducible smooth admissible representation of \(F^\times\)
+is a character. A nonzero finite-dimensional space of compact-open fixed
+vectors is invariant under the abelian group, hence is the whole module.
+Commuting complex matrices have a common eigenline, obtained by successively
+restricting to invariant eigenspaces. Irreducibility makes that line the
+whole module. Reciprocity constructs its unique Weil line.
+
+Its inertia image is finite: a smooth line kills an open unit subgroup.
+For \(c=0\) its invariant space is the line and geometric Frobenius acts by
+\(\chi(\varpi)\); its factor is \((1-\chi(\varpi)X)^{-1}\).
+For \(c>0\) its invariant space is zero and its factor is one.
+The matrix integral in rank one is the scalar Tate integral. Its compact
+test has finitely many unit shells and a constant tail at zero. The tail
+is a geometric series when \(\chi\) is unramified and vanishes by unit
+orthogonality otherwise. The tests \(\mathbf1_{\mathcal O_F}\) and
+\(\chi^{-1}\mathbf1_{\mathcal O_F^\times}\), respectively, attain the full
+factor. Thus the entire ideals, not only their denominators, agree.
+
+The unit/upper-ramification proof in
+Conductors of Weil-group representations, Lemma 2.4
+gives \(a(R_\chi)=c(\chi)\), including nonunitary unramified growth.
+For \(c>0\), the finite Fourier sum gives
+\[
+ \epsilon_{\mathrm{mat}}(s,\chi,\psi_0)
+  =\chi(\varpi)^c q^{-cs}
+    \sum_{u\in(\mathcal O_F/\mathfrak p_F^c)^\times}
+       \chi(u)^{-1}\psi_0(u/\varpi^c).
+ \tag{2.41e}
+\]
+Indeed the Fourier transform of the ramified attaining test is supported
+on the shell of valuation \(-c\). Translation and finite additive
+orthogonality give precisely this sum. Fourier inversion proves it
+nonzero. For \(c=0\), transforming \(\mathbf1_{\mathcal O_F}\) gives the
+same test and epsilon one. The defining character clause of the constructed
+Weil constants is this Tate constant. Its exponent is therefore \(c\)
+on both sides. This proves every assertion. \(\square\)
+
+**Proposition 2.3di (the automatic higher-cuspidal factor).**
+Let \(\rho\) be a cuspidal of rank \(d>1\), and let \(R\) be any irreducible
+smooth Weil representation of that rank. For every smooth character \(\chi\),
+\[
+ L_{\mathrm{mat}}(s,\rho\otimes\chi\circ\det)
+      =L_F(s,R\otimes R_\chi)=1.
+ \tag{2.41f}
+\]
+This equality alone does not assign a parameter to \(\rho\).
+
+**Proof.** Normality of inertia makes \(R^{I_F}\) Weil-stable. If it is
+nonzero, irreducibility makes it all of \(R\). Then \(R\) factors through
+\(W_F/I_F=\mathbb Z\), whose one generating invertible matrix has an
+invariant eigenline. Irreducibility would force dimension one, a
+contradiction. A character twist remains irreducible of the same rank.
+On the analytic side Corollary 2.3ce applied to the length-one cuspidal
+string gives factor one, also after twisting. Both assertions follow
+without a choice of a correspondence. \(\square\)
+
+**Lemma 2.3dj (what an epsilon equality says).**
+For a cuspidal \(\rho\) and a same-rank irreducible Weil representation \(R\),
+equality of their entire conductor-zero epsilon functions is equivalent to
+\[
+ a_{\mathrm{mat}}(\rho)=a(R),\qquad
+ w_{\mathrm{mat}}(\rho,\psi_0)=w_F(R,\psi_0).
+ \tag{2.41g}
+\]
+
+**Proof.** Evaluation at \(s=1/2\) identifies the nonzero constants.
+Divide by that constant. Varying real \(s\) in the remaining exponentials
+forces equality of the exponents, since \(q>1\). Conversely both displayed
+equalities give identical functions. \(\square\)
+
+### A quadratic family with a constructed parameter
+
+**Theorem 2.3dk (quadratic cuspidals in both characteristics).**
+Let \(E/F\) be separable quadratic, with involution \(\sigma\), residue degree
+\(f\), different exponent \(d\), and norm character \(\eta=\eta_{E/F}\).
+For a smooth character \(\theta\ne\theta^\sigma\) of \(E^\times\), there is
+a smooth admissible generic cuspidal \(\pi_E(\theta)\) and an irreducible
+Weil representation
+\[
+ R_E(\theta)=\operatorname{Ind}_{W_E}^{W_F}R_\theta.
+ \tag{2.41h}
+\]
+They satisfy
+\[
+ \begin{aligned}
+ L_{\mathrm{mat}}(s,\pi_E(\theta))&=L_F(s,R_E(\theta))=1,\\
+ a_{\mathrm{mat}}(\pi_E(\theta))&=a_F(R_E(\theta))
+                                  =f(c(\theta)+d),\\
+ \epsilon_{\mathrm{mat}}(s,\pi_E(\theta),\psi)
+                         &=\epsilon_F(s,R_E(\theta),\psi),\\
+ \omega_{\pi_E(\theta)}&=\theta|_{F^\times}\eta.
+ \end{aligned}
+ \tag{2.41i}
+\]
+The assertions retain wild ramification, nonunitary characters, and every
+character twist. For fixed \(E\), equivalent objects are precisely the
+unordered pairs \(\{\theta,\theta^\sigma\}\).
+
+**Proof.** The construction and group relations are proved in
+Supercuspidal representations from compact induction, Section 6.
+We describe the objects and compare their normalizations explicitly.
+Put \(E^1=\ker N\), \(F_+=N(E^\times)\), and
+\(\mathcal S(E,\theta)=\{\Phi:\Phi(xh)=\theta(h)^{-1}\Phi(x),\ h\in E^1\}\),
+with \(\Phi\) a Schwartz test on \(E\). On the determinant-norm subgroup
+\(G^+\) the operators are
+\[
+ \begin{aligned}
+ n(b)\Phi(x)&=\psi(bNx)\Phi(x),\\
+ m(a)\Phi(x)&=\eta(a)|a|_F\Phi(ax),\\
+ w_0\Phi(x)&=\lambda_\psi\widehat\Phi(x^\sigma),\\
+ d(Nh)\Phi(x)&=|h|_E^{1/2}\theta(h)\Phi(xh),
+ \end{aligned}\qquad
+ w_0=\begin{pmatrix}0&1\\-1&0\end{pmatrix},
+ \tag{2.41j}
+\]
+where \(m(a)=\operatorname{diag}(a,a^{-1})\), \(d(a)=\operatorname{diag}(a,1)\),
+and \(\lambda_\psi=\epsilon_F(1/2,\eta,\psi)\).
+The Fourier measure is self-dual for \(\psi\operatorname{Tr}_{E/F}\).
+The norm Gaussian uses
+\[
+ bN(x)+\operatorname{Tr}(xy^\sigma)
+       =bN(x+y/b)-N(y)/b.
+\]
+This identity has no division by two. Its stable integral is
+\(\lambda_\psi\eta(b)|b|^{-1}\). Together with
+\(\lambda_\psi^2=\eta(-1)\), it proves the Bruhat relation for the operators,
+also in characteristic two. Small upper and lower unipotents and small
+diagonals fix each test, proving smoothness. These are the full
+Gaussian and group proofs in Theorems 6.2--6.3 of that earlier lesson.
+Scalar matrices act by \(\theta(c)\eta(c)\).
+
+Hilbert 90 identifies \(\theta\ne\theta^\sigma\) with nontriviality on \(E^1\).
+It makes \(\Phi(0)=0\), hence makes \(\Phi\) vanish near zero. The scalar map
+\(\xi_\Phi(Nh)=|Nh|^{1/2}\theta(h)\Phi(h)\) identifies this space with
+\(C_c^\infty(F_+)\). Its inverse has compact support because the norm is
+proper. Inducing from \(G^+\) gives \(C_c^\infty(F^\times)\), with
+\[
+ n(b)\xi(t)=\psi(bt)\xi(t),\qquad d(a)\xi(t)=\xi(at).
+\]
+Finite additive averages project a nonzero function onto an arbitrarily
+small ball where it is constant and nonzero. Dilations move its centre to
+every nonzero point; finite partitions span all compact tests. Thus the
+mirabolic action already proves irreducibility. Evaluation at one is
+Whittaker. Partitioning a compact support into balls where some
+\(\psi(bt)-1\) is constant and nonzero expresses each vector as a sum of
+unipotent differences. Its Jacquet module is zero, giving cuspidality.
+
+Admissibility can be checked directly. A compact open fixing group contains
+small upper and lower unipotents. Upper invariance bounds \(Nx\) on the
+support of \(\Phi\), hence bounds \(x\). Lower invariance gives a bound on
+the Fourier support. Fourier inversion then makes \(\Phi\) invariant under
+a single fixed translation lattice. Bounded support modulo that lattice
+is finite, so the fixed test space is finite-dimensional. The two induction
+cosets preserve this conclusion for every compact open subgroup of \(G\).
+
+Normalize multiplicative unit measures to one. Norm pushforward has
+positive constant \(\kappa\) on \(F_+\). The entire scalar families satisfy
+\[
+ M_s(\xi_\Phi)=\kappa^{-1}Z_E(\Phi,\theta,s),\qquad
+ D_s(\xi_\Phi)=\lambda_\psi\kappa^{-1}
+               Z_E(\widehat\Phi,\theta^{-1},1-s).
+ \tag{2.41k}
+\]
+Here \(M_s(\xi)=\int\xi(t)|t|^{s-1/2}d^\times t\), and
+\(D_s(\xi)=\int(\pi(w_0)\xi)(t)\omega(t)^{-1}|t|^{1/2-s}d^\times t\).
+The second identity follows by substituting \(h^\sigma\) and using
+\(\omega(Nh)=\theta(h)\theta(h^\sigma)\).
+Translation to the other norm component multiplies both integrals by
+the same Laurent unit \(|c|^{1/2-s}\). The Tate attaining tests belong to
+\(\mathcal S(E,\theta)\). Thus (2.41k) compares the whole ideals and the
+exact Fourier scalar, with the same \(\kappa\) cancelling.
+
+To match our inverse-transpose convention, put
+\(w_2=\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)\) and
+\(f(t)=W(d(t))\). Then
+\[
+ \widetilde W(d(t))=\omega(t)^{-1}(\pi(w_2)f)(t).
+ \tag{2.41l}
+\]
+Since \(w_2=\operatorname{diag}(1,-1)w_0\), this is
+\(\omega(t)^{-1}\omega(-1)(\pi(w_0)f)(-t)\).
+In the dual integral the substitution \(u=-t\) cancels the two
+\(\omega(-1)\) factors. The result is exactly \(D_s(f)\).
+Theorems 2.3l and 2.3n now identify the whole scalar ideal and its Fourier
+constant with the matrix ideal and constant, with no determinant shift.
+
+On the Weil side the two induction lines are distinct and are exchanged
+by the other coset, proving irreducibility. Determinant transfer gives
+\(\theta|_{F^\times}\eta\). The constructed degree-zero induction rule gives
+\[
+ \epsilon_F(s,R_E(\theta),\psi)
+     =\lambda(E/F,\psi)\epsilon_E(s,R_\theta,\psi\operatorname{Tr}).
+ \tag{2.41m}
+\]
+Its quotient for the induced trivial line has exponent zero:
+the numerator exponent is \(fd+2n_F\), the denominator is
+\(f n_E=f(d+e n_F)=fd+2n_F\). At \(s=1/2\) trivial-line constants with
+self-dual measures are one, while \(\operatorname{Ind}1=1+\eta\).
+Consequently this quotient is \(\epsilon_F(1/2,\eta,\psi)=\lambda_\psi\).
+The Tate constants in (2.41k) and (2.41m) therefore agree exactly.
+Their exponent is \(f(c(\theta)+d)\), also the Artin induction conductor
+of the line. This proves (2.41i).
+
+Twisting replaces \(\theta\) by \(\theta(\chi\circ N)\), which remains regular.
+The two coset tensor models and the displayed operators prove the respective
+Weil and automorphic twist identities. For fixed \(E\), Lemma 6.6 of the
+earlier construction identifies isomorphic scalar models exactly by
+\(\{\theta,\theta^\sigma\}\): a mirabolic intertwiner is scalar, and its
+Weyl kernel recovers the sum \(\theta(y)^{-1}+\theta(y^\sigma)^{-1}\)
+by Fourier uniqueness in trace and norm. Distinct group characters are
+linearly independent. Weil restriction recovers the same two lines.
+This proves the fixed-family equivalence. \(\square\)
+
+### Equal standard factors do not fix the root
+
+**Example 2.3dl (both field characteristics).** Let \(F=\mathbb Q_3\) or
+\(\mathbb F_3((t))\), put \(\varpi_F=3\) or \(t\), and set
+\(E=F(\pi)\), \(\pi^2=\varpi_F\). The extension is separable, totally
+ramified, and its different is generated by \(2\pi\), so \(f=d=1\).
+Define
+\[
+ \theta(\pi)=\theta(-1)=1,\qquad
+ \theta(1+a\pi\bmod\pi^2)=\exp(2\pi i\bar a/3).
+ \tag{2.41n}
+\]
+The unit quotient is the product of its signs and the additive
+\(U_E^1/U_E^2=\mathbb F_3\), so this is a character of conductor two.
+The involution negates that additive layer, so \(\theta\ne\theta^\sigma\).
+Let \(\eta_u\) be the unramified quadratic character of \(F^\times\) and put
+\(R=\operatorname{Ind}R_\theta\), \(R'=R\otimes R_{\eta_u}\).
+Then
+\[
+ \begin{gathered}
+ R\not\simeq R',\qquad \det R=\det R',\qquad L_F(s,R)=L_F(s,R')=1,\\
+ a(R)=a(R')=3,\qquad
+ \epsilon_F(s,R',\psi_0)=-\epsilon_F(s,R,\psi_0).
+ \end{gathered}
+ \tag{2.41o}
+\]
+Indeed \(N\pi=-\varpi_F\), so \(\eta_u\circ N\) takes \(\pi\) to \(-1\)
+and is trivial on units. The two restricted lines of \(R\) have uniformizer
+value one; those of \(R'\) have value minus one, so the representations
+are not isomorphic. The quadratic twist preserves determinant and inertia.
+Induction gives conductor \(1+2=3\).
+Write \(\eta_u=|\cdot|^{s_u}\), \(q^{-s_u}=-1\).
+The epsilon-twist formula multiplies the constant by
+\(q^{-3s_u}=(-1)^3=-1\), independent of the logarithm branch.
+The constructed cuspidals \(\pi_E(\theta)\) and its unramified quadratic
+twist have the same centre, standard factor, and conductor, and have these
+opposite roots. Swapping their two parameters preserves the base
+\(L\)-factor and conductor identities while violating the epsilon identity.
+
+### The integer cleanup of a parameter construction
+
+**Lemma 2.3dm (pole forms and positivity).** The free abelian groups on
+irreducible smooth Weil representations and on cuspidals, in all ranks,
+have orthonormal pole forms
+\[
+ B_W(R,S)=\operatorname{poleord}_{s=0}L_F(s,R\otimes S^\vee),\qquad
+ B_A(\rho,\tau)=\operatorname{poleord}_{s=0}
+                     L_{\mathrm{RS}}(s,\rho\times\tau^\vee).
+ \tag{2.41p}
+\]
+For unequal ranks use the larger cuspidal first.
+An integer homomorphism preserving rank degree and these forms sends each
+irreducible Weil class to one positive same-rank cuspidal class and is
+injective. The conclusion does not include surjectivity.
+
+**Proof.** Frobenius on an irreducible Weil representation has a positive
+power equal to a nonzero scalar: kill its conjugation action on finite
+inertia and apply Schur's lemma. Its minimal polynomial divides \(T^m-c\),
+whose roots are distinct. Frobenius on \(R\otimes S^\vee\), and on its
+inertia-fixed space, is therefore semisimple. The pole at \(X=1\) has order
+\(\dim\operatorname{Hom}_{W_F}(S,R)\), which is one for equal irreducibles
+and zero otherwise. The map \(s\mapsto q^{-s}\) has nonzero derivative at zero.
+For cuspidals, Theorem 2.3af gives factor one except for an unramified
+dual twist. The exceptional denominator is \(1-z^{t_\rho}X^{t_\rho}\).
+It has a simple zero at \(X=1\) precisely when \(z^{t_\rho}=1\), which the
+proved self-twist calculation identifies with \(\tau\simeq\rho\).
+This proves both orthonormal forms.
+
+If \(F([R])=\sum_j m_j[\rho_j]\), norm preservation gives
+\(1=\sum_j m_j^2\). Exactly one coefficient is \(+1\) or \(-1\).
+Positive rank degree excludes the minus sign and fixes the rank.
+Orthogonality of different source classes excludes equal targets, proving
+injectivity. Inclusion of a proper subset of an orthonormal basis preserves
+both forms and degrees, so there is no surjectivity inference. \(\square\)
+
+**Corollary 2.3dn (the precise comparison from a cuspidal assignment).**
+Suppose each cuspidal \(\rho\) has a constructed irreducible same-rank
+parameter \(R_\rho\), agreeing with (2.41a) in rank one. The standard
+\(L\)-factor base identity is automatic by Theorem 2.3dh and Proposition
+2.3di. If also \(a_{\mathrm{mat}}(\rho)=a(R_\rho)\) for every cuspidal,
+Corollary 2.3cu gives the standard \(L\)-factor and Artin-conductor comparison
+for every finite-place irreducible head. For a generic head, Theorem 2.3dg
+then identifies its minimal congruence level with this Artin conductor.
+
+**Proof.** These are exactly the two premises (2.38a) of Corollary 2.3cu.
+Apply its special-block determinant and conductor calculation to each
+cuspidal string, and add over the canonical head data. Theorem 2.3dg
+identifies the generic level with the resulting analytic conductor.
+The assertion makes no epsilon-root conclusion from the two premises:
+Lemma 2.3dj and Example 2.3dl show the separate constant comparison needed.
+\(\square\)
+
 ## 3. Global continuation, poles and nonvanishing
 
 **Theorem 3.1 (Jacquet–Piatetski-Shapiro–Shalika, 1979/1983; global Rankin–Selberg analytic theory; proof not yet supplied).** For unitary cuspidal \(\pi\) on \(GL_n(\mathbb A)\) and \(\pi'\) on \(GL_m(\mathbb A)\), the complete product (2.1) has meromorphic continuation and satisfies
@@ -23722,6 +24079,54 @@ parameter \(b=\chi(\varpi)q^{-u-(\ell-1)/2}\), reciprocal factor
 rank-one spherical function is the terminal character. Its first
 fixed level is \(\ell-1\), again a line. The rank-one theorem itself
 has first level \(d\) and one-dimensional character space.
+
+**Exercise 9.62 (a ramified line).** Let \(\chi\) have conductor \(c>0\)
+and \(\chi(\varpi)=z\). Construct its parameter and compute its standard
+factor, conductor, and exact central epsilon constant. Retain nonunitary
+norm twists.
+
+**Solution.** Define \(R_\chi\) by (2.41a). Its inertia action is nontrivial,
+so its standard factor is one; the ramified Tate attaining test makes the
+whole matrix ideal the Laurent ring. Its conductor on both sides is \(c\).
+Put
+\[
+ G=\sum_{u\in(\mathcal O_F/\mathfrak p_F^c)^\times}
+                \chi(u)^{-1}\psi_0(u/\varpi^c).
+\]
+Formula (2.41e) gives \(\epsilon=z^cGq^{-cs}\) and
+\(w=z^cq^{-c/2}G\). Fourier inversion gives \(G\ne0\).
+For unitary \(\chi\), \(|G|=q^{c/2}\) and \(|z|=1\), hence \(|w|=1\).
+Replacing \(\chi\) by \(\chi|\cdot|^v\) replaces \(z\) by \(zq^{-v}\),
+keeps \(c\), and multiplies \(w\) by \(q^{-cv}\).
+
+**Exercise 9.63 (swapping two parameters).** Work over \(\mathbb F_3((t))\).
+Construct cuspidals and parameters with equal standard factors, conductors,
+and centres, but opposite roots. Determine what a swap preserves.
+
+**Solution.** Take \(E=\mathbb F_3((\pi))\), \(\pi^2=t\), and the character
+(2.41n). Its conductor is two, it is regular, and the different exponent
+is one. Theorem 2.3dk constructs its rank-two cuspidal and irreducible
+parameter \(R\), with factor one and conductor three.
+Their unramified quadratic twists have parameter \(R'\), the same determinant
+and centre, factor one, and conductor three. The epsilon twist is
+\((-1)^3=-1\), so their nonzero roots are opposite.
+Assigning \(R'\) to the first cuspidal and \(R\) to the second therefore
+preserves both base identities (2.38a) and determinant equality, but
+violates each epsilon comparison. The construction works in positive
+characteristic without a characteristic-zero correspondence.
+
+**Exercise 9.64 (integer isometry and exhaustion).** Can an integer
+degree-preserving pole-form isometry send a rank-five irreducible Weil
+class to \(2[\rho_1]-[\rho_2]+[\rho_3]\), with distinct cuspidals?
+Does such an isometry prove that every cuspidal is reached?
+
+**Solution.** The source has squared norm one, but the proposed image has
+squared norm \(4+1+1=6\), so it is impossible. The only possible image is
+\(\pm[\rho]\). Degree five excludes the negative sign and fixes
+\(\operatorname{rank}\rho=5\). Distinct source classes have distinct targets.
+There is no exhaustion conclusion: inclusion of a proper subset of a
+basis into a larger orthonormal basis already preserves both its integer
+form and its positive rank degrees. Surjectivity requires a separate proof.
 
 ## 10. What this lesson does not prove
 

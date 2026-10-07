@@ -1,13 +1,16 @@
 # Integer coefficients and additive characteristic cycles
 
-A characteristic cycle is defined by a microlocal identity and a trace. Its generic coefficients have a simpler description: each is the Euler characteristic of a finite coefficient complex. We prove why that complex is finite, how its integer coefficient extends through singularities, and why one distinguished triangle gives an additive identity of cycles.
+A characteristic cycle is defined by a microlocal identity and a trace. Its generic coefficient on a normalized conormal is \((-1)^{\dim Z}\) times the Euler characteristic of a finite coefficient complex, where \(Z\) is its local supporting base. We prove why that complex is finite, how its integer coefficient extends through singularities, and why one distinguished triangle gives an additive identity of cycles.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Use Characteristic cycles from supported microlocal identities for the actual definition, invariance and constructible localized roofs, and Transporting characteristic cycles through a graph for normalized finite constant conormals. Perfect operations and finite microlocal coefficients proves perfection of microlocal Hom. Subanalytic chains and closed cycle supports supplies the dense-piece comparison maps and frontier boundary, while Lagrangian cycles and proper cotangent images supplies the cotangent orientation coefficient. The geometric inputs are compatible analytic stratification and the owned pure-Lagrangian consequence of Involutive subsets of subanalytic isotropic sets.
+The supported identity and trace construction defines \(CC\), and its constructible-roof proof of microlocal invariance permits the local replacements used below. The finite constant-conormal formula fixes the sign: for a smooth \(d\)-dimensional base, its coefficient is \((-1)^d\chi(V)\). The brackets retain the graph and closed-trace normalization; the relative fibre-trace calculation fixes that normalization over the integers.
 
-The prerequisites are the supported coefficient-model theorem in Local models and change of ambient manifold, the submanifold comparison and composition units in Local morphisms in cotangent directions, and the graded point-localized morphism theorem in Categories and operations in one cotangent direction. For the smooth nonzero-covector geometry, the lesson Prescribed canonical coordinates and isotropic fibers, Theorem 5.1 proves that a conic Lagrangian with locally constant base-projection rank is a local open conormal germ. It does not supply compatible subanalytic stratifications; that separate prerequisite is stated in the preceding paragraph. The rank calculation and the Lagrangian-chain definition follow M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1–3.
+The coefficient argument uses the supported local-form theorem LFI8–LFI10, the actual submanifold comparison, center-supported microlocalization, and the graded point-localized morphism theorem MC.4. The perfect microlocal-Hom calculation supplies finite coefficients; its finiteness hypothesis is not part of the arbitrary-coefficient local-form theorem.
 
+The geometric inputs are the regular-locus and dimension rules, the subanalytic rank-locus calculation, and the pure-Lagrangian consequence of involutivity. The local tangent-lifting proof below gives conormal charts, with the nonzero-covector statement also proved as Theorem 5.1 of Prescribed canonical coordinates and isotropic fibers. It does not require a global embedded image of the projection. Compatible subanalytic triangulation is used through the dense-piece chain comparison and its frontier boundary; the cotangent orientation comparison fixes the coefficient line.
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.5–2.3, pp. 196–197, develops coefficient-valued subanalytic chains and the twisted orientation of conormals. Proposition 3.3 and §3.4, pp. 198–199, describe the finite localized coefficient model and generic Euler multiplicities. The conormal brackets in this lesson use the graph normalization fixed above, so the comparison with an Euler multiplicity includes \((-1)^{\dim Z}\). The proofs below construct that local coefficient with its actual maps, extend the integral chain through the frontier, and represent a whole distinguished triangle by one coefficient cone.
 ## Local ranks use an actual derived constant model
 
 Let \(k\) be a field of characteristic zero. Manifolds are real analytic, Hausdorff and countable at infinity, with uniformly bounded finite dimension. Work on a component \(X\) of dimension \(n\). All constructible complexes are bounded with finite-dimensional cohomology stalks. A closed analytic embedding \(i:Z\hookrightarrow X\) is understood locally when \(Z\) is only locally closed. Write \(V_Z=i_*a_Z^{-1}V\) for a constant coefficient complex extended by zero.
@@ -15,7 +18,7 @@ Let \(k\) be a field of characteristic zero. Manifolds are real analytic, Hausdo
 Suppose \(A\in D^b(k_Z)\) has locally constant cohomology sheaves of finite ranks \(m_j\). On each connected component of \(Z\), the ranks are constant. Then
 
 \[
- CC(i_*A)=\left(\sum_j(-1)^jm_j\right)[T_Z^*X].
+ CC(i_*A)=(-1)^{\dim Z}\left(\sum_j(-1)^jm_j\right)[T_Z^*X].
  \qquad\text{(1)}
 \]
 
@@ -27,19 +30,19 @@ Suppose \(A\in D^b(k_Z)\) has locally constant cohomology sheaves of finite rank
  \qquad\text{(2)}
 \]
 
-The arrow is the ordinary constant-section counit. The hypercohomology spectral sequence has terms \(H^q(U;H^jA)\), which vanish for \(q>0\). Its edge maps give \(H^jV=\Gamma(U;H^jA)\). Evaluation at every point of \(U\) is an isomorphism because those cohomology sheaves are constant. Thus (2) is an isomorphism on all cohomology stalks and hence in the derived category. The complex \(V\) is bounded and finite.
+The arrow is the counit of \(a_U^{-1}\dashv R\Gamma(U;-)\). Its cohomology maps are the evaluation maps. To compute their source, use the bounded hypercohomology spectral sequence \(H^q(U;H^jA)\Rightarrow H^{q+j}V\). Every \(H^jA\) is a finite constant sheaf on the contractible ball, so the rows with \(q>0\) vanish. Hence \(H^jV=\Gamma(U;H^jA)\), and the stalk at any \(z\in U\) of the counit is the isomorphism from those constant sections to \(H^j(A)_z\). This proves the derived isomorphism (2) itself, including its actual morphism. There are finitely many nonzero finite groups, so \(V\) is perfect over \(k\).
 
-Shrink an ambient neighborhood \(W\) so that \(Z\cap W=U\) is closed in \(W\). Normalized constant conormals give
+Shrink an ambient neighborhood \(W\) so that \(Z\cap W=U\) is closed in \(W\). Apply the constant-conormal formula to this actual model. The point coefficient has trace \(\chi(V)\); pulling it to the \(d=\dim U\) dimensional base contributes \((-1)^d\), and the closed embedding into \(W\) has the unsigned proper direct formula. Thus
 
 \[
- CC(V_U)=\chi(V)[T_U^*W],\qquad
+ CC(V_U)=(-1)^{\dim U}\chi(V)[T_U^*W],\qquad
  \chi(V)=\sum_j(-1)^j\dim_k H^jV.
  \qquad\text{(3)}
 \]
 
 Characteristic cycles and their defining kernel maps commute with restriction to \(W\). The local formulas (3) therefore agree on overlaps and glue to (1). The counit proof uses local contractible balls; it permits arbitrary monodromy of \(A\) on \(Z\). \(\square\)
 
-For example, a rank-\(d\) local system on a circle has local zero-section coefficient \(d\). Its global cohomology Euler characteristic is zero. Local conormal rank in (1) is calculated before any proper image to a point.
+For example, a rank-\(d\) local system on a circle has local zero-section coefficient \(-d\). Its global cohomology Euler characteristic is zero. Local conormal rank in (1) is calculated before any proper image to a point.
 
 ## Lagrangian chains retain their frontier boundary
 
@@ -63,7 +66,7 @@ For a locally closed subanalytic conic isotropic \(\Lambda\subset T^*X\), its di
  \qquad\text{(5)}
 \]
 
-Here \(H^0_\Lambda\) is degree zero of sheaf \(R\mathcal Hom(k_\Lambda,-)\). Ordinary \(j_{\Lambda*}\) retains approach germs at the frontier. On a smooth \(n\)-dimensional piece, (5) is its orientation line tensored with \(B\). A piece of dimension strictly less than \(n\) contributes zero.
+Here \(H^0_\Lambda\) is degree zero of sheaf \(R\mathcal Hom(k_\Lambda,-)\). For a closed carrier, support adjunction and (4) identify the supported complex with \(j_{\Lambda*}(\omega_\Lambda\otimes B|_\Lambda)[-n]\). Its lowest possible degree is zero, since \(\dim\Lambda\le n\). For a locally closed carrier, make it closed in an open neighborhood and then apply derived ordinary image to the same calculation. The lower bound makes degree zero of that image ordinary \(j_{\Lambda*}\) of the lowest sheaf, proving (5). Thus approach germs at the frontier remain. On a smooth \(n\)-dimensional piece the coefficient is \(\operatorname{or}_\Lambda\otimes B\); a piece of dimension strictly less than \(n\) contributes zero.
 
 We define the sheaf of Lagrangian chains by the dense-piece colimit of (5):
 
@@ -118,13 +121,13 @@ There is a dense relatively open regular subset \(\Lambda_0\subset\Lambda\) on w
  \qquad\text{(9)}
 \]
 
-**Proof.** On the regular \(n\)-dimensional part, use a compatible analytic stratification of the projection and its image, and retain the open constant-rank pieces. The removed pieces have dimension \(<n\). The required local image/refinement statement is the existing subanalytic stratification input. For nonzero conic pieces it can be applied on an angular cotangent link; the radial coordinate is then restored. The zero-section part is handled in ordinary base charts.
+**Proof.** Let \(R\) be the relatively open regular Lagrangian part of \(\Lambda\). On \(R\), the finitely many exact-rank loci of \(d\pi\) are subanalytic: the bounded tangent-witness calculation in the geometric prerequisite proves this for an analytic map restricted to a subanalytic analytic submanifold. Let \(\Lambda_0\) be the union of their relative interiors. It is open and dense in \(R\). Indeed, in any nonempty open patch choose the largest rank attained there; a minor nonzero at a point of that rank stays nonzero on a smaller patch, and maximality makes the rank constant on that smaller patch. The complement is subanalytic with empty interior in the \(n\)-manifold \(R\), so it has dimension \(<n\). Together with \(\Lambda\setminus R\), it remains lower-dimensional. Rank and the relative-interior construction are invariant under positive fibre dilation, so these choices preserve conicity.
 
-Locally the image is an embedded \(Z\), and \(\pi|_{\Lambda_\alpha}\) is a submersion onto \(Z\). The canonical one-form vanishes on \(\Lambda_\alpha\). Thus for \((x;\xi)\in\Lambda_\alpha\) and every \(v\in T_xZ\), choose a tangent vector above \(v\); its canonical-form value is \(\xi(v)=0\). Hence \(\Lambda_\alpha\subset T_Z^*X\).
+Near \(p\in\Lambda_0\), write the constant rank as \(d\). The local constant-rank theorem gives an embedded image germ \(Z\) of dimension \(d\), and makes the restricted projection a submersion onto it. This is a local statement about a sufficiently small source patch. For \((x;\xi)\) in that patch and \(v\in T_xZ\), lift \(v\) to a tangent vector \(w\) of the patch. Isotropy gives \(0=\alpha_X(w)=\xi(v)\), hence the patch lies in \(T_Z^*X\).
 
-Both smooth manifolds have dimension \(n\). Their inclusion is locally an open embedding. As \(p\) lies in the relatively open regular part of the entire closed carrier, shrink \(\Omega\) to exclude other pieces and obtain (9). This is a local chart assertion. When larger projected pieces are used, refine their images to embedded submanifolds before naming \(Z\). Constant rank alone does not assert that an arbitrary global image is embedded. \(\square\)
+The patch and the conormal are both smooth of dimension \(n\). The inclusion therefore has invertible differential and is an open embedding locally. Since \(R\) is relatively open in the full carrier, a smaller ambient cotangent neighborhood meets no other local carrier piece; shrinking once more gives (9). This argument also covers a zero covector: it uses one-form vanishing on the whole smooth patch, without division by \(\xi\). A local base chart makes \(Z\) closed in a smaller neighborhood. The global image of a projection may self-intersect or have a caustic, and is not being declared embedded. \(\square\)
 
-The chain \([\Lambda_\alpha]\) on such a piece is the restriction of the normalized \([T_Z^*X]\). This is a chain normalization with the coefficient \(B\). Equality of its ambient dimension with \(n\) does not supply an untwisted orientation on a nonorientable base.
+The chain \([\Lambda_\alpha]\) on such a piece is the restriction of the normalized \([T_Z^*X]\). This is a chain normalization with the coefficient \(B\). Its integrality can be checked in adapted tangent and normal frames: the tangent zero-section class is \((-1)^{\dim Z}\) times the positive integral fibre-point unit, and the normal factor is the integral closed-submanifold trace. Their product is therefore a primitive integral generator, with coefficient \(+1\) or \(-1\) in any integral orientation frame. Reversing a base frame reverses the corresponding dual fibre frame too; their paired signs cancel. These local generators thus glue with the fixed relative sign line, including on a nonorientable base. This proves primitivity, rather than assuming that an arbitrary rank-one \(k\)-coefficient is integral. The constant sheaf coefficient is \((-1)^{\dim Z}\) in this fixed normalized generator.
 
 ## Perfection makes the local coefficient finite
 
@@ -147,16 +150,16 @@ Microlocal Hom descends in both variables to the point-localized category. The a
  \qquad\text{(11)}
 \]
 
-The first input \(k_Z\) and \(F\) are finite constructible on the chart. Their microlocal Hom is bounded constructible with perfect stalks, so the left side of (11) is perfect over \(k\). The remaining two maps are valid for arbitrary bounded \(V\). The submanifold comparison cancels the projection and inverse projection orientation lines; the center-supported Fourier formula then gives the constant normal-covector coefficient \(V\). No further shift is present. Consequently \(V\) is perfect and its Euler characteristic is an integer.
+The first input \(k_Z\) and \(F\) are finite constructible on the chart. The perfect-operation theorem applies to the actual diagonal kernel \(R\mathcal Hom(q_2^{-1}k_Z,q_1^!F)\), then to its specialization and Fourier transform; it therefore makes the left side of (11) a perfect stalk. The last two arrows do not require this finiteness. The submanifold comparison cancels its projection orientation with the inverse projection orientation, giving \(\mu_ZV_Z\) with no remaining shift. Specialization of \(V_Z\) is supported on the zero normal vector with coefficient \(V\); in the Fourier kernel that vector pairs to zero with every covector, and projection is the identity on its support. The output stalk is exactly \(V\). Thus (11) proves perfection of the initially arbitrary model, and its Euler characteristic is a finite integer sum.
 
-After this step, \(V_Z\) is itself constructible. The constructible-roof theorem for localized isomorphisms represents (10) using constructible denominators whose cone microsupports avoid \(p\). Those microsupports are closed, so a smaller neighborhood avoids them all. Actual invariance and finite conormal normalization give
+After this step, \(V_Z\) is itself constructible. For a nonzero \(p\), the constructible-roof theorem realizes (10) by two ordinary arrows through a constructible cutoff object, both with cone microsupport avoiding \(p\). Closedness lets us choose one neighborhood avoiding both cones; the actual identity-and-trace invariance applies to each arrow there. At a zero covector, the localized isomorphism is an ordinary derived isomorphism on a smaller base neighborhood, where the same trace naturality applies. Using the constant-conormal formula (3) in either case gives
 
 \[
- CC(F)|_\Omega=\chi(V)[T_Z^*X]|_\Omega.
+ CC(F)|_\Omega=(-1)^{\dim Z}\chi(V)[T_Z^*X]|_\Omega.
  \qquad\text{(12)}
 \]
 
-Thus on a connected normalized regular piece its coefficient is one locally constant integer \(m_\alpha\). If \(\Omega_0\) is an open set whose intersection with the carrier is its chosen regular dense part, the generic chain formula is
+Thus on a connected normalized regular piece its coefficient is the locally constant integer \(m_\alpha=(-1)^{\dim Z}\chi(V)\). The base dimension is the locally constant rank of the conormal projection on this piece. The parity factor is a unit in \(\mathbb Z\), so the integrality and frontier arguments below are unchanged. If \(\Omega_0\) is an open set whose intersection with the carrier is its chosen regular dense part, the generic chain formula is
 
 \[
  CC(F)=\sum_\alpha m_\alpha[\Lambda_\alpha]
@@ -230,7 +233,7 @@ For \(V'=V=k\), the submanifold and center-supported comparisons identify the ri
 
 Microlocal Hom is contravariantly exact in the first variable, covariantly exact in the second, and compatible with shifts and finite direct sums. The coefficient map has the same properties. A bounded finite-dimensional coefficient complex is built from shifts of finite sums of \(k\) by a finite sequence of cones; retracts, if finite projective models are used, are also preserved. The comparison is therefore an isomorphism for all perfect \(V',V\). Finally the point-localized morphism theorem identifies every graded morphism group with the corresponding stalk cohomology, proving the second line of (18).
 
-The comparison is induced by the exact functor \(J_Z\). It preserves actual degree-zero compositions and identities. In the written tensor order of two graded microlocal Hom inputs, the derived symmetry retains the factor \((-1)^{ab}\) for degrees \(a,b\), as in the microlocal composition convention. No unrelated choice of vector-space isomorphism enters full faithfulness. \(\square\)
+The comparison is induced by the exact functor \(J_Z\). The kernel unit and composition calculation shows that it preserves actual degree-zero compositions and identities: composing with the diagonal identity cancels the adjacent evaluation and trace counit. In the written tensor order of two graded microlocal Hom inputs, the derived symmetry retains the factor \((-1)^{ab}\) for degrees \(a,b\). For (20) we use the degree-zero functorial map, so no further sign changes the actual arrow \(u\). Thus full faithfulness identifies morphisms compatibly with the exact functor, rather than choosing abstract vector-space isomorphisms. \(\square\)
 
 Take a distinguished triangle of constructible sheaves:
 
@@ -239,7 +242,7 @@ Take a distinguished triangle of constructible sheaves:
  \qquad\text{(19)}
 \]
 
-The triangle microsupport estimate puts all three microsupports in the common closed conic isotropic carrier \(\Lambda=SS(F')\cup SS(F'')\). The union is involutive as well: functions vanishing on the union have Poisson brackets vanishing on both members. The preceding regular-conormal construction therefore applies to the common carrier. On each such chart, choose perfect models \(V'_Z\simeq F'\) and \(V_Z\simeq F\) by (10)–(11). Objects invisible at \(p\) have coefficient zero.
+The triangle microsupport estimate puts all three microsupports in the common closed conic isotropic carrier \(\Lambda=SS(F')\cup SS(F'')\). This is also \(SS(F'\oplus F'')\): the finite direct-sum support tests vanish exactly when both summand tests vanish. Thus it is involutive by the microsupport theorem itself. The preceding regular-conormal construction therefore applies to the common carrier. On each such chart, choose perfect models \(V'_Z\simeq F'\) and \(V_Z\simeq F\) by (10)–(11). Objects invisible at \(p\) have coefficient zero.
 
 Conjugate the actual arrow \(u\) by those two model isomorphisms. Full faithfulness in (18) represents the resulting arrow by one \(\ell:V'\to V\) in \(\operatorname{Perf}(k)\). Set \(V''=\operatorname{Cone}(\ell)\). Exactness of \(J_Z\) gives an isomorphism of distinguished triangles in the point-localized category:
 
@@ -263,7 +266,7 @@ In a bounded finite cochain representative the cone has graded terms \(V^j\oplus
  \qquad\text{(21)}
 \]
 
-The same identity holds using cohomology, since the boundary subspaces cancel in consecutive degrees. Equations (12) and (20) identify these three Euler characteristics with the three generic characteristic-cycle coefficients. Their equality holds on every regular piece of the common carrier. Dense top-chain determination extends it through every singular frontier, giving
+The same identity holds using cohomology, since the boundary subspaces cancel in consecutive degrees. Equations (12) and (20) multiply these three Euler characteristics by the same factor \((-1)^{\dim Z}\) to obtain the three generic characteristic-cycle coefficients. Their additive identity therefore survives unchanged. Their equality holds on every regular piece of the common carrier. Dense top-chain determination extends it through every singular frontier, giving
 
 \[
  CC(F)=CC(F')+CC(F''),\qquad
@@ -290,8 +293,8 @@ These formulas permit cancellation in a nonzero object. They do not assert that 
 Let \(Z=S^1\) be a closed analytic submanifold of an analytic manifold \(X\). Let \(L\) be a rank-\(d\) local system with monodromy \(T\in GL_d(k)\). Compute \(CC(i_*L)\), the complex of its proper image to a point, and the characteristic cycle of that image. Explain the case in which \(T-1\) is invertible.
 
 **Solution.** On a contractible arc, (2) identifies \(L\) with \(k^d\) in degree zero. These actual local coefficient models give
-\(CC(i_*L)=d[T_Z^*X]\) by (1); monodromy does not change the local rank. A one-vertex, one-edge cellular model of the circle with its monodromy gives
-\(R\Gamma(S^1;L)=[k^d\xrightarrow{T-1}k^d]\) in degrees zero and one. Reversing the chosen edge can replace the differential by a conjugate or its negative without changing this derived object. Its cohomology is \(\ker(T-1)\) and \(\operatorname{coker}(T-1)\) in those degrees. Rank-nullity gives their equal dimensions, so its Euler characteristic is zero and its point characteristic cycle is zero. If \(T-1\) is invertible, the global complex is acyclic and the proper image object is zero. The input cycle still has coefficient \(d\), and for \(d>0\) is nonzero. Proper image to a point permits that cancellation; a global constant-complex model of \(L\) was never used.
+\(CC(i_*L)=-d[T_Z^*X]\) by (1); monodromy does not change the local rank. A one-vertex, one-edge cellular model of the circle with its monodromy gives
+\(R\Gamma(S^1;L)=[k^d\xrightarrow{T-1}k^d]\) in degrees zero and one. Changing the orientation, lifts, or trivializations gives a chain-isomorphic cellular complex. For example, reversing the monodromy generator replaces \(T-1\) by \(T^{-1}-1=-T^{-1}(T-1)\), an invertible change on the target term. Its cohomology is \(\ker(T-1)\) and \(\operatorname{coker}(T-1)\) in those degrees. Rank-nullity gives their equal dimensions, so its Euler characteristic is zero and its point characteristic cycle is zero. If \(T-1\) is invertible, the global complex is acyclic and the proper image object is zero. The input cycle still has coefficient \(-d\), and for \(d>0\) is nonzero. Proper image to a point permits that cancellation; a global constant-complex model of \(L\) was never used.
 
 ### A finite microlocal Hom excludes infinite coefficients
 
@@ -309,9 +312,9 @@ If \(F=V_Z\) for \(V=k^{(\mathbb N)}\) in degree zero, it is a bounded sheaf and
 
 At a fixed regular conormal point, take coefficient models \(V'=k^2\) and \(V=k^3\) in degree zero. Let the actual localized arrow correspond under (18) to a rank-one linear map \(\ell:k^2\to k^3\). Compute a model of the third object and all three characteristic-cycle coefficients. Do the coefficients determine the rank of \(\ell\)?
 
-**Solution.** The cone is \([k^2\xrightarrow{\ell}k^3]\) in degrees minus one and zero. Its cohomology is a one-dimensional kernel in degree minus one and a two-dimensional cokernel in degree zero. Over a field it is isomorphic to \(k[1]\oplus k^2\), so the third sheaf model is \((k[1]\oplus k^2)_Z\). The three coefficients are respectively \(2,3,-1+2=1\). Equation (21) reads \(3=2+1\).
+**Solution.** The cone is \([k^2\xrightarrow{\ell}k^3]\) in degrees minus one and zero. Its cohomology is a one-dimensional kernel in degree minus one and a two-dimensional cokernel in degree zero. Over a field it is isomorphic to \(k[1]\oplus k^2\), so the third sheaf model is \((k[1]\oplus k^2)_Z\). Put \(\epsilon_Z=(-1)^{\dim Z}\). The three characteristic-cycle coefficients are respectively \(2\epsilon_Z,3\epsilon_Z,\epsilon_Z(-1+2)=\epsilon_Z\). The raw Euler identity (21) is \(3=2+1\); multiplying it by the common \(\epsilon_Z\) gives the cycle identity.
 
-The cone is selected by the actual arrow, and (20) supplies the isomorphism of the whole localized triangles. For any rank \(r\in\{0,1,2\}\), the kernel and cokernel dimensions would be \(2-r\) and \(3-r\), so the cone Euler coefficient remains \(-(2-r)+(3-r)=1\). The three cycle coefficients therefore do not determine the map's rank. Their additivity records an Euler invariant of the whole triangle.
+The cone is selected by the actual arrow, and (20) supplies the isomorphism of the whole localized triangles. For any rank \(r\in\{0,1,2\}\), the kernel and cokernel dimensions would be \(2-r\) and \(3-r\), so the cone Euler characteristic remains \(-(2-r)+(3-r)=1\), and its cycle coefficient remains \(\epsilon_Z\). The three cycle coefficients therefore do not determine the map's rank. Their additivity records an Euler invariant of the whole triangle.
 
 ### A nonzero sheaf complex can have zero integral cycle
 
@@ -319,7 +322,7 @@ The cone is selected by the actual arrow, and (20) supplies the isomorphism of t
 
 Let \(Z\) be a nonempty closed analytic submanifold and \(F=k_Z\oplus k_Z[1]\). Compute its characteristic cycle and microsupport. Verify the coefficient triangle that explains the cancellation.
 
-**Solution.** The first summand has coefficient \(+1\) and the second \(-1\), by (3) and (23). Thus both \(CC(F)\) and \(CC_{\mathbb Z}(F)\) vanish. The object is nonzero, since on \(Z\) its cohomology is \(k\) in degrees zero and minus one. Its microsupport is the full conormal \(T_Z^*X\), because each nonzero constant submanifold summand has that microsupport and their direct-sum support tests preserve it. The split triangle \(k_Z\to F\to k_Z[1]\xrightarrow{0}k_Z[1]\) comes from inclusion and projection of the summands. Its coefficient triangle is \(k\to k\oplus k[1]\to k[1]\), giving \(0=1+(-1)\). The normalized generic coefficient vanishes even where the microlocal identity of \(F\) is nonzero.
+**Solution.** The first summand has coefficient \(\epsilon_Z=(-1)^{\dim Z}\) and the second \(-\epsilon_Z\), by (3) and (23). Thus both \(CC(F)\) and \(CC_{\mathbb Z}(F)\) vanish. The object is nonzero, since on \(Z\) its cohomology is \(k\) in degrees zero and minus one. Its microsupport is the full conormal \(T_Z^*X\), because each nonzero constant submanifold summand has that microsupport and their direct-sum support tests preserve it. The split triangle \(k_Z\to F\to k_Z[1]\xrightarrow{0}k_Z[1]\) comes from inclusion and projection of the summands. Its coefficient triangle is \(k\to k\oplus k[1]\to k[1]\), giving \(0=1+(-1)\). The normalized generic coefficient vanishes even where the microlocal identity of \(F\) is nonzero.
 
 ### Boundary incidence detects the integral lift
 
@@ -342,10 +345,10 @@ Take the coordinate axes \(Z_1=\{y=0\}\) and \(Z_2=\{x=0\}\) in \(X=\mathbb R^2\
 \(T_{Z_2}^*X=\{x=0,\eta=0\}\).
 They are closed conic smooth two-dimensional carriers. Their intersection is the single point \((0,0;0,0)\): both base coordinates and both covector coordinates must vanish. Their union is the singular common carrier of \(F\).
 
-The normalized generic coefficients are \(+1\) on the first conormal and \(-1\) on the second. With the same relative sign line \(B=\operatorname{or}_{T^*X/X}\), both normalized full conormals are cycles. The split triangle and (22) give
-\(CC_{\mathbb Z}(F)=[T_{Z_1}^*X]-[T_{Z_2}^*X]\).
-This is the extension of those generic weights through the intersection, and its boundary vanishes by linearity of the integral boundary. A further two-dimensional chain confined to the zero-dimensional intersection is zero in \(\mathcal C_2(B_{\mathbb Z})\), by its top-cell description. Hence it cannot supply an additional coefficient or a different lift. Removing the intersection to describe the regular pieces does not create a two-dimensional residue there. The signs \(+1,-1\) come from the coefficient shift, with the conormal generators held in their fixed normalization.
+The normalized generic coefficients are \(-1\) on the first conormal and \(+1\) on the second, since both axes have dimension one and the second coefficient is shifted. With the same relative sign line \(B=\operatorname{or}_{T^*X/X}\), both normalized full conormals are cycles. The split triangle and (22) give
+\(CC_{\mathbb Z}(F)=-[T_{Z_1}^*X]+[T_{Z_2}^*X]\).
+This is the extension of those generic weights through the intersection, and its boundary vanishes by linearity of the integral boundary. A further two-dimensional chain confined to the zero-dimensional intersection is zero in \(\mathcal C_2(B_{\mathbb Z})\), by its top-cell description. Hence it cannot supply an additional coefficient or a different lift. Removing the intersection to describe the regular pieces does not create a two-dimensional residue there. The signs \(-1,+1\) combine the one-dimensional base parity with the coefficient shift, with both conormal generators held in their fixed normalization.
 
-## Scope retained for the following calculations
+## From local coefficients to duality
 
-We have proved general local-system conormal rank, Lagrangian-chain comparison, finite generic coefficient models, integer lifts, additivity and shift signs. Antipodal duality requires its actual swapped-kernel orientation comparison. Half-line and Lorentz-cone examples require their complete boundary and vertex coefficient models. Those arguments, the subsequent microlocal index and the remaining perverse and holomorphic solution material remain separate course work.
+The integer lift retains local Euler coefficients through singular frontiers, and additivity allows them to cancel in a nonzero complex. Verdier duality adds a geometric operation: it reverses the cotangent covector together with its orientation coefficient. The next lesson proves that compatibility at the kernel unit and trace, then uses it to distinguish open and closed half-lines.

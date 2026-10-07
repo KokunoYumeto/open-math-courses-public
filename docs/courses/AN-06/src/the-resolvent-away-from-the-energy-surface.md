@@ -7,7 +7,7 @@
 
 An equation can be difficult at the frequencies where its principal constant-coefficient part equals the energy, while remaining elliptic everywhere else. A long-range perturbation becomes small at distant positions, so the off-energy reciprocal exists outside a compact set in phase space. We correct that reciprocal to obtain a full gain of derivatives in weighted spaces. The error must decrease rapidly in position as well as frequency: frequency smoothing alone cannot transfer an arbitrary spatial weight.
 
-Read [Weighted Sobolev spaces and rough elliptic estimates](weighted-sobolev-spaces-and-rough-elliptic-estimates.md) for the metric, all-real weighted scales and their mapping theorem, and [Admissible differential perturbations](admissible-differential-perturbations.md) for the smooth long-range splitting. We use [Finite composition and adjoints with spatial weights](../providers/analysis/finite-weighted-calculus.md), whose Section 1 proves symbol completeness and reciprocal estimates, Theorem 4.1 proves finite left composition, and Section 5 proves the common operator action and uniqueness of the left symbol. The Fourier facts and Euclidean interchanges are proved in [A finite-derivative bound for left quantization](../providers/analysis/finite-derivative-l2.md#fourier-normalization). Their required interfaces are recalled below. See also Lerner [L]. The joint summation and its weighted residual are constructed here.
+Read [Weighted Sobolev spaces and rough elliptic estimates](weighted-sobolev-spaces-and-rough-elliptic-estimates.md#weighted-symbol-mapping) for the metric, all-real weighted scales and their mapping theorem, and [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-regularization) for the smooth long-range splitting. We use [Finite composition and adjoints with spatial weights](../providers/analysis/finite-weighted-calculus.md), whose Section 1 proves symbol completeness and reciprocal estimates, Theorem 4.1 proves finite left composition, and Section 5 proves the common operator action and uniqueness of the left symbol. The Fourier facts and Euclidean interchanges are proved in [A finite-derivative bound for left quantization](../providers/analysis/finite-derivative-l2.md#fourier-normalization). Their required interfaces are recalled below. See also Lerner [L]. The joint summation and its weighted residual are constructed here.
 
 Write \(D=-i\partial\), \(\langle x\rangle=(1+|x|^2)^{1/2}\), and
 
@@ -49,7 +49,8 @@ Assume \(V_L\) is symmetric on Schwartz functions, the total principal symbol is
 
 The coefficients may be complex. In particular symmetry need not make the full left symbol real; ordering corrections can have imaginary lower-order coefficients.
 
-The smooth part of a 1-admissible perturbation has these bounds after choosing a sufficiently small positive \(\delta\). It can be made zero near a large compact set and then symmetrized, as proved in the admissible-perturbation lesson. Its leading coefficients are then uniformly small compared with \(p_m\), ensuring total ellipticity. Thus the hypotheses include the smooth long-range equation arising from that splitting. The proof below also permits the displayed larger range \(0<\delta\le1\).
+<a id="off-energy-coefficient-class"></a>
+For the smooth part of a 1-admissible perturbation, the [regularization theorem](admissible-differential-perturbations.md#admissible-regularization) permits any \(0<b<\varepsilon<1\). At \(K=1\), its derivative budget is exactly \(M(0)=b\) and \(M(q)=1+bq\) for every integer \(q\ge1\). Thus (3) holds with \(\delta=b\). The [exterior elliptic splitting](admissible-differential-perturbations.md#admissible-exterior-ellipticity) cuts off the smooth coefficients near a sufficiently large compact set and symmetrizes the expression while preserving this entire budget. Its leading coefficients are uniformly small compared with \(p_m\), ensuring total ellipticity. Hence the hypotheses include that smooth long-range equation, with an explicit common choice of \(\delta\) for all derivative orders. The theorem below retains the displayed larger range \(0<\delta\le1\).
 
 Fix \(\lambda\in\mathbb R\), and let
 
@@ -60,6 +61,7 @@ Fix \(\lambda\in\mathbb R\), and let
 
 This set is compact and can be empty. Let \(\chi\in C_c^\infty(\mathbb R^n)\) equal one on a neighborhood of \(M_\lambda\).
 
+<a id="off-energy-theorem"></a>
 **Theorem 1.1.** There is \(r>0\) such that, if \(u\in\mathcal S'\) solves
 
 \[
@@ -124,7 +126,7 @@ Use the left quantization \(a(x,D)\). Each such operator acts on both \(\mathcal
 
 Every target seminorm is bounded by finitely many source seminorms, with fixed metric and weight constants. This is Theorem 4.1, with the operator identities in Section 5, of the [complete programme calculus proof](../providers/analysis/finite-weighted-calculus.md#finite-composition). It does not assert convergence of the untruncated formal series.
 
-The symbol spaces are complete. A nonvanishing symbol of size at least \(cw\) has a reciprocal of weight \(w^{-1}\); the derivative estimates follow by differentiating \(aa^{-1}=1\) and induction. The pointwise version of this recursion also applies on a region where that lower bound holds. Section 1 of that same programme proof gives both arguments, including the pointwise reciprocal recursion (C4a).
+The symbol spaces are complete. A nonvanishing symbol of size at least \(cw\) has a reciprocal of weight \(w^{-1}\); the derivative estimates follow by differentiating \(aa^{-1}=1\) and induction. The pointwise version of this recursion also applies on a region where that lower bound holds. [Section 1 of the calculus proof](../providers/analysis/finite-weighted-calculus.md#symbol-completeness-and-reciprocal) gives both arguments, including the pointwise reciprocal recursion (C4a).
 
 Finally the weighted mapping theorem gives
 
@@ -141,6 +143,7 @@ All these estimates are uniform on symbol families with uniform seminorms. In th
 
 ## 3. A reciprocal outside a compact phase region
 
+<a id="off-energy-reciprocal"></a>
 **Lemma 3.1.** Choose \(\chi_0\in C_c^\infty\), equal one near \(M_\lambda\), with its support contained in an open set on which \(\chi=1\). There are a smooth cutoff \(\theta(x,\xi)\), equal one outside a compact phase set, and \(r>0\), such that
 
 \[
@@ -201,6 +204,7 @@ Whenever \(\theta\ne0\), either \(|x|>R\) or \(|\xi|>T\). On the support of \(1-
 
 Let \(p_z=P_0+V_L-z\). Formula (3), with \(\delta\le1\), implies \(p_z\in S(\langle\xi\rangle^m)\) uniformly. Apply the reciprocal derivative recursion at each point of the active region, where \(|p_z|\ge c\langle\xi\rangle^m\). The resulting derivatives of \(p_z^{-1}\) have exactly the weight \(\langle\xi\rangle^{-m}\). The numerator is in \(S(1)\), and derivatives of \(\theta\) have compact phase support. Product differentiation proves (12) and its uniform bounds. \(\square\)
 
+<a id="off-energy-first-error"></a>
 Set \(E_z=e_z(x,D)\) and \(A_z=P-z\). The \(N=1\) case of (10) gives the exact operator identity
 
 \[
@@ -222,6 +226,7 @@ The residual becomes small in either distant position or large frequency:
 
 This allows an asymptotic sum with a joint Schwartz error.
 
+<a id="off-energy-joint-summation"></a>
 **Lemma 4.1.** Suppose, for each \(j\ge0\), \(b_{j,z}\) is a uniformly bounded family in \(S(w h^j)\), with \(w=\langle\xi\rangle^{-m}\). There is a uniformly bounded family \(b_z\in S(w)\) satisfying, for every \(N\ge1\),
 
 \[
@@ -265,6 +270,7 @@ For each fixed derivative order the sufficiently late terms have summable semino
 
 For \(1\le j<N\), the difference \((q_{L_j}-1)b_{j,z}\) has compact phase support and belongs to \(S(w h^N)\), with uniform bounds. The \(j=0\) term was left unchanged. Subtracting the finite sum in (19) proves the assertion. The same sequence of cutoffs works for the whole parameter family. \(\square\)
 
+<a id="off-energy-schwartz-symbols"></a>
 There is a useful exact identification:
 
 \[
@@ -294,6 +300,7 @@ uniformly in \(z\), for each fixed \(j\). Let \(B_z\) be the operator of the joi
 
 We first identify the cutoff error that finite telescoping leaves behind.
 
+<a id="off-energy-separated-cutoffs"></a>
 **Lemma 5.1.** For every fixed \(j\ge0\), the operator \(CR_z^jC_0\) has a uniformly Schwartz left symbol.
 
 **Proof.** For \(j=0\) it is zero, since \((1-\chi)\chi_0=0\). For \(j\ge1\), let \(r_{j,z}\in S(h^j)\) be the left symbol of \(R_z^j\). Right multiplication by \(\chi_0(D)\) has the exact left symbol
@@ -317,6 +324,7 @@ For \(\gamma=0\), \(\chi=1\) on the support of \(\chi_0\); for positive \(\gamma
 
 An exact product can be nonzero even though all its finite expansion coefficients vanish. It is then measured by the remainder in every order. Problem 4 gives an explicit nonzero example of this phenomenon.
 
+<a id="off-energy-exact-telescoping"></a>
 For \(N\ge1\), (17) and finite telescoping give
 
 \[
@@ -338,7 +346,7 @@ By (19), \(B_z-\sum_{j<N}CR_z^jE_z\) has symbol in
  \tag{29}
 \]
 
-The left symbol is unique, so these are assertions about the same exact residual symbol. Formula (23) proves
+[Uniqueness of the left symbol](../providers/analysis/finite-weighted-calculus.md#weighted-exact-composition) makes these assertions about the same exact residual symbol. Formula (23) proves
 
 \[
  \begin{gathered}
@@ -351,6 +359,7 @@ The left symbol is unique, so these are assertions about the same exact residual
 
 with uniform bounds in the indicated spaces. This argument uses only finite sums of the individually Schwartz cutoff errors. It does not assume that their unmodified infinite series converges.
 
+<a id="off-energy-joint-kernel"></a>
 ## 6. What the joint Schwartz kernel controls
 
 For a left Schwartz symbol \(k_z\), the explicit kernel is
@@ -370,6 +379,7 @@ The parameter-dependent version can be checked directly. Write \(v=x-y\). Multip
 \(e^{iv\cdot\xi}x^\alpha\partial_\xi^\beta(\xi^\nu\partial_x^\gamma k_z(x,\xi))\).
 Every such amplitude is bounded by \(C\langle\xi\rangle^{-n-1}\), uniformly in \(x,z\), from a finite list of Schwartz seminorms. Its integral is finite, proving all joint seminorm estimates. Under an invertible linear substitution, each coordinate polynomial and derivative becomes a finite linear combination of coordinate polynomials and derivatives, so the same bounds hold in \((x,y)\).
 
+<a id="off-energy-tempered-inputs"></a>
 **Lemma 6.1.** An operator with a uniformly Schwartz kernel maps every tempered distribution to a Schwartz function. For arbitrary fixed \(s',t',q,t\in\mathbb R\), it also satisfies
 
 \[
@@ -390,8 +400,9 @@ uniformly in \(z\).
 
 Indeed continuity of \(u\) at zero in the Schwartz topology supplies a neighborhood defined by finitely many seminorms on which \(|\langle u,\phi\rangle|\le1\). A common derivative order and polynomial weight dominate those seminorms by the sum in (33). Rescaling an arbitrary test into that neighborhood gives (33); if the sum vanishes, rescale by arbitrarily large constants to obtain zero. Thus the estimate follows from the definition of a tempered distribution, with no preliminary weighted norm assumption.
 
-Apply this to \(\partial_x^\alpha\mathcal K_z(x,\cdot)\). Every resulting bound decreases faster than any power of \(\langle x\rangle\). Differentiation with respect to \(x\) is legitimate in the Schwartz test topology, so the resulting function \(K_zu\) has every Schwartz seminorm finite. This proves the first assertion for all tempered inputs.
+Apply this to \(\partial_x^\alpha\mathcal K_z(x,\cdot)\). Every resulting bound decreases faster than any power of \(\langle x\rangle\). To justify differentiation in the Schwartz test topology, apply the scalar Taylor formula in one \(x\)-coordinate: the difference between its difference quotient and its first derivative is bounded in each \(y\)-Schwartz seminorm by \(C|h|\), using the corresponding second \(x\)-derivative on a compact neighborhood of the fixed \(x\). The joint kernel bounds supply this constant uniformly in \(z\). Repeat for each \(x\)-derivative and then apply the continuous functional \(u\). Thus the resulting function \(K_zu\) has every Schwartz seminorm finite. This proves the first assertion for all tempered inputs.
 
+<a id="off-energy-weighted-kernel"></a>
 For the norm estimate conjugate by the weighted-space isometries:
 
 \[
@@ -411,6 +422,7 @@ Let \(\widetilde{\mathcal K}_z\) denote this kernel. Cauchy–Schwarz in \(y\) a
 
 The kernel norms are uniformly bounded. Apply this to \(v=M_{t'}J_{s'}u\), using the exact inverse \(J_{-s'}M_{-t'}\), to obtain (32). Schwartz approximation extends the norm estimate to the whole weighted space and agrees with the distributional kernel action. \(\square\)
 
+<a id="off-energy-resolvent-estimate"></a>
 **Proof of Theorem 1.1.** Apply (30) to the distributional equation (5):
 
 \[
@@ -426,6 +438,7 @@ The term involving \(u\) measures a compact phase-space error through a kernel t
 
 Inspect the joint Schwartz kernel and the finite composition remainder. State the weight transferred by that kernel; frequency smoothing by itself is not the asserted off-energy theorem.
 
+<a id="off-energy-solutions"></a>
 ## 7. Graded exercises with complete solutions
 
 **Exercise 1 — Basic: why both variables and positive \(\delta\) matter.** Show that outside a phase ball of radius \(L\), the weight in (8) is at most \(CL^{-\delta}\). Explain why the joint-summation argument fails with this weight at \(\delta=0\).

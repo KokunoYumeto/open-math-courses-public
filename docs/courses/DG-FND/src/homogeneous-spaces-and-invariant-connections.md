@@ -1,6 +1,6 @@
 # Homogeneous spaces and invariant connections
 
-**Draft.** The present chapter covers invariant affine and metric connections, homogeneous holonomy, product decompositions and the invariant almost complex structures on the six-sphere. The global reconstruction from parallel torsion and curvature and the sufficiency of the homogeneous complex-coordinate criterion are not yet included.
+This chapter develops invariant affine and metric connections, homogeneous holonomy, product decompositions and the invariant almost complex structures on the six-sphere. It also proves the homogeneous complex-coordinate criterion and reconstructs reductive homogeneity from complete parallel torsion, curvature and connection-difference data.
 
 Let \(G\) be a finite-dimensional real Lie group, \(H\) a closed subgroup, and \(M=G/H\) a connected homogeneous space. Write \(o=eH\), \(\mathfrak g=T_eG\), \(\mathfrak h=T_eH\), and \(V=\mathfrak g/\mathfrak h\). A bar denotes a class in \(V\). The quotient charts and principal bundle \(q:G\to M\) have their complete construction in [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup). The isotropy representation is
 \[
@@ -594,9 +594,305 @@ At \(p=e_1,u=e_2,v=e_4\), (F.10) is therefore
 \]
 Each term in (F.1) is unchanged when \(J\) is replaced by \(-J\), so \(N_{-J}=N_J\). F.1 excludes complex coordinates for both invariant structures. This conclusion concerns precisely the \(G_2\)-invariant structures classified here. □
 
+## G. From the invariant obstruction to complex coordinates
+
+We now prove the converse to the obstruction in F.1. The analytic method is described in Daniel Beltiţă's free arXiv preprint listed below. We give the finite-dimensional analytic and Frobenius arguments in full, including the analyticity of the homogeneous charts.
+
+**Lemma G.1 (Complex power series, flows and analytic Cauchy–Riemann equations).** Locally absolutely convergent complex power series admit termwise derivatives, compositions, local inverses with invertible complex derivative, and local flows with analytic dependence on complex time and parameters. A real-analytic map extends locally to such a series in the complexified variables, uniquely near the real slice. If a real-analytic map between open subsets of complex vector spaces has complex-linear real derivative at every point, it is locally a convergent power series in the complex coordinates alone.
+
+**Proof.** Here a holomorphic power series means
+\(f(z)=\sum_{\nu\in\mathbb N^d}c_\nu z^\nu\) with complex coefficients and
+\(\sum_\nu|c_\nu|r^\nu<\infty\) for some positive radius vector \(r\).
+[Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1) proves completeness and the product bound in the coefficient norm
+\[
+\|f\|_r=\sum_\nu |c_\nu|r^\nu,
+\qquad \|fg\|_r\leq\|f\|_r\|g\|_r.
+\tag{G.1}
+\]
+That proof uses limits of coefficients, absolute values and the triangle inequality, so it applies unchanged to complex coefficients: a Cauchy coefficient sequence converges in \(\mathbb C=\mathbb R^2\), and its finite partial sums satisfy the same bounds. On smaller radii, the bounds on \(|\nu|^kq^{|\nu|}\), \(q<1\), prove uniform convergence of every derivative series. The proof there of differentiation by passage from polynomial sums works along real and imaginary coordinate segments, giving the complex derivatives. It also proves convergence of substitutions by the majorant
+\(\sum_\nu |c_\nu|\prod_j\|w_j\|_r^{\nu_j}\).
+
+For specificity the inverse and flow constructions require no complex-analysis existence theorem. Normalize an equation with invertible unknown derivative to \(u=T(u,z)\), with \(T(0,0)=0\) and \(D_uT(0,0)=0\), as in [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1). Choose an unknown coefficient-norm ball of radius \(b\) and parameter radii small enough that the substituted derivative of \(T\) has norm at most \(q<1\) and
+\(\|T(0,z)\|_r<(1-q)b\). The monomial difference identity bounds
+\(\|T(u,z)-T(v,z)\|_r\leq q\|u-v\|_r\) over complex coefficients too. The contraction proof in [Local tools 1.1](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) gives a unique power-series fixed point. With the equation \(f(u)-z=0\), this constructs the inverse, and pointwise uniqueness makes it the inverse map on small neighbourhoods.
+
+For the equation \(u'=F(t,u,\lambda)\), use
+\[
+u=\eta+\int_0^t F(s,u(s),\lambda)\,ds.
+\tag{G.2}
+\]
+In the coefficient algebra, integration of \(t^j\) replaces it by \(t^{j+1}/(j+1)\), so its norm is at most the time radius. With bounds \(M,L\) for the substituted \(F,D_uF\), choose that radius with \(r_tM<b/2\), \(r_tL<1\), and \(\|\eta\|<b/2\). Contraction gives a series in \(t,\eta,\lambda\). Termwise differentiation proves (G.2), and the same contraction gives uniqueness. This proves the claimed holomorphic flows and parameter dependence. Restricted to real time, uniqueness in [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) identifies them with the ordinary smooth flows. Finitely many compositions extend parameter analyticity along any already existing compact real-time segment, as proved in [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1).
+
+A real-analytic series in real variables, with real or complex values, has the same absolute convergence bound after those variables are allowed to be complex. It therefore extends as stated. If such a complex series vanishes on a real neighbourhood, all its derivatives in the real coordinate directions vanish at the centre. Termwise differentiation identifies these derivatives with the factorial multiples of all its complex coefficients; those coefficients are zero. This proves local uniqueness and allows analytic identities valid on the real slice to be complexified.
+
+Finally write the real coordinates of \(\mathbb C^k\) as \(x,y\). Substitute
+\[
+x_j=\tfrac12(z_j+w_j),\qquad
+y_j=\tfrac1{2i}(z_j-w_j)
+\]
+in a real-analytic series for a component of the given map, and shrink radii. The composition bound above gives an absolutely convergent series
+\(\sum_{\alpha,\beta}a_{\alpha\beta}z^\alpha w^\beta\), representing the map when \(w=\bar z\). Complex linearity of the real derivative is precisely
+\(\partial f/\partial\bar z_j=\tfrac12(\partial_{x_j}+i\partial_{y_j})f=0\).
+Termwise differentiation gives
+\(\sum_{\alpha,\beta}\beta_j a_{\alpha\beta}z^\alpha w^{\beta-e_j}=0\) on that slice. Substitution back to \(x,y\), followed by uniqueness of real power-series coefficients, makes this a zero series. The invertible linear change between the formal variables \((x,y)\) and \((z,w)\) then makes every \(\beta_j a_{\alpha\beta}\) zero. Thus only \(\beta=0\) terms survive. This is the required holomorphic power series in \(z\). □
+
+**Theorem G.2 (Holomorphic Frobenius in finite dimensions).** Let \(D\) be a rank-\(r\) complex distribution on an open subset of \(\mathbb C^N\), locally spanned by holomorphic power-series vector fields. Suppose the bracket of any two such local sections belongs to \(D\). Near each point there are holomorphic coordinates in which \(D\) is the span of the first \(r\) coordinate fields. Equivalently, it is the kernel of a holomorphic submersion to \(\mathbb C^{N-r}\).
+
+**Proof.** We induct on \(r\). For \(r=0\) any holomorphic coordinate chart works. If \(r>0\), choose a local frame \(X_1,\ldots,X_r\) with \(X_1\ne0\) at the chosen point. A complex-linear coordinate change makes the first component of \(X_1\) nonzero there. G.1 supplies its holomorphic flow. The map
+\[
+(t,w)\longmapsto \Phi_{X_1}^t(0,w)
+\]
+has derivative whose columns are \(X_1(0)\) and the remaining coordinate vectors. They are independent. The holomorphic inverse of G.1 therefore provides coordinates \((t,w)\) in which \(X_1=\partial_t\).
+
+Subtract from the other frame fields their \(\partial_t\) components times \(X_1\). The resulting fields \(B_2,\ldots,B_r\) have only \(w\)-components, remain independent, and together with \(\partial_t\) span \(D\). Involutivity gives
+\[
+\partial_t B=B\,C(t,w),
+\tag{G.3}
+\]
+where \(B\) is the matrix of their columns and \(C\) is a holomorphic \((r-1)\)-square matrix. To see that its entries are holomorphic, choose a nonzero \((r-1)\)-minor of \(B\) at the base point and restrict to where it stays invertible. The coefficients of any field in their span are then obtained by applying that holomorphic inverse matrix to the selected components. The absence of a \(\partial_t\) component eliminates any \(X_1\) term.
+
+Solve the parameter-dependent matrix equation
+\[
+\partial_t P=-CP,\qquad P(0,w)=I.
+\]
+G.1 gives a holomorphic solution, invertible after shrinking because its determinant is initially one. Equation (G.3) implies \(\partial_t(BP)=0\). Thus the columns of \(\widehat B=BP\) are independent of \(t\), as follows also by comparing their power-series coefficients. They define a rank-\((r-1)\) holomorphic distribution on the \(w\)-space. It is involutive: the brackets have no \(\partial_t\) component, are independent of \(t\), and belong to \(D\); therefore they belong to the span of \(\widehat B\). Apply induction in dimension \(N-1\) to obtain holomorphic \(w\)-coordinates straightening it. Keep \(t\) as the first coordinate. These coordinates straighten \(D\), and projection to the last \(N-r\) coordinates is the desired submersion. If \(r=1\) the matrix step is empty; if \(r=N\) the target is the zero-dimensional complex vector space. □
+
+**Lemma G.3 (Analytic homogeneous coordinates).** A smooth finite-dimensional Lie group has a compatible real-analytic atlas of translated exponential charts. Its left translations are analytic in these charts. For a closed subgroup \(H\) and a vector-space complement \(\mathfrak m\) to \(\mathfrak h\), the charts
+\[
+v\longmapsto g\exp(v)H,\qquad v\in\mathfrak m\text{ near }0,
+\tag{G.4}
+\]
+give a compatible real-analytic atlas on \(G/H\), and left translation by \(G\) is analytic. If the complement is \(H\)-invariant and \(I\) commutes with its isotropy action, the invariant endomorphism \(j_gIj_g^{-1}\) is real analytic.
+
+**Proof.** [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) and [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) provide exponential charts in the existing smooth structure. We compute their left Maurer–Cartan matrix. For
+\(F(t,s)=\exp(t(v+sw))\), write
+\(a=\theta_G(\partial_tF)=v+sw\) and
+\(b=\theta_G(\partial_sF)\). Pullback of the Maurer–Cartan equation from [Curvature and holonomy A.3](curvature-and-holonomy-groups.md#lemma-a-3) gives
+\[
+\partial_t b-\partial_s a+[a,b]=0.
+\]
+At \(s=0\), this is \(b'=w-[v,b]\), \(b(0)=0\). The explicit solution is
+\(\int_0^t e^{-(t-u)\operatorname{ad}v}w\,du\): differentiating the matrix power series verifies the equation, and [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) gives uniqueness. Thus
+\[
+(\exp^*\theta_G)_v(w)=B(v)w,\qquad
+B(v)=\int_0^1 e^{-t\operatorname{ad}v}\,dt
+=\sum_{\ell=0}^\infty\frac{(-\operatorname{ad}v)^\ell}{(\ell+1)!}.
+\tag{G.5}
+\]
+In fixed finite-dimensional norms \(\|\operatorname{ad}v\|\leq C\|v\|\), so the displayed series and its coefficient majorants converge on bounded small boxes. It is real analytic. As \(B(0)=I\), it is invertible near zero, with analytic inverse by [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1). A left-invariant field with coefficient \(X\) therefore has coordinate expression \(B(v)^{-1}X\), an analytic function of \(v,X\).
+
+In an exponential chart, multiplication \(\exp(v)\exp(u)\), where the indicated points and path remain in the chart, is computed by the time-one solution of
+\[
+z'(t)=B(z(t))^{-1}u,\qquad z(0)=v.
+\tag{G.6}
+\]
+Indeed its group curve has constant left velocity \(u\). For \(v\) near any fixed chart point and \(u\) sufficiently small, smooth existence keeps the whole path in the chart. Analytic ODE dependence in [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1) makes its endpoint \(\mu(v,u)\) analytic in \(v,u\).
+
+We check chart compatibility. Suppose a point in two translated exponential charts has coordinates \(v_0,w_0\), so
+\(g\exp(v_0)=h\exp(w_0)\). Nearby points are uniquely
+\[
+g\exp(v_0)\exp(u)=h\exp(w_0)\exp(u)
+\]
+for small \(u\). Their two coordinates are \(\mu(v_0,u)\) and \(\mu(w_0,u)\). The derivative of the first map in \(u\) at zero is invertible by (G.5). Its analytic inverse, followed by the second map, is the coordinate transition. This proves an analytic atlas. Left multiplication takes a chart centred at \(g\) to the chart centred at \(ag\) with the same coordinate \(v\), so every left translation is analytic. Right multiplication is analytic too: exponential conjugation from [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) gives \(g\exp(v)a=ga\exp(\operatorname{Ad}_{a^{-1}}v)\), a fixed linear coordinate change in charts centred at \(g\) and \(ga\).
+
+The subgroup exponential is the restriction of the ambient exponential: its left-invariant ODE has the same image curve, by uniqueness in [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). For \(v\in\mathfrak m,Z\in\mathfrak h\) near zero, the group coordinates of
+\(\exp(v)\exp(Z)\) are therefore the analytic function \(\mu(v,Z)\). Its derivative at \((0,0)\) is \((v,Z)\mapsto v+Z\), an isomorphism. Analytic inversion gives a local product chart and an analytic map to its \(v\)-coordinate. The smooth quotient construction of [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) identifies this \(v\)-coordinate with the quotient chart (G.4). To check transitions, suppose \(g\exp(v_0)H=h\exp(w_0)H\), and choose \(k_0\in H\) with \(g\exp(v_0)=h\exp(w_0)k_0\). For \(v\) near \(v_0\), the analytic lift \(g\exp(v)k_0^{-1}\) lies near \(h\exp(w_0)\) in the second translated product chart. Taking its analytic \(\mathfrak m\)-coordinate gives the second quotient coordinate, since right multiplication by \(k_0^{-1}\) leaves its coset unchanged. This proves analytic compatibility even when the two representatives differ by an element of \(H\). Left translation sends the quotient chart centred at \(gH\) to the one centred at \(agH\) with the same coordinate \(v\), so it is analytic as well.
+
+Finally use the reductive identification \(V=\mathfrak m\). The derivative of the chart \(\phi(v)=\exp(v)H\) satisfies, by (G.5),
+\[
+d\phi_v(w)=j_{\exp(v)}\,C(v)w,\qquad
+C(v)=\operatorname{pr}_{\mathfrak m}B(v)|_{\mathfrak m}.
+\]
+Since \(C(0)=I\), it is analytically invertible near zero. In these coordinates the invariant endomorphism has matrix
+\[
+C(v)^{-1}IC(v).
+\tag{G.7}
+\]
+This is analytic, and translated charts give the same conclusion at every point. All constructed atlases have their original smooth coordinate maps, so they are compatible with the given smooth structures. □
+
+**Theorem G.4 (The complete homogeneous complex-coordinate criterion).** For the invariant almost complex structure determined by \(I\) on a reductive space, the condition
+\[
+[IX,IY]_{\mathfrak m}-[X,Y]_{\mathfrak m}
+-I[IX,Y]_{\mathfrak m}-I[X,IY]_{\mathfrak m}=0
+\quad(X,Y\in\mathfrak m)
+\tag{G.8}
+\]
+is necessary and sufficient for complex coordinates inducing that structure. The resulting complex atlas is compatible with the homogeneous real-analytic atlas, and every element of \(G\) acts holomorphically. Neither \(G\) nor \(H\) needs to be connected.
+
+**Proof.** Necessity is F.1. Conversely (G.8) makes \(N_J\) zero at \(o\), and invariance makes it zero everywhere. G.3 proves that \(J\) is real analytic in the homogeneous atlas. Work in one such real coordinate neighbourhood, identified with an open set in \(\mathbb R^{2k}\). By G.1 extend its matrix \(J(x)\) to a holomorphic matrix \(J(z)\) on a neighbourhood in \(\mathbb C^{2k}\). The identity \(J^2=-I\) persists after complexification by the uniqueness assertion of G.1.
+
+The matrices \(P_\pm(z)=\tfrac12(I\mp iJ(z))\) are complementary holomorphic projections onto the \(+i\) and \(-i\) eigenspaces. At the real centre each eigenspace has complex dimension \(k\): conjugation exchanges them, and their direct sum is \(\mathbb C^{2k}\). Choose bases of the two images there and project those fixed vectors by \(P_\pm(z)\). The resulting \(2k\) vectors remain a basis near the centre because their determinant remains nonzero. Thus
+\[
+D_z=\ker(J(z)+iI)
+\]
+is a holomorphic rank-\(k\) distribution.
+
+The tensor \(N_J\) in coordinates is formed from the coefficients of \(J\) and their first derivatives. This follows either by expanding (F.1) on coordinate fields or from its tensoriality proof there. Its holomorphic extension vanishes since it vanishes on the real slice. If \(A,B\) are holomorphic sections of \(D\), their eigenvalue identities \(JA=-iA,JB=-iB\) give
+\[
+0=N_J(A,B)=-2[A,B]+2iJ[A,B].
+\]
+Hence \(J[A,B]=-i[A,B]\), proving involutivity. G.2 supplies a holomorphic submersion \(f\) to \(\mathbb C^k\) with \(\ker df=D\).
+
+Since \((J+iI)(J-iI)=0\), the image of \(J-iI\) lies in \(D\), and consequently
+\[
+df\circ J=i\,df.
+\tag{G.9}
+\]
+At the real centre the restriction of \(df\) to \(\mathbb R^{2k}\) is injective: a real vector in its kernel would satisfy \(Jv=-iv\), with a real left side and purely imaginary right side, forcing \(v=0\). Both real dimensions are \(2k\), so it is an isomorphism. The real-analytic inverse theorem of [Curvature and holonomy I.1](curvature-and-holonomy-groups.md#lemma-i-1) makes the restriction of \(f\) a real-analytic local diffeomorphism onto an open subset of \(\mathbb C^k\). Equation (G.9) says precisely that these coordinates turn \(J\) into multiplication by \(i\).
+
+Carry out this construction at every point. A transition between two resulting charts is real analytic, because the underlying homogeneous transitions and the maps \(f\) and their real-analytic inverses are. Its real derivative commutes with multiplication by \(i\), by (G.9). The final assertion of G.1 then makes it holomorphic. We have obtained a complex atlas with the required compatibility. Each left action by an element of \(G\) is real analytic by G.3 and preserves \(J\) by invariance, so in the new charts its derivative is complex linear. G.1 again proves holomorphicity. All isotropy conditions used were imposed on the whole of \(H\); no connectedness argument entered. If \(k=0\), the coordinate domains are points and the conclusion is immediate. □
+
+## H. Recovering homogeneity from complete parallel data
+
+The free preprint of J. L. Carmona Jiménez and M. Castrillón López treats the relation between parallel data and reductive homogeneity. The next two lemmas provide the global integration and connected-fibre arguments needed for the reconstruction here.
+
+**Lemma H.1 (A complete constant-bracket frame gives a Lie group).** Let \(N\) be a connected simply connected smooth manifold with a global frame \(X_1,\ldots,X_d\). Suppose every \(X_i\) is complete and
+\[
+[X_i,X_j]=\sum_\ell c_{ij}^{\ell}X_\ell
+\]
+with constant real coefficients. For each chosen \(o\in N\), there is a unique Lie-group structure with identity \(o\) for which this frame is left invariant.
+
+**Proof.** The case \(d=0\) is a point. For \(d>0\), on \(N\times N\) consider the rank-\(d\) distribution
+\[
+\mathcal D_{(x,y)}
+=\operatorname{span}\{(X_i(x),X_i(y)):1\leq i\leq d\}.
+\]
+The coefficients in both factors are the same constants, so the bracket of two displayed fields is their same constant linear combination. The bracket product rule then makes the distribution involutive. [De Rham B.2](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-b-2) and [De Rham B.3](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-b-3) give its connected maximal integral leaves with their Hausdorff second-countable manifold structures. Each projection from such a leaf \(L\) to \(N\) is a local diffeomorphism: its derivative takes the displayed basis to the frame basis.
+
+We prove that each projection is a covering, retaining the global completeness hypothesis explicitly. Write \(\Phi_i^t\) for the complete flow of \(X_i\), and
+\[
+\Psi_x(t)=\Phi_d^{t_d}\cdots\Phi_1^{t_1}(x).
+\]
+For fixed \(x\), its derivative at \(t=0\) is the frame at \(x\); [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) gives a small open box \(B\) on which \(\Psi_x\) is a diffeomorphism onto a neighbourhood \(U\) of \(x\). The finite word \(\Phi_d^{t_d}\cdots\Phi_1^{t_1}\) is a global diffeomorphism for every real \(t\), because every constituent flow is complete.
+
+The orbit of any point under all finite words in these flows is open by the same inverse-function argument. These orbits partition connected \(N\) into open sets, so there is only one orbit. The simultaneous flows \((\Phi_i^t,\Phi_i^t)\) preserve every leaf of \(\mathcal D\): their trajectories are tangent to it, and the plaque construction in [De Rham B.3](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-b-3) makes their restrictions smooth. Hence each projection \(L\to N\) is onto.
+
+For every \((x,y)\in L\) over \(x\), the map
+\[
+U\longrightarrow L,\qquad
+\Psi_x(t)\longmapsto(\Psi_x(t),\Psi_y(t))
+\tag{H.1}
+\]
+is a smooth section of the first projection. Its image is open in \(L\): its derivative has rank \(d\), since composition with the projection has invertible derivative, and the inverse function theorem applies on the leaf. Two such images are disjoint unless their initial \(y\)'s agree, because the same global flow word is injective. They exhaust the inverse image of \(U\): given \((x',y')\in L\) with \(x'=\Psi_x(t)\), apply the inverse simultaneous word to reach a unique point \((x,y)\in L\). This proves that \(U\) is evenly covered. The same reasoning with the factors reversed proves the assertion for the second projection.
+
+[Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) now makes both projections diffeomorphisms, since \(N\) is simply connected and \(L\) is connected. Thus the leaf through \((o,y)\) is the graph of a global diffeomorphism \(F_y:N\to N\) with \(F_y(o)=y\) and
+\[
+(F_y)_*X_i=X_i.
+\tag{H.2}
+\]
+It is the only such diffeomorphism: the graph of any other is a connected integral manifold through \((o,y)\), hence lies in that maximal leaf, and the first projection already determines its single value over each point.
+
+Set \(y\cdot z=F_y(z)\). The identity map is \(F_o\). Composition and inversion preserve (H.2), so uniqueness gives
+\[
+F_yF_z=F_{F_y(z)},\qquad F_y^{-1}=F_{F_y^{-1}(o)}.
+\]
+These identities prove associativity, the identity law, and inverses.
+
+We verify smoothness jointly in both variables. The uniqueness of flows in [Local tools 2.1](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) and (H.2) imply that \(F_y\) commutes with every \(\Phi_i^t\). Fix \(z_0\), and choose a finite flow word \(P\) with \(P(o)=z_0\), which is possible by the orbit argument above. A coordinate parametrization near \(z_0\) is \(z=\Psi_{z_0}(t)\) for small \(t\). Commutation gives
+\[
+F_y(\Psi_{z_0}(t))
+=\Phi_d^{t_d}\cdots\Phi_1^{t_1}P(y).
+\tag{H.3}
+\]
+The right side is smooth jointly in \(y,t\), by smooth dependence of complete flows on each bounded time neighbourhood. This proves smooth multiplication near every pair. For inversion solve \(y\cdot z=o\): the derivative in \(z\) is that of the diffeomorphism \(F_y\), hence invertible. [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) gives a smooth solution \(z\) near each pair \((y,y^{-1})\), and uniqueness of the group inverse identifies these solutions. The resulting group is a Lie group on the original manifold.
+
+Its left translations are precisely \(F_y\), so the frame is left invariant. In any other Lie-group structure with this identity and left-invariant frame, left translation by \(y\) would satisfy (H.2) and send \(o\) to \(y\); uniqueness of \(F_y\) forces the same multiplication. Notice that only completeness of the frame fields was used; completeness of all their linear combinations was not assumed. □
+
+**Lemma H.2 (Connected fibres after a connected covering).** Let \(Q\to M\) be a smooth locally trivial bundle with manifold fibre. Suppose \(M\) is connected and simply connected, and \(r:E\to Q\) is a connected smooth covering onto \(Q\). Then the composite \(p:E\to M\) is locally trivial with manifold fibres, and every fibre of \(p\) is connected.
+
+**Proof.** Choose a bundle trivialization \(Q|_U\cong U\times F\), with \(U\) a coordinate ball convex in its coordinates and centred at \(x_0\). Put \(F'=r^{-1}(\{x_0\}\times F)\), a possibly disconnected manifold. For \(a\in F'\), with \(r(a)=(x_0,f)\), lift the path
+\[
+t\longmapsto(x_0+t(x-x_0),f),\qquad 0\leq t\leq1,
+\]
+starting at \(a\), and let \(\Theta(x,a)\) be its endpoint. The covering path-lifting proof in [Flat connections D.1](flat-connections-and-infinitesimal-holonomy.md#lemma-d-1) gives existence and uniqueness on the whole interval. The lift varies smoothly locally with \(x,a\): subdivide one lifted path into finitely many covering charts and use their smooth inverse branches in order; the same subdivision works in a neighbourhood of its parameters by continuity and compactness. This is also the smooth-parameter verification in that lifting proof.
+
+The map \(\Theta:U\times F'\to r^{-1}(Q|_U)\) is a diffeomorphism. Its inverse takes a point over \((x,f)\) to \(x\) and the endpoint obtained by lifting the reverse radial path to \(x_0\). Reversal and uniqueness make these maps inverse, and the same local inverse-branch argument proves smoothness of the inverse. This proves the asserted local triviality of \(p\).
+
+Form the set \(C\) of connected components of all fibres of \(p\), with the quotient topology from \(E\). In a local trivialization \(U\times F'\), every component of \(F'\) is open: a manifold is locally path connected, so its connected components are unions of open path components and are themselves path connected. Thus \(C\) has local charts
+\[
+U\times\pi_0(F')\longrightarrow U,
+\tag{H.4}
+\]
+with the second factor discrete. These charts give exactly the quotient topology. In fact an open subset of \(U\times F'\) meets each component in an open set, whose projection to \(U\) is open; its image in \(U\times\pi_0(F')\) is consequently open. The transition maps preserve the base point and permute component labels locally constantly, because a continuous family of fibre diffeomorphisms cannot move a connected component's chosen point between disjoint open components on a connected small parameter neighbourhood.
+
+Hence \(C\to M\) is a covering. It is Hausdorff: distinct base points separate downstairs, and distinct points over one base point separate in the disjoint sheets of (H.4). The quotient map \(E\to C\) is open by the preceding projection argument, so the images of a countable basis of \(E\) give a countable basis of \(C\). The covering charts therefore also give its usual smooth manifold structure. It is connected as the continuous image of connected \(E\). [Flat connections D.3](flat-connections-and-infinitesimal-holonomy.md#theorem-d-3) makes this covering one-sheeted, since \(M\) is simply connected. Thus every fibre of \(p\) has exactly one connected component. □
+
+**Theorem H.3 (The complete parallel-data criterion).** Let \(M\) be a connected simply connected smooth manifold with an affine connection \(\nabla\). The following are equivalent:
+
+1. A connected Lie group acts transitively on \(M\), preserving \(\nabla\), and has a reductive presentation \(M=G/K\).
+2. There is a geodesically complete affine connection \(\bar\nabla\) such that
+\[
+\bar\nabla\bar T=0,\qquad \bar\nabla\bar R=0,\qquad
+\bar\nabla S=0,\qquad S=\nabla-\bar\nabla.
+\tag{H.5}
+\]
+
+In the reconstruction from the second condition, \(G\) may be chosen simply connected, \(K\) is closed and connected, and \(\bar\nabla\) is the canonical connection for the resulting reductive complement. The action preserves every \(\bar\nabla\)-parallel tensor.
+
+**Proof.** Assume the first condition. Choose its reductive complement and the canonical connection \(\bar\nabla\) from B.2. That theorem proves geodesic completeness and parallel torsion and curvature. The difference \(S\) is a tensor by [Linear connections A.3](linear-and-affine-connections.md#theorem-a-3); both connections are invariant, so \(S\) is invariant. B.2 then gives \(\bar\nabla S=0\). This proves (H.5).
+
+For the converse fix a frame \(u_0:\mathbb R^n\to T_oM\) and take the intrinsic reachable holonomy reduction \(Q\) of \(\bar\nabla\), with full holonomy structure group \(H_0\) and Lie algebra \(\mathfrak h_0\). [Curvature and holonomy G.4](curvature-and-holonomy-groups.md#theorem-g-4) proves that it is a Hausdorff second-countable principal bundle with the restricted connection, even when its inclusion in the full frame bundle is only immersed. It is connected: every point is reached from \(u_0\) by a horizontal path, continuous in that intrinsic structure.
+
+[Geodesics D.3](geodesics-normal-coordinates-and-curvature.md#theorem-d-3) supplies a coframe \((\theta,\omega)\) on \(Q\) and the global fields
+\[
+Z_{A,a}=A^\#+B(a),\qquad A\in\mathfrak h_0,\ a\in\mathbb R^n,
+\]
+whose constant bracket is
+\[
+[Z_{A,a},Z_{C,b}]
+=Z_{[A,C]-r(a,b),\,Ab-Ca-t(a,b)}.
+\tag{H.6}
+\]
+Here \(t,r\) are the constant frame components of \(\bar T,\bar R\). We need a complete frame. Choose bases of \(\mathfrak h_0\) and \(\mathbb R^n\); their fields \(A^\#\) and \(B(a)\) form one. The vertical fields are complete, with flows \(u\mapsto u\exp(tA)\) in the intrinsic principal bundle. The horizontal fields are complete as well. By [Geodesics G.1](geodesics-normal-coordinates-and-curvature.md#theorem-g-1) their projected curves are the geodesics with initial velocity \(ua\), which exist for all real times by hypothesis. On every compact time interval, [Connections C.1](connections-and-parallel-transport.md#theorem-c-1) lifts that geodesic inside the principal bundle \(Q\); the coframe calculation in [Geodesics G.1](geodesics-normal-coordinates-and-curvature.md#theorem-g-1) identifies the lift with the integral curve of \(B(a)\). Uniqueness makes these compact-interval lifts agree. Thus completeness holds on \(Q\) itself.
+
+[Flat connections D.2](flat-connections-and-infinitesimal-holonomy.md#theorem-d-2) constructs its connected simply connected covering
+\(r:\widetilde Q\to Q\) as a smooth Hausdorff second-countable manifold. Each frame field lifts uniquely through this local diffeomorphism. Its lift is complete: lift its whole flow trajectory from any chosen point on each finite time interval by [Flat connections D.1](flat-connections-and-infinitesimal-holonomy.md#lemma-d-1), and join the compatible intervals by uniqueness. The local inverse branches make the lifted curve smooth and give its differential equation. Naturality of brackets from [Curvature and holonomy A.3](curvature-and-holonomy-groups.md#lemma-a-3) shows that the lifted frame has the same constants (H.6).
+
+Apply H.1 to \(\widetilde Q\), with a chosen lift of \(u_0\) as identity. It becomes a connected simply connected Lie group \(G\). Its Lie algebra is
+\(\mathfrak h_0\oplus\mathbb R^n\) with bracket (H.6), and the lifted \(\theta,\omega\) are left-invariant forms: they take constant values on the left-invariant frame. Let
+\[
+p:G\xrightarrow{r}Q\longrightarrow M.
+\]
+It is a surjective submersion. H.2 proves that all its fibres are connected. They are also closed, since \(M\) is Hausdorff. Its vertical distribution is the left-invariant distribution corresponding to
+\(\mathfrak k=\{(A,0):A\in\mathfrak h_0\}\), because \(\theta\) vanishes exactly on vertical vectors.
+
+Let \(K=p^{-1}(o)\). We show that this fibre is a subgroup. Equation (H.6) makes \(\mathfrak k\) a Lie subalgebra. [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1) supplies its connected analytic subgroup, generated by \(\exp(\mathfrak k)\). Its left cosets are exactly the maximal integral leaves of the vertical distribution: finite words in these flows stay in a leaf, their orbit is open in that leaf by the inverse function theorem applied to a basis of \(\mathfrak k\), and the orbits partition a connected leaf into open sets. On the other hand the fibres of \(p\) are exactly these leaves. A vertical path has constant \(p\)-value by differentiation; and any two points of a connected fibre can be joined by finitely many coordinate paths inside that fibre, tangent to its kernel distribution. It follows that \(K\) is the subgroup just constructed and every fibre is a left coset \(gK\).
+
+Since \(K\) is closed, [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1) makes it an embedded Lie subgroup; its tangent space at the identity is \(\ker dp_e=\mathfrak k\). [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) gives the smooth quotient \(G/K\). The induced map
+\[
+G/K\longrightarrow M,\qquad gK\longmapsto p(g)
+\tag{H.7}
+\]
+is bijective by the fibre calculation and is a local diffeomorphism: its derivative is the isomorphism obtained from the surjection \(dp_g\) by dividing out its vertical kernel. Local quotient sections verify smoothness, and its local inverses give a global smooth inverse. Thus left translation on \(G/K\) gives the required transitive action on \(M\).
+
+Set \(\mathfrak m=\{(0,a):a\in\mathbb R^n\}\). Equation (H.6) gives
+\[
+[(A,0),(0,a)]=(0,Aa).
+\tag{H.8}
+\]
+Therefore \(\operatorname{ad}(\mathfrak k)\mathfrak m\subseteq\mathfrak m\). The adjoint ODE of [Curvature and holonomy A.3](curvature-and-holonomy-groups.md#lemma-a-3) shows that \(\operatorname{Ad}(\exp A)\) preserves \(\mathfrak m\) for each \(A\in\mathfrak k\): solve that linear ODE in \(\mathfrak m\) and use uniqueness. The connected group \(K\) is generated by these exponentials, as in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1), so all of \(\operatorname{Ad}(K)\) preserves \(\mathfrak m\). This is a reductive complement for the full stabilizer.
+
+It remains to prove preservation of the connection and tensors, rather than only homogeneity of the manifold. Write \(u_g=r(g)\) for the frame in \(Q\), and \(\ell_a\) for the action of \(a\in G\) on \(M\). For any \(V\in T_gG\), the pulled-back solder identity is
+\[
+dp_g(V)=u_g\,\theta_g(V).
+\]
+Left invariance of \(\theta\) and \(p\circ L_a=\ell_a\circ p\) give
+\[
+d\ell_a\,u_g=u_{ag}.
+\tag{H.9}
+\]
+Indeed every vector in \(\mathbb R^n\) occurs as \(\theta_g(V)\). Thus the natural action on frames, restricted to \(Q\), is exactly the one induced from \(L_a\) through \(r\).
+
+The pulled-back connection form \(\omega\) is left invariant too. Since \(r\) is a covering local diffeomorphism, (H.9) implies that this natural frame action preserves the connection on \(Q\), and hence on the full frame bundle by right equivariance and local frames. [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2) then proves preservation of \(\bar\nabla\). Its horizontal spaces on \(G\) are precisely \(dL_g\mathfrak m=\ker\omega_g\). These are the canonical horizontal spaces for the reductive presentation in [Invariant connections C.2](invariant-connections-on-homogeneous-bundles.md#theorem-c-2), so \(\bar\nabla\) is the canonical connection claimed.
+
+If a tensor \(P\) is \(\bar\nabla\)-parallel, its coefficients in a parallel frame are constant by [Linear connections C.1](linear-and-affine-connections.md#theorem-c-1) and [Linear connections A.2](linear-and-affine-connections.md#theorem-a-2). Every frame in \(Q\) is horizontally reachable from \(u_0\), so those coefficients have the same value throughout \(Q\). Equation (H.9) therefore makes \(P\) invariant under every \(\ell_a\). In particular \(S\) is invariant by (H.5), and preservation of \(\bar\nabla\) and \(S\) gives preservation of \(\nabla=\bar\nabla+S\). This finishes every assertion. □
+
 ## Freely accessible sources
 
 - Alberto Elduque, *Reductive homogeneous spaces and nonassociative algebras*, Communications in Mathematics **28** (2020), 199–229. [Free journal article](https://dml.cz/bitstream/handle/10338.dmlcz/148703/ActaOstrav_28-2020-2_8.pdf), §§4–5 and the Lie-group examples at the start of §6. The moving-frame classification, bilinear products and metric computations are developed in A–D above.
 - Masahiro Morimoto, *The parallel transport map over reductive homogeneous space*, [arXiv:2512.01522v1](https://arxiv.org/pdf/2512.01522v1), 1 December 2025, §2. This version describes local reductive frames and invariant affine connections, including the product-group presentation used in C.3.
+
+- Daniel Beltiţă, *Integrability of almost complex structures on Banach manifolds*, [arXiv:math/0407395v1](https://arxiv.org/pdf/math/0407395v1), 23 July 2004, Theorems 6, 7, 13 and 15 and Proposition 11. Part G develops the finite-dimensional analytic construction, with complete power-series, Frobenius and homogeneous-chart proofs before the complex-coordinate criterion.
+- J. L. Carmona Jiménez and M. Castrillón López, *The Ambrose–Singer Theorem for general homogeneous manifolds with applications to symplectic geometry*, [arXiv:2001.06254v2](https://arxiv.org/pdf/2001.06254v2), 19 August 2021, Theorem 2.2 and its proof. Part H proves the complete parallel-data criterion, including the global frame integration and fibre-connectedness arguments used in the reconstruction.
 
 The complete programme proofs supporting the global product argument are in [De Rham E.3](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-e-3) and [De Rham K.5](holonomy-and-the-de-rham-decomposition-theorem.md#corollary-k-5). The octonion multiplication, stabilizer and sphere-action proofs are in [De Rham Z.1](holonomy-and-the-de-rham-decomposition-theorem.md#lemma-z-1), [De Rham Z.2](holonomy-and-the-de-rham-decomposition-theorem.md#lemma-z-2), [De Rham Z.6](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-z-6) and [De Rham Z.7](holonomy-and-the-de-rham-decomposition-theorem.md#theorem-z-7); F.2 combines those results to construct the prescribed Cayley triples, and F.3 computes the obstruction explicitly in their fixed multiplication convention.

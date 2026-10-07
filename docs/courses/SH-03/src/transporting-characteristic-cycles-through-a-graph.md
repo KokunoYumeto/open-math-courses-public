@@ -2,15 +2,17 @@
 
 Transport of a characteristic cycle must carry its identity and its evaluated trace. A graph separates a map into two changes of one product variable. This makes ordinary restriction, proper duality and the relative orientation visible. We prove proper direct image and noncharacteristic inverse image with their actual microlocal comparisons, then obtain normalized conormal cycles for globally constant finite coefficients.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Use Characteristic cycles from supported microlocal identities for the supported construction, graded evaluation and closed-point normalization. Proper characteristic classes and the compact index proves the evaluated proper-duality and identity comparisons. Pulling back Lagrangian cycles through a graph and Transverse pullback of normalized conormal cycles fix the actual inverse-cycle coefficient and its relative fibre trace. The current SH-02 prerequisites are the two microlocal functorial squares, their specified unit/counit identities, the support estimates and the inverse-comparison theorem with a submersive center.
+The proof follows the identity, its evaluated kernel and its supported coefficient through two changes of a product variable. The supported microlocal identity construction specifies the input cycle. The evaluated proper-duality calculation controls direct image; the actual graph adjoint and graph/fibre-trace comparison specify the inverse-cycle map.
 
-This lesson transports characteristic cycles through a graph, including the globally constant conormal calculation, in the framework of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985). We retain a field \(k\) of characteristic zero and bounded R-constructible complexes with perfect stalks. Manifolds are real analytic, Hausdorff and countable at infinity, with the standing uniform finite dimension bounds. No global orientation is chosen.
+The applications below use the two microlocal functorial squares, their unit-and-counit identities, the microlocal support bound, and the inverse comparison for a submersive center. The positive-first conormal parameter used for microlocal Hom differs from the inverse-cycle lesson's parameter by a fibre antipode. We keep that comparison visible: it supplies a dimension sign in inverse transport with the normalized cycles used here.
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§2–3, pp. 196–199, supplies the twisted conormal and characteristic-cycle framework. The graph argument here proves transport by following the specified kernel units and evaluations; it retains the distinction between the conormal parameters in the cycle operation and in microlocal Hom. We retain a field \(k\) of characteristic zero and bounded R-constructible complexes with perfect stalks. Manifolds are real analytic, Hausdorff and countable at infinity, with the standing uniform finite dimension bounds. No global orientation is chosen.
 
 ## The two carriers and coefficient maps
 
-For \(f:Y\to X\), set
+Let \(f:Y\to X\) be analytic, with \(\dim Y=m\) and \(\dim X=n\). Dimension-dependent signs are interpreted component by component. Set
 
 \[
  \begin{gathered}
@@ -46,8 +48,7 @@ The cycle operations use the coefficient maps
 
 The first is Cartesian proper-support base change followed by
 \(\pi_X^{-1}\operatorname{tr}_f\).
-The second is the actual graph comparison already proved in the inverse-cycle lesson. Its adjoint is the inverse exceptional-composition map
-\(Q\simeq r^!E_Y\), using the cotangent-fibre dualizing identifications. Thus \(\rho_f\) is a relative fibre trace. Properness is required on the supported objects to which these arrows are applied, rather than on every point of their ambient domains.
+The second is the actual graph comparison of the inverse-cycle construction. That construction uses \((-df^t\xi,\xi)\) on the graph and \((-\eta,\eta)\) on the diagonal. Its exceptional adjoint \(\beta_f:Q\to r^!E_Y\) is the particular isomorphism proved there. Exceptional composition also gives an auxiliary isomorphism from the cotangent-fibre dualizing lines. Identifying these two maps requires their orientation normalization; an isomorphism of their endpoint objects alone would not suffice. For the comparison below we use the actual \(\beta_f\) and explicitly track the change to the positive-first parameters of the Hom kernel. Properness is required on the supported objects to which these arrows are applied, rather than on every point of their ambient domains.
 
 For \(G\) with closed support \(Z\) and \(f|_Z\) proper, \(s\) is proper on \(S'\). Indeed its inverse image of a compact cotangent set has base points in the compact set \(Z\cap f^{-1}(\pi_X K)\) and bounded \(\xi\). The incidence and \(S'\) are closed, so this inverse image is compact. The same proof makes \(s\) proper on every closed subset of \(p^{-1}Z\). No norm bound for \(df^t\) is needed here.
 
@@ -58,7 +59,9 @@ For inverse image, properness of \(r|_B\) is equivalent to
  \qquad\text{(3)}
 \]
 
-The proof is the compact uniform lower-norm argument in the inverse-cycle lesson: a killed nonzero covector gives an unbounded ray over one target point; conversely, failure of a compact lower bound gives a normalized nonzero killed limit. Condition (3) is noncharacteristicity for \(F\). Neither condition implies the other.
+The proof is the compact uniform lower-norm argument: a killed nonzero covector gives an unbounded ray over one target point; conversely, failure of a compact lower bound gives a normalized nonzero killed limit. Condition (3) is noncharacteristicity for \(F\). Neither condition implies the other.
+
+We will also use \(\operatorname{SS}(D_WB)=\operatorname{SS}(B)^a\) for bounded constructible \(B\) on a manifold \(W\). The Hom microsupport estimate with constant target gives the inclusion for coefficient duality; tensoring by the invertible \(\omega_W\) changes no support test. Applying that inclusion to \(D_WB\) and using the actual constructible biduality map gives the reverse inclusion. The antipode in this equality is essential in both graph support calculations.
 
 ## The direct-image graph keeps the ordinary counit
 
@@ -70,7 +73,7 @@ Put
  \qquad\text{(4)}
 \]
 
-where the last is the actual evaluated proper-duality map. All objects are bounded constructible by proper perfect image and constructible duality. Define
+where the last is the inverse of the actual evaluated map \(Rf_!D\to D_XP\) in proper duality. Its curry is projection, the ordinary counit on a pulled-back coefficient, graded evaluation and the trace \(Rf_!\omega_Y\to\omega_X\). The proper perfect-image proof and constructible duality make every object in (4) bounded constructible with perfect stalks. The supports of \(D\) and \(R\mathcal Hom(G,G)\) lie in \(Z\), so proper and ordinary images agree on those objects as well. Define
 
 \[
  \begin{gathered}
@@ -106,7 +109,7 @@ These are the specified comparisons, including the product isomorphisms in (4)�
  \qquad\text{(7)}
 \]
 
-To verify invertibility, apply the full direct-comparison test to \(f_2\). It is proper on \(\operatorname{supp}K\), its preimage of \(\Delta_X\) is exactly \(\Gamma_f\), and its normal derivative is the identity. The normal map on the closed normal cone of \(\operatorname{supp}K\) is proper: compact target base bounds \(y\) in \(Z\) by properness of \(f|_Z\), and bounded target normal coordinates bound the source normal coordinates, which are unchanged. The cone is closed, so these bounds give compact inverse images. All three tests hold. The relative line for this second pair is the unit, and its left vertical is \(Rs_!\to Rs_*\). The support of \(\mu_\gamma K\) lies over \(Z\), so that vertical is invertible by the compactness observation following (2). Consequently (7) is inverse to (6)'s second map under this support comparison.
+To verify invertibility, apply the three closed-support conditions of MIC12 to \(f_2\). It is proper on \(\operatorname{supp}K\), its preimage of \(\Delta_X\) is exactly \(\Gamma_f\), and its normal derivative is the identity. The normal map on the closed normal cone of \(\operatorname{supp}K\) is proper: compact target base bounds \(y\) in \(Z\) by properness of \(f|_Z\), and bounded target normal coordinates bound the source normal coordinates, which are unchanged. The cone is closed, so these bounds give compact inverse images. All three tests hold. The relative line for this second pair is the unit, and its left vertical is \(Rs_!\to Rs_*\). The support of \(\mu_\gamma K\) lies over \(Z\), so that vertical is invertible by the compactness observation following (2). Consequently (7) is inverse to (6)'s second map under this support comparison.
 
 Write \(\lambda_N(A):A\to i_{N*}i_N^{-1}A\) for the **ordinary** closed unit. The first restriction comparison is
 
@@ -141,7 +144,7 @@ For \(f_2\), the graph square over \(\Delta_X\) is Cartesian. Proper-support bas
  \qquad\text{(10)}
 \]
 
-This is the closed Cartesian unit identity proved in the proper-transport lesson. Transposing both sides along \(\delta_X^{-1}\dashv\delta_{X*}\) leaves the same proper-base-change map \(B\); the closed ordinary counit cancels its unit. Thus it holds before any vertical proper support is forgotten.
+This is the Cartesian closed-restriction identity. Transposing both sides along \(\delta_X^{-1}\dashv\delta_{X*}\) leaves the same proper-base-change map \(B\); the closed ordinary counit cancels its unit. Thus it holds before any vertical proper support is forgotten.
 
 On the graph, set
 \(t_\gamma=t_G(b_G\otimes1_D):f^{-1}P\otimes D\to\omega_Y\).
@@ -153,7 +156,7 @@ The evaluated proper-duality comparison in (4) says
  \qquad\text{(11)}
 \]
 
-Its proof curries the two pairings against \(P\). Projection formula, the ordinary counit and \(Rf_!\omega_Y\to\omega_X\) give the defining internal-adjunction pairing on both paths. The support-forgetting evaluation identity compares the counit on \(G\) with the counit on \(D\). Their flat/soft resolution evaluations coincide on properly supported sections. The same graded permutations occur in both evaluations. This is the full evaluated comparison already proved in the proper-characteristic-class lesson; no unsigned replacement of the dualizing tensor order is made.
+Its proof curries the two pairings against \(P\). Projection formula, the ordinary counit and \(Rf_!\omega_Y\to\omega_X\) give the defining internal-adjunction pairing on both paths. The support-forgetting evaluation identity compares the counit on \(G\) with the counit on \(D\). Their flat/soft resolution evaluations coincide on properly supported sections. The same graded permutations occur in both evaluations. This is the evaluated identity (19), obtained from the support-forgetting evaluation equality EX.40–EX.41. It compares the two actual pairings while retaining their graded tensor order.
 
 ## Naturality supplies every microlocal trace cell
 
@@ -187,7 +190,9 @@ Thus, if \(\kappa\) denotes the trace after microlocalization, every restriction
 
 This proves the coefficient row of the full direct-image diagram. It also proves its middle rows: (8) is the ordinary restriction/counit cell, (10) is the Cartesian restriction cell, and (11) is the evaluated-duality cell; naturality uses these particular morphisms, rather than an isomorphism of their endpoint objects.
 
-The supported versions of (13) follow uniquely. The first source is supported on \(S'\). Every closed support of \(\mu_\gamma K\) is contained in \(p^{-1}Z\), where \(s\) is proper. Proper-support composition therefore retains the image support, and the trace has a unique lift to \(R\Gamma_{S''}E_X\). Whenever the output microsupport is smaller, we use the natural enlargement to \(S''\).
+The support needed here is the full cotangent carrier, not merely its base projection. By the external product estimate and microlocalization support bound, a point of \(\operatorname{supp}\mu_\gamma K\) has graph covector \((\xi,-df_y^t\xi)\) whose second component lies in \(\operatorname{SS}(D)\). The duality identity above makes \(df_y^t\xi\in\operatorname{SS}(G)\). Therefore \(\operatorname{supp}\mu_\gamma K\subset S'\). Both sources in the first row of (13) are now supported on the same closed carrier.
+
+The map \(s\) is proper there, so \(Rs_!\mu_\gamma K\to Rs_*\mu_\gamma K\) is an isomorphism and its target support is contained in \(S''\). Any map from an object supported on a closed set \(A\) to \(E\) has a unique factorization through \(R\Gamma_AE\): apply Hom from that object to the localization triangle for the complement, whose last term has zero Hom in every degree by open adjunction. Applying this fact to (13) supplies its actual supported coefficient maps. Ordinary global sections are transferred from \(Rs_*\) to \(Rs_!\) only on this supported kernel. The proper-image microsupport estimate places \(\operatorname{SS}(P)\) in \(S''\), so both final traces are compared in \(H^0_{S''}(T^*X;E_X)\), even when the actual output support is smaller.
 
 ## The transported microlocal identity is the identity of the image
 
@@ -197,11 +202,11 @@ Exceptional graph restriction identifies this map with
 \(G\to f^!P\), the exceptional unit. To check its normalization, curry the first-factor product map in (5) against \(G\): its adjoint is \(Rf_!G\to P\), the identity. This is precisely the defining adjunction of that unit. The center-supported upper comparison sends \(1\) to \(1\), so
 \(e_\gamma=\mu_\gamma v=a_1r^{-1}e_G\).
 
-Before microlocalization, ordinary image of \(v\) and the ordinary unit \(k_X\to Rf_*k_Y\) give \(u_P\). The proper identity theorem proves this: under diagonal exceptional restriction it is postcomposition by \(G\to f^!P\), followed by internal adjunction, whose endomorphism is
-\(\varepsilon_P Rf_!\eta_G=\mathrm{id}_P\).
-The closed diagonal adjunction then identifies the kernel maps themselves.
+Before microlocalization, ordinary image of \(v\) and the ordinary unit \(k_X\to Rf_*k_Y\) give \(u_P\). To verify the particular map, the constructible external-Hom evaluation identifies \(\gamma^!K\) with \(R\mathcal Hom(G,f^!P)\). The resulting graph adjunction is the chain
+\(\operatorname{Hom}(k_{\Gamma_f},K)\simeq\operatorname{Hom}(G,f^!P)\simeq\operatorname{Hom}(Rf_!G,P)\).
+The first graph unit represents \(\eta_G\), and its last adjoint is \(\varepsilon_P Rf_!\eta_G=\mathrm{id}_P\). The evaluated graph-Hom proof identifies this chain with the product isomorphisms in (4)–(5), including the actual proper-duality curry. Thus the ordinary image and unit produce the identity under the target's diagonal Hom adjunction. Since the closed diagonal adjunction is a bijection on morphisms, the kernel map itself is \(u_P\). No inference from ordinary microlocal recovery alone is needed.
 
-The specified ordinary microlocal adjunction identity, applied to this kernel map and its ordinary adjoint \(v\), yields
+The specified ordinary microlocal identity MIC16, applied to this kernel map and its ordinary adjoint \(v\), yields
 
 \[
  d_2e_P=Rs_*e_\gamma\;\eta_s,
@@ -214,7 +219,7 @@ To see why (14) is a statement about this unit, the ordinary microlocal identity
 Since (7) is invertible, (14) says that (6), with ordinary support replaced by proper support on \(\mu_\gamma K\), carries the unit in the direct-image diagram to \(e_P\). Applying the supported trace equalities (13) to it proves
 
 \[
- \boxed{CC(Rf_*G)=f_!CC(G)quad
+ \boxed{CC(Rf_*G)=f_!CC(G)\quad
                \text{if }f\text{ is proper on }\operatorname{supp}(G).}
  \qquad\text{(15)}
 \]
@@ -223,7 +228,7 @@ The top constant term remains \(Rs_*k_C\) in (14). We have imposed no properness
 
 ## Inverse image retains its relative dualizing factor
 
-Let \(F\) be bounded constructible and satisfy (3). Put \(P=f^{-1}F\), and factor in the other product order:
+Let \(F\) be bounded constructible and satisfy (3). The perfect inverse-image theorem makes \(P=f^{-1}F\) bounded constructible with perfect stalks. Factor in the other product order:
 
 \[
  \begin{gathered}
@@ -236,7 +241,7 @@ Let \(F\) be bounded constructible and satisfy (3). Put \(P=f^{-1}F\), and facto
  \qquad\text{(16)}
 \]
 
-The first change is transverse to \(\Delta_X\), with identity normal derivative and center map \(f\). Cancel the same relative center line on its two upper inverse terms, using the prescribed graded extraction. The resulting ordinary comparison is
+Use the graph parameter \((y,f(y);df_y^t\xi,-\xi)\) and diagonal parameter \((\eta,-\eta)\), agreeing with the positive-first convention of the Hom kernel. The corresponding normal differences are \(df(v_Y)-v_X\) on the graph and \(v_1-v_2\) on a diagonal. For \(h_1\), the second product variable is free, so the derivative onto the diagonal normal quotient is surjective; its normal map is the identity and its center map is \(f\). The transverse ordinary microlocal comparison MIC14 cancels the common relative center line with its prescribed graded extraction and gives
 
 \[
  c_1:s^{-1}\mathsf M_X(F,F)\longrightarrow\mu_\gamma A.
@@ -263,7 +268,7 @@ Indeed ordinary coefficient dual has the indicated inclusion, and applying it ag
  \qquad\text{(19)}
 \]
 
-The second map is the curry of exceptional tensor comparison, evaluation and \(f^!\omega_X=\omega_Y\). In particular it is not a new choice of duality isomorphism. It identifies \(\mu_{\Delta_Y}J_0\) with \(\mathsf M_Y(P,P)\); write \(q=\mu(1\boxtimes\theta_D)c_2\).
+The first map is the noncharacteristic trace comparison MO20, with the displayed graded order. The second is EX.26 applied to \(R\mathcal Hom(F,\omega_X)\): its evaluation and \(f^!\omega_X=\omega_Y\) give \(R\mathcal Hom(f^{-1}F,\omega_Y)=D_YP\). Both maps are therefore fixed by their actual contractions. They identify \(\mu_{\Delta_Y}J_0\) with \(\mathsf M_Y(P,P)\); write \(q=\mu(1\boxtimes\theta_D)c_2\).
 
 For later use, the lower inverse comparison is an isomorphism
 
@@ -272,7 +277,11 @@ For later use, the lower inverse comparison is an isomorphism
  \qquad\text{(20)}
 \]
 
-Here are its hypotheses. The external product estimate bounds the second covector of \(A\) by \(\operatorname{SS}(D_XF)\). A covector killed by the ambient transpose of \(h_2\) has zero first component and a second component killed by \(df^t\). Noncharacteristicity makes it zero. The center map is the identity, hence a submersion. The submersive-center inverse theorem now applies on the entire conormal bundle: its normal-cone test is automatic because the induced base map is a submersion, and its ambient-lift test follows from surjectivity on the center tangent spaces. Its escaping-covector test follows from the just-checked ordinary noncharacteristicity. Thus its actual upper and lower inverse maps are isomorphisms.
+We check all three hypotheses of LFI26–LFI27. An ambient covector of \(A\) has components \((\alpha,\beta)\), with \(\beta\in\operatorname{SS}(D_XF)\) by the product estimate. Its transpose under \(h_2\) is \((\alpha,df^t\beta)\). If that transpose is zero, \(\alpha=0\) and (3), applied to the antipodal dual microsupport, forces \(\beta=0\).
+
+The theorem's first condition also excludes unbounded covector sequences, including those whose ambient base points only approach the image of \(h_2\). If such a sequence had bounded transposes and covector norm tending to infinity, normalize by its total norm and pass to a unit-sphere subsequence in a relatively compact chart. The first normalized component tends to zero. Closedness of the product microsupport bound retains a nonzero limit \(\beta\in\operatorname{SS}(D_XF)\) at the limiting image point, and continuity gives \(df^t\beta=0\), a contradiction. Thus no escaping sequence of LFI14 exists; its additional weighted-mismatch condition is not even needed for this contradiction.
+
+For the remaining two conditions, the center map is the identity of \(Y\). The conormal base map is consequently the identity, hence noncharacteristic for the entire normal-cone bound. Finally, if \((\alpha,df^t\beta)\) annihilates the diagonal tangent, then \(\alpha+df^t\beta=0\). This is exactly the condition that \((\alpha,\beta)\) annihilate the graph tangent. Thus the ambient-lift condition LFI15 holds for every covector. The submersive-center proof applies on the whole conormal bundle, including its zero section, and makes the actual upper and lower inverse comparisons isomorphisms. No constant derivative rank or properness of the base map has entered.
 
 The support estimate \(\operatorname{supp}\mu_\gamma A\subset\operatorname{SS}(A)\cap T^*_{\Gamma_f}(Y\times X)\) and the product estimate also give
 
@@ -281,7 +290,7 @@ The support estimate \(\operatorname{supp}\mu_\gamma A\subset\operatorname{SS}(A
  \qquad\text{(21)}
 \]
 
-In fact the graph covector is \((df_y^t\xi,-\xi)\); its second component must lie in \(\operatorname{SS}(D_XF)\), so \(\xi\in\operatorname{SS}(F)\). Properness of \(r|_B\) therefore makes \(Rr_!\to Rr_*\) an isomorphism on this kernel. The full relative-trace square gives
+In fact the graph covector is \((df_y^t\xi,-\xi)\); its second component must lie in \(\operatorname{SS}(D_XF)\), so \(\xi\in\operatorname{SS}(F)\). Properness of \(r|_B\) therefore makes \(Rr_!\to Rr_*\) an isomorphism on this kernel. The actual inverse trace square MIC13 gives
 \(b_2q=(Rr_!\to Rr_*)\), with the indicated maps. This is the inverse-diagram relative-duality cell.
 
 ## Ordinary restriction, evaluation and the inverse coefficient
@@ -296,10 +305,17 @@ Consequently, by naturality and the zero-normal center comparison,
  \qquad\text{(22)}
 \]
 
-The graph preimage under \(h_2\) can have additional branches. The next restriction is therefore the ordinary arrow
-\(h_2^{-1}\gamma_*L\to\delta_{Y*}L\), with \(L=f^{-1}\omega_X\), and never an asserted equality of those sheaves. The definition of the inverse-cycle coefficient in the graph lesson is exactly the upper comparison on this center-supported object, followed by that restriction and
-\(\omega_f\otimes f^{-1}\omega_X\simeq\omega_Y\).
-It is \(\rho_f\) in (2).
+The graph preimage under \(h_2\) can have additional branches. The next restriction is therefore the ordinary diagonal unit \(h_2^{-1}\gamma_*L\to\delta_{Y*}L\), with \(L=f^{-1}\omega_X\), rather than an equality of those two supported sheaves. The upper comparison on this center-supported object, followed by that restriction and \(\omega_f\otimes f^{-1}\omega_X\simeq\omega_Y\), defines a coefficient map \(\rho_f^+:Rr_!Q\to E_Y\) in the positive-first parameters used here.
+
+To compare it with (2), let \(a_C(y;\xi)=(y;-\xi)\) and \(a_Y(y;\eta)=(y;-\eta)\). The inverse-cycle construction's graph and diagonal parameters become ours after these two antipodes, and \(ra_C=a_Yr\). Center-supported microlocalization identifies its coefficients with pullbacks from the center, so the parameter change acts identically on \(Q\) and \(E_Y\). Cartesian base change therefore identifies \(\rho_f^+\) with the conjugate \(a_Y^{-1}\rho_f\), using \(a_C^{-1}Q=Q\) on its source.
+
+The difference between this identity action and the dualizing action determines the sign. Let \(\gamma_f:Q\to r^!E_Y\) be the inverse exceptional-composition map under \(Q\simeq\omega_p\) and \(E_Y\simeq\omega_{\pi_Y}\), and let \(\tau_f\) be its adjoint trace. The canonical fibre-antipode actions on these relative dualizing lines are \((-1)^n\) and \((-1)^m\): the orientation action is the sign of \(\det(-I)\) in the corresponding fibre dimension. Naturality of the trace therefore gives \((-1)^n\tau_f=(-1)^m\tau_f^+\).
+
+This also determines the transformation of \(\rho_f\) without presupposing \(\beta_f=\gamma_f\). Both adjoints are isomorphisms from the same invertible complex \(Q\), so \(\gamma_f^{-1}\beta_f\) is multiplication by a locally constant unit on \(C\). Every vector fibre is connected and meets the zero section, so this unit is invariant under \(a_C\). Conjugating \(\rho_f\) thus has exactly the same sign as conjugating \(\tau_f\). Hence
+\[
+ \rho_f^+=(-1)^{m-n}\rho_f.
+\]
+This calculation uses only the two bundle ranks and remains valid when \(df\) changes rank. Already for \(\mathbb R\to\mathrm{pt}\), the target fibre antipode reverses the one-dimensional normal costalk of the zero embedding, so the two zero-supported traces have opposite signs. A positive transpose for \(r\) alone would not detect this coefficient difference.
 
 It remains to check that evaluation after (19) is the same evaluation in this construction. Tensor (19) with \(P\). By its defining curry, contraction against \(P\) is the exceptional tensor comparison followed by \(f^!\) of the original dual-first evaluation. Precompose with the relative trace \(\omega_f\otimes f^{-1}D_XF\to f^!D_XF\). Naturality of that trace and projection identify this pairing with
 \(\omega_f\otimes f^{-1}t_F\), followed by \(\omega_f\otimes f^{-1}\omega_X\to\omega_Y\), after the graded shuffle placing \(\omega_f\) before \(P\). The symmetry changing dual-first evaluation to \(t_P\) is the same symmetry as on this path. Tensor–Hom adjunction thus gives equality of these particular contractions, including the shift signs.
@@ -307,7 +323,7 @@ It remains to check that evaluation after (19) is the same evaluation in this co
 Apply the second upper inverse comparison to (22), its ordinary restriction arrow, and this evaluated identity. Naturality gives
 
 \[
- \kappa_P q=\rho_f Rr_!\kappa_A.
+ \kappa_P q=(-1)^{m-n}\rho_f Rr_!\kappa_A.
  \qquad\text{(23)}
 \]
 
@@ -321,11 +337,11 @@ The exceptional graph-Hom comparison identifies
 \(\gamma^!A\simeq R\mathcal Hom(P,P)\).
 The map \(v\) corresponds to \(\mathrm{id}_P\): pull the first-factor external-Hom kernel of \(u_F\) through \(h_1\), retain the second-factor exceptional projection, and use \(p_Y\gamma=\mathrm{id}_Y\). Its evaluation is ordinary inverse image of the identity of \(F\), hence the identity of \(P\). This checks the actual graph unit. The center-supported comparison in (17) sends \(1\) to \(1\), so \(e_A=\mu_\gamma v=c_1s^{-1}e_F\).
 
-Under the external exceptional-Hom comparison,
-\(h_2^!A\simeq P\boxtimes f^!D_XF\simeq P\boxtimes D_YP\).
-Its diagonal unit \(u_P:k_{\Delta_Y}\to h_2^!A\) is the exceptional adjoint of \(v\), because \(h_2\delta_Y=\gamma\) and exceptional composition identifies both with \(\mathrm{id}_P\).
+For an explicit exceptional-Hom identification, on \(Y\times X\) write \(q_X,q_Y\) for the two projections. The external evaluation isomorphism gives \(A=R\mathcal Hom(q_X^{-1}F,q_Y^!P)\). Apply exceptional inverse image of Hom and the identities \(q_Xh_2=fq_2\), \(q_Yh_2=q_1\). This gives \(h_2^!A=R\mathcal Hom(q_2^{-1}P,q_1^!P)\), which is the actual kernel \(P\boxtimes D_YP\). In external factors this is exactly \(P\boxtimes f^!D_XF\simeq P\boxtimes D_YP\), with the evaluation used in (19).
 
-Apply the specified exceptional microlocal adjunction identity to this pair of adjoint maps. The upper direct comparison on \(k_{\Delta_Y}\) is the zero-normal identity onto \(k_{\Gamma_f}\). The resulting equality is the adjunction transpose of
+The diagonal unit \(u_P:k_{\Delta_Y}\to h_2^!A\) is the exceptional adjoint of \(v\). Indeed \(h_2\delta_Y=\gamma\), and the counit-normalized exceptional composition identifies both closed-adjunction morphism sets with \(\operatorname{Hom}(P,P)\). In both cases the element is \(\mathrm{id}_P\), so bijectivity of adjunction proves equality of the kernel maps.
+
+Apply the specified exceptional identity MIC15–MIC17 to this pair of adjoint maps. The upper direct comparison on \(k_{\Delta_Y}\) is the zero-normal identity onto \(k_{\Gamma_f}\). The resulting equality is the adjunction transpose of
 
 \[
  b_2e_P=Rr_*e_A\;\eta_r,
@@ -335,10 +351,14 @@ Apply the specified exceptional microlocal adjunction identity to this pair of a
 
 Explicitly, that identity inserts the \(r^{-1}\dashv Rr_*\) unit, the upper direct comparison and the exceptional counit. Moving the counit through the inserted unit cancels them by the triangular identity; the remaining map is \(\mu_\gamma v\). Taking its ordinary adjunction transpose gives (24). Thus the unit is established through actual kernel adjoints, rather than inferred from ordinary recovery.
 
-Since (20) is invertible and \(b_2q\) is support forgetting, (24) shows that \(q\) carries the supported inverse-image unit to \(e_P\). Apply (22)–(23). With the exact coefficient map (2) and its retained support, we obtain
+Write \(\pi_A:Rr_!\mu_\gamma A\to Rr_*\mu_\gamma A\). It is invertible because this kernel is supported on \(B\), where \(r\) is proper. Since \(b_2\) is invertible and \(b_2q=\pi_A\), (24) gives the actual identity
+\(e_P=q\,\pi_A^{-1}\,Rr_*e_A\,\eta_r\).
+The constant term in \(\eta_r\) remains \(Rr_*k_C\); no properness of its full support and no inverse of its support-forgetting map is assumed.
+
+Now \(e_A=c_1s^{-1}e_F\), and (22) identifies its evaluated graph class with the supported pullback of \(CC(F)\) to \(B\). Apply (23) to the displayed unit identity. Its middle inverse \(\pi_A^{-1}\) transfers ordinary sections to proper image only on that supported kernel; closed-support adjunction then maps the trace into \(R\Gamma_T E_Y\). This is exactly the supported inverse-cycle construction with coefficient \(\rho_f\), multiplied by the scalar in (23). Thus, with all supports retained, we obtain
 
 \[
- \boxed{CC(f^{-1}F)=f^*CC(F)\quad
+ \boxed{CC(f^{-1}F)=(-1)^{m-n}f^*CC(F)\quad
                     \text{if }f\text{ is noncharacteristic for }F.}
  \qquad\text{(25)}
 \]
@@ -347,22 +367,22 @@ The inverse image \(P\) exists without this hypothesis. Formula (25) requires it
 
 ## Globally constant finite coefficients fix conormal normalization
 
-For \(a_Z:Z\to\mathrm{pt}\), a finite complex \(V\) has point cycle \(\chi(V)\). Its pullback is noncharacteristic: the point has only its zero covector, and the incidence map is the closed zero embedding of \(Z\). Hence (25), and the definition of the normalized zero cycle, give
+Let \(d=\dim Z\). For \(a_Z:Z\to\mathrm{pt}\), a finite complex \(V\) has point cycle \(\chi(V)\), with the graded supertrace normalization of the preceding lesson. Its pullback is noncharacteristic: the point has only its zero covector, and the incidence map is the closed zero embedding of \(Z\). The relative dimension in (25) is \(d\). Since the normalized zero cycle was defined using the inverse-cycle map \(a_Z^*\), we obtain
 
 \[
- CC(a_Z^{-1}V)=\chi(V)[T_Z^*Z].
+ CC(a_Z^{-1}V)=(-1)^d\chi(V)[T_Z^*Z].
  \qquad\text{(26)}
 \]
 
 For a closed analytic submanifold \(i:Z\hookrightarrow X\), the map is proper. Formula (15) and the definition \([T_Z^*X]=i_![T_Z^*Z]\) yield
 
 \[
- CC(i_*a_Z^{-1}V)=\chi(V)[T_Z^*X],
- \qquad CC(k_Z)=[T_Z^*X].
+ CC(i_*a_Z^{-1}V)=(-1)^d\chi(V)[T_Z^*X],
+ \qquad CC(k_Z)=(-1)^d[T_Z^*X].
  \qquad\text{(27)}
 \]
 
-These are globally constant coefficient models. A local system with monodromy need not be a global pullback from a point. Its rank formula, and the coefficient calculation for a general localized constructible model, require local trivialization and microlocal invariance; the subsequent integrality and additivity argument will supply them. Equations (26)–(27) do not assume away monodromy or assert that every complex with locally constant cohomology globally splits.
+The brackets in (26)–(27) are the conormal cycles normalized by the preceding graph and closed-trace constructions. Their dimension factor records that normalization together with the positive-first Hom parameter; it is not a Jacobian sign or a failure of transversality. These are globally constant coefficient models. A local system with monodromy need not be a global pullback from a point. Its rank formula, and the coefficient calculation for a general localized constructible model, require local trivialization and microlocal invariance; the subsequent integrality and additivity argument will supply them. Equations (26)–(27) do not assume away monodromy or assert that every complex with locally constant cohomology globally splits.
 
 ## Exercises with complete solutions
 
@@ -392,9 +412,9 @@ Over zero, all \((0;\xi)\) are sent to \((0;0)\). A noncompact line lies over on
 
 Let \(f:\mathbb R^2_{u,v}\to\mathbb R_x\) be \(f(u,v)=u\), and \(F=k_{\{0\}}[r]\). Compute the inverse cycle, the inverse object's Verdier dual and both cotangent properness tests.
 
-**Solution.** The inverse object is \(P=k_{\{u=0\}}[r]\). The carrier \(B\) has \(u=0\), arbitrary \(v,\xi\), and \(r(0,v;\xi)=(0,v;\xi,0)\). This is a homeomorphism onto a closed conormal, so it is proper. It follows from (25), point normalization and transverse conormal normalization that \(CC(P)=(-1)^r[T^*_{\{u=0\}}\mathbb R^2]\).
+**Solution.** The inverse object is \(P=k_{\{u=0\}}[r]\). The carrier \(B\) has \(u=0\), arbitrary \(v,\xi\), and \(r(0,v;\xi)=(0,v;\xi,0)\). This is a homeomorphism onto a closed conormal, so it is proper. It follows from (25), point normalization and transverse conormal normalization that \(CC(P)=(-1)^{r+1}[T^*_{\{u=0\}}\mathbb R^2]\): the point shift gives \((-1)^r\), and (25) contributes \((-1)^{2-1}\).
 
-With coordinate orientations, \(\omega_f=k[1]\) and \(D_XF=k_{\{0\}}[-r]\). The right coefficient in (16) is therefore \(k_{\{u=0\}}[1-r]\), equal to \(D_YP\). Closed-submanifold duality gives this same result as the zero extension of the line's dualizing complex shifted by \([-r]\). Deleting \(\omega_f\) would lose one degree; inserting its degree into the final cycle as an extra sign would also be incorrect, because (19) already includes it in the dual coefficient and evaluated kernel.
+With coordinate orientations, \(\omega_f=k[1]\) and \(D_XF=k_{\{0\}}[-r]\). The right coefficient in (16) is therefore \(k_{\{u=0\}}[1-r]\), equal to \(D_YP\). Closed-submanifold duality gives this same result as the zero extension of the line's dualizing complex shifted by \([-r]\). Deleting \(\omega_f\) would lose one degree. The final dimension sign is the separate comparison of the two conormal parameters proved before (23); after applying (25), it must not be counted a second time. The dual coefficient and its graded evaluation still use the full map (19).
 
 The other map is \(s(0,v;\xi)=(0;\xi)\), with an unbounded \(v\)-line over each point. It is not proper on this incidence. Thus this example verifies inverse transport for a nonproper base projection and separates it from the direct-image properness test.
 
@@ -404,11 +424,11 @@ The other map is \(s(0,v;\xi)=(0;\xi)\), with an unbounded \(v\)-line over each 
 
 Take \(f(u,v)=(u^2,v)\), \(Z=\{z=0\}\subset\mathbb R^2_{x,z}\), and \(F=k_Z\). Calculate both sides of (25), including at \(u=0\). Identify the proper carrier map and the role of the vanishing tangential derivative.
 
-**Solution.** Formula (27) gives \(CC(F)=[T_Z^*\mathbb R^2]\). This conormal has \(z=0,\xi_x=0\), with arbitrary \(\zeta\). Pulling it back gives \(v=0,\xi_x=0\), and
+**Solution.** Since \(\dim Z=1\), formula (27) gives \(CC(F)=-[T_Z^*\mathbb R^2]\). This conormal has \(z=0,\xi_x=0\), with arbitrary \(\zeta\). Pulling it back gives \(v=0,\xi_x=0\), and
 \(r(u,0;0,\zeta)=(u,0;0,\zeta)\).
 Its restriction is a homeomorphism onto \(T^*_{\{v=0\}}\mathbb R^2\), hence proper, even at \(u=0\). Ordinary inverse image is \(k_{\{v=0\}}\), so (27) gives its same normalized conormal cycle.
 
-The tangential derivative \(2u\) changes rank and vanishes at zero, but no nonzero covector of the input conormal has a tangential component to be killed. The normal derivative is the identity. The normalized transverse-conormal theorem retains the zero-point unit in the tangent cotangent directions under this changing-rank linear map and the closed trace in the normal direction. The resulting coefficient is \(+1\) everywhere. A Jacobian sign or a constant-rank assumption would give an erroneous restriction on the theorem.
+The tangential derivative \(2u\) changes rank and vanishes at zero, but no nonzero covector of the input conormal has a tangential component to be killed. The normal derivative is the identity. The normalized transverse-conormal theorem retains the zero-point unit in the tangent cotangent directions under this changing-rank linear map and the closed trace in the normal direction. The normalized conormal itself is transported with coefficient \(+1\). The characteristic cycle has coefficient \(-1\) on both sides, because both supporting submanifolds have dimension one; the source and target ambient dimensions are both two, so (25) contributes no further sign. A Jacobian sign or a constant-rank assumption would give an erroneous restriction on the theorem.
 
 ### A circle local system can have a nonzero cycle and a zero proper image
 
@@ -416,7 +436,7 @@ The tangential derivative \(2u\) changes rank and vanishes at zero, but no nonze
 
 Let \(L\) be a rank-\(d>0\) local system on \(S^1\), with monodromy \(T\). Determine its cycle locally and globally, and its proper image's cycle under \(a:S^1\to\mathrm{pt}\). Treat the case where \(T-1\) is invertible without replacing \(L\) by a global constant system.
 
-**Solution.** On each small contractible arc, \(L\) is actually isomorphic to \(k^d\). Formula (26) on that arc gives cycle \(d\) times its normalized zero section. The construction restricts to open charts, and the degree-zero cycle coefficient is a sheaf; these local statements therefore give \(CC(L)=d[T^*_{S^1}S^1]\). Since \(k\) has characteristic zero, \(d\) is nonzero. No assertion of a global constant trivialization was needed.
+**Solution.** On each small contractible arc, \(L\) is actually isomorphic to \(k^d\). Formula (26) on that one-dimensional arc gives cycle \(-d\) times its normalized zero section. The construction restricts to open charts, and the degree-zero cycle coefficient is a sheaf; these local statements therefore give \(CC(L)=-d[T^*_{S^1}S^1]\). Since \(k\) has characteristic zero, \(-d\) is nonzero. No assertion of a global constant trivialization was needed.
 
 Cut the circle at one point. The resulting two-arc gluing calculation computes ordinary global sections by \([k^d\xrightarrow{T-1}k^d]\) in degrees zero and one. Compact and ordinary sections agree because the circle is compact. Its Euler characteristic is zero, independently of the kernel and cokernel of \(T-1\), so the image has point cycle zero. Formula (15) gives \(a_!CC(L)=0\). If \(T-1\) is invertible, the image complex is zero as well, while the input cycle is nonzero. The closed containing image support can still be the point. This distinguishes local rank, global Euler index and actual support of the image.
 
@@ -426,7 +446,7 @@ Cut the circle at one point. The resulting two-arc gluing calculation computes o
 
 Let \(a:(0,1)\to\mathrm{pt}\) and \(G=k_{(0,1)}\) on the source manifold. Compute its cycle, both direct-image cycles and the cotangent properness test. Then extend by zero into the ambient line.
 
-**Solution.** Formula (26) gives \(CC(G)=[T^*_{(0,1)}(0,1)]\). The incidence is \((0,1)\), \(r\) is its zero embedding, and \(s\) collapses it to the point. Thus \(s\) is nonproper on the entire pulled-back carrier. The closed support of \(G\) in its source manifold is the same noncompact interval.
+**Solution.** The source has dimension one, so formula (26) gives \(CC(G)=-[T^*_{(0,1)}(0,1)]\). The incidence is \((0,1)\), \(r\) is its zero embedding, and \(s\) collapses it to the point. Thus \(s\) is nonproper on the entire pulled-back carrier. The closed support of \(G\) in its source manifold is the same noncompact interval.
 
 Ordinary sections give \(Ra_*G=k\), with point cycle \(+1\). Compact sections give \(Ra_!G=k[-1]\), with point cycle \(-1\). Both outputs are bounded finite, but no direct cycle operation in (2) is defined on the input carrier. Formula (15) cannot identify either of them with such an undefined image. In particular, finite output coefficients do not justify inverting support forgetting.
 
@@ -435,3 +455,9 @@ For \(j:(0,1)\hookrightarrow\mathbb R\), the extension \(j_!G\) has compact clos
 ## What remains after transport
 
 Properness on closed support proves (15), and noncharacteristicity proves (25), with the actual unit, restriction, evaluation and coefficient maps of both graph diagrams. Equations (26)–(27) normalize globally constant finite models. The general local-system and generic conormal coefficient formulas, integral multiplicities, triangle additivity, antipodal duality and all half-line and Lorentz-cone formulas remain further teaching targets.
+
+## Mathematical sources
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§2.1–3.4, pp. 196–199, gives the twisted conormal orientation and local Euler-multiplicity description of characteristic cycles. These are the historical and mathematical framework, rather than a replacement for the graph comparison proof. The coefficient maps, supported units, and conversion between conormal parameters used here are specified in the programme proofs linked at their use.
+
+P. Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=95), edition dated 01/08/2026, Corollary 4.6.2, Propositions 4.6.4–4.6.8, §4.7 and Proposition 5.1.9, pp. 95–97 and 107–108, gives the exceptional and relative-dualizing framework. The proper-image argument above checks both the image identity and its contraction, imposing properness only on the actual support. The inverse argument keeps its relative line and follows the ordinary graph restriction and unit through the microlocal adjunction. Its examples test the coefficient and properness requirements separately. The human texts retain their authorship and their own terms.

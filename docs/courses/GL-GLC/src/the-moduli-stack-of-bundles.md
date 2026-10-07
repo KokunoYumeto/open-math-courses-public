@@ -1,12 +1,12 @@
 # The moduli stack of bundles
 
-*Draft. Self-checked by the writing AI. Original mathematical exposition: CC0 1.0.*
+*Draft. CC0 1.0.*
 
 A bundle can have many automorphisms while admitting few deformations. A moduli stack records both. This is why its dimension can be negative, why the dimension of a coarse moduli space is a different calculation, and why its cotangent stack is a space of Higgs fields rather than an ordinary vector bundle of constant rank.
 
 Throughout, \(X\) is a smooth projective connected curve over an algebraically closed field \(k\) of characteristic zero. Its genus is \(g\). The group \(G\) is connected reductive. We impose \(g\ge2\) only where it is needed and say so explicitly. A principal bundle is a right \(G\)-torsor; write \(\operatorname{ad}(P)=P\times^G\mathfrak g\) for its adjoint vector bundle. Complexes are cohomologically graded, so \(V[1]\) puts a vector space \(V\) in degree \(-1\).
 
-The prerequisite is deformation theory of algebraic stacks, together with Riemann–Roch and Serre duality on a curve. The [previous lesson](from-automorphic-functions-to-automorphic-sheaves.md) constructed bundles from lattices and identified the elementary Hecke fibres. Here we examine the stack on which those correspondences act.
+Sections 1–2 construct the bundle stack and prove its deformation theory and Euler-characteristic formula. Serre duality on a curve is used later for the cotangent calculation. The [previous lesson](from-automorphic-functions-to-automorphic-sheaves.md) constructed bundles from lattices and identified the elementary Hecke fibres. Here we examine the stack on which those correspondences act.
 
 ## 1. The moduli problem, including its arrows
 
@@ -321,7 +321,7 @@ H^1(T_P)=0.
 
 **Proof.** Choose an affine étale cover trivializing \(P\), with transition functions \(g_{ij}\). For a square-zero thickening with ideal \(I\), smoothness of \(G\) lets us lift each transition function. The failure of the lifted functions to satisfy the cocycle equation on triple overlaps is an additive Čech 2-cocycle with coefficients in \(\operatorname{ad}(P)\otimes I\). Conjugation by the transition functions gives precisely the adjoint bundle, rather than the constant Lie algebra sheaf.
 
-Changing the lifts by 1-cochains changes that failure by a coboundary. Consequently its cohomology class is the obstruction. If it vanishes, correcting the lifts produces a bundle. The set of lift classes is a torsor under \(H^1(\operatorname{ad}(P)\otimes I)\), and an automorphism inducing the identity before thickening is a 0-cocycle, in \(H^0(\operatorname{ad}(P)\otimes I)\). Čech cohomology computes coherent cohomology here, since the cover and its finite intersections are affine. These groups and their cochain-level maps identify the deformation complex with \(R\Gamma(\operatorname{ad}(P))[1]\). On a curve coherent cohomology vanishes above degree one, proving the last assertion. \(\square\)
+Changing the lifts by 1-cochains changes that failure by a coboundary. Consequently its cohomology class is the obstruction. If it vanishes, correcting the lifts produces a bundle. The set of lift classes is a torsor under \(H^1(\operatorname{ad}(P)\otimes I)\), and an automorphism inducing the identity before thickening is a 0-cocycle, in \(H^0(\operatorname{ad}(P)\otimes I)\). Section 2.1 constructs the lifted cover and proves the affine étale Čech comparison with ordinary coherent cohomology. Section 2.2 proves the additive kernel, cocycle corrections, all arrows and universal tensor compatibility used in this argument. These groups and their cochain-level maps identify the deformation complex with \(R\Gamma(\operatorname{ad}(P))[1]\). On a curve coherent cohomology vanishes above degree one, proving the last assertion. \(\square\)
 
 The same argument applies to families and successive square-zero extensions. The relative coherent cohomological dimension is one. Thus the infinitesimal lifting criterion, combined with the algebraicity and local finite presentation already stated, proves that \(\operatorname{Bun}_G\to\operatorname{Spec}k\) is smooth.
 
@@ -340,7 +340,7 @@ The same argument applies to families and successive square-zero extensions. The
 
 The minus sign is the contribution of infinitesimal stabilizers. It also follows by taking a smooth presentation \(U\to\operatorname{Bun}_G\) and subtracting its relative dimension from \(\dim U\).
 
-The character \(\det\operatorname{Ad}:G\to\mathbb G_m\) is trivial. To see this, restrict to a maximal torus. The weights are the roots, in opposite pairs, and zero weights; their sum is zero. A character of a connected reductive group is determined by its restriction to a maximal torus. Hence \(\det\operatorname{ad}(P)\) is trivial and \(\deg\operatorname{ad}(P)=0\). Riemann–Roch gives
+The character \(\det\operatorname{Ad}:G\to\mathbb G_m\) is trivial. The algebraic-hull and trace proof in §2.3 establishes this for every connected reductive group in the stated characteristic-zero scope. Hence \(\det\operatorname{ad}(P)\) is trivial and \(\deg\operatorname{ad}(P)=0\). The Euler-characteristic formula proved in §2.4 gives
 
 \[
 \chi(X,\operatorname{ad}(P))=(1-g)\dim G.
@@ -351,6 +351,280 @@ This is independent of \(P\), so the stated dimension is pure. \(\square\)
 For \(GL_n\), the answer is \(n^2(g-1)\). For the Picard stack it is \(g-1\). The Picard scheme of a fixed degree instead has dimension \(g\), because it has forgotten the scalar automorphisms. For \(X=\mathbb P^1\), the Picard stack has dimension \(-1\): each degree component is \(B\mathbb G_m\). Negative stack dimension records the stabilizer; it is not a negative number of parameters in a scheme.
 
 *Further reading:* [Beilinson–Drinfeld, §2.1.1] describes the tangent and cotangent complexes in the semisimple case with \(g>1\). The proof just given also explains the reductive and low-genus cases without importing that restriction.
+
+### 2.1. An affine étale nerve computes the required cohomology
+
+Here are the cover and cohomology details behind Proposition 2.1. Let \(R'\twoheadrightarrow R\) have square-zero kernel \(I\), with no Noetherian or flatness assumption on \(R\) or \(I\). Let \(P_0\) be a \(G\)-bundle on \(X_R\). The two affine curve opens of §1.1 will be denoted \(V_1,V_2\), after any coefficient change.
+
+The affine torsor dictionary of §7.5 and the smoothness argument of §7.6 make \(P_0\) affine, smooth and finitely presented over \(X_R\). Lemma 7.9, applied on each affine curve open, gives affine étale local sections. Choose finitely many such opens \(U_i\to X_R\), each lying over one \(V_j\), that cover \(X_R\) and trivialize \(P_0\). Finiteness follows from quasi-compactness. Refine by finitely many standard étale affine charts. In such a chart the algebra is a localized polynomial quotient with equally many variables and equations and invertible Jacobian determinant. This form and its infinitesimal criterion are proved in [*Formally smooth, unramified and étale ring maps*](../../AG-CA/src/formally-smooth-unramified-and-etale-ring-maps.md), §§3–5; finite presentations descend to a Noetherian coefficient model as in §§1.1 and 7.6.
+
+Lift the finitely many coefficients of those equations and their localizing elements to the corresponding curve open over \(R'\), and invert the lifted Jacobian determinant. This gives affine étale \(U_i'\to X_{R'}\) with reduction \(U_i\). Their images cover: a nilpotent closed immersion is a homeomorphism on underlying spaces, so every point is still covered. Set \(U=\coprod_iU_i\) and \(U'=\coprod_iU_i'\). Write \(U^{q+1}_X\) for the \((q+1)\)-fold fibre product over \(X_R\), and likewise for \(U'\).
+
+Every nerve term is affine. Indeed, an affine \(R\)-scheme mapping to the separated \(R\)-scheme \(X_R\) has affine inverse images of affine opens: its graph on such an open is closed in a product of affine schemes. The same graph argument makes the finite fibre products affine. Every lifted nerve term is flat over \(R'\), because it is étale over the \(R'\)-flat curve. If \(C_q'\) and \(C_q\) are their rings, therefore,
+
+\[
+0\longrightarrow I\otimes_R C_q
+\longrightarrow C_q'\longrightarrow C_q\longrightarrow0,
+\qquad (I\otimes_R C_q)^2=0.
+\tag{DS.1}
+\]
+
+Flatness gives the injection by tensoring \(0\to I\to R'\to R\to0\); the identification uses \(I^2=0\). This does not require tensoring a nonflat module to preserve an unrelated injection.
+
+For any quasi-coherent \(F\) on \(X_R\), the étale Čech complex \(C_U^\bullet(F)\) computes its coherent-sheaf cohomology. To prove this, form the double complex whose term in bidegree \((q,p)\) is the section module on \(U_X^{q+1}\) restricted to \(V_1\amalg V_2\) when \(p=0\), and to \(V_1\cap V_2\) when \(p=1\). There are only these two vertical degrees. For fixed \(q\), the vertical augmented complex is exact because the nerve term is affine, both restricted opens and their intersection are affine, and affine quasi-coherent cohomology vanishes. The all-ring affine-vanishing and finite-cover proofs are [*Algebra and sheaf cohomology before reductive groups*](../../AG-RG/AG-RG-S01.html), §§4–5.
+
+For fixed \(p\), the horizontal augmented complex is the Amitsur complex of the faithfully flat affine cover \(U\times_XV_p\to V_p\), with the module \(F(V_p)\). Its exactness is the all-module contraction proved in §7.5. Taking these two augmented complexes in either order gives
+
+\[
+C_U^\bullet(F)\ \longrightarrow\operatorname{Tot}D^{\bullet,\bullet}
+\ \longleftarrow\
+\bigl[\Gamma(V_1,F)\oplus\Gamma(V_2,F)
+\longrightarrow\Gamma(V_1\cap V_2,F)\bigr].
+\tag{DS.2}
+\]
+
+Both arrows are quasi-isomorphisms. One may compute this directly by eliminating a horizontal coboundary and then a vertical one; the double-complex proof is the finite-cover calculation in the cited §4. There are two vertical degrees and finitely many summands in each total degree, so no convergence or infinite-product issue occurs. In particular, for \(F=\operatorname{ad}(P_0)\otimes_R I\), (BA.1) identifies the right-hand complex with \(K^\bullet\otimes_R I\), for a finite projective complex \(K^\bullet\) in degrees \(0,1\). Thus \(H^2(X_R,F)=0\), even when \(I\) is not flat.
+
+### 2.2. The square-zero groupoid and smoothness
+
+The additive kernel used in deformation theory has explicit coordinates. Let \(A_G=k[G]\), let \(\epsilon:A_G\to k\) be evaluation at the identity, and put \(\mathfrak a=\ker\epsilon\). For a square-zero ideal \(J\subset B'\), a \(B'\)-point of \(G\) reducing to the identity is a homomorphism \(f=\epsilon+\delta\), with values of \(\delta\) in \(J\). Multiplicativity is exactly
+\(\delta(ab)=\epsilon(a)\delta(b)+\epsilon(b)\delta(a)\), since \(J^2=0\). Hence
+
+\[
+\ker\bigl(G(B')\longrightarrow G(B'/J)\bigr)
+=\operatorname{Hom}_k(\mathfrak a/\mathfrak a^2,J)
+=\operatorname{Lie}(G)\otimes_kJ.
+\tag{DS.3}
+\]
+
+The last equality uses the finite dimension of the cotangent space. Comultiplication makes this group law addition: the product of two derivations has no quadratic term. Conjugation is the adjoint action, as follows by differentiating the conjugation morphism. These identifications hold for every square-zero \(J\); there is no reduced-test restriction.
+
+Use the trivializations on \(U\) from §2.1, with transition functions \(g_{ij}\) written as maps from chart \(j\) to chart \(i\). Smoothness of the affine group and the affine lifting criterion of §7.6 lift each \(g_{ij}\) to the corresponding term of the lifted nerve. Choose the lifts \(\widetilde g_{ij}\) independently; they need not yet satisfy the cocycle condition. Their defect is
+
+\[
+1+c_{ijk}
+=\widetilde g_{ij}\widetilde g_{jk}\widetilde g_{ik}^{-1},
+\qquad
+c_{ijk}\in
+\bigl(\operatorname{ad}(P_0)\otimes_RI\bigr)(U_i\times_XU_j\times_XU_k),
+\tag{DS.4}
+\]
+
+expressed in frame \(i\). The symbol \(1+c\) denotes the point of the kernel (DS.3), not an assumption that \(G\) is a general linear group. Associativity on a quadruple overlap gives
+
+\[
+c_{ijk}+c_{ikl}
+=\operatorname{Ad}(g_{ij})c_{jkl}+c_{ijl}.
+\tag{DS.5}
+\]
+
+To check the equality, expand \((\widetilde g_{ij}\widetilde g_{jk})\widetilde g_{kl}\) and \(\widetilde g_{ij}(\widetilde g_{jk}\widetilde g_{kl})\), move every kernel term to frame \(i\), and discard products of two elements of \(I\). This is exactly the twisted Čech 2-cocycle equation.
+
+Replace a lift by \((1+a_{ij})\widetilde g_{ij}\). Its defect changes by
+\(a_{ij}+\operatorname{Ad}(g_{ij})a_{jk}-a_{ik}\), the Čech coboundary \(da\). The vanishing of \(H^2\) proved in §2.1 supplies \(a\) with \(da=-c\). The corrected transition functions satisfy the cocycle equation, including its identity and inverse relations, and effective torsor descent from §7.5 supplies a \(G\)-bundle on \(X_{R'}\) together with the specified reduction to \(P_0\).
+
+All lifts and all their arrows are described by the same calculation. Fix one corrected lift as origin. A second lift can be trivialized on \(U'\) with the prescribed frames on \(U\): a frame is a section of a smooth affine torsor, so the affine square-zero lifting criterion lifts that section. Its transition functions differ from the origin by a 1-cochain \(a\), and the cocycle equation says \(da=0\). A change of lifted frames by \(1+b_i\) replaces \(a\) by \(a-db\), where
+\((db)_{ij}=\operatorname{Ad}(g_{ij})b_j-b_i\). Every isomorphism reducing to the identity has this form, since it is determined on the trivializing cover. Descent checks its agreement on overlaps. Consequently
+
+\[
+\operatorname{Lift}(P_0;R'\to R)
+\simeq [\,Z^1(C_U^\bullet(F))/C_U^0(F)\,],
+\qquad a\longmapsto a-db,
+\quad F=\operatorname{ad}(P_0)\otimes_RI.
+\tag{DS.6}
+\]
+
+This equivalence uses the chosen origin; the resulting isomorphism classes form a torsor under \(H^1(X_R,F)\), and each object's automorphisms reducing to the identity are \(H^0(X_R,F)\). The obstruction before choosing an origin is the \(H^2\)-class of (DS.4), which is always zero here.
+
+Equation (DS.2) and the tensor-compatible complex of §1.1 give the two-term linearized deformation complex
+
+\[
+T_{P_0}\operatorname{Bun}_G\simeq K^\bullet[1],
+\qquad
+K^\bullet\simeq R\Gamma(X_R,\operatorname{ad}(P_0)),
+\qquad K^\bullet\text{ in degrees }0,1.
+\tag{DS.7}
+\]
+
+Indeed the groupoid of a two-term complex in degrees \(-1,0\) has vectors in degree zero as objects and degree \(-1\) vectors as arrows given by its differential. Applying this to the cocycle groupoid (DS.6) gives (DS.7); the quasi-isomorphism (DS.2) induces the same objects modulo boundaries and the same automorphism kernel. The construction is compatible with every \(R\)-module \(I\) and with coefficient changes by (BA.1). It is this linearized complex that is meant by the tangent complex in Proposition 2.1.
+
+The represented stack of §1.5 is smooth over \(k\). Here is the connection with a scheme atlas, rather than an appeal to a criterion for an unrepresented functor. Let \(V\to\operatorname{Bun}_G\) be that smooth atlas. Given an affine infinitesimal lifting problem for \(V\), lift its underlying bundle by the argument above. The pullback of \(V\) along the lifted bundle is smooth over the extended coefficient ring, so its prescribed reduced section lifts locally on the coefficient scheme. Work in an affine neighborhood \(W\subset V\) containing the reduced image. All lifts factor through \(W\), since the coefficient thickening has the same underlying space. Differences of two local lifts are derivations from \(k[W]\) into the square-zero ideal. They form a Čech 1-cocycle in the module \(\operatorname{Hom}(\Omega_{W/k}\otimes B,I)\) on the affine coefficient scheme \(\operatorname{Spec}B\). This is a quasi-coherent module: \(\Omega_{W/k}\) is finitely presented, so its Hom commutes with localization. Affine vanishing from §2.1 makes the cocycle a coboundary. Subtract those derivations from the local lifts and glue; adding a derivation into a square-zero ideal preserves the ring-homomorphism equations. Thus affine infinitesimal problems for \(W\) have lifts. The atlas is locally of finite presentation by §1.5, and the scheme criterion is proved in [*Formally smooth, unramified and étale ring maps*](../../AG-CA/src/formally-smooth-unramified-and-etale-ring-maps.md), §§3–5. It makes \(V\) smooth over \(k\), and the smooth presentation proves smoothness of \(\operatorname{Bun}_G/k\). A general nilpotent thickening is handled by its successive square-zero powers.
+
+| Step | Actual mathematical object | What its equation proves |
+|---|---|---|
+| Lift affine covers | Étale polynomial charts over \(R'\) | The same curve and torsor cover is available on the thickening |
+| Linearize the group | Derivations of \(k[G]\) at its augmentation | The square-zero kernel is additive, with adjoint transition action |
+| Repair transitions | The 2-cocycle \(c\) and a 1-cochain \(a\) | \(c+da=0\) gives an effective bundle lift |
+| Keep arrows | The action \(a\mapsto a-db\) | \(H^1\) gives lift classes and \(H^0\) gives their infinitesimal automorphisms |
+
+### 2.3. Why the adjoint determinant is trivial without root classification
+
+We prove the character assertion in Theorem 2.2 for the original connected reductive characteristic-zero group. Two earlier Lie results are used at their exact hypotheses: [*Nilpotent and solvable Lie algebras: Engel's and Lie's theorems*](../../RT-LIE/src/RT-LIE-02.md), Theorem 3.1 and Proposition 4.1, prove triangularization of a solvable Lie algebra and existence of its solvable radical; [*The Killing form and Cartan's criteria*](../../RT-LIE/src/RT-LIE-03.md), Corollary 4.2, proves that a semisimple Lie algebra is perfect. We also use the finite-type characteristic-zero Cartier theorem, proved in [*Lie algebras and smoothness of group schemes*](../../AG-GS/src/lie-algebras-and-smoothness.md), Theorem 4.3. Only its finite-type case is needed.
+
+Write \(\mathfrak g=\operatorname{Lie}G\), and let \(\mathfrak r\) be its solvable radical. Take the closed faithful representation from (BA.9), adjoining a trivial line if necessary to give it positive dimension. Lie's theorem puts \(\mathfrak r\) in the upper triangular matrix algebra in a suitable basis. Let \(B\) be the upper triangular group. Among all closed subgroup schemes of the ambient \(GL_n\) whose Lie algebra contains \(\mathfrak r\), take their scheme-theoretic intersection \(H\). This is a finite intersection: the sum of their defining ideals in the Noetherian ring \(k[GL_n]\) is generated by finitely many elements, and each generator uses finitely many of those ideals.
+
+Tangent vectors satisfy the equations of an intersection exactly when they satisfy each set of equations; hence \(\mathfrak r\subset\operatorname{Lie}H\). In particular
+
+\[
+H\subset G\cap B,\qquad
+\mathfrak r\subset\operatorname{Lie}H.
+\tag{DS.8}
+\]
+
+Cartier makes \(H\) smooth. Its identity component has the same Lie algebra and is a closed subgroup, by [*Group schemes over a field*](../../AG-GS/src/group-schemes-over-a-field.md), Lemma 7.0. Minimality of \(H\) therefore makes \(H\) connected. Every \(\operatorname{Ad}(g)\) preserves \(\mathfrak r\), since the radical is characterized as the largest solvable ideal. Thus conjugation by every \(g\in G(k)\) preserves \(H\). This holds schematically: \(G\times H\) is reduced, and every pulled-back defining equation vanishes at all its \(k\)-points, so it vanishes by the Nullstellensatz. Therefore \(H\) is normal in \(G\).
+
+Let \(U=H\cap U_B\), with \(U_B\) the upper unitriangular group. We need its connectedness, not an assumption that all subgroups of a unipotent group are connected. The finite polynomials
+\(\log(1+N)=\sum_{j=1}^{n-1}(-1)^{j+1}N^j/j\) and
+\(\exp(N)=\sum_{j=0}^{n-1}N^j/j!\) are inverse isomorphisms of varieties between strictly upper triangular matrices and \(U_B\). This follows by substitution in the usual formal series modulo degree \(n\); all denominators are invertible.
+
+For \(u\in U(k)\), the curve \(t\mapsto\exp(t\log u)\) belongs to \(U\). Each defining polynomial restricts to a polynomial in \(t\) vanishing at every nonnegative integer, because those points are powers of \(u\); characteristic zero makes that an infinite set. Differentiating at zero gives \(\log u\in\operatorname{Lie}U\). Cartier makes \(U\) smooth and reduced. Hence its reduced closed image under \(\log\) is contained in the vector space \(\operatorname{Lie}U\) and has the same dimension as that vector space. A proper closed subset of an affine space has smaller dimension. Thus
+
+\[
+\log U=\operatorname{Lie}U,\qquad
+U=\exp(\operatorname{Lie}U)\text{ is connected}.
+\tag{DS.9}
+\]
+
+Within \(H\subset B\), the elements of \(U(k)\) are exactly the unipotent matrices. Conjugation by \(G(k)\) preserves unipotence and \(H(k)\), and therefore preserves \(U(k)\). The same reduced-product argument makes \(U\) a normal subgroup scheme of \(G\). It is a connected unipotent subgroup. Reductivity, namely the absence of a nontrivial connected normal unipotent subgroup, forces \(U=1\).
+
+The diagonal map \(q:H\to(\mathbb G_m)^n\) now has trivial scheme-theoretic kernel. Let \(J\) be the reduced closure of its image. The closure of a subgroup of torus points is a subgroup: pull a defining equation back by multiplication and use density in each variable, and likewise use inversion. Reduced products make this a scheme-theoretic statement. Cartier makes \(J\) smooth; it is connected, as the closure of the image of connected \(H\). The differential of \(q:H\to J\) is injective because its kernel is \(\operatorname{Lie}U=0\). Dominance gives \(\dim J\le\dim H\), and injectivity of this differential between smooth groups gives the reverse inequality. Thus the differential is an isomorphism, everywhere by translation. The Jacobian criterion used in §1.3 makes \(q\) étale.
+
+Its image is an open subgroup containing a nonempty open \(W\) of the integral group \(J\). For any \(j\in J(k)\), the opens \(W\) and \(jW\) meet, so \(j\) is a quotient of two image points. All closed points are therefore in the image. The open image is all of \(J\), since a nonempty closed complement would have a closed point. The trivial kernel makes \(q\) a monomorphism on every test ring: two points with the same image differ by a point of \(U\). A monomorphic étale cover is an isomorphism, by the effective descent proved in §7.5. Thus \(H\) is a closed connected subgroup of a split torus.
+
+Such a subgroup is itself a split torus. Here is the relevant character calculation. Its coordinate algebra is a Hopf quotient of \(k[\mathbb Z^n]\). The images of the monomials are units and group-like elements. Distinct group-like elements are linearly independent: a shortest nontrivial relation, after applying comultiplication and subtracting its tensor with the last group-like element, makes all the other group-like elements equal to the last one, a contradiction. If \(M\subset\mathbb Z^n\) consists of exponents whose image is \(1\), it follows that this quotient is exactly \(k[\mathbb Z^n/M]\). Integer row and column division puts a finite relation matrix in diagonal form, so this finitely generated abelian group is a free group plus a finite torsion group. In characteristic zero a nonzero torsion summand gives a nontrivial finite étale factor, contradicting connectedness. The quotient exponent group is therefore free, and \(H\) is a split torus. This also proves the needed special case of [*Diagonalizable groups and groups of multiplicative type*](../../AG-GS/src/diagonalizable-groups.md), Theorem 4.1.
+
+A normal torus in a connected affine group is central, including on nonreduced test rings. To see this directly, for a character \(z^\lambda\) of \(H\), pull it back by conjugation to
+\(\sum_\mu c_\mu z^\mu\) in \(k[G]\otimes k[H]\). The assertion that conjugation is a group homomorphism in its second variable gives
+
+\[
+c_\mu^2=c_\mu,\qquad
+c_\mu c_\nu=0\ (\mu\ne\nu),\qquad
+\sum_\mu c_\mu=1.
+\tag{DS.10}
+\]
+
+Connectedness of \(G\) allows only the idempotents \(0,1\), so exactly one coefficient is \(1\). At the identity of \(G\) the pullback is \(z^\lambda\); hence it is \(z^\lambda\) everywhere. Every character is fixed, and the coordinate algebra is generated by characters. Conjugation is the identity morphism on \(H\), proving centrality. In particular \(\mathfrak r\) is central in \(\mathfrak g\).
+
+The quotient \(\mathfrak g/\mathfrak r\) has zero solvable radical by the earlier Proposition 4.1, so it is semisimple and perfect. Therefore
+
+\[
+\mathfrak g=[\mathfrak g,\mathfrak g]+\mathfrak r,
+\qquad
+\operatorname{tr}_{\mathfrak g}(\operatorname{ad}x)=0
+\quad(x\in\mathfrak g).
+\tag{DS.11}
+\]
+
+The trace vanishes on \(\mathfrak r\) because it is central, and on each commutator because
+\(\operatorname{ad}[y,z]=[\operatorname{ad}y,\operatorname{ad}z]\) and the trace of a matrix commutator is zero.
+
+For \(\chi=\det\operatorname{Ad}:G\to\mathbb G_m\), the coefficient of \(\varepsilon\) in
+\(\det(1+\varepsilon\operatorname{ad}x)\) is this trace. Thus \(d\chi_e=0\), and translations make \(d\chi\) zero everywhere. A rational function with zero differential on an integral characteristic-zero \(k\)-variety is algebraic over \(k\): if it were transcendental, extend it to a transcendence basis of the function field, differentiate with respect to it, and extend that derivation through the remaining finite separable extension by differentiating minimal polynomials. The resulting derivative would be \(1\), a contradiction. This is also the field-differential argument of §1.3. Since \(k\) is algebraically closed, \(\chi\) is constant, and \(\chi(e)=1\). We have proved
+
+\[
+\det\operatorname{Ad}=1,\qquad
+\det\operatorname{ad}(P)\simeq\mathcal O_X,\qquad
+\deg\operatorname{ad}(P)=0.
+\tag{DS.12}
+\]
+
+The first equality is an equality of morphisms, so the associated determinant line is trivial in every bundle family. No root classification or choice of a maximal torus of \(G\) is used in this determinant proof.
+
+### 2.4. Euler characteristics from divisors and line filtrations
+
+For completeness, the numerical curve formula needed here has a short proof that works in genus zero and one as well. Work first over any extension field \(K/k\). The connected smooth curve \(X\) is integral: its regular local rings are domains, so distinct irreducible components cannot meet; the finitely many components are then open and closed, and connectedness leaves one. Its affine coordinate domains remain domains after every field extension. For if two nonzero elements of \(A\otimes_kK\) had zero product, all their coefficients and that equality would lie over a finitely generated subalgebra \(R_0\subset K\). Pick a nonzero coefficient from each factor in a \(k\)-basis of \(A\), invert their product, and take a \(k\)-point of that nonzero finitely generated algebra by the Nullstellensatz. Specialization would give two nonzero elements of the domain \(A\) with zero product, a contradiction. Thus \(X_K\) is integral; applying the same argument to larger extension fields makes it geometrically integral.
+
+The curve \(X_K\) is smooth and projective by coefficient change. Its closed-point local rings are discrete valuation rings: a regular one-dimensional local domain has principal maximal ideal \((t)\) by Nakayama. Every nonzero element is \(t^m\) times a unit. Indeed, infinite divisibility by \(t\) would give an ascending chain of ideals generated by \(a/t^j\); stabilization would give \(a/t^j=t r(a/t^j)\), impossible for a nonzero element because \(1-tr\) is a unit. This proves the required valuation assertion. The regular-domain and dimension-one hypotheses follow from the proved scheme criteria in [*Regular local rings*](../../AG-CA/src/regular-local-rings.md), Theorem 1.1, and [*Smooth algebras over a field and the Jacobian criterion*](../../AG-CA/src/smooth-algebras-over-a-field-and-the-jacobian-criterion.md), Theorem 2.1.
+
+An invertible sheaf \(L\) has a nonzero rational section \(s\). Its orders in those discrete valuation rings are zero off finitely many closed points: the section is a regular frame on a nonempty open, and its complement on a Noetherian integral curve is finite. The local orders give a divisor \(D=\sum_pn_pp\) and identify \(L\) with \(\mathcal O(D)\): the local generator \(t_p^{-n_p}\) is sent to \(t_p^{-n_p}s\), a regular frame of \(L\). Define \(\deg D=\sum_pn_p[K(p):K]\).
+
+For a closed point \(p\), multiplication by its local parameter gives
+\(0\to\mathcal O(D-p)\to\mathcal O(D)\to K(p)\to0\), where the last term is a skyscraper line over \(K(p)\). Its only cohomology is its section space: the two-open complex of §1.1 is exact in positive degree for a sheaf supported at a point. Finite-dimensional cohomology and vanishing above degree one are already proved in §1.1. The long exact sequence therefore gives
+\(\chi(\mathcal O(D))-\chi(\mathcal O(D-p))=[K(p):K]\). Repeating this equality, with subtraction for negative coefficients, proves
+
+\[
+\chi(X_K,L)=\deg L+1-g.
+\tag{DS.13}
+\]
+
+Here \(H^0(X,\mathcal O_X)=k\): a regular function defines a map to \(\mathbb P^1\) whose image is closed because \(X\) is proper, lies in \(\mathbb A^1\), and is irreducible; it cannot be all of \(\mathbb P^1\), so it is a point. The section is constant. The flat field-change calculation (BA.1) gives \(H^0(X_K,\mathcal O)=K\) and
+\(\dim_KH^1(X_K,\mathcal O)=g\). Thus \(\chi(\mathcal O)=1-g\), including both small genera. The divisor degree is independent of the rational frame because (DS.13) computes it from \(L\).
+
+Every vector bundle \(E\) has a filtration with line-bundle quotients. Choose a nonzero vector in its generic fibre. On a trivializing affine chart, multiply its coordinates by a common denominator and take the kernel of their pairwise wedge equations; this is the saturated rank-one subsheaf whose generic fibre is the chosen rational line. These finite equations give a coherent subsheaf and agree on overlaps. At a closed point, write the rational vector as \(t^m\) times a vector with at least one unit coordinate. The intersection of its rational line with the local free module is the span of that primitive vector; elementary row operations make it the first basis vector. Hence the subsheaf is an invertible sheaf \(L\), and \(E/L\) is locally free of rank one less. Induction on the rank constructs the filtration.
+
+Euler characteristic is additive in a short exact sequence by the finite long exact cohomology sequence. Determinants multiply in a vector-bundle exact sequence: locally split the sequence, take wedge products of a basis of the subbundle and lifts of a quotient basis, and observe that changing those lifts does not change the top wedge. Apply (DS.13) to the line quotients. The result is
+
+\[
+\chi(X_K,E)=\deg\det E+\operatorname{rank}(E)(1-g).
+\tag{DS.14}
+\]
+
+This proves precisely the Euler-characteristic form of Riemann–Roch consumed in Theorem 2.2. It does not infer individual \(H^0\) or \(H^1\) dimensions from degree alone.
+
+### 2.5. The tangent exact sequence measures stack dimension
+
+Let \(\Omega\supset k\) be algebraically closed, \(P\) a bundle on \(X_\Omega\), and choose a point \(v\) over \(P\) in the smooth scheme atlas \(V\). Such a point exists: the smooth surjective atlas fibre is nonempty and locally of finite type, and a nonempty finite-type affine open has an \(\Omega\)-point. Put \(F=V\times_{\operatorname{Bun}_G}\operatorname{Spec}\Omega\), using \(P\), and let \(f\) include the chosen identification at \(v\). This fibre is a smooth scheme over \(\Omega\).
+
+Set \(A^i=H^i(X_\Omega,\operatorname{ad}P)\). A tangent vector to \(F\) is a first-order point of \(V\) together with an isomorphism from its underlying bundle to the constant deformation of \(P\), reducing to the chosen identification. Forgetting that isomorphism gives a tangent vector to \(V\). The kernel consists exactly of infinitesimal automorphisms of \(P\), which are \(A^0\) by (DS.6). The map from \(T_vV\) to \(A^1\) sends a first-order point to its underlying deformation class. Its kernel consists of the points for which an isomorphism to the constant deformation exists, precisely the image of \(T_fF\). It is surjective because the atlas is smooth and hence lifts a prescribed reduced atlas point over each first-order bundle. Thus
+
+\[
+0\longrightarrow A^0\longrightarrow T_fF
+\longrightarrow T_vV\longrightarrow A^1\longrightarrow0.
+\tag{DS.15}
+\]
+
+All maps are linear: their formulas are the additive kernel and coboundary calculations (DS.3)–(DS.6). Since the schemes \(V\) and \(F\) are smooth, their tangent dimensions are their local dimensions. Consequently the local stack dimension, the atlas dimension minus its relative fibre dimension, is
+
+\[
+\begin{gathered}
+\dim_vV-\dim_fF=\dim_\Omega A^1-\dim_\Omega A^0
+=-\chi(X_\Omega,\operatorname{ad}P),\\
+\dim_P\operatorname{Bun}_G=(g-1)\dim G.
+\end{gathered}
+\tag{DS.16}
+\]
+
+The second equality uses (DS.12) and (DS.14), and the rank of the adjoint bundle is \(\dim G\) because \(G\) is smooth. This dimension convention is independent of the chosen atlas: the fibre product of two atlases is smooth over both, and local dimensions of a smooth morphism add as they do in its étale-local affine-space coordinates. Subtracting the corresponding fibre dimensions therefore gives the same difference. It is constant at every geometric bundle point, so the dimension is pure. This proves all assertions of Theorem 2.2, with no assumption \(g>1\).
+
+### 2.6. A rank-two example with changing stabilizers
+
+On \(\mathbb P^1\), use \(t\) on the first affine chart and \(t^{-1}\) on the second. With the second frame of \(\mathcal O(m)\) equal to \(t^m\) times the first, the Čech complex has section images \(k[t]\) and \(t^mk[t^{-1}]\) inside \(k[t,t^{-1}]\). Their intersection has basis \(1,t,\ldots,t^m\) for \(m\ge0\), and is zero otherwise. Their quotient has basis the monomials \(t^j\) with \(m<j<0\). Thus
+
+\[
+h^0(\mathcal O(m))=\max(m+1,0),\qquad
+h^1(\mathcal O(m))=\max(-m-1,0).
+\tag{DS.17}
+\]
+
+Take \(E=\mathcal O(a)\oplus\mathcal O(b)\), with \(a\ge b\), and put \(d=a-b\). Its endomorphism bundle is
+\(\mathcal O^{\oplus2}\oplus\mathcal O(d)\oplus\mathcal O(-d)\), so
+
+\[
+h^0(\operatorname{End}E)=d+3+\max(1-d,0),
+\qquad
+h^1(\operatorname{End}E)=\max(d-1,0).
+\tag{DS.18}
+\]
+
+| Degree difference \(d\) | Infinitesimal automorphisms \(h^0\) | Bundle deformations \(h^1\) | Stack dimension \(h^1-h^0\) |
+|---|---:|---:|---:|
+| \(0\) | \(4\) | \(0\) | \(-4\) |
+| \(1\) | \(4\) | \(0\) | \(-4\) |
+| \(d\ge2\) | \(d+3\) | \(d-1\) | \(-4\) |
+
+The stabilizer and deformation dimensions vary together. Their difference remains the dimension of \(\operatorname{Bun}_{GL_2}\) on the genus-zero curve. For the split torus \((\mathbb G_m)^r\), the adjoint bundle is \(\mathcal O_X^r\), so the same exact sequence gives \(rg-r=r(g-1)\). On a genus-one curve every reductive adjoint bundle has equal \(h^0\) and \(h^1\), by (DS.12)–(DS.14); this asserts a zero stack dimension, without asserting that either space vanishes.
+
+**Exercise 2.A.** If \(E\) has rank \(r\) and \(L\) is an invertible sheaf, compute \(\chi(E\otimes L)-\chi(E)\). Explain why it does not require separate formulas for either cohomology dimension.
+
+**Solution 2.A.** Taking the determinant of a local tensor-product basis gives
+\(\det(E\otimes L)\simeq\det E\otimes L^{\otimes r}\). Degrees add by the divisor construction of §2.4. Equation (DS.14) therefore gives
+\(\chi(E\otimes L)-\chi(E)=r\deg L\). This is an equality of alternating dimensions obtained from the exact-sequence argument; it puts no separate constraint on \(h^0\) and \(h^1\).
+
+**Exercise 2.B.** Let \(B=\{\left(\begin{smallmatrix}a&b\\0&1\end{smallmatrix}\right):a\ne0\}\), the connected affine group \(\mathbb G_a\rtimes\mathbb G_m\). Compute its adjoint determinant. For a bundle induced from a line bundle \(L\) through \(a\mapsto\operatorname{diag}(a,1)\), compute the adjoint bundle and its Euler characteristic. Locate the reductivity hypothesis in §2.3.
+
+**Solution 2.B.** With \(h=E_{11}\) and \(e=E_{12}\), direct matrix multiplication gives
+\(\operatorname{Ad}(a,b)h=h-be\) and
+\(\operatorname{Ad}(a,b)e=ae\). The matrix of the adjoint action in the ordered basis \(h,e\) has determinant \(a\). On the diagonal subgroup its weights are \(1,a\), so the associated adjoint bundle is \(\mathcal O_X\oplus L\). Equation (DS.14) gives Euler characteristic \(2(1-g)+\deg L\). The upper unitriangular subgroup is a nontrivial connected normal unipotent subgroup of \(B\); the inference \(U=1\) in §2.3 therefore fails for this group. The determinant conclusion of that proof uses reductivity essentially.
 
 ## 3. Why degree gives exactly the components of \(\operatorname{Bun}_{GL_n}\)
 
@@ -1800,4 +2074,4 @@ The nilpotent-cone Lagrangian proof is written in §6, relative to its exact sta
 - [Stacks] The [Stacks project](https://stacks.math.columbia.edu/) is freely accessible. The curve cohomology, Picard, descent and representability results used above retain their stated proof hypotheses and unresolved foundations; the cited reference does not replace those proofs.
 
 
-Section 6 contains the Lie/parabolic isotropy and all-genus component-dimension arguments for the reduced global nilpotent cone. The central equation count, genus-zero orbit-conormal argument and algebraic elliptic tensor/parabolic source construction retain automorphisms and prove each component bound. Sections 1.1–1.6 prove the connected reductive bundle-stack atlas, affine diagonal and complete Noetherian local formal effectivity. The remaining recursive local-algebra, cohomology, Quot, Picard and flag foundations retain their stated boundaries. Sections 7.1–7.7 prove formal-disc gluing, arbitrary-ring faithful descent, torsor affineness, the vector-bundle dictionary, smooth-group formal local triviality and the exact framed/unframed quotient descriptions. Sections 7.8–7.10 now apply the full earlier generic-triviality and modification/family proof, establish the arbitrary-ring étale-local conclusion and derive the full semisimple bundle-stack quotient. The remaining recursive Lie/flag/local-algebra and all-genus dimension foundations stay open. These are active obligations within the original connected reductive and semisimple simply connected scopes.
+Section 6 contains the Lie/parabolic isotropy and all-genus component-dimension arguments for the reduced global nilpotent cone. The central equation count, genus-zero orbit-conormal argument and algebraic elliptic tensor/parabolic source construction retain automorphisms and prove each component bound. Sections 1.1–1.6 prove the connected reductive bundle-stack atlas, affine diagonal and complete Noetherian local formal effectivity. The remaining recursive local-algebra, cohomology, Quot, Picard and flag foundations retain their stated boundaries. Sections 7.1–7.7 prove formal-disc gluing, arbitrary-ring faithful descent, torsor affineness, the vector-bundle dictionary, smooth-group formal local triviality and the exact framed/unframed quotient descriptions. Sections 7.8–7.10 now apply the full earlier generic-triviality and modification/family proof, establish the arbitrary-ring étale-local conclusion and derive the full semisimple bundle-stack quotient. Sections 2.1–2.6 prove the square-zero deformation groupoid, smoothness, the adjoint determinant and the all-genus bundle-stack dimension. The remaining recursive Lie/flag and local-algebra foundations stay open. These are active obligations within the original connected reductive and semisimple simply connected scopes.

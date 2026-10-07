@@ -6,7 +6,7 @@
 
 A Sobolev norm measures derivatives; a spatial weight measures behavior at infinity. Scattering problems need both at once. The position weight and the Fourier multiplier usually do not commute, so a definition must specify their order and prove that exchanging them gives an equivalent norm. After doing this for every real pair of exponents, we show that an elliptic graph estimate survives multiplication by a polynomial weight even when the operator has rough coefficients.
 
-Read [The Sobolev domain of an elliptic operator](the-sobolev-domain-of-an-elliptic-operator.md) for the unweighted graph estimate and its precise coefficient class, and [Admissible differential perturbations](admissible-differential-perturbations.md) for the local multiplication estimates. For the smooth symbol calculus we use the complete programme proof [Finite composition and adjoints with spatial weights](../providers/analysis/finite-weighted-calculus.md). It supplies the symbol estimates, distribution identities and uniform finite remainders for the exact metric below. Fourier inversion, Plancherel, Schwartz density and the needed measure interchanges are proved in [A finite-derivative bound for left quantization](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The particular calculus interfaces are identified in Section 2. See also Lerner [L].
+Read [The Sobolev domain of an elliptic operator](the-sobolev-domain-of-an-elliptic-operator.md#domain-graph-core) for the unweighted graph estimate and its precise coefficient class, and [Admissible differential perturbations](admissible-differential-perturbations.md#admissible-global-mapping) for the local multiplication estimates. For the smooth symbol calculus we use the complete programme proof [Finite composition and adjoints with spatial weights](../providers/analysis/finite-weighted-calculus.md). It supplies the symbol estimates, distribution identities and uniform finite remainders for the exact metric below. Fourier inversion, Plancherel, Schwartz density and the needed measure interchanges are proved in [A finite-derivative bound for left quantization](../providers/analysis/finite-derivative-l2.md#fourier-normalization). The particular calculus interfaces are identified in Section 2. See also Lerner [L].
 
 Write \(D_j=-i\partial_j\), \(\langle x\rangle=(1+|x|^2)^{1/2}\), and
 
@@ -31,6 +31,7 @@ The Fourier transform has kernel \(e^{-ix\cdot\xi}\). Thus \(J_s\) is multiplica
 
 Here \(s\) measures differentiability and \(t\) measures spatial decay. Positive \(t\) demands more decay; negative \(t\) permits more growth. The case \(t=0\) is \(H^s\), and the case \(s=0\) is weighted \(L^2\).
 
+<a id="weighted-automorphisms"></a>
 Both \(M_t\) and \(J_s\) are continuous automorphisms of \(\mathcal S\) and \(\mathcal S'\). For multiplication this follows from
 
 \[
@@ -50,6 +51,7 @@ The product rule controls every Schwartz seminorm; the same argument with \(-t\)
 
 This order is essential.
 
+<a id="weighted-hilbert-space"></a>
 **Proposition 1.2.** The space \(H^{s,t}\), with the norm in (2), is a Hilbert space continuously embedded in \(\mathcal S'\). Schwartz functions are dense in it.
 
 **Proof.** The map \(T=M_tJ_s\) sends the displayed space bijectively onto \(L^2\), with inverse (4), and is an isometry for its defining norm. Pull back the \(L^2\) inner product. Completeness follows: if \(Tu_j\) converges to \(v\) in \(L^2\), then \(u_j\) converges in the norm to \(T^{-1}v\). The embedding \(L^2\subset\mathcal S'\) is continuous by Cauchy–Schwarz against a Schwartz test, and \(T^{-1}\) is continuous on \(\mathcal S'\), giving the asserted embedding.
@@ -66,6 +68,7 @@ For a smooth power tail \(u(x)=\langle x\rangle^{-a}\),
 
 Indeed its squared weighted radial integrand is comparable at infinity to \(r^{n-1+2(t-a)}\). Equality gives a logarithmically divergent integral. In particular a nondecaying function can lie in a sufficiently negatively weighted space. Problem 2 compares this threshold with integer Sobolev orders.
 
+<a id="weighted-metric"></a>
 ## 2. The metric and the exact calculus interfaces
 
 For \(0<\delta\le1\), use the phase-space metric
@@ -102,7 +105,9 @@ We check the metric conditions rather than infer them from (7). On phase space t
  \tag{8}
 \]
 
-Here \(h_\delta^2=\sup G_\delta/G_\delta^\sigma\). The metric has no mixed position–frequency terms, so it also satisfies the reflection condition used for changes of quantization.
+Indeed weighted Cauchy–Schwarz bounds \(|\eta\cdot v-y\cdot\nu|^2/G_{\delta,(x,\xi)}(v,\nu)\) by the first expression in (8). For a nonzero \((y,\eta)\), equality holds at \(v=\langle x\rangle^{2\delta}\eta\), \(\nu=-\langle\xi\rangle^2y\); the zero vector gives zero. This proves the symplectic dual formula directly.
+
+Here \(h_\delta^2=\sup G_\delta/G_\delta^\sigma\). Both coordinate coefficient ratios equal \(\langle x\rangle^{-2\delta}\langle\xi\rangle^{-2}\), giving the second expression in (8). The metric has no mixed position–frequency terms, so it also satisfies the reflection condition used for changes of quantization.
 
 **Lemma 2.1.** The metric \(G_\delta\) is slowly varying and symplectically temperate. Every weight
 
@@ -148,16 +153,17 @@ for a finite \(N\), including negative \(\tau,\mu\). \(\square\)
 
 The programme reading [Finite composition and adjoints with spatial weights](../providers/analysis/finite-weighted-calculus.md#weights-and-symbols) proves the following interfaces for exactly this metric and all its locally comparable, symplectically temperate weights. It uses our Fourier normalization throughout.
 
-1. Section 5 proves the continuous actions on \(\mathcal S\) and \(\mathcal S'\). Theorem 3.1 proves the exact quantization-change automorphism and inverse, so left and Weyl symbols give equivalent classes.
-2. Theorem 4.1 and Section 5 prove the finite-seminorm left product in \(S(w_1w_2,G_\delta)\), its finite remainder in \(S(w_1w_2h_\delta^N,G_\delta)\), and its equality to operator composition on both spaces. Lemma 2.1 supplies the complete oscillatory estimates in all four near/far regions.
-3. Section 6 applies the proved finite-derivative operator bound to \(S(1,G_\delta)\) and its quantization transforms. This gives the required \(L^2\) bounds with finite-seminorm control.
+1. [Section 5](../providers/analysis/finite-weighted-calculus.md#weighted-schwartz-action) proves the continuous actions on \(\mathcal S\) and \(\mathcal S'\). [Theorem 3.1](../providers/analysis/finite-weighted-calculus.md#quantization-change) proves the exact quantization-change automorphism and inverse, so left and Weyl symbols give equivalent classes.
+2. [Theorem 4.1](../providers/analysis/finite-weighted-calculus.md#finite-composition) and [Section 5](../providers/analysis/finite-weighted-calculus.md#weighted-exact-composition) prove the finite-seminorm left product in \(S(w_1w_2,G_\delta)\), its finite remainder in \(S(w_1w_2h_\delta^N,G_\delta)\), and its equality to operator composition on both spaces. [Lemma 2.1](../providers/analysis/finite-weighted-calculus.md#four-region-lemma) supplies the complete oscillatory estimates in all four near/far regions.
+3. [Section 6](../providers/analysis/finite-weighted-calculus.md#order-zero-and-use) applies the proved finite-derivative operator bound to \(S(1,G_\delta)\) and its quantization transforms. This gives the required \(L^2\) bounds with finite-seminorm control.
 
-These are programme proofs, not inferences from the accessibility of a reference. Lerner [L], Lemma 2.3.12 and Theorems 2.3.18–2.3.19, gives the broader free-source formulas.
+Each of these bounds uses only finitely many symbol seminorms. Lerner [L], Lemma 2.3.12 and Theorems 2.3.18–2.3.19, gives the broader free-source formulas.
 
 The constants depend on the fixed metric and weight comparison constants and the required finite seminorms. Thus bounded symbol families with common structural constants give uniform operator bounds. This uniformity will be needed for the truncated weights in Section 5. These interfaces concern smooth symbols; we will apply them to the weight operators, while treating rough coefficients by the separate multiplication estimate.
 
 ## 3. Exchanging the factors and mapping between spaces
 
+<a id="weighted-factor-exchange"></a>
 **Theorem 3.1.** For every \(s,t\in\mathbb R\),
 
 \[
@@ -199,6 +205,7 @@ have symbols of weight one. The three interfaces therefore make them bounded on 
 
 They prove both inequalities and both finite-norm implications. The bounded extensions agree with the distributional operators on \(L^2\): approximate in \(L^2\) by Schwartz inputs and use their continuous embeddings and distributional action.
 
+<a id="weighted-symbol-mapping"></a>
 For (14) conjugate by the defining isometries of the source and target:
 
 \[
@@ -230,6 +237,7 @@ Its decaying coefficient improves the permitted spatial weight by \(\rho\). This
 
 For nonnegative integer \(k\), the definition also has a familiar derivative form.
 
+<a id="weighted-integer-derivatives"></a>
 **Corollary 3.2.** For \(u\in\mathcal S'\),
 
 \[
@@ -242,6 +250,7 @@ In particular either side is finite exactly when the other is.
 
 **Proof.** Set \(v=M_tu\). The ordinary integer Sobolev norm is equivalent to \(\sum_{|\alpha|\le k}\|D^\alpha v\|_2\), by Plancherel and comparison of \(\langle\xi\rangle^{2k}\) with the finite sum of \(|\xi^\alpha|^2\). Theorem 3.1 compares this norm with \(\|u\|_{k,t}\). In the distributional product rule every term of \(D^\alpha(M_tu)\) is a bounded smooth multiple of \(M_tD^\beta u\), \(|\beta|\le|\alpha|\), by (3). Conversely, expand \(M_tD^\alpha(M_{-t}v)\); all the ratios \(M_tD^\gamma\langle x\rangle^{-t}\) are bounded, so each resulting term is controlled by a derivative of \(v\). These finite expansions prove the two bounds, including the finite-norm implications. \(\square\)
 
+<a id="weighted-fourier-exchange"></a>
 **Corollary 3.3 (Fourier exchange of decay and regularity).** For every real \(s,t\), the unitary Fourier transform gives an isomorphism
 
 \[
@@ -259,6 +268,7 @@ In particular either side is finite exactly when the other is.
 
 Theorem 3.1 supplies the equivalence for every real pair, and the same argument for the inverse Fourier transform gives the reverse map. Density extends both maps and identifies them with the distributional Fourier transform. This proves the Fourier-exchange statement of [HJS], Proposition 3.10, with the factor order in our definition kept explicit. \(\square\)
 
+<a id="weighted-rough-theorem"></a>
 ## 4. The rough elliptic estimate
 
 We retain the full scalar coefficient class from the preceding domain theorem. Let \(n,m\ge1\) be integers, \(P_0(D)\) a real constant-coefficient elliptic operator of order \(m\), and
@@ -283,7 +293,7 @@ The highest-order \(a_\alpha\) are continuous and tend to zero at infinity. For 
  \tag{22}
 \]
 
-Assume that the perturbation is symmetric on compact smooth tests and that the total continuous principal symbol is elliptic. Local membership is explicit; the tail limit by itself would not supply it. The preceding theorem makes \(P\) self-adjoint with domain \(H^m\) and proves
+Assume that the perturbation is symmetric on compact smooth tests and that the total continuous principal symbol is elliptic. Local membership is explicit; the tail limit by itself would not supply it. [The preceding domain theorem](the-sobolev-domain-of-an-elliptic-operator.md#domain-transfer) makes \(P\) self-adjoint with domain \(H^m\); its [graph estimate](the-sobolev-domain-of-an-elliptic-operator.md#domain-graph-core) proves
 
 \[
  \|v\|_{H^m}\le C_0(\|Pv\|_2+\|v\|_2),\qquad v\in H^m.
@@ -314,6 +324,7 @@ For \(0<\varepsilon\le1\), define
 
 For each fixed \(\varepsilon\), \(1\le F_\varepsilon\le\varepsilon^{-1/2}\). Thus \(w_\varepsilon\) and its reciprocal are bounded smooth functions with bounded derivatives, though their zeroth-order bounds can depend on \(\varepsilon\). Also \(w_\varepsilon(x)\to\langle x\rangle^t\) pointwise as \(\varepsilon\downarrow0\).
 
+<a id="weighted-regularized-weights"></a>
 **Lemma 5.1.** For every multi-index \(\gamma\),
 
 \[
@@ -357,6 +368,7 @@ If \(|y-x|\le r\langle x\rangle\), \(r<1/2\), the ratios of both
 
 The dual distance for \(G_1\) dominates \(|x-y|^2\), proving the uniform global condition. \(\square\)
 
+<a id="weighted-uniform-factor-exchange"></a>
 The symbols \(w_\varepsilon\) and \(w_\varepsilon^{-1}\), independent of frequency, consequently form uniformly bounded families relative to their respective variable weights for \(G_1\). In the factor-exchange proof (15), replace \(M_t,M_{-t}\) by multiplication by these two functions. Their product weights still cancel to one, and all structural and normalized derivative constants remain uniform. Thus for each fixed \(s\),
 
 \[
@@ -369,6 +381,7 @@ with constants independent of \(\varepsilon\). The large possible supremum of \(
 
 ## 6. Commutators without differentiating coefficients
 
+<a id="weighted-rough-commutator"></a>
 **Lemma 6.1.** On \(H^m\),
 
 \[
@@ -415,12 +428,13 @@ For a lower rough coefficient, with original gap \(k=m-|\alpha|>0\), the gap for
 
 The original \(L^{p_\alpha}\) assumption suffices at this larger gap. To check every endpoint, the multiplier exponent for gap \(k'\) is \(n/k'>2\) when \(n>2k'\), any fixed finite exponent greater than 2 when \(n=2k'\), and 2 when \(n<2k'\). In the first case \(n/k'\le p_\alpha\); in the second choose an exponent no larger than \(p_\alpha\), which is greater than 2 because \(k\le k'=n/2\); in the third use \(2\le p_\alpha\). Finite-volume inclusion on unit balls supplies each smaller local exponent. Multiplication by the bounded ratio in (32) preserves these bounds.
 
-Local membership and the tail hypothesis in (22) give a finite uniform unit-ball norm: far centers are bounded by the tail limit, and balls with centers in a fixed compact set lie in one larger compact set. The global coefficient multiplier estimate from *Admissible differential perturbations*, Proposition 2.1, now bounds every such term \(H^{m-1}\to L^2\). Highest-order coefficients are bounded and \(|\beta|\le m-1\), so their terms are bounded directly by \(\|v\|_{H^{m-1}}\). The same direct argument handles all constant coefficients of \(P_0\).
+Local membership and the tail hypothesis in (22) give a finite uniform unit-ball norm: far centers are bounded by the tail limit, and balls with centers in a fixed compact set lie in one larger compact set. The [global coefficient multiplier estimate in *Admissible differential perturbations*, Proposition 2.1](admissible-differential-perturbations.md#admissible-global-mapping), now bounds every such term \(H^{m-1}\to L^2\). Highest-order coefficients are bounded and \(|\beta|\le m-1\), so their terms are bounded directly by \(\|v\|_{H^{m-1}}\). The same direct argument handles all constant coefficients of \(P_0\).
 
 If \(m=1\), only terms with \(|\alpha|=1\) contribute: the zeroth-order coefficients commute with the weight, and the remaining terms are bounded multipliers on \(L^2=H^0\). Thus this case does not require a positive-order multiplier theorem with order zero.
 
 There are finitely many terms, all with uniform constants, proving (30). Initially the identities hold on compact smooth inputs. For fixed \(\varepsilon\), multiplication by \(w_\varepsilon^{\pm1}\) is continuous on \(H^m\), \(P:H^m\to L^2\) is continuous, and compact smooth functions are dense in \(H^m\). Passage to the limit proves the identity there. The term estimates also give its stated extension. \(\square\)
 
+<a id="weighted-rough-graph-proof"></a>
 **Proof of Theorem 4.1.** Set \(v=w_\varepsilon u\). It belongs to \(H^m\) for every fixed \(\varepsilon\), and
 
 \[
@@ -469,6 +483,7 @@ Combined with (20), the theorem controls every weighted derivative through order
 
 Compare the two orders of the weight and multiplier before applying a mapping theorem. Check that the rough graph estimate uses a known input regularity rather than assuming the conclusion being proved.
 
+<a id="weighted-solutions"></a>
 ## 7. Graded exercises with complete solutions
 
 **Exercise 1 — Basic: equivalent norms can differ.** Take \(s=t=2\). Compute the commutator of \(J_2=1-\Delta\) and \(M_2=1+|x|^2\). Show on a Schwartz function that factor-order equivalence does not mean equality of operators.
