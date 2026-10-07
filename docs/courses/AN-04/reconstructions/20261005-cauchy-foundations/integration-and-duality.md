@@ -2,9 +2,9 @@
 
 This companion supplies the complete norm, extension and integration arguments used by the first-order existence proof. It retains the full AN-03 Hahn–Banach argument, all-exponent integral inequalities, and the complete construction of the Bochner integral and its spaces. The final sections connect those proofs to the original time interval, Sobolev dual pairing and distributional trace.
 
-This is a modified selection from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. Copyright © 2026 AN-03 course project contributors. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection, current prerequisite bindings and explicitly identified connecting proofs: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
+This is a modified selection from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection, current prerequisite bindings and explicitly identified connecting proofs: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this component under the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The [complete licence](notices/COPYING), [title information](notices/TITLE_PAGE.md), [history](notices/HISTORY.md) and [rights notice](notices/RIGHTS.md) accompany it.
+Original text: CC0.
 
 ## H0. Earlier proofs and notation
 
@@ -293,4 +293,4 @@ For the Sobolev duality, apply this result after the isometry \(E_{-s}:H^{-s}\to
 
 ## Source and receiving status
 
-The unchanged extracts retain their AN-03 GFDL licence and labels. H4–H6 are connecting programme proofs, including the actual primitive, trace and norm derivative, and the complete finite-interval Hilbert duality. These are standard results; no original research claim is made. Together with the sharp-lower-bound companion they close the functional-analytic inputs of U030. Its full restoration still requires the spacetime symbol and pullback dependencies and a review of the receiving proof.
+The unchanged extracts retain their AN-03 labels. H4–H6 are connecting programme proofs, including the actual primitive, trace and norm derivative, and the complete finite-interval Hilbert duality. These are standard results; no original research claim is made. Together with the sharp-lower-bound companion they close the functional-analytic inputs of U030. Its full restoration still requires the spacetime symbol and pullback dependencies and a review of the receiving proof.

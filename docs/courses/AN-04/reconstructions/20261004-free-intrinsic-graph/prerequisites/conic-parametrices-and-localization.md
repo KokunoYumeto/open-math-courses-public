@@ -10,18 +10,11 @@ theorem, including finite-rank matrix tests.
 This is a bounded modified selection of AN03-U010, Section 2, and
 AN03-U012, Section 6, with the conic and intrinsic arguments completed
 below. Original principal author and publisher: AN-03 course-writing
-task / AN-03 local course project. Copyright © 2026 AN-03 course project
-contributors. Earlier modification: AN-03 course-writing task and OpenAI
+task / AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and OpenAI
 Codex. This selection and its connecting proofs: GPT-6 Astra (OpenAI),
 Ultra, 4 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this component under
-the GNU Free Documentation License, Version 1.2 only, with no Invariant
-Sections, no Front-Cover Texts and no Back-Cover Texts. The
-[licence](parametrix-notices/COPYING),
-[title information](parametrix-notices/TITLE_PAGE.md),
-[history](parametrix-notices/HISTORY.md) and
-[rights notice](parametrix-notices/RIGHTS.md) accompany it.
+Original text: CC0.
 
 ## K0. Exact inputs and conic conventions
 

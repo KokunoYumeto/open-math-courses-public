@@ -12,7 +12,7 @@ Prerequisites are [Completely positive finite models](completely-positive-finite
 \[
 \|\xi_\psi-\xi_\chi\|^2\le\|\psi-\chi\|.
 \]
-Its commutant support is obtained from its algebra support by the standard conjugation. No faithful normal state on the whole algebra is assumed. The freely accessible primary constructions are [Araki, Theorems 4 and 6](https://msp.org/pjm/1974/50-2/pjm-v50-n2-p02-p.pdf) and [Haagerup, Lemmas 2.6 and 2.10](https://journals.msp.org/mscand/article/download/2067/2066/2098). The cone component states the cyclic analytic input separately and gives the arbitrary-algebra reduction. We also use Hahn–Banach separation. The dilation and dominated-functional arguments use the freely readable primary papers specified in the references.
+Its commutant support is obtained from its algebra support by the standard conjugation. No faithful normal state on the whole algebra is assumed. The freely accessible primary constructions are [Araki, Theorems 4 and 6](https://msp.org/pjm/1974/50-2/pjm-v50-n2-p02-p.pdf) and [Haagerup, Lemmas 2.6 and 2.10](https://journals.msp.org/mscand/article/download/2067/2066/2098). The [natural-cone construction](../components/natural-cone-construction.md#nc03) proves endpoint duality and self-duality from bounded multiplication. The [cyclic realization proof](../components/cyclic-cone-realization.md#cr07) constructs each positive functional by a convergent modular correction. The geometry component then gives the arbitrary-algebra reduction. We also use Hahn–Banach separation. The dilation and dominated-functional arguments use the freely readable primary papers specified in the references.
 
 Inner products in this lesson are linear in the second variable. Unital algebras in unital assertions are nonzero.
 

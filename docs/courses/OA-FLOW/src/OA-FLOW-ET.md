@@ -5,7 +5,7 @@
 
 Averaging a compact action produces a normal conditional expectation onto its fixed algebra. When the action is ergodic, that algebra consists only of scalars, so the expectation is a faithful normal state. Abelian spectral fibers then supply the missing symmetry: each nonzero homogeneous element is a scalar multiple of a unitary, opposite fibers are one-dimensional, and the Haar state is tracial first against homogeneous elements and then on the whole algebra.
 
-*Original expression written in Codex (OpenAI), September 2026; restoration and illustration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Owner and independent mathematical review are complete at the exact declared inputs. Human review and formal verification are not asserted. Newly written original expression is dedicated under CC0-1.0 to the extent of rights held.*
+*Original expression written in Codex (OpenAI), September 2026; restoration and illustration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Owner and independent mathematical review are complete at the exact declared inputs. Newly written original expression is dedicated under CC0-1.0 to the extent of rights held.*
 
 Let \(G\) be a compact Hausdorff abelian group with normalized Haar measure \(ds\), let \(M\ne0\) be a von Neumann algebra, and let
 

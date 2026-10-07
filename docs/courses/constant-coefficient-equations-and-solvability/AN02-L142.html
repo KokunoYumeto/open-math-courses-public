@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fourier indicators and the convex hull of a measure&#x27;s support</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L141.html">Previous lesson</a> · <a href="#MI1">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#MI9">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="fourier-indicators-and-the-convex-hull-of-a-measure-s-support">Fourier indicators and the convex hull of a measure's support</h1>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proof exposition, examples, solutions and diagrams: CC0 1.0.</p>
+<p>Fourier transforms of complex measures can cancel. A zero at frequency zero says that the total complex mass cancels; it need not mean the measure is zero. Even a whole imaginary ray may vanish. When we take the largest modulus over each real-frequency slice, however, the exponential growth in imaginary directions recovers the convex hull of the measure's support exactly.</p>
+<p>The <a href="#complete-proof">complete proof MI1–MI9</a> includes the support and measure-determination arguments. Its exact earlier inputs are <a href="AN02-L122.html#2-the-compact-support-growth-criterion">the compact-convex growth converse and uniqueness, L122 CF2.1</a>, <a href="AN02-L137.html#proof-Z2">the scalar logarithm circle proof, L137 Z2</a>, and <a href="AN02-L139.html#recession-support-function">the finite PSH indicator and growth refinement, L139</a>.</p>
+<h2 id="1-which-support-and-which-fourier-sign">1. Which support and which Fourier sign?</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(u\)">\(u\)</span> be a compactly supported complex Radon measure on <span class="math" data-index="1" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-index="2" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Its total variation <span class="math" data-index="3" data-tex="\(|u|\)">\(|u|\)</span> is positive, and its support consists of points whose every neighborhood has positive variation. A neighborhood can have total complex integral zero through cancellation while still containing support points.</p>
+<p>For <span class="math" data-index="4" data-tex="\(u\ne0\)">\(u\ne0\)</span>, write <span class="math" data-index="5" data-tex="\(S=\operatorname{supp}u\)">\(S=\operatorname{supp}u\)</span>, <span class="math" data-index="6" data-tex="\(K=\operatorname{conv}S\)">\(K=\operatorname{conv}S\)</span>, and <span class="math" data-index="7" data-tex="\(m=|u|(\mathbb R^n)&gt;0\)">\(m=|u|(\mathbb R^n)&gt;0\)</span>. The hull <span class="math" data-index="8" data-tex="\(K\)">\(K\)</span> is compact, including when it is a point or a line segment. Its support function is</p>
+<span class="math math-display" id="eq-L142.1" data-index="9" data-tex="\[
+ h_K(y)=\max_{s\in K}s\cdot y=\max_{s\in S}s\cdot y.
+ \tag{L142.1}
+\]">\[
+ h_K(y)=\max_{s\in K}s\cdot y=\max_{s\in S}s\cdot y.
+ \tag{L142.1}
+\]</span>
+<p>Use the negative-exponential Fourier convention:</p>
+<span class="math math-display" id="eq-L142.2" data-index="10" data-tex="\[
+ F(z)=\int e^{-is\cdot z}\,du(s),\qquad z=x+iy.
+ \tag{L142.2}
+\]">\[
+ F(z)=\int e^{-is\cdot z}\,du(s),\qquad z=x+iy.
+ \tag{L142.2}
+\]</span>
+<p>The modulus of the integrand is <span class="math" data-index="11" data-tex="\(e^{s\cdot y}\)">\(e^{s\cdot y}\)</span>. A positive imaginary direction therefore detects the largest support pairing in that direction. Reversing the Fourier sign would reverse these directions as well.</p>
+<p>Compact support makes the transform entire: the exponential's parameter power series converges uniformly and absolutely on the support for parameters in compact sets, so it can be integrated term by term. <a href="#MI3">MI3</a> writes the series and proves joint analyticity.</p>
+<h2 id="2-the-direct-growth-bound">2. The direct growth bound</h2>
+<p>The triangle inequality for a complex measure uses its total variation:</p>
+<span class="math math-display" id="eq-L142.3" data-index="12" data-tex="\[
+ |F(x+iy)|\le\int e^{s\cdot y}\,d|u|(s)
+               \le m e^{h_K(y)}.
+ \tag{L142.3}
+\]">\[
+ |F(x+iy)|\le\int e^{s\cdot y}\,d|u|(s)
+               \le m e^{h_K(y)}.
+ \tag{L142.3}
+\]</span>
+<p>Thus, with <span class="math" data-index="13" data-tex="\(\log0=-\infty\)">\(\log0=-\infty\)</span>,</p>
+<span class="math math-display" id="eq-L142.4" data-index="14" data-tex="\[
+ v(x+iy)=\log|F(x+iy)|\le\log m+h_K(y)
+                                      \le\log m+R|y|,
+ \tag{L142.4}
+\]">\[
+ v(x+iy)=\log|F(x+iy)|\le\log m+h_K(y)
+                                      \le\log m+R|y|,
+ \tag{L142.4}
+\]</span>
+<p>where <span class="math" data-index="15" data-tex="\(R=\max_{s\in S}|s|\)">\(R=\max_{s\in S}|s|\)</span>. The constant is <span class="math" data-index="16" data-tex="\(\log m\)">\(\log m\)</span>, even when the total complex mass <span class="math" data-index="17" data-tex="\(u(\mathbb R^n)\)">\(u(\mathbb R^n)\)</span> is zero.</p>
+<p>The transform is not identically zero. Otherwise Fourier uniqueness would make the measure's associated distribution zero, and the measure-determination argument in <a href="#MI2">MI2</a> would make the measure zero.</p>
+<p>The logarithm is PSH. On each complex line, the restricted transform is an entire function of one variable. If it vanishes identically, its logarithm is identically <span class="math" data-index="18" data-tex="\(-\infty\)">\(-\infty\)</span>. Otherwise <a href="AN02-L137.html#proof-Z2">L137's complete logarithm proof</a> gives its subharmonic circle inequality, including its zero values. Continuity of <span class="math" data-index="19" data-tex="\(F\)">\(F\)</span> gives upper semicontinuity of the logarithm on the whole space. These are exactly the PSH conditions needed by L139.</p>
+<h2 id="3-the-horizontal-envelope-gives-an-indicator">3. The horizontal envelope gives an indicator</h2>
+<p>Define</p>
+<span class="math math-display" id="eq-L142.5" data-index="20" data-tex="\[
+ M(y)=\sup_{x\in\mathbb R^n}\log|F(x+iy)|,
+ \qquad H(y)=\lim_{t\to\infty}\frac{M(ty)}t.
+ \tag{L142.5}
+\]">\[
+ M(y)=\sup_{x\in\mathbb R^n}\log|F(x+iy)|,
+ \qquad H(y)=\lim_{t\to\infty}\frac{M(ty)}t.
+ \tag{L142.5}
+\]</span>
+<p><a href="AN02-L139.html#psh-envelope-theorem">L139</a> proves that the upper growth bound makes <span class="math" data-index="21" data-tex="\(M\)">\(M\)</span> finite and convex and <span class="math" data-index="22" data-tex="\(H\)">\(H\)</span> finite, continuous and sublinear. It constructs a nonempty compact convex set <span class="math" data-index="23" data-tex="\(K_H\)">\(K_H\)</span> whose support function is <span class="math" data-index="24" data-tex="\(H\)">\(H\)</span>. Its precise additional estimate is</p>
+<span class="math math-display" id="eq-L142.6" data-index="25" data-tex="\[
+ M(y)\le M(0)+H(y).
+ \tag{L142.6}
+\]">\[
+ M(y)\le M(0)+H(y).
+ \tag{L142.6}
+\]</span>
+<p>The direct bound (L142.4), evaluated at <span class="math" data-index="26" data-tex="\(ty\)">\(ty\)</span>, gives <span class="math" data-index="27" data-tex="\(M(ty)/t\le\log m/t+h_K(y)\)">\(M(ty)/t\le\log m/t+h_K(y)\)</span>. Taking the limit proves <span class="math" data-index="28" data-tex="\(H\le h_K\)">\(H\le h_K\)</span>.</p>
+<p>This definition includes a supremum over every real frequency. For example, the planar measure <span class="math" data-index="29" data-tex="\(\delta_{(-1,0)}-\delta_{(1,0)}\)">\(\delta_{(-1,0)}-\delta_{(1,0)}\)</span> has transform <span class="math" data-index="30" data-tex="\(2i\sin z_1\)">\(2i\sin z_1\)</span>. On the ray <span class="math" data-index="31" data-tex="\((0,it)\)">\((0,it)\)</span> it vanishes at every height. But varying the first real frequency gives <span class="math" data-index="32" data-tex="\(M(t(0,1))=\log2\)">\(M(t(0,1))=\log2\)</span>, hence <span class="math" data-index="33" data-tex="\(H(0,1)=0\)">\(H(0,1)=0\)</span>, consistent with its horizontal support segment. A fixed imaginary ray alone would miss this indicator.</p>
+<h2 id="4-why-the-reverse-inequality-holds-despite-cancellation">4. Why the reverse inequality holds despite cancellation</h2>
+<p>Estimate (L142.6) yields</p>
+<span class="math math-display" id="eq-L142.7" data-index="34" data-tex="\[
+ |F(x+iy)|\le e^{M(0)}e^{H(y)}
+             =e^{M(0)}e^{h_{K_H}(y)}.
+ \tag{L142.7}
+\]">\[
+ |F(x+iy)|\le e^{M(0)}e^{H(y)}
+             =e^{M(0)}e^{h_{K_H}(y)}.
+ \tag{L142.7}
+\]</span>
+<p>This is precisely the compact-convex Fourier growth hypothesis from <a href="AN02-L122.html#2-the-compact-support-growth-criterion">CF2.1</a>, with polynomial order zero. Its converse constructs a distribution supported in <span class="math" data-index="35" data-tex="\(K_H\)">\(K_H\)</span>, with entire Fourier transform <span class="math" data-index="36" data-tex="\(F\)">\(F\)</span>. Its uniqueness identifies that distribution with the one given by the original measure.</p>
+<p>The support of a Radon measure is the same as the support of its distribution. To see the nontrivial direction, vanishing on all smooth compact tests implies vanishing on all continuous compact tests by uniform smoothing. Continuous functions between zero and one then approximate the indicator of each compact subset. Total variation and dominated convergence give zero measure on those compact subsets. Inner regularity of total variation extends this to every Borel subset. <a href="#MI2">MI2</a> gives the explicit approximants and estimates.</p>
+<p>We obtain <span class="math" data-index="37" data-tex="\(S\subset K_H\)">\(S\subset K_H\)</span>, and hence <span class="math" data-index="38" data-tex="\(K\subset K_H\)">\(K\subset K_H\)</span>. Maximizing linear pairings gives <span class="math" data-index="39" data-tex="\(h_K\le h_{K_H}=H\)">\(h_K\le h_{K_H}=H\)</span>. Combining this with the earlier inequality proves</p>
+<span class="math math-display" id="eq-L142.8" data-index="40" data-tex="\[
+ H(y)=h_K(y)\quad\hbox{for every }y,
+ \qquad K_H=K.
+ \tag{L142.8}
+\]">\[
+ H(y)=h_K(y)\quad\hbox{for every }y,
+ \qquad K_H=K.
+ \tag{L142.8}
+\]</span>
+<p>Equality of the sets follows from the elementary separating plane of a nearest point in a compact convex set. <a href="#MI5">MI5</a> proves the whole reverse inequality and this separation argument. Complex coefficients and nonatomic measures are both included.</p>
+<h2 id="5-a-triangle-whose-coefficients-cancel">5. A triangle whose coefficients cancel</h2>
+<p>Consider the planar measure</p>
+<span class="math math-display" id="eq-L142.9" data-index="41" data-tex="\[
+ u=\delta_{(-1,0)}+i\delta_{(1,0)}-(1+i)\delta_{(0,2)}.
+ \tag{L142.9}
+\]">\[
+ u=\delta_{(-1,0)}+i\delta_{(1,0)}-(1+i)\delta_{(0,2)}.
+ \tag{L142.9}
+\]</span>
+<p>Its coefficients sum to zero. Its variation is <span class="math" data-index="42" data-tex="\(2+\sqrt2\)">\(2+\sqrt2\)</span>, and its support hull is the triangle joining the three vertices. Its transform is</p>
+<span class="math math-display" id="eq-L142.10" data-index="43" data-tex="\[
+ F(z)=e^{iz_1}+i e^{-iz_1}-(1+i)e^{-2iz_2}.
+ \tag{L142.10}
+\]">\[
+ F(z)=e^{iz_1}+i e^{-iz_1}-(1+i)e^{-2iz_2}.
+ \tag{L142.10}
+\]</span>
+<p>It vanishes at <span class="math" data-index="44" data-tex="\(z=0\)">\(z=0\)</span>. Nevertheless the real part <span class="math" data-index="45" data-tex="\((\pi/4,-\pi/2)\)">\((\pi/4,-\pi/2)\)</span> aligns all three complex phases. At imaginary height <span class="math" data-index="46" data-tex="\(y\)">\(y\)</span>, the triangle bound is therefore attained and</p>
+<span class="math math-display" id="eq-L142.11" data-index="47" data-tex="\[
+ M(y)=\log(e^{-y_1}+e^{y_1}+\sqrt2e^{2y_2}),
+ \qquad H(y)=\max(-y_1,y_1,2y_2).
+ \tag{L142.11}
+\]">\[
+ M(y)=\log(e^{-y_1}+e^{y_1}+\sqrt2e^{2y_2}),
+ \qquad H(y)=\max(-y_1,y_1,2y_2).
+ \tag{L142.11}
+\]</span>
+<p>The envelope at height zero is <span class="math" data-index="48" data-tex="\(\log(2+\sqrt2)\)">\(\log(2+\sqrt2)\)</span>, although the logarithm at frequency zero is <span class="math" data-index="49" data-tex="\(-\infty\)">\(-\infty\)</span>. The displayed maximum is exactly the triangle's support function. This explicit alignment is a calculation for the example; the general theorem uses the support converse and uniqueness.</p>
+<figure><img class="course-figure" width="2144" height="928" src="reproduce/L142/figures/complex-triangle-envelope.png" alt="A complex triangle measure and its exact Fourier envelope." /><figcaption class="native"><a href="reproduce/L142/figures/complex-triangle-envelope.png">Open full-size PNG</a> · <a href="reproduce/L142/figures/complex-triangle-envelope.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> The left panel gives the actual atom locations and coefficients in (L142.9), with an equal Euclidean scale on both axes. The supporting line <span class="math" data-index="50" data-tex="\(s_1+s_2=2\)">\(s_1+s_2=2\)</span> touches the top vertex. The right panel follows <span class="math" data-index="51" data-tex="\(y=t(1,1)\)">\(y=t(1,1)\)</span>, drawing the exact envelope and the hull profile. Their gap is at most <span class="math" data-index="52" data-tex="\(\log(2+\sqrt2)\)">\(\log(2+\sqrt2)\)</span>. The marked height-zero envelope is finite even though the transform cancels at frequency zero. See (L142.9)–(L142.11) and formal Example 2.</p>
+<h2 id="6-a-signed-density-with-no-endpoint-atoms">6. A signed density with no endpoint atoms</h2>
+<p>On the real line set</p>
+<span class="math math-display" id="eq-L142.12" data-index="53" data-tex="\[
+ du(s)=\mathbf1_{[-1,0]}(s)\,ds-\mathbf1_{[0,1]}(s)\,ds.
+ \tag{L142.12}
+\]">\[
+ du(s)=\mathbf1_{[-1,0]}(s)\,ds-\mathbf1_{[0,1]}(s)\,ds.
+ \tag{L142.12}
+\]</span>
+<p>Its total mass is zero, its variation is two, and its support is the whole interval <span class="math" data-index="54" data-tex="\([-1,1]\)">\([-1,1]\)</span>. Neither endpoint has an atom. Each endpoint is still in the support because every neighborhood meets a positive-length interval of nonzero variation.</p>
+<p>Integrating the two exponentials gives</p>
+<span class="math math-display" id="eq-L142.13" data-index="55" data-tex="\[
+ F(z)=\frac{2(\cos z-1)}{iz},\qquad F(0)=0,
+ \tag{L142.13}
+\]">\[
+ F(z)=\frac{2(\cos z-1)}{iz},\qquad F(0)=0,
+ \tag{L142.13}
+\]</span>
+<p>where the value at zero is its entire extension. Its series begins <span class="math" data-index="56" data-tex="\(iz+O(z^3)\)">\(iz+O(z^3)\)</span>. The indicator theorem gives <span class="math" data-index="57" data-tex="\(H(y)=|y|\)">\(H(y)=|y|\)</span>. On the positive imaginary ray we can check this slope directly:</p>
+<span class="math math-display" id="eq-L142.14" data-index="58" data-tex="\[
+ \frac{\log|F(it)|}t
+ =1-\frac{\log t}t+\frac{2\log(1-e^{-t})}t\longrightarrow1.
+ \tag{L142.14}
+\]">\[
+ \frac{\log|F(it)|}t
+ =1-\frac{\log t}t+\frac{2\log(1-e^{-t})}t\longrightarrow1.
+ \tag{L142.14}
+\]</span>
+<p>The same modulus on the negative ray gives the other endpoint slope. This is a nonatomic example of the full theorem.</p>
+<figure><img class="course-figure" width="2144" height="880" src="reproduce/L142/figures/signed-density-growth.png" alt="The signed interval density and its exact large-height growth." /><figcaption class="native"><a href="reproduce/L142/figures/signed-density-growth.png">Open full-size PNG</a> · <a href="reproduce/L142/figures/signed-density-growth.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> The density is +1 on the left half interval and −1 on the right half interval. The endpoints have zero atomic mass. The right panel uses the exact quotient in (L142.14) on <span class="math" data-index="59" data-tex="\(1/2\le t\le32\)">\(1/2\le t\le32\)</span>, together with the limiting slope 1 and the upper bound <span class="math" data-index="60" data-tex="\(1+\log2/t\)">\(1+\log2/t\)</span> from variation two. Cancellation at zero does not remove either endpoint from the support. See formal Example 3 for the transform and moment calculations.</p>
+<h2 id="7-location-lower-dimensional-supports-and-zero-measure">7. Location, lower-dimensional supports and zero measure</h2>
+<p>A nonzero atom <span class="math" data-index="61" data-tex="\(c\delta_a\)">\(c\delta_a\)</span> has <span class="math" data-index="62" data-tex="\(F(z)=ce^{-ia\cdot z}\)">\(F(z)=ce^{-ia\cdot z}\)</span>, <span class="math" data-index="63" data-tex="\(M(y)=\log|c|+a\cdot y\)">\(M(y)=\log|c|+a\cdot y\)</span>, and <span class="math" data-index="64" data-tex="\(H(y)=a\cdot y\)">\(H(y)=a\cdot y\)</span>. This retains the actual position <span class="math" data-index="65" data-tex="\(a\)">\(a\)</span>; when <span class="math" data-index="66" data-tex="\(a\ne0\)">\(a\ne0\)</span>, the indicator in direction <span class="math" data-index="67" data-tex="\(-a\)">\(-a\)</span> is negative. A support function need not be nonnegative.</p>
+<p>For a lower-dimensional example, push forward Lebesgue measure on <span class="math" data-index="68" data-tex="\([-1,1]\)">\([-1,1]\)</span> under <span class="math" data-index="69" data-tex="\(s\mapsto(s,2s)\)">\(s\mapsto(s,2s)\)</span>. Its hull is a segment in the plane, and its indicator is <span class="math" data-index="70" data-tex="\(|y_1+2y_2|\)">\(|y_1+2y_2|\)</span>. The transform is <span class="math" data-index="71" data-tex="\(2\sin(z_1+2z_2)/(z_1+2z_2)\)">\(2\sin(z_1+2z_2)/(z_1+2z_2)\)</span>, with value 2 on the denominator's zero set. The theorem requires no support interior.</p>
+<p>For <span class="math" data-index="72" data-tex="\(u=0\)">\(u=0\)</span>, every transform value is zero and <span class="math" data-index="73" data-tex="\(v=\log|F|\equiv-\infty\)">\(v=\log|F|\equiv-\infty\)</span>. The support is empty, and the extended convention is <span class="math" data-index="74" data-tex="\(H=h_\varnothing=-\infty\)">\(H=h_\varnothing=-\infty\)</span>, including at the zero direction. For a nonzero measure, <span class="math" data-index="75" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>, even when <span class="math" data-index="76" data-tex="\(F(0)=0\)">\(F(0)=0\)</span>. These two meanings of a zero value must be distinguished. <a href="#MI6">MI6</a> treats the zero and translation conventions in full.</p>
+<h2 id="8-exercises-and-complete-solutions">8. Exercises and complete solutions</h2>
+<p><strong>Exercise 1.</strong> For <span class="math" data-index="77" data-tex="\(u=-2i\delta_3\)">\(u=-2i\delta_3\)</span> on the line, find its variation, horizontal envelope and indicator at <span class="math" data-index="78" data-tex="\(y=-1\)">\(y=-1\)</span>.</p>
+<p><strong>Solution.</strong> Its variation is two and its transform is <span class="math" data-index="79" data-tex="\(-2i e^{-3iz}\)">\(-2i e^{-3iz}\)</span>. Thus <span class="math" data-index="80" data-tex="\(M(y)=\log2+3y\)">\(M(y)=\log2+3y\)</span> and <span class="math" data-index="81" data-tex="\(H(y)=3y\)">\(H(y)=3y\)</span>. At <span class="math" data-index="82" data-tex="\(y=-1\)">\(y=-1\)</span> the indicator is <span class="math" data-index="83" data-tex="\(-3\)">\(-3\)</span>, the support function of the point 3 in the negative direction. Its negative value records location.</p>
+<p><strong>Exercise 2.</strong> Why is <span class="math" data-index="84" data-tex="\(\log|u(\mathbb R^n)|\)">\(\log|u(\mathbb R^n)|\)</span> an unsuitable constant in the growth bound for the triangle measure?</p>
+<p><strong>Solution.</strong> Its total complex mass is zero, so that expression would be <span class="math" data-index="85" data-tex="\(-\infty\)">\(-\infty\)</span>. But the transform is not identically zero and its horizontal supremum at height zero has modulus <span class="math" data-index="86" data-tex="\(2+\sqrt2\)">\(2+\sqrt2\)</span>. The triangle inequality integrates against total variation, giving the correct finite constant <span class="math" data-index="87" data-tex="\(\log(2+\sqrt2)\)">\(\log(2+\sqrt2)\)</span>.</p>
+<p><strong>Exercise 3.</strong> For <span class="math" data-index="88" data-tex="\(\delta_{(-1,0)}-\delta_{(1,0)}\)">\(\delta_{(-1,0)}-\delta_{(1,0)}\)</span>, compare the log modulus on <span class="math" data-index="89" data-tex="\((0,it)\)">\((0,it)\)</span> with its envelope at imaginary height <span class="math" data-index="90" data-tex="\((0,t)\)">\((0,t)\)</span>.</p>
+<p><strong>Solution.</strong> The transform is <span class="math" data-index="91" data-tex="\(2i\sin z_1\)">\(2i\sin z_1\)</span>, so it is zero on that pure imaginary ray and its logarithm there is <span class="math" data-index="92" data-tex="\(-\infty\)">\(-\infty\)</span>. On the same imaginary slice choose first real frequency <span class="math" data-index="93" data-tex="\(x_1=\pi/2\)">\(x_1=\pi/2\)</span>, giving modulus two. No real frequency can give larger modulus, so <span class="math" data-index="94" data-tex="\(M(0,t)=\log2\)">\(M(0,t)=\log2\)</span>. Dividing by the dilation gives indicator zero in the vertical direction, as the horizontal support segment requires.</p>
+<p><strong>Exercise 4.</strong> Why does the signed interval measure have support endpoints even though it has no endpoint atoms? What is its first moment?</p>
+<p><strong>Solution.</strong> Every neighborhood of −1 or 1 intersects a positive-length interval on which the absolute density is one, so it has positive variation. A single endpoint has zero Lebesgue mass and hence no atom. Its first moment is <span class="math" data-index="95" data-tex="\(\int_{-1}^0s\,ds-\int_0^1s\,ds=-1\)">\(\int_{-1}^0s\,ds-\int_0^1s\,ds=-1\)</span>, giving transform derivative <span class="math" data-index="96" data-tex="\(F&#x27;(0)=i\)">\(F&#x27;(0)=i\)</span>. Thus zero total mass does not make the transform zero as a function.</p>
+<p><strong>Exercise 5.</strong> Identify the two logical roles of CF2.1 in proving the reverse support-function inequality.</p>
+<p><strong>Solution.</strong> First, the growth-to-support converse constructs an inverse Fourier distribution supported in the compact convex set represented by the PSH indicator. Second, uniqueness identifies that inverse with the distribution of the original measure. The equality of measure and distribution support then puts the original support in that convex set. The construction alone would not identify the original measure's support.</p>
+<p><strong>Exercise 6.</strong> What are <span class="math" data-index="97" data-tex="\(H(0)\)">\(H(0)\)</span> for a nonzero measure with canceled total mass and for the zero measure? Why do they differ?</p>
+<p><strong>Solution.</strong> For the nonzero measure, its logarithm is a nontrivial PSH function and the finite recession construction gives <span class="math" data-index="98" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>. A zero at Fourier frequency zero is only one singular value. For the zero measure, the transform is zero at every frequency, its logarithm is identically <span class="math" data-index="99" data-tex="\(-\infty\)">\(-\infty\)</span>, and the support is empty. The empty-set support function is <span class="math" data-index="100" data-tex="\(-\infty\)">\(-\infty\)</span> even at zero. The finite indicator theorem is applied only to the nonzero case.</p>
+<h2 id="source-credit">Source credit</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em> (1983 edition; second revised printing 1990; reprint 2005), §16.3, Lemma 16.3.1, printed p. 319 (PDF p. 332). The <a href="#complete-proof">complete original proof</a> identifies the PSH indicator with the compact measure's support function using the exact linked growth converse and support-set construction.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proof exposition, examples, solutions and diagrams: CC0 1.0.</p>
+<p>A complex measure can cancel at many Fourier frequencies, including frequency zero. Nevertheless the largest exponential growth of its transform in each imaginary direction determines the convex hull of its support exactly. The proof uses a uniform upper bound in every real frequency. A single imaginary ray or a noncancelling endpoint atom is not required.</p>
+<p>Our precise earlier inputs are <a href="AN02-L122.html#2-the-compact-support-growth-criterion">the compact-convex Fourier growth converse and uniqueness, L122 Theorem CF2.1</a>, <a href="AN02-L137.html#proof-Z2">the scalar log-modulus proof, L137 Lemma Z2</a>, and <a href="AN02-L139.html#psh-envelope-theorem">the PSH envelope/support construction, L139 Theorem E1</a>, especially <a href="AN02-L139.html#recession-support-function">the recession proof and (E17)</a>. We prove the measure/distribution support identification and the remaining support-function steps directly. The Fourier convention is the negative exponential throughout.</p>
+<p><a id="MI1"></a></p>
+<h2 id="mi1-the-exact-assertion">MI1. The exact assertion</h2>
+<p>Let <span class="math" data-index="101" data-tex="\(n\ge1\)">\(n\ge1\)</span> and let <span class="math" data-index="102" data-tex="\(u\)">\(u\)</span> be a complex Radon measure on <span class="math" data-index="103" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> with compact support. Total variation is denoted by <span class="math" data-index="104" data-tex="\(|u|\)">\(|u|\)</span>. Support means</p>
+<span class="math math-display" id="eq-MI1" data-index="105" data-tex="\[
+ S=\operatorname{supp}u
+   =\{x:|u|(V)&gt;0\text{ for every open neighborhood }V\text{ of }x\}.
+ \tag{MI1}
+\]">\[
+ S=\operatorname{supp}u
+   =\{x:|u|(V)&gt;0\text{ for every open neighborhood }V\text{ of }x\}.
+ \tag{MI1}
+\]</span>
+<p>Vanishing on an open set means the restriction of the measure is zero, rather than just that its total integral over that set is zero. Cancellation can make the latter vanish even when the restriction is nonzero.</p>
+<p>For <span class="math" data-index="106" data-tex="\(u\ne0\)">\(u\ne0\)</span>, set</p>
+<span class="math math-display" id="eq-MI2" data-index="107" data-tex="\[
+ m=|u|(\mathbb R^n)&gt;0,\qquad K=\operatorname{conv}S,\qquad
+ h_K(y)=\max_{s\in K}s\cdot y,
+ \tag{MI2}
+\]">\[
+ m=|u|(\mathbb R^n)&gt;0,\qquad K=\operatorname{conv}S,\qquad
+ h_K(y)=\max_{s\in K}s\cdot y,
+ \tag{MI2}
+\]</span>
+<p>and define its entire Fourier transform and logarithm by</p>
+<span class="math math-display" id="eq-MI3" data-index="108" data-tex="\[
+ F(z)=\int e^{-is\cdot z}\,du(s),\qquad
+ v(z)=\log|F(z)|,\qquad \log0=-\infty.
+ \tag{MI3}
+\]">\[
+ F(z)=\int e^{-is\cdot z}\,du(s),\qquad
+ v(z)=\log|F(z)|,\qquad \log0=-\infty.
+ \tag{MI3}
+\]</span>
+<p><strong>Theorem MI.</strong> For <span class="math" data-index="109" data-tex="\(u\ne0\)">\(u\ne0\)</span>, <span class="math" data-index="110" data-tex="\(F\)">\(F\)</span> is not identically zero, <span class="math" data-index="111" data-tex="\(v\)">\(v\)</span> is PSH, and</p>
+<span class="math math-display" id="eq-MI4" data-index="112" data-tex="\[
+ v(x+iy)\le\log m+h_K(y)\le\log m+R|y|,
+ \qquad R=\max_{s\in S}|s|.
+ \tag{MI4}
+\]">\[
+ v(x+iy)\le\log m+h_K(y)\le\log m+R|y|,
+ \qquad R=\max_{s\in S}|s|.
+ \tag{MI4}
+\]</span>
+<p>Consequently the L139 horizontal envelope and indicator are well defined:</p>
+<span class="math math-display" id="eq-MI5" data-index="113" data-tex="\[
+ M(y)=\sup_{x\in\mathbb R^n}\log|F(x+iy)|\in\mathbb R,
+ \qquad H(y)=\lim_{t\to\infty}\frac{M(ty)}t.
+ \tag{MI5}
+\]">\[
+ M(y)=\sup_{x\in\mathbb R^n}\log|F(x+iy)|\in\mathbb R,
+ \qquad H(y)=\lim_{t\to\infty}\frac{M(ty)}t.
+ \tag{MI5}
+\]</span>
+<p>The exact identification is</p>
+<span class="math math-display" id="eq-MI6" data-index="114" data-tex="\[
+ H(y)=h_K(y)=\max_{s\in S}s\cdot y
+ \quad(y\in\mathbb R^n).
+ \tag{MI6}
+\]">\[
+ H(y)=h_K(y)=\max_{s\in S}s\cdot y
+ \quad(y\in\mathbb R^n).
+ \tag{MI6}
+\]</span>
+<p>Thus the compact convex set constructed from <span class="math" data-index="115" data-tex="\(H\)">\(H\)</span> is exactly <span class="math" data-index="116" data-tex="\(K\)">\(K\)</span>. No positivity of <span class="math" data-index="117" data-tex="\(u\)">\(u\)</span>, nonzero total complex mass, endpoint atoms, full-dimensional hull, or attainment of the real-frequency supremum is assumed.</p>
+<p>For <span class="math" data-index="118" data-tex="\(u=0\)">\(u=0\)</span>, take <span class="math" data-index="119" data-tex="\(F=0\)">\(F=0\)</span>, <span class="math" data-index="120" data-tex="\(v=M=H=-\infty\)">\(v=M=H=-\infty\)</span>, <span class="math" data-index="121" data-tex="\(S=K=\varnothing\)">\(S=K=\varnothing\)</span>, and <span class="math" data-index="122" data-tex="\(h_\varnothing=-\infty\)">\(h_\varnothing=-\infty\)</span>, including at the zero vector. This is the extended convention in L139; the finite indicator construction applies to the nonzero case.</p>
+<p><a id="MI2"></a></p>
+<h2 id="mi2-a-measure-and-its-distribution-have-the-same-support">MI2. A measure and its distribution have the same support</h2>
+<p>The measure acts on smooth compact tests by</p>
+<span class="math math-display" id="eq-MI7" data-index="123" data-tex="\[
+ T_u(\phi)=\int\phi\,du,
+ \qquad |T_u(\phi)|\le m\|\phi\|_\infty.
+ \tag{MI7}
+\]">\[
+ T_u(\phi)=\int\phi\,du,
+ \qquad |T_u(\phi)|\le m\|\phi\|_\infty.
+ \tag{MI7}
+\]</span>
+<p>This is a complex-linear distribution of order zero. A compactly supported Radon measure has finite total variation: <span class="math" data-index="124" data-tex="\(|u|\)">\(|u|\)</span> is finite on the compact support, and the complement has zero variation. The latter statement follows by covering the complement with countably many rational balls on which <span class="math" data-index="125" data-tex="\(|u|\)">\(|u|\)</span> is zero. It also shows that empty support forces the measure to be zero.</p>
+<p>We prove the support equality</p>
+<span class="math math-display" id="eq-MI8" data-index="126" data-tex="\[
+ \operatorname{supp}T_u=\operatorname{supp}u.
+ \tag{MI8}
+\]">\[
+ \operatorname{supp}T_u=\operatorname{supp}u.
+ \tag{MI8}
+\]</span>
+<p>One inclusion is immediate: if the measure vanishes on an open region <span class="math" data-index="127" data-tex="\(O\)">\(O\)</span>, every smooth test there integrates to zero. Conversely suppose every <span class="math" data-index="128" data-tex="\(\phi\in C_c^\infty(O)\)">\(\phi\in C_c^\infty(O)\)</span> pairs to zero. Given <span class="math" data-index="129" data-tex="\(f\in C_c(O)\)">\(f\in C_c(O)\)</span>, extend it by zero and convolve with smooth approximate identities small enough that all supports remain in one compact subset of <span class="math" data-index="130" data-tex="\(O\)">\(O\)</span>. Uniform continuity gives uniform convergence to <span class="math" data-index="131" data-tex="\(f\)">\(f\)</span>; (MI7) passes the zero pairings to <span class="math" data-index="132" data-tex="\(\int f\,du=0\)">\(\int f\,du=0\)</span>.</p>
+<p>Here is the measure-determination step. For any compact <span class="math" data-index="133" data-tex="\(A\subset O\)">\(A\subset O\)</span>, choose <span class="math" data-index="134" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that its closed <span class="math" data-index="135" data-tex="\(\delta\)">\(\delta\)</span>-neighborhood is compact and contained in <span class="math" data-index="136" data-tex="\(O\)">\(O\)</span>. The continuous cutoff <span class="math" data-index="137" data-tex="\(\chi(s)=\max(0,\min(1,2-2\operatorname{dist}(s,A)/\delta))\)">\(\chi(s)=\max(0,\min(1,2-2\operatorname{dist}(s,A)/\delta))\)</span> lies in <span class="math" data-index="138" data-tex="\(C_c(O)\)">\(C_c(O)\)</span>, stays between zero and one, and equals one near <span class="math" data-index="139" data-tex="\(A\)">\(A\)</span>. Put</p>
+<span class="math math-display" id="eq-MI9" data-index="140" data-tex="\[
+ f_j(s)=\chi(s)\max(0,1-j\operatorname{dist}(s,A)).
+ \tag{MI9}
+\]">\[
+ f_j(s)=\chi(s)\max(0,1-j\operatorname{dist}(s,A)).
+ \tag{MI9}
+\]</span>
+<p>These continuous compact tests tend pointwise to <span class="math" data-index="141" data-tex="\(\mathbf1_A\)">\(\mathbf1_A\)</span> and are bounded by one. Dominated convergence with respect to <span class="math" data-index="142" data-tex="\(|u|\)">\(|u|\)</span> proves <span class="math" data-index="143" data-tex="\(u(A)=0\)">\(u(A)=0\)</span>. For a Borel set <span class="math" data-index="144" data-tex="\(B\subset O\)">\(B\subset O\)</span>, inner regularity of the finite positive measure <span class="math" data-index="145" data-tex="\(|u|\)">\(|u|\)</span> supplies compact <span class="math" data-index="146" data-tex="\(A\subset B\)">\(A\subset B\)</span> with <span class="math" data-index="147" data-tex="\(|u|(B\setminus A)&lt;\varepsilon\)">\(|u|(B\setminus A)&lt;\varepsilon\)</span>. Therefore</p>
+<span class="math math-display" id="eq-MI10" data-index="148" data-tex="\[
+ |u(B)|\le |u(A)|+|u|(B\setminus A)&lt;\varepsilon.
+ \tag{MI10}
+\]">\[
+ |u(B)|\le |u(A)|+|u|(B\setminus A)&lt;\varepsilon.
+ \tag{MI10}
+\]</span>
+<p>Let <span class="math" data-index="149" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Every Borel subset of <span class="math" data-index="150" data-tex="\(O\)">\(O\)</span> has zero measure, so its restriction there is zero and so is its total variation there. This proves (MI8). The same argument proves that agreement on all smooth compact tests determines a finite complex Radon measure.</p>
+<p><a id="MI3"></a></p>
+<h2 id="mi3-the-compact-hull-and-entire-fourier-transform">MI3. The compact hull and entire Fourier transform</h2>
+<p>For completeness, <span class="math" data-index="151" data-tex="\(K=\operatorname{conv}S\)">\(K=\operatorname{conv}S\)</span> is compact even when it has empty interior. In a convex combination with more than <span class="math" data-index="152" data-tex="\(n+1\)">\(n+1\)</span> positive coefficients, the corresponding points are affinely dependent. Choose real <span class="math" data-index="153" data-tex="\(c_j\)">\(c_j\)</span>, not all zero, with <span class="math" data-index="154" data-tex="\(\sum c_j=0\)">\(\sum c_j=0\)</span>, <span class="math" data-index="155" data-tex="\(\sum c_js_j=0\)">\(\sum c_js_j=0\)</span>, and some <span class="math" data-index="156" data-tex="\(c_j&gt;0\)">\(c_j&gt;0\)</span>. Subtract</p>
+<span class="math math-display" id="eq-MI11" data-index="157" data-tex="\[
+ a c_j\quad\hbox{from each coefficient},\qquad
+ a=\min_{c_j&gt;0}\lambda_j/c_j.
+ \tag{MI11}
+\]">\[
+ a c_j\quad\hbox{from each coefficient},\qquad
+ a=\min_{c_j&gt;0}\lambda_j/c_j.
+ \tag{MI11}
+\]</span>
+<p>The coefficients remain nonnegative, their sum and represented point are unchanged, and one positive coefficient becomes zero. Repeating reduces to at most <span class="math" data-index="158" data-tex="\(n+1\)">\(n+1\)</span> points. Thus <span class="math" data-index="159" data-tex="\(K\)">\(K\)</span> is the image of the compact product of <span class="math" data-index="160" data-tex="\(S^{n+1}\)">\(S^{n+1}\)</span> and the closed coefficient simplex; shorter combinations can be padded with zero coefficients. Linear functionals obey</p>
+<span class="math math-display" id="eq-MI12" data-index="161" data-tex="\[
+ \max_K s\cdot y=\max_S s\cdot y,
+ \tag{MI12}
+\]">\[
+ \max_K s\cdot y=\max_S s\cdot y,
+ \tag{MI12}
+\]</span>
+<p>because each convex combination pairs at most as large as the maximum on <span class="math" data-index="162" data-tex="\(S\)">\(S\)</span>, while <span class="math" data-index="163" data-tex="\(S\subset K\)">\(S\subset K\)</span>.</p>
+<p>For the transform, expand at any <span class="math" data-index="164" data-tex="\(z_0\)">\(z_0\)</span>. On the compact support, the exponential's product series is absolutely and uniformly convergent for <span class="math" data-index="165" data-tex="\(h\)">\(h\)</span> in compact complex sets. If <span class="math" data-index="166" data-tex="\(|s_j|\le R\)">\(|s_j|\le R\)</span>, its absolute series is bounded by <span class="math" data-index="167" data-tex="\(\exp(R\sum_j|h_j|)\)">\(\exp(R\sum_j|h_j|)\)</span>, multiplied by a fixed bound for <span class="math" data-index="168" data-tex="\(|e^{-is\cdot z_0}|\)">\(|e^{-is\cdot z_0}|\)</span>. Finite total variation allows termwise integration, giving the locally normally convergent series</p>
+<span class="math math-display" id="eq-MI13" data-index="169" data-tex="\[
+ F(z_0+h)=\sum_{\alpha\in\mathbb N^n}\frac{h^\alpha}{\alpha!}
+                \int(-is)^\alpha e^{-is\cdot z_0}\,du(s).
+ \tag{MI13}
+\]">\[
+ F(z_0+h)=\sum_{\alpha\in\mathbb N^n}\frac{h^\alpha}{\alpha!}
+                \int(-is)^\alpha e^{-is\cdot z_0}\,du(s).
+ \tag{MI13}
+\]</span>
+<p>This proves joint entire analyticity and all parameter-derivative formulas. It is also the compact distribution transform of <span class="math" data-index="170" data-tex="\(T_u\)">\(T_u\)</span>: inserting a smooth cutoff equal to one near <span class="math" data-index="171" data-tex="\(S\)">\(S\)</span> leaves the integral unchanged.</p>
+<p>If <span class="math" data-index="172" data-tex="\(F\)">\(F\)</span> were identically zero, Theorem CF2.1's uniqueness for the nonempty compact convex carrier <span class="math" data-index="173" data-tex="\(K\)">\(K\)</span> would identify <span class="math" data-index="174" data-tex="\(T_u\)">\(T_u\)</span> with the zero distribution. MI2 would then identify the measure with zero, a contradiction. Thus <span class="math" data-index="175" data-tex="\(F\not\equiv0\)">\(F\not\equiv0\)</span>.</p>
+<p><a id="MI4"></a></p>
+<h2 id="mi4-the-logarithm-is-psh-and-obeys-the-sharp-upper-bound">MI4. The logarithm is PSH and obeys the sharp upper bound</h2>
+<p>Continuity of <span class="math" data-index="176" data-tex="\(F\)">\(F\)</span> makes <span class="math" data-index="177" data-tex="\(v=\log|F|\)">\(v=\log|F|\)</span> upper semicontinuous, including a zero: near a zero it lies below every prescribed finite logarithmic bound. On a complex affine line <span class="math" data-index="178" data-tex="\(z=z_0+wa\)">\(z=z_0+wa\)</span>, <span class="math" data-index="179" data-tex="\(a\ne0\)">\(a\ne0\)</span>, the composition <span class="math" data-index="180" data-tex="\(G(w)=F(z_0+wa)\)">\(G(w)=F(z_0+wa)\)</span> is entire. If it is identically zero, the logarithm is identically <span class="math" data-index="181" data-tex="\(-\infty\)">\(-\infty\)</span> there. Otherwise <a href="AN02-L137.html#proof-Z2">L137, Lemma Z2</a> gives a locally integrable subharmonic log modulus with its actual minus-infinite values at zeros. That proof writes the local zero factorization, integrable logarithmic pole and complete circle-mean identity, including a zero on the circle. These line restrictions and upper semicontinuity prove the PSH assertion. Since <span class="math" data-index="182" data-tex="\(F\not\equiv0\)">\(F\not\equiv0\)</span>, <span class="math" data-index="183" data-tex="\(v\not\equiv-\infty\)">\(v\not\equiv-\infty\)</span>.</p>
+<p>For <span class="math" data-index="184" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>, with real <span class="math" data-index="185" data-tex="\(x,y\)">\(x,y\)</span>,</p>
+<span class="math math-display" id="eq-MI14" data-index="186" data-tex="\[
+ |e^{-is\cdot(x+iy)}|=e^{s\cdot y},\qquad
+ |F(x+iy)|\le\int e^{s\cdot y}\,d|u|(s)
+            \le m e^{h_K(y)}.
+ \tag{MI14}
+\]">\[
+ |e^{-is\cdot(x+iy)}|=e^{s\cdot y},\qquad
+ |F(x+iy)|\le\int e^{s\cdot y}\,d|u|(s)
+            \le m e^{h_K(y)}.
+ \tag{MI14}
+\]</span>
+<p>The bound uses total variation <span class="math" data-index="187" data-tex="\(m\)">\(m\)</span>, not <span class="math" data-index="188" data-tex="\(|u(\mathbb R^n)|\)">\(|u(\mathbb R^n)|\)</span>, which may be zero. Taking logarithms gives (MI4); at a zero of <span class="math" data-index="189" data-tex="\(F\)">\(F\)</span> the inequality is understood as <span class="math" data-index="190" data-tex="\(-\infty\)">\(-\infty\)</span> on the left. The Euclidean estimate <span class="math" data-index="191" data-tex="\(s\cdot y\le R|y|\)">\(s\cdot y\le R|y|\)</span> gives its affine imaginary-growth form.</p>
+<p><a href="AN02-L139.html#psh-envelope-theorem">L139, Theorem E1</a> therefore supplies finite <span class="math" data-index="192" data-tex="\(M\)">\(M\)</span>, finite continuous sublinear <span class="math" data-index="193" data-tex="\(H\)">\(H\)</span>, and the compact nonempty convex set</p>
+<span class="math math-display" id="eq-MI15" data-index="194" data-tex="\[
+ K_H=\{s:s\cdot y\le H(y)\text{ for every }y\in\mathbb R^n\},
+ \qquad H(y)=\max_{s\in K_H}s\cdot y.
+ \tag{MI15}
+\]">\[
+ K_H=\{s:s\cdot y\le H(y)\text{ for every }y\in\mathbb R^n\},
+ \qquad H(y)=\max_{s\in K_H}s\cdot y.
+ \tag{MI15}
+\]</span>
+<p>Its explicit finite-dimensional extension proof establishes both nonemptiness and the support-function identity, without assuming a positive measure or a maximum in (MI5).</p>
+<p><a id="MI5"></a></p>
+<h2 id="mi5-one-inequality-from-integration-the-other-from-uniqueness">MI5. One inequality from integration, the other from uniqueness</h2>
+<p>Taking the real-frequency supremum in (MI4) at height <span class="math" data-index="195" data-tex="\(ty\)">\(ty\)</span>, dividing by <span class="math" data-index="196" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, and using positive homogeneity of <span class="math" data-index="197" data-tex="\(h_K\)">\(h_K\)</span>, gives</p>
+<span class="math math-display" id="eq-MI16" data-index="198" data-tex="\[
+ \frac{M(ty)}t\le\frac{\log m}t+h_K(y).
+ \tag{MI16}
+\]">\[
+ \frac{M(ty)}t\le\frac{\log m}t+h_K(y).
+ \tag{MI16}
+\]</span>
+<p>Letting <span class="math" data-index="199" data-tex="\(t\to\infty\)">\(t\to\infty\)</span> proves <span class="math" data-index="200" data-tex="\(H\le h_K\)">\(H\le h_K\)</span>.</p>
+<p>For the reverse inequality, the exact <a href="AN02-L139.html#recession-support-function">L139 recession estimate (E17)</a> states <span class="math" data-index="201" data-tex="\(M(y)\le M(0)+H(y)\)">\(M(y)\le M(0)+H(y)\)</span>. Hence</p>
+<span class="math math-display" id="eq-MI17" data-index="202" data-tex="\[
+ |F(x+iy)|\le e^{M(0)}e^{H(y)}
+             =e^{M(0)}e^{h_{K_H}(y)}.
+ \tag{MI17}
+\]">\[
+ |F(x+iy)|\le e^{M(0)}e^{H(y)}
+             =e^{M(0)}e^{h_{K_H}(y)}.
+ \tag{MI17}
+\]</span>
+<p>This is exactly the growth hypothesis of <a href="AN02-L122.html#2-the-compact-support-growth-criterion">Theorem CF2.1</a>, with polynomial order <span class="math" data-index="203" data-tex="\(N=0\)">\(N=0\)</span> and compact convex carrier <span class="math" data-index="204" data-tex="\(K_H\)">\(K_H\)</span>. Its converse constructs a distribution <span class="math" data-index="205" data-tex="\(T\)">\(T\)</span> supported in <span class="math" data-index="206" data-tex="\(K_H\)">\(K_H\)</span> whose entire transform is <span class="math" data-index="207" data-tex="\(F\)">\(F\)</span>.</p>
+<p>Uniqueness identifies that distribution with <span class="math" data-index="208" data-tex="\(T_u\)">\(T_u\)</span>. To make the common-carrier requirement explicit, both are supported in the compact convex set <span class="math" data-index="209" data-tex="\(\operatorname{conv}(K\cup K_H)\)">\(\operatorname{conv}(K\cup K_H)\)</span>. Apply the uniqueness assertion there. Equivalently, the inverse integral CF8 determines each pairing with a Schwartz test uniquely from the real-frequency restriction of <span class="math" data-index="210" data-tex="\(F\)">\(F\)</span>. Thus</p>
+<span class="math math-display" id="eq-MI18" data-index="211" data-tex="\[
+ S=\operatorname{supp}T_u\subset K_H,
+ \qquad K=\operatorname{conv}S\subset K_H.
+ \tag{MI18}
+\]">\[
+ S=\operatorname{supp}T_u\subset K_H,
+ \qquad K=\operatorname{conv}S\subset K_H.
+ \tag{MI18}
+\]</span>
+<p>The measure support equality uses MI2, and the hull inclusion uses convexity of <span class="math" data-index="212" data-tex="\(K_H\)">\(K_H\)</span>. Maximizing linear functionals on (MI18) gives <span class="math" data-index="213" data-tex="\(h_K\le h_{K_H}=H\)">\(h_K\le h_{K_H}=H\)</span>. Together with (MI16), this proves (MI6).</p>
+<p>For clarity, equality of support functions also identifies the sets. If a point <span class="math" data-index="214" data-tex="\(q\)">\(q\)</span> lies outside a nonempty compact convex set <span class="math" data-index="215" data-tex="\(D\)">\(D\)</span>, let <span class="math" data-index="216" data-tex="\(p\in D\)">\(p\in D\)</span> minimize <span class="math" data-index="217" data-tex="\(|q-p|\)">\(|q-p|\)</span>. Differentiation of the squared distance along <span class="math" data-index="218" data-tex="\(p+a(d-p)\)">\(p+a(d-p)\)</span>, <span class="math" data-index="219" data-tex="\(0\le a\le1\)">\(0\le a\le1\)</span>, gives</p>
+<span class="math math-display" id="eq-MI19" data-index="220" data-tex="\[
+ (q-p)\cdot(d-p)\le0\quad(d\in D),\qquad
+ q\cdot(q-p)&gt;h_D(q-p)=p\cdot(q-p).
+ \tag{MI19}
+\]">\[
+ (q-p)\cdot(d-p)\le0\quad(d\in D),\qquad
+ q\cdot(q-p)&gt;h_D(q-p)=p\cdot(q-p).
+ \tag{MI19}
+\]</span>
+<p>Thus the inequalities <span class="math" data-index="221" data-tex="\(s\cdot y\le h_D(y)\)">\(s\cdot y\le h_D(y)\)</span> in every direction characterize <span class="math" data-index="222" data-tex="\(D\)">\(D\)</span> exactly. Apply this to <span class="math" data-index="223" data-tex="\(D=K\)">\(D=K\)</span> and (MI15): <span class="math" data-index="224" data-tex="\(K_H=K\)">\(K_H=K\)</span>. This completes Theorem MI. <span class="math" data-index="225" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The converse in this proof is the written Fourier growth theorem. We have not deduced the support from one endpoint coefficient, from the absence of cancellation on a ray, or from merely knowing that <span class="math" data-index="226" data-tex="\(F\)">\(F\)</span> is entire.</p>
+<p><a id="MI6"></a></p>
+<h2 id="mi6-zero-measure-translations-and-lower-dimensional-hulls">MI6. Zero measure, translations and lower-dimensional hulls</h2>
+<p>If <span class="math" data-index="227" data-tex="\(u=0\)">\(u=0\)</span>, its support is empty by (MI1), and <span class="math" data-index="228" data-tex="\(F=0\)">\(F=0\)</span>. Its logarithm is identically <span class="math" data-index="229" data-tex="\(-\infty\)">\(-\infty\)</span> and satisfies any finite affine upper bound, for example with both constants zero. L139's extended convention assigns <span class="math" data-index="230" data-tex="\(H=-\infty\)">\(H=-\infty\)</span>, the support function of the empty set under <span class="math" data-index="231" data-tex="\(\sup\varnothing=-\infty\)">\(\sup\varnothing=-\infty\)</span>. In particular <span class="math" data-index="232" data-tex="\(H(0)=-\infty\)">\(H(0)=-\infty\)</span>. One must not apply the finite <span class="math" data-index="233" data-tex="\(M(0)\)">\(M(0)\)</span>, finite <span class="math" data-index="234" data-tex="\(H\)">\(H\)</span> or nonempty <span class="math" data-index="235" data-tex="\(K_H\)">\(K_H\)</span> construction to this case. For a nonzero measure, (MI6) instead gives <span class="math" data-index="236" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>.</p>
+<p>Location, rather than just radius, is retained. If <span class="math" data-index="237" data-tex="\(\tau_a u\)">\(\tau_a u\)</span> denotes pushforward under <span class="math" data-index="238" data-tex="\(s\mapsto s+a\)">\(s\mapsto s+a\)</span>, its transform is</p>
+<span class="math math-display" id="eq-MI20" data-index="239" data-tex="\[
+ F_{\tau_a u}(z)=e^{-ia\cdot z}F_u(z),\qquad
+ H_{\tau_a u}(y)=a\cdot y+H_u(y).
+ \tag{MI20}
+\]">\[
+ F_{\tau_a u}(z)=e^{-ia\cdot z}F_u(z),\qquad
+ H_{\tau_a u}(y)=a\cdot y+H_u(y).
+ \tag{MI20}
+\]</span>
+<p>The second identity follows by taking the real-frequency supremum and the recession limit of <span class="math" data-index="240" data-tex="\(\log|F_{\tau_a u}(x+iy)|=a\cdot y+v_u(x+iy)\)">\(\log|F_{\tau_a u}(x+iy)|=a\cdot y+v_u(x+iy)\)</span>. It agrees with the support function of the translated hull. Values in some directions can be negative; replacing them by absolute values would lose the translation.</p>
+<p>No interior assumption is hidden in MI5: CF2.1 and L139 both allow a point or a compact hull in a proper affine subspace. In dimension zero, a measure is a scalar on one point. A nonzero scalar has constant transform and indicator zero, the support function of that point. A zero scalar has the empty convention. No complex-line or separation argument is needed in that scalar case.</p>
+<p><a id="MI7"></a></p>
+<h2 id="mi7-five-worked-examples">MI7. Five worked examples</h2>
+<p><strong>Example 1: a translated complex atom.</strong> Let <span class="math" data-index="241" data-tex="\(u=c\delta_a\)">\(u=c\delta_a\)</span>, with <span class="math" data-index="242" data-tex="\(c\in\mathbb C\setminus\{0\}\)">\(c\in\mathbb C\setminus\{0\}\)</span> and <span class="math" data-index="243" data-tex="\(a\in\mathbb R^n\)">\(a\in\mathbb R^n\)</span>. Then <span class="math" data-index="244" data-tex="\(m=|c|\)">\(m=|c|\)</span>, <span class="math" data-index="245" data-tex="\(S=K=\{a\}\)">\(S=K=\{a\}\)</span>, and</p>
+<span class="math math-display" id="eq-MI21" data-index="246" data-tex="\[
+ F(z)=ce^{-ia\cdot z},\qquad
+ M(y)=\log|c|+a\cdot y,
+ \qquad H(y)=a\cdot y.
+ \tag{MI21}
+\]">\[
+ F(z)=ce^{-ia\cdot z},\qquad
+ M(y)=\log|c|+a\cdot y,
+ \qquad H(y)=a\cdot y.
+ \tag{MI21}
+\]</span>
+<p>All real frequencies give the same modulus at a given height. If <span class="math" data-index="247" data-tex="\(a\ne0\)">\(a\ne0\)</span>, the direction <span class="math" data-index="248" data-tex="\(-a\)">\(-a\)</span> has indicator <span class="math" data-index="249" data-tex="\(-|a|^2\)">\(-|a|^2\)</span>. This is a finite negative support value, not a failure of the theorem.</p>
+<p><strong>Example 2: a complex triangle with complete cancellation at zero.</strong> In <span class="math" data-index="250" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, take</p>
+<span class="math math-display" id="eq-MI22" data-index="251" data-tex="\[
+ u=\delta_{(-1,0)}+i\delta_{(1,0)}-(1+i)\delta_{(0,2)}.
+ \tag{MI22}
+\]">\[
+ u=\delta_{(-1,0)}+i\delta_{(1,0)}-(1+i)\delta_{(0,2)}.
+ \tag{MI22}
+\]</span>
+<p>Its total complex mass is zero, but its variation is <span class="math" data-index="252" data-tex="\(m=2+\sqrt2\)">\(m=2+\sqrt2\)</span> and its support consists of the three distinct vertices. Its hull is their triangle. The transform is</p>
+<span class="math math-display" id="eq-MI23" data-index="253" data-tex="\[
+ F(z_1,z_2)=e^{iz_1}+i e^{-iz_1}-(1+i)e^{-2iz_2},
+ \qquad F(0,0)=0.
+ \tag{MI23}
+\]">\[
+ F(z_1,z_2)=e^{iz_1}+i e^{-iz_1}-(1+i)e^{-2iz_2},
+ \qquad F(0,0)=0.
+ \tag{MI23}
+\]</span>
+<p>The triangle inequality gives an upper bound by the sum of its three moduli. This particular example attains that bound: at real part <span class="math" data-index="254" data-tex="\(x_1=\pi/4\)">\(x_1=\pi/4\)</span>, <span class="math" data-index="255" data-tex="\(x_2=-\pi/2\)">\(x_2=-\pi/2\)</span>, the three terms all have phase <span class="math" data-index="256" data-tex="\(e^{i\pi/4}\)">\(e^{i\pi/4}\)</span>. Therefore</p>
+<span class="math math-display" id="eq-MI24" data-index="257" data-tex="\[
+ M(y)=\log\bigl(e^{-y_1}+e^{y_1}+\sqrt2 e^{2y_2}\bigr),
+ \qquad H(y)=\max(-y_1,y_1,2y_2).
+ \tag{MI24}
+\]">\[
+ M(y)=\log\bigl(e^{-y_1}+e^{y_1}+\sqrt2 e^{2y_2}\bigr),
+ \qquad H(y)=\max(-y_1,y_1,2y_2).
+ \tag{MI24}
+\]</span>
+<p>The second formula follows by factoring out the largest exponential: the remaining sum is between 1 and <span class="math" data-index="258" data-tex="\(2+\sqrt2\)">\(2+\sqrt2\)</span>, so its logarithm divided by a dilation tends to zero. This explicit phase alignment belongs to this example; the general proof did not require it. Although <span class="math" data-index="259" data-tex="\(v(0,0)=-\infty\)">\(v(0,0)=-\infty\)</span>, its horizontal envelope at height zero is <span class="math" data-index="260" data-tex="\(M(0)=\log(2+\sqrt2)\)">\(M(0)=\log(2+\sqrt2)\)</span>.</p>
+<figure><img class="course-figure" width="2144" height="928" src="reproduce/L142/figures/complex-triangle-envelope.png" alt="A complex triangle measure and its exact horizontal Fourier envelope." /><figcaption class="native"><a href="reproduce/L142/figures/complex-triangle-envelope.png">Open full-size PNG</a> · <a href="reproduce/L142/figures/complex-triangle-envelope.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> The atoms, coefficients and Euclidean coordinates are exactly (MI22). In direction <span class="math" data-index="261" data-tex="\(\eta=(1,1)\)">\(\eta=(1,1)\)</span>, the supporting line is <span class="math" data-index="262" data-tex="\(s_1+s_2=2\)">\(s_1+s_2=2\)</span>, touching the vertex <span class="math" data-index="263" data-tex="\((0,2)\)">\((0,2)\)</span>. The right panel draws the exact envelope <span class="math" data-index="264" data-tex="\(\log(e^{-t}+e^t+\sqrt2e^{2t})\)">\(\log(e^{-t}+e^t+\sqrt2e^{2t})\)</span> on <span class="math" data-index="265" data-tex="\(y=t\eta\)">\(y=t\eta\)</span> and the hull profile <span class="math" data-index="266" data-tex="\(\max(-t,t,2t)\)">\(\max(-t,t,2t)\)</span>. Their gap is between zero and <span class="math" data-index="267" data-tex="\(\log(2+\sqrt2)\)">\(\log(2+\sqrt2)\)</span>. Cancellation <span class="math" data-index="268" data-tex="\(F(0)=0\)">\(F(0)=0\)</span> coexists with the finite envelope <span class="math" data-index="269" data-tex="\(M(0)=\log(2+\sqrt2)\)">\(M(0)=\log(2+\sqrt2)\)</span>. See MI4–MI5 and Example 2.</p>
+<p><strong>Example 3: cancellation without endpoint atoms.</strong> In one real dimension let</p>
+<span class="math math-display" id="eq-MI25" data-index="270" data-tex="\[
+ du(s)=\mathbf1_{[-1,0]}(s)\,ds-\mathbf1_{[0,1]}(s)\,ds.
+ \tag{MI25}
+\]">\[
+ du(s)=\mathbf1_{[-1,0]}(s)\,ds-\mathbf1_{[0,1]}(s)\,ds.
+ \tag{MI25}
+\]</span>
+<p>Its total mass is zero and total variation is two. Every neighborhood of either endpoint meets an interval of nonzero density, so <span class="math" data-index="271" data-tex="\(S=K=[-1,1]\)">\(S=K=[-1,1]\)</span>; there is no atom at either endpoint. Direct integration gives the entire extension</p>
+<span class="math math-display" id="eq-MI26" data-index="272" data-tex="\[
+ F(z)=\frac{2(\cos z-1)}{iz}\quad(z\ne0),\qquad F(0)=0.
+ \tag{MI26}
+\]">\[
+ F(z)=\frac{2(\cos z-1)}{iz}\quad(z\ne0),\qquad F(0)=0.
+ \tag{MI26}
+\]</span>
+<p>The series at zero begins <span class="math" data-index="273" data-tex="\(iz+O(z^3)\)">\(iz+O(z^3)\)</span>, in agreement with <span class="math" data-index="274" data-tex="\(F&#x27;(0)=-i\int s\,du=i\)">\(F&#x27;(0)=-i\int s\,du=i\)</span>. The theorem gives <span class="math" data-index="275" data-tex="\(H(y)=|y|\)">\(H(y)=|y|\)</span>. In this example the positive imaginary ray already checks the positive slope explicitly: for <span class="math" data-index="276" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>,</p>
+<span class="math math-display" id="eq-MI27" data-index="277" data-tex="\[
+ |F(it)|=\frac{2(\cosh t-1)}t
+         =\frac{e^t(1-e^{-t})^2}t,
+ \qquad
+ \frac{\log|F(it)|}t
+ =1-\frac{\log t}t+\frac{2\log(1-e^{-t})}t\longrightarrow1.
+ \tag{MI27}
+\]">\[
+ |F(it)|=\frac{2(\cosh t-1)}t
+         =\frac{e^t(1-e^{-t})^2}t,
+ \qquad
+ \frac{\log|F(it)|}t
+ =1-\frac{\log t}t+\frac{2\log(1-e^{-t})}t\longrightarrow1.
+ \tag{MI27}
+\]</span>
+<p>The negative imaginary ray has the same modulus and confirms <span class="math" data-index="278" data-tex="\(H(-1)=1\)">\(H(-1)=1\)</span>. This explicit calculation illustrates the result for a signed nonatomic measure; it is not a substitute for the all-direction support converse.</p>
+<figure><img class="course-figure" width="2144" height="880" src="reproduce/L142/figures/signed-density-growth.png" alt="A signed interval density and its exact imaginary-ray growth." /><figcaption class="native"><a href="reproduce/L142/figures/signed-density-growth.png">Open full-size PNG</a> · <a href="reproduce/L142/figures/signed-density-growth.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> The left panel is the Lebesgue density in (MI25), with no endpoint atoms. The right panel samples the exact quotient in (MI27), for <span class="math" data-index="279" data-tex="\(1/2\le t\le32\)">\(1/2\le t\le32\)</span>. The horizontal line is the hull slope 1, and the other upper curve is <span class="math" data-index="280" data-tex="\(1+\log2/t\)">\(1+\log2/t\)</span>, from the total-variation estimate <span class="math" data-index="281" data-tex="\(|F(it)|\le2e^t\)">\(|F(it)|\le2e^t\)</span>. The quotient approaches 1 despite total-mass cancellation and the absence of endpoint atoms. See MI2, MI5 and Example 3.</p>
+<p><strong>Example 4: a support hull with empty interior.</strong> Push forward Lebesgue measure on <span class="math" data-index="282" data-tex="\([-1,1]\)">\([-1,1]\)</span> under <span class="math" data-index="283" data-tex="\(s\mapsto(s,2s)\in\mathbb R^2\)">\(s\mapsto(s,2s)\in\mathbb R^2\)</span>. This nonzero measure has the line-segment hull <span class="math" data-index="284" data-tex="\(K=\{(s,2s):-1\le s\le1\}\)">\(K=\{(s,2s):-1\le s\le1\}\)</span>, and</p>
+<span class="math math-display" id="eq-MI28" data-index="285" data-tex="\[
+ F(z_1,z_2)=\frac{2\sin(z_1+2z_2)}{z_1+2z_2},\qquad
+ H(y_1,y_2)=|y_1+2y_2|.
+ \tag{MI28}
+\]">\[
+ F(z_1,z_2)=\frac{2\sin(z_1+2z_2)}{z_1+2z_2},\qquad
+ H(y_1,y_2)=|y_1+2y_2|.
+ \tag{MI28}
+\]</span>
+<p>The quotient is interpreted as 2 when its denominator is zero. The support value follows by maximizing <span class="math" data-index="286" data-tex="\(s(y_1+2y_2)\)">\(s(y_1+2y_2)\)</span> on <span class="math" data-index="287" data-tex="\([-1,1]\)">\([-1,1]\)</span>. In directions with <span class="math" data-index="288" data-tex="\(y_1+2y_2=0\)">\(y_1+2y_2=0\)</span>, the indicator is zero. A two-dimensional support interior was not needed.</p>
+<p><strong>Example 5: an imaginary ray which vanishes identically.</strong> In <span class="math" data-index="289" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>, let <span class="math" data-index="290" data-tex="\(u=\delta_{(-1,0)}-\delta_{(1,0)}\)">\(u=\delta_{(-1,0)}-\delta_{(1,0)}\)</span>. Its transform is <span class="math" data-index="291" data-tex="\(F(z)=2i\sin z_1\)">\(F(z)=2i\sin z_1\)</span>, independent of <span class="math" data-index="292" data-tex="\(z_2\)">\(z_2\)</span>, and its support hull is the horizontal segment between its two atoms. Thus <span class="math" data-index="293" data-tex="\(H(y)=|y_1|\)">\(H(y)=|y_1|\)</span>. On the pure imaginary ray <span class="math" data-index="294" data-tex="\(z=(0,it)\)">\(z=(0,it)\)</span>, the transform vanishes for every <span class="math" data-index="295" data-tex="\(t\)">\(t\)</span>, so its log modulus is always <span class="math" data-index="296" data-tex="\(-\infty\)">\(-\infty\)</span>. Nevertheless <span class="math" data-index="297" data-tex="\(M(t(0,1))=\log2\)">\(M(t(0,1))=\log2\)</span>, obtained by varying the first real frequency, and <span class="math" data-index="298" data-tex="\(H(0,1)=0\)">\(H(0,1)=0\)</span>. The supremum in (MI5) is essential to the general indicator definition.</p>
+<p><a id="MI8"></a></p>
+<h2 id="mi8-exercises-and-complete-solutions">MI8. Exercises and complete solutions</h2>
+<p><strong>Exercise 1.</strong> Let <span class="math" data-index="299" data-tex="\(u=i\delta_{(2,-1)}\)">\(u=i\delta_{(2,-1)}\)</span>. Compute <span class="math" data-index="300" data-tex="\(M\)">\(M\)</span>, <span class="math" data-index="301" data-tex="\(H\)">\(H\)</span> and <span class="math" data-index="302" data-tex="\(H((-2,1))\)">\(H((-2,1))\)</span>. Explain why <span class="math" data-index="303" data-tex="\(H\)">\(H\)</span> cannot be replaced by its absolute value when identifying the hull.</p>
+<p><strong>Solution 1.</strong> Its variation is one and <span class="math" data-index="304" data-tex="\(F(z)=i e^{-i(2z_1-z_2)}\)">\(F(z)=i e^{-i(2z_1-z_2)}\)</span>. Thus <span class="math" data-index="305" data-tex="\(M(y)=H(y)=2y_1-y_2\)">\(M(y)=H(y)=2y_1-y_2\)</span>, and <span class="math" data-index="306" data-tex="\(H((-2,1))=-5\)">\(H((-2,1))=-5\)</span>. The support hull is the single point <span class="math" data-index="307" data-tex="\((2,-1)\)">\((2,-1)\)</span>. Absolute values would instead give the support function of the symmetric segment joining that point to its negative. This would change the recovered set.</p>
+<p><strong>Exercise 2.</strong> Why does zero total complex mass not imply zero measure or an empty support? Evaluate the mass and variation in Example 2.</p>
+<p><strong>Solution 2.</strong> A measure vanishes only if it gives zero on every Borel subset. Its integral over the whole space is one pairing which can cancel. The three coefficients in Example 2 sum to <span class="math" data-index="308" data-tex="\(1+i-(1+i)=0\)">\(1+i-(1+i)=0\)</span>; their absolute values sum to <span class="math" data-index="309" data-tex="\(1+1+\sqrt2=2+\sqrt2\)">\(1+1+\sqrt2=2+\sqrt2\)</span>. Each atom has a nonzero coefficient and is a distinct support point, so the support and its triangle hull are nonempty. The transform has a zero at frequency zero but is not identically zero.</p>
+<p><strong>Exercise 3.</strong> Verify the common phase in Example 2 and evaluate its real-frequency supremum at height zero.</p>
+<p><strong>Solution 3.</strong> At <span class="math" data-index="310" data-tex="\(x_1=\pi/4\)">\(x_1=\pi/4\)</span>, the first phase is <span class="math" data-index="311" data-tex="\(e^{i\pi/4}\)">\(e^{i\pi/4}\)</span>; the second is <span class="math" data-index="312" data-tex="\(i e^{-i\pi/4}=e^{i\pi/4}\)">\(i e^{-i\pi/4}=e^{i\pi/4}\)</span>. At <span class="math" data-index="313" data-tex="\(x_2=-\pi/2\)">\(x_2=-\pi/2\)</span>, the third coefficient is multiplied by <span class="math" data-index="314" data-tex="\(e^{i\pi}=-1\)">\(e^{i\pi}=-1\)</span>, so it becomes <span class="math" data-index="315" data-tex="\(1+i=\sqrt2e^{i\pi/4}\)">\(1+i=\sqrt2e^{i\pi/4}\)</span>. At any imaginary height their positive amplitudes align. At height zero the modulus is <span class="math" data-index="316" data-tex="\(2+\sqrt2\)">\(2+\sqrt2\)</span>, which also is the upper triangle bound; hence <span class="math" data-index="317" data-tex="\(M(0)=\log(2+\sqrt2)\)">\(M(0)=\log(2+\sqrt2)\)</span>. The canceled value at real frequency <span class="math" data-index="318" data-tex="\((0,0)\)">\((0,0)\)</span> is a different point in the same horizontal slice.</p>
+<p><strong>Exercise 4.</strong> In Example 3, compute the first moment, the derivative of the transform at zero, and the indicator at <span class="math" data-index="319" data-tex="\(y=2\)">\(y=2\)</span> and <span class="math" data-index="320" data-tex="\(y=-3\)">\(y=-3\)</span>.</p>
+<p><strong>Solution 4.</strong> The first moment is <span class="math" data-index="321" data-tex="\(\int_{-1}^0s\,ds-\int_0^1s\,ds=-1/2-1/2=-1\)">\(\int_{-1}^0s\,ds-\int_0^1s\,ds=-1/2-1/2=-1\)</span>. Differentiating the transform gives <span class="math" data-index="322" data-tex="\(F&#x27;(0)=-i(-1)=i\)">\(F&#x27;(0)=-i(-1)=i\)</span>, so it is nonzero as a function despite <span class="math" data-index="323" data-tex="\(F(0)=0\)">\(F(0)=0\)</span>. The hull is <span class="math" data-index="324" data-tex="\([-1,1]\)">\([-1,1]\)</span>, giving <span class="math" data-index="325" data-tex="\(H(y)=|y|\)">\(H(y)=|y|\)</span>, hence values 2 and 3. The endpoints carry no point mass, but every neighborhood of them has positive variation.</p>
+<p><strong>Exercise 5.</strong> State exactly how the Fourier growth converse proves <span class="math" data-index="326" data-tex="\(K\subset K_H\)">\(K\subset K_H\)</span>. Why is uniqueness essential?</p>
+<p><strong>Solution 5.</strong> The L139 estimate gives the entire transform bound (MI17), with carrier <span class="math" data-index="327" data-tex="\(K_H\)">\(K_H\)</span>, constant <span class="math" data-index="328" data-tex="\(e^{M(0)}\)">\(e^{M(0)}\)</span> and polynomial order zero. CF2.1 constructs a distribution supported there with transform <span class="math" data-index="329" data-tex="\(F\)">\(F\)</span>. The original measure's associated distribution has the same transform. Uniqueness on a common compact convex carrier identifies the two distributions. MI2 then identifies their supports with the measure's support, giving <span class="math" data-index="330" data-tex="\(S\subset K_H\)">\(S\subset K_H\)</span>, and convexity gives <span class="math" data-index="331" data-tex="\(K\subset K_H\)">\(K\subset K_H\)</span>. Without identifying the inverse with the original measure, an existence assertion would not localize that original measure.</p>
+<p><strong>Exercise 6.</strong> In the measure-determination argument, why are continuous compact tests sufficient to prove vanishing on every Borel subset of an open region?</p>
+<p><strong>Solution 6.</strong> For compact <span class="math" data-index="332" data-tex="\(A\)">\(A\)</span> in the region, the continuous functions (MI9) stay between zero and one and tend to its indicator. Their pairings vanish, so dominated convergence against total variation gives <span class="math" data-index="333" data-tex="\(u(A)=0\)">\(u(A)=0\)</span>. For any Borel <span class="math" data-index="334" data-tex="\(B\)">\(B\)</span> in the region, choose such a compact <span class="math" data-index="335" data-tex="\(A\subset B\)">\(A\subset B\)</span> with <span class="math" data-index="336" data-tex="\(|u|(B\setminus A)\)">\(|u|(B\setminus A)\)</span> arbitrarily small. Then <span class="math" data-index="337" data-tex="\(|u(B)|\le |u(A)|+|u|(B\setminus A)\)">\(|u(B)|\le |u(A)|+|u|(B\setminus A)\)</span> is arbitrarily small, hence zero. This works for a complex measure because the approximation errors are controlled by its positive total variation.</p>
+<p><strong>Exercise 7.</strong> Distinguish the indicator at zero for a nonzero measure and for the zero measure. Compute the indicator for Example 4 in direction <span class="math" data-index="338" data-tex="\((2,-1)\)">\((2,-1)\)</span>.</p>
+<p><strong>Solution 7.</strong> For a nonzero measure, the finite recession function gives <span class="math" data-index="339" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>, regardless of whether <span class="math" data-index="340" data-tex="\(F(0)\)">\(F(0)\)</span> vanishes. For the zero measure, <span class="math" data-index="341" data-tex="\(v\equiv-\infty\)">\(v\equiv-\infty\)</span> and the empty-set convention gives <span class="math" data-index="342" data-tex="\(H(0)=-\infty\)">\(H(0)=-\infty\)</span>. In Example 4, <span class="math" data-index="343" data-tex="\(H(2,-1)=|2+2(-1)|=0\)">\(H(2,-1)=|2+2(-1)|=0\)</span>: the direction is orthogonal to the carrier segment. A zero support value in one direction does not make the support empty.</p>
+<p><a id="MI9"></a></p>
+<h2 id="mi9-source-credit-and-precise-proof-inputs">MI9. Source credit and precise proof inputs</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em> (1983 edition; second revised printing 1990; reprint 2005), §16.3, Lemma 16.3.1, printed p. 319 (PDF p. 332), supplies the compact-measure indicator target. The proof exposition, examples, complete solutions and diagrams here are original.</p>
+<p>MI2 proves the equality of measure and distribution support and the determination of complex measures from smooth tests. MI3 proves entire analyticity and compactness of the hull. MI4 uses the actual <a href="AN02-L137.html#proof-Z2">scalar log-modulus circle proof, Z2</a>, to obtain PSH line restrictions. MI5 uses <a href="AN02-L122.html#2-the-compact-support-growth-criterion">CF2.1, growth-to-support and uniqueness</a>, together with <a href="AN02-L139.html#dominated-linear-extension">L139's support-set construction</a> and <a href="AN02-L139.html#recession-support-function">its exact growth refinement (E17)</a>. The result concerns a compactly supported measure; no assertion about arbitrary compact distributions or singular support is inferred.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/fourier-indicators-and-the-convex-hull-of-a-measures-support.md" download>Download the complete lesson source</a>. Original proofs,examples,solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L142/compact-measure-indicators-formal.md" download>compact-measure-indicators-formal.md</a></li><li><a href="reproduce/L142/compact-measure-indicators-learner.md" download>compact-measure-indicators-learner.md</a></li><li><a href="reproduce/L142/make_figures141.py" download>make_figures141.py</a></li><li><a href="reproduce/L142/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L142/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L142/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L142/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L142/figures/complex-triangle-envelope.png" download>figures/complex-triangle-envelope.png</a></li><li><a href="reproduce/L142/figures/complex-triangle-envelope.svg" download>figures/complex-triangle-envelope.svg</a></li><li><a href="reproduce/L142/figures/signed-density-growth.png" download>figures/signed-density-growth.png</a></li><li><a href="reproduce/L142/figures/signed-density-growth.svg" download>figures/signed-density-growth.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

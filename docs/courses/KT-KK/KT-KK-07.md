@@ -1,6 +1,6 @@
 # Pictures of KK: Fredholm operators, quasihomomorphisms and extensions
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 
 An even cycle has two represented modules and an operator between them. One can make the representations particularly simple, leaving the information in a Fredholm operator, or make the operator particularly simple, leaving the information in two homomorphisms. An odd cycle has a compression description closely related to the Busby invariant of an extension. These descriptions are useful because they connect the cycle definition to ordinary K-theory and to explicit operators.

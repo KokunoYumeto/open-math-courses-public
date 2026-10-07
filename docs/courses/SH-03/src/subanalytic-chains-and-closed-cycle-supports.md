@@ -2,9 +2,9 @@
 
 A subanalytic chain records an orientation and a coefficient on each smooth piece of a given dimension. Its support includes limiting points of those pieces. A cycle satisfies an additional compatibility condition at those limiting points. The dualizing object expresses that condition even at a branch or a singularity, where an orientation line on a manifold would be insufficient.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-We use the subanalytic filtrations and local finiteness established in the preceding constructibility lessons, and the locally closed support, exceptional-composition and manifold-orientation lessons of SH-02. The dualizing complex from oriented simplices fixes the incidence signs used in the examples. Subanalytic chains were introduced for this purpose by M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §1. Proper images, products, the local contraction proving the full chain resolution, coefficient flatness and intersections are treated in the following lessons.
+We use compatible subanalytic triangulations, the locally closed support and composition maps, and manifold cohomological dimension and orientation. These supply the precise geometric and sheaf operations used below. The dualizing complex from oriented simplices fixes the incidence signs used in the examples. Subanalytic chains were introduced for this purpose by M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §1. Proper images, products, the local contraction proving the full chain resolution, coefficient flatness and intersections are treated in the following lessons.
 
 ## Orientations give a sheaf of chains
 
@@ -52,7 +52,9 @@ For any locally closed subanalytic subset \(S\) let \(j_S:S\to X\) be its inclus
 
 Here the first assertion holds for every sheaf \(F\) on \(S\), with no coefficient finiteness condition.
 
-**Proof of the dimension bound.** Choose a finite closed dimension filtration of \(S\) whose layer in dimension \(r\) is a disjoint union of \(r\)-manifolds. A locally finite stratification supplies such a filtration even if there are infinitely many strata globally. The manifold cohomological-dimension theorem supplies a c-soft resolution of length \(r\) for every sheaf on that layer.
+**Proof of the dimension bound.** Triangulate the ambient analytic manifold compatibly with \(S\). Intersect \(S\) with each closed skeleton. These intersections are closed in \(S\); their successive differences are disjoint unions of open simplices of the indicated dimension. A neighborhood of each point meets finitely many simplices. In a fixed-dimensional layer every simplex is open, since all its remaining faces have been removed. The layer is therefore a possibly disconnected manifold. There are only the dimension levels \(0,\ldots,p\), regardless of the number of simplices globally. This constructs the required finite closed filtration.
+
+The manifold dimension theorem (M2)–(M4) supplies a c-soft resolution of length \(r\) for every sheaf on an \(r\)-dimensional layer. A locally closed subspace here is locally compact and second countable, hence countable at infinity. The same theorem proves that c-soft sheaves are soft and acyclic for ordinary sections on these spaces; it does not identify ordinary sections with compactly supported sections.
 
 Open extension by zero preserves c-softness in this situation. To see the relevant extension property, a section of \(j_!E\) on a compact subset has its nonzero germ support in a compact subset of the open stratum, away from its complement. Choose a compact neighborhood of that support inside the stratum. Prescribe the original values on its intersection with the given compact set, and zero on an outer compact boundary, where those prescriptions agree. C-soft extension then gives a section; it vanishes on a collar of that boundary, so its restriction extends by zero with compact support. Its extension by zero has all the desired values on the ambient compact set. This also applies to a disjoint union: a compactly supported section meets only finitely many members of a locally finite family.
 
@@ -60,7 +62,7 @@ Consequently the open-stratum term in
 \(0\to j_!F|_U\to F\to i_*F|_{S\setminus U}\to0\)
 has ordinary and compact-support cohomology zero above \(r\). For ordinary sections we use c-soft acyclicity on a countable-at-infinity locally compact space; for compact sections we use compact-support acyclicity. The closed term has the bound of the next filtration stage. Induction and the two long exact sequences give the first part of (4). This proof does not commute arbitrary ordinary global sections with a filtered colimit.
 
-Exceptional adjunction gives, on every relatively open neighborhood \(V\subset S\),
+The dual-sections adjunction (EX.32)–(EX.33), together with open restriction of the dualizing object, gives on every relatively open neighborhood \(V\subset S\),
 
 \[
  R\Gamma(V;\omega_S|_V)
@@ -95,7 +97,9 @@ The ordinary direct image in this formula retains boundary germs. It is not open
 
 For locally closed \(V\), \(H^0_V\) means degree zero of the **sheaf** operation \(R\mathcal Hom(A_V,-)\), with \(A_V\) extended by zero. In particular an open \(V\) gives ordinary direct image after restriction. For closed \(V\) it is the usual subsheaf of sections supported there.
 
-To prove (8), use \(Rj_{V*}\omega_V=R\Gamma_V(Rj_{S*}\omega_S)\). Both derived support and derived ordinary image have nonnegative cohomological degree on sheaves. Since all dualizing cohomology begins at \(-p\), their degree-\(-p\) term is exactly the degree-zero support of the lowest sheaf. This identifies the actual maps as well as their objects.
+To prove (8), first apply internal ordinary adjunction to the extension-by-zero sheaf \(A_V\). Its restriction to \(S\) is the extension-by-zero constant sheaf of \(V\subset S\). Factoring that locally closed inclusion into an open and a closed inclusion, support adjunction gives \(R\Gamma_V(Rj_{S*}\omega_S)\simeq Rj_{V*}\omega_V\). Exceptional composition supplies the dualizing object on \(V\); the ordinary direct images compose. These are the locally closed support comparisons (EX.13)–(EX.16), with their natural restriction and closed-trace maps.
+
+Both derived support and derived ordinary image preserve the lower bound \(-p\). Apply either functor to the truncation triangle separating the sheaf \(H^{-p}(\omega_S)[p]\) from the part beginning in degree \(1-p\). The latter contributes nothing in degree \(-p\). The former contributes the degree-zero ordinary image or degree-zero support of the lowest sheaf. Consequently \(H^{-p}(Rj_{S*}\omega_S)=T_S\), and taking degree \(-p\) of the preceding natural comparison gives precisely (8). This proves the identification of its maps as well as its objects.
 
 Two consequences control the singular points. If \(V\) is closed in \(S\) and \(\dim(S\setminus V)<p\), the closed-support trace induces an isomorphism
 
@@ -104,7 +108,7 @@ Two consequences control the singular points. If \(V\) is closed in \(S\) and \(
  \qquad\text{(9)}
 \]
 
-Use the localization triangle and (4) on the lower-dimensional open complement; its ordinary derived image starts in degree \(1-p\). If \(U\) is open and dense in the \(p\)-dimensional regular part of a **closed** \(S\), let \(B=S\setminus U\). Then
+Use the localization triangle and (4) on the lower-dimensional open complement; its ordinary derived image starts in degree \(1-p\). Let \(S\) be **closed**, with \(\dim S\leq p\), and let \(U\) be a subanalytic open subset of \(S\) contained in and dense in its \(p\)-dimensional regular part. Set \(B=S\setminus U\). The lower-dimensional components of \(S\) lie in \(B\); the subanalytic frontier and regular-locus bounds give \(\dim B<p\). Then
 
 \[
  0\longrightarrow T_S
@@ -135,7 +139,7 @@ The comparison gives
  \qquad\text{(12)}
 \]
 
-by restricting to \(V\), then using the closed-support trace from \(V\) to \(S_2\). These maps are independent of the witness. If \(V'\) is another witness, \(V\cap V'\) is open and closed in \(V\), with lower-dimensional complement. Equation (9) makes passage to that intersection an isomorphism. Both maps then factor through the same trace and restriction. The same argument proves compatibility under composition: intersect witnesses for two consecutive comparisons.
+by restricting to \(V\), then using the closed-support trace from \(V\) to \(S_2\). These maps are independent of the witness. If \(V'\) is another witness, \(V\cap V'\) is open and closed in \(V\), with lower-dimensional complement. Equation (9) makes passage to that intersection an isomorphism. Both maps then factor through the same trace and restriction. For composition, let \(V_{12}\) witness \(S_1\preceq S_2\) and \(V_{23}\) witness \(S_2\preceq S_3\). The intersection \(V_{12}\cap V_{23}\) is open in \(V_{12}\), hence in \(S_1\), and closed in \(V_{23}\), hence in \(S_3\). Its complement in \(S_1\) is the union of \(S_1\setminus V_{12}\) and a subset of \(S_2\setminus V_{23}\); both have dimension less than \(p\). Thus it is an actual comparison witness. Restrict the closed-trace map for \(V_{12}\subset S_2\) to the open \(V_{23}\subset S_2\). The open base-change comparison identifies it with the trace from their intersection. Composition of closed traces then gives the same map as this composite witness. Reflexivity uses \(V=S\). These facts prove the preorder and functoriality, rather than presupposing them.
 
 Here is a common upper representative for \(S_1,S_2\):
 \[
@@ -157,7 +161,7 @@ These comparisons yield a concrete description of chains:
  \qquad\text{(14)}
 \]
 
-**Proof.** The top regular part of \(S\) is a comparison successor in (11); there (3) gives its orientation line. Thus it suffices to compare the chain presentation with orientation sections on smooth top-dimensional pieces. Work in a relatively compact subanalytic neighborhood. A finite compatible triangulation subdivides the relevant pieces into oriented open \(p\)-cells; after deletion of lower-dimensional faces these form a dense subset. A section of an orientation line has a locally constant coefficient on each such cell. This produces the map from (1) to (14).
+**Proof.** If \(\dim S<p\), (4) gives \(T_S=0\), and the empty set is a comparison successor. Otherwise remove all lower-dimensional pieces and the singular set, leaving the \(p\)-dimensional regular part \(U\). It is open in \(S\), closed in itself and has lower-dimensional complement, so it is a comparison successor in (11). On \(U\), (3) gives its orientation line. Thus it suffices to compare the chain presentation with orientation sections on smooth top-dimensional pieces. Work in a relatively compact subanalytic neighborhood. A finite compatible triangulation subdivides the relevant pieces into oriented open \(p\)-cells; after deletion of lower-dimensional faces these form a dense subset. A section of an orientation line has a locally constant coefficient on each such cell. This produces the map from (1) to (14).
 
 Conversely those cell coefficients are represented by a finite sum of oriented symbols on a sufficiently small neighborhood. Two representations can be compared on a common finite subdivision. Their difference is zero precisely when every open \(p\)-cell coefficient is zero; lower-dimensional leftovers are deleted by (1). Orientation reversal gives exactly the opposite coefficient. This proves surjectivity and injectivity on germs. Compatible restriction then proves the sheaf isomorphism. Nonorientable pieces cause no obstruction to this argument: the cells trivialize their sign lines, and their transition signs are retained when the pieces are compared. \(\square\)
 
@@ -195,7 +199,7 @@ where the first and last objects are pushed forward from the closed frontier as 
  \qquad\text{(17)}
 \]
 
-The superscript reminds us to take \(H^{-(p-1)}(\omega_B)\) in the last term. Map that term into \(\mathcal Z_{p-1}\). Localization and trace naturality make these arrows compatible with (12), so (14) yields
+The superscript reminds us to take \(H^{-(p-1)}(\omega_B)\) in the last term. Map that term into \(\mathcal Z_{p-1}\). The compatibility with (12) can be checked on the same finite compatible subdivisions used for (14). On an oriented open \(p\)-cell the connecting map in (16), localized at an open codimension-one face, is the dual of the compact-support boundary of a half-collar. The oriented-boundary computation (11)–(12) identifies it with outward-normal-first incidence. On an interval this is terminal endpoint minus initial endpoint. After subdivision, each artificial interior face occurs twice with opposite induced orientations; their two closed-face maps agree and their coefficients add to zero over every \(A\). Faces of codimension at least two contribute no top \((p-1)\)-coefficient. Injection (10), applied in degree \(p-1\), shows that equality of these regular-face coefficients is equality of the resulting closed cycles, including their singular germs. Thus replacing a representative by its dense regular pieces, refining it, reversing an orientation or composing a comparison preserves this boundary map. For \(p=0\) the target is zero and the frontier is empty. Therefore (14) yields
 
 \[
  b_p:\mathcal C_p\longrightarrow\mathcal Z_{p-1},
@@ -226,13 +230,13 @@ It is bounded in degrees \([-n,0]\). Since \(X\) itself is terminal among closed
  \qquad\text{(21)}
 \]
 
-It is canonical with the orientation and trace conventions fixed above. Proving that (21) is an isomorphism requires killing the lower-degree local cycle classes. We have not inferred that conclusion just from (19).
+It is canonical with the orientation and trace conventions fixed above. The local half-ray contraction proves that (21) is a quasi-isomorphism by killing the lower-degree local cycle classes. The kernel identity (19) gives the complex and its top class; that local contraction supplies the additional exactness.
 
 All these constructions commute with restriction to an open subset. Indeed the support representatives and traces restrict, every local representative can be chosen in a relatively compact subanalytic neighborhood of the point under examination, and sheafification is determined by those germs. Hence both \(\mathcal C_p^X|_U=\mathcal C_p^U\) and \(\mathcal Z_p^X|_U=\mathcal Z_p^U\).
 
 ## Cutting chains proves softness
 
-Let \(W\subset X\) be subanalytic and open. Restriction from a representative \(S\) to \(S\cap W\), followed by its ordinary image to \(X\), defines an endomorphism \(P_W\) of \(\mathcal C_p\). It is compatible with (12) and (14). It satisfies
+Let \(W\subset X\) be subanalytic and open. On each oriented generator define \(P_W[S]=[S\cap W]\), taking the empty intersection to zero and retaining the induced orientation. Intersection preserves disjoint union, orientation reversal and dense deletion inside the surviving open part. It therefore respects all three relations (1), commutes with restriction and induces a sheaf endomorphism of \(\mathcal C_p\). Under (14), this is restriction from \(T_S\) to the ordinary image of the dualizing sheaf on \(S\cap W\), followed by its canonical map to the chain colimit. It satisfies
 
 \[
  P_W^2=P_W,\qquad P_W|_W=\mathrm{id},\qquad
@@ -244,16 +248,18 @@ The closure in the last expression is necessary: a cut interval has new endpoint
 
 For every sheaf \(F\), \(\mathcal C_p(F)\) is soft. Here softness means extension of a section from every closed subset, with no constructibility, local freeness or coefficient flatness assumption on \(F\).
 
-**Proof.** A section on a closed \(Z\) extends to some open neighborhood \(U\) of \(Z\). The neighborhood representation uses the standard closed-neighborhood gluing property for sheaves on a paracompact Hausdorff space: local representatives can be shrunk in a locally finite cover so that their agreements give a single section near \(Z\). Choose a subanalytic open \(W\) with
+**Proof.** First we give the needed neighborhood representation for a section of any sheaf on a closed \(Z\). Represent it near each point by a section \(s_i\) on an open \(U_i\). Choose a locally finite cover of a neighborhood of \(Z\) by smaller open sets \(V_i\), with \(\overline V_i\subset U_i\). This is obtained by the compact-exhaustion and finite-ball construction below, applied to the varying neighborhoods \(U_i\). In \(U_i\cap U_j\), the locus where the germs of \(s_i,s_j\) disagree is closed. Intersect that locus with \(\overline V_i\cap\overline V_j\); the result is closed in \(X\) and misses \(Z\). The family of these intersections is locally finite, so their union \(D\) is closed and misses \(Z\). On \(U=(\bigcup_i V_i)\setminus D\), all the sections agree on overlaps and glue. This proves that the prescribed section extends to an actual open neighborhood of \(Z\).
+
+Now choose a subanalytic open \(W\) with
 \[
  Z\subset W\subset\overline W\subset U.
  \qquad\text{(23)}
 \]
-Such a \(W\) exists even for a nonsubanalytic \(Z\): a locally finite family of analytic coordinate balls, with compact closures in \(U\), can be chosen to cover \(Z\). Their union is subanalytic locally, and the union of their closures is closed and contained in \(U\).
+Such a \(W\) exists even when \(Z\) is not subanalytic. Take a compact exhaustion \(K_r\subset\operatorname{int}K_{r+1}\), with interiors covering \(X\), and take negatively indexed sets to be empty. Each compact shell \(Z\cap(K_r\setminus\operatorname{int}K_{r-1})\) is covered by finitely many analytic coordinate balls with compact closures in \(U\cap(\operatorname{int}K_{r+1}\setminus K_{r-2})\). At a shell point such a ball exists, since \(K_{r-2}\subset\operatorname{int}K_{r-1}\). Choose finitely many to cover that shell. Their closures form a locally finite family: a neighborhood with compact closure in some \(\operatorname{int}K_m\) misses all sufficiently late shells' balls. The balls cover \(Z\). Let \(W\) be their union. Each ball is semianalytic in its chart and empty near points outside its compact chart closure, so their locally finite union is subanalytic. The union of their compact closures is closed and lies in \(U\), proving (23). The same construction works with any prescribed open neighborhood at each chosen centre, which justifies the earlier \(V_i\) selection.
 
 Apply \(P_W\otimes\mathrm{id}_F\) to the neighborhood extension. By (22) its support is contained in \(\overline W\), so it extends by zero from \(U\) to \(X\), and it still equals the prescribed section near \(Z\). This is the required global extension. The argument uses an actual idempotent on chains, without assuming that tensor product preserves a prior exact sequence. \(\square\)
 
-Softness supplies an acyclic chain model once (21) is proved to be an isomorphism. It does not make cycles soft, and it does not make chains flabby. The latter distinction is visible in Exercise 5.
+Together with the local contraction proving (21), softness supplies an acyclic chain model. Softness of chains does not assert softness of cycles or flabbiness of chains; Exercise 5 exhibits the failure of flabbiness. Exact coefficient kernels require the cycle-flatness proof, which uses the completed local resolution and chain-stalk flatness from the products lesson.
 
 ## Exercises with complete solutions
 
@@ -354,3 +360,9 @@ For an independent check, the usual one-cell-in-each-dimension decomposition has
 which has exactly the two values above.
 
 The finite cellular cochain complex is free. Applying its derived \(A\)-dual computes \(R\Gamma(X;\omega_X)\) by (5), with \(A\xrightarrow{2}A\xrightarrow{0}A\) in degrees \(-2,-1,0\), up to the harmless consistent basis sign. Over \(\mathbb Z\) it has \(H^{-2}=0\), \(H^{-1}=\mathbb Z/2\) and \(H^0=\mathbb Z\). In particular the dualizing object is not zero just because there is no integral top cycle. No characteristic-zero assumption or division by two belongs in these constructions.
+
+## Sources and mathematical credit
+
+Masaki Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), pp. 193–209, §1.3–1.5 (pp. 195–196), is the source for the oriented subanalytic chain model, the use of noncompact supports, and tensoring the chain sheaf with a coefficient sheaf. That short account states the orientation resolution and coefficient-cohomology comparison. The closed-support colimit construction, frontier maps, coefficient cutoff extension and worked singular and torsion examples are proved in the programme text here and in the linked contraction lesson.
+
+Pierre Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), edition dated 01/08/2026, §4.7 (pp. 97–98) gives duality between ordinary dualizing sections and compactly supported cohomology; §5.1, Lemma 5.1.1 and Proposition 5.1.2 (pp. 105–106), gives the manifold cohomological-dimension and soft-resolution results. The dimension filtration and lowest-degree arguments above apply those operations to singular carriers with the explicit programme proofs linked at each use. The finite-global-dimension ring convention, arbitrary coefficient sheaves and absence of a global orientation are retained throughout.

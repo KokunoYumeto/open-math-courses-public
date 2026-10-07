@@ -12,7 +12,7 @@ Copyright © 2026 AN-03 course project contributors.
 
 Permission is granted to copy, distribute and modify the 36 revised inherited units under the terms of the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. A copy of that license is included in [COPYING](COPYING).
 
-The added CC0 lessons are separate works collected with those units. Their routes are identified in the course metadata. See [Rights and licenses](RIGHTS.md) and [History](HISTORY.md).
+The added CC0 lessons are separate works collected with those units. Their routes are identified in the course metadata. See Rights and licenses and History.
 
 # Metric operator bounds and scalar positivity
 

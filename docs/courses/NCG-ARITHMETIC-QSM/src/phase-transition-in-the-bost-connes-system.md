@@ -1,14 +1,12 @@
 # Phase transition in the Bost–Connes system
 
-*The marked Exercise 12B and its solution retain CC BY-NC-SA 3.0; the original course prose is CC0.*
-
 The partition function of a quantum system is a weighted count of its energy levels. If the energy of the integer \(k\ge1\) is \(\log k\), the weights are \(k^{-\beta}\), and the partition function becomes the Riemann zeta function. This explains one side of the Bost–Connes phase transition. More work is needed to classify all equilibrium states: a convergent trace produces examples, but does not by itself prove that every state has that form.
 
 We classify equilibrium states on both sides of the threshold. Above \(\beta=1\), a measure decomposition isolates the invertible profinite integers, which label the extreme states. At \(0<\beta\le1\), finite-prime averages and the distribution of primes force a unique state. Sections 30–31 develop the additional ratio calculation needed for the high-temperature factors, with their general classification prerequisites stated explicitly.
 
 The prerequisites are [The Bost–Connes Hecke algebra](the-bost-connes-hecke-algebra.md), the exact measure-theory lessons and diagonal-measure applications specified in [Section 0](#0-measures-on-the-diagonal), the elementary integral test, Taylor series of holomorphic functions as proved in Section 36, and the written cyclotomic-field and profinite Galois results bound in [Corollary 6.2 of the Hecke lesson](the-bost-connes-hecke-algebra.md#6-arithmetic-symmetries) for the identification with field embeddings. We use Haar measure on locally compact groups, Theorem 2.2, for positive functionals and their Radon measures, Proposition 3.1(4) for continuous-function density, and Theorems 8.3 and 9.2 for normalized Haar probability on compact groups. We also use Example 10.2 of [Analytic elements and strip arguments](https://kokunoyumeto.github.io/open-math-courses-public/courses/analytic-elements-strips-and-kms/analytic-elements-and-strip-arguments.html), with the exact rescaling below. Basic references are [Bost–Connes], [Connes–Marcolli] and [Neshveyev]. The arithmetic classifications use positive inverse temperatures; Sections 17 and 22 also state the zero-temperature-parameter trace convention explicitly.
 
-*Written by GPT-6.1 Sol (OpenAI), September 2026, with Ultra reasoning effort. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026, with Ultra reasoning effort; Exercise 12B by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original text: CC0.*
 
 Sections 13–15 additionally use the GNS construction, closed antilinear operator adjoints and polar decomposition, spectral calculus, bounded Kaplansky density and faithful restriction of a von Neumann algebra. The exact Stone and modular commutant results are named at their applications. The module induction, C*-KMS graph argument and orbit-count domain comparison are proved here.
 
@@ -984,13 +982,43 @@ The construction above specifies a family of averaged logarithmic, or Connes–D
 
 *Solution.* The nonzero spectrum of \(DP_n\) is \(1/(nk)\), \(k\geq1\). Proposition 12.2 gives \(\rho(DP_n)=1/n\). Linearity and \(\rho(D)=1\) give \(\rho(D(I-P_n))=1-1/n\). These operators are positive because \(D\) commutes with the projections. Singular values list the nonzero spectrum with multiplicity; an infinite kernel does not insert zeros ahead of its infinitely many positive terms.
 
-*Exercise 12B and its solution adapt Steven Lord and Fedor Sukochev, [Measure Theory in Noncommutative Spaces, arXiv:1009.3095v1](https://arxiv.org/html/1009.3095v1#S1), 16 September 2010, Introduction, the argument following (1.6). This marked component is licensed under [CC BY-NC-SA 3.0 Unported](https://creativecommons.org/licenses/by-nc-sa/3.0/): retain the source and author credit, use it noncommercially, and license adaptations and translations under the same terms. GPT-6.1 Sol (OpenAI), Ultra, adapted and checked it on 2 October 2026: specialized the density to the arithmetic operator D, supplied the explicit sequence calculation, and added the question about restriction to a smaller algebra. No author endorsement is implied.*
+**Exercise 12B (Normality at the critical temperature, 5 points).** Let \(\rho\) be a trace from Proposition 12.2, and let \(f(A)=\rho(AD)\) be the state on \(B(\ell^2(\mathbb N_{>0}))\) from the proof of Theorem 12.1.
 
-**Exercise 12B (The ambient state is not normal, 5 points).** Let \(\rho\) be a trace from Proposition 12.2, and let \(f(A)=\rho(AD)\) be the state from the proof of Theorem 12.1. For the projection \(E_N\) onto the first \(N\) integer basis vectors, prove \(E_N\uparrow I\) strongly and compute \(f(E_N)\). Does this decide normality on the represented Toeplitz algebra's von Neumann closure?
+(a) Show that \(f\) vanishes on finite-rank operators. Let \(G_N\) be the projection onto the span of the \(\delta_k\) with \(k\mid N!\). Show that the \(G_N\) are finite-rank projections increasing strongly to \(I\), and conclude that \(f\) does not preserve suprema of increasing bounded sequences of positive operators, so it is not normal.
 
-*Solution.* For every \(\xi\in\ell^2\), \(\|(I-E_N)\xi\|^2=\sum_{k>N}|\xi_k|^2\to0\), so the projections increase strongly to \(I\). The operator \(E_ND\) has finite rank, hence the earlier trace construction gives \(f(E_N)=0\). But \(f(I)=1\). Thus this state fails preservation of increasing positive suprema on the ambient \(B(\ell^2)\). Normality on a smaller von Neumann algebra requires a separate check: the sequence \(E_N\) has not been shown to belong to that algebra. This argument alone gives no factor-type conclusion.
+(b) Call a state \(\psi\) of \(\mathcal T\) normal in the integer representation if there are unit vectors \(v_i\in\ell^2(\mathbb N_{>0})\) and weights \(s_i\geq0\) with \(\sum_is_i=1\) such that \(\psi(x)=\sum_is_i\langle v_i,\pi_1(x)v_i\rangle\) for all \(x\in\mathcal T\). For \(n\geq1\) and a finite set \(F\) of primes, compute \(\tau_1(\mu_nQ_F\mu_n^*)\), where \(Q_F\) are the defect projections from the proof of Theorem 11.3. Is \(\tau_1\) normal in the integer representation? Explain why part (a) alone does not answer this.
 
-*End of the marked CC BY-NC-SA component. The subsequent original course text is CC0.*
+*Solution.* (a) If \(A\) has finite rank, so does \(AD\). It is trace class, and the traces constructed in Proposition 12.2 vanish on trace-class operators, so \(f(A)=0\). The divisors of \(N!\) form a finite set, each of them divides \((N+1)!\), and every \(k\leq N\) is among them. Hence \(G_N\) has finite rank, \(G_N\leq G_{N+1}\), and for \(\xi\in\ell^2(\mathbb N_{>0})\)
+\[
+\|\xi-G_N\xi\|^2=\sum_{k\nmid N!}|\xi_k|^2\leq\sum_{k>N}|\xi_k|^2\longrightarrow0.
+\]
+The supremum of the \(G_N\) is \(I\): a selfadjoint \(B\) with \(B\geq G_N\) for every \(N\) satisfies \(\langle\xi,B\xi\rangle\geq\|G_N\xi\|^2\to\|\xi\|^2\). However \(f(G_N)=0\) for every \(N\), while \(f(I)=\rho(D)=1\). Thus \(f(\sup_NG_N)\neq\sup_Nf(G_N)\), and \(f\) is not normal.
+
+(b) The isometry \(\pi_1(\mu_k)\) sends \(\delta_m\) to \(\delta_{km}\) (Proposition 11.2), so its adjoint sends \(\delta_m\) to \(\delta_{m/k}\) if \(k\mid m\) and to zero otherwise. As in the proof of Theorem 11.3, \(\pi_1(Q_F)\) projects onto the \(\delta_j\) with \(j\) prime to every \(p\in F\). Hence \(R_{n,F}=\pi_1(\mu_nQ_F\mu_n^*)\) projects onto the \(\delta_m\) with \(n\mid m\) and \(m/n\) prime to every \(p\in F\). For \(L\subseteq F\) put \(d_L=\prod_{p\in L}p\), and let \(P_k\) be as in Exercise 12A. Then
+\[
+R_{n,F}=\sum_{L\subseteq F}(-1)^{|L|}P_{nd_L}.
+\]
+Both sides vanish on \(\delta_m\) when \(n\nmid m\). For \(m=nk\), the right side multiplies \(\delta_m\) by the sum of \((-1)^{|L|}\) over the subsets \(L\) of the set of primes in \(F\) dividing \(k\); this sum is one when that set is empty and zero otherwise. Theorem 12.1, linearity of \(\rho\) and Exercise 12A give
+\[
+\tau_1(\mu_nQ_F\mu_n^*)=\rho(DR_{n,F})=\sum_{L\subseteq F}\frac{(-1)^{|L|}}{nd_L}=\frac1n\prod_{p\in F}\Bigl(1-\frac1p\Bigr).
+\]
+Take \(F_M=\{p\text{ prime}:p\leq M\}\). Expanding geometric series and using unique factorization,
+\[
+\prod_{p\leq M}\Bigl(1-\frac1p\Bigr)^{-1}=\prod_{p\leq M}\sum_{j\geq0}p^{-j}\geq\sum_{k\leq M}\frac1k\longrightarrow\infty,
+\]
+so \(\tau_1(\mu_nQ_{F_M}\mu_n^*)\to0\) as \(M\to\infty\). On the other hand, \(R_{n,F_M}\) converges strongly to the projection onto \(\delta_n\). An index \(m\neq n\) in its range has \(m/n>1\) with all prime factors larger than \(M\), so \(m>M\), and
+\[
+\|R_{n,F_M}\xi-\xi_n\delta_n\|^2\leq\sum_{m>M}|\xi_m|^2\longrightarrow0.
+\]
+Suppose that \(\tau_1(x)=\sum_is_i\langle v_i,\pi_1(x)v_i\rangle\) for all \(x\in\mathcal T\). For a projection \(R\), \(\langle v,Rv\rangle=\|Rv\|^2\). The terms \(s_i\|R_{n,F_M}v_i\|^2\) are at most \(s_i\) and tend to \(s_i|\langle\delta_n,v_i\rangle|^2\), so dominated convergence for series gives
+\[
+\sum_is_i|\langle\delta_n,v_i\rangle|^2=\lim_{M\to\infty}\tau_1(\mu_nQ_{F_M}\mu_n^*)=0\qquad(n\geq1).
+\]
+Summing over \(n\), interchanging the two sums of nonnegative terms and using Parseval gives \(\sum_is_i\|v_i\|^2=0\), which contradicts \(\sum_is_i=1\). Hence \(\tau_1\) is not normal in the integer representation.
+
+Part (a) does not settle this. By (12.1) and (12.3), \(f(\pi_1(x))=\rho(\pi_1(x)D)=\rho(D\pi_1(x))=\tau_1(x)\), so \(f\) is one extension of \(\tau_1\) to \(B(\ell^2(\mathbb N_{>0}))\). Its failure of normality leaves open whether some other extension has the form \(\sum_is_i\langle v_i,\,\cdot\,v_i\rangle\); the computation above shows that none does.
+
+The failure of normality for functionals defined by Dixmier traces on all bounded operators, and the separate question of normality on a smaller von Neumann algebra, are also discussed in S. Lord and F. Sukochev, [*Measure Theory in Noncommutative Spaces*, arXiv:1009.3095v1](https://arxiv.org/abs/1009.3095v1), Introduction.
 
 ## 13. A thermal Hilbert space from a right module
 
@@ -8152,7 +8180,7 @@ The complete KMS characterization now supplies a recognition principle for later
 - [Kedlaya] K. S. Kedlaya, *Dirichlet characters and Dirichlet L-series* and *Primes in arithmetic progressions*, MIT 18.785, Spring 2007. [\(L\)-function notes](https://kskedlaya.org/18.785/lfunc.pdf), [residue-class notes](https://kskedlaya.org/18.785/dirichlet.pdf).
 - [Sutherland] A. V. Sutherland, *Dirichlet L-functions, primes in arithmetic progressions*, MIT 18.785, Fall 2025, Lecture 18. [Lecture notes](https://math.mit.edu/classes/18.785/2025/LectureNotes18.pdf).
 - [Dixmier] J. Dixmier, *Existence de traces non normales*, Comptes Rendus de l’Académie des Sciences de Paris, Série A–B 262 (1966), A1107–A1108. [Primary article](https://gallica.bnf.fr/ark:/12148/bpt6k6238594s/f139.item).
-- [Lord–Sukochev] S. Lord and F. Sukochev, *Measure Theory in Noncommutative Spaces*, SIGMA 6 (2010), 072; Section 2, equations (2.1)–(2.14), for logarithmic ideals, generalized limits and trace conventions. [Author preprint, version 1, 16 September 2010](https://arxiv.org/html/1009.3095v1#S2), [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/). Reference for trace conventions; the explicitly marked Exercise 12B and its solution adapt the Introduction’s argument following (1.6) and retain CC BY-NC-SA 3.0.
+- [Lord–Sukochev] S. Lord and F. Sukochev, *Measure Theory in Noncommutative Spaces*, SIGMA 6 (2010), 072; Section 2, equations (2.1)–(2.14), for logarithmic ideals, generalized limits and trace conventions, and the Introduction for the failure of normality of functionals defined by Dixmier traces. [Author preprint, version 1, 16 September 2010](https://arxiv.org/html/1009.3095v1#S2).
 - [Ponge] R. Ponge, *Noncommutative Geometry, Chapter 8: Connes' Trace Theorem and Lower Dimensional Volumes*, lecture notes, 2025, definitions of positive normalized traces and Dixmier traces. [Open notes](https://raphaelponge.org/wp-content/uploads/2025/05/ncg-chap8-3.pdf).
 - [Choi–Ghandehari] Y. Choi and M. Ghandehari, *Dual convolution for the affine group of the real line*, Complex Analysis and Operator Theory 15 (2021), article 76; Sections 2.2–2.3 for the affine representation and its group convention. [Author preprint, version 2](https://arxiv.org/abs/2009.05497v2).
 - [Choquet–Meyer] G. Choquet and P.-A. Meyer, *Existence et unicité des représentations intégrales dans les convexes compacts quelconques*, Annales de l'Institut Fourier 13 (1963), no. 1, 139–154; Theorems 3 and 11 for maximal measures and the cone-lattice criterion, Corollary 14 for the metrizable extreme-boundary assertion. [Primary article and bibliographic record](https://www.numdam.org/item/AIF_1963__13_1_139_0/).

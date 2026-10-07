@@ -38,6 +38,21 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
@@ -56,8 +71,7 @@
 \section{Bott periodicity in KK: the Bott and Dirac
 elements}\label{bott-periodicity-in-kk-the-bott-and-dirac-elements}
 
-\emph{Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public
-domain (CC0).}
+\emph{Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).}
 
 Bott periodicity comes from two concrete cycles. One multiplies by the
 position vector in a Clifford algebra. The other differentiates forms on
@@ -691,6 +705,70 @@ domain preservation prove the dense smooth commutator condition. Lemma
 The individual Dirac resolvent is not globally compact on Euclidean
 space. Localizing it in position was essential in Lemma 3.1.
 
+\textbf{Proposition 3.3 (the planar Dolbeault operator).} In dimension
+two, use the graded matrix identification \(e_1=\sigma_1,e_2=\sigma_2\),
+whose grading is \(\sigma_3=-ie_1e_2\), and its even rank-one corner.
+The Morita image of \(\alpha_2\) is the Dolbeault--Dirac class for the
+complex coordinate \(w=x_1-ix_2\), with operator \[
+D_w=\begin{pmatrix}
+0&-\partial_1-i\partial_2\\
+\partial_1-i\partial_2&0
+\end{pmatrix}
+=\sqrt2\bigl(\bar\partial_w+\bar\partial_w^*\bigr).
+\tag{3.3}
+\] Its domain is \(H^1(\mathbb R^2)\otimes\mathbb C^2\), and its bounded
+transform represents the stated class.
+
+\textbf{Proof.} On the exterior-algebra representation of Section 1 put
+\[
+p=\frac{1-ic_1c_2}{2},\qquad
+v_0=\frac{1-i(e_1\wedge e_2)}{\sqrt2},\qquad
+v_1=\frac{e_1+ie_2}{\sqrt2}.
+\tag{3.4}
+\] Here the \(e_j\) in the two vectors denote the exterior basis
+vectors. The Clifford generators in the formula for \(p\) act through
+the operators \(c_j\). The two vectors are orthonormal, of even and odd
+degree respectively, and span \(p\Lambda^*\mathbb C^2\). Indeed
+\(c_1c_2v_j=iv_j\), and this eigenspace has one dimension in each
+parity. The other eigenspace is its orthogonal complement.
+
+The operator \(D_2\) commutes with \(p\), since each \(\widehat c_j\)
+anticommutes with both \(c_1\) and \(c_2\). Thus \(p\) preserves its
+Sobolev domain and reduces its self-adjoint closure. The even corner
+Morita module identifies its tensor Hilbert space with \(pH_2\) and
+sends \(D_2(1-\Delta)^{-1/2}\) to its restriction there. This is the
+corner tensor construction proved in
+\href{KT-KK-09.html\#7-morita-and-external-products}{Lesson 09,
+Proposition 7.1}.
+
+The exterior and contraction formulas give the four exact identities \[
+\widehat c_1v_0=v_1,\qquad
+\widehat c_2v_0=-iv_1,\qquad
+\widehat c_1v_1=-v_0,\qquad
+\widehat c_2v_1=-iv_0.
+\tag{3.5}
+\] Consequently the unitary \((f_0,f_1)\mapsto f_0v_0+f_1v_1\) carries
+the restricted operator to the matrix in (3.3). It preserves the
+grading, the multiplication representation and the complete Sobolev
+domain. Local compactness and the bounded-transform conditions follow
+from Lemma 3.1 by restriction to this reducing subspace.
+
+For the Dolbeault equality, the unit \((0,1)\)-form is
+\(\eta=d\bar w/\sqrt2\) in the Euclidean metric. Since
+\(\partial/\partial\bar w=(\partial_1-i\partial_2)/2\), the coefficient
+of \(\bar\partial_w f\) in this unit form is
+\((\partial_1-i\partial_2)f/\sqrt2\). Integration by parts gives the
+adjoint coefficient \((-\partial_1-i\partial_2)/\sqrt2\). Multiplication
+by \(\sqrt2\) gives exactly (3.3), first on compactly supported smooth
+forms and then on the common self-adjoint domain.
+
+The reflection \(x_2\mapsto-x_2\) changes \(w\) to \(z=x_1+ix_2\) and
+also reflects the multiplication representation. It therefore changes
+the planar orientation. Section 6 computes the corresponding Bott sign
+in the fixed \(z\)-coordinate. Equations (3.3)--(3.5) specify the
+Dolbeault identification together with its Clifford, grading and
+coordinate conventions. \(\square\)
+
 \subsection{4. The first product and its
 Gaussian}\label{the-first-product-and-its-gaussian}
 
@@ -971,8 +1049,7 @@ Removing its zero-source parts changes its operator only compactly; the
 remaining off-diagonal map is \(P_\infty:R B^2\to P_\infty B^2\). The
 unitary column \(b\mapsto(Tb,rb)\) identifies that map with \(T\). Thus
 the relative projection pair gives exactly (6.1), including the
-prescribed boundary sign, without using the unfinished Fredholm-picture
-lesson.
+prescribed boundary sign, directly from the cycle and projection pair.
 
 Conjugate (6.3) and its scalar projection by the constant
 vector-coordinate swap. The resulting pair is exactly \(q,P\) in (6.2),
@@ -1297,6 +1374,616 @@ the colimit. For first-variable suspension the source \(S^nA\) is still
 separable, so the identical argument applies. This proves the stated
 arbitrary-coefficient generality. \(\square\)
 
+Let \(Cl_1=C_1\). Write \(KK_h\) for the cycle group of Lesson 06, using
+countably generated modules and homotopies on whole interval modules.
+
+\textbf{Proposition 8.2 (the actual simultaneous suspension).} For
+separable graded \(A\) and arbitrary graded \(B\), the map
+
+\[
+ \tau_S:KK_h(A,B)\longrightarrow KK_h(SA,SB),\qquad
+ (E,\phi,F)\longmapsto(C_0(\mathbb R,E),\rho,\widetilde F),
+ \tag{8.6}
+\]
+
+where \((\rho(f\otimes a)\xi)(r)=f(r)\phi(a)\xi(r)\) and
+\((\widetilde F\xi)(r)=F\xi(r)\), is an isomorphism for the whole
+interval-module relation.
+
+\textbf{Proof.} Scalar cutoffs times the countable input generators
+generate the module. Rank-one field formulas and a finite partition of
+unity give
+
+\[
+ \mathcal K(C_0(\mathbb R,E))=C_0(\mathbb R,\mathcal K(E)).
+ \tag{8.7}
+\]
+
+Indeed finite sums of scalar functions times rank-one operators are
+dense on both sides: approximate a vanishing continuous compact field on
+a compact interval and truncate its small tails. Its multiplication norm
+is the supremum norm, by a vector with a scalar bump at a selected
+point. The localized commutator and square defect of (8.6) are
+\(f(r)[F,\phi(a)]_{\rm gr}\) and \(f(r)(F^2-1)\phi(a)\), so belong to
+(8.7). The identical calculation on a countably generated whole interval
+module proves well-definedness on the full homotopy relation. The
+operation is additive and natural.
+
+First take separable \(A,B\). Write \(\beta_A=1_A\boxtimes\beta_1\),
+\(\alpha_A=1_A\boxtimes\alpha_1\), and similarly for \(B\).
+Associativity and the proved exterior interchange rule in Lesson 10,
+Theorem 4.1 and Section 5, give
+
+\[
+ \tau_{B_1}(x)=\alpha_A\widehat\otimes_A x\widehat\otimes_B\beta_B.
+ \tag{8.8}
+\]
+
+Its inverse is
+\(y\mapsto\beta_A\widehat\otimes_{A\widehat\otimes B_1}y\widehat\otimes_{B\widehat\otimes B_1}\alpha_B\),
+by (4.3), (5.5) and associativity. All source and intermediate algebras
+meet the proved product hypotheses.
+
+Simultaneous Clifford dilation is an isomorphism as well. Put
+\(G_j=KK_h(A\widehat\otimes Cl_1^{\widehat\otimes j},B\widehat\otimes Cl_1^{\widehat\otimes j})\),
+and let \(T_j:G_j\to G_{j+1}\) be Clifford dilation. The composites
+\(T_1T_0\) and \(T_2T_1\) are simultaneous \(Cl_2\) dilations, by the
+even rebracketing unitaries and ordered Clifford isomorphism. They are
+isomorphisms by the inverse finite matrix Morita tensor unitaries in
+Lesson 09, Proposition 7.1. The first composite makes \(T_1\)
+surjective; the second makes it injective. Hence \(T_1\) and
+\(T_0=T_1^{-1}(T_1T_0)\) are isomorphisms. Since
+\(B_1=S\widehat\otimes Cl_1\), the actual \(\tau_{B_1}\) is the Clifford
+dilation of \(\tau_S\), up to even rebracketing. Thus \(\tau_S\) is an
+isomorphism for separable coefficients. Finally apply Proposition 8.1's
+whole-homotopy coefficient descent to sources \(A,SA\); its
+countable-values argument makes the stages \(SB_0\) cofinal. Naturality
+passes both inverse identities to arbitrary \(B\). \(\square\)
+
+\subsection{8A. Why source separability matters for coefficient
+Bott}\label{a.-why-source-separability-matters-for-coefficient-bott}
+
+The countably generated cycle convention places a real restriction on
+coefficient periodicity. In this section \(KK_h\) denotes exactly the
+group defined in Lesson 06, with countably generated modules and
+homotopies on whole interval modules; it is the \(KK\) group used in
+this course. Put \(S=C_0(\mathbb R)\) and \(Cl_1=C_1\), the positive
+complex graded Clifford algebra.
+
+\textbf{Proposition 8A.0 (the bounded coefficient Bott operation).} For
+a normalized cycle \(z=(E,\phi,F)\), put \(q(r)=(1+r^2)^{-1/2}\),
+\(b(r)=rq(r)e\), and
+
+\[
+ E_b=E\widehat\otimes(S\widehat\otimes Cl_1),\qquad
+ \phi_b(a)=\phi(a)\widehat\otimes1,\qquad
+ G_b=F\widehat\otimes q+1\widehat\otimes b.
+ \tag{CB.22}
+\]
+
+This defines a natural additive map
+\(\mathfrak b_1:KK_h(A,B)\to KK_h(A,B\widehat\otimes S\widehat\otimes Cl_1)\)
+for all graded \(A,B\).
+
+\textbf{Proof.} Tensor the given countable input generators with scalar
+cutoffs and a finite homogeneous generating family of \(Cl_1\). They
+generate \(E_b\). The compact tensor identity is Lesson 05, Proposition
+6.3, and the adjointable tensor construction is Lesson 05, Lemma 6.0a.
+The second odd tensor summand inserts the input grading, so the two odd
+summands anticommute. Since \(b^2=1-q^2\),
+
+\[
+ G_b^2-1=(F^2-1)\widehat\otimes q^2,\qquad
+ [G_b,\phi_b(a)]_{\rm gr}=[F,\phi(a)]_{\rm gr}\widehat\otimes q.
+ \tag{CB.23}
+\]
+
+The geometric summand graded commutes with the entire source. Both
+scalar factors on the right vanish at infinity, so the localized defects
+are compact by that tensor identity. Oddness and self-adjointness are
+exact. The same formulas on an actual interval module prove homotopy
+invariance; endpoint evaluation gives the tensor endpoint modules by the
+inner-product formulas and density. Degenerate cycles remain degenerate.
+Direct sums, source pullbacks and coefficient pushforwards commute with
+the construction. Normalization on each actual module is Lesson 06,
+Theorem 3.2; its homotopies and this formula give independence of
+normalization. This proves the map. In the separable-source product
+scope it is the Bott product in (8.1): the first-cycle anticommutator is
+\(2F^2\widehat\otimes q\geq0\). For homogeneous \(\xi\), the
+creation-operator connection difference is \(T_{F\xi}q\), since the
+terms involving \(b\) cancel by the graded sign. This is creation by the
+actual vector \(F\xi\widehat\otimes q\) in the tensor module, hence
+compact: multiply its right coefficient by a contractive approximate
+identity of the standard second module to approximate it by rank-one
+creation maps. Taking adjoints gives the second connection condition.
+Lesson 09, Theorem 4.1, and Lesson 10, Theorem 2.3, identify the class.
+Formula (CB.22) itself requires no nonseparable-source product theorem.
+\(\square\)
+
+The following example proves that this operation need not be surjective,
+even with a unital source and scalar coefficient.
+
+Let \(H=\ell^2(\mathbb N)\), and define the following concrete,
+trivially graded, unital C\emph{-algebra: \[
+ A_\ell=\left\{
+ a(r)=\begin{pmatrix}a_+(r)&k_{+-}(r)\\k_{-+}(r)&a_-(r)\end{pmatrix}:
+ a_\pm\in C_b(\mathbb R,\mathcal B(H)),\quad
+ k_{\pm\mp}\in C_0(\mathbb R,\mathcal K(H))
+ \right\}.
+ \tag{CB.1}
+\] Every field here is operator-norm-continuous; the norm is the
+supremum norm. Products and adjoints retain the prescribed entries
+because bounded operator fields multiply vanishing compact fields into
+vanishing compact fields. Entrywise norm limits retain the same spaces,
+so (CB.1) is a C}-algebra. Its unit is the constant identity on
+\(H\oplus H\). Write \(p_+,p_-\) for its two constant diagonal corner
+units. It contains the graded-even ideal \[
+ J=C_0(\mathbb R,\mathcal K(H\oplus H)).
+ \tag{CB.2}
+\] The algebra \(A_\ell\) itself is the unital source in the
+counterexample.
+
+\textbf{Theorem 8A.1 (coefficient Bott is not universally surjective).}
+For the literal countably generated-module and whole interval-module
+relation, \[
+ KK_h(A_\ell,\mathbb C)=0,
+ \qquad KK_h(A_\ell,S\widehat\otimes Cl_1)\ne0.
+ \tag{CB.3}
+\] Consequently the bounded coefficient Bott operation of Proposition
+8A.0, \[
+ \mathfrak b_1:KK_h(A_\ell,\mathbb C)
+       \longrightarrow KK_h(A_\ell,S\widehat\otimes Cl_1),
+ \tag{CB.4}
+\] is not surjective. Its coefficient \(\mathbb C\) is sigma-unital. The
+domain is zero on every allowed representative, while the target
+contains the nonzero class constructed below.
+
+The following three lemmas prove the scalar-domain assertion on every
+allowed representative. The final paragraph proves nonvanishing by an
+already proved separable-source detector, with the exact Toeplitz sign.
+
+\subsubsection{8A.1. The essential
+commutant}\label{a.1.-the-essential-commutant}
+
+\textbf{Lemma 8A.2 (an elementary essential-commutant calculation).} Let
+\(K\) be a separable Hilbert space and \(H=\ell^2(\mathbb N)\). If
+\(T\in\mathcal B(K\otimes H)\) satisfies \[
+ [T,1_K\otimes a]\in\mathcal K(K\otimes H)
+ \quad\text{for every }a\in\mathcal B(H),
+ \tag{CB.0}
+\] then \(T=T_\infty\otimes1_H+K_T\) for an operator
+\(T_\infty\in\mathcal B(K)\) and a compact \(K_T\).
+
+\textbf{Proof.} Let \(P_i=1_K\otimes p_i\), let
+\(T_i=P_iT|_{P_i(K\otimes H)}\), regarded as an operator on \(K\), and
+put \(T_{\rm diag}=\bigoplus_iT_i\), \(R=T-T_{\rm diag}\). The diagonal
+is bounded with norm at most \(\|T\|\). Its off-diagonal part satisfies
+\(RP_i,P_iR\) compact, by (CB.0) with \(a=p_i\).
+
+Suppose \(R\) is not compact, with essential norm \(\delta>0\). For
+every finite initial coordinate projection \(P_{\leq m}\), the
+difference between \(R\) and its compression to the complementary tail
+is compact, because \(RP_{\leq m}\) and \(P_{\leq m}R\) are compact. The
+tail norm is therefore at least \(\delta\). Finite coordinate
+compressions converge strongly to the identity on that tail;
+approximating a chosen vector and its image shows that some finite
+window \(Q=P_{\leq n}-P_{\leq m}\) has \(\|QRQ\|>\delta/2\). For this
+finite window, average \(DQRQD\) over its finitely many diagonal sign
+unitaries \(D\). All off-diagonal blocks cancel and the diagonal blocks
+of \(R\) are zero, so the average is zero. Therefore some sign choice
+has \[
+ \|[QRQ,D]\|>\delta/2.
+\] Recursively choose disjoint windows and a unit vector in each window
+on which this commutator has norm \(>\delta/4\). Assemble those finite
+sign choices into one diagonal sign unitary on \(H\). Compression of
+\([R,1\otimes D]\) to each window is exactly its chosen finite
+commutator. It has norm bounded below on the resulting orthonormal
+sequence and cannot be compact. But \(T_{\rm diag}\) commutes with every
+diagonal sign, and (CB.0) says \([R,1\otimes D]\) is compact. This
+contradiction proves \(R\) compact.
+
+Condition (CB.0) with a matrix unit gives \(T_i-T_j\) compact on \(K\)
+for every \(i,j\). Also the sequence \(T_i\) is Cauchy in operator norm.
+Otherwise recursively choose disjoint pairs of arbitrarily large indices
+\(i_k,j_k\) with \(\|T_{i_k}-T_{j_k}\|>\epsilon\), and let one
+permutation unitary swap all these pairs. Choose a unit vector in each
+\(i_k\)-coordinate on which the difference has norm \(>\epsilon/2\). The
+commutator of \(T_{\rm diag}\) with this single permutation is bounded
+below on those orthogonal vectors, hence is not compact. This
+contradicts (CB.0) and the already proved compactness of \(R\). Let
+\(T_i\to T_\infty\) in norm. Each \(T_i-T_\infty\) is compact, as a norm
+limit of \(T_i-T_j\). The diagonal sum of these compacts is compact
+because its tail norms tend to zero; finite initial sums are compact.
+Adding \(R\) proves the assertion. \(\square\)
+
+\subsubsection{8A.2. Separable representations of the constant operator
+corners}\label{a.2.-separable-representations-of-the-constant-operator-corners}
+
+\textbf{Lemma 8A.3.} Every unital representation of \(\mathcal B(H)\) on
+a separable Hilbert space is unitarily equivalent to
+\(a\mapsto1_K\otimes a\), for a separable multiplicity space \(K\). If
+the represented Hilbert space is graded and the representation is even,
+its grading is \(\Gamma_K\otimes1_H\).
+
+\textbf{Proof.} First the Calkin algebra
+\(Q(H)=\mathcal B(H)/\mathcal K(H)\) is simple and has no nonzero
+representation on a separable Hilbert space. Here are the needed
+elementary proofs. If \(T\) is noncompact, put
+\(\delta=\inf_{R\ \mathrm{finite\ rank}}\|T-R\|>0\); positivity follows
+because compacts are precisely the norm closure of finite ranks. For
+every finite-rank projection \(P\), \(\|T(1-P)\|\geq\delta\).
+Recursively choose unit vectors \(x_n\), orthogonal to the preceding
+\(x_j\) and \(T^*Tx_j\), with \(\|Tx_n\|>\delta/2\). The removed span is
+finite-dimensional, so the preceding norm bound supplies each choice.
+The \(x_n\) are orthonormal and the \(Tx_n\) are pairwise orthogonal.
+Thus the isometry \(V:H\to H\), sending its basis to \(x_n\), satisfies
+\[
+ V^*T^*TV\geq\delta^2/4.
+\] A closed ideal of \(\mathcal B(H)\) containing \(T\) therefore
+contains this invertible positive element, hence contains \(1\). The
+inverse is supplied by continuous positive functional calculus. The
+preimage of every nonzero ideal of \(Q(H)\) contains a noncompact
+element, so \(Q(H)\) is simple.
+
+To see that it has no nonzero separable representation, label a basis of
+\(H\) by the finite binary strings. For each infinite binary string,
+project onto the basis vectors on its infinite branch. Distinct branches
+have finite intersection; their projections have orthogonal nonzero
+images in \(Q(H)\). There are uncountably many branches. A nonzero
+representation of the simple Calkin algebra would be faithful, hence
+would produce uncountably many pairwise orthogonal nonzero projections
+on a separable Hilbert space. Selecting unit vectors in their ranges
+contradicts separability. This proves the claim without assuming any
+normality theorem for representations of \(\mathcal B(H)\).
+
+For a unital representation \(\rho\) of \(\mathcal B(H)\), the subspace
+\(L_0=\overline{\rho(\mathcal K(H))L}\) is reducing. On its orthogonal
+complement the representation factors through the Calkin algebra, and
+the preceding argument makes that complement zero. Thus the restriction
+to \(\mathcal K(H)\) is nondegenerate. If \(e_{ij}\) are its usual
+matrix units, put \(K=\rho(e_{11})L\). The map \[
+ K\otimes H\longrightarrow L,
+ \qquad \xi\otimes e_n\longmapsto\rho(e_{n1})\xi
+ \tag{CB.5}
+\] is an isometry with dense range, hence a unitary. The density follows
+from the strong convergence of the represented finite matrix-unit sums
+to \(1\), using nondegeneracy. For arbitrary \(a\in\mathcal B(H)\), its
+represented matrix entries under (CB.5) are \(a_{ij}1_K\), since
+\(e_{ii}ae_{jj}=a_{ij}e_{ij}\). This gives \(\rho(a)=1_K\otimes a\). An
+even grading commutes with every matrix unit, and the same entry
+calculation gives \(\Gamma_K\otimes1_H\). \(\square\)
+
+\subsubsection{8A.3. A logarithm compact after scalar
+localization}\label{a.3.-a-logarithm-compact-after-scalar-localization}
+
+\textbf{Lemma 8A.4.} Let \(\psi:S\to\mathcal B(K)\) be a nondegenerate
+even representation on a separable graded Hilbert space. Suppose the
+even unitary \(V\) commutes with its actual multiplier extension to
+\(C_b(\mathbb R)\), and \[
+ (V-1)\psi(f)\in\mathcal K(K)\quad(f\in S).
+ \tag{CB.6}
+\] Then there is a norm-continuous path of even unitaries \(V_t\),
+\(0\leq t\leq1\), from \(1\) to \(V\), commuting with that scalar action
+and satisfying \[
+ (V_t-1)\psi(f)\in\mathcal K(K)
+\] as a norm-continuous compact field in \(t\), for every \(f\in S\).
+
+\textbf{Proof.} Put \(h(r)=(1+r^2)^{-1}\). Nondegeneracy and the
+approximate identity \(h/(h+1/n)\) imply that \(\psi(h)\) is injective:
+its kernel is killed by every represented approximate-identity member
+and consequently is zero. The positive even operator \[
+ C=(V-1)^*(V-1)\psi(h)
+ \tag{CB.7}
+\] is compact by (CB.6). All its factors commute. Its kernel is exactly
+\(\ker(V-1)\): positivity gives \((V-1)\psi(h)^{1/2}\xi=0\), and
+commutation and injectivity of \(\psi(h)^{1/2}\) then give
+\((V-1)\xi=0\). The reverse implication is immediate.
+
+Here are the elementary spectral facts needed, so no spectral theorem
+for an arbitrary represented source is being imported. A nonzero
+positive compact operator \(T\), with \(\lambda=\|T\|\), has an
+eigenvector of eigenvalue \(\lambda\). The order inequality
+\(T^2\leq\lambda T\) shows that
+\(\sup_{\|\xi\|=1}\langle T\xi,\xi\rangle=\lambda\): apply it to unit
+vectors on which \(\|T\xi\|\to\lambda\), and use the opposite norm
+bound. Choose unit vectors with
+\(\langle T\xi_j,\xi_j\rangle\to\lambda\). The same positive inequality
+gives \[
+ \|(T-\lambda)\xi_j\|^2
+ \leq\lambda(\lambda-\langle T\xi_j,\xi_j\rangle)
+ \longrightarrow0.
+ \tag{CB.21}
+\] Compactness supplies a norm-convergent subsequence of \(T\xi_j\), and
+(CB.21) then makes the corresponding \(\xi_j\) converge to a unit
+eigenvector. A nonzero eigenspace is finite-dimensional, since a compact
+operator cannot have constant nonzero norm on an orthonormal sequence.
+Repeat on the orthogonal complement of each finite eigenspace. The
+positive eigenvalues tend to zero if there are infinitely many, by the
+same orthonormal-sequence test. This construction exhausts
+\((\ker T)^\perp\): a nonzero restriction to its remaining orthogonal
+complement would have a positive top eigenvalue by the preceding
+argument, whereas every sufficiently late selected eigenvalue would then
+be at least that number. This contradicts their convergence to zero.
+This proves the required compact spectral decomposition.
+
+The compact spectral decomposition just proved splits \(K\) into this
+kernel and finite-dimensional positive-eigenvalue spaces of \(C\). Each
+such space reduces \(V\), the grading, and every \(\psi(g)\),
+\(g\in C_b(\mathbb R)\), by commutation. The real and imaginary parts of
+\(V\) on each finite block are commuting self-adjoint matrices. Adding a
+sufficiently large scalar makes each positive, so the positive-compact
+eigenvector proof just given diagonalizes the real part and then the
+imaginary part on its reducing eigenspaces. This simultaneously
+diagonalizes \(V\). Take its principal eigenvalue arguments in
+\((-\pi,\pi]\). Define \(L\) by these arguments on each finite block and
+by zero on \(\ker C\). Then \(L\) is a bounded even self-adjoint
+operator, \(\|L\|\leq\pi\), commuting with the entire scalar action and
+satisfying \(\exp(iL)=V\). This constructs the logarithm from finite
+compact spectral blocks; it does not use an unproved measurable
+functional calculus for an arbitrary source representation.
+
+The scalar inequality \(|\theta|\leq(\pi/2)|e^{i\theta}-1|\) on
+\([-\pi,\pi]\) gives \[
+ L^2\leq\frac{\pi^2}{4}(V-1)^*(V-1).
+\] After scalar localization, \[
+ (L\psi(f))^*(L\psi(f))
+ \leq\frac{\pi^2}{4}
+ ((V-1)\psi(f))^*((V-1)\psi(f)).
+ \tag{CB.8}
+\] An operator whose square modulus is dominated by a compact positive
+operator is compact: cut down on the right by the finite spectral
+projections of that compact operator. The domination makes the
+complementary-tail norm tend to zero, while the cutdowns are finite
+rank. Thus (CB.8) proves \(L\psi(f)\) compact.
+
+Set \(V_t=\exp(itL)\). The exponential series makes this a
+norm-continuous even unitary path commuting with the scalar action. The
+continuous scalar function \((e^{it\lambda}-1)/\lambda\), with value
+\(it\) at zero, writes \((V_t-1)\psi(f)\) as a bounded continuous
+function of \(L\) times \(L\psi(f)\). Hence it is compact; norm
+continuity of \(V_t\) makes the compact field norm-continuous.
+\(\square\)
+
+\subsubsection{8A.4. Every even scalar cycle is explicitly
+null}\label{a.4.-every-even-scalar-cycle-is-explicitly-null}
+
+\textbf{Lemma 8A.5.} Every \((A_\ell,\mathbb C)\)-cycle is zero for the
+actual whole interval-module homotopy relation.
+
+\textbf{Proof.} Its countably generated module is a separable graded
+Hilbert space \(M\). Normalize \(F\) to an odd self-adjoint contraction,
+using \href{KT-KK-06.html}{Lesson 06}, Theorem 3.2. The genuine
+source-unit projection \(P=\phi(1_{A_\ell})\) has compact commutator
+with \(F\). Remove its compact off-diagonal blocks and its zero-source
+complement. These operations are allowed norm-continuous operator
+homotopies plus removal of a degenerate summand, and the remaining
+source representation is unital. On this remaining space \(F^2-1\) is
+globally compact, by localization at the actual source unit.
+
+Now \(\phi(p_+)\) and \(\phi(p_-)\) are complementary even projections.
+Their compact commutators permit removal of the two corresponding
+compact off-diagonal blocks of \(F\). Write the remaining operator as
+\(F_+\oplus F_-\). Each corner still has globally compact square defect.
+Lemma 8A.3 applied to the actual constant \(\mathcal B(H)\) in each
+source corner gives graded identifications \[
+ M_\pm=K_\pm\otimes H,
+ \qquad \phi_\pm(a)=1_{K_\pm}\otimes a
+ \quad(a\in\mathcal B(H)).
+ \tag{CB.9}
+\] Zero corners are allowed throughout. The whole Hilbert space, not
+just a chosen source-generated subspace of an arbitrary Hilbert module,
+has been retained in this step.
+
+Lemma 8A.2 applies to \(F_\pm\), because the source contains every
+constant \(a\in\mathcal B(H)\). It gives \[
+ F_\pm=T_\pm\otimes1_H+C_\pm,
+ \qquad C_\pm\ \mathrm{compact}.
+ \tag{CB.10}
+\] Its diagonal-block construction and norm limit show that \(T_\pm\)
+are odd self-adjoint contractions on the graded \(K_\pm\). Since the
+square defects in (CB.10) are compact, \((T_\pm^2-1)\otimes1_H\) is
+compact. A nonzero amplification by the infinite identity cannot be
+compact: if \(T\xi\ne0\), its values on \(\xi\otimes e_n\) have constant
+nonzero norm and mutually orthogonal ranges. Thus \(T_\pm^2=1\) exactly.
+A globally compact perturbation path now replaces \(F\) by the exact odd
+self-adjoint involution \[
+ F_\infty=(T_+\otimes1_H)\oplus(T_-\otimes1_H).
+ \tag{CB.11}
+\] This remains a cycle for all of \(A_\ell\), because its difference
+from the preceding cycle operator is globally compact.
+
+Each actual diagonal scalar field \(f(r)1_H\), \(f\in C_b(\mathbb R)\),
+commutes with the constant \(\mathcal B(H)\) corner. The matrix-unit
+argument in (CB.5) therefore writes its representation as
+\(\psi_\pm(f)\otimes1_H\), where \(\psi_\pm\) is an even unital scalar
+representation. The cycle commutator for this source field says that
+\([T_\pm,\psi_\pm(f)]\otimes1_H\) is compact, hence is zero by the
+preceding amplification test. Consequently \(T_\pm\) commute with every
+\(\psi_\pm(f)\).
+
+In fact (CB.11) commutes exactly with every diagonal source field
+\(a_\pm\in C_b(\mathbb R,\mathcal B(H))\). Its \(i,j\) represented entry
+in the normal amplification (CB.9) is \(\psi_\pm((a_\pm)_{ij})\):
+multiply the field by the two constant matrix units to obtain the actual
+scalar-entry field times one matrix unit. Since \(T_\pm\) commute with
+every such scalar entry, every matrix entry of the commutator is zero.
+Finite-coordinate vectors are dense, so the bounded commutator itself is
+zero.
+
+Only now split the actual Hilbert space into \[
+ M_J=\overline{\phi(J)M},\qquad M_J^\perp.
+ \tag{CB.12}
+\] This is a reducing decomposition for \(\phi(A_\ell)\), because \(J\)
+is an ideal. It is also reducing for \(F_\infty\). Indeed in each
+physical corner the support projection of \(J\) is the strong support
+projection of \(\psi_\pm(S)\) tensored with \(1_H\). This follows using
+the approximate identity formed by scalar cutoffs times
+finite-coordinate projections; (CB.9) makes the latter projections
+converge strongly to \(1\). The operators \(T_\pm\) commute with the
+scalar action and hence with that strong support projection. This proves
+reduction, rather than assuming that the original cycle operator
+preserved an essential source subspace. On \(M_J^\perp\) the
+off-diagonal source entries vanish, because they are in \(J\). The
+diagonal commutators are already zero, so that summand is degenerate by
+(CB.11).
+
+On \(M_J\), the representation of \(J=S\otimes\mathcal K(H\oplus H)\) is
+nondegenerate. Its elementary matrix-unit representation gives one
+common separable graded multiplicity space \(K\), an even nondegenerate
+scalar representation \(\psi:S\to\mathcal B(K)\), and a unitary \[
+ M_J\cong K\otimes(H\oplus H),\qquad
+ \phi(f\otimes k)=\psi(f)\otimes k.
+ \tag{CB.13}
+\] Here is the required justification of the multiplier actions in this
+special Hilbert-space situation. A nondegenerate representation of \(J\)
+extends an actual bounded multiplier \(m\) by the formula
+\(\widetilde\phi(m)\phi(j)\xi=\phi(mj)\xi\) on the dense represented
+span. More explicitly, for a contractive approximate identity \(e_n\) of
+\(J\), the operators \(\phi(me_n)\) have norm at most \(\|m\|\) and
+converge on that span to the displayed formula, since \(me_nj\to mj\).
+The uniform bound makes this a strong limit on the whole Hilbert space.
+Their adjoints \(\phi(e_nm^*)\) converge on the same span to the
+analogous formula for \(m^*\); hence the extension is adjointable with
+that adjoint. The extended constant matrix units have strongly summing
+finite-coordinate units, and their \(11\)-corner gives \(K\), just as in
+(CB.5). The scalar \(f\)-corner yields \(\psi\) and (CB.13). The
+original \(\phi(a)\) acts as this extension of its actual pointwise
+multiplier on \(J\), since both operators agree on the dense
+\(\phi(J)M_J\). Thus all required \(C_b\)-scalar actions are constructed
+on the nondegenerate ideal representation just obtained.
+
+The two physical blocks in (CB.11), transported through (CB.13), now
+have the form \(T_+\otimes1_H,T_-\otimes1_H\) on this \emph{same} graded
+\(K\). Both are odd self-adjoint unitaries commuting with
+\(\psi(C_b(\mathbb R))\). The source commutator with \(f\) times a fixed
+off-diagonal rank-one matrix gives \[
+ (T_+-T_-)\psi(f)\in\mathcal K(K)
+ \quad(f\in S).
+ \tag{CB.14}
+\] One can read this by compressing that compact commutator to one fixed
+input and output \(H\)-coordinate. This proves ordinary Hilbert-space
+compactness in (CB.14).
+
+Write \(K=K^0\oplus K^1\) for its grading, and \[
+ T_\pm=\begin{pmatrix}0&U_\pm^*\\ U_\pm&0\end{pmatrix},
+ \qquad U_\pm:K^0\longrightarrow K^1\ \mathrm{unitary}.
+\] The even unitary \[
+ V=\operatorname{diag}(1_{K^0},U_+U_-^*)
+ \tag{CB.15}
+\] commutes with the scalar action, satisfies \(VT_-V^*=T_+\), and has
+\((V-1)\psi(f)\) compact for every \(f\in S\), by (CB.14). Lemma 8A.4
+supplies its path \(V_t\), with compact scalar localizations. Keep the
+source representation on (CB.13) fixed and put \[
+ G_t=(T_+\otimes1_H)\oplus(V_tT_-V_t^*\otimes1_H).
+ \tag{CB.16}
+\] This is a norm-continuous path of odd self-adjoint involutions. Every
+diagonal source commutator is zero, by the scalar-entry calculation
+already given. For an off-diagonal elementary field \(f(r)k\), with
+\(f\in S\) and \(k\) compact, the commutator coefficient is
+\((T_+-V_tT_-V_t^*)\psi(f)\). It is compact by (CB.14) and Lemma 8A.4:
+expand the change of \(T_-\) as \[
+ V_tT_-V_t^*-T_-
+ =(V_t-1)T_-V_t^*+T_-(V_t^*-1)
+\] and move \(\psi(f)\) through the commuting factors. Tensoring with
+\(k\) preserves compactness. Finite elementary fields are norm dense in
+\(C_0(\mathbb R,\mathcal K(H))\), so contractivity and boundedness give
+compact commutators for every off-diagonal source field. The fields of
+compacts are norm-continuous in \(t\), since \(G_t\) is norm-continuous
+on the fixed Hilbert space.
+
+The endpoint \(G_1\) has the same \(T_+\) in both physical blocks. Its
+represented matrix entries therefore commute with every scalar matrix
+entry of every source field. Thus its source commutators are identically
+zero. Its square and adjoint defects are zero as well, making it
+degenerate. Formula (CB.16), with coefficient module \(C([0,1],M_J)\),
+is an actual countably generated whole interval-module cycle. Together
+with the earlier allowed compact-perturbation paths and the degenerate
+complementary summands, it is a null homotopy of the original arbitrary
+representative. This proves \(KK_h(A_\ell,\mathbb C)=0\). \(\square\)
+
+\subsubsection{8A.5. A nonzero target and its exact
+detector}\label{a.5.-a-nonzero-target-and-its-exact-detector}
+
+Give \(H\oplus H\) trivial grading and identify it with
+\(\ell^2(\mathbb Z)\), so that its first physical summand is the span of
+the coordinates \(n\geq0\). Let \(P\) be the projection onto that
+summand, and let \(Ue_n=e_{n+1}\) be the bilateral shift. On the
+countably generated graded coefficient module \[
+ E=C_0(\mathbb R,H\oplus H)\widehat\otimes Cl_1
+\] use the pointwise source action \((\pi(a)\xi)(r)=a(r)\xi(r)\), and
+the odd operator \[
+ F_w=(2P-1)\widehat\otimes L_e,
+ \qquad e=e^*,\quad e^2=1,
+ \tag{CB.17}
+\] where \(L_e\) is left multiplication on the coefficient Clifford
+module. Countable basis vectors multiplied by scalar cutoffs generate
+\(E\). The pointwise operator-norm-continuous bounded fields and their
+adjoints are adjointable. The operator in (CB.17) is an exact odd
+self-adjoint involution. Its source commutator has only the two
+off-diagonal physical entries, namely \(2k_{+-}(r)\) and
+\(-2k_{-+}(r)\), tensored with \(L_e\). They are continuous vanishing
+compact fields, hence compact module operators. This proves that \[
+ w=[(E,\pi,F_w)]\in KK_h(A_\ell,S\widehat\otimes Cl_1)
+ \tag{CB.18}
+\] is an allowed cycle.
+
+There is an actual homomorphism \[
+ j:S\otimes C(\mathbb T)\longrightarrow A_\ell,
+ \qquad j(f\otimes g)(r)=f(r)g(U).
+ \tag{CB.19}
+\] Indeed \([P,U]\) has rank one; Laurent polynomials give finite-rank
+commutators with \(P\), and uniform trigonometric approximation gives
+\([P,g(U)]\) compact for every \(g\in C(\mathbb T)\). Thus the
+off-diagonal physical entries of \(g(U)\) are compact. Multiplication by
+\(f\in S\) makes them vanish at infinity, proving that the displayed
+elementary fields lie in \(A_\ell\). The pointwise functional-calculus
+representation is contractive for the \(C_0(\mathbb R,C(\mathbb T))\)
+norm, so it completes to the stated homomorphism.
+
+Let \(v\in KK_h(C(\mathbb T),Cl_1)\) be the usual odd Hardy cycle, with
+Hilbert-space involution \(2P-1\) and representation \(g\mapsto g(U)\),
+converted to the coefficient Clifford cycle by
+\href{KT-KK-06.html}{Lesson 06}, formula (7.1). Its pairing with the
+positive circle coordinate is \[
+ \operatorname{index}(PUP:P(H\oplus H)\to P(H\oplus H))=-1:
+\] the compression is the unilateral shift, with zero kernel and
+one-dimensional cokernel. This detects \(v\ne0\) for the \textbf{full}
+KK homotopy relation: \href{KT-KK-10.html}{Lesson 10}, Theorem 6.2,
+identifies this index with a product of two separable-source odd
+classes, and its Theorem 2.3 proves the comparison with whole module
+homotopies in this separable-source, sigma-unital-coefficient scope. The
+scalar index is nonzero by \href{KT-KK-07.html}{Lesson 07}, Theorems 2.2
+and 3.2, and its transfer to full interval homotopy is
+\href{KT-KK-10.html}{Lesson 10}, Corollary 2.4. Only the separable
+circle source and scalar or finite Clifford coefficients enter this
+detector.
+
+Pullback of (CB.18) through (CB.19) is literally the simultaneous
+suspension of this cycle: \[
+ j^*w=\tau_S(v)\in
+ KK_h(SC(\mathbb T),SCl_1).
+ \tag{CB.20}
+\] Its source acts as \(f(r)g(U)\), its coefficient extension is the
+displayed \(C_0\)-module, and its operator is (CB.17). Proposition 8.2
+applies to source \(C(\mathbb T)\) and coefficient \(Cl_1\), so
+\(\tau_S(v)\ne0\). If \(w\) were zero through any allowed whole interval
+module, its source pullback would be zero through that same countably
+generated interval module, contradicting (CB.20). Therefore \(w\ne0\).
+Together with Lemma 8A.5, this proves Theorem 8A.1. \(\square\)
+
+\pandocbounded{\includegraphics[keepaspectratio,alt={The coefficient Bott map has zero domain but a detected nonzero target.}]{figures/KT-KK-12-coefficient-bott-counterexample.png}}
+
+\emph{Figure 8A.1.} The actual source algebra (CB.1) has arbitrary
+bounded norm-continuous diagonal operator fields and vanishing compact
+off-diagonal fields. Every allowed scalar-coefficient cycle is homotopic
+to a degenerate cycle by the compact perturbations and the exact unitary
+path (CB.16). The target cycle (CB.17)--(CB.18) has the suspended Hardy
+readback (CB.20), whose index sign is minus one. The displayed
+coefficient Bott arrow therefore has zero image and a nonzero target
+class. This proves nonsurjectivity of that specific operation; the
+simultaneous-suspension arrow shown in the detector has separable source
+and is injective by Proposition 8.2.
+
 \subsection{9. Exercises}\label{exercises}
 
 \textbf{9.1. The Bott defect.} Verify every bounded-cycle condition for
@@ -1361,17 +2048,19 @@ the relative class. The operator K-theory lesson's ordered suspension
 has coordinate \(x+iy\), so the sign in (6.2) agrees with that positive
 generator.
 
-\subsection{Working completion
-obligations}\label{working-completion-obligations}
+\subsection{Scope of periodicity}\label{scope-of-periodicity}
 
-The Bott and Dirac cycles, both inverse products, the planar projection
-sign, and the exact cone/coisometry extension comparison are given
-above. Proposition 8.1 also proves arbitrary-coefficient periodicity for
-separable sources. Periodicity for nonseparable sources remains to be
-checked against the exact homotopy and product conventions used earlier
-in this course. The scalar cone/coisometry comparison is proved above.
-The full-scope nonseparable-source periodicity assertion and its uses
-still require the indicated further proof.
+The Euclidean Bott and Dirac classes in Sections 2--5 are inverse for
+their stated product hypotheses. Proposition 8.1 extends the periodicity
+maps to arbitrary coefficients with separable source; Proposition 8.2
+identifies the actual simultaneous suspension map in that scope. Theorem
+8A.1 proves that the bounded coefficient Bott operation need not be
+surjective for a nonseparable source, even when the source is unital and
+the coefficient is scalar. Thus coefficient periodicity does not extend
+to every source under the countably generated-module convention. The
+simultaneous map (8.6) is defined for every source by its direct cycle
+formulas; its isomorphism assertion here has the separable-source
+hypothesis of Proposition 8.2.
 
 \subsection{References and source
 credit}\label{references-and-source-credit}

@@ -39,6 +39,17 @@
 }{% if KOMA class
   \KOMAoptions{parskip=half}}
 \makeatother
+\usepackage{longtable,booktabs,array}
+\newcounter{none} % for unnumbered tables
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
 \newsavebox\pandoc@box
@@ -852,7 +863,7 @@ local residue-group order. This distinction allows the height floor
 \subsection{6. Coprime powers and a worked
 example}\label{coprime-powers-and-a-worked-example}
 
-\textbf{Corollary 10.9.} Let \(a>b\ge2\) be coprime positive integers,
+\textbf{Corollary 10.9.} Let \(a>b\ge1\) be coprime positive integers,
 and let \(p\nmid ab\) be prime. Then
 
 \[
@@ -861,20 +872,42 @@ v_p(a^{p-1}-b^{p-1})
 \tag{10.34}
 \]
 
-\textbf{Proof.} Coprimality and \(a,b>1\) make the bases
-multiplicatively independent: a prime dividing either base forces its
-exponent to vanish in a proposed relation. In Theorem 10.8 take \(d=1\),
-\(b_1=b_2=p-1\), and \(\ln A_1=\ln(5a)\), \(\ln A_2=\ln(5b)\). These
-exceed the rational heights \(\ln a,\ln b\) and one. Then
+\textbf{Proof.} First suppose \(b>1\). Coprimality makes the bases
+\(a,b\) multiplicatively independent: a prime dividing either base
+forces its exponent to vanish in a proposed relation. In Theorem 10.8
+take \(d=1\), \(b_1=b_2=p-1\), and \(\ln A_1=\ln(5a)\),
+\(\ln A_2=\ln(5b)\). These exceed their rational heights and one.
 
+For \(b=1\), choose \(c\in\{2,3,5\}\) such that \(c\ne p\) and \(a,c\)
+are multiplicatively independent. Such a prime always exists. Dependence
+of \(a\ge2\) and a prime \(c\) would force \(a=c^j\) for an integer
+\(j\ge1\): taking a prime valuation outside \(c\) in the relation makes
+the exponent of \(a\) zero unless every prime divisor is \(c\). Thus at
+most one of the three primes is dependent with \(a\), and excluding
+\(p\) removes at most one more.
+
+Set \(\alpha_1=a/c,\alpha_2=1/c\). A relation \(\alpha_1^u\alpha_2^v=1\)
+is \(a^u c^{-u-v}=1\), so independence of \(a,c\) forces \(u=v=0\). Both
+bases are p-adic units, their common number field is \(\mathbb Q\), and
+\[
+h(a/c)\le\ln\max\{a,c\}\le\ln(5a),\qquad
+h(1/c)=\ln c\le\ln5.
+\] Use \(\ln A_1=\ln(5a)\), \(\ln A_2=\ln5\), and again \(b_1=b_2=p-1\).
+The exact identity \[
+\left(\frac ac\right)^{p-1}
+-\left(\frac1c\right)^{p-1}
+=c^{-(p-1)}(a^{p-1}-1)
+\] preserves the valuation, since \(c\ne p\).
+
+In both cases the height choices are the stated \(\ln(5a),\ln(5b)\), and
 \[
 B'\ln p\le\frac{2(p-1)\ln p}{\ln5},
 \qquad \ln(B'\ln p)\le3\ln p<10\ln p.
-\]
-
-For the second inequality use \(\ln\ln p\le\ln p\) and
-\(\ln(2/\ln5)<\ln2\le\ln p\). Thus \(H=10\ln p\). Substitute it into
-(10.22). \(\square\)
+\] For the second inequality use \(\ln\ln p\le\ln p\), \(p-1\le p\), and
+\(\ln(2/\ln5)<\ln2\le\ln p\). Thus \(H=10\ln p\). Substitute it into the
+proved bound (10.22), and use the displayed valuation identity when
+\(b=1\). This proves (10.34) for every allowed prime, including \(p=2\).
+\(\square\)
 
 For positive integers \(a,b\), the independent bases \(2,3\) are 5-adic
 units. Taking \(\ln A_1=1\), \(\ln A_2=\ln3\), Theorem 10.8 gives
@@ -892,7 +925,7 @@ its valuation is one; \(2^7-3=125\), so its valuation is three. These
 are exact illustrations of the quantity being bounded, rather than
 numerical evidence for the theorem.
 
-\textbf{Corollary 10.10 (all powers).} For coprime \(a>b\ge2\), an odd
+\textbf{Corollary 10.10 (all powers).} For coprime \(a>b\ge1\), an odd
 prime \(p\nmid ab\), and \(n\ge1\),
 
 \[
@@ -914,6 +947,28 @@ v_p(a^n-b^n)=v_p(a^q-b^q)+v_p(m)
 
 Here \(p\nmid q\) and \(p\nmid(p-1)/q\). Apply Corollary 10.9 and
 \(p-1\le p\). \(\square\)
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={An independent auxiliary prime embeds one base in the two-logarithm bound}]{../figures/one-base-embedding.png}}
+\par\smallskip
+\begin{flushleft}\small
+\emph{Figure 10.1b. Choose \(c\in\{2,3,5\}\) with \(c\ne p\) and
+independent of \(a\). At most one candidate is removed by dependence and
+at most one by the prime \(p\). The invertible exponent change
+\((u,v)\mapsto(u,-u-v)\) proves that \(a/c,1/c\) are independent. The
+lower row gives the exact unit-factor identity and the height choices
+\(\ln A_1=\ln(5a),\ln A_2=\ln5\). The example \(a=8,p=3\) removes
+\(c=2\) by dependence and \(c=3\) by the unit condition, leaving
+\(c=5\); both differences have valuation two. The complete argument is
+Corollaries 10.9--10.10, and Solution 30 verifies the examples and the
+height cutoff. Human-source context: the determinant estimate from
+Bugeaud's freely accessible 1999 paper, cited below; the auxiliary-prime
+embedding here is proved explicitly from Theorem 10.8.
+\href{../figure_sources/one_base_embedding.py}{Figure program}.}
+\end{flushleft}
+\end{minipage}\par\medskip
+
 
 \subsection{7. A deep-unit refinement}\label{a-deep-unit-refinement}
 
@@ -5089,7 +5144,2370 @@ pp.~352 and 365--366, cited below.
 \end{minipage}\par\medskip
 
 
-\subsection{23. Exercises with
+\subsection{23. Heights of the actual exponent
+support}\label{heights-of-the-actual-exponent-support}
+
+The torus contribution can be measured before enclosing the exponents in
+a coordinate box. This keeps the geometry of a support through a change
+of multiplicative bases and through division by \(q\). Positive and
+negative nodes require separate heights unless the support is symmetric.
+
+\subsubsection{A projective height from a support
+function}\label{a-projective-height-from-a-support-function}
+
+Let \(K\) have degree \(d\), and use the absolute values and place
+multiplicities of Section 14. Thus \(\sum_v\ln|z|_v=0\) for
+\(z\in K^\times\); a complex place is counted with multiplicity two.
+Take \(\theta=(\theta_1,\ldots,\theta_r)\in(K^\times)^r\), and put
+\(\ell_v=(\ln|\theta_1|_v,\ldots,\ln|\theta_r|_v)\). Only finitely many
+finite-place vectors \(\ell_v\) are nonzero. For a nonempty compact set
+\(C\subset\mathbb R^r\), and a nonempty finite set
+\(M\subset\mathbb Z^r\), define
+
+\[
+\begin{aligned}
+\mathfrak H_\theta(C)&=\frac1d\sum_v\sup_{u\in C}u\cdot\ell_v,\\
+\mathfrak H_\theta(M)&=\mathfrak H_\theta(\operatorname{conv}M)
+=h_\infty((\theta^m)_{m\in M}).
+\end{aligned}
+\tag{10.159}
+\]
+
+The finite-set equality, and all the properties needed below, are proved
+next.
+
+\textbf{Theorem 10.59 (the support height).} The quantities in (10.159)
+are finite and nonnegative. For a real vector \(a\), a real \(t\ge0\),
+and an integer \(s\),
+
+\[
+\begin{aligned}
+\mathfrak H_\theta(C+a)&=\mathfrak H_\theta(C),&
+\mathfrak H_\theta(tC)&=t\mathfrak H_\theta(C),\\
+C\subset C'&\Longrightarrow\mathfrak H_\theta(C)\le\mathfrak H_\theta(C'),&
+h_\infty((\theta^{sm})_{m\in M})
+&=\begin{cases}
+s\mathfrak H_\theta(M),&s\ge0,\\
+|s|\mathfrak H_\theta(-M),&s<0.
+\end{cases}
+\end{aligned}
+\tag{10.160}
+\]
+
+If \(|m_i|\le A_i\) for every \(m\in M\), then
+
+\[
+\mathfrak H_\theta(M),\ \mathfrak H_\theta(-M)
+\le2\sum_i A_i h(\theta_i).
+\tag{10.161}
+\]
+
+These heights are unchanged by extending \(K\). Root-of-unity factors
+attached separately to the monomial coordinates change neither height.
+
+\textbf{Proof.} The support function of a finite convex hull is the
+maximum over its original points: a convex combination cannot exceed
+their maximum, and those points belong to the hull. Since
+\(\ln|\theta^m|_v=m\cdot\ell_v\), its normalized sum is exactly the
+maximum projective height in (10.159). All sums are finite. For a
+compact \(C\), translating by \(a\) adds \(a\cdot\ell_v\) at each place.
+The product formula for each \(\theta_i\) makes the sum of these
+additions zero. Translating by the negative of any point of \(C\) places
+zero in the set; every resulting support function is then nonnegative.
+This proves nonnegativity.
+
+Nonnegative scaling multiplies each support function by \(t\), including
+\(t=0\); inclusion increases it. Taking \(s\ge0\) in the monomial
+identity multiplies the local maximum by \(s\), while \(s<0\) replaces
+\(M\) by \(-M\). This proves (10.160). At any place, the box bounds both
+support functions by \(\sum_i A_i|\ln|\theta_i|_v|\). The sum of the
+positive logarithms for one element is \(d h(\theta_i)\), and the
+product formula says the sum of the negative logarithms has the same
+absolute value. Their total is \(2d h(\theta_i)\), proving (10.161).
+
+For completeness, an extension \(E/K\) repeats each archimedean
+embedding \([E:K]\) times. At a finite place \(v\), the logarithm of the
+norm absolute value at a place \(w\) of \(E\) restricting to \(v\) is
+multiplied by \([E_w:K_v]\). The local degrees sum to \([E:K]\), by the
+places identities proved in \href{../TR-BAKER-02.html}{Absolute values
+and places}. The support function is homogeneous for these positive
+multipliers. Thus its unnormalized place sum is multiplied by \([E:K]\);
+dividing by \([E:\mathbb Q]=[E:K]d\) preserves its value. Every root of
+unity has absolute value one at every place, by its finite-order
+equation, so its coordinate factors make no contribution. \(\square\)
+
+Symmetry is a sufficient reason for the two signs to agree; it is not
+automatic. Over \(\mathbb Q\), for \(\theta=(2,3)\) and
+\(M=\{(0,0),(1,0),(0,1)\}\), the monomial vector is \((1,2,3)\), of
+height \(\ln3\). The inverse vector \((1,1/2,1/3)\) becomes the
+primitive integer vector \((6,3,2)\), of height \(\ln6\). These are
+\(\mathfrak H_\theta(M)\) and \(\mathfrak H_\theta(-M)\).
+
+\subsubsection{Contraction and the original multiplicative
+bases}\label{contraction-and-the-original-multiplicative-bases}
+
+\textbf{Theorem 10.60 (a height envelope for the divided support).} Let
+\(C\subset\mathbb R^r\) be nonempty and compact. If a finite nonempty
+support \(M_I\) satisfies \(M_I\subset q^{-I}C-x_I\), then
+
+\[
+\mathfrak H_\theta(M_I)\le q^{-I}\mathfrak H_\theta(C),\qquad
+\mathfrak H_\theta(-M_I)\le q^{-I}\mathfrak H_\theta(-C).
+\tag{10.162}
+\]
+
+The support passage
+\(M_{I+1}=\{(m-m_*)/q:m\text{ in a retained coset of }M_I\}\) retains
+this form of containment. A further restriction of the support and any
+choice of reference point retain the bound.
+
+Suppose also that \(\alpha_1,\ldots,\alpha_n\in K^\times\), that
+\(B=(b_{ji})\) is a real \(n\)-by-\(r\) matrix of rank \(r\), and that a
+positive integer \(\tau\) satisfies \(\tau b_{ji}\in\mathbb Z\) and
+\(\theta_i^\tau=\prod_j\alpha_j^{\tau b_{ji}}\). For finite \(D_j\ge0\),
+put \(C_B=\{u: |(Bu)_j|\le D_j,\ 1\le j\le n\}\). Then \(C_B\) is
+compact and centrally symmetric, and
+
+\[
+\mathfrak H_\theta(C_B)=\mathfrak H_\theta(-C_B)
+\le2\sum_{j=1}^nD_j h(\alpha_j),\qquad
+\mathfrak H_\theta(\pm M_I)
+\le2q^{-I}\sum_jD_jh(\alpha_j)
+\quad(M_I\subset q^{-I}C_B-x_I).
+\tag{10.163}
+\]
+
+\textbf{Proof.} Translation, scaling and inclusion in Theorem 10.59 give
+(10.162). The next retained support is contained in
+\(q^{-(I+1)}C-(x_I+m_*)/q\), so induction preserves exactly this
+envelope. Restriction uses inclusion; changing reference uses
+translation.
+
+Choose an invertible \(r\)-by-\(r\) row minor of \(B\). Its inverse
+bounds each coordinate of \(u\in C_B\) by a fixed finite linear
+combination of the \(D_j\). Thus \(C_B\) is bounded; its defining
+inequalities make it closed. To see directly that its support maximum is
+attained, take a sequence approaching the supremum of a linear function.
+Successive bisection of a bounded coordinate interval chooses an
+infinite subsequence in nested closed intervals of lengths tending to
+zero. Repeating this for the finitely many coordinates gives a
+convergent subsequence. Its limit lies in the closed set, and the finite
+linear sum tends to its value there. This also proves the required
+compactness in finite dimension.
+
+Taking absolute values of the \(\tau\)-power identities and cancelling
+\(\tau\) gives \(\ell_v=B^{\mathsf T}(\ln|\alpha_j|_v)_j\). Consequently
+\[
+u\cdot\ell_v=\sum_j(Bu)_j\ln|\alpha_j|_v
+\le\sum_jD_j|\ln|\alpha_j|_v|
+\qquad(u\in C_B).
+\] Sum this inequality and use the inverse-height identity proved in
+Theorem 10.59. The set \(C_B\) is centrally symmetric because its
+inequalities use absolute values. Combining the resulting bound with
+(10.162) proves (10.163). \(\square\)
+
+The same height bound holds for a nonempty affine box constraint
+\(|(Bu)_j-z_j|\le D_j\), with arbitrary real \(z_j\). Indeed its local
+support maximum is at most
+\(\sum_j z_j\ln|\alpha_j|_v+\sum_jD_j|\ln|\alpha_j|_v|\). The first sum
+disappears after summing over places, by the product formula, even if
+\(z\) is outside the image of \(B\). Thus the bound uses the half-widths
+in the original coordinates and follows the original torus products
+through a change of basis. An enclosing box in the new coordinates is
+unnecessary.
+
+\subsubsection{The coefficient and nonzero-value
+budgets}\label{the-coefficient-and-nonzero-value-budgets}
+
+\textbf{Corollary 10.61 (initial coefficients with the support height).}
+Retain every hypothesis and notation of Theorem 10.55, including
+\(N>M_*\), and put \(M=\Lambda-\lambda_0\),
+\(H_+=\mathfrak H_\theta(M)\), \(H_-=\mathfrak H_\theta(-M)\). Define
+\(b(s)=PsH_+\) for \(s\ge0\), and \(b(s)=P|s|H_-\) for \(s<0\). Its
+nonzero integral kernel exists with
+
+\[
+\begin{aligned}
+h_\infty(c)\le h_2(c)\le&
+\tfrac12\ln N+\frac{\ln|\Delta_K|}{2d}\\
+&+\frac1{N-M_*}\sum_{s=-S}^S\sum_{\boldsymbol t\in\mathcal J_T}
+\left(\tfrac12\ln N+\ln\mathcal H_0(|s|;\boldsymbol t)+b(s)\right),
+\end{aligned}
+\tag{10.164}
+\]
+
+and hence with
+
+\[
+\begin{aligned}
+h_2(c)\le&\ \tfrac12\ln N+\frac{\ln|\Delta_K|}{2d}\\
+&+\frac{M_*}{N-M_*}\left(
+\tfrac12\ln N+\ln\mathcal B_0^*(S,T)
++\frac{PS(S+1)}{2(2S+1)}(H_++H_-)\right).
+\end{aligned}
+\tag{10.165}
+\]
+
+Both bounds are at least as strong as their respective bounds (10.152)
+and (10.153).
+
+\textbf{Proof.} The normalized torus monomials in a row are
+\(\alpha_0^{s w_\lambda}\theta^{Ps m_\lambda}\). At an archimedean
+embedding, their maximum times
+\(\sqrt N\mathcal H_0(|s|;\boldsymbol t)\) bounds the row's Euclidean
+norm. At a finite place their maximum bounds its maximum norm, since
+every scalar is an integer. The phase has absolute value one. Summing
+the logarithms of these maxima gives exactly \(b(s)\), by Theorem 10.59.
+The support contains zero, so each local torus maximum is at least one;
+the scalar majorant is also at least one, by Theorem 10.44. These are
+valid row factors in the completely proved weighted Siegel lemma (8.40),
+with a zero row allowed factor one. Its proof therefore gives (10.164)
+over \(K\), exactly as in Theorem 10.55. The same row system, integral
+vector and polynomial-independence argument impose every original zero.
+
+The positive and negative node sums are both \(S(S+1)/2\). There are
+\(J_T\) rows at each node and \(M_*=(2S+1)J_T\). Using the uniform
+scalar bound gives (10.165). Finally (10.161) bounds each of \(H_+,H_-\)
+by \(2\sum_iA_i h(\theta_i)\); substitution gives the original two torus
+terms, without changing any other term. \(\square\)
+
+\textbf{Corollary 10.62 (the support budget for a nonzero value).} In
+the phase family of Theorem 10.55, suppose the \(\gamma_i\) are units at
+the chosen prime, and consider an integer-node prepared value
+\(V=\Psi_I(s;\boldsymbol t)\), with \(t_0\le D\). Put
+\(C_c=\min\{h_\infty(c)+\ln N,h_2(c)+\tfrac12\ln N\}\) and
+\(\delta=\min_jv_p(c_j)\). If \(V\ne0\), then
+
+\[
+v_p(V)-\delta\le\frac d{ef\ln p}
+\left(C_c+\ln\mathcal H_I(|s|;\boldsymbol t)
++\Xi_{I,0,t_0}\ln q+b(s)\right).
+\tag{10.166}
+\]
+
+In the first fractional family of Corollary 10.57, with its support
+field \(E_\Lambda\), the nonzero value at \(x=s/q\) satisfies instead
+
+\[
+v_p(V)-\delta\le\frac{q^{h_\Lambda}d}{ef\ln p}
+\left(C_c+\ln\mathcal H_I(|s|/q;\boldsymbol t)
++\Xi_{I,1,t_0}\ln q+\frac{b(s)}q\right).
+\tag{10.167}
+\]
+
+Uniformly for \(|s|\le X\) in the integer case and \(|s|\le qX\) in the
+fractional case, the torus term may be replaced by
+
+\[
+PX\max\{H_+,H_-\}.
+\tag{10.168}
+\]
+
+The corresponding strict zero-forcing comparisons of Theorem 10.43 and
+Corollaries 10.54 and 10.58 remain valid with these smaller budgets,
+under all their original analytic and field hypotheses.
+
+\textbf{Proof.} For the integer case the phase congruence puts every
+torus monomial in \(K\). Repeat Theorem 10.41's product formula after
+dividing by a coefficient of minimum local valuation. Its coefficient
+contribution is \(C_c\); Theorem 10.44 supplies the individual scalar
+bound, and (10.115) supplies its clearing exponent. At each place the
+torus contribution is the maximum of the logarithms of
+\(\theta^{Ps m_\lambda}\), with the phase removed. Its sum is
+\(d b(s)\). Its omitted contribution at the chosen prime is zero: the
+\(\gamma_i\) are units, and taking absolute values of
+\(\gamma_i=\theta_i^P\zeta^{d_i}\) shows that the \(\theta_i\) are units
+there. These local maxima are nonnegative because \(0\in M\). This
+proves (10.166).
+
+In the fractional case,
+\(U_\lambda^q=\alpha_0^{w_\lambda}\theta^{Pm_\lambda}\). Taking local
+logarithmic absolute values divides the preceding torus maximum by
+\(q\), and its field-normalized sum is \(b(s)/q\), by the
+field-invariance proof of Theorem 10.59. Theorem 10.56 still gives the
+global degree \(q^{h_\Lambda}d\) and the original local \(e,f\); none of
+these degree factors has been discarded. The same coefficient-normalized
+product formula gives (10.167). The bounds on \(s\) give (10.168).
+
+The analytic conclusions in the cited zero-forcing proofs supply their
+unchanged lower bounds for the same valuations. A strict inequality
+between that lower bound and the new arithmetic upper bound again
+contradicts \(V\ne0\). Taking the maximum over the asserted output
+indices proves all the same zeros. This changes only the torus height
+estimate; every slope, depth, order and field condition remains a
+hypothesis. \(\square\)
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={The exact exponent diamond and its larger coordinate box, with their local height contributions}]{../figures/support-height-envelope.png}}
+\par\smallskip
+\begin{flushleft}\small
+\emph{Figure 10.11. Over \(\mathbb Q\), with \(\theta=(2,3)\), the
+diamond \(C=\{(u_1,u_2):|u_1|+2|u_2|\le2\}\) has seven integer points;
+its enclosing box \([-2,2]\times[-1,1]\) has fifteen. At the real,
+2-adic and 3-adic places the diamond's support contributions are
+\(\ln4,\ln4,\ln3\), attained respectively at \((2,0),(-2,0),(0,-1)\).
+The box contributions are \(\ln12,\ln4,\ln3\). Their exact projective
+heights are therefore \(\ln48\) and \(\ln144\). The bar lengths are
+numerical renderings of these labelled exact logarithms. The polygon,
+lattice points, active points and height identities are exact. Equations
+(10.159)--(10.168) prove the general support, contraction and budget
+mechanism; Solution 31 checks the primitive monomial vectors and a
+divided-support example. Human-source context: the original-coordinate
+torus identity and support containment (4.16), (5.1), and the
+product-formula steps (5.34)--(5.36), (7.13) in Yu's free 2013 paper,
+cited below. \href{../figure_sources/support_height_envelope.py}{Figure
+program}.}
+\end{flushleft}
+\end{minipage}\par\medskip
+
+
+The enclosing-box estimate is valid, but this example loses exactly
+\(\ln3\) in its torus height. The support budget avoids that loss, and
+(10.163) retains bounds in the original bases after a multiplicative
+change of coordinates.
+
+\subsection{24. The field and the numerical scale of the initial
+kernel}\label{the-field-and-the-numerical-scale-of-the-initial-kernel}
+
+The initial rows need not generate the entire ambient number field. We
+can construct their coefficients over the field they actually generate.
+Its discriminant is controlled by the heights of explicit normalized
+torus monomials, so an unrelated extension of the ambient field does not
+enter the coefficient budget.
+
+\subsubsection{The exact field of the row
+entries}\label{the-exact-field-of-the-row-entries}
+
+Retain Theorem 10.55, and write \(M=\Lambda-\lambda_0\),
+\(H_+=\mathfrak H_\theta(M)\), \(H_-=\mathfrak H_\theta(-M)\). The
+normalized monomials and the field generated by all initial row entries
+are
+
+\[
+\begin{aligned}
+W_\lambda&=\alpha_0^{w_\lambda}\theta^{P(\lambda-\lambda_0)}
+\in K,\qquad W_{\lambda_0}=1,\\
+E_0&=\begin{cases}
+\mathbb Q,&S=0,\\
+\mathbb Q(W_\lambda:\lambda\in\Lambda),&S\ge1,
+\end{cases}
+\qquad d_0=[E_0:\mathbb Q]\le d.
+\end{aligned}
+\tag{10.169}
+\]
+
+\textbf{Theorem 10.63 (initial coefficients over their row field).} The
+field in (10.169) is exactly the smallest subfield of \(K\) containing
+every coefficient of the initial homogeneous system (10.150). If
+\(N>M_*\), that system has a nonzero coefficient vector
+\(c\in\mathcal O_{E_0}^N\subset\mathcal O_K^N\) giving the same nonzero
+Laurent polynomial and every originally specified zero.
+
+For \(S\ge1\), choose normalized monomials \(z_1,\ldots,z_a\) that
+generate \(E_0\). Put \(F_j=\mathbb Q(z_1,\ldots,z_j)\),
+\(F_0=\mathbb Q\), so \(F_a=E_0\), and let \(e_j=[F_j:F_{j-1}]\). Omit
+steps of degree one, and define \(\Gamma=\sum_j(e_j-1)h(z_j)\). For
+\(S=0\), use the empty tower and \(\Gamma=0\). Then
+
+\[
+\frac{\ln|\Delta_{E_0}|}{2d_0}
+\le\frac12\ln d_0+\Gamma,\qquad
+\Gamma\le(d_0-1)P\min\{H_+,H_-\}.
+\tag{10.170}
+\]
+
+With \(b(s)\) as in Corollary 10.61, the coefficients can be chosen with
+
+\[
+\begin{aligned}
+h_\infty(c)\le h_2(c)\le&
+\frac12\ln(Nd_0)+\Gamma\\
+&+\frac1{N-M_*}\sum_{s=-S}^S
+\sum_{\boldsymbol t\in\mathcal J_T}
+\left(\frac12\ln N+\ln\mathcal H_0(|s|;\boldsymbol t)+b(s)\right),
+\end{aligned}
+\tag{10.171}
+\]
+
+and therefore with
+
+\[
+\begin{aligned}
+h_2(c)\le&\ \frac12\ln(Nd_0)+\Gamma\\
+&+\frac{M_*}{N-M_*}
+\left(\frac12\ln N+\ln\mathcal B_0^*(S,T)
++\frac{PS(S+1)}{2(2S+1)}(H_++H_-)\right).
+\end{aligned}
+\tag{10.172}
+\]
+
+The actual discriminant term \(\ln|\Delta_{E_0}|/(2d_0)\) may instead be
+retained, replacing \(\frac12\ln d_0+\Gamma\) in either formula.
+
+\textbf{Proof.} Every entry of the row at \(s\) is an integer prepared
+scalar times \(W_\lambda^s\). If \(S=0\), all entries are rational
+integers, so their field is \(\mathbb Q\). If \(S\ge1\), these
+expressions first show that every entry belongs to the monomial field in
+(10.169). Conversely take the row at \(s=1\) with derivative index zero.
+Its column with \(a=0,\ell=1\) and any \(\lambda\) is
+\(\Delta(1;k)W_\lambda=(k+1)W_\lambda\). Every Euler factor there is
+\(\Delta(\omega;0)=1\). Division by the nonzero rational integer \(k+1\)
+recovers \(W_\lambda\) from that row. Thus every field containing the
+entries contains each monomial, proving minimality.
+
+The
+\href{../TR-BAKER-08.html\#the-discriminant-of-the-coefficient-field}{discriminant-and-generators
+proof}, equation (8.33), gives the first bound in (10.170) for this
+explicit tower, including nonintegral monomials. Each selected \(z_j\)
+is a coordinate of the monomial vector containing \(1\). Its ordinary
+height is at most that vector's maximum projective height \(PH_+\):
+locally, the vector maximum bounds \(\max\{1,|z_j|_v\}\). The inverse
+vector also contains \(1\), so it bounds \(h(z_j^{-1})=h(z_j)\) by
+\(PH_-\). Consequently \(h(z_j)\le P\min\{H_+,H_-\}\). The integer
+degrees have product \(d_0\); induction using \((u-1)+(v-1)\le uv-1\)
+gives \(\sum_j(e_j-1)\le d_0-1\). This proves the second bound. The
+empty-tower case has \(d_0=1,\Delta_{E_0}=1\).
+
+Apply the completely proved weighted Siegel lemma (8.40) over \(E_0\) to
+the actual representative rows. Their number \(M_*\), their integer
+scalar bounds and all their dependencies are unchanged. Their normalized
+torus row height is \(b(s)\), as in Corollary 10.61. This height can be
+computed over \(K\), because the row vector lies in \(E_0\) and
+projective heights are invariant under extension. The individual
+\(\theta_i\) need not lie in \(E_0\). The Euclidean row bound adds
+\(\frac12\ln N+\ln\mathcal H_0\) as before. The finite-place conditions
+give \(c\in\mathcal O_{E_0}^N\), and such elements are also algebraic
+integers in \(K\).
+
+That lemma supplies \(\frac12\ln N+\ln|\Delta_{E_0}|/(2d_0)\), followed
+by the displayed row sum divided by \(N-M_*\). Substitution of (10.170)
+proves (10.171). Summing the positive and negative nodes separately
+proves (10.172), exactly as in (10.165). A nonzero coefficient vector
+still gives a nonzero polynomial by Lemma 10.29, and the same
+representative-row argument preserves all jets in (10.150). This proves
+every assertion. \(\square\)
+
+\subsubsection{Full widths in the original
+coordinates}\label{full-widths-in-the-original-coordinates}
+
+The original torus widths can now be inserted before any numerical
+constants are rounded. Let \(\alpha_1,\ldots,\alpha_r\in K^\times\), and
+suppose the multiplicative change of basis in Theorem 10.60 satisfies,
+for a positive integer \(\tau\),
+\(\theta_i^\tau=\omega_i\prod_j\alpha_j^{\tau b_{ji}}\), where
+\(\omega_i\) is a root of unity and every \(\tau b_{ji}\) is integral.
+The root-of-unity factors contribute zero to every local logarithm, so
+the proof of (10.163) still applies. Suppose the original support
+coordinates \(B\Lambda\) lie in a translated box of full widths
+\(D_1,\ldots,D_r\), and put \(L_\alpha=\sum_j D_j h(\alpha_j)\). After
+choosing the reference point \(\lambda_0\), its original coordinates
+\(BM\) satisfy affine box constraints with half-widths \(D_j/2\). The
+affine-centre proof following (10.163) gives
+
+\[
+H_+,H_-\le L_\alpha,\qquad
+\Gamma\le(d_0-1)P L_\alpha.
+\tag{10.173}
+\]
+
+Here the box condition is imposed on \(Bm\); it does not require its
+centre to be in the image of \(B\).
+
+\textbf{Corollary 10.64 (an initial budget in the original heights).}
+Under these hypotheses and \(N>M_*\), the initial coefficient vector may
+be chosen with
+
+\[
+\begin{aligned}
+h_2(c)\le&\ \frac12\ln(Nd_0)+(d_0-1)P L_\alpha\\
+&+\frac{M_*}{N-M_*}
+\left(\frac12\ln N+\ln\mathcal B_0^*(S,T)
++\frac{PS(S+1)}{2S+1}L_\alpha\right).
+\end{aligned}
+\tag{10.174}
+\]
+
+Replacing \(d_0\) everywhere by its upper bound \(d\) gives a valid
+further bound.
+
+\textbf{Proof.} Substitute both parts of (10.173) into (10.172). The
+factor of two from \(H_++H_-\) cancels the two in its denominator. The
+replacement by \(d\) increases \(\ln d_0\) and \(d_0-1\), while all
+other terms stay unchanged and \(P L_\alpha\ge0\). \(\square\)
+
+In particular a full width \(D_j\) is not a half-width \(D_j\). This
+distinction accounts for a factor of two in the torus contribution.
+
+\subsubsection{Substitution at the numerical
+scale}\label{substitution-at-the-numerical-scale}
+
+\textbf{Corollary 10.65 (the scaled coefficient inequality).} Suppose
+\(S\ge1\), \(N\ge c_*M_*\) with \(c_*>1\), and that positive numbers
+\(\mathcal D,c_1,c_2,\sigma_1,\ldots,\sigma_r\) satisfy
+
+\[
+h(\alpha_j)\le\sigma_j,\qquad
+D_j=\frac{\mathcal D}{c_1c_2rPd\sigma_j},\qquad
+Z=\frac{S\mathcal D}{d}.
+\tag{10.175}
+\]
+
+Then a coefficient vector with every zero in Theorem 10.63 exists with
+
+\[
+\begin{aligned}
+\frac{h_2(c)}Z\le&
+\frac{d\ln(Nd_0)}{2S\mathcal D}
++\frac{d_0-1}{c_1c_2S}\\
+&+\frac1{c_*-1}\left(
+\frac{d(\frac12\ln N+\ln\mathcal B_0^*(S,T))}{S\mathcal D}
++\frac1{2c_1c_2}\left(1+\frac1{2S+1}\right)\right).
+\end{aligned}
+\tag{10.176}
+\]
+
+An explicit generator tower may improve the second term to \(\Gamma/Z\).
+If \(S\ge g>0\), the last factor \(1+1/(2S+1)\) is at most
+\(1+1/(2g+1)\).
+
+\textbf{Proof.} Formula (10.175) gives \[
+P L_\alpha=P\sum_jD_jh(\alpha_j)
+\le P\sum_jD_j\sigma_j
+=\frac{\mathcal D}{c_1c_2d}.
+\] Also \(M_*/(N-M_*)\le1/(c_*-1)\): divide \(N\ge c_*M_*\) by \(M_*>0\)
+and subtract one. Every term in the parentheses of (10.174) is
+nonnegative. Divide that bound by \(Z\), insert these inequalities, and
+use the exact identity \[
+\frac{S+1}{2S+1}=\frac12\left(1+\frac1{2S+1}\right).
+\] This proves (10.176), including its coefficient \(\frac1{2c_1c_2}\).
+Retaining \(\Gamma\) in (10.172) proves the tower refinement. Finally
+\(S\ge g\) increases the positive denominator \(2S+1\), giving the
+asserted upper bound. \(\square\)
+
+Equation (10.176) supplies a direct numerical comparison once the column
+surplus, scalar majorant and coefficient-field tower have been
+determined. It retains the full-width torus term without an
+ambient-field discriminant. The later zero-forcing inequalities still
+require their own strict comparisons.
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={A rational initial kernel and an algebraic initial kernel use their actual row fields}]{../figures/initial-coefficient-field.png}}
+\par\smallskip
+\begin{flushleft}\small
+\emph{Figure 10.12. For \(k=L=S=1,T=0,\Lambda=\{0,1,2,3\},P=1\), the
+initial rows are \(0\), \((1,1,1,1)\), \(2(1,t,t^2,t^3)\). The vector
+\((-t,t^2+t+1,-t^2-t-1,t)\) is their exact integral kernel. Left:
+\(t=6\), with ambient \(K=\mathbb Q(\sqrt5)\), gives row field
+\(\mathbb Q\), vector \((-6,43,-43,6)\), and no discriminant cost. The
+ambient-field cost would be \(\frac14\ln5\). Right: \(t=\sqrt6\)
+generates row field \(\mathbb Q(\sqrt6)\), with discriminant \(24\). Its
+cost \(\frac14\ln24\) is retained; the generator proof bounds it by
+\(\frac12\ln12\). The exact coefficient heights are
+\(\ln43,\frac12\ln3770\) on the left and
+\(\frac12\ln43,\frac14\ln10180\) on the right. Theorem 10.63 and
+equations (10.169)--(10.176) prove the field and budget mechanism;
+Solution 32 verifies the rows, discriminants and heights. Human-source
+context: the initial coefficient-field reduction in Lemma 4.2 of Yu's
+free 2013 paper; the complete discriminant and Siegel inputs are proved
+in the earlier lesson linked above, from Matveev's free paper.
+\href{../figure_sources/initial_coefficient_field.py}{Figure program}.}
+\end{flushleft}
+\end{minipage}\par\medskip
+
+
+\subsection{25. Constructing enough columns in one phase
+class}\label{constructing-enough-columns-in-one-phase-class}
+
+The coefficient inequalities require a surplus of columns over
+equations. We now produce that surplus from the volume of a closed box,
+the covolume of the saturated exponent lattice and the number of
+possible phase classes. The boundary of the box matters when its
+normalized volume is an integer.
+
+\subsubsection{Points in a translated closed
+box}\label{points-in-a-translated-closed-box}
+
+\textbf{Theorem 10.66 (the closed-box lattice count).} Let
+\(\mathcal L=B\mathbb Z^r\), with \(B\) an invertible real matrix, and
+let \(C=\prod_{j=1}^r[0,D_j]\), with every \(D_j>0\). Write
+
+\[
+\Delta=|\det B|,\qquad V=\prod_jD_j,\qquad m=\lfloor V/\Delta\rfloor.
+\tag{10.177}
+\]
+
+There are \(m+1\) distinct points \(y_0,\ldots,y_m\) of \(C\) such that
+all \(y_j-y_0\) lie in \(\mathcal L\). Consequently a translate of \(C\)
+contains \(m+1\) distinct lattice points, including zero.
+
+If \(\mathcal L\supset\mathbb Z^r\) has finite index
+\(J=|\mathcal L/\mathbb Z^r|\), then
+
+\[
+\Delta=J^{-1},\qquad m=\lfloor JV\rfloor.
+\tag{10.178}
+\]
+
+\textbf{Proof.} Take the half-open fundamental cell \(F=B[0,1)^r\). Its
+translates by \(\mathcal L\) partition \(\mathbb R^r\), and its volume
+is \(\Delta\). For \(x\in F\), let \(n_C(x)\) count the points of
+\(x+\mathcal L\) in \(C\). This is a finite sum of indicator functions:
+boundedness of \(C-F\) bounds the integer coordinates \(B^{-1}\ell\) of
+any participating lattice vector. Translating each integral and using
+the partition gives \[
+\int_F n_C(x)\,dx
+=\sum_{\ell\in\mathcal L}\int_{F+\ell}\mathbf1_C(y)\,dy
+=V.
+\] The volume and translation rules used here are the same ones proved
+in the lattice argument of
+\href{../TR-BAKER-08.html\#small-solutions-over-the-coefficient-field}{Small
+solutions over the coefficient field}. If \(V/\Delta>m\), this integral
+prevents \(n_C(x)\le m\) everywhere. Some coset therefore supplies
+\(m+1\) points.
+
+For the equality case \(V/\Delta=m\), enlarge \(C\) about its centre by
+factors \(1+1/n\). Each enlarged closed box has volume strictly greater
+than \(m\Delta\), so it contains \(m+1\) points
+\(x_n+\ell_{0n},\ldots,x_n+\ell_{mn}\), with \(x_n\in F\). All
+participating lattice vectors lie in one fixed bounded set, because the
+enlarged boxes lie in the box enlarged by two and \(F\) is bounded.
+There are finitely many such lattice vectors. Passing to a subsequence
+fixes the distinct vectors \(\ell_0,\ldots,\ell_m\); a further
+subsequence makes \(x_n\) converge in the closed bounded cell
+\(B[0,1]^r\). Coordinatewise interval bisection gives this convergent
+subsequence, as in the proof of Theorem 10.60. The limits \(x+\ell_j\)
+lie in \(C\): its closed inequalities are the limits of the enlarged
+inequalities. Their differences are the distinct lattice differences
+\(\ell_j-\ell_0\). This proves the count also at integer normalized
+volume.
+
+For (10.178), since every coordinate unit vector belongs to
+\(\mathcal L\), the matrix \(U=B^{-1}\) is integral. Multiplication by
+\(B^{-1}\) identifies \(\mathcal L/\mathbb Z^r\) with
+\(\mathbb Z^r/U\mathbb Z^r\). Its index is \(|\det U|\). Here is an
+integer reduction proof of that identity. Interchanging rows or columns,
+changing a sign, and adding an integer multiple of another row or column
+preserve index and absolute determinant. The Euclidean algorithm makes
+the first column have a positive pivot and zeros below. If an entry in
+its first row is not divisible by the pivot, column division and
+interchange produce a smaller positive pivot; repeat. This must stop
+because positive integers decrease. Column subtraction then clears the
+first row and leaves a nonsingular block of size \(r-1\). Induction
+diagonalizes the matrix by these operations. The quotient for a diagonal
+matrix has the product of the absolute diagonal entries as its index, by
+independent residue representatives. This is its absolute determinant.
+Thus \(J=|\det U|=1/\Delta\), proving (10.178). \(\square\)
+
+The enlargement argument uses a closed box. For the open interval
+\(C=(0,1)\) and lattice \(\mathbb Z\), the normalized volume is one but
+no translate contains two lattice points.
+
+\subsubsection{Retaining a single phase}\label{retaining-a-single-phase}
+
+\textbf{Lemma 10.67 (the phase-class count).} Take the \(m+1\) lattice
+differences in Theorem 10.66 and write them as \(B\lambda_j\), with
+\(\lambda_j\in\mathbb Z^r\). For integers \(G_0\ge1\) and
+\(d_1,\ldots,d_r\), put
+
+\[
+g=\gcd(G_0,d_1,\ldots,d_r),\qquad H=G_0/g.
+\tag{10.179}
+\]
+
+There is a set \(\Lambda\) of at least \(\lceil(m+1)/H\rceil\) of these
+distinct integer vectors, all satisfying the same congruence
+\(\boldsymbol d\cdot\lambda\equiv\varepsilon\pmod{G_0}\). Moreover
+\(B\Lambda\subset C-y_0\).
+
+\textbf{Proof.} Each phase value is a multiple of \(g\) modulo \(G_0\),
+so there are at most \(H\) possible values. If every class contained
+fewer than \(\lceil(m+1)/H\rceil\) of the \(m+1\) points, their total
+would be smaller than \(m+1\). Choose a class of at least that size. The
+map \(B\) is injective, so no points coalesce. The containment holds
+because every original difference was \(y_j-y_0\). This includes the
+case \(d_i=0\) for every \(i\), when \(g=G_0,H=1\). \(\square\)
+
+\subsubsection{A certified surplus of prepared
+columns}\label{a-certified-surplus-of-prepared-columns}
+
+\textbf{Corollary 10.68 (box volume supplies the initial kernel).}
+Suppose the multiplicative and phase hypotheses of Theorem 10.55 are
+available for the lattice basis \(B\) and the phase data of Lemma 10.67.
+For integers \(k,L\ge1,S,T\ge0\), choose the retained support
+\(\Lambda\) there. Its number of coefficient columns satisfies
+
+\[
+\begin{aligned}
+kL\left\lceil\frac{\lfloor V/\Delta\rfloor+1}{H}\right\rceil
+&\le N=kL|\Lambda|\le kL(\lfloor V/\Delta\rfloor+1),\\
+N&>\frac{kLV}{\Delta H}.
+\end{aligned}
+\tag{10.180}
+\]
+
+Define the support-independent row upper bound
+
+\[
+\overline J_T=\sum_{u=0}^{\min(kL,T)}
+\binom{T-u+r-1}{r-1},\qquad
+\overline M=(2S+1)\overline J_T.
+\tag{10.181}
+\]
+
+If \(kLV/(\Delta H)\ge c_*\overline M\), with \(c_*>1\), then
+\(N>c_*M_*\). In particular the complete integral initial kernel of
+Theorem 10.63 exists and its scaled budget (10.176) applies whenever its
+original-width hypotheses hold. The selected support retains that
+full-width height bound.
+
+For a saturated lattice of index \(J\) and widths from (10.175), an
+explicit sufficient criterion is
+
+\[
+\frac{kLJ}{H}\,
+\frac{\mathcal D^r}
+{(c_1c_2rPd)^r\prod_j\sigma_j}
+\ge c_*(2S+1)
+\sum_{u=0}^{\min(kL,T)}\binom{T-u+r-1}{r-1}.
+\tag{10.182}
+\]
+
+\textbf{Proof.} The first inequality in (10.180) is the retained-class
+count; the upper bound follows because the retained class is a subset of
+the chosen \(m+1\) points. Since \(\lfloor V/\Delta\rfloor+1>V/\Delta\),
+and a ceiling is at least its argument, the strict inequality follows.
+
+At additive order \(u\le\min(kL,T)\), allowing all \(r-1\) Euler
+directions gives \(\binom{T-u+r-1}{r-1}\) indices of order at most
+\(T-u\), by the divider count proved in Theorem 10.32. Every
+representative index in (10.126) is among these; zero Euler directions
+only remove duplicates. Hence \(M_*\le\overline M\). Combining this fact
+with (10.180) proves the strict surplus.
+
+Pick any reference \(\lambda_0\) in the retained class. Its normalized
+phase differences are multiples of \(G_0\), and its original coordinates
+lie in \(C-y_0-B\lambda_0\). Thus all the hypotheses for the initial
+coefficient construction and the full-width estimate are retained. Apply
+Theorem 10.63 and, when (10.175) holds, Corollary 10.65. Substitution of
+\(\Delta=1/J\) and \(V=\mathcal D^r/[(c_1c_2rPd)^r\prod_j\sigma_j]\)
+gives (10.182). \(\square\)
+
+The count certifies the initial coefficient construction. The analytic
+slope, derivative precision and strict nonzero-value comparisons used to
+extend its zeros remain separate hypotheses.
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Five lattice points divide into two phase classes, leaving three retained exponent columns}]{../figures/box-phase-support.png}}
+\par\smallskip
+\begin{flushleft}\small
+\emph{Figure 10.13. The exact lattice has basis columns \((1,0)\),
+\((1/2,1/2)\), covolume \(1/2\) and index two over \(\mathbb Z^2\). The
+closed box is \(C=[0,2]\times[0,1]\), so \(V/\Delta=4\). Five displayed
+points have integral basis coordinates
+\((0,0),(0,1),(1,0),(1,1),(2,0)\). For \(G_0=4,d=(2,2)\), there are
+\(H=2\) phase classes. The class \(0\) retains three points with
+coordinates \((0,0),(1,1),(2,0)\). At \(k=2,L=1,S=1,T=0\), they give
+\(N=6\) columns and \(M_*=3\) rows. The lattice, box, points and phase
+labels are exact. Theorem 10.66, Lemma 10.67 and Corollary 10.68 prove
+(10.177)--(10.182), including the integer-volume boundary case; Solution
+33 verifies these data and the derivative-order limitation. Human-source
+context: the box and phase selection (4.18)--(4.21) in Yu's free 2013
+paper, cited below. \href{../figure_sources/box_phase_support.py}{Figure
+program}.}
+\end{flushleft}
+\end{minipage}\par\medskip
+
+
+\subsection{26. Choosing parameters with a strict coefficient
+surplus}\label{choosing-parameters-with-a-strict-coefficient-surplus}
+
+The lattice count becomes useful only when it exceeds the number of
+prescribed jets. We give a parameter choice for which that comparison
+holds with all integer roundings retained. The node and jet budgets are
+real numbers; their floors, rather than the budgets themselves, count
+the equations.
+
+\subsubsection{The real parameters}\label{the-real-parameters}
+
+Let \(r\ge2\), and retain the independent \(\mathfrak p\)-adic units
+\(\alpha_1,\ldots,\alpha_r\) in a number field of degree \(d\). Write
+\(e=e_{\mathfrak p}\), \(f=f_{\mathfrak p}\), and \(t=f\ln p\); thus
+\(ef\le d\). Let \(q=2\) for odd \(p\), and \(q=3\) for \(p=2\), with
+\(\zeta_3\in K\) in the latter case. Let \(q^u\) be the order of the
+q-primary roots of unity, and \(J=q^\nu\) the index of the q-primary
+saturation lattice. The roots reduce injectively: a nontrivial q-primary
+root in \(1+\mathfrak p\) would retain its positive finite valuation
+under its prime-to-\(p\) order by
+\href{../TR-BAKER-09.html\#4-taking-powers-until-the-exponential-applies}{p-adic
+logarithms: power series, heights and the one-logarithm bound}, Lemma
+9.5, but its power is one. Their reductions form a subgroup of the
+finite field's group of \(p^f-1\) nonzero elements. Its distinct cosets
+partition that group into sets of size \(q^u\), proving
+\(q^u\mid p^f-1\). Use its phase coefficients from Section 20, and put
+
+\[
+\begin{aligned}
+G&=p^f-1,&G_0&=G/q^u,&
+\delta&=\gcd(G_0,d_1,\ldots,d_r),&H&=G_0/\delta,\\
+\ell_d&=\max\{1,\ln d\},&
+\rho&=\begin{cases}58,&d\ge2,\\17,&d=1,\end{cases}&
+g_1&=4+\ln((r+1)d),&A&=\max\{g_1,e,t\}.
+\end{aligned}
+\tag{10.183}
+\]
+
+Take \(\sigma_i\ge h(\alpha_i)>0\), constants \(c_0>1\) and
+\(c_1,c_3,c_4>0\), and \(g_0>39\). Choose \(h\ge\max\{g_0,(r+1)t\}\). In
+this subsection \(h\) is this real auxiliary parameter, whereas
+\(h(\alpha)\) denotes Weil height. Let \(\kappa\ge0\) be the integer
+with \(p^{\kappa-1}(p-1)\le2e<p^\kappa(p-1)\), and set \(P=p^\kappa\).
+For any \(\tau\ge0\) define
+
+\[
+\begin{aligned}
+\vartheta&=\begin{cases}(p-2)/(p-1),&p\ge5, e=1,\\P/(2e),&\text{otherwise},\end{cases}
+&\theta&=\vartheta/(1+\tau),\\
+c_2&=\begin{cases}7/4,&p>2,\\13/9,&p=2,\end{cases}
+&a_*&=\begin{cases}7/2,&p\ge5, e=1,\\26/3,&p=2,\\7,&\text{otherwise}.
+\end{cases}
+\end{aligned}
+\tag{10.184}
+\]
+
+Choose any \(\widehat\vartheta\ge\vartheta\). The explicit choices
+\(3/2\) at \(p=3\), \(5/4\) at \(p=5,e\ge2\), \(1\) at \(p\ge5,e=1\),
+\(7/6\) at \(p\ge7,e\ge2\), and \(2\) at \(p=2\) work. Indeed
+\(P\le2pe/(p-1)\), so \(P/(2e)\le p/(p-1)\). If \(p\ge5,e=1\), then
+\(\kappa=0\), \(P=1\), and \(\vartheta<1\). In particular
+\(c_2qP/(e\theta)\ge a_*\) in every case.
+
+Define the positive lower budgets
+
+\[
+\begin{aligned}
+g_2&=\begin{cases}
+c_3q(r+1)^2d,&p\ge5,\ e=1,\text{ or }p\ge7,\\
+c_3q(r+1)g_0e/\ln p,&p=2,3,\text{ or }p=5,\ e\ge2,
+\end{cases}\\
+g_3&=\frac{2c_0c_1c_4}{\rho}
+a_*^r\frac{r^r(r+1)^r}{(r!)^2}g_1t,\\
+g_4&=\frac{q(r+1)g_3}{c_1\widehat\vartheta t}
+\begin{cases}1,&e=1\text{ and }(p\ge5\text{ or }d=1),\\g_1^{-1},&\text{otherwise},\end{cases}\\
+g_5&=\frac{c_3q(r+1)g_3}{c_1c_4g_1t},
+&1+\epsilon&=\left(1+\frac{r+1}{2g_4}\right)^r.
+\end{aligned}
+\tag{10.185}
+\]
+
+Here the \(d=1\) alternative in \(g_4\) is compatible with \(p=3,e=1\);
+\(p=2,d=1\) cannot meet \(\zeta_3\in K\). Set
+
+\[
+\begin{aligned}
+x&=\nu\ln q,\\
+\gamma&=\frac{q^\nu hA}{(h+x)(A+x)},\\
+S&=\frac{c_3q(r+1)d(h+x)}t,\\
+\mathcal D&=\frac{\gamma}{q^{\nu+u}}
+(1+\epsilon)(2+g_2^{-1})c_0c_1c_4
+\left(\frac{c_2qPr(r+1)}{e\theta}\right)^r\frac1{r!}\\
+&\quad{}\times
+\max\left\{\frac{p^f}{\delta t^r},\frac{\mathrm e^r}{r^r}t\right\}
+d^{r+1}\ell_d\prod_i\sigma_i\,(A+x),\\
+T&=\frac{q(r+1)\mathcal D}{c_1\theta et},\\
+k&=\lfloor h+x-1\rfloor+1=\lfloor h+x\rfloor,\\
+\widetilde D_0&=\frac{S\mathcal D}{c_1c_4kd(A+x)},\\
+L&=\lfloor\widetilde D_0\rfloor+1,\\
+D_i&=\frac{\mathcal D}{c_1c_2rPd\sigma_i}.
+\end{aligned}
+\tag{10.186}
+\]
+
+The exponential constant \(\mathrm e=\exp(1)\) in this formula is
+different from the ramification index \(e\). The additive factors of the
+prepared family have precisely \(k\) choices of degree index and \(L\)
+choices of positive power, as in Lemma 10.29.
+
+\textbf{Lemma 10.69 (the saturation factor).} The parameters above
+satisfy \(1\le\gamma\le q^\nu\).
+
+\textbf{Proof.} With \(x\ge0\), \(\gamma=\exp(x)hA/((h+x)(A+x))\). The
+logarithmic derivative with respect to \(x\) is
+\(1-(h+x)^{-1}-(A+x)^{-1}>0\), because \(h>39\) and \(A\ge g_1>5\). At
+\(x=0\) the value is one. The upper bound follows from
+\((h+x)(A+x)\ge hA\). \(\square\)
+
+\subsubsection{Lower bounds and the rounded equation
+count}\label{lower-bounds-and-the-rounded-equation-count}
+
+\textbf{Lemma 10.70 (lower budgets without lost floors).} We have
+
+\[
+\begin{gathered}
+S\ge g_2,\qquad
+\frac{\mathcal D}{A+x}\ge\frac{g_3}{g_1},\qquad
+\mathcal D\ge g_3,\qquad T\ge g_4,\\
+\widetilde D_0\ge g_5,\qquad
+\widetilde D_0<L\le(1+g_5^{-1})\widetilde D_0,\\
+\binom{\lfloor T\rfloor+r}{r}
+\le(1+\epsilon)\frac{T^r}{r!}.
+\end{gathered}
+\tag{10.187}
+\]
+
+\textbf{Proof.} In the first alternative for \(g_2\), use
+\(h+x\ge(r+1)t\) in \(S\). In the second, use \(h+x\ge g_0\) and
+\(d/f\ge e\). These give both stated lower bounds, including
+\(p=5,e\ge2\).
+
+The q-primary lattice lies in the full saturation lattice of Theorem
+10.18. Its index is \(q^\nu\), and \(w_K\ge q^u\). Consequently (10.55)
+gives
+
+\[
+d^{r+1}\ell_d\prod_i\sigma_i
+\ge \frac{q^{\nu+u}}{\rho}\frac{r^r}{r!\mathrm e^r}.
+\tag{10.188}
+\]
+
+For \(d\ge2\), replacing \(\ln d\) by the larger \(\ell_d\) preserves
+this bound; at \(d=1\) the degree and logarithmic factors equal one. The
+maximum in (10.186) is at least \((\mathrm e^r/r^r)t\). Combine this
+fact with (10.188), \(\gamma\ge1\), \((1+\epsilon)(2+g_2^{-1})\ge2\),
+and \(c_2qP/(e\theta)\ge a_*\). This yields
+\(\mathcal D/(A+x)\ge g_3/g_1\), including every displayed constant.
+Since \(A+x\ge g_1\), it also yields \(\mathcal D\ge g_3\).
+
+If the first alternative in \(g_4\) applies, \(e=1\); use
+\(\mathcal D\ge g_3\) and \(\theta\le\widehat\vartheta\). Otherwise use
+the stronger bound \(\mathcal D\ge g_3(A+x)/g_1\) and \(A+x\ge e\). Both
+give \(T\ge g_4\).
+
+We have \(0<k\le h+x\). Substitute the formula for \(S\) into
+\(\widetilde D_0\), and then use the stronger bound for \(\mathcal D\):
+\[
+\widetilde D_0=
+\frac{c_3q(r+1)(h+x)\mathcal D}{c_1c_4kt(A+x)}
+\ge\frac{c_3q(r+1)g_3}{c_1c_4g_1t}=g_5.
+\] For any positive real \(y\), \(y<\lfloor y\rfloor+1\le y+1\). Taking
+\(y=\widetilde D_0\) proves both assertions about \(L\), including the
+strict inequality when \(y\) is an integer.
+
+Finally, \[
+\binom{\lfloor T\rfloor+r}{r}
+\le\frac1{r!}\prod_{j=1}^r(T+j)
+\le\frac1{r!}\left(T+\frac{r+1}{2}\right)^r.
+\] The last inequality follows from the concavity of \(\ln\): its second
+derivative is \(-z^{-2}<0\), so the sum of the logarithms is at most
+\(r\) times the logarithm of their average. Divide by \(T^r\), and use
+\(T\ge g_4\) and (10.185). This proves the last line of (10.187).
+\(\square\)
+
+\textbf{Theorem 10.71 (the parameter choice supplies a kernel).} Use the
+closed box with widths \(D_i\) and choose its single phase class as in
+Lemma 10.67. In the prepared system impose every node \(|s|\le S\) with
+integer \(s\), and every jet of total order at most the real number
+\(T\). Write \(s_0=\lfloor S\rfloor\), \(t_0=\lfloor T\rfloor\), let
+\(N=kL|\Lambda|\), and let \(M_*\) be the actual representative row
+count. Put
+
+\[
+c_{01}=c_0\ell_d\frac{p^f}{p^f-1}>1.
+\tag{10.189}
+\]
+
+Then
+
+\[
+\begin{aligned}
+N&>\frac{kLq^\nu D_1\cdots D_r}{H}
+>c_{01}(2S+1)\binom{t_0+r}{r}\\
+&\ge c_{01}(2s_0+1)\binom{t_0+r}{r}
+\ge c_{01}M_*.
+\end{aligned}
+\tag{10.190}
+\]
+
+In particular a nonzero global-integral coefficient vector and
+polynomial with all these zeros and jets exist, with the field and
+height conclusions of Lemma 10.63.
+
+\textbf{Proof.} The first strict inequality is (10.180), with
+\(J=q^\nu\), \(\Delta=1/J\), and \(H=G/(q^u\delta)\). For the next
+comparison keep all widths in (10.186), and write \(V=\prod_iD_i\).
+Since \(L>\widetilde D_0\), \[
+\frac{kLq^\nu V}{H}>
+\frac{Sq^{\nu+u}\delta\mathcal D^{r+1}}
+{c_1^{r+1}c_4c_2^rr^rP^rd^{r+1}(A+x)G\prod_i\sigma_i}.
+\] Divide by \((2S+1)(1+\epsilon)T^r/r!\). Substitute (10.186) for
+\(\mathcal D\). The degree factors, widths and normalization factors
+cancel, leaving \[
+\frac{S(2+g_2^{-1})}{2S+1}
+\frac{\gamma c_0\ell_d\delta t^r}{G}
+\max\left\{\frac{p^f}{\delta t^r},\frac{\mathrm e^r}{r^r}t\right\}
+\ge c_{01}.
+\] Indeed \(S\ge g_2\) makes the first factor at least one,
+\(\gamma\ge1\), and the first member of the maximum gives \(p^f\). The
+binomial inequality (10.187) proves the second strict inequality in
+(10.190). A derivative order is an integer, so an order at most \(T\) is
+exactly an order at most \(t_0\); similarly there are exactly \(2s_0+1\)
+nodes. Counting all \(r\) derivative directions gives
+\(\binom{t_0+r}{r}\) rows per node by the divider argument of Theorem
+10.32. Removing zero additive orders or duplicate Euler directions only
+decreases the representative count. This proves the remaining
+inequalities.
+
+Since \(N>M_*\), the completely proved integral Siegel argument in Lemma
+10.63 applies over the actual row field, with no unproved estimate used
+in place of an equation. Its nonzero vector gives a nonzero polynomial
+by Lemma 10.29. \(\square\)
+
+\subsubsection{The height term with a real node
+budget}\label{the-height-term-with-a-real-node-budget}
+
+\textbf{Corollary 10.72 (the rounded mean torus contribution).} In this
+kernel let \(d_0\) be the row-field degree, let \(\mathcal H_0\) be the
+scalar row bound from Lemma 10.63 with node budget \(s_0\) and jet
+budget \(t_0\), and put \(Z=S\mathcal D/d\) and
+\(L_\alpha=\sum_iD_i h(\alpha_i)\). Then
+
+\[
+\begin{aligned}
+\frac{h_2(\boldsymbol c)}Z
+\le{}&\frac{\tfrac12\ln(Nd_0)}Z
+ +\frac{d_0-1}{c_1c_2S}\\
+&+\frac1{c_{01}-1}\left[
+\frac{\tfrac12\ln N+\ln\mathcal H_0}Z
+ +\frac{1+1/(2g_2)}{2c_1c_2}
+\right].
+\end{aligned}
+\tag{10.191}
+\]
+
+\textbf{Proof.} Apply (10.174) at the integer budget \(s_0\), and use
+\(N>c_{01}M_*\) from (10.190). The full original width bound and
+\(\sigma_i\ge h(\alpha_i)\) give \(PL_\alpha\le\mathcal D/(c_1c_2d)\),
+so the generator term divided by \(Z\) is at most \((d_0-1)/(c_1c_2S)\).
+The exact mean of the absolute integer nodes is \(s_0(s_0+1)/(2s_0+1)\).
+It satisfies \[
+\frac{s_0(s_0+1)}{2s_0+1}
+=\frac{s_0}{2}+\frac14-\frac1{4(2s_0+1)}
+\le\frac S2+\frac14.
+\] Thus its contribution divided by \(Z\) is at most
+\((1+1/(2S))/(2c_1c_2)\le(1+1/(2g_2))/(2c_1c_2)\). Substitution proves
+(10.191). This leaves the scalar row and row-field generator costs
+explicit; each must still be included in a numerical zero-forcing
+comparison. \(\square\)
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={The rounded coefficient surplus for rational bases two and five at three}]{../figures/initial-parameter-counts.png}}
+\par\smallskip
+\begin{flushleft}\small
+\emph{Figure 10.14. Take \(K=\mathbb Q\), \(p=3\),
+\((\alpha_1,\alpha_2)=(2,5)\), and the parameters in Solution 34. The
+prepared column count and every plotted comparison are exact integer or
+rational quantities. There are \(2\lfloor S\rfloor+1\) nodes and
+\(\binom{\lfloor T\rfloor+2}{2}\) possible jets per node. The surplus
+\(c_{01}=57/20\) is retained through both floors; the strict comparison
+follows from the full real parameters, without rounding either budget
+upwards. The phase count is one, so no support is lost at that step. See
+(10.187)--(10.191), Solution 34, and
+\href{https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf}{Yu's
+free paper} for further reading.}
+\end{flushleft}
+\end{minipage}\par\medskip
+
+
+\subsection{27. The global size and scalar cost of the initial
+kernel}\label{the-global-size-and-scalar-cost-of-the-initial-kernel}
+
+We now bound the number of coefficients and the size of each scalar row
+entry at the parameters of Section 26. Two factors need separate care. A
+prime-to-\(p\) root field is unramified, which strengthens the global
+degree bound by the ramification index. The additive prepared derivative
+also contains an lcm clearing factor; that factor contributes to its
+ordinary absolute value as well as to its integrality.
+
+\subsubsection{The degree available above an unramified root
+field}\label{the-degree-available-above-an-unramified-root-field}
+
+\textbf{Lemma 10.73 (the torsion degree divided by ramification).} With
+the notation of (10.183), we have
+
+\[
+\frac d e\ge q^{u-1}(q-1).
+\tag{10.192}
+\]
+
+\textbf{Proof.} Put \(F=\mathbb Q(\zeta_{q^u})\subseteq K\). The
+cyclotomic Eisenstein proof in
+\href{../TR-BAKER-09.html\#5-cyclotomic-ramification-and-distances-between-roots}{p-adic
+logarithms: power series, heights and the one-logarithm bound},
+Proposition 9.7 at the prime \(q\), gives
+\([F:\mathbb Q]=q^{u-1}(q-1)\): irreducibility over \(\mathbb Q_q\)
+implies irreducibility over \(\mathbb Q\). Since \(q\ne p\), the
+completion \(F_{\mathfrak q}\) at the prime below \(\mathfrak p\) is
+unramified over \(\mathbb Q_p\), by the complete prime-to-\(p\) proof in
+\href{../../NT-LOC/NT-LOC-12.html\#1-two-kinds-of-cyclotomic-extension}{Cyclotomic,
+quadratic and Kummer extensions of local fields}, Proposition 1.1.
+
+Let \(m=[K:F]\), and choose an \(F\)-basis \(b_1,\ldots,b_m\) of \(K\).
+Inside \(K_{\mathfrak p}\), the subspace \(\sum_jF_{\mathfrak q}b_j\)
+has dimension at most \(m\) over the complete field \(F_{\mathfrak q}\).
+It is complete, hence closed, by the finite-dimensional norm proof in
+\href{../../NT-LOC/NT-LOC-04.html\#2-coordinates-control-convergence}{Extensions
+of complete valued fields}, Proposition 2.1. It contains \(K\), whose
+closure is \(K_{\mathfrak p}\), so it equals that completion. Therefore
+\([K_{\mathfrak p}:F_{\mathfrak q}]\le m\).
+
+Ramification indices multiply in a tower: restriction of a normalized
+integer valuation multiplies it by the ramification index at each step.
+The base root field has ramification index one, so
+\(e=e(K_{\mathfrak p}/F_{\mathfrak q})\). The degree formula
+\(ef=[L:K]\), fully proved by residue digits in
+\href{../../NT-LOC/NT-LOC-04.html\#3-an-integral-basis-from-residue-digits}{Extensions
+of complete valued fields}, Theorem 3.1, gives
+\(e\le[K_{\mathfrak p}:F_{\mathfrak q}]\le m\). Therefore
+\(d/e=[F:\mathbb Q]m/e\ge[F:\mathbb Q]\), as asserted. \(\square\)
+
+\subsubsection{A lower volume and an upper coefficient
+count}\label{a-lower-volume-and-an-upper-coefficient-count}
+
+Retain all real parameters in (10.183)--(10.186). Set
+
+\[
+\begin{aligned}
+b&=\begin{cases}1,&e=1\text{ and }(p\ge5\text{ or }d=1),\\
+g_1^{-1},&\text{otherwise},\end{cases}\\
+g_{61}&=
+2c_0c_1^{1-r}c_4
+\left(\frac q{\widehat\vartheta}\right)^r
+\frac{(r+1)^r\mathrm e^r}{r!r^r}\,
+t\,\frac{q-1}{q}\,g_1\,(bg_3)^{r-1},\\
+v&=q^\nu D_1\cdots D_r.
+\end{aligned}
+\tag{10.193}
+\]
+
+\textbf{Lemma 10.74 (a uniform lower box volume).} We have
+
+\[
+v\ge g_{61}>0.
+\tag{10.194}
+\]
+
+\textbf{Proof.} In the maximum defining \(\mathcal D\), use the second
+member \((\mathrm e^r/r^r)t\). Substituting one factor of \(\mathcal D\)
+into \(v\), and using \(\gamma\ge1\), \(1+\epsilon\ge1\), and
+\(2+g_2^{-1}\ge2\), gives \[
+v\ge
+\frac{2c_0c_1^{1-r}c_4}{q^u}
+\left(\frac q\theta\right)^r
+\frac{(r+1)^r\mathrm e^r}{r!r^r}\,
+t\,\frac d{e^r}\ell_d(A+x)\mathcal D^{r-1}.
+\] Lemma 10.73 gives \(d/q^u\ge e(q-1)/q\); also \(\ell_d\ge1\) and
+\(\theta\le\widehat\vartheta\). The remaining factor is
+\((A+x)(\mathcal D/e)^{r-1}\). In the first case for \(b\), \(e=1\) and
+\(\mathcal D\ge g_3\). In the other case, the stronger bound in (10.187)
+and \(A+x\ge e\) give \(\mathcal D/e\ge g_3/g_1\). Since \(A+x\ge g_1\),
+both cases imply \((A+x)(\mathcal D/e)^{r-1}\ge g_1(bg_3)^{r-1}\). This
+proves (10.194). \(\square\)
+
+Let \(w_K\) denote the full root-of-unity order, and put
+
+\[
+\begin{aligned}
+g_6&=
+\rho(1+g_5^{-1})(1+g_{61}^{-1})
+\frac{r!\mathrm e^r}
+{c_1^{r+1}c_4c_2^rP^rw_Kr^{2r}},\\
+g_7&=\frac{c_3q(r+1)g_0g_3}{t},\\
+g_8&=\frac{\ln g_7+g_1+
+\max\{\ln(g_6d/\mathrm e^{g_1}),0\}}{g_7}
++\frac r{c_3q(r+1)^2}\frac{\ln g_3}{g_3}.
+\end{aligned}
+\tag{10.195}
+\]
+
+\textbf{Theorem 10.75 (the logarithmic coefficient budget).} Suppose
+\(g_3\ge\mathrm e\) and \(g_7\ge\mathrm e\). For the selected support of
+Theorem 10.71, \(N=kL|\Lambda|\) and \(Z=S\mathcal D/d\) satisfy
+
+\[
+N\le g_6S\mathcal D^{r+1},
+\qquad Z\ge g_7,\qquad
+\ln N\le g_8Z.
+\tag{10.196}
+\]
+
+\textbf{Proof.} By (10.180), \(|\Lambda|\le v+1\). Also \[
+kL\le(1+g_5^{-1})\frac{S\mathcal D}{c_1c_4d(A+x)}.
+\] Use \(v\ge g_{61}\) to replace \(v+1\) by at most
+\((1+g_{61}^{-1})v\). The full saturation bound (10.55) gives \[
+\frac{q^\nu}{d^{r+1}\prod_i\sigma_i}
+\le\frac{\rho\ell_dr!\mathrm e^r}{w_Kr^r}.
+\] For \(d\ge2\), use the same replacement of \(\ln d\) by \(\ell_d\) as
+in (10.188); for \(d=1\) the formula is exact. Substituting the widths
+\(D_i\) and \(\ell_d\le g_1\le A+x\) gives the first inequality of
+(10.196), with exactly \(g_6\).
+
+The formula for \(S\), together with \(h+x\ge g_0\) and
+\(\mathcal D\ge g_3\), gives \(Z\ge g_7\). Taking logarithms in the
+first inequality yields \[
+\ln N\le\ln(g_6d)+\ln Z+r\ln\mathcal D.
+\] Put \(C=g_1+\max\{\ln(g_6d/\mathrm e^{g_1}),0\}>0\); then
+\(\ln(g_6d)\le C\), so \(C/Z\le C/g_7\). The function \(\ln y/y\)
+decreases for \(y\ge\mathrm e\), because its derivative is
+\((1-\ln y)/y^2\). Thus \(\ln Z/Z\le\ln g_7/g_7\).
+
+Finally \(h+x\ge(r+1)t\) gives \(S/d\ge c_3q(r+1)^2\), and therefore \[
+\frac{r\ln\mathcal D}{Z}
+\le\frac r{c_3q(r+1)^2}\frac{\ln\mathcal D}{\mathcal D}
+\le\frac r{c_3q(r+1)^2}\frac{\ln g_3}{g_3}.
+\] Combining these three bounds proves \(\ln N\le g_8Z\). \(\square\)
+
+The lower hypotheses here have simple sufficient conditions. If
+\(c_0\ge19/10,c_1\ge7/5,c_3\ge47/100,c_4\ge15/4\), then \(g_3/\!t>21\).
+Indeed \(a_*\ge7/2\), \(\rho\le58\), \(g_1>5\), and
+\(r^r(r+1)^r/(r!)^2\ge1\); hence \[
+\frac{g_3}{t}>
+\frac2{58}\frac{19}{10}\frac75\frac{15}4
+\left(\frac72\right)^2\,5>21.
+\] The positive logarithm series in Solution 34 gives \(\ln2>2/3\), so
+\(t\ge\ln2>2/3\), and \(g_3>14>\mathrm e\). Also
+\(g_7>(47/100)\cdot2\cdot3\cdot39\cdot21>3>\mathrm e\), where
+\(\mathrm e<3\) follows by summing its positive series and bounding the
+tail geometrically.
+
+\subsubsection{Retaining the clearing factor and the jet
+allocation}\label{retaining-the-clearing-factor-and-the-jet-allocation}
+
+Write \(s_0=\lfloor S\rfloor,t_0=\lfloor T\rfloor,D_{\mathrm a}=kL\),
+and \(\mathfrak v=v(k)=\operatorname{lcm}(1,\ldots,k)\). For the \(r-1\)
+integer Euler forms of the actual prepared system, let \(\Omega_j\) be
+the maximum of their absolute arguments on the support, and put \[
+m=\sum_{j=1}^{r-1}\Omega_j+r-2,\qquad
+U=\min(D_{\mathrm a},t_0).
+\tag{10.197}
+\]
+
+\textbf{Lemma 10.76 (a complete scalar row bound).} The scalar bound in
+Lemma 10.63 may be taken to be
+
+\[
+\mathcal H_0=
+\left[2\mathrm e\left(\frac{s_0}{k}+2\right)\right]^{D_{\mathrm a}}
+\max_{0\le u\le U}
+\left\{\mathfrak v^u
+\binom{m+t_0-u}{t_0-u}\right\}.
+\tag{10.198}
+\]
+
+If \(\mathfrak v=1\), a maximizing index is \(u_*=0\). If
+\(\mathfrak v>1\), one is \[
+u_*=\min\left\{U,\,
+\max\left\{0,t_0-\left\lceil\frac m{\mathfrak v-1}\right\rceil+1\right\}\right\}.
+\tag{10.199}
+\]
+
+More sharply, with \(R=s_0+2k\), the scalar bound may be taken to be \[
+\mathcal H_{\rm fine}=
+\frac{R^{D_{\mathrm a}}}{(k!)^L}
+\max_{0\le u\le U}
+\left\{\left(\frac{\mathfrak v}{R}\right)^u
+\binom{D_{\mathrm a}}u
+\binom{m+t_0-u}{t_0-u}\right\}.
+\tag{10.200}
+\] A maximizing index \(\widehat u\) is the first index after all the
+consecutive increasing steps. A step from \(u\) to \(u+1\), for \(u<U\),
+is increasing or constant precisely when \[
+\mathfrak v(D_{\mathrm a}-u)(t_0-u)
+\ge R(u+1)(m+t_0-u).
+\tag{10.201}
+\] These steps form an initial interval, so an integer binary search
+finds a maximizing index, with no numerical root approximation.
+
+\textbf{Proof.} For \(0\le a<k\), \(1\le\ell\le L\), write \[
+F_{a,\ell}(X)=\frac1{(k!)^\ell}
+\prod_{j=1}^k(X+a+j)^\ell.
+\] It has degree \(k\ell\), and every shift \(a+j\) is at most \(2k\).
+In the divided derivative of order \(u\), choose the \(u\)
+differentiated linear factors. There are \(\binom{k\ell}{u}\) choices.
+For \(|s|\le s_0\), each remaining factor has absolute value at most
+\(s_0+2k\). Thus \[
+\left|\frac{F_{a,\ell}^{(u)}(s)}{u!}\right|
+\le \frac{\binom{k\ell}{u}(s_0+2k)^{k\ell-u}}{(k!)^\ell}
+\le\left[2\mathrm e\left(\frac{s_0}{k}+2\right)\right]^{D_{\mathrm a}}.
+\] For the last inequality use \(\binom{k\ell}{u}\le2^{k\ell}\), the
+positive factor \(s_0+2k\ge1\), and \(\ln(k!)\ge k\ln k-k\). The latter
+follows by comparing \(\sum_{j=1}^k\ln j\) with the integral of the
+increasing function \(\ln x\) on \([1,k]\). The resulting base is
+greater than one, and \(k\ell\le D_{\mathrm a}\). If \(u>k\ell\), the
+derivative is zero.
+
+The prepared derivative multiplies this divided derivative by
+\(\mathfrak v^u\), by (10.86); discarding that multiplier would give the
+wrong ordinary absolute-value bound. Each Euler factor satisfies \[
+|\Delta(\omega_j;t_j)|
+\le\binom{\Omega_j+t_j}{t_j}.
+\] Multiplying the positive generating series for these binomial
+coefficients, as in (10.124), shows that their product at total Euler
+order \(h\) is at most \(\binom{m+h}{h}\). This increases with \(h\), so
+for additive order \(u\) it is at most \(\binom{m+t_0-u}{t_0-u}\). This
+proves (10.198).
+
+For \(F(u)=\mathfrak v^u\binom{m+t_0-u}{t_0-u}\), whenever \(u<t_0\), \[
+\frac{F(u+1)}{F(u)}
+=\mathfrak v\frac{t_0-u}{m+t_0-u}.
+\] At \(\mathfrak v=1\) this is at most one. Otherwise it is at least
+one exactly when \((\mathfrak v-1)(t_0-u)\ge m\). These ratios decrease
+as \(u\) increases. Hence \(F\) increases up to this integer threshold
+and decreases afterwards; equality may give two adjacent maximizers.
+Clamping the last increasing step to \([0,U]\) gives (10.199), choosing
+the larger maximizer in the equality case.
+
+For (10.200), retain the first divided-derivative estimate, rather than
+replacing its binomial coefficient by \(2^{k\ell}\). Since
+\(\binom{k\ell}{u}\le\binom{D_{\mathrm a}}u\) and \(R^k/k!>1\), it gives
+\[
+\left|\frac{F_{a,\ell}^{(u)}(s)}{u!}\right|
+\le \binom{D_{\mathrm a}}u\,R^{-u}
+\left(\frac{R^k}{k!}\right)^\ell
+\le\frac{\binom{D_{\mathrm a}}u R^{D_{\mathrm a}-u}}{(k!)^L}.
+\] Multiply by the clearing and Euler factors already proved. The ratio
+of the resulting expression at \(u+1\) to that at \(u\) is \[
+\frac{\mathfrak v}{R}\frac{D_{\mathrm a}-u}{u+1}
+\frac{t_0-u}{m+t_0-u}.
+\] Every factor depending on \(u\) decreases on \(0\le u<U\); the first
+is strictly decreasing. Thus the ratios cross one at most once. Clearing
+their positive denominators gives exactly (10.201), which proves the
+asserted integer rule and the sharper bound. \(\square\)
+
+\textbf{Corollary 10.77 (the normalized additive cost).} If
+\(c_3q/t\le8\), the first factor in (10.198) contributes at most \[
+\frac{D_{\mathrm a}}Z
+\ln\left[2\mathrm e\left(\frac{s_0}{k}+2\right)\right]
+\le\frac{1+g_5^{-1}}{c_1c_4}.
+\tag{10.202}
+\]
+
+\textbf{Proof.} Since \(h+x>39\), \(k=\lfloor h+x\rfloor\ge39\) and
+\((h+x)/k<(k+1)/k\le40/39\). Put \(W=(r+1)d\ge3\). Then \[
+\frac{s_0}{k}+2\le\frac Sk+2
+<\frac{320}{39}W+2\le\frac{346}{39}W.
+\] Since \(\mathrm e^3>18>692/39\), it follows that
+\(2\mathrm e(s_0/k+2)<\mathrm e^4W\), and its logarithm is at most
+\(g_1\). The inequality \(\mathrm e^3>18\) follows already from the
+terms of degrees zero through five in its exponential series at three.
+Also \(D_{\mathrm a}/Z\le(1+g_5^{-1})/[c_1c_4(A+x)]\), by (10.187), and
+\(g_1\le A+x\). These prove (10.202). For odd \(p\), the hypothesis
+holds whenever \(c_3\le4\), since \(\ln p\ge\ln3>1\). At \(p=2\), it
+holds whenever \(c_3\le1/2\), since \(\ln2>2/3\). \(\square\)
+
+\textbf{Theorem 10.78 (the initial height with all scalar costs).}
+Assume the hypotheses of Theorems 10.71 and 10.75 and Corollary 10.77.
+Set \(\Psi=u_*\ln\mathfrak v+\ln\binom{m+t_0-u_*}{t_0-u_*}\). Then the
+integral initial kernel can be chosen with \[
+\begin{aligned}
+\frac{h_2(\boldsymbol c)}Z\le{}&
+\frac12g_8+\frac{\ln d_0}{2g_7}
++\frac{d_0-1}{c_1c_2S}\\
+&+\frac1{c_{01}-1}
+\left[\frac12g_8+\frac{1+g_5^{-1}}{c_1c_4}
++\frac{\Psi}{Z}
++\frac{1+1/(2g_2)}{2c_1c_2}\right].
+\end{aligned}
+\tag{10.203}
+\]
+
+\textbf{Proof.} In (10.191), use \(\ln N/Z\le g_8\), \(Z\ge g_7\), and
+the exact scalar bound (10.198) at (10.199). Corollary 10.77 bounds its
+additive first factor; its remaining factor has logarithm exactly
+\(\Psi\). Substitution proves every term of (10.203). The row-field term
+may further be bounded by \(1/[c_1c_2c_3q(r+1)^2]\), since \(d_0\le d\)
+and \(S/d\ge c_3q(r+1)^2\), but its exact vanishing at \(d_0=1\) is
+preferable there.
+
+More sharply, replace the sum \((1+g_5^{-1})/(c_1c_4)+\Psi/Z\) in
+(10.203) by \(\ln\mathcal H_{\rm fine}/Z\), evaluated at the exact
+integer maximizer \(\widehat u\) in (10.201). This follows from the same
+substitution in (10.191), using (10.200).
+
+This is a height bound for coefficients whose existence has already been
+proved. An extension of their zeros still requires the stated analytic
+slopes, derivative precision, arithmetic strict comparisons and final
+multiplicity contradiction. In particular the lcm and Euler term
+\(\Psi\) must be retained in each such comparison. \(\square\)
+
+\subsubsection{Averaging the derivative
+orders}\label{averaging-the-derivative-orders}
+
+\textbf{Corollary 10.79 (a mean scalar budget).} Retain every Euler
+index, allowing duplicate rows, but omit the identically zero additive
+orders above \(D_{\mathrm a}\). Define \[
+\begin{aligned}
+J_u&=\binom{t_0-u+r-1}{r-1}\quad(0\le u\le U),&
+\overline J&=\sum_{u=0}^U J_u,\\
+\overline u&=\frac{\sum_{u=0}^UuJ_u}{\overline J},&
+\overline h&=\frac{r-1}{r}(t_0-\overline u),&
+\overline M&=(2s_0+1)\overline J.
+\end{aligned}
+\tag{10.204}
+\] Let \(H(z)=-z\ln z-(1-z)\ln(1-z)\), with endpoint values zero, and
+put \[
+\begin{aligned}
+A_{\rm mean}&=(D_{\mathrm a}-\overline u)\ln R
+-L\ln(k!)+D_{\mathrm a}H(\overline u/D_{\mathrm a}),\\
+E_{\rm mean}&=\begin{cases}
+\overline h\ln\!\left[\mathrm e(1+m/\overline h)\right],&\overline h>0,\\
+0,&\overline h=0,
+\end{cases}\\
+B_{\rm mean}&=A_{\rm mean}+\overline u\ln\mathfrak v+E_{\rm mean}.
+\end{aligned}
+\tag{10.205}
+\] The mean logarithm of the scalar row bounds is at most
+\(B_{\rm mean}\), and an integral initial kernel exists with \[
+\begin{aligned}
+\frac{h_2(\boldsymbol c)}Z\le{}&
+\frac{\tfrac12\ln(Nd_0)}Z+\frac{d_0-1}{c_1c_2S}\\
+&+\frac{\overline M}{N-\overline M}
+\left[\frac{\tfrac12\ln N+B_{\rm mean}}Z
++\frac{s_0(s_0+1)}
+{(2s_0+1)c_1c_2S}\right].
+\end{aligned}
+\tag{10.206}
+\] Moreover \(\overline u\le t_0/(r+1)\).
+
+\textbf{Proof.} At fixed additive order \(u\), the \(r-1\) Euler indices
+and their slack coordinate are all the nonnegative integer compositions
+of \(t_0-u\) into \(r\) parts. Permuting their coordinates is a
+bijection; the sum of their coordinate averages is \(t_0-u\). Thus their
+mean total Euler order is \((r-1)(t_0-u)/r\). Weighting by \(J_u\)
+proves the formula for \(\overline h\).
+
+Without the additive cutoff, all \(r\) derivative coordinates and their
+slack are the compositions of \(t_0\) into \(r+1\) parts, so the mean
+additive order is \(t_0/(r+1)\). Removing orders greater than \(U\) can
+only decrease that mean: each removed order exceeds every retained one.
+This proves the last assertion.
+
+The sharper additive estimate in the proof of Lemma 10.76 has logarithm
+at most \[
+\ln\binom{D_{\mathrm a}}u+(D_{\mathrm a}-u)\ln R-L\ln(k!).
+\] For \(0<u<D_{\mathrm a}\), the binomial theorem at
+\(z=u/D_{\mathrm a}\) gives
+\(\binom{D_{\mathrm a}}u z^u(1-z)^{D_{\mathrm a}-u}\le1\). Hence
+\(\ln\binom{D_{\mathrm a}}u\le D_{\mathrm a}H(u/D_{\mathrm a})\),
+including the endpoints by continuity. The second derivative
+\(H''(z)=-1/z-1/(1-z)<0\) proves concavity, so averaging gives
+\(A_{\rm mean}\).
+
+At total Euler order \(h>0\), the factorial integral bound gives
+\(\ln\binom{m+h}{h}\le h\ln[\mathrm e(1+m/h)]\). The right side extends
+continuously by zero at \(h=0\). Its second derivative is
+\(-m^2/[h(m+h)^2]\le0\), so its average is at most \(E_{\rm mean}\);
+when \(m=0\) it is the linear function \(h\). The clearing multiplier
+has logarithm \(u\ln\mathfrak v\), whose mean is exactly
+\(\overline u\ln\mathfrak v\). This proves (10.205).
+
+By (10.190), \(N>c_{01}(2s_0+1)\binom{t_0+r}{r}\ge c_{01}\overline M\),
+so the completely proved weighted integral Siegel argument of Lemma
+10.63 applies to these rows. Duplicate or further zero rows do not
+increase rank; assigning them the same positive upper scalar bounds
+preserves that argument. The row field remains \(E_0\), and the
+torus-row mean remains that of (10.174). Use (10.173) for its full-width
+and field-generator terms, and substitute the mean scalar bound into the
+row sum in (10.171). This is (10.206), with the actual ratio
+\(\overline M/(N-\overline M)\). The nonzero polynomial and every
+required jet follow as before. \(\square\)
+
+\subsubsection{A second way to clear the global
+rows}\label{a-second-way-to-clear-the-global-rows}
+
+\textbf{Corollary 10.80 (row scaling and an alternative mean bound).}
+Define \[
+B_{\rm proj}=(D_{\mathrm a}-\overline u)\ln R
++D_{\mathrm a}H(\overline u/D_{\mathrm a})+E_{\rm mean}.
+\tag{10.207}
+\] In (10.206), \(B_{\rm mean}\) may be replaced by \[
+\min\{B_{\rm mean},B_{\rm proj}\}.
+\tag{10.208}
+\] One may also choose the smaller scalar bound separately at each row
+before averaging.
+
+\textbf{Proof.} At the additive order \(u\), every original prepared row
+contains the common multiplier \(\mathfrak v^u\). Replace it by the
+common multiplier \((k!)^L\). This multiplies that entire row by the
+nonzero rational number \((k!)^L/\mathfrak v^u\), so it preserves its
+kernel and its coefficient field. Every nonzero row has unchanged
+projective height; zero rows remain zero. For a nonzero row, the
+logarithms of the absolute values of that common scalar sum to zero by
+the normalized product formula proved in
+\href{../../NT-LOC/NT-LOC-05.html\#5-norms-and-the-normalized-product-formula}{Places
+of number fields in extensions and the product formula}, Theorem 5.2.
+
+The divided derivative of \(F_{a,\ell}\) has denominator dividing
+\((k!)^\ell\). To verify this at every order, its polynomial
+coefficients have that denominator and divided differentiation
+multiplies a monomial coefficient by an integer binomial coefficient. At
+an integer node its denominator still divides \((k!)^\ell\), hence
+divides \((k!)^L\). The Euler binomials are integers at their integer
+arguments. Thus the replaced scalar entries are integers, as required
+for the same finite-place row estimate.
+
+The sharper derivative bound in Lemma 10.76 now gives the archimedean
+scalar bound \[
+\binom{D_{\mathrm a}}u R^{D_{\mathrm a}-u}
+\binom{m+t_0-u}{t_0-u}.
+\] The factorial denominator cancels against the new common multiplier.
+Averaging its logarithm with the concavity arguments of Corollary 10.79
+gives \(B_{\rm proj}\). Its coefficient matrix has exactly the same
+kernel as the original prepared matrix, so the identical weighted Siegel
+and full-width argument proves (10.206) with this bound. Both bounds
+therefore apply to the same row heights; choosing their smaller value,
+globally or row by row, is valid. The original lcm normalization remains
+available for every later local jet-precision computation. \(\square\)
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={The complete scalar height budget at the rounded rational parameters}]{../figures/initial-scalar-budget.png}}
+\par\smallskip
+\begin{flushleft}\small
+\emph{Figure 10.15. The parameters of Solution 34 give the proved
+coefficient-height bounds in Solution 35. The sharper allocation and row
+average retain the factorial denominator; lcm clearing, Euler orders,
+mean torus and logarithmic terms are all included. Left of zero is the
+factorial contribution to be subtracted when the highest additive order
+is used. The diamonds mark the net sums. Each pair uses either the
+actual integer \(\operatorname{lcm}(1,\ldots,50)\) or the completely
+proved coarser \(3^{50}\) bound in
+\href{../TR-BAKER-07.html\#an-exponential-bound-for-least-common-multiples}{Two
+logarithms II: explicit lower bounds}. The final pair uses the
+alternative global row clearing of Corollary 10.80. All bars give proved
+upper bounds on the height of some initial kernel. See
+(10.198)--(10.208), Solution 35, and
+\href{https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf}{Yu's
+free paper} for further reading.}
+\end{flushleft}
+\end{minipage}\par\medskip
+
+
+\subsection{28. Principal-unit depth and the analytic
+torus}\label{principal-unit-depth-and-the-analytic-torus}
+
+The local torus coordinates must define convergent exponential functions
+on the enlarged disc used for interpolation. We prove the depth with the
+same power \(P\) as in Section 26. The ramification index enters this
+choice; the small strict reduction from \(\vartheta\) to \(\theta\) also
+has a mathematical purpose.
+
+\subsubsection{The power needed for an enlarged
+disc}\label{the-power-needed-for-an-enlarged-disc}
+
+Let \(L/\mathbb Q_p\) be a finite extension with ramification index
+\(e\), and normalize \(v_p(p)=1\). Write \(a_p=1/(p-1)\), and choose the
+nonnegative integer \(\kappa\) by
+
+\[
+p^{\kappa-1}(p-1)\le2e<p^\kappa(p-1),\qquad P=p^\kappa,
+\qquad
+\vartheta=\begin{cases}
+(p-2)/(p-1),&p\ge5, e=1,\\
+P/(2e),&\text{otherwise}.
+\end{cases}
+\tag{10.209}
+\]
+
+This integer exists: take the least nonnegative \(\kappa\) satisfying
+the strict upper inequality. At \(\kappa=0\), its lower inequality still
+holds because \((p-1)/p<1\le2e\). Fix \(0<\theta<\vartheta\); in
+particular the choice \(\theta=\vartheta/(1+\varepsilon)\) with
+\(\varepsilon>0\) is permitted.
+
+\textbf{Lemma 10.81 (the original principal-unit depth).} If
+\(\beta\in L\) and \(v_p(\beta-1)>0\), then
+
+\[
+v_p(\beta^P-1)\ge\vartheta+a_p>\theta+a_p.
+\tag{10.210}
+\]
+
+The statement includes \(\beta^P=1\), with valuation infinity.
+
+\textbf{Proof.} The valuation group of \(L\) is \(e^{-1}\mathbb Z\), by
+the complete degree-and-residue proof in
+\href{../../NT-LOC/NT-LOC-04.html\#3-an-integral-basis-from-residue-digits}{Extensions
+of complete valued fields}, Theorem 3.1. Thus \(v_p(\beta-1)\ge1/e\).
+The elementary power step in
+\href{../TR-BAKER-09.html\#4-taking-powers-until-the-exponential-applies}{p-adic
+logarithms: power series, heights and the one-logarithm bound}, Lemma
+9.5, gives \(c_{j+1}\ge F(c_j)\) for \(c_j=v_p(\beta^{p^j}-1)\), where
+\(F(c)=\min\{pc,c+1\}\). Below \(a_p\) the step is exactly
+multiplication by \(p\); at or above that threshold the lower bound
+still holds. The function \(F\) is increasing and \(F(c)\ge c\) for
+\(c\ge0\). If any power is one, all subsequent assertions are immediate.
+
+In the exceptional case \(p\ge5,e=1\), we have \(\kappa=0\), so the
+initial bound is \(1=\vartheta+a_p\). Consider the other cases. The
+inequalities defining \(\kappa\) give \(a_p<\vartheta\le p a_p\). If
+\(\kappa=0\), then \(1/e=2\vartheta>\vartheta+a_p\), which proves the
+claim.
+
+Suppose \(\kappa\ge1\). We first prove \(c_{\kappa-1}\ge P/(pe)\). If
+none of \(c_0,\ldots,c_{\kappa-2}\) reaches \(a_p\), the exact steps
+below the threshold give \(c_{\kappa-1}=p^{\kappa-1}c_0\ge P/(pe)\); for
+\(\kappa=1\) this uses no step. Otherwise, after the first such crossing
+there is at least one further step before index \(\kappa-1\). That step
+gives \(c\ge a_p+1\ge2a_p\). Subsequent steps cannot decrease the
+valuation, and the lower defining inequality gives \(P/(pe)\le2a_p\).
+This proves the same bound in that case.
+
+Applying the increasing function \(F\) once more yields
+
+\[
+c_\kappa\ge\min\{P/e, 1+P/(pe)\}
+=\min\{2\vartheta, 1+2\vartheta/p\}
+\ge\vartheta+a_p.
+\tag{10.211}
+\]
+
+Indeed \(2\vartheta>\vartheta+a_p\). For the other member, use
+\((1-2/p)\vartheta\le(p-2)/(p-1)=1-a_p\). This remains valid at \(p=2\),
+where both sides of that last inequality are zero. Finally
+\(\theta<\vartheta\) supplies the strict inequality in (10.210).
+\(\square\)
+
+\subsubsection{Coefficients and divided jets of the torus
+functions}\label{coefficients-and-divided-jets-of-the-torus-functions}
+
+\textbf{Corollary 10.82 (normality with the actual depth).} Let
+\(w_1,\ldots,w_s\in L\) satisfy \(v_p(w_i-1)\ge\vartheta+a_p\), and let
+\(\lambda_i\in L\) have \(v_p(\lambda_i)\ge0\). Put
+
+\[
+\ell=\sum_i\lambda_i\log w_i,\qquad
+F(Z)=\exp(Z\ell)=\sum_{n\ge0}A_nZ^n.
+\tag{10.212}
+\]
+
+Then \(F\in\mathcal A_{p^\theta}\), its Gauss norm is one, and for
+\(n\ge1\)
+
+\[
+v_p(A_n)\ge n\vartheta+a_p,\qquad
+v_p(A_n)-n\theta\ge n(\vartheta-\theta)+a_p.
+\tag{10.213}
+\]
+
+If \(v_p(z)\ge-\theta\), its divided jets satisfy
+
+\[
+\frac{F^{(j)}(z)}{j!}=F(z)\frac{\ell^j}{j!},\qquad
+v_p\!\left(\frac{F^{(j)}(z)}{j!}\right)
+\ge j\vartheta+a_p\quad(j\ge1).
+\tag{10.214}
+\]
+
+If \(\ell=0\), the positive-order coefficients and jets are zero. The
+constant coefficient and value have valuation zero.
+
+\textbf{Proof.} The logarithm is an isometry at this depth, by
+Proposition 9.3 of the linked preceding lesson. Thus each logarithm has
+valuation at least \(\vartheta+a_p\), and the integral multipliers and
+ultrametric inequality give the same bound for \(\ell\). If \(\ell=0\),
+the assertions follow from \(F=1\). Otherwise \(A_n=\ell^n/n!\). The
+complete factorial digit formula (9.4) gives
+\(v_p(n!)=(n-s_p(n))a_p\le(n-1)a_p\). This proves the first bound in
+(10.213); subtracting \(n\theta\) proves the second. It tends to
+infinity, so the series belongs to the complete coefficient algebra
+\(\mathcal A_{p^\theta}\). The constant coefficient is one and every
+other weighted coefficient has positive valuation, proving that the
+Gauss norm is exactly one.
+
+For the asserted nodes, \(v_p(z\ell)\ge\vartheta-\theta+a_p>a_p\). The
+exponential converges there and is a unit, by Proposition 9.3. The
+coefficient algebra and analytic identities of Lemma 9.2 and Proposition
+9.4 justify differentiation and translation on this disc; alternatively
+the coefficient identity for each divided derivative is verified
+directly by the convergent exponential series. It gives (10.214), with
+the same factorial estimate. \(\square\)
+
+This applies to the integer exponent vectors of every torus monomial,
+including negative coordinates, and to exponents divided by any power of
+\(q\ne p\). Such scalars are p-adically integral. Finite sums of these
+exponential series with locally integral coefficients have Gauss norm at
+most one. An additional additive polynomial still contributes its own
+coefficient norm; (10.213) does not discard that contribution.
+
+The strict choice of \(\theta\) cannot generally be removed. If
+\(v_p(\ell)=\vartheta+a_p\), then the exact factorial formula gives
+\(v_p(A_n)-n\vartheta=s_p(n)a_p\). At \(n=p^j\) this is the constant
+\(a_p\). The weighted coefficients therefore fail to tend to zero at
+radius \(p^\vartheta\). In this equality case the exponential does not
+converge at a point of valuation \(-\vartheta\). Solution 36 supplies an
+actual example.
+
+\subsubsection{Residue phases and a coherent root
+choice}\label{residue-phases-and-a-coherent-root-choice}
+
+\textbf{Corollary 10.83 (principal roots of the phased coordinates).}
+Let \(G=p^f-1\), let \(\zeta\in L\) be a primitive \(G\)-th root of
+unity, and suppose that the residue of the local unit \(\alpha\) is the
+residue of \(\zeta^a\). Such residue lifts, including their primitivity,
+are proved in Lemma 10.53. Put
+
+\[
+\beta=\alpha\zeta^{-a},\qquad
+V=\beta^P=\alpha^P\zeta^{-aP}.
+\tag{10.215}
+\]
+
+For a prime \(q\ne p\), the element
+
+\[
+\eta=\exp(q^{-1}\log V)\in L,\qquad
+\eta^q=V,\qquad
+v_p(\eta-1)=v_p(V-1)\ge\vartheta+a_p
+\tag{10.216}
+\]
+
+is the unique \(q\)-th root of \(V\) with residue one. Fix
+\(\xi\in\mathbb C_p\) with \(\xi^q=\zeta\). A \(q\)-th root \(\rho\) of
+\(\alpha\) can be chosen so that
+
+\[
+\rho^P\xi^{-aP}=\eta.
+\tag{10.217}
+\]
+
+The choice may be made separately for every member of a finite family,
+without changing any of their \(q\)-th power identities.
+
+\textbf{Proof.} The residue condition gives \(v_p(\beta-1)>0\). Lemma
+10.81 therefore proves the depth of \(V\). Since \(q\) is a local unit,
+\(q^{-1}\log V\) has this same valuation; Proposition 9.4 gives both
+\(\eta^q=V\) and the valuation identity. The series defining \(\eta\)
+lies in the complete field \(L\). If two such roots had residue one,
+their ratio would be a \(q\)-th root of unity with positive valuation of
+its difference from one. The prime-to-\(p\) power identity in Lemma 9.5
+forces that ratio to be one. This proves uniqueness, also when \(V=1\).
+
+Start with any \(\rho_0^q=\alpha\) in \(\mathbb C_p\). Then
+\(w=\rho_0^P\xi^{-aP}\) satisfies \(w^q=V\), so \(\eta/w\) is a \(q\)-th
+root of unity. Fix a primitive one \(\omega\), and write
+\(\eta/w=\omega^j\). Since \(P=p^\kappa\) is coprime to \(q\), integer
+division gives an integer \(b\) with \(Pb\equiv j\pmod q\). Set
+\(\rho=\rho_0\omega^b\). Its \(q\)-th power is still \(\alpha\), and its
+\(P\)-th power supplies the required correction, proving (10.217). No
+equation for another member of the family is affected. \(\square\)
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={Six exact guaranteed valuation paths for the original principal-unit power}]{../figures/principal-unit-depth.png}}
+\par\smallskip
+\begin{flushleft}\small
+\emph{Figure 10.16. Start with the smallest possible positive valuation
+\(1/e\) and iterate the guaranteed step \(c\mapsto\min\{pc,c+1\}\). The
+points show lower bounds, not claims that every step is attained by a
+unit. The horizontal line is the exact final depth
+\(\vartheta+1/(p-1)\); its special unramified branch is retained at
+\(p=5,e=1\). The zero-step case \(p=7,e=2\) is included. Lemma 10.81
+proves all six bounds and all other ramification cases. Corollary 10.82
+then permits every closed radius \(p^\theta\) with \(\theta<\vartheta\).
+See Solution 36, \href{../figure_sources/principal_unit_depth.py}{the
+figure program}, and
+\href{https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf}{Yu's
+free paper}, equations (2.1), (4.7) and (4.11), for further reading.}
+\end{flushleft}
+\end{minipage}\par\medskip
+
+
+\subsection{29. The uniform clearing and Euler
+budget}\label{the-uniform-clearing-and-euler-budget}
+
+The saturated coordinates explain the integer arguments of the Euler
+factors. Their full \(q^\nu\) multiplier matters for ordinary absolute
+values. Averaging the derivative orders then controls that multiplier
+and the additive lcm cost together.
+
+\subsubsection{Euler arguments in a saturated
+basis}\label{euler-arguments-in-a-saturated-basis}
+
+Let \(\beta_1,\ldots,\beta_n\in K^\times\), with \(n\ge2\) and positive
+heights \(h_j=h(\beta_j)\). Let \(A_0=(a_{ij})\) be an \(r\)-by-\(n\)
+integer matrix, \(2\le r\le n\), and suppose that the original
+independent bases \(\alpha_i\) of Section 26 have the form
+\(\alpha_i=\zeta_i\prod_j\beta_j^{a_{ij}}\), with roots of unity
+\(\zeta_i\), and that
+
+\[
+\sum_{j=1}^n|a_{ij}|h_j\le\sigma_i,\qquad
+R_j=\frac{|b_n|}{h_j}+\frac{|b_j|}{h_n},
+\qquad R_{\max}=\max_{1\le j<n}R_j.
+\tag{10.218}
+\]
+
+Here \(b_j\in\mathbb Z\) and \(b_n\ne0\). The product and inverse height
+inequalities proved earlier give \(h(\alpha_i)\le\sigma_i\), as required
+in Section 26.
+
+Let \(B\) be a column-basis matrix of the q-primary saturation lattice
+\(M\supseteq\mathbb Z^r\), of index \(J=q^\nu\). Suppose \(B\Lambda\)
+lies in a translated closed box of full widths \(D_i\). Fix
+\(\lambda_0\in\Lambda\), and write \(\mu=B\lambda,\mu_0=B\lambda_0\).
+For any selected indices \(j<n\), put
+
+\[
+\omega_j(\lambda)
+=J\sum_{i=1}^r(b_na_{ij}-b_ja_{in})(\mu_i-\mu_{0i}).
+\tag{10.219}
+\]
+
+\textbf{Lemma 10.84 (the original integer Euler arguments).} These are
+integer linear forms in \(\lambda-\lambda_0\). They are the eigenvalues
+of \(\sum_i(b_na_{ij}-b_ja_{in})Y_i\partial/\partial Y_i\) on the
+Laurent monomials \(Y^{J(\mu-\mu_0)}\). With the widths of (10.186),
+
+\[
+\Omega_j=\max_{\lambda\in\Lambda}|\omega_j(\lambda)|
+\le J R_{\max}\sum_iD_i\sigma_i
+=\frac{q^\nu\mathcal D R_{\max}}{c_1c_2Pd}.
+\tag{10.220}
+\]
+
+\textbf{Proof.} The quotient \(M/\mathbb Z^r\) has order \(J\). The
+cyclic subgroup generated by any class has order dividing \(J\), because
+its distinct cosets partition this finite group into equal-sized sets.
+Hence \(J\) annihilates every class, and \(JB\) has integer entries.
+This proves integrality in (10.219). Acting on a Laurent monomial
+multiplies it by its integer exponent in the differentiated coordinate,
+which proves the eigenvalue identity, including negative exponents.
+
+Both \(\mu\) and \(\mu_0\) lie in the same translated box, so
+\(|\mu_i-\mu_{0i}|\le D_i\). No extra factor two is needed for its full
+widths. Also \[
+|b_na_{ij}-b_ja_{in}|
+\le |b_n||a_{ij}|+|b_j||a_{in}|
+\le R_j\sigma_i.
+\] The last inequality uses separately \(|a_{ij}|h_j\le\sigma_i\) and
+\(|a_{in}|h_n\le\sigma_i\), which follow from (10.218). Sum over \(i\),
+and substitute \(D_i\sigma_i=\mathcal D/(c_1c_2rPd)\). This gives
+(10.220). \(\square\)
+
+The same proof divides the bound by \(q^I\) when the full original
+widths have contracted by \(q^{-I}\). It keeps the original
+denominator-clearing multiplier \(J\).
+
+\subsubsection{The combined mean cost}\label{the-combined-mean-cost}
+
+Use the full composition rows of Corollary 10.79, including duplicate
+Euler rows, and let \(t_0=\lfloor T\rfloor\ge1\). Retain its
+\(\overline u,\overline h\), and \(m=\sum_{j=1}^{r-1}\Omega_j+r-2\).
+Then \(\overline h>0\).
+
+\textbf{Lemma 10.85 (one budget for clearing and Euler factors).} With
+\(\mathfrak v=\operatorname{lcm}(1,\ldots,k)\), put
+
+\[
+\begin{aligned}
+\mathfrak a_{\rm av}
+&=\max\left\{\ln\!\left[\mathrm e(1+m/\overline h)\right],
+                   \frac12\ln\mathfrak v\right\},\\
+E_{\rm mean}+\overline u\ln\mathfrak v
+&\le t_0\mathfrak a_{\rm av}.
+\end{aligned}
+\tag{10.221}
+\]
+
+\textbf{Proof.} The exact composition means in (10.204) give \[
+\overline h+2\overline u
+=\frac{r-1}{r}t_0+\frac{r+1}{r}\overline u
+\le t_0,
+\] since \(\overline u\le t_0/(r+1)\). Formula (10.205) bounds the mean
+Euler logarithm by \(\overline h\ln[\mathrm e(1+m/\overline h)]\); the
+mean clearing logarithm is exactly \(\overline u\ln\mathfrak v\). Both
+are bounded by their respective multipliers times
+\(\mathfrak a_{\rm av}\). Adding proves (10.221). \(\square\)
+
+For the original parameters, we can retain more information than the
+maximum in this lemma. Define
+
+\[
+W(d)=\begin{cases}
+\ln^3(3d),&d\ge2,\\
+\dfrac{\ln6}{\ln2\,\ln3},&d=1,
+\end{cases}
+\qquad
+g_{91}=1+\frac{1+\ln W(d)}{g_0}.
+\tag{10.222}
+\]
+
+Thus \(g_{91}\) is \(1+(1+3\ln\ln(3d))/g_0\) for \(d\ge2\). Assume in
+addition to Section 26 that
+
+\[
+h\ge\ln\!\left(\frac{R_{\max}}{dW(d)}\right),
+\qquad c_0\ge19/10,\quad c_4\ge15/4,\quad
+\widehat\vartheta\le2,
+\qquad H_1=h+\nu\ln q.
+\tag{10.223}
+\]
+
+The added height condition is exactly \(R_{\max}\le dW(d)\mathrm e^h\).
+It is the coefficient-height condition associated with (10.218).
+
+\textbf{Theorem 10.86 (the original uniform mean Euler budget).} Under
+these assumptions,
+
+\[
+\begin{aligned}
+\frac m{\overline h}
+&\le\frac47\,\mathrm e^{H_1}tW(d)+\frac{r+1}{t_0},\\
+\ln\!\left[\mathrm e(1+m/\overline h)\right]
+&\le\left(g_{91}+\frac1{2(r-1)}\right)H_1,
+\end{aligned}
+\tag{10.224}
+\]
+
+and
+
+\[
+E_{\rm mean}+\overline u\ln\mathfrak v
+\le g_{91}t_0H_1.
+\tag{10.225}
+\]
+
+\textbf{Proof.} First \(T\ge g_4>9\). To verify the latter lower bound
+directly, the factor defining \(g_4\) is at least \(g_1^{-1}\). Insert
+\(g_3\) from (10.185), cancel \(c_1,g_1,t\), and use
+\(q\ge2,r+1\ge3,\rho\le58,a_*\ge7/2\) and \(r!\le r^r\). This gives \[
+g_4\ge\frac62\frac{2(19/10)(15/4)}{58}
+                 \left(\frac72\right)^2
+=\frac{8379}{928}>9.
+\] Consequently \(t_0\ge1\) and \(T/t_0<2\).
+
+We have \(\overline h\ge(r-1)t_0/(r+1)\). Sum (10.220), use (10.223),
+and use \(T=q(r+1)\mathcal D/(c_1\theta et)\). Then \[
+\frac m{\overline h}
+\le\mathrm e^{H_1}\frac{T}{t_0}
+       \frac{\theta e}{P}\frac{tW(d)}{c_2q}+
+       \frac{(r+1)(r-2)}{(r-1)t_0}.
+\] Indeed the factor \(d\) in \(R_{\max}\le dW(d)\mathrm e^h\) cancels
+the global degree in (10.220). Formula (10.184) gives
+\(\theta e/P\le1\), including its special unramified case, and
+\(c_2q\ge7/2\). These inequalities prove the first line of (10.224).
+
+Both branches have \(W(d)\ge1\). For \(d\ge2\), \(\ln(3d)\ge\ln6>1\).
+For \(d=1\), use \(\ln6=\ln2+\ln3\) and \(\ln2<1\), so
+\(W(d)=1/\ln2+1/\ln3>1\). Since \(t\ge\ln2>2/3\) and \(H_1\ge(r+1)t\),
+we have \(r+1<3H_1/2\). Moreover \(H_1>39\) implies \[
+1+\frac{3H_1}{2}<\frac3{14}H_1^2
+\le\frac37\mathrm e^{H_1}.
+\] The last inequality follows from the quadratic term of the positive
+exponential series. This absorbs the \(1+(r+1)/t_0\) term in the first
+line of (10.224), yielding \[
+1+m/\overline h\le
+\mathrm e^{H_1}W(d)\max\{t,1\}.
+\] Take logarithms and add one. As \(H_1\ge g_0\), the constant
+\(1+\ln W(d)\) is at most \((g_{91}-1)H_1\). The function \(\ln z/z\)
+has maximum \(1/\mathrm e\) for \(z>0\), by differentiating. Hence
+\(\ln\max\{t,1\}\le t/\mathrm e\le H_1/[\mathrm e(r+1)]\le H_1/[2(r-1)]\),
+since \(\mathrm e>2\). This proves the second line of (10.224).
+
+The complete lcm bound in
+\href{../TR-BAKER-07.html\#an-exponential-bound-for-least-common-multiples}{Two
+logarithms II: explicit lower bounds} gives
+\(\ln\mathfrak v<k\ln3<(3/2)H_1\). Here \(k\le H_1\), and \(\ln3<3/2\)
+follows already from \(1+3/2+(3/2)^2/2>3\) in the positive exponential
+series.
+
+Put \(a=g_{91}+1/[2(r-1)]\). We have bounded the combined mean by \[
+H_1\left[\frac{r-1}{r}(t_0-\overline u)a+
+                       \frac32\overline u\right].
+\] This is affine in \(\overline u\), so its maximum on
+\([0,t_0/(r+1)]\) occurs at an endpoint. At zero its coefficient of
+\(t_0H_1\) is \((r-1)g_{91}/r+1/(2r)\le g_{91}\). At the other endpoint
+that coefficient is \(((r-1)g_{91}+2)/(r+1)\le g_{91}\). Both
+inequalities use \(g_{91}\ge1\). This proves (10.225). \(\square\)
+
+\subsubsection{The full initial coefficient-height
+bound}\label{the-full-initial-coefficient-height-bound}
+
+\textbf{Corollary 10.87 (a uniform bound for all initial scalar rows).}
+Assume also the hypotheses of Theorem 10.75 and Corollary 10.77. An
+integral initial kernel with all required zeros can be chosen with mean
+scalar logarithm at most
+
+\[
+\ln\mathcal B_{\rm av}
+=kL\ln\!\left[2\mathrm e\left(\frac{s_0}{k}+2\right)\right]
+                    +g_{91}TH_1.
+\tag{10.226}
+\]
+
+In particular
+
+\[
+\frac{\ln\mathcal B_{\rm av}}Z
+\le\frac{1+g_5^{-1}}{c_1c_4}
+                    +\frac{g_{91}}{c_1c_3\theta e}.
+\tag{10.227}
+\]
+
+With \(d_0\) the actual row-field degree, its coefficients satisfy
+
+\[
+\begin{aligned}
+\frac{h_2(\boldsymbol c)}Z\le{}&
+\frac12g_8+\frac{\ln d_0}{2g_7}
+                         +\frac{d_0-1}{c_1c_2S}\\
+&+\frac1{c_{01}-1}\left[
+\frac12g_8+\frac{1+g_5^{-1}}{c_1c_4}
++\frac{g_{91}}{c_1c_3\theta e}
++\frac{1+1/(2g_2)}{2c_1c_2}\right].
+\end{aligned}
+\tag{10.228}
+\]
+
+\textbf{Proof.} At every additive order, the first factor of (10.198)
+bounds its divided derivative before the lcm multiplier. Its logarithm
+is independent of the derivative allocation, so it also bounds its
+average. Theorem 10.86 bounds the mean lcm and Euler contributions
+together by \(g_{91}t_0H_1\le g_{91}TH_1\). This proves (10.226).
+Corollary 10.77 bounds its first normalized term. The exact parameter
+formulas give \[
+\frac{TH_1}{Z}=\frac1{c_1c_3\theta e},
+\] proving (10.227).
+
+Use the full composition rows and their actual ratio
+\(\overline M/(N-\overline M)\) in (10.206). The column surplus (10.190)
+bounds that ratio by \(1/(c_{01}-1)\). Insert (10.227),
+\(\ln N/Z\le g_8\), \(Z\ge g_7\), and the exact mean-node bound from
+Corollary 10.72. This is (10.228), with every scalar, logarithmic,
+field-generator and torus cost retained. The row field and the integral
+nonzero coefficient conclusion are those of Lemma 10.63. \(\square\)
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={The saturated-coordinate Euler arguments with their full clearing factor}]{../figures/mean-clearing-euler.png}}
+\par\smallskip
+\begin{flushleft}\small
+\emph{Figure 10.17. Take the rational bases \(4,9\), their q-primary
+saturated generators \(2,3\), and \(J=4\). The map \(B=\tfrac12I\) sends
+the integer support on the left to its original coordinates in the upper
+right panel. Retain the phase class
+\(\lambda_1+\lambda_2\equiv0\pmod2\). With \((b_1,b_2)=(2,3)\), the
+prepared Euler argument is \(6\lambda_1-4\lambda_2=4(3\mu_1-2\mu_2)\).
+Its extrema at the reference \(\lambda_0=0\) are \(48\) and \(-24\),
+marked at the corresponding vertices. The lower panel shows the exact
+mean relation at \(r=2\): for \(a=\overline u/t_0\le1/3\), the
+normalized Euler mean is \((1-a)/2\) and their weighted sum
+\((1-a)/2+2a\) is at most one. Lemma 10.84 keeps the full clearing
+factor and original widths; Lemma 10.85 and Theorem 10.86 control the
+cost after averaging orders. The coordinates and values are
+reconstructed in Solution 37.
+\href{../figure_sources/mean_clearing_euler.py}{Figure program}.
+Human-source context:
+\href{https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf}{Yu's
+free paper}, equations (2.8), (4.23) and (5.6).}
+\end{flushleft}
+\end{minipage}\par\medskip
+
+
+\subsection{30. The generator field and its uniform discriminant
+cost}\label{the-generator-field-and-its-uniform-discriminant-cost}
+
+The initial scalar bound is now uniform. We next control the field in
+which its coefficients are chosen. A large entry of a saturation basis
+can make its displayed generators have large heights while leaving the
+field unchanged. Centering the basis removes that loss. We then use the
+height-product theorem separately after each omission; the cancellation
+in \(S\mathcal D/d\) keeps its bound independent of the saturation
+index.
+
+\subsubsection{A centered basis with small generator
+heights}\label{a-centered-basis-with-small-generator-heights}
+
+\textbf{Lemma 10.88 (a centered saturation basis).} Let \(r\ge2\), and
+let \(M\supseteq\mathbb Z^r\) be a rational lattice of finite index
+\(J\). Suppose its basis \(B\) corresponds to generators
+\(\theta_1,\ldots,\theta_r\in K^\times\) in the independent original
+bases \(\alpha_1,\ldots,\alpha_r\), up to roots of unity. Put
+\(\sigma_{\max}=\max_i\sigma_i\), where \(h(\alpha_i)\le\sigma_i\).
+
+There is a basis \(B'=BU\), with \(U\in\operatorname{GL}_r(\mathbb Z)\),
+that is upper triangular and has the following alternatives for each
+column:
+
+\[
+\begin{gathered}
+B'_{ii}=1\quad\Longrightarrow\quad B'_i=e_i,\\
+0<B'_{ii}<1\quad\Longrightarrow\quad
+ B'_{ii}\le\tfrac12,\qquad
+ |B'_{ji}|\le\tfrac12\quad(j<i),\qquad B'_{ji}=0\quad(j>i).
+\end{gathered}
+\tag{10.229}
+\]
+
+Choose \(\theta'_j=\prod_i\theta_i^{U_{ij}}\). Then
+
+\[
+\begin{aligned}
+h(\theta'_j)&\le\sum_i|B'_{ij}|h(\alpha_i)
+\le\frac r2\sigma_{\max},\\
+E&=\mathbb Q(\alpha_0,\theta_1,\ldots,\theta_r)
+=\mathbb Q(\alpha_0,\theta'_1,\ldots,\theta'_r),
+\end{aligned}
+\tag{10.230}
+\]
+
+for any root of unity \(\alpha_0\). This change preserves every
+normalized monomial, phase class, original support width and integer
+Euler argument after relabelling \(\lambda'=U^{-1}\lambda\).
+
+\textbf{Proof.} The cyclic-subgroup coset argument in Lemma 10.84 shows
+that \(J\) kills \(M/\mathbb Z^r\). Thus \(L=JM\) is an integer lattice
+containing \(J\mathbb Z^r\). Let
+\(L_i=L\cap\operatorname{span}(e_1,\ldots,e_i)\). Its i-th coordinate
+image is a nonzero subgroup \(h_i\mathbb Z\) containing \(J\mathbb Z\).
+Hence \(h_i\) is a positive divisor of \(J\).
+
+Inductively choose \(v_i\in L_i\) whose i-th coordinate is \(h_i\). If
+\(h_i=J\), choose \(v_i=Je_i\), which belongs to \(L\). Otherwise,
+subtract integer multiples of \(v_{i-1},\ldots,v_1\), in that descending
+order, to place coordinate \(j<i\) in the interval \([-h_j/2,h_j/2]\).
+Ordinary integer division, with either consistent choice at a midpoint,
+makes this possible. Subtracting \(v_j\) does not change a coordinate
+larger than \(j\).
+
+The vectors \(v_1,\ldots,v_i\) form a basis of \(L_i\). Indeed, for
+\(x\in L_i\), subtract the multiple of \(v_i\) specified by its i-th
+coordinate to obtain an element of \(L_{i-1}\), and use induction.
+Reading the largest coordinate proves independence. Thus
+\(B'=(v_1,\ldots,v_r)/J\) is a basis of \(M\). Its diagonal lies in
+\((0,1]\); a proper divisor \(h_i<J\) is at most \(J/2\). Every centered
+upper entry has absolute value at most \(h_j/(2J)\le1/2\). The special
+choice at \(h_i=J\) gives the first alternative in (10.229).
+
+Both \(B\) and \(B'\) are integer bases of the same lattice, so
+expressing one in the other gives inverse integer matrices \(U,U^{-1}\).
+The chosen new generators and their inverse products therefore generate
+exactly the same field. Clear the denominators of \(B'\) and the finite
+root-of-unity factors by a common positive power. The height product
+inequality and exact power identity, already proved in the earlier
+height lesson, give the first inequality of (10.230). A proper-diagonal
+column has at most \(r\) entries of absolute value at most \(1/2\). A
+unit column gives height at most \(\sigma_{\max}\le r\sigma_{\max}/2\).
+This proves the second inequality.
+
+Finally \(B'\lambda'=B\lambda\) and
+\((\theta')^{\lambda'}=\theta^\lambda\). With the phase vector
+transformed to \(d'=U^{\mathsf T}d\), we have
+\(d'\cdot\lambda'=d\cdot\lambda\). Original-coordinate differences,
+hence their full-width bounds and the integer Euler forms in (10.219),
+are unchanged. Taking the same integer products of chosen q-th roots
+also preserves their powers and generated root field; the inverse
+products recover the old roots. The uniqueness assertion in Corollary
+10.83 preserves the principal root choices. \(\square\)
+
+The unit-column alternative matters. Centering only the off-diagonal
+entries of a column with diagonal one would give the weaker
+\((r+1)\sigma_{\max}/2\). Choosing the coordinate unit vector avoids
+this extra half-height.
+
+\subsubsection{Each omitted height product and the exact
+scale}\label{each-omitted-height-product-and-the-exact-scale}
+
+Retain all parameters in (10.183)--(10.186). Write \(w_K\) for the full
+root-of-unity order, and define
+
+\[
+\begin{aligned}
+g_{11}&=\frac{4q\mathrm e}{\rho}\,
+c_0c_1c_3c_4a_*^r
+\frac{(r+1)^{r+1}(r-1)^{r-1}}{(r!)^2}g_0g_1,\\
+g_{12}&=\begin{cases}
+g_1/(2g_7)+1/g_{11},&d\ge2,\\
+0,&d=1.
+\end{cases}
+\end{aligned}
+\tag{10.231}
+\]
+
+These are the original constants in Yu's equation (3.16);
+\(\mathrm e=\exp(1)\) is distinct from the ramification index.
+
+\textbf{Lemma 10.89 (the original omitted-product bound).} For
+\(Z=S\mathcal D/d\) and every \(i=1,\ldots,r\),
+
+\[
+\begin{gathered}
+d^r\ell_d\prod_{j\ne i}\sigma_j
+\ge\frac{w_K}{\rho}
+\frac{(r-1)^{r-1}}{(r-1)!\,\mathrm e^{r-1}},\\
+\frac{2Z}{rd\sigma_i}\ge g_{11}.
+\end{gathered}
+\tag{10.232}
+\]
+
+\textbf{Proof.} Every subset of an independent multiplicative family is
+independent: a relation in that subset would extend by zero exponents to
+a relation in the full family. Apply the completely proved
+height-product inequality (10.57) to the \(r-1\) original bases other
+than \(\alpha_i\). Since \(\sigma_j\ge h(\alpha_j)\), replacing the
+heights preserves its lower bound. At \(d\ge2\), multiply by
+\(d^r\ell_d\) and use \(\ell_d\ge\ln d\). At \(d=1\), the proved
+constant is \(17=\rho\). This proves the first line of (10.232) for each
+omission separately.
+
+For clarity the exact cancellation in the scale is
+
+\[
+\begin{aligned}
+Z={}&\frac{c_3q(r+1)hA}{q^ut}
+(1+\epsilon)(2+g_2^{-1})c_0c_1c_4
+\left(\frac{c_2qPr(r+1)}{e\theta}\right)^r\frac1{r!}\\
+&\quad{}\times
+\max\left\{\frac{p^f}{\delta t^r},
+\frac{\mathrm e^r}{r^r}t\right\}
+d^{r+1}\ell_d\prod_j\sigma_j.
+\end{aligned}
+\tag{10.233}
+\]
+
+It follows by substituting \(S\) and \(\gamma\) in (10.186): the factors
+\(q^\nu\), \(h+x\) and \(A+x\) cancel exactly. Use \(h\ge g_0\),
+\(A\ge g_1\), \((1+\epsilon)(2+g_2^{-1})\ge2\),
+\(c_2qP/(e\theta)\ge a_*\), and the second member of the maximum. We
+obtain
+
+\[
+Z\ge
+\frac{2q\mathrm e^r}{q^u}
+c_0c_1c_3c_4a_*^r
+\frac{(r+1)^{r+1}}{r!}g_0g_1
+d^{r+1}\ell_d\prod_j\sigma_j.
+\]
+
+Divide by \(\sigma_i\), insert the first line of (10.232), and use
+\(w_K\ge q^u\). Multiplication by \(2/(rd)\), together with
+\(r(r-1)!=r!\), gives exactly \(g_{11}\) in (10.231). No bound on
+\(q^\nu\) has been inferred from an omitted product. \(\square\)
+
+\subsubsection{A uniform coefficient-field and initial height
+bound}\label{a-uniform-coefficient-field-and-initial-height-bound}
+
+\textbf{Theorem 10.90 (the original field cost).} Let
+\(E=\mathbb Q(\alpha_0,\theta_1,\ldots,\theta_r)\subseteq K\) be the
+generator field of the normalized initial rows, and let
+\(d_E=[E:\mathbb Q]\). Then
+
+\[
+\frac{\ln|\Delta_E|}{2d_EZ}\le g_{12}.
+\tag{10.234}
+\]
+
+Under the remaining hypotheses of Corollary 10.87, the initial rows have
+a nonzero integral kernel \(c\in\mathcal O_E^N\subseteq\mathcal O_K^N\)
+giving every original zero and the same nonzero-polynomial conclusion,
+with
+
+\[
+\begin{aligned}
+\frac{h_2(c)}Z\le{}&
+g_{12}+\frac{g_8}{2}\\
+&+\frac1{c_{01}-1}\left[
+\frac{g_8}{2}
++\frac{1+g_5^{-1}}{c_1c_4}
++\frac{g_{91}}{c_1c_3\theta e}
++\frac{1+(2g_2)^{-1}}{2c_1c_2}\right].
+\end{aligned}
+\tag{10.235}
+\]
+
+\textbf{Proof.} At \(d=1\), \(E=\mathbb Q\) and its discriminant is one.
+Suppose \(d\ge2\), and use the centered generators of Lemma 10.88. Apply
+the complete discriminant-and-generators argument (8.33) in
+\href{../TR-BAKER-08.html\#the-discriminant-of-the-coefficient-field}{Linear
+forms in many logarithms} to the tower obtained by first adjoining
+\(\alpha_0\), then the \(\theta'_j\). The first height is zero. The
+product of its nontrivial degrees is \(d_E\); induction on
+\((a-1)+(b-1)\le ab-1\) bounds the sum of the degree decrements by
+\(d_E-1\). Consequently
+
+\[
+\frac{\ln|\Delta_E|}{2d_E}
+\le\frac{\ln d_E}{2}
++(d_E-1)\frac r2\sigma_{\max}.
+\tag{10.236}
+\]
+
+Choose an index attaining \(\sigma_{\max}\). Lemma 10.89 gives
+\(r\sigma_{\max}/2\le Z/(dg_{11})\). Since \(d_E\le d\), the second term
+in (10.236), divided by \(Z\), is at most
+\((d_E-1)/(dg_{11})<1/g_{11}\). Also \(Z\ge g_7\) and
+\(\ln d_E\le\ln d<g_1\), so its first term is at most \(g_1/(2g_7)\).
+This proves (10.234), with the original \(g_{12}\).
+
+Every initial row entry is its integer prepared scalar times
+\(\alpha_0^{sw_\lambda}\theta^{Ps(\lambda-\lambda_0)}\), by (10.151),
+hence belongs to \(E\). Apply the complete weighted integral Siegel
+proof (8.40) over this field, allowing the full composition rows and
+retaining zero or duplicate rows as in Theorem 10.79. Their normalized
+heights do not change upon restriction to \(E\), by the field-invariance
+argument in Theorem 10.59. The resulting bound is the original row-sum
+inequality with discriminant term \(\ln|\Delta_E|/(2d_E)\).
+
+Insert (10.234), \(\ln N/Z\le g_8\), the exact row ratio bounded by
+\(1/(c_{01}-1)\), the mean scalar bound (10.227), and the mean-node
+torus term in Corollary 10.72. This is (10.235). The vector is integral
+over \(E\), hence over \(K\); it is nonzero, and Lemma 10.29 gives the
+nonzero Laurent polynomial. The representative-row identities used in
+Theorem 10.55 supply every original jet zero. \(\square\)
+
+The field bound uses the same \(g_{12}\) as the original argument.
+Equation (10.235) retains the complete mean scalar budget proved with
+\(\operatorname{lcm}(1,\ldots,k)<3^k\). A later individual prepared
+value still has its own scalar, denominator and field costs; averaging
+the initial rows does not change that value.
+
+\begin{minipage}[t]{\linewidth}
+\centering
+\pandocbounded{\includegraphics[keepaspectratio,alt={An integer change of saturation basis preserves the field and original support while reducing generator heights}]{../figures/initial-field-budget.png}}
+\par\smallskip
+\begin{flushleft}\small
+\emph{Figure 10.18. Over \(K=\mathbb Q(\sqrt5)\), the original bases
+\(5,7\) have saturation lattice \((\tfrac12\mathbb Z)\times\mathbb Z\)
+and index two. The displayed basis
+\(B=\left(\begin{smallmatrix}1/2&5\\0&1\end{smallmatrix}\right)\) has
+generators \(\sqrt5,5^5\cdot7\). The integer matrix
+\(U=\left(\begin{smallmatrix}1&-10\\0&1\end{smallmatrix}\right)\) gives
+\(B'=BU=\operatorname{diag}(1/2,1)\) and generators \(\sqrt5,7\). The
+sampled lattice points, blue for an even first coordinate and brown for
+an odd one, are labelled by \(\lambda'\), with original coordinates
+\(B'\lambda'=(\lambda'_1/2,\lambda'_2)\). In the old basis they have
+labels \(U\lambda'\), producing exactly the same points and monomials.
+The height bars are numerical renderings of the labelled exact
+logarithms; the dashed line is the centered bound
+\(r\sigma_{\max}/2=\ln7\). Both lists generate the same quadratic field
+of discriminant five. Lemmas 10.88--10.89 and Theorem 10.90 prove the
+basis, omitted-product and field-budget mechanisms; Solution 38 checks
+this example and the normalized original constants.
+\href{../figure_sources/initial_field_budget.py}{Figure program}.
+Human-source context:
+\href{https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf}{Yu's
+free paper}, equations (3.16), (3.23) and Lemma 4.2;
+\href{https://www.impan.pl/shop/en/publication/transaction/download/product/82907}{Loher
+and Masser's free paper}, Theorem 3, whose complete height-product proof
+is given in Section 9.}
+\end{flushleft}
+\end{minipage}\par\medskip
+
+
+\subsection{31. Exercises with
 solutions}\label{exercises-with-solutions}
 
 \begin{enumerate}
@@ -5282,6 +7700,98 @@ solutions}\label{exercises-with-solutions}
   every term in (10.156). Compare the support-field budget with the
   budget from the full root field, and explain why equal local degrees
   do not justify using the original global degree.
+\item
+  \textbf{Medium.} Verify the auxiliary-prime choices in Corollary 10.9
+  for \((a,p)=(8,3),(3,2),(25,2)\). Compute the exact original and
+  transformed valuations, the rational heights and the cutoff \(H\).
+  Derive the all-power bound when \(b=1\), retaining the same
+  \(250000\ln(5a)\ln5\) coefficient. Explain why simply setting the
+  second base to one would not prove this case.
+\item
+  \textbf{Hard.} Verify the two support heights in Figure 10.11 by
+  clearing denominators in the monomial vectors and finding their
+  primitive integer coordinates. Compute both signed heights of
+  \(\{(0,0),(1,0),(0,1)\}\). Extract the even-even coset from the
+  diamond at \(q=2\), use reference \((-2,0)\), and verify (10.162). At
+  \(P=1,S=1,k=L=1,T=0\), compare the separate-row coefficient budgets
+  for the seven-point diamond support using its exact height and its
+  coordinate box. Explain how a shifted original-coordinate box is
+  handled when its centre is outside the image of \(B\).
+\item
+  \textbf{Hard.} Verify the two initial kernels in Figure 10.12 and
+  determine their exact row fields. Prove the discriminants \(5\) and
+  \(24\) using the full integral bases of the two quadratic fields.
+  Compute both projective coefficient heights, explain why their
+  finite-place contributions vanish, and evaluate (10.171) with the
+  actual row-field discriminant for each example. For \(t=\sqrt6\),
+  compare the one-generator discriminant bound with the bound using only
+  the maximum support height. Explain what happens to the row field when
+  \(S=0\), and why \(N>M_*\) and the later analytic inequalities still
+  need checking.
+\item
+  \textbf{Medium.} Verify every lattice and phase coordinate in Figure
+  10.13. Compute \(J,V/\Delta,g,H\), the guaranteed class size, and both
+  sides of (10.180) at \(k=2,L=1\). At \(S=1,T=0\), compare the
+  coefficient surplus certified by the exact class count with the
+  coarser volume criterion. Then take \(T=1\) and one nonzero Euler
+  direction: compute \(M_*\), and state precisely what the counting
+  criterion does and does not prove. Explain why replacing the closed
+  box by an open one would invalidate the integer-volume argument.
+\item
+  \textbf{Hard.} Use \(K=\mathbb Q,p=3,r=2\),
+  \((\alpha_1,\alpha_2)=(2,5)\), and
+  \(c_0=1.9,c_1=1.4494,c_3=1.3852,c_4=20.8\). Put \(a_0=2+\ln14\),
+  \(a_1=4.79\), \(g_0=3(2a_0+a_1+\ln(2a_0+a_1))\), \(h=g_0\), and
+  \(\tau=1/(4\cdot10^{26})\). Use \(\widehat\vartheta=3/2\) and
+  \(\sigma_1=\ln2,\sigma_2=\ln5\). Prove that \(J=1,u=1,H=1\). Verify
+  the floors in Figure 10.14 with rigorous bounds, construct a support
+  of exactly \(\lfloor D_1D_2\rfloor+1\) points without listing it, and
+  compute \(N,M_{\rm full},M_*\). Use the integral identity
+  \(20N-57M_{\rm full}>0\) to verify the strict surplus. Identify the
+  actual coefficient field and its discriminant cost.
+\item
+  \textbf{Hard.} First take \(K=\mathbb Q(\zeta_3,\sqrt2)\) and \(p=2\).
+  Prove that \(d=4,e=2,f=2,u=1\), and verify equality in (10.192). Then
+  return to all the rational parameters of Solution 34. Compute
+  \(\Omega_1\), the actual clearing integer, both maximizing additive
+  orders in (10.199) and (10.201), and the exact mean orders in
+  (10.204). Reconstruct each signed component and net height bound in
+  Figure 10.15, using (10.174) with the actual ratio \(M_* /(N-M_*)\).
+  Include the row-scaling bounds of Corollary 10.80. Explain why the
+  coefficient field and all zeros are preserved by the alternative
+  global clearing.
+\item
+  \textbf{Medium.} Reconstruct every exact lower-bound path and final
+  depth in Figure 10.16. Distinguish these lower bounds from the actual
+  valuation path for \(\beta=1+\sqrt2\) in \(\mathbb Q_2(\sqrt2)\). Next
+  let \(\pi^3=3\), \(L=\mathbb Q_3(\pi)\), and \(\beta=1+\pi\). Show
+  that the bound (10.210) is attained at \(P=9\), and use the
+  exponential coefficients to prove that the closed boundary radius
+  \(3^{\vartheta}\) cannot replace \(3^\theta\) in Corollary 10.82.
+  Describe the coherent principal square root of the phased coordinate
+  for \(\alpha=-\beta,\zeta=-1\).
+\item
+  \textbf{Hard.} Reconstruct Figure 10.17 over \(K=\mathbb Q\) at
+  \(p=5\). Prove that the q-primary saturation lattice of \(4,9\) has
+  basis \(B=\tfrac12I\) and index \(J=4\), and identify the even phase
+  class of its generators \(2,3\). Compute the exact prepared Euler
+  range at reference \(0\), and again at reference \((8,0)\). Explain
+  why the full box widths give a bound without a factor two, and why
+  omitting \(J\) can even destroy integrality. Then return to Solution
+  34 and use (10.222)--(10.228) to certify the uniform initial height
+  bound, retaining every field and scalar cost.
+\item
+  \textbf{Hard.} Reconstruct Figure 10.18 for \(K=\mathbb Q(\sqrt5)\),
+  with original bases \(5,7\) and coefficients \(b_1=b_2=1\). Determine
+  the full saturation lattice and its q-primary index at \(q=2\), verify
+  \(B'=BU\), and compute both lists of generator heights. Identify the
+  field and its discriminant. At \(p=3\), determine \(e,f,u,\nu,P\) and
+  the phase classes. Use the constants of Solution 34, put
+  \(g_0=3(2a_0+a_1+\ln(2a_0+a_1)+\ln2)\), \(h=g_0\),
+  \(\sigma_1=\ln5,\sigma_2=\ln7\), and retain its \(\tau\). Certify the
+  original \(g_{11},g_{12}\), a strict initial column surplus, and the
+  full bound (10.235). Compare the generator field with the smallest
+  field of the actual rows.
 \end{enumerate}
 
 \textbf{Solution 1.} Put \(q_i=v(\alpha_i)\). If \(b_1q_1\ne b_2q_2\),
@@ -5804,6 +8314,659 @@ same row estimate over \(F\) would instead give \(4\ln36/\ln5\). The
 support field halves this sufficient budget. Its unchanged completion
 removes no further factor: \(V\notin\mathbb Q\), and the product formula
 still sums over a global field of degree two.
+
+\textbf{Solution 30.} Choose the smallest admissible prime. For
+\(a=8,p=3\), two is dependent with eight and three is not a unit, so
+\(c=5\). The transformed difference is \(63/25\), and
+\(v_3(8^2-1)=v_3(63/25)=2\). The heights are \(\ln8,\ln5\), bounded by
+\(\ln40,\ln5\). For \(a=3,p=2\), two is excluded by \(p\) and three by
+dependence, so again \(c=5\). The difference is \(3/5-1/5=2/5\), with
+valuation one, equal to \(v_2(3-1)\). Here the heights are both
+\(\ln5\), bounded by \(\ln15,\ln5\). For \(a=25,p=2\), the smallest
+admissible prime is three. The difference is \(25/3-1/3=8\), with
+valuation three, equal to \(v_2(25-1)\). The heights are \(\ln25,\ln3\),
+bounded by \(\ln125,\ln5\).
+
+For all these pairs, the proof gives \(\ln(B'\ln p)\le3\ln p\), so
+\(H=10\ln p\). For the all-power conclusion let \(q\mid p-1\) be the
+residue order of \(a\). If \(q\nmid n\), the valuation of \(a^n-1\) is
+zero. Otherwise the proved prime-to-p and deep p-power identities at odd
+\(p\) give \[
+v_p(a^n-1)
+=v_p(a^{p-1}-1)+v_p(n)
+\le250000\ln(5a)\ln5\,\frac p{(\ln p)^2}+v_p(n).
+\] The prime \(p\) is odd in this last assertion, exactly as in
+Corollary 10.10. A base equal to one would be multiplicatively dependent
+with every base; Theorem 10.8 requires independence. The two rational
+bases constructed here satisfy that requirement while preserving the
+original valuation.
+
+\textbf{Solution 31.} Order the diamond monomials as
+\(1/4,1/2,1,2,4,1/3,3\). Multiplication by \(12\) gives
+\((3,6,12,24,48,4,36)\). Its coordinates have gcd one and maximum
+\(48\), so the projective height is \(\ln48\). For the box the smallest
+and largest monomials are \(1/12\) and \(12\). Multiplication by \(12\)
+gives integer coordinates of gcd one, since one coordinate is one, and
+maximum \(144\). Its height is \(\ln144\). Direct local maxima give the
+same products \(4\cdot4\cdot3=48\) and \(12\cdot4\cdot3=144\).
+
+For the asymmetric three-point support the vectors \((1,2,3)\) and
+\((6,3,2)\) are primitive; their heights are \(\ln3\) and \(\ln6\). They
+show why a negative node needs the negative support.
+
+The even-even diamond points are \((-2,0),(0,0),(2,0)\). Subtracting
+\((-2,0)\) and dividing by two gives \(M_1=\{(0,0),(1,0),(2,0)\}\). Its
+two heights are both \(\ln4\). It is contained in \(C/2+(1,0)\), and
+\(\ln4\le\tfrac12\ln48\) follows exactly from \(16\le48\). Translation
+of the envelope is harmless; it does not change its height.
+
+Here \(N=7,J_T=1,M_*=3,\Delta_{\mathbb Q}=1\). The additive scalar
+majorants at \(s=-1,0,1\) are \(2,1,2\), while the exact signed torus
+costs are \(\ln48,0,\ln48\). Thus (10.164) gives \[
+h_2(c)\le\frac12\ln7+
+\frac14\left(\frac32\ln7+2\ln2+2\ln48\right)
+=\frac78\ln7+\frac12\ln96.
+\] The coordinate-box calculation replaces \(48\) by \(144\); it gives
+\(\tfrac78\ln7+\tfrac12\ln288\). The exact-support bound improves this
+coefficient budget by \(\tfrac12\ln3\). The mean-node bound (10.165)
+also uses \(\ln48\), but its uniform scalar majorant \(2\) loses a
+further \(\tfrac14\ln2\) relative to the separate-row bound. The actual
+row at \(s=-1\) is zero; allowing it the displayed factor is legitimate
+and does not assert that the row is nonzero.
+
+Finally, for \(|(Bu)_j-z_j|\le D_j\), the local bound includes the
+linear term \(\sum_j z_j\ln|\alpha_j|_v\). It sums to zero by the
+product formula. No vector \(a\) with \(Ba=z\) is required.
+
+\textbf{Solution 32.} Put \(C=t^2+t+1\). The vector \((-t,C,-C,t)\) has
+coordinate sum zero, and \[
+-t+Ct-Ct^2+t^4=0.
+\] Therefore it annihilates both nonzero rows in the figure, and also
+the zero row. Its torus polynomial is \[
+-t+CY-CY^2+tY^3=t(Y-t^{-1})(Y-1)(Y-t).
+\] For \(t=6\) all row entries are rational, so \(E_0=\mathbb Q\), even
+with ambient field \(\mathbb Q(\sqrt5)\). For \(t=\sqrt6\), the entry
+\(2t\) in the \(s=1\) row recovers \(t\); hence
+\(E_0=\mathbb Q(\sqrt6)\), of degree two because six is not a rational
+square.
+
+Here are the integral-basis checks. For square-free \(m\), write an
+algebraic integer in \(\mathbb Q(\sqrt m)\) as \(\beta=x+y\sqrt m\). Its
+trace \(a=2x\) and norm are rational integers, by the earlier
+norm-and-trace proof. Thus \(m(2y)^2=a^2-4N(\beta)\) is an integer. If
+\(2y=c/b\) in lowest terms, this implies \(b^2\mid m\), so \(b=1\).
+Hence \(\beta=(a+c\sqrt m)/2\) with integers \(a,c\) and
+\(a^2-mc^2\equiv0\pmod4\). For \(m=5\) this is exactly
+\(a\equiv c\pmod2\); for \(m=6\) it forces both \(a,c\) even. Conversely
+\(u=(1+\sqrt5)/2\) and \(t=\sqrt6\) are integral, satisfying
+\(u^2-u-1=0\) and \(t^2-6=0\). Their integer spans are integral and
+include every possible \(\beta\). The full integral bases are
+consequently \((1,u)\) and \((1,t)\). Their trace matrices are \[
+\begin{pmatrix}2&1\\1&3\end{pmatrix},
+\qquad
+\begin{pmatrix}2&0\\0&12\end{pmatrix},
+\] of determinants \(5\) and \(24\).
+
+In the rational kernel, \(43-7\cdot6=1\), so its integer coordinates
+have gcd one. Its maximum is \(43\) and its Euclidean norm is
+\(\sqrt{3770}\). Thus \(h_\infty(c)=\ln43\) and
+\(h_2(c)=\tfrac12\ln3770\).
+
+In the second kernel \(C=7+t\), and the identity \(C-(1+t)t=1\) shows
+that the integral coordinates generate the unit ideal. At every finite
+place their maximum norm is therefore one. At the two real embeddings
+the maximum coordinates are \(7+t\) and \(7-t\): the latter exceeds
+\(t>0\), since \(49>24\). Their product is \(43\), giving
+\(h_\infty(c)=\tfrac12\ln43\). The squared Euclidean norms are
+\(122+28t\) and \(122-28t\); their product is \(10180\). With both the
+square root and field-degree normalization, \(h_2(c)=\tfrac14\ln10180\).
+
+Both examples have \(N=4,J_T=1,M_*=3\). Their scalar majorants at
+\(-1,0,1\) are \(2,1,2\). For \(t=6\), the signed support heights are
+\(3\ln6\). Thus the bound retaining the actual discriminant in (10.171)
+is \(6\ln2+6\ln6=6\ln12\). An ambient-field application over
+\(\mathbb Q(\sqrt5)\) would add \(\tfrac14\ln5\).
+
+For \(t=\sqrt6\), the monomial vector is \((1,t,6,6t)\); its signed
+support heights are both \(\tfrac32\ln6\). Equality of the two signs
+also follows from translating the inverse support by three. The
+corresponding actual-discriminant bound is \[
+h_2(c)\le6\ln2+3\ln6+\tfrac14\ln24.
+\] These inequalities exceed the exact heights just calculated: for the
+first, \(3770<12^{12}\); for the second, \(10180<2^{24}6^{12}\cdot24\).
+
+The tower with the single generator \(z_1=t\) has \(e_1=2\) and
+\(h(t)=\tfrac12\ln6\), so (10.170) bounds its discriminant cost by
+\(\tfrac12\ln2+\tfrac12\ln6=\tfrac12\ln12\). It bounds the exact cost
+because \(24<12^2\). Using only the support maximum instead would give
+\(\tfrac12\ln2+\tfrac32\ln6\), a loss of \(\ln6\).
+
+If \(S=0\), every torus factor is \(W_\lambda^0=1\), so every row entry
+is rational even in the second example; the exact row field is
+\(\mathbb Q\). In neither case does choosing a smaller row field change
+the number of required equations. The surplus \(N>M_*\) still supplies
+the kernel, and extending its zeros still requires all the stated
+analytic and strict arithmetic comparisons.
+
+\textbf{Solution 33.} The basis matrix and its inverse are \[
+B=\begin{pmatrix}1&1/2\\0&1/2\end{pmatrix},\qquad
+B^{-1}=\begin{pmatrix}1&-1\\0&2\end{pmatrix}.
+\] Thus \(B(\lambda_1,\lambda_2)=(\lambda_1+\lambda_2/2,\lambda_2/2)\),
+its covolume is \(1/2\), and the index over \(\mathbb Z^2\) is \(J=2\).
+Equivalently its nontrivial coset is represented by \((1/2,1/2)\), whose
+double is integral. The box has volume two and normalized volume four,
+so Theorem 10.66 supplies five points. The five displayed points are
+\((0,0),(1/2,1/2),(1,0),(3/2,1/2),(2,0)\), with exactly the stated
+integer basis coordinates.
+
+Here \(g=\gcd(4,2,2)=2\) and \(H=2\). Their phases
+\(2(\lambda_1+\lambda_2)\pmod4\) are \(0,2,2,0,0\). The zero class
+retains \((0,0),(1,1),(2,0)\), of size three, equal to the guarantee
+\(\lceil5/2\rceil\). At \(kL=2\), (10.180) gives \(6\le N\le10\), and
+the actual chosen support has \(N=6\). Its strict volume bound is
+\(N>4\).
+
+For \(S=1,T=0\), \(J_T=\overline J_T=1\) and \(M_*=3\). The actual class
+count therefore certifies \(N\ge2M_*\), so \(c_*=2\) can be used in
+(10.176). The sufficient volume criterion certifies \(c_*=4/3\), since
+\(4=(4/3)\overline M\); it does not certify \(c_*=2\). This is a
+limitation of that coarser bound, not a failure of the exact class
+count.
+
+At \(T=1\), with one nonzero Euler direction, the representative indices
+are \((0,0),(1,0),(0,1)\), so \(J_T=3\) and \(M_*=9\). The six columns
+no longer satisfy \(N>M_*\). Thus this counting criterion does not
+supply the kernel for those requested jets. It makes no claim that an
+actual matrix of these rows has rank nine or that every kernel is
+impossible.
+
+Finally an open interval of length one cannot contain two integers:
+their distance would be at least one, whereas any two points of that
+interval are at distance strictly less than one. Its volume nevertheless
+equals the covolume of \(\mathbb Z\). The closed-body limiting argument
+is therefore essential at integer normalized volume.
+
+\textbf{Solution 34.} Prime valuations at two and five prove both
+independence and saturation: if a rational \(\beta\) has
+\(\beta^T=2^{Ta}5^{Tb}\) with \(Ta,Tb\) integers, then \(a=v_2(\beta)\)
+and \(b=v_5(\beta)\) are integers. Thus the full and q-primary lattices
+are \(\mathbb Z^2\), and \(J=1,\nu=0\). The only rational roots of unity
+are \(1,-1\), since a rational algebraic integer whose inverse is also
+integral is \(1\) or \(-1\); hence \(q^u=2\). At three,
+\(G=2,G_0=1,\delta=1,H=1\), regardless of the phase coefficients. Here
+\(e=f=d=1,P=3,c_2=7/4,\theta=(3/2)/(1+\tau)\), \(\rho=17\),
+\(A=g_1=4+\ln3\), and \(\gamma=1\). The specified \(g_0>39\) and
+\(h\ge3\ln3\), as the bounds below also verify.
+
+For a positive \(z>1\), put \(v=(z-1)/(z+1)\). Integrating the geometric
+series for \(2/(1-v^2)\) gives \[
+\ln z=2\sum_{j=0}^{n-1}\frac{v^{2j+1}}{2j+1}+R_n,\qquad
+0<R_n\le\frac{2v^{2n+1}}{(2n+1)(1-v^2)}.
+\] The remainder estimate follows by replacing every later denominator
+by \(2n+1\) and summing the remaining geometric powers. For an interval
+of positive \(z\)'s, the monotonicity of \(\ln z\) bounds it by applying
+these rational bounds at the two endpoints. Similarly the positive
+exponential series at two has \[
+0<\mathrm e^2-\sum_{j=0}^{64}\frac{2^j}{j!}
+\le\frac{2^{65}}{65!}\frac1{1-2/66},
+\] because the ratio of each successive omitted term is at most
+\(2/66\). Using \(n=512\) in the logarithm bounds, exact rational
+interval operations in (10.185)--(10.186) give the following enclosures.
+Rounding each lower endpoint down and each upper endpoint up to a
+multiple of \(10^{-60}\) preserves the inequalities at every operation.
+The reproducible source of Figure 10.14 implements these rational
+operations and tails.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lrr@{}}
+\toprule\noalign{}
+Quantity & Lower bound & Upper bound \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(g_0=h\) & 50.136076 & 50.136077 \\
+\(S\) & 379.288456 & 379.288457 \\
+\(\mathcal D\) & 715255.319062 & 715255.319063 \\
+\(T\) & 1796752.997002 & 1796752.997003 \\
+\(\widetilde D_0\) & 35298.572063 & 35298.572064 \\
+\(D_1\) & 67804.431507 & 67804.431508 \\
+\(D_2\) & 29201.779183 & 29201.779184 \\
+\(D_1D_2\) & 1980010036.552128 & 1980010036.552129 \\
+\end{longtable}
+}
+
+Thus
+\(s_0=379,t_0=1796752,k=50,L=35299,m=\lfloor D_1D_2\rfloor=1980010036\).
+A concrete support of size \(m+1\) is \[
+\Lambda=\left\{\left(\left\lfloor\frac j{29202}\right\rfloor,\,
+j-29202\left\lfloor\frac j{29202}\right\rfloor\right):0\le j\le m\right\}.
+\] The enclosing integer grid has \(67805\cdot29202\) points, at least
+\(m+1\), because each side count exceeds its corresponding real width.
+Integer division gives distinct points within \([0,D_1]\times[0,D_2]\).
+Every point has the same phase, since \(H=1\), and \((0,0)\) is a
+permissible reference.
+
+Take the nonzero Euler direction
+\(Y_1\partial_{Y_1}-Y_2\partial_{Y_2}\); its exponent form
+\(\lambda_1-\lambda_2\) is nonzero on this support. The additive degree
+cap is \(kL=1764950<t_0\). Therefore the representative count from
+(10.126) is \[
+J_T=\binom{t_0+2}{2}-\binom{t_0-kL+1}{2}
+=1613655870378.
+\] This subtraction counts the excluded indices with additive order at
+least \(kL+1\), after shifting that order down by \(kL+1\). The exact
+column and row counts are \[
+\begin{aligned}
+N&=50\cdot35299\cdot1980010037=3494618714803150,\\
+M_{\rm full}&=759\binom{1796754}{2}=1225148631539679,\\
+M_*&=759J_T=1224764805616902,\\
+20N-57M_{\rm full}&=58902298301297>0.
+\end{aligned}
+\] Since \(c_{01}=1.9\cdot3/2=57/20\), the last integer identity
+verifies the stronger full-row surplus in (10.190). The representative
+rows have a still larger surplus. This is a count of equations, not a
+claim that these rows are linearly independent.
+
+The saturation basis is the identity, so the normalized integer torus
+values are rational powers of the rational bases, with a possible
+rational sign. Lemma 10.63 therefore gives \(E_0=\mathbb Q,d_0=1\); its
+discriminant is one. Both the discriminant and the generator
+contribution vanish. The scalar row-height contribution in (10.191)
+remains and must be retained.
+
+\textbf{Solution 35.} At two, \(F=\mathbb Q(\zeta_3)\) has unramified
+completion of degree two, since \(2\) has order two modulo three; use
+the prime-to-\(p\) proof cited in Lemma 10.73. Over this completion
+\(X^2-2\) is Eisenstein: two is still a uniformizer, its constant
+coefficient has valuation one, and its middle coefficient is zero.
+\href{../../NT-LOC/NT-LOC-04.html\#5-root-valuations-in-the-coefficients}{Extensions
+of complete valued fields}, Corollary 5.2, gives a totally ramified
+quadratic extension. Thus the resulting completion has degree four,
+ramification index two and residue degree two. The global field is
+generated by two quadratics, so its degree is at most four; the
+local/global dimension argument of Lemma 10.73 forces it to be at least
+four. Hence \(d=4\). The field contains \(\zeta_3\), but cannot contain
+\(\zeta_9\), whose degree six would have to divide four. Therefore
+\(q^u=3,u=1\), and \(d/e=2=3^{u-1}(3-1)\).
+
+For the rational example the support contains \((67804,0)\) and
+\((0,29201)\). Every coordinate is between the corresponding endpoints,
+so the Euler argument \(\lambda_1-\lambda_2\) has exact maximum absolute
+value \(\Omega_1=67804\). Thus \(m=67804\), \(R=379+2\cdot50=479\),
+\(D_{\mathrm a}=1764950\), and \(t_0=1796752\). Prime powers give \[
+\mathfrak v=\operatorname{lcm}(1,\ldots,50)
+=3099044504245996706400,\qquad
+3^{50}=717897987691852588770249.
+\] Indeed the prime-power factors are
+\(2^5,3^3,5^2,7^2,11,13,17,19,23,29,31,37,41,43,47\). Their product is
+the displayed integer. The prime list is checked by trial division by
+two, three, five and seven: every composite at most fifty has a prime
+divisor at most its square root, hence at most seven.
+
+The separated and sharper maxima both occur at \(u=D_{\mathrm a}\). For
+the sharper one it suffices to check the last step, since its ratios
+decrease: \[
+\mathfrak v\cdot31803
+>479\cdot1764950\cdot99607.
+\] This holds for both \(\mathfrak v\) and the larger \(3^{50}\). The
+remaining Euler order is \(31802\), and the sharper logarithm is \[
+\ln\mathcal H_{\rm fine}
+=1764950\ln\mathfrak v-35299\ln(50!)
++\ln\binom{99606}{31802}.
+\] The factorial contribution is negative; omitting its sign would
+overstate this upper bound. The mean orders are obtained by summing
+\(J_u=t_0-u+1\): \[
+\overline u=\frac{820859713025}{1371417},
+\qquad
+\overline h=\frac{1643236524559}{2742834}.
+\] Use \(\sum_{u=0}^Uu=U(U+1)/2\) and \(\sum_{u=0}^Uu^2=U(U+1)(2U+1)/6\)
+in \(\sum u(t_0-u+1)\). The two polynomial sum identities follow by
+telescoping the consecutive squares and cubes, respectively.
+
+Here \(E_0=\mathbb Q,d_0=1\), so the discriminant and field-generator
+terms vanish. The exact ratio is \(M_*/(N-M_*)\), with both integers
+from Solution 34, and \(Z=S\mathcal D\). Since \(\sigma_i=h(\alpha_i)\),
+\(PL_\alpha=\mathcal D/(c_1c_2)\). The mean torus contribution divided
+by \(Z\) is therefore exactly \[
+\frac{s_0(s_0+1)}{(2s_0+1)c_1c_2S}.
+\] Substitute the sharper logarithm above, or (10.205), into the
+weighted coefficient bound. The rational series and outward interval
+operations from Solution 34 give these net upper bounds:
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Scalar estimate & \(h_2(\boldsymbol c)/Z\) is at most \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Sharper peak, actual lcm & 0.269837353526 \\
+Sharper peak, \(3^{50}\) & 0.288952296008 \\
+Row mean, actual lcm & 0.172796821752 \\
+Row mean, \(3^{50}\) & 0.179279284082 \\
+Alternative global rows, peak & 0.128675661391 \\
+Alternative global rows, mean & 0.124309602511 \\
+\end{longtable}
+}
+
+For the alternative peak, the exact integer rule (10.201) with clearing
+factor one gives \(\widehat u=3543\). Check its last increasing step and
+its next decreasing step with integer products. The alternative mean
+replaces \(A_{\rm mean}\) by \(A_{\rm mean}+35299\ln(50!)\), and removes
+\(\overline u\ln\mathfrak v\), exactly as (10.207) prescribes.
+
+Large binomial logarithms need no approximation of their integer
+coefficients: for a positive integer \(n\), write \(n=2^b y\) with
+\(1\le y<2\), and use \(\ln n=b\ln2+\ln y\). The logarithm series in
+Solution 34 then has ratio at most \(1/3\), even for these enormous
+integers. The figure program uses this reduction and exact rational
+outward intervals, retaining each component. The separate logarithmic
+contribution is less than \(0.000000101556\).
+
+Finally, multiplication of a row by \((50!)^{35299}/\mathfrak v^u\) is
+multiplication by a nonzero rational number. It changes neither its zero
+equations nor its rational coefficient field. Its normalized projective
+height is invariant by the product formula. These global row estimates
+therefore preserve all required zeros; later local prepared derivatives
+retain their own original clearing convention.
+
+\textbf{Solution 36.} Iterating \(c\mapsto\min\{pc,c+1\}\) from \(1/e\)
+gives the following exact lower bounds. The inequalities (10.209)
+determine the power; the separate unramified clause determines
+\(\vartheta\) in the last row.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.1667}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2222}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 8\tabcolsep) * \real{0.2222}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\(p,e\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(P\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Guaranteed valuation path
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+\(\vartheta\)
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Final required depth
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(2,2\) & 8 & \(1/2\), \(1\), \(2\), \(3\) & 2 & 3 \\
+\(2,3\) & 8 & \(1/3\), \(2/3\), \(4/3\), \(7/3\) & \(4/3\) & \(7/3\) \\
+\(3,2\) & 3 & \(1/2\), \(3/2\) & \(3/4\) & \(5/4\) \\
+\(3,3\) & 9 & \(1/3\), \(1\), \(2\) & \(3/2\) & 2 \\
+\(7,2\) & 1 & \(1/2\) & \(1/4\) & \(5/12\) \\
+\(5,1\) & 1 & 1 & \(3/4\) & 1 \\
+\end{longtable}
+}
+
+For the first actual example, \(X^2-2\) is Eisenstein, so the complete
+local-field proof linked in Solution 35 gives ramification index two.
+With \(\beta=1+\sqrt2\), the first difference is
+\(\beta^2-1=2(1+\sqrt2)\), of valuation one. The next factor is
+\(\beta^2+1=4+2\sqrt2=2\sqrt2(1+\sqrt2)\), of valuation \(3/2\).
+Consequently \(v_2(\beta^4-1)=5/2\). The last step is above the
+threshold one, so Lemma 9.5 gives \(v_2(\beta^8-1)=7/2\). The actual
+path is therefore \(1/2,1,5/2,7/2\). Its extra gain at the boundary is
+permitted by the lower-bound path, but is not asserted for all units.
+
+For the second example \(X^3-3\) is Eisenstein, giving \(e=3\) and
+\(v_3(\pi)=1/3\). Direct expansion gives \[
+\beta^3-1=3(1+\pi+\pi^2),\qquad v_3(\beta^3-1)=1.
+\] The parenthesis is a unit since its residue is one. The next step is
+strictly above \(1/(3-1)=1/2\), hence \(v_3(\beta^9-1)=2\). Formula
+(10.209) gives \(\kappa=2,P=9,\vartheta=3/2\); thus the final depth
+\(\vartheta+1/2=2\) is attained.
+
+Put \(\ell=\log(\beta^9)\); its valuation is two. At the indices
+\(n=3^j\), the exponential coefficient \(A_n=\ell^n/n!\) has \[
+v_3(A_n)=2n-\frac{n-1}{2}=\frac32n+\frac12.
+\] Thus \(v_3(A_n)-n\vartheta=1/2\) along infinitely many indices. These
+weighted coefficients do not tend to zero, so the series is not in
+\(\mathcal A_{3^{3/2}}\). At any \(z\in\mathbb C_3\) of valuation
+\(-3/2\), the terms of those indices still have valuation \(1/2\), and
+the series does not converge. Such a point exists, for example a square
+root of \(3^{-3}\). Every smaller radius with \(\theta<3/2\) instead has
+the positive linear decay (10.213).
+
+Finally the residue field here is \(\mathbb F_3\). For \(\alpha=-\beta\)
+and \(\zeta=-1\), choose \(a=1\), so the phased coordinate is
+\(V=\alpha^9\zeta^{-9}=\beta^9\). Its principal square root is
+\(\eta=\exp(\ell/2)\in L\), of depth two. Fix \(\xi^2=-1\), and begin
+with any \(\rho_0^2=\alpha\). The ratio \(\eta/(\rho_0^9\xi^{-9})\) is
+\(1\) or \(-1\). Replacing \(\rho_0\) by its negative when the ratio is
+\(-1\) changes its ninth power by that sign and leaves its square
+unchanged. It therefore gives the exact choice \(\rho^9\xi^{-9}=\eta\)
+required in (10.217).
+
+\textbf{Solution 37.} If a rational power combination of \(4,9\) has a
+rational root, its valuations at two and three show that both
+coordinates of the corresponding exponent vector are half-integers.
+Conversely every half-integer pair produces a rational number
+\(2^{2x}3^{2y}\). Thus the full saturation lattice, and hence its
+q-primary part at \(q=2\), is \((\tfrac12\mathbb Z)^2\). Its four cosets
+modulo \(\mathbb Z^2\) prove \(J=4\), with basis \(B=\tfrac12I\); the
+corresponding generators are \(2,3\).
+
+The rational roots of unity are \(1,-1\), so \(q^u=2\). At five the
+residue group has order four. Choose the primitive residue lift
+\(\zeta\) with residue two, whose existence and primitivity are proved
+in Lemma 10.53. Then \(G_0=4/2=2\), and \(2,3\) have residues
+\(\zeta,\zeta^3\), respectively. With \(P=1\), their phase coefficients
+are \(-1,-3\); the zero phase class is therefore
+\(\lambda_1+\lambda_2\equiv0\pmod2\).
+
+There are \(5\cdot4+4\cdot3=32\) such points in
+\(\{0,\ldots,8\}\times\{0,\ldots,6\}\). Their original coordinates are
+\((\lambda_1/2,\lambda_2/2)\), with full widths \(4,3\). For
+\((b_1,b_2)=(2,3)\) and the identity matrix \(A_0\), formula (10.219)
+gives \[
+\omega=4(3\mu_1-2\mu_2)=6\lambda_1-4\lambda_2.
+\] At reference zero its range is \([-24,48]\), and both extremes occur
+at allowed points, \((0,6)\) and \((8,0)\). Hence \(\Omega=48\). At
+reference \((8,0)\), subtract its value \(48\); the range becomes
+\([-72,0]\) and the exact maximum absolute value becomes \(72\). The
+direct full-width estimate is \(4(3\cdot4+2\cdot3)=72\). It covers every
+reference in the same box because each difference of two original
+coordinates is bounded by its full width. The weighted estimate in Lemma
+10.84 also holds, using \(R_{\max}=3/\ln4+2/\ln9\) and
+\(\sum_iD_i\sigma_i=4\ln4+3\ln9\).
+
+Omitting \(J\) would give \(3\mu_1-2\mu_2\). At the allowed point
+\((\lambda_1,\lambda_2)=(1,1)\), this is \(1/2\); its first rising
+binomial is \(3/2\), which is not an integer. Thus the original
+denominator clearing is part of the integral prepared system.
+
+For the mean-order panel, put \(a=\overline u/t_0\). At \(r=2\),
+(10.204) gives \(\overline h/t_0=(1-a)/2\) and \(0\le a\le1/3\). The
+joint multiplier is \((1-a)/2+2a=(1+3a)/2\), between \(1/2\) and one.
+These are exactly the plotted lines; no numerical approximation of the
+means is used.
+
+For the original rational parameters of Solution 34, \(d=e=f=1,\nu=0\),
+\(R_{\max}=1/\ln2+1/\ln5\), and \[
+W(1)=\frac{\ln6}{\ln2\,\ln3},\qquad
+g_{91}=1+\frac{1+\ln W(1)}{g_0}.
+\] The condition \(h\ge\ln(R_{\max}/W(1))\) holds at the stated
+\(h=g_0\). Its exact outward logarithm intervals are given by the series
+proved in Solution 34. The coefficient field is \(\mathbb Q\), so the
+field-degree logarithm and generator/discriminant costs are zero. Keep
+\(c_{01}=57/20\), all \(g_2,g_5,g_8\), and the strict \(\theta\) from
+that solution. Substitution into (10.228) gives the following certified
+upper bounds.
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.4286}}
+  >{\raggedleft\arraybackslash}p{(\linewidth - 2\tabcolsep) * \real{0.5714}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Quantity
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedleft
+Upper bound
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(g_{91}\) & 1.037012532704 \\
+\((E_{\rm mean}+\overline u\ln\mathfrak v)/(t_0h)\), actual lcm &
+0.336168252156 \\
+The same combined cost using \(3^{50}\) & 0.372348992541 \\
+The coefficient height \(h_2(\boldsymbol c)/Z\) in (10.228) &
+0.310817025826 \\
+\end{longtable}
+}
+
+For the two combined costs use the exact \(\overline u,\overline h\)
+from Solution 35 and
+\(E_{\rm mean}=\overline h\ln[\mathrm e(1+67804/\overline h)]\). For the
+last line, the exact expression enclosed is \[
+\frac{g_8}{2}+\frac{20}{37}
+\left[\frac{g_8}{2}+\frac{1+1/g_5}{c_1c_4}
++\frac{g_{91}}{c_1c_3\theta}
++\frac{1+1/(2g_2)}{2c_1c_2}\right].
+\] The first logarithmic term is outside the row ratio; all other scalar
+and torus terms are inside it. The same rational outward interval rules
+apply to each positive logarithm and arithmetic operation, proving the
+displayed bounds.
+
+\textbf{Solution 38.} Suppose a rational exponent vector belongs to the
+full saturation lattice. After taking a common positive integer power,
+its realizing element \(\beta\in K^\times\) has a rational power
+\(\beta^T=5^a7^b\). Conjugation gives \((\overline\beta/\beta)^T=1\).
+This quotient is a root of unity in the real quadratic field, hence is
+\(1\) or \(-1\). Writing \(\beta=x+y\sqrt5\) shows that \(\beta\) is
+either rational or a rational multiple of \(\sqrt5\).
+
+In the rational case, the ordinary prime valuations at five and seven
+make both exponent coordinates integers. In the second case, dividing by
+\(\sqrt5\) makes the first coordinate an integer plus \(1/2\), and the
+second an integer. Conversely every such vector is realized by
+\((\sqrt5)^{2v_1}7^{v_2}\). Thus \[
+M=(\tfrac12\mathbb Z)\times\mathbb Z,\qquad
+J=2,\qquad
+B'=\begin{pmatrix}1/2&0\\0&1\end{pmatrix}.
+\] This is already q-primary. Direct multiplication gives \[
+\begin{pmatrix}1/2&5\\0&1\end{pmatrix}
+\begin{pmatrix}1&-10\\0&1\end{pmatrix}
+=B',\qquad
+U^{-1}=\begin{pmatrix}1&10\\0&1\end{pmatrix}.
+\] The new generators are \(\theta'_1=\sqrt5\) and
+\(\theta'_2=(\sqrt5)^{-10}(5^5\cdot7)=7\). Their heights are
+\(\frac12\ln5,\ln7\); the old heights are \(\frac12\ln5,5\ln5+\ln7\).
+For \(\lambda'= (a,b)\), the old label is \((a-10b,b)\), and both
+monomials are \((\sqrt5)^a7^b\). Both generator lists give \(E=K\). The
+integral-basis proof in Solution 32 gives \(\Delta_E=5\).
+
+At three, \(X^2-5\) has irreducible separable reduction \(X^2+1\). The
+complete quadratic proof in
+\href{../../NT-LOC/NT-LOC-12.html\#3-quadratic-extensions-from-square-classes}{Cyclotomic,
+quadratic and Kummer extensions of local fields}, Section 3, makes its
+completion unramified quadratic. Hence \(e=1,f=2,d=2\); both original
+bases are units. The only global roots of unity are \(1,-1\), so
+\(u=1,\nu=1\). The first admissible power is \(P=3\), since
+\(p-1=2\le2e\) and \(3(p-1)=6>2e\). Thus \(\vartheta=3/2\), with the
+strict \(\theta\) of Solution 34.
+
+The residue field has order nine. Its element \(\overline{\sqrt5}\) has
+square \(-1\), so order four, whereas \(7\) has residue one. Choose the
+primitive residue lift \(\zeta\) of order eight from Lemma 10.53 with
+\(\overline{\sqrt5}=\overline\zeta^{\,2}\). Then \(G_0=8/2=4\); the
+centered generator phases can be taken to be \(d'=(-6,0)\). Consequently
+\(\delta=2,H=2\), and the two phase classes distinguish even and odd
+first coordinates. In the old basis the second phase is \(-60\);
+\(U^{\mathsf T}(-6,-60)=(-6,0)\). Thus both bases have exactly the same
+phase at corresponding labels. The blue and brown points in the figure
+display the two classes.
+
+Apply the outward rational interval method proved in Solution 34 to the
+parameters specified in the exercise, with \(t=2\ln3,\rho=58,x=\ln2\),
+and \(\delta=2\). The basic linear-form matrix is the identity and
+\(R_{\max}=1/\ln5+1/\ln7<2\). Since \(dW(d)=2(\ln6)^3>2\), the height
+condition of Theorem 10.86 holds at positive \(h\). In the maximum
+defining \(\mathcal D\), the second member exceeds the first. The
+resulting integer data are
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Exact value \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(\lfloor S\rfloor,\lfloor T\rfloor\) & \(400,\ 36977365\) \\
+\(k,L\) & \(52,\ 579557\) \\
+\(\lfloor2D_1D_2\rfloor+1\) & \(597441303726\) \\
+Selected points in either phase & \(298720651863\) \\
+\(N\) & \(9002533531251763932\) \\
+\(M_{\rm full}\) & \(547613916126766461\) \\
+\(80N-171M_{\rm full}\) & \(626560702842464049729\) \\
+\end{longtable}
+}
+
+Here is an explicit selection without listing the points. The
+integer-coordinate grid has \(1201952\) first-coordinate choices and
+\(497060\) second-coordinate choices. Take its first \(597441303726\)
+points, ordering the first coordinate fastest. For each full row,
+exactly half the first coordinates are even; the remaining initial
+segment also has even length. Each phase therefore contains the stated
+number of points. Their original coordinates lie in the box of widths
+\(D_1,D_2\). Since \(c_{01}=1.9\cdot9/8=171/80\), the last line proves
+\(N>c_{01}M_{\rm full}\), with all floors retained.
+
+The same outward interval arithmetic gives
+
+{\def\LTcaptype{none} % do not increment counter
+\begin{longtable}[]{@{}lr@{}}
+\toprule\noalign{}
+Quantity & Certified upper bound \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\(g_{11}\) & \(2975665.522410184771\) \\
+\(g_{12}=g_1/(2g_7)+1/g_{11}\) & \(0.000001658758\) \\
+\(g_{91}\) & \(1.052658564765\) \\
+Generator-field cost \(\ln5/(4Z)\) & \(0.000000000069\) \\
+Explicit tower bound \(\ln10/(2Z)\) & \(0.000000000196\) \\
+Centered bound \((\frac12\ln2+\ln7)/Z\) & \(0.000000000390\) \\
+Full \(h_2(c)/Z\) bound (10.235) & \(0.510159606689\) \\
+\end{longtable}
+}
+
+For a lower bound on \(g_{11}\), the same calculation gives
+\(2975665.522410184770\). Also \[
+5891891927.130371871238\le Z\le
+5891891927.130371871239.
+\] The explicit tower first adjoins \(\sqrt5\), of degree two and height
+\(\frac12\ln5\); the generator \(7\) has degree increment one. Equation
+(8.33) therefore gives \(\frac12\ln2+\frac12\ln5=\frac12\ln10\) as its
+discriminant bound. The centered maximum bound in (10.236) is
+\(\frac12\ln2+\ln7\). Both are larger than the exact cost
+\(\frac14\ln5\). The interval programme enclosed in the figure source
+uses only the rational positive series and geometric tail bounds of
+Solution 34, and verifies both instances of (10.232), the strict integer
+surplus, and every term in the last line.
+
+Finally, within one phase, \(\lambda_1-\lambda_{01}\) is even. Since
+\(P=3\), each normalized torus monomial has a rational power of \(5\), a
+rational power of \(7\), and a rational sign. Every initial row is
+therefore rational, and its smallest field is \(E_0=\mathbb Q\), of
+discriminant one. The construction over the generator field \(E\) is
+valid and satisfies the stated uniform bound; applying Theorem 10.63
+over \(E_0\) improves its field cost to zero. The generator field and
+the actual row field are distinct objects.
 
 \subsection{References}\label{references}
 

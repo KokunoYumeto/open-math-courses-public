@@ -515,6 +515,6 @@ For comparison and further reading:
 - M. W. Davis, *The Geometry and Topology of Coxeter Groups* (2008), Appendix C, pp.433–438, and Appendix D, pp.439–448: positive-definite Coxeter forms and geometric representations, also in broader settings. [Author's first-edition PDF](https://people.math.osu.edu/davis.12/davisbook.pdf).
 - A. Kirillov Jr., *Introduction to Lie Groups and Lie Algebras*, §§7.8 and 7.10, pp.119–123 and 125–127: diagrams and the simply laced classification. The [author's notes](https://www.math.stonybrook.edu/~kirillov/liegroups/liegroups.pdf) use the transpose Cartan convention.
 
-The original diagram source is available as [reproducible Python plotting code](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/RT-LIE/figures/rt_lie_09_figures.py). Figures 2.1, 2.2 and 8.1 represent the Cartan data proved in this lesson.
+The original diagram source is available as reproducible Python plotting code. Figures 2.1, 2.2 and 8.1 represent the Cartan data proved in this lesson.
 
 **What this lesson does not prove.** The full folding correspondence, the classification of affine or noncrystallographic systems, and reconstruction of a semisimple Lie algebra from its roots. None is used to prove Theorems 1–3 or the tables in Sections 5–6.

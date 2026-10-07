@@ -410,7 +410,7 @@ The last inequality uses s/(1+s^2)<=1 and 1/(1+s^2)<=1. In fact it is a delibera
 
 ## Reproduce the exact example figure
 
-Figure 1 retains its original caption and numerical domains. Its rendering source is supplied unchanged as the original renderer and 206-check script, together with [a standalone reproduction wrapper](../figures/an02-l110-reproduce-higher-order-q.py). Save these with the [PNG](../figures/an02-l110-higher-order-q-mechanisms.png), [SVG](../figures/an02-l110-higher-order-q-mechanisms.svg) and [exact geometry description](../figures/an02-l110-higher-order-q-geometry.json). The reproduction guide gives the dependencies, command and verification limits.
+Figure 1 retains its original caption and numerical domains. Its rendering source is supplied unchanged as the original renderer and 206-check script, together with a standalone reproduction wrapper. Save these with the [PNG](../figures/an02-l110-higher-order-q-mechanisms.png), [SVG](../figures/an02-l110-higher-order-q-mechanisms.svg) and [exact geometry description](../figures/an02-l110-higher-order-q-geometry.json). The reproduction guide gives the dependencies, command and verification limits.
 
 Run the wrapper with Python, NumPy, SymPy and Matplotlib, using a fresh output directory. It executes the unchanged renderer and all 206 checks in isolation, verifies the complete generated figure and geometry, and writes uniquely named outputs. The SVG comparison accounts explicitly for Matplotlib's volatile date and randomly generated element identifiers; every other byte must match. Numerical reproduction supplements the proof of the equation, denominator bounds, support and flatness.
 

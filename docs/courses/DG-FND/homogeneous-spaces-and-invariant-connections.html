@@ -1,1 +1,797 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connections, curvature and holonomy</title></head><body><main><h1>Connections, curvature and holonomy</h1><p>No lessons are currently available for this course.</p><p><span class="unlinked">Open Mathematics Courses</span></p></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Homogeneous spaces and invariant connections</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+<style>.lesson .math:not(.math-display){padding-inline-end:2px}</style><style>.lesson .math:not(.math-display){padding-inline-end:2px}</style></head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. Frames turn invariance into linear algebra</a></li><li><a href="#part-b">B. Torsion, curvature and complete orbit geodesics</a></li><li><a href="#part-c">C. Invariant metrics and their geodesics</a></li><li><a href="#part-d">D. Holonomy and a round model</a></li><li><a href="#part-e">E. Homogeneity and the intrinsic product factors</a></li><li><a href="#part-f">F. Invariant almost complex structures and the six-sphere</a></li><li><a href="#further-reading">Freely accessible sources</a></li></ul></nav><article class="lesson"><h1 id="homogeneous-spaces-and-invariant-connections">Homogeneous spaces and invariant connections</h1>
+<p><strong>Draft.</strong> The present chapter covers invariant affine and metric connections, homogeneous holonomy, product decompositions and the invariant almost complex structures on the six-sphere. The global reconstruction from parallel torsion and curvature and the sufficiency of the homogeneous complex-coordinate criterion are not yet included.</p>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a finite-dimensional real Lie group, <span class="math" data-tex="\(H\)">\(H\)</span> a closed subgroup, and <span class="math" data-tex="\(M=G/H\)">\(M=G/H\)</span> a connected homogeneous space. Write <span class="math" data-tex="\(o=eH\)">\(o=eH\)</span>, <span class="math" data-tex="\(\mathfrak g=T_eG\)">\(\mathfrak g=T_eG\)</span>, <span class="math" data-tex="\(\mathfrak h=T_eH\)">\(\mathfrak h=T_eH\)</span>, and <span class="math" data-tex="\(V=\mathfrak g/\mathfrak h\)">\(V=\mathfrak g/\mathfrak h\)</span>. A bar denotes a class in <span class="math" data-tex="\(V\)">\(V\)</span>. The quotient charts and principal bundle <span class="math" data-tex="\(q:G\to M\)">\(q:G\to M\)</span> have their complete construction in <a href="local-tools-for-bundles-and-transport.html#4-quotients-by-a-closed-lie-subgroup">Local tools 4.1</a>. The isotropy representation is
+<span class="math math-display" data-tex="\[
+\lambda(h)\bar X=\overline{\operatorname{Ad}_hX}.
+\]">\[
+\lambda(h)\bar X=\overline{\operatorname{Ad}_hX}.
+\]</span>
+It includes every component of <span class="math" data-tex="\(H\)">\(H\)</span>. Our curvature convention is
+<span class="math math-display" data-tex="\[
+R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z.
+\]">\[
+R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z.
+\]</span>
+The free accounts of Alberto Elduque and Masahiro Morimoto listed below inform the affine and metric constructions. Every proof used from the programme is identified where it enters.</p>
+<h2 id="part-a">A. Frames turn invariance into linear algebra</h2>
+<p id="theorem-a-1"><strong>Theorem A.1 (Classification without a reductive hypothesis).</strong> The <span class="math" data-tex="\(G\)">\(G\)</span>-invariant affine connections on <span class="math" data-tex="\(G/H\)">\(G/H\)</span> correspond bijectively to linear maps <span class="math" data-tex="\(W:\mathfrak g\to\mathfrak{gl}(V)\)">\(W:\mathfrak g\to\mathfrak{gl}(V)\)</span> satisfying
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(Z)&amp;=\lambda_*(Z) &amp;&amp;(Z\in\mathfrak h),\\
+W(\operatorname{Ad}_hX)&amp;=\lambda(h)W(X)\lambda(h)^{-1}
+&amp;&amp;(h\in H,\ X\in\mathfrak g).
+\end{aligned}
+\tag{A.1}
+\]">\[
+\begin{aligned}
+W(Z)&amp;=\lambda_*(Z) &amp;&amp;(Z\in\mathfrak h),\\
+W(\operatorname{Ad}_hX)&amp;=\lambda(h)W(X)\lambda(h)^{-1}
+&amp;&amp;(h\in H,\ X\in\mathfrak g).
+\end{aligned}
+\tag{A.1}
+\]</span>
+If this set is nonempty, it is an affine space with translation space
+<span class="math" data-tex="\(\operatorname{Hom}_H(V,\mathfrak{gl}(V))\)">\(\operatorname{Hom}_H(V,\mathfrak{gl}(V))\)</span>, where <span class="math" data-tex="\(H\)">\(H\)</span> acts on the endomorphisms by conjugation. For a smooth curve <span class="math" data-tex="\(g(t)\in G\)">\(g(t)\in G\)</span> and a vector <span class="math" data-tex="\(v(t)\in V\)">\(v(t)\in V\)</span>, the corresponding connection obeys
+<span class="math math-display" data-tex="\[
+\nabla_t(j_{g(t)}v(t))
+=j_{g(t)}\bigl(v'(t)+W(g(t)^{-1}g'(t))v(t)\bigr),
+\tag{A.2}
+\]">\[
+\nabla_t(j_{g(t)}v(t))
+=j_{g(t)}\bigl(v'(t)+W(g(t)^{-1}g'(t))v(t)\bigr),
+\tag{A.2}
+\]</span>
+where <span class="math" data-tex="\(j_g\bar X=d(L_g)_o(dq_eX)\)">\(j_g\bar X=d(L_g)_o(dq_eX)\)</span>; the notation <span class="math" data-tex="\(g^{-1}g'\)">\(g^{-1}g'\)</span> means the left Maurer–Cartan form and does not require a matrix group.</p>
+<p><strong>Proof.</strong> The map <span class="math" data-tex="\(j_g:V\to T_{gH}M\)">\(j_g:V\to T_{gH}M\)</span> is an isomorphism, and differentiating <span class="math" data-tex="\(gh\exp(tX)H=g\exp(t\operatorname{Ad}_hX)H\)">\(gh\exp(tX)H=g\exp(t\operatorname{Ad}_hX)H\)</span> gives
+<span class="math math-display" data-tex="\[
+j_{gh}=j_g\lambda(h).
+\]">\[
+j_{gh}=j_g\lambda(h).
+\]</span>
+Consequently the frame bundle is <span class="math" data-tex="\(G\times_H\mathrm{GL}(V)\)">\(G\times_H\mathrm{GL}(V)\)</span>: the pair <span class="math" data-tex="\((g,a)\)">\((g,a)\)</span> represents <span class="math" data-tex="\(j_ga\)">\(j_ga\)</span>, and <span class="math" data-tex="\((gh,a)\)">\((gh,a)\)</span> represents the same frame as <span class="math" data-tex="\((g,\lambda(h)a)\)">\((g,\lambda(h)a)\)</span>. Local sections of <span class="math" data-tex="\(q\)">\(q\)</span>, supplied by <a href="local-tools-for-bundles-and-transport.html#4-quotients-by-a-closed-lie-subgroup">Local tools 4.1</a>, make this identification a smooth principal-bundle isomorphism.</p>
+<p><a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a> proves, in both directions, the correspondence between a covariant derivative and a principal connection on its frame bundle. Apply the complete invariant-bundle classification in <a href="invariant-connections-on-homogeneous-bundles.html#theorem-b-2">Invariant connections B.2</a> to this associated frame bundle and its isotropy homomorphism <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. It says exactly that the pullback of the connection form by <span class="math" data-tex="\(j:G\to FM\)">\(j:G\to FM\)</span> is
+<span class="math math-display" data-tex="\[
+j^*\omega=W\theta_G
+\]">\[
+j^*\omega=W\theta_G
+\]</span>
+with (A.1), and reconstructs the connection on <span class="math" data-tex="\(G\times\mathrm{GL}(V)\)">\(G\times\mathrm{GL}(V)\)</span> as
+<span class="math math-display" data-tex="\[
+\omega_{(g,a)}=\operatorname{Ad}_{a^{-1}}(W\theta_G)+\theta_{\mathrm{GL}(V)}.
+\]">\[
+\omega_{(g,a)}=\operatorname{Ad}_{a^{-1}}(W\theta_G)+\theta_{\mathrm{GL}(V)}.
+\]</span>
+That proof checks descent for all of <span class="math" data-tex="\(H\)">\(H\)</span>, reproduction of vertical fields, right equivariance, and the inverse construction; thus no existence condition is suppressed here. The frame formula for the covariant derivative in <a href="linear-and-affine-connections.html#theorem-a-2">Linear connections A.2</a> gives (A.2).</p>
+<p>The difference of two admissible maps vanishes on <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> and has the indicated equivariance, hence factors uniquely through an element of <span class="math" data-tex="\(\operatorname{Hom}_H(V,\mathfrak{gl}(V))\)">\(\operatorname{Hom}_H(V,\mathfrak{gl}(V))\)</span>. Conversely adding any such element preserves (A.1).</p>
+<p>For later comparison of signs, let <span class="math" data-tex="\(Y^*\)">\(Y^*\)</span> be the fundamental vector field of the left action, <span class="math" data-tex="\(Y^*(gH)=\left.\frac{d}{ds}\right|_0\exp(sY)gH\)">\(Y^*(gH)=\left.\frac{d}{ds}\right|_0\exp(sY)gH\)</span>. Its moving-frame coefficient is <span class="math" data-tex="\(\overline{\operatorname{Ad}_{g^{-1}}Y}\)">\(\overline{\operatorname{Ad}_{g^{-1}}Y}\)</span>. Along <span class="math" data-tex="\(g(t)=\exp(tX)\)">\(g(t)=\exp(tX)\)</span>, its coefficient derivative at zero is <span class="math" data-tex="\(-\overline{[X,Y]}\)">\(-\overline{[X,Y]}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+(\nabla_{X^*}Y^*)_o=W(X)\bar Y-\overline{[X,Y]}.
+\tag{A.3}
+\]">\[
+(\nabla_{X^*}Y^*)_o=W(X)\bar Y-\overline{[X,Y]}.
+\tag{A.3}
+\]</span>
+This distinguishes fundamental fields from the local frames used next. □</p>
+<p id="theorem-a-2"><strong>Theorem A.2 (A reductive complement and a bilinear product).</strong> Suppose
+<span class="math" data-tex="\(\mathfrak g=\mathfrak h\oplus\mathfrak m\)">\(\mathfrak g=\mathfrak h\oplus\mathfrak m\)</span>, with
+<span class="math" data-tex="\(\operatorname{Ad}_h\mathfrak m=\mathfrak m\)">\(\operatorname{Ad}_h\mathfrak m=\mathfrak m\)</span> for every <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>. Identify <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>. The connections in A.1 correspond to all <span class="math" data-tex="\(H\)">\(H\)</span>-equivariant bilinear products
+<span class="math" data-tex="\(\alpha:\mathfrak m\times\mathfrak m\to\mathfrak m\)">\(\alpha:\mathfrak m\times\mathfrak m\to\mathfrak m\)</span>, by
+<span class="math math-display" data-tex="\[
+W(Z+X)=\operatorname{ad}(Z)|_{\mathfrak m}+\Lambda(X),
+\qquad \Lambda(X)Y=\alpha(X,Y).
+\tag{A.4}
+\]">\[
+W(Z+X)=\operatorname{ad}(Z)|_{\mathfrak m}+\Lambda(X),
+\qquad \Lambda(X)Y=\alpha(X,Y).
+\tag{A.4}
+\]</span>
+In the local frame <span class="math" data-tex="\(Y^\#(x)=j_{s(x)}Y\)">\(Y^\#(x)=j_{s(x)}Y\)</span> defined by the section
+<span class="math" data-tex="\(s(\exp(X)H)=\exp(X)\)">\(s(\exp(X)H)=\exp(X)\)</span>, one has
+<span class="math math-display" data-tex="\[
+(\nabla_{X^\#}Y^\#)_o=\alpha(X,Y).
+\tag{A.5}
+\]">\[
+(\nabla_{X^\#}Y^\#)_o=\alpha(X,Y).
+\tag{A.5}
+\]</span></p>
+<p><strong>Proof.</strong> The exponential exists smoothly by <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.3</a>. The derivative at zero of <span class="math" data-tex="\(X\mapsto\exp(X)H\)">\(X\mapsto\exp(X)H\)</span>, restricted to <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, is the quotient isomorphism onto <span class="math" data-tex="\(T_oM\)">\(T_oM\)</span>. The inverse function theorem in <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a> makes this map a chart and defines the stated section. In that chart the derivative of <span class="math" data-tex="\(s\)">\(s\)</span> at <span class="math" data-tex="\(o\)">\(o\)</span> sends <span class="math" data-tex="\(j_eX\)">\(j_eX\)</span> to <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p>Restriction of (A.1) to <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is precisely the equivariance of <span class="math" data-tex="\(\alpha(X,Y)=W(X)Y\)">\(\alpha(X,Y)=W(X)Y\)</span>. Conversely (A.4) is linear, agrees with <span class="math" data-tex="\(\lambda_*\)">\(\lambda_*\)</span> on <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>, and is <span class="math" data-tex="\(H\)">\(H\)</span>-equivariant: both summands have this property, the first by the adjoint bracket identity and the second by the assumed equivariance of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. The direct-sum decomposition makes these operations inverse. Finally the coefficient of <span class="math" data-tex="\(Y^\#\)">\(Y^\#\)</span> is constant in the frame <span class="math" data-tex="\(j_s\)">\(j_s\)</span>; apply (A.2) at <span class="math" data-tex="\(o\)">\(o\)</span> along <span class="math" data-tex="\(X^\#\)">\(X^\#\)</span>, where <span class="math" data-tex="\(\theta_G ds(X^\#)=X\)">\(\theta_G ds(X^\#)=X\)</span>, to obtain (A.5). □</p>
+<p id="example-a-3"><strong>Example A.3 (Nonexistence and disconnected isotropy).</strong> Some homogeneous spaces admit no invariant affine connection. Even when a reductive complement exists, equivariance under <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> alone need not give equivariance under <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof.</strong> First take <span class="math" data-tex="\(G=\mathrm{SL}(2,\mathbb R)\)">\(G=\mathrm{SL}(2,\mathbb R)\)</span> and its closed subgroup <span class="math" data-tex="\(H\)">\(H\)</span> of upper triangular matrices. Its quotient is the space of lines in <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>: the action is transitive since a nonzero vector can be completed to a basis of determinant one, and the stabilizer of the first coordinate line is exactly <span class="math" data-tex="\(H\)">\(H\)</span>. This line space is connected, being the image of the connected circle. The matrices
+<span class="math math-display" data-tex="\[
+E=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\qquad
+D=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+F=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}
+\]">\[
+E=\begin{pmatrix}0&amp;1\\0&amp;0\end{pmatrix},\qquad
+D=\begin{pmatrix}1&amp;0\\0&amp;-1\end{pmatrix},\qquad
+F=\begin{pmatrix}0&amp;0\\1&amp;0\end{pmatrix}
+\]</span>
+satisfy <span class="math" data-tex="\([E,F]=D\)">\([E,F]=D\)</span>, <span class="math" data-tex="\([D,F]=-2F\)">\([D,F]=-2F\)</span>, and <span class="math" data-tex="\(\mathfrak h=\operatorname{span}(D,E)\)">\(\mathfrak h=\operatorname{span}(D,E)\)</span>. Thus <span class="math" data-tex="\(V=\mathbb R\bar F\)">\(V=\mathbb R\bar F\)</span>, <span class="math" data-tex="\(\lambda_*(E)=0\)">\(\lambda_*(E)=0\)</span>, and <span class="math" data-tex="\(\lambda_*(D)=-2\)">\(\lambda_*(D)=-2\)</span>. Differentiating the second identity of (A.1) along <span class="math" data-tex="\(\exp(tE)\)">\(\exp(tE)\)</span> would give
+<span class="math math-display" data-tex="\[
+W([E,F])=[\lambda_*(E),W(F)]=0,
+\]">\[
+W([E,F])=[\lambda_*(E),W(F)]=0,
+\]</span>
+whereas its first identity gives <span class="math" data-tex="\(W([E,F])=W(D)=-2\)">\(W([E,F])=W(D)=-2\)</span>. This contradiction proves nonexistence. The Lie-group and quotient hypotheses here can also be checked directly: determinant one is a smooth matrix submanifold because its derivative is the nonzero functional <span class="math" data-tex="\(A\mapsto\operatorname{tr}(g^{-1}A)\)">\(A\mapsto\operatorname{tr}(g^{-1}A)\)</span>, and multiplication and inversion restrict smoothly; the subgroup is closed, so <a href="local-tools-for-bundles-and-transport.html#4-quotients-by-a-closed-lie-subgroup">Local tools 4.1</a> applies.</p>
+<p>For the second assertion use <span class="math" data-tex="\(G=\mathbb R\rtimes\{1,-1\}\)">\(G=\mathbb R\rtimes\{1,-1\}\)</span>, with
+<span class="math" data-tex="\((a,\epsilon)(b,\delta)=(a+\epsilon b,\epsilon\delta)\)">\((a,\epsilon)(b,\delta)=(a+\epsilon b,\epsilon\delta)\)</span>, and
+<span class="math" data-tex="\(H=\{(0,1),(0,-1)\}\)">\(H=\{(0,1),(0,-1)\}\)</span>. Then <span class="math" data-tex="\(G/H=\mathbb R\)">\(G/H=\mathbb R\)</span>, <span class="math" data-tex="\(\mathfrak h=0\)">\(\mathfrak h=0\)</span>, and <span class="math" data-tex="\(\mathfrak m=\mathbb R\)">\(\mathfrak m=\mathbb R\)</span> is a reductive complement. A bilinear product has the form <span class="math" data-tex="\(\alpha(x,y)=cxy\)">\(\alpha(x,y)=cxy\)</span>. Equivariance under the nonidentity element of <span class="math" data-tex="\(H\)">\(H\)</span> requires
+<span class="math" data-tex="\(\alpha(-x,-y)=-\alpha(x,y)\)">\(\alpha(-x,-y)=-\alpha(x,y)\)</span>, so <span class="math" data-tex="\(c=0\)">\(c=0\)</span>. The infinitesimal condition, with <span class="math" data-tex="\(\mathfrak h=0\)">\(\mathfrak h=0\)</span>, would have imposed no restriction. This also verifies explicitly why the classification in A.2 uses the whole isotropy group. □</p>
+<h2 id="part-b">B. Torsion, curvature and complete orbit geodesics</h2>
+<p id="theorem-b-1"><strong>Theorem B.1 (Torsion and curvature in the moving frame).</strong> For the connection specified by <span class="math" data-tex="\(W\)">\(W\)</span>, the tensors at <span class="math" data-tex="\(o\)">\(o\)</span> are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_o(\bar X,\bar Y)&amp;=W(X)\bar Y-W(Y)\bar X-\overline{[X,Y]},\\
+R_o(\bar X,\bar Y)&amp;=[W(X),W(Y)]-W([X,Y]).
+\end{aligned}
+\tag{B.1}
+\]">\[
+\begin{aligned}
+T_o(\bar X,\bar Y)&amp;=W(X)\bar Y-W(Y)\bar X-\overline{[X,Y]},\\
+R_o(\bar X,\bar Y)&amp;=[W(X),W(Y)]-W([X,Y]).
+\end{aligned}
+\tag{B.1}
+\]</span>
+For a reductive presentation and the product of A.2, these become
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_o(X,Y)&amp;=\alpha(X,Y)-\alpha(Y,X)-[X,Y]_{\mathfrak m},\\
+R_o(X,Y)&amp;=[\Lambda(X),\Lambda(Y)]
+-\Lambda([X,Y]_{\mathfrak m})
+-\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}.
+\end{aligned}
+\tag{B.2}
+\]">\[
+\begin{aligned}
+T_o(X,Y)&amp;=\alpha(X,Y)-\alpha(Y,X)-[X,Y]_{\mathfrak m},\\
+R_o(X,Y)&amp;=[\Lambda(X),\Lambda(Y)]
+-\Lambda([X,Y]_{\mathfrak m})
+-\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}.
+\end{aligned}
+\tag{B.2}
+\]</span></p>
+<p><strong>Proof.</strong> Pull the solder form on <span class="math" data-tex="\(FM\)">\(FM\)</span> back by <span class="math" data-tex="\(j\)">\(j\)</span>. At a left-invariant vector <span class="math" data-tex="\(X^L\)">\(X^L\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span> it equals <span class="math" data-tex="\(\bar X\)">\(\bar X\)</span>, so it is the <span class="math" data-tex="\(\mathfrak g/\mathfrak h\)">\(\mathfrak g/\mathfrak h\)</span> projection of <span class="math" data-tex="\(\theta_G\)">\(\theta_G\)</span>. Its exterior derivative on <span class="math" data-tex="\(X^L,Y^L\)">\(X^L,Y^L\)</span> is <span class="math" data-tex="\(-\overline{[X,Y]}\)">\(-\overline{[X,Y]}\)</span>. The torsion structure equation <span class="math" data-tex="\(T=d\theta+\omega\wedge\theta\)">\(T=d\theta+\omega\wedge\theta\)</span>, with its identification with covariant torsion proved in <a href="linear-and-affine-connections.html#theorem-d-1">Linear connections D.1</a>, now gives the first line of (B.1).</p>
+<p><a href="invariant-connections-on-homogeneous-bundles.html#theorem-b-3">Invariant connections B.3</a> computes the curvature of <span class="math" data-tex="\(W\theta_G\)">\(W\theta_G\)</span> as the bracket defect in the second line. <a href="linear-and-affine-connections.html#theorem-b-3">Linear connections B.3</a> identifies the induced endomorphism with <span class="math" data-tex="\(R\)">\(R\)</span> in our convention. These formulas descend to <span class="math" data-tex="\(V\)">\(V\)</span>: if, for example, <span class="math" data-tex="\(X=Z\in\mathfrak h\)">\(X=Z\in\mathfrak h\)</span>, the first line is
+<span class="math" data-tex="\(\overline{[Z,Y]}-0-\overline{[Z,Y]}=0\)">\(\overline{[Z,Y]}-0-\overline{[Z,Y]}=0\)</span>, and the second vanishes by the infinitesimal form of (A.1). Alternation handles the other argument. Substitution of (A.4), separating the two components of <span class="math" data-tex="\([X,Y]\)">\([X,Y]\)</span>, proves (B.2). □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (Canonical connection and the torsion-free orbit connection).</strong> On a reductive space let <span class="math" data-tex="\(\bar\nabla\)">\(\bar\nabla\)</span> denote the connection with <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. Every <span class="math" data-tex="\(G\)">\(G\)</span>-invariant tensor is <span class="math" data-tex="\(\bar\nabla\)">\(\bar\nabla\)</span>-parallel. In particular
+<span class="math math-display" data-tex="\[
+\bar T_o(X,Y)=-[X,Y]_{\mathfrak m},\qquad
+\bar R_o(X,Y)=-\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}
+\tag{B.3}
+\]">\[
+\bar T_o(X,Y)=-[X,Y]_{\mathfrak m},\qquad
+\bar R_o(X,Y)=-\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}
+\tag{B.3}
+\]</span>
+are parallel, and <span class="math" data-tex="\(\bar\nabla\)">\(\bar\nabla\)</span> is geodesically complete.</p>
+<p>More generally, all the curves
+<span class="math math-display" data-tex="\[
+t\longmapsto g\exp(tX)H \quad(g\in G,\ X\in\mathfrak m)
+\tag{B.4}
+\]">\[
+t\longmapsto g\exp(tX)H \quad(g\in G,\ X\in\mathfrak m)
+\tag{B.4}
+\]</span>
+are affinely parametrized geodesics for the connection <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> if and only if <span class="math" data-tex="\(\alpha(X,X)=0\)">\(\alpha(X,X)=0\)</span> for every <span class="math" data-tex="\(X\)">\(X\)</span>. Among these connections there is exactly one torsion-free connection: it has
+<span class="math" data-tex="\(\alpha(X,Y)=\tfrac12[X,Y]_{\mathfrak m}\)">\(\alpha(X,Y)=\tfrac12[X,Y]_{\mathfrak m}\)</span>.</p>
+<p><strong>Proof.</strong> Along (B.4) the left Maurer–Cartan coefficient of the lift <span class="math" data-tex="\(g\exp(tX)\)">\(g\exp(tX)\)</span> is the constant <span class="math" data-tex="\(X\)">\(X\)</span>, and its tangent vector has the constant frame coefficient <span class="math" data-tex="\(X\)">\(X\)</span>. Formula (A.2) gives acceleration <span class="math" data-tex="\(j_{g\exp(tX)}\alpha(X,X)\)">\(j_{g\exp(tX)}\alpha(X,X)\)</span>. This proves the stated equivalence, since one can also take <span class="math" data-tex="\(g=e,t=0\)">\(g=e,t=0\)</span>. In particular it vanishes for <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>. Every initial tangent vector at every point is <span class="math" data-tex="\(j_gX\)">\(j_gX\)</span> for some <span class="math" data-tex="\(X\in\mathfrak m\)">\(X\in\mathfrak m\)</span>. Smooth ODE uniqueness, proved in <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>, therefore identifies every geodesic of <span class="math" data-tex="\(\bar\nabla\)">\(\bar\nabla\)</span> with a curve (B.4), which exists for all real <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>For <span class="math" data-tex="\(\bar\nabla\)">\(\bar\nabla\)</span>, (A.2) also shows that the frame <span class="math" data-tex="\(j_{g\exp(tX)}\)">\(j_{g\exp(tX)}\)</span> is parallel. The coefficients of a <span class="math" data-tex="\(G\)">\(G\)</span>-invariant tensor in <span class="math" data-tex="\(j_g\)">\(j_g\)</span> equal its coefficients in <span class="math" data-tex="\(j_e\)">\(j_e\)</span>: invariance says exactly this for both vector and covector slots. They are therefore constant along (B.4). The tensor-derivative rule of <a href="linear-and-affine-connections.html#theorem-c-1">Linear connections C.1</a> makes its derivative zero along each such curve. Their initial velocities exhaust every tangent space, so the tensor is parallel. Torsion and curvature are <span class="math" data-tex="\(G\)">\(G\)</span>-invariant by (B.1) and the equivariance of <span class="math" data-tex="\(W\)">\(W\)</span>, and (B.3) follows from (B.2).</p>
+<p>Finally polarization of <span class="math" data-tex="\(\alpha(X,X)=0\)">\(\alpha(X,X)=0\)</span> gives
+<span class="math" data-tex="\(\alpha(X,Y)=-\alpha(Y,X)\)">\(\alpha(X,Y)=-\alpha(Y,X)\)</span>. The first line of (B.2) makes torsion-freeness equivalent to <span class="math" data-tex="\(2\alpha(X,Y)=[X,Y]_{\mathfrak m}\)">\(2\alpha(X,Y)=[X,Y]_{\mathfrak m}\)</span>. This product is <span class="math" data-tex="\(H\)">\(H\)</span>-equivariant, so A.2 gives its existence as well as uniqueness. Notice that the general-point curves in (B.4) have <span class="math" data-tex="\(g\)">\(g\)</span> on the left; the complement <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> was fixed at <span class="math" data-tex="\(o\)">\(o\)</span>. □</p>
+<h2 id="part-c">C. Invariant metrics and their geodesics</h2>
+<p>Throughout this section the reductive complement is invariant under all of <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p id="theorem-c-1"><strong>Theorem C.1 (Invariant metrics and their unique metric torsion-free connection).</strong> The <span class="math" data-tex="\(G\)">\(G\)</span>-invariant pseudo-Riemannian metrics on <span class="math" data-tex="\(G/H\)">\(G/H\)</span> correspond to the nondegenerate symmetric bilinear forms <span class="math" data-tex="\(B\)">\(B\)</span> on <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> invariant under <span class="math" data-tex="\(\operatorname{Ad}(H)|_{\mathfrak m}\)">\(\operatorname{Ad}(H)|_{\mathfrak m}\)</span>. The metric determined by <span class="math" data-tex="\(B\)">\(B\)</span> has a unique torsion-free metric connection. It is the invariant connection with
+<span class="math math-display" data-tex="\[
+\alpha(X,Y)=\tfrac12[X,Y]_{\mathfrak m}+U(X,Y),
+\tag{C.1}
+\]">\[
+\alpha(X,Y)=\tfrac12[X,Y]_{\mathfrak m}+U(X,Y),
+\tag{C.1}
+\]</span>
+where the symmetric bilinear map <span class="math" data-tex="\(U\)">\(U\)</span> is determined by
+<span class="math math-display" data-tex="\[
+2B(U(X,Y),Z)=B([Z,X]_{\mathfrak m},Y)+B(X,[Z,Y]_{\mathfrak m}).
+\tag{C.2}
+\]">\[
+2B(U(X,Y),Z)=B([Z,X]_{\mathfrak m},Y)+B(X,[Z,Y]_{\mathfrak m}).
+\tag{C.2}
+\]</span>
+An arbitrary invariant connection <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is metric precisely when every <span class="math" data-tex="\(\Lambda(X)\)">\(\Lambda(X)\)</span> is <span class="math" data-tex="\(B\)">\(B\)</span>-skew:
+<span class="math math-display" data-tex="\[
+B(\alpha(X,Y),Z)+B(Y,\alpha(X,Z))=0.
+\tag{C.3}
+\]">\[
+B(\alpha(X,Y),Z)+B(Y,\alpha(X,Z))=0.
+\tag{C.3}
+\]</span></p>
+<p><strong>Proof.</strong> Invariance forces a metric at <span class="math" data-tex="\(gH\)">\(gH\)</span> to have the value
+<span class="math math-display" data-tex="\[
+g_{gH}(j_gX,j_gY)=B(X,Y).
+\]">\[
+g_{gH}(j_gX,j_gY)=B(X,Y).
+\]</span>
+The identity <span class="math" data-tex="\(j_{gh}=j_g\lambda(h)\)">\(j_{gh}=j_g\lambda(h)\)</span> makes this independent of the representative <span class="math" data-tex="\(g\)">\(g\)</span> exactly when <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(H\)">\(H\)</span>-invariant. Local sections make the resulting tensor smooth. Nondegeneracy and symmetry hold at every point because <span class="math" data-tex="\(j_g\)">\(j_g\)</span> is an isomorphism. Conversely restricting an invariant metric to <span class="math" data-tex="\(T_oM\)">\(T_oM\)</span> gives such a <span class="math" data-tex="\(B\)">\(B\)</span>, so the constructions are inverse.</p>
+<p>Compute the covariant derivative at <span class="math" data-tex="\(o\)">\(o\)</span> in the local frame of A.2, whose metric coefficients are constant. The tensor rule in <a href="linear-and-affine-connections.html#theorem-c-1">Linear connections C.1</a> gives
+<span class="math math-display" data-tex="\[
+(\nabla_Xg)_o(Y,Z)=-B(\alpha(X,Y),Z)-B(Y,\alpha(X,Z)).
+\]">\[
+(\nabla_Xg)_o(Y,Z)=-B(\alpha(X,Y),Z)-B(Y,\alpha(X,Z)).
+\]</span>
+Invariance propagates this identity to every point and proves (C.3).</p>
+<p>Nondegeneracy of <span class="math" data-tex="\(B\)">\(B\)</span> makes <span class="math" data-tex="\(v\mapsto B(v,\cdot)\)">\(v\mapsto B(v,\cdot)\)</span> a linear isomorphism onto <span class="math" data-tex="\(\mathfrak m^*\)">\(\mathfrak m^*\)</span>; thus (C.2) defines a unique bilinear <span class="math" data-tex="\(U\)">\(U\)</span>. Interchanging <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span>, and using symmetry of <span class="math" data-tex="\(B\)">\(B\)</span>, proves that <span class="math" data-tex="\(U\)">\(U\)</span> is symmetric. Applying an element of <span class="math" data-tex="\(H\)">\(H\)</span> to all three inputs of (C.2) preserves its right side. Uniqueness then proves equivariance of <span class="math" data-tex="\(U\)">\(U\)</span>, so (C.1) defines an invariant connection by A.2. Its torsion is zero by B.1.</p>
+<p>For metric compatibility, insert (C.1) and (C.2) into twice the left side of (C.3). The result is the sum
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;B([X,Y]_{\mathfrak m},Z)+B([Z,X]_{\mathfrak m},Y)
++B(X,[Z,Y]_{\mathfrak m})\\
+&amp;\quad+B(Y,[X,Z]_{\mathfrak m})+B([Y,X]_{\mathfrak m},Z)
++B(X,[Y,Z]_{\mathfrak m}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;B([X,Y]_{\mathfrak m},Z)+B([Z,X]_{\mathfrak m},Y)
++B(X,[Z,Y]_{\mathfrak m})\\
+&amp;\quad+B(Y,[X,Z]_{\mathfrak m})+B([Y,X]_{\mathfrak m},Z)
++B(X,[Y,Z]_{\mathfrak m}),
+\end{aligned}
+\]</span>
+which vanishes in pairs by skew symmetry of the bracket and symmetry of <span class="math" data-tex="\(B\)">\(B\)</span>. This proves existence without any positive-definiteness assumption.</p>
+<p>To prove uniqueness among all connections, the difference <span class="math" data-tex="\(A\)">\(A\)</span> of two covariant derivatives is a tensor by <a href="linear-and-affine-connections.html#theorem-a-3">Linear connections A.3</a>. If both are torsion free, <span class="math" data-tex="\(A(X,Y)=A(Y,X)\)">\(A(X,Y)=A(Y,X)\)</span>. If both are metric, <span class="math" data-tex="\(a(X,Y,Z)=g(A(X,Y),Z)\)">\(a(X,Y,Z)=g(A(X,Y),Z)\)</span> satisfies <span class="math" data-tex="\(a(X,Y,Z)=-a(X,Z,Y)\)">\(a(X,Y,Z)=-a(X,Z,Y)\)</span>. Combining these two symmetries gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+a(X,Y,Z)&amp;=a(Y,X,Z)=-a(Y,Z,X)\\
+&amp;=-a(Z,Y,X)=a(Z,X,Y)=a(X,Z,Y)=-a(X,Y,Z).
+\end{aligned}
+\]">\[
+\begin{aligned}
+a(X,Y,Z)&amp;=a(Y,X,Z)=-a(Y,Z,X)\\
+&amp;=-a(Z,Y,X)=a(Z,X,Y)=a(X,Z,Y)=-a(X,Y,Z).
+\end{aligned}
+\]</span>
+Thus <span class="math" data-tex="\(a=0\)">\(a=0\)</span>, and nondegeneracy gives <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. In particular the metric torsion-free connection constructed above is the Levi-Civita connection. □</p>
+<p id="theorem-c-2"><strong>Theorem C.2 (Natural reductivity and the curvature numerator).</strong> Call <span class="math" data-tex="\(B\)">\(B\)</span> naturally reductive for this complement when
+<span class="math math-display" data-tex="\[
+B([X,Y]_{\mathfrak m},Z)+B(Y,[X,Z]_{\mathfrak m})=0
+\quad(X,Y,Z\in\mathfrak m).
+\tag{C.4}
+\]">\[
+B([X,Y]_{\mathfrak m},Z)+B(Y,[X,Z]_{\mathfrak m})=0
+\quad(X,Y,Z\in\mathfrak m).
+\tag{C.4}
+\]</span>
+This is equivalent to <span class="math" data-tex="\(U=0\)">\(U=0\)</span> in C.1. In this case the Levi-Civita connection is geodesically complete, including in indefinite signature, and all its geodesics have the form (B.4). Its curvature is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R(X,Y)Z={}&amp;\tfrac14[X,[Y,Z]_{\mathfrak m}]_{\mathfrak m}
+-\tfrac14[Y,[X,Z]_{\mathfrak m}]_{\mathfrak m}\\
+&amp;-\tfrac12[[X,Y]_{\mathfrak m},Z]_{\mathfrak m}
+-[[X,Y]_{\mathfrak h},Z].
+\end{aligned}
+\tag{C.5}
+\]">\[
+\begin{aligned}
+R(X,Y)Z={}&amp;\tfrac14[X,[Y,Z]_{\mathfrak m}]_{\mathfrak m}
+-\tfrac14[Y,[X,Z]_{\mathfrak m}]_{\mathfrak m}\\
+&amp;-\tfrac12[[X,Y]_{\mathfrak m},Z]_{\mathfrak m}
+-[[X,Y]_{\mathfrak h},Z].
+\end{aligned}
+\tag{C.5}
+\]</span>
+Writing <span class="math" data-tex="\(K=[X,Y]_{\mathfrak m}\)">\(K=[X,Y]_{\mathfrak m}\)</span>, its sectional-curvature numerator is
+<span class="math math-display" data-tex="\[
+B(R(X,Y)Y,X)=\tfrac14 B(K,K)-B([[X,Y]_{\mathfrak h},Y],X).
+\tag{C.6}
+\]">\[
+B(R(X,Y)Y,X)=\tfrac14 B(K,K)-B([[X,Y]_{\mathfrak h},Y],X).
+\tag{C.6}
+\]</span>
+If <span class="math" data-tex="\(Q\)">\(Q\)</span> is a positive-definite <span class="math" data-tex="\(\operatorname{Ad}(G)\)">\(\operatorname{Ad}(G)\)</span>-invariant form on <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, <span class="math" data-tex="\(\mathfrak m=\mathfrak h^{\perp_Q}\)">\(\mathfrak m=\mathfrak h^{\perp_Q}\)</span>, and <span class="math" data-tex="\(B=Q|_{\mathfrak m}\)">\(B=Q|_{\mathfrak m}\)</span>, then
+<span class="math math-display" data-tex="\[
+B(R(X,Y)Y,X)
+=\tfrac14\lVert[X,Y]_{\mathfrak m}\rVert_Q^2
++\lVert[X,Y]_{\mathfrak h}\rVert_Q^2\geq0.
+\tag{C.7}
+\]">\[
+B(R(X,Y)Y,X)
+=\tfrac14\lVert[X,Y]_{\mathfrak m}\rVert_Q^2
++\lVert[X,Y]_{\mathfrak h}\rVert_Q^2\geq0.
+\tag{C.7}
+\]</span></p>
+<p><strong>Proof.</strong> Condition (C.4), with <span class="math" data-tex="\(X\)">\(X\)</span> replaced by <span class="math" data-tex="\(Z\)">\(Z\)</span>, makes the right side of (C.2) zero, hence <span class="math" data-tex="\(U=0\)">\(U=0\)</span>. Conversely if <span class="math" data-tex="\(U=0\)">\(U=0\)</span>, the connection <span class="math" data-tex="\(\alpha(X,Y)=\tfrac12[X,Y]_{\mathfrak m}\)">\(\alpha(X,Y)=\tfrac12[X,Y]_{\mathfrak m}\)</span> is metric, and (C.3) is (C.4). B.2 then gives all the geodesics and their completeness, without using a metric distance or positive definiteness. Substitution of <span class="math" data-tex="\(\Lambda(X)Y=\tfrac12[X,Y]_{\mathfrak m}\)">\(\Lambda(X)Y=\tfrac12[X,Y]_{\mathfrak m}\)</span> into (B.2) proves (C.5).</p>
+<p>For <span class="math" data-tex="\(Z=Y\)">\(Z=Y\)</span>, the first term of (C.5) is zero. Combining the next two, using <span class="math" data-tex="\([K,Y]_{\mathfrak m}=-[Y,K]_{\mathfrak m}\)">\([K,Y]_{\mathfrak m}=-[Y,K]_{\mathfrak m}\)</span>, gives
+<span class="math math-display" data-tex="\[
+R(X,Y)Y=\tfrac14[Y,K]_{\mathfrak m}-[[X,Y]_{\mathfrak h},Y].
+\]">\[
+R(X,Y)Y=\tfrac14[Y,K]_{\mathfrak m}-[[X,Y]_{\mathfrak h},Y].
+\]</span>
+By (C.4) the inner product of <span class="math" data-tex="\([Y,K]_{\mathfrak m}\)">\([Y,K]_{\mathfrak m}\)</span> with <span class="math" data-tex="\(X\)">\(X\)</span> is
+<span class="math" data-tex="\(-B(K,[Y,X]_{\mathfrak m})=B(K,K)\)">\(-B(K,[Y,X]_{\mathfrak m})=B(K,K)\)</span>, which proves (C.6). In indefinite signature, sectional curvature on a nondegenerate plane is this numerator divided by <span class="math" data-tex="\(B(X,X)B(Y,Y)-B(X,Y)^2\)">\(B(X,X)B(Y,Y)-B(X,Y)^2\)</span>; no claim is made for degenerate planes.</p>
+<p>For the last assertion, invariance of <span class="math" data-tex="\(Q\)">\(Q\)</span> makes <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> invariant under all of <span class="math" data-tex="\(H\)">\(H\)</span>. Differentiating its invariance under <span class="math" data-tex="\(\exp(tA)\)">\(\exp(tA)\)</span> gives
+<span class="math math-display" data-tex="\[
+Q([A,B_1],B_2)+Q(B_1,[A,B_2])=0.
+\]">\[
+Q([A,B_1],B_2)+Q(B_1,[A,B_2])=0.
+\]</span>
+For <span class="math" data-tex="\(X,Y,Z\in\mathfrak m\)">\(X,Y,Z\in\mathfrak m\)</span>, orthogonality allows the projections in (C.4) to be removed inside <span class="math" data-tex="\(Q\)">\(Q\)</span>, and this identity proves natural reductivity. Put <span class="math" data-tex="\(A=[X,Y]_{\mathfrak h}\)">\(A=[X,Y]_{\mathfrak h}\)</span>. The same identity, together with symmetry, gives
+<span class="math math-display" data-tex="\[
+Q([A,Y],X)=Q(A,[Y,X])=-Q(A,A).
+\]">\[
+Q([A,Y],X)=Q(A,[Y,X])=-Q(A,A).
+\]</span>
+Here the <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> part of <span class="math" data-tex="\([X,Y]\)">\([X,Y]\)</span> is orthogonal to <span class="math" data-tex="\(A\)">\(A\)</span>. Equation (C.7) follows from (C.6). □</p>
+<p id="example-c-3"><strong>Example C.3 (Three connections on a Lie group).</strong> On a Lie group <span class="math" data-tex="\(L\)">\(L\)</span>, for each real number <span class="math" data-tex="\(s\)">\(s\)</span>, the prescription
+<span class="math math-display" data-tex="\[
+\nabla^{(s)}_{X^L}Y^L=s[X,Y]^L
+\tag{C.8}
+\]">\[
+\nabla^{(s)}_{X^L}Y^L=s[X,Y]^L
+\tag{C.8}
+\]</span>
+defines a bi-invariant affine connection with
+<span class="math math-display" data-tex="\[
+T^{(s)}(X,Y)=(2s-1)[X,Y],\qquad
+R^{(s)}(X,Y)=(s^2-s)\operatorname{ad}[X,Y].
+\tag{C.9}
+\]">\[
+T^{(s)}(X,Y)=(2s-1)[X,Y],\qquad
+R^{(s)}(X,Y)=(s^2-s)\operatorname{ad}[X,Y].
+\tag{C.9}
+\]</span>
+At <span class="math" data-tex="\(s=0\)">\(s=0\)</span> all left-invariant fields are parallel; at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> all right-invariant fields are parallel; at <span class="math" data-tex="\(s=\tfrac12\)">\(s=\tfrac12\)</span> the connection is torsion free. All three, and indeed every member of the family, are geodesically complete. The torsion-free member is also the canonical connection of the symmetric presentation
+<span class="math" data-tex="\((L\times L)/\operatorname{diag}L\)">\((L\times L)/\operatorname{diag}L\)</span>, acting by <span class="math" data-tex="\((a,b)x=axb^{-1}\)">\((a,b)x=axb^{-1}\)</span>.</p>
+<p><strong>Proof.</strong> For the left translation presentation <span class="math" data-tex="\(L/\{e\}\)">\(L/\{e\}\)</span>, A.2 constructs (C.8) from the bilinear product <span class="math" data-tex="\(s[X,Y]\)">\(s[X,Y]\)</span>. Its torsion follows immediately from B.1. Jacobi's identity gives <span class="math" data-tex="\([\operatorname{ad}X,\operatorname{ad}Y]=\operatorname{ad}[X,Y]\)">\([\operatorname{ad}X,\operatorname{ad}Y]=\operatorname{ad}[X,Y]\)</span>, so its curvature in (B.2) is <span class="math" data-tex="\(s^2\operatorname{ad}[X,Y]-s\operatorname{ad}[X,Y]\)">\(s^2\operatorname{ad}[X,Y]-s\operatorname{ad}[X,Y]\)</span>. This proves (C.9).</p>
+<p>Right translation by <span class="math" data-tex="\(a\)">\(a\)</span> takes the left frame at <span class="math" data-tex="\(x\)">\(x\)</span> to the left frame at <span class="math" data-tex="\(xa\)">\(xa\)</span> with the constant coefficient change <span class="math" data-tex="\(\operatorname{Ad}_{a^{-1}}\)">\(\operatorname{Ad}_{a^{-1}}\)</span>. This change preserves the bracket, so formula (A.2) intertwines the derivatives and proves right invariance; left invariance already holds by construction.</p>
+<p>For <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, the left-frame coefficients of every left-invariant field are constant, giving parallelism directly. The left-frame coefficient of <span class="math" data-tex="\(Y^R\)">\(Y^R\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(\operatorname{Ad}_{x^{-1}}Y\)">\(\operatorname{Ad}_{x^{-1}}Y\)</span>. Along a curve with left velocity <span class="math" data-tex="\(X(t)\)">\(X(t)\)</span>, differentiating the adjoint action gives its derivative <span class="math" data-tex="\(-[X(t),\operatorname{Ad}_{x^{-1}}Y]\)">\(-[X(t),\operatorname{Ad}_{x^{-1}}Y]\)</span>, which the <span class="math" data-tex="\(s=1\)">\(s=1\)</span> connection term cancels. Thus the right-invariant fields are parallel. Torsion-freeness at <span class="math" data-tex="\(s=\tfrac12\)">\(s=\tfrac12\)</span> and completeness of every member follow from (C.9) and B.2, since <span class="math" data-tex="\(s[X,X]=0\)">\(s[X,X]=0\)</span>.</p>
+<p>For the last assertion set
+<span class="math math-display" data-tex="\[
+\mathfrak h=\{(Z,Z):Z\in\mathfrak l\},\qquad
+\mathfrak m=\{(X/2,-X/2):X\in\mathfrak l\}.
+\]">\[
+\mathfrak h=\{(Z,Z):Z\in\mathfrak l\},\qquad
+\mathfrak m=\{(X/2,-X/2):X\in\mathfrak l\}.
+\]</span>
+The complement is invariant under the full diagonal subgroup, identifies with <span class="math" data-tex="\(T_eL\)">\(T_eL\)</span> by <span class="math" data-tex="\(X\)">\(X\)</span>, and its self-bracket lies in <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>. Its canonical connection has zero torsion by (B.3). Its geodesics starting at <span class="math" data-tex="\(e\)">\(e\)</span> are
+<span class="math math-display" data-tex="\[
+\exp(tX/2)\exp(tX/2)=\exp(tX).
+\]">\[
+\exp(tX/2)\exp(tX/2)=\exp(tX).
+\]</span>
+Left translations show that all other geodesics have the corresponding left translates. Relative to <span class="math" data-tex="\(L/\{e\}\)">\(L/\{e\}\)</span>, it must therefore have a skew product by B.2; torsion-freeness forces that product to be <span class="math" data-tex="\(\tfrac12[X,Y]\)">\(\tfrac12[X,Y]\)</span>. This proves the claimed equality of connections, despite the different reductive presentations.</p>
+<p>Finally a left-invariant nondegenerate symmetric metric is bi-invariant exactly when its value <span class="math" data-tex="\(B\)">\(B\)</span> at <span class="math" data-tex="\(e\)">\(e\)</span> is <span class="math" data-tex="\(\operatorname{Ad}(L)\)">\(\operatorname{Ad}(L)\)</span>-invariant, by the same frame change. Differentiating this condition makes the bracket <span class="math" data-tex="\(B\)">\(B\)</span>-skew. C.1 then identifies its Levi-Civita connection with <span class="math" data-tex="\(s=\tfrac12\)">\(s=\tfrac12\)</span>, including indefinite metrics. □</p>
+<h2 id="part-d">D. Holonomy and a round model</h2>
+<p id="theorem-d-1"><strong>Theorem D.1 (A finite holonomy calculation).</strong> For <span class="math" data-tex="\(W\)">\(W\)</span> in A.1 put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_W(X,Y)&amp;=[W(X),W(Y)]-W([X,Y]),\\
+V_0&amp;=\operatorname{span}\{C_W(X,Y):X,Y\in\mathfrak g\},\\
+V_{r+1}&amp;=V_r+\operatorname{span}\{[W(X),A]:X\in\mathfrak g,\ A\in V_r\}.
+\end{aligned}
+\tag{D.1}
+\]">\[
+\begin{aligned}
+C_W(X,Y)&amp;=[W(X),W(Y)]-W([X,Y]),\\
+V_0&amp;=\operatorname{span}\{C_W(X,Y):X,Y\in\mathfrak g\},\\
+V_{r+1}&amp;=V_r+\operatorname{span}\{[W(X),A]:X\in\mathfrak g,\ A\in V_r\}.
+\end{aligned}
+\tag{D.1}
+\]</span>
+This sequence stabilizes in at most <span class="math" data-tex="\((\dim M)^2\)">\((\dim M)^2\)</span> strict increases. Its stable value is the holonomy Lie algebra in the frame <span class="math" data-tex="\(j_e\)">\(j_e\)</span>. For the canonical connection of a reductive space it is already
+<span class="math math-display" data-tex="\[
+\mathfrak{hol}(\bar\nabla)
+=\operatorname{span}\{\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}:X,Y\in\mathfrak m\}.
+\tag{D.2}
+\]">\[
+\mathfrak{hol}(\bar\nabla)
+=\operatorname{span}\{\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}:X,Y\in\mathfrak m\}.
+\tag{D.2}
+\]</span>
+The restricted canonical holonomy is a connected analytic normal subgroup of <span class="math" data-tex="\(\lambda(H)\)">\(\lambda(H)\)</span>; it can be strictly smaller.</p>
+<p><strong>Proof.</strong> The hypotheses of the complete homogeneous holonomy theorem, <a href="invariant-connections-on-homogeneous-bundles.html#theorem-c-1">Invariant connections C.1</a>, hold for the frame bundle in A.1. That theorem proves that (D.1) stabilizes, that its stable space is automatically closed under brackets, and that it is the Lie algebra both of full and restricted holonomy. It also identifies restricted holonomy with the connected analytic subgroup generated by its exponentials. Dimension bounds the number of strict increases by <span class="math" data-tex="\(\dim\mathfrak{gl}(V)=(\dim M)^2\)">\(\dim\mathfrak{gl}(V)=(\dim M)^2\)</span>.</p>
+<p>For the canonical connection, <span class="math" data-tex="\(W\)">\(W\)</span> is zero on <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> and is <span class="math" data-tex="\(\lambda_*\)">\(\lambda_*\)</span> on <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>. Its curvature span is the space on the right of (D.2), with an immaterial overall minus sign by (B.3). This space is invariant under conjugation by every <span class="math" data-tex="\(\lambda(h)\)">\(\lambda(h)\)</span>: the projection of <span class="math" data-tex="\([X,Y]\)">\([X,Y]\)</span> to <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> commutes with <span class="math" data-tex="\(\operatorname{Ad}_h\)">\(\operatorname{Ad}_h\)</span>, and conjugating its action on <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> gives the action of <span class="math" data-tex="\(\operatorname{Ad}_h[X,Y]_{\mathfrak h}\)">\(\operatorname{Ad}_h[X,Y]_{\mathfrak h}\)</span>. Differentiating this invariance makes the space stable under brackets with <span class="math" data-tex="\(\lambda_*(\mathfrak h)=W(\mathfrak g)\)">\(\lambda_*(\mathfrak h)=W(\mathfrak g)\)</span>. Thus <span class="math" data-tex="\(V_1=V_0\)">\(V_1=V_0\)</span>, which proves (D.2).</p>
+<p>The principal connection on <span class="math" data-tex="\(G\to G/H\)">\(G\to G/H\)</span> with horizontal spaces <span class="math" data-tex="\(dL_g\mathfrak m\)">\(dL_g\mathfrak m\)</span> is constructed in <a href="invariant-connections-on-homogeneous-bundles.html#theorem-c-2">Invariant connections C.2</a>, and induces this tangent connection through <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. A lifted loop starting at <span class="math" data-tex="\(e\)">\(e\)</span> ends in <span class="math" data-tex="\(H\)">\(H\)</span>, and parallel tangent vectors are <span class="math" data-tex="\(j_{g(t)}v\)">\(j_{g(t)}v\)</span>. At its endpoint their transformation is <span class="math" data-tex="\(\lambda(h)\)">\(\lambda(h)\)</span>, proving containment of full canonical holonomy in <span class="math" data-tex="\(\lambda(H)\)">\(\lambda(H)\)</span>. Normality of restricted holonomy under every <span class="math" data-tex="\(\lambda(h)\)">\(\lambda(h)\)</span> follows because conjugation preserves the Lie algebra (D.2) and hence preserves the subgroup generated by its exponentials. Uniqueness of that connected analytic subgroup is also proved in <a href="flat-connections-and-infinitesimal-holonomy.html#lemma-a-1">Flat connections A.1</a>.</p>
+<p>For strictness take the Euclidean motion presentation
+<span class="math math-display" data-tex="\[
+(\mathbb R^n\rtimes\mathrm{SO}(n))/\mathrm{SO}(n)=\mathbb R^n,\qquad n\geq2.
+\]">\[
+(\mathbb R^n\rtimes\mathrm{SO}(n))/\mathrm{SO}(n)=\mathbb R^n,\qquad n\geq2.
+\]</span>
+Translation vectors form <span class="math" data-tex="\(\mathfrak m=\mathbb R^n\)">\(\mathfrak m=\mathbb R^n\)</span>, whose brackets vanish. The canonical connection is ordinary coordinate differentiation by (A.2), so transport around every loop is the identity. Its holonomy is trivial, whereas <span class="math" data-tex="\(\lambda(H)=\mathrm{SO}(n)\)">\(\lambda(H)=\mathrm{SO}(n)\)</span> is not: a nontrivial rotation in a coordinate two-plane gives an element different from the identity. Thus even normality does not imply equality. □</p>
+<p id="exercise-d-2"><strong>Exercise D.2 (The sphere, its reductive complement and its holonomy).</strong> For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, identify <span class="math" data-tex="\(S^n\)">\(S^n\)</span> with <span class="math" data-tex="\(\mathrm{SO}(n+1)/\mathrm{SO}(n)\)">\(\mathrm{SO}(n+1)/\mathrm{SO}(n)\)</span> at <span class="math" data-tex="\(e_0=(1,0,\ldots,0)\)">\(e_0=(1,0,\ldots,0)\)</span>. Compute the canonical torsion, curvature, geodesics and full holonomy.</p>
+<p><strong>Solution.</strong> <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-y-2">De Rham Y.2</a> proves transitivity of <span class="math" data-tex="\(\mathrm{SO}(n+1)\)">\(\mathrm{SO}(n+1)\)</span> on this sphere. Its stabilizer at <span class="math" data-tex="\(e_0\)">\(e_0\)</span> consists exactly of <span class="math" data-tex="\(\operatorname{diag}(1,h)\)">\(\operatorname{diag}(1,h)\)</span> with <span class="math" data-tex="\(h\in\mathrm{SO}(n)\)">\(h\in\mathrm{SO}(n)\)</span>: the first column is <span class="math" data-tex="\(e_0\)">\(e_0\)</span>, orthogonality forces the first row as well, and the remaining determinant is one. The transitive-action submersion of <a href="invariant-connections-on-homogeneous-bundles.html#theorem-a-2">Invariant connections A.2</a> and the quotient charts of <a href="local-tools-for-bundles-and-transport.html#4-quotients-by-a-closed-lie-subgroup">Local tools 4.1</a> identify the quotient smoothly with <span class="math" data-tex="\(S^n\)">\(S^n\)</span>.</p>
+<p>Every skew matrix splits uniquely as a stabilizer matrix plus
+<span class="math math-display" data-tex="\[
+A(x)=
+\begin{pmatrix}0&amp;-x^{\mathsf T}\\x&amp;0\end{pmatrix},
+\qquad x\in\mathbb R^n.
+\]">\[
+A(x)=
+\begin{pmatrix}0&amp;-x^{\mathsf T}\\x&amp;0\end{pmatrix},
+\qquad x\in\mathbb R^n.
+\]</span>
+These <span class="math" data-tex="\(A(x)\)">\(A(x)\)</span> form an <span class="math" data-tex="\(\operatorname{Ad}(H)\)">\(\operatorname{Ad}(H)\)</span>-invariant complement, with <span class="math" data-tex="\(A(x)e_0=(0,x)\)">\(A(x)e_0=(0,x)\)</span> and
+<span class="math" data-tex="\(\operatorname{Ad}_{\operatorname{diag}(1,h)}A(x)=A(hx)\)">\(\operatorname{Ad}_{\operatorname{diag}(1,h)}A(x)=A(hx)\)</span>. The isotropy representation is therefore the ordinary <span class="math" data-tex="\(\mathrm{SO}(n)\)">\(\mathrm{SO}(n)\)</span> representation. Direct multiplication gives
+<span class="math math-display" data-tex="\[
+[A(x),A(y)]
+=\begin{pmatrix}0&amp;0\\0&amp;yx^{\mathsf T}-xy^{\mathsf T}\end{pmatrix}.
+\]">\[
+[A(x),A(y)]
+=\begin{pmatrix}0&amp;0\\0&amp;yx^{\mathsf T}-xy^{\mathsf T}\end{pmatrix}.
+\]</span>
+Its <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> component is zero, so (B.3) gives <span class="math" data-tex="\(T=0\)">\(T=0\)</span> and
+<span class="math math-display" data-tex="\[
+R(x,y)z=\langle y,z\rangle x-\langle x,z\rangle y.
+\tag{D.3}
+\]">\[
+R(x,y)z=\langle y,z\rangle x-\langle x,z\rangle y.
+\tag{D.3}
+\]</span>
+The Euclidean inner product on <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> gives the round metric. With zero projected bracket, C.1 gives its Levi-Civita product <span class="math" data-tex="\(\alpha=0\)">\(\alpha=0\)</span>; thus this is exactly the canonical connection. Its geodesics are the <span class="math" data-tex="\(G\)">\(G\)</span>-translates of
+<span class="math math-display" data-tex="\[
+\exp(tA(x))e_0
+=\cos(t|x|)e_0+\frac{\sin(t|x|)}{|x|}(0,x)
+\]">\[
+\exp(tA(x))e_0
+=\cos(t|x|)e_0+\frac{\sin(t|x|)}{|x|}(0,x)
+\]</span>
+when <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span>, and the constant curve when <span class="math" data-tex="\(x=0\)">\(x=0\)</span>. To verify the formula, the right side has initial value <span class="math" data-tex="\(e_0\)">\(e_0\)</span> and satisfies <span class="math" data-tex="\(c'=A(x)c\)">\(c'=A(x)c\)</span>, since <span class="math" data-tex="\(A(x)e_0=(0,x)\)">\(A(x)e_0=(0,x)\)</span> and <span class="math" data-tex="\(A(x)(0,x)=-|x|^2e_0\)">\(A(x)(0,x)=-|x|^2e_0\)</span>. Uniqueness of the linear ODE in <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a> identifies it with the exponential.</p>
+<p>For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, taking <span class="math" data-tex="\(x,y\)">\(x,y\)</span> to be distinct coordinate vectors shows that the curvature endomorphisms span all elementary skew matrices, hence <span class="math" data-tex="\(\mathfrak{so}(n)\)">\(\mathfrak{so}(n)\)</span>. <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-y-2">De Rham Y.2</a> proves that <span class="math" data-tex="\(\mathrm{SO}(n)\)">\(\mathrm{SO}(n)\)</span> is connected. The connected subgroup generated by exponentials of its whole Lie algebra is the group itself: the exponential is a local diffeomorphism at zero by <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.3</a> and <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a>, so this subgroup is open, and its disjoint open cosets would otherwise disconnect the group. D.1 therefore gives restricted holonomy <span class="math" data-tex="\(\mathrm{SO}(n)\)">\(\mathrm{SO}(n)\)</span>. Full holonomy is contained in the same isotropy group, so it too is <span class="math" data-tex="\(\mathrm{SO}(n)\)">\(\mathrm{SO}(n)\)</span>. For <span class="math" data-tex="\(n=1\)">\(n=1\)</span>, the isotropy group and both holonomy groups are trivial; (D.3) vanishes in one dimension, consistently with this conclusion. □</p>
+<h2 id="part-e">E. Homogeneity and the intrinsic product factors</h2>
+<p>The metric in this section is positive definite. The Euclidean factor of the de Rham decomposition is kept as one factor; zero-dimensional factors are omitted.</p>
+<p id="theorem-e-1"><strong>Theorem E.1 (Connected closed groups on the factors).</strong> Suppose <span class="math" data-tex="\(G\)">\(G\)</span> is connected and acts transitively by isometries on a simply connected Riemannian manifold <span class="math" data-tex="\(M=G/H\)">\(M=G/H\)</span>. For each based factor leaf <span class="math" data-tex="\(L_i\)">\(L_i\)</span> of its de Rham decomposition, its set stabilizer
+<span class="math math-display" data-tex="\[
+K_i=\{g\in G:gL_i=L_i\}
+\]">\[
+K_i=\{g\in G:gL_i=L_i\}
+\]</span>
+is a closed connected Lie subgroup containing <span class="math" data-tex="\(H\)">\(H\)</span>. It acts transitively on <span class="math" data-tex="\(L_i\)">\(L_i\)</span>, and
+<span class="math math-display" data-tex="\[
+L_i\cong K_i/H
+\tag{E.1}
+\]">\[
+L_i\cong K_i/H
+\tag{E.1}
+\]</span>
+as a homogeneous Riemannian manifold.</p>
+<p><strong>Proof.</strong> <a href="completeness-and-the-hopf-rinow-theorem.html#corollary-b-3">Hopf–Rinow B.3</a> proves completeness of a homogeneous Riemannian manifold. <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-e-3">De Rham E.3</a> therefore supplies a finite product <span class="math" data-tex="\(M=\prod_i M_i\)">\(M=\prod_i M_i\)</span> of complete simply connected factors, with each <span class="math" data-tex="\(L_i\)">\(L_i\)</span> the <span class="math" data-tex="\(i\)">\(i\)</span>-th axis through <span class="math" data-tex="\(o=(o_j)_j\)">\(o=(o_j)_j\)</span>. <a href="holonomy-and-the-de-rham-decomposition-theorem.html#corollary-k-5">De Rham K.5</a> proves that a connected group of isometries preserves each of the factor foliations and acts as a product of factor isometries. The given action is continuous in the compact-open topology used there: for a compact subset, continuity of the smooth action gives a common parameter neighbourhood with any prescribed uniform displacement bound, by a finite covering of that subset. Thus connectedness of <span class="math" data-tex="\(G\)">\(G\)</span> really does put its image in the identity component considered in that theorem.</p>
+<p>Write <span class="math" data-tex="\(g_j\)">\(g_j\)</span> for the action on <span class="math" data-tex="\(M_j\)">\(M_j\)</span>. Then
+<span class="math math-display" data-tex="\[
+K_i=\{g:g_j(o_j)=o_j\text{ for every }j\ne i\},
+\tag{E.2}
+\]">\[
+K_i=\{g:g_j(o_j)=o_j\text{ for every }j\ne i\},
+\tag{E.2}
+\]</span>
+because the factors are preserved and <span class="math" data-tex="\(g_i\)">\(g_i\)</span> maps <span class="math" data-tex="\(M_i\)">\(M_i\)</span> onto itself. This is a closed subgroup and contains <span class="math" data-tex="\(H\)">\(H\)</span>. <a href="invariant-connections-on-homogeneous-bundles.html#theorem-a-1">Invariant connections A.1</a> makes it an embedded Lie subgroup. If <span class="math" data-tex="\(p\in L_i\)">\(p\in L_i\)</span>, transitivity on <span class="math" data-tex="\(M\)">\(M\)</span> supplies <span class="math" data-tex="\(g\)">\(g\)</span> with <span class="math" data-tex="\(go=p\)">\(go=p\)</span>; its other coordinates satisfy (E.2), so <span class="math" data-tex="\(g\in K_i\)">\(g\in K_i\)</span>. This proves transitivity on the leaf. Its stabilizer of <span class="math" data-tex="\(o\)">\(o\)</span> is <span class="math" data-tex="\(H\)">\(H\)</span>, and the transitive-action theorem in <a href="invariant-connections-on-homogeneous-bundles.html#theorem-a-2">Invariant connections A.2</a>, together with <a href="local-tools-for-bundles-and-transport.html#4-quotients-by-a-closed-lie-subgroup">Local tools 4.1</a>, gives the diffeomorphism (E.1). The induced metric is invariant under <span class="math" data-tex="\(K_i\)">\(K_i\)</span>, giving the Riemannian statement.</p>
+<p>It remains to prove connectedness, which does not follow from transitivity alone. The action of <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(N_i=\prod_{j\ne i}M_j\)">\(N_i=\prod_{j\ne i}M_j\)</span> is transitive: complete a specified point of <span class="math" data-tex="\(N_i\)">\(N_i\)</span> by <span class="math" data-tex="\(o_i\)">\(o_i\)</span> and use transitivity on <span class="math" data-tex="\(M\)">\(M\)</span>. Its stabilizer is <span class="math" data-tex="\(K_i\)">\(K_i\)</span>. The same quotient theorem gives <span class="math" data-tex="\(G/K_i\cong N_i\)">\(G/K_i\cong N_i\)</span>. This base is simply connected: loops and homotopies in a finite product are exactly their coordinate loops and homotopies.</p>
+<p>Let <span class="math" data-tex="\(K_i^0\)">\(K_i^0\)</span> be the identity component of <span class="math" data-tex="\(K_i\)">\(K_i\)</span>. Components of a Lie group are open, since coordinate balls are locally path connected, and are closed as components of a topological space. Thus <span class="math" data-tex="\(K_i^0\)">\(K_i^0\)</span> is a closed Lie subgroup. The natural map
+<span class="math math-display" data-tex="\[
+G/K_i^0\longrightarrow G/K_i
+\tag{E.3}
+\]">\[
+G/K_i^0\longrightarrow G/K_i
+\tag{E.3}
+\]</span>
+is a covering. Indeed a local principal-bundle section for <span class="math" data-tex="\(G\to G/K_i\)">\(G\to G/K_i\)</span>, supplied by <a href="local-tools-for-bundles-and-transport.html#4-quotients-by-a-closed-lie-subgroup">Local tools 4.1</a>, identifies its inverse image in (E.3) with <span class="math" data-tex="\(U\times(K_i/K_i^0)\)">\(U\times(K_i/K_i^0)\)</span>. The second factor is discrete, giving disjoint sheets over <span class="math" data-tex="\(U\)">\(U\)</span>. The space <span class="math" data-tex="\(G/K_i^0\)">\(G/K_i^0\)</span> is connected as an image of connected <span class="math" data-tex="\(G\)">\(G\)</span>. The complete covering classification of <a href="flat-connections-and-infinitesimal-holonomy.html#theorem-d-3">Flat connections D.3</a> says that a connected covering of a simply connected base has one sheet. Hence <span class="math" data-tex="\(K_i/K_i^0\)">\(K_i/K_i^0\)</span> has one point, and <span class="math" data-tex="\(K_i=K_i^0\)">\(K_i=K_i^0\)</span>. If there is only one factor, the other-factor product is a point and the same reasoning simply gives <span class="math" data-tex="\(K_i=G\)">\(K_i=G\)</span>. □</p>
+<p id="theorem-e-2"><strong>Theorem E.2 (The ideals generated by naturally reductive factors).</strong> Under E.1, suppose additionally that the action is effective and a reductive complement makes the metric naturally reductive. Identify
+<span class="math" data-tex="\(\mathfrak m=\bigoplus_i\mathfrak m_i\)">\(\mathfrak m=\bigoplus_i\mathfrak m_i\)</span> with the de Rham tangent splitting at <span class="math" data-tex="\(o\)">\(o\)</span>. Then
+<span class="math math-display" data-tex="\[
+[\mathfrak m_i,\mathfrak m_j]=0\quad(i\ne j).
+\tag{E.4}
+\]">\[
+[\mathfrak m_i,\mathfrak m_j]=0\quad(i\ne j).
+\tag{E.4}
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+\mathfrak h_i=\operatorname{span}\{[X,Y]_{\mathfrak h}:X,Y\in\mathfrak m_i\},
+\qquad \mathfrak k_i=\mathfrak m_i\oplus\mathfrak h_i.
+\]">\[
+\mathfrak h_i=\operatorname{span}\{[X,Y]_{\mathfrak h}:X,Y\in\mathfrak m_i\},
+\qquad \mathfrak k_i=\mathfrak m_i\oplus\mathfrak h_i.
+\]</span>
+Each <span class="math" data-tex="\(\mathfrak k_i\)">\(\mathfrak k_i\)</span> is an ideal in <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>, distinct such ideals commute, and the ideal generated by <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is
+<span class="math math-display" data-tex="\[
+\mathfrak k(\mathfrak m)=\mathfrak m+[\mathfrak m,\mathfrak m]
+=\bigoplus_i\mathfrak k_i,\qquad
+\mathfrak h\cap\mathfrak k(\mathfrak m)=\bigoplus_i\mathfrak h_i.
+\tag{E.5}
+\]">\[
+\mathfrak k(\mathfrak m)=\mathfrak m+[\mathfrak m,\mathfrak m]
+=\bigoplus_i\mathfrak k_i,\qquad
+\mathfrak h\cap\mathfrak k(\mathfrak m)=\bigoplus_i\mathfrak h_i.
+\tag{E.5}
+\]</span>
+The ideal <span class="math" data-tex="\(\mathfrak k(\mathfrak m)\)">\(\mathfrak k(\mathfrak m)\)</span> need not be all of <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span>.</p>
+<p><strong>Proof.</strong> E.1 and <a href="holonomy-and-the-de-rham-decomposition-theorem.html#corollary-k-5">De Rham K.5</a> make the orthogonal projections onto the factor distributions <span class="math" data-tex="\(G\)">\(G\)</span>-invariant. B.2 makes them parallel for the canonical connection <span class="math" data-tex="\(\bar\nabla\)">\(\bar\nabla\)</span>; they are parallel for the Levi-Civita connection <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> by <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-e-3">De Rham E.3</a>. Hence their commutators with the difference <span class="math" data-tex="\(S=\nabla-\bar\nabla\)">\(S=\nabla-\bar\nabla\)</span> vanish: applying the tensor derivative rule of <a href="linear-and-affine-connections.html#theorem-c-1">Linear connections C.1</a> to a projection <span class="math" data-tex="\(P\)">\(P\)</span> gives <span class="math" data-tex="\(0=(\nabla_XP-\bar\nabla_XP)=[S_X,P]\)">\(0=(\nabla_XP-\bar\nabla_XP)=[S_X,P]\)</span>. Thus every <span class="math" data-tex="\(S_X\)">\(S_X\)</span> preserves each factor. C.2 identifies
+<span class="math math-display" data-tex="\[
+S_XY=\tfrac12[X,Y]_{\mathfrak m}.
+\]">\[
+S_XY=\tfrac12[X,Y]_{\mathfrak m}.
+\]</span>
+For <span class="math" data-tex="\(X\in\mathfrak m_i,Y\in\mathfrak m_j\)">\(X\in\mathfrak m_i,Y\in\mathfrak m_j\)</span>, <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, this lies in <span class="math" data-tex="\(\mathfrak m_j\)">\(\mathfrak m_j\)</span>; reversing <span class="math" data-tex="\(X,Y\)">\(X,Y\)</span> places its negative in <span class="math" data-tex="\(\mathfrak m_i\)">\(\mathfrak m_i\)</span>. Their intersection is zero, so <span class="math" data-tex="\([X,Y]_{\mathfrak m}=0\)">\([X,Y]_{\mathfrak m}=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(X\in\mathfrak m_i\)">\(X\in\mathfrak m_i\)</span>, the operator <span class="math" data-tex="\(\Lambda(X)=\tfrac12[X,\cdot]_{\mathfrak m}\)">\(\Lambda(X)=\tfrac12[X,\cdot]_{\mathfrak m}\)</span> vanishes on every other summand and preserves <span class="math" data-tex="\(\mathfrak m_i\)">\(\mathfrak m_i\)</span>. Thus if <span class="math" data-tex="\(Y\in\mathfrak m_j\)">\(Y\in\mathfrak m_j\)</span>, <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>, the two operators commute and the projected bracket is zero. The curvature formula (B.2) reduces to
+<span class="math math-display" data-tex="\[
+R(X,Y)=-\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}.
+\]">\[
+R(X,Y)=-\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}.
+\]</span>
+Mixed curvature is zero by <a href="holonomy-and-the-de-rham-decomposition-theorem.html#corollary-c-3">De Rham C.3</a>, so the right side vanishes.</p>
+<p>Here the isotropy action of <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> on <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is faithful. To prove this, if <span class="math" data-tex="\(A\in\mathfrak h\)">\(A\in\mathfrak h\)</span> acts as zero, <span class="math" data-tex="\(\exp(tA)\)">\(\exp(tA)\)</span> fixes <span class="math" data-tex="\(o\)">\(o\)</span> and has identity derivative there for every <span class="math" data-tex="\(t\)">\(t\)</span>; the derivative is <span class="math" data-tex="\(\exp(t\lambda_*A)\)">\(\exp(t\lambda_*A)\)</span> by the representation ODE. An isometry preserves geodesics and their initial derivatives by <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-3">Riemannian connections A.3</a>. Hence it fixes every <span class="math" data-tex="\(\exp_o(v)\)">\(\exp_o(v)\)</span>. <a href="completeness-and-the-hopf-rinow-theorem.html#theorem-b-2">Hopf–Rinow B.2</a> makes <span class="math" data-tex="\(\exp_o\)">\(\exp_o\)</span> surjective, so it fixes all of <span class="math" data-tex="\(M\)">\(M\)</span>. Effectiveness gives <span class="math" data-tex="\(\exp(tA)=e\)">\(\exp(tA)=e\)</span> for every <span class="math" data-tex="\(t\)">\(t\)</span>, and differentiation gives <span class="math" data-tex="\(A=0\)">\(A=0\)</span>. Apply this to <span class="math" data-tex="\([X,Y]_{\mathfrak h}\)">\([X,Y]_{\mathfrak h}\)</span>. This proves (E.4).</p>
+<p>The full subgroup <span class="math" data-tex="\(H\)">\(H\)</span> preserves the factor splitting, so its adjoint action preserves every <span class="math" data-tex="\(\mathfrak m_i\)">\(\mathfrak m_i\)</span>, and equivariance of the bracket projection preserves every <span class="math" data-tex="\(\mathfrak h_i\)">\(\mathfrak h_i\)</span>. In particular
+<span class="math math-display" data-tex="\[
+[\mathfrak h,\mathfrak m_i]\subseteq\mathfrak m_i,\qquad
+[\mathfrak h,\mathfrak h_i]\subseteq\mathfrak h_i.
+\tag{E.6}
+\]">\[
+[\mathfrak h,\mathfrak m_i]\subseteq\mathfrak m_i,\qquad
+[\mathfrak h,\mathfrak h_i]\subseteq\mathfrak h_i.
+\tag{E.6}
+\]</span>
+For <span class="math" data-tex="\(X,Y\in\mathfrak m_i\)">\(X,Y\in\mathfrak m_i\)</span>, <span class="math" data-tex="\([X,Y]_{\mathfrak m}\in\mathfrak m_i\)">\([X,Y]_{\mathfrak m}\in\mathfrak m_i\)</span>, as already follows from preservation by <span class="math" data-tex="\(S_X\)">\(S_X\)</span>. If <span class="math" data-tex="\(Z\in\mathfrak m_j\)">\(Z\in\mathfrak m_j\)</span>, <span class="math" data-tex="\(j\ne i\)">\(j\ne i\)</span>, Jacobi and (E.4) give
+<span class="math math-display" data-tex="\[
+[[X,Y]_{\mathfrak h},Z]
+=[[X,Y],Z]-[[X,Y]_{\mathfrak m},Z]=0.
+\]">\[
+[[X,Y]_{\mathfrak h},Z]
+=[[X,Y],Z]-[[X,Y]_{\mathfrak m},Z]=0.
+\]</span>
+Thus <span class="math" data-tex="\(\mathfrak h_i\)">\(\mathfrak h_i\)</span> annihilates each other <span class="math" data-tex="\(\mathfrak m_j\)">\(\mathfrak m_j\)</span>. For <span class="math" data-tex="\(A\in\mathfrak h_i\)">\(A\in\mathfrak h_i\)</span> and <span class="math" data-tex="\(Y,Z\in\mathfrak m_j\)">\(Y,Z\in\mathfrak m_j\)</span>, differentiation of bracket-projection equivariance gives
+<span class="math math-display" data-tex="\[
+[A,[Y,Z]_{\mathfrak h}]
+=[[A,Y],Z]_{\mathfrak h}+[Y,[A,Z]]_{\mathfrak h}=0.
+\]">\[
+[A,[Y,Z]_{\mathfrak h}]
+=[[A,Y],Z]_{\mathfrak h}+[Y,[A,Z]]_{\mathfrak h}=0.
+\]</span>
+Therefore <span class="math" data-tex="\([\mathfrak h_i,\mathfrak h_j]=0\)">\([\mathfrak h_i,\mathfrak h_j]=0\)</span> for <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span>. Equations (E.4) and (E.6), and
+<span class="math" data-tex="\([\mathfrak m_i,\mathfrak m_i]\subseteq\mathfrak m_i+\mathfrak h_i\)">\([\mathfrak m_i,\mathfrak m_i]\subseteq\mathfrak m_i+\mathfrak h_i\)</span>, now show both that each <span class="math" data-tex="\(\mathfrak k_i\)">\(\mathfrak k_i\)</span> is an ideal of
+<span class="math" data-tex="\(\mathfrak g=\mathfrak h+\sum_j\mathfrak m_j\)">\(\mathfrak g=\mathfrak h+\sum_j\mathfrak m_j\)</span> and that the different <span class="math" data-tex="\(\mathfrak k_i\)">\(\mathfrak k_i\)</span> commute.</p>
+<p>The sum of the <span class="math" data-tex="\(\mathfrak h_i\)">\(\mathfrak h_i\)</span> is direct. If <span class="math" data-tex="\(\sum_i A_i=0\)">\(\sum_i A_i=0\)</span>, <span class="math" data-tex="\(A_i\in\mathfrak h_i\)">\(A_i\in\mathfrak h_i\)</span>, apply its isotropy action to <span class="math" data-tex="\(\mathfrak m_j\)">\(\mathfrak m_j\)</span>. All terms except <span class="math" data-tex="\(A_j\)">\(A_j\)</span> vanish, so <span class="math" data-tex="\(A_j\)">\(A_j\)</span> annihilates <span class="math" data-tex="\(\mathfrak m_j\)">\(\mathfrak m_j\)</span> too. It then annihilates all of <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, and faithfulness gives <span class="math" data-tex="\(A_j=0\)">\(A_j=0\)</span>. Together with the directness of <span class="math" data-tex="\(\mathfrak h\oplus\mathfrak m\)">\(\mathfrak h\oplus\mathfrak m\)</span>, this proves directness in (E.5). Its right side is an ideal containing <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, and is contained in every ideal containing <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span>, since each bracket projection <span class="math" data-tex="\([X,Y]_{\mathfrak h}\)">\([X,Y]_{\mathfrak h}\)</span> is <span class="math" data-tex="\([X,Y]-[X,Y]_{\mathfrak m}\)">\([X,Y]-[X,Y]_{\mathfrak m}\)</span>. This proves the equality with the generated ideal and its displayed intersection with <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>.</p>
+<p>Finally the effective Euclidean motion example of D.1, with <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, is naturally reductive, simply connected and has one Euclidean factor. Its translation complement is abelian. Thus <span class="math" data-tex="\(\mathfrak k(\mathfrak m)=\mathbb R^n\)">\(\mathfrak k(\mathfrak m)=\mathbb R^n\)</span>, while
+<span class="math" data-tex="\(\mathfrak g=\mathbb R^n\rtimes\mathfrak{so}(n)\)">\(\mathfrak g=\mathbb R^n\rtimes\mathfrak{so}(n)\)</span> is larger. All the stated hypotheses hold, so equality with <span class="math" data-tex="\(\mathfrak g\)">\(\mathfrak g\)</span> would be false. □</p>
+<h2 id="part-f">F. Invariant almost complex structures and the six-sphere</h2>
+<p>An almost complex structure is a smooth tangent endomorphism <span class="math" data-tex="\(J\)">\(J\)</span> with <span class="math" data-tex="\(J^2=-I\)">\(J^2=-I\)</span>. It comes from complex coordinates if the manifold has charts to open subsets of <span class="math" data-tex="\(\mathbb C^k\)">\(\mathbb C^k\)</span> in which <span class="math" data-tex="\(J\)">\(J\)</span> is multiplication by <span class="math" data-tex="\(i\)">\(i\)</span> and the transition maps are holomorphic.</p>
+<p id="lemma-f-1"><strong>Lemma F.1 (The invariant Nijenhuis obstruction).</strong> For an almost complex structure, the expression
+<span class="math math-display" data-tex="\[
+N_J(U,V)=[JU,JV]-[U,V]-J[JU,V]-J[U,JV]
+\tag{F.1}
+\]">\[
+N_J(U,V)=[JU,JV]-[U,V]-J[JU,V]-J[U,JV]
+\tag{F.1}
+\]</span>
+is a skew bilinear tensor. It vanishes for every almost complex structure coming from complex coordinates. On a reductive <span class="math" data-tex="\(G/H\)">\(G/H\)</span>, invariant almost complex structures correspond precisely to the <span class="math" data-tex="\(H\)">\(H\)</span>-equivariant endomorphisms <span class="math" data-tex="\(I:\mathfrak m\to\mathfrak m\)">\(I:\mathfrak m\to\mathfrak m\)</span> with <span class="math" data-tex="\(I^2=-1\)">\(I^2=-1\)</span>, and
+<span class="math math-display" data-tex="\[
+(N_J)_o(X,Y)
+=[IX,IY]_{\mathfrak m}-[X,Y]_{\mathfrak m}
+-I[IX,Y]_{\mathfrak m}-I[X,IY]_{\mathfrak m}.
+\tag{F.2}
+\]">\[
+(N_J)_o(X,Y)
+=[IX,IY]_{\mathfrak m}-[X,Y]_{\mathfrak m}
+-I[IX,Y]_{\mathfrak m}-I[X,IY]_{\mathfrak m}.
+\tag{F.2}
+\]</span>
+In particular (F.2) is a necessary algebraic condition for invariant complex coordinates.</p>
+<p><strong>Proof.</strong> Real bilinearity and skew symmetry follow from the bracket. To check multiplication by a smooth scalar <span class="math" data-tex="\(f\)">\(f\)</span> in the first slot, the four additional derivative terms in <span class="math" data-tex="\(N_J(fU,V)-fN_J(U,V)\)">\(N_J(fU,V)-fN_J(U,V)\)</span> are, respectively,
+<span class="math math-display" data-tex="\[
+-(JVf)JU,\qquad (Vf)U,\qquad
+(Vf)J(JU),\qquad +(JVf)JU.
+\]">\[
+-(JVf)JU,\qquad (Vf)U,\qquad
+(Vf)J(JU),\qquad +(JVf)JU.
+\]</span>
+They cancel since <span class="math" data-tex="\(J^2=-1\)">\(J^2=-1\)</span>. Skew symmetry gives scalar linearity in the other slot. Hence the expression depends only on the values of the vector fields at a point and is a tensor. In complex coordinates its value on each pair of real coordinate fields is zero: those fields and their <span class="math" data-tex="\(J\)">\(J\)</span>-images have constant coefficients and commute. Tensoriality makes it zero everywhere.</p>
+<p>An invariant <span class="math" data-tex="\(J\)">\(J\)</span> is determined by <span class="math" data-tex="\(I=j_e^{-1}J_oj_e\)">\(I=j_e^{-1}J_oj_e\)</span>. Changing the representative <span class="math" data-tex="\(g\)">\(g\)</span> of a coset in the translation formula <span class="math" data-tex="\(J_{gH}=j_gIj_g^{-1}\)">\(J_{gH}=j_gIj_g^{-1}\)</span> shows that it is well defined exactly when <span class="math" data-tex="\(I\lambda(h)=\lambda(h)I\)">\(I\lambda(h)=\lambda(h)I\)</span> for all <span class="math" data-tex="\(h\)">\(h\)</span>. The local sections used in A.1 give smoothness, and squaring gives <span class="math" data-tex="\(J^2=-1\)">\(J^2=-1\)</span> precisely when <span class="math" data-tex="\(I^2=-1\)">\(I^2=-1\)</span>. These operations are inverse.</p>
+<p>For such an invariant <span class="math" data-tex="\(J\)">\(J\)</span>, B.2 gives <span class="math" data-tex="\(\bar\nabla J=0\)">\(\bar\nabla J=0\)</span>. Substitute
+<span class="math math-display" data-tex="\[
+[U,V]=\bar\nabla_UV-\bar\nabla_VU-\bar T(U,V)
+\]">\[
+[U,V]=\bar\nabla_UV-\bar\nabla_VU-\bar T(U,V)
+\]</span>
+into each bracket of (F.1). For example,
+<span class="math" data-tex="\(\bar\nabla_{JU}(JV)=J\bar\nabla_{JU}V\)">\(\bar\nabla_{JU}(JV)=J\bar\nabla_{JU}V\)</span>, and
+<span class="math" data-tex="\(J\bar\nabla_U(JV)=-\bar\nabla_UV\)">\(J\bar\nabla_U(JV)=-\bar\nabla_UV\)</span>.
+The eight covariant-derivative terms cancel in pairs. The remaining expression is
+<span class="math math-display" data-tex="\[
+-\bar T(JU,JV)+\bar T(U,V)+J\bar T(JU,V)+J\bar T(U,JV).
+\]">\[
+-\bar T(JU,JV)+\bar T(U,V)+J\bar T(JU,V)+J\bar T(U,JV).
+\]</span>
+At <span class="math" data-tex="\(o\)">\(o\)</span>, use <span class="math" data-tex="\(\bar T(X,Y)=-[X,Y]_{\mathfrak m}\)">\(\bar T(X,Y)=-[X,Y]_{\mathfrak m}\)</span> from (B.3) to obtain (F.2). The proof establishes the stated obstruction without presupposing any converse integrability theorem. □</p>
+<p id="theorem-f-2"><strong>Theorem F.2 (Cayley triples and their stabilizers).</strong> Let
+<span class="math" data-tex="\(\mathbb O=\mathbb H\oplus\mathbb H\)">\(\mathbb O=\mathbb H\oplus\mathbb H\)</span> be the octonions with multiplication
+<span class="math math-display" data-tex="\[
+(a,b)(c,d)=(ac-\overline d\,b,\ da+b\overline c).
+\tag{F.3}
+\]">\[
+(a,b)(c,d)=(ac-\overline d\,b,\ da+b\overline c).
+\tag{F.3}
+\]</span>
+Put <span class="math" data-tex="\(i=(i,0)\)">\(i=(i,0)\)</span>, <span class="math" data-tex="\(j=(j,0)\)">\(j=(j,0)\)</span>, <span class="math" data-tex="\(e=(0,1)\)">\(e=(0,1)\)</span>. Given unit imaginary octonions <span class="math" data-tex="\(\xi,\eta,\zeta\)">\(\xi,\eta,\zeta\)</span> with
+<span class="math math-display" data-tex="\[
+\xi\perp\eta,\qquad
+\zeta\perp\operatorname{span}_{\mathbb R}\{\xi,\eta,\xi\eta\},
+\]">\[
+\xi\perp\eta,\qquad
+\zeta\perp\operatorname{span}_{\mathbb R}\{\xi,\eta,\xi\eta\},
+\]</span>
+there is exactly one real algebra automorphism <span class="math" data-tex="\(A\)">\(A\)</span> with
+<span class="math math-display" data-tex="\[
+A(i)=\xi,\qquad A(j)=\eta,\qquad A(e)=\zeta.
+\tag{F.4}
+\]">\[
+A(i)=\xi,\qquad A(j)=\eta,\qquad A(e)=\zeta.
+\tag{F.4}
+\]</span>
+In particular it sends the orthonormal basis
+<span class="math math-display" data-tex="\[
+1,i,j,ij,e,ie,je,(ij)e
+\]">\[
+1,i,j,ij,e,ie,je,(ij)e
+\]</span>
+to
+<span class="math math-display" data-tex="\[
+1,\xi,\eta,\xi\eta,\zeta,\xi\zeta,\eta\zeta,(\xi\eta)\zeta,
+\tag{F.5}
+\]">\[
+1,\xi,\eta,\xi\eta,\zeta,\xi\zeta,\eta\zeta,(\xi\eta)\zeta,
+\tag{F.5}
+\]</span>
+with all products transported by that map. The stabilizer of a unit imaginary octonion in <span class="math" data-tex="\(G_2=\operatorname{Aut}_{\mathbb R}(\mathbb O)\)">\(G_2=\operatorname{Aut}_{\mathbb R}(\mathbb O)\)</span> is exactly <span class="math" data-tex="\(\mathrm{SU}(3)\)">\(\mathrm{SU}(3)\)</span>; the stabilizer of an ordered orthonormal imaginary pair is <span class="math" data-tex="\(\mathrm{SU}(2)\)">\(\mathrm{SU}(2)\)</span>.</p>
+<p><strong>Proof.</strong> <a href="holonomy-and-the-de-rham-decomposition-theorem.html#lemma-z-1">De Rham Z.1</a> proves (F.3), its norm, conjugation and alternativity, and <a href="holonomy-and-the-de-rham-decomposition-theorem.html#lemma-z-2">De Rham Z.2</a> proves that automorphisms are orthogonal and that <span class="math" data-tex="\(v\mapsto uv\)">\(v\mapsto uv\)</span> is an orthogonal complex structure on <span class="math" data-tex="\(u^\perp\cap\operatorname{Im}\mathbb O\)">\(u^\perp\cap\operatorname{Im}\mathbb O\)</span> for unit imaginary <span class="math" data-tex="\(u\)">\(u\)</span>. <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-z-7">De Rham Z.7</a> proves that <span class="math" data-tex="\(G_2\)">\(G_2\)</span> is transitive on the unit imaginary sphere. Choose an automorphism <span class="math" data-tex="\(A_1\)">\(A_1\)</span> sending <span class="math" data-tex="\(i\)">\(i\)</span> to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p>We recall exactly what the stabilizer proof supplies. At <span class="math" data-tex="\(i\)">\(i\)</span>, <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-z-6">De Rham Z.6</a> uses the complex basis with real vectors <span class="math" data-tex="\(j,e,je\)">\(j,e,je\)</span> and imaginary partners <span class="math" data-tex="\(ij,ie,-(ij)e\)">\(ij,ie,-(ij)e\)</span>. It writes the octonion three-form as
+<span class="math math-display" data-tex="\[
+\varphi=i^*\wedge\omega+\operatorname{Re}\Omega,
+\tag{F.6}
+\]">\[
+\varphi=i^*\wedge\omega+\operatorname{Re}\Omega,
+\tag{F.6}
+\]</span>
+where <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is the Hermitian two-form and <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is the complex volume form in that basis. An automorphism fixing <span class="math" data-tex="\(i\)">\(i\)</span> preserves the metric and commutes with multiplication by <span class="math" data-tex="\(i\)">\(i\)</span>, hence is unitary on the complex three-space <span class="math" data-tex="\(i^\perp\)">\(i^\perp\)</span>. Preservation of <span class="math" data-tex="\(\operatorname{Re}\Omega\)">\(\operatorname{Re}\Omega\)</span>, evaluated on a real complex basis and then with its first vector multiplied by <span class="math" data-tex="\(i\)">\(i\)</span>, forces its complex determinant to be one. Conversely every special unitary transformation preserves both summands in (F.6), and <a href="holonomy-and-the-de-rham-decomposition-theorem.html#lemma-z-2">De Rham Z.2</a> proves directly that an orthogonal transformation preserving <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> extends by fixing <span class="math" data-tex="\(1\)">\(1\)</span> to an octonion automorphism. This gives both inclusions in the stabilizer assertion; conjugating by <span class="math" data-tex="\(A_1\)">\(A_1\)</span> gives the assertion at <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p><a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-y-2">De Rham Y.2</a> proves that <span class="math" data-tex="\(\mathrm{SU}(3)\)">\(\mathrm{SU}(3)\)</span> acts transitively on the unit sphere of its complex three-space. The vector <span class="math" data-tex="\(A_1(j)\)">\(A_1(j)\)</span> and the prescribed <span class="math" data-tex="\(\eta\)">\(\eta\)</span> are both unit vectors perpendicular to <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. There is consequently an automorphism <span class="math" data-tex="\(A_2\)">\(A_2\)</span> fixing <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and sending <span class="math" data-tex="\(A_1(j)\)">\(A_1(j)\)</span> to <span class="math" data-tex="\(\eta\)">\(\eta\)</span>. The composition <span class="math" data-tex="\(B=A_2A_1\)">\(B=A_2A_1\)</span> fixes the prescribed images of <span class="math" data-tex="\(i,j\)">\(i,j\)</span>, and hence also sends <span class="math" data-tex="\(ij\)">\(ij\)</span> to <span class="math" data-tex="\(\xi\eta\)">\(\xi\eta\)</span>.</p>
+<p>Within this <span class="math" data-tex="\(\mathrm{SU}(3)\)">\(\mathrm{SU}(3)\)</span>, the subgroup fixing the real vector <span class="math" data-tex="\(\eta\)">\(\eta\)</span> fixes its complex partner <span class="math" data-tex="\(\xi\eta\)">\(\xi\eta\)</span> as well. In an orthonormal complex basis starting with <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, its matrices are exactly <span class="math" data-tex="\(\operatorname{diag}(1,C)\)">\(\operatorname{diag}(1,C)\)</span>, <span class="math" data-tex="\(C\in\mathrm{SU}(2)\)">\(C\in\mathrm{SU}(2)\)</span>: unitarity forces the zero off-diagonal blocks, and determinant one forces <span class="math" data-tex="\(\det C=1\)">\(\det C=1\)</span>. The remaining complex two-space is the real orthogonal complement of <span class="math" data-tex="\(\xi,\eta,\xi\eta\)">\(\xi,\eta,\xi\eta\)</span> in the imaginary octonions. Both <span class="math" data-tex="\(B(e)\)">\(B(e)\)</span> and <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> are unit vectors there. The <span class="math" data-tex="\(\mathrm{SU}(2)\)">\(\mathrm{SU}(2)\)</span> sphere transitivity proved in <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-y-2">De Rham Y.2</a> supplies <span class="math" data-tex="\(A_3\)">\(A_3\)</span> fixing <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> and sending <span class="math" data-tex="\(B(e)\)">\(B(e)\)</span> to <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>. Then <span class="math" data-tex="\(A=A_3B\)">\(A=A_3B\)</span> has (F.4).</p>
+<p>The basis in (F.5) on the source side is the real orthonormal basis of the two quaternion summands in (F.3). Every automorphism fixes <span class="math" data-tex="\(1\)">\(1\)</span> and preserves products. Therefore its values on <span class="math" data-tex="\(i,j,e\)">\(i,j,e\)</span> force its values on this entire basis, proving uniqueness. Existence and orthogonality prove that the target list is also orthonormal. Multiplication is transported because <span class="math" data-tex="\(A\)">\(A\)</span> is an automorphism, not merely an orthogonal linear map. More explicitly, writing <span class="math" data-tex="\(Q=\operatorname{span}(1,\xi,\eta,\xi\eta)\)">\(Q=\operatorname{span}(1,\xi,\eta,\xi\eta)\)</span>, the transported formula is
+<span class="math math-display" data-tex="\[
+(a+b\zeta)(c+d\zeta)
+=(ac-\overline d\,b)+(da+b\overline c)\zeta
+\quad(a,b,c,d\in Q).
+\tag{F.7}
+\]">\[
+(a+b\zeta)(c+d\zeta)
+=(ac-\overline d\,b)+(da+b\overline c)\zeta
+\quad(a,b,c,d\in Q).
+\tag{F.7}
+\]</span>
+Indeed <span class="math" data-tex="\(A\)">\(A\)</span> restricts to the quaternion algebra isomorphism from the first summand onto <span class="math" data-tex="\(Q\)">\(Q\)</span>; it preserves conjugation since it preserves real parts and fixes <span class="math" data-tex="\(1\)">\(1\)</span>. Apply <span class="math" data-tex="\(A\)">\(A\)</span> to (F.3), where <span class="math" data-tex="\((a,b)=a+be\)">\((a,b)=a+be\)</span>. This proves every case of (F.7) with its multiplication order. The block argument above proves the ordered-pair stabilizer assertion as well. □</p>
+<p id="theorem-f-3"><strong>Theorem F.3 (All invariant almost complex structures on <span class="math" data-tex="\(S^6\)">\(S^6\)</span>).</strong> On
+<span class="math math-display" data-tex="\[
+S^6=\{p\in\operatorname{Im}\mathbb O:|p|=1\}=G_2/\mathrm{SU}(3)
+\]">\[
+S^6=\{p\in\operatorname{Im}\mathbb O:|p|=1\}=G_2/\mathrm{SU}(3)
+\]</span>
+there are exactly two <span class="math" data-tex="\(G_2\)">\(G_2\)</span>-invariant almost complex structures:
+<span class="math math-display" data-tex="\[
+J_pv=p\times v,\qquad -J_pv=-p\times v
+\quad(v\perp p).
+\tag{F.8}
+\]">\[
+J_pv=p\times v,\qquad -J_pv=-p\times v
+\quad(v\perp p).
+\tag{F.8}
+\]</span>
+Neither comes from complex coordinates.</p>
+<p><strong>Proof.</strong> The cross product and its square identity are proved in <a href="holonomy-and-the-de-rham-decomposition-theorem.html#lemma-z-2">De Rham Z.2</a>. Thus <span class="math" data-tex="\(J_p^2v=-v\)">\(J_p^2v=-v\)</span> on <span class="math" data-tex="\(p^\perp\)">\(p^\perp\)</span>, its image is tangent, and it is smooth because the cross product is bilinear. Automorphisms preserve that product, so <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(-J\)">\(-J\)</span> are invariant.</p>
+<p>The sphere quotient and its full stabilizer are proved in <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-z-7">De Rham Z.7</a> and <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-z-6">De Rham Z.6</a>. An invariant tangent endomorphism is therefore determined by its value at <span class="math" data-tex="\(p=i\)">\(p=i\)</span>, which must commute with the standard real action of <span class="math" data-tex="\(\mathrm{SU}(3)\)">\(\mathrm{SU}(3)\)</span> on <span class="math" data-tex="\(\mathbb C^3\)">\(\mathbb C^3\)</span>. To compute this commutant directly, let <span class="math" data-tex="\(L\)">\(L\)</span> be such a real-linear endomorphism. The central scalar
+<span class="math" data-tex="\(\zeta=-\tfrac12+\tfrac{\sqrt3}{2}i\)">\(\zeta=-\tfrac12+\tfrac{\sqrt3}{2}i\)</span> has <span class="math" data-tex="\(\zeta^3=1\)">\(\zeta^3=1\)</span>, so <span class="math" data-tex="\(\zeta I\in\mathrm{SU}(3)\)">\(\zeta I\in\mathrm{SU}(3)\)</span>. Commutation with it gives commutation with
+<span class="math math-display" data-tex="\[
+J_i=\frac{2}{\sqrt3}\bigl(\zeta I+\tfrac12 I\bigr).
+\]">\[
+J_i=\frac{2}{\sqrt3}\bigl(\zeta I+\tfrac12 I\bigr).
+\]</span>
+Hence <span class="math" data-tex="\(L\)">\(L\)</span> is complex linear. Commutation with both
+<span class="math" data-tex="\(\operatorname{diag}(-1,-1,1)\)">\(\operatorname{diag}(-1,-1,1)\)</span> and
+<span class="math" data-tex="\(\operatorname{diag}(-1,1,-1)\)">\(\operatorname{diag}(-1,1,-1)\)</span> forces it to preserve each complex coordinate line, since their pairs of eigenvalues distinguish the three lines. Its matrix is thus complex diagonal. A cyclic permutation of the three coordinate vectors is unitary of determinant one; commutation with it makes the three diagonal entries equal. Consequently <span class="math" data-tex="\(L=a+bJ_i\)">\(L=a+bJ_i\)</span> with real <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. The equation <span class="math" data-tex="\(L^2=-1\)">\(L^2=-1\)</span> gives
+<span class="math math-display" data-tex="\[
+a^2-b^2=-1,\qquad 2ab=0.
+\]">\[
+a^2-b^2=-1,\qquad 2ab=0.
+\]</span>
+If <span class="math" data-tex="\(b=0\)">\(b=0\)</span> the first equation is impossible over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>; otherwise <span class="math" data-tex="\(a=0\)">\(a=0\)</span> and <span class="math" data-tex="\(b=\pm1\)">\(b=\pm1\)</span>. Transitivity then makes the invariant almost complex structure exactly <span class="math" data-tex="\(J\)">\(J\)</span> or <span class="math" data-tex="\(-J\)">\(-J\)</span> everywhere.</p>
+<p>We compute the obstruction of F.1 at one point, directly in the established octonion table. Fix <span class="math" data-tex="\(p\in S^6\)">\(p\in S^6\)</span> and <span class="math" data-tex="\(u,v\perp p\)">\(u,v\perp p\)</span>. Extend them to tangent fields
+<span class="math math-display" data-tex="\[
+U(q)=u-\langle u,q\rangle q,\qquad
+V(q)=v-\langle v,q\rangle q.
+\]">\[
+U(q)=u-\langle u,q\rangle q,\qquad
+V(q)=v-\langle v,q\rangle q.
+\]</span>
+Since <span class="math" data-tex="\(q\times q=0\)">\(q\times q=0\)</span>, one has <span class="math" data-tex="\(JU(q)=q\times u\)">\(JU(q)=q\times u\)</span> and <span class="math" data-tex="\(JV(q)=q\times v\)">\(JV(q)=q\times v\)</span>. With the bracket convention <span class="math" data-tex="\([A,B]=DB(A)-DA(B)\)">\([A,B]=DB(A)-DA(B)\)</span>, differentiating these ambient formulas at <span class="math" data-tex="\(p\)">\(p\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+[U,V]_p&amp;=0,\\
+[JU,JV]_p&amp;=(p\times u)\times v-(p\times v)\times u,\\
+[JU,V]_p&amp;=u\times v-cp,\\
+[U,JV]_p&amp;=u\times v-cp,\qquad
+c=\langle p\times u,v\rangle.
+\end{aligned}
+\tag{F.9}
+\]">\[
+\begin{aligned}
+[U,V]_p&amp;=0,\\
+[JU,JV]_p&amp;=(p\times u)\times v-(p\times v)\times u,\\
+[JU,V]_p&amp;=u\times v-cp,\\
+[U,JV]_p&amp;=u\times v-cp,\qquad
+c=\langle p\times u,v\rangle.
+\end{aligned}
+\tag{F.9}
+\]</span>
+For clarity, <span class="math" data-tex="\(DV_p(w)=-\langle v,w\rangle p\)">\(DV_p(w)=-\langle v,w\rangle p\)</span> and
+<span class="math" data-tex="\(DU_p(w)=-\langle u,w\rangle p\)">\(DU_p(w)=-\langle u,w\rangle p\)</span> for tangent <span class="math" data-tex="\(w\)">\(w\)</span>, since <span class="math" data-tex="\(u,v\perp p\)">\(u,v\perp p\)</span>; meanwhile <span class="math" data-tex="\(D(JU)_p(w)=w\times u\)">\(D(JU)_p(w)=w\times u\)</span> and <span class="math" data-tex="\(D(JV)_p(w)=w\times v\)">\(D(JV)_p(w)=w\times v\)</span>. These four identities give (F.9), using alternation of
+<span class="math" data-tex="\(\langle a\times b,c\rangle\)">\(\langle a\times b,c\rangle\)</span> from <a href="holonomy-and-the-de-rham-decomposition-theorem.html#lemma-z-2">De Rham Z.2</a>. The two mixed brackets are tangent because the normal component of <span class="math" data-tex="\(u\times v\)">\(u\times v\)</span> is <span class="math" data-tex="\(cp\)">\(cp\)</span>.</p>
+<p>Applying (F.1), and using <span class="math" data-tex="\(p\times p=0\)">\(p\times p=0\)</span>, now yields
+<span class="math math-display" data-tex="\[
+(N_J)_p(u,v)
+=(p\times u)\times v-(p\times v)\times u-2p\times(u\times v).
+\tag{F.10}
+\]">\[
+(N_J)_p(u,v)
+=(p\times u)\times v-(p\times v)\times u-2p\times(u\times v).
+\tag{F.10}
+\]</span>
+Use the exact basis of <a href="holonomy-and-the-de-rham-decomposition-theorem.html#lemma-z-2">De Rham Z.2</a>:
+<span class="math math-display" data-tex="\[
+e_1=(i,0),\ e_2=(j,0),\ e_3=(ij,0),\
+e_4=(0,1),\ e_5=(0,i),\ e_6=(0,j),\ e_7=(0,ij).
+\]">\[
+e_1=(i,0),\ e_2=(j,0),\ e_3=(ij,0),\
+e_4=(0,1),\ e_5=(0,i),\ e_6=(0,j),\ e_7=(0,ij).
+\]</span>
+Its table gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e_1\times e_2&amp;=e_3,&amp; e_1\times e_4&amp;=e_5,\\
+e_2\times e_4&amp;=e_6,&amp; e_1\times e_6&amp;=-e_7,\\
+e_3\times e_4&amp;=e_7,&amp; e_5\times e_2&amp;=-e_7.
+\end{aligned}
+\]">\[
+\begin{aligned}
+e_1\times e_2&amp;=e_3,&amp; e_1\times e_4&amp;=e_5,\\
+e_2\times e_4&amp;=e_6,&amp; e_1\times e_6&amp;=-e_7,\\
+e_3\times e_4&amp;=e_7,&amp; e_5\times e_2&amp;=-e_7.
+\end{aligned}
+\]</span>
+At <span class="math" data-tex="\(p=e_1,u=e_2,v=e_4\)">\(p=e_1,u=e_2,v=e_4\)</span>, (F.10) is therefore
+<span class="math math-display" data-tex="\[
+(N_J)_{e_1}(e_2,e_4)=e_7-(-e_7)-2(-e_7)=4e_7\ne0.
+\]">\[
+(N_J)_{e_1}(e_2,e_4)=e_7-(-e_7)-2(-e_7)=4e_7\ne0.
+\]</span>
+Each term in (F.1) is unchanged when <span class="math" data-tex="\(J\)">\(J\)</span> is replaced by <span class="math" data-tex="\(-J\)">\(-J\)</span>, so <span class="math" data-tex="\(N_{-J}=N_J\)">\(N_{-J}=N_J\)</span>. F.1 excludes complex coordinates for both invariant structures. This conclusion concerns precisely the <span class="math" data-tex="\(G_2\)">\(G_2\)</span>-invariant structures classified here. □</p>
+<h2 id="further-reading">Freely accessible sources</h2>
+<ul>
+<li>Alberto Elduque, <em>Reductive homogeneous spaces and nonassociative algebras</em>, Communications in Mathematics <strong>28</strong> (2020), 199–229. <a href="https://dml.cz/bitstream/handle/10338.dmlcz/148703/ActaOstrav_28-2020-2_8.pdf">Free journal article</a>, §§4–5 and the Lie-group examples at the start of §6. The moving-frame classification, bilinear products and metric computations are developed in A–D above.</li>
+<li>Masahiro Morimoto, <em>The parallel transport map over reductive homogeneous space</em>, <a href="https://arxiv.org/pdf/2512.01522v1">arXiv:2512.01522v1</a>, 1 December 2025, §2. This version describes local reductive frames and invariant affine connections, including the product-group presentation used in C.3.</li>
+</ul>
+<p>The complete programme proofs supporting the global product argument are in <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-e-3">De Rham E.3</a> and <a href="holonomy-and-the-de-rham-decomposition-theorem.html#corollary-k-5">De Rham K.5</a>. The octonion multiplication, stabilizer and sphere-action proofs are in <a href="holonomy-and-the-de-rham-decomposition-theorem.html#lemma-z-1">De Rham Z.1</a>, <a href="holonomy-and-the-de-rham-decomposition-theorem.html#lemma-z-2">De Rham Z.2</a>, <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-z-6">De Rham Z.6</a> and <a href="holonomy-and-the-de-rham-decomposition-theorem.html#theorem-z-7">De Rham Z.7</a>; F.2 combines those results to construct the prescribed Cayley triples, and F.3 computes the obstruction explicitly in their fixed multiplication convention.</p>
+</article><footer><p><a href="src/homogeneous-spaces-and-invariant-connections.md">Chapter source</a> · <span class="unlinked">Course contents</span></p><p>New exposition: CC0 1.0.</p><p><a href="assets/mathjax/LICENSE">MathJax licence</a> · <a href="assets/mathjax/FONT-LICENSES.txt">Font notices</a></p></footer></main></body></html>

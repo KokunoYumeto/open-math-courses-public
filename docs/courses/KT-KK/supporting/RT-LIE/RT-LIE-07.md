@@ -1,8 +1,6 @@
 # The root space decomposition of a semisimple Lie algebra
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
-
-*KT–KK receiving revision, 5 October 2026: the proofs used by Lesson 18 are rewritten from the checked free author editions and bound to the local companion. Original authorship and CC0 remain as stated above. The proof/source audit distinguishes this used chain from retained comparisons and unused later dependencies.*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 Commuting diagonalizable adjoint operators separate a Lie algebra into simultaneous eigenspaces. The bracket adds their eigenvalues. Each pair of opposite nonzero eigenspaces then supplies a copy of \(\mathfrak{sl}_2\). Its finite-dimensional representation theory forces the eigenspaces to be lines, arranges them in strings and supplies reflections. Finally, a trace calculation turns the resulting finite set of eigenvalues into a Euclidean root system.
 

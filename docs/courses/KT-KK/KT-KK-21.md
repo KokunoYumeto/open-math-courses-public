@@ -1,6 +1,6 @@
 # Asymptotic morphisms and E-theory
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 An extension has a boundary map even when its quotient has no completely positive section. Asymptotic morphisms provide a bivariant place for these maps. Their errors tend to zero, and composition is defined by allowing the second morphism enough time to control the moving image of the first.
 

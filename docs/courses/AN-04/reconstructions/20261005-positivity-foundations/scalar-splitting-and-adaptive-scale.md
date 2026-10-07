@@ -2,9 +2,9 @@
 
 The scalar lower-bound argument starts with a local decomposition of a nonnegative function into a square and a function independent of one constant direction. This companion proves that decomposition, its uniform derivative bounds, and the adaptive metric and squared partition used to localize it. These are elementary prerequisites for the Fefferman–Phong operator estimate; that operator estimate is not asserted here.
 
-This is a modified selection of AN03-U019, *When a nonnegative scalar symbol acquires a negative part*, from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. Copyright © 2026 AN-03 course project contributors. The renewed edition is the work of the AN-03 course-writing task and OpenAI Codex. Selection, exact prerequisite connections and identified additions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
+This is a modified selection of AN03-U019, *When a nonnegative scalar symbol acquires a negative part*, from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. The renewed edition is the work of the AN-03 course-writing task and OpenAI Codex. Selection, exact prerequisite connections and identified additions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this component under the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The [complete licence](notices/COPYING), [title information](notices/TITLE_PAGE.md), [history](notices/HISTORY.md) and [rights notice](notices/RIGHTS.md) accompany it.
+Original text: CC0.
 
 ## S0. Conventions and exact earlier inputs
 

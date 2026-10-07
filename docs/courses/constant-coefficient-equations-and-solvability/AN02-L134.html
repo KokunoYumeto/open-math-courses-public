@@ -1,0 +1,631 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Distributional limits of subharmonic functions</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L133.html">Previous lesson</a> · <a href="#SC1">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#SC11">Proof exercises and solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="distributional-limits-of-subharmonic-functions">Distributional limits of subharmonic functions</h1>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition, examples, solutions and diagrams: CC0-1.0.</p>
+<p>Testing against smooth functions usually tells us little about individual values. For subharmonic functions, positive averages place a ceiling over those values. The local Newtonian decomposition also turns weak distributional convergence into strong convergence in the precise integrability range.</p>
+<p>There is a further conclusion for a measuring measure with continuous potential. It identifies the <strong>limsup</strong>, not necessarily the ordinary limit. A sequence of moving logarithmic wells will show why that word cannot be dropped.</p>
+<p>The written tools are <a href="AN02-L131.html#NP2">Local Newtonian potentials and subharmonic regularity, NP2–NP7</a>, including the positive Laplacian measure, explicit kernel, harmonic smoothing and local decomposition, and the <a href="prerequisites/banach-foundation-bridges.html#a-common-finite-order-for-an-arbitrary-family">fixed-support uniform distribution bound</a>. The <a href="#complete-proof">complete argument SC1–SC12</a> proves every additional convergence and measurement step.</p>
+<h2 id="1-what-is-assumed-and-what-follows">1. What is assumed and what follows</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open, <span class="math" data-index="1" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Suppose <span class="math" data-index="2" data-tex="\(v_j\)">\(v_j\)</span> and <span class="math" data-index="3" data-tex="\(v\)">\(v\)</span> are upper semicontinuous subharmonic functions, none identically <span class="math" data-index="4" data-tex="\(-\infty\)">\(-\infty\)</span> on any component. Their spherical means dominate their center values on every closed ball in <span class="math" data-index="5" data-tex="\(X\)">\(X\)</span>. Assume</p>
+<span class="math math-display" id="L134.1" data-index="6" data-tex="\[
+ \int_X(v_j-v)\phi\,dx\longrightarrow0
+ \qquad(\phi\in C_c^\infty(X)).                              \tag{L134.1}
+\]">\[
+ \int_X(v_j-v)\phi\,dx\longrightarrow0
+ \qquad(\phi\in C_c^\infty(X)).                              \tag{L134.1}
+\]</span>
+<p>Their local integrability makes these test pairings meaningful. Then, for every compact <span class="math" data-index="7" data-tex="\(K\subset X\)">\(K\subset X\)</span>,</p>
+<span class="math math-display" id="L134.2" data-index="8" data-tex="\[
+ \|v_j-v\|_{L^p(K)}\longrightarrow0,\qquad
+ \begin{cases}
+ 1\le p&lt;n/(n-2),&amp;n&gt;2,\\
+ \text{every finite }p\ge1,&amp;n=2.
+ \end{cases}                                                \tag{L134.2}
+\]">\[
+ \|v_j-v\|_{L^p(K)}\longrightarrow0,\qquad
+ \begin{cases}
+ 1\le p&lt;n/(n-2),&amp;n&gt;2,\\
+ \text{every finite }p\ge1,&amp;n=2.
+ \end{cases}                                                \tag{L134.2}
+\]</span>
+<p>The corresponding integral tends to zero for <span class="math" data-index="9" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span> too. At every point,</p>
+<span class="math math-display" id="L134.3" data-index="10" data-tex="\[
+ \limsup_jv_j(x)\le v(x).                                   \tag{L134.3}
+\]">\[
+ \limsup_jv_j(x)\le v(x).                                   \tag{L134.3}
+\]</span>
+<p>Finally, let <span class="math" data-index="11" data-tex="\(\sigma\)">\(\sigma\)</span> be a positive Radon measure with compact support in <span class="math" data-index="12" data-tex="\(X\)">\(X\)</span>, and assume <span class="math" data-index="13" data-tex="\(E_n*\sigma\)">\(E_n*\sigma\)</span> has a continuous representative on all of <span class="math" data-index="14" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Here</p>
+<span class="math math-display" id="L134.4" data-index="15" data-tex="\[
+ E_n(x)=-\frac{|x|^{2-n}}{(n-2)s_n}\quad(n&gt;2),
+ \qquad E_2(x)=\frac{\log|x|}{2\pi},\qquad
+ \Delta E_n=\delta_0.                                      \tag{L134.4}
+\]">\[
+ E_n(x)=-\frac{|x|^{2-n}}{(n-2)s_n}\quad(n&gt;2),
+ \qquad E_2(x)=\frac{\log|x|}{2\pi},\qquad
+ \Delta E_n=\delta_0.                                      \tag{L134.4}
+\]</span>
+<p>For this measure,</p>
+<span class="math math-display" id="L134.5" data-index="16" data-tex="\[
+ \limsup_jv_j(x)=v(x)&gt;-\infty
+ \quad\text{for }\sigma\text{-almost every }x.               \tag{L134.5}
+\]">\[
+ \limsup_jv_j(x)=v(x)&gt;-\infty
+ \quad\text{for }\sigma\text{-almost every }x.               \tag{L134.5}
+\]</span>
+<p>The measuring potential need not be globally bounded. Positivity and compact support alone do not replace its continuity hypothesis. The sequence is assumed to converge in distributions to the specified subharmonic function <span class="math" data-index="17" data-tex="\(v\)">\(v\)</span>.</p>
+<h2 id="2-a-small-cap-separates-the-two-limits">2. A small cap separates the two limits</h2>
+<p>Write the positive Laplacian measures as <span class="math" data-index="18" data-tex="\(\mu_j=\Delta v_j\)">\(\mu_j=\Delta v_j\)</span> and <span class="math" data-index="19" data-tex="\(\mu=\Delta v\)">\(\mu=\Delta v\)</span>. Testing on <span class="math" data-index="20" data-tex="\(\Delta\phi\)">\(\Delta\phi\)</span> makes <span class="math" data-index="21" data-tex="\(\mu_j\to\mu\)">\(\mu_j\to\mu\)</span> on smooth tests. Their local masses are uniformly bounded: a nonnegative smooth cutoff equal to one near a compact set bounds its mass by a convergent test pairing. Uniform approximation by smooth functions then gives convergence on continuous compact tests.</p>
+<p>Near a compact observation region, choose <span class="math" data-index="22" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span>, compactly supported in <span class="math" data-index="23" data-tex="\(X\)">\(X\)</span>, equal to one there. The local decomposition is</p>
+<span class="math math-display" id="L134.6" data-index="24" data-tex="\[
+ v_j=E_n*(\chi\mu_j)+h_j,\qquad
+ v=E_n*(\chi\mu)+h,                                        \tag{L134.6}
+\]">\[
+ v_j=E_n*(\chi\mu_j)+h_j,\qquad
+ v=E_n*(\chi\mu)+h,                                        \tag{L134.6}
+\]</span>
+<p>with harmonic remainders. Fixed radial harmonic averages and the uniform test bound show that <span class="math" data-index="25" data-tex="\(h_j\to h\)">\(h_j\to h\)</span> locally with every derivative.</p>
+<p>The remaining difficulty is the singularity of <span class="math" data-index="26" data-tex="\(E_n\)">\(E_n\)</span>. Cap it at radius <span class="math" data-index="27" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>:</p>
+<span class="math math-display" id="L134.7" data-index="28" data-tex="\[
+ E_n^\delta(x)=E_n(\max(|x|,\delta)).                        \tag{L134.7}
+\]">\[
+ E_n^\delta(x)=E_n(\max(|x|,\delta)).                        \tag{L134.7}
+\]</span>
+<p>This kernel is continuous and differs from <span class="math" data-index="29" data-tex="\(E_n\)">\(E_n\)</span> only inside its small ball. On a fixed compact observation set, weak convergence of the cut-off measures gives uniform convergence of their potentials against this fixed cap. Uniform continuity of the cap on the relevant compact difference set and a finite set of observation points prove that uniformity.</p>
+<p>If the masses are at most <span class="math" data-index="30" data-tex="\(M\)">\(M\)</span>, the error obeys</p>
+<span class="math math-display" id="L134.8" data-index="31" data-tex="\[
+ \begin{aligned}
+ \|E_n*(\chi\mu_j-\chi\mu)\|_{L^p(K)}
+ &amp;\le2M\|E_n-E_n^\delta\|_{L^p(\mathbb R^n)}\\
+ &amp;\quad+|K|^{1/p}
+   \sup_K|E_n^\delta*(\chi\mu_j-\chi\mu)|.
+ \end{aligned}                                              \tag{L134.8}
+\]">\[
+ \begin{aligned}
+ \|E_n*(\chi\mu_j-\chi\mu)\|_{L^p(K)}
+ &amp;\le2M\|E_n-E_n^\delta\|_{L^p(\mathbb R^n)}\\
+ &amp;\quad+|K|^{1/p}
+   \sup_K|E_n^\delta*(\chi\mu_j-\chi\mu)|.
+ \end{aligned}                                              \tag{L134.8}
+\]</span>
+<p>Take <span class="math" data-index="32" data-tex="\(j\to\infty\)">\(j\to\infty\)</span> while <span class="math" data-index="33" data-tex="\(\delta\)">\(\delta\)</span> is fixed. Then take <span class="math" data-index="34" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. The first norm tends to zero exactly in the stated range, by the explicit radial integrals. This order avoids demanding any convergence rate from the measures.</p>
+<p>For example, in three dimensions,</p>
+<span class="math math-display" id="L134.9" data-index="35" data-tex="\[
+ \|E_3-E_3^\delta\|_1=\frac{\delta^2}{6},\qquad
+ \|E_3-E_3^\delta\|_2=\left(\frac{\delta}{12\pi}\right)^{1/2}.
+                                                               \tag{L134.9}
+\]">\[
+ \|E_3-E_3^\delta\|_1=\frac{\delta^2}{6},\qquad
+ \|E_3-E_3^\delta\|_2=\left(\frac{\delta}{12\pi}\right)^{1/2}.
+                                                               \tag{L134.9}
+\]</span>
+<p>In dimension two the <span class="math" data-index="36" data-tex="\(L^1\)">\(L^1\)</span> error is <span class="math" data-index="37" data-tex="\(\delta^2/4\)">\(\delta^2/4\)</span>. <a href="#SC3">SC3–SC5</a> give the positive-measure convergence, harmonic limit and complete norm estimate.</p>
+<figure><img class="course-figure" width="2484" height="827" src="reproduce/L134/figures/kernel-cap-and-norms.png" alt="The capped Newtonian kernel and the exact rates at which its local error vanishes." /><figcaption class="native"><a href="reproduce/L134/figures/kernel-cap-and-norms.png">Open full-size PNG</a> · <a href="reproduce/L134/figures/kernel-cap-and-norms.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> The cap radius is <span class="math" data-index="38" data-tex="\(0.4\)">\(0.4\)</span>. The original three-dimensional kernel diverges negatively at zero; the cap stays finite and agrees with it beyond the cap radius. The radial <span class="math" data-index="39" data-tex="\(L^1\)">\(L^1\)</span> error density is <span class="math" data-index="40" data-tex="\(r-r^2/\delta\)">\(r-r^2/\delta\)</span>. Its area gives the first formula in (L134.9). The final panel plots that rate, the exact <span class="math" data-index="41" data-tex="\(L^2\)">\(L^2\)</span> rate in dimension three, and the planar <span class="math" data-index="42" data-tex="\(L^1\)">\(L^1\)</span> rate. The general exponent calculation is in SC4.</p>
+<h2 id="3-positive-averages-control-the-upper-limit">3. Positive averages control the upper limit</h2>
+<p>For a fixed small normalized radial smooth kernel <span class="math" data-index="43" data-tex="\(\rho_r\)">\(\rho_r\)</span>, subharmonicity gives</p>
+<span class="math math-display" id="L134.10" data-index="44" data-tex="\[
+ v_j(x)\le(v_j*\rho_r)(x).                                  \tag{L134.10}
+\]">\[
+ v_j(x)\le(v_j*\rho_r)(x).                                  \tag{L134.10}
+\]</span>
+<p>The right side converges by (L134.1), because its translate is one fixed smooth test. Hence <span class="math" data-index="45" data-tex="\(\limsup v_j(x)\le v*\rho_r(x)\)">\(\limsup v_j(x)\le v*\rho_r(x)\)</span>. Letting <span class="math" data-index="46" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span> recovers the given upper semicontinuous value <span class="math" data-index="47" data-tex="\(v(x)\)">\(v(x)\)</span>, even if it is <span class="math" data-index="48" data-tex="\(-\infty\)">\(-\infty\)</span>. This proves the everywhere inequality, without passing to a subsequence.</p>
+<p>One fixed radius valid over a compact observation set also gives a finite common upper bound for all <span class="math" data-index="49" data-tex="\(v_j\)">\(v_j\)</span> there. It does not bound the functions below. Deep negative wells remain possible.</p>
+<p><strong>Worked example: a strict exceptional point.</strong> Set <span class="math" data-index="50" data-tex="\(v_j(x)=j^{-1}\log|x|\)">\(v_j(x)=j^{-1}\log|x|\)</span> in a planar disc and <span class="math" data-index="51" data-tex="\(v=0\)">\(v=0\)</span>. Every finite local <span class="math" data-index="52" data-tex="\(L^p\)">\(L^p\)</span> norm tends to zero. Nevertheless all <span class="math" data-index="53" data-tex="\(v_j(0)=-\infty\)">\(v_j(0)=-\infty\)</span>, so the upper limit at zero is strictly smaller than the limit function. The measure <span class="math" data-index="54" data-tex="\(\delta_0\)">\(\delta_0\)</span> notices that point, but its logarithmic potential is not continuous and it does not satisfy the final hypothesis.</p>
+<h2 id="4-a-second-measure-detects-almost-every-upper-limit-value">4. A second measure detects almost every upper-limit value</h2>
+<p>Let <span class="math" data-index="55" data-tex="\(F=E_n*\sigma\)">\(F=E_n*\sigma\)</span> be the continuous potential. On the support of the local cutoff mass it is bounded. Absolute product-kernel integrability is available: the positive part of the kernel is bounded on compact difference sets, while finiteness of <span class="math" data-index="56" data-tex="\(F\)">\(F\)</span> controls its negative part.</p>
+<p>Fubini and the even kernel therefore give</p>
+<span class="math math-display" id="L134.11" data-index="57" data-tex="\[
+ \int E_n*(\chi\mu_j)\,d\sigma
+ =\int F(y)\chi(y)\,d\mu_j(y)
+ \longrightarrow\int F(y)\chi(y)\,d\mu(y).                  \tag{L134.11}
+\]">\[
+ \int E_n*(\chi\mu_j)\,d\sigma
+ =\int F(y)\chi(y)\,d\mu_j(y)
+ \longrightarrow\int F(y)\chi(y)\,d\mu(y).                  \tag{L134.11}
+\]</span>
+<p>The harmonic integrals converge too. Thus <span class="math" data-index="58" data-tex="\(v_j,v\in L^1(\sigma)\)">\(v_j,v\in L^1(\sigma)\)</span> and their integrals converge. In particular <span class="math" data-index="59" data-tex="\(v\)">\(v\)</span> is finite <span class="math" data-index="60" data-tex="\(\sigma\)">\(\sigma\)</span>-almost everywhere.</p>
+<p>Choose a finite upper bound <span class="math" data-index="61" data-tex="\(C\)">\(C\)</span> on the compact measuring support. Fatou applies to <span class="math" data-index="62" data-tex="\(C-v_j\ge0\)">\(C-v_j\ge0\)</span>:</p>
+<span class="math math-display" id="L134.12" data-index="63" data-tex="\[
+ \int(C-\limsup_jv_j)\,d\sigma
+ \le\liminf_j\int(C-v_j)\,d\sigma
+ =\int(C-v)\,d\sigma.                                      \tag{L134.12}
+\]">\[
+ \int(C-\limsup_jv_j)\,d\sigma
+ \le\liminf_j\int(C-v_j)\,d\sigma
+ =\int(C-v)\,d\sigma.                                      \tag{L134.12}
+\]</span>
+<p>The everywhere upper-limit inequality gives the opposite comparison between the two integrands. Their equal finite integrals force equality almost everywhere, proving (L134.5). <a href="#SC7">SC7–SC8</a> justify the canonical potential values, all integrability and the Fatou step.</p>
+<p><strong>Worked example: a measure on a circle.</strong> Uniform probability measure on the planar circle of radius <span class="math" data-index="64" data-tex="\(a\)">\(a\)</span> has potential</p>
+<span class="math math-display" id="L134.13" data-index="65" data-tex="\[
+ F(x)=\frac1{2\pi}\log\max(|x|,a).                           \tag{L134.13}
+\]">\[
+ F(x)=\frac1{2\pi}\log\max(|x|,a).                           \tag{L134.13}
+\]</span>
+<p>It is continuous, including at the circle. Inside, the angular mean of <span class="math" data-index="66" data-tex="\(\log|1-qe^{i\theta}|\)">\(\log|1-qe^{i\theta}|\)</span>, <span class="math" data-index="67" data-tex="\(q&lt;1\)">\(q&lt;1\)</span>, is zero by its convergent logarithmic series; outside, factor out <span class="math" data-index="68" data-tex="\(|x|\)">\(|x|\)</span>. An integrable logarithmic bound lets the interior formula reach the circle. SC9 gives the details. The theorem identifies the upper limit for arc-length almost every point on this set of zero planar area.</p>
+<h2 id="5-why-the-sequence-itself-can-still-fail-to-converge">5. Why the sequence itself can still fail to converge</h2>
+<p>On <span class="math" data-index="69" data-tex="\(X=(0,1)^2\)">\(X=(0,1)^2\)</span>, let <span class="math" data-index="70" data-tex="\(N_m=\lceil e^m\rceil\)">\(N_m=\lceil e^m\rceil\)</span> and list, block by block, all centers</p>
+<span class="math math-display" data-index="71" data-tex="\[
+ a=(k/N_m,\ell/N_m),\qquad0\le k,\ell\le N_m.
+\]">\[
+ a=(k/N_m,\ell/N_m),\qquad0\le k,\ell\le N_m.
+\]</span>
+<p>For each center in block <span class="math" data-index="72" data-tex="\(m\)">\(m\)</span>, use <span class="math" data-index="73" data-tex="\(u_{m,a}(x)=m^{-1}\log|x-a|\)">\(u_{m,a}(x)=m^{-1}\log|x-a|\)</span>. All finite local <span class="math" data-index="74" data-tex="\(L^p\)">\(L^p\)</span> norms tend to zero uniformly within the block: the translated logarithmic kernel has a uniform norm bound, and the coefficient is <span class="math" data-index="75" data-tex="\(1/m\)">\(1/m\)</span>.</p>
+<p>At any fixed point a nearest center is within <span class="math" data-index="76" data-tex="\(\sqrt2/(2N_m)&lt;e^{-m}\)">\(\sqrt2/(2N_m)&lt;e^{-m}\)</span>. That term is at most <span class="math" data-index="77" data-tex="\(-1\)">\(-1\)</span>. A far corner has distance between <span class="math" data-index="78" data-tex="\(1/\sqrt2\)">\(1/\sqrt2\)</span> and <span class="math" data-index="79" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, so its value tends to zero after division by <span class="math" data-index="80" data-tex="\(m\)">\(m\)</span>. Every term is at most <span class="math" data-index="81" data-tex="\((\log\sqrt2)/m\)">\((\log\sqrt2)/m\)</span>. Therefore</p>
+<span class="math math-display" id="L134.14" data-index="82" data-tex="\[
+ \limsup_j u_j(x)=0,\qquad\liminf_j u_j(x)\le-1
+ \quad\text{everywhere in }X.                              \tag{L134.14}
+\]">\[
+ \limsup_j u_j(x)=0,\qquad\liminf_j u_j(x)\le-1
+ \quad\text{everywhere in }X.                              \tag{L134.14}
+\]</span>
+<p>The normalized area measure of the disc of radius <span class="math" data-index="83" data-tex="\(1/4\)">\(1/4\)</span> centered at <span class="math" data-index="84" data-tex="\((1/2,1/2)\)">\((1/2,1/2)\)</span> has a continuous potential by L131. Pointwise convergence fails at every point of its support too. The theorem's upper-limit conclusion remains exactly correct.</p>
+<figure><img class="course-figure" width="2484" height="864" src="reproduce/L134/figures/moving-logarithmic-wells.png" alt="A nearby logarithmic well and a far corner give incompatible pointwise subsequences." /><figcaption class="native"><a href="reproduce/L134/figures/moving-logarithmic-wells.png">Open full-size PNG</a> · <a href="reproduce/L134/figures/moving-logarithmic-wells.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> A finite grid block covers the square with the regions where some term is at most <span class="math" data-index="85" data-tex="\(-1\)">\(-1\)</span>. The chosen observation point is <span class="math" data-index="86" data-tex="\(x_0=(0.37,0.61)\)">\(x_0=(0.37,0.61)\)</span>. The distance panel gives a nearby term in each illustrated block; the final panel compares these values with a fixed far-corner subsequence tending to zero. The complete proof uses every level, not just the plotted samples. Each block has <span class="math" data-index="87" data-tex="\((N_m+1)^2\)">\((N_m+1)^2\)</span> terms.</p>
+<p>The norm endpoints have a separate obstruction. In dimension three, translated kernels <span class="math" data-index="88" data-tex="\(E_3(x-a_j)\to E_3(x)\)">\(E_3(x-a_j)\to E_3(x)\)</span>, <span class="math" data-index="89" data-tex="\(a_j\to0\)">\(a_j\to0\)</span>, converge in distributions. Their difference near a displaced singularity has an infinite <span class="math" data-index="90" data-tex="\(L^p\)">\(L^p\)</span> norm for <span class="math" data-index="91" data-tex="\(p\ge3\)">\(p\ge3\)</span>. Translated planar logarithms have unbounded differences, excluding a general <span class="math" data-index="92" data-tex="\(L^\infty\)">\(L^\infty\)</span> assertion.</p>
+<p>In dimension one the kernel <span class="math" data-index="93" data-tex="\(|x|/2\)">\(|x|/2\)</span> is continuous. The same local decomposition then gives local uniform convergence directly. This is a separate conclusion; the higher-dimensional expression <span class="math" data-index="94" data-tex="\(n/(n-2)\)">\(n/(n-2)\)</span> supplies no positive exponent when <span class="math" data-index="95" data-tex="\(n=1\)">\(n=1\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>Integrate the three-dimensional capped-kernel <span class="math" data-index="96" data-tex="\(L^1\)">\(L^1\)</span> error density <span class="math" data-index="97" data-tex="\(r-r^2/\delta\)">\(r-r^2/\delta\)</span>.</li>
+<li>Explain why the cap radius stays fixed while the sequence converges.</li>
+<li>Identify the step that uses positivity when smooth tests are replaced by continuous tests.</li>
+<li>For <span class="math" data-index="98" data-tex="\(v_j=j^{-1}\log|x|\)">\(v_j=j^{-1}\log|x|\)</span>, find the upper and lower limits at zero and at a nonzero point.</li>
+<li>Prove that the grid block always contains a term at most <span class="math" data-index="99" data-tex="\(-1\)">\(-1\)</span> at a given point.</li>
+<li>Explain why a common upper bound is enough for Fatou here, even though negative wells are unbounded.</li>
+<li>Check the potential of the admissible normalized disc measure of radius <span class="math" data-index="100" data-tex="\(a\)">\(a\)</span>.</li>
+</ol>
+<h2 id="7-complete-solutions">7. Complete solutions</h2>
+<p><strong>1.</strong> Integration gives <span class="math" data-index="101" data-tex="\(\delta^2/2-\delta^2/3=\delta^2/6\)">\(\delta^2/2-\delta^2/3=\delta^2/6\)</span>. Including the sphere area and <span class="math" data-index="102" data-tex="\(1/(4\pi)\)">\(1/(4\pi)\)</span> kernel coefficient is exactly what makes the density <span class="math" data-index="103" data-tex="\(r-r^2/\delta\)">\(r-r^2/\delta\)</span>.</p>
+<p><strong>2.</strong> Weak convergence gives uniform convergence for one continuous cap, with constants depending on that cap. It does not supply uniformity for increasingly singular caps. First make the cap error smaller than half a chosen tolerance; then make the fixed-cap sequence error smaller than the other half.</p>
+<p><strong>3.</strong> Positivity bounds local mass by one nonnegative cutoff pairing. The convergent pairing gives a uniform mass bound, which controls uniform-approximation errors. For signed measures, a total-variation bound would need separate justification.</p>
+<p><strong>4.</strong> At zero all terms are <span class="math" data-index="104" data-tex="\(-\infty\)">\(-\infty\)</span>, so both limits are <span class="math" data-index="105" data-tex="\(-\infty\)">\(-\infty\)</span>. At any nonzero point the fixed finite logarithm divided by <span class="math" data-index="106" data-tex="\(j\)">\(j\)</span> tends to zero. The distributional limit is zero everywhere, but its pointwise value at zero is not the upper limit of the sequence.</p>
+<p><strong>5.</strong> Round both coordinates of <span class="math" data-index="107" data-tex="\(N_mx\)">\(N_mx\)</span> to a nearest integer. Each coordinate error is at most <span class="math" data-index="108" data-tex="\(1/(2N_m)\)">\(1/(2N_m)\)</span>, giving Euclidean distance at most <span class="math" data-index="109" data-tex="\(\sqrt2/(2N_m)&lt;e^{-m}\)">\(\sqrt2/(2N_m)&lt;e^{-m}\)</span>. The logarithm divided by <span class="math" data-index="110" data-tex="\(m\)">\(m\)</span> is consequently at most <span class="math" data-index="111" data-tex="\(-1\)">\(-1\)</span>; a zero distance gives <span class="math" data-index="112" data-tex="\(-\infty\)">\(-\infty\)</span>.</p>
+<p><strong>6.</strong> Subtract each function from the common upper bound <span class="math" data-index="113" data-tex="\(C\)">\(C\)</span>. The resulting functions are nonnegative, so Fatou applies without a bound on their size. Convergence of their integrals comes from the continuous-potential calculation, not from dominated convergence of the original sequence.</p>
+<p><strong>7.</strong> L131's planar ball formula gives, for <span class="math" data-index="114" data-tex="\(r=|x|\)">\(r=|x|\)</span>,</p>
+<span class="math math-display" data-index="115" data-tex="\[
+ E_2*q_a=
+ \begin{cases}
+ (2\pi)^{-1}\log a+(r^2-a^2)/(4\pi a^2),&amp;r\le a,\\
+ (2\pi)^{-1}\log r,&amp;r\ge a.
+ \end{cases}
+\]">\[
+ E_2*q_a=
+ \begin{cases}
+ (2\pi)^{-1}\log a+(r^2-a^2)/(4\pi a^2),&amp;r\le a,\\
+ (2\pi)^{-1}\log r,&amp;r\ge a.
+ \end{cases}
+\]</span>
+<p>The values agree at <span class="math" data-index="116" data-tex="\(r=a\)">\(r=a\)</span>, and both derivatives are <span class="math" data-index="117" data-tex="\(1/(2\pi a)\)">\(1/(2\pi a)\)</span> there. The formula is finite at zero and continuous everywhere. Translating it gives the disc measure used in the grid example; its closed support stays inside <span class="math" data-index="118" data-tex="\(X\)">\(X\)</span> when the radius is <span class="math" data-index="119" data-tex="\(1/4\)">\(1/4\)</span> and the center <span class="math" data-index="120" data-tex="\((1/2,1/2)\)">\((1/2,1/2)\)</span>.</p>
+<h2 id="source-credit">Source credit</h2>
+<p>The classical statement is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Proposition 16.1.2, printed pages 304–305: first edition 1983, second printing 1990, reprint 2005. Both pointwise claims are limsup claims. The <a href="#complete-proof">full original argument</a>, worked examples, solutions and diagrams accompany this exposition.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition, examples, solutions and diagrams: CC0-1.0.</p>
+<p>A distributional limit need not control individual values. Subharmonicity supplies an upper bound through positive averages. A local positive-measure decomposition supplies stronger norm convergence. A second measure can detect almost every value of the upper limit when its Newtonian potential is continuous. The upper limit matters: the sequence itself can fail to converge at every point even though every finite local norm tends to zero.</p>
+<p>The exact written inputs are <a href="AN02-L131.html#NP2">Local Newtonian potentials and subharmonic regularity, NP2–NP7</a>: local integrability and radial recovery of a subharmonic representative, its positive Laplacian measure, the signed fundamental kernel, harmonic smoothing, finite-mass potential estimates, and the pointwise local decomposition. <a href="AN02-L131.html#NP9">NP9</a> gives the separate one-dimensional kernel. The uniform finite-order bound for a pointwise bounded family on a fixed compact test support is proved in <a href="prerequisites/banach-foundation-bridges.html#a-common-finite-order-for-an-arbitrary-family">Banach estimates, quotient spaces and compact parameter arguments, Section 14.3</a>. Every new convergence, kernel approximation and measurement argument is given below.</p>
+<p><a id="SC1"></a></p>
+<h2 id="sc1-the-precise-statement">SC1. The precise statement</h2>
+<p>Let <span class="math" data-index="121" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open, <span class="math" data-index="122" data-tex="\(n\ge2\)">\(n\ge2\)</span>. Let <span class="math" data-index="123" data-tex="\(v_j,v\)">\(v_j,v\)</span> be upper semicontinuous subharmonic functions on <span class="math" data-index="124" data-tex="\(X\)">\(X\)</span>, with no component on which any of these functions is identically <span class="math" data-index="125" data-tex="\(-\infty\)">\(-\infty\)</span>. The spherical submean inequality holds on every closed ball contained in <span class="math" data-index="126" data-tex="\(X\)">\(X\)</span>. Suppose</p>
+<span class="math math-display" id="SC1.1" data-index="127" data-tex="\[
+ v_j\longrightarrow v\quad\text{in }\mathcal D&#x27;(X),
+ \qquad
+ \int_X(v_j-v)\phi\,dx\longrightarrow0
+ \quad(\phi\in C_c^\infty(X)).                               \tag{SC1.1}
+\]">\[
+ v_j\longrightarrow v\quad\text{in }\mathcal D&#x27;(X),
+ \qquad
+ \int_X(v_j-v)\phi\,dx\longrightarrow0
+ \quad(\phi\in C_c^\infty(X)).                               \tag{SC1.1}
+\]</span>
+<p>NP2 supplies the locally integrable representatives in this pairing. Use</p>
+<span class="math math-display" id="SC1.2" data-index="128" data-tex="\[
+ \Delta E_n=\delta_0,\qquad
+ E_n(x)=-\frac{|x|^{2-n}}{(n-2)s_n}\ (n&gt;2),\qquad
+ E_2(x)=\frac{\log|x|}{2\pi},                                \tag{SC1.2}
+\]">\[
+ \Delta E_n=\delta_0,\qquad
+ E_n(x)=-\frac{|x|^{2-n}}{(n-2)s_n}\ (n&gt;2),\qquad
+ E_2(x)=\frac{\log|x|}{2\pi},                                \tag{SC1.2}
+\]</span>
+<p>where <span class="math" data-index="129" data-tex="\(s_n\)">\(s_n\)</span> is the area of the unit sphere.</p>
+<p><strong>Theorem SC1.</strong> For every compact <span class="math" data-index="130" data-tex="\(K\subset X\)">\(K\subset X\)</span>,</p>
+<span class="math math-display" id="SC1.3" data-index="131" data-tex="\[
+ \|v_j-v\|_{L^p(K)}\longrightarrow0,\qquad
+ \begin{cases}
+ 1\le p&lt;n/(n-2),&amp;n&gt;2,\\
+ 1\le p&lt;\infty,&amp;n=2.
+ \end{cases}                                                \tag{SC1.3}
+\]">\[
+ \|v_j-v\|_{L^p(K)}\longrightarrow0,\qquad
+ \begin{cases}
+ 1\le p&lt;n/(n-2),&amp;n&gt;2,\\
+ 1\le p&lt;\infty,&amp;n=2.
+ \end{cases}                                                \tag{SC1.3}
+\]</span>
+<p>Convergence also holds for <span class="math" data-index="132" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>, in the integral metric. At every point,</p>
+<span class="math math-display" id="SC1.4" data-index="133" data-tex="\[
+ \limsup_{j\to\infty}v_j(x)\le v(x),\qquad x\in X.            \tag{SC1.4}
+\]">\[
+ \limsup_{j\to\infty}v_j(x)\le v(x),\qquad x\in X.            \tag{SC1.4}
+\]</span>
+<p>Let <span class="math" data-index="134" data-tex="\(\sigma\)">\(\sigma\)</span> be a positive Radon measure with compact support in <span class="math" data-index="135" data-tex="\(X\)">\(X\)</span>. Assume that the distribution <span class="math" data-index="136" data-tex="\(E_n*\sigma\)">\(E_n*\sigma\)</span> has a continuous representative on all of <span class="math" data-index="137" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. Then</p>
+<span class="math math-display" id="SC1.5" data-index="138" data-tex="\[
+ \limsup_{j\to\infty}v_j(x)=v(x)&gt;-\infty
+ \quad\text{for }\sigma\text{-almost every }x.                \tag{SC1.5}
+\]">\[
+ \limsup_{j\to\infty}v_j(x)=v(x)&gt;-\infty
+ \quad\text{for }\sigma\text{-almost every }x.                \tag{SC1.5}
+\]</span>
+<p>Compact support makes the Radon measure finite. For the zero measure the last assertion is vacuous. It concerns the upper limit of the entire sequence, not ordinary pointwise convergence. No critical exponent in dimension greater than two or planar <span class="math" data-index="139" data-tex="\(L^\infty\)">\(L^\infty\)</span> convergence is asserted. The separate one-dimensional statement is in SC10.</p>
+<p><a id="SC2"></a></p>
+<h2 id="sc2-uniformity-for-compact-families-of-smooth-tests">SC2. Uniformity for compact families of smooth tests</h2>
+<p><strong>Lemma SC2.</strong> Suppose <span class="math" data-index="140" data-tex="\(T_j\to0\)">\(T_j\to0\)</span> in <span class="math" data-index="141" data-tex="\(\mathcal D&#x27;(U)\)">\(\mathcal D&#x27;(U)\)</span>. Let <span class="math" data-index="142" data-tex="\(K\)">\(K\)</span> be compact and let <span class="math" data-index="143" data-tex="\(x\mapsto\phi_x\)">\(x\mapsto\phi_x\)</span> be a continuous map from <span class="math" data-index="144" data-tex="\(K\)">\(K\)</span> to smooth tests with one common compact support <span class="math" data-index="145" data-tex="\(L\Subset U\)">\(L\Subset U\)</span>, continuous in every derivative supremum seminorm. Then</p>
+<span class="math math-display" id="SC2.1" data-index="146" data-tex="\[
+ \sup_{x\in K}|\langle T_j,\phi_x\rangle|\longrightarrow0.   \tag{SC2.1}
+\]">\[
+ \sup_{x\in K}|\langle T_j,\phi_x\rangle|\longrightarrow0.   \tag{SC2.1}
+\]</span>
+<p><strong>Proof.</strong> Pairings with each fixed test form a bounded sequence. The exact fixed-support uniform boundedness theorem cited above supplies an integer <span class="math" data-index="147" data-tex="\(N\)">\(N\)</span> and a constant <span class="math" data-index="148" data-tex="\(C\)">\(C\)</span>, independent of <span class="math" data-index="149" data-tex="\(j\)">\(j\)</span>, such that</p>
+<span class="math math-display" id="SC2.2" data-index="150" data-tex="\[
+ |\langle T_j,\psi\rangle|
+ \le C\max_{|\alpha|\le N}\sup_L|\partial^\alpha\psi|
+ \quad(\psi\in\mathcal D_L(U)).                             \tag{SC2.2}
+\]">\[
+ |\langle T_j,\psi\rangle|
+ \le C\max_{|\alpha|\le N}\sup_L|\partial^\alpha\psi|
+ \quad(\psi\in\mathcal D_L(U)).                             \tag{SC2.2}
+\]</span>
+<p>Given <span class="math" data-index="151" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, compactness of the continuous image provides finitely many center tests such that every <span class="math" data-index="152" data-tex="\(\phi_x\)">\(\phi_x\)</span> is within <span class="math" data-index="153" data-tex="\(\varepsilon/(2(C+1))\)">\(\varepsilon/(2(C+1))\)</span> of one center in this seminorm. For large <span class="math" data-index="154" data-tex="\(j\)">\(j\)</span>, the finitely many center pairings are smaller than <span class="math" data-index="155" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. Apply (SC2.2) to the difference from the center. The sum is smaller than <span class="math" data-index="156" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, uniformly in <span class="math" data-index="157" data-tex="\(x\)">\(x\)</span>. <span class="math" data-index="158" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a fixed smooth compact kernel <span class="math" data-index="159" data-tex="\(\rho\)">\(\rho\)</span>, the tests <span class="math" data-index="160" data-tex="\(\partial_x^\alpha\rho(x-\cdot)\)">\(\partial_x^\alpha\rho(x-\cdot)\)</span> meet these hypotheses wherever their supports stay in <span class="math" data-index="161" data-tex="\(U\)">\(U\)</span>. Continuity follows from the mean-value estimate for every derivative on a common compact set. Thus weak distributional convergence becomes locally uniform convergence of every derivative after convolution with a <strong>fixed</strong> kernel. This assertion does not allow its radius to shrink with <span class="math" data-index="162" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Corollary SC2.</strong> If harmonic distributions <span class="math" data-index="163" data-tex="\(h_j,h\)">\(h_j,h\)</span> on <span class="math" data-index="164" data-tex="\(U\)">\(U\)</span> converge in <span class="math" data-index="165" data-tex="\(\mathcal D&#x27;(U)\)">\(\mathcal D&#x27;(U)\)</span>, they converge in <span class="math" data-index="166" data-tex="\(C^\infty_{\mathrm{loc}}(U)\)">\(C^\infty_{\mathrm{loc}}(U)\)</span>.</p>
+<p><strong>Proof.</strong> On a compact observation set choose a fixed normalized radial smooth kernel with all its small translates contained in <span class="math" data-index="167" data-tex="\(U\)">\(U\)</span>. NP5 makes the distributions smooth and identifies them there with their averages against this kernel. Apply Lemma SC2 to the translated kernel and every translated derivative. <span class="math" data-index="168" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="SC3"></a></p>
+<h2 id="sc3-positive-measures-and-the-local-decomposition">SC3. Positive measures and the local decomposition</h2>
+<p>NP2–NP3 give</p>
+<span class="math math-display" id="SC3.1" data-index="169" data-tex="\[
+ \mu_j=\Delta v_j\ge0,\qquad\mu=\Delta v\ge0,\qquad
+ \mu_j\longrightarrow\mu\text{ in }\mathcal D&#x27;(X).           \tag{SC3.1}
+\]">\[
+ \mu_j=\Delta v_j\ge0,\qquad\mu=\Delta v\ge0,\qquad
+ \mu_j\longrightarrow\mu\text{ in }\mathcal D&#x27;(X).           \tag{SC3.1}
+\]</span>
+<p>The convergence follows by testing (SC1.1) on <span class="math" data-index="170" data-tex="\(\Delta\phi\)">\(\Delta\phi\)</span>.</p>
+<p><strong>Lemma SC3.</strong> Positive Radon measures converging on smooth compact tests converge on continuous compact tests. Their masses on each fixed compact subset of <span class="math" data-index="171" data-tex="\(X\)">\(X\)</span> are uniformly bounded.</p>
+<p><strong>Proof.</strong> For compact <span class="math" data-index="172" data-tex="\(L\subset X\)">\(L\subset X\)</span>, choose a smooth nonnegative compact cutoff <span class="math" data-index="173" data-tex="\(\eta\ge1\)">\(\eta\ge1\)</span> near <span class="math" data-index="174" data-tex="\(L\)">\(L\)</span>. Then <span class="math" data-index="175" data-tex="\(\mu_j(L)\le\langle\mu_j,\eta\rangle\)">\(\mu_j(L)\le\langle\mu_j,\eta\rangle\)</span>. The convergent right-hand sequence is bounded, including its finite initial part.</p>
+<p>For a continuous compact test <span class="math" data-index="176" data-tex="\(g\)">\(g\)</span>, extend it by zero and mollify, then multiply by a fixed cutoff supported in <span class="math" data-index="177" data-tex="\(X\)">\(X\)</span> and equal to one near its support. The resulting smooth <span class="math" data-index="178" data-tex="\(g_\varepsilon\)">\(g_\varepsilon\)</span> have one common compact support and converge uniformly to <span class="math" data-index="179" data-tex="\(g\)">\(g\)</span>: convolution changes a continuous compactly supported function by at most its modulus of continuity at the mollifier radius. The mass bound gives</p>
+<span class="math math-display" id="SC3.2" data-index="180" data-tex="\[
+ \left|\int(g-g_\varepsilon)\,d\mu_j\right|
+ \le M\|g-g_\varepsilon\|_\infty,                            \tag{SC3.2}
+\]">\[
+ \left|\int(g-g_\varepsilon)\,d\mu_j\right|
+ \le M\|g-g_\varepsilon\|_\infty,                            \tag{SC3.2}
+\]</span>
+<p>uniformly in <span class="math" data-index="181" data-tex="\(j\)">\(j\)</span>, and likewise for <span class="math" data-index="182" data-tex="\(\mu\)">\(\mu\)</span>. Take the sequence limit on the fixed smooth test, then let <span class="math" data-index="183" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. <span class="math" data-index="184" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Choose <span class="math" data-index="185" data-tex="\(Y\)">\(Y\)</span> with <span class="math" data-index="186" data-tex="\(\overline Y\Subset X\)">\(\overline Y\Subset X\)</span>, and <span class="math" data-index="187" data-tex="\(0\le\chi\le1\)">\(0\le\chi\le1\)</span> smooth, compactly supported in <span class="math" data-index="188" data-tex="\(X\)">\(X\)</span>, equal to one near <span class="math" data-index="189" data-tex="\(\overline Y\)">\(\overline Y\)</span>. Put</p>
+<span class="math math-display" id="SC3.3" data-index="190" data-tex="\[
+ \nu_j=\chi\mu_j,\quad\nu=\chi\mu,\quad
+ P_j=E_n*\nu_j,\quad P=E_n*\nu.                              \tag{SC3.3}
+\]">\[
+ \nu_j=\chi\mu_j,\quad\nu=\chi\mu,\quad
+ P_j=E_n*\nu_j,\quad P=E_n*\nu.                              \tag{SC3.3}
+\]</span>
+<p>The measures have common compact support <span class="math" data-index="191" data-tex="\(S=\operatorname{supp}\chi\)">\(S=\operatorname{supp}\chi\)</span>. Their masses <span class="math" data-index="192" data-tex="\(m_j=\langle\mu_j,\chi\rangle\)">\(m_j=\langle\mu_j,\chi\rangle\)</span> converge to <span class="math" data-index="193" data-tex="\(m=\langle\mu,\chi\rangle\)">\(m=\langle\mu,\chi\rangle\)</span>; choose <span class="math" data-index="194" data-tex="\(M\)">\(M\)</span> with <span class="math" data-index="195" data-tex="\(m_j,m\le M\)">\(m_j,m\le M\)</span>. They converge on every continuous function on a neighborhood of <span class="math" data-index="196" data-tex="\(S\)">\(S\)</span>, by multiplying that function by <span class="math" data-index="197" data-tex="\(\chi\)">\(\chi\)</span> and applying Lemma SC3.</p>
+<p>Also <span class="math" data-index="198" data-tex="\(P_j\to P\)">\(P_j\to P\)</span> in distributions. For a compact smooth output test <span class="math" data-index="199" data-tex="\(\phi\)">\(\phi\)</span>, the function</p>
+<span class="math math-display" id="SC3.4" data-index="200" data-tex="\[
+ g_\phi(y)=\int E_n(x-y)\phi(x)\,dx
+          =\int E_n(z)\phi(z+y)\,dz                          \tag{SC3.4}
+\]">\[
+ g_\phi(y)=\int E_n(x-y)\phi(x)\,dx
+          =\int E_n(z)\phi(z+y)\,dz                          \tag{SC3.4}
+\]</span>
+<p>is smooth near <span class="math" data-index="201" data-tex="\(S\)">\(S\)</span>. On any fixed compact neighborhood, all derivatives fall on <span class="math" data-index="202" data-tex="\(\phi\)">\(\phi\)</span> and all <span class="math" data-index="203" data-tex="\(z\)">\(z\)</span>-integrals stay in one compact set where <span class="math" data-index="204" data-tex="\(E_n\)">\(E_n\)</span> is integrable. Dominated convergence justifies each derivative. The compact-factor pairing therefore gives</p>
+<span class="math math-display" id="SC3.5" data-index="205" data-tex="\[
+ \langle P_j-P,\phi\rangle
+ =\langle\mu_j-\mu,\chi g_\phi\rangle\longrightarrow0.        \tag{SC3.5}
+\]">\[
+ \langle P_j-P,\phi\rangle
+ =\langle\mu_j-\mu,\chi g_\phi\rangle\longrightarrow0.        \tag{SC3.5}
+\]</span>
+<p>NP7 gives pointwise subharmonic decompositions on <span class="math" data-index="206" data-tex="\(Y\)">\(Y\)</span>,</p>
+<span class="math math-display" id="SC3.6" data-index="207" data-tex="\[
+ v_j=P_j+h_j,\qquad v=P+h,                                  \tag{SC3.6}
+\]">\[
+ v_j=P_j+h_j,\qquad v=P+h,                                  \tag{SC3.6}
+\]</span>
+<p>with smooth harmonic remainders. Subtracting (SC3.5) from (SC1.1) gives distributional convergence of those remainders. Corollary SC2 yields</p>
+<span class="math math-display" id="SC3.7" data-index="208" data-tex="\[
+ h_j\longrightarrow h\quad\text{in }C^\infty_{\mathrm{loc}}(Y). \tag{SC3.7}
+\]">\[
+ h_j\longrightarrow h\quad\text{in }C^\infty_{\mathrm{loc}}(Y). \tag{SC3.7}
+\]</span>
+<p>The decomposition requires neither convexity of <span class="math" data-index="209" data-tex="\(X\)">\(X\)</span> nor a bound on all Laplacian mass throughout <span class="math" data-index="210" data-tex="\(X\)">\(X\)</span>.</p>
+<p><a id="SC4"></a></p>
+<h2 id="sc4-a-continuous-cap-for-the-kernel-singularity">SC4. A continuous cap for the kernel singularity</h2>
+<p>For <span class="math" data-index="211" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, use</p>
+<span class="math math-display" id="SC4.1" data-index="212" data-tex="\[
+ E_n^\delta(x)=E_n(\max(|x|,\delta)),\qquad
+ R_\delta=E_n-E_n^\delta.                                   \tag{SC4.1}
+\]">\[
+ E_n^\delta(x)=E_n(\max(|x|,\delta)),\qquad
+ R_\delta=E_n-E_n^\delta.                                   \tag{SC4.1}
+\]</span>
+<p>At zero the capped kernel has the finite value <span class="math" data-index="213" data-tex="\(E_n(\delta)\)">\(E_n(\delta)\)</span>. It is continuous everywhere, though it need not be smooth at the truncation sphere. The error is supported in <span class="math" data-index="214" data-tex="\(\overline{B(0,\delta)}\)">\(\overline{B(0,\delta)}\)</span>.</p>
+<p>For <span class="math" data-index="215" data-tex="\(n&gt;2\)">\(n&gt;2\)</span>, let <span class="math" data-index="216" data-tex="\(c_n=1/((n-2)s_n)\)">\(c_n=1/((n-2)s_n)\)</span>. Polar coordinates and <span class="math" data-index="217" data-tex="\(r=\delta t\)">\(r=\delta t\)</span> give</p>
+<span class="math math-display" id="SC4.2" data-index="218" data-tex="\[
+ \|R_\delta\|_p^p
+ =s_nc_n^p\delta^{\,n-p(n-2)}
+   \int_0^1(t^{2-n}-1)^p t^{n-1}\,dt.                       \tag{SC4.2}
+\]">\[
+ \|R_\delta\|_p^p
+ =s_nc_n^p\delta^{\,n-p(n-2)}
+   \int_0^1(t^{2-n}-1)^p t^{n-1}\,dt.                       \tag{SC4.2}
+\]</span>
+<p>For <span class="math" data-index="219" data-tex="\(0&lt;p&lt;n/(n-2)\)">\(0&lt;p&lt;n/(n-2)\)</span>, the integral is finite: its power near zero is <span class="math" data-index="220" data-tex="\(n-1-p(n-2)&gt;-1\)">\(n-1-p(n-2)&gt;-1\)</span>; near one the difference vanishes linearly. Its positive power of <span class="math" data-index="221" data-tex="\(\delta\)">\(\delta\)</span> makes the norm tend to zero.</p>
+<p>For <span class="math" data-index="222" data-tex="\(n=2\)">\(n=2\)</span>,</p>
+<span class="math math-display" id="SC4.3" data-index="223" data-tex="\[
+ \|R_\delta\|_p^p
+ =(2\pi)^{1-p}\delta^2
+   \int_0^1(\log(1/t))^p t\,dt.                             \tag{SC4.3}
+\]">\[
+ \|R_\delta\|_p^p
+ =(2\pi)^{1-p}\delta^2
+   \int_0^1(\log(1/t))^p t\,dt.                             \tag{SC4.3}
+\]</span>
+<p>The last integral equals <span class="math" data-index="224" data-tex="\(\int_0^\infty s^pe^{-2s}\,ds\)">\(\int_0^\infty s^pe^{-2s}\,ds\)</span>, by <span class="math" data-index="225" data-tex="\(t=e^{-s}\)">\(t=e^{-s}\)</span>, and is finite for every finite <span class="math" data-index="226" data-tex="\(p&gt;0\)">\(p&gt;0\)</span>. The norm again tends to zero. These norms are over all of <span class="math" data-index="227" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, since the error vanishes outside its small ball.</p>
+<p><strong>Lemma SC4.</strong> If positive finite measures <span class="math" data-index="228" data-tex="\(\lambda_j,\lambda\)">\(\lambda_j,\lambda\)</span> have common compact support <span class="math" data-index="229" data-tex="\(S\)">\(S\)</span>, uniformly bounded masses and convergence on continuous tests, then for every continuous <span class="math" data-index="230" data-tex="\(G\)">\(G\)</span>,</p>
+<span class="math math-display" id="SC4.4" data-index="231" data-tex="\[
+ G*\lambda_j\longrightarrow G*\lambda
+ \quad\text{uniformly on compact output sets}.              \tag{SC4.4}
+\]">\[
+ G*\lambda_j\longrightarrow G*\lambda
+ \quad\text{uniformly on compact output sets}.              \tag{SC4.4}
+\]</span>
+<p><strong>Proof.</strong> For fixed <span class="math" data-index="232" data-tex="\(x\)">\(x\)</span>, the continuous pairing <span class="math" data-index="233" data-tex="\(G(x-\cdot)\)">\(G(x-\cdot)\)</span> converges. On the compact difference set <span class="math" data-index="234" data-tex="\(K-S\)">\(K-S\)</span>, uniform continuity gives the common bound</p>
+<span class="math math-display" id="SC4.5" data-index="235" data-tex="\[
+ |G*(\lambda_j-\lambda)(x)-G*(\lambda_j-\lambda)(x&#x27;)|
+ \le(\lambda_j(S)+\lambda(S))
+       \sup_{y\in S}|G(x-y)-G(x&#x27;-y)|.                       \tag{SC4.5}
+\]">\[
+ |G*(\lambda_j-\lambda)(x)-G*(\lambda_j-\lambda)(x&#x27;)|
+ \le(\lambda_j(S)+\lambda(S))
+       \sup_{y\in S}|G(x-y)-G(x&#x27;-y)|.                       \tag{SC4.5}
+\]</span>
+<p>A finite net in <span class="math" data-index="236" data-tex="\(K\)">\(K\)</span> now reduces uniform convergence to finitely many pointwise convergences. <span class="math" data-index="237" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a fixed <span class="math" data-index="238" data-tex="\(\delta\)">\(\delta\)</span>, this applies to <span class="math" data-index="239" data-tex="\(G=E_n^\delta\)">\(G=E_n^\delta\)</span> and (SC3.3). No smooth-test pairing with the capped kernel is assumed.</p>
+<figure><img class="course-figure" width="2484" height="827" src="reproduce/L134/figures/kernel-cap-and-norms.png" alt="A continuous cap removes the small Newtonian singularity, with exact norm errors." /><figcaption class="native"><a href="reproduce/L134/figures/kernel-cap-and-norms.png">Open full-size PNG</a> · <a href="reproduce/L134/figures/kernel-cap-and-norms.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> The three-dimensional kernel is <span class="math" data-index="240" data-tex="\(E_3(r)=-1/(4\pi r)\)">\(E_3(r)=-1/(4\pi r)\)</span>, capped at <span class="math" data-index="241" data-tex="\(\delta=0.4\)">\(\delta=0.4\)</span>. Including the sphere area, its radial <span class="math" data-index="242" data-tex="\(L^1\)">\(L^1\)</span> error density is <span class="math" data-index="243" data-tex="\(r-r^2/\delta\)">\(r-r^2/\delta\)</span> on <span class="math" data-index="244" data-tex="\(0&lt;r&lt;\delta\)">\(0&lt;r&lt;\delta\)</span>, with integral <span class="math" data-index="245" data-tex="\(\delta^2/6\)">\(\delta^2/6\)</span>. The final panel compares the exact rates <span class="math" data-index="246" data-tex="\(\|R_\delta\|_{L^1(\mathbb R^3)}=\delta^2/6\)">\(\|R_\delta\|_{L^1(\mathbb R^3)}=\delta^2/6\)</span>, <span class="math" data-index="247" data-tex="\(\|R_\delta\|_{L^2(\mathbb R^3)}=(\delta/(12\pi))^{1/2}\)">\(\|R_\delta\|_{L^2(\mathbb R^3)}=(\delta/(12\pi))^{1/2}\)</span>, and <span class="math" data-index="248" data-tex="\(\|R_\delta\|_{L^1(\mathbb R^2)}=\delta^2/4\)">\(\|R_\delta\|_{L^1(\mathbb R^2)}=\delta^2/4\)</span>. These evaluate (SC4.2)–(SC4.3), whose proof holds for every admissible exponent.</p>
+<p><a id="SC5"></a></p>
+<h2 id="sc5-strong-local-norm-convergence">SC5. Strong local norm convergence</h2>
+<p>For <span class="math" data-index="249" data-tex="\(p\ge1\)">\(p\ge1\)</span>, a finite positive measure <span class="math" data-index="250" data-tex="\(\lambda\)">\(\lambda\)</span> of mass <span class="math" data-index="251" data-tex="\(a\)">\(a\)</span> and <span class="math" data-index="252" data-tex="\(R\in L^p(\mathbb R^n)\)">\(R\in L^p(\mathbb R^n)\)</span> satisfy</p>
+<span class="math math-display" id="SC5.1" data-index="253" data-tex="\[
+ \|R*\lambda\|_p\le a\|R\|_p.                               \tag{SC5.1}
+\]">\[
+ \|R*\lambda\|_p\le a\|R\|_p.                               \tag{SC5.1}
+\]</span>
+<p>For <span class="math" data-index="254" data-tex="\(a=0\)">\(a=0\)</span> this is immediate. For <span class="math" data-index="255" data-tex="\(p=1\)">\(p=1\)</span>, integrate the triangle inequality and use Tonelli. For <span class="math" data-index="256" data-tex="\(p&gt;1\)">\(p&gt;1\)</span>, Hölder on the probability measure <span class="math" data-index="257" data-tex="\(\lambda/a\)">\(\lambda/a\)</span> gives</p>
+<span class="math math-display" data-index="258" data-tex="\[
+ \left|\int R(x-y)\,d\lambda(y)\right|^p
+ \le a^{p-1}\int|R(x-y)|^p\,d\lambda(y).
+\]">\[
+ \left|\int R(x-y)\,d\lambda(y)\right|^p
+ \le a^{p-1}\int|R(x-y)|^p\,d\lambda(y).
+\]</span>
+<p>Integrate in <span class="math" data-index="259" data-tex="\(x\)">\(x\)</span> and use Tonelli and translation invariance. The needed Hölder inequality follows by normalizing the two factors to unit <span class="math" data-index="260" data-tex="\(L^p\)">\(L^p\)</span> and <span class="math" data-index="261" data-tex="\(L^q\)">\(L^q\)</span> norm, <span class="math" data-index="262" data-tex="\(q=p/(p-1)\)">\(q=p/(p-1)\)</span>, integrating the scalar inequality <span class="math" data-index="263" data-tex="\(ab\le a^p/p+b^q/q\)">\(ab\le a^p/p+b^q/q\)</span>, and rescaling; truncation handles infinite initial norms. Thus (SC5.1) does not assume continuity of the potential.</p>
+<p>The <span class="math" data-index="264" data-tex="\(L^p\)">\(L^p\)</span> triangle inequality used next also follows from this Hölder argument. Finiteness of the sum first follows from <span class="math" data-index="265" data-tex="\(|A+B|^p\le2^{p-1}(|A|^p+|B|^p)\)">\(|A+B|^p\le2^{p-1}(|A|^p+|B|^p)\)</span>. For <span class="math" data-index="266" data-tex="\(p&gt;1\)">\(p&gt;1\)</span>, integrate <span class="math" data-index="267" data-tex="\((|A|+|B|)|A+B|^{p-1}\)">\((|A|+|B|)|A+B|^{p-1}\)</span> and apply Hölder to each summand; cancel <span class="math" data-index="268" data-tex="\(\|A+B\|_p^{p-1}\)">\(\|A+B\|_p^{p-1}\)</span> unless it is zero. This yields <span class="math" data-index="269" data-tex="\(\|A+B\|_p\le\|A\|_p+\|B\|_p\)">\(\|A+B\|_p\le\|A\|_p+\|B\|_p\)</span>. For <span class="math" data-index="270" data-tex="\(p=1\)">\(p=1\)</span>, integrate the pointwise triangle inequality.</p>
+<p>For <span class="math" data-index="271" data-tex="\(K\subset Y\)">\(K\subset Y\)</span> compact, split the potentials with (SC4.1):</p>
+<span class="math math-display" id="SC5.2" data-index="272" data-tex="\[
+ \begin{aligned}
+ \|P_j-P\|_{L^p(K)}
+ &amp;\le(m_j+m)\|R_\delta\|_{L^p(\mathbb R^n)}\\
+ &amp;\quad+|K|^{1/p}
+       \sup_{x\in K}|E_n^\delta*(\nu_j-\nu)(x)|.             
+ \end{aligned}
+ \tag{SC5.2}
+\]">\[
+ \begin{aligned}
+ \|P_j-P\|_{L^p(K)}
+ &amp;\le(m_j+m)\|R_\delta\|_{L^p(\mathbb R^n)}\\
+ &amp;\quad+|K|^{1/p}
+       \sup_{x\in K}|E_n^\delta*(\nu_j-\nu)(x)|.             
+ \end{aligned}
+ \tag{SC5.2}
+\]</span>
+<p>NP6 identifies the potential distributions with their almost-everywhere functions, so these norms and the split are legitimate. For fixed <span class="math" data-index="273" data-tex="\(\delta\)">\(\delta\)</span>, the second term tends to zero by Lemma SC4. The first is at most <span class="math" data-index="274" data-tex="\(2M\|R_\delta\|_p\)">\(2M\|R_\delta\|_p\)</span>, which tends to zero when <span class="math" data-index="275" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. First take the sequence limit with the cap fixed, then remove the cap. Add the uniformly convergent harmonic remainder from (SC3.7). This proves (SC1.3).</p>
+<p>Every compact subset of <span class="math" data-index="276" data-tex="\(X\)">\(X\)</span> fits inside such a relatively compact <span class="math" data-index="277" data-tex="\(Y\)">\(Y\)</span>, by finitely many small neighborhoods and a cutoff. For <span class="math" data-index="278" data-tex="\(0&lt;p&lt;1\)">\(0&lt;p&lt;1\)</span>, local <span class="math" data-index="279" data-tex="\(L^1\)">\(L^1\)</span> convergence also gives</p>
+<span class="math math-display" id="SC5.3" data-index="280" data-tex="\[
+ \int_K|v_j-v|^p\,dx
+ \le |K|^{1-p}\left(\int_K|v_j-v|\,dx\right)^p\longrightarrow0. \tag{SC5.3}
+\]">\[
+ \int_K|v_j-v|^p\,dx
+ \le |K|^{1-p}\left(\int_K|v_j-v|\,dx\right)^p\longrightarrow0. \tag{SC5.3}
+\]</span>
+<p>This is Hölder for <span class="math" data-index="281" data-tex="\(|v_j-v|^p\)">\(|v_j-v|^p\)</span> and one; a zero-volume <span class="math" data-index="282" data-tex="\(K\)">\(K\)</span> is immediate. For <span class="math" data-index="283" data-tex="\(p&lt;1\)">\(p&lt;1\)</span> the integral is used, not a claim that the <span class="math" data-index="284" data-tex="\(L^p\)">\(L^p\)</span> expression is a norm.</p>
+<p><a id="SC6"></a></p>
+<h2 id="sc6-the-upper-limit-at-every-point">SC6. The upper limit at every point</h2>
+<p>For a nonnegative normalized radial smooth mollifier <span class="math" data-index="285" data-tex="\(\rho_r\)">\(\rho_r\)</span>, whose translate at <span class="math" data-index="286" data-tex="\(x\)">\(x\)</span> stays in <span class="math" data-index="287" data-tex="\(X\)">\(X\)</span>, integrate the spherical submean inequality over radii:</p>
+<span class="math math-display" id="SC6.1" data-index="288" data-tex="\[
+ v_j(x)\le(v_j*\rho_r)(x).                                  \tag{SC6.1}
+\]">\[
+ v_j(x)\le(v_j*\rho_r)(x).                                  \tag{SC6.1}
+\]</span>
+<p>For fixed <span class="math" data-index="289" data-tex="\(r\)">\(r\)</span>, distributional convergence makes the right side converge at <span class="math" data-index="290" data-tex="\(x\)">\(x\)</span>. Thus</p>
+<span class="math math-display" id="SC6.2" data-index="291" data-tex="\[
+ \limsup_jv_j(x)\le(v*\rho_r)(x).                            \tag{SC6.2}
+\]">\[
+ \limsup_jv_j(x)\le(v*\rho_r)(x).                            \tag{SC6.2}
+\]</span>
+<p>NP2 proves that these radial smoothings recover the given subharmonic values, including a value <span class="math" data-index="292" data-tex="\(-\infty\)">\(-\infty\)</span>. Let <span class="math" data-index="293" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span> to prove (SC1.4). No subsequence or almost-everywhere norm limit was used.</p>
+<p>There is also one finite upper bound for all <span class="math" data-index="294" data-tex="\(v_j\)">\(v_j\)</span> and <span class="math" data-index="295" data-tex="\(v\)">\(v\)</span> on each compact <span class="math" data-index="296" data-tex="\(K\subset X\)">\(K\subset X\)</span>. Choose one small <span class="math" data-index="297" data-tex="\(r\)">\(r\)</span> valid throughout <span class="math" data-index="298" data-tex="\(K\)">\(K\)</span>. Lemma SC2 gives uniform convergence of the fixed smoothings there; the limit is smooth and bounded. Include the finite initial part and use (SC6.1). This is an upper bound, not an absolute bound on deep negative wells.</p>
+<p><a id="SC7"></a></p>
+<h2 id="sc7-testing-with-a-continuous-potential-measure">SC7. Testing with a continuous-potential measure</h2>
+<p>Let <span class="math" data-index="299" data-tex="\(T=\operatorname{supp}\sigma\Subset X\)">\(T=\operatorname{supp}\sigma\Subset X\)</span>, and choose <span class="math" data-index="300" data-tex="\(Y\)">\(Y\)</span> containing <span class="math" data-index="301" data-tex="\(T\)">\(T\)</span> in the decomposition above. We prove</p>
+<span class="math math-display" id="SC7.1" data-index="302" data-tex="\[
+ v_j,v\in L^1(\sigma),\qquad
+ \int v_j\,d\sigma\longrightarrow\int v\,d\sigma.            \tag{SC7.1}
+\]">\[
+ v_j,v\in L^1(\sigma),\qquad
+ \int v_j\,d\sigma\longrightarrow\int v\,d\sigma.            \tag{SC7.1}
+\]</span>
+<p>First, the canonical integral potential <span class="math" data-index="303" data-tex="\(P_\sigma=E_n*\sigma\)">\(P_\sigma=E_n*\sigma\)</span> is subharmonic by NP6. Its distribution agrees with the continuous representative <span class="math" data-index="304" data-tex="\(F\)">\(F\)</span>. Radially mollifying the equal distributions gives equal smooth functions. NP2 recovers <span class="math" data-index="305" data-tex="\(P_\sigma\)">\(P_\sigma\)</span> pointwise, while continuity of <span class="math" data-index="306" data-tex="\(F\)">\(F\)</span> gives locally uniform recovery of <span class="math" data-index="307" data-tex="\(F\)">\(F\)</span>. Consequently</p>
+<span class="math math-display" id="SC7.2" data-index="308" data-tex="\[
+ P_\sigma(y)=F(y)\in\mathbb R\quad\text{at every }y.          \tag{SC7.2}
+\]">\[
+ P_\sigma(y)=F(y)\in\mathbb R\quad\text{at every }y.          \tag{SC7.2}
+\]</span>
+<p>Thus a merely almost-everywhere continuous representative cannot conceal an infinite integral value at a point of <span class="math" data-index="309" data-tex="\(S\)">\(S\)</span>.</p>
+<p>On <span class="math" data-index="310" data-tex="\(T-S\)">\(T-S\)</span>, the positive part of <span class="math" data-index="311" data-tex="\(E_n\)">\(E_n\)</span> has a finite upper bound <span class="math" data-index="312" data-tex="\(B\)">\(B\)</span>. For <span class="math" data-index="313" data-tex="\(n&gt;2\)">\(n&gt;2\)</span>, take <span class="math" data-index="314" data-tex="\(B=0\)">\(B=0\)</span>; in dimension two a ball of radius <span class="math" data-index="315" data-tex="\(R\ge1\)">\(R\ge1\)</span> containing that difference set gives <span class="math" data-index="316" data-tex="\(B=(2\pi)^{-1}\log R\)">\(B=(2\pi)^{-1}\log R\)</span>. The even kernel and (SC7.2) imply, for <span class="math" data-index="317" data-tex="\(y\in S\)">\(y\in S\)</span>,</p>
+<span class="math math-display" id="SC7.3" data-index="318" data-tex="\[
+ \begin{aligned}
+ \int_T|E_n(x-y)|\,d\sigma(x)
+ &amp;=2\int_T E_n(x-y)^+\,d\sigma(x)-F(y)\\
+ &amp;\le2B\sigma(T)+\sup_S|F|.                                 
+ \end{aligned}
+ \tag{SC7.3}
+\]">\[
+ \begin{aligned}
+ \int_T|E_n(x-y)|\,d\sigma(x)
+ &amp;=2\int_T E_n(x-y)^+\,d\sigma(x)-F(y)\\
+ &amp;\le2B\sigma(T)+\sup_S|F|.                                 
+ \end{aligned}
+ \tag{SC7.3}
+\]</span>
+<p>The positive part is finite, and the finite value of <span class="math" data-index="319" data-tex="\(F(y)\)">\(F(y)\)</span> forces the negative part to be finite too. This justifies the identity before taking the bound.</p>
+<p>Integrating (SC7.3) against <span class="math" data-index="320" data-tex="\(\nu_j\)">\(\nu_j\)</span> or <span class="math" data-index="321" data-tex="\(\nu\)">\(\nu\)</span> proves absolute product-kernel integrability. Fubini therefore yields</p>
+<span class="math math-display" id="SC7.4" data-index="322" data-tex="\[
+ \int_T P_j\,d\sigma=\int_S F\,d\nu_j,\qquad
+ \int_T P\,d\sigma=\int_S F\,d\nu.                           \tag{SC7.4}
+\]">\[
+ \int_T P_j\,d\sigma=\int_S F\,d\nu_j,\qquad
+ \int_T P\,d\sigma=\int_S F\,d\nu.                           \tag{SC7.4}
+\]</span>
+<p>Both potentials belong to <span class="math" data-index="323" data-tex="\(L^1(\sigma)\)">\(L^1(\sigma)\)</span>. The right-hand integrals converge by Lemma SC3 and continuity on <span class="math" data-index="324" data-tex="\(S\)">\(S\)</span>. The harmonic remainders converge uniformly on <span class="math" data-index="325" data-tex="\(T\)">\(T\)</span>, so their integrals converge against finite <span class="math" data-index="326" data-tex="\(\sigma\)">\(\sigma\)</span>. The pointwise identities (SC3.6) prove (SC7.1). In particular <span class="math" data-index="327" data-tex="\(v\)">\(v\)</span> is finite <span class="math" data-index="328" data-tex="\(\sigma\)">\(\sigma\)</span>-almost everywhere. Only boundedness of <span class="math" data-index="329" data-tex="\(F\)">\(F\)</span> on <span class="math" data-index="330" data-tex="\(S\)">\(S\)</span> is needed, not a global bound.</p>
+<p><a id="SC8"></a></p>
+<h2 id="sc8-equality-for-the-upper-limit">SC8. Equality for the upper limit</h2>
+<p>Choose <span class="math" data-index="331" data-tex="\(C\)">\(C\)</span> above the common upper bound of <span class="math" data-index="332" data-tex="\(v_j,v\)">\(v_j,v\)</span> on <span class="math" data-index="333" data-tex="\(T\)">\(T\)</span>. Fatou applies to the nonnegative functions <span class="math" data-index="334" data-tex="\(C-v_j\)">\(C-v_j\)</span>:</p>
+<span class="math math-display" id="SC8.1" data-index="335" data-tex="\[
+ \int_T(C-\limsup_jv_j)\,d\sigma
+ \le\liminf_j\int_T(C-v_j)\,d\sigma
+ =\int_T(C-v)\,d\sigma&lt;\infty.                              \tag{SC8.1}
+\]">\[
+ \int_T(C-\limsup_jv_j)\,d\sigma
+ \le\liminf_j\int_T(C-v_j)\,d\sigma
+ =\int_T(C-v)\,d\sigma&lt;\infty.                              \tag{SC8.1}
+\]</span>
+<p>Equation (SC1.4) gives the reverse pointwise comparison <span class="math" data-index="336" data-tex="\(C-\limsup_jv_j\ge C-v\)">\(C-\limsup_jv_j\ge C-v\)</span>. The two functions have equal finite integrals and a nonnegative difference, so they agree almost everywhere: otherwise one of the sets where the difference exceeds <span class="math" data-index="337" data-tex="\(1/k\)">\(1/k\)</span> would have positive measure and give a positive integral. This proves (SC1.5) and completes the theorem. It gives no equality for the lower limit.</p>
+<p><a id="SC9"></a></p>
+<h2 id="sc9-worked-examples-and-the-limits-of-the-result">SC9. Worked examples and the limits of the result</h2>
+<p><strong>Example 1: a strict exceptional value.</strong> On a planar open disc containing zero, put <span class="math" data-index="338" data-tex="\(v_j(x)=j^{-1}\log|x|\)">\(v_j(x)=j^{-1}\log|x|\)</span> and <span class="math" data-index="339" data-tex="\(v=0\)">\(v=0\)</span>. NP4 gives convergence to zero in every finite local <span class="math" data-index="340" data-tex="\(L^p\)">\(L^p\)</span>, hence in distributions. Each function is subharmonic, and <span class="math" data-index="341" data-tex="\(v_j(0)=-\infty\)">\(v_j(0)=-\infty\)</span>. Thus <span class="math" data-index="342" data-tex="\(\limsup_jv_j(0)=-\infty&lt;0\)">\(\limsup_jv_j(0)=-\infty&lt;0\)</span>. For <span class="math" data-index="343" data-tex="\(\sigma=\delta_0\)">\(\sigma=\delta_0\)</span>, the potential is <span class="math" data-index="344" data-tex="\(E_2\)">\(E_2\)</span>, which is not continuous at zero. Positivity and compact support of the measuring measure alone do not suffice.</p>
+<p><strong>Example 2: no pointwise convergence anywhere.</strong> Let <span class="math" data-index="345" data-tex="\(X=(0,1)^2\)">\(X=(0,1)^2\)</span>. For every positive integer <span class="math" data-index="346" data-tex="\(m\)">\(m\)</span>, define</p>
+<span class="math math-display" id="SC9.1" data-index="347" data-tex="\[
+ N_m=\lceil e^m\rceil,\qquad
+ G_m=\{(k/N_m,\ell/N_m):0\le k,\ell\le N_m\}.                \tag{SC9.1}
+\]">\[
+ N_m=\lceil e^m\rceil,\qquad
+ G_m=\{(k/N_m,\ell/N_m):0\le k,\ell\le N_m\}.                \tag{SC9.1}
+\]</span>
+<p>List all points of <span class="math" data-index="348" data-tex="\(G_1\)">\(G_1\)</span>, then all of <span class="math" data-index="349" data-tex="\(G_2\)">\(G_2\)</span>, and so on, in a fixed order within each finite block. For a term belonging to center <span class="math" data-index="350" data-tex="\(a\in G_m\)">\(a\in G_m\)</span>, use</p>
+<span class="math math-display" id="SC9.2" data-index="351" data-tex="\[
+ u_{m,a}(x)=\frac1m\log|x-a|,\qquad\log0=-\infty.           \tag{SC9.2}
+\]">\[
+ u_{m,a}(x)=\frac1m\log|x-a|,\qquad\log0=-\infty.           \tag{SC9.2}
+\]</span>
+<p>This is one sequence; its block number tends to infinity with its index. Each term is subharmonic. A boundary center gives a smooth harmonic function throughout <span class="math" data-index="352" data-tex="\(X\)">\(X\)</span>.</p>
+<p>For compact <span class="math" data-index="353" data-tex="\(K\subset X\)">\(K\subset X\)</span>, the translated logarithmic kernels have uniformly bounded finite <span class="math" data-index="354" data-tex="\(L^p(K)\)">\(L^p(K)\)</span> norms for all <span class="math" data-index="355" data-tex="\(a\in[0,1]^2\)">\(a\in[0,1]^2\)</span>: after translating the integration variable, the domains lie inside one fixed ball, and NP4 bounds the integral of <span class="math" data-index="356" data-tex="\(|\log|z||^p\)">\(|\log|z||^p\)</span> there. The factor <span class="math" data-index="357" data-tex="\(1/m\)">\(1/m\)</span> proves strong local convergence to zero for every finite <span class="math" data-index="358" data-tex="\(p\ge1\)">\(p\ge1\)</span>, and then in distributions.</p>
+<p>At every fixed <span class="math" data-index="359" data-tex="\(x\in X\)">\(x\in X\)</span>, round each coordinate of <span class="math" data-index="360" data-tex="\(N_mx\)">\(N_mx\)</span> to a nearest integer. The resulting center <span class="math" data-index="361" data-tex="\(a_m\)">\(a_m\)</span> satisfies</p>
+<span class="math math-display" id="SC9.3" data-index="362" data-tex="\[
+ |x-a_m|\le\frac{\sqrt2}{2N_m}&lt;e^{-m},\qquad
+ u_{m,a_m}(x)\le-1.                                        \tag{SC9.3}
+\]">\[
+ |x-a_m|\le\frac{\sqrt2}{2N_m}&lt;e^{-m},\qquad
+ u_{m,a_m}(x)\le-1.                                        \tag{SC9.3}
+\]</span>
+<p>A zero distance gives <span class="math" data-index="363" data-tex="\(-\infty\)">\(-\infty\)</span>. Thus the lower limit is at most <span class="math" data-index="364" data-tex="\(-1\)">\(-1\)</span> everywhere. All distances in the square are at most <span class="math" data-index="365" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, so every term is at most <span class="math" data-index="366" data-tex="\((\log\sqrt2)/m\)">\((\log\sqrt2)/m\)</span>, tending to zero. By choosing a far endpoint in each coordinate, one of the four corners has distance at least <span class="math" data-index="367" data-tex="\(1/\sqrt2\)">\(1/\sqrt2\)</span> from <span class="math" data-index="368" data-tex="\(x\)">\(x\)</span>. Its distance is also at most <span class="math" data-index="369" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, so its logarithm divided by <span class="math" data-index="370" data-tex="\(m\)">\(m\)</span> tends to zero. Choosing that corner once in each block supplies a subsequence. Consequently</p>
+<span class="math math-display" id="SC9.4" data-index="371" data-tex="\[
+ \limsup_j u_j(x)=0,\qquad\liminf_j u_j(x)\le-1
+ \quad\text{at every }x\in X.                              \tag{SC9.4}
+\]">\[
+ \limsup_j u_j(x)=0,\qquad\liminf_j u_j(x)\le-1
+ \quad\text{at every }x\in X.                              \tag{SC9.4}
+\]</span>
+<p>Different observation points may choose different nearby terms from a block; one center need not work for the whole square.</p>
+<p>Take as an admissible measuring measure the normalized area measure of the disc centered at <span class="math" data-index="372" data-tex="\((1/2,1/2)\)">\((1/2,1/2)\)</span> with radius <span class="math" data-index="373" data-tex="\(1/4\)">\(1/4\)</span>. Its support is compact in <span class="math" data-index="374" data-tex="\(X\)">\(X\)</span>; NP10 of L131 gives its globally continuous logarithmic potential. Thus ordinary convergence fails at every point of a measure satisfying exactly (SC1.5)'s hypothesis. The upper-limit equality still holds everywhere.</p>
+<figure><img class="course-figure" width="2484" height="864" src="reproduce/L134/figures/moving-logarithmic-wells.png" alt="A nearby well and a distant center give different subsequences in each finite grid block." /><figcaption class="native"><a href="reproduce/L134/figures/moving-logarithmic-wells.png">Open full-size PNG</a> · <a href="reproduce/L134/figures/moving-logarithmic-wells.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> At level <span class="math" data-index="375" data-tex="\(m\)">\(m\)</span>, the mesh is <span class="math" data-index="376" data-tex="\(1/N_m\)">\(1/N_m\)</span>, and a well has value at most <span class="math" data-index="377" data-tex="\(-1\)">\(-1\)</span> within distance <span class="math" data-index="378" data-tex="\(e^{-m}\)">\(e^{-m}\)</span> of its center. The left panel shows the whole <span class="math" data-index="379" data-tex="\(m=1\)">\(m=1\)</span> grid and its covering discs. The middle panel shows the exact nearest-center distances for <span class="math" data-index="380" data-tex="\(x_0=(0.37,0.61)\)">\(x_0=(0.37,0.61)\)</span> at three levels, each bounded by <span class="math" data-index="381" data-tex="\(\sqrt2/(2N_m)\)">\(\sqrt2/(2N_m)\)</span>. The right panel samples one nearest-center value and the value at the fixed distant corner <span class="math" data-index="382" data-tex="\((1,0)\)">\((1,0)\)</span>, for <span class="math" data-index="383" data-tex="\(1\le m\le8\)">\(1\le m\le8\)</span>. The full sequence contains all <span class="math" data-index="384" data-tex="\((N_m+1)^2\)">\((N_m+1)^2\)</span> centers at each level. The finite samples illustrate the proof in (SC9.3)–(SC9.4), which applies to every level and every point.</p>
+<p><strong>Example 3: a lower-dimensional measuring measure.</strong> In the plane let <span class="math" data-index="385" data-tex="\(\sigma\)">\(\sigma\)</span> be uniform probability measure on the circle of radius <span class="math" data-index="386" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, inside an open disc <span class="math" data-index="387" data-tex="\(X\)">\(X\)</span> of larger radius. Its potential is</p>
+<span class="math math-display" id="SC9.5" data-index="388" data-tex="\[
+ (E_2*\sigma)(x)=\frac1{2\pi}\log\max(|x|,a).                \tag{SC9.5}
+\]">\[
+ (E_2*\sigma)(x)=\frac1{2\pi}\log\max(|x|,a).                \tag{SC9.5}
+\]</span>
+<p>To verify the formula, for <span class="math" data-index="389" data-tex="\(r&lt;a\)">\(r&lt;a\)</span> factor <span class="math" data-index="390" data-tex="\(a\)">\(a\)</span> from <span class="math" data-index="391" data-tex="\(|r-ae^{i\theta}|\)">\(|r-ae^{i\theta}|\)</span>. For fixed <span class="math" data-index="392" data-tex="\(q=r/a&lt;1\)">\(q=r/a&lt;1\)</span>, the absolutely uniformly convergent series</p>
+<span class="math math-display" data-index="393" data-tex="\[
+ \log|1-qe^{i\theta}|
+ =-\sum_{k\ge1}\frac{q^k}{k}\cos(k\theta)
+\]">\[
+ \log|1-qe^{i\theta}|
+ =-\sum_{k\ge1}\frac{q^k}{k}\cos(k\theta)
+\]</span>
+<p>has zero angular mean. It is the real part of the logarithmic power series: differentiating gives the geometric series, and the value at zero fixes the integration constant. For <span class="math" data-index="394" data-tex="\(r&gt;a\)">\(r&gt;a\)</span>, factor <span class="math" data-index="395" data-tex="\(r\)">\(r\)</span> and use <span class="math" data-index="396" data-tex="\(q=a/r\)">\(q=a/r\)</span>.</p>
+<p>For <span class="math" data-index="397" data-tex="\(r\)">\(r\)</span> near <span class="math" data-index="398" data-tex="\(a\)">\(a\)</span>, the bound <span class="math" data-index="399" data-tex="\(|r-ae^{i\theta}|\ge a|\sin\theta|\)">\(|r-ae^{i\theta}|\ge a|\sin\theta|\)</span>, together with a fixed finite upper bound, dominates the absolute logarithm by an integrable function. Indeed <span class="math" data-index="400" data-tex="\(|\log|\sin\theta||\)">\(|\log|\sin\theta||\)</span> is integrable: near each of its finitely many zeros, <span class="math" data-index="401" data-tex="\(|\sin\theta|\)">\(|\sin\theta|\)</span> is at least a positive constant times distance to that zero, and <span class="math" data-index="402" data-tex="\(\int_0^b|\log t|\,dt&lt;\infty\)">\(\int_0^b|\log t|\,dt&lt;\infty\)</span>. Dominated convergence proves that the circle value is the limit of the interior formula. This establishes (SC9.5) and global continuity. The theorem therefore controls the upper limit for arc-length almost every point on the circle, although its planar Lebesgue measure is zero.</p>
+<p><strong>Example 4: excluded norm endpoints.</strong> In three dimensions take <span class="math" data-index="403" data-tex="\(a_j=(1/j,0,0)\)">\(a_j=(1/j,0,0)\)</span>, <span class="math" data-index="404" data-tex="\(v_j(x)=E_3(x-a_j)\)">\(v_j(x)=E_3(x-a_j)\)</span> and <span class="math" data-index="405" data-tex="\(v(x)=E_3(x)\)">\(v(x)=E_3(x)\)</span>, on a ball containing the centers. Local <span class="math" data-index="406" data-tex="\(L^1\)">\(L^1\)</span> translation continuity from NP2 gives distributional convergence. For fixed <span class="math" data-index="407" data-tex="\(j\)">\(j\)</span>, <span class="math" data-index="408" data-tex="\(v\)">\(v\)</span> is bounded near <span class="math" data-index="409" data-tex="\(a_j\)">\(a_j\)</span>, while <span class="math" data-index="410" data-tex="\(v_j\)">\(v_j\)</span> has its <span class="math" data-index="411" data-tex="\(1/r\)">\(1/r\)</span> singularity. On a sufficiently small punctured ball there,</p>
+<span class="math math-display" data-index="412" data-tex="\[
+ |v_j-v|\ge\frac1{8\pi r}.
+\]">\[
+ |v_j-v|\ge\frac1{8\pi r}.
+\]</span>
+<p>The integral of its <span class="math" data-index="413" data-tex="\(p\)">\(p\)</span>-th power is infinite for <span class="math" data-index="414" data-tex="\(p\ge3\)">\(p\ge3\)</span>, by <span class="math" data-index="415" data-tex="\(\int_0^b r^{2-p}\,dr\)">\(\int_0^b r^{2-p}\,dr\)</span>. Thus the critical exponent cannot be added. Translated planar logarithmic kernels similarly have unbounded differences near their new centers, excluding general <span class="math" data-index="416" data-tex="\(L^\infty\)">\(L^\infty\)</span> convergence in the plane.</p>
+<p><a id="SC10"></a></p>
+<h2 id="sc10-a-separate-one-dimensional-statement">SC10. A separate one-dimensional statement</h2>
+<p>NP9 uses <span class="math" data-index="417" data-tex="\(E_1(x)=|x|/2\)">\(E_1(x)=|x|/2\)</span> and proves that nontrivial one-dimensional subharmonic functions are locally continuous and convex. This kernel is already continuous, so Lemma SC4 gives uniform local convergence of its cut-off positive-measure potentials without truncation. Corollary SC2 handles the harmonic remainders. Therefore distributional convergence of these one-dimensional functions implies local uniform convergence, every finite local <span class="math" data-index="418" data-tex="\(L^p\)">\(L^p\)</span> convergence, and pointwise convergence.</p>
+<p>Every positive finite compact measure has a continuous <span class="math" data-index="419" data-tex="\(E_1\)">\(E_1\)</span>-potential: its change between arguments <span class="math" data-index="420" data-tex="\(x,x&#x27;\)">\(x,x&#x27;\)</span> is at most <span class="math" data-index="421" data-tex="\(\sigma(\mathbb R)|x-x&#x27;|/2\)">\(\sigma(\mathbb R)|x-x&#x27;|/2\)</span>, by integrating the Lipschitz bound for <span class="math" data-index="422" data-tex="\(|x|/2\)">\(|x|/2\)</span>. These are direct supplements. The expression <span class="math" data-index="423" data-tex="\(1/(1-2)\)">\(1/(1-2)\)</span> in the higher-dimensional integrability formula supplies no positive exponent.</p>
+<p><a id="SC11"></a></p>
+<h2 id="sc11-exercises-with-complete-solutions">SC11. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> Compute the three kernel-cap errors in Figure 1.</p>
+<p><strong>Solution.</strong> In dimension three,</p>
+<span class="math math-display" data-index="424" data-tex="\[
+ \|R_\delta\|_1
+ =4\pi\int_0^\delta\frac1{4\pi}(r^{-1}-\delta^{-1})r^2\,dr
+ =\int_0^\delta(r-r^2/\delta)\,dr=\delta^2/6.
+\]">\[
+ \|R_\delta\|_1
+ =4\pi\int_0^\delta\frac1{4\pi}(r^{-1}-\delta^{-1})r^2\,dr
+ =\int_0^\delta(r-r^2/\delta)\,dr=\delta^2/6.
+\]</span>
+<p>The squared <span class="math" data-index="425" data-tex="\(L^2\)">\(L^2\)</span> error is</p>
+<span class="math math-display" data-index="426" data-tex="\[
+ \|R_\delta\|_2^2
+ =\frac1{4\pi}\int_0^\delta(1-r/\delta)^2\,dr
+ =\frac{\delta}{12\pi}.
+\]">\[
+ \|R_\delta\|_2^2
+ =\frac1{4\pi}\int_0^\delta(1-r/\delta)^2\,dr
+ =\frac{\delta}{12\pi}.
+\]</span>
+<p>Take the square root. In the plane,
+<span class="math" data-index="427" data-tex="\(\|R_\delta\|_1=\int_0^\delta r\log(\delta/r)\,dr=\delta^2/4\)">\(\|R_\delta\|_1=\int_0^\delta r\log(\delta/r)\,dr=\delta^2/4\)</span>.
+The last integral follows by parts; its boundary term <span class="math" data-index="428" data-tex="\(r^2\log r\)">\(r^2\log r\)</span> tends to zero.</p>
+<p><strong>Exercise 2.</strong> Why would choosing a shrinking radius <span class="math" data-index="429" data-tex="\(\delta_j\)">\(\delta_j\)</span> at the outset leave a gap in (SC5.2)? Give the correct argument.</p>
+<p><strong>Solution.</strong> Lemma SC4 concerns a fixed continuous kernel, not a family whose singularity becomes sharper with <span class="math" data-index="430" data-tex="\(j\)">\(j\)</span>. Given <span class="math" data-index="431" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, first choose one <span class="math" data-index="432" data-tex="\(\delta\)">\(\delta\)</span> with <span class="math" data-index="433" data-tex="\(2M\|R_\delta\|_p&lt;\varepsilon/2\)">\(2M\|R_\delta\|_p&lt;\varepsilon/2\)</span>. For that cap choose <span class="math" data-index="434" data-tex="\(J\)">\(J\)</span> so that the second term of (SC5.2) is below <span class="math" data-index="435" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> whenever <span class="math" data-index="436" data-tex="\(j\ge J\)">\(j\ge J\)</span>. This proves convergence without requiring a rate for weak convergence of the measures.</p>
+<p><strong>Exercise 3.</strong> Prove uniform convergence of the gradients of a distributionally convergent harmonic sequence on a compact interior set.</p>
+<p><strong>Solution.</strong> A fixed radial mean-value kernel represents each first derivative by pairing with the corresponding translated kernel derivative. The tests have one common compact support and depend continuously on the point in all smooth seminorms. Lemma SC2 gives uniform convergence of the finitely many gradient components. The proof never differentiates a merely pointwise limit.</p>
+<p><strong>Exercise 4.</strong> Where is positivity used in the passage from smooth-test to continuous-test convergence?</p>
+<p><strong>Solution.</strong> The cutoff bound <span class="math" data-index="437" data-tex="\(\mu_j(L)\le\langle\mu_j,\eta\rangle\)">\(\mu_j(L)\le\langle\mu_j,\eta\rangle\)</span> makes local masses uniformly bounded. It controls the uniform-approximation error in (SC3.2). Smooth-test convergence for signed measures does not by itself supply a total-variation bound, so that displayed argument would be unavailable. No mass bound outside the fixed compact neighborhood is needed.</p>
+<p><strong>Exercise 5.</strong> Show that a positive compact measure with continuous Newtonian potential has no atoms when <span class="math" data-index="438" data-tex="\(n\ge2\)">\(n\ge2\)</span>.</p>
+<p><strong>Solution.</strong> An atom of mass <span class="math" data-index="439" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> at <span class="math" data-index="440" data-tex="\(a\)">\(a\)</span> contributes <span class="math" data-index="441" data-tex="\(bE_n(0)=-\infty\)">\(bE_n(0)=-\infty\)</span> to the canonical potential there. In higher dimensions every other contribution is nonpositive. In the plane the positive part is bounded by compact support and finite mass. Thus the potential at <span class="math" data-index="442" data-tex="\(a\)">\(a\)</span> is <span class="math" data-index="443" data-tex="\(-\infty\)">\(-\infty\)</span>, contradicting (SC7.2). This is a necessary condition; it does not say every non-atomic measure has a continuous potential.</p>
+<p><strong>Exercise 6.</strong> Justify the two subsequences of the grid-block example and its failure of convergence for the admissible disc measure.</p>
+<p><strong>Solution.</strong> Rounding coordinates gives a center within <span class="math" data-index="444" data-tex="\(\sqrt2/(2N_m)&lt;e^{-m}\)">\(\sqrt2/(2N_m)&lt;e^{-m}\)</span>, hence a term at most <span class="math" data-index="445" data-tex="\(-1\)">\(-1\)</span> in each block. Choosing a far endpoint in each coordinate gives a corner at distance between <span class="math" data-index="446" data-tex="\(1/\sqrt2\)">\(1/\sqrt2\)</span> and <span class="math" data-index="447" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, whose logarithm divided by <span class="math" data-index="448" data-tex="\(m\)">\(m\)</span> tends to zero. Every term has upper bound <span class="math" data-index="449" data-tex="\((\log\sqrt2)/m\)">\((\log\sqrt2)/m\)</span>. Thus the upper limit is zero and the lower limit is at most <span class="math" data-index="450" data-tex="\(-1\)">\(-1\)</span> at every point. The disc measure has a continuous potential by NP10, and the failures occur everywhere on its support. Only the upper limit is promised by the theorem.</p>
+<p><strong>Exercise 7.</strong> Derive the almost-everywhere upper-limit equality without pointwise convergence or domination of negative parts.</p>
+<p><strong>Solution.</strong> Use a common finite upper bound <span class="math" data-index="451" data-tex="\(C\)">\(C\)</span>. Fatou applies to <span class="math" data-index="452" data-tex="\(C-v_j\ge0\)">\(C-v_j\ge0\)</span>, giving (SC8.1). The everywhere inequality gives <span class="math" data-index="453" data-tex="\(C-\limsup v_j\ge C-v\)">\(C-\limsup v_j\ge C-v\)</span>. Their integrals are equal and finite by (SC7.1); sets where their nonnegative difference exceeds <span class="math" data-index="454" data-tex="\(1/k\)">\(1/k\)</span> show that difference vanishes almost everywhere. Integrability of <span class="math" data-index="455" data-tex="\(v\)">\(v\)</span> also gives its almost-everywhere finiteness. No bound on negative spikes or on the lower limit was used.</p>
+<p><a id="SC12"></a></p>
+<h2 id="sc12-source-credit">SC12. Source credit</h2>
+<p>The classical statement is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Proposition 16.1.2, printed pages 304–305. The first edition appeared in 1983; the second printing is 1990, and the edition used here is the 2005 reprint. Both pointwise conclusions are upper-limit conclusions. The proof, cap estimates, grid-block example, circle computation, solutions and diagrams here are independently written. The exact earlier kernel and positive-measure arguments are credited and linked at the start.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/distributional-limits-of-subharmonic-functions.md" download>Download the complete lesson source</a>. Original proof exposition, examples, solutions and figures use CC0 1.0. The figure font notice is included below.</p><ul><li><a href="reproduce/L134/subharmonic-convergence-formal.md" download>subharmonic-convergence-formal.md</a></li>
+<li><a href="reproduce/L134/subharmonic-convergence-learner.md" download>subharmonic-convergence-learner.md</a></li>
+<li><a href="reproduce/L134/make_figures118.py" download>make_figures118.py</a></li>
+<li><a href="reproduce/L134/README-reproduce.md" download>README-reproduce.md</a></li>
+<li><a href="reproduce/L134/LICENSE.txt" download>LICENSE.txt</a></li>
+<li><a href="reproduce/L134/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li>
+<li><a href="reproduce/L134/figures/geometry.json" download>figures/geometry.json</a></li>
+<li><a href="reproduce/L134/figures/kernel-cap-and-norms.png" download>figures/kernel-cap-and-norms.png</a></li>
+<li><a href="reproduce/L134/figures/kernel-cap-and-norms.svg" download>figures/kernel-cap-and-norms.svg</a></li>
+<li><a href="reproduce/L134/figures/moving-logarithmic-wells.png" download>figures/moving-logarithmic-wells.png</a></li>
+<li><a href="reproduce/L134/figures/moving-logarithmic-wells.svg" download>figures/moving-logarithmic-wells.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a> · <a href="index.html">Course contents</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

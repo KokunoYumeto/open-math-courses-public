@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Weighted holomorphic extensions and their growth</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L144.html">Previous lesson</a> · <a href="#extension-statement">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#7-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="weighted-holomorphic-extensions-and-their-growth">Weighted holomorphic extensions and their growth</h1>
+<p><em>AN-02 · Lesson 145 · Original exposition by GPT-6.1 Sol (OpenAI), Ultra. Self-checked by the writing AI. October 2026. CC0 1.0.</em></p>
+<p>An entire function on a complex linear subspace always has an entire extension if we ignore growth: keep it independent of the missing coordinates. That obvious extension may have infinite norm in the desired weight. The problem here is to extend with a controlled weighted norm. A cutoff produces a finite-norm candidate near the subspace; a solved Cauchy–Riemann equation repairs its failure to be holomorphic.</p>
+<p>The <a href="#complete-proof">complete formal proof</a> writes all operator, restriction, iteration and growth steps. Its actual existence input is <a href="AN02-L144.html#general-psh-weighted-existence">L144 general PSH weighted existence</a>. The harmonic smoothing lemma <a href="AN02-L131.html#NP5">L131 NP5</a>, followed by an explicit joint Cauchy-series argument, turns the resulting weak equation into an entire function.</p>
+<h2 id="1-the-two-results">1. The two results</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(\phi\)">\(\phi\)</span> be a finite PSH function on <span class="math" data-index="1" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, <span class="math" data-index="2" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Assume a global unit-scale oscillation bound:</p>
+<span class="math math-display" id="eq-L145.1" data-index="3" data-tex="\[
+|\phi(z)-\phi(z&#x27;)|&lt;C\quad\text{if }|z-z&#x27;|&lt;1,
+\qquad C&gt;0.
+\tag{L145.1}
+\]">\[
+|\phi(z)-\phi(z&#x27;)|&lt;C\quad\text{if }|z-z&#x27;|&lt;1,
+\qquad C&gt;0.
+\tag{L145.1}
+\]</span>
+<p>Let <span class="math" data-index="4" data-tex="\(W\)">\(W\)</span> be a complex linear subspace of codimension <span class="math" data-index="5" data-tex="\(k\)">\(k\)</span>, <span class="math" data-index="6" data-tex="\(0\le k\le n\)">\(0\le k\le n\)</span>, and put <span class="math" data-index="7" data-tex="\(R(z)=1+|z|^2\)">\(R(z)=1+|z|^2\)</span>. Use ordinary induced Euclidean volume <span class="math" data-index="8" data-tex="\(dS\)">\(dS\)</span> on <span class="math" data-index="9" data-tex="\(W\)">\(W\)</span>. If <span class="math" data-index="10" data-tex="\(W=\{0\}\)">\(W=\{0\}\)</span>, its single point has measure 1.</p>
+<p><a id="extension-statement"></a></p>
+<p><strong>Weighted extension.</strong> Every entire <span class="math" data-index="11" data-tex="\(u\)">\(u\)</span> on <span class="math" data-index="12" data-tex="\(W\)">\(W\)</span> with finite <span class="math" data-index="13" data-tex="\(J_0=\int_W|u|^2e^{-\phi}dS\)">\(J_0=\int_W|u|^2e^{-\phi}dS\)</span> has an entire extension <span class="math" data-index="14" data-tex="\(U\)">\(U\)</span> satisfying</p>
+<span class="math math-display" id="eq-L145.2" data-index="15" data-tex="\[
+U|_W=u,\qquad
+\int_{\mathbb C^n}|U|^2e^{-\phi}R^{-3k}dV
+\le(6\pi e^C)^kJ_0.
+\tag{L145.2}
+\]">\[
+U|_W=u,\qquad
+\int_{\mathbb C^n}|U|^2e^{-\phi}R^{-3k}dV
+\le(6\pi e^C)^kJ_0.
+\tag{L145.2}
+\]</span>
+<p>For <span class="math" data-index="16" data-tex="\(k=0\)">\(k=0\)</span>, choose <span class="math" data-index="17" data-tex="\(U=u\)">\(U=u\)</span>; the factor is1 and no normal coordinate is added. For positive <span class="math" data-index="18" data-tex="\(k\)">\(k\)</span>, the restriction in (L145.2) holds at every point of <span class="math" data-index="19" data-tex="\(W\)">\(W\)</span>. An ambient almost-everywhere identity alone would not determine a function on that zero-volume subspace.</p>
+<p><a id="growth-statement"></a></p>
+<p><strong>Growth transfer.</strong> If instead <span class="math" data-index="20" data-tex="\(|u(z)|\le C_1e^{\phi(z)}\)">\(|u(z)|\le C_1e^{\phi(z)}\)</span> on <span class="math" data-index="21" data-tex="\(W\)">\(W\)</span>, with finite <span class="math" data-index="22" data-tex="\(C_1\ge0\)">\(C_1\ge0\)</span>, an entire extension satisfies</p>
+<span class="math math-display" id="eq-L145.3" data-index="23" data-tex="\[
+|U(z)|\le C_2(1+|z|)^{n+2k+1}e^{\phi(z)}
+\quad(z\in\mathbb C^n)
+\tag{L145.3}
+\]">\[
+|U(z)|\le C_2(1+|z|)^{n+2k+1}e^{\phi(z)}
+\quad(z\in\mathbb C^n)
+\tag{L145.3}
+\]</span>
+<p>for some finite <span class="math" data-index="24" data-tex="\(C_2\)">\(C_2\)</span>. This hypothesis need not give finite <span class="math" data-index="25" data-tex="\(J_0\)">\(J_0\)</span>. The proof changes the weight first. The displayed polynomial exponent is the exact source exponent; no optimality assertion accompanies it.</p>
+<h2 id="2-build-the-extension-one-coordinate-at-a-time">2. Build the extension one coordinate at a time</h2>
+<p>Use orthonormal complex coordinates in which a hyperplane is <span class="math" data-index="26" data-tex="\(w=0\)">\(w=0\)</span>, with <span class="math" data-index="27" data-tex="\(z=(\zeta,w)\)">\(z=(\zeta,w)\)</span>. Unitary coordinates preserve lengths, induced volumes and PSH. For one step we need only</p>
+<span class="math math-display" id="eq-L145.4" data-index="28" data-tex="\[
+\theta(\zeta,w)\ge\theta(\zeta,0)-C\quad(|w|&lt;1).
+\tag{L145.4}
+\]">\[
+\theta(\zeta,w)\ge\theta(\zeta,0)-C\quad(|w|&lt;1).
+\tag{L145.4}
+\]</span>
+<p>This compares the weight in the normal unit disk with its value on the hyperplane. It makes the norm of the normal-independent candidate in that disk at most <span class="math" data-index="29" data-tex="\(\pi e^C\)">\(\pi e^C\)</span> times its hyperplane norm.</p>
+<p>Take a continuous Lipschitz cutoff that is1 on <span class="math" data-index="30" data-tex="\(|w|\le1/2\)">\(|w|\le1/2\)</span>, equals <span class="math" data-index="31" data-tex="\(2(1-|w|)\)">\(2(1-|w|)\)</span> between radii1/2 and1, and is0 for <span class="math" data-index="32" data-tex="\(|w|\ge1\)">\(|w|\ge1\)</span>. Its weak antiholomorphic derivative is</p>
+<span class="math math-display" id="eq-L145.5" data-index="33" data-tex="\[
+\bar\partial_w\eta=-\frac{w}{|w|}\mathbf1_{\{1/2&lt;|w|&lt;1\}}.
+\tag{L145.5}
+\]">\[
+\bar\partial_w\eta=-\frac{w}{|w|}\mathbf1_{\{1/2&lt;|w|&lt;1\}}.
+\tag{L145.5}
+\]</span>
+<p>The cutoff values match at both joining circles, so first weak derivatives have no circle-supported jump term. The candidate <span class="math" data-index="34" data-tex="\(\eta(w)u(\zeta)\)">\(\eta(w)u(\zeta)\)</span> agrees with the datum near the hyperplane, but its derivative is not zero in the annulus. Define the last coefficient of a closed form by</p>
+<span class="math math-display" id="eq-L145.6" data-index="35" data-tex="\[
+f_d=\frac{u(\zeta)}w\bar\partial_w\eta
+=-\frac{u(\zeta)}{|w|}\mathbf1_{\{1/2&lt;|w|&lt;1\}},
+\qquad f_1=\cdots=f_{d-1}=0.
+\tag{L145.6}
+\]">\[
+f_d=\frac{u(\zeta)}w\bar\partial_w\eta
+=-\frac{u(\zeta)}{|w|}\mathbf1_{\{1/2&lt;|w|&lt;1\}},
+\qquad f_1=\cdots=f_{d-1}=0.
+\tag{L145.6}
+\]</span>
+<p>There is no singular coefficient at0: the annulus stays away from0, and the definition is zero near it. The cross derivatives vanish because <span class="math" data-index="36" data-tex="\(u\)">\(u\)</span> is holomorphic in every <span class="math" data-index="37" data-tex="\(\zeta\)">\(\zeta\)</span> coordinate. In dimension one closedness is automatic.</p>
+<p>If <span class="math" data-index="38" data-tex="\(J=\int|u|^2e^{-\theta(\zeta,0)}dV(\zeta)\)">\(J=\int|u|^2e^{-\theta(\zeta,0)}dV(\zeta)\)</span>, then <span class="math" data-index="39" data-tex="\(|f_d|\le2|u|\)">\(|f_d|\le2|u|\)</span> on the normal tube. L144 provides <span class="math" data-index="40" data-tex="\(v\)">\(v\)</span> with</p>
+<span class="math math-display" id="eq-L145.7" data-index="41" data-tex="\[
+\bar\partial v=f,\qquad
+\int|v|^2e^{-\theta}R^{-2}dV\le2\pi e^C J.
+\tag{L145.7}
+\]">\[
+\bar\partial v=f,\qquad
+\int|v|^2e^{-\theta}R^{-2}dV\le2\pi e^C J.
+\tag{L145.7}
+\]</span>
+<p>Now put</p>
+<span class="math math-display" id="eq-L145.8" data-index="42" data-tex="\[
+U=\eta(w)u(\zeta)-wv.
+\tag{L145.8}
+\]">\[
+U=\eta(w)u(\zeta)-wv.
+\tag{L145.8}
+\]</span>
+<p>Initially this is an almost-everywhere locally square-integrable formula. Its distributional Cauchy–Riemann derivatives vanish, because multiplication by the holomorphic <span class="math" data-index="43" data-tex="\(w\)">\(w\)</span> cancels exactly the error in (L145.6). Formal E3 proves that it has an entire representative: zero antiholomorphic derivatives give zero Laplacian, NP5 gives a smooth representative, and iterated coordinate Cauchy formulas give a joint power series.</p>
+<p><a id="learner-restriction"></a></p>
+<p>Why does the entire representative still equal <span class="math" data-index="44" data-tex="\(u\)">\(u\)</span> on the hyperplane? On <span class="math" data-index="45" data-tex="\(|w|&lt;1/2\)">\(|w|&lt;1/2\)</span>, its entire difference <span class="math" data-index="46" data-tex="\(G=U-u\)">\(G=U-u\)</span> equals <span class="math" data-index="47" data-tex="\(-wv\)">\(-wv\)</span> almost everywhere. A nonzero value <span class="math" data-index="48" data-tex="\(G(\zeta_0,0)\)">\(G(\zeta_0,0)\)</span> would, by continuity, make <span class="math" data-index="49" data-tex="\(|G|\)">\(|G|\)</span> bounded below on a product neighborhood. Then <span class="math" data-index="50" data-tex="\(|v|\)">\(|v|\)</span> would be at least a positive constant times <span class="math" data-index="51" data-tex="\(1/|w|\)">\(1/|w|\)</span>, while</p>
+<span class="math math-display" id="eq-L145.9" data-index="52" data-tex="\[
+\int_{0&lt;|w|&lt;\varepsilon}|w|^{-2}dA(w)
+=2\pi\int_0^\varepsilon\frac{dr}{r}=\infty.
+\tag{L145.9}
+\]">\[
+\int_{0&lt;|w|&lt;\varepsilon}|w|^{-2}dA(w)
+=2\pi\int_0^\varepsilon\frac{dr}{r}=\infty.
+\tag{L145.9}
+\]</span>
+<p>This contradicts the local square integrability supplied by (L145.7). Fubini includes the positive tangential volume; when there is no tangential coordinate, its factor is1. The restriction therefore holds pointwise. It was not obtained by arbitrarily assigning a value to <span class="math" data-index="53" data-tex="\(v\)">\(v\)</span> at <span class="math" data-index="54" data-tex="\(w=0\)">\(w=0\)</span>.</p>
+<figure><img class="course-figure" width="2278" height="918" src="reproduce/L145/figures/normal-cutoff-and-trace.png" alt="The normal cutoff, annular error and local square-integrability obstruction" /><figcaption class="native"><a href="reproduce/L145/figures/normal-cutoff-and-trace.png">Open full-size PNG</a> · <a href="reproduce/L145/figures/normal-cutoff-and-trace.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1. The normal coordinate is one complex plane; the error factor is shown for unit datum <span class="math" data-index="55" data-tex="\(u=1\)">\(u=1\)</span>. The cutoff changes only between radii1/2 and1; the error divided by the datum has modulus <span class="math" data-index="56" data-tex="\(1/r\)">\(1/r\)</span> on that annulus. Its exact square area integral is <span class="math" data-index="57" data-tex="\(2\pi\log2\)">\(2\pi\log2\)</span>, below the coarse bound <span class="math" data-index="58" data-tex="\(4\pi\)">\(4\pi\)</span> used in the theorem. A nonzero holomorphic trace difference would instead force a normal pole down to radius 0; its truncated square integral is <span class="math" data-index="59" data-tex="\(2\pi\log(1/\varepsilon)\)">\(2\pi\log(1/\varepsilon)\)</span>, which diverges. The right panel shows that different, hypothetical obstruction, not the actual correction returned by the theorem. Proof locators: formal E4, EX11–EX18. Human source: Hörmander II, Theorem 15.1.3, printed pp. 274–275.</em></p>
+<h2 id="3-track-the-constant-and-the-three-lost-powers">3. Track the constant and the three lost powers</h2>
+<p>The elementary square inequality and <span class="math" data-index="60" data-tex="\(|w|^2\le R\)">\(|w|^2\le R\)</span> give</p>
+<span class="math math-display" id="eq-L145.10" data-index="61" data-tex="\[
+\begin{aligned}
+\int|U|^2e^{-\theta}R^{-3}dV
+&amp;\le2\int_{|w|&lt;1}|u|^2e^{-\theta}dV
+   +2\int|v|^2e^{-\theta}R^{-2}dV\\
+&amp;\le2\pi e^C J+4\pi e^C J=6\pi e^C J.
+\end{aligned}
+\tag{L145.10}
+\]">\[
+\begin{aligned}
+\int|U|^2e^{-\theta}R^{-3}dV
+&amp;\le2\int_{|w|&lt;1}|u|^2e^{-\theta}dV
+   +2\int|v|^2e^{-\theta}R^{-2}dV\\
+&amp;\le2\pi e^C J+4\pi e^C J=6\pi e^C J.
+\end{aligned}
+\tag{L145.10}
+\]</span>
+<p>The correction estimate already carries two powers of <span class="math" data-index="62" data-tex="\(R^{-1}\)">\(R^{-1}\)</span>. Multiplication by the normal coordinate adds the third. These exact inequalities account for the constant 6 and the exponent 3.</p>
+<p>For codimension <span class="math" data-index="63" data-tex="\(k\)">\(k\)</span>, take an orthogonal flag <span class="math" data-index="64" data-tex="\(W=E_0\subset E_1\subset\cdots\subset E_k=\mathbb C^n\)">\(W=E_0\subset E_1\subset\cdots\subset E_k=\mathbb C^n\)</span>, adding one complex normal coordinate at each step. Step <span class="math" data-index="65" data-tex="\(j\)">\(j\)</span> uses</p>
+<span class="math math-display" id="eq-L145.11" data-index="66" data-tex="\[
+\theta_j=\phi+3(j-1)\log R.
+\tag{L145.11}
+\]">\[
+\theta_j=\phi+3(j-1)\log R.
+\tag{L145.11}
+\]</span>
+<p>In an orthogonal normal split, <span class="math" data-index="67" data-tex="\(R(\zeta,w)=R(\zeta,0)+|w|^2\)">\(R(\zeta,w)=R(\zeta,0)+|w|^2\)</span>, so</p>
+<span class="math math-display" id="eq-L145.12" data-index="68" data-tex="\[
+\theta_j(\zeta,w)-\theta_j(\zeta,0)
+\ge-C+3(j-1)\log\left(1+\frac{|w|^2}{R(\zeta,0)}\right)
+\ge-C\quad(|w|&lt;1).
+\tag{L145.12}
+\]">\[
+\theta_j(\zeta,w)-\theta_j(\zeta,0)
+\ge-C+3(j-1)\log\left(1+\frac{|w|^2}{R(\zeta,0)}\right)
+\ge-C\quad(|w|&lt;1).
+\tag{L145.12}
+\]</span>
+<p>The one-sided constant stays <span class="math" data-index="69" data-tex="\(C\)">\(C\)</span>. Each output norm becomes the next input norm, with one extra factor <span class="math" data-index="70" data-tex="\(6\pi e^C\)">\(6\pi e^C\)</span> and three extra lost powers. Formal E6 proves all restrictions and norm bounds on this actual flag. The result is (L145.2), not a bound with a new oscillation constant at every stage.</p>
+<figure><img class="course-figure" width="2006" height="951" src="reproduce/L145/figures/codimension-and-norm-budgets.png" alt="Codimension iteration and two explicitly qualified norm bounds" /><figcaption class="native"><a href="reproduce/L145/figures/codimension-and-norm-budgets.png">Open full-size PNG</a> · <a href="reproduce/L145/figures/codimension-and-norm-budgets.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2. Step <span class="math" data-index="71" data-tex="\(j\)">\(j\)</span> has complex dimension <span class="math" data-index="72" data-tex="\(m+j\)">\(m+j\)</span> and weight loss <span class="math" data-index="73" data-tex="\(R^{-3j}\)">\(R^{-3j}\)</span>; it retains the same normal-comparison constant. The right panel plots proved upper bounds, with <span class="math" data-index="74" data-tex="\(C=1\)">\(C=1\)</span>, rather than actual solution norms. The universal bound is <span class="math" data-index="75" data-tex="\((6\pi e)^j\)">\((6\pi e)^j\)</span>. For the stronger normal-monotone example below, the direct extension has the smaller bound <span class="math" data-index="76" data-tex="\(B_j=\pi^j(2j-1)!/(3j-1)!\)">\(B_j=\pi^j(2j-1)!/(3j-1)!\)</span>, with <span class="math" data-index="77" data-tex="\(B_0=1\)">\(B_0=1\)</span>. Both curves are normalized by the initial finite norm. Formal E6 and E9 give their distinct hypotheses. Human source for the universal extension bound: Hörmander II, Theorem 15.1.3.</em></p>
+<h2 id="4-four-worked-examples">4. Four worked examples</h2>
+<h3 id="example-1-a-radial-weight-with-genuine-finite-data">Example 1. A radial weight with genuine finite data</h3>
+<p>Take <span class="math" data-index="78" data-tex="\(\phi(z)=\sqrt{1+|z|^2}\)">\(\phi(z)=\sqrt{1+|z|^2}\)</span>. Its real gradient has length <span class="math" data-index="79" data-tex="\(|z|/\sqrt{1+|z|^2}\le1\)">\(|z|/\sqrt{1+|z|^2}\le1\)</span>, so it satisfies (L145.1) with <span class="math" data-index="80" data-tex="\(C=1\)">\(C=1\)</span>. Its Levi form is positive: in a radial complex direction its eigenvalue is <span class="math" data-index="81" data-tex="\((2+|z|^2)/(4(1+|z|^2)^{3/2})\)">\((2+|z|^2)/(4(1+|z|^2)^{3/2})\)</span>, and in a complex orthogonal direction it is <span class="math" data-index="82" data-tex="\(1/(2\sqrt{1+|z|^2})\)">\(1/(2\sqrt{1+|z|^2})\)</span>. Exercise 5 verifies these formulas. A polynomial on <span class="math" data-index="83" data-tex="\(W\)">\(W\)</span> has finite weighted norm, because exponential radial decay dominates every polynomial. More explicitly, a degree<span class="math" data-index="84" data-tex="\(D\)">\(D\)</span> polynomial has modulus at most <span class="math" data-index="85" data-tex="\(A(1+r)^D\)">\(A(1+r)^D\)</span>. On the shell <span class="math" data-index="86" data-tex="\(\ell\le r&lt;\ell+1\)">\(\ell\le r&lt;\ell+1\)</span>, its weighted square integral is at most a fixed constant times <span class="math" data-index="87" data-tex="\((\ell+2)^{2D+2m}e^{-\ell}\)">\((\ell+2)^{2D+2m}e^{-\ell}\)</span>, where <span class="math" data-index="88" data-tex="\(m=\dim_\mathbb C W\)">\(m=\dim_\mathbb C W\)</span>. The ratios of successive terms tend to <span class="math" data-index="89" data-tex="\(e^{-1}&lt;1\)">\(e^{-1}&lt;1\)</span>, so their sum is finite. The case <span class="math" data-index="90" data-tex="\(m=0\)">\(m=0\)</span> is simply the finite point norm.</p>
+<p>Here <span class="math" data-index="91" data-tex="\(\phi(\zeta,w)\ge\phi(\zeta,0)\)">\(\phi(\zeta,w)\ge\phi(\zeta,0)\)</span> for every normal <span class="math" data-index="92" data-tex="\(w\)">\(w\)</span>. The direct entire extension <span class="math" data-index="93" data-tex="\(U(\zeta,w)=u(\zeta)\)">\(U(\zeta,w)=u(\zeta)\)</span> already works. For <span class="math" data-index="94" data-tex="\(k\ge1\)">\(k\ge1\)</span>, formal E9 gives</p>
+<span class="math math-display" id="eq-L145.13" data-index="95" data-tex="\[
+\int|U|^2e^{-\phi}R^{-3k}dV
+\le B_kJ_0,
+\qquad B_k=\pi^k\frac{(2k-1)!}{(3k-1)!}.
+\tag{L145.13}
+\]">\[
+\int|U|^2e^{-\phi}R^{-3k}dV
+\le B_kJ_0,
+\qquad B_k=\pi^k\frac{(2k-1)!}{(3k-1)!}.
+\tag{L145.13}
+\]</span>
+<p>This stronger example has an additional global normal-monotonicity property. It illustrates that the universal constant need not be attained. The general theorem does not assume this property.</p>
+<h3 id="example-2-a-point-datum-and-an-affine-weight">Example 2. A point datum and an affine weight</h3>
+<p>In <span class="math" data-index="96" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, let <span class="math" data-index="97" data-tex="\(W=\{0\}\)">\(W=\{0\}\)</span>, <span class="math" data-index="98" data-tex="\(\phi(z)=\operatorname{Re}z\)">\(\phi(z)=\operatorname{Re}z\)</span>, and <span class="math" data-index="99" data-tex="\(u(0)=c\)">\(u(0)=c\)</span>. Then <span class="math" data-index="100" data-tex="\(C=1\)">\(C=1\)</span> is valid, <span class="math" data-index="101" data-tex="\(J_0=|c|^2\)">\(J_0=|c|^2\)</span>, and the extension</p>
+<span class="math math-display" id="eq-L145.14" data-index="102" data-tex="\[
+U(z)=ce^{z/2}
+\tag{L145.14}
+\]">\[
+U(z)=ce^{z/2}
+\tag{L145.14}
+\]</span>
+<p>has <span class="math" data-index="103" data-tex="\(|U|^2e^{-\phi}=|c|^2\)">\(|U|^2e^{-\phi}=|c|^2\)</span>. Hence</p>
+<span class="math math-display" id="eq-L145.15" data-index="104" data-tex="\[
+\int_\mathbb C|U|^2e^{-\phi}(1+|z|^2)^{-3}dA
+=\frac\pi2|c|^2\le6\pi e,J_0.
+\tag{L145.15}
+\]">\[
+\int_\mathbb C|U|^2e^{-\phi}(1+|z|^2)^{-3}dA
+=\frac\pi2|c|^2\le6\pi e,J_0.
+\tag{L145.15}
+\]</span>
+<p>The constant extension <span class="math" data-index="105" data-tex="\(c\)">\(c\)</span> would have infinite norm when <span class="math" data-index="106" data-tex="\(c\ne0\)">\(c\ne0\)</span>: on a fixed-width strip extending toward negative real infinity the weight <span class="math" data-index="107" data-tex="\(e^{-\operatorname{Re}z}\)">\(e^{-\operatorname{Re}z}\)</span> outgrows the polynomial denominator. Keeping the datum independent of normal coordinates is therefore not a general weighted solution. For the stated divergence, write <span class="math" data-index="108" data-tex="\(z=-t+iy\)">\(z=-t+iy\)</span>, <span class="math" data-index="109" data-tex="\(t\ge1\)">\(t\ge1\)</span>, <span class="math" data-index="110" data-tex="\(0\le y\le1\)">\(0\le y\le1\)</span>. Then <span class="math" data-index="111" data-tex="\(R(z)\le3t^2\)">\(R(z)\le3t^2\)</span>, so the integrand is at least <span class="math" data-index="112" data-tex="\(|c|^2e^t/(27t^6)\)">\(|c|^2e^t/(27t^6)\)</span>. The positive exponential series gives <span class="math" data-index="113" data-tex="\(e^t\ge t^7/7!\)">\(e^t\ge t^7/7!\)</span>, which makes that strip integral infinite.</p>
+<h3 id="example-3-a-normal-affine-drift-with-nonzero-tangential-data">Example 3. A normal affine drift with nonzero tangential data</h3>
+<p>In <span class="math" data-index="114" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, with coordinates <span class="math" data-index="115" data-tex="\((\zeta,w)\)">\((\zeta,w)\)</span>, let</p>
+<span class="math math-display" id="eq-L145.16" data-index="116" data-tex="\[
+\phi(\zeta,w)=\sqrt{1+|\zeta|^2}+\operatorname{Re}w,
+\quad W=\{w=0\},\quad u(\zeta)=\zeta^p,
+\quad p\in\mathbb N\cup\{0\}.
+\tag{L145.16}
+\]">\[
+\phi(\zeta,w)=\sqrt{1+|\zeta|^2}+\operatorname{Re}w,
+\quad W=\{w=0\},\quad u(\zeta)=\zeta^p,
+\quad p\in\mathbb N\cup\{0\}.
+\tag{L145.16}
+\]</span>
+<p>The weight is PSH, and its real gradient has length at most <span class="math" data-index="117" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>, so <span class="math" data-index="118" data-tex="\(C=\sqrt2\)">\(C=\sqrt2\)</span> is valid. The tangential norm <span class="math" data-index="119" data-tex="\(J_0\)">\(J_0\)</span> is finite. The explicit extension <span class="math" data-index="120" data-tex="\(U=\zeta^p e^{w/2}\)">\(U=\zeta^p e^{w/2}\)</span> cancels the normal affine drift in its squared weighted modulus. Integrating first in <span class="math" data-index="121" data-tex="\(w\)">\(w\)</span> gives</p>
+<span class="math math-display" id="eq-L145.17" data-index="122" data-tex="\[
+\int_{\mathbb C^2}|U|^2e^{-\phi}R^{-3}dV
+=\frac\pi2\int_\mathbb C|\zeta|^{2p}e^{-\sqrt{1+|\zeta|^2}}
+(1+|\zeta|^2)^{-2}dA(\zeta)
+\le\frac\pi2J_0.
+\tag{L145.17}
+\]">\[
+\int_{\mathbb C^2}|U|^2e^{-\phi}R^{-3}dV
+=\frac\pi2\int_\mathbb C|\zeta|^{2p}e^{-\sqrt{1+|\zeta|^2}}
+(1+|\zeta|^2)^{-2}dA(\zeta)
+\le\frac\pi2J_0.
+\tag{L145.17}
+\]</span>
+<p>Its normal weight difference can be negative: at <span class="math" data-index="123" data-tex="\(\zeta=2,w=-3/4\)">\(\zeta=2,w=-3/4\)</span>, it equals <span class="math" data-index="124" data-tex="\(-3/4\)">\(-3/4\)</span>. Adding <span class="math" data-index="125" data-tex="\(3\ell\log R\)">\(3\ell\log R\)</span>, <span class="math" data-index="126" data-tex="\(\ell\ge0\)">\(\ell\ge0\)</span>, changes that difference to</p>
+<span class="math math-display" id="eq-L145.18" data-index="127" data-tex="\[
+-\frac34+3\ell\log\left(1+\frac9{80}\right)\ge-\frac34&gt;-\sqrt2.
+\tag{L145.18}
+\]">\[
+-\frac34+3\ell\log\left(1+\frac9{80}\right)\ge-\frac34&gt;-\sqrt2.
+\tag{L145.18}
+\]</span>
+<p>This is an exact example of the one-sided comparison retaining its original lower bound despite the added logarithms.</p>
+<h3 id="example-4-growth-data-without-the-original-finite-square-norm">Example 4. Growth data without the original finite square norm</h3>
+<p>Let <span class="math" data-index="128" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-index="129" data-tex="\(W=\{z_2=0\}\)">\(W=\{z_2=0\}\)</span>, <span class="math" data-index="130" data-tex="\(\phi(z)=\operatorname{Re}z_1\)">\(\phi(z)=\operatorname{Re}z_1\)</span>, and <span class="math" data-index="131" data-tex="\(u(z_1)=e^{z_1}\)">\(u(z_1)=e^{z_1}\)</span>. The growth premise holds with <span class="math" data-index="132" data-tex="\(C_1=1\)">\(C_1=1\)</span>, and the unit-oscillation bound holds with <span class="math" data-index="133" data-tex="\(C=1\)">\(C=1\)</span>. But</p>
+<span class="math math-display" id="eq-L145.19" data-index="134" data-tex="\[
+\int_W|u|^2e^{-\phi}dS
+=\int_\mathbb C e^{\operatorname{Re}z_1}dA=\infty.
+\tag{L145.19}
+\]">\[
+\int_W|u|^2e^{-\phi}dS
+=\int_\mathbb C e^{\operatorname{Re}z_1}dA=\infty.
+\tag{L145.19}
+\]</span>
+<p>The growth corollary still applies. Here <span class="math" data-index="135" data-tex="\(m=1\)">\(m=1\)</span>, <span class="math" data-index="136" data-tex="\(\beta=m+1=2\)">\(\beta=m+1=2\)</span>, <span class="math" data-index="137" data-tex="\(N=n+2k+1=5\)">\(N=n+2k+1=5\)</span>, and its modified input norm is</p>
+<span class="math math-display" id="eq-L145.20" data-index="138" data-tex="\[
+\int_\mathbb C|u|^2e^{-2\phi}(1+|z_1|^2)^{-2}dA=\pi.
+\tag{L145.20}
+\]">\[
+\int_\mathbb C|u|^2e^{-2\phi}(1+|z_1|^2)^{-2}dA=\pi.
+\tag{L145.20}
+\]</span>
+<p>The explicit entire extension <span class="math" data-index="139" data-tex="\(U=e^{z_1}\)">\(U=e^{z_1}\)</span> even satisfies the growth bound with <span class="math" data-index="140" data-tex="\(C_2=1\)">\(C_2=1\)</span>, because <span class="math" data-index="141" data-tex="\((1+|z|)^5\ge1\)">\((1+|z|)^5\ge1\)</span>. Its full modified square norm is <span class="math" data-index="142" data-tex="\(\int_{\mathbb C^2}(1+|z|^2)^{-5}dV=\pi^2/12\)">\(\int_{\mathbb C^2}(1+|z|^2)^{-5}dV=\pi^2/12\)</span>. This confirms why the corollary must not silently impose the original norm hypothesis.</p>
+<h2 id="5-the-growth-proof-in-a-few-exact-steps">5. The growth proof in a few exact steps</h2>
+<p>Put <span class="math" data-index="143" data-tex="\(m=n-k\)">\(m=n-k\)</span>, <span class="math" data-index="144" data-tex="\(\beta=m+1\)">\(\beta=m+1\)</span>, and <span class="math" data-index="145" data-tex="\(\Theta=2\phi+\beta\log R\)">\(\Theta=2\phi+\beta\log R\)</span>. The logarithm is PSH and globally 1-Lipschitz, so <span class="math" data-index="146" data-tex="\(\Theta\)">\(\Theta\)</span> has unit-oscillation constant <span class="math" data-index="147" data-tex="\(C_*=2C+\beta\)">\(C_*=2C+\beta\)</span>. The growth datum satisfies</p>
+<span class="math math-display" id="eq-L145.21" data-index="148" data-tex="\[
+\int_W|u|^2e^{-\Theta}dS
+\le C_1^2\int_W R^{-(m+1)}dS
+=C_1^2\frac{\pi^m}{m!}.
+\tag{L145.21}
+\]">\[
+\int_W|u|^2e^{-\Theta}dS
+\le C_1^2\int_W R^{-(m+1)}dS
+=C_1^2\frac{\pi^m}{m!}.
+\tag{L145.21}
+\]</span>
+<p>Formal E7 proves that radial integral using a positive Laplace integral and the Gaussian integral. Applying weighted extension gives finite</p>
+<span class="math math-display" id="eq-L145.22" data-index="149" data-tex="\[
+A=\int|U|^2e^{-2\phi}R^{-N}dV,
+\qquad N=(m+1)+3k=n+2k+1.
+\tag{L145.22}
+\]">\[
+A=\int|U|^2e^{-2\phi}R^{-N}dV,
+\qquad N=(m+1)+3k=n+2k+1.
+\tag{L145.22}
+\]</span>
+<p>The entire <span class="math" data-index="150" data-tex="\(U\)">\(U\)</span> is harmonic. Average over the unit ball centered at <span class="math" data-index="151" data-tex="\(z\)">\(z\)</span>, use weighted Cauchy–Schwarz, and compare the weight there with its center value. Since <span class="math" data-index="152" data-tex="\(\phi(w)&lt;\phi(z)+C\)">\(\phi(w)&lt;\phi(z)+C\)</span> and <span class="math" data-index="153" data-tex="\(1+|w|^2\le2(1+|z|)^2\)">\(1+|w|^2\le2(1+|z|)^2\)</span> on that ball,</p>
+<span class="math math-display" id="eq-L145.23" data-index="154" data-tex="\[
+|U(z)|^2\le\frac{A}{b_n}e^{2\phi(z)+2C}2^N(1+|z|)^{2N},
+\quad b_n=|B_{\mathbb R^{2n}}(0,1)|.
+\tag{L145.23}
+\]">\[
+|U(z)|^2\le\frac{A}{b_n}e^{2\phi(z)+2C}2^N(1+|z|)^{2N},
+\quad b_n=|B_{\mathbb R^{2n}}(0,1)|.
+\tag{L145.23}
+\]</span>
+<p>Taking square roots proves (L145.3). Formal E8 writes both weighted integrals in this Cauchy–Schwarz step; the pointwise bound is obtained from the fixed-radius ball mean, not from arbitrary pointwise evaluation of an <span class="math" data-index="155" data-tex="\(L^2\)">\(L^2\)</span> representative.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li><strong>Basic.</strong> Verify the weak derivative of the cutoff, including the absence of first-derivative measures on the joining circles. Compute the exact square area integral of <span class="math" data-index="156" data-tex="\(\bar\partial\eta/w\)">\(\bar\partial\eta/w\)</span>.</li>
+<li><strong>Basic.</strong> Why does an almost-everywhere ambient identity not by itself establish a restriction on <span class="math" data-index="157" data-tex="\(W\)">\(W\)</span>? Reproduce the normal-pole contradiction, including the zero-dimensional tangential case.</li>
+<li><strong>Intermediate.</strong> Derive every factor in <span class="math" data-index="158" data-tex="\(6\pi e^C\)">\(6\pi e^C\)</span> and explain the loss of exactly three powers of <span class="math" data-index="159" data-tex="\(R^{-1}\)">\(R^{-1}\)</span> in one step.</li>
+<li><strong>Intermediate.</strong> Verify the lower comparison in the <span class="math" data-index="160" data-tex="\(j\)">\(j\)</span>-th flag step. Explain why estimating a new two-sided oscillation constant is unnecessary for iteration.</li>
+<li><strong>Intermediate.</strong> Prove that <span class="math" data-index="161" data-tex="\(\sqrt{1+|z|^2}\)">\(\sqrt{1+|z|^2}\)</span> is PSH and has the required unit-oscillation bound. Why does <span class="math" data-index="162" data-tex="\(a|z|^2\)">\(a|z|^2\)</span>, <span class="math" data-index="163" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, fail this global bound?</li>
+<li><strong>Intermediate.</strong> Prove (EX32), and compute <span class="math" data-index="164" data-tex="\(B_1,B_2,B_3\)">\(B_1,B_2,B_3\)</span>. State the additional assumption needed to apply these bounds to the normal-independent extension.</li>
+<li><strong>Intermediate.</strong> Compute <span class="math" data-index="165" data-tex="\(m,\beta,C_*,N\)">\(m,\beta,C_*,N\)</span> for <span class="math" data-index="166" data-tex="\(n=4,k=2\)">\(n=4,k=2\)</span>. Explain why <span class="math" data-index="167" data-tex="\(2\phi\)">\(2\phi\)</span>, rather than <span class="math" data-index="168" data-tex="\(\phi\)">\(\phi\)</span> alone, occurs in the growth proof.</li>
+<li><strong>Intermediate.</strong> Verify all norm and growth assertions in Example 4, including <span class="math" data-index="169" data-tex="\(\pi^2/12\)">\(\pi^2/12\)</span>, without a numerical approximation.</li>
+<li><strong>Advanced.</strong> Explain how unitary coordinates and the <span class="math" data-index="170" data-tex="\(k\)">\(k\)</span>-step restriction chain cover an arbitrary complex linear subspace, including <span class="math" data-index="171" data-tex="\(W=\{0\}\)">\(W=\{0\}\)</span>. Identify the measure used in that endpoint case.</li>
+<li><strong>Advanced.</strong> Write the full weighted Cauchy–Schwarz inequality for the harmonic ball mean. Recover the constant in (L145.23) and explain which quantities remain fixed when evaluating different centers.</li>
+</ol>
+<h2 id="7-complete-solutions">7. Complete solutions</h2>
+<p><strong>1.</strong> On the middle annulus the radial slope is <span class="math" data-index="172" data-tex="\(-2\)">\(-2\)</span>. Since <span class="math" data-index="173" data-tex="\(\bar\partial |w|=w/(2|w|)\)">\(\bar\partial |w|=w/(2|w|)\)</span>, the derivative is <span class="math" data-index="174" data-tex="\(-w/|w|\)">\(-w/|w|\)</span>; it is zero on the two constant regions. Integration by parts on the three pieces gives opposite boundary contributions at each joining circle with the same cutoff value, so they cancel. First derivatives therefore have no circle-supported term. The quotient has modulus <span class="math" data-index="175" data-tex="\(1/r\)">\(1/r\)</span> on <span class="math" data-index="176" data-tex="\(1/2&lt;r&lt;1\)">\(1/2&lt;r&lt;1\)</span>, hence</p>
+<span class="math math-display" id="eq-L145.24" data-index="177" data-tex="\[
+\int_\mathbb C\left|\frac{\bar\partial\eta}{w}\right|^2dA
+=2\pi\int_{1/2}^1\frac{dr}{r}=2\pi\log2.
+\tag{L145.24}
+\]">\[
+\int_\mathbb C\left|\frac{\bar\partial\eta}{w}\right|^2dA
+=2\pi\int_{1/2}^1\frac{dr}{r}=2\pi\log2.
+\tag{L145.24}
+\]</span>
+<p>This is at most <span class="math" data-index="178" data-tex="\(4\pi\)">\(4\pi\)</span>, the coarse bound from modulus at most2 on a disk of area <span class="math" data-index="179" data-tex="\(\pi\)">\(\pi\)</span>. The sharper integral could improve a one-step estimate, but is not needed to prove the source's constant.</p>
+<p><strong>2.</strong> A positive-codimension subspace has zero ambient volume, so an ambient almost-everywhere equality can omit it entirely. Instead, both <span class="math" data-index="180" data-tex="\(U\)">\(U\)</span> and the normal-independent <span class="math" data-index="181" data-tex="\(u\)">\(u\)</span> are entire, and their difference <span class="math" data-index="182" data-tex="\(G\)">\(G\)</span> is continuous. A nonzero value at a point of the subspace gives <span class="math" data-index="183" data-tex="\(|G|\ge c&gt;0\)">\(|G|\ge c&gt;0\)</span> on a product neighborhood. There <span class="math" data-index="184" data-tex="\(G=-wv\)">\(G=-wv\)</span> almost everywhere off the axis, implying <span class="math" data-index="185" data-tex="\(|v|^2\ge c^2|w|^{-2}\)">\(|v|^2\ge c^2|w|^{-2}\)</span>. The integral <span class="math" data-index="186" data-tex="\(2\pi\int_0^\varepsilon dr/r\)">\(2\pi\int_0^\varepsilon dr/r\)</span> is infinite. Fubini multiplies it by a positive finite tangential neighborhood volume, contradicting local <span class="math" data-index="187" data-tex="\(L^2\)">\(L^2\)</span>. With no tangential coordinates that multiplier is1, and the same normal integral proves the point restriction. No selected value of <span class="math" data-index="188" data-tex="\(v\)">\(v\)</span> on the axis was used.</p>
+<p><strong>3.</strong> The normal tube comparison has factor <span class="math" data-index="189" data-tex="\(\pi e^C\)">\(\pi e^C\)</span>. The last data coefficient has modulus at most <span class="math" data-index="190" data-tex="\(2|u|\)">\(2|u|\)</span>, giving data square norm at most <span class="math" data-index="191" data-tex="\(4\pi e^C J\)">\(4\pi e^C J\)</span>. L144's estimate divides that bound by2, giving the correction norm at most <span class="math" data-index="192" data-tex="\(2\pi e^C J\)">\(2\pi e^C J\)</span> with weight <span class="math" data-index="193" data-tex="\(R^{-2}\)">\(R^{-2}\)</span>. The square of the difference in (L145.8) is at most twice each square. The cutoff part therefore costs at most <span class="math" data-index="194" data-tex="\(2\pi e^C J\)">\(2\pi e^C J\)</span>; the correction part costs at most <span class="math" data-index="195" data-tex="\(4\pi e^C J\)">\(4\pi e^C J\)</span>. Their sum is <span class="math" data-index="196" data-tex="\(6\pi e^C J\)">\(6\pi e^C J\)</span>. Since <span class="math" data-index="197" data-tex="\(|w|^2R^{-3}\le R^{-2}\)">\(|w|^2R^{-3}\le R^{-2}\)</span>, multiplication by <span class="math" data-index="198" data-tex="\(w\)">\(w\)</span> is paid for by one extra inverse power. The two powers already present in the solved equation become three.</p>
+<p><strong>4.</strong> Orthogonal coordinates give <span class="math" data-index="199" data-tex="\(R(\zeta,w)=R(\zeta,0)+|w|^2\)">\(R(\zeta,w)=R(\zeta,0)+|w|^2\)</span>. The original oscillation assumption gives <span class="math" data-index="200" data-tex="\(\phi(\zeta,w)-\phi(\zeta,0)&gt;-C\)">\(\phi(\zeta,w)-\phi(\zeta,0)&gt;-C\)</span> for <span class="math" data-index="201" data-tex="\(|w|&lt;1\)">\(|w|&lt;1\)</span>. The additional logarithm contributes a nonnegative term, proving (L145.12). The hyperplane lemma assumes only that lower comparison. It does not need the absolute difference of the two modified weights bounded by the same <span class="math" data-index="202" data-tex="\(C\)">\(C\)</span>. Thus every flag step keeps the same factor <span class="math" data-index="203" data-tex="\(6\pi e^C\)">\(6\pi e^C\)</span>, and multiplication gives the <span class="math" data-index="204" data-tex="\(k\)">\(k\)</span>-th power in (L145.2).</p>
+<p><strong>5.</strong> For <span class="math" data-index="205" data-tex="\(s=|z|^2\)">\(s=|z|^2\)</span>, let <span class="math" data-index="206" data-tex="\(h(s)=\sqrt{1+s}\)">\(h(s)=\sqrt{1+s}\)</span>. Then <span class="math" data-index="207" data-tex="\(h&#x27;=1/(2\sqrt{1+s})\)">\(h&#x27;=1/(2\sqrt{1+s})\)</span> and <span class="math" data-index="208" data-tex="\(h&#x27;&#x27;=-1/(4(1+s)^{3/2})\)">\(h&#x27;&#x27;=-1/(4(1+s)^{3/2})\)</span>. Its Levi matrix is <span class="math" data-index="209" data-tex="\(h&#x27;\delta_{jk}+h&#x27;&#x27;\overline z_jz_k\)">\(h&#x27;\delta_{jk}+h&#x27;&#x27;\overline z_jz_k\)</span>. The complex radial eigenvalue is</p>
+<span class="math math-display" id="eq-L145.25" data-index="210" data-tex="\[
+h&#x27;+s h&#x27;&#x27;=\frac{2+s}{4(1+s)^{3/2}}&gt;0,
+\tag{L145.25}
+\]">\[
+h&#x27;+s h&#x27;&#x27;=\frac{2+s}{4(1+s)^{3/2}}&gt;0,
+\tag{L145.25}
+\]</span>
+<p>and every complex orthogonal eigenvalue is <span class="math" data-index="211" data-tex="\(h&#x27;&gt;0\)">\(h&#x27;&gt;0\)</span>. At zero all eigenvalues are1/2. Positive Levi form gives the circle submean inequality along each line by the usual real Laplacian/mean calculation, so the smooth function is PSH. Its real gradient length is <span class="math" data-index="212" data-tex="\(r/\sqrt{1+r^2}\le1\)">\(r/\sqrt{1+r^2}\le1\)</span>; integrating along a segment makes it1-Lipschitz, so differences at distance less than1 are less than1. In contrast, for real points <span class="math" data-index="213" data-tex="\(z=r\)">\(z=r\)</span> and <span class="math" data-index="214" data-tex="\(z&#x27;=r+1/2\)">\(z&#x27;=r+1/2\)</span> in one coordinate, the difference of <span class="math" data-index="215" data-tex="\(a|z|^2\)">\(a|z|^2\)</span> is <span class="math" data-index="216" data-tex="\(a(r+1/4)\)">\(a(r+1/4)\)</span>, which grows without bound. A strictly PSH Gaussian weight can be used in L144, but it does not satisfy this extension theorem's global unit-oscillation premise.</p>
+<p><strong>6.</strong> Repeated integration by parts gives <span class="math" data-index="217" data-tex="\(\int_0^\infty t^{q-1}e^{-at}dt=(q-1)!a^{-q}\)">\(\int_0^\infty t^{q-1}e^{-at}dt=(q-1)!a^{-q}\)</span>. Use this with <span class="math" data-index="218" data-tex="\(a+|w|^2\)">\(a+|w|^2\)</span> in place of <span class="math" data-index="219" data-tex="\(a\)">\(a\)</span>, integrate by Tonelli, and insert <span class="math" data-index="220" data-tex="\(\int_{\mathbb C^p}e^{-t|w|^2}dV=(\pi/t)^p\)">\(\int_{\mathbb C^p}e^{-t|w|^2}dV=(\pi/t)^p\)</span>. The remaining integral is <span class="math" data-index="221" data-tex="\(\int_0^\infty t^{q-p-1}e^{-at}dt\)">\(\int_0^\infty t^{q-p-1}e^{-at}dt\)</span>, which converges because <span class="math" data-index="222" data-tex="\(q&gt;p\)">\(q&gt;p\)</span>, and equals <span class="math" data-index="223" data-tex="\((q-p-1)!a^{p-q}\)">\((q-p-1)!a^{p-q}\)</span>. This proves (EX32). For <span class="math" data-index="224" data-tex="\(q=3k,p=k,a=1\)">\(q=3k,p=k,a=1\)</span>,</p>
+<span class="math math-display" id="eq-L145.26" data-index="225" data-tex="\[
+B_1=\pi/2,\qquad B_2=\pi^2/20,\qquad B_3=\pi^3/336.
+\tag{L145.26}
+\]">\[
+B_1=\pi/2,\qquad B_2=\pi^2/20,\qquad B_3=\pi^3/336.
+\tag{L145.26}
+\]</span>
+<p>To bound the actual normal-independent extension by <span class="math" data-index="226" data-tex="\(B_kJ_0\)">\(B_kJ_0\)</span>, one also needs <span class="math" data-index="227" data-tex="\(\phi(\zeta,w)\ge\phi(\zeta,0)\)">\(\phi(\zeta,w)\ge\phi(\zeta,0)\)</span> for all normal <span class="math" data-index="228" data-tex="\(w\)">\(w\)</span>. That allows dropping the extra normal weight factor in the full normal integral. Unit-scale oscillation alone does not give it; the affine-weight Example 2 shows that the direct extension can fail without it.</p>
+<p><strong>7.</strong> Here <span class="math" data-index="229" data-tex="\(m=2\)">\(m=2\)</span>, <span class="math" data-index="230" data-tex="\(\beta=3\)">\(\beta=3\)</span>, <span class="math" data-index="231" data-tex="\(C_*=2C+3\)">\(C_*=2C+3\)</span>, and <span class="math" data-index="232" data-tex="\(N=3+3\cdot2=9=4+2\cdot2+1\)">\(N=3+3\cdot2=9=4+2\cdot2+1\)</span>. The growth hypothesis bounds <span class="math" data-index="233" data-tex="\(|u|^2\)">\(|u|^2\)</span> by <span class="math" data-index="234" data-tex="\(C_1^2e^{2\phi}\)">\(C_1^2e^{2\phi}\)</span>. Multiplying by <span class="math" data-index="235" data-tex="\(e^{-2\phi}\)">\(e^{-2\phi}\)</span> cancels that exponential and leaves the integrable radial factor <span class="math" data-index="236" data-tex="\(R^{-(m+1)}\)">\(R^{-(m+1)}\)</span>. Using <span class="math" data-index="237" data-tex="\(e^{-\phi}\)">\(e^{-\phi}\)</span> would leave a factor <span class="math" data-index="238" data-tex="\(e^\phi\)">\(e^\phi\)</span>, which need not be integrable on the subspace. The added logarithm supplies precisely the radial integrability needed for the finite-dimensional tangential volume.</p>
+<p><strong>8.</strong> The functions <span class="math" data-index="239" data-tex="\(\phi=\operatorname{Re}z_1\)">\(\phi=\operatorname{Re}z_1\)</span> and <span class="math" data-index="240" data-tex="\(u=e^{z_1}\)">\(u=e^{z_1}\)</span> satisfy <span class="math" data-index="241" data-tex="\(|u|=e^\phi\)">\(|u|=e^\phi\)</span>. The original norm is infinite: on <span class="math" data-index="242" data-tex="\(\operatorname{Re}z_1\ge0\)">\(\operatorname{Re}z_1\ge0\)</span> and <span class="math" data-index="243" data-tex="\(0\le\operatorname{Im}z_1\le1\)">\(0\le\operatorname{Im}z_1\le1\)</span>, its integrand is at least1, and that strip has infinite area. In the modified norm, <span class="math" data-index="244" data-tex="\(|u|^2e^{-2\phi}=1\)">\(|u|^2e^{-2\phi}=1\)</span>, so (EX32) with <span class="math" data-index="245" data-tex="\(p=1,q=2,a=1\)">\(p=1,q=2,a=1\)</span> gives <span class="math" data-index="246" data-tex="\(\pi\)">\(\pi\)</span>. The entire <span class="math" data-index="247" data-tex="\(U=e^{z_1}\)">\(U=e^{z_1}\)</span> satisfies the pointwise bound with <span class="math" data-index="248" data-tex="\(C_2=1\)">\(C_2=1\)</span>, since <span class="math" data-index="249" data-tex="\((1+|z|)^5\ge1\)">\((1+|z|)^5\ge1\)</span>. For its full modified norm, (EX32) with <span class="math" data-index="250" data-tex="\(p=2,q=5,a=1\)">\(p=2,q=5,a=1\)</span> gives <span class="math" data-index="251" data-tex="\(\pi^2(2)!/(4)!=\pi^2/12\)">\(\pi^2(2)!/(4)!=\pi^2/12\)</span>. Both calculations use ordinary real4-dimensional volume in the ambient case, not area on the line.</p>
+<p><strong>9.</strong> Apply complex Gram–Schmidt to a basis of <span class="math" data-index="252" data-tex="\(W\)">\(W\)</span>, then complete it to an orthonormal basis of <span class="math" data-index="253" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. The unitary change sends <span class="math" data-index="254" data-tex="\(W\)">\(W\)</span> to the first <span class="math" data-index="255" data-tex="\(m=n-k\)">\(m=n-k\)</span> coordinate directions. Its determinant has complex modulus1, and its real volume Jacobian is1. Restricting the ambient weight and adding the normal directions produces <span class="math" data-index="256" data-tex="\(E_0,\ldots,E_k\)">\(E_0,\ldots,E_k\)</span>. At each step the hyperplane lemma gives an entire pointwise restriction equal to the previous function; composing these equalities gives <span class="math" data-index="257" data-tex="\(U|_W=u\)">\(U|_W=u\)</span>. When <span class="math" data-index="258" data-tex="\(W=\{0\}\)">\(W=\{0\}\)</span>, the first input norm is <span class="math" data-index="259" data-tex="\(|u(0)|^2e^{-\phi(0)}\)">\(|u(0)|^2e^{-\phi(0)}\)</span>, using the zero-dimensional point measure 1. The first ambient extension step has one complex coordinate and is exactly the <span class="math" data-index="260" data-tex="\(d=1\)">\(d=1\)</span> case of the proved hyperplane argument.</p>
+<p><strong>10.</strong> The harmonic mean is <span class="math" data-index="261" data-tex="\(U(z)=b_n^{-1}\int_{B(z,1)}U(w)dV(w)\)">\(U(z)=b_n^{-1}\int_{B(z,1)}U(w)dV(w)\)</span>. Split its integrand into <span class="math" data-index="262" data-tex="\(U(w)e^{-\phi(w)}R(w)^{-N/2}\)">\(U(w)e^{-\phi(w)}R(w)^{-N/2}\)</span> and <span class="math" data-index="263" data-tex="\(e^{\phi(w)}R(w)^{N/2}\)">\(e^{\phi(w)}R(w)^{N/2}\)</span>, then apply Cauchy–Schwarz. The first square integral is at most the global fixed <span class="math" data-index="264" data-tex="\(A\)">\(A\)</span>. The second is at most</p>
+<span class="math math-display" id="eq-L145.27" data-index="265" data-tex="\[
+b_n e^{2\phi(z)+2C}2^N(1+|z|)^{2N}.
+\tag{L145.27}
+\]">\[
+b_n e^{2\phi(z)+2C}2^N(1+|z|)^{2N}.
+\tag{L145.27}
+\]</span>
+<p>Multiplication by <span class="math" data-index="266" data-tex="\(b_n^{-2}\)">\(b_n^{-2}\)</span> gives (L145.23), and square roots give <span class="math" data-index="267" data-tex="\(C_2=e^C2^{N/2}\sqrt{A/b_n}\)">\(C_2=e^C2^{N/2}\sqrt{A/b_n}\)</span>. The unit-ball volume, norm <span class="math" data-index="268" data-tex="\(A\)">\(A\)</span>, exponent <span class="math" data-index="269" data-tex="\(N\)">\(N\)</span> and oscillation constant <span class="math" data-index="270" data-tex="\(C\)">\(C\)</span> remain fixed for every center; only the displayed center factors change. The argument uses the entire representative and the proved harmonic mean identity, so evaluating <span class="math" data-index="271" data-tex="\(U(z)\)">\(U(z)\)</span> is justified.</p>
+<h2 id="8-source-and-reproduction">8. Source and reproduction</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.1, Theorem 15.1.3 and Corollary 15.1.4, printed pp. 274–276; 1983 edition, second revised printing 1990, reprint 2005. These proof expositions, examples, full solutions and illustrations are original. Protected source text, book pages and media are excluded.</p>
+<p>The reproduction folder retains the two native PNG/SVG figure pairs, exact geometry, plotting script and independent calculation checks. The plotted normal-pole obstruction and upper norm budgets are explicitly distinguished from an actual returned solution. The normal-monotone comparison has its own additional hypothesis. The full formal proof covers the original general extension statement. Later analytic-functional representation and other assigned targets remain separate work; this lesson does not claim the whole course is complete.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p><em>Original proof exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>We extend an entire function from a complex linear subspace, with the precise codimension-dependent square norm estimate. The proof constructs the extension from a normal cutoff, solves its closed Cauchy–Riemann error, and proves that the corrected entire function has the required pointwise restriction. A one-sided normal weight comparison makes iteration retain the original constant. We then prove the exact polynomial growth transfer.</p>
+<p>All lengths and induced volumes use the standard Hermitian metric on <span class="math" data-index="272" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. Write <span class="math" data-index="273" data-tex="\(R(z)=1+|z|^2\)">\(R(z)=1+|z|^2\)</span>, <span class="math" data-index="274" data-tex="\(dV\)">\(dV\)</span> for ordinary real <span class="math" data-index="275" data-tex="\(2n\)">\(2n\)</span>-dimensional volume, and <span class="math" data-index="276" data-tex="\(dS\)">\(dS\)</span> for the induced volume on a complex subspace. On the zero-dimensional subspace, its single point has measure 1. The operators are <span class="math" data-index="277" data-tex="\(\partial_j=(\partial_{x_j}-i\partial_{y_j})/2\)">\(\partial_j=(\partial_{x_j}-i\partial_{y_j})/2\)</span> and <span class="math" data-index="278" data-tex="\(\bar\partial_j=(\partial_{x_j}+i\partial_{y_j})/2\)">\(\bar\partial_j=(\partial_{x_j}+i\partial_{y_j})/2\)</span>.</p>
+<p>The actual existence input is <a href="AN02-L144.html#general-psh-weighted-existence">L144, general PSH weighted existence, W5 and W25–W28</a>: for a finite global PSH weight <span class="math" data-index="279" data-tex="\(\theta\)">\(\theta\)</span> and distributionally closed coefficient data <span class="math" data-index="280" data-tex="\(f\)">\(f\)</span> with finite <span class="math" data-index="281" data-tex="\(\int|f|^2e^{-\theta}\)">\(\int|f|^2e^{-\theta}\)</span>, there is a solution <span class="math" data-index="282" data-tex="\(\bar\partial v=f\)">\(\bar\partial v=f\)</span> with</p>
+<span class="math math-display" id="eq-EX1" data-index="283" data-tex="\[
+\int |v|^2 e^{-\theta}R^{-2}dV
+\le\tfrac12\int|f|^2e^{-\theta}dV.
+\tag{EX1}
+\]">\[
+\int |v|^2 e^{-\theta}R^{-2}dV
+\le\tfrac12\int|f|^2e^{-\theta}dV.
+\tag{EX1}
+\]</span>
+<p>We also use <a href="AN02-L131.html#NP5">L131 NP5</a>, whose full local harmonic smoothing proof gives a smooth harmonic representative of every distribution with zero Laplacian. Its mean identity is NP5.1. Ordinary local integration and distributional products have their written proofs in the linked Lebesgue/distribution foundations. The normal cutoff derivatives, holomorphic regularity step, restriction argument, iteration and radial integral are proved below.</p>
+<p><a id="weighted-extension-theorem"></a>
+<a id="EX-theorem"></a></p>
+<h2 id="e1-the-exact-extension-statement">E1. The exact extension statement</h2>
+<p><strong>Theorem E1.</strong> Let <span class="math" data-index="284" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and let <span class="math" data-index="285" data-tex="\(\phi:\mathbb C^n\to\mathbb R\)">\(\phi:\mathbb C^n\to\mathbb R\)</span> be PSH. Suppose there is <span class="math" data-index="286" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> such that</p>
+<span class="math math-display" id="eq-EX2" data-index="287" data-tex="\[
+|\phi(z)-\phi(\widetilde z)|&lt;C
+\quad\text{whenever }|z-\widetilde z|&lt;1.
+\tag{EX2}
+\]">\[
+|\phi(z)-\phi(\widetilde z)|&lt;C
+\quad\text{whenever }|z-\widetilde z|&lt;1.
+\tag{EX2}
+\]</span>
+<p>Let <span class="math" data-index="288" data-tex="\(W\)">\(W\)</span> be a complex linear subspace of codimension <span class="math" data-index="289" data-tex="\(k\)">\(k\)</span>, <span class="math" data-index="290" data-tex="\(0\le k\le n\)">\(0\le k\le n\)</span>. If <span class="math" data-index="291" data-tex="\(u\)">\(u\)</span> is entire on <span class="math" data-index="292" data-tex="\(W\)">\(W\)</span> and</p>
+<span class="math math-display" id="eq-EX3" data-index="293" data-tex="\[
+J_0=\int_W |u|^2e^{-\phi}dS&lt;\infty,
+\tag{EX3}
+\]">\[
+J_0=\int_W |u|^2e^{-\phi}dS&lt;\infty,
+\tag{EX3}
+\]</span>
+<p>there is an entire <span class="math" data-index="294" data-tex="\(U\)">\(U\)</span> on <span class="math" data-index="295" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> satisfying</p>
+<span class="math math-display" id="eq-EX4" data-index="296" data-tex="\[
+U|_W=u,\qquad
+\int_{\mathbb C^n}|U|^2e^{-\phi}R^{-3k}dV
+\le(6\pi e^C)^kJ_0.
+\tag{EX4}
+\]">\[
+U|_W=u,\qquad
+\int_{\mathbb C^n}|U|^2e^{-\phi}R^{-3k}dV
+\le(6\pi e^C)^kJ_0.
+\tag{EX4}
+\]</span>
+<p>The unit-oscillation assumption is global; a smooth strictly PSH weight alone need not satisfy it. The case <span class="math" data-index="297" data-tex="\(k=0\)">\(k=0\)</span> is <span class="math" data-index="298" data-tex="\(U=u\)">\(U=u\)</span>, with equality of the norms. The entire restriction is pointwise, not merely an almost-everywhere trace on a subspace of zero ambient volume.</p>
+<p><a id="extension-growth-corollary"></a></p>
+<p><strong>Corollary E2.</strong> With the same <span class="math" data-index="299" data-tex="\(\phi,W,C\)">\(\phi,W,C\)</span>, suppose <span class="math" data-index="300" data-tex="\(u\)">\(u\)</span> is entire on <span class="math" data-index="301" data-tex="\(W\)">\(W\)</span> and, for a finite <span class="math" data-index="302" data-tex="\(C_1\ge0\)">\(C_1\ge0\)</span>,</p>
+<span class="math math-display" id="eq-EX5" data-index="303" data-tex="\[
+|u(z)|\le C_1e^{\phi(z)}\quad(z\in W).
+\tag{EX5}
+\]">\[
+|u(z)|\le C_1e^{\phi(z)}\quad(z\in W).
+\tag{EX5}
+\]</span>
+<p>Then an entire extension has, for a finite constant <span class="math" data-index="304" data-tex="\(C_2\)">\(C_2\)</span>,</p>
+<span class="math math-display" id="eq-EX6" data-index="305" data-tex="\[
+|U(z)|\le C_2(1+|z|)^{n+2k+1}e^{\phi(z)}
+\quad(z\in\mathbb C^n).
+\tag{EX6}
+\]">\[
+|U(z)|\le C_2(1+|z|)^{n+2k+1}e^{\phi(z)}
+\quad(z\in\mathbb C^n).
+\tag{EX6}
+\]</span>
+<p>No finite value of the original square norm (EX3) is assumed in this corollary. We create the needed norm by changing the weight.</p>
+<p><a id="distributional-holomorphic-regularity"></a></p>
+<h2 id="e3-a-distributional-cauchy-riemann-solution-has-an-entire-representative">E3. A distributional Cauchy–Riemann solution has an entire representative</h2>
+<p>Let <span class="math" data-index="306" data-tex="\(H\in L^2_{\mathrm{loc}}(\mathbb C^d)\)">\(H\in L^2_{\mathrm{loc}}(\mathbb C^d)\)</span>, <span class="math" data-index="307" data-tex="\(d\ge1\)">\(d\ge1\)</span>, satisfy <span class="math" data-index="308" data-tex="\(\bar\partial_jH=0\)">\(\bar\partial_jH=0\)</span> as distributions for all <span class="math" data-index="309" data-tex="\(j\)">\(j\)</span>. Since</p>
+<span class="math math-display" id="eq-EX7" data-index="310" data-tex="\[
+\Delta=4\sum_{j=1}^d\partial_j\bar\partial_j,
+\tag{EX7}
+\]">\[
+\Delta=4\sum_{j=1}^d\partial_j\bar\partial_j,
+\tag{EX7}
+\]</span>
+<p>its distributional Laplacian is zero. Apply NP5 to its real and imaginary parts. It has a smooth harmonic representative <span class="math" data-index="311" data-tex="\(h\)">\(h\)</span>, with <span class="math" data-index="312" data-tex="\(\bar\partial_jh=0\)">\(\bar\partial_jh=0\)</span> as ordinary smooth functions.</p>
+<p>Here is the required joint analyticity step. In one coordinate disk, fixing the other coordinates, the smooth restricted function <span class="math" data-index="313" data-tex="\(g\)">\(g\)</span> has <span class="math" data-index="314" data-tex="\(\bar\partial g=0\)">\(\bar\partial g=0\)</span>. On the annulus between a circle surrounding a point <span class="math" data-index="315" data-tex="\(a\)">\(a\)</span> and a small circle centered at <span class="math" data-index="316" data-tex="\(a\)">\(a\)</span>, the function <span class="math" data-index="317" data-tex="\(g(w)/(w-a)\)">\(g(w)/(w-a)\)</span> has zero antiholomorphic derivative. Real Green–Stokes integration equates its outer and inner complex contour integrals. Parametrizing the small inner circle and using continuity makes its integral tend to <span class="math" data-index="318" data-tex="\(2\pi i g(a)\)">\(2\pi i g(a)\)</span>. Thus the Cauchy formula holds in that coordinate.</p>
+<p>Apply this formula successively in each coordinate of any polydisc whose closed torus lies in a larger open polydisc. Fubini is valid on the compact integration torus, and gives the product Cauchy formula. Expand each kernel about the polydisc center using its geometric series. On a smaller polydisc, the series are absolutely and uniformly convergent. The product geometric bound is finite, so termwise integration gives a joint power series. Equivalently, if its outer coordinate radii are <span class="math" data-index="319" data-tex="\(r_j\)">\(r_j\)</span> and <span class="math" data-index="320" data-tex="\(|h|\le M\)">\(|h|\le M\)</span> on the torus, its coefficients satisfy</p>
+<span class="math math-display" id="eq-EX8" data-index="321" data-tex="\[
+|a_\alpha|\le M\prod_{j=1}^d r_j^{-\alpha_j},\qquad
+\sum_{\alpha\in\mathbb N^d}|a_\alpha|\prod_j s_j^{\alpha_j}
+\le M\prod_{j=1}^d(1-s_j/r_j)^{-1}&lt;\infty
+\quad(0\le s_j&lt;r_j).
+\tag{EX8}
+\]">\[
+|a_\alpha|\le M\prod_{j=1}^d r_j^{-\alpha_j},\qquad
+\sum_{\alpha\in\mathbb N^d}|a_\alpha|\prod_j s_j^{\alpha_j}
+\le M\prod_{j=1}^d(1-s_j/r_j)^{-1}&lt;\infty
+\quad(0\le s_j&lt;r_j).
+\tag{EX8}
+\]</span>
+<p>These local polydiscs cover <span class="math" data-index="322" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>. The representative is consequently entire. Two continuous representatives of one distribution coincide: otherwise a real or imaginary component has one strict sign on a small ball and its integral against a positive compact test is nonzero. This supplies the pointwise entire representative used in the construction.</p>
+<p><a id="one-sided-hyperplane-extension"></a></p>
+<h2 id="e4-one-hyperplane-under-a-one-sided-normal-comparison">E4. One hyperplane under a one-sided normal comparison</h2>
+<p>We prove a slightly more precise hyperplane lemma. Let <span class="math" data-index="323" data-tex="\(d\ge1\)">\(d\ge1\)</span>, write <span class="math" data-index="324" data-tex="\(z=(\zeta,w)\in\mathbb C^{d-1}\times\mathbb C\)">\(z=(\zeta,w)\in\mathbb C^{d-1}\times\mathbb C\)</span>, and let <span class="math" data-index="325" data-tex="\(\theta\)">\(\theta\)</span> be a finite PSH weight such that</p>
+<span class="math math-display" id="eq-EX9" data-index="326" data-tex="\[
+\theta(\zeta,w)\ge\theta(\zeta,0)-C
+\quad(|w|&lt;1).
+\tag{EX9}
+\]">\[
+\theta(\zeta,w)\ge\theta(\zeta,0)-C
+\quad(|w|&lt;1).
+\tag{EX9}
+\]</span>
+<p>For entire <span class="math" data-index="327" data-tex="\(u(\zeta)\)">\(u(\zeta)\)</span> with <span class="math" data-index="328" data-tex="\(J=\int|u(\zeta)|^2e^{-\theta(\zeta,0)}dV(\zeta)&lt;\infty\)">\(J=\int|u(\zeta)|^2e^{-\theta(\zeta,0)}dV(\zeta)&lt;\infty\)</span>, Fubini and the area of the normal unit disk give</p>
+<span class="math math-display" id="eq-EX10" data-index="329" data-tex="\[
+\int_{|w|&lt;1}|u(\zeta)|^2e^{-\theta(\zeta,w)}dV(\zeta)dA(w)
+\le\pi e^C J.
+\tag{EX10}
+\]">\[
+\int_{|w|&lt;1}|u(\zeta)|^2e^{-\theta(\zeta,w)}dV(\zeta)dA(w)
+\le\pi e^C J.
+\tag{EX10}
+\]</span>
+<p>Choose the exact continuous Lipschitz normal cutoff</p>
+<span class="math math-display" id="eq-EX11" data-index="330" data-tex="\[
+\eta(w)=
+\begin{cases}
+1,&amp;|w|\le\tfrac12,\\
+2(1-|w|),&amp;\tfrac12&lt;|w|&lt;1,\\
+0,&amp;|w|\ge1.
+\end{cases}
+\tag{EX11}
+\]">\[
+\eta(w)=
+\begin{cases}
+1,&amp;|w|\le\tfrac12,\\
+2(1-|w|),&amp;\tfrac12&lt;|w|&lt;1,\\
+0,&amp;|w|\ge1.
+\end{cases}
+\tag{EX11}
+\]</span>
+<p>Its weak first derivatives equal its classical derivatives off the two joining circles. Indeed, integration by parts on the three pieces cancels the boundary terms because the values agree at each joining circle. Since <span class="math" data-index="331" data-tex="\(\bar\partial_w|w|=w/(2|w|)\)">\(\bar\partial_w|w|=w/(2|w|)\)</span> away from zero,</p>
+<span class="math math-display" id="eq-EX12" data-index="332" data-tex="\[
+\bar\partial_w\eta=-\frac{w}{|w|}\,
+\mathbf1_{\{1/2&lt;|w|&lt;1\}},\qquad
+|\bar\partial_w\eta|\le1.
+\tag{EX12}
+\]">\[
+\bar\partial_w\eta=-\frac{w}{|w|}\,
+\mathbf1_{\{1/2&lt;|w|&lt;1\}},\qquad
+|\bar\partial_w\eta|\le1.
+\tag{EX12}
+\]</span>
+<p>Define the coefficient vector <span class="math" data-index="333" data-tex="\(f\)">\(f\)</span> by its zero first <span class="math" data-index="334" data-tex="\(d-1\)">\(d-1\)</span> coefficients and</p>
+<span class="math math-display" id="eq-EX13" data-index="335" data-tex="\[
+f_d(\zeta,w)=\frac{u(\zeta)}{w}\bar\partial_w\eta(w)
+=-\frac{u(\zeta)}{|w|}\mathbf1_{\{1/2&lt;|w|&lt;1\}}.
+\tag{EX13}
+\]">\[
+f_d(\zeta,w)=\frac{u(\zeta)}{w}\bar\partial_w\eta(w)
+=-\frac{u(\zeta)}{|w|}\mathbf1_{\{1/2&lt;|w|&lt;1\}}.
+\tag{EX13}
+\]</span>
+<p>Set it to zero off that annulus, in particular near <span class="math" data-index="336" data-tex="\(w=0\)">\(w=0\)</span>. This is a locally square-integrable function, with <span class="math" data-index="337" data-tex="\(|f|\le2|u|\)">\(|f|\le2|u|\)</span> on the normal unit tube. It is distributionally closed: the only potentially nonzero cross derivatives are the antiholomorphic <span class="math" data-index="338" data-tex="\(\zeta\)">\(\zeta\)</span> derivatives of its last coefficient, and they vanish because <span class="math" data-index="339" data-tex="\(u\)">\(u\)</span> is entire. For <span class="math" data-index="340" data-tex="\(d=1\)">\(d=1\)</span>, closedness is automatic. Therefore</p>
+<span class="math math-display" id="eq-EX14" data-index="341" data-tex="\[
+\int|f|^2e^{-\theta}dV\le4\pi e^C J.
+\tag{EX14}
+\]">\[
+\int|f|^2e^{-\theta}dV\le4\pi e^C J.
+\tag{EX14}
+\]</span>
+<p>Apply (EX1) in complex dimension <span class="math" data-index="342" data-tex="\(d\)">\(d\)</span> to obtain <span class="math" data-index="343" data-tex="\(v\)">\(v\)</span> with</p>
+<span class="math math-display" id="eq-EX15" data-index="344" data-tex="\[
+\bar\partial v=f,\qquad
+\int|v|^2e^{-\theta}R^{-2}dV\le2\pi e^C J.
+\tag{EX15}
+\]">\[
+\bar\partial v=f,\qquad
+\int|v|^2e^{-\theta}R^{-2}dV\le2\pi e^C J.
+\tag{EX15}
+\]</span>
+<p>This <span class="math" data-index="345" data-tex="\(v\)">\(v\)</span> is in ordinary local <span class="math" data-index="346" data-tex="\(L^2\)">\(L^2\)</span>. The finite PSH function <span class="math" data-index="347" data-tex="\(\theta\)">\(\theta\)</span> is locally bounded above, and the left weight has a positive lower bound on any compact set. Let</p>
+<span class="math math-display" id="eq-EX16" data-index="348" data-tex="\[
+H(\zeta,w)=\eta(w)u(\zeta)-wv(\zeta,w).
+\tag{EX16}
+\]">\[
+H(\zeta,w)=\eta(w)u(\zeta)-wv(\zeta,w).
+\tag{EX16}
+\]</span>
+<p>It is locally square integrable. Distributional multiplication by the holomorphic coordinate <span class="math" data-index="349" data-tex="\(w\)">\(w\)</span>, the weak derivative (EX12), and (EX13) give <span class="math" data-index="350" data-tex="\(\bar\partial_jH=0\)">\(\bar\partial_jH=0\)</span> in every coordinate. E3 supplies its unique entire representative <span class="math" data-index="351" data-tex="\(U\)">\(U\)</span>.</p>
+<p><a id="pointwise-restriction-recovery"></a></p>
+<p>The restriction requires proof, because no value of the merely locally square-integrable <span class="math" data-index="352" data-tex="\(v\)">\(v\)</span> at <span class="math" data-index="353" data-tex="\(w=0\)">\(w=0\)</span> was chosen. On <span class="math" data-index="354" data-tex="\(|w|&lt;1/2\)">\(|w|&lt;1/2\)</span> the entire function <span class="math" data-index="355" data-tex="\(G=U-u\)">\(G=U-u\)</span> satisfies <span class="math" data-index="356" data-tex="\(G=-wv\)">\(G=-wv\)</span> almost everywhere. If <span class="math" data-index="357" data-tex="\(G(\zeta_0,0)\ne0\)">\(G(\zeta_0,0)\ne0\)</span>, continuity would supply a product neighborhood and a positive <span class="math" data-index="358" data-tex="\(c\)">\(c\)</span> on which <span class="math" data-index="359" data-tex="\(|G|\ge c\)">\(|G|\ge c\)</span>. Off the axis there, <span class="math" data-index="360" data-tex="\(|v|\ge c/|w|\)">\(|v|\ge c/|w|\)</span> almost everywhere. But</p>
+<span class="math math-display" id="eq-EX17" data-index="361" data-tex="\[
+\int_{0&lt;|w|&lt;\varepsilon}\frac{dA(w)}{|w|^2}
+=2\pi\int_0^\varepsilon\frac{dr}{r}=\infty.
+\tag{EX17}
+\]">\[
+\int_{0&lt;|w|&lt;\varepsilon}\frac{dA(w)}{|w|^2}
+=2\pi\int_0^\varepsilon\frac{dr}{r}=\infty.
+\tag{EX17}
+\]</span>
+<p>Fubini, using the positive volume of the <span class="math" data-index="362" data-tex="\(\zeta\)">\(\zeta\)</span> neighborhood, contradicts local <span class="math" data-index="363" data-tex="\(L^2\)">\(L^2\)</span> of <span class="math" data-index="364" data-tex="\(v\)">\(v\)</span>. When <span class="math" data-index="365" data-tex="\(d=1\)">\(d=1\)</span>, the <span class="math" data-index="366" data-tex="\(\zeta\)">\(\zeta\)</span> factor has dimension zero and measure 1, giving exactly the same contradiction. Thus</p>
+<span class="math math-display" id="eq-EX18" data-index="367" data-tex="\[
+U(\zeta,0)=u(\zeta)\quad\text{for every }\zeta.
+\tag{EX18}
+\]">\[
+U(\zeta,0)=u(\zeta)\quad\text{for every }\zeta.
+\tag{EX18}
+\]</span>
+<p><a id="hyperplane-norm-constant"></a></p>
+<h2 id="e5-the-exact-hyperplane-estimate">E5. The exact hyperplane estimate</h2>
+<p>For complex numbers <span class="math" data-index="368" data-tex="\(a,b\)">\(a,b\)</span>, <span class="math" data-index="369" data-tex="\(|a-b|^2\le2|a|^2+2|b|^2\)">\(|a-b|^2\le2|a|^2+2|b|^2\)</span>. Use this in (EX16). Since <span class="math" data-index="370" data-tex="\(0\le\eta\le1\)">\(0\le\eta\le1\)</span>, <span class="math" data-index="371" data-tex="\(\eta=0\)">\(\eta=0\)</span> outside the normal unit disk, <span class="math" data-index="372" data-tex="\(R^{-3}\le1\)">\(R^{-3}\le1\)</span>, and <span class="math" data-index="373" data-tex="\(|w|^2\le R\)">\(|w|^2\le R\)</span>, we obtain</p>
+<span class="math math-display" id="eq-EX19" data-index="374" data-tex="\[
+\begin{aligned}
+\int |U|^2e^{-\theta}R^{-3}dV
+&amp;\le2\int_{|w|&lt;1}|u|^2e^{-\theta}dV
+ +2\int|v|^2e^{-\theta}R^{-2}dV\\
+&amp;\le2\pi e^C J+4\pi e^C J
+=6\pi e^C J.
+\end{aligned}
+\tag{EX19}
+\]">\[
+\begin{aligned}
+\int |U|^2e^{-\theta}R^{-3}dV
+&amp;\le2\int_{|w|&lt;1}|u|^2e^{-\theta}dV
+ +2\int|v|^2e^{-\theta}R^{-2}dV\\
+&amp;\le2\pi e^C J+4\pi e^C J
+=6\pi e^C J.
+\end{aligned}
+\tag{EX19}
+\]</span>
+<p>The factor 2 in each square term, the factor 1/2 in (EX1), and the normal disk area <span class="math" data-index="375" data-tex="\(\pi\)">\(\pi\)</span> account for the displayed constant. Multiplying the correction by <span class="math" data-index="376" data-tex="\(w\)">\(w\)</span> costs one additional power of <span class="math" data-index="377" data-tex="\(R^{-1}\)">\(R^{-1}\)</span>; together with the two powers in (EX1), this gives exactly <span class="math" data-index="378" data-tex="\(R^{-3}\)">\(R^{-3}\)</span>. This proves the hyperplane lemma using only (EX9), not the stronger two-sided unit-oscillation condition for the modified weight.</p>
+<p><a id="codimension-iteration"></a></p>
+<h2 id="e6-iterate-while-retaining-the-original-constant">E6. Iterate while retaining the original constant</h2>
+<p>Choose orthonormal complex coordinates adapted to <span class="math" data-index="379" data-tex="\(W\)">\(W\)</span>. This can be done by taking a basis of <span class="math" data-index="380" data-tex="\(W\)">\(W\)</span>, subtracting its orthogonal projections successively and normalizing, and then repeating with vectors outside its span until obtaining a basis of <span class="math" data-index="381" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. The coordinate map is unitary. It preserves lengths and ordinary volumes: its complex determinant has modulus1, so its real Jacobian has absolute value1. A complex line maps to a complex line, so PSH is preserved. We may consequently take</p>
+<span class="math math-display" id="eq-EX20" data-index="382" data-tex="\[
+W=\mathbb C^{m}\times\{0\},\qquad m=n-k,
+\quad E_j=\mathbb C^{m+j}\times\{0\}\quad(0\le j\le k).
+\tag{EX20}
+\]">\[
+W=\mathbb C^{m}\times\{0\},\qquad m=n-k,
+\quad E_j=\mathbb C^{m+j}\times\{0\}\quad(0\le j\le k).
+\tag{EX20}
+\]</span>
+<p>Start with <span class="math" data-index="383" data-tex="\(u_0=u\)">\(u_0=u\)</span>. At the <span class="math" data-index="384" data-tex="\(j\)">\(j\)</span>-th step use the finite PSH weight on <span class="math" data-index="385" data-tex="\(E_j\)">\(E_j\)</span></p>
+<span class="math math-display" id="eq-EX21" data-index="386" data-tex="\[
+\theta_j(z)=\phi(z)+3(j-1)\log R(z).
+\tag{EX21}
+\]">\[
+\theta_j(z)=\phi(z)+3(j-1)\log R(z).
+\tag{EX21}
+\]</span>
+<p>The logarithm is PSH by the exact Levi computation in L144 W25. For the orthogonal splitting <span class="math" data-index="387" data-tex="\(z=(\zeta,w)\in E_j\)">\(z=(\zeta,w)\in E_j\)</span> relative to <span class="math" data-index="388" data-tex="\(E_{j-1}\)">\(E_{j-1}\)</span>, <span class="math" data-index="389" data-tex="\(R(\zeta,w)=R(\zeta,0)+|w|^2\)">\(R(\zeta,w)=R(\zeta,0)+|w|^2\)</span>. Therefore, for <span class="math" data-index="390" data-tex="\(|w|&lt;1\)">\(|w|&lt;1\)</span>,</p>
+<span class="math math-display" id="eq-EX22" data-index="391" data-tex="\[
+\begin{aligned}
+\theta_j(\zeta,w)-\theta_j(\zeta,0)
+&amp;=\phi(\zeta,w)-\phi(\zeta,0)
+ +3(j-1)\log\frac{R(\zeta,0)+|w|^2}{R(\zeta,0)}\\
+&amp;\ge-C.
+\end{aligned}
+\tag{EX22}
+\]">\[
+\begin{aligned}
+\theta_j(\zeta,w)-\theta_j(\zeta,0)
+&amp;=\phi(\zeta,w)-\phi(\zeta,0)
+ +3(j-1)\log\frac{R(\zeta,0)+|w|^2}{R(\zeta,0)}\\
+&amp;\ge-C.
+\end{aligned}
+\tag{EX22}
+\]</span>
+<p>The added term is nonnegative. This is the decisive one-sided comparison with the original <span class="math" data-index="392" data-tex="\(C\)">\(C\)</span>; taking an enlarged two-sided oscillation constant for each new weight would produce a different and unnecessarily worse estimate.</p>
+<p>Apply the hyperplane lemma to <span class="math" data-index="393" data-tex="\(u_{j-1}\)">\(u_{j-1}\)</span> and <span class="math" data-index="394" data-tex="\(\theta_j\)">\(\theta_j\)</span>. It yields entire <span class="math" data-index="395" data-tex="\(u_j\)">\(u_j\)</span> on <span class="math" data-index="396" data-tex="\(E_j\)">\(E_j\)</span>, with pointwise restriction <span class="math" data-index="397" data-tex="\(u_j|_{E_{j-1}}=u_{j-1}\)">\(u_j|_{E_{j-1}}=u_{j-1}\)</span>, and</p>
+<span class="math math-display" id="eq-EX23" data-index="398" data-tex="\[
+J_j:=\int_{E_j}|u_j|^2e^{-\phi}R^{-3j}dS
+\le6\pi e^C
+\int_{E_{j-1}}|u_{j-1}|^2e^{-\phi}R^{-3(j-1)}dS
+=6\pi e^C J_{j-1}.
+\tag{EX23}
+\]">\[
+J_j:=\int_{E_j}|u_j|^2e^{-\phi}R^{-3j}dS
+\le6\pi e^C
+\int_{E_{j-1}}|u_{j-1}|^2e^{-\phi}R^{-3(j-1)}dS
+=6\pi e^C J_{j-1}.
+\tag{EX23}
+\]</span>
+<p>Each input norm is finite by the preceding step. Repeating <span class="math" data-index="399" data-tex="\(k\)">\(k\)</span> times gives <span class="math" data-index="400" data-tex="\(J_k\le(6\pi e^C)^kJ_0\)">\(J_k\le(6\pi e^C)^kJ_0\)</span>. The pointwise restrictions compose, so <span class="math" data-index="401" data-tex="\(u_k|_W=u\)">\(u_k|_W=u\)</span>. Taking <span class="math" data-index="402" data-tex="\(U=u_k\)">\(U=u_k\)</span> proves Theorem E1, including subspaces with <span class="math" data-index="403" data-tex="\(m=0\)">\(m=0\)</span>.</p>
+<p><a id="radial-integral-and-logarithmic-oscillation"></a></p>
+<h2 id="e7-two-elementary-estimates-for-growth-transfer">E7. Two elementary estimates for growth transfer</h2>
+<p>First, the real gradient of <span class="math" data-index="404" data-tex="\(L(z)=\log(1+|z|^2)\)">\(L(z)=\log(1+|z|^2)\)</span> has length</p>
+<span class="math math-display" id="eq-EX24" data-index="405" data-tex="\[
+|\nabla L(z)|=\frac{2|z|}{1+|z|^2}\le1.
+\tag{EX24}
+\]">\[
+|\nabla L(z)|=\frac{2|z|}{1+|z|^2}\le1.
+\tag{EX24}
+\]</span>
+<p>Integrating the gradient along the segment between two points shows that <span class="math" data-index="406" data-tex="\(L\)">\(L\)</span> is globally 1-Lipschitz.</p>
+<p>Second, for an integer <span class="math" data-index="407" data-tex="\(m\ge0\)">\(m\ge0\)</span>,</p>
+<span class="math math-display" id="eq-EX25" data-index="408" data-tex="\[
+\int_{\mathbb C^m}(1+|\zeta|^2)^{-(m+1)}dV(\zeta)
+=\frac{\pi^m}{m!}.
+\tag{EX25}
+\]">\[
+\int_{\mathbb C^m}(1+|\zeta|^2)^{-(m+1)}dV(\zeta)
+=\frac{\pi^m}{m!}.
+\tag{EX25}
+\]</span>
+<p>For a direct proof, repeated integration by parts gives
+<span class="math" data-index="409" data-tex="\(\int_0^\infty t^m e^{-a t}dt=m!a^{-(m+1)}\)">\(\int_0^\infty t^m e^{-a t}dt=m!a^{-(m+1)}\)</span> for <span class="math" data-index="410" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>. Thus</p>
+<span class="math math-display" id="eq-EX26" data-index="411" data-tex="\[
+(1+|\zeta|^2)^{-(m+1)}
+=\frac1{m!}\int_0^\infty t^m e^{-t}e^{-t|\zeta|^2}dt.
+\tag{EX26}
+\]">\[
+(1+|\zeta|^2)^{-(m+1)}
+=\frac1{m!}\int_0^\infty t^m e^{-t}e^{-t|\zeta|^2}dt.
+\tag{EX26}
+\]</span>
+<p>Tonelli applies because the integrand is nonnegative. Polar integration in one complex coordinate gives <span class="math" data-index="412" data-tex="\(\int_\mathbb C e^{-t|w|^2}dA=\pi/t\)">\(\int_\mathbb C e^{-t|w|^2}dA=\pi/t\)</span>; multiply these <span class="math" data-index="413" data-tex="\(m\)">\(m\)</span> integrals by Fubini. Integrating (EX26) becomes <span class="math" data-index="414" data-tex="\(\pi^m/m!\)">\(\pi^m/m!\)</span> times <span class="math" data-index="415" data-tex="\(\int_0^\infty e^{-t}dt=1\)">\(\int_0^\infty e^{-t}dt=1\)</span>. For <span class="math" data-index="416" data-tex="\(m=0\)">\(m=0\)</span>, all products are empty products1, and this is the stated point measure convention. This proves (EX25) without an unproved convergence assumption.</p>
+<p><a id="growth-transfer-proof"></a></p>
+<h2 id="e8-prove-the-exact-growth-exponent">E8. Prove the exact growth exponent</h2>
+<p>Let <span class="math" data-index="417" data-tex="\(m=n-k\)">\(m=n-k\)</span>, <span class="math" data-index="418" data-tex="\(\beta=m+1\)">\(\beta=m+1\)</span>, and replace the weight by</p>
+<span class="math math-display" id="eq-EX27" data-index="419" data-tex="\[
+\Theta(z)=2\phi(z)+\beta\log R(z),\qquad
+C_*:=2C+\beta.
+\tag{EX27}
+\]">\[
+\Theta(z)=2\phi(z)+\beta\log R(z),\qquad
+C_*:=2C+\beta.
+\tag{EX27}
+\]</span>
+<p>It is finite PSH. For two points at distance less than1, (EX2) and (EX24) give <span class="math" data-index="420" data-tex="\(|\Theta(z)-\Theta(\widetilde z)|&lt;C_*\)">\(|\Theta(z)-\Theta(\widetilde z)|&lt;C_*\)</span>, so it satisfies the extension hypothesis. By (EX5) and (EX25),</p>
+<span class="math math-display" id="eq-EX28" data-index="421" data-tex="\[
+\int_W|u|^2e^{-\Theta}dS
+\le C_1^2\int_W R^{-(m+1)}dS
+=C_1^2\frac{\pi^m}{m!}.
+\tag{EX28}
+\]">\[
+\int_W|u|^2e^{-\Theta}dS
+\le C_1^2\int_W R^{-(m+1)}dS
+=C_1^2\frac{\pi^m}{m!}.
+\tag{EX28}
+\]</span>
+<p>Theorem E1 applied to <span class="math" data-index="422" data-tex="\(\Theta\)">\(\Theta\)</span> gives an entire extension with</p>
+<span class="math math-display" id="eq-EX29" data-index="423" data-tex="\[
+A:=\int_{\mathbb C^n}|U|^2e^{-2\phi}R^{-N}dV
+\le(6\pi e^{C_*})^kC_1^2\frac{\pi^m}{m!}&lt;\infty,
+\qquad N=\beta+3k=n+2k+1.
+\tag{EX29}
+\]">\[
+A:=\int_{\mathbb C^n}|U|^2e^{-2\phi}R^{-N}dV
+\le(6\pi e^{C_*})^kC_1^2\frac{\pi^m}{m!}&lt;\infty,
+\qquad N=\beta+3k=n+2k+1.
+\tag{EX29}
+\]</span>
+<p>An entire function is harmonic in real dimension <span class="math" data-index="424" data-tex="\(2n\)">\(2n\)</span>, by (EX7). Its unit-ball mean equals its center value; the divergence/mean identity in NP5.1 proves this for its real and imaginary parts. Put <span class="math" data-index="425" data-tex="\(b_n=|B_{\mathbb R^{2n}}(0,1)|&gt;0\)">\(b_n=|B_{\mathbb R^{2n}}(0,1)|&gt;0\)</span>. Weighted Cauchy–Schwarz in that ball yields</p>
+<span class="math math-display" id="eq-EX30" data-index="426" data-tex="\[
+\begin{aligned}
+|U(z)|^2
+&amp;\le b_n^{-2}
+ \left(\int_{B(z,1)}|U(w)|^2e^{-2\phi(w)}R(w)^{-N}dV(w)\right)
+ \left(\int_{B(z,1)}e^{2\phi(w)}R(w)^N dV(w)\right)\\
+&amp;\le \frac{A}{b_n}\, e^{2\phi(z)+2C}\,
+ 2^N(1+|z|)^{2N}.
+\end{aligned}
+\tag{EX30}
+\]">\[
+\begin{aligned}
+|U(z)|^2
+&amp;\le b_n^{-2}
+ \left(\int_{B(z,1)}|U(w)|^2e^{-2\phi(w)}R(w)^{-N}dV(w)\right)
+ \left(\int_{B(z,1)}e^{2\phi(w)}R(w)^N dV(w)\right)\\
+&amp;\le \frac{A}{b_n}\, e^{2\phi(z)+2C}\,
+ 2^N(1+|z|)^{2N}.
+\end{aligned}
+\tag{EX30}
+\]</span>
+<p>Indeed, on this open ball <span class="math" data-index="427" data-tex="\(\phi(w)&lt;\phi(z)+C\)">\(\phi(w)&lt;\phi(z)+C\)</span>, and
+<span class="math" data-index="428" data-tex="\(R(w)\le1+(|z|+1)^2\le2(1+|z|)^2\)">\(R(w)\le1+(|z|+1)^2\le2(1+|z|)^2\)</span>. Taking square roots proves (EX6), for example with</p>
+<span class="math math-display" id="eq-EX31" data-index="429" data-tex="\[
+C_2=e^C 2^{N/2}\sqrt{A/b_n}.
+\tag{EX31}
+\]">\[
+C_2=e^C 2^{N/2}\sqrt{A/b_n}.
+\tag{EX31}
+\]</span>
+<p>If <span class="math" data-index="430" data-tex="\(C_1=0\)">\(C_1=0\)</span>, take <span class="math" data-index="431" data-tex="\(U=0\)">\(U=0\)</span>, so the same conclusion is immediate. This completes Corollary E2. The exponent <span class="math" data-index="432" data-tex="\(n+2k+1\)">\(n+2k+1\)</span> is the exact stated growth-transfer exponent; no claim of optimality is needed or made.</p>
+<p><a id="normal-monotone-comparison"></a></p>
+<h2 id="e9-an-exact-comparison-for-normal-monotone-weights">E9. An exact comparison for normal-monotone weights</h2>
+<p>The universal constant in E1 is an upper bound, not a claim that every example attains it. Here is a useful exact comparison with a directly known extension. For integers <span class="math" data-index="433" data-tex="\(p\ge0\)">\(p\ge0\)</span>, <span class="math" data-index="434" data-tex="\(q&gt;p\)">\(q&gt;p\)</span>, and <span class="math" data-index="435" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, the same Laplace and Gaussian calculation as in E7 gives</p>
+<span class="math math-display" id="eq-EX32" data-index="436" data-tex="\[
+\int_{\mathbb C^p}(a+|w|^2)^{-q}dV(w)
+=\pi^p\frac{(q-p-1)!}{(q-1)!}\,a^{p-q}.
+\tag{EX32}
+\]">\[
+\int_{\mathbb C^p}(a+|w|^2)^{-q}dV(w)
+=\pi^p\frac{(q-p-1)!}{(q-1)!}\,a^{p-q}.
+\tag{EX32}
+\]</span>
+<p>Indeed, write the integrand as <span class="math" data-index="437" data-tex="\((q-1)!^{-1}\int_0^\infty t^{q-1}e^{-at}e^{-t|w|^2}dt\)">\((q-1)!^{-1}\int_0^\infty t^{q-1}e^{-at}e^{-t|w|^2}dt\)</span>, use Tonelli, multiply the <span class="math" data-index="438" data-tex="\(p\)">\(p\)</span> Gaussian integrals, and evaluate the remaining <span class="math" data-index="439" data-tex="\(\int_0^\infty t^{q-p-1}e^{-at}dt\)">\(\int_0^\infty t^{q-p-1}e^{-at}dt\)</span> by repeated integration by parts. For <span class="math" data-index="440" data-tex="\(p=0\)">\(p=0\)</span> this reduces to <span class="math" data-index="441" data-tex="\(a^{-q}\)">\(a^{-q}\)</span>, as it should.</p>
+<p>Suppose in orthogonal coordinates <span class="math" data-index="442" data-tex="\(z=(\zeta,w)\in\mathbb C^{n-k}\times\mathbb C^k\)">\(z=(\zeta,w)\in\mathbb C^{n-k}\times\mathbb C^k\)</span> a particular finite weight satisfies <span class="math" data-index="443" data-tex="\(\phi(\zeta,w)\ge\phi(\zeta,0)\)">\(\phi(\zeta,w)\ge\phi(\zeta,0)\)</span> for every <span class="math" data-index="444" data-tex="\(w\)">\(w\)</span>, and <span class="math" data-index="445" data-tex="\(k\ge1\)">\(k\ge1\)</span>. The directly known entire extension <span class="math" data-index="446" data-tex="\(U(\zeta,w)=u(\zeta)\)">\(U(\zeta,w)=u(\zeta)\)</span> then satisfies</p>
+<span class="math math-display" id="eq-EX33" data-index="447" data-tex="\[
+\begin{aligned}
+\int |U|^2e^{-\phi}R^{-3k}dV
+&amp;\le B_k\int_W |u|^2e^{-\phi}R^{-2k}dS
+\le B_kJ_0,\\
+B_k&amp;=\pi^k\frac{(2k-1)!}{(3k-1)!}.
+\end{aligned}
+\tag{EX33}
+\]">\[
+\begin{aligned}
+\int |U|^2e^{-\phi}R^{-3k}dV
+&amp;\le B_k\int_W |u|^2e^{-\phi}R^{-2k}dS
+\le B_kJ_0,\\
+B_k&amp;=\pi^k\frac{(2k-1)!}{(3k-1)!}.
+\end{aligned}
+\tag{EX33}
+\]</span>
+<p>To see the first inequality, apply (EX32) to the normal integral with <span class="math" data-index="448" data-tex="\(p=k\)">\(p=k\)</span>, <span class="math" data-index="449" data-tex="\(q=3k\)">\(q=3k\)</span>, and <span class="math" data-index="450" data-tex="\(a=R(\zeta,0)\)">\(a=R(\zeta,0)\)</span>. Tonelli is applicable to the nonnegative weighted square integrand. The last inequality uses <span class="math" data-index="451" data-tex="\(R\ge1\)">\(R\ge1\)</span>. These extra global normal-monotonicity assumptions belong to this comparison only; E1 proves the extension under the original unit-oscillation condition without them.</p>
+<h2 id="source-credit-and-scope">Source credit and scope</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.1, Theorem 15.1.3 and Corollary 15.1.4, printed pp. 274–276 (1983 edition; second revised printing 1990; reprint 2005), provides these classical targets. The full proof exposition above is original. The earlier original weighted existence and harmonic smoothing arguments are actually linked and read. No protected source pages or media are part of this lesson. The associated learner material supplies worked examples, complete exercises and original reproducible illustrations. Analytic-functional Fourier representation, later extension results and the remaining course targets retain their separate proof obligations.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/weighted-holomorphic-extensions-and-their-growth.md" download>Download the complete lesson source</a>. Original proofs,examples,solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L145/weighted-holomorphic-extension-formal.md" download>weighted-holomorphic-extension-formal.md</a></li><li><a href="reproduce/L145/weighted-holomorphic-extension-learner.md" download>weighted-holomorphic-extension-learner.md</a></li><li><a href="reproduce/L145/make_figures147.py" download>make_figures147.py</a></li><li><a href="reproduce/L145/check_examples147.py" download>check_examples147.py</a></li><li><a href="reproduce/L145/independent-example-checks147.json" download>independent-example-checks147.json</a></li><li><a href="reproduce/L145/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L145/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L145/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L145/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L145/figures/normal-cutoff-and-trace.png" download>figures/normal-cutoff-and-trace.png</a></li><li><a href="reproduce/L145/figures/normal-cutoff-and-trace.svg" download>figures/normal-cutoff-and-trace.svg</a></li><li><a href="reproduce/L145/figures/codimension-and-norm-budgets.png" download>figures/codimension-and-norm-budgets.png</a></li><li><a href="reproduce/L145/figures/codimension-and-norm-budgets.svg" download>figures/codimension-and-norm-budgets.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

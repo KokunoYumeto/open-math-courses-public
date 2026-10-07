@@ -1,6 +1,6 @@
 # Proper actions, universal proper spaces and equivariant K-homology
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 An equivariant Fredholm cycle needs a space on which the group acts properly. There is no preferred such space for a general group. A universal proper space collects them, and equivariant K-homology with compact orbit support removes the choice of model. We construct the universal comparison space, prove the comparison of its locally compact stages, and give Euclidean, tree and enlarged local-field building models.
 

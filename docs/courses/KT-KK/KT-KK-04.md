@@ -1,6 +1,6 @@
 # The index pairing between K-theory and K-homology
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A Fredholm module supplies an operator that almost intertwines the algebra action. A projection selects two subspaces on which that operator is Fredholm; a unitary supplies a Fredholm compression on the positive spectral subspace. Their finite-dimensional defects are the even and odd index pairings.
 
@@ -319,7 +319,7 @@ The operator \(D_p\) is the Dirac operator for the projected connection on \(E\)
 
 Finally \(R_+=(1+D_E^2|_{H_+})^{-1/2}\) is an isomorphism from \(L^2(S^+\otimes E)\) onto the domain of \(D_E^+\), with its graph norm. The spectral-domain formula proves this exactly: the graph norm squared is the weighted eigenvector sum of \(1+\lambda_j^2\) in the preceding lesson, Lemma 4.0, and multiplication by \((1+\lambda^2)^{-1/2}\) gives an isometry onto that domain, with inverse the reciprocal multiplier. The estimate in the preceding lesson, Lemma 4.1b, identifies its graph norm with \(H^1\). The equality \(F_{D_E}^+=D_E^+R_+\) therefore identifies kernels and ranges with those of the Sobolev realization of \(D_E^+\). Their indices agree. This proves (5.1). \(\square\)
 
-The same argument shows independence from the connection. The closed-manifold topological expression, with its orientation hypotheses and symbol class, is proved in Dirac classes and the cotangent Dolbeault element, Sections 3–10. It is not a premise of the analytic comparison proved here.
+The same argument shows independence from the connection. The closed-manifold topological expression, with its orientation hypotheses and symbol class, is proved in [Dirac classes and the cotangent Dolbeault element](KT-KK-15.html), Sections 3–10. It is not a premise of the analytic comparison proved here.
 
 ## 6. Circle and noncommutative-torus calculations
 
@@ -704,7 +704,7 @@ The compressions \(PUP\), \(PVP\) are Fredholm. Compact invariance and compositi
 
 The preceding lesson, Lemma 2.1 and Propositions 2.2–2.3, proves the locally compact ideal and continuous normalization; its Lemma 7.1 proves range transport by explicit close-projection unitaries. Lemma 1.1 here gives all typed even inverse and adjoint errors, Lemma 2.1 gives the odd errors and product rule, Lemma 4.0 proves the full relative compact-rank identification, and Lemmas 5.1–5.1a give the compact transform comparison and domain preservation used for twisting. The operator K-theory lessons *Nonunital algebras: unitization, relative classes and half-exactness* and *Invertibles, unitaries and \(K_1\)* supply the exact relative and stable-unitary definitions; *The index map and the exact sequence at \(K_0\)*, Definition 2.1 and Theorem 2.2, supplies the doubled-lift boundary and its naturality. *Toeplitz operators and the index theorem on the circle*, Theorem 3.1, supplies the general matrix-symbol calculation. The Hilbert-space Fredholm prerequisites are those identified in the preceding lesson. Its local Lemmas 4.1a–4.1c and Corollary 4.2 prove the entire closed-manifold Sobolev, elliptic-estimate and adjoint-domain foundation used by Theorem 5.2 here.
 
-The bounded Fredholm-character comparison is proved in Section 7 using the exact Schatten and ordinary-trace foundations named there. The Kasparov-product interpretation is proved in the earlier product lessons identified in Section 7. The closed-manifold topological Dirac index comparison is proved in Dirac classes and the cotangent Dolbeault element, Sections 3–10. The pairings, their invariance, the relative scalar check, the extension boundary sign, the analytic twisting bridge, and all examples and exercises above are proved here.
+The bounded Fredholm-character comparison is proved in Section 7 using the exact Schatten and ordinary-trace foundations named there. The Kasparov-product interpretation is proved in the earlier product lessons identified in Section 7. The closed-manifold topological Dirac index comparison is proved in [Dirac classes and the cotangent Dolbeault element](KT-KK-15.html), Sections 3–10. The pairings, their invariance, the relative scalar check, the extension boundary sign, the analytic twisting bridge, and all examples and exercises above are proved here.
 
 ## References
 

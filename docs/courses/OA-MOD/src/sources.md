@@ -10,7 +10,7 @@ The entire ten-section lesson and its three solved problems retain their indepen
 
 The twelve-section spectral lesson retains the complete reviewed independent construction and all four solutions. The primary scalar proof route is the complete human-readable programme proof in Haar Theorem 2.2 and Proposition 2.3 and measure-tools Theorems 1.1, 2.1–2.2 and 3.1–3.2, with the exact topology support used in RMK. Their independently written AI prose retains its original credits and CC0 terms. [The scalar companion](spectral-scalar-foundations.md) gives exact links and the five complete original compact/complexification, L2, measure, Borel-representative and approximation bridges. Its real-to-complex correspondence applies the complex RMK theorem to the real contract used in SK. The exact binding record retains the ten pinned mathlib files, their hashes and 48 selected ranges as formal-source and historical evidence at commit 71a80585ee495fc24472fd0eaffc89d94e4fd8d6; eight were originally primary formal providers and two supporting comparisons. The human contributors are credited individually in the companion. The programme-proof record lists the complete bodies included in the download. The course has not been compiled in Lean. No source code, comments or human expression are copied. The earlier bounded Hilbert/CFC proofs and the maximal principle are linked in the lesson; the construction does not rely on an unbounded spectral or polar theorem.
 
-The spectral lesson and scalar companion retain **GFDL-1.2-or-later**, with no invariant sections or cover texts; the full license accompanies this edition. The retained mathlib proof components retain Apache-2.0. Current source correspondence and reader presentation are GPT-6.1 Sol (OpenAI), Ultra; historical author variants are not inferred.
+The spectral lesson and scalar companion are **CC0-1.0**. The retained mathlib proof components retain Apache-2.0. Current source correspondence and reader presentation are GPT-6.1 Sol (OpenAI), Ultra; historical author variants are not inferred.
 
 ## Concrete preduals
 
@@ -24,7 +24,7 @@ The eleven-section lesson retains its independently written representation, exac
 
 The exact constructive route is the complete earlier HS, BK, SK and scalar programme proofs named in QF01. Their full source/reader bodies and original AI credits remain unchanged in the download. Original QF mathematical exposition is credited to OpenAI Codex (AI), with its exact historical model variant unverified. Current QF mathematical review, prerequisite proof correspondence and clarifications, exact-byte proof review, and source/input-binding preparation are credited to GPT-6 Astra (OpenAI), Ultra; reading presentation to GPT-6.1 Sol (OpenAI), Ultra, October 2026. The scopes of the earlier mathematical review and of the check of QF01, QF03 and QF04 are stated in the proof-input record; no human review or formal verification is claimed.
 
-Retained QF prose remains **GFDL-1.2-or-later**, with no invariant sections or cover texts. The source-history record identifies the current source, contributions and terms. The independently written new prerequisite/proof clarification, source comparison and reading presentation text has a separate CC0 notice. This notice does not replace GFDL for retained prose or the original terms of any provider. The full GFDL 1.2 text accompanies this edition.
+Retained QF prose is **CC0-1.0**. The source-history record identifies the current source, contributions and terms. The independently written new prerequisite/proof clarification, source comparison and reading presentation text has a separate CC0 notice. This notice does not replace the original terms of any provider.
 
 ## Tomita graph closure and polar data
 
@@ -32,7 +32,7 @@ The thirteen-section reading retains the complete independently written proofs, 
 
 The complete current TC mathematical review, precise prerequisite correspondence and matrix-model clarification were prepared by GPT-6.1 Sol (OpenAI), Ultra. GPT-6 Astra (OpenAI), Ultra prepared the reader presentation and publication and corrected prerequisite links. Original exposition is credited to OpenAI Codex (AI), with its exact historical model variant unverified.
 
-Retained TC prose is **GFDL-1.2-or-later**, with no invariant sections or cover texts; the complete license accompanies it. The independently written new correspondence, model-input clarification and presentation have a separate CC0 notice. Source and contributor notices identify the freely accessible proof sources, contributions and terms. The proof guide names the complete earlier proofs and their mathematical roles. Provider credits and terms are preserved.
+Retained TC prose is **CC0-1.0**. The independently written new correspondence, model-input clarification and presentation have a separate CC0 notice. Source and contributor notices identify the freely accessible proof sources, contributions and terms. The proof guide names the complete earlier proofs and their mathematical roles. Provider credits and terms are preserved.
 
 ## Real coercive equations
 

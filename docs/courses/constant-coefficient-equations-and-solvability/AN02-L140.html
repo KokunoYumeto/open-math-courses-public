@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Constant upper envelopes and scaled plurisubharmonic averages</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L139.html">Previous lesson</a> · <a href="#UE1">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#UE9">Proof exercises and solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="constant-upper-envelopes-and-scaled-plurisubharmonic-averages">Constant upper envelopes and scaled plurisubharmonic averages</h1>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proof exposition, examples, solutions and diagrams: CC0 1.0.</p>
+<p>When a family of plurisubharmonic functions changes with a large parameter, individual values may oscillate or stay singular. Its largest limiting values can nevertheless have a simple shape. A locally uniform upper bound, followed by a global upper bound on the pointwise upper limit, forces that upper limit to be constant almost everywhere.</p>
+<p>The <a href="#complete-proof">complete proof UE1–UE10</a> constructs the needed upper semicontinuous envelopes. Its precise earlier inputs are <a href="AN02-L131.html#NP2">local integrability and smoothing, L131 NP2</a>, and <a href="AN02-L139.html#psh-liouville">bounded-above PSH Liouville, L139 Theorem C2</a>. A final application uses <a href="AN02-L139.html#recession-support-function">the finite support function in L139</a> to control averages along expanding complex lines.</p>
+<h2 id="1-the-statement-concerns-an-upper-limit">1. The statement concerns an upper limit</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(v_j\)">\(v_j\)</span> be plurisubharmonic, or PSH, on all of <span class="math" data-index="1" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, <span class="math" data-index="2" data-tex="\(n\ge1\)">\(n\ge1\)</span>. This means upper semicontinuity and the subharmonic circle inequality on each complex line; a restriction identically equal to <span class="math" data-index="3" data-tex="\(-\infty\)">\(-\infty\)</span> is allowed.</p>
+<p>Assume one common finite upper bound for all <span class="math" data-index="4" data-tex="\(v_j\)">\(v_j\)</span> on each compact set. The bound may change from one compact set to another. Define</p>
+<span class="math math-display" id="eq-L140.1" data-index="5" data-tex="\[
+ v(z)=\limsup_{j\to\infty}v_j(z)
+     =\inf_{k\ge1}\sup_{j\ge k}v_j(z).
+ \tag{L140.1}
+\]">\[
+ v(z)=\limsup_{j\to\infty}v_j(z)
+     =\inf_{k\ge1}\sup_{j\ge k}v_j(z).
+ \tag{L140.1}
+\]</span>
+<p>The inner supremum looks only at the tail of the sequence. Increasing <span class="math" data-index="6" data-tex="\(k\)">\(k\)</span> removes early members, so these tail suprema decrease. Suppose that their limiting value <span class="math" data-index="7" data-tex="\(v\)">\(v\)</span> is bounded above by a single finite constant on the whole space. Then</p>
+<span class="math math-display" id="eq-L140.2" data-index="8" data-tex="\[
+ v(z)=A\quad\hbox{for almost every }z,
+ \qquad A=\sup_{\mathbb C^n}v\in[-\infty,\infty).
+ \tag{L140.2}
+\]">\[
+ v(z)=A\quad\hbox{for almost every }z,
+ \qquad A=\sup_{\mathbb C^n}v\in[-\infty,\infty).
+ \tag{L140.2}
+\]</span>
+<p>“Almost every” uses ordinary real <span class="math" data-index="9" data-tex="\(2n\)">\(2n\)</span>-dimensional volume. The constant can be <span class="math" data-index="10" data-tex="\(-\infty\)">\(-\infty\)</span>. The functions themselves need not converge: constants alternating between 0 and <span class="math" data-index="11" data-tex="\(-1\)">\(-1\)</span> have upper limit 0 and lower limit <span class="math" data-index="12" data-tex="\(-1\)">\(-1\)</span>, everywhere.</p>
+<p>The whole-space bound on <span class="math" data-index="13" data-tex="\(v\)">\(v\)</span> is essential. The constant sequence <span class="math" data-index="14" data-tex="\(v_j(z)=|z|^2\)">\(v_j(z)=|z|^2\)</span> is locally uniformly bounded above on compact sets and is PSH, but its upper limit is the same unbounded, nonconstant function.</p>
+<h2 id="2-why-regularization-is-needed">2. Why regularization is needed</h2>
+<p>A supremum of arbitrarily many upper semicontinuous functions need not be upper semicontinuous. For a locally upper-bounded function <span class="math" data-index="15" data-tex="\(f\)">\(f\)</span>, its regularization is</p>
+<span class="math math-display" id="eq-L140.3" data-index="16" data-tex="\[
+ f^*(z)=\lim_{r\downarrow0}\sup_{|\zeta-z|&lt;r}f(\zeta).
+ \tag{L140.3}
+\]">\[
+ f^*(z)=\lim_{r\downarrow0}\sup_{|\zeta-z|&lt;r}f(\zeta).
+ \tag{L140.3}
+\]</span>
+<p>It records the largest value visible in every small neighborhood and includes the center itself, so <span class="math" data-index="17" data-tex="\(f\le f^*\)">\(f\le f^*\)</span>. For the tail supremum <span class="math" data-index="18" data-tex="\(f_k=\sup_{j\ge k}v_j\)">\(f_k=\sup_{j\ge k}v_j\)</span>, let <span class="math" data-index="19" data-tex="\(U_k=f_k^*\)">\(U_k=f_k^*\)</span>.</p>
+<p>The main construction proves two facts: <span class="math" data-index="20" data-tex="\(U_k\)">\(U_k\)</span> is PSH, and <span class="math" data-index="21" data-tex="\(U_k=f_k\)">\(U_k=f_k\)</span> outside a set of measure zero. It also proves this for an uncountable family, which will matter when the index is a real dilation parameter.</p>
+<p>To see the mechanism, start with finite maxima. A finite maximum is PSH: choose a function attaining the maximum at a circle center, use its mean inequality, then bound its circle values by the maximum. These maxima increase to the full countable supremum and converge in local <span class="math" data-index="22" data-tex="\(L^1\)">\(L^1\)</span>, because a nontrivial first member supplies an integrable lower bound and the hypothesis supplies a common upper bound.</p>
+<p>Smooth each maximum with a positive radial kernel. The result is smooth and PSH and lies above that maximum. Passing to the local <span class="math" data-index="23" data-tex="\(L^1\)">\(L^1\)</span> limit gives smooth majorants of the full supremum. A summable sequence of smoothing errors shows that the regularization and the original supremum agree almost everywhere. The smooth majorants converge to the regularization at every point; reverse Fatou passes their circle inequalities to it. <a href="#UE3">UE2–UE3</a> give every step, including minus-infinite values.</p>
+<h2 id="3-a-logarithmic-hole-which-persists">3. A logarithmic hole which persists</h2>
+<p>In one complex variable consider</p>
+<span class="math math-display" id="eq-L140.4" data-index="24" data-tex="\[
+ v_j(z)=\frac1j\log|z|,
+ \tag{L140.4}
+\]">\[
+ v_j(z)=\frac1j\log|z|,
+ \tag{L140.4}
+\]</span>
+<p>with value <span class="math" data-index="25" data-tex="\(-\infty\)">\(-\infty\)</span> at zero. The logarithm is subharmonic, and multiplication by the positive number <span class="math" data-index="26" data-tex="\(1/j\)">\(1/j\)</span> preserves that property. Each compact disk has a common finite upper bound for the whole sequence. At every nonzero point the sequence tends to zero, but at zero it remains <span class="math" data-index="27" data-tex="\(-\infty\)">\(-\infty\)</span>.</p>
+<p>For <span class="math" data-index="28" data-tex="\(r=|z|&gt;0\)">\(r=|z|&gt;0\)</span>, the tail supremum is 0 when <span class="math" data-index="29" data-tex="\(r\le1\)">\(r\le1\)</span>, and <span class="math" data-index="30" data-tex="\((\log r)/k\)">\((\log r)/k\)</span> when <span class="math" data-index="31" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>. At zero its value remains <span class="math" data-index="32" data-tex="\(-\infty\)">\(-\infty\)</span>. Regularization produces</p>
+<span class="math math-display" id="eq-L140.5" data-index="33" data-tex="\[
+ U_k(z)=\frac{\max(0,\log|z|)}k,
+ \qquad U_k(0)=0.
+ \tag{L140.5}
+\]">\[
+ U_k(z)=\frac{\max(0,\log|z|)}k,
+ \qquad U_k(0)=0.
+ \tag{L140.5}
+\]</span>
+<p>These envelopes decrease to zero everywhere. The raw upper limit still has its one singular value. This is why the theorem's conclusion is almost everywhere. In <span class="math" data-index="34" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, replace <span class="math" data-index="35" data-tex="\(z\)">\(z\)</span> by the first coordinate <span class="math" data-index="36" data-tex="\(z_1\)">\(z_1\)</span>; the exceptional set is the hyperplane <span class="math" data-index="37" data-tex="\(z_1=0\)">\(z_1=0\)</span>, which has real codimension two and volume zero. <a href="#UE8">Example 1 in UE8</a> verifies the PSH line restrictions and the exact tails.</p>
+<figure><img class="course-figure" width="2144" height="880" src="reproduce/L140/figures/logarithmic-tail-envelopes.png" alt="Logarithmic functions and the regularized envelopes of their tails." /><figcaption class="native"><a href="reproduce/L140/figures/logarithmic-tail-envelopes.png">Open full-size PNG</a> · <a href="reproduce/L140/figures/logarithmic-tail-envelopes.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> The left panel shows exact radial sections <span class="math" data-index="38" data-tex="\(\log r/j\)">\(\log r/j\)</span>, for <span class="math" data-index="39" data-tex="\(j=1,2,4,8\)">\(j=1,2,4,8\)</span>, on <span class="math" data-index="40" data-tex="\(10^{-3}\le r\le3\)">\(10^{-3}\le r\le3\)</span>; the logarithmic radius axis does not include the singular center. The right panel shows <span class="math" data-index="41" data-tex="\(\max(0,\log r)/k\)">\(\max(0,\log r)/k\)</span>, including its regularized value zero at the center. The raw tail has value <span class="math" data-index="42" data-tex="\(-\infty\)">\(-\infty\)</span> at that marked point. No finite number has been assigned to the original singularity. The curves illustrate (L140.4)–(L140.5).</p>
+<h2 id="4-the-decreasing-tail-limit-becomes-constant">4. The decreasing tail limit becomes constant</h2>
+<p>The envelopes <span class="math" data-index="43" data-tex="\(U_k\)">\(U_k\)</span> decrease. Their limit <span class="math" data-index="44" data-tex="\(U\)">\(U\)</span> is upper semicontinuous and PSH: after subtracting from a common upper bound, monotone convergence passes the circle inequality to the limit.</p>
+<p>For each <span class="math" data-index="45" data-tex="\(k\)">\(k\)</span>, discard the null set where <span class="math" data-index="46" data-tex="\(f_k\ne U_k\)">\(f_k\ne U_k\)</span>. There are only countably many tails, so their combined exceptional set is still null. Consequently</p>
+<span class="math math-display" id="eq-L140.6" data-index="47" data-tex="\[
+ v=U\quad\hbox{almost everywhere},\qquad v\le U\quad\hbox{everywhere}.
+ \tag{L140.6}
+\]">\[
+ v=U\quad\hbox{almost everywhere},\qquad v\le U\quad\hbox{everywhere}.
+ \tag{L140.6}
+\]</span>
+<p>If <span class="math" data-index="48" data-tex="\(U\equiv-\infty\)">\(U\equiv-\infty\)</span>, the everywhere inequality makes <span class="math" data-index="49" data-tex="\(v\equiv-\infty\)">\(v\equiv-\infty\)</span> as well. Otherwise <span class="math" data-index="50" data-tex="\(U\)">\(U\)</span> is locally integrable. Its almost-everywhere agreement with the globally upper-bounded <span class="math" data-index="51" data-tex="\(v\)">\(v\)</span> gives the same bound almost everywhere. The real ball-mean inequality then gives the bound at every center.</p>
+<p>Now the <a href="AN02-L139.html#psh-liouville">PSH Liouville theorem</a> applies: <span class="math" data-index="52" data-tex="\(U\)">\(U\)</span> must be constant. Equation (L140.6) makes <span class="math" data-index="53" data-tex="\(v\)">\(v\)</span> equal to that constant almost everywhere and no larger anywhere. Its global supremum is therefore that same constant. <a href="#UE5">UE5</a> is the complete proof of (L140.2).</p>
+<h2 id="5-real-dilation-parameters-are-included">5. Real dilation parameters are included</h2>
+<p>For a family <span class="math" data-index="54" data-tex="\(v_t\)">\(v_t\)</span>, <span class="math" data-index="55" data-tex="\(t\ge1\)">\(t\ge1\)</span>, the tail <span class="math" data-index="56" data-tex="\(\{v_t:t\ge k\}\)">\(\{v_t:t\ge k\}\)</span> is usually uncountable. Sampling only integers can miss members of this tail. A family of spatial constants which is zero at integers and one at every other parameter has full upper limit one; sampling integers would give zero.</p>
+<p>The proof handles the entire family. Take a countable base of rational balls and rational thresholds. For every threshold below the family's supremum on such a ball, select one function which exceeds that threshold somewhere in the ball. These countably many selections reproduce every ball supremum and hence the full upper semicontinuous regularization. Almost-everywhere equality for the selected functions squeezes the whole family's supremum to that same regularization.</p>
+<p>Apply this construction separately to the countably many tails <span class="math" data-index="57" data-tex="\(t\ge k\)">\(t\ge k\)</span>. The rest of the proof is unchanged. Thus a locally uniformly upper-bounded PSH family with a globally bounded-above pointwise <span class="math" data-index="58" data-tex="\(\limsup_{t\to\infty}\)">\(\limsup_{t\to\infty}\)</span> has a constant upper limit almost everywhere. No integration or measurability in <span class="math" data-index="59" data-tex="\(t\)">\(t\)</span> is needed. <a href="#UE4">UE4 and UE6</a> prove the selection and real-parameter assertions.</p>
+<h2 id="6-a-scaled-average-application">6. A scaled-average application</h2>
+<p>Let <span class="math" data-index="60" data-tex="\(q\)">\(q\)</span> satisfy the linear imaginary-growth hypothesis from <a href="AN02-L139.html#psh-envelope-theorem">L139</a>. Its finite continuous support function <span class="math" data-index="61" data-tex="\(H\)">\(H\)</span> obeys</p>
+<span class="math math-display" data-index="62" data-tex="\[
+ q(x+iy)\le M(0)+H(y),
+ \qquad H(a+b)\le H(a)+H(b),\quad H(ra)=rH(a)\quad(r\ge0).
+
+\]">\[
+ q(x+iy)\le M(0)+H(y),
+ \qquad H(a+b)\le H(a)+H(b),\quad H(ra)=rH(a)\quad(r\ge0).
+
+\]</span>
+<p>For a fixed real vector <span class="math" data-index="63" data-tex="\(y\)">\(y\)</span> and a compact planar set <span class="math" data-index="64" data-tex="\(K\)">\(K\)</span>, average translations along the complex line in direction <span class="math" data-index="65" data-tex="\(y\)">\(y\)</span>:</p>
+<span class="math math-display" id="eq-L140.7" data-index="66" data-tex="\[
+ a_t(\zeta)=\frac1t\int_K q(\zeta+twy)\,dA(w),
+ \qquad L=\int_K H((\operatorname{Im}w)y)\,dA(w).
+ \tag{L140.7}
+\]">\[
+ a_t(\zeta)=\frac1t\int_K q(\zeta+twy)\,dA(w),
+ \qquad L=\int_K H((\operatorname{Im}w)y)\,dA(w).
+ \tag{L140.7}
+\]</span>
+<p>Positive translation averages are PSH: integrate each translated circle inequality, and use the local upper bound to justify Tonelli and upper semicontinuity. Subadditivity and positive homogeneity give the precise estimate</p>
+<span class="math math-display" id="eq-L140.8" data-index="67" data-tex="\[
+ a_t(\zeta)\le L+\frac{m(K)}t
+                 \bigl(M(0)+H(\operatorname{Im}\zeta)\bigr).
+ \tag{L140.8}
+\]">\[
+ a_t(\zeta)\le L+\frac{m(K)}t
+                 \bigl(M(0)+H(\operatorname{Im}\zeta)\bigr).
+ \tag{L140.8}
+\]</span>
+<p>This supplies a common upper bound on compact center sets and a pointwise upper limit at most <span class="math" data-index="68" data-tex="\(L\)">\(L\)</span> on the whole space. The envelope theorem consequently makes that upper limit a constant <span class="math" data-index="69" data-tex="\(A\le L\)">\(A\le L\)</span> almost everywhere.</p>
+<p>There is a useful distinction between spatial constancy and the value of the constant. To prove <span class="math" data-index="70" data-tex="\(A=L\)">\(A=L\)</span>, one needs a lower estimate. If one center already has upper limit at least <span class="math" data-index="71" data-tex="\(L\)">\(L\)</span>, the everywhere majorization in (L140.6) forces equality. An absolute error integral requires the corresponding lower integral estimate as well. <a href="#UE7">UE7</a> states exactly what this application proves.</p>
+<h2 id="7-an-average-which-can-be-computed-completely">7. An average which can be computed completely</h2>
+<p>Take <span class="math" data-index="72" data-tex="\(q(\zeta)=|\operatorname{Im}\zeta|\)">\(q(\zeta)=|\operatorname{Im}\zeta|\)</span>, <span class="math" data-index="73" data-tex="\(y=1\)">\(y=1\)</span>, and the rectangle <span class="math" data-index="74" data-tex="\(-1\le\operatorname{Re}w\le1\)">\(-1\le\operatorname{Re}w\le1\)</span>, <span class="math" data-index="75" data-tex="\(0\le\operatorname{Im}w\le1\)">\(0\le\operatorname{Im}w\le1\)</span>. Then <span class="math" data-index="76" data-tex="\(H(b)=|b|\)">\(H(b)=|b|\)</span>, the rectangle has area two, and <span class="math" data-index="77" data-tex="\(L=1\)">\(L=1\)</span>. Write <span class="math" data-index="78" data-tex="\(s=\operatorname{Im}\zeta\)">\(s=\operatorname{Im}\zeta\)</span>. Integrating the real coordinate first gives</p>
+<span class="math math-display" id="eq-L140.9" data-index="79" data-tex="\[
+ a_t(\zeta)=2\int_0^1|b+s/t|\,db.
+ \tag{L140.9}
+\]">\[
+ a_t(\zeta)=2\int_0^1|b+s/t|\,db.
+ \tag{L140.9}
+\]</span>
+<p>If <span class="math" data-index="80" data-tex="\(s\ge0\)">\(s\ge0\)</span>, this is <span class="math" data-index="81" data-tex="\(1+2s/t\)">\(1+2s/t\)</span>. If <span class="math" data-index="82" data-tex="\(s\le-t\)">\(s\le-t\)</span>, it is <span class="math" data-index="83" data-tex="\(-1-2s/t\)">\(-1-2s/t\)</span>. Between these ranges, split at the zero <span class="math" data-index="84" data-tex="\(b=-s/t\)">\(b=-s/t\)</span>, obtaining <span class="math" data-index="85" data-tex="\(1+2s/t+2(s/t)^2\)">\(1+2s/t+2(s/t)^2\)</span>. At every fixed center the answer tends to one, and the triangle inequality bounds it by <span class="math" data-index="86" data-tex="\(1+2|s|/t\)">\(1+2|s|/t\)</span>. The calculation proves the exact limit for this example.</p>
+<figure><img class="course-figure" width="2880" height="928" src="reproduce/L140/figures/scaled-translation-averages.png" alt="The rectangle of translations and the exact scaled averages." /><figcaption class="native"><a href="reproduce/L140/figures/scaled-translation-averages.png">Open full-size PNG</a> · <a href="reproduce/L140/figures/scaled-translation-averages.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> The rectangle in the left panel is the integration set, with area two. The middle panel fixes <span class="math" data-index="87" data-tex="\(s=-1\)">\(s=-1\)</span> and shows the integrand <span class="math" data-index="88" data-tex="\(|b-1/t|\)">\(|b-1/t|\)</span>; twice its area gives the average. The right panel uses the exact piecewise integral for <span class="math" data-index="89" data-tex="\(-2\le s\le2\)">\(-2\le s\le2\)</span>. The fixed-center limit is the horizontal line 1. The values at <span class="math" data-index="90" data-tex="\(s=-1\)">\(s=-1\)</span>, for <span class="math" data-index="91" data-tex="\(t=1,2,4,8\)">\(t=1,2,4,8\)</span>, are <span class="math" data-index="92" data-tex="\(1,1/2,5/8,25/32\)">\(1,1/2,5/8,25/32\)</span>. The finite-parameter averages need not approach their limit monotonically. See (L140.7)–(L140.9) and formal Example 4.</p>
+<h2 id="8-exercises-and-complete-solutions">8. Exercises and complete solutions</h2>
+<p><strong>Exercise 1.</strong> What do the upper limit and lower limit equal for a sequence of constants alternating between 2 and <span class="math" data-index="93" data-tex="\(-3\)">\(-3\)</span>?</p>
+<p><strong>Solution.</strong> Every tail contains both values, so its supremum is 2 and its infimum is <span class="math" data-index="94" data-tex="\(-3\)">\(-3\)</span>. The upper limit is 2 and the lower limit is <span class="math" data-index="95" data-tex="\(-3\)">\(-3\)</span>, everywhere. Both values are PSH constants. The envelope theorem concerns the upper limit and does not make the sequence converge.</p>
+<p><strong>Exercise 2.</strong> For <span class="math" data-index="96" data-tex="\(v_j=\log|z|/j\)">\(v_j=\log|z|/j\)</span>, find the tail supremum at radius <span class="math" data-index="97" data-tex="\(1/4\)">\(1/4\)</span> and radius 4. Does a function attain each supremum?</p>
+<p><strong>Solution.</strong> At radius <span class="math" data-index="98" data-tex="\(1/4\)">\(1/4\)</span>, the values are <span class="math" data-index="99" data-tex="\(-\log4/j\)">\(-\log4/j\)</span>, so the supremum over <span class="math" data-index="100" data-tex="\(j\ge k\)">\(j\ge k\)</span> is zero, approached as <span class="math" data-index="101" data-tex="\(j\to\infty\)">\(j\to\infty\)</span> and never attained. At radius 4 the values are <span class="math" data-index="102" data-tex="\(\log4/j\)">\(\log4/j\)</span>, so their maximum is <span class="math" data-index="103" data-tex="\(\log4/k\)">\(\log4/k\)</span>, attained at <span class="math" data-index="104" data-tex="\(j=k\)">\(j=k\)</span>. At the center every value is <span class="math" data-index="105" data-tex="\(-\infty\)">\(-\infty\)</span>; the regularized envelope's center value zero is supplied by nearby points.</p>
+<p><strong>Exercise 3.</strong> Why can an almost-everywhere upper bound for the PSH limit <span class="math" data-index="106" data-tex="\(U\)">\(U\)</span> be upgraded to an everywhere upper bound?</p>
+<p><strong>Solution.</strong> If <span class="math" data-index="107" data-tex="\(U\not\equiv-\infty\)">\(U\not\equiv-\infty\)</span>, it is real subharmonic and locally integrable. On a ball its volume integral is unchanged by removing a null set. Therefore a bound <span class="math" data-index="108" data-tex="\(U\le C\)">\(U\le C\)</span> almost everywhere makes its volume average at most <span class="math" data-index="109" data-tex="\(C\)">\(C\)</span>. The ball-mean inequality gives <span class="math" data-index="110" data-tex="\(U\)">\(U\)</span> at the center no larger than that average. Every point can be such a center. In the identically minus-infinite case the bound is immediate.</p>
+<p><strong>Exercise 4.</strong> Why do real parameters introduce no uncountable union of exceptional null sets in the proof?</p>
+<p><strong>Solution.</strong> Inside each tail <span class="math" data-index="111" data-tex="\(t\ge k\)">\(t\ge k\)</span>, rational balls and rational thresholds select a countable family with the same regularization as the entire tail. That envelope agrees with the full tail supremum almost everywhere. Only the countably many integer thresholds <span class="math" data-index="112" data-tex="\(k\)">\(k\)</span> then produce exceptional sets to combine. Their union is null, even though each tail contains uncountably many functions.</p>
+<p><strong>Exercise 5.</strong> Compute the rectangle average at <span class="math" data-index="113" data-tex="\(s=-1\)">\(s=-1\)</span> for <span class="math" data-index="114" data-tex="\(t=2\)">\(t=2\)</span> and <span class="math" data-index="115" data-tex="\(t=8\)">\(t=8\)</span>.</p>
+<p><strong>Solution.</strong> For <span class="math" data-index="116" data-tex="\(t=2\)">\(t=2\)</span>, split the integral at <span class="math" data-index="117" data-tex="\(b=1/2\)">\(b=1/2\)</span>. The two triangular areas sum to <span class="math" data-index="118" data-tex="\(1/4\)">\(1/4\)</span>; multiplying by two gives <span class="math" data-index="119" data-tex="\(1/2\)">\(1/2\)</span>. For <span class="math" data-index="120" data-tex="\(t=8\)">\(t=8\)</span>, use <span class="math" data-index="121" data-tex="\(1+2(-1/8)+2(1/64)=1-1/4+1/32=25/32\)">\(1+2(-1/8)+2(1/64)=1-1/4+1/32=25/32\)</span>. Both differ from the fixed-center limit 1 because their dilation factors are finite.</p>
+<p><strong>Exercise 6.</strong> Suppose a scaled-average upper limit equals a constant <span class="math" data-index="122" data-tex="\(A\le L\)">\(A\le L\)</span> almost everywhere and is at most <span class="math" data-index="123" data-tex="\(A\)">\(A\)</span> everywhere. If one center has upper limit at least <span class="math" data-index="124" data-tex="\(L\)">\(L\)</span>, what follows? Does that alone imply convergence at every center?</p>
+<p><strong>Solution.</strong> At that center the two inequalities give <span class="math" data-index="125" data-tex="\(L\le A\le L\)">\(L\le A\le L\)</span>, hence <span class="math" data-index="126" data-tex="\(A=L\)">\(A=L\)</span>. It follows that the upper limit is <span class="math" data-index="127" data-tex="\(L\)">\(L\)</span> almost everywhere. An upper limit does not control the lower limit: alternating constants already demonstrate this. The pointwise convergence and absolute integral convergence need additional estimates.</p>
+<h2 id="source-credit">Source credit</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em> (1983 edition; second revised printing 1990; reprint 2005), §16.2, Lemma 16.2.3 and the following real-parameter remark, printed p. 316 (PDF p. 329). The <a href="#complete-proof">complete original proof</a> establishes the upper-envelope construction and almost-everywhere constancy. The scaled-average application uses the explicitly linked support-function theorem.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proof exposition, examples, solutions and diagrams: CC0 1.0.</p>
+<p>A pointwise upper limit need not be upper semicontinuous. For plurisubharmonic functions its upper semicontinuous envelope has a strong rigidity property: a global upper bound forces that envelope to be constant. We construct the envelope directly, including the almost-everywhere comparison with the original pointwise upper limit. The same argument works for a real dilation parameter and therefore applies to scaled translation averages.</p>
+<p>The precise classical target is Hörmander II, Lemma 16.2.3. Its conclusion concerns an upper limit, rather than convergence of the original functions. The proof below uses <a href="AN02-L131.html#NP2">L131, NP2</a> for local integrability and the local <span class="math" data-index="128" data-tex="\(L^1\)">\(L^1\)</span> approximate-identity argument, and <a href="AN02-L139.html#psh-liouville">L139, Theorem C2</a> for bounded-above PSH Liouville. The scaling application uses only <a href="AN02-L139.html#recession-support-function">L139, Theorem E1 and its recession proof</a>, specifically the finite continuous support function and its bound on the original function. All upper-envelope constructions are proved here. Tonelli, dominated convergence and elementary properties of Lebesgue integration are used explicitly.</p>
+<p><a id="UE1"></a></p>
+<h2 id="ue1-statement-values-and-the-meaning-of-the-upper-limit">UE1. Statement, values and the meaning of the upper limit</h2>
+<p>Identify <span class="math" data-index="129" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> with <span class="math" data-index="130" data-tex="\(\mathbb R^{2n}\)">\(\mathbb R^{2n}\)</span>, where <span class="math" data-index="131" data-tex="\(n\ge1\)">\(n\ge1\)</span>. A PSH function is an upper semicontinuous map to <span class="math" data-index="132" data-tex="\([-\infty,\infty)\)">\([-\infty,\infty)\)</span> whose restriction to every nonconstant complex affine line is subharmonic or identically <span class="math" data-index="133" data-tex="\(-\infty\)">\(-\infty\)</span>. Subharmonicity is the circle-mean inequality. The identically minus-infinite function is allowed.</p>
+<p><strong>Theorem UE.</strong> Let <span class="math" data-index="134" data-tex="\(v_j\)">\(v_j\)</span> be PSH on all of <span class="math" data-index="135" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. Suppose that for every compact <span class="math" data-index="136" data-tex="\(K\)">\(K\)</span> there is a finite real <span class="math" data-index="137" data-tex="\(C_K\)">\(C_K\)</span> such that</p>
+<span class="math math-display" id="eq-UE1" data-index="138" data-tex="\[
+ v_j(z)\le C_K\qquad(z\in K,\ j\ge1).
+ \tag{UE1}
+\]">\[
+ v_j(z)\le C_K\qquad(z\in K,\ j\ge1).
+ \tag{UE1}
+\]</span>
+<p>Define the pointwise upper limit by its tail suprema,</p>
+<span class="math math-display" id="eq-UE2" data-index="139" data-tex="\[
+ v(z)=\limsup_{j\to\infty}v_j(z)
+     =\inf_{k\ge1}\sup_{j\ge k}v_j(z).
+ \tag{UE2}
+\]">\[
+ v(z)=\limsup_{j\to\infty}v_j(z)
+     =\inf_{k\ge1}\sup_{j\ge k}v_j(z).
+ \tag{UE2}
+\]</span>
+<p>If <span class="math" data-index="140" data-tex="\(v\le C\)">\(v\le C\)</span> on all of <span class="math" data-index="141" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, for a finite real <span class="math" data-index="142" data-tex="\(C\)">\(C\)</span>, then, with</p>
+<span class="math math-display" id="eq-UE3" data-index="143" data-tex="\[
+ A=\sup_{z\in\mathbb C^n}v(z)\in[-\infty,C],
+ \tag{UE3}
+\]">\[
+ A=\sup_{z\in\mathbb C^n}v(z)\in[-\infty,C],
+ \tag{UE3}
+\]</span>
+<p>we have <span class="math" data-index="144" data-tex="\(v(z)=A\)">\(v(z)=A\)</span> for almost every <span class="math" data-index="145" data-tex="\(z\)">\(z\)</span>, in <span class="math" data-index="146" data-tex="\(2n\)">\(2n\)</span>-dimensional Lebesgue measure. In fact there is a PSH upper envelope which equals <span class="math" data-index="147" data-tex="\(A\)">\(A\)</span> at every point and dominates <span class="math" data-index="148" data-tex="\(v\)">\(v\)</span> at every point. The theorem allows <span class="math" data-index="149" data-tex="\(A=-\infty\)">\(A=-\infty\)</span>. It does not assert that <span class="math" data-index="150" data-tex="\(v_j\)">\(v_j\)</span> converges or that <span class="math" data-index="151" data-tex="\(v=A\)">\(v=A\)</span> at every point.</p>
+<p>For a locally upper-bounded function <span class="math" data-index="152" data-tex="\(f\)">\(f\)</span>, write</p>
+<span class="math math-display" id="eq-UE4" data-index="153" data-tex="\[
+ f^*(z)=\lim_{r\downarrow0}\sup_{|\zeta-z|&lt;r}f(\zeta).
+ \tag{UE4}
+\]">\[
+ f^*(z)=\lim_{r\downarrow0}\sup_{|\zeta-z|&lt;r}f(\zeta).
+ \tag{UE4}
+\]</span>
+<p>This is its upper semicontinuous regularization. It majorizes <span class="math" data-index="154" data-tex="\(f\)">\(f\)</span>. It is upper semicontinuous because a neighborhood on which the supremum is below a number supplies smaller such neighborhoods for all nearby centers. We will not assume in advance that a regularized upper envelope is PSH.</p>
+<p><a id="UE2"></a></p>
+<h2 id="ue2-real-subharmonicity-finite-maxima-and-positive-averages">UE2. Real subharmonicity, finite maxima and positive averages</h2>
+<p><strong>Real means.</strong> A PSH function <span class="math" data-index="155" data-tex="\(u\not\equiv-\infty\)">\(u\not\equiv-\infty\)</span> is subharmonic in real dimension <span class="math" data-index="156" data-tex="\(2n\)">\(2n\)</span>, and hence is locally integrable by NP2. Here is the connection between the two mean inequalities. If <span class="math" data-index="157" data-tex="\(u(z)\)">\(u(z)\)</span> is finite, apply the complex-line circle inequality with direction <span class="math" data-index="158" data-tex="\(\omega\in S^{2n-1}\)">\(\omega\in S^{2n-1}\)</span>, then average over <span class="math" data-index="159" data-tex="\(\omega\)">\(\omega\)</span>. The normalized sphere measure is invariant under multiplication by <span class="math" data-index="160" data-tex="\(e^{i\theta}\)">\(e^{i\theta}\)</span>. Thus</p>
+<span class="math math-display" id="eq-UE5" data-index="161" data-tex="\[
+ u(z)\le\frac1{|S^{2n-1}|}
+             \int_{S^{2n-1}}u(z+r\omega)\,dS(\omega).
+ \tag{UE5}
+\]">\[
+ u(z)\le\frac1{|S^{2n-1}|}
+             \int_{S^{2n-1}}u(z+r\omega)\,dS(\omega).
+ \tag{UE5}
+\]</span>
+<p>All integrals are justified by subtracting a common local upper bound: the resulting negative parts are nonnegative, so Tonelli applies. A finite center gives a finite lower bound for the average. At a minus-infinite center the inequality is automatic. Upper semicontinuity and (UE5) are exactly the real subharmonic conditions used in NP2. Integrating the sphere inequalities over radii also gives the ball-mean inequality.</p>
+<p><strong>Finite maxima.</strong> A finite maximum of PSH functions is PSH. It is upper semicontinuous. At a circle center with a finite maximum, choose one of the finitely many functions attaining it, apply that function's circle inequality, and bound its circle values by the maximum. A minus-infinite center again causes no problem.</p>
+<p><strong>Positive translation averages.</strong> Let <span class="math" data-index="162" data-tex="\(\nu\)">\(\nu\)</span> be a finite positive measure of bounded support in <span class="math" data-index="163" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. For PSH <span class="math" data-index="164" data-tex="\(u\)">\(u\)</span>, set</p>
+<span class="math math-display" id="eq-UE6" data-index="165" data-tex="\[
+ T_\nu u(z)=\int u(z+a)\,d\nu(a).
+ \tag{UE6}
+\]">\[
+ T_\nu u(z)=\int u(z+a)\,d\nu(a).
+ \tag{UE6}
+\]</span>
+<p>The integral is defined with its possibly infinite negative part; local upper bounds exclude a positive infinity. If <span class="math" data-index="166" data-tex="\(\nu=0\)">\(\nu=0\)</span>, take the result to be zero. Otherwise, for <span class="math" data-index="167" data-tex="\(u\not\equiv-\infty\)">\(u\not\equiv-\infty\)</span>, local integrability and Tonelli give, on every bounded compact observation region <span class="math" data-index="168" data-tex="\(B\)">\(B\)</span>,</p>
+<span class="math math-display" id="eq-UE7" data-index="169" data-tex="\[
+ \int_B\int |u(z+a)|\,d\nu(a)\,dz
+ \le\nu(\mathbb C^n)\int_{B+\operatorname{supp}\nu}|u(\zeta)|\,d\zeta&lt;\infty.
+ \tag{UE7}
+\]">\[
+ \int_B\int |u(z+a)|\,d\nu(a)\,dz
+ \le\nu(\mathbb C^n)\int_{B+\operatorname{supp}\nu}|u(\zeta)|\,d\zeta&lt;\infty.
+ \tag{UE7}
+\]</span>
+<p>Thus the average is locally integrable and finite almost everywhere. For a sequence of centers approaching <span class="math" data-index="170" data-tex="\(z\)">\(z\)</span>, upper semicontinuity of <span class="math" data-index="171" data-tex="\(u\)">\(u\)</span>, the common local upper bound and reverse Fatou give upper semicontinuity of the average. Integrate each translated complex-line circle inequality with respect to <span class="math" data-index="172" data-tex="\(\nu\)">\(\nu\)</span>. Tonelli applied to the common upper bound minus <span class="math" data-index="173" data-tex="\(u\)">\(u\)</span> permits the interchange and proves the circle inequality for the average. Consequently (UE6) is PSH. If <span class="math" data-index="174" data-tex="\(u\equiv-\infty\)">\(u\equiv-\infty\)</span> and <span class="math" data-index="175" data-tex="\(\nu\ne0\)">\(\nu\ne0\)</span>, its average is identically <span class="math" data-index="176" data-tex="\(-\infty\)">\(-\infty\)</span>.</p>
+<p>On an open region the same averaging argument applies locally whenever the translated circles and kernel supports stay in that region. In particular, convolution with a nonnegative smooth compact radial kernel of integral one makes a nontrivial PSH function smooth and PSH on the region where convolution is defined. Its real sphere-mean inequality gives</p>
+<span class="math math-display" id="eq-UE8" data-index="177" data-tex="\[
+ u\le u*\rho_\varepsilon,
+ \qquad \rho_\varepsilon(a)=\varepsilon^{-2n}\rho(a/\varepsilon).
+ \tag{UE8}
+\]">\[
+ u\le u*\rho_\varepsilon,
+ \qquad \rho_\varepsilon(a)=\varepsilon^{-2n}\rho(a/\varepsilon).
+ \tag{UE8}
+\]</span>
+<p>NP2 proves the local <span class="math" data-index="178" data-tex="\(L^1\)">\(L^1\)</span> convergence of these approximate identities. These facts concern the given upper semicontinuous values, not an arbitrary modification on a null set.</p>
+<p><a id="UE3"></a></p>
+<h2 id="ue3-a-countable-upper-envelope-without-a-compactness-theorem">UE3. A countable upper envelope, without a compactness theorem</h2>
+<p><strong>Lemma UE3.</strong> Suppose <span class="math" data-index="179" data-tex="\(u_\ell\)">\(u_\ell\)</span> are PSH on a connected open region <span class="math" data-index="180" data-tex="\(\Omega\)">\(\Omega\)</span>, locally uniformly bounded above, and at least one is not identically <span class="math" data-index="181" data-tex="\(-\infty\)">\(-\infty\)</span>. Put <span class="math" data-index="182" data-tex="\(f=\sup_\ell u_\ell\)">\(f=\sup_\ell u_\ell\)</span>. Then <span class="math" data-index="183" data-tex="\(f^*\)">\(f^*\)</span> is PSH, locally integrable, and <span class="math" data-index="184" data-tex="\(f=f^*\)">\(f=f^*\)</span> almost everywhere.</p>
+<p><strong>Proof.</strong> Reindex so that the first member is nontrivial, and let</p>
+<span class="math math-display" id="eq-UE9" data-index="185" data-tex="\[
+ f_m=\max_{1\le\ell\le m}u_\ell\uparrow f.
+ \tag{UE9}
+\]">\[
+ f_m=\max_{1\le\ell\le m}u_\ell\uparrow f.
+ \tag{UE9}
+\]</span>
+<p>Every <span class="math" data-index="186" data-tex="\(f_m\)">\(f_m\)</span> is PSH. On a compact neighborhood it lies between the locally integrable first nontrivial member and a common finite upper bound. Dominated convergence therefore gives <span class="math" data-index="187" data-tex="\(f_m\to f\)">\(f_m\to f\)</span> in local <span class="math" data-index="188" data-tex="\(L^1\)">\(L^1\)</span>, and makes <span class="math" data-index="189" data-tex="\(f\)">\(f\)</span> finite almost everywhere and locally integrable.</p>
+<p>For a fixed sufficiently small <span class="math" data-index="190" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, (UE8) and this convergence give</p>
+<span class="math math-display" id="eq-UE10" data-index="191" data-tex="\[
+ f\le f*\rho_\varepsilon,
+ \qquad f^*\le f*\rho_\varepsilon.
+ \tag{UE10}
+\]">\[
+ f\le f*\rho_\varepsilon,
+ \qquad f^*\le f*\rho_\varepsilon.
+ \tag{UE10}
+\]</span>
+<p>The second inequality holds because the right side is continuous and majorizes <span class="math" data-index="192" data-tex="\(f\)">\(f\)</span>. Convolutions of <span class="math" data-index="193" data-tex="\(f_m\)">\(f_m\)</span> tend uniformly on compact subsets to the convolution of <span class="math" data-index="194" data-tex="\(f\)">\(f\)</span>: bound the difference by the supremum of the fixed kernel times the local <span class="math" data-index="195" data-tex="\(L^1\)">\(L^1\)</span> error. Thus <span class="math" data-index="196" data-tex="\(f*\rho_\varepsilon\)">\(f*\rho_\varepsilon\)</span> is smooth and PSH, by passing to the limit in the circle inequalities.</p>
+<p>We spell out the almost-everywhere step. Choose compact sets <span class="math" data-index="197" data-tex="\(K_q\)">\(K_q\)</span> exhausting <span class="math" data-index="198" data-tex="\(\Omega\)">\(\Omega\)</span>, and a sequence <span class="math" data-index="199" data-tex="\(\varepsilon_q\downarrow0\)">\(\varepsilon_q\downarrow0\)</span>, small enough that convolution is defined near <span class="math" data-index="200" data-tex="\(K_q\)">\(K_q\)</span>, with</p>
+<span class="math math-display" id="eq-UE11" data-index="201" data-tex="\[
+ \|f*\rho_{\varepsilon_q}-f\|_{L^1(K_q)}&lt;2^{-q}.
+ \tag{UE11}
+\]">\[
+ \|f*\rho_{\varepsilon_q}-f\|_{L^1(K_q)}&lt;2^{-q}.
+ \tag{UE11}
+\]</span>
+<p>This is possible by NP2's approximate-identity argument, which applies to every locally integrable <span class="math" data-index="202" data-tex="\(f\)">\(f\)</span>. On each fixed <span class="math" data-index="203" data-tex="\(K_p\)">\(K_p\)</span>, the sum of these absolute errors for <span class="math" data-index="204" data-tex="\(q\ge p\)">\(q\ge p\)</span> has finite integral. It is therefore finite almost everywhere, and its summands tend to zero there. Inequality (UE10) implies <span class="math" data-index="205" data-tex="\(f^*\le f\)">\(f^*\le f\)</span> almost everywhere; the opposite inequality holds everywhere. Hence</p>
+<span class="math math-display" id="eq-UE12" data-index="206" data-tex="\[
+ f^*=f\quad\hbox{almost everywhere}.
+ \tag{UE12}
+\]">\[
+ f^*=f\quad\hbox{almost everywhere}.
+ \tag{UE12}
+\]</span>
+<p>In particular <span class="math" data-index="207" data-tex="\(f^*\)">\(f^*\)</span> is locally integrable and has the same convolutions as <span class="math" data-index="208" data-tex="\(f\)">\(f\)</span>. Upper semicontinuity gives <span class="math" data-index="209" data-tex="\(\limsup_{\varepsilon\downarrow0}f^**\rho_\varepsilon(z)\le f^*(z)\)">\(\limsup_{\varepsilon\downarrow0}f^**\rho_\varepsilon(z)\le f^*(z)\)</span>, including a minus-infinite value: all values in a sufficiently small neighborhood are then below any prescribed finite number. Together with (UE10) this proves convergence at every point,</p>
+<span class="math math-display" id="eq-UE13" data-index="210" data-tex="\[
+ f*\rho_\varepsilon(z)\longrightarrow f^*(z).
+ \tag{UE13}
+\]">\[
+ f*\rho_\varepsilon(z)\longrightarrow f^*(z).
+ \tag{UE13}
+\]</span>
+<p>On any fixed complex circle the smooth convolutions have a common finite upper bound for all sufficiently small <span class="math" data-index="211" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. Their circle inequality and reverse Fatou therefore yield</p>
+<span class="math math-display" id="eq-UE14" data-index="212" data-tex="\[
+ f^*(z)\le\frac1{2\pi}\int_0^{2\pi}
+              f^*(z+r e^{i\theta}a)\,d\theta.
+ \tag{UE14}
+\]">\[
+ f^*(z)\le\frac1{2\pi}\int_0^{2\pi}
+              f^*(z+r e^{i\theta}a)\,d\theta.
+ \tag{UE14}
+\]</span>
+<p>The circle lies inside <span class="math" data-index="213" data-tex="\(\Omega\)">\(\Omega\)</span>, and <span class="math" data-index="214" data-tex="\(a\)">\(a\)</span> is its complex direction. Extended negative integrals are allowed. Thus <span class="math" data-index="215" data-tex="\(f^*\)">\(f^*\)</span> is upper semicontinuous and PSH. This proves the lemma. <span class="math" data-index="216" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If all members are identically <span class="math" data-index="217" data-tex="\(-\infty\)">\(-\infty\)</span>, both the supremum and its regularization are identically <span class="math" data-index="218" data-tex="\(-\infty\)">\(-\infty\)</span>, so the conclusion has that immediate extended interpretation.</p>
+<p><a id="UE4"></a></p>
+<h2 id="ue4-arbitrary-families-reduce-to-a-countable-selection">UE4. Arbitrary families reduce to a countable selection</h2>
+<p>The preceding envelope assertion also holds for an arbitrarily indexed locally uniformly upper-bounded family <span class="math" data-index="219" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> of PSH functions. This fact will permit a real dilation parameter.</p>
+<p>Take the countable base of balls with rational centers and radii whose closures lie in <span class="math" data-index="220" data-tex="\(\Omega\)">\(\Omega\)</span>. For each such ball <span class="math" data-index="221" data-tex="\(B\)">\(B\)</span>, let</p>
+<span class="math math-display" id="eq-UE15" data-index="222" data-tex="\[
+ S_B=\sup\{u(z):u\in\mathcal F,\ z\in B\}.
+ \tag{UE15}
+\]">\[
+ S_B=\sup\{u(z):u\in\mathcal F,\ z\in B\}.
+ \tag{UE15}
+\]</span>
+<p>For every rational <span class="math" data-index="223" data-tex="\(b&lt;S_B\)">\(b&lt;S_B\)</span>, select one member <span class="math" data-index="224" data-tex="\(u_{B,b}\)">\(u_{B,b}\)</span> and one point of <span class="math" data-index="225" data-tex="\(B\)">\(B\)</span> where it exceeds <span class="math" data-index="226" data-tex="\(b\)">\(b\)</span>. There are only countably many selected functions. Their supremum <span class="math" data-index="227" data-tex="\(g\)">\(g\)</span> and the whole family's supremum <span class="math" data-index="228" data-tex="\(f\)">\(f\)</span> obey</p>
+<span class="math math-display" id="eq-UE16" data-index="229" data-tex="\[
+ g\le f\le f^*,\qquad \sup_B g=\sup_B f=S_B.
+ \tag{UE16}
+\]">\[
+ g\le f\le f^*,\qquad \sup_B g=\sup_B f=S_B.
+ \tag{UE16}
+\]</span>
+<p>The equality of ball suprema follows by taking all rational <span class="math" data-index="230" data-tex="\(b&lt;S_B\)">\(b&lt;S_B\)</span>. Regularization at a point is the infimum of the suprema over its base neighborhoods; hence <span class="math" data-index="231" data-tex="\(g^*=f^*\)">\(g^*=f^*\)</span> everywhere. If the family contains a nontrivial member, the selection contains one too. UE3 then gives <span class="math" data-index="232" data-tex="\(g=g^*=f^*\)">\(g=g^*=f^*\)</span> almost everywhere. The inequalities in (UE16) squeeze <span class="math" data-index="233" data-tex="\(f\)">\(f\)</span> to the same value almost everywhere. Therefore <span class="math" data-index="234" data-tex="\(f^*\)">\(f^*\)</span> is PSH and <span class="math" data-index="235" data-tex="\(f=f^*\)">\(f=f^*\)</span> almost everywhere for arbitrary families as well. All-minus-infinite families have the immediate interpretation already stated.</p>
+<p>No measurability of the index set is required. The proof also establishes Lebesgue measurability of the possibly uncountable supremum: it agrees outside a null set with the measurable function <span class="math" data-index="236" data-tex="\(f^*\)">\(f^*\)</span>; Lebesgue measure is complete.</p>
+<p><a id="UE5"></a></p>
+<h2 id="ue5-tail-envelopes-prove-the-exact-theorem">UE5. Tail envelopes prove the exact theorem</h2>
+<p>Define</p>
+<span class="math math-display" id="eq-UE17" data-index="237" data-tex="\[
+ f_k=\sup_{j\ge k}v_j,\qquad U_k=f_k^*,\qquad
+ U=\inf_{k\ge1}U_k.
+ \tag{UE17}
+\]">\[
+ f_k=\sup_{j\ge k}v_j,\qquad U_k=f_k^*,\qquad
+ U=\inf_{k\ge1}U_k.
+ \tag{UE17}
+\]</span>
+<p>UE3 says that every <span class="math" data-index="238" data-tex="\(U_k\)">\(U_k\)</span> is PSH and equals <span class="math" data-index="239" data-tex="\(f_k\)">\(f_k\)</span> outside a null set, unless it is identically <span class="math" data-index="240" data-tex="\(-\infty\)">\(-\infty\)</span>, which causes no difficulty. The functions <span class="math" data-index="241" data-tex="\(U_k\)">\(U_k\)</span> decrease. Their limit is upper semicontinuous: <span class="math" data-index="242" data-tex="\(\{U&lt;b\}=\bigcup_k\{U_k&lt;b\}\)">\(\{U&lt;b\}=\bigcup_k\{U_k&lt;b\}\)</span>. On a fixed complex circle choose a common local upper bound <span class="math" data-index="243" data-tex="\(B\)">\(B\)</span>; the nonnegative functions <span class="math" data-index="244" data-tex="\(B-U_k\)">\(B-U_k\)</span> increase. Monotone convergence in the circle inequalities shows that <span class="math" data-index="245" data-tex="\(U\)">\(U\)</span> satisfies the circle inequality. Thus <span class="math" data-index="246" data-tex="\(U\)">\(U\)</span> is PSH, with the identically minus-infinite case allowed.</p>
+<p>The countable union of the exceptional null sets for <span class="math" data-index="247" data-tex="\(f_k=U_k\)">\(f_k=U_k\)</span> is null. Off that union, (UE2) and (UE17) give</p>
+<span class="math math-display" id="eq-UE18" data-index="248" data-tex="\[
+ v=U\quad\hbox{almost everywhere},
+ \qquad v\le U\quad\hbox{everywhere}.
+ \tag{UE18}
+\]">\[
+ v=U\quad\hbox{almost everywhere},
+ \qquad v\le U\quad\hbox{everywhere}.
+ \tag{UE18}
+\]</span>
+<p>The second inequality follows pointwise from <span class="math" data-index="249" data-tex="\(f_k\le U_k\)">\(f_k\le U_k\)</span> for every <span class="math" data-index="250" data-tex="\(k\)">\(k\)</span>.</p>
+<p>If <span class="math" data-index="251" data-tex="\(U\equiv-\infty\)">\(U\equiv-\infty\)</span>, the pointwise inequality makes <span class="math" data-index="252" data-tex="\(v\equiv-\infty\)">\(v\equiv-\infty\)</span>, and the theorem is proved. Otherwise UE2 and NP2 make <span class="math" data-index="253" data-tex="\(U\)">\(U\)</span> locally integrable and real subharmonic. Since <span class="math" data-index="254" data-tex="\(v\le C\)">\(v\le C\)</span>, (UE18) gives <span class="math" data-index="255" data-tex="\(U\le C\)">\(U\le C\)</span> almost everywhere. For any ball centered at <span class="math" data-index="256" data-tex="\(z\)">\(z\)</span>, its volume mean is at most <span class="math" data-index="257" data-tex="\(C\)">\(C\)</span>; the real ball-mean inequality therefore gives</p>
+<span class="math math-display" id="eq-UE19" data-index="258" data-tex="\[
+ U(z)\le C\quad\hbox{at every point}.
+ \tag{UE19}
+\]">\[
+ U(z)\le C\quad\hbox{at every point}.
+ \tag{UE19}
+\]</span>
+<p><a href="AN02-L139.html#psh-liouville">L139's PSH Liouville theorem</a> makes <span class="math" data-index="259" data-tex="\(U\)">\(U\)</span> a finite constant, say <span class="math" data-index="260" data-tex="\(a\)">\(a\)</span>. Formula (UE18) says that <span class="math" data-index="261" data-tex="\(v=a\)">\(v=a\)</span> almost everywhere and <span class="math" data-index="262" data-tex="\(v\le a\)">\(v\le a\)</span> everywhere. A set of full measure contains points, so <span class="math" data-index="263" data-tex="\(\sup v=a\)">\(\sup v=a\)</span>. Hence <span class="math" data-index="264" data-tex="\(a=A\)">\(a=A\)</span>, proving Theorem UE in precisely the form (UE3). <span class="math" data-index="265" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="UE6"></a></p>
+<h2 id="ue6-a-real-parameter-and-the-scope-of-the-conclusion">UE6. A real parameter and the scope of the conclusion</h2>
+<p>Let <span class="math" data-index="266" data-tex="\(v_t\)">\(v_t\)</span> be PSH for every real <span class="math" data-index="267" data-tex="\(t\ge1\)">\(t\ge1\)</span>, locally uniformly bounded above for all these parameters, and suppose</p>
+<span class="math math-display" id="eq-UE20" data-index="268" data-tex="\[
+ v(z)=\limsup_{t\to\infty}v_t(z)
+     =\inf_{k\ge1}\sup_{t\ge k}v_t(z)\le C
+ \tag{UE20}
+\]">\[
+ v(z)=\limsup_{t\to\infty}v_t(z)
+     =\inf_{k\ge1}\sup_{t\ge k}v_t(z)\le C
+ \tag{UE20}
+\]</span>
+<p>globally. Use UE4 for each tail <span class="math" data-index="269" data-tex="\(t\ge k\)">\(t\ge k\)</span>, and then repeat UE5 verbatim. There are still only countably many tails and hence only countably many exceptional sets to remove. The conclusion is again</p>
+<span class="math math-display" id="eq-UE21" data-index="270" data-tex="\[
+ v(z)=\sup_{\zeta\in\mathbb C^n}v(\zeta)
+ \quad\hbox{for almost every }z.
+ \tag{UE21}
+\]">\[
+ v(z)=\sup_{\zeta\in\mathbb C^n}v(\zeta)
+ \quad\hbox{for almost every }z.
+ \tag{UE21}
+\]</span>
+<p>It is unnecessary to replace the real parameter by integers, which could miss peaks at noninteger parameter values. For example, the family of spatial constants equal to zero at integer <span class="math" data-index="271" data-tex="\(t\)">\(t\)</span> and one at all other <span class="math" data-index="272" data-tex="\(t\)">\(t\)</span> has full upper limit one but integer-sampled upper limit zero. No parameter measurability is assumed here because we never integrate in <span class="math" data-index="273" data-tex="\(t\)">\(t\)</span>.</p>
+<p>Neither version implies local <span class="math" data-index="274" data-tex="\(L^1\)">\(L^1\)</span> convergence of the original functions. Alternating constants already prevent convergence. Nor may one replace “almost every” by “every”: the logarithmic example below has a persistent singular hyperplane. The regularized tail limit <span class="math" data-index="275" data-tex="\(U\)">\(U\)</span>, rather than each raw tail or each <span class="math" data-index="276" data-tex="\(v_t\)">\(v_t\)</span>, is the constant function.</p>
+<p><a id="UE7"></a></p>
+<h2 id="ue7-scaled-translation-averages-the-actual-application">UE7. Scaled translation averages: the actual application</h2>
+<p>Suppose <span class="math" data-index="277" data-tex="\(q\not\equiv-\infty\)">\(q\not\equiv-\infty\)</span> is PSH on <span class="math" data-index="278" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> and satisfies the linear imaginary-growth hypothesis of <a href="AN02-L139.html#psh-envelope-theorem">L139, Theorem E1</a>. Write <span class="math" data-index="279" data-tex="\(M\)">\(M\)</span> and <span class="math" data-index="280" data-tex="\(H\)">\(H\)</span> for its envelope and finite continuous support function. Its proved estimate, (E17), is</p>
+<span class="math math-display" id="eq-UE22" data-index="281" data-tex="\[
+ q(x+iy)\le M(0)+H(y),
+ \qquad H(a+b)\le H(a)+H(b),\quad H(ra)=rH(a)\ (r\ge0).
+ \tag{UE22}
+\]">\[
+ q(x+iy)\le M(0)+H(y),
+ \qquad H(a+b)\le H(a)+H(b),\quad H(ra)=rH(a)\ (r\ge0).
+ \tag{UE22}
+\]</span>
+<p>Fix <span class="math" data-index="282" data-tex="\(y\in\mathbb R^n\)">\(y\in\mathbb R^n\)</span> and a compact measurable <span class="math" data-index="283" data-tex="\(K\subset\mathbb C\)">\(K\subset\mathbb C\)</span>. Let <span class="math" data-index="284" data-tex="\(m(K)\)">\(m(K)\)</span> be its planar area, and define</p>
+<span class="math math-display" id="eq-UE23" data-index="285" data-tex="\[
+ a_t(\zeta)=\frac1t\int_K q(\zeta+twy)\,dA(w),
+ \qquad L=\int_K H((\operatorname{Im}w)y)\,dA(w),\quad t\ge1.
+ \tag{UE23}
+\]">\[
+ a_t(\zeta)=\frac1t\int_K q(\zeta+twy)\,dA(w),
+ \qquad L=\int_K H((\operatorname{Im}w)y)\,dA(w),\quad t\ge1.
+ \tag{UE23}
+\]</span>
+<p>If <span class="math" data-index="286" data-tex="\(m(K)=0\)">\(m(K)=0\)</span>, the integral is zero and the assertion below is immediate. Otherwise each <span class="math" data-index="287" data-tex="\(a_t\)">\(a_t\)</span> is PSH by UE2, using the positive translation measure which is the pushforward of <span class="math" data-index="288" data-tex="\(t^{-1}\mathbf1_KdA\)">\(t^{-1}\mathbf1_KdA\)</span> under <span class="math" data-index="289" data-tex="\(w\mapsto twy\)">\(w\mapsto twy\)</span>. It is locally integrable and not identically <span class="math" data-index="290" data-tex="\(-\infty\)">\(-\infty\)</span>; this includes <span class="math" data-index="291" data-tex="\(y=0\)">\(y=0\)</span>, when the average is <span class="math" data-index="292" data-tex="\(m(K)q/t\)">\(m(K)q/t\)</span>.</p>
+<p>By (UE22), positive homogeneity and subadditivity,</p>
+<span class="math math-display" id="eq-UE24" data-index="293" data-tex="\[
+ a_t(\zeta)
+ \le\frac{m(K)M(0)}t+
+       \int_K H(t^{-1}\operatorname{Im}\zeta+(\operatorname{Im}w)y)\,dA(w)
+ \le L+\frac{m(K)}t\bigl(M(0)+H(\operatorname{Im}\zeta)\bigr).
+ \tag{UE24}
+\]">\[
+ a_t(\zeta)
+ \le\frac{m(K)M(0)}t+
+       \int_K H(t^{-1}\operatorname{Im}\zeta+(\operatorname{Im}w)y)\,dA(w)
+ \le L+\frac{m(K)}t\bigl(M(0)+H(\operatorname{Im}\zeta)\bigr).
+ \tag{UE24}
+\]</span>
+<p>The finite continuous <span class="math" data-index="294" data-tex="\(H\)">\(H\)</span> is bounded on each compact set of imaginary vectors. Thus <span class="math" data-index="295" data-tex="\(a_t\)">\(a_t\)</span> is locally uniformly bounded above for all <span class="math" data-index="296" data-tex="\(t\ge1\)">\(t\ge1\)</span>, and its pointwise upper limit is globally at most <span class="math" data-index="297" data-tex="\(L\)">\(L\)</span>. UE6 proves that there is <span class="math" data-index="298" data-tex="\(A\in[-\infty,L]\)">\(A\in[-\infty,L]\)</span> with</p>
+<span class="math math-display" id="eq-UE25" data-index="299" data-tex="\[
+ \limsup_{t\to\infty}a_t(\zeta)=A
+ \quad\hbox{for almost every }\zeta,
+ \qquad \limsup_{t\to\infty}a_t(\zeta)\le A\quad\hbox{everywhere}.
+ \tag{UE25}
+\]">\[
+ \limsup_{t\to\infty}a_t(\zeta)=A
+ \quad\hbox{for almost every }\zeta,
+ \qquad \limsup_{t\to\infty}a_t(\zeta)\le A\quad\hbox{everywhere}.
+ \tag{UE25}
+\]</span>
+<p>This is the spatial constancy supplied by the envelope lemma. Identifying <span class="math" data-index="300" data-tex="\(A=L\)">\(A=L\)</span> requires a lower estimate. Precisely, if one point <span class="math" data-index="301" data-tex="\(\zeta_0\)">\(\zeta_0\)</span> satisfies <span class="math" data-index="302" data-tex="\(\limsup a_t(\zeta_0)\ge L\)">\(\limsup a_t(\zeta_0)\ge L\)</span>, the everywhere inequality in (UE25) gives <span class="math" data-index="303" data-tex="\(A\ge L\)">\(A\ge L\)</span>, and hence <span class="math" data-index="304" data-tex="\(A=L\)">\(A=L\)</span>. Obtaining an absolute integral limit, such as <span class="math" data-index="305" data-tex="\(\int_K|q(\zeta+twy)/t-H((\operatorname{Im}w)y)|dA\to0\)">\(\int_K|q(\zeta+twy)/t-H((\operatorname{Im}w)y)|dA\to0\)</span>, additionally requires the appropriate lower integral estimate. It is not a consequence of an upper-envelope statement alone.</p>
+<p><a id="UE8"></a></p>
+<h2 id="ue8-four-worked-examples">UE8. Four worked examples</h2>
+<p><strong>Example 1: a permanent exceptional hyperplane.</strong> Let</p>
+<span class="math math-display" id="eq-UE26" data-index="306" data-tex="\[
+ v_j(z)=\frac1j\log|z_1|,\qquad
+ Z=\{z_1=0\}.
+ \tag{UE26}
+\]">\[
+ v_j(z)=\frac1j\log|z_1|,\qquad
+ Z=\{z_1=0\}.
+ \tag{UE26}
+\]</span>
+<p>The planar logarithm is subharmonic: NP4 proves <span class="math" data-index="307" data-tex="\(\Delta\log|w|=2\pi\delta_0\)">\(\Delta\log|w|=2\pi\delta_0\)</span>, and NP6 supplies its given logarithmic representative. On a complex line, <span class="math" data-index="308" data-tex="\(z_1\)">\(z_1\)</span> is affine in the parameter; the logarithm is harmonic off its possible single zero, with a positive logarithmic pole there, or is a constant, including identically <span class="math" data-index="309" data-tex="\(-\infty\)">\(-\infty\)</span>. Thus (UE26) is PSH for every <span class="math" data-index="310" data-tex="\(n\ge1\)">\(n\ge1\)</span>. On a compact set with <span class="math" data-index="311" data-tex="\(|z_1|\le R\)">\(|z_1|\le R\)</span>, the common upper bound is <span class="math" data-index="312" data-tex="\(\max(0,\log R)\)">\(\max(0,\log R)\)</span>, taking any <span class="math" data-index="313" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>. Its pointwise upper limit is zero off <span class="math" data-index="314" data-tex="\(Z\)">\(Z\)</span> and <span class="math" data-index="315" data-tex="\(-\infty\)">\(-\infty\)</span> on <span class="math" data-index="316" data-tex="\(Z\)">\(Z\)</span>. The hyperplane has real codimension two and measure zero.</p>
+<p>For <span class="math" data-index="317" data-tex="\(r=|z_1|&gt;0\)">\(r=|z_1|&gt;0\)</span>, the exact raw and regularized tails are</p>
+<span class="math math-display" id="eq-UE27" data-index="318" data-tex="\[
+ f_k(z)=\begin{cases}0,&amp;0&lt;r\le1,\\ (\log r)/k,&amp;r&gt;1,\end{cases}
+ \qquad f_k|_Z=-\infty,\qquad
+ U_k(z)=\frac{\max(0,\log r)}k,
+ \tag{UE27}
+\]">\[
+ f_k(z)=\begin{cases}0,&amp;0&lt;r\le1,\\ (\log r)/k,&amp;r&gt;1,\end{cases}
+ \qquad f_k|_Z=-\infty,\qquad
+ U_k(z)=\frac{\max(0,\log r)}k,
+ \tag{UE27}
+\]</span>
+<p>where <span class="math" data-index="319" data-tex="\(U_k=0\)">\(U_k=0\)</span> also at <span class="math" data-index="320" data-tex="\(r=0\)">\(r=0\)</span>. For negative <span class="math" data-index="321" data-tex="\(\log r\)">\(\log r\)</span>, the supremum over <span class="math" data-index="322" data-tex="\(j\ge k\)">\(j\ge k\)</span> is zero but is not attained; for positive <span class="math" data-index="323" data-tex="\(\log r\)">\(\log r\)</span>, it is attained at <span class="math" data-index="324" data-tex="\(j=k\)">\(j=k\)</span>. Regularization fills only the raw tail's singular hyperplane. Finally <span class="math" data-index="325" data-tex="\(U_k\downarrow0\)">\(U_k\downarrow0\)</span> everywhere, exactly as the theorem predicts.</p>
+<figure><img class="course-figure" width="2144" height="880" src="reproduce/L140/figures/logarithmic-tail-envelopes.png" alt="Logarithmic functions and their regularized tail envelopes." /><figcaption class="native"><a href="reproduce/L140/figures/logarithmic-tail-envelopes.png">Open full-size PNG</a> · <a href="reproduce/L140/figures/logarithmic-tail-envelopes.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> The left panel samples the exact planar functions <span class="math" data-index="326" data-tex="\(j^{-1}\log r\)">\(j^{-1}\log r\)</span> for <span class="math" data-index="327" data-tex="\(j=1,2,4,8\)">\(j=1,2,4,8\)</span> on <span class="math" data-index="328" data-tex="\(10^{-3}\le r\le3\)">\(10^{-3}\le r\le3\)</span>, with a logarithmic radius axis. The omitted point <span class="math" data-index="329" data-tex="\(r=0\)">\(r=0\)</span> has value <span class="math" data-index="330" data-tex="\(-\infty\)">\(-\infty\)</span> for every function. The right panel draws <span class="math" data-index="331" data-tex="\(U_k(r)=\max(0,\log r)/k\)">\(U_k(r)=\max(0,\log r)/k\)</span>, with value zero at the center, and marks the raw tail's missing value there. These are scalar radial sections, not a finite plot value assigned to the singularity. See UE3–UE5 and (UE26)–(UE27).</p>
+<p><strong>Example 2: upper limits need not be limits.</strong> Take <span class="math" data-index="332" data-tex="\(v_{2j}=0\)">\(v_{2j}=0\)</span>, <span class="math" data-index="333" data-tex="\(v_{2j-1}=-1\)">\(v_{2j-1}=-1\)</span>. Every function is PSH and globally bounded above by zero. The upper limit is zero everywhere, while the lower limit is <span class="math" data-index="334" data-tex="\(-1\)">\(-1\)</span> everywhere. The sequence has neither pointwise convergence nor local <span class="math" data-index="335" data-tex="\(L^1\)">\(L^1\)</span> convergence to a single function. This does not contradict Theorem UE.</p>
+<p><strong>Example 3: the minus-infinite outcome.</strong> Let <span class="math" data-index="336" data-tex="\(v_j=-j\)">\(v_j=-j\)</span>. These constant PSH functions satisfy (UE1) with upper bound <span class="math" data-index="337" data-tex="\(-1\)">\(-1\)</span>. Their upper limit and its global supremum are both <span class="math" data-index="338" data-tex="\(-\infty\)">\(-\infty\)</span>. In (UE17), <span class="math" data-index="339" data-tex="\(U_k=-k\)">\(U_k=-k\)</span> and <span class="math" data-index="340" data-tex="\(U=-\infty\)">\(U=-\infty\)</span>. No finite nontrivial representative is asserted in this case.</p>
+<p><strong>Example 4: an exact scaled average.</strong> In one complex dimension set <span class="math" data-index="341" data-tex="\(q(\zeta)=|\operatorname{Im}\zeta|\)">\(q(\zeta)=|\operatorname{Im}\zeta|\)</span>, <span class="math" data-index="342" data-tex="\(y=1\)">\(y=1\)</span>, and</p>
+<span class="math math-display" id="eq-UE28" data-index="343" data-tex="\[
+ K=\{u+ib:-1\le u\le1,\ 0\le b\le1\}.
+ \tag{UE28}
+\]">\[
+ K=\{u+ib:-1\le u\le1,\ 0\le b\le1\}.
+ \tag{UE28}
+\]</span>
+<p>The function is the maximum of two real affine harmonic functions, so it is PSH. Here <span class="math" data-index="344" data-tex="\(M(b)=H(b)=|b|\)">\(M(b)=H(b)=|b|\)</span>, <span class="math" data-index="345" data-tex="\(m(K)=2\)">\(m(K)=2\)</span>, and <span class="math" data-index="346" data-tex="\(L=1\)">\(L=1\)</span>. Writing <span class="math" data-index="347" data-tex="\(s=\operatorname{Im}\zeta\)">\(s=\operatorname{Im}\zeta\)</span>, direct integration gives</p>
+<span class="math math-display" id="eq-UE29" data-index="348" data-tex="\[
+ a_t(\zeta)=2\int_0^1|b+s/t|\,db
+ =\begin{cases}
+ 1+2s/t,&amp;s\ge0,\\
+ 1+2s/t+2(s/t)^2,&amp;-t\le s\le0,\\
+ -1-2s/t,&amp;s\le-t.
+ \end{cases}
+ \tag{UE29}
+\]">\[
+ a_t(\zeta)=2\int_0^1|b+s/t|\,db
+ =\begin{cases}
+ 1+2s/t,&amp;s\ge0,\\
+ 1+2s/t+2(s/t)^2,&amp;-t\le s\le0,\\
+ -1-2s/t,&amp;s\le-t.
+ \end{cases}
+ \tag{UE29}
+\]</span>
+<p>The formulas and their first derivatives agree at both joining points. This is a convex function of <span class="math" data-index="349" data-tex="\(s\)">\(s\)</span>, with second derivative <span class="math" data-index="350" data-tex="\(4/t^2\)">\(4/t^2\)</span> on <span class="math" data-index="351" data-tex="\((-t,0)\)">\((-t,0)\)</span> and zero elsewhere. It is PSH. At every fixed <span class="math" data-index="352" data-tex="\(s\)">\(s\)</span>, (UE29) tends to one. The triangle inequality gives the exact useful bound <span class="math" data-index="353" data-tex="\(a_t\le1+2|s|/t\)">\(a_t\le1+2|s|/t\)</span>, consistent with (UE24). At <span class="math" data-index="354" data-tex="\(s=-1\)">\(s=-1\)</span>, the values for <span class="math" data-index="355" data-tex="\(t=1,2,4,8\)">\(t=1,2,4,8\)</span> are respectively <span class="math" data-index="356" data-tex="\(1,1/2,5/8,25/32\)">\(1,1/2,5/8,25/32\)</span>; the approach is not monotone for all positive <span class="math" data-index="357" data-tex="\(t\)">\(t\)</span>.</p>
+<figure><img class="course-figure" width="2880" height="928" src="reproduce/L140/figures/scaled-translation-averages.png" alt="The translation rectangle, normalized absolute-value profiles and their exact averages." /><figcaption class="native"><a href="reproduce/L140/figures/scaled-translation-averages.png">Open full-size PNG</a> · <a href="reproduce/L140/figures/scaled-translation-averages.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> The left panel is the exact planar rectangle (UE28), of area two. The middle panel fixes <span class="math" data-index="358" data-tex="\(s=-1\)">\(s=-1\)</span> and draws <span class="math" data-index="359" data-tex="\(|b-1/t|\)">\(|b-1/t|\)</span> on <span class="math" data-index="360" data-tex="\(0\le b\le1\)">\(0\le b\le1\)</span>. Twice its area is the scaled average. The right panel uses the full piecewise formula (UE29) for <span class="math" data-index="361" data-tex="\(-2\le s\le2\)">\(-2\le s\le2\)</span>; the horizontal line is the proved fixed-center limit <span class="math" data-index="362" data-tex="\(L=1\)">\(L=1\)</span>. Parameters are <span class="math" data-index="363" data-tex="\(t=1,2,4,8\)">\(t=1,2,4,8\)</span>. The picture concerns this example, while UE7 gives the general upper-envelope application.</p>
+<p><a id="UE9"></a></p>
+<h2 id="ue9-exercises-and-complete-solutions">UE9. Exercises and complete solutions</h2>
+<p><strong>Exercise 1.</strong> In Example 1, compute <span class="math" data-index="364" data-tex="\(f_k\)">\(f_k\)</span> at <span class="math" data-index="365" data-tex="\(|z_1|=1/2\)">\(|z_1|=1/2\)</span>, <span class="math" data-index="366" data-tex="\(|z_1|=2\)">\(|z_1|=2\)</span>, and <span class="math" data-index="367" data-tex="\(z_1=0\)">\(z_1=0\)</span>. Which suprema are attained?</p>
+<p><strong>Solution 1.</strong> At radius <span class="math" data-index="368" data-tex="\(1/2\)">\(1/2\)</span>, the values are <span class="math" data-index="369" data-tex="\(-\log2/j\)">\(-\log2/j\)</span>, increasing toward zero; hence the tail supremum is zero and no index attains it. At radius 2, the values are <span class="math" data-index="370" data-tex="\(\log2/j\)">\(\log2/j\)</span>, decreasing with <span class="math" data-index="371" data-tex="\(j\)">\(j\)</span>, so the tail supremum is <span class="math" data-index="372" data-tex="\(\log2/k\)">\(\log2/k\)</span>, attained at <span class="math" data-index="373" data-tex="\(j=k\)">\(j=k\)</span>. At zero every value is <span class="math" data-index="374" data-tex="\(-\infty\)">\(-\infty\)</span>; the tail remains <span class="math" data-index="375" data-tex="\(-\infty\)">\(-\infty\)</span>, and regularization, not any member of the sequence, gives zero there.</p>
+<p><strong>Exercise 2.</strong> Why does equality almost everywhere for each tail suffice, even though its exceptional set may depend on the tail?</p>
+<p><strong>Solution 2.</strong> There are only countably many integer tails. The union of their exceptional null sets is null. At every point outside that union, all equalities <span class="math" data-index="376" data-tex="\(f_k=U_k\)">\(f_k=U_k\)</span> hold simultaneously. Taking their decreasing limits gives <span class="math" data-index="377" data-tex="\(v=U\)">\(v=U\)</span> there. The inequality <span class="math" data-index="378" data-tex="\(v\le U\)">\(v\le U\)</span> separately holds at every point and does not use removal of a null set.</p>
+<p><strong>Exercise 3.</strong> Prove that the sum-of-errors argument in (UE11) yields an almost-everywhere convergent subsequence on every compact set.</p>
+<p><strong>Solution 3.</strong> Fix <span class="math" data-index="379" data-tex="\(K_p\)">\(K_p\)</span>. For <span class="math" data-index="380" data-tex="\(q\ge p\)">\(q\ge p\)</span>, nesting gives <span class="math" data-index="381" data-tex="\(\int_{K_p}|f*\rho_{\varepsilon_q}-f|&lt;2^{-q}\)">\(\int_{K_p}|f*\rho_{\varepsilon_q}-f|&lt;2^{-q}\)</span>. Tonelli implies that the integral of the nonnegative sum of these errors is at most <span class="math" data-index="382" data-tex="\(\sum_{q\ge p}2^{-q}&lt;\infty\)">\(\sum_{q\ge p}2^{-q}&lt;\infty\)</span>. Thus that sum is finite almost everywhere on <span class="math" data-index="383" data-tex="\(K_p\)">\(K_p\)</span>, so each error tends to zero there. Taking the countable union of the exceptional sets for all <span class="math" data-index="384" data-tex="\(p\)">\(p\)</span> gives convergence almost everywhere in the entire region. Inequality (UE10) then yields <span class="math" data-index="385" data-tex="\(f^*\le f\)">\(f^*\le f\)</span> at those points.</p>
+<p><strong>Exercise 4.</strong> In UE4, why are countably many selections sufficient for an uncountable family? Why is sampling only integer dilation parameters insufficient?</p>
+<p><strong>Solution 4.</strong> For each of countably many rational balls and rational thresholds, one selected function reaches above the threshold somewhere in that ball. All such selections reproduce every ball supremum, so their upper semicontinuous regularization equals that of the full family. UE3 gives almost-everywhere equality for the selected family, and the supremum over the whole family is squeezed between that countable supremum and their common regularization. In a parameter family, integer samples could omit functions present only at noninteger parameters. UE4 applies to the whole family <span class="math" data-index="386" data-tex="\(t\ge k\)">\(t\ge k\)</span>, so no such omission occurs.</p>
+<p><strong>Exercise 5.</strong> Show that the global upper bound on the raw upper limit cannot be removed, even when the original sequence is locally uniformly upper bounded.</p>
+<p><strong>Solution 5.</strong> Let <span class="math" data-index="387" data-tex="\(v_j(z)=|z|^2\)">\(v_j(z)=|z|^2\)</span> for every <span class="math" data-index="388" data-tex="\(j\)">\(j\)</span>. On each complex line it is a quadratic with nonnegative planar Laplacian, so it is PSH. The sequence has a common finite upper bound on each compact set. Its upper limit is <span class="math" data-index="389" data-tex="\(|z|^2\)">\(|z|^2\)</span>, which is nonconstant and unbounded above globally. The step (UE19) no longer supplies a global bound to which Liouville can be applied.</p>
+<p><strong>Exercise 6.</strong> Derive the middle branch in (UE29), and evaluate the scaled average at <span class="math" data-index="390" data-tex="\(s=-1,t=4\)">\(s=-1,t=4\)</span>.</p>
+<p><strong>Solution 6.</strong> Put <span class="math" data-index="391" data-tex="\(c=s/t\in[-1,0]\)">\(c=s/t\in[-1,0]\)</span>. The zero of <span class="math" data-index="392" data-tex="\(b+c\)">\(b+c\)</span> is <span class="math" data-index="393" data-tex="\(-c\)">\(-c\)</span>. Splitting there gives <span class="math" data-index="394" data-tex="\(\int_0^1|b+c|db=c^2/2+(1+c)^2/2\)">\(\int_0^1|b+c|db=c^2/2+(1+c)^2/2\)</span>. Multiply by two to obtain <span class="math" data-index="395" data-tex="\(1+2c+2c^2\)">\(1+2c+2c^2\)</span>. At <span class="math" data-index="396" data-tex="\(s=-1,t=4\)">\(s=-1,t=4\)</span>, <span class="math" data-index="397" data-tex="\(c=-1/4\)">\(c=-1/4\)</span>, so the value is <span class="math" data-index="398" data-tex="\(1-1/2+1/8=5/8\)">\(1-1/2+1/8=5/8\)</span>. The lower value than one reflects a finite dilation, not a different limiting constant.</p>
+<p><strong>Exercise 7.</strong> Does (UE25) alone imply <span class="math" data-index="399" data-tex="\(A=L\)">\(A=L\)</span>, pointwise convergence of <span class="math" data-index="400" data-tex="\(a_t\)">\(a_t\)</span>, or convergence of an absolute error integral? State an exact additional condition which does force <span class="math" data-index="401" data-tex="\(A=L\)">\(A=L\)</span>.</p>
+<p><strong>Solution 7.</strong> None of the three assertions follows from the upper-envelope conclusion alone. It supplies a constant upper limit almost everywhere and the everywhere bound by that constant. A family of constants <span class="math" data-index="402" data-tex="\(a_t=L-1\)">\(a_t=L-1\)</span> already has <span class="math" data-index="403" data-tex="\(A&lt;L\)">\(A&lt;L\)</span>; alternating constants show lack of convergence. If one point satisfies <span class="math" data-index="404" data-tex="\(\limsup a_t(\zeta_0)\ge L\)">\(\limsup a_t(\zeta_0)\ge L\)</span>, the everywhere bound in (UE25) gives <span class="math" data-index="405" data-tex="\(L\le A\le L\)">\(L\le A\le L\)</span>, so <span class="math" data-index="406" data-tex="\(A=L\)">\(A=L\)</span>. An absolute error integral additionally needs a lower integral estimate and control of its positive part; equality of upper limits is not that estimate.</p>
+<p><a id="UE10"></a></p>
+<h2 id="ue10-source-credit-and-proof-map">UE10. Source credit and proof map</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em> (1983 edition; second revised printing 1990; reprint 2005), §16.2, Lemma 16.2.3, printed p. 316 (PDF p. 329). The real-parameter extension is discussed immediately after the lemma. The theorem, examples, solutions and illustrations here have an independent original exposition.</p>
+<p>UE2–UE4 prove the general PSH upper-envelope construction. UE5 proves the exact almost-everywhere constancy assertion, including all minus-infinite cases. UE6 proves the real-parameter form. UE7 shows how this form applies to scaled translation averages and states the precise extra lower estimate needed to identify their constant. Its written lower inputs are <a href="AN02-L131.html#NP2">local integrability and approximate identities, NP2</a>, <a href="AN02-L139.html#psh-liouville">PSH Liouville, Theorem C2</a>, and <a href="AN02-L139.html#recession-support-function">the finite support function and increment proof, (E14)–(E17)</a>. Example 1 additionally uses <a href="AN02-L131.html#NP4">the logarithmic fundamental kernel, NP4</a>.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/constant-upper-envelopes-and-scaled-plurisubharmonic-averages.md" download>Download the complete lesson source</a>. Original proof exposition, examples, solutions and figures use CC0 1.0. The figure font notice retains its separate terms.</p><ul><li><a href="reproduce/L140/constant-upper-envelopes-formal.md" download>constant-upper-envelopes-formal.md</a></li>
+<li><a href="reproduce/L140/constant-upper-envelopes-learner.md" download>constant-upper-envelopes-learner.md</a></li>
+<li><a href="reproduce/L140/make_figures134.py" download>make_figures134.py</a></li>
+<li><a href="reproduce/L140/README-reproduce.md" download>README-reproduce.md</a></li>
+<li><a href="reproduce/L140/LICENSE.txt" download>LICENSE.txt</a></li>
+<li><a href="reproduce/L140/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li>
+<li><a href="reproduce/L140/figures/geometry.json" download>figures/geometry.json</a></li>
+<li><a href="reproduce/L140/figures/logarithmic-tail-envelopes.png" download>figures/logarithmic-tail-envelopes.png</a></li>
+<li><a href="reproduce/L140/figures/logarithmic-tail-envelopes.svg" download>figures/logarithmic-tail-envelopes.svg</a></li>
+<li><a href="reproduce/L140/figures/scaled-translation-averages.png" download>figures/scaled-translation-averages.png</a></li>
+<li><a href="reproduce/L140/figures/scaled-translation-averages.svg" download>figures/scaled-translation-averages.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a> · <a href="index.html">Course contents</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

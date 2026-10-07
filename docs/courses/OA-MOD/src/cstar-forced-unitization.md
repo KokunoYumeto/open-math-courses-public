@@ -1,6 +1,6 @@
 # A unitization that keeps its scalar quotient
 
-*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. This lesson is a draft awaiting course-level mathematical review.*
+*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0.*
 
 Even when a \(C^*\)-algebra already has an identity, it can be useful to adjoin a *new* one. The resulting forced unitization always has a quotient onto \(\mathbb C\) whose kernel is the original algebra. That quotient detects when a continuous function of an element of \(A\) returns to \(A\), as needed for approximate identities. We use the programme's existing forced-unitization construction and give an alternative proof of its maximum norm for the C*-weight route. The required abstract self-adjoint calculus and positive-cone theorem are proved in AC1–4. The free comparison is [Blackadar, corrected author edition, II.1.2.1, printed page 54](https://bruceblackadar.com/Mathematics/Cycr.pdf). We keep the scalar coordinate in the norm so that the same construction also works for already-unital and zero algebras.
 

@@ -2,9 +2,9 @@
 
 A closed union of stratum conormals is involutive even when the chosen stratification fails the μ-condition. The proof works at each singular covector: select one smooth conormal through it, then use that conormal's entire tangent space inside both normal cones of the union. An explicit polynomial example will distinguish this involutivity from the stronger control of cancelling conormals required by μ.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-This lesson studies closed unions of conormal bundles at singular points, using the real normal-cone conventions fixed earlier. See Involutive subsets of subanalytic isotropic sets for their earlier isotropic applications, and Whitney secants and the microlocal stratification condition for the ordinary polynomial stratification and its μ-failure. The argument here is geometric and requires no coefficient ring, finiteness of sheaf stalks or derived-category assumption.
+The singular involutivity criterion compares two normal cones, with the Hamiltonian sign fixed by the canonical symplectic form. We prove the conormal-union assertion directly from that criterion. Involutive subsets of subanalytic isotropic sets explains the relation with isotropy; Whitney secants and the microlocal stratification condition defines the two Whitney conditions and μ. The arguments below are geometric and require no coefficient ring or sheaf-theoretic hypothesis.
 
 ## Keep the two normal cones distinct
 
@@ -31,7 +31,9 @@ Thus $\iota_{H\theta}\omega=-\theta$. For $p\in S\subset P$, the point and pair 
  \qquad\text{(2)}
 \]
 
-Only convergent quotients enter. These definitions transform by the tangent map under a $C^1$ change of coordinates. The pair cone can have many more directions than the point cone; it is symmetric, whereas the point cone need not be. A locally closed $S$ is involutive at $p$ when
+Only convergent quotients enter. Here is the coordinate comparison for two moving endpoints. In a convex coordinate neighborhood, a $C^1$ coordinate change $F$ satisfies $F(s)-F(t)=dF_p(s-t)+r(s,t)$, with $|r(s,t)|\leq\sup_{z\in[s,t]}\|dF_z-dF_p\|\,|s-t|$. If $(s_j-t_j)/h_j$ converges, its norm is bounded, while the supremum tends to zero. Division by $h_j$ therefore sends the remainder to zero. Applying the same argument to $F^{-1}$ proves that the pair cone transforms exactly by $dF_p$. Taking $t_j=p$ proves the point-cone assertion. Separate Taylor remainders at $p$ would not suffice when $s_j-t_j$ is much smaller than either endpoint's distance to $p$.
+
+The pair cone is symmetric, by exchanging its two endpoints; the point cone need not be. Since $p\in S$, choosing the second endpoint to be $p$ gives $C_p(S)\subset C_p(S,S)$. These are the two-endpoint comparison and cone properties. A locally closed $S$ is involutive at $p$ when
 
 \[
  C_p(S,S)\subset\ker\theta
@@ -73,7 +75,7 @@ Lagrangian pieces satisfy equality in the middle of (5). Their union need not be
 
 ## Apply the lemma to the total conormal
 
-Let $X$ be real analytic, Hausdorff and countable at infinity, and let $(S_\beta)$ be a locally finite subanalytic stratification. Retain the ordinary stratification assumptions; impose no μ- or Whitney hypothesis. Set
+Let $X$ be real analytic, Hausdorff and countable at infinity, and let $(S_\beta)$ be a locally finite subanalytic stratification. Its strata are locally closed smooth submanifolds of fixed dimension; the ordinary frontier rule says that a stratum meeting another's closure lies wholly in that closure. Strata may be disconnected. We do not add a μ- or Whitney hypothesis. Set
 
 \[
  \Lambda=\bigcup_\beta T^*_{S_\beta}X.
@@ -92,15 +94,29 @@ Each conormal here is over the stratum itself. Formula (6) does not insert its c
  \qquad\text{(7)}
 \]
 
-It has $d+(n-d)=n$ free coordinates and $\omega|_{TL}=0$: each term $d\xi_i\wedge dx_i$ has one zero factor. Hence $(T_pL)^\omega=T_pL$. The coordinate calculation is invariant under cotangent changes of coordinates. Since $L\subset\Lambda$, (4) and (5) prove (3) at $p$. Closedness makes $\Lambda$ locally closed as required by the definition, and $p$ was arbitrary. $\square$
+It has $d+(n-d)=n$ free coordinates and $\omega|_{TL}=0$: each term $d\xi_i\wedge dx_i$ has one zero factor. Nondegeneracy gives $\dim(T_pL)^\omega=2n-\dim T_pL=n$; isotropy then gives $(T_pL)^\omega=T_pL$. Under a base coordinate change $x'=F(x)$ the cotangent coordinates satisfy $\xi'=(dF_x)^{-\mathsf t}\xi$, hence $\sum_i\xi_i'\,dx_i'=\sum_i\xi_i\,dx_i$. Both $\alpha$ and $\omega=d\alpha$ are therefore preserved, so this calculation applies to every smooth conormal, including zero covectors.
 
-The geometric prerequisites also make each conormal conic and subanalytic. Local finiteness in the **base** means that only finitely many strata, hence finitely many conormals, occur over a sufficiently small base neighborhood. Thus their union is locally subanalytic, without a global finite-stratum assumption. The canonical form vanishes on each conormal; finite local union preserves this singular-set vanishing. Every point lies on an $n$-dimensional piece, and finite local union gives local dimension exactly $n$. These explain the isotropic geometry of (6), but the singular involutivity proof is the pointwise argument (4)–(7).
+Since $L\subset\Lambda$ passes through the specified $p$, (4) and (5) prove (3) at that point. Closedness makes $\Lambda$ locally closed, as required by the definition. The point $p$ was arbitrary, including points where several conormal closures meet. $\square$
 
-Closedness is retained exactly as in the source. The covering lemma also applies to any such union that is locally closed. Neither statement permits one to replace a union by its closure and silently assume a smooth coisotropic piece passes through each newly added point.
+For completeness, subanalyticity of a conormal must also hold near the frontier of its base stratum. The bounded tangent-witness proof, (B1)–(B2) gives it as follows. The tangent bundle of a smooth subanalytic stratum is the restriction of its pair normal cone to that stratum, so it is subanalytic by the normal-cone calculus. A covector fails to annihilate that tangent space precisely when there is a tangent vector $v$ of norm at most one with nonzero pairing. The set of these witnesses is subanalytic. Forgetting $v$ is proper on its closure over every compact cotangent-coordinate set, since the auxiliary vector lies in a closed unit ball. The proper-closure projection theorem makes the nonannihilating locus subanalytic; its complement over the stratum is exactly the conormal. This argument applies to smooth subanalytic strata, without requiring a subanalytic extension of a straightening chart across their frontier.
+
+Local finiteness in the base gives only finitely many such conormals over a sufficiently small base neighborhood. Their union is therefore subanalytic there and has dimension at most $n$. At every one of its points it contains an $n$-dimensional smooth conormal through that point, so its local dimension is exactly $n$. Each conormal is invariant under every real fibre scale and has zero canonical form. The singular one-form test, (C1)–(C4) extends this vanishing to its point-cone directions at frontier points. A witness for a point cone of the finite union has a subsequence lying in a single member. The canonical form consequently vanishes on the union in the same singular sense. These observations establish its subanalytic isotropic geometry; its involutivity already follows from the smooth piece through each actual point.
+
+The covering lemma also applies when this actual union is only locally closed. Replacing it by its closure is a different operation: a newly added covector need not lie on any of the smooth conormals already present. The proof requires a coisotropic piece through the point being tested, not merely pieces converging to it.
+
+## Closedness is exactly Whitney (a) for this stratification
+
+For an incident pair of strata $M,N$, Whitney (a) says that $x_j\in M$, $x_j\to p\in N$, and $T_{x_j}M\to T$ imply $T_pN\subset T$. Tangent-plane convergence can be described by convergence of orthogonal projectors in a coordinate chart. For a locally finite smooth stratification, the total conormal (6) is closed if and only if every incident pair satisfies this condition.
+
+Suppose first that $\Lambda$ is closed. For any $\xi\in T^\perp$, let $P_j$ be the orthogonal projector onto $T_{x_j}M$ and set $\xi_j=(I-P_j)\xi$. Then $\xi_j\in(T_{x_j}M)^\perp$ and $\xi_j\to\xi$. Closedness puts $(p,\xi)$ in $\Lambda$, and the unique stratum through $p$ is $N$. Thus $\xi$ annihilates $T_pN$. This holds for every $\xi\in T^\perp$, so $T_pN\subset(T^\perp)^\perp=T$, proving (a).
+
+Conversely, assume (a) for every incident pair and take a convergent sequence $(x_j,\xi_j)\in\Lambda$ with limit $(p,\xi)$. Local finiteness near $p$ lets us pass to a subsequence whose bases lie in one stratum $M$. Compactness of the Grassmannian lets us further arrange $T_{x_j}M\to T$. If $p$ lies in $M$, smoothness gives $T=T_pM$. Otherwise the frontier rule makes the stratum $N$ through $p$ incident to $M$, and (a) gives $T_pN\subset T$. In either case the limit covector annihilates $T$, because each $\xi_j$ annihilates $T_{x_j}M$. It therefore annihilates the stratum through $p$, and $(p,\xi)\in\Lambda$. This proves closedness. Only finite-dimensional linear algebra, smooth tangent continuity and local finiteness were used in this equivalence.
+
+Thus the closedness hypothesis already encodes Whitney (a); it does not encode Whitney (b), whose test also includes secant lines between two moving base points. The example below separates those two conditions and μ.
 
 ## Closed conormals can still fail μ
 
-In coordinates $(t,x,y)$ on $\mathbb R^3$, take the previously checked ordinary stratification
+In coordinates $(t,x,y)$ on $\mathbb R^3$, consider
 
 \[
  \begin{gathered}
@@ -111,14 +127,16 @@ In coordinates $(t,x,y)$ on $\mathbb R^3$, take the previously checked ordinary 
  \qquad\text{(8)}
 \]
 
-The open complement, analytic hypersurface and closed axis are semialgebraic strata with the ordinary frontier rule. On $S_1$, $x\ne0$, and $s=y/x$ gives
+All three pieces are semialgebraic. The complement $S_0$ is open and $S_2$ is the closed $t$-axis. On $S_1$, $x\ne0$, since $x=0$ and $g=0$ force $y=0$. The gradient is $dg=(-2tx^2,-2t^2x-3x^2,2y)$. If $y\ne0$ it is nonzero; if $y=0$, the equation gives $x=-t^2\ne0$, so its $dx$ component is $-t^4\ne0$. Thus $S_1$ is a smooth analytic hypersurface. Dividing its defining equation by $x^2$ and putting $s=y/x$ gives
 
 \[
  x=s^2-t^2,\qquad y=s(s^2-t^2),\qquad s\ne\pm t.
  \qquad\text{(9)}
 \]
 
-Dividing the nonzero normal $dg$ by $x$ gives a convenient generator of the conormal line,
+The parametrization (9) reaches every point of $S_1$. For each fixed $t_0$, taking $s\to t_0$ through $s\ne\pm t_0$ approaches $(t_0,0,0)$; for $t_0=0$, take nonzero $s\to0$. Hence $\overline{S_1}=Z$. A nonzero polynomial cannot vanish on an open ball, so $Z$ has empty interior and $\overline{S_0}=\mathbb R^3$. The three frontiers are therefore $S_1\cup S_2$, $S_2$, and the empty set, respectively. They are unions of whole lower-dimensional strata, proving the ordinary frontier rule and the required finite stratification.
+
+Substituting (9) into $dg/x$ gives the nonzero generator
 
 \[
  n(t,s)=\bigl(-2t(s^2-t^2),\ t^2-3s^2,\ 2s\bigr).
@@ -144,7 +162,7 @@ At the origin use the two elementary estimates
 For the first case, $|n_x|=|t^2-3s^2|\geq t^2/2$ and
 $|n_t|\leq2|t|(t^2+s^2)\leq(7/3)|t|t^2$. In the second, $|t|<\sqrt6|s|$, $t^2+s^2<7s^2$, and $|n_y|=2|s|$. These prove (11). Its right side tends to zero at the origin. Multiplying by the bounded norm of $(\lambda_jn_x,\lambda_jn_y)$ shows that $\lambda_jn_t\to0$, even when $\lambda_j$ is unbounded.
 
-Every finite limiting covector therefore has $dt$ component zero, so lies in $T^*_{S_2}\mathbb R^3$ at its limiting base. The axis conormal is closed; the open-stratum zero covectors remain zero under limits; and over interior points of $S_1$ the conormal bundle is closed relative to that smooth stratum. Passing to one of the three stratum types in any converging sequence proves that their total union is closed. The theorem applies and proves its singular involutivity.
+Every finite limiting covector from $S_1$ at an axis point has $dt$ component zero, so belongs to $T^*_{S_2}\mathbb R^3$. The axis conormal is closed because it is given by $x=y=\xi_t=0$. Zero covectors from the open stratum have zero limits, and a zero covector over any limit base belongs to that base's stratum conormal. If an $S_1$ sequence has limit base in $S_1$, then in a neighborhood of that base the continuous tangent planes of the hypersurface make its conormal bundle closed; its limit covector is conormal there. There are only three stratum types, so any convergent sequence in the total union has a subsequence of one of these types. Each case puts its limit in the union. This proves closedness and hence, by the preceding equivalence, Whitney (a) for the whole stratification. The closed total-conormal theorem also proves its singular involutivity.
 
 Nevertheless the pair $S_1,S_2$ fails μ. For $u_j>0$ tending to zero, let
 
@@ -166,7 +184,9 @@ The first covector is conormal to $S_1$ at $a_j$, since $dg$ there spans $(2u_j,
  \qquad\text{(13)}
 \]
 
-Thus the full limiting sum of the two conormals contains $dt$ at the origin, which is not an axis conormal. This violates μ. The failing Whitney (b) secant is the $x$-axis, whereas the upper tangent planes tend to the $(t,y)$-plane. Ordinary bounded conormal limits, which (11) controls, and the sums of two unbounded cancelling conormals, which (13) detects, are different operations. The source exercise requires the former closed union, without assuming the latter μ-control.
+Thus the full limiting sum of the two conormals contains $dt$ at the origin, outside the axis conormal, and μ fails. The Whitney (b) failure can be checked independently: at $a_j$ the normal line spans $(2u_j,1,0)$, so the tangent plane is spanned by $(1,-2u_j,0)$ and $(0,0,1)$. Its limit is the $(t,y)$-plane. But $a_j-b_j=(0,-u_j^2,0)$, so the secant line is always the $x$-axis, which is absent from that plane. This contradicts the secant requirement in Whitney (b).
+
+The estimate (11) controls every finite limit of an individual conormal, even with an unbounded scalar multiplier. The witness (12)–(13) instead adds two conormals whose divergent components cancel. Closedness and Whitney (a) permit the former limits; μ excludes the latter tangential output. The involutivity of the closed union is compatible with both its Whitney (b) failure and its μ-failure.
 
 ## Exercises with complete solutions
 
@@ -244,10 +264,14 @@ Let $S$ satisfy the covering lemma with Lagrangian pieces. If $\varphi,\psi$ are
 
 The calculation holds even if the union is singular at $p$, since the smooth piece passes through that point. The earlier proof established (3) for **every** covector annihilating the pair cone, rather than just differentials of the particular vanishing functions. The bracket consequence does not replace that quantifier or excuse a proof only on regular strata.
 
-## References and remaining boundaries
+## References and further geometry
 
-The mathematical source target is Exercise VIII.11. The exact real singular definition and sign are Definition 6.5.1 represented by the current `SH02-INV-SECANTS` and `SH02-INV-DEFINITION` contracts. We reuse the definition and its coordinate comparison, and prove the conormal-union application directly. We do not import the general microsupport involutivity theorem or its propagation proof to obtain this exercise.
+Pierre Schapira, [*A short review on microlocal sheaf theory*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf), 19 January 2016, §2.1, pp. 5–6, gives the point and pair normal cones, the canonical form, the Hamiltonian isomorphism used in (1), and singular coisotropy in Definition 2.2. The annihilator of the pair cone is a vector subspace, so using −H rather than H gives the same quantified condition (3).
 
-The polynomial stratification and failing μ-witness were taught in the earlier Whitney lesson. Here the estimate (11) checks **all** individual finite conormal limits, and proves the closedness needed for this separate exercise. The proof illustrates why that geometric hypothesis permits a stratification failing μ; it does not assert that every ordinary stratification has closed total conormal.
+Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §8.1, Proposition 8.1.4, pp. 142–143, uses limiting tangent planes to prove conormal closedness for a Whitney stratification. The proof above isolates the exact equivalence with Whitney (a) and proves singular involutivity directly through the smooth conormal passing through each tested point.
 
-The six solutions are complete relative to the exact prerequisites. The prerequisites themselves are not proved here.
+The two-cone definition and Hamiltonian convention distinguish singular involutivity from a condition checked only on smooth points. The direct argument (4)–(7) uses those definitions and elementary symplectic linear algebra. The bounded conormal construction and singular one-form calculus explain the additional subanalytic isotropic geometry.
+
+The Whitney secant lesson studies the same polynomial surface and its quantitative conormal failure. Here the complete finite-limit estimate proves closedness of its total conormal and hence Whitney (a). Its explicit secant and cancelling-conormal sequences show why Whitney (b) and μ impose further control.
+
+The pointwise covering lemma extends beyond stratifications: any locally closed set covered through each point by contained smooth coisotropic pieces is involutive. The conormal application supplies such pieces canonically, while the crossing example shows why the two cones must remain distinct at their intersections.

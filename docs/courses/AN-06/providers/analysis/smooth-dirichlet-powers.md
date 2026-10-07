@@ -1,16 +1,18 @@
 # Smooth Dirichlet regularity, power domains, and projector growth
 
-*Written by GPT-6.1 Sol (OpenAI). Self-checked by the writing AI. Original exposition: CC0.*
+*Written by GPT-6.1 Sol (OpenAI); revised and self-checked by GPT-6 Astra (OpenAI). Original exposition: CC0.*
 
 This supplies the boundary regularity, recursive operator domains and parameter Sobolev input used by AN06-U051. Let $X$ be a compact smooth manifold of dimension $n\geq1$, with smooth boundary and no corners. The boundary may be empty, and connectedness is unnecessary. Let $P$ be a scalar differential operator of order two with coefficients smooth up to the boundary, formally symmetric on half densities, with real positive quadratic principal symbol $p(x,\xi)$ for $\xi\ne0$. Its homogeneous Dirichlet realization is strictly positive, as assumed in that lesson. All constants below may depend on $X$, $P$, the fixed coordinate partition and the indicated integer; they are independent of the functions and of the spectral and Sobolev parameters. The zero Hilbert space case is immediate.
 
-The second-order construction source is John K. Hunter, [*Notes on Partial Differential Equations*, revised 18 June 2014](https://www.math.ucdavis.edu/~hunter/pdes/pde_notes.pdf): complete Theorem 4.27, printed pp.112–113; the boundary change of variables and complete Theorem 4.30, pp.114–116; and Proposition 4.52/Theorem 4.53, pp.124–126. The complete trace proof and omitted converse notice in Theorem 3.44, pp.72–73, were also read. The bundled [second-order Dirichlet provider](dirichlet-domain-and-compactness.md#3-the-full-second-order-boundary-estimate), equations (8)–(14), supplies the corrected quotient signs, admissible tests and weak coordinate argument. Its equations (10)–(13) are written for an arbitrary smooth real symmetric positive matrix $A$, so the coefficient argument applies beyond the Laplacian. We explain that application below. Hunter's higher interior Theorem 4.28 refers elsewhere for its detailed proof; boundary Theorem 4.31 and Corollary 4.32 are statements after the second-order proof. None of those higher proofs is imported here. Sections 1–3 give the additional proofs explicitly.
+John K. Hunter's [*Notes on Partial Differential Equations*, revised 18 June 2014](https://www.math.ucdavis.edu/~hunter/pdes/pde_notes.pdf), Theorems 4.27 and 4.30 (pp.112–116), give the second-order difference-quotient method; Proposition 4.52 and Theorem 4.53 (pp.124–126) treat the Dirichlet realization. The trace discussion is Theorem 3.44 (pp.72–73). The [full second-order programme proof](dirichlet-domain-and-compactness.md#dirichlet-boundary-h2), equations (8)–(14), establishes the quotient identities, admissible tests and weak coordinate argument for arbitrary smooth real symmetric positive principal coefficients. Sections 1–3 below prove the zero-trace converse and the full higher-order boundary induction, and Sections 4–6 derive the exact recursive domains and projector bound.
 
 We use inner products linear in the first variable and the unitary Fourier transform on $\mathbb R^n$. Fix a smooth positive density $\rho$ on $X$. Write a half density as $h=u\rho^{1/2}$, so that $\|h\|^2=\int_X|u|^2\rho$. This is a unitary identification with $L^2(X,\rho)$, and conjugates $P$ to a smooth scalar differential operator on functions, denoted again by $P$. Its principal symbol is unchanged. Sobolev spaces below refer to this scalar representative; multiplication by any other smooth positive trivializing factor gives equivalent norms. Let $H_0^1(X)$ be the $H^1$ closure of smooth functions compactly supported in $X^\circ$. On a closed component this is the full $H^1$ space. Only nonnegative integer Sobolev orders are needed.
 
+<a id="smooth-dirichlet-approximation"></a>
+
 ## 1. Smooth approximation, trace, extension, and interpolation
 
-Choose a finite smooth coordinate partition $\sum_a\chi_a=1$ on $X$, with each support inside an interior chart or a boundary chart flattened to $\mathbb R^n_+=\{y_n>0\}$. Supports stay away from each chart's artificial edges. The chart pieces $w_a=(\chi_a u)\circ\psi_a$ are extended by zero past those artificial edges, within the half space in a boundary chart. Define $H^k(X)$ by requiring their weak derivatives of order at most $k$ to be in $L^2$, with the squared norm the sum of these local squared norms. Smooth positive Jacobians make the local $L^2$ norms equivalent to the $\rho$ norm. The product rule and the iterated chain rule on the compact chart supports prove equivalence with any other such finite atlas; the weak versions follow from the approximation proved next. In particular smooth differential operators of order $d$ map $H^{k+d}$ boundedly to $H^k$.
+Use the [finite partition construction](coordinate-inverses-and-integration.md#finite-partitions) to choose a finite smooth coordinate partition $\sum_a\chi_a=1$ on $X$, with each support inside an interior chart or a boundary chart flattened to $\mathbb R^n_+=\{y_n>0\}$. Supports stay away from each chart's artificial edges. The chart pieces $w_a=(\chi_a u)\circ\psi_a$ are extended by zero past those artificial edges, within the half space in a boundary chart. Define $H^k(X)$ by requiring their weak derivatives of order at most $k$ to be in $L^2$, with the squared norm the sum of these local squared norms. Smooth positive Jacobians make the local $L^2$ norms equivalent to the $\rho$ norm. The product rule and the iterated chain rule on the compact chart supports prove equivalence with any other such finite atlas; the weak versions follow from the approximation proved next. In particular smooth differential operators of order $d$ map $H^{k+d}$ boundedly to $H^k$.
 
 **Lemma 1.1 (density up to a flat boundary).** For a nonnegative integer $k$, a compactly supported $w\in H^k(\mathbb R^n_+)$ is an $H^k$ limit of functions smooth on the closed half space, with supports in a common slightly larger compact set. No boundary value condition is required.
 
@@ -18,7 +20,9 @@ Choose a finite smooth coordinate partition $\sum_a\chi_a=1$ on $X$, with each s
 
 Extend $w_\varepsilon$ by zero below $y_n=-\varepsilon$ and convolve with a smooth approximate identity of radius $\delta<\varepsilon/2$. On a neighborhood of the closed upper half space convolution samples only $y_n>-\varepsilon$, where the weak derivative identities hold. Its $\alpha$th derivative there is the convolution of $g_\alpha(\,·+\varepsilon e_n)$ with that approximate identity. The whole-space $L^2$ convergence of convolution, and then translation convergence, give $H^k$ convergence on the half space as $\delta,\varepsilon\to0$. The resulting functions are smooth across its boundary. Compact support of $w$ keeps all supports in a common enlarged compact set. Cutoffs first reduce a local chart function to this case. Interior charts use ordinary convolution. A finite partition proves smooth density up to $\partial X$ in every $H^k(X)$. $\square$
 
-The translation and convolution convergence used here can be proved first for smooth compactly supported functions, by uniform continuity and bounded support, and then for all $L^2$ functions by their density and the $L^2$ norm bound of translation and convolution. Thus it needs no boundary extension theorem.
+The required whole-space density, translation continuity and convolution convergence are proved in [Euclidean approximation, Sections 2–4](euclidean-approximation-and-convolution.md#finite-p-density). These statements apply to each zero-extended derivative as an individual $L^2$ function. They therefore give the convergence above without presupposing a Sobolev extension across the boundary.
+
+<a id="smooth-dirichlet-trace"></a>
 
 **Lemma 1.2 (trace and the zero-trace energy space).** On a flat boundary patch the value trace $T:H^1\to L^2(\partial\mathbb R^n_+)$ is continuous. If $w\in H^{r+1}$ and $\gamma$ is tangential with $|\gamma|\leq r$, then, in boundary distributions,
 \[
@@ -55,6 +59,8 @@ for any whole-space smooth test $\phi$. The same approximation gives tangential 
 
 Apply this argument to the finitely many boundary chart pieces of $u$; interior pieces are mollified inside their charts. Their smooth compactly supported approximants transfer back and sum to an $H^1$ approximation in $X^\circ$. This proves (2), including the assertion about tangential derivatives after localization. In dimension one there are no nonzero tangential derivatives and the same trace proof applies at each endpoint. $\square$
 
+<a id="smooth-dirichlet-extension"></a>
+
 **Lemma 1.3 (one bounded extension at two orders).** For each integer $k\geq1$ there is a linear extension $E_k:H^k(\mathbb R^n_+)\to H^k(\mathbb R^n)$ with
 \[
  \|E_kw\|_{H^k}\leq C_k\|w\|_{H^k},
@@ -69,7 +75,7 @@ The same extension is used in both bounds.
  \qquad j=0,\ldots,k-1.
  \tag{6}
 \]
-The coefficient matrix is the Vandermonde matrix of the distinct numbers $-1,\ldots,-k$; its determinant is the product of their nonzero pairwise differences. Thus a unique solution exists. For $y_n<0$ define
+An explicit solution is $c_\ell=\prod_{a\ne\ell}(1+a)/(a-\ell)$, with empty product equal to one. Indeed the polynomials $L_\ell(t)=\prod_{a\ne\ell}(t+a)/(a-\ell)$ satisfy $L_\ell(-b)=\delta_{\ell b}$. For a polynomial $p$ of degree less than $k$, the difference $p(t)-\sum_\ell p(-\ell)L_\ell(t)$ has degree less than $k$ and vanishes at all $k$ distinct nodes. Successively dividing by the corresponding linear factors makes this difference zero. Evaluating at $t=1$ and taking $p(t)=t^j$ proves (6). For $y_n<0$ define
 \[
  E_kw(y',y_n)=\sum_{\ell=1}^k c_\ell w(y',-\ell y_n),
  \qquad E_kw=w\quad(y_n\geq0).
@@ -77,7 +83,7 @@ The coefficient matrix is the Vandermonde matrix of the distinct numbers $-1,\ld
 \]
 For $w$ smooth up to the boundary, (6) matches its two one-sided normal derivatives of orders $0$ through $k-1$; tangential derivatives of these identities also match. Integration by parts on the two half spaces consequently cancels the boundary terms each time a weak derivative of order at most $k$ is taken. Its derivatives are therefore the piecewise classical derivatives, with no boundary distribution. The term with $\ell$ and $j$ normal differentiations has $L^2$ norm on the lower half space equal to $\ell^{j-1/2}$ times the corresponding upper-half-space derivative norm. The triangle inequality gives (5) for every derivative of order at most $k$, including the separate $L^2$ bound. Lemma 1.1, with truncation if needed, extends the formula by completeness to all $H^k$ functions. The $L^2$ bound identifies its limit with the explicit almost-everywhere formula (7), so it is still one extension operator at both orders. $\square$
 
-For whole-space Sobolev functions, Plancherel identifies the derivative norm with a norm equivalent to $\int(1+|\xi|^2)^k|\widehat v(\xi)|^2d\xi$. For $k\geq1$ and every $\varepsilon>0$, splitting into bounded and large $|\xi|$ gives
+For whole-space Sobolev functions, the [proved Fourier and Plancherel identities](finite-derivative-l2.md#fourier-normalization) identify the derivative norm with a norm equivalent to $\int(1+|\xi|^2)^k|\widehat v(\xi)|^2d\xi$. For $k\geq1$ and every $\varepsilon>0$, splitting into bounded and large $|\xi|$ gives
 \[
  \|v\|_{H^{k-1}(\mathbb R^n)}
  \leq\varepsilon\|v\|_{H^k(\mathbb R^n)}+C_{k,\varepsilon}\|v\|_2.
@@ -89,6 +95,8 @@ Apply this to $E_kw_a$ at a boundary chart and to the ordinary compactly support
  \tag{8}
 \]
 This is proved for $u\in H^k$; membership in that space must be established before using it to absorb a lower-order term.
+
+<a id="smooth-dirichlet-second-order"></a>
 
 ## 2. Second-order regularity for the general operator
 
@@ -134,7 +142,7 @@ Flatten a boundary patch. Change variables in the weak form, including the smoot
        =J(f\circ\psi)-B_i\partial_iw-Cw=:F_0\in L^2.
  \tag{14}
 \]
-The weak change of variables is justified first on the $H_0^1$ approximants, then by their $H^1$ limits. Equation (14) has exactly the coefficient and right-side hypotheses of equations (10)–(13) of the [full second-order proof](dirichlet-domain-and-compactness.md#3-the-full-second-order-boundary-estimate). On nested patches use its test $-\delta_{-h}^k(\eta^2\delta_h^kw)$, $k<n$. Lemma 1.2 or the transformed $H_0^1$ approximants make this test admissible. Its discrete product rule, real ellipticity and absorption give
+The weak change of variables is justified first on the $H_0^1$ approximants, then by their $H^1$ limits. Equation (14) has exactly the coefficient and right-side hypotheses of equations (10)–(13) of the [full second-order proof](dirichlet-domain-and-compactness.md#dirichlet-boundary-h2). On nested patches use its test $-\delta_{-h}^k(\eta^2\delta_h^kw)$, $k<n$. Lemma 1.2 or the transformed $H_0^1$ approximants make this test admissible. Its discrete product rule, real ellipticity and absorption give
 \[
  \|\eta\delta_h^k\nabla w\|_2
        \leq C(\|F_0\|_2+\|w\|_{H^1}).
@@ -150,7 +158,9 @@ Since $A_{nn}\geq\theta_1$, its smooth reciprocal identifies this distribution d
 
 The weak coordinate formula (14) in the second-order provider transforms these derivatives back. More generally Lemma 1.1 proves the same chain rule by $H^2$ approximation in a chart. Its coefficients and Jacobians are bounded on the compact supports. A finite covering therefore gives $\|u\|_{H^2}\leq C(\|f\|_2+\|u\|_{H^1})$. Finally (13) proves (12). $\square$
 
-The argument before (13) also proves the local second-order estimate needed for differentiated functions: an $H^1$ solution on a half patch, with zero trace on its flat face and $L^2$ right side, has $H^2$ regularity on a smaller half patch, bounded by that right side and its $H^1$ norm on a larger patch. Insert a cutoff supported away from artificial edges when forming the tests. A cutoff commutator is of order one and hence is controlled by that $H^1$ norm. Symmetry is needed for (13); this local regularity estimate only needs real positive principal coefficients and bounded smooth lower terms.
+The local difference-quotient argument following (13) also proves the local second-order estimate needed for differentiated functions: an $H^1$ solution on a half patch, with zero trace on its flat face and $L^2$ right side, has $H^2$ regularity on a smaller half patch, bounded by that right side and its $H^1$ norm on a larger patch. Insert a cutoff supported away from artificial edges when forming the tests. A cutoff commutator is of order one and hence is controlled by that $H^1$ norm. Symmetry is needed for (13); this local regularity estimate only needs real positive principal coefficients and bounded smooth lower terms.
+
+<a id="smooth-dirichlet-induction"></a>
 
 ## 3. The full boundary induction
 
@@ -194,6 +204,8 @@ Membership has now been established. Apply (8) with $k=r+2$ and choose $\varepsi
 
 All identities in this induction are distribution identities justified by weak product rules with smooth coefficients. In particular no unproved normal derivative is used as a test, and no derivative of order $r+2$ is hidden in the commutator error.
 
+<a id="smooth-dirichlet-realization"></a>
+
 ## 4. The original Dirichlet realization and compact inverse
 
 **Theorem 4.1.** The homogeneous Dirichlet form realization of $P$ has its exact domain
@@ -204,9 +216,9 @@ All identities in this induction are distribution identities justified by weak p
 It is self-adjoint. Its strictly positive inverse is compact, and it has a complete orthonormal eigenbasis with eigenvalues $\lambda_j>0$, of finite multiplicity, tending to infinity in the infinite-dimensional case.
 
 **Proof.** Choose $c_*>C_0$ large enough that (11) makes
-$q_*(u,v)=q(u,v)+c_*(u,v)$ a positive complete inner product on $H_0^1$, equivalent to the $H^1$ norm. For $f\in L^2$ the continuous conjugate-linear functional $v\mapsto(f,v)$ has a unique representative $u$ for that inner product. The elementary Hilbert representation proof is given in [the energy-inverse construction](dirichlet-domain-and-compactness.md#2-the-energy-inverse). Define $K_*f=u$. Testing with $u$ gives $\|K_*f\|_{H^1}\leq C\|f\|_2$. Hermitian symmetry gives $(f,K_*g)=q_*(K_*f,K_*g)=(K_*f,g)$, and $(K_*f,f)=q_*(K_*f,K_*f)\geq0$. Thus $K_*$ is bounded, positive and self-adjoint on $L^2$. If $K_*f=0$, the form equation gives $(f,v)=0$ on all interior smooth tests, which are dense in $L^2$, so $f=0$. Its range is dense because its orthogonal complement is $\ker K_*^*=0$.
+$q_*(u,v)=q(u,v)+c_*(u,v)$ a positive complete inner product on $H_0^1$, equivalent to the $H^1$ norm. For $f\in L^2$ the continuous conjugate-linear functional $v\mapsto(f,v)$ has a unique representative $u$ for that inner product. The elementary Hilbert representation proof is given in [the energy-inverse construction](dirichlet-domain-and-compactness.md#dirichlet-energy-inverse). Define $K_*f=u$. Testing with $u$ gives $\|K_*f\|_{H^1}\leq C\|f\|_2$. Hermitian symmetry gives $(f,K_*g)=q_*(K_*f,K_*g)=(K_*f,g)$, and $(K_*f,f)=q_*(K_*f,K_*f)\geq0$. Thus $K_*$ is bounded, positive and self-adjoint on $L^2$. If $K_*f=0$, the form equation gives $(f,v)=0$ on all interior smooth tests, which are dense in $L^2$, so $f=0$. Its range is dense because its orthogonal complement is $\ker K_*^*=0$.
 
-For completeness, the compact embedding needed here follows from the finite chart partition. A bounded $H_0^1$ family has uniformly bounded $H^1$ zero extensions of its boundary pieces by Lemma 1.2, and compactly supported $H^1$ extensions of its interior pieces. Each has support in a fixed bounded Euclidean set. The [Fourier-cutoff compactness proof](dirichlet-domain-and-compactness.md#1-the-zero-boundary-energy-space-and-compact-embedding), Lemma 1.1 and equation (2), applies to precisely such families: their high-frequency tails are bounded by $N^{-1}$ times the first-derivative norm, while the bounded-frequency operator on a fixed support has a square-integrable kernel and is a norm limit of finite-rank operators. Successively extract subsequences in the finitely many charts. The final subsequence converges in each local $L^2$, and hence globally by bounded Jacobians and $\sum_a\chi_a=1$. Thus $H_0^1(X)\to L^2(X,\rho)$ is compact, and $K_*$ is compact.
+For completeness, the compact embedding needed here follows from the finite chart partition. A bounded $H_0^1$ family has uniformly bounded $H^1$ zero extensions of its boundary pieces by Lemma 1.2, and compactly supported $H^1$ extensions of its interior pieces. Each has support in a fixed bounded Euclidean set. The [Fourier-cutoff compactness proof](dirichlet-domain-and-compactness.md#dirichlet-compact-embedding), Lemma 1.1 and equation (2), applies to precisely such families: their high-frequency tails are bounded by $N^{-1}$ times the first-derivative norm, while the bounded-frequency operator on a fixed support has a square-integrable kernel and is a norm limit of finite-rank operators. Successively extract subsequences in the finitely many charts. The final subsequence converges in each local $L^2$, and hence globally by bounded Jacobians and $\sum_a\chi_a=1$. Thus $H_0^1(X)\to L^2(X,\rho)$ is compact, and $K_*$ is compact.
 
 Define $Q=K_*^{-1}$ on $\operatorname{Ran}K_*$. The form identity says $(P+c_*)u=f$ in distributions for $u=K_*f$. Lemma 2.1 applied to $Pu=f-c_*u$ proves $u\in H^2\cap H_0^1$. Conversely, for $u$ in that space, $f=(P+c_*)u\in L^2$; the distribution identity and density of energy tests give $q_*(u,v)=(f,v)$, so $u=K_*f$. Hence
 \[
@@ -219,6 +231,8 @@ Self-adjointness is also on this domain: if $Q^*v=g$, test its defining identity
 Apply the [compact positive inverse and diagonal-domain proof](compact-spectrum-domains.md#positive-compact-inverse) to $K_*$. It gives a complete orthonormal eigenbasis $h_j$ of $Q$, with positive eigenvalues $\nu_j$ tending to infinity and finite multiplicities. Equation (21) makes these eigenvectors eigenvectors of the original $P$, with $\lambda_j=\nu_j-c_*$. The assumed strict positivity of $P$ gives $\lambda_j>0$ for every $j$. Since the sequence tends to infinity, its infimum is positive (the finite-dimensional case is immediate). In particular even if strict positivity is stated only as $(Pu,u)>0$ for nonzero $u\in D(P)$, it gives a uniform positive lower bound here.
 
 The diagonal $P^{-1}$ is bounded because $\inf_j\lambda_j>0$. Its finite-rank truncations converge in operator norm because $\lambda_j^{-1}\to0$, so it is compact. The two inverse identities hold on the domain (21): $\nu_j/\lambda_j=1+c_*/\lambda_j$ is bounded, so the image of the proposed inverse lies in $D(Q)$; conversely coordinate inversion gives $P^{-1}Pu=u$. It is therefore the inverse of the original realization rather than a new diagonal realization. The same compact positive inverse provider applied to $P^{-1}$ gives every exact spectral multiplier domain. $\square$
+
+<a id="smooth-dirichlet-powers"></a>
 
 ## 5. Every recursive power domain and its elliptic estimate
 
@@ -259,6 +273,8 @@ The elliptic estimate at $m=1$ is (12). For $m\geq2$, Theorem 3.1 with $r=2m-2$ 
 Equation (24) proves the last line of (22). Conversely $P^m$ is a smooth differential operator of order $2m$, so $\|P^m u\|_2\leq C_m\|u\|_{H^{2m}}$. Thus its graph norm and the $H^{2m}$ norm are equivalent on the displayed domain. $\square$
 
 For $u\in\bigcap_mD(P^m)$, (22) gives every integer Sobolev order and the zero trace of every iterate. Smoothness up to the boundary follows directly from the Fourier argument in Section 6 applied to derivatives: for a chart extension in sufficiently large $H^k$, $\xi^\alpha\widehat v\in L^1$ when $k>|\alpha|+n/2$, by weighted Cauchy–Schwarz. Fourier inversion and dominated convergence give continuous derivatives through any prescribed finite order. Every eigenfunction belongs to every power domain because $P^m h_j=\lambda_j^m h_j$, and is therefore smooth up to the boundary, with homogeneous Dirichlet value.
+
+<a id="smooth-dirichlet-projector-growth"></a>
 
 ## 6. Parameter Sobolev estimate and polynomial projector growth
 
@@ -319,4 +335,6 @@ Finally write $h_j=u_j^{(g)}(dV_g)^{1/2}$. Then
 \]
 This smooth positive ratio is bounded above and below on compact $X$. Thus the metric-volume diagonal has the same uniform power bound, and its integral is the same counting function. This proves the half-density convention and the stated metric normalization explicitly. $\square$
 
-The completed input is integer boundary regularity, all recursive Dirichlet power domains, compact positive spectral calculus, the parameter inequality (25), and the rough diagonal and counting growth (26). It supplies no estimate for the curved diagonal remainder and no generalized boundary propagation theorem. Those are the separate prerequisites numbered 70 and 69 in AN06-U051.
+These estimates are also uniform for families on fixed $X$, with fixed $\rho$ and coordinate partition, a common positive ellipticity lower bound, and common bounds on every coefficient derivative used at the chosen order. Indeed the second-order quotient estimate uses only first derivatives of the principal coefficients and bounds on the lower coefficients. At induction level $r$, the product rule in (17)–(18) adds only finitely many coefficient derivatives through order $r+1$, and division uses the same ellipticity lower bound. The interpolation constants depend only on the fixed charts. Induction therefore gives a common constant in (16), and the finite iteration in (22) gives one in the power estimate. Finally (27) and the fixed extension operator have no operator-dependent constants, so (26) is uniform as well. This argument uses no common lower bound for the positive eigenvalues: the estimates retain the separate $L^2$ term.
+
+The parameter inequality (25) converts the elliptic power estimate into the uniform projector and counting bounds (26). Curved diagonal asymptotics require the additional local wave analysis in [Curved boundary spectral reduction](curved-boundary-spectral-reduction.md); generalized reflected propagation is developed in [Generalized reflected curves](generalized-reflected-curves.md).

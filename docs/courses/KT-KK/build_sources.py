@@ -47,5 +47,5 @@ for p in lessons:
 with tempfile.TemporaryDirectory() as temporary:
     combined = Path(temporary) / 'course.md'
     combined.write_text('\n\n\\newpage\n\n'.join(combined_source(p) for p in lessons), encoding='utf-8', newline='\n')
-    subprocess.run(args + ['--toc', '--metadata=title:Kasparov’s KK-theory', f'--metadata=subtitle:{len(course["units"])} draft lessons and {len(course.get("supplements", []))} proof companions', str(combined), '-o', 'KT-KK.tex'], cwd=r, check=True)
+    subprocess.run(args + ['--toc', '--metadata=title:Kasparov’s KK-theory', f'--metadata=subtitle:{len(course["units"])} lessons and {len(course.get("supplements", []))} proof companions', str(combined), '-o', 'KT-KK.tex'], cwd=r, check=True)
     normalize_print_links(r / 'KT-KK.tex')

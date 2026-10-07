@@ -10,6 +10,7 @@ The operator has the full scope used in [Generalized rays and the Dirichlet Weyl
 
 Read [Smooth Dirichlet regularity, power domains, and projector growth](smooth-dirichlet-powers.md), Sections 4–6, first. It proves the exact spectral realization, smooth eigenfunctions, and the uniform diagonal bound used here. The positive-measure argument develops the cumulative version of [Return times and spectral counting](../../src/return-times-and-spectral-counting.md), Lemma 1.1. Section 5 uses the already proved [parameter Morse lemma](phase-geometry-and-stationary-phase.md#parameter-morse) and [stationary phase with parameter remainders](phase-geometry-and-stationary-phase.md#stationary-phase), equations (P1)–(P10). None of these inputs requires the curved estimate being reduced.
 
+<a id="positive-reflected-measure"></a>
 ## 1. The positive measure and the reflected model
 
 Write the orthonormal eigensections as \(u_j(dV_g)^{1/2}\), with eigenvalues \(\lambda_j>0\), and put \(\kappa_j=\sqrt{\lambda_j}\). At each point define
@@ -616,7 +617,7 @@ On each ordinary leg, \(L_hU_\sigma=\mathcal R_\sigma U_\sigma\), by differentia
 \]
 The error bound is for the ordinary piecewise remainder; the singular term has already been identified exactly. The boundary value cancels because \(U_-(0,0)=I\). All constants are uniform as the interior source approaches the wall. On each open side of \(a=d\), fixed parameter derivatives of the remainder lose only finitely many powers of \(h\); increasing the Riccati accuracy beforehand gives any prescribed differentiated error bound there. Across the source slice, derivatives in \(a,d\) are distributional and may also differentiate its step functions. Their delta coefficients are differences of the same arbitrarily small differentiated remainder values; no pointwise bound for a delta is asserted. No global resolvent bound at an eigenvalue has been assumed.
 
-This proves the exact normal source jump and the Dirichlet coupling for the extended separated-root operator. To obtain the actual short-time spectral kernel one still has to match this family, with its phase cutoffs and gauge restored, to the physical wave solution and control the complementary phase regions. The ordinary errors in (B51) concern the extended operator; the difference between that operator and the actual expression outside the retained region must also be estimated. Neither a normal Green family nor an arbitrary smooth-amplitude solution of (B38) is by itself the spectral projector.
+The normal source jump and Dirichlet cancellation in (B51) hold for the extended separated-root operator. Sections 22–27 compare its localized wave with the physical wave, including the extension and position-cutoff errors.
 
 <a id="compact-frequency-phase-action"></a>
 ## 11. Phase action when the tangential frequency can be zero
@@ -847,7 +848,7 @@ The error is uniform for \(0\leq d\leq d_0\) and all retained \(y\). Indeed, ins
 
 The multiplicative normal gauge used in (B47) does not alter this diagonal normalization on the retained region. If \(\widetilde P=\kappa P\kappa^{-1}\), restoring a kernel multiplies its coordinate coefficient by \(\kappa(a,z)^{-1}\kappa(d,y)\). On the diagonal this factor is exactly one. Its off-diagonal derivatives are bounded on the compact collar and therefore preserve every finite remainder estimate above. The volume factor \(\gamma^{-1}\) remains exactly the one proved in (B41).
 
-The remaining identification is substantive. One must show that the appropriately localized physical wave kernel has the normal representation just analyzed, with the correct physical-time normalization and with the actual-versus-extended operator and cutoff errors controlled. The complementary non-normal and glancing regions must also satisfy the required quantitative bounds. Equation (B68) supplies the exact normal family and its uniform frozen comparison; it does not yet assert the full actual-kernel comparison (B16).
+The normalization and error in (B68) concern the exact normal family. Sections 18–27 supply the physical-time normalization and the quantitative comparison with the actual near-normal spectral contribution.
 
 <a id="exact-second-order-normal-evolution"></a>
 ## 16. An extension compatible with physical time
@@ -1009,6 +1010,7 @@ For every fixed \(\varepsilon>0\), bounded time interval with \(t\leq-\varepsilo
 \]
 To prove it, replace the exact operators by their phase kernels to a sufficiently high finite accuracy using (B63), (B74) and (B77). Their inverse factors carry the explicit \(h^{-1}\), while (B79) carries the other fixed powers; increasing the accuracy absorbs all of them and all chosen derivatives. For a phase term, (B78) gives \(|\partial_\tau(t\tau+S)|\geq\varepsilon\). Integrate repeatedly in \(\tau\) with \((h/i)(t+\partial_\tau S)^{-1}\partial_\tau\). All amplitudes have smooth compact temporal support, so there are no endpoint terms. The coefficient and its derivatives are uniformly bounded on the compact parameters. Each integration supplies \(h\); each preassigned ordinary derivative loses only a fixed power. This proves (B81), uniformly as either normal distance tends to zero. Across \(a=d\), derivatives are distributions; their jump coefficients have the same rapid bounds by the same compact temporal integration. The reflected kernel itself is smooth through that slice. This is rapid decay before negative times separated from zero, not exact causal support for a temporally band-limited function.
 
+<a id="actual-retarded-spectral-family"></a>
 ## 19. The actual retarded spectral family with a smooth temporal cutoff
 
 We now give the corresponding exact identity for the actual compact Dirichlet operator \(P\). This fixes what the normal construction must match. Let \(Pe_j=\lambda_je_j\), \(\kappa_j=\sqrt{\lambda_j}>0\), and \(\Pi_j f=(f,e_j)e_j\), with the eigenbasis and exact domains proved in [Compact positive inverses and diagonal domains](compact-spectrum-domains.md#compact-inverse-domains), equations (1)–(2), and applied to this realization in [Dirichlet wave regularization](dirichlet-wave-regularization.md#dirichlet-wave-regularization), equations (W1)–(W8). Let \(Q_h(E)\) be any smooth operator family on \(L^2(X)\), supported in the fixed energy interval after multiplication by the cutoff below, with uniform operator bounds for every required energy derivative. The local tangential cutoffs used here have those bounds after fixed coordinate and density cutoffs: apply (N17) on each normal slice and integrate its squared estimate in the normal variable. Smooth density multipliers on the compact chart only change its constant.
@@ -1081,9 +1083,9 @@ For the sign and constant, (B77) says \(\widehat G_\sigma^rQ_h=-\sigma(ih)^{-1}\
 
 The smooth temporal cutoff in Sections 18–20 is essential to their rapid negative-time bounds. A sharp upper energy endpoint cannot be substituted into their integration-by-parts proof: it would add endpoint terms. Equation (B86) fixes the local energy-density normalization for smooth tests. The sharp cumulative endpoint in (B67)–(B68) retains its separate energy-endpoint analysis from Lemma 5.1. Neither calculation alone identifies the normal extension with the actual spectral projector.
 
-## 21. The remaining comparison
+## 21. Comparing the normal and physical waves
 
-We have now proved an exact second-order normal Green equation, uniform comparison with its phase kernels, temporal orientation, the physical-time source factor and the matching factor of two in the actual spectral band identity. The next comparison must replace \(\mathscr P_h\) in (B80) by the actual gauged \(h^2P\), estimate the extension and position-cutoff errors, and compare the two Dirichlet time families with those errors retained. That estimate must be strong enough after localization and time testing to control the diagonal kernel uniformly at the wall. The complementary non-normal and glancing regions still require their quantitative estimates. These are remaining proof obligations for (B16); the exact normal source and the spectral identities above do not discharge them by themselves.
+Equations (B76)–(B86) fix the normal Green equation, its phase representation, temporal orientation and source normalization. To identify this family with the physical wave, replace \(\mathscr P_h\) in (B80) by the actual gauged \(h^2P\) and estimate the extension and position-cutoff errors. Sections 22–27 perform this comparison in energy norms and then control the diagonal uniformly at the wall. Sections 28–30 treat the complementary frozen model. The full-frequency argument in Sections 31–38 proves (B16), including the regions not covered by the near-normal cutoff.
 
 <a id="actual-near-normal-wave-comparison"></a>
 ## 22. Source columns with uniform energy norms at the wall
@@ -1260,6 +1262,7 @@ Use the bounded half-space extensions in Lemma 1.3 of that reading and Fourier C
 \]
 The kernels in the last line of (B97) are evaluated at \((t,x;d,y)\). This is the required actual near-normal short-time comparison for a fixed smooth energy band and right cutoff. It includes pointwise diagonal evaluation and the wall limit. It does not assert a comparable theorem for the complementary phase regions. Source normal derivatives, which were not used, are not inferred from the target estimates.
 
+<a id="sharp-near-normal-endpoint"></a>
 ## 27. The normal contribution with a sharp upper endpoint
 
 We now apply the comparison without replacing a smooth temporal cutoff by a discontinuous one. On the diagonal \(x=(d,y)\) in \(K'\), set
@@ -1331,7 +1334,7 @@ Equation (B58) gives the incident formula, with its \(h\) amplitude correction b
  \end{gathered}
  \tag{B103}
 \]
-This proves the actual near-normal contribution, including full lower terms, all source and density constants, the sharp upper endpoint and a uniform wall estimate. It concerns the specified smooth lower energy band and near-normal right cutoff. To prove the full comparison (B16), the remaining phase regions and the remaining energy pieces must be assembled with quantitative bounds; a smooth band and a near-normal cutoff are not the identity operator. The original general curved theorem and every solution retain their full scope.
+Thus (B103) gives the actual contribution of the specified smooth lower energy band and near-normal right cutoff, with all lower-order terms, density factors and the sharp upper endpoint retained. The full-frequency estimate is proved in Sections 31–38.
 
 <a id="complementary-frozen-boundary-model"></a>
 ## 28. Tangential energy coordinates through glancing
@@ -1494,12 +1497,12 @@ Thus this use of \(D^0_{h,q_0}\) does not assume that the tangential energy coor
 \]
 Here \(\Theta\) is extended by zero below \(E_0\). The same partition may be made smoothly in the coefficient parameters by fixed slightly larger frequency cutoffs. No high-frequency remainder appears in this **frozen** identity because the spectral support itself bounds \(r_\alpha\).
 
-The actual near-normal contribution is already identified by (B97)–(B103). Equations (B104)–(B111) now identify the complementary frozen contribution, prove its regularity through glancing and its uniform coefficient-freezing error, and verify the complete frozen band partition. A variable-coefficient spectral family still requires a quantitative comparison with this complementary model, including the actual tangential cutoff errors and the region outside the compact frequency cutoff. Nor does (B111) assemble the whole positive energy range. Those are the remaining obligations within this particular band-decomposition route. The complete second route in Sections 31–38 below proves the required spectral estimate directly, while preserving this calculation. 
+Equations (B104)–(B111) describe the complementary frozen contribution through glancing, its coefficient-freezing error and the complete frozen band partition. They do not compare the variable-coefficient complementary family or frequencies outside that band. Sections 31–38 instead estimate the entire cosine distribution directly.
 
 <a id="scaled-reflected-parametrix"></a>
 ## 31. A fixed spatial region after dilation
 
-We now prove (B16) by a second route, retaining all the constructions in Sections 5–30. The argument uses the full no-return kernel estimate (T194) in [the boundary propagation reading](diffractive-phase-neighborhoods.md#uniform-rough-dirichlet-columns). Its other input is a finite wave construction, which we give below, including its actual error. All constants can depend on the fixed operator, dimension and finitely many coefficient bounds.
+We prove (B16) using a finite reflected wave construction with its actual smooth error and the [joint no-return kernel estimate](diffractive-phase-neighborhoods.md#joint-kernel-parameters), equation (T194). All constants may depend on the fixed operator, dimension and finitely many coefficient bounds.
 
 Use boundary normal coordinates, and represent half densities by their coefficients relative to the coordinate half density. After a constant tangential linear change at a boundary point \(y_0\), the principal matrix at that point is the identity. These changes can be chosen smoothly on finitely many boundary patches: the positive matrix square root follows, for example, by the uniformly convergent power series for \((I-B)^{1/2}\), after a fixed positive scalar rescaling makes \(\|B\|<1\). Its differentiated series converge on the same compact spectral interval. Put \(z=(z',z_n)\), with wall \(z_n=0\), and dilate the original coordinates about \(y_0\) by \(\varepsilon\). The resulting differential operator, multiplied by \(\varepsilon^2\), has the form
 \[
@@ -1545,6 +1548,7 @@ Write \(G_y=A_\varepsilon(y)^{-1}\) and \(r=|S|_{G_y}\). The ordinary and broken
 \]
 For completeness, differentiate the length of a unit-speed geodesic variation. Integration of the derivative of its kinetic energy leaves only the endpoint scalar products, because the geodesic equation cancels the interior term. For a broken geodesic there is an additional wall term: the difference of the incoming and outgoing momenta paired with the moving wall point. It is zero because that motion is tangent to the wall and the two tangential momenta agree. Consequently the endpoint radial velocity has scalar product with an arbitrary endpoint variation equal to \(G_y S\cdot dS/r\). This is the metric identity dual to (B115). It proves that identity for both coordinate systems without a separate geometric comparison theorem. At \(z=y=\Pi\), the reflected length is exactly two: the boundary normal line goes down a unit distance and back a unit distance for every \(\varepsilon\), and uniqueness in (B114) identifies it with the reflected inverse just constructed.
 
+<a id="flat-causal-distributions"></a>
 ## 32. Flat causal distributions from Fourier multipliers
 
 Let \(L_0=\partial_t^2-\Delta_z\). Define distributions \(E_\nu\), \(\nu=0,1,\ldots\), by their spatial Fourier transforms
@@ -1596,6 +1600,7 @@ They have a well-defined restriction to every fixed \(z\), including zero. Indee
 \]
 This definition avoids restricting the individual retarded fundamental solution to its singular vertex.
 
+<a id="full-radial-transport"></a>
 ## 33. Transport with the complete differential operator
 
 Pull \(P_\varepsilon\) back by either endpoint map. Rewrite it as
@@ -1666,6 +1671,7 @@ For \(\varepsilon=0\), both pulled-back operators are \(-\Delta\). Consequently 
 \]
 These bounds retain every lower-order coefficient.
 
+<a id="actual-reflected-kernel-error"></a>
 ## 34. The smooth error is an error for the actual kernel
 
 Choose a spatial cutoff equal to one on the entire causal region from the source neighborhood for \(0\leq t\leq T_*\), supported inside the larger region of Section 31. Such a cutoff can be chosen independently of the parameters. Indeed the metric is uniformly close to the identity, so a path of length at most \(T_*+1\) stays in \(|z-\Pi|<2T_*+3\). Put the cutoff transition farther away. On its transition, both terms of (B123) vanish by cone support throughout the retained time interval. Multiplying the parametrix by this cutoff introduces no forcing there. It also preserves the exact wall cancellation. The construction now extends by zero to the fixed compact extension.
@@ -1724,6 +1730,7 @@ Write \(a_\nu=u_\nu(\Pi,\Pi)\) and \(b_\nu=v_\nu(\Pi,\Pi)\). Taking the odd-time
 \]
 For any fixed greater regularity of the remainder, increase \(N\). The \(\gamma_\varepsilon(y)\) in (B123) cancels exactly with the diagonal conversion \(1/\gamma_\varepsilon(\Pi)\). The coefficient of \(C_0(t,0)\) is exactly one. Restrictions at that term are the time-tested restrictions from (B119); the smooth remainder supplies the same restriction for the actual kernel. This proves both the normalization and the actual finite remainder.
 
+<a id="temporal-distribution-bounds"></a>
 ## 35. Coarse temporal estimates, including the singular vertex
 
 We require only polynomial bounds, not a stationary-phase expansion. Introduce the mass parameter \(m\geq0\):
@@ -1783,6 +1790,7 @@ For a bounded ordinary function \(R\) on this fixed interval,
 \]
 This is simply \(|\sin(\kappa t)/t|\leq\kappa\) and the finite interval length.
 
+<a id="reflected-arrival-comparison"></a>
 ## 36. The reflected-arrival part of the actual comparison
 
 Choose an even smooth \(\chi\), equal to one on \([-16,16]\) and supported in \((-32,32)\). The physical diagonal is at distance \(d\); set \(\varepsilon=d\), \(t=du\), and \(\kappa=kd\). Unitary spatial dilation of the coordinate half densities multiplies a kernel by \(d^{-n}\). Conversion to metric volume then gives the exact distributional identity
@@ -1851,6 +1859,7 @@ Pair this smooth function with the complementary time cutoff. The two elementary
 \]
 For example the first bound is \(Ckd\int_{16d}^T t^{-n}\,dt\), and the second is \(Cd\int_{16d}^T t^{-n-1}\,dt\). Both integrals have the stated bounds for \(n\geq2\). If \(16d\geq T\), this part is empty. Thus no small-distance or energy range is left out.
 
+<a id="curved-spectral-estimate"></a>
 ## 38. Completion of the curved spectral estimate
 
 Adding (B134) and (B137), and reinstating the harmless factor \(1/\pi\), proves (B16) for a fixed collar \(0<d\leq d_0\). The two tails in (B13) then prove (B7). The positive unsmoothing proof in Section 3 gives, for \(k\geq2\),
@@ -1880,7 +1889,7 @@ All steps in that argument remain unchanged: the bulk model has positive derivat
 Finally \(|W_n(s)|\leq C/(1+s)\) for \(s\geq0\). For \(s\geq1\), slice the unit ball in its last coordinate. The remaining amplitude is a constant times \((1-a^2)^{(n-1)/2}\) on \([-1,1]\); it is zero at the endpoints and has integrable derivative for every \(n\geq2\). One integration by parts bounds its Fourier integral by \(C/s\). For \(s\leq1\), use the volume bound. Hence
 \(k^n|W_n(2kd)|\leq C_{d_0}k^{n-1}\) when \(d\geq d_0\). Combining this with (B139) proves (B138) throughout \(X\), without assuming that the distance function is smooth outside the collar.
 
-The construction proves the full scalar, smooth, formally self-adjoint, strictly positive Dirichlet scope stated at the start of this reading. It retains all lower-order terms and both simultaneous remainder bounds. The near-normal and complementary frozen proofs (B18)–(B111) remain useful alternative calculations; their more detailed complementary comparison is no longer a missing input to (B138), because Sections 31–38 estimate the entire cosine distribution directly. This closes the specific curved-projector input at equation (21) of the reflection lesson and equation (5) of the generalized-ray lesson. 
+Estimate (B138) holds for the full scalar, smooth, formally self-adjoint, strictly positive Dirichlet operator stated at the start, including all lower-order terms. It supplies the two bounds in [the integrated remainder transfer theorem](../../src/reflection-and-the-dirichlet-boundary-coefficient.md#reflection-remainder-transfer) and the pointwise input in [Generalized rays and the Dirichlet Weyl law](../../src/generalized-rays-and-the-dirichlet-weyl-law.md).
 
 <a id="39-source-comparison-and-proof-scope"></a>
 
@@ -1888,8 +1897,8 @@ The construction proves the full scalar, smooth, formally self-adjoint, strictly
 
 Victor Ivrii's freely readable [author monograph, *Microlocal Analysis, Sharp Spectral Asymptotics and Applications*](https://www.math.toronto.edu/ivrii/monsterbook.pdf), July 9, 2023 version, Section 8.1.2, printed pp. 741–749, distinguishes boundary parametrices, Tauberian comparison and coefficient freezing. Propositions 8.1.3–8.1.5 lead to Theorem 8.1.6. Section 8.1.1 identifies a tangential energy direction away from normal incidence; the pointwise complementary route uses Theorem 7.3.2 with Remark 7.3.3(v), supported by Theorem 7.2.17(i). Sections 5–30 above develop the near-normal and frozen parts of that route explicitly.
 
-The second construction in Sections 31–38 was compared with Lars Hörmander, [*The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*](https://doi.org/10.1007/978-3-540-49938-1), the 2007 electronic edition. Section 17.4, printed pp. 32–40, constructs ordinary and reflected radial wave parametrices; Proposition 17.4.4 identifies their finite residual. Theorem 17.5.10, printed p. 52, is the corresponding curved spectral estimate. Its text and figures are not included here.
+For the construction in Sections 31–38, see also Lars Hörmander, [*The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*](https://doi.org/10.1007/978-3-540-49938-1), the 2007 electronic edition. Section 17.4, printed pp. 32–40, constructs ordinary and reflected radial wave parametrices; Proposition 17.4.4 identifies their finite residual. Theorem 17.5.10, printed p. 52, is the corresponding curved spectral estimate.
 
-The programme proof supplies its own Fourier-multiplier distributions, transport integrals, fixed-region geometry, source normalization, forced-wave error estimate and coarse temporal bounds. The actual no-return input is proved in [Uniform rough Dirichlet columns](diffractive-phase-neighborhoods.md#uniform-rough-dirichlet-columns), Sections 76–89, including all coefficient-parameter derivatives and boundary source limits. The two-scale argument in Sections 36–38 proves the whole-energy comparison (B16); positive unsmoothing then proves (B138). No source theorem substitutes for those steps.
+The two-scale comparison uses the [joint parameter kernel theorem](diffractive-phase-neighborhoods.md#joint-kernel-parameters), including boundary source limits. The Fourier distributions and radial transports in Sections 32–34 control the reflected arrival; the uniform kernel theorem controls later times. Section 3 then removes the positive smoothing.
 
-This closes the specific curved-projector prerequisite used at equation (21) of the reflection lesson and equation (5) of the generalized-ray lesson. The earlier alternative arguments and every existing solution remain preserved. 
+The near-normal and complementary frozen calculations in Sections 5–30 provide more detailed descriptions of the corresponding localized models.

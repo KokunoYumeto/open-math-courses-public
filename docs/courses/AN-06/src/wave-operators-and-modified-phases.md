@@ -8,12 +8,13 @@ Scattering compares two evolutions over a long time. A wave operator records the
 
 The prerequisites are [Resolvents, domains and spectral density](resolvents-domains-and-spectral-density.md), Fourier inversion, and the complete bundled proof of [Self-adjoint spectral calculus with the original domain](../providers/analysis/self-adjoint-spectral-domains.md#self-adjoint-pvm-domain). Its Cayley transform constructs the spectral measure using the earlier [unitary spectral foundation](../providers/analysis/unitary-spectral-foundation.md); truncation and inverse-resolvent arguments prove bounded and unbounded Borel calculus and recover the original second-moment domain. It applies to every self-adjoint operator, without a lower-bound or separability assumption. We derive the unitary evolution and its domain criterion below.
 
-Continuous vector integration and its fundamental theorem are proved in Cauchy's theorem for cycles and its consequences, Lemma 0.1, for an arbitrary Banach space. Its finite-interval Riemann construction suffices for every continuous path below; an integrable norm bounds the differences of truncated integrals and thus constructs each improper integral by completeness. The local changes of variables and null-set preservation in Section 3 are proved in [Coordinate inverses and integration, CI1–CI4](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-integration); its smooth approximation step uses [Approximation and convolution, Section 2](../providers/analysis/euclidean-approximation-and-convolution.md).
+Continuous vector integration, improper norm bounds and the fundamental theorem are proved for arbitrary Banach spaces in [Hilbert-valued integration for the evolution equations, Sections 2–3](../providers/analysis/hilbert-valued-integration.md#bochner-integral). Apply these results to each continuous vector orbit; no operator-norm measurability is needed. The local changes of variables and null-set preservation in Section 3 follow from [Coordinate inverses and integration, CI1–CI4](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-integration). Smooth approximation uses [Approximation and convolution, Sections 2–3](../providers/analysis/euclidean-approximation-and-convolution.md#finite-p-density).
 
 Section 3 supplies the nonstationary integration-by-parts estimate used for its escaping packets. [Modified waves and the direction of escape](modified-waves-and-the-direction-of-escape.md), Section 2, gives the complete uniform cell estimate used for the long-range application. Teschl's freely readable second edition [T], Theorem 5.1, Lemma 12.3 and Theorem 12.2, contains the spectral-evolution, Cook and intertwining proofs corresponding to Section 1; we supply the domain and density details used here. Yafaev [Y] gives freely accessible scattering background. The gauge closure, conditional ordinary-limit criterion and all exact drift examples in Section 4 are proved directly below.
 
 ## 1. Integrating the mismatch
 
+<a id="wave-spectral-evolution"></a>
 **Spectral evolution and its domain.** Let \(A\) be self-adjoint on a complex Hilbert space and let \(E_A\) be its spectral measure. Put \(\mu_f(S)=(E_A(S)f,f)\). The bounded Borel calculus gives
 
 \[
@@ -53,6 +54,7 @@ Let \(A,H\) be self-adjoint on the same Hilbert space. When the following strong
 
 Strong convergence means norm convergence after applying the operators to each fixed vector. It does not mean convergence in operator norm.
 
+<a id="wave-cook-criterion"></a>
 **Theorem 1.1 (Cook's criterion).** Suppose \(H=A+V\), where \(V\) is bounded and self-adjoint. Let \(\mathcal D\subset D(A)\) be dense in the Hilbert space. If for each \(f\in\mathcal D\),
 
 \[
@@ -61,7 +63,7 @@ Strong convergence means norm convergence after applying the operators to each f
 
 then \(W_+\) exists on the whole Hilbert space and is an isometry. If the corresponding integral over negative times is finite, the same conclusion holds for \(W_-\).
 
-**Proof.** The bounded-perturbation result gives \(D(H)=D(A)\). For \(f\in D(A)\), spectral multiplication shows that \(t\mapsto e^{-itA}f\) is differentiable in Hilbert norm, remains in \(D(A)\), and is continuous in the graph norm of \(A\). The graph norms of \(A\) and \(H\) are equivalent. Thus the product rule gives
+**Proof.** The [bounded-perturbation theorem](resolvents-domains-and-spectral-density.md#u001-specified-domains) gives \(D(H)=D(A)\). For \(f\in D(A)\), spectral multiplication shows that \(t\mapsto e^{-itA}f\) is differentiable in Hilbert norm, remains in \(D(A)\), and is continuous in the graph norm of \(A\). The graph norms of \(A\) and \(H\) are equivalent. Thus the product rule gives
 
 \[
  \frac{d}{dt}\bigl(e^{itH}e^{-itA}f\bigr)
@@ -77,6 +79,7 @@ For precision, put \(F(t)=e^{-itA}f\). The difference quotient of \(e^{itH}F(t)\
 
 The assumed integrability makes this a Cauchy family. Each approximating operator is unitary, so its limit preserves the norm on \(\mathcal D\). For arbitrary \(f\), choose \(g\in\mathcal D\) close to \(f\). The difference of two approximating operators on \(f-g\) has norm at most \(2\|f-g\|\). This proves the Cauchy condition and convergence on all vectors. Taking the limit of their norms proves isometry. The negative-time proof reverses the integration interval. \(\square\)
 
+<a id="wave-intertwining"></a>
 **Proposition 1.2.** Whenever \(W_\pm\) exists,
 
 \[
@@ -91,6 +94,7 @@ The range of \(W_\pm\) is closed and reduces \(H\). Also \(W_\pm D(A)\subset D(H
 
 The absolutely continuous subspace \(\mathcal H_{\mathrm{ac}}(A)\) consists of vectors whose scalar spectral measures are absolutely continuous with respect to Lebesgue measure. It is a closed reducing subspace: for a null Borel set \(N\), the condition is \(E_A(N)f=0\); intersection of these closed kernels proves closedness and reducing invariance.
 
+<a id="wave-spectral-projections"></a>
 **Proposition 2.1.** A wave operator carries \(\mathcal H_{\mathrm{ac}}(A)\) into \(\mathcal H_{\mathrm{ac}}(H)\).
 
 **Proof.** The group identity gives the resolvent identity
@@ -124,7 +128,9 @@ Its error from \((\lambda-z)^{-1}\) is at most \(e^{-bT}/b\), uniformly in real 
  \|R_A(z)-B_T\|\leq e^{-bT}/b.
 \]
 
-Thus the vectorwise truncated integrals converge in operator norm, with this explicit tail bound. This does not require a Bochner integral taking values in the operator-norm space \(B(\mathcal H)\). Substitution of the group identity in each vector integral proves the resolvent intertwining. Stone's formula and polarization, with intervals whose endpoints are not atoms, then give \(E_H(S)W_\pm=W_\pm E_A(S)\) for Borel sets \(S\). One may first take such intervals and extend the identity by monotone limits; their endpoints can be chosen outside the countable set of atoms of the scalar measures in each test pairing. For a null Borel set \(N\) and \(f\in\mathcal H_{\mathrm{ac}}(A)\), this identity gives \(E_H(N)W_\pm f=0\). \(\square\)
+Thus the vectorwise truncated integrals converge in operator norm, with this explicit tail bound. This does not require a Bochner integral taking values in the operator-norm space \(B(\mathcal H)\). Substitution of the group identity in each vector integral proves the resolvent intertwining. To obtain spectral projections, fix vectors \(f,g\). The two finite complex measures are \(\nu_H(S)=(E_H(S)W_\pm f,g)\) and \(\nu_A(S)=(E_A(S)f,W_\pm^*g)\). Their finite variation follows from Cauchy–Schwarz on each finite orthogonal partition: \(\sum_j|(E(S_j)u,v)|\leq\|u\|\|v\|\). Choose a countable dense set of endpoints avoiding the atoms of the four finite positive measures associated with \(W_\pm f,g\) for \(H\), and \(f,W_\pm^*g\) for \(A\). Each atom set is countable. The [strong Stone formula](resolvents-domains-and-spectral-density.md#u001-stone-and-density), applied to the resolvent identity, gives \(\nu_H((a,b))=\nu_A((a,b))\) for these endpoints.
+
+The measures also agree on the whole line, since both totals are \((W_\pm f,g)\). Thus the sets on which they agree form a lambda system: complements use equality of the total, and disjoint countable unions use countable additivity. The intervals just obtained, together with the whole line and the empty set, form a pi system generating the Borel sets. The earlier [pi–lambda proof](../providers/analysis/finite-derivative-l2.md#pi-lambda-uniqueness) gives equality on every Borel set. Since \(f,g\) were arbitrary, \(E_H(S)W_\pm=W_\pm E_A(S)\) for every Borel \(S\). For a null Borel set \(N\) and \(f\in\mathcal H_{\mathrm{ac}}(A)\), this identity gives \(E_H(N)W_\pm f=0\). \(\square\)
 
 For a comparison restricted to \(\mathcal H_{\mathrm{ac}}(A)\), **asymptotic completeness** means
 
@@ -134,13 +140,14 @@ For a comparison restricted to \(\mathcal H_{\mathrm{ac}}(A)\), **asymptotic com
 
 Existence and isometry do not prove this equality.
 
+<a id="wave-common-range"></a>
 **Theorem 2.2.** Suppose \(W_+,W_-\) are isometries from the same comparison Hilbert space and have the same range \(\mathcal K\). Then
 
 \[
  S=W_+^*W_-
 \]
 
-is unitary, and commutes with the comparison evolution. If the common range is \(\mathcal H_{\mathrm{ac}}(H)\), it describes scattering of every absolutely continuous state of \(H\).
+is unitary. If the isometries also satisfy \(e^{-isH}W_\pm=W_\pm e^{-isA}\) for the same two evolutions, as ordinary wave operators do, then \(S\) commutes with the comparison evolution. If the common range is \(\mathcal H_{\mathrm{ac}}(H)\), it describes scattering of every absolutely continuous state of \(H\).
 
 **Proof.** Since \(W_\pm W_\pm^*=P_{\mathcal K}\),
 
@@ -149,10 +156,11 @@ is unitary, and commutes with the comparison evolution. If the common range is \
  \qquad SS^*=W_+^*P_{\mathcal K}W_+=I.
 \]
 
-The intertwining from Proposition 1.2 and its adjoint give \(Se^{-isA}=e^{-isA}S\). The final assertion is the definition of completeness and the two isometric identifications with that subspace. \(\square\)
+Under the stated intertwining assumption, the identity from Proposition 1.2 and its adjoint give \(Se^{-isA}=e^{-isA}S\). The final assertion is the definition of completeness and the two isometric identifications with that subspace. \(\square\)
 
 Without equality of ranges the same expression is only known to be a contraction. Each wave operator separately may have norm one and still leave a part of the perturbed space unaccounted for.
 
+<a id="wave-operator-measurability"></a>
 **Example 2.3: vector integrals and operator measurability.** Let \(A\) be multiplication by \(\lambda\) on \(L^2(\mathbb R)\), and set \(K(t)=e^{itz}e^{-itA}\), with \(b=\operatorname{Im}z>0\). For distinct \(s,t\in[0,T]\), the multiplication-operator norm is
 
 \[
@@ -170,6 +178,7 @@ The relative angle runs through the full circle as \(\lambda\) varies, giving th
 
 Here the perturbation is a multiplication potential. Perturbations of derivatives require their own operator estimates.
 
+<a id="wave-short-range-existence"></a>
 **Theorem 3.1.** Let \(p_0\) be a nonconstant real polynomial on \(\mathbb R^n\), let \(A=p_0(D)\) have its maximal Fourier multiplication domain, and let \(V\) be a real measurable function satisfying
 
 \[
@@ -178,8 +187,10 @@ Here the perturbation is a multiplication potential. Perturbations of derivative
 
 Then the ordinary wave operators for \(H=A+V\) exist on \(L^2\) and are isometries. Their ranges lie in \(\mathcal H_{\mathrm{ac}}(H)\). This theorem asserts existence, not completeness.
 
-**Proof.** Choose the dense set of vectors with \(\mathcal Ff=a\in C_c^\infty\) supported away from \(\{\nabla p_0=0\}\). It is dense because that critical set has measure zero. To verify this fact, at least one partial derivative of the nonconstant polynomial is a nonzero polynomial. The zero set of a nonzero polynomial has measure zero, by induction on the number of variables: regard it as a polynomial in the last variable; outside the zero set of one nonzero coefficient, each fibre has only finitely many roots. Fubini completes the induction. Smooth approximation on the open complement then proves density.
+<a id="wave-polynomial-density"></a>
+**Proof.** Choose the dense set of vectors with \(\mathcal Ff=a\in C_c^\infty\) supported away from \(\{\nabla p_0=0\}\). It is dense because that critical set has measure zero. To verify this fact, at least one partial derivative of the nonconstant polynomial is a nonzero polynomial. The zero set of a nonzero polynomial has measure zero, by induction on the number of variables: regard it as a polynomial in the last variable; outside the zero set of one nonzero coefficient, each fibre has only finitely many roots. Fubini completes the induction. To see density on the open complement \(\Omega\), first truncate an arbitrary Fourier datum to \(K_j=\{\xi:|\xi|\leq j,\ \operatorname{dist}(\xi,\Omega^c)\geq1/j\}\). These compact sets increase to \(\Omega\), so dominated convergence gives convergence in \(L^2\). When \(\Omega^c\) is empty, just use the closed balls. Mollifying a truncated datum with a sufficiently small compactly supported kernel gives a smooth compactly supported function in \(\Omega\), converging in \(L^2\) by the proved convolution approximation. Choose successively smaller errors to obtain the required dense set.
 
+<a id="wave-escaping-packets"></a>
 Each vector in this dense set belongs to \(D(A)\). On its compact Fourier support and a slightly larger neighborhood there are constants \(0<r<M\) with
 
 \[
@@ -223,6 +234,7 @@ For \(-\Delta\), this proof uses Fourier supports avoiding zero velocity; their 
 
 Fix a speed \(c>0\), put \(A=cD_x\) on \(L^2(\mathbb R)\) with domain \(H^1\), and let \(V\) be any smooth real function. Choose a real primitive \(F\) with \(F'=V/c\), and put \(Uf=e^{-iF}f\). The multiplier \(U\) is unitary even when \(V\) is unbounded. The domain needs to follow this unitary change of variables.
 
+<a id="wave-gauge-domain"></a>
 **Gauge domain and test-function core.** The operator \(cD_x+V\), initially defined on \(C_c^\infty(\mathbb R)\), is essentially self-adjoint. Its self-adjoint closure is
 
 \[
@@ -277,6 +289,7 @@ Since \(e^{itA}f(x)=f(x+ct)\), the comparison operator is the explicit multiplie
  =e^{-iF(x)}e^{iF(x+ct)}f(x).
 \]
 
+<a id="wave-integrable-drift"></a>
 **Proposition 4.1.** If \(V\in L^1(\mathbb R)\), the ordinary wave operators are unitary multipliers
 
 \[
@@ -290,6 +303,7 @@ They are asymptotically complete.
 
 Smoothness and integrability do not imply boundedness: a smooth function can have arbitrarily tall, sufficiently narrow bumps. The gauge-domain proof covers such potentials, so Proposition 4.1 retains its full integrable scope.
 
+<a id="wave-modified-drift"></a>
 **Theorem 4.2.** If instead \(V(x)\to0\) as \(x\to\pm\infty\), the modified limits
 
 \[
@@ -310,6 +324,7 @@ The interval has fixed length and lies arbitrarily far out at the chosen end. Th
 
 The phase choice is part of the comparison. In this model the two modified identifications happen to coincide, so their scattering operator is the identity. The ordinary scattering operator in Proposition 4.1 can be nontrivial. These are different normalizations of distant states.
 
+<a id="wave-logarithmic-phase"></a>
 **Example 4.3.** Let \(V(x)=\kappa x/(1+x^2)\), \(\kappa\ne0\). It is bounded, tends to zero at both ends, and has primitive
 
 \[
@@ -324,6 +339,7 @@ The modified limits exist by Theorem 4.2. The ordinary limit at positive times d
 
 tends to zero in norm, by the same fixed-length integral estimate. But \(F(ct)=(\kappa/c)\log(ct)+o(1)\) as \(t\to+\infty\). Choose sequences for which \((|\kappa|/c)\log(ct)\) equals \(2\pi j\) and \(2\pi j+\pi\). The scalar phases tend respectively to one and minus one, so the two subsequential vector limits are \(Uf\) and \(-Uf\). They differ. This proves failure of the ordinary strong limit without appealing to an approximate trajectory.
 
+<a id="wave-ordinary-phase-criterion"></a>
 **Proposition 4.4: the exact ordinary-limit criterion.** Fix either end of the real line, and suppose \(V(x)\to0\) at that end. The corresponding ordinary wave operator exists if and only if \(F\) has a finite real endpoint there. Equivalently, the corresponding one-sided improper integral of \(V\) converges. Absolute integrability is sufficient and is not necessary.
 
 **Proof.** Put \(T(t)=e^{itH}e^{-itA}\). The fixed-length oriented integral in Theorem 4.2 tends to zero at the chosen end. Dominated convergence against \(4|f|^2\) gives, for every \(f\in L^2\),
@@ -348,6 +364,7 @@ If both ends satisfy the criterion, the operators are unitary and complete, with
 
 The two integrals here are separate improper limits, rather than a principal value. The completeness proof is the same exact unitary equivalence as in Proposition 4.1. A finite endpoint remains sufficient without assuming \(V\to0\), directly from the multiplier formula; the necessity argument above uses that decay assumption. No higher-dimensional perturbation theorem is inferred from this drift model.
 
+<a id="wave-conditional-phase"></a>
 **Example 4.5: conditional convergence is enough.** Take \(V(x)=\sin x/x\) for \(x\ne0\), with \(V(0)=1\). The integral identity \(\sin x/x=\int_0^1\cos(tx)\,dt\) proves smoothness at zero by differentiation under a finite integral. This real even function tends to zero at both ends. For \(1\leq a<b\), integration by parts gives
 
 \[
@@ -368,6 +385,7 @@ On each interval \([2\pi k+\pi/6,2\pi k+5\pi/6]\), \(k\geq1\), one has \(|\sin s
 
 Identify the domain of the gauge-conjugated generator, then apply the exact phase-limit criterion. Keep separate existence, preservation of norm and completeness of the range; an isometry alone answers only the second question.
 
+<a id="wave-exercises"></a>
 ## 5. Exercises
 
 **Exercise 5.1 (foundation).** Let \(\|e^{itH}e^{-itA}f-e^{isH}e^{-isA}f\|\leq\int_s^tg_f(r)\,dr\), with \(g_f\in L^1(0,\infty)\), on a dense set. Prove the extension of the limit to all vectors, explicitly controlling the approximation error.
@@ -399,7 +417,7 @@ Compute the ordinary scattering operator, and determine which parameter affects 
 
 For fixed \(\eta\), the last integral tends uniformly to zero when \(t,s\to+\infty\). Then let \(\eta\downarrow0\). Completeness of the Hilbert space gives the limit. Its norm is \(\|f\|\), since every \(U_t\) preserves that norm.
 
-**Solution 5.2.** An isometry has norm one and its adjoint has norm one, so the product is a contraction. Take \(W_+=I\) and \(W_-=L\), where \(Le_j=e_{j+1}\) is the unilateral shift. The product is \(L\), whose range misses \(e_0\), so it is not unitary. This proves that isometry alone is insufficient. It does not assert that this pair is obtained as wave operators of some self-adjoint comparison; their strong-limit definition imposes additional constraints. The common-range proof in Theorem 2.2 supplies the missing sufficient hypothesis.
+**Solution 5.2.** An isometry and its adjoint have norm at most one, with equality when the domain is nonzero, so the product is a contraction. Take \(W_+=I\) and \(W_-=L\), where \(Le_j=e_{j+1}\) is the unilateral shift. The product is \(L\), whose range misses \(e_0\), so it is not unitary. This proves that isometry alone is insufficient. It does not assert that this pair is obtained as wave operators of some self-adjoint comparison; their strong-limit definition imposes additional constraints. The common-range proof in Theorem 2.2 supplies the missing sufficient hypothesis.
 
 **Solution 5.3.** Both summands are absolutely integrable. The first integrates to \(\pi\alpha\); the second is odd and integrates to zero, also seen from its primitive \(-\beta(1+x^2)^{-1/2}\). Hence \(S=e^{-i\pi\alpha/c}I\). The parameter \(\beta\) changes the individual spatial phase multipliers but not their relative endpoint phase. Completeness holds because each wave operator is a unitary multiplier.
 
@@ -422,5 +440,5 @@ The two operators are still unitary and complete. The scattering phase changes b
 
 ## References
 
-- [Y] Dmitri Yafaev, *Lectures on scattering theory*, 2004, [arXiv:math/0403213](https://arxiv.org/abs/math/0403213).
+- [Y] Dmitri Yafaev, notes prepared by Andrew Hassell, *Lectures on scattering theory*, 2004, [arXiv:math/0403213](https://arxiv.org/abs/math/0403213).
 - [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics: With Applications to Schrödinger Operators*, second edition, American Mathematical Society, 2014. [Freely readable author's edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf).

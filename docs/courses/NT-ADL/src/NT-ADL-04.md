@@ -1,10 +1,10 @@
 # Idèles, ideals and ray class groups
 
-*Original independently authored material written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026, and dedicated under [CC0](https://creativecommons.org/publicdomain/zero/1.0/). Source adaptations are credited below. Self-checked by the writing AI. This revised lesson as a whole is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/); the prior CC0 dedication of its original components remains in force.*
+*Original independently authored material written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; the exact sequence of unit and class groups by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original text: [CC0](https://creativecommons.org/publicdomain/zero/1.0/).*
 
 An idèle specifies a nonzero element at every completion. Its valuations form a fractional ideal; its unit components carry congruence information that the ideal forgets. A ray class group remembers a prescribed finite amount of this information, together with prescribed signs at real embeddings. We will construct these groups as finite discrete quotients of the idèle class group and prove that they detect every open subgroup.
 
-Let \(K\) be a number field, \(\mathcal O_K\) its ring of integers, \(J_K\) its idèle group, and \(C_K=J_K/K^\times\). At a finite place \(v\) corresponding to \(\mathfrak p\), write \(\operatorname{ord}_v\) for the valuation with \(\operatorname{ord}_v(\varpi_v)=1\), and \(\mathcal O_v\) for the valuation ring. We use the topology and arithmetic proved in [Idèles and the idèle class group](NT-ADL-03.md), including the finiteness of the ordinary ideal class group. Simultaneous approximation at any finite set of places follows from Theorem 2.3 of [The adèle ring of a number field](NT-ADL-02.md), by omitting a place outside that set. For the conventions allowing a selected set of real places, compare [Milne CFT, Chapter V, §§1 and 4]. [Sutherland 21, Remark 21.5] gives the narrow case, with positivity at all real places. The exact diagram adapted from Sutherland is credited below.
+Let \(K\) be a number field, \(\mathcal O_K\) its ring of integers, \(J_K\) its idèle group, and \(C_K=J_K/K^\times\). At a finite place \(v\) corresponding to \(\mathfrak p\), write \(\operatorname{ord}_v\) for the valuation with \(\operatorname{ord}_v(\varpi_v)=1\), and \(\mathcal O_v\) for the valuation ring. We use the topology and arithmetic proved in [Idèles and the idèle class group](NT-ADL-03.md), including the finiteness of the ordinary ideal class group. Simultaneous approximation at any finite set of places follows from Theorem 2.3 of [The adèle ring of a number field](NT-ADL-02.md), by omitting a place outside that set. For the conventions allowing a selected set of real places, compare [Milne CFT, Chapter V, §§1 and 4]. [Sutherland 21, Remark 21.5] gives the narrow case, with positivity at all real places. [Sutherland 26, §26.1] relates the idèle class group to the ideal class group.
 
 ## What the valuations retain
 
@@ -38,19 +38,21 @@ C_K\longrightarrow\operatorname{Cl}_K
 
 For a diagonal element \(a\in K^\times\), (2) equals its principal fractional ideal \((a)\). Hence the map descends to (3), and surjectivity survives. If \(\mathfrak a(x)=(a)\), then \(xa^{-1}\) has zero valuation at every finite place and belongs to (1). Conversely, an element of \(J_{K,\infty}K^\times\) has principal ideal. The quotient topology on \(C_K\) gives continuity. \(\square\)
 
-Write \(P_K=\{(a):a\in K^\times\}\) for the group of principal fractional ideals. The relation between idèles and ideals can be read in the commutative diagram
+Let \(P_K\subseteq I_K\) be the subgroup of principal fractional ideals \((a)\), \(a\in K^\times\), so that \(\operatorname{Cl}_K=I_K/P_K\). As noted in the proof of Proposition 4.1, the map (2) sends a diagonal element \(a\in K^\times\) to \((a)\). It therefore maps the subgroup \(K^\times\) of \(J_K\) onto \(P_K\), and the map (3) sends the class of an idèle \(x\) to the ideal class of \(\mathfrak a(x)\). The unit group \(\mathcal O_K^\times\) and the subgroup (1) fit together with (3) into the sequence
 
 \[
-\begin{array}{ccccccccc}
-1&\longrightarrow&K^\times&\longrightarrow&J_K&\longrightarrow&C_K&\longrightarrow&1\\
-&&\scriptstyle a\mapsto(a)\;\downarrow&&\scriptstyle\mathfrak a\;\downarrow&&\downarrow\;\scriptstyle[x]\mapsto[\mathfrak a(x)]&&\\
-1&\longrightarrow&P_K&\longrightarrow&I_K&\longrightarrow&\operatorname{Cl}_K&\longrightarrow&1.
-\end{array}
+1\longrightarrow\mathcal O_K^\times
+\longrightarrow J_{K,\infty}
+\longrightarrow C_K
+\longrightarrow\operatorname{Cl}_K
+\longrightarrow1,
 \]
 
-Both rows are exact by the definitions of the two quotients. The valuations forget local units and send a principal idèle to its principal ideal, so both squares commute. Proposition 4.1 identifies the right-hand map and its kernel: the classes represented by \(J_{K,\infty}K^\times\).
+which is exact. Its first map is the diagonal embedding, its second is the restriction of the quotient map \(q:J_K\to C_K\), and its third is (3).
 
-The diagram adapts Andrew V. Sutherland’s [MIT 18.785 Lecture 26, §26.1, p.2](https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec26/) (1 December 2021), provided by MIT OpenCourseWare under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). GPT-6.1 Sol (OpenAI), Ultra, adapted the notation and explanatory caption. The source’s attribution, noncommercial and ShareAlike conditions apply to this revised lesson as a whole.
+The diagonal embedding is injective, because each map \(K\to K_v\) is injective. The kernel of the second map is \(J_{K,\infty}\cap K^\times\). Since \(J_{K,\infty}\) is the kernel of \(\mathfrak a\), a diagonal element \(a\) lies in it exactly when \((a)=\mathcal O_K\). Every unit generates \(\mathcal O_K\). Conversely, if \(a\mathcal O_K=\mathcal O_K\), then \(a\in\mathcal O_K\) and \(ab=1\) for some \(b\in\mathcal O_K\), so \(a\in\mathcal O_K^\times\). Thus \(J_{K,\infty}\cap K^\times=\mathcal O_K^\times\), which gives exactness at the first two terms. The image of the second map is \(J_{K,\infty}K^\times/K^\times\). Proposition 4.1 identifies this group with the kernel of (3) and proves that (3) is surjective.
+
+Consequently, the kernel of (3) is isomorphic to \(J_{K,\infty}/\mathcal O_K^\times\). The isomorphism is a homeomorphism when the kernel carries the subspace topology from \(C_K\) and \(J_{K,\infty}/\mathcal O_K^\times\) carries the quotient topology. First, \(q\) is open: for open \(W\subseteq J_K\), the set \(q^{-1}(q(W))=\bigcup_{a\in K^\times}aW\) is a union of translates of \(W\) and is therefore open. Since \(J_{K,\infty}\) is open in \(J_K\), the restriction of \(q\) to \(J_{K,\infty}\) is a continuous open homomorphism onto \(J_{K,\infty}K^\times/K^\times\), with kernel \(\mathcal O_K^\times\). The induced bijection from \(J_{K,\infty}/\mathcal O_K^\times\) is continuous by the definition of the quotient topology. It is open because every open subset of \(J_{K,\infty}/\mathcal O_K^\times\) is the image of an open subset of \(J_{K,\infty}\).
 
 Even when the ordinary class group is trivial, its kernel in (3) contains much information. The rational case already shows this: \(C_{\mathbb Q}\) has a positive real factor and a profinite unit factor. Congruences will give finite quotients of the latter.
 
@@ -396,4 +398,4 @@ The group \(\mathbb R_{>0}\) is connected. The finite reduction maps separate di
 - **[Milne CFT]** J. S. Milne, *Class Field Theory*, version 4.03 (6 August 2020), [author-hosted notes](https://www.jmilne.org/math/CourseNotes/CFT.pdf), Chapter V, §1, Definition 1.3, Theorem 1.7 and Example 1.8, pp.148–152; §4, especially 4.1–4.4 and Propositions 4.6–4.7, pp.170–174.
 - **[Milne ANT]** J. S. Milne, *Algebraic Number Theory*, version 3.08 (19 July 2020), [author-hosted notes](https://www.jmilne.org/math/CourseNotes/ANT.pdf), Theorems 1.14 and 3.20, Lemmas 3.9–3.10 and Example 3.26(c): Chinese remainders, prime-power quotients and their localizations, and fractional-ideal factorization with its valuations.
 - **[Sutherland 21]** A. V. Sutherland, *Class field theory: ray class groups and ray class fields*, MIT 18.785, Lecture 21 (22 November 2021), [lecture notes](https://math.mit.edu/classes/18.785/2021fa/LectureNotes21.pdf), §21.3, Definitions 21.2–21.3 and Remark 21.5: moduli with a selected set of real places, ray class groups and the narrow case.
-- **[Sutherland 26]** A. V. Sutherland, *The idele group, profinite groups, infinite Galois theory*, MIT 18.785, Lecture 26 (1 December 2021), [MIT OpenCourseWare notes](https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec26/), §26.1, p.2, for the exact diagram explicitly adapted and credited above under CC BY-NC-SA 4.0.
+- **[Sutherland 26]** A. V. Sutherland, *The idele group, profinite groups, infinite Galois theory*, MIT 18.785, Lecture 26 (1 December 2021), [MIT OpenCourseWare notes](https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec26/), §26.1, p.2: the map from idèles to fractional ideals and the induced surjection of the idèle class group onto the ideal class group.

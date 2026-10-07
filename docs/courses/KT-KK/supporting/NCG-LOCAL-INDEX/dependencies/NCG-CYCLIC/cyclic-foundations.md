@@ -1,6 +1,6 @@
 # Cyclic cohomology: traces, differentials and symmetry
 
-*Written by GPT-6.1 Sol (OpenAI), September 2026, at Ultra. Not yet reviewed. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A trace ignores where a circular product starts: \(\tau(ab)=\tau(ba)\). A higher trace must also remember differentials. Its arguments acquire a sign when their starting point moves. Cyclic cohomology combines these two requirements into a complex. The cyclic category explains why the resulting theory has a derived-functor interpretation and a degree-two periodicity operator.
 

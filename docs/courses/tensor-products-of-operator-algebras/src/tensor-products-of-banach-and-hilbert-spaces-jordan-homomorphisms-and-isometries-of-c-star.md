@@ -2,6 +2,8 @@
 
 *Written by Claude Opus 5.5 (Anthropic), September 2026, extended October 2026. The September text was spot-checked by Claude Opus 5.5 in a separate session; the October additions (the approximation property in Section 4 and Theorem 11.8) are self-checked by the writing AI. Public domain (CC0).*
 
+*The proof of Theorem 4.12 was written by GPT-6 Astra (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Original text: CC0 1.0.*
+
 The algebraic tensor product of a pair of Banach spaces carries many natural norms, and different norms give different completions with different dual spaces. This lesson studies the two extreme norms and the norms between them. The *injective norm* \(\lambda\) tests a tensor against products of functionals. It turns tensors into operators of finite rank, measured in the operator norm. The *projective norm* \(\gamma\) is the largest norm for which the map \((x,y)\mapsto x\otimes y\) is contractive. It turns bounded bilinear maps into bounded linear maps, and its dual space is the space of bounded operators from one factor into the dual of the other. Between the two lie the *reasonable* cross norms, whose dual norms are again cross norms. For Hilbert spaces the injective norm, the Hilbert space norm and the projective norm give the compact, the Hilbert–Schmidt and the trace-class operators. Trace duality then identifies the dual of the compact operators with the trace class, and the dual of the trace class with the bounded operators.
 
 The second half of the lesson is about maps between \(C^*\)-algebras that keep only part of the structure. A *Jordan homomorphism* preserves adjoints and squares of self-adjoint elements, but not products. The transpose of matrices is the basic example. It is an isometric Jordan automorphism of \(M_n(\mathbb C)\) that is not multiplicative. Its tensor product with the identity map of \(M_n(\mathbb C)\) has norm at least \(n\), so the operator norm on \(M_n(\mathbb C)\odot M_n(\mathbb C)\) is a reasonable cross norm that behaves badly under tensor products of maps, unlike \(\lambda\) and \(\gamma\). We prove that every Jordan homomorphism of a \(C^*\)-algebra into a von Neumann algebra splits, by a central projection, into a homomorphism and an antihomomorphism. We also prove Kadison's theorem: a linear isometry of a unital \(C^*\)-algebra onto a \(C^*\)-algebra is a unitary times a Jordan isomorphism; in particular, one that maps \(1\) to \(1\) is a Jordan isomorphism. Positive linear isometries of one \(C^*\)-algebra onto another, with or without units, are described in the same way.
@@ -224,7 +226,7 @@ because by Lemma 3.2, applied to the pair \(E^*,F^*\), the injective norm of \(E
 \[
 (Jv)(x\otimes h)=\sum_nh_n(x)\varphi_n(h)=\Big(\sum_n\varphi_n(h)h_n\Big)(x)=0 .
 \]
-So \(Jv=0\). Choose \(v_m\in E^*\odot E^{**}\) with \(\gamma(v_m-v)\to0\). Then \(\lambda^*(v_m)=\|Jv_m\|\to\|Jv\|=0\), while \(\gamma(v_m)\to\gamma(v)>0\). So no inequality \(\gamma\le c\lambda^*\) holds. Such spaces \(E\) exist: if \(X\) is a Banach space without the approximation property, then \(X^*\) fails it too, by Corollary 4.11(2), so \(E=X\) will do; Banach spaces without the approximation property exist by [Enflo 1973]; a shorter construction is due to Davie (1973). \(\square\)
+So \(Jv=0\). Choose \(v_m\in E^*\odot E^{**}\) with \(\gamma(v_m-v)\to0\). Then \(\lambda^*(v_m)=\|Jv_m\|\to\|Jv\|=0\), while \(\gamma(v_m)\to\gamma(v)>0\). So no inequality \(\gamma\le c\lambda^*\) holds. Such spaces \(E\) exist: if \(X\) is a Banach space without the approximation property, then \(X^*\) fails it too, by Corollary 4.11(2), so \(E=X\) will do; A closed subspace of \(c_0\) without the approximation property is constructed in [Theorem 4.12](#4-12-a-closed-sequence-subspace-without-finite-rank-approximation). The first counterexample is due to Enflo [Enflo 1973]; the construction below follows Davie's method as presented in [Dacunha–Castelle 1974]. \(\square\)
 
 The proof of (3) also shows that the natural map of \(E^*\hat\otimes_\gamma F^*\) into \((E\hat\otimes_\lambda F)^*\) need not be injective. It is injective when \(E^*\) or \(F^*\) has the approximation property (Corollary 4.11(3) below).
 
@@ -348,6 +350,264 @@ compact. So \(v=0\). If \(E^*\) has the approximation property, apply this to th
 
 *Reference:* Theorem 4.10 and Corollary 4.11 are due to Grothendieck.
 
+
+### 4.12. A closed sequence subspace without finite-rank approximation
+
+**Theorem 4.12.** There is a closed complex linear subspace of the sequence space
+\(c_0\) without the approximation property. There is also a real example.
+
+Here the approximation property means: for every compact \(K\subset X\) and
+every \(\eta>0\), there is a bounded finite-rank linear map \(R:X\to X\) such
+that \(\sup_{x\in K}\|Rx-x\|<\eta\). The proof below produces one compact set
+on which that error cannot be less than \(1/3\).
+
+*Proof.* The construction follows Davie's method in the exposition [Dacunha–Castelle 1974]. The probabilistic estimates, coefficient maps and compact-set obstruction are proved below.
+
+#### The certificate we will construct
+
+We will construct a Banach space \(X\), a compact subset \(K\), and a bounded
+linear functional \(b:B(X)\to\mathbb C\) with
+
+\[
+b(I_X)=1,\qquad b(R)=0\quad\text{for every finite-rank }R,
+\qquad |b(T)|\le3\sup_{x\in K}\|Tx\|.                 \tag{4.12.1}
+\]
+
+These identities immediately rule out the approximation property: apply the
+last inequality to \(T=I_X-R\). In particular, the compact set must control
+the *whole* functional, not just a series of differences of functionals.
+
+#### A finite probability estimate
+
+All probabilities in this proof are on finite product spaces. If a real random
+variable \(Y\) lies in \([-1,1]\) and has mean zero, convexity gives
+
+\[
+e^{tY}\le\frac{1+Y}{2}e^t+\frac{1-Y}{2}e^{-t},\qquad
+\mathbb E e^{tY}\le\cosh t\le e^{t^2/2}.
+\]
+
+The final inequality follows termwise from \((2k)!\ge2^k k!\) in the power
+series. Consequently, for independent such variables \(Y_1,\dots,Y_m\) and
+real coefficients \(a_j\) of absolute value at most one,
+\(\mathbb E\exp(t\sum a_jY_j)\le\exp(mt^2/2)\).
+For a nonnegative random variable \(Z\), summing over the event \(Z\ge s\)
+gives \(\mathbb P(Z\ge s)\le\mathbb EZ/s\). Apply this to the exponential
+and take \(t=v/m\) to obtain each one-sided tail bound
+\(\exp(-v^2/(2m))\). Apply both tails to the real and imaginary parts. For
+complex coefficients \(|c_j|\le1\), this proves
+
+\[
+\mathbb P\left(\left|\sum_{j=1}^m c_jY_j\right|>u\right)
+\le4\exp\left(-\frac{u^2}{4m}\right).                \tag{4.12.2}
+\]
+
+Indeed, a complex number of modulus greater than \(u\) has a real or imaginary
+part of absolute value greater than \(u/\sqrt2\). The probability of a union
+is at most the sum of the probabilities because its indicator is at most the
+sum of the event indicators. These are the only probabilistic tools used below.
+
+#### Finite Fourier data and the closed sequence subspace
+
+For every integer \(n\ge0\), put \(m_n=2^n\), \(N_n=3m_n\), and let
+\(G_n=\mathbb Z/N_n\mathbb Z\). Regard the groups as disjoint sets and put
+\(G=\coprod_{n\ge0}G_n\). Its characters are
+\(\chi_r(g)=\exp(2\pi i rg/N_n)\), \(0\le r<N_n\).
+The finite geometric-series formula gives
+
+\[
+\frac1{N_n}\sum_{g\in G_n}\overline{\chi_r(g)}\chi_s(g)
+=\begin{cases}1&r=s,\\0&r\ne s.\end{cases}           \tag{4.12.3}
+\]
+
+Partition these characters into sets \(S_n,T_n\) with respectively \(m_n\)
+and \(2m_n\) elements, so that
+
+\[
+\left|2\sum_{\chi\in S_n}\chi(g)-\sum_{\chi\in T_n}\chi(g)\right|
+\le d_n:=12\sqrt{N_n\log(8N_n)}\quad(g\in G_n).       \tag{4.12.4}
+\]
+
+Here is an existence proof with the cardinalities enforced. Independently put
+each character into a preliminary set with probability \(1/3\). Write its
+indicator as \(B_r\), and take \(Y_r=B_r-1/3\). By (4.12.2), with
+\(u=\sqrt{4N_n\log(8N_n)}\), the probability that
+\(|\sum_rY_r\chi_r(g)|\le u\) fails for any of the \(N_n\) choices of
+\(g\) is at most \(1/2\). Choose a successful outcome. At the identity of
+the group the same bound says that its cardinality differs from \(N_n/3\)
+by at most \(u\). Add or remove exactly that many characters to obtain
+cardinality \(m_n\). Each change changes the character sum by a number of
+modulus one. Thus the final centered sum has modulus at most \(2u\);
+multiplying it by three gives (4.12.4), since \(6u=d_n\).
+
+List \(S_n=(\sigma_{n,j})_{j=1}^{m_n}\) and
+\(T_n=(\tau_{n,j})_{j=1}^{2m_n}\). For each \(n\ge1\), choose signs
+\(\epsilon_{n,j}\in\{-1,1\}\) such that
+
+\[
+\left|\sum_{j=1}^{m_n}\epsilon_{n,j}
+\tau_{n-1,j}(g)\overline{\sigma_{n,j}(h)}\right|
+\le v_n:=2\sqrt{m_n\log(8P_n)},
+\quad g\in G_{n-1},\ h\in G_n,                       \tag{4.12.5}
+\]
+
+where \(P_n=N_{n-1}N_n\). To see existence, choose independent signs with
+equal probabilities. Apply (4.12.2) to each pair \((g,h)\), then sum the failure
+probabilities. Their sum is at most \(4P_n/(8P_n)=1/2\).
+Complex conjugation gives the corresponding reversed-conjugation bound; a
+second, incompatible selection of signs is not necessary.
+
+These are finite nonempty choices for each \(n\); one can fix an ordering of
+all partitions and sign strings and select the first successful one.
+
+Define \(u_{n,j}:G\to\mathbb C\), for \(n\ge1\), by
+
+\[
+u_{n,j}(h)=
+\begin{cases}
+\tau_{n-1,j}(h),&h\in G_{n-1},\\
+\epsilon_{n,j}\sigma_{n,j}(h),&h\in G_n,\\
+0,&\text{otherwise}.
+\end{cases}                                                        \tag{4.12.6}
+\]
+
+Let \(X\) be their closed linear span in the supremum norm. Every generator
+has finite support and norm one, so \(X\subset c_0(G)\): a uniform limit of
+finite-support functions tends to zero outside finite sets. The space
+\(c_0(G)\) is complete, since a uniformly Cauchy sequence has a uniform
+coordinatewise limit and this limit still vanishes outside finite sets.
+Therefore \(X\) is Banach. Enumerating the countable set \(G\) identifies
+\(c_0(G)\) isometrically with the usual \(c_0\).
+
+The following two formulas define the same bounded functional
+\(f_{n,j}:X\to\mathbb C\):
+
+\[
+f_{n,j}(x)=\frac{\epsilon_{n,j}}{N_n}
+\sum_{g\in G_n}\overline{\sigma_{n,j}(g)}x(g)
+=\frac1{N_{n-1}}\sum_{g\in G_{n-1}}
+\overline{\tau_{n-1,j}(g)}x(g).                         \tag{4.12.7}
+\]
+
+Both have norm at most one. On a generator \(u_{k,l}\), equation (4.12.3) shows
+that both are \(1\) if \((k,l)=(n,j)\), and zero otherwise: at either
+overlapping block the other family belongs to the disjoint set of characters.
+Equality on the dense generator span proves equality on all of \(X\).
+In particular \(f_{n,j}(u_{k,l})=\delta_{nk}\delta_{jl}\).
+
+#### Trace differences with summable norm bounds
+
+For \(T\in B(X)\), define
+
+\[
+b_n(T)=\frac1{m_n}\sum_{j=1}^{m_n}f_{n,j}(Tu_{n,j}).   \tag{4.12.8}
+\]
+
+These are linear functionals with \(\|b_n\|\le1\) and \(b_n(I_X)=1\).
+For \(g\in G_n\), put
+
+\[
+w_{n,g}=\frac1{m_{n+1}}\sum_{j=1}^{m_{n+1}}
+\overline{\tau_{n,j}(g)}u_{n+1,j}
+-\frac1{m_n}\sum_{j=1}^{m_n}\epsilon_{n,j}
+\overline{\sigma_{n,j}(g)}u_{n,j}\in X.                 \tag{4.12.9}
+\]
+
+Use the first formula of (4.12.7) for \(b_n\) and the second for \(b_{n+1}\).
+All sums are finite, and the denominators then give the exact identity
+
+\[
+b_{n+1}(T)-b_n(T)=\frac1{N_n}\sum_{g\in G_n}(Tw_{n,g})(g). \tag{4.12.10}
+\]
+
+For clarity, the three nonzero blocks of \(w_{n,g}\), evaluated at \(h\), are
+
+\[
+\begin{array}{ll}
+h\in G_{n-1}:&-m_n^{-1}\sum_j\epsilon_{n,j}
+\overline{\sigma_{n,j}(g)}\tau_{n-1,j}(h),\\[2pt]
+h\in G_n:&(2m_n)^{-1}\left(\sum_j\tau_{n,j}(h-g)
+-2\sum_j\sigma_{n,j}(h-g)\right),\\[2pt]
+h\in G_{n+1}:&m_{n+1}^{-1}\sum_j\epsilon_{n+1,j}
+\overline{\tau_{n,j}(g)}\sigma_{n+1,j}(h).
+\end{array}                                                       \tag{4.12.11}
+\]
+
+Thus (4.12.4) and (4.12.5) imply
+
+\[
+\|w_{n,g}\|\le\delta_n:=
+\max\left\{\frac{v_n}{m_n},\frac{d_n}{2m_n},
+\frac{v_{n+1}}{m_{n+1}}\right\}.                       \tag{4.12.12}
+\]
+
+Explicitly \(\log(8N_n)=\log24+n\log2\) and
+\(\log(8P_n)=\log36+2n\log2\). Hence \(\delta_n\) is bounded by a fixed
+constant times \(\sqrt{n+1}\,2^{-n/2}\). This tends to zero even after
+multiplication by \(n^2\), and its sum converges: the successive-term ratio
+of each polynomial-times-geometric bound tends to \(1/\sqrt2<1\), so its
+tail is bounded by a geometric series with ratio strictly less than one.
+
+By (4.12.10), \(|b_{n+1}(T)-b_n(T)|\le\delta_n\|T\|\). Consequently
+\(b(T):=\lim_{n\to\infty}b_n(T)\) exists for every \(T\), is linear,
+has norm at most one, and satisfies \(b(I_X)=1\).
+
+It annihilates every finite-rank operator. First, if the range of \(R\) lies
+in the span of generators with indices at most \(q\), then (4.12.7) gives
+\(b_n(R)=0\) whenever \(n>q\), hence \(b(R)=0\). Every bounded finite-rank
+operator is \(Rx=\sum_{i=1}^r\phi_i(x)y_i\), where \(\phi_i\in X^*\):
+choose a basis of its finite-dimensional range and compose its continuous
+coordinate functionals with \(R\). Those coordinate functionals are bounded
+because on the Euclidean coefficient unit sphere the norm of the basis
+combination has a positive minimum (continuity, compactness and independence).
+Approximating each \(y_i\) by generator combinations produces such operators
+\(R_k\) with
+\(\|R-R_k\|\le\sum_i\|\phi_i\|\|y_i-y_{i,k}\|\to0\).
+Continuity of \(b\) gives \(b(R)=0\).
+
+#### The compact witness includes the initial trace
+
+Set
+
+\[
+K=\{0,u_{1,1},u_{1,2}\}\ \cup\
+\{n^2w_{n,g}:n\ge1,\ g\in G_n\}.                     \tag{4.12.13}
+\]
+
+For any neighborhood of zero, all sufficiently high blocks lie in it because
+\(n^2\delta_n\to0\). Each remaining block is finite. An open cover of
+\(K\) has a member containing zero, hence contains the entire tail; finitely
+many further members cover the finitely many remaining points. Thus \(K\)
+is compact, without any assumption that bounded subsets of \(X\) are compact.
+
+Write \(p_K(T)=\sup_{x\in K}\|Tx\|\). Equation (4.12.8) for \(n=1\) gives
+\(|b_1(T)|\le p_K(T)\). Equation (4.12.10) gives
+\(|b_{n+1}(T)-b_n(T)|\le n^{-2}p_K(T)\). Telescoping now controls the whole
+limit, including its initial term:
+
+\[
+|b(T)|\le\left(1+\sum_{n=1}^{\infty}\frac1{n^2}\right)p_K(T)
+\le3p_K(T),                                         \tag{4.12.14}
+\]
+
+where \(\sum_{n\ge1}n^{-2}\le1+\int_1^\infty t^{-2}\,dt=2\).
+This proves every part of (4.12.1), and therefore the complex result.
+
+For the real statement, if the underlying real space of \(X\) had the
+approximation property, approximate on \(K\cup iK\) by a real finite-rank
+operator \(R\). Then
+\(R_{\mathbb C}x=(Rx-iR(ix))/2\) is complex linear, has finite complex
+rank, and its error on \(K\) is no greater than the maximum error of \(R\)
+on \(K\cup iK\). This contradicts the complex result. Finally, the real
+linear map sending each complex coordinate to its real and imaginary parts
+embeds this underlying real space as a closed subspace of real \(c_0\).
+Its supremum norm and the original norm differ by factors between one and
+\(\sqrt2\). A bounded linear isomorphism transports finite-rank operators
+and compact sets, with error multiplied by at most its two operator norms,
+so the approximation property is invariant under this change. This proves
+the real result as well.
+
+**Consequence for the tensor norms.** For the complex space \(X\) just constructed, Corollary 4.11(2) implies that \(X^*\) also fails the approximation property. Taking \(E=X\) in Proposition 4.6(3) therefore gives its asserted examples.
 
 ## 5. The Hilbert cross norm and singular values
 
@@ -772,7 +1032,7 @@ estimate is Theorem 3.1(3) applied to the function \(\lambda-\sum_k\lambda_k1_{\
 
 (e) *Projections and types*, from Projections and types of von Neumann algebras. Let \(M\) be a von Neumann algebra. There is a central projection \(z_{\rm I}\) such that \(M(1-z_{\rm I})\) has no nonzero abelian projection and \(Mz_{\rm I}\) is of type I. For each nonzero cardinal \(\alpha\), \(Mz_{\rm I}\) has a largest central projection \(z_\alpha\) that is the sum of \(\alpha\) mutually orthogonal abelian projections with central support \(z_\alpha\); these \(z_\alpha\) are mutually orthogonal with sum \(z_{\rm I}\). Abelian projections with the same central support are equivalent. If \((e_i)\) and \((f_i)\) are families of mutually orthogonal projections with \(e_i\sim f_i\) for each \(i\), then \(\sum_ie_i\sim\sum_if_i\). Mutually orthogonal, mutually equivalent projections \(e_1,\ldots,e_n\) with sum \(1\) are the diagonal of a system of \(n\times n\) matrix units. If an algebra has no nonzero abelian projections, then each of its projections is the sum of two orthogonal equivalent projections. Finally, a bounded linear functional \(\omega\) on a unital \(C^*\)-algebra with \(\omega(1)=\|\omega\|\) is positive.
 
-(f) *Banach spaces without the approximation property.* There is a Banach space without the approximation property (defined before Lemma 4.7). The first one was constructed in [Enflo 1973]; Davie (1973) constructed a closed subspace of \(c_0\) without it. This existence theorem is not yet proved in the programme; it is used only for the last sentence of Proposition 4.6(3).
+(f) *Banach spaces without the approximation property.* [Theorem 4.12](#4-12-a-closed-sequence-subspace-without-finite-rank-approximation) proves that a closed subspace of \(c_0\) fails the approximation property, over the complex or real scalars. Its complex example, together with Corollary 4.11(2), supplies the existence assertion in Proposition 4.6(3). The construction follows Davie's method in [Dacunha–Castelle 1974]; Enflo's original counterexample is [Enflo 1973].
 
 (g) *Polar decomposition of bounded functionals.* For a \(C^*\)-algebra \(B\) and \(f\in B^*\), regarded as a normal functional on \(B^{**}\), there are a partial isometry \(v\in B^{**}\) and a positive functional \(\omega\) with \(\|\omega\|=\|f\|\) and \(f(x)=\omega(xv)\) for all \(x\in B^{**}\). Proved in Polar decomposition and absolute value of functionals, Theorem 2.7 (with the module action \((v\omega)(x)=\omega(xv)\) of its conventions).
 
@@ -786,3 +1046,4 @@ estimate is Theorem 3.1(3) applied to the function \(\lambda-\sum_k\lambda_k1_{\
 - [Størmer 1965] E. Størmer, *On the Jordan structure of \(C^*\)-algebras*, Trans. Amer. Math. Soc. 120 (1965), 438–447. Free at https://www.ams.org/journals/tran/1965-120-03/S0002-9947-1965-0185463-5/S0002-9947-1965-0185463-5.pdf
 - [Enflo 1973] P. Enflo, *A counterexample to the approximation problem in Banach spaces*, Acta Math. 130 (1973), 309–317. Free at https://projecteuclid.org/journals/acta-mathematica/volume-130/issue-none/A-counterexample-to-the-approximation-problem-in-Banach-spaces/10.1007/BF02392270.pdf
 - [Grothendieck 1952] A. Grothendieck, *Résumé des résultats essentiels dans la théorie des produits tensoriels topologiques et des espaces nucléaires*, Ann. Inst. Fourier 4 (1952), 73–112. Free at https://www.numdam.org/item/10.5802/aif.46.pdf
+- [Dacunha–Castelle 1974] D. Dacunha-Castelle, *Contre-exemple à la propriété d'approximation uniforme dans les espaces de Banach*, Séminaire Bourbaki, exposé 433 (June 1973), volume 15 (1974), 286–293. [NUMDAM exposition](https://www.numdam.org/item/SB_1972-1973__15__286_0/).

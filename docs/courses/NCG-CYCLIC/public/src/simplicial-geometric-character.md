@@ -272,7 +272,7 @@ No derivative of the merely continuous map is taken. \(\square\)
 
 ![Separated spectral clusters and the ordered edge prism](../assets/character-naturality-mechanism.png)
 
-**Figure A.2.** The spectral example uses the exact bound \(\varepsilon=1/8\), giving clusters \([-1/8,1/8]\) and \([7/8,9/8]\) with cutoff at \(1/2\). These are proved bounds, not sampled eigenvalues. For lower edge vertices \(a,b\) and upper vertices \(c,d\), the interval-first edge prism is \([a,c,d]-[a,b,d]\). Its boundary is \([c,d]-[a,b]-[b,d]+[a,c]\): top minus bottom minus right plus left. Locators: (A.20)–(A.23). The drawing's N1 and N3 labels denote the smoothing and prism steps, respectively, of A5. Reproducible source: [draw_character_naturality.py](../../tools/draw_character_naturality.py).
+**Figure A.2.** The spectral example uses the exact bound \(\varepsilon=1/8\), giving clusters \([-1/8,1/8]\) and \([7/8,9/8]\) with cutoff at \(1/2\). These are proved bounds, not sampled eigenvalues. For lower edge vertices \(a,b\) and upper vertices \(c,d\), the interval-first edge prism is \([a,c,d]-[a,b,d]\). Its boundary is \([c,d]-[a,b]-[b,d]+[a,c]\): top minus bottom minus right plus left. Locators: (A.20)–(A.23). The drawing's N1 and N3 labels denote the smoothing and prism steps, respectively, of A5. Reproducible source: draw_character_naturality.py.
 
 ## A6. A line bundle: descent, normalized integration and the topological sign
 

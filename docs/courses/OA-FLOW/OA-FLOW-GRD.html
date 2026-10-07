@@ -1,0 +1,1092 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Graded fibers and changing weight coordinates · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-SCW.html">Previous lesson</a><a href="OA-FLOW-SEC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-GRD.md">Lesson source</a></nav><h1 id="OA-FLOW.GRD.SETTING">Graded fibers and changing weight coordinates</h1>
+<p><em>Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.</em></p>
+<p>The continuous core already contains the degree spaces we need: an operator has degree <span class="math" data-tex="\(t\)">\(t\)</span> when the dual flow multiplies it by <span class="math" data-tex="\(e^{-irt}\)">\(e^{-irt}\)</span>. We first identify these entire spectral subspaces. Weight-labelled symbols then give coordinates on them, and the ordinary core product determines the order of every cocycle and modular factor. Finally we ask which topologies allow the degree to vary continuously. Bounded operator topologies and the full Mackey topology work; the norm topology has an explicit obstruction.</p>
+<p><a id="grd-setting"></a></p>
+<h2 id="algebras-degrees-and-earlier-constructions">Algebras, degrees and earlier constructions</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be an arbitrary von Neumann algebra, with predual <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. We impose no factor, separable-predual, countable-decomposability or faithful-state assumption. The <a href="OA-FLOW-CORE.html#core-7">intrinsic core</a> is <span class="math" data-tex="\(C=C(M)\)">\(C=C(M)\)</span>, with coefficient inclusion <span class="math" data-tex="\(j_M\)">\(j_M\)</span>, dual flow <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, and canonical trace. We identify the coefficient image with <span class="math" data-tex="\(M\)">\(M\)</span>. The <a href="OA-FLOW-DA.html#da-fixed">full fixed-algebra theorem</a> gives <span class="math" data-tex="\(C^\theta=M\)">\(C^\theta=M\)</span>.</p>
+<p>Write <span class="math" data-tex="\(\mathcal W(M)\)">\(\mathcal W(M)\)</span> for the set of faithful normal semifinite weights. It is nonempty by <a href="OA-FLOW-FR.html#oa-flow.fr.1">FR1</a>. In its faithful chart, a weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> supplies the unitary group <span class="math" data-tex="\(\lambda^\varphi(t)=h_\varphi^{it}\)">\(\lambda^\varphi(t)=h_\varphi^{it}\)</span>, satisfying
+<span class="math math-display" data-tex="\[
+ \theta_r(\lambda^\varphi(t))=e^{-irt}\lambda^\varphi(t),\qquad
+ \lambda^\varphi(s)x\lambda^\varphi(s)^*=\sigma_s^\varphi(x).
+\]">\[
+ \theta_r(\lambda^\varphi(t))=e^{-irt}\lambda^\varphi(t),\qquad
+ \lambda^\varphi(s)x\lambda^\varphi(s)^*=\sigma_s^\varphi(x).
+\]</span>
+These are the actual normal crossed-product relations, with original Haar measure <span class="math" data-tex="\(dt\)">\(dt\)</span>, dual measure <span class="math" data-tex="\(dr/(2\pi)\)">\(dr/(2\pi)\)</span>, and the displayed negative character. All weights used to label a whole fiber here are faithful. The previous <a href="OA-FLOW-SCW.html#scw-1">supported-weight construction</a> retains nonfaithful weights as symbols on their support corners; they are not bijective coordinate charts on all of <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Multiplication and the adjoint on bounded operators, their norm inequalities, and weak-star continuity of fixed multipliers are established in <a href="OA-FLOW-CF.html#oa-flow.cf.3">the C-star norm foundations</a> and <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a>. The additional predual compactness inputs for the Mackey topology will be specified at the point of use. A total graded space is a disjoint union: its degree is part of each element, including its zero element.</p>
+<p><span id="OA-FLOW.GRD.1"></span><a id="grd-1"></a></p>
+<h2 id="1-find-the-complete-spectral-fiber-in-the-core">1. Find the complete spectral fiber in the core</h2>
+<p>For <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, define
+<span class="math math-display" data-tex="\[
+ E_t=\{a\in C:\theta_r(a)=e^{-irt}a\text{ for every }r\in\mathbb R\}.
+ \tag{GRD.1.a}
+\]">\[
+ E_t=\{a\in C:\theta_r(a)=e^{-irt}a\text{ for every }r\in\mathbb R\}.
+ \tag{GRD.1.a}
+\]</span>
+This is a linear ultraweakly closed subspace: for each <span class="math" data-tex="\(r\)">\(r\)</span>, the equation is the kernel of the ultraweakly continuous linear map <span class="math" data-tex="\(\theta_r-e^{-irt}\operatorname{id}\)">\(\theta_r-e^{-irt}\operatorname{id}\)</span>, and we take their intersection. The fixed-algebra theorem gives <span class="math" data-tex="\(E_0=M\)">\(E_0=M\)</span>.</p>
+<p>For any <span class="math" data-tex="\(\varphi\in\mathcal W(M)\)">\(\varphi\in\mathcal W(M)\)</span> the entire space, not merely a dense part, is
+<span class="math math-display" data-tex="\[
+ E_t=M\lambda^\varphi(t),\qquad
+ L_{\varphi,t}:M\longrightarrow E_t,\quad x\longmapsto x\lambda^\varphi(t).
+ \tag{GRD.1.b}
+\]">\[
+ E_t=M\lambda^\varphi(t),\qquad
+ L_{\varphi,t}:M\longrightarrow E_t,\quad x\longmapsto x\lambda^\varphi(t).
+ \tag{GRD.1.b}
+\]</span>
+The inclusion from right to left follows by applying <span class="math" data-tex="\(\theta_r\)">\(\theta_r\)</span> to both factors. Conversely, if <span class="math" data-tex="\(a\in E_t\)">\(a\in E_t\)</span>, then
+<span class="math math-display" data-tex="\[
+ \theta_r(a\lambda^\varphi(-t))
+ =e^{-irt}a\,e^{irt}\lambda^\varphi(-t)
+ =a\lambda^\varphi(-t).
+ \tag{GRD.1.c}
+\]">\[
+ \theta_r(a\lambda^\varphi(-t))
+ =e^{-irt}a\,e^{irt}\lambda^\varphi(-t)
+ =a\lambda^\varphi(-t).
+ \tag{GRD.1.c}
+\]</span>
+Thus <span class="math" data-tex="\(a\lambda^\varphi(-t)\in M\)">\(a\lambda^\varphi(-t)\in M\)</span>, by the full fixed-algebra theorem, and this is the coefficient in (GRD.1.b). Right multiplication by a unitary is a linear isometry, with inverse
+<span class="math math-display" data-tex="\[
+ L_{\varphi,t}^{-1}(a)=a\lambda^\varphi(-t).
+ \tag{GRD.1.d}
+\]">\[
+ L_{\varphi,t}^{-1}(a)=a\lambda^\varphi(-t).
+ \tag{GRD.1.d}
+\]</span>
+Both maps are normal as maps of weak-star spaces: fixed bounded multiplication is ultraweakly continuous by <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a>, and the coefficient inclusion and its inverse onto <span class="math" data-tex="\(M\)">\(M\)</span> are normal by <a href="OA-FLOW-CORE.html#core-7">CORE7</a>. In particular each fiber is complete in its inherited norm. Transporting the predual of <span class="math" data-tex="\(M\)">\(M\)</span> along this map makes it a dual Banach space; Section 2 verifies that this transported predual does not depend on <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<p>The core operations immediately show
+<span class="math math-display" data-tex="\[
+ E_sE_t\subseteq E_{s+t},\qquad E_t^*=E_{-t},\qquad
+ a^*a\in M_+,\quad \|a^*a\|=\|a\|^2\quad(a\in E_t).
+ \tag{GRD.1.e}
+\]">\[
+ E_sE_t\subseteq E_{s+t},\qquad E_t^*=E_{-t},\qquad
+ a^*a\in M_+,\quad \|a^*a\|=\|a\|^2\quad(a\in E_t).
+ \tag{GRD.1.e}
+\]</span>
+For example <span class="math" data-tex="\(\theta_r(ab)=e^{-ir(s+t)}ab\)">\(\theta_r(ab)=e^{-ir(s+t)}ab\)</span>, and taking adjoints reverses the sign of the character. The two inclusions for the adjoint give equality because the adjoint is an involution. The last statements are the positive square and norm identity in the represented C-star algebra.</p>
+<p>Every finite-degree product and every adjoint remains inside these spaces. Moreover their union generates <span class="math" data-tex="\(C\)">\(C\)</span> as a von Neumann algebra: it contains <span class="math" data-tex="\(E_0=M\)">\(E_0=M\)</span> and each <span class="math" data-tex="\(\lambda^\varphi(t)\in E_t\)">\(\lambda^\varphi(t)\in E_t\)</span>, which are the defining generators of a faithful core chart. This assertion does not identify <span class="math" data-tex="\(C\)">\(C\)</span> with a Banach direct sum of the <span class="math" data-tex="\(E_t\)">\(E_t\)</span>. We retain the degree label in their disjoint union; all spectral fibers contain the zero operator.</p>
+<p><span id="OA-FLOW.GRD.2"></span><a id="grd-2"></a></p>
+<h2 id="2-weight-labels-give-canonical-dual-banach-coordinates">2. Weight labels give canonical dual Banach coordinates</h2>
+<p>For faithful normal semifinite <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span>, set
+<span class="math math-display" data-tex="\[
+ u_{\varphi,\psi}(t)=(D\varphi:D\psi)_t.
+ \tag{GRD.2.a}
+\]">\[
+ u_{\varphi,\psi}(t)=(D\varphi:D\psi)_t.
+ \tag{GRD.2.a}
+\]</span>
+The actual <a href="OA-FLOW-BC.html#oa-flow.bc.4">balanced cocycle proof</a> gives strong-star continuous unitary paths and the ordered identities
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ u_{\varphi,\rho}(t)&amp;=u_{\varphi,\psi}(t)u_{\psi,\rho}(t),\\
+ u_{\varphi,\psi}(s+t)&amp;=u_{\varphi,\psi}(s)\sigma_s^\psi(u_{\varphi,\psi}(t)),\\
+ \sigma_s^\varphi&amp;=\operatorname{Ad}(u_{\varphi,\psi}(s))\sigma_s^\psi,\\
+ u_{\varphi,\varphi}(t)&amp;=1,\qquad
+ u_{\psi,\varphi}(t)=u_{\varphi,\psi}(t)^*.
+ \end{aligned}
+ \tag{GRD.2.b}
+\]">\[
+ \begin{aligned}
+ u_{\varphi,\rho}(t)&amp;=u_{\varphi,\psi}(t)u_{\psi,\rho}(t),\\
+ u_{\varphi,\psi}(s+t)&amp;=u_{\varphi,\psi}(s)\sigma_s^\psi(u_{\varphi,\psi}(t)),\\
+ \sigma_s^\varphi&amp;=\operatorname{Ad}(u_{\varphi,\psi}(s))\sigma_s^\psi,\\
+ u_{\varphi,\varphi}(t)&amp;=1,\qquad
+ u_{\psi,\varphi}(t)=u_{\varphi,\psi}(t)^*.
+ \end{aligned}
+ \tag{GRD.2.b}
+\]</span>
+These products are not commutative. <a href="OA-FLOW-CORE.html#core-5">CORE5–7</a> identify their intrinsic meaning:
+<span class="math math-display" data-tex="\[
+ \lambda^\varphi(t)=u_{\varphi,\psi}(t)\lambda^\psi(t).
+ \tag{GRD.2.c}
+\]">\[
+ \lambda^\varphi(t)=u_{\varphi,\psi}(t)\lambda^\psi(t).
+ \tag{GRD.2.c}
+\]</span></p>
+<p>For fixed <span class="math" data-tex="\(t\)">\(t\)</span>, give the set <span class="math" data-tex="\(M\times\mathcal W(M)\)">\(M\times\mathcal W(M)\)</span> the relation
+<span class="math math-display" data-tex="\[
+ (x,\varphi)\sim_t(y,\psi)
+ \quad\Longleftrightarrow\quad
+ y=xu_{\varphi,\psi}(t).
+ \tag{GRD.2.d}
+\]">\[
+ (x,\varphi)\sim_t(y,\psi)
+ \quad\Longleftrightarrow\quad
+ y=xu_{\varphi,\psi}(t).
+ \tag{GRD.2.d}
+\]</span>
+Reflexivity follows from the identity in (GRD.2.b). Multiplication by the adjoint derivative proves symmetry. If <span class="math" data-tex="\(y=xu_{\varphi,\psi}(t)\)">\(y=xu_{\varphi,\psi}(t)\)</span> and <span class="math" data-tex="\(z=yu_{\psi,\rho}(t)\)">\(z=yu_{\psi,\rho}(t)\)</span>, the first ordered identity gives <span class="math" data-tex="\(z=xu_{\varphi,\rho}(t)\)">\(z=xu_{\varphi,\rho}(t)\)</span>, proving transitivity. Denote the quotient by <span class="math" data-tex="\(M(t)\)">\(M(t)\)</span> and the class by <span class="math" data-tex="\(x\varphi^{it}\)">\(x\varphi^{it}\)</span>. The symbol records a coordinate and a degree; it does not take a complex power of a linear functional on <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>The quotient is exactly the spectral space of Section 1, through
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ j_t:M(t)&amp;\longrightarrow E_t,\\
+ j_t(x\varphi^{it})&amp;=x\lambda^\varphi(t).
+ \end{aligned}
+ \tag{GRD.2.e}
+\]">\[
+ \begin{aligned}
+ j_t:M(t)&amp;\longrightarrow E_t,\\
+ j_t(x\varphi^{it})&amp;=x\lambda^\varphi(t).
+ \end{aligned}
+ \tag{GRD.2.e}
+\]</span>
+Indeed (GRD.2.c) proves that equivalent pairs have the same image. Conversely equality of the two core operators, multiplied on the right by <span class="math" data-tex="\(\lambda^\psi(-t)\)">\(\lambda^\psi(-t)\)</span>, gives exactly (GRD.2.d). Surjectivity is (GRD.1.b), so <span class="math" data-tex="\(j_t\)">\(j_t\)</span> is a bijection.</p>
+<p>The coefficient chart for a fixed <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is
+<span class="math math-display" data-tex="\[
+ q_{\psi,t}(x\varphi^{it})=xu_{\varphi,\psi}(t),\qquad
+ q_{\psi,t}^{-1}(a)=a\psi^{it}.
+ \tag{GRD.2.f}
+\]">\[
+ q_{\psi,t}(x\varphi^{it})=xu_{\varphi,\psi}(t),\qquad
+ q_{\psi,t}^{-1}(a)=a\psi^{it}.
+ \tag{GRD.2.f}
+\]</span>
+It equals <span class="math" data-tex="\(L_{\psi,t}^{-1}j_t\)">\(L_{\psi,t}^{-1}j_t\)</span>. Transport addition, scalar multiplication and norm from <span class="math" data-tex="\(M\)">\(M\)</span>; in one chart this says
+<span class="math math-display" data-tex="\[
+ x\varphi^{it}+y\varphi^{it}=(x+y)\varphi^{it},\qquad
+ c(x\varphi^{it})=(cx)\varphi^{it},\qquad
+ \|x\varphi^{it}\|=\|x\|.
+ \tag{GRD.2.g}
+\]">\[
+ x\varphi^{it}+y\varphi^{it}=(x+y)\varphi^{it},\qquad
+ c(x\varphi^{it})=(cx)\varphi^{it},\qquad
+ \|x\varphi^{it}\|=\|x\|.
+ \tag{GRD.2.g}
+\]</span>
+The transition from the <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-chart to the <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-chart is <span class="math" data-tex="\(x\mapsto xu_{\varphi,\psi}(t)\)">\(x\mapsto xu_{\varphi,\psi}(t)\)</span>, a surjective linear isometry. It preserves precisely these operations, so they are independent of the chart. Completeness follows from that of <span class="math" data-tex="\(M\)">\(M\)</span>. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span> all derivatives are one, so <span class="math" data-tex="\(M(0)=M\)">\(M(0)=M\)</span>.</p>
+<p>Here is the predual statement in full. Pull each normal functional <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span> back along <span class="math" data-tex="\(q_{\varphi,t}\)">\(q_{\varphi,t}\)</span>. This gives a Banach space of functionals on <span class="math" data-tex="\(M(t)\)">\(M(t)\)</span>, isometric to <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. Under a chart change the preadjoint is
+<span class="math math-display" data-tex="\[
+ R_u^*(\omega)(x)=\omega(xu),\qquad
+ u=u_{\varphi,\psi}(t).
+ \tag{GRD.2.h}
+\]">\[
+ R_u^*(\omega)(x)=\omega(xu),\qquad
+ u=u_{\varphi,\psi}(t).
+ \tag{GRD.2.h}
+\]</span>
+It is normal by fixed-multiplier continuity, and it is an isometry because <span class="math" data-tex="\(x\mapsto xu\)">\(x\mapsto xu\)</span> bijects the unit ball of <span class="math" data-tex="\(M\)">\(M\)</span> onto itself. Its inverse uses <span class="math" data-tex="\(u^*\)">\(u^*\)</span>. Thus the two transported sets of functionals coincide with identical norms. Their dual pairing recovers <span class="math" data-tex="\(M(t)\)">\(M(t)\)</span> isometrically, because this is true in any chart. The weak-star topology is therefore canonical, and <span class="math" data-tex="\(j_t\)">\(j_t\)</span> and its inverse onto <span class="math" data-tex="\(E_t\)">\(E_t\)</span> are normal isometries by (GRD.1.b)–(GRD.1.d).</p>
+<p>The direction of (GRD.2.d) is forced by the core formula, not a convention that can be reversed while keeping the same charts. For example if <span class="math" data-tex="\(\varphi=c\psi\)">\(\varphi=c\psi\)</span>, <a href="OA-FLOW-BC.html#oa-flow.bc.5">BC5</a> gives <span class="math" data-tex="\(u_{\varphi,\psi}(t)=c^{it}\)">\(u_{\varphi,\psi}(t)=c^{it}\)</span>, so the <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-coefficient of <span class="math" data-tex="\(1\varphi^{it}\)">\(1\varphi^{it}\)</span> is <span class="math" data-tex="\(c^{it}\)">\(c^{it}\)</span>. Section 7 computes a scalar time at which the opposite coefficient differs. The zero algebra is harmless: it has one zero space at every degree and the unique corresponding coordinate maps.</p>
+<p><span id="OA-FLOW.GRD.3"></span><a id="grd-3"></a></p>
+<h2 id="3-multiplication-and-adjoints-with-their-ordered-coefficients">3. Multiplication and adjoints with their ordered coefficients</h2>
+<p>Let <span class="math" data-tex="\(\mathcal F(M)=\bigsqcup_{t\in\mathbb R}M(t)\)">\(\mathcal F(M)=\bigsqcup_{t\in\mathbb R}M(t)\)</span>. Use the bijections <span class="math" data-tex="\(j_t\)">\(j_t\)</span> and the ordinary core operations to define multiplication from degrees <span class="math" data-tex="\((s,t)\)">\((s,t)\)</span> to degree <span class="math" data-tex="\(s+t\)">\(s+t\)</span>, and an adjoint from degree <span class="math" data-tex="\(t\)">\(t\)</span> to degree <span class="math" data-tex="\(-t\)">\(-t\)</span>. Section 1 proves that both operations have these target fibers. In any single faithful chart the resulting formulas are
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (x\varphi^{is})(y\varphi^{it})
+ &amp;=x\sigma_s^\varphi(y)\varphi^{i(s+t)},\\
+ (x\varphi^{it})^*&amp;=\sigma_{-t}^\varphi(x^*)\varphi^{-it}.
+ \end{aligned}
+ \tag{GRD.3.a}
+\]">\[
+ \begin{aligned}
+ (x\varphi^{is})(y\varphi^{it})
+ &amp;=x\sigma_s^\varphi(y)\varphi^{i(s+t)},\\
+ (x\varphi^{it})^*&amp;=\sigma_{-t}^\varphi(x^*)\varphi^{-it}.
+ \end{aligned}
+ \tag{GRD.3.a}
+\]</span>
+For the first, move <span class="math" data-tex="\(y\)">\(y\)</span> past <span class="math" data-tex="\(\lambda^\varphi(s)\)">\(\lambda^\varphi(s)\)</span> using covariance, then multiply the two group unitaries. For the second, move <span class="math" data-tex="\(x^*\)">\(x^*\)</span> past <span class="math" data-tex="\(\lambda^\varphi(-t)\)">\(\lambda^\varphi(-t)\)</span>. This derivation already makes the formulas independent of the weight label. The following direct coordinate check also determines every cocycle order.</p>
+<p>Put <span class="math" data-tex="\(u_t=u_{\varphi,\psi}(t)\)">\(u_t=u_{\varphi,\psi}(t)\)</span>. In the <span class="math" data-tex="\(\psi\)">\(\psi\)</span>-chart the two coefficients are <span class="math" data-tex="\(xu_s\)">\(xu_s\)</span> and <span class="math" data-tex="\(yu_t\)">\(yu_t\)</span>. Their product is
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (xu_s)\sigma_s^\psi(yu_t)
+ &amp;=x\sigma_s^\varphi(y)u_s\sigma_s^\psi(u_t)\\
+ &amp;=x\sigma_s^\varphi(y)u_{s+t}.
+ \end{aligned}
+ \tag{GRD.3.b}
+\]">\[
+ \begin{aligned}
+ (xu_s)\sigma_s^\psi(yu_t)
+ &amp;=x\sigma_s^\varphi(y)u_s\sigma_s^\psi(u_t)\\
+ &amp;=x\sigma_s^\varphi(y)u_{s+t}.
+ \end{aligned}
+ \tag{GRD.3.b}
+\]</span>
+This is exactly the transition of the product coefficient in (GRD.3.a). For the adjoint, the cocycle law at <span class="math" data-tex="\((-t,t)\)">\((-t,t)\)</span> gives <span class="math" data-tex="\(\sigma_{-t}^\psi(u_t^*)=u_{-t}\)">\(\sigma_{-t}^\psi(u_t^*)=u_{-t}\)</span>. Consequently
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \sigma_{-t}^\psi((xu_t)^*)
+ &amp;=u_{-t}\sigma_{-t}^\psi(x^*)\\
+ &amp;=\sigma_{-t}^\varphi(x^*)u_{-t},
+ \end{aligned}
+ \tag{GRD.3.c}
+\]">\[
+ \begin{aligned}
+ \sigma_{-t}^\psi((xu_t)^*)
+ &amp;=u_{-t}\sigma_{-t}^\psi(x^*)\\
+ &amp;=\sigma_{-t}^\varphi(x^*)u_{-t},
+ \end{aligned}
+ \tag{GRD.3.c}
+\]</span>
+the required transition at degree <span class="math" data-tex="\(-t\)">\(-t\)</span>.</p>
+<p>Multiplication is bilinear on each pair of fibers. Both associations of three elements with coordinates <span class="math" data-tex="\(x,y,z\)">\(x,y,z\)</span> at degrees <span class="math" data-tex="\(r,s,t\)">\(r,s,t\)</span> have coefficient
+<span class="math math-display" data-tex="\[
+ x\sigma_r^\varphi(y)\sigma_{r+s}^\varphi(z)
+ \quad\text{at degree }r+s+t.
+ \tag{GRD.3.d}
+\]">\[
+ x\sigma_r^\varphi(y)\sigma_{r+s}^\varphi(z)
+ \quad\text{at degree }r+s+t.
+ \tag{GRD.3.d}
+\]</span>
+This proves associativity directly. The adjoint is conjugate linear within a fiber. Applying it twice returns <span class="math" data-tex="\(x\)">\(x\)</span>, because <span class="math" data-tex="\(\sigma_t^\varphi\sigma_{-t}^\varphi=\operatorname{id}\)">\(\sigma_t^\varphi\sigma_{-t}^\varphi=\operatorname{id}\)</span> and each automorphism preserves adjoints. The adjoint of a product in (GRD.3.a) has coefficient
+<span class="math math-display" data-tex="\[
+ \sigma_{-t}^\varphi(y^*)\sigma_{-(s+t)}^\varphi(x^*)
+ \quad\text{at degree }-(s+t).
+ \tag{GRD.3.e}
+\]">\[
+ \sigma_{-t}^\varphi(y^*)\sigma_{-(s+t)}^\varphi(x^*)
+ \quad\text{at degree }-(s+t).
+ \tag{GRD.3.e}
+\]</span>
+This is also the coefficient obtained by multiplying the two adjoints in the reverse order, of degrees <span class="math" data-tex="\(-t,-s\)">\(-t,-s\)</span>. Hence <span class="math" data-tex="\((ab)^*=b^*a^*\)">\((ab)^*=b^*a^*\)</span>.</p>
+<p>Automorphisms preserve the norm and positive cone. For <span class="math" data-tex="\(a=x\varphi^{it}\)">\(a=x\varphi^{it}\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> in any degree, the complete norm and positivity statements are
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \|ab\|\le\|a\|\|b\|,\qquad \|a^*\|=\|a\|,\\
+ a^*a=\sigma_{-t}^\varphi(x^*x)\in M(0)_+,\qquad
+ \|a^*a\|=\|a\|^2.
+ \end{gathered}
+ \tag{GRD.3.f}
+\]">\[
+ \begin{gathered}
+ \|ab\|\le\|a\|\|b\|,\qquad \|a^*\|=\|a\|,\\
+ a^*a=\sigma_{-t}^\varphi(x^*x)\in M(0)_+,\qquad
+ \|a^*a\|=\|a\|^2.
+ \end{gathered}
+ \tag{GRD.3.f}
+\]</span>
+The norm inequality follows from (GRD.3.a) and the bounded-operator inequality in <span class="math" data-tex="\(M\)">\(M\)</span>; the last identity is the C-star norm identity. The degree-zero identity acts as the identity on both sides. The identifications with the core preserve all these operations:
+<span class="math math-display" data-tex="\[
+ j_s(a)j_t(b)=j_{s+t}(ab),\qquad
+ j_t(a)^*=j_{-t}(a^*),\qquad
+ \theta_r(j_t(a))=e^{-irt}j_t(a).
+ \tag{GRD.3.g}
+\]">\[
+ j_s(a)j_t(b)=j_{s+t}(ab),\qquad
+ j_t(a)^*=j_{-t}(a^*),\qquad
+ \theta_r(j_t(a))=e^{-irt}j_t(a).
+ \tag{GRD.3.g}
+\]</span>
+Addition is confined to a single fiber. We have defined neither a norm completion of sums across degrees nor an algebra of integrable sections at this stage; those require further constructions.</p>
+<p><span id="OA-FLOW.GRD.4"></span><a id="grd-4"></a></p>
+<h2 id="4-changing-degree-in-bounded-operator-topologies">4. Changing degree in bounded operator topologies</h2>
+<p>The chart transition in <a href="OA-FLOW-GRD.html#grd-2">Section 2</a> has a useful form independent of the cocycle law. Let <span class="math" data-tex="\(u:\mathbb R\to\mathcal U(M)\)">\(u:\mathbb R\to\mathcal U(M)\)</span> be any sigma-strong-star continuous unitary path, and put
+<span class="math math-display" data-tex="\[
+ T_u(x,t)=(xu(t),t),\qquad
+ T_u^{-1}(x,t)=(xu(t)^*,t).
+ \tag{GRD.4.a}
+\]">\[
+ T_u(x,t)=(xu(t),t),\qquad
+ T_u^{-1}(x,t)=(xu(t)^*,t).
+ \tag{GRD.4.a}
+\]</span>
+For each <span class="math" data-tex="\(R\ge0\)">\(R\ge0\)</span>, let <span class="math" data-tex="\(B_R(M)=\{x:\|x\|\le R\}\)">\(B_R(M)=\{x:\|x\|\le R\}\)</span>. We claim that <span class="math" data-tex="\(T_u\)">\(T_u\)</span> is a homeomorphism of <span class="math" data-tex="\(B_R(M)\times\mathbb R\)">\(B_R(M)\times\mathbb R\)</span>, with the ordinary topology in the second coordinate, for each of the following first-coordinate topologies: weak operator, ultraweak, strong operator, sigma-strong, and their star variants.</p>
+<p>Choose any faithful normal representation of <span class="math" data-tex="\(M\)">\(M\)</span> on a Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>. The <a href="OA-FLOW-ST12.html#oa-flow.st.2">full bounded-topology comparison</a> proves, for arbitrary <span class="math" data-tex="\(H\)">\(H\)</span> and arbitrary nets, that on a norm ball the weak and ultraweak topologies coincide, as do the strong and intrinsic sigma-strong topologies and their star versions. The latter intrinsic topologies use all positive normal functionals:
+<span class="math math-display" data-tex="\[
+ p_\omega(x)=\omega(x^*x)^{1/2},\qquad
+ p_\omega^*(x)=\omega(x^*x+xx^*)^{1/2}
+       \quad(\omega\in M_*^+).
+ \tag{GRD.4.b}
+\]">\[
+ p_\omega(x)=\omega(x^*x)^{1/2},\qquad
+ p_\omega^*(x)=\omega(x^*x+xx^*)^{1/2}
+       \quad(\omega\in M_*^+).
+ \tag{GRD.4.b}
+\]</span>
+In particular, both <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(u^*\)">\(u^*\)</span> are strongly continuous in this representation. No basis or faithful normal state has been chosen.</p>
+<p>Suppose <span class="math" data-tex="\(t_i\to t\)">\(t_i\to t\)</span>, <span class="math" data-tex="\(x_i,x\in B_R(M)\)">\(x_i,x\in B_R(M)\)</span>, and write <span class="math" data-tex="\(u_i=u(t_i)\)">\(u_i=u(t_i)\)</span>, <span class="math" data-tex="\(u=u(t)\)">\(u=u(t)\)</span>. If <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span> weakly, then for every <span class="math" data-tex="\(\xi,\eta\in H\)">\(\xi,\eta\in H\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ |\langle(x_i u_i-xu)\xi,\eta\rangle|
+ &amp;\le R\|(u_i-u)\xi\|\,\|\eta\|\\
+ &amp;\quad+|\langle(x_i-x)u\xi,\eta\rangle|
+ \longrightarrow0.
+ \end{aligned}
+ \tag{GRD.4.c}
+\]">\[
+ \begin{aligned}
+ |\langle(x_i u_i-xu)\xi,\eta\rangle|
+ &amp;\le R\|(u_i-u)\xi\|\,\|\eta\|\\
+ &amp;\quad+|\langle(x_i-x)u\xi,\eta\rangle|
+ \longrightarrow0.
+ \end{aligned}
+ \tag{GRD.4.c}
+\]</span>
+The first term uses strong continuity of the unitary path; the second is one fixed weak test. Since <span class="math" data-tex="\(\|x_i u_i\|\le R\)">\(\|x_i u_i\|\le R\)</span>, the bounded-topology comparison gives the ultraweak conclusion as well. It applies whether the original convergence was stated weakly or ultraweakly.</p>
+<p>If <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span> strongly, then
+<span class="math math-display" data-tex="\[
+ \|(x_i u_i-xu)\xi\|
+ \le R\|(u_i-u)\xi\|
+       +\|(x_i-x)u\xi\|
+ \longrightarrow0
+ \qquad(\xi\in H).
+ \tag{GRD.4.d}
+\]">\[
+ \|(x_i u_i-xu)\xi\|
+ \le R\|(u_i-u)\xi\|
+       +\|(x_i-x)u\xi\|
+ \longrightarrow0
+ \qquad(\xi\in H).
+ \tag{GRD.4.d}
+\]</span>
+This also proves sigma-strong continuity on the ball by the same comparison. For the strong-star statement, assume in addition that <span class="math" data-tex="\(x_i^*\to x^*\)">\(x_i^*\to x^*\)</span> strongly. The adjoint difference is
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (x_i u_i)^*-(xu)^*
+ &amp;=u_i^*(x_i^*-x^*)+(u_i^*-u^*)x^*,\\
+ \|((x_i u_i)^*-(xu)^*)\xi\|
+ &amp;\le\|(x_i^*-x^*)\xi\|
+       +\|(u_i^*-u^*)x^*\xi\|
+ \longrightarrow0.
+ \end{aligned}
+ \tag{GRD.4.e}
+\]">\[
+ \begin{aligned}
+ (x_i u_i)^*-(xu)^*
+ &amp;=u_i^*(x_i^*-x^*)+(u_i^*-u^*)x^*,\\
+ \|((x_i u_i)^*-(xu)^*)\xi\|
+ &amp;\le\|(x_i^*-x^*)\xi\|
+       +\|(u_i^*-u^*)x^*\xi\|
+ \longrightarrow0.
+ \end{aligned}
+ \tag{GRD.4.e}
+\]</span>
+Thus strong-star and sigma-strong-star continuity both hold. The weak and ultraweak star variants introduce no additional condition: taking the adjoint is continuous for these topologies, as follows from conjugating vector coefficients and the <a href="OA-FLOW-CP.html#oa-flow.cp.6">normal vector-series description</a>.</p>
+<p>Right multiplication by a unitary preserves the norm, so both maps in (GRD.4.a) preserve <span class="math" data-tex="\(B_R(M)\times\mathbb R\)">\(B_R(M)\times\mathbb R\)</span>. Repeating the proof for the path <span class="math" data-tex="\(t\mapsto u(t)^*\)">\(t\mapsto u(t)^*\)</span> proves continuity of the inverse. This completes the homeomorphism claim. Restricting to any subset with uniformly norm-bounded coefficients gives a homeomorphism onto its image; the subset need not itself be preserved.</p>
+<p>For a faithful weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, write the full chart as
+<span class="math math-display" data-tex="\[
+ Q_\varphi:\mathcal F(M)\longrightarrow M\times\mathbb R,\qquad
+ Q_\varphi(a)=\bigl(q_{\varphi,t}(a),t\bigr)
+                 \quad(a\in M(t)).
+ \tag{GRD.4.f}
+\]">\[
+ Q_\varphi:\mathcal F(M)\longrightarrow M\times\mathbb R,\qquad
+ Q_\varphi(a)=\bigl(q_{\varphi,t}(a),t\bigr)
+                 \quad(a\in M(t)).
+ \tag{GRD.4.f}
+\]</span>
+Then <a href="OA-FLOW-GRD.html#grd-2">the ordered chart formula</a> gives
+<span class="math math-display" data-tex="\[
+ Q_\psi Q_\varphi^{-1}(x,t)
+       =\bigl(xu_{\varphi,\psi}(t),t\bigr).
+ \tag{GRD.4.g}
+\]">\[
+ Q_\psi Q_\varphi^{-1}(x,t)
+       =\bigl(xu_{\varphi,\psi}(t),t\bigr).
+ \tag{GRD.4.g}
+\]</span>
+The <a href="OA-FLOW-BC.html#oa-flow.bc.4">balanced cocycle proof</a> supplies exactly the required continuous unitary path. Consequently each of the bounded-set topologies just proved is independent of the faithful weight chart. The coefficient norm bound is part of this statement; (GRD.4.c) does not assert joint continuity for arbitrary weakly convergent unbounded nets.</p>
+<p><span id="OA-FLOW.GRD.5"></span><a id="grd-5"></a></p>
+<h2 id="5-a-chart-independent-mackey-topology-on-the-whole-graded-space">5. A chart-independent Mackey topology on the whole graded space</h2>
+<p>The whole-space argument uses weak compactness in the predual. Give <span class="math" data-tex="\(M\)">\(M\)</span> the Mackey topology <span class="math" data-tex="\(\tau(M,M_*)\)">\(\tau(M,M_*)\)</span>, defined here by the seminorms
+<span class="math math-display" data-tex="\[
+ p_K(x)=\sup_{\omega\in K}|\omega(x)|,
+ \qquad K\subset M_*\ \text{absolutely convex and weakly compact}.
+ \tag{GRD.5.a}
+\]">\[
+ p_K(x)=\sup_{\omega\in K}|\omega(x)|,
+ \qquad K\subset M_*\ \text{absolutely convex and weakly compact}.
+ \tag{GRD.5.a}
+\]</span>
+Here “weakly” means <span class="math" data-tex="\(\sigma(M_*,M)\)">\(\sigma(M_*,M)\)</span>, and <span class="math" data-tex="\(p_\varnothing=0\)">\(p_\varnothing=0\)</span>. A set is absolutely convex if it contains every finite sum <span class="math" data-tex="\(\sum_j c_j\omega_j\)">\(\sum_j c_j\omega_j\)</span> with <span class="math" data-tex="\(\omega_j\)">\(\omega_j\)</span> in the set and <span class="math" data-tex="\(\sum_j|c_j|\le1\)">\(\sum_j|c_j|\le1\)</span>. For each normal functional, its scalar disc is absolutely convex and weakly compact, and its seminorm is the absolute value of that functional. Normal functionals separate the points of <span class="math" data-tex="\(M\)">\(M\)</span>, so this topology is Hausdorff.</p>
+<p>We use two precise programme results. The <a href="../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#OA-FND-PD-16">weak compactness theorem, Theorem 10.2</a> proves that <span class="math" data-tex="\(S\subset M_*\)">\(S\subset M_*\)</span> is relatively weakly compact if and only if it is norm bounded and there is <span class="math" data-tex="\(\omega_0\in M_*^+\)">\(\omega_0\in M_*^+\)</span> such that, for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, some <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \|a\|\le1,\quad
+ \omega_0(a^*a+aa^*)&lt;\delta
+ \quad\Longrightarrow\quad
+ \sup_{\omega\in S}|\omega(a)|&lt;\varepsilon.
+ \tag{GRD.5.b}
+\]">\[
+ \|a\|\le1,\quad
+ \omega_0(a^*a+aa^*)&lt;\delta
+ \quad\Longrightarrow\quad
+ \sup_{\omega\in S}|\omega(a)|&lt;\varepsilon.
+ \tag{GRD.5.b}
+\]</span>
+The controlling functional need not be faithful. The <a href="../foundations-of-von-neumann-algebras/polar-decomposition-of-functionals-and-weak-compactness-in-preduals.html#OA-FND-PD-19">bounded-set theorem, Theorem 11.2 and Remark 11.3</a> proves that uniform convergence on relatively weakly compact predual sets, the Mackey topology just defined, and the sigma-strong-star topology agree on each norm-bounded subset. In particular,
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ a_i\longrightarrow0\ \text{sigma-strong-star},\qquad
+ \sup_i\|a_i\|&lt;\infty,\qquad K\subset M_*\ \text{weakly compact}\\
+ \Longrightarrow\quad
+ p_K(a_i)\longrightarrow0.
+ \end{gathered}
+ \tag{GRD.5.c}
+\]">\[
+ \begin{gathered}
+ a_i\longrightarrow0\ \text{sigma-strong-star},\qquad
+ \sup_i\|a_i\|&lt;\infty,\qquad K\subset M_*\ \text{weakly compact}\\
+ \Longrightarrow\quad
+ p_K(a_i)\longrightarrow0.
+ \end{gathered}
+ \tag{GRD.5.c}
+\]</span>
+These are proved for arbitrary von Neumann algebras. We use the definition (GRD.5.a), without the further characterization of Mackey topology as the finest compatible locally convex topology.</p>
+<p><strong>The compact hull needed below.</strong> If <span class="math" data-tex="\(S\subset M_*\)">\(S\subset M_*\)</span> is relatively weakly compact, then
+<span class="math math-display" data-tex="\[
+ C=\overline{\operatorname{aconv}(S)}^{\,\|\cdot\|}
+ \quad\text{is absolutely convex and weakly compact}.
+ \tag{GRD.5.d}
+\]">\[
+ C=\overline{\operatorname{aconv}(S)}^{\,\|\cdot\|}
+ \quad\text{is absolutely convex and weakly compact}.
+ \tag{GRD.5.d}
+\]</span>
+For <span class="math" data-tex="\(S=\varnothing\)">\(S=\varnothing\)</span>, take <span class="math" data-tex="\(C=\{0\}\)">\(C=\{0\}\)</span>. Otherwise Theorem 10.2 gives norm boundedness and a controlling <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, use (GRD.5.b) with error <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. For each allowed <span class="math" data-tex="\(a\)">\(a\)</span>, every absolutely convex combination <span class="math" data-tex="\(\sum_j c_j\omega_j\)">\(\sum_j c_j\omega_j\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \left|\sum_j c_j\omega_j(a)\right|
+ \le\sum_j|c_j|\,|\omega_j(a)|
+ \le\varepsilon/2.
+ \tag{GRD.5.e}
+\]">\[
+ \left|\sum_j c_j\omega_j(a)\right|
+ \le\sum_j|c_j|\,|\omega_j(a)|
+ \le\varepsilon/2.
+ \tag{GRD.5.e}
+\]</span>
+Evaluation at this fixed <span class="math" data-tex="\(a\)">\(a\)</span> is norm continuous, so the same non-strict bound holds throughout <span class="math" data-tex="\(C\)">\(C\)</span>, and it is strictly less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The norm bound on <span class="math" data-tex="\(S\)">\(S\)</span> passes to <span class="math" data-tex="\(C\)">\(C\)</span> as well. Thus <span class="math" data-tex="\(C\)">\(C\)</span> satisfies (GRD.5.b), and Theorem 10.2 makes it relatively weakly compact. The actual <a href="../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-04">Mazur separation proof, Theorem 4.1</a> makes a norm-closed convex subset of the Banach space <span class="math" data-tex="\(M_*\)">\(M_*\)</span> weakly closed. By the concrete predual duality <span class="math" data-tex="\(M=(M_*)^*\)">\(M=(M_*)^*\)</span>, this is precisely the weak topology <span class="math" data-tex="\(\sigma(M_*,M)\)">\(\sigma(M_*,M)\)</span> used here. Therefore <span class="math" data-tex="\(C\)">\(C\)</span> is weakly compact. This proves the required hull assertion directly from the indicated foundations.</p>
+<p>Return to any sigma-strong-star continuous unitary path <span class="math" data-tex="\(u\)">\(u\)</span>, as in Section 4. Fix an absolutely convex weakly compact <span class="math" data-tex="\(K\subset M_*\)">\(K\subset M_*\)</span> and a compact real interval <span class="math" data-tex="\(I\)">\(I\)</span>. Define
+<span class="math math-display" data-tex="\[
+ F:K\times I\longrightarrow M_*,
+ \qquad F(\omega,s)(a)=\omega(a u(s)).
+ \tag{GRD.5.f}
+\]">\[
+ F:K\times I\longrightarrow M_*,
+ \qquad F(\omega,s)(a)=\omega(a u(s)).
+ \tag{GRD.5.f}
+\]</span>
+For each <span class="math" data-tex="\((\omega,s)\)">\((\omega,s)\)</span>, this is a normal functional: the <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6 vector-series proof</a> shows that right multiplication by a fixed bounded element pulls normal functionals back to normal functionals.</p>
+<p>We prove joint continuity into the weak topology <span class="math" data-tex="\(\sigma(M_*,M)\)">\(\sigma(M_*,M)\)</span>. Let <span class="math" data-tex="\((\omega_i,s_i)\to(\omega,s)\)">\((\omega_i,s_i)\to(\omega,s)\)</span> in <span class="math" data-tex="\(K\times I\)">\(K\times I\)</span>, and fix <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>. The difference at <span class="math" data-tex="\(a\)">\(a\)</span> is
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ F(\omega_i,s_i)(a)-F(\omega,s)(a)
+ &amp;=\omega_i\bigl(a(u(s_i)-u(s))\bigr)\\
+ &amp;\quad+(\omega_i-\omega)(a u(s)).
+ \end{aligned}
+ \tag{GRD.5.g}
+\]">\[
+ \begin{aligned}
+ F(\omega_i,s_i)(a)-F(\omega,s)(a)
+ &amp;=\omega_i\bigl(a(u(s_i)-u(s))\bigr)\\
+ &amp;\quad+(\omega_i-\omega)(a u(s)).
+ \end{aligned}
+ \tag{GRD.5.g}
+\]</span>
+The second term tends to zero by weak convergence in <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. The elements
+<span class="math" data-tex="\(b_i=a(u(s_i)-u(s))\)">\(b_i=a(u(s_i)-u(s))\)</span> have norm at most <span class="math" data-tex="\(2\|a\|\)">\(2\|a\|\)</span> and converge sigma-strong-star to zero. Indeed, in any faithful normal representation,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|b_i\xi\|&amp;\le\|a\|\,\|(u(s_i)-u(s))\xi\|\longrightarrow0,\\
+ \|b_i^*\xi\|&amp;=\|(u(s_i)^*-u(s)^*)a^*\xi\|\longrightarrow0.
+ \end{aligned}
+ \tag{GRD.5.h}
+\]">\[
+ \begin{aligned}
+ \|b_i\xi\|&amp;\le\|a\|\,\|(u(s_i)-u(s))\xi\|\longrightarrow0,\\
+ \|b_i^*\xi\|&amp;=\|(u(s_i)^*-u(s)^*)a^*\xi\|\longrightarrow0.
+ \end{aligned}
+ \tag{GRD.5.h}
+\]</span>
+the bounded-topology comparison in Section 4 makes the convergence intrinsic. Equation (GRD.5.c) now gives <span class="math" data-tex="\(p_K(b_i)\to0\)">\(p_K(b_i)\to0\)</span>, controlling the first term in (GRD.5.g) uniformly for <span class="math" data-tex="\(\omega_i\in K\)">\(\omega_i\in K\)</span>. This proves the claimed joint weak continuity.</p>
+<p>Consequently
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ L=F(K\times I)\ \text{is weakly compact},\\
+ C_{K,I}=\overline{\operatorname{aconv}(L)}^{\,\|\cdot\|}\\
+ \text{is absolutely convex and weakly compact}.
+ \end{gathered}
+ \tag{GRD.5.i}
+\]">\[
+ \begin{gathered}
+ L=F(K\times I)\ \text{is weakly compact},\\
+ C_{K,I}=\overline{\operatorname{aconv}(L)}^{\,\|\cdot\|}\\
+ \text{is absolutely convex and weakly compact}.
+ \end{gathered}
+ \tag{GRD.5.i}
+\]</span>
+The first assertion uses compactness of <span class="math" data-tex="\(K\times I\)">\(K\times I\)</span> and the just-proved continuity; the second is (GRD.5.d). In particular <span class="math" data-tex="\(p_{C_{K,I}}\)">\(p_{C_{K,I}}\)</span> is one of the seminorms defining the Mackey topology.</p>
+<p><strong>Whole-space chart theorem.</strong> Suppose <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span> in <span class="math" data-tex="\(\tau(M,M_*)\)">\(\tau(M,M_*)\)</span> and <span class="math" data-tex="\(t_i\to t\)">\(t_i\to t\)</span> in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Choose a compact interval <span class="math" data-tex="\(I\)">\(I\)</span> containing <span class="math" data-tex="\(t\)">\(t\)</span> in its interior. The net <span class="math" data-tex="\(t_i\)">\(t_i\)</span> is eventually in <span class="math" data-tex="\(I\)">\(I\)</span>. For each <span class="math" data-tex="\(K\)">\(K\)</span> as above, on this tail,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ p_K(x_i u(t_i)-xu(t))
+ &amp;\le p_K((x_i-x)u(t_i))
+       +p_K(x(u(t_i)-u(t)))\\
+ &amp;\le p_{C_{K,I}}(x_i-x)
+       +p_K(x(u(t_i)-u(t)))\\
+ &amp;\longrightarrow0.
+ \end{aligned}
+ \tag{GRD.5.j}
+\]">\[
+ \begin{aligned}
+ p_K(x_i u(t_i)-xu(t))
+ &amp;\le p_K((x_i-x)u(t_i))
+       +p_K(x(u(t_i)-u(t)))\\
+ &amp;\le p_{C_{K,I}}(x_i-x)
+       +p_K(x(u(t_i)-u(t)))\\
+ &amp;\longrightarrow0.
+ \end{aligned}
+ \tag{GRD.5.j}
+\]</span>
+The first term tends to zero by Mackey convergence of <span class="math" data-tex="\(x_i\)">\(x_i\)</span>. For the second, <span class="math" data-tex="\(x\)">\(x\)</span> is fixed, so <span class="math" data-tex="\(x(u(t_i)-u(t))\)">\(x(u(t_i)-u(t))\)</span> is uniformly norm bounded and sigma-strong-star null by the calculation in (GRD.5.h). Equation (GRD.5.c) applies to this second term. No norm bound on the net <span class="math" data-tex="\(x_i\)">\(x_i\)</span> has been assumed or deduced.</p>
+<p>Thus <span class="math" data-tex="\(T_u\)">\(T_u\)</span> is jointly continuous for the Mackey topology on all of <span class="math" data-tex="\(M\)">\(M\)</span> and the ordinary real topology. The path <span class="math" data-tex="\(s\mapsto u(s)^*\)">\(s\mapsto u(s)^*\)</span> has the same sigma-strong-star continuity, so the same proof applies to <span class="math" data-tex="\(T_u^{-1}\)">\(T_u^{-1}\)</span>. We have proved
+<span class="math math-display" data-tex="\[
+ T_u:\bigl(M,\tau(M,M_*)\bigr)\times\mathbb R
+     \longrightarrow
+     \bigl(M,\tau(M,M_*)\bigr)\times\mathbb R
+ \quad\text{is a homeomorphism}.
+ \tag{GRD.5.k}
+\]">\[
+ T_u:\bigl(M,\tau(M,M_*)\bigr)\times\mathbb R
+     \longrightarrow
+     \bigl(M,\tau(M,M_*)\bigr)\times\mathbb R
+ \quad\text{is a homeomorphism}.
+ \tag{GRD.5.k}
+\]</span></p>
+<p>Transport this product topology through any <span class="math" data-tex="\(Q_\varphi\)">\(Q_\varphi\)</span> from (GRD.4.f). Equations (GRD.4.g) and (GRD.5.k) prove that the resulting topology on
+<span class="math math-display" data-tex="\[
+ \mathcal F(M)=\bigsqcup_{t\in\mathbb R}M(t)
+ \tag{GRD.5.l}
+\]">\[
+ \mathcal F(M)=\bigsqcup_{t\in\mathbb R}M(t)
+ \tag{GRD.5.l}
+\]</span>
+is independent of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. On a fixed fiber it is exactly the Mackey topology associated with its canonical transported predual from Section 2. The degree projection is continuous, since it is the second coordinate in every chart. On each fixed norm ball this topology agrees with the sigma-strong-star product topology of Section 4, by the bounded-set theorem.</p>
+<p>This constructs the common total-space topology. Its proof concerns the specified chart changes; integration of sections and Hilbert-fiber constructions require their own arguments. The norm-product topology has a separate additional condition, tested in <a href="OA-FLOW-GRD.html#grd-7">Section 7</a>. For the zero algebra the total space is <span class="math" data-tex="\(\{0\}\times\mathbb R\)">\(\{0\}\times\mathbb R\)</span>, and every chart change above is its identity.</p>
+<p><span id="OA-FLOW.GRD.6"></span><a id="grd-6"></a></p>
+<h2 id="6-normal-isomorphisms-transport-every-degree-and-the-total-topology">6. Normal isomorphisms transport every degree and the total topology</h2>
+<p>Let <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> be a normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism with normal inverse, between arbitrary von Neumann algebras. For a faithful normal semifinite weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> on <span class="math" data-tex="\(M\)">\(M\)</span>, put
+<span class="math math-display" data-tex="\[
+ \varphi^f=\varphi\circ f^{-1}.
+ \tag{GRD.6.a}
+\]">\[
+ \varphi^f=\varphi\circ f^{-1}.
+ \tag{GRD.6.a}
+\]</span>
+This is faithful and normal because <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span> preserves positivity and increasing positive suprema. It is semifinite because <span class="math" data-tex="\(f\)">\(f\)</span> carries the finite positive cone of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and its ultraweakly dense linear span, onto those of <span class="math" data-tex="\(\varphi^f\)">\(\varphi^f\)</span>. The inverse operation is transport through <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span>. Thus transport is a bijection between the two sets of faithful normal semifinite weights.</p>
+<p>The <a href="OA-FLOW-BC.html#oa-flow.bc.5">balanced covariance proof</a>, including its diagonal modular groups as spelled out in <a href="OA-FLOW-CORE.html#core-8">CORE8</a>, gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ f\bigl([D\varphi:D\psi]_t\bigr)
+   &amp;=[D\varphi^f:D\psi^f]_t,\\
+ f(\sigma_t^\varphi(x))
+   &amp;=\sigma_t^{\varphi^f}(f(x)).
+ \end{aligned}
+ \tag{GRD.6.b}
+\]">\[
+ \begin{aligned}
+ f\bigl([D\varphi:D\psi]_t\bigr)
+   &amp;=[D\varphi^f:D\psi^f]_t,\\
+ f(\sigma_t^\varphi(x))
+   &amp;=\sigma_t^{\varphi^f}(f(x)).
+ \end{aligned}
+ \tag{GRD.6.b}
+\]</span>
+These identities preserve the normalized weights, not just their modular actions.</p>
+<p>Write <span class="math" data-tex="\(\mathcal F(M)=\bigsqcup_{t\in\mathbb R}M(t)\)">\(\mathcal F(M)=\bigsqcup_{t\in\mathbb R}M(t)\)</span> for the graded fibers of Sections 1–5. Define
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ F_t(f):M(t)&amp;\longrightarrow N(t),\\
+ x\varphi^{it}&amp;\longmapsto f(x)(\varphi^f)^{it},\\
+ \mathcal F(f)|_{M(t)}&amp;=F_t(f).
+ \end{aligned}
+ \tag{GRD.6.c}
+\]">\[
+ \begin{aligned}
+ F_t(f):M(t)&amp;\longrightarrow N(t),\\
+ x\varphi^{it}&amp;\longmapsto f(x)(\varphi^f)^{it},\\
+ \mathcal F(f)|_{M(t)}&amp;=F_t(f).
+ \end{aligned}
+ \tag{GRD.6.c}
+\]</span>
+We prove that this is a well-defined graded map, a normal linear isometry on every fiber, and a homeomorphism for the entire Mackey total-space topology.</p>
+<p><strong>The quotient and its dual structure.</strong> If <span class="math" data-tex="\(x\varphi^{it}=y\psi^{it}\)">\(x\varphi^{it}=y\psi^{it}\)</span>, the defining ordered relation says <span class="math" data-tex="\(y=x[D\varphi:D\psi]_t\)">\(y=x[D\varphi:D\psi]_t\)</span>. Applying <span class="math" data-tex="\(f\)">\(f\)</span> and (GRD.6.b) gives
+<span class="math math-display" data-tex="\[
+ f(y)=f(x)[D\varphi^f:D\psi^f]_t.
+ \tag{GRD.6.d}
+\]">\[
+ f(y)=f(x)[D\varphi^f:D\psi^f]_t.
+ \tag{GRD.6.d}
+\]</span>
+This is exactly the relation defining equality of the two proposed target classes. Applying the same argument to <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span> proves both the converse and bijectivity of (GRD.6.c). In the coefficient charts of Section 2,
+<span class="math math-display" data-tex="\[
+ q^N_{\varphi^f,t}\,F_t(f)
+   =f\,q^M_{\varphi,t}.
+ \tag{GRD.6.e}
+\]">\[
+ q^N_{\varphi^f,t}\,F_t(f)
+   =f\,q^M_{\varphi,t}.
+ \tag{GRD.6.e}
+\]</span>
+In particular the map is complex linear, preserves the norm, and is a weak-star homeomorphism: both coefficient charts are linear isometric weak-star homeomorphisms, and <span class="math" data-tex="\(f,f^{-1}\)">\(f,f^{-1}\)</span> are normal isometries.</p>
+<p>Here is also the exact predual map. For <span class="math" data-tex="\(\lambda\in N_*\)">\(\lambda\in N_*\)</span>, define <span class="math" data-tex="\(f_*\lambda=\lambda\circ f\)">\(f_*\lambda=\lambda\circ f\)</span>. It belongs to <span class="math" data-tex="\(M_*\)">\(M_*\)</span> by normality. Since <span class="math" data-tex="\(f\)">\(f\)</span> maps the closed unit ball of <span class="math" data-tex="\(M\)">\(M\)</span> onto that of <span class="math" data-tex="\(N\)">\(N\)</span>,
+<span class="math math-display" data-tex="\[
+ \|f_*\lambda\|
+  =\sup_{\|x\|\le1}|\lambda(f(x))|
+  =\|\lambda\|.
+ \tag{GRD.6.f}
+\]">\[
+ \|f_*\lambda\|
+  =\sup_{\|x\|\le1}|\lambda(f(x))|
+  =\|\lambda\|.
+ \tag{GRD.6.f}
+\]</span>
+Its inverse is <span class="math" data-tex="\((f^{-1})_*\)">\((f^{-1})_*\)</span>, so it is onto. Writing
+<span class="math" data-tex="\(q_{\varphi,t,*}(\omega)=\omega\circ q_{\varphi,t}\)">\(q_{\varphi,t,*}(\omega)=\omega\circ q_{\varphi,t}\)</span>
+for the transported predual chart, the preadjoint of the fiber map is
+<span class="math math-display" data-tex="\[
+ F_t(f)_*
+ =q^M_{\varphi,t,*}\, f_*\,
+       (q^N_{\varphi^f,t,*})^{-1}
+ :N(t)_*\longrightarrow M(t)_*.
+ \tag{GRD.6.g}
+\]">\[
+ F_t(f)_*
+ =q^M_{\varphi,t,*}\, f_*\,
+       (q^N_{\varphi^f,t,*})^{-1}
+ :N(t)_*\longrightarrow M(t)_*.
+ \tag{GRD.6.g}
+\]</span>
+Indeed pairing its right side with <span class="math" data-tex="\(a\in M(t)\)">\(a\in M(t)\)</span> gives exactly the pairing of the original functional with <span class="math" data-tex="\(F_t(f)a\)">\(F_t(f)a\)</span>, by (GRD.6.e). This also proves independence from the chosen chart: the intrinsic functional is <span class="math" data-tex="\(\ell\mapsto\ell\circ F_t(f)\)">\(\ell\mapsto\ell\circ F_t(f)\)</span>, and its values on every <span class="math" data-tex="\(a\)">\(a\)</span> determine it. Every factor in (GRD.6.g) is an onto isometry. Thus each fiber is transported as its full dual Banach space, with an onto isometric preadjoint, rather than merely as a normed space.</p>
+<p><strong>The graded operations.</strong> Express <span class="math" data-tex="\(a\in M(s)\)">\(a\in M(s)\)</span> and <span class="math" data-tex="\(b\in M(t)\)">\(b\in M(t)\)</span> in the same faithful chart as <span class="math" data-tex="\(a=x\varphi^{is}\)">\(a=x\varphi^{is}\)</span> and <span class="math" data-tex="\(b=y\varphi^{it}\)">\(b=y\varphi^{it}\)</span>. The product formula of Section 3 and (GRD.6.b) give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ F_{s+t}(f)(ab)
+ &amp;=f\bigl(x\sigma_s^\varphi(y)\bigr)
+                      (\varphi^f)^{i(s+t)}\\
+ &amp;=f(x)\sigma_s^{\varphi^f}(f(y))
+                      (\varphi^f)^{i(s+t)}\\
+ &amp;=F_s(f)(a)F_t(f)(b).
+ \end{aligned}
+ \tag{GRD.6.h}
+\]">\[
+ \begin{aligned}
+ F_{s+t}(f)(ab)
+ &amp;=f\bigl(x\sigma_s^\varphi(y)\bigr)
+                      (\varphi^f)^{i(s+t)}\\
+ &amp;=f(x)\sigma_s^{\varphi^f}(f(y))
+                      (\varphi^f)^{i(s+t)}\\
+ &amp;=F_s(f)(a)F_t(f)(b).
+ \end{aligned}
+ \tag{GRD.6.h}
+\]</span>
+Likewise,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ F_{-t}(f)\bigl((x\varphi^{it})^*\bigr)
+ &amp;=f\bigl(\sigma_{-t}^\varphi(x^*)\bigr)
+                       (\varphi^f)^{-it}\\
+ &amp;=\sigma_{-t}^{\varphi^f}(f(x)^*)
+                       (\varphi^f)^{-it}\\
+ &amp;=\bigl(F_t(f)(x\varphi^{it})\bigr)^*.
+ \end{aligned}
+ \tag{GRD.6.i}
+\]">\[
+ \begin{aligned}
+ F_{-t}(f)\bigl((x\varphi^{it})^*\bigr)
+ &amp;=f\bigl(\sigma_{-t}^\varphi(x^*)\bigr)
+                       (\varphi^f)^{-it}\\
+ &amp;=\sigma_{-t}^{\varphi^f}(f(x)^*)
+                       (\varphi^f)^{-it}\\
+ &amp;=\bigl(F_t(f)(x\varphi^{it})\bigr)^*.
+ \end{aligned}
+ \tag{GRD.6.i}
+\]</span>
+The quotient proof already permits changing this common chart, so these are intrinsic identities. At degree zero <span class="math" data-tex="\(F_0(f)=f\)">\(F_0(f)=f\)</span>; in particular the unit and the positive cone of that fiber are preserved.</p>
+<p><strong>The whole Mackey topology.</strong> This step uses actual weakly compact sets in the predual and does not impose a norm bound on a convergent net. Recall that the Mackey seminorm associated to an absolutely convex weakly compact <span class="math" data-tex="\(K\subset N_*\)">\(K\subset N_*\)</span> is
+<span class="math math-display" data-tex="\[
+ p_K(y)=\sup_{\lambda\in K}|\lambda(y)|.
+\]">\[
+ p_K(y)=\sup_{\lambda\in K}|\lambda(y)|.
+\]</span>
+Here weak compactness means compactness for <span class="math" data-tex="\(\sigma(N_*,N)\)">\(\sigma(N_*,N)\)</span>. The map <span class="math" data-tex="\(f_*:N_*\to M_*\)">\(f_*:N_*\to M_*\)</span> is continuous for the respective weak topologies: for every <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, evaluation of <span class="math" data-tex="\(f_*\lambda\)">\(f_*\lambda\)</span> at <span class="math" data-tex="\(x\)">\(x\)</span> is evaluation of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> at the fixed element <span class="math" data-tex="\(f(x)\)">\(f(x)\)</span>. Therefore <span class="math" data-tex="\(f_*(K)\)">\(f_*(K)\)</span> is weakly compact. It is absolutely convex because <span class="math" data-tex="\(f_*\)">\(f_*\)</span> is linear. Directly,
+<span class="math math-display" data-tex="\[
+ p_K(f(x))=p_{f_*(K)}(x)\qquad(x\in M).
+ \tag{GRD.6.j}
+\]">\[
+ p_K(f(x))=p_{f_*(K)}(x)\qquad(x\in M).
+ \tag{GRD.6.j}
+\]</span>
+The right side is one of the defining Mackey seminorms of <span class="math" data-tex="\(M\)">\(M\)</span>. Consequently <span class="math" data-tex="\(f:(M,\tau(M,M_*))\to(N,\tau(N,N_*))\)">\(f:(M,\tau(M,M_*))\to(N,\tau(N,N_*))\)</span> is continuous on the entire space. Applying the same argument to <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span> proves continuity of its inverse. In fact weak continuity of both predual maps shows that they carry the collection of absolutely convex weakly compact sets bijectively onto each other. The corresponding argument with (GRD.6.g) gives the Mackey homeomorphism on each individual fiber as well.</p>
+<p>Use the total coefficient chart
+<span class="math math-display" data-tex="\[
+ Q_\varphi^M(a)=\bigl(q^M_{\varphi,t}(a),t\bigr)
+ \quad(a\in M(t)),
+\]">\[
+ Q_\varphi^M(a)=\bigl(q^M_{\varphi,t}(a),t\bigr)
+ \quad(a\in M(t)),
+\]</span>
+and its counterpart for <span class="math" data-tex="\(N\)">\(N\)</span>. By Section 5 these are homeomorphisms for the chart-independent total topology and the Mackey topology times the usual topology of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Equation (GRD.6.e), in all degrees at once, becomes
+<span class="math math-display" data-tex="\[
+ Q_{\varphi^f}^N\,\mathcal F(f)\,(Q_\varphi^M)^{-1}
+       =(f,\operatorname{id}_{\mathbb R}).
+ \tag{GRD.6.k}
+\]">\[
+ Q_{\varphi^f}^N\,\mathcal F(f)\,(Q_\varphi^M)^{-1}
+       =(f,\operatorname{id}_{\mathbb R}).
+ \tag{GRD.6.k}
+\]</span>
+The preceding seminorm argument proves that the right side and its inverse are continuous. This proves that <span class="math" data-tex="\(\mathcal F(f)\)">\(\mathcal F(f)\)</span> is a homeomorphism of the complete total spaces. Explicitly, whenever <span class="math" data-tex="\(x_i\to x\)">\(x_i\to x\)</span> in the Mackey topology and <span class="math" data-tex="\(t_i\to t\)">\(t_i\to t\)</span>, (GRD.6.j) gives <span class="math" data-tex="\(f(x_i)\to f(x)\)">\(f(x_i)\to f(x)\)</span> in the target Mackey topology. No norm-boundedness of <span class="math" data-tex="\(x_i\)">\(x_i\)</span> is used. Section 5's chart independence makes this conclusion independent of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>.</p>
+<p><strong>Compatibility with the continuous core.</strong> Let
+<span class="math" data-tex="\(j_t^M:M(t)\to C(M)\)">\(j_t^M:M(t)\to C(M)\)</span> and <span class="math" data-tex="\(j_t^N:N(t)\to C(N)\)">\(j_t^N:N(t)\to C(N)\)</span>
+be the bounded spectral-fiber identifications of Sections 1–2. The normal isomorphism <span class="math" data-tex="\(C(f)\)">\(C(f)\)</span> was already constructed, with its normal inverse, in <a href="OA-FLOW-CORE.html#core-8">CORE8</a>. Write <span class="math" data-tex="\(\kappa_\varphi\)">\(\kappa_\varphi\)</span> for a faithful core chart as in CORE7. Its chart formula gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ C(f)\bigl(j_t^M(x\varphi^{it})\bigr)
+ &amp;=C(f)\bigl(\kappa_\varphi^M
+                  (\pi_\varphi^M(x)\lambda_\varphi^M(t))\bigr)\\
+ &amp;=\kappa_{\varphi^f}^N
+                  (\pi_{\varphi^f}^N(f(x))\lambda_{\varphi^f}^N(t))\\
+ &amp;=j_t^N\bigl(F_t(f)(x\varphi^{it})\bigr).
+ \end{aligned}
+ \tag{GRD.6.l}
+\]">\[
+ \begin{aligned}
+ C(f)\bigl(j_t^M(x\varphi^{it})\bigr)
+ &amp;=C(f)\bigl(\kappa_\varphi^M
+                  (\pi_\varphi^M(x)\lambda_\varphi^M(t))\bigr)\\
+ &amp;=\kappa_{\varphi^f}^N
+                  (\pi_{\varphi^f}^N(f(x))\lambda_{\varphi^f}^N(t))\\
+ &amp;=j_t^N\bigl(F_t(f)(x\varphi^{it})\bigr).
+ \end{aligned}
+ \tag{GRD.6.l}
+\]</span>
+Thus the following equality holds on the full fiber:
+<span class="math math-display" data-tex="\[
+ C(f)\,j_t^M=j_t^N F_t(f).
+ \tag{GRD.6.m}
+\]">\[
+ C(f)\,j_t^M=j_t^N F_t(f).
+ \tag{GRD.6.m}
+\]</span>
+Since the Section 1 image is the entire bounded spectral subspace with dual character <span class="math" data-tex="\(s\mapsto e^{-ist}\)">\(s\mapsto e^{-ist}\)</span>, this identifies the restriction of <span class="math" data-tex="\(C(f)\)">\(C(f)\)</span> to that entire subspace. It preserves the degree and its sign. No new core map is inferred from a possibly incomplete linear span of fibers: (GRD.6.l) uses the already proved normal isomorphism on the whole core.</p>
+<p><strong>Identity and composition.</strong> Let <span class="math" data-tex="\(g:N\to P\)">\(g:N\to P\)</span> be another normal isomorphism with normal inverse. Transported weights satisfy the exact identity
+<span class="math math-display" data-tex="\[
+ (\varphi^f)^g
+ =\varphi\circ f^{-1}\circ g^{-1}
+ =\varphi^{g\circ f}.
+ \tag{GRD.6.n}
+\]">\[
+ (\varphi^f)^g
+ =\varphi\circ f^{-1}\circ g^{-1}
+ =\varphi^{g\circ f}.
+ \tag{GRD.6.n}
+\]</span>
+On every representative <span class="math" data-tex="\(x\varphi^{it}\)">\(x\varphi^{it}\)</span>, it follows that
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ F_t(g)F_t(f)&amp;=F_t(g\circ f),&amp;
+ F_t(\operatorname{id}_M)&amp;=\operatorname{id}_{M(t)},\\
+ \mathcal F(g)\mathcal F(f)&amp;=\mathcal F(g\circ f),&amp;
+ \mathcal F(\operatorname{id}_M)&amp;=\operatorname{id}_{\mathcal F(M)}.
+ \end{aligned}
+ \tag{GRD.6.o}
+\]">\[
+ \begin{aligned}
+ F_t(g)F_t(f)&amp;=F_t(g\circ f),&amp;
+ F_t(\operatorname{id}_M)&amp;=\operatorname{id}_{M(t)},\\
+ \mathcal F(g)\mathcal F(f)&amp;=\mathcal F(g\circ f),&amp;
+ \mathcal F(\operatorname{id}_M)&amp;=\operatorname{id}_{\mathcal F(M)}.
+ \end{aligned}
+ \tag{GRD.6.o}
+\]</span>
+These are equalities of maps, without a choice of an additional implementing unitary or scalar. Preadjoints consequently compose in reverse order. In particular <span class="math" data-tex="\(F_t(f^{-1})\)">\(F_t(f^{-1})\)</span> and <span class="math" data-tex="\(\mathcal F(f^{-1})\)">\(\mathcal F(f^{-1})\)</span> are the inverses already used above. The result is a functor on the groupoid of arbitrary von Neumann algebras and normal isomorphisms, preserving their graded operations, dual Banach fibers and total Mackey topology, and intertwined with the earlier core functor by (GRD.6.m). The formula uses <span class="math" data-tex="\(f^{-1}\)">\(f^{-1}\)</span>; no extension to arbitrary noninvertible normal homomorphisms is asserted.</p>
+<p><span id="OA-FLOW.GRD.7"></span><a id="grd-7"></a></p>
+<h2 id="7-exact-tests-for-the-topology-quotient-direction-and-graded-operations">7. Exact tests for the topology, quotient direction and graded operations</h2>
+<p><strong>A norm obstruction on a commutative algebra.</strong> Let
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ M=\ell^\infty(\mathbb N),\qquad \mathbb N=\{1,2,\ldots\},\\
+ \tau(a)=\sum_{n\ge1}a_n,\qquad
+ h_n=e^n,\qquad
+ \varphi(a)=\tau_h(a)=\sum_{n\ge1}e^n a_n
+ \quad(a\in M_+).
+ \end{gathered}
+ \tag{GRD.7.a}
+\]">\[
+ \begin{gathered}
+ M=\ell^\infty(\mathbb N),\qquad \mathbb N=\{1,2,\ldots\},\\
+ \tau(a)=\sum_{n\ge1}a_n,\qquad
+ h_n=e^n,\qquad
+ \varphi(a)=\tau_h(a)=\sum_{n\ge1}e^n a_n
+ \quad(a\in M_+).
+ \end{gathered}
+ \tag{GRD.7.a}
+\]</span>
+These are faithful normal semifinite weights. Faithfulness follows from the strictly positive coordinate coefficients. Normality follows by expressing the sum as the supremum of finite sums and interchanging that supremum with a bounded increasing positive net. The projections <span class="math" data-tex="\(p_N=1_{\{1,\ldots,N\}}\)">\(p_N=1_{\{1,\ldots,N\}}\)</span> increase strongly to <span class="math" data-tex="\(1\)">\(1\)</span> and have finite value for both weights; the finite-coordinate corners therefore give dense finite domains. The operator <span class="math" data-tex="\(h\)">\(h\)</span> is the positive self-adjoint multiplication operator on <span class="math" data-tex="\(\ell^2(\mathbb N)\)">\(\ell^2(\mathbb N)\)</span> with domain
+<span class="math" data-tex="\(\{\xi:\sum_n e^{2n}|\xi_n|^2&lt;\infty\}\)">\(\{\xi:\sum_n e^{2n}|\xi_n|^2&lt;\infty\}\)</span>. Its spectral projections belong to <span class="math" data-tex="\(M\)">\(M\)</span>, and it has zero kernel. Since the algebra is commutative, its spectral projections belong to the centralizer of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>.</p>
+<p>The actual normalized derivative theorem <a href="OA-FLOW-CZ.html#oa-flow.cz.6">CZ6</a> consequently gives
+<span class="math math-display" data-tex="\[
+ u(t)=(D\varphi:D\tau)_t=h^{it},\qquad
+ u(t)_n=e^{int}.
+ \tag{GRD.7.b}
+\]">\[
+ u(t)=(D\varphi:D\tau)_t=h^{it},\qquad
+ u(t)_n=e^{int}.
+ \tag{GRD.7.b}
+\]</span>
+Both modular actions are trivial, by <a href="OA-FLOW-CZ.html#oa-flow.cz.5">CZ5</a>, but this derivative is not the constant identity. At the exact times
+<span class="math math-display" data-tex="\[
+ t_k=\frac\pi k,\qquad
+ u(t_k)_k=-1,\qquad
+ \|u(t_k)-1\|=2\quad(k\ge1).
+ \tag{GRD.7.c}
+\]">\[
+ t_k=\frac\pi k,\qquad
+ u(t_k)_k=-1,\qquad
+ \|u(t_k)-1\|=2\quad(k\ge1).
+ \tag{GRD.7.c}
+\]</span>
+The coordinate <span class="math" data-tex="\(k\)">\(k\)</span> supplies the lower bound <span class="math" data-tex="\(2\)">\(2\)</span>; the unitary triangle inequality supplies the upper bound. Since <span class="math" data-tex="\(t_k\to0\)">\(t_k\to0\)</span>, the path fails norm continuity at zero.</p>
+<p>It nevertheless converges to <span class="math" data-tex="\(1\)">\(1\)</span> in the sigma-strong-star topology. Every positive normal functional on <span class="math" data-tex="\(\ell^\infty(\mathbb N)\)">\(\ell^\infty(\mathbb N)\)</span> has the form
+<span class="math" data-tex="\(\omega_w(a)=\sum_nw_na_n\)">\(\omega_w(a)=\sum_nw_na_n\)</span> for <span class="math" data-tex="\(w\in\ell^1(\mathbb N)_+\)">\(w\in\ell^1(\mathbb N)_+\)</span>. Indeed normality evaluates a positive sequence as the increasing supremum of its finite-coordinate truncations, so the coefficients are <span class="math" data-tex="\(w_n=\omega_w(e_n)\)">\(w_n=\omega_w(e_n)\)</span>, with <span class="math" data-tex="\(\sum_nw_n=\omega_w(1)&lt;\infty\)">\(\sum_nw_n=\omega_w(1)&lt;\infty\)</span>. Conversely these sums define normal positive functionals. For each such <span class="math" data-tex="\(w\)">\(w\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ p_w(u(t)-1)^2
+ &amp;:=\omega_w\bigl((u(t)-1)^*(u(t)-1)\bigr)\\
+ &amp;=\sum_{n\ge1}w_n|e^{int}-1|^2\longrightarrow0.
+ \end{aligned}
+ \tag{GRD.7.d}
+\]">\[
+ \begin{aligned}
+ p_w(u(t)-1)^2
+ &amp;:=\omega_w\bigl((u(t)-1)^*(u(t)-1)\bigr)\\
+ &amp;=\sum_{n\ge1}w_n|e^{int}-1|^2\longrightarrow0.
+ \end{aligned}
+ \tag{GRD.7.d}
+\]</span>
+For a direct proof, choose a finite initial segment so that <span class="math" data-tex="\(4\)">\(4\)</span> times the remaining <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> tail is below the desired error. The tail is then uniformly controlled for every <span class="math" data-tex="\(t\)">\(t\)</span>, while the finite initial sum tends to zero. The adjoint seminorm is identical because the algebra is commutative. This proves convergence for every positive normal functional, not just one selected state. Applying the same estimate to <span class="math" data-tex="\(u(t)-u(t_0)\)">\(u(t)-u(t_0)\)</span> proves sigma-strong-star continuity at every real <span class="math" data-tex="\(t_0\)">\(t_0\)</span>.</p>
+<p>For a plotted scalar test one may choose <span class="math" data-tex="\(w_n=2^{-n}\)">\(w_n=2^{-n}\)</span>. Summing the convergent geometric series gives the exact formula
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ p_w(u(t)-1)^2
+ &amp;=2-2\operatorname{Re}\frac{e^{it}}{2-e^{it}}\\
+ &amp;=\frac{12(1-\cos t)}{5-4\cos t}.
+ \end{aligned}
+ \tag{GRD.7.e}
+\]">\[
+ \begin{aligned}
+ p_w(u(t)-1)^2
+ &amp;=2-2\operatorname{Re}\frac{e^{it}}{2-e^{it}}\\
+ &amp;=\frac{12(1-\cos t)}{5-4\cos t}.
+ \end{aligned}
+ \tag{GRD.7.e}
+\]</span>
+This formula displays one seminorm; the all-functional argument (GRD.7.d) proves the claimed topology.</p>
+<p>The obstruction has an exact general formulation. For a unitary path <span class="math" data-tex="\(u\)">\(u\)</span>, a coordinate change
+<span class="math math-display" data-tex="\[
+ T_u:M\times\mathbb R\longrightarrow M\times\mathbb R,
+ \qquad T_u(x,t)=(xu(t),t)
+ \tag{GRD.7.f}
+\]">\[
+ T_u:M\times\mathbb R\longrightarrow M\times\mathbb R,
+ \qquad T_u(x,t)=(xu(t),t)
+ \tag{GRD.7.f}
+\]</span>
+is continuous for the norm-product topology if and only if <span class="math" data-tex="\(u\)">\(u\)</span> is norm continuous. Sufficiency follows, for any convergent pair <span class="math" data-tex="\((x_i,t_i)\to(x,t)\)">\((x_i,t_i)\to(x,t)\)</span>, from
+<span class="math math-display" data-tex="\[
+ \|x_i u(t_i)-xu(t)\|
+   \le\|x_i-x\|+\|x\|\,\|u(t_i)-u(t)\|.
+ \tag{GRD.7.g}
+\]">\[
+ \|x_i u(t_i)-xu(t)\|
+   \le\|x_i-x\|+\|x\|\,\|u(t_i)-u(t)\|.
+ \tag{GRD.7.g}
+\]</span>
+Necessity follows by restricting to <span class="math" data-tex="\(x_i=x=1\)">\(x_i=x=1\)</span>. If the condition holds, the inverse <span class="math" data-tex="\((x,t)\mapsto(xu(t)^*,t)\)">\((x,t)\mapsto(xu(t)^*,t)\)</span> is continuous by the same argument. Thus every fixed-degree change can be an isometry even though the changes do not define compatible norm-product topologies as the degree varies. In (GRD.7.a), the <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-coordinate path <span class="math" data-tex="\((1,t)\)">\((1,t)\)</span> becomes <span class="math" data-tex="\((u(t),t)\)">\((u(t),t)\)</span> in the <span class="math" data-tex="\(\tau\)">\(\tau\)</span>-chart; (GRD.7.c) detects exactly this failure. The bounded operator and whole-space Mackey topologies proved earlier in this lesson retain their stated continuity.</p>
+<p><strong>The scalar direction test.</strong> On <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span>, put <span class="math" data-tex="\(\varphi_a(z)=az\)">\(\varphi_a(z)=az\)</span> for <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span> and <span class="math" data-tex="\(z\ge0\)">\(z\ge0\)</span>. The normalized scalar rule in <a href="OA-FLOW-BC.html#oa-flow.bc.5">BC5</a> gives
+<span class="math math-display" data-tex="\[
+ (D\varphi_a:D\varphi_b)_t=(a/b)^{it},\qquad
+ (x,\varphi_a)\sim_t\bigl(x(a/b)^{it},\varphi_b\bigr).
+ \tag{GRD.7.h}
+\]">\[
+ (D\varphi_a:D\varphi_b)_t=(a/b)^{it},\qquad
+ (x,\varphi_a)\sim_t\bigl(x(a/b)^{it},\varphi_b\bigr).
+ \tag{GRD.7.h}
+\]</span>
+This direction is also forced by the core realization. The scalar density relation proved in <a href="OA-FLOW-CORE.html#core-11">CORE's rescaling calculation</a> is <span class="math" data-tex="\(h_{\varphi_b}=(b/a)h_{\varphi_a}\)">\(h_{\varphi_b}=(b/a)h_{\varphi_a}\)</span> in the common core. Hence
+<span class="math math-display" data-tex="\[
+ x(a/b)^{it}h_{\varphi_b}^{it}
+     =x h_{\varphi_a}^{it}.
+ \tag{GRD.7.i}
+\]">\[
+ x(a/b)^{it}h_{\varphi_b}^{it}
+     =x h_{\varphi_a}^{it}.
+ \tag{GRD.7.i}
+\]</span>
+At <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(b=4\)">\(b=4\)</span>, <span class="math" data-tex="\(t=\pi/(2\log4)\)">\(t=\pi/(2\log4)\)</span>, the new coefficient is <span class="math" data-tex="\(-ix\)">\(-ix\)</span>. Reversing the derivative would give <span class="math" data-tex="\(+ix\)">\(+ix\)</span>; for <span class="math" data-tex="\(x=1\)">\(x=1\)</span> its core image would be <span class="math" data-tex="\(-h_{\varphi_1}^{it}\)">\(-h_{\varphi_1}^{it}\)</span>, not <span class="math" data-tex="\(h_{\varphi_1}^{it}\)">\(h_{\varphi_1}^{it}\)</span>. Fiber norms alone do not detect this sign error, since both scalar factors have modulus one.</p>
+<p><strong>A matrix product and adjoint that need the modular action.</strong> Let
+<span class="math math-display" data-tex="\[
+ D=\begin{pmatrix}4&amp;0\\0&amp;1\end{pmatrix},\qquad
+ \varphi(x)=\operatorname{Tr}(Dx),\qquad
+ s_0=\frac\pi{2\log4}.
+ \tag{GRD.7.j}
+\]">\[
+ D=\begin{pmatrix}4&amp;0\\0&amp;1\end{pmatrix},\qquad
+ \varphi(x)=\operatorname{Tr}(Dx),\qquad
+ s_0=\frac\pi{2\log4}.
+ \tag{GRD.7.j}
+\]</span>
+The finite-matrix proof in <a href="OA-FLOW-BC.html#oa-flow.bc.6">BC6</a> gives
+<span class="math" data-tex="\(\sigma_s^\varphi(x)=D^{is}xD^{-is}\)">\(\sigma_s^\varphi(x)=D^{is}xD^{-is}\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+ \sigma_{s_0}^\varphi(e_{12})=i e_{12},\qquad
+ \sigma_{s_0}^\varphi(e_{21})=-i e_{21}.
+ \tag{GRD.7.k}
+\]">\[
+ \sigma_{s_0}^\varphi(e_{12})=i e_{12},\qquad
+ \sigma_{s_0}^\varphi(e_{21})=-i e_{21}.
+ \tag{GRD.7.k}
+\]</span>
+For the two degree-<span class="math" data-tex="\(s_0\)">\(s_0\)</span> elements <span class="math" data-tex="\(a=e_{12}\varphi^{is_0}\)">\(a=e_{12}\varphi^{is_0}\)</span> and <span class="math" data-tex="\(b=e_{21}\varphi^{is_0}\)">\(b=e_{21}\varphi^{is_0}\)</span>, the graded rules give
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ ab&amp;=-i e_{11}\varphi^{2is_0}\in M(2s_0),\\
+ a^*&amp;=i e_{21}\varphi^{-is_0}\in M(-s_0),\\
+ a^*a&amp;=e_{22},\qquad aa^*=e_{11}\quad\text{in }M(0).
+ \end{aligned}
+ \tag{GRD.7.l}
+\]">\[
+ \begin{aligned}
+ ab&amp;=-i e_{11}\varphi^{2is_0}\in M(2s_0),\\
+ a^*&amp;=i e_{21}\varphi^{-is_0}\in M(-s_0),\\
+ a^*a&amp;=e_{22},\qquad aa^*=e_{11}\quad\text{in }M(0).
+ \end{aligned}
+ \tag{GRD.7.l}
+\]</span>
+The first coefficient is <span class="math" data-tex="\(e_{12}\sigma_{s_0}^\varphi(e_{21})=-i e_{11}\)">\(e_{12}\sigma_{s_0}^\varphi(e_{21})=-i e_{11}\)</span>; the adjoint coefficient is <span class="math" data-tex="\(\sigma_{-s_0}^\varphi(e_{21})=i e_{21}\)">\(\sigma_{-s_0}^\varphi(e_{21})=i e_{21}\)</span>. In the products with the adjoint, these phases cancel through the prescribed modular action. Multiplying the original coefficients without that action would instead give <span class="math" data-tex="\(e_{11}\)">\(e_{11}\)</span>, and taking only the matrix adjoint would miss the factor <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p>The <a href="OA-FLOW-CORE.html#core-10">normal matrix Fourier model in CORE10</a> checks the same formulas inside the entire core. With <span class="math" data-tex="\(q=-p\)">\(q=-p\)</span>, it sends
+<span class="math math-display" data-tex="\[
+ j_t(x\varphi^{it})(q)=xD^{it}e^{-itq},\qquad
+ (\theta_rY)(q)=Y(q+r).
+ \tag{GRD.7.m}
+\]">\[
+ j_t(x\varphi^{it})(q)=xD^{it}e^{-itq},\qquad
+ (\theta_rY)(q)=Y(q+r).
+ \tag{GRD.7.m}
+\]</span>
+Multiplication uses <span class="math" data-tex="\(D^{is}y=\sigma_s^\varphi(y)D^{is}\)">\(D^{is}y=\sigma_s^\varphi(y)D^{is}\)</span>, and taking the adjoint moves <span class="math" data-tex="\(D^{-it}\)">\(D^{-it}\)</span> past <span class="math" data-tex="\(x^*\)">\(x^*\)</span>, producing <span class="math" data-tex="\(\sigma_{-t}^\varphi(x^*)\)">\(\sigma_{-t}^\varphi(x^*)\)</span>. Translation multiplies this field by <span class="math" data-tex="\(e^{-irt}\)">\(e^{-irt}\)</span>, with the negative spectral sign. These are bounded matrix fields; no unbounded operator products are needed for the verification.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Exact moving-coordinate norm witnesses and a modular matrix product with its adjoint" src="assets/graded-core-fibers/norm-and-product.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 1.</em> The table samples the exact witnesses (GRD.7.c): at <span class="math" data-tex="\(t_k=\pi/k\)">\(t_k=\pi/k\)</span>, coordinate <span class="math" data-tex="\(k\)">\(k\)</span> is <span class="math" data-tex="\(-1\)">\(-1\)</span>, so the norm distance is <span class="math" data-tex="\(2\)">\(2\)</span>. The lower plot shows selected integer <span class="math" data-tex="\(k\)">\(k\)</span>'s for that norm and the single seminorm with <span class="math" data-tex="\(w_n=2^{-n}\)">\(w_n=2^{-n}\)</span>, evaluated from (GRD.7.e). Connecting segments only join samples. The all-functional tail estimate (GRD.7.d), not this plot, proves sigma-strong-star continuity. The right matrices show the exact coefficient calculation in (GRD.7.l), together with the actual degrees and adjoint phase; omitting the modular action changes the product. Human-source context for the graded construction is Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, the graded-fiber construction on printed page 438; the direction and operations used here are proved in this lesson. Original <a href="assets/graded-core-fibers/render.py">renderer</a>, <a href="assets/graded-core-fibers/data.json">exact data</a>, <a href="assets/graded-core-fibers/norm-and-product.svg">editable SVG</a>, and <a href="assets/graded-core-fibers/TERMS.md">terms</a> are retained.</p>
+<p><span id="OA-FLOW.GRD.8"></span><a id="grd-8"></a></p>
+<h2 id="8-five-diagnostics-with-complete-solutions">8. Five diagnostics with complete solutions</h2>
+<p><strong>A. Do three scalar chart changes compose in the stated order?</strong> Start with <span class="math" data-tex="\(x\varphi_1^{it}\)">\(x\varphi_1^{it}\)</span>, pass successively to the <span class="math" data-tex="\(\varphi_4\)">\(\varphi_4\)</span>- and <span class="math" data-tex="\(\varphi_9\)">\(\varphi_9\)</span>-charts, and compare with the direct change. At <span class="math" data-tex="\(t=\pi/(2\log4)\)">\(t=\pi/(2\log4)\)</span>, decide which sign the first change must have.</p>
+<p><strong>Solution.</strong> The two coefficient changes are right multiplication by <span class="math" data-tex="\((1/4)^{it}\)">\((1/4)^{it}\)</span> and then <span class="math" data-tex="\((4/9)^{it}\)">\((4/9)^{it}\)</span>. Their product is
+<span class="math math-display" data-tex="\[
+ x(1/4)^{it}(4/9)^{it}=x(1/9)^{it},
+ \tag{GRD.8.a}
+\]">\[
+ x(1/4)^{it}(4/9)^{it}=x(1/9)^{it},
+ \tag{GRD.8.a}
+\]</span>
+which is exactly the direct coefficient. At the specified time, <span class="math" data-tex="\((1/4)^{it}=-i\)">\((1/4)^{it}=-i\)</span>. The density in the new chart has imaginary power <span class="math" data-tex="\(h_{\varphi_4}^{it}=i h_{\varphi_1}^{it}\)">\(h_{\varphi_4}^{it}=i h_{\varphi_1}^{it}\)</span>, so the factors cancel. The opposite sign would multiply the original core image by <span class="math" data-tex="\(-1\)">\(-1\)</span>. Scalar commutativity does not license reversing the derivative: it is its numerator and denominator that determine this phase.</p>
+<p><strong>B. Can finite coordinate truncations repair the norm discontinuity?</strong> Define <span class="math" data-tex="\(u^{(N)}(t)_n=e^{int}\)">\(u^{(N)}(t)_n=e^{int}\)</span> for <span class="math" data-tex="\(n\le N\)">\(n\le N\)</span> and <span class="math" data-tex="\(u^{(N)}(t)_n=1\)">\(u^{(N)}(t)_n=1\)</span> for <span class="math" data-tex="\(n&gt;N\)">\(n&gt;N\)</span>. Prove that each path is norm continuous, but that these paths need not converge pointwise in norm to <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>Solution.</strong> The scalar identity <span class="math" data-tex="\(e^{iv}-e^{iw}=\int_w^v i e^{ir}\,dr\)">\(e^{iv}-e^{iw}=\int_w^v i e^{ir}\,dr\)</span> gives
+<span class="math math-display" data-tex="\[
+ \|u^{(N)}(t)-u^{(N)}(s)\|
+   \le N|t-s|.
+ \tag{GRD.8.b}
+\]">\[
+ \|u^{(N)}(t)-u^{(N)}(s)\|
+   \le N|t-s|.
+ \tag{GRD.8.b}
+\]</span>
+Thus each truncated path is norm continuous. At <span class="math" data-tex="\(t=\pi\)">\(t=\pi\)</span>, infinitely many odd coordinates remain beyond any <span class="math" data-tex="\(N\)">\(N\)</span>, and <span class="math" data-tex="\(e^{in\pi}=-1\)">\(e^{in\pi}=-1\)</span> there. Consequently
+<span class="math math-display" data-tex="\[
+ \|u^{(N)}(\pi)-u(\pi)\|=2\qquad(N\ge1).
+ \tag{GRD.8.c}
+\]">\[
+ \|u^{(N)}(\pi)-u(\pi)\|=2\qquad(N\ge1).
+ \tag{GRD.8.c}
+\]</span>
+For each positive <span class="math" data-tex="\(w\in\ell^1\)">\(w\in\ell^1\)</span>, however,
+<span class="math math-display" data-tex="\[
+ p_w(u^{(N)}(t)-u(t))^2
+    \le4\sum_{n&gt;N}w_n\longrightarrow0,
+ \tag{GRD.8.d}
+\]">\[
+ p_w(u^{(N)}(t)-u(t))^2
+    \le4\sum_{n&gt;N}w_n\longrightarrow0,
+ \tag{GRD.8.d}
+\]</span>
+uniformly in real <span class="math" data-tex="\(t\)">\(t\)</span>, and the adjoint estimate is the same. These finite-coordinate approximations converge in precisely the tested operator seminorms, without giving the missing norm convergence.</p>
+<p><strong>C. How does the adjoint rule enforce positivity at degree zero?</strong> For arbitrary real <span class="math" data-tex="\(t\)">\(t\)</span>, let <span class="math" data-tex="\(a=e_{12}\varphi^{it}\)">\(a=e_{12}\varphi^{it}\)</span> with the matrix weight (GRD.7.j). Compute <span class="math" data-tex="\(a^*a\)">\(a^*a\)</span>. What happens at <span class="math" data-tex="\(t=s_0\)">\(t=s_0\)</span> if one uses the uncorrected coefficient <span class="math" data-tex="\(e_{21}\)">\(e_{21}\)</span> for the adjoint?</p>
+<p><strong>Solution.</strong> Since <span class="math" data-tex="\(\sigma_{-t}^\varphi(e_{21})=4^{it}e_{21}\)">\(\sigma_{-t}^\varphi(e_{21})=4^{it}e_{21}\)</span>,
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ a^*&amp;=4^{it}e_{21}\varphi^{-it},\\
+ a^*a&amp;=4^{it}e_{21}\sigma_{-t}^\varphi(e_{12})
+       =4^{it}e_{21}\,4^{-it}e_{12}=e_{22}.
+ \end{aligned}
+ \tag{GRD.8.e}
+\]">\[
+ \begin{aligned}
+ a^*&amp;=4^{it}e_{21}\varphi^{-it},\\
+ a^*a&amp;=4^{it}e_{21}\sigma_{-t}^\varphi(e_{12})
+       =4^{it}e_{21}\,4^{-it}e_{12}=e_{22}.
+ \end{aligned}
+ \tag{GRD.8.e}
+\]</span>
+Thus <span class="math" data-tex="\(a^*a\)">\(a^*a\)</span> is positive in <span class="math" data-tex="\(M(0)=M\)">\(M(0)=M\)</span>, with norm <span class="math" data-tex="\(1=\|a\|^2\)">\(1=\|a\|^2\)</span>. At <span class="math" data-tex="\(t=s_0\)">\(t=s_0\)</span>, the incorrectly chosen degree-<span class="math" data-tex="\(-s_0\)">\(-s_0\)</span> element <span class="math" data-tex="\(e_{21}\varphi^{-is_0}\)">\(e_{21}\varphi^{-is_0}\)</span> instead produces
+<span class="math math-display" data-tex="\[
+ (e_{21}\varphi^{-is_0})(e_{12}\varphi^{is_0})
+       =-i e_{22},
+ \tag{GRD.8.f}
+\]">\[
+ (e_{21}\varphi^{-is_0})(e_{12}\varphi^{is_0})
+       =-i e_{22},
+ \tag{GRD.8.f}
+\]</span>
+which is not even self-adjoint. The modular correction is therefore required by the adjoint and positivity identities, not merely by a notation convention.</p>
+<p><strong>D. How does one recover the coefficient from a bounded spectral vector?</strong> Suppose <span class="math" data-tex="\(z\in C(M)\)">\(z\in C(M)\)</span> satisfies <span class="math" data-tex="\(\theta_r(z)=e^{-irt}z\)">\(\theta_r(z)=e^{-irt}z\)</span> for every real <span class="math" data-tex="\(r\)">\(r\)</span>. Recover its degree-<span class="math" data-tex="\(t\)">\(t\)</span> coefficient in a faithful <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>-chart, and show that distinct real degrees have zero intersection inside the core.</p>
+<p><strong>Solution.</strong> The inverse power is bounded and unitary, and
+<span class="math math-display" data-tex="\[
+ \theta_r(zh_\varphi^{-it})
+   =(e^{-irt}z)(e^{irt}h_\varphi^{-it})
+   =zh_\varphi^{-it}.
+ \tag{GRD.8.g}
+\]">\[
+ \theta_r(zh_\varphi^{-it})
+   =(e^{-irt}z)(e^{irt}h_\varphi^{-it})
+   =zh_\varphi^{-it}.
+ \tag{GRD.8.g}
+\]</span>
+The full dual fixed-algebra theorem, used in <a href="#grd-1">Section 1</a> and proved in <a href="OA-FLOW-DA.html#da-fixed">DA</a>, puts <span class="math" data-tex="\(x=zh_\varphi^{-it}\)">\(x=zh_\varphi^{-it}\)</span> in the coefficient algebra <span class="math" data-tex="\(M\)">\(M\)</span>. Hence <span class="math" data-tex="\(z=j_t(x\varphi^{it})\)">\(z=j_t(x\varphi^{it})\)</span>, uniquely, and <span class="math" data-tex="\(\|x\|=\|z\|\)">\(\|x\|=\|z\|\)</span>. Using the opposite power would not cancel the phase. If a vector lies in both degrees <span class="math" data-tex="\(s\ne t\)">\(s\ne t\)</span>, then
+<span class="math" data-tex="\((e^{-irs}-e^{-irt})z=0\)">\((e^{-irs}-e^{-irt})z=0\)</span> for every <span class="math" data-tex="\(r\)">\(r\)</span>. Choosing <span class="math" data-tex="\(r=\pi/(s-t)\)">\(r=\pi/(s-t)\)</span> makes the two phases negatives of each other and forces <span class="math" data-tex="\(z=0\)">\(z=0\)</span>. This identifies individual spectral fibers; it does not express every core element as a norm-convergent sum of homogeneous terms.</p>
+<p><strong>E. Does an isomorphism preserve the matrix phase?</strong> Let <span class="math" data-tex="\(S=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)">\(S=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}\)</span>, <span class="math" data-tex="\(\rho(x)=SxS^*\)">\(\rho(x)=SxS^*\)</span>, and <span class="math" data-tex="\(\varphi'=\varphi\circ\rho^{-1}\)">\(\varphi'=\varphi\circ\rho^{-1}\)</span>. Transport the two elements <span class="math" data-tex="\(a,b\)">\(a,b\)</span> of (GRD.7.l) and verify their product and the adjoint of <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><strong>Solution.</strong> The transported density is <span class="math" data-tex="\(D'=SDS^*=\operatorname{diag}(1,4)\)">\(D'=SDS^*=\operatorname{diag}(1,4)\)</span>, so <span class="math" data-tex="\(\varphi'(x)=\operatorname{Tr}(D'x)\)">\(\varphi'(x)=\operatorname{Tr}(D'x)\)</span>. The fiber map sends
+<span class="math math-display" data-tex="\[
+ a\longmapsto e_{21}(\varphi')^{is_0},\qquad
+ b\longmapsto e_{12}(\varphi')^{is_0}.
+ \tag{GRD.8.h}
+\]">\[
+ a\longmapsto e_{21}(\varphi')^{is_0},\qquad
+ b\longmapsto e_{12}(\varphi')^{is_0}.
+ \tag{GRD.8.h}
+\]</span>
+Now <span class="math" data-tex="\(\sigma_{s_0}^{\varphi'}(e_{12})=-i e_{12}\)">\(\sigma_{s_0}^{\varphi'}(e_{12})=-i e_{12}\)</span>, and therefore their product is
+<span class="math math-display" data-tex="\[
+ -i e_{22}(\varphi')^{2is_0},
+ \tag{GRD.8.i}
+\]">\[
+ -i e_{22}(\varphi')^{2is_0},
+ \tag{GRD.8.i}
+\]</span>
+the image of <span class="math" data-tex="\(-i e_{11}\varphi^{2is_0}\)">\(-i e_{11}\varphi^{2is_0}\)</span>. Also
+<span class="math" data-tex="\(\sigma_{-s_0}^{\varphi'}(e_{12})=i e_{12}\)">\(\sigma_{-s_0}^{\varphi'}(e_{12})=i e_{12}\)</span>, so the adjoint of the first transported element is <span class="math" data-tex="\(i e_{12}(\varphi')^{-is_0}\)">\(i e_{12}(\varphi')^{-is_0}\)</span>, the image of <span class="math" data-tex="\(a^*\)">\(a^*\)</span>. These computations verify the degree and order in the normal-isomorphism functor of <a href="#grd-6">Section 6</a>; its core counterpart is the actual normal map in <a href="OA-FLOW-CORE.html#core-8">CORE8</a>. They change neither the derivative direction nor the negative spectral sign.</p>
+<p><span id="OA-FLOW.GRD.READING"></span><a id="grd-reading"></a></p>
+<h2 id="reading-and-the-next-constructions">Reading and the next constructions</h2>
+<p>Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, Lemmas XII.6.1–6.3, Remark XII.6.4 and Definition XII.6.5, printed pages 438–440, develop the weight-labelled graded spaces and their topology. Our construction starts with the full dual-action spectral subspaces of the already constructed core, and uses them to determine the quotient, multiplication and adjoint. The complete bounded-topology and Mackey arguments appear above with their actual earlier predual foundations.</p>
+<p>There is a coordinate-direction issue in the printed opening relation on page 438: it writes <span class="math" data-tex="\(x=y(D\varphi:D\psi)_t\)">\(x=y(D\varphi:D\psi)_t\)</span>, whereas its following coefficient chart and addition calculation use the opposite placement. The core transition and (GRD.2.d) give <span class="math" data-tex="\(y=x(D\varphi:D\psi)_t\)">\(y=x(D\varphi:D\psi)_t\)</span>. The explicit scalar-weight test in Section 7 distinguishes them, so the direction here is fixed throughout by the actual core operators.</p>
+<p>The norm-topology obstruction is calculated explicitly, including a coordinate witnessing norm distance two and the positive-functional proof of strong-star convergence. This does not obstruct the Mackey topology constructed above. Building the Banach algebra of integrable sections and its intrinsic Hilbert-space representations requires further integration and representation proofs; the individual Banach fibers are not those Hilbert fibers.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-SCW.html">Previous lesson</a><a href="OA-FLOW-SEC.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-GRD.md">Lesson source</a></nav></main></body></html>

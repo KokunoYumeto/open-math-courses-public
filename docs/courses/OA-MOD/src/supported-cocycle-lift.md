@@ -1,6 +1,6 @@
 # Recovering a supported weight from a partial cocycle
 
-*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. This lesson is a draft awaiting course-level mathematical review.*
+*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0.*
 
 A faithful weight gives a unitary Connes cocycle. When the weight to be recovered has support smaller than \(1\), the comparison instead has a moving initial projection and a fixed final projection. The trick is to fill the complementary corner, reconstruct a faithful weight from the resulting unitary cocycle, and then restrict back to the desired support. The antecedent is Takesaki, *Theory of Operator Algebras II*, Chapter VIII, §3, Theorem 3.21. Here “n.s.f.” means normal, semifinite and faithful.
 

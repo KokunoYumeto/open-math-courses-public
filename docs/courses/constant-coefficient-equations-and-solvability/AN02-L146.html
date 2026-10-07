@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Fourier transforms of analytic functionals on a real convex carrier</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L145.html">Previous lesson</a> · <a href="#1-what-the-theorem-says">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#5-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="analytic-functionals-small-exponential-losses-and-a-diagonal-construction">Analytic functionals: small exponential losses and a diagonal construction</h1>
+<p><em>Original learner exposition, examples and solutions by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>A compact distribution can differentiate a test only a finite number of times. An analytic functional can use infinitely many derivatives, because a holomorphic test has Cauchy bounds on every disk around its carrier. This lesson explains the Fourier growth that permits that extra freedom, and how a function satisfying the growth bounds reconstructs one well-defined analytic functional.</p>
+<p>Read the <a href="#complete-proof">complete original proof</a> alongside this guide. The actual preceding inputs are <a href="AN02-L145.html#extension-growth-corollary">L145 E2, holomorphic extension with a growth bound</a>, and <a href="AN02-L122.html#2-the-compact-support-growth-criterion">L122 CF2.1, the compact-distribution Fourier theorem</a>. The extension is used in complex dimension <span class="math" data-index="0" data-tex="\(2n\)">\(2n\)</span>; the distribution theorem is used in real dimension <span class="math" data-index="1" data-tex="\(2n\)">\(2n\)</span>. These are different roles for the same numeral.</p>
+<h2 id="1-what-the-theorem-says">1. What the theorem says</h2>
+<p>Let <span class="math" data-index="2" data-tex="\(K\)">\(K\)</span> be a nonempty compact convex subset of <span class="math" data-index="3" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, regarded as a real subset of <span class="math" data-index="4" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. It can have empty interior. Its support function is</p>
+<span class="math math-display" id="eq-L146.1" data-index="5" data-tex="\[
+h_K(\eta)=\max_{a\in K}a\cdot\eta.
+\tag{L146.1}
+\]">\[
+h_K(\eta)=\max_{a\in K}a\cdot\eta.
+\tag{L146.1}
+\]</span>
+<p>An analytic functional carried by <span class="math" data-index="6" data-tex="\(K\)">\(K\)</span> is initially a complex-linear map on <strong>entire holomorphic tests</strong>, with a separate bound for every complex neighborhood <span class="math" data-index="7" data-tex="\(\Omega\)">\(\Omega\)</span> of <span class="math" data-index="8" data-tex="\(K\)">\(K\)</span>:</p>
+<span class="math math-display" id="eq-L146.2" data-index="9" data-tex="\[
+|u(h)|\leq C_\Omega\sup_\Omega|h|.
+\tag{L146.2}
+\]">\[
+|u(h)|\leq C_\Omega\sup_\Omega|h|.
+\tag{L146.2}
+\]</span>
+<p>Its transform uses the bilinear dot product and no conjugate:</p>
+<span class="math math-display" id="eq-L146.3" data-index="10" data-tex="\[
+\widehat u(\zeta)=u(e^{-iz\cdot\zeta}).
+\tag{L146.3}
+\]">\[
+\widehat u(\zeta)=u(e^{-iz\cdot\zeta}).
+\tag{L146.3}
+\]</span>
+<p><a href="#analytic-functional-fourier-theorem">Theorem AF1</a> says that these transforms are exactly the entire functions for which</p>
+<span class="math math-display" id="eq-L146.4" data-index="11" data-tex="\[
+\forall\varepsilon&gt;0\ \exists C_\varepsilon&lt;\infty:
+\quad |F(\zeta)|\leq C_\varepsilon
+e^{h_K(\operatorname{Im}\zeta)+\varepsilon|\zeta|}.
+\tag{L146.4}
+\]">\[
+\forall\varepsilon&gt;0\ \exists C_\varepsilon&lt;\infty:
+\quad |F(\zeta)|\leq C_\varepsilon
+e^{h_K(\operatorname{Im}\zeta)+\varepsilon|\zeta|}.
+\tag{L146.4}
+\]</span>
+<p>The order of the quantifiers matters. The constant may become very large when the allowed loss becomes small. Every positive loss must work. On real frequencies the support term is zero, so the condition allows subexponential growth that exceeds every polynomial.</p>
+<p>In contrast, the compact-distribution theorem asks for some fixed polynomial degree:</p>
+<span class="math math-display" id="eq-L146.5" data-index="12" data-tex="\[
+|F(\zeta)|\leq C(1+|\zeta|)^N
+e^{h_K(\operatorname{Im}\zeta)}.
+\tag{L146.5}
+\]">\[
+|F(\zeta)|\leq C(1+|\zeta|)^N
+e^{h_K(\operatorname{Im}\zeta)}.
+\tag{L146.5}
+\]</span>
+<p>Any bound (L146.5) implies (L146.4), by absorbing a polynomial into each small exponential with a loss-dependent constant. The converse fails, as Worked example 3 proves.</p>
+<h2 id="2-the-construction-with-its-coordinates-visible">2. The construction, with its coordinates visible</h2>
+<p>Write <span class="math" data-index="13" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>, and enlarge the real carrier by a closed Euclidean ball in its complex neighborhood:</p>
+<span class="math math-display" id="eq-L146.6" data-index="14" data-tex="\[
+L_\varepsilon=(K\times\{0\})+
+\varepsilon\overline B_{\mathbb R^{2n}}(0,1).
+\tag{L146.6}
+\]">\[
+L_\varepsilon=(K\times\{0\})+
+\varepsilon\overline B_{\mathbb R^{2n}}(0,1).
+\tag{L146.6}
+\]</span>
+<p>Its support function in the two real blocks is</p>
+<span class="math math-display" id="eq-L146.7" data-index="15" data-tex="\[
+h_{L_\varepsilon}(\eta_1,\eta_2)
+=h_K(\eta_1)+\varepsilon\sqrt{|\eta_1|^2+|\eta_2|^2}.
+\tag{L146.7}
+\]">\[
+h_{L_\varepsilon}(\eta_1,\eta_2)
+=h_K(\eta_1)+\varepsilon\sqrt{|\eta_1|^2+|\eta_2|^2}.
+\tag{L146.7}
+\]</span>
+<p>Make this support function a weight on the imaginary coordinates of <span class="math" data-index="16" data-tex="\(\mathbb C^{2n}\)">\(\mathbb C^{2n}\)</span>. Convexity gives the PSH circle inequality, and compactness of <span class="math" data-index="17" data-tex="\(K\)">\(K\)</span> gives a global Lipschitz bound. The entire function we want to extend is prescribed on the complex graph</p>
+<span class="math math-display" id="eq-L146.8" data-index="18" data-tex="\[
+\zeta\longmapsto(\zeta,i\zeta),\qquad
+\zeta=\xi+i\eta\longmapsto(\xi,\eta,-\eta,\xi).
+\tag{L146.8}
+\]">\[
+\zeta\longmapsto(\zeta,i\zeta),\qquad
+\zeta=\xi+i\eta\longmapsto(\xi,\eta,-\eta,\xi).
+\tag{L146.8}
+\]</span>
+<p>The imaginary block of the graph is <span class="math" data-index="19" data-tex="\((\eta,\xi)\)">\((\eta,\xi)\)</span>. Therefore the weight on the graph is exactly <span class="math" data-index="20" data-tex="\(h_K(\eta)+\varepsilon|\zeta|\)">\(h_K(\eta)+\varepsilon|\zeta|\)</span>, the assumed exponent of (L146.4). L145 E2 extends <span class="math" data-index="21" data-tex="\(F\)">\(F\)</span> to an entire <span class="math" data-index="22" data-tex="\(G_\varepsilon\)">\(G_\varepsilon\)</span> in the bigger complex space with a polynomial times that support-function bound. L122 CF2.1 then returns a distribution <span class="math" data-index="23" data-tex="\(T_\varepsilon\)">\(T_\varepsilon\)</span> supported in the actual real <span class="math" data-index="24" data-tex="\(2n\)">\(2n\)</span>-dimensional set <span class="math" data-index="25" data-tex="\(L_\varepsilon\)">\(L_\varepsilon\)</span>.</p>
+<p>The transform identity on the graph is</p>
+<span class="math math-display" id="eq-L146.9" data-index="26" data-tex="\[
+T_\varepsilon(e^{-i(x\cdot\zeta+y\cdot i\zeta)})
+=T_\varepsilon(e^{-i(x+iy)\cdot\zeta})=F(\zeta).
+\tag{L146.9}
+\]">\[
+T_\varepsilon(e^{-i(x\cdot\zeta+y\cdot i\zeta)})
+=T_\varepsilon(e^{-i(x+iy)\cdot\zeta})=F(\zeta).
+\tag{L146.9}
+\]</span>
+<p>All representatives consequently have the same holomorphic polynomial moments. The global Taylor polynomials of an entire test converge with the finite number of derivatives required by either distribution, so their actions agree on every entire test. This is the compatibility argument that lets us define one functional <span class="math" data-index="27" data-tex="\(u\)">\(u\)</span>, rather than an unrelated functional for each <span class="math" data-index="28" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>For a given neighborhood <span class="math" data-index="29" data-tex="\(\Omega\)">\(\Omega\)</span> of <span class="math" data-index="30" data-tex="\(K\)">\(K\)</span>, choose a sufficiently small <span class="math" data-index="31" data-tex="\(L_\varepsilon\)">\(L_\varepsilon\)</span> inside it. Insert a cutoff there and bound the finite derivatives of the test by Cauchy's formula on polydiscs still inside <span class="math" data-index="32" data-tex="\(\Omega\)">\(\Omega\)</span>. That gives (L146.2). Every step, including the cutoff estimate and uniqueness, is written in AF2–AF7.</p>
+<figure><img class="course-figure" width="2040" height="1054" src="reproduce/L146/figures/complex-carrier-and-diagonal.png" alt="The exact complex carrier thickening and diagonal frequency coordinates" /><figcaption class="native"><a href="reproduce/L146/figures/complex-carrier-and-diagonal.png">Open full-size PNG</a> · <a href="reproduce/L146/figures/complex-carrier-and-diagonal.svg">Open SVG</a></figcaption></figure>
+<p>The graph has four real coordinates when <span class="math" data-index="33" data-tex="\(n=1\)">\(n=1\)</span>. The right panel displays its parameter plane and states all four coordinates; it does not depict an unlabeled spatial projection. The closed thickening on the left is where the auxiliary distribution is supported, not the asserted support of a real one-dimensional distribution.</p>
+<h2 id="3-four-worked-examples">3. Four worked examples</h2>
+<h3 id="worked-example-1-a-finite-jet-at-a-translated-real-point">Worked example 1. A finite jet at a translated real point</h3>
+<p>Fix <span class="math" data-index="34" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span> and define</p>
+<span class="math math-display" id="eq-L146.10" data-index="35" data-tex="\[
+u(h)=\sum_{j=0}^M c_j h^{(j)}(a).
+\tag{L146.10}
+\]">\[
+u(h)=\sum_{j=0}^M c_j h^{(j)}(a).
+\tag{L146.10}
+\]</span>
+<p>Choose a closed disk of radius <span class="math" data-index="36" data-tex="\(r\)">\(r\)</span> centered at <span class="math" data-index="37" data-tex="\(a\)">\(a\)</span> inside any specified neighborhood. Cauchy's bound gives a valid neighborhood constant <span class="math" data-index="38" data-tex="\(\sum_j|c_j|j!r^{-j}\)">\(\sum_j|c_j|j!r^{-j}\)</span>, so this functional is carried by <span class="math" data-index="39" data-tex="\(\{a\}\)">\(\{a\}\)</span>. Its Fourier transform and support function are</p>
+<span class="math math-display" id="eq-L146.11" data-index="40" data-tex="\[
+F(\zeta)=e^{-ia\zeta}\sum_{j=0}^M c_j(-i\zeta)^j,
+\qquad h_{\{a\}}(\eta)=a\eta.
+\tag{L146.11}
+\]">\[
+F(\zeta)=e^{-ia\zeta}\sum_{j=0}^M c_j(-i\zeta)^j,
+\qquad h_{\{a\}}(\eta)=a\eta.
+\tag{L146.11}
+\]</span>
+<p>For each <span class="math" data-index="41" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and <span class="math" data-index="42" data-tex="\(t\geq0\)">\(t\geq0\)</span>, the <span class="math" data-index="43" data-tex="\(j\)">\(j\)</span>-th term of the exponential series proves <span class="math" data-index="44" data-tex="\(t^j\leq j!\varepsilon^{-j}e^{\varepsilon t}\)">\(t^j\leq j!\varepsilon^{-j}e^{\varepsilon t}\)</span>. Thus (L146.4) holds with <span class="math" data-index="45" data-tex="\(C_\varepsilon=\sum_j|c_j|j!\varepsilon^{-j}\)">\(C_\varepsilon=\sum_j|c_j|j!\varepsilon^{-j}\)</span>. This example also satisfies the polynomial criterion (L146.5).</p>
+<p>For instance <span class="math" data-index="46" data-tex="\(u(h)=h&#x27;(-2)\)">\(u(h)=h&#x27;(-2)\)</span> has <span class="math" data-index="47" data-tex="\(F(\zeta)=-i\zeta e^{2i\zeta}\)">\(F(\zeta)=-i\zeta e^{2i\zeta}\)</span>. Its exponential support term is <span class="math" data-index="48" data-tex="\(-2\operatorname{Im}\zeta\)">\(-2\operatorname{Im}\zeta\)</span>, which must retain its negative sign when the imaginary part is positive. A distribution representing (L146.10) on real tests is <span class="math" data-index="49" data-tex="\(\sum_j(-1)^j c_j\partial_x^j\delta_a\)">\(\sum_j(-1)^j c_j\partial_x^j\delta_a\)</span>, since a distributional derivative contributes the transpose sign.</p>
+<h3 id="worked-example-2-cancellation-of-total-mass-does-not-give-the-zero-functional">Worked example 2. Cancellation of total mass does not give the zero functional</h3>
+<p>For <span class="math" data-index="50" data-tex="\(K=[-1,1]\)">\(K=[-1,1]\)</span>, take <span class="math" data-index="51" data-tex="\(u(h)=h(1)-h(-1)\)">\(u(h)=h(1)-h(-1)\)</span>. Then</p>
+<span class="math math-display" id="eq-L146.12" data-index="52" data-tex="\[
+h_K(\eta)=|\eta|,\quad
+F(\zeta)=e^{-i\zeta}-e^{i\zeta}=-2i\sin\zeta,
+\quad |F(\zeta)|\leq2e^{|\operatorname{Im}\zeta|}.
+\tag{L146.12}
+\]">\[
+h_K(\eta)=|\eta|,\quad
+F(\zeta)=e^{-i\zeta}-e^{i\zeta}=-2i\sin\zeta,
+\quad |F(\zeta)|\leq2e^{|\operatorname{Im}\zeta|}.
+\tag{L146.12}
+\]</span>
+<p>The neighborhood bound has constant 2. Its total mass <span class="math" data-index="53" data-tex="\(u(1)\)">\(u(1)\)</span> and transform <span class="math" data-index="54" data-tex="\(F(0)\)">\(F(0)\)</span> are zero, but <span class="math" data-index="55" data-tex="\(u(z)=2\)">\(u(z)=2\)</span> and <span class="math" data-index="56" data-tex="\(F&#x27;(0)=-2i\)">\(F&#x27;(0)=-2i\)</span>. Checking just the value at the origin cannot establish uniqueness. The uniqueness proof uses all derivatives, hence all holomorphic moments, and then the Taylor expansion of every entire test.</p>
+<h3 id="worked-example-3-infinitely-many-derivatives-at-zero">Worked example 3. Infinitely many derivatives at zero</h3>
+<p>Define</p>
+<span class="math math-display" id="eq-L146.13" data-index="57" data-tex="\[
+u_0(h)=\sum_{m=0}^\infty\frac{i^m h^{(m)}(0)}{(m!)^2},
+\qquad F_0(\zeta)=\sum_{m=0}^\infty\frac{\zeta^m}{(m!)^2}.
+\tag{L146.13}
+\]">\[
+u_0(h)=\sum_{m=0}^\infty\frac{i^m h^{(m)}(0)}{(m!)^2},
+\qquad F_0(\zeta)=\sum_{m=0}^\infty\frac{\zeta^m}{(m!)^2}.
+\tag{L146.13}
+\]</span>
+<p>On a closed disk of radius <span class="math" data-index="58" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, Cauchy's derivative estimates make the series absolutely convergent and give the explicit constant <span class="math" data-index="59" data-tex="\(e^{1/r}\)">\(e^{1/r}\)</span> for (L146.2). For each positive loss,</p>
+<span class="math math-display" id="eq-L146.14" data-index="60" data-tex="\[
+|F_0(\zeta)|\leq e^{2\sqrt{|\zeta|}}
+\leq e^{1/\varepsilon}e^{\varepsilon|\zeta|}.
+\tag{L146.14}
+\]">\[
+|F_0(\zeta)|\leq e^{2\sqrt{|\zeta|}}
+\leq e^{1/\varepsilon}e^{\varepsilon|\zeta|}.
+\tag{L146.14}
+\]</span>
+<p>The first bound follows by taking the diagonal subseries of the positive double series <span class="math" data-index="61" data-tex="\(e^{\sqrt{|\zeta|}}e^{\sqrt{|\zeta|}}\)">\(e^{\sqrt{|\zeta|}}e^{\sqrt{|\zeta|}}\)</span>. The second is the nonnegative-square inequality in AF9. These are actual bounds, not claimed exact values of <span class="math" data-index="62" data-tex="\(F_0\)">\(F_0\)</span>.</p>
+<p>For the test <span class="math" data-index="63" data-tex="\(z^3\)">\(z^3\)</span>, only one derivative contributes, giving <span class="math" data-index="64" data-tex="\(u_0(z^3)=-i/6\)">\(u_0(z^3)=-i/6\)</span>. Every monomial has a nonzero corresponding moment. AF9 proves that a distribution supported at a point only sees some finite jet, so no point-supported distribution gives this functional. Equally, on the positive real axis, choosing a single term of degree <span class="math" data-index="65" data-tex="\(m&gt;N\)">\(m&gt;N\)</span> proves that <span class="math" data-index="66" data-tex="\(F_0\)">\(F_0\)</span> eventually exceeds every proposed polynomial bound of degree <span class="math" data-index="67" data-tex="\(N\)">\(N\)</span>.</p>
+<figure><img class="course-figure" width="1955" height="1105" src="reproduce/L146/figures/infinite-order-point-growth.png" alt="The infinite-order example and its explicitly labeled growth bounds" /><figcaption class="native"><a href="reproduce/L146/figures/infinite-order-point-growth.png">Open full-size PNG</a> · <a href="reproduce/L146/figures/infinite-order-point-growth.svg">Open SVG</a></figcaption></figure>
+<p>This is why requiring a compact distribution on the real carrier would wrongly remove an actual part of the theorem. The auxiliary distributions on arbitrarily small complex thickenings provide the correct construction.</p>
+<h3 id="worked-example-4-check-every-block-of-the-diagonal">Worked example 4. Check every block of the diagonal</h3>
+<p>Take <span class="math" data-index="68" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-index="69" data-tex="\(K=[-1,1]\)">\(K=[-1,1]\)</span> and <span class="math" data-index="70" data-tex="\(\varepsilon=1/2\)">\(\varepsilon=1/2\)</span>. The bigger-space weight is</p>
+<span class="math math-display" id="eq-L146.15" data-index="71" data-tex="\[
+\Phi(\zeta_1,\zeta_2)
+=|\operatorname{Im}\zeta_1|+
+\tfrac12\sqrt{(\operatorname{Im}\zeta_1)^2+
+                    (\operatorname{Im}\zeta_2)^2}.
+\tag{L146.15}
+\]">\[
+\Phi(\zeta_1,\zeta_2)
+=|\operatorname{Im}\zeta_1|+
+\tfrac12\sqrt{(\operatorname{Im}\zeta_1)^2+
+                    (\operatorname{Im}\zeta_2)^2}.
+\tag{L146.15}
+\]</span>
+<p>For <span class="math" data-index="72" data-tex="\(\zeta=3+4i\)">\(\zeta=3+4i\)</span>, its graph point is <span class="math" data-index="73" data-tex="\((3+4i,-4+3i)\)">\((3+4i,-4+3i)\)</span>, with real chart <span class="math" data-index="74" data-tex="\((3,4,-4,3)\)">\((3,4,-4,3)\)</span>. The imaginary block is <span class="math" data-index="75" data-tex="\((4,3)\)">\((4,3)\)</span>, so <span class="math" data-index="76" data-tex="\(\Phi=4+5/2=13/2\)">\(\Phi=4+5/2=13/2\)</span>. The graph norm is <span class="math" data-index="77" data-tex="\(5\sqrt2\)">\(5\sqrt2\)</span>, and its chart volume factor is 2. The weight's global Lipschitz bound is <span class="math" data-index="78" data-tex="\(R_K+\varepsilon=3/2\)">\(R_K+\varepsilon=3/2\)</span>. The growth extension gives the polynomial exponent <span class="math" data-index="79" data-tex="\(4n+1=5\)">\(4n+1=5\)</span>.</p>
+<p>The value <span class="math" data-index="80" data-tex="\(13/2\)">\(13/2\)</span> is the exponent in an upper bound, not the logarithm of a constructed function's modulus. The distribution returned by the compact Fourier theorem is in real dimension 2, supported in the closed stadium of radius <span class="math" data-index="81" data-tex="\(1/2\)">\(1/2\)</span> around <span class="math" data-index="82" data-tex="\([-1,1]\)">\([-1,1]\)</span>. The entire extension is in complex dimension 2, or real dimension 4. Confusing these spaces loses both the diagonal identity and the support geometry.</p>
+<h2 id="4-ten-graded-exercises">4. Ten graded exercises</h2>
+<ol>
+<li><strong>Foundational: signed support functions.</strong> For <span class="math" data-index="83" data-tex="\(K=\{(2,-1)\}+r\overline B_{\mathbb R^2}(0,1)\)">\(K=\{(2,-1)\}+r\overline B_{\mathbb R^2}(0,1)\)</span>, <span class="math" data-index="84" data-tex="\(r\geq0\)">\(r\geq0\)</span>, compute <span class="math" data-index="85" data-tex="\(h_K\)">\(h_K\)</span>. Then give <span class="math" data-index="86" data-tex="\(h_{L_\varepsilon}\)">\(h_{L_\varepsilon}\)</span> with its two real frequency blocks.</li>
+<li><strong>Foundational: metric and dimension.</strong> In <span class="math" data-index="87" data-tex="\(n=2\)">\(n=2\)</span>, compute the norm and induced volume factor of the graph chart, its complex codimension, the real dimension of the carrier thickening, and the polynomial exponent furnished by E2.</li>
+<li><strong>Foundational: moments and signs.</strong> Derive <span class="math" data-index="88" data-tex="\(\partial_1\partial_2 F(0)\)">\(\partial_1\partial_2 F(0)\)</span> in terms of <span class="math" data-index="89" data-tex="\(u(z_1z_2)\)">\(u(z_1z_2)\)</span>. Compute the transform of <span class="math" data-index="90" data-tex="\(h\mapsto h&#x27;(a)\)">\(h\mapsto h&#x27;(a)\)</span> and the real distributional derivative representing it.</li>
+<li><strong>Intermediate: the quantifier failure.</strong> For <span class="math" data-index="91" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span>, show that <span class="math" data-index="92" data-tex="\(F(\zeta)=e^{-2i\zeta}\)">\(F(\zeta)=e^{-2i\zeta}\)</span> satisfies a bound with loss 2 but fails the theorem's condition. Also disprove that evaluation at 2 is carried by zero using only polynomial tests and a neighborhood of zero.</li>
+<li><strong>Intermediate: compatibility.</strong> Suppose two compact distributions on <span class="math" data-index="93" data-tex="\(\mathbb R^{2n}\)">\(\mathbb R^{2n}\)</span> have identical holomorphic polynomial moments. Prove that they agree on entire holomorphic tests. State the convergence needed beyond convergence of values.</li>
+<li><strong>Intermediate: local holomorphic tests.</strong> Let <span class="math" data-index="94" data-tex="\(L=[-1,1]\subset\mathbb C\)">\(L=[-1,1]\subset\mathbb C\)</span>, and let <span class="math" data-index="95" data-tex="\(V\)">\(V\)</span> be supported in <span class="math" data-index="96" data-tex="\(L\)">\(L\)</span> with all holomorphic polynomial moments zero. Use the dilation <span class="math" data-index="97" data-tex="\(h_\lambda(z)=1/(\lambda z-2)\)">\(h_\lambda(z)=1/(\lambda z-2)\)</span> to prove <span class="math" data-index="98" data-tex="\(V(1/(z-2))=0\)">\(V(1/(z-2))=0\)</span>. Describe a parameter domain containing the interval from 0 to 1.</li>
+<li><strong>Intermediate: the infinite-order series.</strong> Compute <span class="math" data-index="99" data-tex="\(u_0(z^m)\)">\(u_0(z^m)\)</span>, prove (L146.14), and show that the constants in an arbitrarily small exponential bound cannot remain bounded as the loss tends to zero.</li>
+<li><strong>Advanced: the point-support obstruction.</strong> Prove that a distribution supported at a point and of order <span class="math" data-index="100" data-tex="\(M\)">\(M\)</span> sees only the Taylor jet through degree <span class="math" data-index="101" data-tex="\(M\)">\(M\)</span>, using a shrinking cutoff. Apply it to <span class="math" data-index="102" data-tex="\(u_0\)">\(u_0\)</span>, without citing a point-support classification theorem.</li>
+<li><strong>Advanced: why the carrier is real.</strong> Show that evaluation at <span class="math" data-index="103" data-tex="\(3i/2\)">\(3i/2\)</span> is carried by that complex point, but its transform cannot satisfy the theorem for any compact real carrier.</li>
+<li><strong>Advanced: an explicit neighborhood constant.</strong> In AF7 suppose the distribution estimate has constant <span class="math" data-index="104" data-tex="\(B\)">\(B\)</span> and order <span class="math" data-index="105" data-tex="\(M\)">\(M\)</span>, every cutoff derivative through order <span class="math" data-index="106" data-tex="\(M\)">\(M\)</span> is bounded by <span class="math" data-index="107" data-tex="\(A\)">\(A\)</span>, and the admissible Cauchy polydisc radius is <span class="math" data-index="108" data-tex="\(0&lt;r\leq1\)">\(0&lt;r\leq1\)</span>. Give a valid explicit <span class="math" data-index="109" data-tex="\(C_\Omega\)">\(C_\Omega\)</span> and justify every factor.</li>
+</ol>
+<h2 id="5-complete-solutions">5. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>Maximization over the translated ball separates the translation and the ball. The latter has support <span class="math" data-index="110" data-tex="\(r|\eta|\)">\(r|\eta|\)</span>, attained in the direction of <span class="math" data-index="111" data-tex="\(\eta\)">\(\eta\)</span> when it is nonzero. Therefore</p>
+<span class="math math-display" id="eq-L146.16" data-index="112" data-tex="\[
+h_K(\eta)=2\eta_1-\eta_2+r|\eta|.
+\tag{L146.16}
+\]">\[
+h_K(\eta)=2\eta_1-\eta_2+r|\eta|.
+\tag{L146.16}
+\]</span>
+<p>For blocks <span class="math" data-index="113" data-tex="\(\eta^{(1)},\eta^{(2)}\in\mathbb R^2\)">\(\eta^{(1)},\eta^{(2)}\in\mathbb R^2\)</span>, adding the closed complex-neighborhood ball gives</p>
+<span class="math math-display" id="eq-L146.17" data-index="114" data-tex="\[
+h_{L_\varepsilon}(\eta^{(1)},\eta^{(2)})
+=2\eta^{(1)}_1-\eta^{(1)}_2+r|\eta^{(1)}|
++\varepsilon\sqrt{|\eta^{(1)}|^2+|\eta^{(2)}|^2}.
+\tag{L146.17}
+\]">\[
+h_{L_\varepsilon}(\eta^{(1)},\eta^{(2)})
+=2\eta^{(1)}_1-\eta^{(1)}_2+r|\eta^{(1)}|
++\varepsilon\sqrt{|\eta^{(1)}|^2+|\eta^{(2)}|^2}.
+\tag{L146.17}
+\]</span>
+<p>The translation term retains its sign. The real ball radius <span class="math" data-index="115" data-tex="\(r\)">\(r\)</span> and the complex thickening radius <span class="math" data-index="116" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> have different roles.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>For any <span class="math" data-index="117" data-tex="\(\zeta\in\mathbb C^2\)">\(\zeta\in\mathbb C^2\)</span>, the graph norm is <span class="math" data-index="118" data-tex="\(\sqrt2|\zeta|\)">\(\sqrt2|\zeta|\)</span>. The real graph chart has dimension 4 and metric matrix <span class="math" data-index="119" data-tex="\(2I_4\)">\(2I_4\)</span>, so its volume factor is <span class="math" data-index="120" data-tex="\(\sqrt{\det(2I_4)}=4\)">\(\sqrt{\det(2I_4)}=4\)</span>. It has complex dimension 2 inside complex dimension 4, hence complex codimension 2. The carrier thickening lies in <span class="math" data-index="121" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>. E2 gives exponent <span class="math" data-index="122" data-tex="\(4+2\cdot2+1=9\)">\(4+2\cdot2+1=9\)</span>. The extension's ambient space has real dimension 8.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>Differentiation of the negative exponential gives</p>
+<span class="math math-display" id="eq-L146.18" data-index="123" data-tex="\[
+\partial_1\partial_2F(0)=(-i)^2u(z_1z_2)=-u(z_1z_2).
+\tag{L146.18}
+\]">\[
+\partial_1\partial_2F(0)=(-i)^2u(z_1z_2)=-u(z_1z_2).
+\tag{L146.18}
+\]</span>
+<p>In one variable, the derivative test has transform <span class="math" data-index="124" data-tex="\(-i\zeta e^{-ia\zeta}\)">\(-i\zeta e^{-ia\zeta}\)</span>. The distribution <span class="math" data-index="125" data-tex="\(-\partial_x\delta_a\)">\(-\partial_x\delta_a\)</span> acts on <span class="math" data-index="126" data-tex="\(h\)">\(h\)</span> as <span class="math" data-index="127" data-tex="\(h&#x27;(a)\)">\(h&#x27;(a)\)</span>, because <span class="math" data-index="128" data-tex="\((\partial_x\delta_a)(h)=-h&#x27;(a)\)">\((\partial_x\delta_a)(h)=-h&#x27;(a)\)</span>. This pairing is complex-linear; inserting a conjugation would change the convention.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>We have <span class="math" data-index="129" data-tex="\(|F(\zeta)|=e^{2\operatorname{Im}\zeta}\leq e^{2|\zeta|}\)">\(|F(\zeta)|=e^{2\operatorname{Im}\zeta}\leq e^{2|\zeta|}\)</span>, so the single-loss estimate holds with constant 1. Along <span class="math" data-index="130" data-tex="\(\zeta=it\)">\(\zeta=it\)</span>, <span class="math" data-index="131" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the required estimate with a loss <span class="math" data-index="132" data-tex="\(\varepsilon&lt;2\)">\(\varepsilon&lt;2\)</span> would give <span class="math" data-index="133" data-tex="\(e^{(2-\varepsilon)t}\leq C_\varepsilon\)">\(e^{(2-\varepsilon)t}\leq C_\varepsilon\)</span>, impossible as <span class="math" data-index="134" data-tex="\(t\to\infty\)">\(t\to\infty\)</span>.</p>
+<p>For the neighborhood <span class="math" data-index="135" data-tex="\(\Omega=\{|z|&lt;1\}\)">\(\Omega=\{|z|&lt;1\}\)</span>, take <span class="math" data-index="136" data-tex="\(h_N(z)=(z/2)^N\)">\(h_N(z)=(z/2)^N\)</span>. Evaluation at 2 is 1, while <span class="math" data-index="137" data-tex="\(\sup_\Omega|h_N|=2^{-N}\)">\(\sup_\Omega|h_N|=2^{-N}\)</span>. No fixed neighborhood constant can satisfy <span class="math" data-index="138" data-tex="\(1\leq C_\Omega2^{-N}\)">\(1\leq C_\Omega2^{-N}\)</span> for all <span class="math" data-index="139" data-tex="\(N\)">\(N\)</span>. Thus the original definition fails as well.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>Their difference has compact support and a finite distribution order <span class="math" data-index="140" data-tex="\(M\)">\(M\)</span> on a compact neighborhood of that support. Expand an entire test in its global Taylor series on a larger polydisc. Cauchy coefficient bounds imply uniform convergence of the polynomials and their holomorphic derivatives through order <span class="math" data-index="141" data-tex="\(M\)">\(M\)</span> on a smaller polydisc containing the support neighborhood. For a holomorphic function each real derivative is a holomorphic derivative multiplied by a power of <span class="math" data-index="142" data-tex="\(i\)">\(i\)</span>. Insert a fixed cutoff and apply the finite-order estimate to the difference between the test and each Taylor polynomial. The pairing difference tends to zero. Since it is zero on each polynomial, it is zero on the entire test. Uniform convergence of values alone would not justify applying an order-<span class="math" data-index="143" data-tex="\(M\)">\(M\)</span> distribution.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>For <span class="math" data-index="144" data-tex="\(z\in[-1,1]\)">\(z\in[-1,1]\)</span>, the denominator can vanish only if <span class="math" data-index="145" data-tex="\(\lambda\)">\(\lambda\)</span> is real and <span class="math" data-index="146" data-tex="\(|\lambda|\geq2\)">\(|\lambda|\geq2\)</span>. Thus use</p>
+<span class="math math-display" id="eq-L146.19" data-index="147" data-tex="\[
+\Lambda=\mathbb C\setminus
+\bigl(( -\infty,-2]\cup[2,\infty)\bigr).
+\tag{L146.19}
+\]">\[
+\Lambda=\mathbb C\setminus
+\bigl(( -\infty,-2]\cup[2,\infty)\bigr).
+\tag{L146.19}
+\]</span>
+<p>It is open and contains <span class="math" data-index="148" data-tex="\([0,1]\)">\([0,1]\)</span>. Near any fixed parameter in it, compactness supplies a common neighborhood of <span class="math" data-index="149" data-tex="\(L\)">\(L\)</span> with denominator bounded away from zero, so pairing with <span class="math" data-index="150" data-tex="\(V\)">\(V\)</span> is holomorphic in the parameter by its finite-order estimate. For small <span class="math" data-index="151" data-tex="\(\lambda\)">\(\lambda\)</span>, the series</p>
+<span class="math math-display" id="eq-L146.20" data-index="152" data-tex="\[
+\frac1{\lambda z-2}
+=-\frac12\sum_{m=0}^\infty(\lambda z/2)^m
+\tag{L146.20}
+\]">\[
+\frac1{\lambda z-2}
+=-\frac12\sum_{m=0}^\infty(\lambda z/2)^m
+\tag{L146.20}
+\]</span>
+<p>converges uniformly with the required derivatives near <span class="math" data-index="153" data-tex="\(L\)">\(L\)</span>. Each term pairs to zero. The parameter identity principle on the component containing <span class="math" data-index="154" data-tex="\([0,1]\)">\([0,1]\)</span> gives zero at <span class="math" data-index="155" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, which is the requested assertion. This is the concrete dilation argument of AF8.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>Only the <span class="math" data-index="156" data-tex="\(m\)">\(m\)</span>-th derivative of <span class="math" data-index="157" data-tex="\(z^m\)">\(z^m\)</span> is nonzero at zero, and it equals <span class="math" data-index="158" data-tex="\(m!\)">\(m!\)</span>. Thus <span class="math" data-index="159" data-tex="\(u_0(z^m)=i^m/m!\)">\(u_0(z^m)=i^m/m!\)</span>. Absolute values of the transform series are bounded by its series in <span class="math" data-index="160" data-tex="\(|\zeta|\)">\(|\zeta|\)</span>. Put <span class="math" data-index="161" data-tex="\(s=\sqrt{|\zeta|}\)">\(s=\sqrt{|\zeta|}\)</span>; the diagonal terms of <span class="math" data-index="162" data-tex="\(e^se^s\)">\(e^se^s\)</span> are exactly <span class="math" data-index="163" data-tex="\(s^{2m}/(m!)^2\)">\(s^{2m}/(m!)^2\)</span>. This gives the first bound in (L146.14). Expanding <span class="math" data-index="164" data-tex="\((\sqrt{\varepsilon|\zeta|}-1/\sqrt\varepsilon)^2\geq0\)">\((\sqrt{\varepsilon|\zeta|}-1/\sqrt\varepsilon)^2\geq0\)</span> gives the second.</p>
+<p>If constants stayed bounded by <span class="math" data-index="165" data-tex="\(C\)">\(C\)</span> along losses tending to zero, the bound at each fixed positive real <span class="math" data-index="166" data-tex="\(x\)">\(x\)</span> would imply <span class="math" data-index="167" data-tex="\(F_0(x)\leq C\)">\(F_0(x)\leq C\)</span>. But the first two terms give <span class="math" data-index="168" data-tex="\(F_0(x)\geq1+x\)">\(F_0(x)\geq1+x\)</span>. This contradicts a bound independent of <span class="math" data-index="169" data-tex="\(x\)">\(x\)</span>. The explicit available constant <span class="math" data-index="170" data-tex="\(e^{1/\varepsilon}\)">\(e^{1/\varepsilon}\)</span> is allowed to diverge; no optimality for it is asserted.</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>Subtract the Taylor polynomial of total degree <span class="math" data-index="171" data-tex="\(M\)">\(M\)</span> from a smooth test to obtain <span class="math" data-index="172" data-tex="\(R\)">\(R\)</span>. On a ball of radius proportional to <span class="math" data-index="173" data-tex="\(t\)">\(t\)</span>, its derivative of order <span class="math" data-index="174" data-tex="\(j\leq M\)">\(j\leq M\)</span> is bounded by <span class="math" data-index="175" data-tex="\(C_jt^{M+1-j}\)">\(C_jt^{M+1-j}\)</span>. A cutoff <span class="math" data-index="176" data-tex="\(\chi(x/t)\)">\(\chi(x/t)\)</span> has derivatives of order <span class="math" data-index="177" data-tex="\(k\)">\(k\)</span> bounded by a constant times <span class="math" data-index="178" data-tex="\(t^{-k}\)">\(t^{-k}\)</span>. In a Leibniz term of total order <span class="math" data-index="179" data-tex="\(|\beta|\leq M\)">\(|\beta|\leq M\)</span>, the product is therefore bounded by a constant times <span class="math" data-index="180" data-tex="\(t^{M+1-|\beta|}\)">\(t^{M+1-|\beta|}\)</span>, at most a constant times <span class="math" data-index="181" data-tex="\(t\)">\(t\)</span> for <span class="math" data-index="182" data-tex="\(0&lt;t\leq1\)">\(0&lt;t\leq1\)</span>. The cutoff equals one near the support point, so the distributional action on <span class="math" data-index="183" data-tex="\(R\)">\(R\)</span> equals its action on the cutoff remainder. The finite-order estimate makes that action tend to zero. Hence it is zero, and the distribution depends only on the jet through order <span class="math" data-index="184" data-tex="\(M\)">\(M\)</span>. For <span class="math" data-index="185" data-tex="\(m&gt;M\)">\(m&gt;M\)</span>, the test <span class="math" data-index="186" data-tex="\(z^m\)">\(z^m\)</span> has that jet zero; the nonzero value <span class="math" data-index="187" data-tex="\(i^m/m!\)">\(i^m/m!\)</span> of <span class="math" data-index="188" data-tex="\(u_0\)">\(u_0\)</span> contradicts representation by such a distribution.</p>
+<h3 id="solution-9">Solution 9</h3>
+<p>Evaluation at <span class="math" data-index="189" data-tex="\(3i/2\)">\(3i/2\)</span> is bounded by the supremum on any neighborhood of that point, with constant 1. Its negative-exponential transform is <span class="math" data-index="190" data-tex="\(e^{3\zeta/2}\)">\(e^{3\zeta/2}\)</span>. For any compact real <span class="math" data-index="191" data-tex="\(K\)">\(K\)</span>, its support function is zero at imaginary frequency zero. Along <span class="math" data-index="192" data-tex="\(\zeta=x&gt;0\)">\(\zeta=x&gt;0\)</span>, a bound (L146.4) with any loss <span class="math" data-index="193" data-tex="\(\varepsilon&lt;3/2\)">\(\varepsilon&lt;3/2\)</span> would require <span class="math" data-index="194" data-tex="\(e^{(3/2-\varepsilon)x}\leq C_\varepsilon\)">\(e^{(3/2-\varepsilon)x}\leq C_\varepsilon\)</span>, a contradiction. A complex point carrier does not fall under the real-carrier theorem.</p>
+<h3 id="solution-10">Solution 10</h3>
+<p>A valid constant is</p>
+<span class="math math-display" id="eq-L146.21" data-index="195" data-tex="\[
+C_\Omega=B A\,2^M M!\,r^{-M}.
+\tag{L146.21}
+\]">\[
+C_\Omega=B A\,2^M M!\,r^{-M}.
+\tag{L146.21}
+\]</span>
+<p>In the Leibniz rule for a real derivative of total order <span class="math" data-index="196" data-tex="\(|\beta|\leq M\)">\(|\beta|\leq M\)</span>, the sum of the binomial coefficients is <span class="math" data-index="197" data-tex="\(2^{|\beta|}\leq2^M\)">\(2^{|\beta|}\leq2^M\)</span>. Each cutoff derivative is at most <span class="math" data-index="198" data-tex="\(A\)">\(A\)</span>. Each real derivative of the holomorphic test reduces, up to a unit complex factor, to a holomorphic multiindex derivative of total order at most <span class="math" data-index="199" data-tex="\(M\)">\(M\)</span>. Its Cauchy factorial is at most <span class="math" data-index="200" data-tex="\(M!\)">\(M!\)</span>, and <span class="math" data-index="201" data-tex="\(r^{-|\alpha|}\leq r^{-M}\)">\(r^{-|\alpha|}\leq r^{-M}\)</span> because <span class="math" data-index="202" data-tex="\(r\leq1\)">\(r\leq1\)</span>. Multiply these bounds and the distribution constant <span class="math" data-index="203" data-tex="\(B\)">\(B\)</span>. The same argument applies to a test holomorphic only on the chosen neighborhood. A coarse finite constant suffices for the carrier definition; it need not be optimal.</p>
+<h2 id="6-what-is-established-and-what-comes-later">6. What is established and what comes later</h2>
+<p>The full proof establishes the exact every-loss Fourier criterion, uniqueness on entire tests, compatibility of auxiliary distributions, and a uniquely bounded action on holomorphic germs for this convex real carrier. It also gives an explicit infinite-order point functional. It does not assert that all analytic functionals are compact real distributions, nor a theorem for arbitrary complex carriers. The later weighted Fourier estimates and remaining course targets require their own proofs.</p>
+<p>Human scholarly sources: Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.1, Theorem 15.1.5, printed p. 276; and volume I, Definition 9.1.1 and the local-test discussion following Proposition 9.1.2, printed pp. 326–328. Original derivations and scope comparisons are in the formal companion. Native protected pages are excluded from the original distributable packet.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p><em>Original proof exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>An analytic functional can have infinite differential order at a point. Its Fourier transform therefore need not have polynomial growth on real frequencies. The exact replacement is an arbitrarily small exponential loss, with a different constant allowed for each loss. We prove both directions of this criterion, the uniqueness statement, and the compatibility of the complex-neighborhood distribution representatives used in the construction.</p>
+<p>Our convention is a complex-linear pairing and the negative-exponential forward transform. The dot product in a complex exponential is bilinear, without conjugation. Lengths on complex spaces are Euclidean lengths on their underlying real spaces.</p>
+<p>The two substantive earlier inputs are <a href="AN02-L145.html#extension-growth-corollary">L145, E2, the proved holomorphic extension growth corollary</a>, and <a href="AN02-L122.html#2-the-compact-support-growth-criterion">L122, Theorem CF2.1, the full compact-distribution Fourier criterion</a>. The latter includes both growth-to-support and uniqueness, with the same forward-transform convention. Its use below is in real dimension <span class="math" data-index="204" data-tex="\(2n\)">\(2n\)</span>, not <span class="math" data-index="205" data-tex="\(n\)">\(n\)</span>. The product Cauchy formula and uniform joint power series are proved in <a href="AN02-L145.html#distributional-holomorphic-regularity">L145 E3</a>. Smooth cutoffs and finite-order bounds for compact distributions are the written distribution foundations used in CF2.1. Every new carrier, compatibility and uniqueness step is given here.</p>
+<p><a id="analytic-functional-definition"></a></p>
+<h2 id="af1-the-definition-and-the-exact-theorem">AF1. The definition and the exact theorem</h2>
+<p>Let <span class="math" data-index="206" data-tex="\(n\geq1\)">\(n\geq1\)</span> and let <span class="math" data-index="207" data-tex="\(K\subset\mathbb R^n\subset\mathbb C^n\)">\(K\subset\mathbb R^n\subset\mathbb C^n\)</span> be a nonempty compact convex set. It may be a point or lie in a proper affine subspace. Define its support function and radius by</p>
+<span class="math math-display" id="eq-AF1" data-index="208" data-tex="\[
+h_K(\eta)=\max_{a\in K}a\cdot\eta,
+\qquad R_K=\max_{a\in K}|a|.
+\tag{AF1}
+\]">\[
+h_K(\eta)=\max_{a\in K}a\cdot\eta,
+\qquad R_K=\max_{a\in K}|a|.
+\tag{AF1}
+\]</span>
+<p>Write <span class="math" data-index="209" data-tex="\(\mathcal A(\mathbb C^n)\)">\(\mathcal A(\mathbb C^n)\)</span> for the entire holomorphic functions. An <strong>analytic functional carried by <span class="math" data-index="210" data-tex="\(K\)">\(K\)</span></strong> is a complex-linear map <span class="math" data-index="211" data-tex="\(u:\mathcal A(\mathbb C^n)\to\mathbb C\)">\(u:\mathcal A(\mathbb C^n)\to\mathbb C\)</span> such that, for every open complex neighborhood <span class="math" data-index="212" data-tex="\(\Omega\supset K\)">\(\Omega\supset K\)</span>, a finite constant <span class="math" data-index="213" data-tex="\(C_\Omega\)">\(C_\Omega\)</span> satisfies</p>
+<span class="math math-display" id="eq-AF2" data-index="214" data-tex="\[
+|u(h)|\leq C_\Omega\sup_{z\in\Omega}|h(z)|
+\quad(h\in\mathcal A(\mathbb C^n)).
+\tag{AF2}
+\]">\[
+|u(h)|\leq C_\Omega\sup_{z\in\Omega}|h(z)|
+\quad(h\in\mathcal A(\mathbb C^n)).
+\tag{AF2}
+\]</span>
+<p>This space is denoted <span class="math" data-index="215" data-tex="\(\mathcal A&#x27;(K)\)">\(\mathcal A&#x27;(K)\)</span>. It suffices to check bounded neighborhoods: each neighborhood of the compact set contains a smaller bounded one. A supremum that is infinite gives no restriction, but all sufficiently small bounded neighborhoods must still have their own finite constants. We initially define <span class="math" data-index="216" data-tex="\(u\)">\(u\)</span> on entire tests, exactly as in the cited definition. An action on holomorphic germs will be a proved consequence for the convex real carrier, not an additional assumption.</p>
+<p><a id="analytic-functional-fourier-theorem"></a></p>
+<p><strong>Theorem AF1.</strong> The map</p>
+<span class="math math-display" id="eq-AF3" data-index="217" data-tex="\[
+\widehat u(\zeta)=u\bigl(z\mapsto e^{-iz\cdot\zeta}\bigr)
+\tag{AF3}
+\]">\[
+\widehat u(\zeta)=u\bigl(z\mapsto e^{-iz\cdot\zeta}\bigr)
+\tag{AF3}
+\]</span>
+<p>is a bijection between <span class="math" data-index="218" data-tex="\(\mathcal A&#x27;(K)\)">\(\mathcal A&#x27;(K)\)</span> and the entire functions <span class="math" data-index="219" data-tex="\(F\)">\(F\)</span> satisfying</p>
+<span class="math math-display" id="eq-AF4" data-index="220" data-tex="\[
+\text{for every }\varepsilon&gt;0\text{ there is }C_\varepsilon&lt;\infty:
+\quad
+|F(\zeta)|\leq C_\varepsilon
+\exp\bigl(h_K(\operatorname{Im}\zeta)+\varepsilon|\zeta|\bigr)
+\quad(\zeta\in\mathbb C^n).
+\tag{AF4}
+\]">\[
+\text{for every }\varepsilon&gt;0\text{ there is }C_\varepsilon&lt;\infty:
+\quad
+|F(\zeta)|\leq C_\varepsilon
+\exp\bigl(h_K(\operatorname{Im}\zeta)+\varepsilon|\zeta|\bigr)
+\quad(\zeta\in\mathbb C^n).
+\tag{AF4}
+\]</span>
+<p>The constant may depend on <span class="math" data-index="221" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. In particular, (AF4) asserts neither polynomial growth on the real axis nor one constant uniform as <span class="math" data-index="222" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. The support function can be negative; we keep its exact sign.</p>
+<h2 id="af2-entire-dependence-and-all-holomorphic-moments">AF2. Entire dependence and all holomorphic moments</h2>
+<p>Fix a bounded neighborhood <span class="math" data-index="223" data-tex="\(\Omega\)">\(\Omega\)</span> of <span class="math" data-index="224" data-tex="\(K\)">\(K\)</span>. On <span class="math" data-index="225" data-tex="\(\Omega\)">\(\Omega\)</span>, the exponential has, for <span class="math" data-index="226" data-tex="\(\zeta=\zeta_0+w\)">\(\zeta=\zeta_0+w\)</span>, the series</p>
+<span class="math math-display" id="eq-AF5" data-index="227" data-tex="\[
+e^{-iz\cdot(\zeta_0+w)}
+=e^{-iz\cdot\zeta_0}
+\sum_{\alpha\in\mathbb N^n}
+\frac{(-iz)^\alpha w^\alpha}{\alpha!}.
+\tag{AF5}
+\]">\[
+e^{-iz\cdot(\zeta_0+w)}
+=e^{-iz\cdot\zeta_0}
+\sum_{\alpha\in\mathbb N^n}
+\frac{(-iz)^\alpha w^\alpha}{\alpha!}.
+\tag{AF5}
+\]</span>
+<p>It is absolutely and uniformly convergent for <span class="math" data-index="228" data-tex="\(z\in\Omega\)">\(z\in\Omega\)</span> and <span class="math" data-index="229" data-tex="\(w\)">\(w\)</span> in any fixed bounded polydisc: bound each coordinate of <span class="math" data-index="230" data-tex="\(z\)">\(z\)</span> by a fixed number and multiply the ordinary exponential majorants. The same applies to any fixed parameter derivative. The bound (AF2) permits applying <span class="math" data-index="231" data-tex="\(u\)">\(u\)</span> to the partial sums and passing to the limit, uniformly on the parameter polydisc. Consequently <span class="math" data-index="232" data-tex="\(\widehat u\)">\(\widehat u\)</span> has a convergent joint power series about every <span class="math" data-index="233" data-tex="\(\zeta_0\)">\(\zeta_0\)</span>, and</p>
+<span class="math math-display" id="eq-AF6" data-index="234" data-tex="\[
+\partial_\zeta^\alpha\widehat u(0)
+=(-i)^{|\alpha|}u(z^\alpha).
+\tag{AF6}
+\]">\[
+\partial_\zeta^\alpha\widehat u(0)
+=(-i)^{|\alpha|}u(z^\alpha).
+\tag{AF6}
+\]</span>
+<p>Thus the Fourier transform determines every holomorphic polynomial moment. If <span class="math" data-index="235" data-tex="\(\widehat u=0\)">\(\widehat u=0\)</span>, all these moments vanish. For any entire <span class="math" data-index="236" data-tex="\(h\)">\(h\)</span>, its Taylor polynomials about the origin converge uniformly on the bounded set <span class="math" data-index="237" data-tex="\(\Omega\)">\(\Omega\)</span>, by the product Cauchy expansion on a larger polydisc. Applying (AF2) shows <span class="math" data-index="238" data-tex="\(u(h)=0\)">\(u(h)=0\)</span>. This proves injectivity on the actual entire-test space.</p>
+<h2 id="af3-the-precise-forward-growth-bound">AF3. The precise forward growth bound</h2>
+<p>For <span class="math" data-index="239" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, take</p>
+<span class="math math-display" id="eq-AF7" data-index="240" data-tex="\[
+\Omega_\varepsilon=\{z:\operatorname{dist}(z,K)&lt;\varepsilon\}.
+\tag{AF7}
+\]">\[
+\Omega_\varepsilon=\{z:\operatorname{dist}(z,K)&lt;\varepsilon\}.
+\tag{AF7}
+\]</span>
+<p>It is a bounded complex neighborhood. Write <span class="math" data-index="241" data-tex="\(\zeta=\xi+i\eta\)">\(\zeta=\xi+i\eta\)</span>. For <span class="math" data-index="242" data-tex="\(z\in\Omega_\varepsilon\)">\(z\in\Omega_\varepsilon\)</span>, choose <span class="math" data-index="243" data-tex="\(a\in K\)">\(a\in K\)</span> and write <span class="math" data-index="244" data-tex="\(z=a+p+iq\)">\(z=a+p+iq\)</span> with <span class="math" data-index="245" data-tex="\(\sqrt{|p|^2+|q|^2}&lt;\varepsilon\)">\(\sqrt{|p|^2+|q|^2}&lt;\varepsilon\)</span>. Direct multiplication gives</p>
+<span class="math math-display" id="eq-AF8" data-index="246" data-tex="\[
+\operatorname{Re}(-iz\cdot\zeta)
+=a\cdot\eta+p\cdot\eta+q\cdot\xi
+\leq h_K(\eta)+\varepsilon\sqrt{|\xi|^2+|\eta|^2}.
+\tag{AF8}
+\]">\[
+\operatorname{Re}(-iz\cdot\zeta)
+=a\cdot\eta+p\cdot\eta+q\cdot\xi
+\leq h_K(\eta)+\varepsilon\sqrt{|\xi|^2+|\eta|^2}.
+\tag{AF8}
+\]</span>
+<p>Use (AF2) with this neighborhood and the exponential test to obtain (AF4). No derivative bound or distribution order is assumed.</p>
+<p><a id="complex-thickening-and-diagonal"></a></p>
+<h2 id="af4-a-convex-complex-thickening-and-its-diagonal-weight">AF4. A convex complex thickening and its diagonal weight</h2>
+<p>Now let <span class="math" data-index="247" data-tex="\(F\)">\(F\)</span> be an entire function satisfying (AF4). Fix <span class="math" data-index="248" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Identify <span class="math" data-index="249" data-tex="\(z=x+iy\in\mathbb C^n\)">\(z=x+iy\in\mathbb C^n\)</span> with <span class="math" data-index="250" data-tex="\((x,y)\in\mathbb R^{2n}\)">\((x,y)\in\mathbb R^{2n}\)</span>, and set</p>
+<span class="math math-display" id="eq-AF9" data-index="251" data-tex="\[
+L_\varepsilon=(K\times\{0\})+
+\varepsilon\overline B_{\mathbb R^{2n}}(0,1).
+\tag{AF9}
+\]">\[
+L_\varepsilon=(K\times\{0\})+
+\varepsilon\overline B_{\mathbb R^{2n}}(0,1).
+\tag{AF9}
+\]</span>
+<p>This is the closed Euclidean <span class="math" data-index="252" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>-neighborhood of the real set <span class="math" data-index="253" data-tex="\(K\)">\(K\)</span> in <span class="math" data-index="254" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. To verify the equality, minimizing distance to <span class="math" data-index="255" data-tex="\(K\)">\(K\)</span> is possible by compactness, and the residual vector then has length at most <span class="math" data-index="256" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. It is nonempty, compact and convex. Maximizing independently over the two summands gives its exact real support function:</p>
+<span class="math math-display" id="eq-AF10" data-index="257" data-tex="\[
+h_{L_\varepsilon}(\eta_1,\eta_2)
+=h_K(\eta_1)+\varepsilon\sqrt{|\eta_1|^2+|\eta_2|^2}.
+\tag{AF10}
+\]">\[
+h_{L_\varepsilon}(\eta_1,\eta_2)
+=h_K(\eta_1)+\varepsilon\sqrt{|\eta_1|^2+|\eta_2|^2}.
+\tag{AF10}
+\]</span>
+<p>On <span class="math" data-index="258" data-tex="\(\mathbb C^{2n}\)">\(\mathbb C^{2n}\)</span>, whose complex coordinate blocks are <span class="math" data-index="259" data-tex="\(Z=(\zeta_1,\zeta_2)\)">\(Z=(\zeta_1,\zeta_2)\)</span>, define</p>
+<span class="math math-display" id="eq-AF11" data-index="260" data-tex="\[
+\Phi_\varepsilon(Z)
+=h_{L_\varepsilon}(\operatorname{Im}\zeta_1,
+                       \operatorname{Im}\zeta_2).
+\tag{AF11}
+\]">\[
+\Phi_\varepsilon(Z)
+=h_{L_\varepsilon}(\operatorname{Im}\zeta_1,
+                       \operatorname{Im}\zeta_2).
+\tag{AF11}
+\]</span>
+<p>It is finite and continuous. It is PSH, with a direct circle proof. At the center of any disk in any complex affine line, choose a maximizer <span class="math" data-index="261" data-tex="\(\ell\in L_\varepsilon\)">\(\ell\in L_\varepsilon\)</span> for the support function. The real linear function <span class="math" data-index="262" data-tex="\(\ell\cdot\operatorname{Im}Z\)">\(\ell\cdot\operatorname{Im}Z\)</span> is harmonic along that line, so its circle average equals its value at the center. On the circle it is at most <span class="math" data-index="263" data-tex="\(\Phi_\varepsilon\)">\(\Phi_\varepsilon\)</span>. This proves the submean inequality at the center. Continuity supplies upper semicontinuity. Equivalently, the weight is a convex function of the imaginary coordinates.</p>
+<p>The inequality <span class="math" data-index="264" data-tex="\(|h_K(\eta)-h_K(\widetilde\eta)|\leq R_K|\eta-\widetilde\eta|\)">\(|h_K(\eta)-h_K(\widetilde\eta)|\leq R_K|\eta-\widetilde\eta|\)</span>, proved by taking the maximizing linear functions in turn, and the triangle inequality for the Euclidean norm give</p>
+<span class="math math-display" id="eq-AF12" data-index="265" data-tex="\[
+|\Phi_\varepsilon(Z)-\Phi_\varepsilon(\widetilde Z)|
+\leq(R_K+\varepsilon)|Z-\widetilde Z|.
+\tag{AF12}
+\]">\[
+|\Phi_\varepsilon(Z)-\Phi_\varepsilon(\widetilde Z)|
+\leq(R_K+\varepsilon)|Z-\widetilde Z|.
+\tag{AF12}
+\]</span>
+<p>Because <span class="math" data-index="266" data-tex="\(R_K+\varepsilon&gt;0\)">\(R_K+\varepsilon&gt;0\)</span>, this is exactly the strict unit-oscillation hypothesis of L145 E2 when <span class="math" data-index="267" data-tex="\(|Z-\widetilde Z|&lt;1\)">\(|Z-\widetilde Z|&lt;1\)</span>.</p>
+<p>The complex linear graph</p>
+<span class="math math-display" id="eq-AF13" data-index="268" data-tex="\[
+W=\{(\zeta,i\zeta):\zeta\in\mathbb C^n\}
+\subset\mathbb C^{2n}
+\tag{AF13}
+\]">\[
+W=\{(\zeta,i\zeta):\zeta\in\mathbb C^n\}
+\subset\mathbb C^{2n}
+\tag{AF13}
+\]</span>
+<p>has complex dimension <span class="math" data-index="269" data-tex="\(n\)">\(n\)</span> and codimension <span class="math" data-index="270" data-tex="\(n\)">\(n\)</span>. For <span class="math" data-index="271" data-tex="\(\zeta=\xi+i\eta\)">\(\zeta=\xi+i\eta\)</span>, its real-coordinate chart is <span class="math" data-index="272" data-tex="\((\xi,\eta,-\eta,\xi)\)">\((\xi,\eta,-\eta,\xi)\)</span>. In particular,</p>
+<span class="math math-display" id="eq-AF14" data-index="273" data-tex="\[
+\operatorname{Im}(\zeta,i\zeta)=(\eta,\xi),\quad
+\Phi_\varepsilon(\zeta,i\zeta)=h_K(\eta)+\varepsilon|\zeta|,
+\quad |(\zeta,i\zeta)|=\sqrt2|\zeta|.
+\tag{AF14}
+\]">\[
+\operatorname{Im}(\zeta,i\zeta)=(\eta,\xi),\quad
+\Phi_\varepsilon(\zeta,i\zeta)=h_K(\eta)+\varepsilon|\zeta|,
+\quad |(\zeta,i\zeta)|=\sqrt2|\zeta|.
+\tag{AF14}
+\]</span>
+<p>The induced real volume in this graph chart is <span class="math" data-index="274" data-tex="\(2^n\,dV(\zeta)\)">\(2^n\,dV(\zeta)\)</span>, since the metric is twice the identity in real dimension <span class="math" data-index="275" data-tex="\(2n\)">\(2n\)</span>. The growth corollary does not require an original square integral in this chart; its pointwise hypothesis is precisely (AF4).</p>
+<h2 id="af5-extension-then-a-distribution-in-real-dimension-twice-as-large">AF5. Extension, then a distribution in real dimension twice as large</h2>
+<p>Apply L145 E2 to the entire function <span class="math" data-index="276" data-tex="\((\zeta,i\zeta)\mapsto F(\zeta)\)">\((\zeta,i\zeta)\mapsto F(\zeta)\)</span> on <span class="math" data-index="277" data-tex="\(W\)">\(W\)</span>, with ambient complex dimension <span class="math" data-index="278" data-tex="\(2n\)">\(2n\)</span>, codimension <span class="math" data-index="279" data-tex="\(n\)">\(n\)</span>, and weight <span class="math" data-index="280" data-tex="\(\Phi_\varepsilon\)">\(\Phi_\varepsilon\)</span>. It supplies an entire <span class="math" data-index="281" data-tex="\(G_\varepsilon\)">\(G_\varepsilon\)</span> with</p>
+<span class="math math-display" id="eq-AF15" data-index="282" data-tex="\[
+G_\varepsilon(\zeta,i\zeta)=F(\zeta),\qquad
+|G_\varepsilon(Z)|\leq A_\varepsilon(1+|Z|)^{4n+1}
+e^{h_{L_\varepsilon}(\operatorname{Im}Z)}.
+\tag{AF15}
+\]">\[
+G_\varepsilon(\zeta,i\zeta)=F(\zeta),\qquad
+|G_\varepsilon(Z)|\leq A_\varepsilon(1+|Z|)^{4n+1}
+e^{h_{L_\varepsilon}(\operatorname{Im}Z)}.
+\tag{AF15}
+\]</span>
+<p>The exponent is the proved choice <span class="math" data-index="283" data-tex="\(2n+2n+1\)">\(2n+2n+1\)</span>; no optimality is claimed. The constant is finite for the fixed <span class="math" data-index="284" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>.</p>
+<p>L122 CF2.1, now in real dimension <span class="math" data-index="285" data-tex="\(2n\)">\(2n\)</span>, gives a compact distribution <span class="math" data-index="286" data-tex="\(T_\varepsilon\)">\(T_\varepsilon\)</span> with</p>
+<span class="math math-display" id="eq-AF16" data-index="287" data-tex="\[
+\operatorname{supp}T_\varepsilon\subset L_\varepsilon,
+\qquad
+G_\varepsilon(\zeta_1,\zeta_2)
+=T_\varepsilon\bigl(e^{-i(x\cdot\zeta_1+y\cdot\zeta_2)}\bigr).
+\tag{AF16}
+\]">\[
+\operatorname{supp}T_\varepsilon\subset L_\varepsilon,
+\qquad
+G_\varepsilon(\zeta_1,\zeta_2)
+=T_\varepsilon\bigl(e^{-i(x\cdot\zeta_1+y\cdot\zeta_2)}\bigr).
+\tag{AF16}
+\]</span>
+<p>A compact distribution acts on a smooth function near its support by inserting a smooth cutoff equal to one there. This value does not depend on the cutoff. Restrict (AF16) to the complex graph. The identity</p>
+<span class="math math-display" id="eq-AF17" data-index="288" data-tex="\[
+-i\bigl(x\cdot\zeta+y\cdot(i\zeta)\bigr)
+=-i(x+iy)\cdot\zeta
+\tag{AF17}
+\]">\[
+-i\bigl(x\cdot\zeta+y\cdot(i\zeta)\bigr)
+=-i(x+iy)\cdot\zeta
+\tag{AF17}
+\]</span>
+<p>proves</p>
+<span class="math math-display" id="eq-AF18" data-index="289" data-tex="\[
+T_\varepsilon\bigl((x,y)\mapsto e^{-i(x+iy)\cdot\zeta}\bigr)
+=F(\zeta).
+\tag{AF18}
+\]">\[
+T_\varepsilon\bigl((x,y)\mapsto e^{-i(x+iy)\cdot\zeta}\bigr)
+=F(\zeta).
+\tag{AF18}
+\]</span>
+<p>There is no assertion that these distributions are carried by <span class="math" data-index="290" data-tex="\(K\)">\(K\)</span> in real <span class="math" data-index="291" data-tex="\(n\)">\(n\)</span>-dimensional distribution theory. Their actual supports lie in complex neighborhoods of <span class="math" data-index="292" data-tex="\(K\)">\(K\)</span>, viewed in real dimension <span class="math" data-index="293" data-tex="\(2n\)">\(2n\)</span>.</p>
+<p><a id="representative-compatibility"></a></p>
+<h2 id="af6-all-the-representatives-give-one-functional-on-entire-tests">AF6. All the representatives give one functional on entire tests</h2>
+<p>Differentiating (AF18) is legitimate in the finite smooth seminorms of a compact distribution, exactly as in CF2.1. Thus for every <span class="math" data-index="294" data-tex="\(\alpha\)">\(\alpha\)</span>,</p>
+<span class="math math-display" id="eq-AF19" data-index="295" data-tex="\[
+T_\varepsilon\bigl((x+iy)^\alpha\bigr)
+=i^{|\alpha|}\partial^\alpha F(0).
+\tag{AF19}
+\]">\[
+T_\varepsilon\bigl((x+iy)^\alpha\bigr)
+=i^{|\alpha|}\partial^\alpha F(0).
+\tag{AF19}
+\]</span>
+<p>If <span class="math" data-index="296" data-tex="\(\varepsilon,\delta&gt;0\)">\(\varepsilon,\delta&gt;0\)</span>, the compact distribution <span class="math" data-index="297" data-tex="\(T_\varepsilon-T_\delta\)">\(T_\varepsilon-T_\delta\)</span> has all these holomorphic moments zero. Let <span class="math" data-index="298" data-tex="\(h\)">\(h\)</span> be entire. Its Taylor polynomials converge to <span class="math" data-index="299" data-tex="\(h(x+iy)\)">\(h(x+iy)\)</span>, together with all real derivatives up to any fixed finite order, uniformly on a fixed compact neighborhood of both supports. Here is the derivative justification: on a slightly larger polydisc, the product Cauchy bounds dominate the series geometrically; differentiating a fixed number of times adds only polynomial factors to the indices, still summable on a smaller polydisc. Moreover <span class="math" data-index="300" data-tex="\(\partial_{x_j}h=\partial_{z_j}h\)">\(\partial_{x_j}h=\partial_{z_j}h\)</span> and <span class="math" data-index="301" data-tex="\(\partial_{y_j}h=i\partial_{z_j}h\)">\(\partial_{y_j}h=i\partial_{z_j}h\)</span>. The finite-order distribution estimate therefore permits passage to the limit. Every Taylor polynomial pairs to zero, so</p>
+<span class="math math-display" id="eq-AF20" data-index="302" data-tex="\[
+T_\varepsilon\bigl(h(x+iy)\bigr)
+=T_\delta\bigl(h(x+iy)\bigr).
+\tag{AF20}
+\]">\[
+T_\varepsilon\bigl(h(x+iy)\bigr)
+=T_\delta\bigl(h(x+iy)\bigr).
+\tag{AF20}
+\]</span>
+<p>This also proves independence of the particular extension <span class="math" data-index="303" data-tex="\(G_\varepsilon\)">\(G_\varepsilon\)</span> selected by E2: any other extension with the same diagonal values has the same holomorphic moments and the same entire-test action. Define</p>
+<span class="math math-display" id="eq-AF21" data-index="304" data-tex="\[
+u(h)=T_\varepsilon\bigl(h(x+iy)\bigr),
+\qquad h\in\mathcal A(\mathbb C^n),
+\tag{AF21}
+\]">\[
+u(h)=T_\varepsilon\bigl(h(x+iy)\bigr),
+\qquad h\in\mathcal A(\mathbb C^n),
+\tag{AF21}
+\]</span>
+<p>using any one positive <span class="math" data-index="305" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. It is one complex-linear functional, independent of every choice just discussed, and (AF18) gives <span class="math" data-index="306" data-tex="\(\widehat u=F\)">\(\widehat u=F\)</span>.</p>
+<h2 id="af7-the-bound-on-every-neighborhood-with-all-derivative-estimates-supplied">AF7. The bound on every neighborhood, with all derivative estimates supplied</h2>
+<p>Let <span class="math" data-index="307" data-tex="\(\Omega\)">\(\Omega\)</span> be any open complex neighborhood of <span class="math" data-index="308" data-tex="\(K\)">\(K\)</span>. Compactness gives <span class="math" data-index="309" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> with <span class="math" data-index="310" data-tex="\(L_\varepsilon\subset\Omega\)">\(L_\varepsilon\subset\Omega\)</span> and a positive gap to its complement. Choose a smooth compactly supported cutoff <span class="math" data-index="311" data-tex="\(\chi\)">\(\chi\)</span> inside <span class="math" data-index="312" data-tex="\(\Omega\)">\(\Omega\)</span>, equal to one near <span class="math" data-index="313" data-tex="\(L_\varepsilon\)">\(L_\varepsilon\)</span>. The finite-order estimate of <span class="math" data-index="314" data-tex="\(T_\varepsilon\)">\(T_\varepsilon\)</span>, on the fixed compact support of <span class="math" data-index="315" data-tex="\(\chi\)">\(\chi\)</span>, gives constants <span class="math" data-index="316" data-tex="\(B\)">\(B\)</span> and an integer <span class="math" data-index="317" data-tex="\(M\)">\(M\)</span> with</p>
+<span class="math math-display" id="eq-AF22" data-index="318" data-tex="\[
+|u(h)|=|T_\varepsilon(\chi h)|
+\leq B\max_{|\beta|\leq M}\sup
+|\partial_{x,y}^\beta(\chi h)|.
+\tag{AF22}
+\]">\[
+|u(h)|=|T_\varepsilon(\chi h)|
+\leq B\max_{|\beta|\leq M}\sup
+|\partial_{x,y}^\beta(\chi h)|.
+\tag{AF22}
+\]</span>
+<p>Choose <span class="math" data-index="319" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> such that every closed coordinate polydisc of radius <span class="math" data-index="320" data-tex="\(r\)">\(r\)</span> centered on <span class="math" data-index="321" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span> lies inside <span class="math" data-index="322" data-tex="\(\Omega\)">\(\Omega\)</span>. Such an <span class="math" data-index="323" data-tex="\(r\)">\(r\)</span> exists by compactness, reducing it by <span class="math" data-index="324" data-tex="\(\sqrt n\)">\(\sqrt n\)</span> when passing from Euclidean distance to a coordinate polydisc. The product Cauchy formula yields</p>
+<span class="math math-display" id="eq-AF23" data-index="325" data-tex="\[
+|\partial_z^\alpha h(z)|
+\leq\alpha!\,r^{-|\alpha|}\sup_\Omega|h|
+\quad(z\in\operatorname{supp}\chi).
+\tag{AF23}
+\]">\[
+|\partial_z^\alpha h(z)|
+\leq\alpha!\,r^{-|\alpha|}\sup_\Omega|h|
+\quad(z\in\operatorname{supp}\chi).
+\tag{AF23}
+\]</span>
+<p>For <span class="math" data-index="326" data-tex="\(\beta=(\beta_x,\beta_y)\)">\(\beta=(\beta_x,\beta_y)\)</span>, the real derivative is <span class="math" data-index="327" data-tex="\(i^{|\beta_y|}\partial_z^{\beta_x+\beta_y}h\)">\(i^{|\beta_y|}\partial_z^{\beta_x+\beta_y}h\)</span>. Apply the finite Leibniz rule in (AF22), bound the fixed derivatives of <span class="math" data-index="328" data-tex="\(\chi\)">\(\chi\)</span>, and use (AF23) for every derivative of <span class="math" data-index="329" data-tex="\(h\)">\(h\)</span> that occurs. Their orders are at most <span class="math" data-index="330" data-tex="\(M\)">\(M\)</span>. This gives a finite <span class="math" data-index="331" data-tex="\(C_\Omega\)">\(C_\Omega\)</span> such that (AF2) holds. If <span class="math" data-index="332" data-tex="\(\sup_\Omega|h|=\infty\)">\(\sup_\Omega|h|=\infty\)</span>, the inequality is automatic; otherwise the preceding argument applies verbatim. We have proved <span class="math" data-index="333" data-tex="\(u\in\mathcal A&#x27;(K)\)">\(u\in\mathcal A&#x27;(K)\)</span>, and AF2 already proved its uniqueness. This completes Theorem AF1. <span class="math" data-index="334" data-tex="\(\square\)">\(\square\)</span></p>
+<figure><img class="course-figure" width="2040" height="1054" src="reproduce/L146/figures/complex-carrier-and-diagonal.png" alt="The complex carrier thickening and the exact diagonal coordinates" /><figcaption class="native"><a href="reproduce/L146/figures/complex-carrier-and-diagonal.png">Open full-size PNG</a> · <a href="reproduce/L146/figures/complex-carrier-and-diagonal.svg">Open SVG</a></figcaption></figure>
+<p>The left diagram is the exact <span class="math" data-index="335" data-tex="\(n=1\)">\(n=1\)</span>, <span class="math" data-index="336" data-tex="\(K=[-1,1]\)">\(K=[-1,1]\)</span>, <span class="math" data-index="337" data-tex="\(\varepsilon=1/2\)">\(\varepsilon=1/2\)</span> carrier in the complex <span class="math" data-index="338" data-tex="\(z=x+iy\)">\(z=x+iy\)</span> plane. The right diagram is the original frequency plane <span class="math" data-index="339" data-tex="\(\zeta=\xi+i\eta\)">\(\zeta=\xi+i\eta\)</span>, with the full four-real-coordinate graph map written explicitly. It is not a spatial projection of that four-dimensional graph. Both panels concern the construction in AF4–AF7.</p>
+<p><a id="holomorphic-germ-action"></a></p>
+<h2 id="af8-the-action-on-holomorphic-germs-proved-for-this-convex-carrier">AF8. The action on holomorphic germs, proved for this convex carrier</h2>
+<p>We give the additional compatibility needed when a test is holomorphic only near <span class="math" data-index="340" data-tex="\(K\)">\(K\)</span>. First prove the following elementary convex-carrier fact.</p>
+<p><strong>Lemma AF8.</strong> Let <span class="math" data-index="341" data-tex="\(L\subset\mathbb C^n\)">\(L\subset\mathbb C^n\)</span> be nonempty compact and convex as a real set. If a compact distribution <span class="math" data-index="342" data-tex="\(V\)">\(V\)</span> on <span class="math" data-index="343" data-tex="\(\mathbb R^{2n}\)">\(\mathbb R^{2n}\)</span>, supported in <span class="math" data-index="344" data-tex="\(L\)">\(L\)</span>, vanishes on all holomorphic polynomials, then it vanishes on every function holomorphic in a neighborhood <span class="math" data-index="345" data-tex="\(D\)">\(D\)</span> of <span class="math" data-index="346" data-tex="\(L\)">\(L\)</span>.</p>
+<p>Choose <span class="math" data-index="347" data-tex="\(a\in L\)">\(a\in L\)</span> and set</p>
+<span class="math math-display" id="eq-AF24" data-index="348" data-tex="\[
+\Lambda=\{\lambda\in\mathbb C:
+a+\lambda(L-a)\subset D\},
+\qquad h_\lambda(z)=h(a+\lambda(z-a)).
+\tag{AF24}
+\]">\[
+\Lambda=\{\lambda\in\mathbb C:
+a+\lambda(L-a)\subset D\},
+\qquad h_\lambda(z)=h(a+\lambda(z-a)).
+\tag{AF24}
+\]</span>
+<p>The set <span class="math" data-index="349" data-tex="\(\Lambda\)">\(\Lambda\)</span> is open: at any of its points, the compact image of <span class="math" data-index="350" data-tex="\(L\)">\(L\)</span> has a positive gap inside <span class="math" data-index="351" data-tex="\(D\)">\(D\)</span>, and multiplication depends continuously on <span class="math" data-index="352" data-tex="\(\lambda\)">\(\lambda\)</span>. Convexity implies <span class="math" data-index="353" data-tex="\([0,1]\subset\Lambda\)">\([0,1]\subset\Lambda\)</span>. For <span class="math" data-index="354" data-tex="\(\lambda\)">\(\lambda\)</span> near a fixed <span class="math" data-index="355" data-tex="\(\lambda_0\in\Lambda\)">\(\lambda_0\in\Lambda\)</span>, the functions <span class="math" data-index="356" data-tex="\(h_\lambda\)">\(h_\lambda\)</span> are defined on a common neighborhood of <span class="math" data-index="357" data-tex="\(L\)">\(L\)</span>. Insert one common cutoff there. Their dependence on <span class="math" data-index="358" data-tex="\(\lambda\)">\(\lambda\)</span> is holomorphic in every finite smooth seminorm: Cauchy expansion in the parameter on a slightly larger parameter disk, and the spatial derivative bounds on a compact neighborhood, give uniform convergence of the series and of its finitely many spatial derivatives. Hence <span class="math" data-index="359" data-tex="\(\lambda\mapsto V(h_\lambda)\)">\(\lambda\mapsto V(h_\lambda)\)</span> is holomorphic near <span class="math" data-index="360" data-tex="\(\lambda_0\)">\(\lambda_0\)</span>.</p>
+<p>For <span class="math" data-index="361" data-tex="\(|\lambda|\)">\(|\lambda|\)</span> small, the Taylor series of <span class="math" data-index="362" data-tex="\(h\)">\(h\)</span> about <span class="math" data-index="363" data-tex="\(a\)">\(a\)</span> converges with the required finite derivatives uniformly near <span class="math" data-index="364" data-tex="\(L\)">\(L\)</span> after the dilation. Its terms are holomorphic polynomials in <span class="math" data-index="365" data-tex="\(z\)">\(z\)</span>, so <span class="math" data-index="366" data-tex="\(V(h_\lambda)=0\)">\(V(h_\lambda)=0\)</span> near zero. The ordinary one-variable identity principle makes it zero on the connected component of <span class="math" data-index="367" data-tex="\(\Lambda\)">\(\Lambda\)</span> containing <span class="math" data-index="368" data-tex="\([0,1]\)">\([0,1]\)</span>. Explicitly, a nonzero power series about a zero has a first nonzero coefficient and factors as a power of the coordinate times a nonvanishing function on a small disk, so that zero is isolated. A limit point of zeros inside the domain must consequently have the zero power series. The set of points with a zero neighborhood is therefore both open and closed in the connected component and is nonempty here. At <span class="math" data-index="369" data-tex="\(\lambda=1\)">\(\lambda=1\)</span>, this gives <span class="math" data-index="370" data-tex="\(V(h)=0\)">\(V(h)=0\)</span>, proving the lemma.</p>
+<p>Now let <span class="math" data-index="371" data-tex="\(h\)">\(h\)</span> be holomorphic in <span class="math" data-index="372" data-tex="\(D\supset K\)">\(D\supset K\)</span>. Choose <span class="math" data-index="373" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> with <span class="math" data-index="374" data-tex="\(L_\varepsilon\subset D\)">\(L_\varepsilon\subset D\)</span> and define <span class="math" data-index="375" data-tex="\(u_D(h)=T_\varepsilon(h(x+iy))\)">\(u_D(h)=T_\varepsilon(h(x+iy))\)</span>. For two admissible radii, both supports lie in the larger of their nested convex thickenings, which is still inside <span class="math" data-index="376" data-tex="\(D\)">\(D\)</span>. Their difference has zero polynomial moments by (AF19). Lemma AF8 proves that both choices have the same action. Different representatives give the same result by the same argument. If two holomorphic functions agree on some neighborhood of <span class="math" data-index="377" data-tex="\(K\)">\(K\)</span>, choose a smaller thickening inside that neighborhood; their values agree. We therefore obtain a linear action on holomorphic germs at <span class="math" data-index="378" data-tex="\(K\)">\(K\)</span>. The Cauchy estimate argument of AF7 applies to local holomorphic functions as well, giving (AF2) on every neighborhood where the representative is defined.</p>
+<p>For completeness, this continuous germ action is unique. If two such actions agree on entire tests, their difference <span class="math" data-index="379" data-tex="\(v\)">\(v\)</span> vanishes on polynomials. For a local <span class="math" data-index="380" data-tex="\(h\)">\(h\)</span>, use (AF24) with <span class="math" data-index="381" data-tex="\(L=K\)">\(L=K\)</span>. Near each parameter value the functions <span class="math" data-index="382" data-tex="\(h_\lambda\)">\(h_\lambda\)</span> are holomorphic on a common neighborhood of <span class="math" data-index="383" data-tex="\(K\)">\(K\)</span>. Choose a smaller bounded neighborhood with closure in it; uniform Cauchy expansion in <span class="math" data-index="384" data-tex="\(\lambda\)">\(\lambda\)</span>, together with the neighborhood bound for <span class="math" data-index="385" data-tex="\(v\)">\(v\)</span>, makes <span class="math" data-index="386" data-tex="\(v(h_\lambda)\)">\(v(h_\lambda)\)</span> holomorphic. For small <span class="math" data-index="387" data-tex="\(\lambda\)">\(\lambda\)</span>, Taylor polynomials about <span class="math" data-index="388" data-tex="\(a\)">\(a\)</span> converge uniformly there, so it is zero. The identity principle along <span class="math" data-index="389" data-tex="\([0,1]\)">\([0,1]\)</span> gives <span class="math" data-index="390" data-tex="\(v(h)=0\)">\(v(h)=0\)</span>. This proves uniqueness without assuming a general approximation theorem for an arbitrary complex carrier. This argument establishes the local-test conclusion for the convex carrier used here; it is not a proof of the more general nonconvex real-carrier approximation proposition.</p>
+<p><a id="infinite-order-point-functional"></a></p>
+<h2 id="af9-an-actual-infinite-order-point-functional">AF9. An actual infinite-order point functional</h2>
+<p>In one complex variable, define</p>
+<span class="math math-display" id="eq-AF25" data-index="391" data-tex="\[
+u_0(h)=\sum_{m=0}^\infty
+\frac{i^m}{(m!)^2}h^{(m)}(0).
+\tag{AF25}
+\]">\[
+u_0(h)=\sum_{m=0}^\infty
+\frac{i^m}{(m!)^2}h^{(m)}(0).
+\tag{AF25}
+\]</span>
+<p>For any neighborhood <span class="math" data-index="392" data-tex="\(\Omega\)">\(\Omega\)</span> of zero, choose <span class="math" data-index="393" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> whose closed disk lies inside <span class="math" data-index="394" data-tex="\(\Omega\)">\(\Omega\)</span>. Cauchy's estimate gives absolute convergence and</p>
+<span class="math math-display" id="eq-AF26" data-index="395" data-tex="\[
+|u_0(h)|\leq\sup_{|z|\leq r}|h(z)|
+\sum_{m=0}^\infty\frac{r^{-m}}{m!}
+=e^{1/r}\sup_{|z|\leq r}|h(z)|.
+\tag{AF26}
+\]">\[
+|u_0(h)|\leq\sup_{|z|\leq r}|h(z)|
+\sum_{m=0}^\infty\frac{r^{-m}}{m!}
+=e^{1/r}\sup_{|z|\leq r}|h(z)|.
+\tag{AF26}
+\]</span>
+<p>Thus <span class="math" data-index="396" data-tex="\(u_0\in\mathcal A&#x27;(\{0\})\)">\(u_0\in\mathcal A&#x27;(\{0\})\)</span>. Its Fourier transform is</p>
+<span class="math math-display" id="eq-AF27" data-index="397" data-tex="\[
+F_0(\zeta)=\sum_{m=0}^\infty\frac{\zeta^m}{(m!)^2}.
+\tag{AF27}
+\]">\[
+F_0(\zeta)=\sum_{m=0}^\infty\frac{\zeta^m}{(m!)^2}.
+\tag{AF27}
+\]</span>
+<p>It is entire by the ratio bound on bounded disks. With <span class="math" data-index="398" data-tex="\(s=\sqrt{|\zeta|}\)">\(s=\sqrt{|\zeta|}\)</span>, the nonnegative double sum <span class="math" data-index="399" data-tex="\(e^s e^s\)">\(e^s e^s\)</span> contains its diagonal subseries, so</p>
+<span class="math math-display" id="eq-AF28" data-index="400" data-tex="\[
+|F_0(\zeta)|\leq e^{2\sqrt{|\zeta|}}
+\leq e^{1/\varepsilon}e^{\varepsilon|\zeta|}
+\quad(\varepsilon&gt;0).
+\tag{AF28}
+\]">\[
+|F_0(\zeta)|\leq e^{2\sqrt{|\zeta|}}
+\leq e^{1/\varepsilon}e^{\varepsilon|\zeta|}
+\quad(\varepsilon&gt;0).
+\tag{AF28}
+\]</span>
+<p>The second inequality is <span class="math" data-index="401" data-tex="\(2\sqrt t\leq\varepsilon t+1/\varepsilon\)">\(2\sqrt t\leq\varepsilon t+1/\varepsilon\)</span>, obtained by expanding <span class="math" data-index="402" data-tex="\((\sqrt{\varepsilon t}-1/\sqrt\varepsilon)^2\geq0\)">\((\sqrt{\varepsilon t}-1/\sqrt\varepsilon)^2\geq0\)</span>.</p>
+<p>It is not the action of a distribution supported at zero. Here is the needed finite-jet argument, without citing a point-support structure theorem. Let <span class="math" data-index="403" data-tex="\(T\)">\(T\)</span> have support <span class="math" data-index="404" data-tex="\(\{0\}\)">\(\{0\}\)</span> and finite order <span class="math" data-index="405" data-tex="\(M\)">\(M\)</span> on a fixed compact neighborhood. For any smooth test, subtract its Taylor polynomial of total degree <span class="math" data-index="406" data-tex="\(M\)">\(M\)</span> at zero to get a remainder <span class="math" data-index="407" data-tex="\(R\)">\(R\)</span>. For a fixed cutoff <span class="math" data-index="408" data-tex="\(\chi\)">\(\chi\)</span> equal to one near zero, set <span class="math" data-index="409" data-tex="\(\chi_t(x)=\chi(x/t)\)">\(\chi_t(x)=\chi(x/t)\)</span>. Taylor's remainder estimate and the Leibniz rule give</p>
+<span class="math math-display" id="eq-AF29" data-index="410" data-tex="\[
+\max_{|\beta|\leq M}\sup
+|\partial^\beta(\chi_tR)|=O(t)
+\quad(t\downarrow0).
+\tag{AF29}
+\]">\[
+\max_{|\beta|\leq M}\sup
+|\partial^\beta(\chi_tR)|=O(t)
+\quad(t\downarrow0).
+\tag{AF29}
+\]</span>
+<p>Indeed a term with total derivative order <span class="math" data-index="411" data-tex="\(|\beta|\)">\(|\beta|\)</span> is bounded by a constant times <span class="math" data-index="412" data-tex="\(t^{M+1-|\beta|}\)">\(t^{M+1-|\beta|}\)</span>. The support property gives <span class="math" data-index="413" data-tex="\(T(R)=T(\chi_tR)\)">\(T(R)=T(\chi_tR)\)</span>, and its finite-order estimate makes this value tend to zero. Hence <span class="math" data-index="414" data-tex="\(T\)">\(T\)</span> depends only on the jet through order <span class="math" data-index="415" data-tex="\(M\)">\(M\)</span>. This proof works in real dimension one or two. But</p>
+<span class="math math-display" id="eq-AF30" data-index="416" data-tex="\[
+u_0(z^m)=\frac{i^m}{m!}\ne0
+\quad\text{for every }m,
+\tag{AF30}
+\]">\[
+u_0(z^m)=\frac{i^m}{m!}\ne0
+\quad\text{for every }m,
+\tag{AF30}
+\]</span>
+<p>whereas <span class="math" data-index="417" data-tex="\(z^m\)">\(z^m\)</span> has zero real jet through order <span class="math" data-index="418" data-tex="\(M\)">\(M\)</span> when <span class="math" data-index="419" data-tex="\(m&gt;M\)">\(m&gt;M\)</span>. No point-supported distribution can represent <span class="math" data-index="420" data-tex="\(u_0\)">\(u_0\)</span>. Consistently, <span class="math" data-index="421" data-tex="\(F_0(x)\)">\(F_0(x)\)</span> is not polynomially bounded for <span class="math" data-index="422" data-tex="\(x&gt;0\)">\(x&gt;0\)</span>: for any proposed degree <span class="math" data-index="423" data-tex="\(N\)">\(N\)</span>, choose an integer <span class="math" data-index="424" data-tex="\(m&gt;N\)">\(m&gt;N\)</span>; the single positive term <span class="math" data-index="425" data-tex="\(x^m/(m!)^2\)">\(x^m/(m!)^2\)</span> exceeds every constant multiple of <span class="math" data-index="426" data-tex="\((1+x)^N\)">\((1+x)^N\)</span> eventually.</p>
+<p>An independent real-integral expression will check the plotted series numerically. With <span class="math" data-index="427" data-tex="\(s=\sqrt x\)">\(s=\sqrt x\)</span>, expand <span class="math" data-index="428" data-tex="\(e^{s e^{it}}e^{s e^{-it}}\)">\(e^{s e^{it}}e^{s e^{-it}}\)</span>; the double series is absolutely uniform in <span class="math" data-index="429" data-tex="\(t\)">\(t\)</span>. Integrating a term around the circle gives zero unless its two indices agree. Therefore</p>
+<span class="math math-display" id="eq-AF31" data-index="430" data-tex="\[
+F_0(x)=\frac1{2\pi}\int_0^{2\pi}e^{2\sqrt x\cos t}\,dt
+\quad(x\geq0).
+\tag{AF31}
+\]">\[
+F_0(x)=\frac1{2\pi}\int_0^{2\pi}e^{2\sqrt x\cos t}\,dt
+\quad(x\geq0).
+\tag{AF31}
+\]</span>
+<p>This identity is not needed for existence of the analytic functional. It supplies a genuinely different calculation for the numerical checks.</p>
+<figure><img class="course-figure" width="1955" height="1105" src="reproduce/L146/figures/infinite-order-point-growth.png" alt="Subexponential growth, with the constants and the exact positive-term obstruction" /><figcaption class="native"><a href="reproduce/L146/figures/infinite-order-point-growth.png">Open full-size PNG</a> · <a href="reproduce/L146/figures/infinite-order-point-growth.svg">Open SVG</a></figcaption></figure>
+<p>The plotted function is the actual convergent positive series (AF27) on positive real frequencies. The curves identified as upper bounds are (AF28). A displayed single-term lower bound is one exact term of the positive series, not an asymptotic approximation. The plot is an illustration; the proofs of arbitrarily small exponential type and failure of every polynomial bound are the exact arguments above.</p>
+<h2 id="af10-quantifiers-translation-and-exclusions">AF10. Quantifiers, translation and exclusions</h2>
+<p>If <span class="math" data-index="431" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>, translating the preceding functional gives</p>
+<span class="math math-display" id="eq-AF32" data-index="432" data-tex="\[
+u_a(h)=\sum_{m=0}^\infty\frac{i^m}{(m!)^2}h^{(m)}(a),
+\qquad \widehat u_a(\zeta)=e^{-ia\zeta}F_0(\zeta),
+\qquad h_{\{a\}}(\eta)=a\eta.
+\tag{AF32}
+\]">\[
+u_a(h)=\sum_{m=0}^\infty\frac{i^m}{(m!)^2}h^{(m)}(a),
+\qquad \widehat u_a(\zeta)=e^{-ia\zeta}F_0(\zeta),
+\qquad h_{\{a\}}(\eta)=a\eta.
+\tag{AF32}
+\]</span>
+<p>The signed support term is retained, including when it is negative. A single exponential-loss estimate would not suffice: for <span class="math" data-index="433" data-tex="\(a\ne0\)">\(a\ne0\)</span>, the function <span class="math" data-index="434" data-tex="\(e^{-ia\zeta}\)">\(e^{-ia\zeta}\)</span> satisfies a bound with <span class="math" data-index="435" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span> and loss <span class="math" data-index="436" data-tex="\(|a|\)">\(|a|\)</span>, but fails (AF4) for <span class="math" data-index="437" data-tex="\(\varepsilon&lt;|a|\)">\(\varepsilon&lt;|a|\)</span>, along <span class="math" data-index="438" data-tex="\(\zeta=it\operatorname{sgn}(a)\)">\(\zeta=it\operatorname{sgn}(a)\)</span>.</p>
+<p>The real-carrier hypothesis matters. Evaluation at a nonreal point <span class="math" data-index="439" data-tex="\(ib\)">\(ib\)</span>, <span class="math" data-index="440" data-tex="\(b\ne0\)">\(b\ne0\)</span>, is an analytic functional with that complex point as a carrier and transform <span class="math" data-index="441" data-tex="\(e^{b\zeta}\)">\(e^{b\zeta}\)</span>. It cannot satisfy (AF4) for any compact real <span class="math" data-index="442" data-tex="\(K\)">\(K\)</span>: along the real frequency ray of the sign of <span class="math" data-index="443" data-tex="\(b\)">\(b\)</span>, <span class="math" data-index="444" data-tex="\(h_K(0)=0\)">\(h_K(0)=0\)</span> and any <span class="math" data-index="445" data-tex="\(\varepsilon&lt;|b|\)">\(\varepsilon&lt;|b|\)</span> gives a contradiction. We have not asserted this theorem for arbitrary complex carriers.</p>
+<p>If a single constant <span class="math" data-index="446" data-tex="\(C\)">\(C\)</span> works for all <span class="math" data-index="447" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> in (AF4), taking <span class="math" data-index="448" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span> at each fixed <span class="math" data-index="449" data-tex="\(\zeta\)">\(\zeta\)</span> gives <span class="math" data-index="450" data-tex="\(|F(\zeta)|\leq C e^{h_K(\operatorname{Im}\zeta)}\)">\(|F(\zeta)|\leq C e^{h_K(\operatorname{Im}\zeta)}\)</span>. CF2.1 then supplies a distribution supported in <span class="math" data-index="451" data-tex="\(K\)">\(K\)</span>. This is a stronger hypothesis than the theorem; neither a common constant nor a real-carrier distribution representative is supplied in general.</p>
+<p>The empty-carrier case is just the zero functional. With the convention that the supremum over the empty neighborhood is zero, its defining bound forces this. The support-function statement above is formulated for nonempty <span class="math" data-index="452" data-tex="\(K\)">\(K\)</span>, so it does not assign a finite support function to the empty set.</p>
+<h2 id="exact-human-source-comparison-and-scope">Exact human-source comparison and scope</h2>
+<p>Theorem AF1 matches Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.1, Theorem 15.1.5, printed p. 276, 1983 edition, second revised printing 1990, reprint 2005. The initial entire-test definition is Hörmander I, Definition 9.1.1, printed p. 326, 1983 edition, second edition 1990, reprint 2003. The distinction between that definition and subsequent local holomorphic tests is visible in I, Proposition 9.1.2 and its following conclusion, printed pp. 327–328. AF8 gives a separate direct proof for the convex carrier needed here, with its stated scope.</p>
+<p>Our proof fills in the joint analyticity, exact graph metric and coordinates, PSH and global oscillation checks, diagonal sign, independence of representatives, every-neighborhood continuity, uniqueness and infinite-order example. It uses actual earlier course proofs of II, Corollary 15.1.4 and I, Theorem 7.3.1 through L145 E2 and L122 CF2.1. Protected native book text and page images are private reading evidence and are absent from the distributable original packet. This proves the stated analytic-functional target, not the remaining Chapter 15 weighted Fourier estimates or the entire course.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/fourier-transforms-of-analytic-functionals-on-a-real-convex-carrier.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L146/analytic-functional-fourier-formal.md" download>analytic-functional-fourier-formal.md</a></li><li><a href="reproduce/L146/analytic-functional-fourier-learner.md" download>analytic-functional-fourier-learner.md</a></li><li><a href="reproduce/L146/make_figures151.py" download>make_figures151.py</a></li><li><a href="reproduce/L146/check_examples151.py" download>check_examples151.py</a></li><li><a href="reproduce/L146/independent-example-checks151.json" download>independent-example-checks151.json</a></li><li><a href="reproduce/L146/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L146/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L146/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L146/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L146/figures/complex-carrier-and-diagonal.png" download>figures/complex-carrier-and-diagonal.png</a></li><li><a href="reproduce/L146/figures/complex-carrier-and-diagonal.svg" download>figures/complex-carrier-and-diagonal.svg</a></li><li><a href="reproduce/L146/figures/infinite-order-point-growth.png" download>figures/infinite-order-point-growth.png</a></li><li><a href="reproduce/L146/figures/infinite-order-point-growth.svg" download>figures/infinite-order-point-growth.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

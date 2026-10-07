@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Proper characteristic classes and the compact index · Constructible and perverse sheaves</title>
-<meta name="description" content="A lesson of the course Constructible and perverse sheaves. Draft, written by AI; English only for now.">
+<meta name="description" content="Properly supported characteristic classes, diagonal evaluation and the compact Euler index, with six worked exercises.">
 <meta name="color-scheme" content="light dark">
 <link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/SH-03/proper-characteristic-classes-and-the-compact-index.html">
 <link rel="stylesheet" href="../../assets/site.css">
@@ -26,14 +26,13 @@
 <main id="main">
 <nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Constructible and perverse sheaves</a> <span aria-hidden="true">›</span> <span>Proper characteristic classes and the compact index</span></nav>
 <aside class="notice" aria-label="About this lesson">
-<p><strong>Written by AI.</strong> Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. New original text is public domain (CC0).</p>
+<p>Worked exercises and mathematical sources accompany the lesson.</p>
 <p class="small">English only for now</p>
 </aside>
-<article class="lesson">
-<h1 id="proper-characteristic-classes-and-the-compact-index">Proper characteristic classes and the compact index</h1>
+<article class="lesson"><h1 id="proper-characteristic-classes-and-the-compact-index">Proper characteristic classes and the compact index</h1>
 <p>The characteristic class of a constructible complex is obtained by evaluating its identity along the diagonal. Proper transport must preserve that entire map. The two closed-support comparisons place the identity inside a graph factorization; product evaluation and internal adjunction then identify its transported endomorphism. The resulting supported trace gives the Euler index when the target is a point.</p>
-<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. New original text is public domain (CC0).</em></p>
-<p>This lesson proves the compact index formula through proper characteristic classes, the global form of the index theorem of M. Kashiwara, <a href="https://www.numdam.org/item/AST_1985__130__193_0/"><em>Index theorem for constructible sheaves</em></a>, Astérisque 130 (1985). Use <a href="../analytic-boundaries-and-constructible-traces/constructible-traces-and-local-euler-indices.html">Constructible traces and local Euler indices</a> for the supported characteristic class and graded point trace, <a href="closed-supports-and-evaluated-proper-transport.html">Closed supports and evaluated proper transport</a> for the closed comparison, evaluated Hom and identity maps, and <a href="../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html">Perfect coefficients on compact fibres</a> for proper constructible finiteness. The product evaluation, exceptional composition and Hom, base change, projection and support-forgetting comparisons are foundational inputs. We prove the index theorem relative to those maps; cotangent characteristic cycles are constructed in the following lessons.</p>
+<p><em>Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.</em></p>
+<p>M. Kashiwara's <a href="https://www.numdam.org/item/AST_1985__130__193_0/"><em>Index theorem for constructible sheaves</em></a>, Astérisque 130 (1985), develops the characteristic-cycle index theorem in §§3–4. Here we prove the compact index through the proper transport of a supported dualizing class, keeping the diagonal evaluation, support maps and coefficient supertrace explicit. The proof follows three objects: the supported endomorphism complex, its image through a graph, and the finite coefficient complex obtained at a point. The <a href="../analytic-boundaries-and-constructible-traces/constructible-traces-and-local-euler-indices.html#the-identity-and-the-evaluated-tensor">diagonal evaluation construction</a> specifies the class we transport. The <a href="closed-supports-and-evaluated-proper-transport.html#a-composite-closed-embedding-keeps-the-ordinary-counit">closed comparison proofs</a> and <a href="closed-supports-and-evaluated-proper-transport.html#the-evaluated-proper-hom-map-has-a-prescribed-tensor-order">evaluated internal adjunction</a> supply its actual maps. We assemble these maps below, construct the transport with its closed support, and calculate the resulting compact index on a finite complex. The <a href="../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html#proper-direct-image-with-perfect-stalks">proper perfect-image proof</a> supplies the required finiteness.</p>
 <h2 id="properness-is-imposed-on-a-closed-support">Properness is imposed on a closed support</h2>
 <p>Let <span class="math" data-tex="$k$">$k$</span> be a commutative field of characteristic zero. Manifolds and maps are real analytic, with the standing finite uniform dimension bounds. Suppose</p>
 <span class="math math-display" data-tex="\[
@@ -45,7 +44,7 @@ f:Y\longrightarrow X,\qquad G\in D^b_{\mathbb R\text{-c}}(k_Y),
 \qquad Z=\operatorname{supp}(G),\qquad f|_Z\text{ proper}.
 \qquad\text{(1)}
 \]</span>
-<p>The support <span class="math" data-tex="$Z$">$Z$</span> is closed, with the convention of the preceding lessons, and is subanalytic. Its image <span class="math" data-tex="$S=f(Z)$">$S=f(Z)$</span> is closed because <span class="math" data-tex="$f|_Z$">$f|_Z$</span> is proper. The proper perfect-image theorem and constructible duality give bounded constructible complexes</p>
+<p>The support <span class="math" data-tex="$Z$">$Z$</span> is closed, with the convention of the preceding lessons, and is subanalytic. Its image <span class="math" data-tex="$S=f(Z)$">$S=f(Z)$</span> is closed because <span class="math" data-tex="$f|_Z$">$f|_Z$</span> is proper. The <a href="../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html#proper-direct-image-with-perfect-stalks">proper perfect-image theorem</a> and <a href="../sheaf-proof-readings/SH03-constructible-costalks-and-verdier-duality.html#the-evaluation-map-is-biduality">constructible Verdier duality</a> give bounded constructible complexes</p>
 <span class="math math-display" data-tex="\[
 P=Rf_!G\simeq Rf_*G,\qquad E=D_YG,\qquad Q=D_XP.
 \qquad\text{(2)}
@@ -64,7 +63,21 @@ d:L_fE\xrightarrow{\pi_{f,E}}S_fE
 \xrightarrow{\sim}R\mathcal Hom(P,\omega_X)=Q.
 \qquad\text{(3)}
 \]</span>
-<p>This is proper duality with its evaluated normalization. It contains the manifold orientation complexes; there is no extra dimension shift to append to (3).</p>
+<p>To specify the map in (3), first curry the pairing</p>
+<span class="math math-display" data-tex="\[
+P\otimes S_fE
+\longrightarrow L_f(G\otimes f^{-1}S_fE)
+\xrightarrow{L_f(1\otimes b_E)}L_f(G\otimes E)
+\xrightarrow{L_f\operatorname{tr}_G}L_f\omega_Y
+\xrightarrow{t_{\omega_X}}\omega_X.
+\]">\[
+P\otimes S_fE
+\longrightarrow L_f(G\otimes f^{-1}S_fE)
+\xrightarrow{L_f(1\otimes b_E)}L_f(G\otimes E)
+\xrightarrow{L_f\operatorname{tr}_G}L_f\omega_Y
+\xrightarrow{t_{\omega_X}}\omega_X.
+\]</span>
+<p>Then precompose the curry with <span class="math" data-tex="$\pi_{f,E}$">$\pi_{f,E}$</span>. The first arrow is inverse projection, and <span class="math" data-tex="$\operatorname{tr}_G$">$\operatorname{tr}_G$</span> contains the graded flip into dual-first evaluation. This is exactly the <a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-INTERNAL">evaluated internal-Hom comparison (EX.20)–(EX.22)</a>. Its first input <span class="math" data-tex="$G$">$G$</span> is bounded and its target <span class="math" data-tex="$\omega_X$">$\omega_X$</span> is bounded below; the finite dimension bound keeps all its functors in the constructed range. Properness on <span class="math" data-tex="$Z$">$Z$</span> makes the precomposition invertible. Thus (3) fixes proper duality as a map. Its orientation complexes are already contained in <span class="math" data-tex="$f^!\omega_X=\omega_Y$">$f^!\omega_X=\omega_Y$</span> and the two dualities, so no further shift is appended.</p>
 <p>For a constructible complex <span class="math" data-tex="$B$">$B$</span> on a manifold <span class="math" data-tex="$W$">$W$</span>, abbreviate the pre-contraction part of its characteristic-class map by</p>
 <span class="math math-display" data-tex="\[
 h_B:R\mathcal Hom(B,B)
@@ -77,7 +90,7 @@ h_B:R\mathcal Hom(B,B)
 \xrightarrow{\beta_{\delta_W}}B\otimes^LD_WB.
 \qquad\text{(4)}
 \]</span>
-<p>Contraction <span class="math" data-tex="$\operatorname{tr}_B:B\otimes D_WB\to\omega_W$">$\operatorname{tr}_B:B\otimes D_WB\to\omega_W$</span> is graded symmetry followed by dual-first evaluation. The identity unit followed by <span class="math" data-tex="$\operatorname{tr}_Bh_B$">$\operatorname{tr}_Bh_B$</span> defines <span class="math" data-tex="$C(B)$">$C(B)$</span> with its closed support.</p>
+<p>Contraction <span class="math" data-tex="$\operatorname{tr}_B:B\otimes D_WB\to\omega_W$">$\operatorname{tr}_B:B\otimes D_WB\to\omega_W$</span> is graded symmetry followed by dual-first evaluation. The identity unit followed by <span class="math" data-tex="$\operatorname{tr}_Bh_B$">$\operatorname{tr}_Bh_B$</span> defines <span class="math" data-tex="$C(B)$">$C(B)$</span> with its closed support. Here <span class="math" data-tex="$\theta_B$">$\theta_B$</span> is the inverse of the evaluated diagonal Hom isomorphism, and <span class="math" data-tex="$\beta_{i,A}=i^{-1}(i_*i^!A\to A)$">$\beta_{i,A}=i^{-1}(i_*i^!A\to A)$</span> is restriction of the exceptional counit. This <a href="closed-supports-and-evaluated-proper-transport.html#name-both-adjunctions-before-composing-their-maps">closed-embedding comparison</a> is fixed by its counit; it need not be invertible. The source <span class="math" data-tex="$R\mathcal Hom(B,B)$">$R\mathcal Hom(B,B)$</span> is supported on <span class="math" data-tex="$\operatorname{supp}(B)$">$\operatorname{supp}(B)$</span>, which gives the unique supported lift used in the definition.</p>
 <h2 id="product-maps-provide-the-middle-comparison">Product maps provide the middle comparison</h2>
 <p>Put <span class="math" data-tex="$A=G\boxtimes E$">$A=G\boxtimes E$</span> on <span class="math" data-tex="$Y\times Y$">$Y\times Y$</span> and <span class="math" data-tex="$K=P\boxtimes E$">$K=P\boxtimes E$</span> on <span class="math" data-tex="$X\times Y$">$X\times Y$</span>. Use the graph maps</p>
 <span class="math math-display" data-tex="\[
@@ -89,9 +102,23 @@ f_1=(f,\mathrm{id}_Y),\quad f_2=(\mathrm{id}_X,f),\quad
 \gamma(y)=(f(y),y).
 \qquad\text{(5)}
 \]</span>
-<p>The preceding lesson proves <span class="math" data-tex="$f_1\delta_Y=\gamma$">$f_1\delta_Y=\gamma$</span> with both embeddings closed, and the cartesian square with top <span class="math" data-tex="$\gamma$">$\gamma$</span>, bottom <span class="math" data-tex="$\delta_X$">$\delta_X$</span> and vertical maps <span class="math" data-tex="$f,f_2$">$f,f_2$</span>.</p>
+<p>The equality <span class="math" data-tex="$f_1\delta_Y=\gamma$">$f_1\delta_Y=\gamma$</span> follows by evaluating both maps at <span class="math" data-tex="$y$">$y$</span>. Both embeddings are closed: the diagonal is closed in a Hausdorff space, and the graph of a continuous map to a Hausdorff space is closed. The other placement is the cartesian square</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+Y&amp;\xrightarrow{\gamma}&amp;X\times Y\\
+f\downarrow&amp;&amp;\downarrow f_2\\
+X&amp;\xrightarrow{\delta_X}&amp;X\times X.
+\end{array}
+\]">\[
+\begin{array}{ccc}
+Y&amp;\xrightarrow{\gamma}&amp;X\times Y\\
+f\downarrow&amp;&amp;\downarrow f_2\\
+X&amp;\xrightarrow{\delta_X}&amp;X\times X.
+\end{array}
+\]</span>
+<p>Indeed <span class="math" data-tex="$(x,f(y))=(z,z)$">$(x,f(y))=(z,z)$</span> forces <span class="math" data-tex="$x=z=f(y)$">$x=z=f(y)$</span>; the inverse parametrization of the fibre product is <span class="math" data-tex="$y\mapsto((f(y),y),f(y))$">$y\mapsto((f(y),y),f(y))$</span>. This verifies the graph placement, with its topology and maps, for the <a href="closed-supports-and-evaluated-proper-transport.html#a-cartesian-closed-restriction-compares-before-support-is-forgotten">two closed comparison lemmas</a>.</p>
 <p>The map <span class="math" data-tex="$f_1$">$f_1$</span> is proper on the support of <span class="math" data-tex="$A$">$A$</span>: that support lies in <span class="math" data-tex="$Z\times Z$">$Z\times Z$</span>, inside the domain of the proper product <span class="math" data-tex="$f|_Z\times\mathrm{id}_Y$">$f|_Z\times\mathrm{id}_Y$</span>. Similarly <span class="math" data-tex="$f_2$">$f_2$</span> is proper on the support of <span class="math" data-tex="$K$">$K$</span>, which lies in <span class="math" data-tex="$\operatorname{supp}(P)\times Z$">$\operatorname{supp}(P)\times Z$</span>. Thus support forgetting is an isomorphism on these product objects.</p>
-<p>Projection formula and proper-support base change supply actual product isomorphisms</p>
+<p>The <a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-PROJECTION">projection map (EX.11)</a> and <a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-BASECHANGE-BRIDGE">proper-support base change</a> supply actual product isomorphisms</p>
 <span class="math math-display" data-tex="\[
 \sigma_1:L_{f_1}A\xrightarrow{\sim}K,\qquad
 \sigma_2:P\boxtimes Q\xrightarrow{\sim}L_{f_2}K.
@@ -120,7 +147,17 @@ c:L_f\gamma^!K\longrightarrow\delta_X^!L_{f_2}K,
 B:\delta_X^{-1}L_{f_2}K\xrightarrow{\sim}L_f\gamma^{-1}K.
 \qquad\text{(7)}
 \]</span>
-<p>The map <span class="math" data-tex="$c$">$c$</span> is the transpose of the closed-embedding counit through proper composition, exactly as in the preceding lesson. We first use it as a morphism.</p>
+<p>The map <span class="math" data-tex="$c$">$c$</span> is the <span class="math" data-tex="$\delta_{X*}\dashv\delta_X^!$">$\delta_{X*}\dashv\delta_X^!$</span> transpose of</p>
+<span class="math math-display" data-tex="\[
+\delta_{X*}L_f\gamma^!K
+\xrightarrow{\sim}L_{f_2}\gamma_*\gamma^!K
+\xrightarrow{L_{f_2}t_{\gamma,K}}L_{f_2}K.
+\]">\[
+\delta_{X*}L_f\gamma^!K
+\xrightarrow{\sim}L_{f_2}\gamma_*\gamma^!K
+\xrightarrow{L_{f_2}t_{\gamma,K}}L_{f_2}K.
+\]</span>
+<p>Proper composition supplies the first arrow because <span class="math" data-tex="$\delta_Xf=f_2\gamma$">$\delta_Xf=f_2\gamma$</span> and both horizontal embeddings are closed. This is the <a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-SUPPORT-ERASURE">exceptional exchange (EX.38)</a>; the extra exceptional functors exist since closed direct image has dimension zero. We first use <span class="math" data-tex="$c$">$c$</span> as a morphism, with no general claim of invertibility.</p>
 <p>Since <span class="math" data-tex="$\gamma^{-1}K=f^{-1}P\otimes E$">$\gamma^{-1}K=f^{-1}P\otimes E$</span>, the ordinary counit gives</p>
 <span class="math math-display" data-tex="\[
 \psi=b_G\otimes1_E:\gamma^{-1}K\longrightarrow G\otimes E.
@@ -151,7 +188,23 @@ m&amp;=L_f\psi\,B\,(\delta_X^{-1}\sigma_2).
 \alpha:L_f\delta_Y^!A\longrightarrow\delta_X^!(P\boxtimes Q),
 \qquad m:P\otimes Q\longrightarrow L_f(G\otimes E).
 \]</span>
-<p>In the first line, exceptional composition identifies <span class="math" data-tex="$\delta_Y^!f_1^!K$">$\delta_Y^!f_1^!K$</span> with <span class="math" data-tex="$\gamma^!K$">$\gamma^!K$</span>. In the second, ordinary diagonal restriction identifies <span class="math" data-tex="$\delta_X^{-1}(P\boxtimes Q)$">$\delta_X^{-1}(P\boxtimes Q)$</span> with <span class="math" data-tex="$P\otimes Q$">$P\otimes Q$</span>.</p>
+<p>In the first line, exceptional composition identifies <span class="math" data-tex="$\delta_Y^!f_1^!K$">$\delta_Y^!f_1^!K$</span> with <span class="math" data-tex="$\gamma^!K$">$\gamma^!K$</span>. In the second, ordinary diagonal restriction identifies <span class="math" data-tex="$\delta_X^{-1}(P\boxtimes Q)$">$\delta_X^{-1}(P\boxtimes Q)$</span> with <span class="math" data-tex="$P\otimes Q$">$P\otimes Q$</span>. The diagram to be proved is therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{array}{ccc}
+L_f\delta_Y^!A&amp;\xrightarrow{\alpha}&amp;\delta_X^!(P\boxtimes Q)\\
+{\scriptstyle L_f\beta_{\delta_Y,A}}\downarrow&amp;&amp;
+\downarrow{\scriptstyle\beta_{\delta_X,P\boxtimes Q}}\\
+L_f(G\otimes E)&amp;\xleftarrow{m}&amp;P\otimes Q.
+\end{array}
+\]">\[
+\begin{array}{ccc}
+L_f\delta_Y^!A&amp;\xrightarrow{\alpha}&amp;\delta_X^!(P\boxtimes Q)\\
+{\scriptstyle L_f\beta_{\delta_Y,A}}\downarrow&amp;&amp;
+\downarrow{\scriptstyle\beta_{\delta_X,P\boxtimes Q}}\\
+L_f(G\otimes E)&amp;\xleftarrow{m}&amp;P\otimes Q.
+\end{array}
+\]</span>
+<p>The bottom arrow points toward the source manifold's integrated tensor. Its direction is what allows contraction there to be compared with contraction on <span class="math" data-tex="$X$">$X$</span>.</p>
 <p><strong>Middle restriction identity.</strong> These maps satisfy</p>
 <span class="math math-display" data-tex="\[
 L_f\beta_{\delta_Y,A}
@@ -162,7 +215,7 @@ L_f\beta_{\delta_Y,A}
 =m\,\beta_{\delta_X,P\boxtimes Q}\,\alpha.
 \qquad\text{(9)}
 \]</span>
-<p><strong>Proof.</strong> Apply the composite closed-comparison lemma to <span class="math" data-tex="$\delta_Y,f_1,\gamma$">$\delta_Y,f_1,\gamma$</span> and <span class="math" data-tex="$A$">$A$</span>. Its exceptional unit is <span class="math" data-tex="$U$">$U$</span>. Since <span class="math" data-tex="$\pi_{f_1,A}$">$\pi_{f_1,A}$</span> is an isomorphism, the composite path gives</p>
+<p><strong>Proof.</strong> Apply <a href="closed-supports-and-evaluated-proper-transport.html#a-composite-closed-embedding-keeps-the-ordinary-counit">the composite closed-comparison identity (3)</a> to <span class="math" data-tex="$\delta_Y,f_1,\gamma$">$\delta_Y,f_1,\gamma$</span> and <span class="math" data-tex="$A$">$A$</span>. Its exceptional unit is <span class="math" data-tex="$U$">$U$</span>. Since <span class="math" data-tex="$\pi_{f_1,A}$">$\pi_{f_1,A}$</span> is an isomorphism, the composite path gives</p>
 <span class="math math-display" data-tex="\[
 L_f\beta_{\delta_Y,A}
 =L_f\psi\,L_f\beta_{\gamma,K}\,L_f(\delta_Y^!U).
@@ -173,7 +226,7 @@ L_f\beta_{\delta_Y,A}
 \qquad\text{(10)}
 \]</span>
 <p>The ordinary counit for <span class="math" data-tex="$f_1$">$f_1$</span> restricts on the diagonal to <span class="math" data-tex="$b_G\otimes1_E$">$b_G\otimes1_E$</span>: under (6), its first-factor counit is <span class="math" data-tex="$f^{-1}S_fG\to G$">$f^{-1}S_fG\to G$</span> and the second factor is unchanged. This is the ordinary arrow in (10), not an exceptional-to-ordinary identification for <span class="math" data-tex="$f$">$f$</span> itself.</p>
-<p>The cartesian closed-comparison lemma, before support forgetting, gives</p>
+<p>The <a href="closed-supports-and-evaluated-proper-transport.html#a-cartesian-closed-restriction-compares-before-support-is-forgotten">cartesian closed-comparison identity (13)</a>, before support forgetting, gives</p>
 <span class="math math-display" data-tex="\[
 L_f\beta_{\gamma,K}=B\,\beta_{\delta_X,L_{f_2}K}\,c.
 \]">\[
@@ -197,7 +250,8 @@ L_f\beta_{\gamma,K}=B\,\beta_{\delta_X,L_{f_2}K}\,c.
 \rho:S_fR\mathcal Hom(G,G)\longrightarrow R\mathcal Hom(P,P).
 \qquad\text{(11)}
 \]</span>
-<p>It first postcomposes with <span class="math" data-tex="$u_G:G\to f^!P$">$u_G:G\to f^!P$</span>, then applies the actual internal adjunction <span class="math" data-tex="$S_fR\mathcal Hom(G,f^!P)\simeq R\mathcal Hom(P,P)$">$S_fR\mathcal Hom(G,f^!P)\simeq R\mathcal Hom(P,P)$</span>. Its identity-square proof in the preceding lesson shows that <span class="math" data-tex="$k_X\to S_fk_Y\to S_fR\mathcal Hom(G,G)\xrightarrow{\rho}R\mathcal Hom(P,P)$">$k_X\to S_fk_Y\to S_fR\mathcal Hom(G,G)\xrightarrow{\rho}R\mathcal Hom(P,P)$</span> is the identity unit of <span class="math" data-tex="$P$">$P$</span>.</p>
+<p>It first postcomposes with <span class="math" data-tex="$u_G:G\to f^!P$">$u_G:G\to f^!P$</span>, then applies the actual internal adjunction <span class="math" data-tex="$S_fR\mathcal Hom(G,f^!P)\simeq R\mathcal Hom(P,P)$">$S_fR\mathcal Hom(G,f^!P)\simeq R\mathcal Hom(P,P)$</span>. To check the identity path, the ordinary unit <span class="math" data-tex="$k_X\to S_fk_Y$">$k_X\to S_fk_Y$</span> followed by <span class="math" data-tex="$S_fe_G$">$S_fe_G$</span> represents <span class="math" data-tex="$\mathrm{id}_G$">$\mathrm{id}_G$</span>. Postcomposition sends it to <span class="math" data-tex="$u_G$">$u_G$</span>, whose exceptional adjoint is <span class="math" data-tex="$t_P L_fu_G=\mathrm{id}_P$">$t_P L_fu_G=\mathrm{id}_P$</span>. Hence its image by <span class="math" data-tex="$\rho$">$\rho$</span> is <span class="math" data-tex="$e_P$">$e_P$</span>. The same adjunction calculation on each open subset gives the sheaf morphism, with the normalization in <a href="closed-supports-and-evaluated-proper-transport.html#the-transported-identity-follows-from-the-exceptional-triangle">the transported identity proof</a>.</p>
+<p>When the domain is <span class="math" data-tex="$L_fR\mathcal Hom(G,G)$">$L_fR\mathcal Hom(G,G)$</span>, the notation <span class="math" data-tex="$\rho$">$\rho$</span> in (12), (16) and (20) means <span class="math" data-tex="$\rho\,\pi_{f,R\mathcal Hom(G,G)}$">$\rho\,\pi_{f,R\mathcal Hom(G,G)}$</span>. This is the canonical identification on the supported endomorphism object, rather than a replacement of ordinary direct image on every term. In particular the initial constant-sheaf unit remains ordinary.</p>
 <p><strong>Hom identification of the middle map.</strong> With proper and ordinary images identified on the supported endomorphism object,</p>
 <span class="math math-display" data-tex="\[
 \alpha\,L_f\theta_G=\theta_P\,\rho.
@@ -206,7 +260,7 @@ L_f\beta_{\gamma,K}=B\,\beta_{\delta_X,L_{f_2}K}\,c.
 \alpha\,L_f\theta_G=\theta_P\,\rho.
 \qquad\text{(12)}
 \]</span>
-<p><strong>Proof.</strong> Denote by <span class="math" data-tex="$p_Y,p_X$">$p_Y,p_X$</span> the projections from <span class="math" data-tex="$W=X\times Y$">$W=X\times Y$</span>. Current product evaluation with its constructible second factor gives</p>
+<p><strong>Proof.</strong> Denote by <span class="math" data-tex="$p_Y,p_X$">$p_Y,p_X$</span> the projections from <span class="math" data-tex="$W=X\times Y$">$W=X\times Y$</span>. The <a href="../sheaf-proof-readings/SH02-cohomological-biduality.html#SH02-CB-EXTERNAL-HOM">external-Hom evaluation</a>, applied to the constructible factor <span class="math" data-tex="$G$">$G$</span> on <span class="math" data-tex="$Y$">$Y$</span> and then placed in the indicated product order, gives</p>
 <span class="math math-display" data-tex="\[
 K=P\boxtimes E\simeq
 R\mathcal Hom(p_Y^{-1}G,p_X^!P).
@@ -216,7 +270,7 @@ K=P\boxtimes E\simeq
 R\mathcal Hom(p_Y^{-1}G,p_X^!P).
 \qquad\text{(13)}
 \]</span>
-<p>Exceptional-Hom restriction and composition then give</p>
+<p><a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-HOM">Exceptional inverse image of Hom (EX.26)</a> applies because <span class="math" data-tex="$p_Y^{-1}G$">$p_Y^{-1}G$</span> is bounded and <span class="math" data-tex="$p_X^!P$">$p_X^!P$</span> is bounded below. Together with <a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-COMPOSITION">trace-normalized exceptional composition (EX.13)–(EX.14)</a>, it gives</p>
 <span class="math math-display" data-tex="\[
 \gamma^!K\simeq R\mathcal Hom(G,f^!P),\qquad
 \delta_Y^!f_1^!K\simeq R\mathcal Hom(G,f^!P).
@@ -233,7 +287,15 @@ R\mathcal Hom(p_Y^{-1}G,p_X^!P).
 (t_P\,L_fu_G)\boxtimes1_E=\mathrm{id}_{P\boxtimes E}.
 \]</span>
 <p>The equality is the exceptional triangular identity. Uniqueness of the adjunction transpose makes this candidate exactly <span class="math" data-tex="$U$">$U$</span>. Restricting by the evaluated exceptional-Hom comparison gives precisely postcomposition with <span class="math" data-tex="$u_G$">$u_G$</span> in (14).</p>
-<p>We next check the remaining part of <span class="math" data-tex="$\alpha$">$\alpha$</span>. The object <span class="math" data-tex="$\gamma^!K$">$\gamma^!K$</span> is supported on <span class="math" data-tex="$Z$">$Z$</span>, by (14), and <span class="math" data-tex="$f_2$">$f_2$</span> is proper on the support of <span class="math" data-tex="$K$">$K$</span>. Therefore the support-forgetting comparisons identify <span class="math" data-tex="$c$">$c$</span> with the ordinary exceptional base-change isomorphism <span class="math" data-tex="$S_f\gamma^!K\simeq\delta_X^!S_{f_2}K$">$S_f\gamma^!K\simeq\delta_X^!S_{f_2}K$</span>. The current exceptional/proper-to-ordinary compatibility fixes this identification: both are transposes of the same closed-embedding counit. There is no arbitrary choice of the isomorphism <span class="math" data-tex="$c$">$c$</span> in this supported situation.</p>
+<p>We next check the remaining part of <span class="math" data-tex="$\alpha$">$\alpha$</span>. The object <span class="math" data-tex="$\gamma^!K$">$\gamma^!K$</span> is supported on <span class="math" data-tex="$Z$">$Z$</span>, by (14), and <span class="math" data-tex="$f_2$">$f_2$</span> is proper on the support of <span class="math" data-tex="$K$">$K$</span>. Therefore the support-forgetting comparisons identify <span class="math" data-tex="$c$">$c$</span> with the ordinary exceptional base-change isomorphism <span class="math" data-tex="$S_f\gamma^!K\simeq\delta_X^!S_{f_2}K$">$S_f\gamma^!K\simeq\delta_X^!S_{f_2}K$</span>. More precisely, if <span class="math" data-tex="$c_*:S_f\gamma^!K\xrightarrow{\sim}\delta_X^!S_{f_2}K$">$c_*:S_f\gamma^!K\xrightarrow{\sim}\delta_X^!S_{f_2}K$</span> denotes ordinary exceptional base change, <a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-SUPPORT-ERASURE">the supported exchange identity (EX.39)</a> is</p>
+<span class="math math-display" data-tex="\[
+\delta_X^!\pi_{f_2,K}\,c
+=c_*\,\pi_{f,\gamma^!K}.
+\]">\[
+\delta_X^!\pi_{f_2,K}\,c
+=c_*\,\pi_{f,\gamma^!K}.
+\]</span>
+<p>Both <span class="math" data-tex="$\pi$">$\pi$</span> maps here are invertible on the supports just checked. This determines <span class="math" data-tex="$c$">$c$</span> in terms of <span class="math" data-tex="$c_*$">$c_*$</span>, with its counit normalization, and proves invertibility in this particular supported application.</p>
 <p>After using (13), internal adjunction for <span class="math" data-tex="$f_2$">$f_2$</span> identifies <span class="math" data-tex="$S_{f_2}K$">$S_{f_2}K$</span> with</p>
 <span class="math math-display" data-tex="\[
 R\mathcal Hom(q_2^{-1}P,q_1^!P),
@@ -241,7 +303,13 @@ R\mathcal Hom(q_2^{-1}P,q_1^!P),
 R\mathcal Hom(q_2^{-1}P,q_1^!P),
 \]</span>
 <p>where <span class="math" data-tex="$q_1,q_2$">$q_1,q_2$</span> are the projections of <span class="math" data-tex="$X\times X$">$X\times X$</span>. Here <span class="math" data-tex="$L_{f_2}p_Y^{-1}G=q_2^{-1}P$">$L_{f_2}p_Y^{-1}G=q_2^{-1}P$</span> by proper-support base change, and <span class="math" data-tex="$f_2^!q_1^!P=p_X^!P$">$f_2^!q_1^!P=p_X^!P$</span> by exceptional composition. The product evaluation for <span class="math" data-tex="$P$">$P$</span> identifies this Hom object with <span class="math" data-tex="$P\boxtimes Q$">$P\boxtimes Q$</span>.</p>
-<p>This latter identification agrees with <span class="math" data-tex="$\sigma_2$">$\sigma_2$</span> in (6). Curry both product maps against <span class="math" data-tex="$q_2^{-1}P$">$q_2^{-1}P$</span>. Pulling the independent first factor through projection formula leaves, in both cases, the same pairing <span class="math" data-tex="$G\otimes E\to\omega_Y$">$G\otimes E\to\omega_Y$</span> followed by the trace <span class="math" data-tex="$L_f\omega_Y\to\omega_X$">$L_f\omega_Y\to\omega_X$</span>, which defines (3). The ordered product evaluations use the same graded permutations. The evaluated internal-adjunction and normalized projection comparisons thus give the same map, not just isomorphic objects.</p>
+<p>Let <span class="math" data-tex="$J:S_{f_2}K\xrightarrow{\sim}P\boxtimes Q$">$J:S_{f_2}K\xrightarrow{\sim}P\boxtimes Q$</span> denote this combined internal-Hom and product-evaluation identification. Its direction is opposite to <span class="math" data-tex="$\sigma_2$">$\sigma_2$</span> in (6); the required equality is</p>
+<span class="math math-display" data-tex="\[
+J\,\pi_{f_2,K}=\sigma_2^{-1}.
+\]">\[
+J\,\pi_{f_2,K}=\sigma_2^{-1}.
+\]</span>
+<p>Curry both sides against <span class="math" data-tex="$q_2^{-1}P$">$q_2^{-1}P$</span>. Pulling the independent first factor through projection leaves the same second-factor evaluation <span class="math" data-tex="$E\otimes G\to\omega_Y$">$E\otimes G\to\omega_Y$</span> and the same trace defining (3). Equivalently one may use <span class="math" data-tex="$G\otimes E$">$G\otimes E$</span> with the graded flip in <span class="math" data-tex="$\operatorname{tr}_G$">$\operatorname{tr}_G$</span>. The ordered product evaluations use the same permutations in either description. Thus the evaluated projection and internal-adjunction comparisons prove this equality of maps. Inverting it supplies exactly the direction of <span class="math" data-tex="$\sigma_2$">$\sigma_2$</span> used in (8).</p>
 <p>For an explicit check of the resulting graph-Hom adjunction, test it against <span class="math" data-tex="$C\in D^+(k_X)$">$C\in D^+(k_X)$</span>. Its chain of bijections is</p>
 <span class="math math-display" data-tex="\[
 \begin{aligned}
@@ -289,7 +357,7 @@ P\otimes L_fE\xrightarrow{\sim}L_f(f^{-1}P\otimes E)
 \qquad\text{(17)}
 \]</span>
 <p>This identification follows by proper base change for the cartesian graph square applied to <span class="math" data-tex="$\sigma_2$">$\sigma_2$</span>; it restricts the independent first factor to <span class="math" data-tex="$f^{-1}P$">$f^{-1}P$</span> and leaves the properly integrated second factor <span class="math" data-tex="$E$">$E$</span> unchanged.</p>
-<p>There are two ways to compare such an evaluated pairing with internal adjunction. The usual evaluated-Hom square uses the ordinary counit on <span class="math" data-tex="$E$">$E$</span> after projection on <span class="math" data-tex="$G$">$G$</span>. Formula (17) uses the counit on <span class="math" data-tex="$G$">$G$</span> after projection on <span class="math" data-tex="$E$">$E$</span>. The current support-forgetting evaluation identity asserts</p>
+<p>There are two ways to compare such an evaluated pairing with internal adjunction. The usual evaluated-Hom square uses the ordinary counit on <span class="math" data-tex="$E$">$E$</span> after projection on <span class="math" data-tex="$G$">$G$</span>. Formula (17) uses the counit on <span class="math" data-tex="$G$">$G$</span> after projection on <span class="math" data-tex="$E$">$E$</span>. The <a href="../sheaf-proof-readings/SH02-exceptional-operations.html#SH02-EX-HOM-SUPPORT-COMPATIBILITY">evaluated support-forgetting identity (EX.40)–(EX.41)</a> asserts</p>
 <span class="math math-display" data-tex="\[
 R\mathcal Hom(\pi_{f,G},\omega_X)\,u_E
 =v_E\,\pi_{f,E},
@@ -299,7 +367,21 @@ R\mathcal Hom(\pi_{f,G},\omega_X)\,u_E
 =v_E\,\pi_{f,E},
 \qquad\text{(18)}
 \]</span>
-<p>where <span class="math" data-tex="$v_E:S_fE\simeq R\mathcal Hom(L_fG,\omega_X)$">$v_E:S_fE\simeq R\mathcal Hom(L_fG,\omega_X)$</span> is internal adjunction and <span class="math" data-tex="$u_E:L_fE\to R\mathcal Hom(S_fG,\omega_X)$">$u_E:L_fE\to R\mathcal Hom(S_fG,\omega_X)$</span> is the curry of the second pairing. Its proof curries both paths, evaluates the same two properly supported sections, and then applies the same trace; support lies in their intersection. The flat/soft resolution maps and Koszul symmetries are the same on both paths.</p>
+<p>Here <span class="math" data-tex="$v_E:S_fE\simeq R\mathcal Hom(L_fG,\omega_X)$">$v_E:S_fE\simeq R\mathcal Hom(L_fG,\omega_X)$</span> is internal adjunction. The notation <span class="math" data-tex="$u_E$">$u_E$</span> in (18) denotes the supported evaluation map, not an exceptional unit: it is the curry of</p>
+<span class="math math-display" data-tex="\[
+L_fE\otimes S_fG
+\longrightarrow L_f(E\otimes f^{-1}S_fG)
+\xrightarrow{L_f(1\otimes b_G)}L_f(E\otimes G)
+\xrightarrow{L_f\mathrm{ev}}L_f\omega_Y
+\xrightarrow{t_{\omega_X}}\omega_X.
+\]">\[
+L_fE\otimes S_fG
+\longrightarrow L_f(E\otimes f^{-1}S_fG)
+\xrightarrow{L_f(1\otimes b_G)}L_f(E\otimes G)
+\xrightarrow{L_f\mathrm{ev}}L_f\omega_Y
+\xrightarrow{t_{\omega_X}}\omega_X.
+\]</span>
+<p>Uncurry both sides of (18) against <span class="math" data-tex="$L_fG$">$L_fG$</span>. The left path forgets support on the <span class="math" data-tex="$G$">$G$</span> section; the right forgets support on the <span class="math" data-tex="$E$">$E$</span> section. They evaluate the same two sections, whose common tensor is properly supported on the intersection of their supports, and apply the same trace. On the finite flat/soft models for proper image and the comparison to ordinary injective models, these are the identical section-evaluation chain maps. The projection and support-forgetting compatibilities therefore derive this equality with the same Koszul symmetry. This proves the comparison needed here without inverting either ordinary counit.</p>
 <p>Both support-forgetting maps in (18) are isomorphisms under (1). Consequently, evaluating (18) in the <span class="math" data-tex="$P$">$P$</span>-before-<span class="math" data-tex="$Q$">$Q$</span> order gives</p>
 <span class="math math-display" data-tex="\[
 t_{\omega_X}\,L_f\operatorname{tr}_G\,m
@@ -311,7 +393,7 @@ t_{\omega_X}\,L_f\operatorname{tr}_G\,m
 \qquad\text{(19)}
 \]</span>
 <p>This proves the last trace square for the actual <span class="math" data-tex="$m$">$m$</span> used in (16). In particular, a bare projection pairing is not incorrectly declared invertible, and the two evaluation orders are compared with their graded signs. One may also verify (19) directly in the evaluated resolution model; (18) records precisely the needed compatibility.</p>
-<p>The identity-square proof, (12), (9) and (19) now give all four parts of Proposition 9.1.3. Combining (16) with (19), the whole evaluated endomorphism map satisfies</p>
+<p>The identity calculation, Hom identification (12), closed restriction (9) and contraction (19) account for the four maps in the trace comparison. Combining (16) with (19), the whole evaluated endomorphism map satisfies</p>
 <span class="math math-display" data-tex="\[
 t_{\omega_X}\,L_f(\operatorname{tr}_Gh_G)
 =\operatorname{tr}_Ph_P\,\rho.
@@ -323,7 +405,16 @@ t_{\omega_X}\,L_f(\operatorname{tr}_Gh_G)
 \]</span>
 <p>The top constant-sheaf term remains <span class="math" data-tex="$S_fk_Y$">$S_fk_Y$</span>, with unit <span class="math" data-tex="$k_X\to S_fk_Y$">$k_X\to S_fk_Y$</span>. Nothing in this proof asserts that <span class="math" data-tex="$f$">$f$</span> is proper on the support of <span class="math" data-tex="$k_Y$">$k_Y$</span>.</p>
 <h2 id="the-supported-trace-transports-the-characteristic-class">The supported trace transports the characteristic class</h2>
-<p>Set <span class="math" data-tex="$T_Z=R\Gamma_Z\omega_Y$">$T_Z=R\Gamma_Z\omega_Y$</span>. This is supported on <span class="math" data-tex="$Z$">$Z$</span> and is constructible by the closed subanalytic support operation. Properness on <span class="math" data-tex="$Z$">$Z$</span> identifies <span class="math" data-tex="$S_fT_Z$">$S_fT_Z$</span> with <span class="math" data-tex="$L_fT_Z$">$L_fT_Z$</span>. Since the latter is supported on the closed set <span class="math" data-tex="$S=f(Z)$">$S=f(Z)$</span>, the trace has a unique supported lift</p>
+<p>Set <span class="math" data-tex="$T_Z=R\Gamma_Z\omega_Y$">$T_Z=R\Gamma_Z\omega_Y$</span>. For the closed inclusion <span class="math" data-tex="$i:Z\hookrightarrow Y$">$i:Z\hookrightarrow Y$</span>, the support adjunction gives <span class="math" data-tex="$T_Z=R\mathcal Hom(k_Z,\omega_Y)=D_Yk_Z$">$T_Z=R\mathcal Hom(k_Z,\omega_Y)=D_Yk_Z$</span>. A compatible subanalytic stratification makes <span class="math" data-tex="$k_Z$">$k_Z$</span> constructible, so constructible duality makes <span class="math" data-tex="$T_Z$">$T_Z$</span> bounded constructible. Its restriction to <span class="math" data-tex="$Y\setminus Z$">$Y\setminus Z$</span> is zero, hence its support lies in <span class="math" data-tex="$Z$">$Z$</span>. Properness on <span class="math" data-tex="$Z$">$Z$</span> identifies <span class="math" data-tex="$S_fT_Z$">$S_fT_Z$</span> with <span class="math" data-tex="$L_fT_Z$">$L_fT_Z$</span>.</p>
+<p>To justify the supported lift, let <span class="math" data-tex="$j:X\setminus S\hookrightarrow X$">$j:X\setminus S\hookrightarrow X$</span> and let <span class="math" data-tex="$V$">$V$</span> be any bounded-below complex supported on <span class="math" data-tex="$S$">$S$</span>. For every <span class="math" data-tex="$A\in D^+(k_X)$">$A\in D^+(k_X)$</span>, localization gives the triangle <span class="math" data-tex="$R\Gamma_SA\to A\to Rj_*j^{-1}A\xrightarrow{+1}$">$R\Gamma_SA\to A\to Rj_*j^{-1}A\xrightarrow{+1}$</span>. Adjunction gives <span class="math" data-tex="$\operatorname{Hom}(V,Rj_*j^{-1}A[n])=\operatorname{Hom}(j^{-1}V,j^{-1}A[n])=0$">$\operatorname{Hom}(V,Rj_*j^{-1}A[n])=\operatorname{Hom}(j^{-1}V,j^{-1}A[n])=0$</span> for every integer <span class="math" data-tex="$n$">$n$</span>. Applying <span class="math" data-tex="$\operatorname{Hom}(V,-)$">$\operatorname{Hom}(V,-)$</span> therefore proves</p>
+<span class="math math-display" data-tex="\[
+\operatorname{Hom}(V,R\Gamma_SA)
+\xrightarrow{\sim}\operatorname{Hom}(V,A).
+\]">\[
+\operatorname{Hom}(V,R\Gamma_SA)
+\xrightarrow{\sim}\operatorname{Hom}(V,A).
+\]</span>
+<p>This proves existence and uniqueness from the supported source. Apply it to <span class="math" data-tex="$V=L_fT_Z$">$V=L_fT_Z$</span>, which is supported on <span class="math" data-tex="$S$">$S$</span> by proper-support base change, and to <span class="math" data-tex="$A=\omega_X$">$A=\omega_X$</span>. The trace has the unique supported lift</p>
 <span class="math math-display" data-tex="\[
 L_fT_Z\longrightarrow R\Gamma_S\omega_X
 \qquad\text{(21)}
@@ -331,7 +422,21 @@ L_fT_Z\longrightarrow R\Gamma_S\omega_X
 L_fT_Z\longrightarrow R\Gamma_S\omega_X
 \qquad\text{(21)}
 \]</span>
-<p>of <span class="math" data-tex="$L_fT_Z\to L_f\omega_Y\xrightarrow{t_{\omega_X}}\omega_X$">$L_fT_Z\to L_f\omega_Y\xrightarrow{t_{\omega_X}}\omega_X$</span>. The uniqueness uses its supported source, as in the characteristic-class construction. Applying global sections, with the proper-to-ordinary comparison on <span class="math" data-tex="$T_Z$">$T_Z$</span>, gives</p>
+<p>of <span class="math" data-tex="$L_fT_Z\to L_f\omega_Y\xrightarrow{t_{\omega_X}}\omega_X$">$L_fT_Z\to L_f\omega_Y\xrightarrow{t_{\omega_X}}\omega_X$</span>. Write <span class="math" data-tex="$\ell:L_fT_Z\to R\Gamma_S\omega_X$">$\ell:L_fT_Z\to R\Gamma_S\omega_X$</span> for (21). The actual map on section complexes is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+R\Gamma(Y;T_Z)&amp;\simeq R\Gamma(X;S_fT_Z)\\
+&amp;\xrightarrow{R\Gamma(\pi_{f,T_Z}^{-1})}R\Gamma(X;L_fT_Z)
+\xrightarrow{R\Gamma(\ell)}R\Gamma(X;R\Gamma_S\omega_X).
+\end{aligned}
+\]">\[
+\begin{aligned}
+R\Gamma(Y;T_Z)&amp;\simeq R\Gamma(X;S_fT_Z)\\
+&amp;\xrightarrow{R\Gamma(\pi_{f,T_Z}^{-1})}R\Gamma(X;L_fT_Z)
+\xrightarrow{R\Gamma(\ell)}R\Gamma(X;R\Gamma_S\omega_X).
+\end{aligned}
+\]</span>
+<p>Every inverse in this chain is justified by properness on <span class="math" data-tex="$Z$">$Z$</span>. Taking degree-zero cohomology gives</p>
 <span class="math math-display" data-tex="\[
 f_\#:H_Z^0(Y;\omega_Y)\longrightarrow H_S^0(X;\omega_X).
 \qquad\text{(22)}
@@ -351,7 +456,18 @@ C(P)=f_\#C(G)
 \]</span>
 <p>On the left, the class with support <span class="math" data-tex="$\operatorname{supp}(P)$">$\operatorname{supp}(P)$</span> is enlarged to <span class="math" data-tex="$S$">$S$</span>.</p>
 <p><strong>Proof.</strong> Equation (20) is an equality of maps from <span class="math" data-tex="$L_fR\mathcal Hom(G,G)$">$L_fR\mathcal Hom(G,G)$</span> to <span class="math" data-tex="$\omega_X$">$\omega_X$</span>. That source is supported on <span class="math" data-tex="$S$">$S$</span>, so both maps lift uniquely to <span class="math" data-tex="$R\Gamma_S\omega_X$">$R\Gamma_S\omega_X$</span>. Hence (20) is also an equality of supported maps, not merely an equality after support is forgotten.</p>
-<p>On global sections, the unit <span class="math" data-tex="$k_X\to S_fk_Y$">$k_X\to S_fk_Y$</span> sends <span class="math" data-tex="$1_X$">$1_X$</span> to <span class="math" data-tex="$1_Y$">$1_Y$</span>. The identity-square proof says that applying <span class="math" data-tex="$S_fe_G$">$S_fe_G$</span> and then <span class="math" data-tex="$\rho$">$\rho$</span> sends that unit to <span class="math" data-tex="$e_P$">$e_P$</span>. The definition of <span class="math" data-tex="$C(G)$">$C(G)$</span> factors the other path through <span class="math" data-tex="$T_Z$">$T_Z$</span>. Properness on <span class="math" data-tex="$Z$">$Z$</span> is exactly what allows its ordinary global sections to pass through <span class="math" data-tex="$L_fT_Z$">$L_fT_Z$</span> in (21). Applying the supported equality to this unit gives (23). <span class="math" data-tex="$\square$">$\square$</span></p>
+<p>Let <span class="math" data-tex="$E_G=R\mathcal Hom(G,G)$">$E_G=R\mathcal Hom(G,G)$</span>. Precompose the lifted equality with the actual path</p>
+<span class="math math-display" data-tex="\[
+k_X\longrightarrow S_fk_Y
+\xrightarrow{S_fe_G}S_fE_G
+\xrightarrow{\pi_{f,E_G}^{-1}}L_fE_G.
+\]">\[
+k_X\longrightarrow S_fk_Y
+\xrightarrow{S_fe_G}S_fE_G
+\xrightarrow{\pi_{f,E_G}^{-1}}L_fE_G.
+\]</span>
+<p>The first arrow is the ordinary unit, whose input is on <span class="math" data-tex="$X$">$X$</span>; its image on global units is <span class="math" data-tex="$1_Y$">$1_Y$</span>. The final inverse is legitimate because <span class="math" data-tex="$E_G$">$E_G$</span> is supported on <span class="math" data-tex="$Z$">$Z$</span>. On the target path it cancels the <span class="math" data-tex="$\pi_{f,E_G}$">$\pi_{f,E_G}$</span> suppressed in (20), and the identity calculation above gives <span class="math" data-tex="$e_P$">$e_P$</span>. The target's supported evaluation is therefore <span class="math" data-tex="$C(P)$">$C(P)$</span> enlarged to <span class="math" data-tex="$S$">$S$</span>.</p>
+<p>For the source path, the defining supported evaluation <span class="math" data-tex="$E_G\to T_Z$">$E_G\to T_Z$</span> commutes with <span class="math" data-tex="$\pi_f$">$\pi_f$</span> by naturality. It consequently gives exactly the section-complex path defining <span class="math" data-tex="$f_\#$">$f_\#$</span> after the image of <span class="math" data-tex="$C(G)$">$C(G)$</span> in <span class="math" data-tex="$R\Gamma(Y;T_Z)$">$R\Gamma(Y;T_Z)$</span>. Thus the two lifted paths yield (23), with the same support map, not merely after passing to ordinary cohomology. <span class="math" data-tex="$\square$">$\square$</span></p>
 <p>This argument also fixes the support-image map, rather than introducing an unspecified pushforward on cohomology groups. The image <span class="math" data-tex="$S$">$S$</span> can be larger than the output support, and the target comparison remains the natural enlargement of a closed support condition.</p>
 <h2 id="compact-support-gives-an-integer-index">Compact support gives an integer index</h2>
 <p>Let <span class="math" data-tex="$F\in D^b_{\mathbb R\text{-c}}(k_X)$">$F\in D^b_{\mathbb R\text{-c}}(k_X)$</span> have compact closed support <span class="math" data-tex="$Z$">$Z$</span>, and let <span class="math" data-tex="$a:X\to\{\mathrm{pt}\}$">$a:X\to\{\mathrm{pt}\}$</span>. The map is proper on <span class="math" data-tex="$Z$">$Z$</span>, so (23) applies. Compact constructible finiteness and the actual comparison give</p>
@@ -360,7 +476,25 @@ P=Ra_!F=R\Gamma_c(X;F)\simeq R\Gamma(X;F).
 \]">\[
 P=Ra_!F=R\Gamma_c(X;F)\simeq R\Gamma(X;F).
 \]</span>
-<p>The point trace theorem gives <span class="math" data-tex="$C(P)=\chi(X;F)1_k$">$C(P)=\chi(X;F)1_k$</span>. The trace <span class="math" data-tex="$Ra_!\omega_X\to k$">$Ra_!\omega_X\to k$</span> defines integration on <strong>compactly supported</strong> cohomology,</p>
+<p>Finiteness here concerns the entire coefficient complex. One way to see it is the <a href="../sheaf-proof-readings/SH03-perfect-coefficients-on-compact-fibres.html#finite-descent-on-a-compact-triangulation">finite compact-triangulation descent proof</a>: a triangulation compatible with the finitely many cohomology sheaves has only finitely many simplices on <span class="math" data-tex="$Z$">$Z$</span>. Its finite open-star cover has perfect section complexes on every nonempty intersection. Finite derived Čech descent uses their actual alternating restriction maps, and filtration by its finitely many columns expresses the result by finite sums, shifts and cones of perfect complexes. Thus <span class="math" data-tex="$P$">$P$</span> has a bounded representative <span class="math" data-tex="$V^\bullet$">$V^\bullet$</span> of finite-dimensional vector spaces. This does not replace the differentials by stalk dimensions.</p>
+<p>We calculate the point class on this representative. At a point the diagonal and its two restrictions are identities. The evaluated tensor–Hom map is</p>
+<span class="math math-display" data-tex="\[
+V^\bullet\otimes(V^\bullet)^\vee
+\longrightarrow\operatorname{Hom}^\bullet(V^\bullet,V^\bullet),
+\qquad v\otimes\varphi\longmapsto(w\mapsto v\varphi(w)).
+\]">\[
+V^\bullet\otimes(V^\bullet)^\vee
+\longrightarrow\operatorname{Hom}^\bullet(V^\bullet,V^\bullet),
+\qquad v\otimes\varphi\longmapsto(w\mapsto v\varphi(w)).
+\]</span>
+<p>For <span class="math" data-tex="$\varphi$">$\varphi$</span> of degree <span class="math" data-tex="$b$">$b$</span>, the dual differential is <span class="math" data-tex="$d\varphi=(-1)^{b+1}\varphi d$">$d\varphi=(-1)^{b+1}\varphi d$</span>. Substitution shows that the displayed map commutes with differentials. If <span class="math" data-tex="$e_{q,j}$">$e_{q,j}$</span> is a homogeneous basis of <span class="math" data-tex="$V^q$">$V^q$</span>, its inverse sends the identity to the closed element <span class="math" data-tex="$\sum_{q,j}e_{q,j}\otimes e_{q,j}^*$">$\sum_{q,j}e_{q,j}\otimes e_{q,j}^*$</span>. Contraction flips degrees <span class="math" data-tex="$q$">$q$</span> and <span class="math" data-tex="$-q$">$-q$</span>, contributing <span class="math" data-tex="$(-1)^{-q^2}=(-1)^q$">$(-1)^{-q^2}=(-1)^q$</span>, and then evaluates each matching pair to <span class="math" data-tex="$1$">$1$</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+C(P)=\left(\sum_q(-1)^q\dim_k V^q\right)1_k.
+\]">\[
+C(P)=\left(\sum_q(-1)^q\dim_k V^q\right)1_k.
+\]</span>
+<p>To replace terms by cohomology, set <span class="math" data-tex="$B^q=\operatorname{im}d^{q-1}$">$B^q=\operatorname{im}d^{q-1}$</span> and <span class="math" data-tex="$Z^q=\ker d^q$">$Z^q=\ker d^q$</span>. The exact sequences <span class="math" data-tex="$0\to Z^q\to V^q\to B^{q+1}\to0$">$0\to Z^q\to V^q\to B^{q+1}\to0$</span> and <span class="math" data-tex="$0\to B^q\to Z^q\to H^q(V)\to0$">$0\to B^q\to Z^q\to H^q(V)\to0$</span> give <span class="math" data-tex="$\dim V^q=\dim B^q+\dim H^q(V)+\dim B^{q+1}$">$\dim V^q=\dim B^q+\dim H^q(V)+\dim B^{q+1}$</span>. The two boundary sums cancel in the finite alternating sum. Therefore <span class="math" data-tex="$C(P)=\chi(X;F)1_k$">$C(P)=\chi(X;F)1_k$</span>, with precisely the <a href="../analytic-boundaries-and-constructible-traces/constructible-traces-and-local-euler-indices.html#a-point-fixes-the-trace-sign">graded point-trace normalization</a>. No splitting of the original sheaf complex into its cohomology is used.</p>
+<p>The trace <span class="math" data-tex="$Ra_!\omega_X\to k$">$Ra_!\omega_X\to k$</span> defines integration on <strong>compactly supported</strong> cohomology,</p>
 <span class="math math-display" data-tex="\[
 \int_X:H_c^0(X;\omega_X)\longrightarrow k.
 \qquad\text{(24)}
@@ -368,7 +502,19 @@ P=Ra_!F=R\Gamma_c(X;F)\simeq R\Gamma(X;F).
 \int_X:H_c^0(X;\omega_X)\longrightarrow k.
 \qquad\text{(24)}
 \]</span>
-<p>Since <span class="math" data-tex="$Z$">$Z$</span> is compact, the supported class maps naturally from <span class="math" data-tex="$H_Z^0(X;\omega_X)$">$H_Z^0(X;\omega_X)$</span> into this compactly supported group. The special case of (22) for <span class="math" data-tex="$a$">$a$</span> is exactly that map followed by (24). Thus</p>
+<p>Since <span class="math" data-tex="$Z$">$Z$</span> is compact, the actual map of section complexes is</p>
+<span class="math math-display" data-tex="\[
+R\Gamma(X;T_Z)
+\xrightarrow{\sim}R\Gamma_c(X;T_Z)
+\longrightarrow R\Gamma_c(X;\omega_X)
+\xrightarrow{t_{\omega_X}}k.
+\]">\[
+R\Gamma(X;T_Z)
+\xrightarrow{\sim}R\Gamma_c(X;T_Z)
+\longrightarrow R\Gamma_c(X;\omega_X)
+\xrightarrow{t_{\omega_X}}k.
+\]</span>
+<p>The first arrow is the inverse of support forgetting on <span class="math" data-tex="$T_Z$">$T_Z$</span>, and the middle arrow forgets the closed condition <span class="math" data-tex="$Z$">$Z$</span> while retaining compact support. This is exactly the specialization of the section-complex construction (21)–(22) to <span class="math" data-tex="$a$">$a$</span>. Thus its degree-zero map first sends <span class="math" data-tex="$H_Z^0(X;\omega_X)$">$H_Z^0(X;\omega_X)$</span> to the compactly supported group and then applies (24), giving</p>
 <span class="math math-display" data-tex="\[
 \int_X C(F)=\chi(X;F)1_k.
 \qquad\text{(25)}
@@ -376,7 +522,7 @@ P=Ra_!F=R\Gamma_c(X;F)\simeq R\Gamma(X;F).
 \int_X C(F)=\chi(X;F)1_k.
 \qquad\text{(25)}
 \]</span>
-<p>This proves (9.1.14) with its support and trace normalization. An ordinary group <span class="math" data-tex="$H^0(X;\omega_X)$">$H^0(X;\omega_X)$</span> need not admit this integration when <span class="math" data-tex="$X$">$X$</span> is noncompact. Even a class supported on a compact set can vanish after it is mapped to ordinary cohomology, while its integral remains nonzero. Characteristic zero lets the resulting field element recover the integer index; in positive characteristic it would record only its reduction.</p>
+<p>This is the compact index identity with its specified support map and graded trace normalization. An ordinary group <span class="math" data-tex="$H^0(X;\omega_X)$">$H^0(X;\omega_X)$</span> need not admit this integration when <span class="math" data-tex="$X$">$X$</span> is noncompact. Even a class supported on a compact set can vanish after it is mapped to ordinary cohomology, while its integral remains nonzero. Characteristic zero lets the resulting field element recover the integer index; in positive characteristic it would record only its reduction.</p>
 <h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
 <h3 id="a-point-supported-class-carries-the-coefficient-supertrace">A point-supported class carries the coefficient supertrace</h3>
 <p><em>Difficulty: Introductory.</em></p>
@@ -417,9 +563,11 @@ P=Ra_!F=R\Gamma_c(X;F)\simeq R\Gamma(X;F).
 <p>With the increasing orientation, <span class="math" data-tex="$\omega_Y=k_Y[1]$">$\omega_Y=k_Y[1]$</span>, and <span class="math" data-tex="$H^0(Y;\omega_Y)=H^1((0,1);k)=0$">$H^0(Y;\omega_Y)=H^1((0,1);k)=0$</span>. In particular the characteristic class <span class="math" data-tex="$C(G)$">$C(G)$</span> in its ordinary supported group for <span class="math" data-tex="$Z=Y$">$Z=Y$</span> is zero. The construction of (22) would require <span class="math" data-tex="$S_fR\Gamma_Z\omega_Y$">$S_fR\Gamma_Z\omega_Y$</span> to be identified with <span class="math" data-tex="$L_fR\Gamma_Z\omega_Y$">$L_fR\Gamma_Z\omega_Y$</span>. But <span class="math" data-tex="$R\Gamma_Z\omega_Y=\omega_Y$">$R\Gamma_Z\omega_Y=\omega_Y$</span>, and these two images are <span class="math" data-tex="$k[1]$">$k[1]$</span> and <span class="math" data-tex="$k$">$k$</span>, respectively. Their support-forgetting comparison is not an isomorphism. We cannot invert it to send the ordinary class through the proper trace.</p>
 <p>The bounded constructibility of both output objects does not repair this missing hypothesis. An unconditional image rule from the zero ordinary class would also be incompatible with the nonzero point class <span class="math" data-tex="$C(L_fG)=-1_k$">$C(L_fG)=-1_k$</span>.</p>
 <p>For the open inclusion <span class="math" data-tex="$j:(0,1)\hookrightarrow\mathbb R$">$j:(0,1)\hookrightarrow\mathbb R$</span>, the ambient extension <span class="math" data-tex="$j_!G$">$j_!G$</span> has compact closed support <span class="math" data-tex="$[0,1]$">$[0,1]$</span>, including its zero-stalk endpoints. Its supported characteristic class on the ambient line is the nonzero negative generator calculated above. Formula (25) now applies and gives the compact index <span class="math" data-tex="$-1$">$-1$</span>. The two settings have different closed supports and different available supported-to-compact maps.</p>
-<h2 id="what-has-now-been-proved">What has now been proved</h2>
-<p>The full proper trace diagram is established through its identity, Hom, closed-restriction and evaluated-tensor maps. The supported trace transports the characteristic class under properness on the closed support, and compact support gives the integer Euler index through (25). These results do not identify the class with a cotangent cycle or supply a cycle intersection formula. The lessons on <a href="subanalytic-chains-and-closed-cycle-supports.html">subanalytic chains</a>, <a href="the-dualizing-resolution-by-subanalytic-chains.html">the dualizing chain resolution</a>, and <a href="intersections-of-supported-subanalytic-cycles.html">supported intersections</a> develop the cycle constructions needed for those further comparisons.</p>
-
+<h2 id="what-has-now-been-proved">From supported traces to cycle comparisons</h2>
+<p>Proper transport retains the closed image support while the identity, graph restriction and ordered contraction determine its map. For a compact source support, the same map becomes integration of the supported class and gives the finite coefficient index in (25). Relating this dualizing class to geometric cycles requires the further constructions in <a href="subanalytic-chains-and-closed-cycle-supports.html">subanalytic chains</a>, <a href="the-dualizing-resolution-by-subanalytic-chains.html">the dualizing chain resolution</a>, and <a href="intersections-of-supported-subanalytic-cycles.html">supported intersections</a>.</p>
+<h2 id="mathematical-sources">Mathematical sources</h2>
+<p>M. Kashiwara, <a href="https://www.numdam.org/item/AST_1985__130__193_0/"><em>Index theorem for constructible sheaves</em></a>, Astérisque 130 (1985), §3.4 and Theorems 4.2–4.3, pp. 199–200, gives the microlocal characteristic-cycle index formulas with their support conditions. The supported characteristic-class transport proved here is organized around the graph, the two closed comparisons and the identity endomorphism. Its final scalar is computed directly on a finite coefficient complex.</p>
+<p>P. Schapira, <a href="https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=94"><em>An Introduction to Sheaves on Grothendieck Topologies</em></a>, edition dated 01/08/2026, Corollary 4.6.2, Propositions 4.6.5–4.6.8 and §4.7, pp. 95–98, treats exceptional composition, evaluated internal adjunction, closed support, diagonal Hom and the dualizing object. The linked programme proofs supply the required adjoint construction, product evaluation and support-forgetting compatibilities; the complete graph and trace calculations are given above. These mathematical sources retain their authorship and their own terms.</p>
 </article>
 
 <nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span></span></nav>

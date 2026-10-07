@@ -10,7 +10,7 @@ Read the lessons in this order:
 2. [The C*-algebra of a foliation](src/the-c-star-algebra-of-a-foliation.md)
 3. [Hilbert modules and fields on the leaf space](src/hilbert-modules-and-fields-on-the-leaf-space.md)
 4. [The index theorem for measured foliations](src/the-index-theorem-for-measured-foliations.md)
-5. [K-theory of the leaf space](src/k-theory-of-the-leaf-space.md)
+5. K-theory of the leaf space
 
 Take first measure theory, functional analysis, smooth manifolds and differential forms. The lessons link their specific measured-groupoid, random-operator and stable K-theory prerequisites where those results enter a proof.
 

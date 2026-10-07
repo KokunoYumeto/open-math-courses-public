@@ -2,9 +2,9 @@
 
 The metric symbol product becomes an operator product only after its factors have a common domain. This companion proves the full Schwartz and tempered-distribution action, including bounded-set continuity and the strong-dual topology, before identifying the product. It then proves affine symplectic covariance, including the singular position-block case and uniqueness up to a scalar phase.
 
-This is a modified selection of AN03-U009, *From Weyl symbols to operators and changes of coordinates*, from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. Copyright © 2026 AN-03 course project contributors. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection, exact prerequisite connections and identified additions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
+This is a modified selection of AN03-U009, *From Weyl symbols to operators and changes of coordinates*, from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection, exact prerequisite connections and identified additions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this component under the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The [complete licence](notices/COPYING), [title information](notices/TITLE_PAGE.md), [history](notices/HISTORY.md) and [rights notice](notices/RIGHTS.md) accompany it.
+Original text: CC0.
 
 ## A0. Exact inputs and selected scope
 

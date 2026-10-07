@@ -1,16 +1,16 @@
 # Finite domains, null directions, and support corners
 
-**Self-checked by the writing AI. Original arguments and one explicitly marked licensed adaptation.**
+**Self-checked by the writing AI. Original text: CC0.**
 
 A general normal weight has two potentially different obstructions: some directions have no finite-weight approximation, while others have weight zero. Separating these obstructions explains why the support convention for an arbitrary normal weight needs two projections. For a semifinite normal weight the first obstruction disappears, and the usual faithful support-corner reduction follows.
 
-Free comparisons are Brent Nelson, [*Tomita–Takesaki Theory*, the support paragraph after Definition 3.19, page 32](https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf), and François Combes, [*Poids associé à une algèbre hilbertienne à gauche*, the opening paragraph of printed page 51](https://www.numdam.org/item/CM_1971__23_1_49_0.pdf). Nelson uses \(e-f\); Combes uses \(1-f\). Here both projections are constructed and distinguished, and each asserted corner property is proved. They coincide for a semifinite weight. The separately attributed Daws component below provides an additional compression criterion. Central support results for traces and support results for bounded normal functionals are separate specializations.
+Free comparisons are Brent Nelson, [*Tomita–Takesaki Theory*, the support paragraph after Definition 3.19, page 32](https://users.math.msu.edu/users/banelson/files/Tomita-Takesaki%20Theory.pdf), and François Combes, [*Poids associé à une algèbre hilbertienne à gauche*, the opening paragraph of printed page 51](https://www.numdam.org/item/CM_1971__23_1_49_0.pdf). Nelson uses \(e-f\); Combes uses \(1-f\). Here both projections are constructed and distinguished, and each asserted corner property is proved. They coincide for a semifinite weight. The compression criterion in WS-03 gives a further characterization of semifiniteness for normal weights. Central support results for traces and support results for bounded normal functionals are separate specializations.
 
 ## Conventions and exact inputs
 
 Let \(M\subseteq B(H)\) be a concrete unital von Neumann algebra on any Hilbert space. Use the definitions of a weight \(\varphi\), its finite cone \(F_\varphi\), its finite left ideal \(\mathfrak n_\varphi\), its definition algebra \(\mathfrak m_\varphi\), and its null left ideal \(N_\varphi\) from WG002, WG003, WG004 and WG005. Inner products are linear in the first variable.
 
-OA-MOD-WS-02 and the corner-restriction proposition in OA-MOD-WS-03 allow an arbitrary weight. The separately marked compression criterion in WS-03 assumes normality and uses NW-11. All later weight assertions explicitly assume normality, in the sense of preservation of bounded increasing positive suprema.
+OA-MOD-WS-02 and the corner-restriction proposition in OA-MOD-WS-03 allow an arbitrary weight. The compression criterion in WS-03 assumes normality and uses NW-11. All later weight assertions explicitly assume normality, in the sense of preservation of bounded increasing positive suprema.
 
 The written inputs are WG003 for the finite-domain algebra, BK01 for square roots and positive-operator estimates, BK03 for bounded strong and ultraweak convergence, BK04 for monotone nets, BK05 for inverse order, BK06 for support cutoffs, and WG008 for the finite-cutoff characterization of semifiniteness. The compression criterion alone additionally uses NW11. These proofs apply in arbitrary Hilbert dimension; no modular theorem or spatial derivative is used.
 
@@ -102,58 +102,90 @@ a\ne eae\quad\Longrightarrow\quad\varphi(a)=+\infty.
 
 The implication is about all finite elements. It does not say that every positive element of \(eMe\) has finite weight.
 
-### Compression detects semifiniteness: an adapted proof by Matt Daws
+### Compression detects semifiniteness
 
-**Separate component: CC BY-NC-SA 4.0.** The following criterion and proof are adapted from **Matt Daws, *Some notes on weights*, September 2024, Section 2.1, proposition labelled `prop:semifinitequiv`**, in [the exact source version a2d54776](https://github.com/MatthewDaws/Mathematics/blob/a2d54776c75fc99f12d8e317e3e3c3fd34c813f9/Weights/weights.tex). The [repository licence notice](https://github.com/MatthewDaws/Mathematics/blob/a2d54776c75fc99f12d8e317e3e3c3fd34c813f9/README.md) grants [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/), which also covers this adaptation and its added teaching bridges. GPT-6.1 Sol (OpenAI), Ultra effort, October 2026, converted the notation, specified positive contractive norm approximate units, supplied their existence and corner-limit arguments from WS-02, and made the finite-value and subnet steps explicit. No endorsement by the source author is implied. This marked component is excluded from the surrounding original-prose licence.
+By the cutoff theorem WG-008, a weight of any kind is semifinite exactly when some increasing net of finite positive contractions has supremum \(1\). The criterion below tests semifiniteness in another way. It compresses an arbitrary positive element by finite-weight positive contractions that act as a unit on the norm closure of the definition algebra, and it asks whether infinite weight always shows in the compressed weights. For a normal weight this happens exactly when the weight is semifinite. Normality enters through the net form of ultraweak lower semicontinuity in NW11.
 
-The arbitrary-weight cutoff theorem WG-008 remains in force. The criterion below additionally assumes **normality**, using its ultraweak lower semicontinuity from The full characterization. It tests compressions; it does not assert that they increase or lie below the element being tested.
-
-Put \(A_\varphi=\overline{\mathfrak m_\varphi}^{\|\cdot\|}\subseteq eMe\), with the finite-domain projection \(e\) of WS-02. A **positive contractive approximate unit** here means a net \(a_i\in F_\varphi\), \(0\leq a_i\leq1\), such that \(a_i z\to z\) and \(z a_i\to z\) in norm for every \(z\in A_\varphi\). In the zero algebra the constant zero net qualifies. This definition concerns norm approximation in the finite-domain algebra, rather than monotone convergence to \(1\) in \(M\).
-
-Such nets exist without normality. Use the net \(u_a=a(1+a)^{-1}\) from WS-02. For \(b\in F_\varphi\), whenever \(a\geq tb\), inverse order and \((1-u_a)^2\leq1-u_a\) give
+Let \(A_\varphi\) be the norm closure of \(\mathfrak m_\varphi\) in \(M\). It lies in \(eMe\) by WS-02, and it is self-adjoint because \(\mathfrak m_\varphi\) is. In this subsection a **positive contractive approximate unit** is a net \((a_i)_{i\in I}\) in \(F_\varphi\) with \(0\leq a_i\leq1\) such that
 
 \[
-\|(1-u_a)b\|^2
-\leq\|b(1-u_a)b\|
-\leq\|b(1+tb)^{-1}b\|
-\leq\frac{\|b\|}{t}.
+\|a_iz-z\|\to0
+\quad\text{and}\quad
+\|za_i-z\|\to0
+\qquad(z\in A_\varphi).
 \]
 
-Taking adjoints gives the right-sided estimate. Since \(\mathfrak m_\varphi=\operatorname{span}_{\mathbb C}F_\varphi\) and the contractions are uniformly bounded, these estimates extend by norm density to \(A_\varphi\).
+Both limits are operator-norm limits for elements of \(A_\varphi\). The net need not increase, and nothing is assumed about convergence to \(1\) in \(M\).
 
-Every approximate unit in the stated sense converges strongly to \(e\), hence sigma-strongly and ultraweakly. Indeed, \(a_i=ea_i e\), and \(a_i b\to b\) in norm for every \(b\in F_\varphi\). WS-02 identifies \(eH\) as the closed span of their ranges. Uniform boundedness gives convergence to the identity on \(eH\); the operators vanish on \((1-e)H\).
+**Lemma.** Let \(\varphi\) be an arbitrary weight, with finite-domain projection \(e\).
+
+(a) The net \(u_a=a(1+a)^{-1}\) of WS-02, indexed by \(a\in F_\varphi\) with the operator order, is a positive contractive approximate unit. More precisely, if \(b\in F_\varphi\), \(t>0\) and \(a\geq tb\), then
+
+\[
+\|(1-u_a)b\|=\|b(1-u_a)\|\leq\left(\frac{\|b\|}{t}\right)^{1/2}.
+\]
+
+(b) Every positive contractive approximate unit converges strongly to \(e\), and hence sigma-strongly and ultraweakly.
+
+*Proof.* (a) By WS-02 the index set is directed, and each \(u_a\) is a positive contraction of finite weight. Fix an index \(a\) and put \(c=(1+a)^{-1/2}\). Functional calculus gives \(0\leq c\leq1\), \(1-u_a=c^2\) and \(cac=a(1+a)^{-1}=u_a\leq1\). Conjugation by \(c\) preserves order: if \(p\leq q\), then \(c(q-p)c=\bigl((q-p)^{1/2}c\bigr)^*(q-p)^{1/2}c\geq0\). Now suppose \(a\geq tb\). Then \(0\leq t\,cbc\leq cac\leq1\), so \(\|cbc\|\leq1/t\), and the identity \(\|y\|^2=\|y^*y\|\) with \(y=b^{1/2}c\) gives \(\|b^{1/2}c\|^2=\|cbc\|\leq1/t\). Factor \((1-u_a)b=c\,(cb^{1/2})\,b^{1/2}\). Since \(\|c\|\leq1\) and \(\|cb^{1/2}\|=\|b^{1/2}c\|\), this product has norm at most \(t^{-1/2}\|b\|^{1/2}\). The element \(b(1-u_a)\) is its adjoint and has the same norm. Because \(tb\in F_\varphi\) is itself an index and \(t>0\) is arbitrary, \(u_ab\to b\) and \(bu_a\to b\) in norm. Linearity extends both limits to \(\mathfrak m_\varphi=\operatorname{span}_{\mathbb C}F_\varphi\) (WG003). For \(z\in A_\varphi\) and \(z'\in\mathfrak m_\varphi\), the bound \(\|1-u_a\|\leq1\) gives \(\|(1-u_a)z\|\leq\|z-z'\|+\|(1-u_a)z'\|\), and similarly on the right; choosing \(z'\) close to \(z\) completes (a). When \(F_\varphi=\{0\}\), the net has the single member \(u_0=0\), and \(A_\varphi=\{0\}\).
+
+(b) Let \((a_i)\) be a positive contractive approximate unit, \(\xi\in H\) and \(\varepsilon>0\). The net \((u_a)\) increases strongly to \(e\) by WS-02 and BK04, so some \(a\in F_\varphi\) has \(\|(e-u_a)\xi\|\leq\varepsilon\). Each \(a_i\) lies in \(F_\varphi\), so WS-02 gives \(a_i=ea_ie\), and therefore \(a_ie=a_i\). Hence
+
+\[
+(a_i-e)\xi=a_i(e-u_a)\xi+(a_iu_a-u_a)\xi+(u_a-e)\xi .
+\]
+
+The first and last terms have norm at most \(\varepsilon\). The middle term tends to zero, since \(u_a\in F_\varphi\subseteq A_\varphi\). Thus \(\limsup_i\|(a_i-e)\xi\|\leq2\varepsilon\) for every \(\varepsilon>0\), which is strong convergence to \(e\). The net is bounded by \(1\), so the topology facts in WS-01 and BK03 give the sigma-strong and ultraweak limits. \(\square\)
 
 **Proposition.** For a normal weight \(\varphi\), the following conditions are equivalent:
 
 1. \(\varphi\) is semifinite, so \(e=1\).
-2. For every such approximate unit and every \(x\in M_+\),
+2. For every positive contractive approximate unit \((a_i)\) and every \(x\in M_+\), one has \(\varphi(x)\leq\liminf_i\varphi(a_ixa_i)\).
+3. For every positive contractive approximate unit \((a_i)\) and every \(x\in M_+\) with \(\varphi(x)=+\infty\), the net \(\varphi(a_ixa_i)\) tends to \(+\infty\).
+4. For every positive contractive approximate unit \((a_i)\) and every \(x\in M_+\) with \(\varphi(x)=+\infty\), one has \(\sup_i\varphi(a_ixa_i)=+\infty\).
+
+Every compressed weight is finite. Indeed, \(x\leq\|x\|1\) gives \(a_ixa_i\leq\|x\|a_i^2\), and \(a_i^2\leq a_i\) because \(0\leq a_i\leq1\). Hence \(\varphi(a_ixa_i)\leq\|x\|\varphi(a_i)<\infty\). Conditions 3 and 4 therefore say that finite numbers exceed every bound, eventually or at some index; no arithmetic with \(+\infty\) occurs.
+
+*Proof.* We prove \(1\Rightarrow2\Rightarrow3\Rightarrow4\Rightarrow1\).
+
+*1 implies 2.* Part (b) of the lemma, with \(e=1\), gives \(a_i\to1\) strongly. For \(\xi\in H\),
 
 \[
-\varphi(x)\leq\liminf_i\varphi(a_i x a_i).
+\|(a_ixa_i-x)\xi\|
+\leq\|a_ix(a_i-1)\xi\|+\|(a_i-1)x\xi\|
+\leq\|x\|\,\|(a_i-1)\xi\|+\|(a_i-1)x\xi\|,
 \]
 
-3. For every such approximate unit and every \(x\in M_+\) with \(\varphi(x)=+\infty\), the net \(\varphi(a_i x a_i)\) tends to \(+\infty\).
-4. For every such approximate unit and every \(x\in M_+\) with \(\varphi(x)=+\infty\), one has \(\sup_i\varphi(a_i x a_i)=+\infty\).
+and the right side tends to zero. The positive elements \(a_ixa_i\) have norm at most \(\|x\|\), so they converge ultraweakly to \(x\) by BK03. Lower semicontinuity, NW11, gives \(\varphi(x)\leq\liminf_i\varphi(a_ixa_i)\).
 
-Each compression has finite weight: \(a_i x a_i\leq\|x\|a_i^2\leq\|x\|a_i\). Thus condition 3 asserts eventual escape above every finite bound; it does not involve subtracting infinities.
+*2 implies 3.* If \(\varphi(x)=+\infty\), condition 2 makes the lower limit infinite. Thus for every finite \(K\) there is an index \(i_0\) with \(\varphi(a_ixa_i)>K\) for all \(i\geq i_0\), which is condition 3.
 
-**Proof.** If condition 1 holds, the corner-limit argument gives \(a_i\to1\) strongly. The uniformly bounded positive compressions converge strongly, hence ultraweakly, to \(x\). Lower semicontinuity proves condition 2.
+*3 implies 4.* A net that eventually exceeds every finite bound has supremum \(+\infty\).
 
-Conversely, under condition 2 take \(x=1-e\). Every compression is zero, so \(\varphi(1-e)=0\). Therefore \(1-e\in F_\varphi\subseteq eMe\), which forces \(1-e=0\). This proves condition 1.
+*4 implies 1.* Use the approximate unit \((u_a)\) of part (a) and the element \(x=1-e\). Each \(u_a\) lies in \(F_\varphi\), so WS-02 gives \(u_a=u_ae\); every compression \(u_a(1-e)u_a\) is therefore zero, and the supremum of the compressed weights is \(0\). Condition 4 thus rules out \(\varphi(1-e)=+\infty\). Hence \(1-e\in F_\varphi\), and WS-02 gives \(1-e=e(1-e)e=0\). So \(e=1\), which is semifiniteness by WS-02. \(\square\)
 
-Condition 2 implies condition 3, since a nonnegative extended-valued net whose liminf is infinite tends to infinity. For the converse, elements of infinite weight are covered by condition 3. If \(\varphi(x)<\infty\), then \(x\in F_\varphi\subseteq A_\varphi\), and the norm approximate-unit property gives \(a_i x a_i\to x\) in norm. Lower semicontinuity again gives the inequality in condition 2. This finite-value argument applies before semifiniteness is known.
+Normality was used only in the first step. The steps \(2\Rightarrow3\Rightarrow4\Rightarrow1\) hold for every weight, so for an arbitrary weight each of conditions 2, 3 and 4 already implies semifiniteness.
 
-Condition 3 immediately implies condition 4. Suppose condition 4 holds but condition 3 fails for an approximate unit and an element of infinite weight. Some finite \(K\geq0\) then has a cofinal index set
+For every normal weight, semifinite or not, and every positive contractive approximate unit, elements of finite weight satisfy the inequality of condition 2. If \(x\in F_\varphi\), then \(x\in A_\varphi\), and
 
 \[
-J=\{i:\varphi(a_i x a_i)\leq K\}.
+\|a_ixa_i-x\|
+\leq\|a_i(xa_i-x)\|+\|a_ix-x\|
+\leq\|xa_i-x\|+\|a_ix-x\|\to0 .
 \]
 
-With its inherited order, a cofinal subset of a directed set is directed: find a common upper bound in the original set and then an element of \(J\) above it. The inclusion is cofinal and order preserving, so \((a_j)_{j\in J}\) is a subnet and remains a positive contractive norm approximate unit. Its compressed weights have supremum at most \(K\), contradicting condition 4 for this approximate unit. All four conditions are equivalent. \(\square\)
+Norm convergence implies ultraweak convergence, so NW11 applies again. The criterion is therefore a statement about elements of infinite weight. The compressions \(a_ixa_i\) need not increase with \(i\) and need not lie below \(x\). For this reason the proof uses lower semicontinuity rather than the monotone form of normality.
 
-Normality cannot be dropped from this criterion. For the semifinite nonnormal weight \(\theta\) in WS-08, Problem 4, the finite-domain algebra is \(c_0(\mathbb N)\). Its finite-support coordinate projections \(q_n\) form a norm approximate unit, but \(\theta(q_n1q_n)=0\) while \(\theta(1)=+\infty\). This does not contradict WG-008, which characterizes semifiniteness without normality by strong cutoffs.
+The implication from 1 to 4 fails without normality. Take the semifinite nonnormal weight \(\theta\) on \(\ell^\infty(\mathbb N)\) from WS-08, Problem 4. Its finite cone is \(c_0(\mathbb N)_+\). Every element of \(c_0(\mathbb N)\) is a combination of four elements of this cone, so \(\mathfrak m_\theta=c_0(\mathbb N)\) and \(A_\theta=c_0(\mathbb N)\). The projections \(q_n\) onto the first \(n\) coordinates have weight zero, and
 
-**End of the separately licensed Daws adaptation.** The original support-corner lesson resumes below.
+\[
+\|q_nz-z\|=\|zq_n-z\|=\sup_{k>n}|z_k|\longrightarrow0
+\qquad(z\in c_0(\mathbb N)).
+\]
+
+They therefore form a positive contractive approximate unit. For \(x=1\), every compression has weight \(\theta(q_n1q_n)=\theta(q_n)=0\), although \(\theta(1)=+\infty\). Condition 4 fails, and conditions 2 and 3 fail with it. This agrees with WG-008: the same projections increase to \(1\) and are finite cutoffs of the kind required there.
+
+The same criterion, for approximate units of the definition algebra, is treated in Matt Daws, [*Some notes on weights*](https://github.com/MatthewDaws/Mathematics/blob/a2d54776c75fc99f12d8e317e3e3c3fd34c813f9/Weights/weights.tex), September 2024, Section 2.1.
 
 ## Normality produces a largest null projection
 

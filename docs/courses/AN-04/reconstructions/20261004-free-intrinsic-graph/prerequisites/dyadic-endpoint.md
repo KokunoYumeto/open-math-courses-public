@@ -8,17 +8,11 @@ extension arguments written out. Only the sequence endpoint
 The original lesson's other sequence indices remain outside this selection.
 
 Original principal author and publisher: AN-03 course-writing task /
-AN-03 local course project. Copyright © 2026 AN-03 course project
-contributors. Earlier modification: AN-03 course-writing task and
+AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and
 OpenAI Codex. This selection and its connecting arguments: GPT-6 Astra
 (OpenAI), Ultra, 4 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this component under
-the GNU Free Documentation License, Version 1.2 only, with no Invariant
-Sections, no Front-Cover Texts and no Back-Cover Texts. The
-[licence](endpoint-notices/COPYING), [title information](endpoint-notices/TITLE_PAGE.md),
-[history](endpoint-notices/HISTORY.md) and [rights notice](endpoint-notices/RIGHTS.md)
-accompany it.
+Original text: CC0.
 
 ## B0. Exact inputs and scope
 

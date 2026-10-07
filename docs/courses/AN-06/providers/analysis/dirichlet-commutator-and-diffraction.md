@@ -4,11 +4,13 @@
 
 <a id="dirichlet-commutator"></a>
 
-This reading proves an exact boundary commutator identity and a quantitative estimate near a strict diffractive scalar wave covector. It includes the normal gauge, all lower-order terms, compact tangential cutoffs and weak localized traces. The resulting estimate is one analytic step in the full boundary propagation problem. The subsequent [negative-order wave reading](dirichlet-wave-regularization.md#dirichlet-wave-regularization) proves the spectral regularization needed for the boundary lesson, and [Quadratic normal division and Dirichlet phase cutoffs](quadratic-normal-cutoffs.md#quadratic-normal-cutoffs) constructs cutoffs involving normal frequency and their exact boundary form. Full propagation at every contact type remains to be proved.
+This reading proves an exact boundary commutator identity and a quantitative estimate near a strict diffractive scalar wave covector. It includes the normal gauge, all lower-order terms, compact tangential cutoffs and weak localized traces. The estimate controls the localized wave and its normal derivative, including the derivative's boundary value, in terms of the exact localized forcing. [Quadratic normal division and Dirichlet phase cutoffs](quadratic-normal-cutoffs.md#quadratic-normal-cutoffs) constructs the normal-frequency multipliers used in the later [boundary propagation argument](diffractive-phase-neighborhoods.md#singular-generalized-curves).
 
-The free comparison is Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), Section 3.4, especially the boundary term in (3.4.4), the discussion of normal-frequency multipliers on printed pp. 259–260, and the estimates on pp. 262–266. Theorem 3.4.10 describes the refined generalized relation for a single quadratic normal block; using that theorem here still requires its complete programme proof. We derive our signs and estimates directly below. The identities are not inferred from a source locator.
+For further reading, see Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), Section 3.4: the boundary term in (3.4.4), normal-frequency multipliers on printed pp. 259–260, and the estimates on pp. 262–266. Theorem 3.4.10 treats the refined generalized relation for a single quadratic normal block.
 
-Read [Boundary traces near a real normal root](real-normal-root-trace.md), Sections 6–10, first. Its formulas (N19)–(N23) prove the finite tangential products, cutoff tails and bounded differential compositions used here; Section 8 constructs weak traces from norm primitives. The [Gaussian-packet reading](weighted-positivity.md#high-frequency-norm), Lemmas 2–3 and Theorem 4, supplies the proved positivity and norm estimates. Its free comparison is [Nicolas Lerner's author Chapter 2](https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf), Proposition 2.4.3. Vector integration and the fundamental theorem have their earlier proofs in [Hilbert-valued integration](hilbert-valued-integration.md).
+Read [Boundary traces near a real normal root](real-normal-root-trace.md#real-root-cutoff-products), Sections 6–10, first. Its formulas (N19)–(N23) prove the finite tangential products, cutoff tails and bounded differential compositions used here; [Section 8](real-normal-root-trace.md#real-root-weak-localized-traces) constructs weak traces from norm primitives. The [Gaussian-packet reading](weighted-positivity.md#high-frequency-norm), Lemmas 2–3 and Theorem 4, supplies the positivity and norm estimates; related packet identities appear in [Nicolas Lerner's author Chapter 2](https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf), Proposition 2.4.3. Vector integration and the fundamental theorem are proved in [Hilbert-valued integration](hilbert-valued-integration.md#vector-primitives).
+
+<a id="dirichlet-normal-gauge"></a>
 
 ## 1. Conventions and the normal gauge
 
@@ -52,6 +54,8 @@ The operator $R_h$ is tangential and formally self-adjoint. Differentiating $U$ 
 \]
 
 where $a_1$ is a polynomial of degree at most one in $\eta$, with uniformly bounded coefficient derivatives. Its degree-zero part includes the original potential, the square-completion term and all derivatives of $U$. No such term has been discarded. Multiplication by $U$ preserves the Dirichlet condition. For a Dirichlet function $v$, $(d_xUv)(0)=(d_xv)(0)$ as well. We prove the remaining assertions for $P_h=d_x^2+R_h$; (D3) transfers them to the original operator with this explicit gauge.
+
+<a id="dirichlet-green-commutator"></a>
 
 ## 2. Green's identity and the boundary commutator
 
@@ -110,6 +114,8 @@ For completeness, the entire commutator can be expanded without a symbolic remai
 Each term follows by the product commutator rule. For example
 $[d_x^2,B]=-ih(d_xB'+B'd_x)$, and commuting $R_h$ with the two terms in $Bd_x+d_xB$ produces the last line with its minus sign. This proves (D8), including all lower terms. When $A=d_x$, it reduces to $-R_h'$.
 
+<a id="dirichlet-tangential-estimates"></a>
+
 ## 3. Two scalar tangential estimates
 
 We write the precise finite estimates needed below, including their proofs. Let $q(y,\eta)$ be real, smooth and compactly supported, independent of $x$, and put $Q_h=\operatorname{Op}_h(q)$. Assume on its support, for $0\leq x\leq\ell<L$, that
@@ -158,6 +164,8 @@ Choose a compact smooth $\chi$ equal to one near $\operatorname{supp}q$ and set 
 
 The compositions $R_hQ_h,Q_hR_h$ and their normal derivatives are bounded on $H$ by (N23), and $[R_h,Q_h]=O_{H\to H}(h)$. These are bounded distributional extensions, not a claim that $R_h$ itself is bounded on $H$.
 
+<a id="dirichlet-weak-normal-multiplier"></a>
+
 ## 4. Weak inputs and the exact normal multiplier identity
 
 Suppose $u,d_xu,f\in L^2((0,L);H)$, $P_hu=f$ distributionally, and $u$ vanishes for $x\geq\ell$ with some $\ell<L$. Let
@@ -199,7 +207,9 @@ Indeed differentiate the real scalar function $(R_hv,v)_H$ and integrate; both e
 
 Here are the approximation details for the stated weak domain. For every fixed $h>0$, the compact phase cutoff maps $H$ boundedly into every integer tangential Sobolev space: differentiating its kernel only inserts a power of $\eta/h$ or a derivative of $q$, so the bounded-amplitude proof applies. The same statement holds for $Q_hR_h$, using its two-position differential amplitude in (N23). Consequently $v,d_xv,d_x^2v$ have every required tangential derivative in $L^2$, for this fixed $h$.
 
-Extend $v$ oddly across $x=0$. Its zero trace makes this extension continuous; its first normal derivative extends evenly, hence continuously as well. Applying the primitive integration-by-parts formula separately on the two half intervals shows that the first and second distributional derivatives have no point-mass boundary terms. They are precisely the reflected $L^2$ derivatives. Convolve with an even smooth normal mollifier and a smooth tangential mollifier, and multiply by a fixed even normal cutoff equal to one on the support under consideration. The approximants are smooth, odd in $x$, zero at the boundary and zero near $L$, and converge with two normal derivatives and every tangential derivative needed here. Convolution convergence follows from the already proved translation continuity and averaging result.
+The same primitive argument works in each integer tangential Sobolev space. In particular, the traces of $v$ and its first normal derivative exist in each such space. Their images in $H$ equal the traces already obtained there, since the inclusion into $H$ is continuous. Thus $v(0)=0$ also in these stronger trace spaces.
+
+Extend $v$ oddly across $x=0$. Its zero trace makes this extension continuous; its first normal derivative extends evenly, hence continuously as well. Applying the primitive integration-by-parts formula separately on the two half intervals shows that the first and second distributional derivatives have no point-mass boundary terms. They are precisely the reflected $L^2$ derivatives. Convolve with an even smooth normal mollifier and a smooth tangential mollifier, and multiply by a fixed even normal cutoff equal to one on the support under consideration. The approximants are smooth, odd in $x$, zero at the boundary and zero near $L$, and converge with two normal derivatives and every tangential derivative needed here. Convolution convergence follows from [translation continuity and mollification](euclidean-approximation-and-convolution.md#mollification).
 
 If compact tangential support is desired, a smooth cutoff tending to one gives the same convergence: its nonzero derivatives are bounded by inverse powers of its radius and the remaining terms tend to zero by the $L^2$ tail bound. All boundary traces converge as well. For an $H$-valued primitive $z$, the elementary estimate
 $\|z(0)\|\leq L^{-1/2}\|z\|_{L^2}+L^{1/2}\|z'\|_{L^2}$ follows by integrating $z(x)-z(0)$ and Cauchy–Schwarz. Apply it to $v$ and to $v'$. Thus every term of (D14)–(D15) passes to the limit. Constants in this approximation may depend on fixed $h$; the identities are exact, and the uniform estimates below come from Sections 3 and 5.
@@ -256,6 +266,8 @@ Absorb $cX^2/2$ into the left side and use $h^2\leq h$. This bounds $X^2+T^2$ by
 
 For example, for any real $s$, the actual bounds $\|u\|=O(h^{s-1/2})$ and $\|F\|=O(h^{s+1})$ imply that all three norms on the left of (D17) are $O(h^s)$. This is a direct consequence of the estimate, not a claim that a homogeneous wave automatically satisfies its cutoff-forcing hypothesis. Normal position localization also contributes $[d_x^2,\psi]u$ to $f$; that term must be retained.
 
+<a id="dirichlet-strict-contact-geometry"></a>
+
 ## 6. Which contact this estimate treats
 
 The normalized scalar principal symbol is
@@ -272,6 +284,6 @@ $H_p=\partial_\xi p\,\partial_x-\partial_xp\,\partial_\xi$ in each canonical pai
 
 At a glancing point, $x=\xi_x=0$ and $r=\tau^2$. A strict diffractive contact, where the tangent Hamilton curve bends into $x>0$ in both time directions, has $H_p^2x>0$, or $\partial_xr<0$. Since this inequality is strict, continuity provides a normal interval and a compact tangential cutoff equal to one near the point on which (D9) holds. For physical time, $H_pt=-2\tau$ and $\tau$ is constant for the time-independent wave. At glancing,
 $d^2x/dt^2=-\partial_xr/(2\tau^2)>0$.
-These signs follow from (D21), regardless of notation or printing conventions in the comparison source.
+Here $\tau\ne0$: at a nonzero glancing wave covector, $\tau=0$ would force $r=0$ and hence $\xi'=0$ by positivity of the tangential metric, while $\xi_x=0$ already. Thus the division by $\tau^2$ is legitimate.
 
-Thus (D17) is available for the actual variable scalar Dirichlet wave near every strict diffractive covector. It gives the positive normal boundary term and the quantitative local estimate needed in that part of a propagation argument. The [quadratic normal cutoff reading, Sections 1–6](quadratic-normal-cutoffs.md#quadratic-normal-cutoffs), proves smooth division through the double root, constructs a signed normal-frequency cutoff and quantizes its Dirichlet boundary form as an exact square. The [localized glancing estimate](glancing-commutator-estimate.md#glancing-commutator-estimate) now proves the interior lower estimate for that multiplier, identifies its actual phase and normal cutoff errors, and gives a half-step gain under the stated bounds on those errors. The [negative-order wave reduction](dirichlet-wave-regularization.md#dirichlet-wave-regularization) is also proved. [Existence and compactness of generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves) now proves the geometric existence, compactness and continuation, including gliding and degenerate contacts. A full analytic argument must still obtain the cutoff bounds from the incoming phase neighborhood and complete the regularity iteration to prove propagation along that precise relation. These readings do not replace those obligations by the strict-contact case.
+Thus (D17) applies to the actual variable scalar Dirichlet wave near every strict diffractive covector, with its full localization forcing. The [quadratic normal cutoff reading](quadratic-normal-cutoffs.md#quadratic-normal-cutoffs) constructs the multipliers needed when a tangential cutoff alone does not isolate the incoming ray. The [localized glancing estimate](glancing-commutator-estimate.md#glancing-commutator-estimate) supplies their interior lower bound, and the [incoming phase-neighborhood argument](diffractive-phase-neighborhoods.md#two-root-diffraction-supports) develops the cutoff bounds and regularity iteration. [Generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves) describes the corresponding geometry at all contact types; [negative-order wave regularization](dirichlet-wave-regularization.md#dirichlet-wave-regularization) transfers the finite-energy propagation statement to compactly supported distributional data.

@@ -2,9 +2,9 @@
 
 This modified component retains Sections 6–7 of AN03-U008, *Singularities along a submanifold and smooth boundary passage*. The exact amplitude characterization and complete Sections 1–5 are already present in the [conormal test companion](../20261005-conormal-test-foundations/conormal-amplitudes-and-test-spaces.md). The present component supplies the coordinate and half-density law, symbol quotient, full ordered operator action and every finite remainder.
 
-Copyright © 2026 AN-03 course project contributors. Principal author entity: AN-03 course-writing task. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Current proof connections and clarifications: AN-04 course-writing task and OpenAI Codex, 5 October 2026; publisher: AN-04 local course project.
+Principal author entity: AN-03 course-writing task, 2026. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Current proof connections and clarifications: AN-04 course-writing task and OpenAI Codex, 5 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this document under the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The full licence is [COPYING](notices/COPYING); retained [title page](notices/TITLE_PAGE.md), [rights](notices/RIGHTS.md) and [history](notices/HISTORY.md) accompany this component.
+Original text: CC0.
 
 ## Exact prerequisites and scope
 

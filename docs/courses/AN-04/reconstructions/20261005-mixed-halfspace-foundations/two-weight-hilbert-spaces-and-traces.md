@@ -2,9 +2,9 @@
 
 This selected and modified edition retains the definitions and complete multiplier/Hilbert-space proofs from Sections2–4, and the full trace proof from Section9, of AN03-U030, *Mixed symbols on every real two-parameter Sobolev scale*. Its broader mixed-symbol composition and mapping theorem is not imported: the receiving higher-order Cauchy lesson needs the precise coefficient and integer-normal tangential bounds proved in the separate half-space companion. All real two-weight indices and the trace constants are retained.
 
-Copyright ©2026 AN-03 course project contributors. Principal author entity: AN-03 course-writing task. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection and current prerequisite connections: AN-04 course-writing task and OpenAI Codex,5 October2026; publisher: AN-04 local course project.
+Principal author entity: AN-03 course-writing task, 2026. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection and current prerequisite connections: AN-04 course-writing task and OpenAI Codex,5 October2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this document under the GNU Free Documentation License, Version1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The complete licence is [COPYING](notices/COPYING). Retained [title-page information](notices/TITLE_PAGE.md), [rights notice](notices/RIGHTS.md) and [history](notices/HISTORY.md) accompany this component.
+Original text: CC0.
 
 ## Exact prerequisites and coordinates
 

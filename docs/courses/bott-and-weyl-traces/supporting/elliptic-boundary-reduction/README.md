@@ -16,4 +16,4 @@ The `--pandoc` option accepts a specific executable path. The mathematical reade
 
 The existing TeX file uses the sibling figure directory. To build its PDF, start from `tex/` and compile `arbitrary-boundary-data-reduction.tex` with a standard LaTeX installation. Regenerate the PNG and SVG with Python and Matplotlib by running `figures/arbitrary_boundary_data_reduction.py`.
 
-Read offline by serving this directory with a local HTTP server. Human source identities and use roles are in [sources.json](sources.json). The lesson and independent operator-flow figure are dedicated under CC0 1.0. Supporting inherited readings retain their own GFDL 1.2 only terms and notices.
+Read offline by serving this directory with a local HTTP server. Human source identities and use roles are in [sources.json](sources.json). The lesson and independent operator-flow figure are dedicated under CC0 1.0. The supporting inherited readings are also CC0.

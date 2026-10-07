@@ -2,7 +2,7 @@
 
 The induced system of lesson 44 starts with a representation of $H$ and produces a covariant representation of $C_0(G/H)$. The converse can be built from the covariant representation itself: smooth its spectral measures, take the density at the identity coset, and complete that positive form. The resulting Hilbert space carries the missing subgroup representation.
 
-*Programme exposition written in Codex (OpenAI), September 2026; foundation integration and proof restoration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held. No human review is asserted.*
+*Programme exposition written in Codex (OpenAI), September 2026; foundation integration and proof restoration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held.*
 
 The exact earlier foundations are [QF4–5](OA-FLOW-QF.md#qf-4) for locally finite complex Radon functionals and scalar representing measures, [HR5](OA-FLOW-HR.md#hr-05) and [H0](OA-FLOW-TOPOLOGY.md#l138-h0) for compact product interchange, [CF8](OA-FLOW-CF.md#oa-flow.cf.8) and [CF10](OA-FLOW-CF.md#oa-flow.cf.10) for Hilbert completion and orthogonal complements, and the complete preceding quotient and induced-field chapters. Closed-subspace compact extensions are [QF1](OA-FLOW-QF.md#qf-1).
 

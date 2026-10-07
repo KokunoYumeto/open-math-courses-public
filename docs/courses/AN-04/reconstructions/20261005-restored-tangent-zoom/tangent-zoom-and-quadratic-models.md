@@ -4,12 +4,12 @@ To inspect a singularity at a particular covector, remove a matching oscillation
 
 The exact earlier programme proofs are:
 
-- The restored [intrinsic-regularity lesson](../20261005-restored-intrinsic-regularity/intrinsic-lagrangian-regularity.md), especially its frequency-graph criterion, and the restored [oscillatory-distribution lesson](../20261005-restored-oscillatory/oscillatory-distributions-and-order.md), including its exact localization and Fourier reduction.
+- The restored [intrinsic-regularity lesson](../20261005-restored-intrinsic-regularity/intrinsic-lagrangian-regularity.md), especially its frequency-graph criterion, and the restored oscillatory-distribution lesson, including its exact localization and Fourier reduction.
 - [Quadratic stationary phase, Q1–Q6](../20261004-free-stationary-phase/quadratic-stationary-phase.md): the compact-plus-tail limit rule, Gaussian factors, Schwartz estimates, Fourier inversion, symmetric diagonalization and the regularized quadratic identity. [The full stationary-phase proof](../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md) supplies the nonstationary integration-by-parts bound with its transposed vector field.
 - [Wavefront tests and pullbacks, T0–W5](../20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md), together with the earlier tangent companion's [compact-distribution Fourier estimate T3 and rapid regular zoom T4](../20261004-free-tangent-zoom/tangent-zoom-and-quadratic-models.md).
 - [Uniform local distribution bounds and moving tests, U1](../20261004-free-tangent-zoom/prerequisites/uniform-distribution-bounds.md). Its [complete-test-space component](../20261004-free-tangent-zoom/prerequisites/complete-test-spaces.md), Sections 6, 14.1–14.2 and 19, proves the Baire and completeness inputs at the declared logical base. That separate component retains its [GFDL 1.2 licence and notices](../20261004-free-tangent-zoom/prerequisites/notices/COPYING).
 
-The [exact proof map](proof-map.json) records every dependency. The primary sources for this restoration are the approved purchased reprints of Hörmander IV, Section 25.1 and Hörmander III, Section 21.6. They supply the mathematical results; this lesson supplies its own exposition, exercises and full programme proofs. The earlier [tangent companion](../20261004-free-tangent-zoom/tangent-zoom-and-quadratic-models.md) remains available, including its uniform \(O_{\mathcal D'}(t^{-1})\) estimate, Gaussian-symbol identification and reproducible figures.
+The [exact proof map](proof-map.json) records every dependency. The primary sources for this restoration are the reprints of Hörmander IV, Section 25.1 and Hörmander III, Section 21.6. They supply the mathematical results; this lesson supplies its own exposition, exercises and full programme proofs. The earlier [tangent companion](../20261004-free-tangent-zoom/tangent-zoom-and-quadratic-models.md) remains available, including its uniform \(O_{\mathcal D'}(t^{-1})\) estimate, Gaussian-symbol identification and reproducible figures.
 
 We keep \(D=-i\partial\), the Fourier phase \(-x\cdot\xi\), and the inverse coefficient \((2\pi)^{-n}\). Half densities are written in the local frame \(|dx|^{1/2}\).
 
@@ -344,7 +344,7 @@ The limit is \(\xi_0^q\delta_0\). In Theorem 2.1, the normalized coefficient is 
 
 ## References
 
-- [Hörmander III, §21.6] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994, §21.6, especially. The exact approved purchased reprint was read for this restoration.
-- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing, Springer, 1994, §25.1, especially Proposition 25.1.7, its wavefront remark and Lemma 25.1.8. The exact approved purchased reprint was read for this restoration.
+- [Hörmander III, §21.6] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994, §21.6, especially.
+- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing, Springer, 1994, §25.1, especially Proposition 25.1.7, its wavefront remark and Lemma 25.1.8.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Self-checked by the writing AI. Original text: public domain (CC0).*

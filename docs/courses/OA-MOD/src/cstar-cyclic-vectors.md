@@ -1,6 +1,6 @@
 # A cyclic vector for a bounded positive functional
 
-*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. This lesson is a draft awaiting course-level mathematical review.*
+*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0.*
 
 For an arbitrary weight, the finite-domain GNS space need not have a cyclic vector. A bounded positive functional is different: it is finite on every square. Here we specialize the programme's existing cyclic GNS theorem to that finite-domain construction. An approximate identity indexed by finite subsets makes the specialization explicit without assuming a unit or a countable approximate identity. We use the forced \(C^*\)-unitization, with \(A\) as the kernel of its scalar quotient, and continuous functional calculus. Related classical results appear in Takesaki, *Theory of Operator Algebras I*, Chapter I, §§7 and 9, and the weight context in *Theory of Operator Algebras II*, Chapter VII, §4. Inner products are linear in the first variable.
 

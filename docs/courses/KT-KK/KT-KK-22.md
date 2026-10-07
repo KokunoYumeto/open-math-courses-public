@@ -1,6 +1,6 @@
 # Deformations and the analytic index in E-theory
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A deformation replaces an operator algebra by its limiting symbol algebra. Evaluation at a small positive parameter almost preserves multiplication on lifts of symbols. Those evaluations define an asymptotic morphism. For the tangent groupoid, the resulting map on K-theory is the analytic index.
 
@@ -138,7 +138,7 @@ K_0(C_0(T^*M))\longrightarrow K_0(\mathcal K(L^2M))
 \]
 This is the deformation analytic index of Theorem 17.7 in the tangent-groupoid lesson.
 
-We verify its operator meaning for closed manifolds using the complete free-source quantization proof in *Dirac classes and the cotangent Dolbeault element*, Lemma CI.10 and Theorems CI.11–CI.14. This comparison uses the classical order-zero index statement proved there.
+We verify its operator meaning for closed manifolds using the complete free-source quantization proof in [*Dirac classes and the cotangent Dolbeault element*, Lemma CI.10 and Theorems CI.11–CI.14](KT-KK-15.html#9-a-universal-quantization-morphism). This comparison uses the classical order-zero index statement proved there.
 
 **Proposition 22.6 (the closed-manifold comparison).** For closed \(M\), the semiclassical algebra \(\mathcal A_M\) of Lemma CI.10 is \(D_M\), with the same two evaluations. Thus the E-class is the image of its KK quantization morphism. For every classical elliptic order-zero \(P\),
 \[
@@ -299,7 +299,7 @@ The chart, Haar, fibre and continuity proofs for these two deformations are the 
 \gamma_i\in E(C^*(J_i),C_0(N)\otimes\mathcal K).
 \tag{22.29}
 \]
-A full K-orientation, including its determinant line and grading, supplies the Thom factor on \(T^*M\oplus i^*TN\) in the convention of *Wrong-way maps for K-oriented maps*. Combining that factor, (22.29) and the stable pair-algebra corner gives the deformation formulation of the oriented embedding class.
+A full K-orientation, including its determinant line and grading, supplies the Thom factor on \(T^*M\oplus i^*TN\) in the convention of [*Wrong-way maps for K-oriented maps*](KT-KK-16.html). Combining that factor, (22.29) and the stable pair-algebra corner gives the deformation formulation of the oriented embedding class.
 
 We state the comparison with the wrong-way class of that lesson: the resulting E-class is \(\mathfrak c(i!)\), with the same full orientation. The proof of this deformation comparison is not given here and it is not an input to (22.5), (22.14), (22.15) or (22.25). Its free primary locator is Connes's author edition, Chapter II, Section 6, Propositions 1 and 3 and Theorem 7. The manifold construction, composition and projection formulas themselves are the complete proofs of the preceding wrong-way lesson.
 

@@ -1,6 +1,6 @@
 # Homotopy, associativity, the index pairing and KK-equivalence
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 The product constructed in the preceding lesson makes cycles composable. Three further facts give the composition its force: an arbitrary module homotopy can be replaced by an operator homotopy, products associate, and composition with an odd Fredholm class is the familiar compression index. We prove these facts with their signs and countability conditions.
 

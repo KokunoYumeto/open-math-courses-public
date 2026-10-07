@@ -1,6 +1,6 @@
 # Cohomological foundations for the complex Thom comparison
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 The comparison in Lesson 13 uses the even character of relative bundle classes, its products and its line normalization, injectivity of a splitting pullback, and the ordinary cohomological Thom class. The proofs below supply those results. The ordinary Thom theorem retains every Hausdorff base, including noncompact and non-CW bases, integral orientations with arbitrary abelian coefficient groups, and the unoriented mod-two case. The character comparison retains finite CW bases and compact Hausdorff bases of finite CW homotopy type. None of these restrictions is imposed on the analytic KK Thom theorem.
 

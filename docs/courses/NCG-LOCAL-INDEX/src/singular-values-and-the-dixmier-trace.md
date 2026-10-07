@@ -1,12 +1,12 @@
 # Singular values and the Dixmier trace
 
-*Written by GPT-6.1 Sol (OpenAI), September–October 2026, at Ultra; editorial revision with OpenAI Codex, 3 October 2026. AI-written mathematical draft; not formally verified. Original course text is offered under CC0, excluding the marked Lord–Sukochev adaptation (CC BY-NC-SA 3.0) and the separately licensed prerequisite texts.*
+*Written by GPT-6.1 Sol (OpenAI), September–October 2026, at Ultra; Proposition 4.4 and its discussion by Claude Opus 5.5 (Anthropic); editorial revision with OpenAI Codex, 3 October 2026. AI-written mathematical draft; not formally verified. Original text: CC0.*
 
 What can we learn about an operator by observing only its first \(N\) singular values? A divergent sum may still have a stable logarithmic coefficient. To turn that coefficient into an integral, we must answer three different questions: which tails are too small to detect, how changing a spectral cutoff affects addition, and when the eventual answer is independent of a choice of limit.
 
 We first study the finite observations themselves and test them on a direct sum. We then identify the tails that disappear in the logarithmic ideal norm, before using a scale average to repair additivity. The resulting traces lead to two further tests: whether their value is canonical, and whether they preserve monotone convergence. Finally, the zeta and heat calculations show how to obtain an actual number without selecting a generalized limit.
 
-For the logarithmic-trace construction the human sources are [Dixmier 1966] and [Connes–Moscovici 1995]; [Carey–Rennie–Sedaev–Sukochev 2006] studies the connection with zeta asymptotics. The separately marked normality argument is adapted from Lord and Sukochev.
+For the logarithmic-trace construction the human sources are [Dixmier 1966] and [Connes–Moscovici 1995]; [Carey–Rennie–Sedaev–Sukochev 2006] studies the connection with zeta asymptotics. [Lord–Sukochev 2010] discusses the normality of the functionals these traces define.
 
 Our entry prerequisites are complex Hilbert spaces, elementary finite-dimensional linear algebra, real and complex calculus, and integration with monotone and dominated convergence. The supporting proofs are collected in Section 9, with links at their points of use: [compact decomposition](#compact-positive-operators), [compact-resolvent domains](#compact-resolvent-spectral-core), [Schatten estimates](#schatten-holder), and [positive extensions of limits](#extension-used-to-construct-a-state). The bounded positive functional calculus and scalar measure construction have complete proofs in [Positive spectral calculus](../../elliptic-boundary-reduction/lower-bounded-spectral-calculus.html#the-full-calculus-of-a-bounded-positive-contraction), AN03-SPC-001–003; the trace-class facts are proved in [Traces that survive passage to cohomology](../../elliptic-boundary-reduction/traces-and-complexes.html#the-trace-ideal-from-paired-orthonormal-systems), AN03-TRC-002–003. These are referenced proofs with their own licenses. In the sections on limits we use finite measures and polynomial approximation on a compact interval. Basic references are [Dixmier 1966], [Connes–Moscovici 1995], and [Carey–Rennie–Sedaev–Sukochev 2006]. Our trace class is on a separable complex Hilbert space \(H\), and \(\operatorname{Tr}\) denotes its ordinary trace.
 
@@ -243,36 +243,63 @@ This construction uses arbitrary states **after** logarithmic averaging. If one 
 
 ### A singular integral need not satisfy monotone convergence
 
-*Adapted from Steven Lord and Fedor Sukochev, **Measure Theory in Noncommutative Spaces**, [arXiv:1009.3095v1](https://arxiv.org/html/1009.3095v1#S1), 16 September 2010, Introduction, the argument following (1.6). This subsection, including its proof and the AI changes, is licensed under [CC BY-NC-SA 3.0 Unported](https://creativecommons.org/licenses/by-nc-sa/3.0/): credit the authors and source, retain this notice, use it noncommercially, and distribute adaptations and translations under the same licence. The complete licence is included. GPT-6.1 Sol (OpenAI), Ultra, adapted and checked the argument on 2 October 2026: replaced the spectral weight by an arbitrary positive operator in our logarithmic ideal, used our trace convention (4.2), expanded the positivity and continuity proofs, and distinguished norm closure from strong closure. No author endorsement is implied.*
+A positive element of the logarithmic ideal can serve as a weight: pairing it with bounded operators through a trace (4.2) gives a positive functional on all of \(B(H)\). The next proposition shows that such a functional vanishes on compact operators, and that this property is incompatible with monotone convergence as soon as the weight has positive trace.
 
-**Proposition 4.4.** Let \(H\) be separable and infinite dimensional, let \(T\geq0\) belong to \(\mathcal M_{1,\infty}\), and put
+**Proposition 4.4.** Suppose that \(H\) is separable and infinite dimensional, and let \(T\in\mathcal M_{1,\infty}\) be positive. The functional
 \[
-\Phi_\omega(A)=\operatorname{Tr}_\omega(AT),\qquad A\in B(H).
+\Phi_\omega(A)=\operatorname{Tr}_\omega(AT),\qquad A\in B(H),
 \]
-This is a bounded positive linear functional. If \(\operatorname{Tr}_\omega(T)>0\), it fails monotone convergence on \(B(H)\): there are finite-rank projections \(P_N\uparrow I\) strongly with
+has the following properties.
+
+(i) \(\Phi_\omega(K)=0\) for every compact operator \(K\).
+
+(ii) \(\Phi_\omega\) is a positive linear functional on \(B(H)\), and \(\|\Phi_\omega\|=\Phi_\omega(I)=\operatorname{Tr}_\omega(T)\). In particular \(\Phi_\omega=0\) when \(\operatorname{Tr}_\omega(T)=0\).
+
+(iii) If \(\operatorname{Tr}_\omega(T)>0\), then \(\Phi_\omega\) fails monotone convergence on \(B(H)\). There are finite-rank projections \(P_1\leq P_2\leq\cdots\) converging strongly to \(I\), and every such sequence satisfies
 \[
-\Phi_\omega(P_N)=0\quad\hbox{for every }N,
-\qquad \Phi_\omega(I)>0.
+\Phi_\omega(P_N)=0\quad\text{for every }N,\qquad\Phi_\omega(I)>0.
 \]
-In particular it is not normal, where normality means preservation of increasing bounded positive suprema.
+Consequently \(\Phi_\omega\) is not normal, where normality means \(\Phi_\omega(\sup_\alpha X_\alpha)=\sup_\alpha\Phi_\omega(X_\alpha)\) for every bounded increasing family \((X_\alpha)\) of positive operators.
 
-**Proof.** The ideal estimate in Section 2 puts \(AT\) in \(\mathcal M_{1,\infty}\). Linearity follows from Theorem 4.3. For \(A\geq0\), the bounded positive square root and cyclicity give
+**Proof.** Multiplication by a bounded operator is bounded on the ideal. Multiplying a decomposition \(X=X_1+X_2\) as in (2.1) by \(A\) on either side, and using \(\|AX_1\|_1,\|X_1A\|_1\leq\|A\|\,\|X_1\|_1\), gives the real-cutoff form of (1.5): \(S_t(AX)\) and \(S_t(XA)\) are at most \(\|A\|S_t(X)\) for bounded \(A\), compact \(X\) and \(t>0\). For \(X\in\mathcal M_{1,\infty}\), dividing by \(\log t\) and taking the supremum over \(t\geq a\) yields
 \[
-\Phi_\omega(A)=\operatorname{Tr}_\omega(A^{1/2}TA^{1/2})\geq0.
+\|AX\|_{\mathcal M}\leq\|A\|\,\|X\|_{\mathcal M},\qquad\|XA\|_{\mathcal M}\leq\|A\|\,\|X\|_{\mathcal M}.
 \]
-If \(B=B^*\), write it as the difference of the positive operators \(B+\|B\|I\) and \(\|B\|I\). Its functional value is real. Splitting a general operator into real and imaginary selfadjoint parts therefore gives \(\Phi_\omega(A^*)=\overline{\Phi_\omega(A)}\). Now positivity applied to \((A+zI)^*(A+zI)\), for all \(z\in\mathbb C\), yields the scalar quadratic inequality
+Hence \(AT\in\mathcal M_{1,\infty}\), and \(\Phi_\omega\) is linear because \(\operatorname{Tr}_\omega\) is.
+
+For (i), Lemma 9.1 applied to \(K^*K\) shows \(\mu_j(K)\to0\). By (1.1), for each \(j\geq1\) there is an operator \(R_j\) of rank at most \(j\) with \(\|K-R_j\|\leq\mu_j(K)+1/j\). Every \(R_jT\) has finite rank, and
 \[
-|\Phi_\omega(A)|^2\leq
-\Phi_\omega(A^*A)\Phi_\omega(I)
-\leq\|A\|^2\Phi_\omega(I)^2.
+\|KT-R_jT\|_{\mathcal M}\leq\|K-R_j\|\,\|T\|_{\mathcal M}\longrightarrow0.
 \]
-If \(\Phi_\omega(I)=0\), the same quadratic inequality forces every value to be zero. Otherwise it proves boundedness with norm \(\Phi_\omega(I)\).
+Thus \(KT\) lies in the closure of the finite-rank operators in \(\|\cdot\|_{\mathcal M}\), on which \(\operatorname{Tr}_\omega\) vanishes by Theorem 4.3.
 
-Choose an orthonormal basis and let \(P_N\) project onto its first \(N\) vectors. Parseval gives \(P_N\uparrow I\) strongly. The product \(P_NT\) has finite rank, so Theorem 4.3 gives \(\Phi_\omega(P_N)=0\). But \(\Phi_\omega(I)=\operatorname{Tr}_\omega(T)>0\). This proves the asserted failure of monotone convergence. \(\square\)
+For (ii), let \(A\geq0\), and let \(R=A^{1/2}\) be its positive square root, given by the bounded positive functional calculus listed among the prerequisites. Formula (4.1), applied to the bounded operator \(R\) and the ideal element \(RT\), moves the left factor \(R\) to the right:
+\[
+\Phi_\omega(A)=\operatorname{Tr}_\omega(R\,RT)=\operatorname{Tr}_\omega(RTR)\geq0,
+\]
+because \(\langle RTR\xi,\xi\rangle=\langle TR\xi,R\xi\rangle\geq0\) and \(\operatorname{Tr}_\omega\) is positive. For selfadjoint \(B\), the operators \(\|B\|I+B\) and \(\|B\|I-B\) are positive; applying \(\Phi_\omega\) to both shows that \(\Phi_\omega(B)\) is real and \(|\Phi_\omega(B)|\leq\|B\|\Phi_\omega(I)\). For arbitrary \(A\), choose \(c\in\mathbb C\) with \(|c|=1\) and \(c\Phi_\omega(A)=|\Phi_\omega(A)|\), and split \(cA=B_1+iB_2\) with selfadjoint \(B_1=(cA+(cA)^*)/2\) and \(B_2=(cA-(cA)^*)/(2i)\). The numbers \(\Phi_\omega(B_1)\) and \(\Phi_\omega(B_2)\) are real, and \(\Phi_\omega(B_1)+i\Phi_\omega(B_2)=|\Phi_\omega(A)|\) is real, so \(\Phi_\omega(B_2)=0\) and
+\[
+|\Phi_\omega(A)|=\Phi_\omega(B_1)\leq\|B_1\|\,\Phi_\omega(I)\leq\|A\|\,\Phi_\omega(I).
+\]
+Equality at \(A=I\) shows \(\|\Phi_\omega\|=\Phi_\omega(I)=\operatorname{Tr}_\omega(T)\).
 
-Thus a logarithmic trace can define a positive integral while failing the convergence property of ordinary measure integration on the ambient algebra. Its restriction to a smaller algebra needs its own normality check. Norm continuity gives a unique extension from an algebra to its **norm** closure; it does not give a unique extension to its strong or weak closure. The argument above makes no assertion that \(A\mapsto\Phi_\omega(A)\) is a trace on every coefficient algebra.
+For (iii), Gram–Schmidt applied to a dense sequence gives an orthonormal basis \((e_k)_{k\geq1}\) of \(H\). The orthogonal projections \(P_N\) onto \(\operatorname{span}\{e_1,\ldots,e_N\}\) have finite rank, increase with \(N\), and converge strongly to \(I\), since Parseval gives \(\|\xi-P_N\xi\|^2=\sum_{k>N}|\langle\xi,e_k\rangle|^2\). Now let \((P_N)\) be any increasing sequence of finite-rank projections with strong limit \(I\). Part (i) gives \(\Phi_\omega(P_N)=0\) for every \(N\), whereas \(\Phi_\omega(I)=\operatorname{Tr}_\omega(T)>0\). The supremum of the sequence is \(I\): the numbers \(\langle P_N\xi,\xi\rangle\) increase to \(\|\xi\|^2\), so \(P_N\leq I\), and every selfadjoint \(B\) with \(B\geq P_N\) for all \(N\) satisfies \(\langle B\xi,\xi\rangle\geq\|\xi\|^2\). Normality would force \(\Phi_\omega(I)=\sup_N\Phi_\omega(P_N)=0\). \(\square\)
 
-*End of the Lord–Sukochev adaptation. The following original course text is CC0.*
+Part (i) is the mechanism behind (iii). Operators that differ by a compact operator have the same value, so the complementary projections \(I-P_N\), which decrease strongly to zero, all have the value \(\operatorname{Tr}_\omega(T)\). For the same reason, the values of \(\Phi_\omega\) on a strongly dense subalgebra need not determine it. The finite-rank operators form such a subalgebra, since for bounded \(A\)
+\[
+P_NAP_N\xi-A\xi=P_NA(P_N\xi-\xi)+(P_N-I)A\xi\longrightarrow0,
+\]
+and \(\Phi_\omega\) vanishes on all of them, although \(\Phi_\omega(I)>0\) in the situation of (iii). Norm continuity, in contrast, determines \(\Phi_\omega\) on the norm closure of a subalgebra from its values on the subalgebra.
+
+Normality of a restriction is a separate question for each algebra of coefficients, because it involves only increasing families inside that algebra. If a unital subalgebra \(\mathcal N\subseteq B(H)\) contains an increasing sequence of compact positive operators with strong limit \(I\), the argument for (iii) runs inside \(\mathcal N\), and the restriction of \(\Phi_\omega\) to \(\mathcal N\) is not normal when \(\operatorname{Tr}_\omega(T)>0\). If \(\mathcal N\) contains no nonzero compact operator, part (i) gives no information about \(\Phi_\omega\) on \(\mathcal N\).
+
+Positivity and boundedness pass from \(\operatorname{Tr}_\omega\) to \(\Phi_\omega\); the trace property is a separate matter. Cyclicity (4.1) moves a bounded factor past the ideal element \(AT\), so \(\Phi_\omega(BA)=\operatorname{Tr}_\omega(B\,AT)=\operatorname{Tr}_\omega(ATB)\) and
+\[
+\Phi_\omega(AB)-\Phi_\omega(BA)=\operatorname{Tr}_\omega(A[B,T]),\qquad A,B\in B(H).
+\]
+The right side vanishes for every \(A\) when \([B,T]\) lies in the closure of the finite-rank operators in \(\|\cdot\|_{\mathcal M}\), for example when \(B\) commutes with \(T\): by the estimate at the start of the proof, left multiplication by \(A\) maps that closure into itself, and \(\operatorname{Tr}_\omega\) vanishes on it by Theorem 4.3. Whether \(\Phi_\omega\) is a trace on a given algebra of coefficients is decided by these commutators.
+
+The failure of normality for functionals defined by Dixmier traces, and the separate question of normality on a smaller von Neumann algebra, are also discussed in S. Lord and F. Sukochev, *Measure Theory in Noncommutative Spaces*, [arXiv:1009.3095v1](https://arxiv.org/abs/1009.3095v1), Introduction.
 
 ## 5. When the choice disappears
 
@@ -592,7 +619,7 @@ Thus its complex norm is one and it extends the complex ordinary limit. Composit
 
 ## References
 
-- [Lord–Sukochev 2010] Steven Lord and Fedor Sukochev, *Measure Theory in Noncommutative Spaces*, SIGMA 6 (2010), 072, 36 pages; [exact arXiv v1](https://arxiv.org/abs/1009.3095v1), [readable text](https://arxiv.org/html/1009.3095v1). The marked subsection adapts the full Introduction argument following (1.6), under CC BY-NC-SA 3.0.
+- [Lord–Sukochev 2010] Steven Lord and Fedor Sukochev, *Measure Theory in Noncommutative Spaces*, SIGMA 6 (2010), 072, 36 pages; [exact arXiv v1](https://arxiv.org/abs/1009.3095v1), [readable text](https://arxiv.org/html/1009.3095v1). Its Introduction discusses the normality of functionals defined by Dixmier traces.
 
 - [Carey–Rennie–Sedaev–Sukochev 2006] Alan L. Carey, Adam Rennie, Aleksandr Sedaev, and Fedor A. Sukochev, *The Dixmier trace and asymptotics of zeta functions*, [open preprint](https://arxiv.org/abs/math/0611629).
 - [Connes–Moscovici 1995] Alain Connes and Henri Moscovici, *The local index formula in noncommutative geometry*, Geometric and Functional Analysis 5 (1995), 174–243; [IHÉS preprint](https://repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/CONNES/1994-1998/M_95_19/M_95_19.pdf).

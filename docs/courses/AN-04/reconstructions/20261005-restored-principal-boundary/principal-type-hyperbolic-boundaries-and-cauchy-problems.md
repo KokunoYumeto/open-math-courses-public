@@ -2,9 +2,9 @@
 
 Original independent programme exposition and all twenty complete original solutions are retained. Current source and proof review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. This lesson, its added proof completions and original figure are dedicated under CC0. Linked components retain their own licences.
 
-Begin with [higher-order Cauchy roots, jets and propagation](../20261005-restored-higher-order-cauchy/higher-order-cauchy-roots-jets-and-propagation.md) and [the necessity of hyperbolicity](../20261005-restored-hyperbolicity-necessity/hyperbolicity-necessity-support-tests-and-double-roots.md). We now prove energy estimates, supported existence and boundary propagation when two real normal roots merge at the initial surface while the characteristic remains of principal type. The [ordinary symbol calculus](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md) supplies the composition and Sobolev mapping conventions used below.
+Begin with higher-order Cauchy roots, jets and propagation and the necessity of hyperbolicity. We now prove energy estimates, supported existence and boundary propagation when two real normal roots merge at the initial surface while the characteristic remains of principal type. The [ordinary symbol calculus](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md) supplies the composition and Sobolev mapping conventions used below.
 
-Use coordinates \((x',t)\), \(D=-i\partial\), the Hermitian pairing linear in its first entry, and the tangential Sobolev norm \(\|\cdot\|_s\). All symbols are ordinary \(S^r_{1,0}\), with \(t\) as a smooth parameter on a fixed compact interval. The [mixed half-space proofs in the higher-order Cauchy lesson](../20261005-restored-higher-order-cauchy/higher-order-cauchy-roots-jets-and-propagation.md) supply restricted/supported duality, the complete normal jet norm and the all-real normal step. Boundary distributions and intrinsic derivatives retain their exact AN-03 interfaces. No raw ambient derivative is substituted for an intrinsic derivative.
+Use coordinates \((x',t)\), \(D=-i\partial\), the Hermitian pairing linear in its first entry, and the tangential Sobolev norm \(\|\cdot\|_s\). All symbols are ordinary \(S^r_{1,0}\), with \(t\) as a smooth parameter on a fixed compact interval. The mixed half-space proofs in the higher-order Cauchy lesson supply restricted/supported duality, the complete normal jet norm and the all-real normal step. Boundary distributions and intrinsic derivatives retain their exact AN-03 interfaces. No raw ambient derivative is substituted for an intrinsic derivative.
 
 ## 0. Exact programme inputs and the weak-limit step
 
@@ -40,7 +40,7 @@ Fix a double root \(\tau_0\) and a small complex circle around it, disjoint from
 S_k=(2\pi i)^{-1}\oint z^k\frac{\partial_zp(z)}{p(z)}\,dz,
 \quad k=1,2.
 \]
-The [complete polynomial circle-count identity and homotopy proof](../20261005-restored-hyperbolicity-necessity/hyperbolicity-necessity-support-tests-and-double-roots.md), together with [the weighted circle moments A5](../20261005-restored-quadratic-forms/spectral-algebra-and-contour-projections.md), counts the multiplicities and gives these power sums. Differentiation under the fixed compact contour, whose denominator is bounded away from zero, proves every parameter derivative. Set
+The complete polynomial circle-count identity and homotopy proof, together with [the weighted circle moments A5](../20261005-restored-quadratic-forms/spectral-algebra-and-contour-projections.md), counts the multiplicities and gives these power sums. Differentiation under the fixed compact contour, whose denominator is bounded away from zero, proves every parameter derivative. Set
 \[
 a=S_1/2,\qquad b=S_2/2-a^2.
 \]

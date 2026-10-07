@@ -4,11 +4,13 @@
 
 <a id="glancing-commutator-estimate"></a>
 
-This reading proves the interior lower estimate for a signed normal-frequency multiplier at a glancing point. The equation makes the localized normal derivative small enough to absorb its mixed terms. We then identify the actual errors on the phase and normal cutoff edges and prove a quantitative half-step regularity gain under bounds on those errors. Establishing those bounds from the incoming generalized-ray geometry is a further obligation; it is not inferred here from the homogeneous wave equation alone.
+This reading proves the interior lower estimate for a signed normal-frequency multiplier at a glancing point. The equation makes the localized normal derivative small enough to absorb its mixed terms. We identify the errors on the phase and normal cutoff edges and prove a quantitative half-step regularity gain under explicit bounds on those errors. The final section explains how these hypotheses enter boundary propagation.
 
-Read [Quadratic normal division and Dirichlet phase cutoffs](quadratic-normal-cutoffs.md#quadratic-normal-cutoffs), [Dirichlet commutators and a local diffraction estimate](dirichlet-commutator-and-diffraction.md#dirichlet-commutator), and [the finite tangential calculus](real-normal-root-trace.md#6-semiclassical-tangential-norms-with-the-correct-leading-constant) first. We use their actual finite product, adjoint, separated-support, norm and boundary-form proofs. The scalar positivity estimate is proved by [the Gaussian-packet reading](weighted-positivity.md#high-frequency-norm) and repeated in (D10)–(D11).
+Read [Quadratic normal division and Dirichlet phase cutoffs](quadratic-normal-cutoffs.md#quadratic-exact-interior-form), [Dirichlet commutators and a local diffraction estimate](dirichlet-commutator-and-diffraction.md#dirichlet-green-commutator), and [the finite tangential calculus](real-normal-root-trace.md#real-root-cutoff-products) first. We use their finite product, adjoint, separated-support, norm and boundary-form proofs. The scalar positivity estimate is proved by [the Gaussian-packet reading](weighted-positivity.md#high-frequency-norm) and applied in [the tangential Dirichlet estimates](dirichlet-commutator-and-diffraction.md#dirichlet-tangential-estimates), (D10)–(D11).
 
-The freely accessible comparison is Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), printed pp. 261–264, especially the separate bulk, lower-regularity and cutoff-edge contributions in (3.4.42). The present scalar estimate is derived below with its own hypotheses and constants. It is not identified with the complete propagation theorem in that source.
+For further reading, see Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), printed pp. 261–264, especially the separate bulk, lower-regularity and cutoff-edge contributions in (3.4.42).
+
+<a id="glancing-leading-form"></a>
 
 ## 1. The exact form and its scalar leading term
 
@@ -93,6 +95,8 @@ Let $z_0=(0,y_0,\eta_0)$ be a glancing point, so $a_0(z_0)=0$, and assume
 
 For the construction in (C21)–(C24), with the outer cutoff equal to one, (L5) at this point is precisely $H_pq(z_0,0)$ for $p=s^2+a_0$. Thus the signed cutoff supplies (L7) whenever its stated strict phase inequality holds. The estimate below uses exactly (L7), without claiming the existence of a suitable incoming phase for every boundary contact.
 
+<a id="glancing-inner-localization"></a>
+
 ## 2. Choosing the inner localization in the correct order
 
 Fix $c>0$ and a neighborhood of $z_0$ on which $t_0\geq6c$. Fix a constant $K\geq1$ bounding $T_{1,h},T_{2,h},B_h'$ and the multiplier norms in (C26) on a small fixed normal interval. These constants depend on the already chosen outer multiplier; they are fixed before shrinking the inner cutoff.
@@ -135,6 +139,8 @@ There is also, for each fixed integer $J\geq1$, the uniform small-norm estimate
 
 For its proof set $E_h=\operatorname{Op}_h(\theta(a_0+ha_1))$. The proved norm estimate (N17) gives $\|E_h\|\leq m/2+C_\theta h\leq m$ after fixing $h_0$ sufficiently small. The symbol of $R_h-E_h$ vanishes near $\operatorname{supp}q$; the full separated-symbol estimate (N21) gives $(R_h-E_h)Q_h=O(h^J)$ for every fixed $J$. This proves (L11). In particular the small constant is chosen before the inner cutoff derivatives and before $h_0$; it is not incorrectly inferred from a derivative-dependent norm bound.
 
+<a id="glancing-lower-bound"></a>
+
 ## 3. The lower estimate and the normal boundary term
 
 Let $u,d_xu,f\in L^2$, with $P_hu=f$ distributionally, and suppose $u$ vanishes for $x\geq\ell$. Set
@@ -144,7 +150,7 @@ Let $u,d_xu,f\in L^2$, with $P_hu=f$ distributionally, and suppose $u$ vanishes 
  \tag{L12}
 \]
 
-Assume the localized Dirichlet condition $v(0)=0$. The weak-trace and approximation proof in Section 4 of the Dirichlet commutator reading applies: $v,d_xv,d_x^2v$ and all required tangential derivatives belong to $L^2$ for each fixed $h$, because $Q_hR_h$ is bounded with compact frequency amplitude. It gives the continuous traces and justifies the exact Green identities, including (L4). Let
+Assume the localized Dirichlet condition $v(0)=0$. The [weak-trace and approximation proof](dirichlet-commutator-and-diffraction.md#dirichlet-weak-normal-multiplier) applies: $v,d_xv,d_x^2v$ and all required tangential derivatives belong to $L^2$ for each fixed $h$, because $Q_hR_h$ is bounded with compact frequency amplitude. It gives the continuous traces and justifies the exact Green identities, including (L4). Let
 
 \[
  X=\|v\|,\quad Y=\|d_xv\|,\quad
@@ -199,6 +205,8 @@ Now use the exact positive boundary identity (C25). Its right side is bounded by
 
 All constants are independent of sufficiently small $h$. The boundary norm is the actual weighted normal trace appearing in the chosen multiplier. We have not replaced it by an unweighted trace using an unproved global inverse for $S_h$.
 
+<a id="glancing-transition-calculus"></a>
+
 ## 4. Where the phase and normal cutoff errors occur
 
 We make the forcing in (L18) more useful without assuming that it is small. Choose a real compact tangential cutoff $g$, independent of $x$, equal to one on a neighborhood of $\operatorname{supp}q$, and put
@@ -233,7 +241,21 @@ Next expand $[R_h,Q_h]$ to any finite order. With $a_h=a_0+ha_1$, its coefficien
  -(\partial_\eta^\nu q)(\partial_y^\nu a_h)\right).
 \]
 
-The first product is (N20). For the reversed product, the input-coefficient Taylor calculation in Section 1 gives the second: applying the product rule to the frequency monomials and summing the finitely many transposed differential terms cancels their input-coefficient derivatives without a derivative of $q$. Equivalently, moving the input differential operator onto the full oscillatory kernel and then Taylor-expanding its coefficient gives precisely the displayed left-product formula. The remainder is $h^N$ times a bounded compact-frequency amplitude. The scalar zeroth-order products cancel. Every displayed coefficient contains a positive-order derivative of $q$, including the lower differential terms, so it is supported in the transition set where $e=1$. Composing on the right with $E_h^{\mathrm{edge}}$ changes each of them only by an arbitrarily high-order remainder, by the same product argument. The original remainders have bounded norms with the asserted powers. This proves the second line of (L20), and the last line is also (N23). All estimates are uniform in the retained normal interval.
+The first product is (N20). To verify the reversed product explicitly, consider a term $c(y)\eta^\beta$ of the polynomial symbol $a_h$. Moving its input derivatives onto the kernel gives the two-position amplitude
+
+\[
+ q(y,\eta)\sum_{\gamma\leq\beta}\binom{\beta}{\gamma}
+       \eta^{\beta-\gamma}(ih)^{|\gamma|}
+       \partial_z^\gamma c(z).
+\]
+
+Taylor-expand at $z=y$. Integration by parts replaces a factor $(z-y)^\delta$ by $(-ih)^{|\delta|}\partial_\eta^\delta$ on the amplitude. Fix the total coefficient derivative $\nu=\gamma+\delta$, and let $\kappa\leq\delta$ derivatives fall on $q$. Set $\mu=\nu-\kappa$. If $\mu\not\leq\beta$, the differentiated frequency monomial vanishes. Otherwise, after the common factors are removed, summing the terms with this $\kappa$ gives
+$\sum_{\gamma\leq\mu}(-1)^{|\gamma|}/(\gamma!(\mu-\gamma)!)=\prod_j(1-1)^{\mu_j}/\mu!$.
+For $\mu\ne0$ this is zero, by the finite binomial formula. The only surviving case is $\kappa=\nu$, whose coefficient is $(h/i)^{|\nu|}\eta^\beta(\partial_\eta^\nu q)(\partial_y^\nu c)/\nu!$. Summing the differential terms gives exactly the second product above, including the terms from $ha_1$. Taylor's integral remainder is $h^N$ times a bounded compact-frequency amplitude; each transferred derivative either differentiates $q$ or lowers a frequency monomial. The same kernel calculation controls fixed normal derivatives and compositions with $R_h$.
+
+The scalar zeroth-order products cancel. Every remaining displayed coefficient contains a positive-order derivative of $q$, so it is supported in the transition set where $e=1$. Composing on the right with $E_h^{\mathrm{edge}}$ changes each of them only by an arbitrarily high-order remainder: all differentiated products meet a derivative of $e$ outside that transition set. The original remainders have bounded norms with the asserted powers. This proves the second line of (L20), and the last line is also (N23). All estimates are uniform in the retained normal interval.
+
+<a id="glancing-cutoff-forcing"></a>
 
 Let $w$ be an $H^2$ Dirichlet input on the collar. Choose a smooth real normal cutoff $\psi$ equal to one near zero and supported in $[0,\ell)$. Apply (L18) to $u=G_h(\psi w)$, so $v=K_h(\psi w)$. Since $Q_h,G_h$ are independent of $x$, its exact forcing is
 
@@ -264,6 +286,8 @@ The normal terms follow directly from $[d_x^2,\psi]=-2ih\psi'd_x-h^2\psi''$. The
 
 The first error uses the actual equation. The next three occur on explicitly identified phase or normal cutoff edges. The term with factor $h$ uses the more localized input $G_h(\psi w)$; only the arbitrarily small remainder uses its unlocalized counterpart. This distinction is what makes a regularity induction possible. The main constant can be chosen from the fixed estimate (L18) and the $O(h)$ commutator norm; the arbitrarily high remainder constant may depend on $J$.
 
+<a id="glancing-half-step"></a>
+
 ## 5. The precise half-step consequence
 
 For any real $s$, suppose a family $w_h$ satisfies the domain hypotheses above, is polynomially bounded in the sense $\|\psi w_h\|=O(h^{-M})$ for some fixed $M$, and has the actual bounds
@@ -289,4 +313,8 @@ Choose an integer $J\geq1$ with $J-M\geq s$. Every term on the right of (L22) is
  \tag{L24}
 \]
 
-Thus the interior estimate and its quantitative gain are proved, with no restriction to zero forcing and no concealed assumption that the edges are regular. The subsequent [Incoming phase neighborhoods for Dirichlet waves](diffractive-phase-neighborhoods.md#diffractive-phase-neighborhoods) constructs the oriented phase and proves rapid bounds for its principal full-phase outer error on a prescribed regular interior neighborhood. Its support is different from the entire transition set of the inner cutoff $q$ in (L20), so that result does not automatically supply every bound in (L23). Sections 5–7 of that reading now prove the smooth divided square root at every zero weight, its nonnegative elliptic extension and the exactly nonnegative boundary form over the whole cutoff. Sections 8–11 then prove the whole-neighborhood bulk square estimate, including the equation contribution and the actual full-phase edge, with an explicit unlocalized energy remainder. Sections 12–18 of that reading now control all the bulk remainders and forcing pairings by larger shifted weights, retain the actual incoming edge, and recover the full local energy with two multipliers. Sections 19–21 control the forcing created by spatial localization of the fixed spectral wave reduction and prove a conditional semiclassical half-step gain. Sections 22–26 construct a tangential Sobolev-regularized Dirichlet family, prove its exact first-order commutator and uniform norm bounds, and verify its cutoff-forcing and incoming-edge estimates. Sections 27–31 control all three regularizer commutator energy pairings with uniform lower-norm remainders. Sections 32–35 recover the full local energy uniformly in the regularizer and prove a half-order Sobolev gain from the explicit larger-weight hypothesis. Section 36 gives the fixed-neighborhood induction criterion. Sections 37–40 prove the tangentially elliptic boundary input by positive normal energy and a full-order Sobolev induction on one fixed open set. Sections 41–47 prove local reflection at separated normal roots and interior propagation for the actual wave, including exact mode coupling, transported cutoffs and fixed-neighborhood regularity. Sections 48–50 prove a two-root reachable region, continuity through tangency, the regularity of its incoming and transversely reflected legs, and containment of the entire larger diffraction weights. Sections 51–54 prove finite-order outgoing transport, simultaneous induction on the fixed two-root region, and normal smoothness from the actual equation. This establishes strict-diffraction regularity for the fixed H² Dirichlet wave. Sections 55–62 prove a local cone-regularity estimate at arbitrary glancing contacts, using nested phase tubes, the actual Sobolev regularizer and a two-component energy recovery. Sections 63–70 construct a curve in the closed compressed singular set and prove that it satisfies the exact inward-reaction relation (G1)–(G23), including all glancing orders and accumulating reflections. This proves the singular-curve theorem for the actual H² wave on homogeneous time intervals. Sections 71–75 prove the Cauchy-data endpoint argument, including smoothness near the initial wall from compatible collar data, and transfer propagation to every compact interior distributional datum in the spectral Dirichlet realization. The curved spectral remainder is proved separately in the spectral reading, Sections 31–38. The negative-order reduction is already proved in [Dirichlet wave regularization](dirichlet-wave-regularization.md#dirichlet-wave-regularization); it does not supply these missing edge bounds. [Existence and compactness of generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves) now constructs the energy-preserving normal-reaction relation, proves its existence, compactness and continuation at every permitted contact, and excludes boundary residence at strict diffraction. Sections 63–75 of the phase-neighborhood reading prove that the relevant spectral wave singularities reach their initial data along this precise relation. 
+The five bounds in (L23) are the hypotheses needed to apply this gain. In particular, the homogeneous equation controls the first term only; regularity on the tangential and normal cutoff edges must also be established.
+
+[Incoming phase neighborhoods for Dirichlet waves](diffractive-phase-neighborhoods.md#diffractive-phase-neighborhoods) develops the oriented phase, its incoming edge and the estimates used to propagate regularity along generalized rays. That full-phase outer edge differs from the entire transition set of the inner tangential cutoff $q$ in (L20). A bound on the former therefore does not by itself establish the second line of (L23).
+
+For distributional initial data, [Dirichlet wave regularization](dirichlet-wave-regularization.md#dirichlet-wave-regularization) supplies the finite domain regularity used in this reading. The geometry of the rays, including arbitrary contacts and accumulating reflections, is developed in [Existence and compactness of generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves).

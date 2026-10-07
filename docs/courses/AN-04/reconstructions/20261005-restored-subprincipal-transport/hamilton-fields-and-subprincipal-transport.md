@@ -10,7 +10,7 @@ The exact earlier programme proofs are:
 - The included [subprincipal coordinate companion](subprincipal-coordinate-invariance.md) retains AN03-U012's complete scalar calculation G11–G14, with its licence and notices. Section S1 proves the first coordinate correction, including every differentiated remainder, using the existing amplitude and coordinate calculus. Thus the invariant coefficient below is an exact programme result.
 - [Homogeneous symbol estimates, H2–H3 and H6–H8](../20261004-free-canonical-composition/homogeneous-symbol-transport.md), prove all derivative counts, support-preserving asymptotic sums and cutoff convergence. [Density integration](../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md), [product measure](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md) and [exponentials and circle periods](../20261004-free-stationary-phase/exponential-prerequisite-completions.md) supply the elementary inputs.
 
-The [proof map](proof-map.json) binds every use to the exact retained source and proof. The primary source is the approved purchased reprint of Hörmander IV, corrected second printing (1994), Section 25.2 equation 25.2.11, Theorem 25.2.4 and Lemma 25.2.5. The independently written lesson, its calculations and all six original solved exercises are retained. All symbol estimates in this lesson are ordinary \(S_{1,0}\) estimates. The scalar operator is classical with step-one homogeneous expansion. The FIO need not have a homogeneous leading amplitude. All constructions are local over compact base sets, with microlocal cutoffs inside the stated open cones.
+The [proof map](proof-map.json) binds every use to the exact retained source and proof. The primary source is the reprint of Hörmander IV, corrected second printing (1994), Section 25.2 equation 25.2.11, Theorem 25.2.4 and Lemma 25.2.5. The independently written lesson, its calculations and all six original solved exercises are retained. All symbol estimates in this lesson are ordinary \(S_{1,0}\) estimates. The scalar operator is classical with step-one homogeneous expansion. The FIO need not have a homogeneous leading amplitude. All constructions are local over compact base sets, with microlocal cutoffs inside the stated open cones.
 
 ## 1. A vector field differentiates a density as well as its coefficient
 
@@ -385,6 +385,6 @@ A nonzero solution is periodic exactly when this factor is one, equivalently whe
 
 ## References
 
-- [Hörmander IV, §25.2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, approved purchased reprint of the corrected second printing (1994), equation 25.2.11, Theorem 25.2.4 and Lemma 25.2.5.
+- [Hörmander IV, §25.2] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, reprint of the corrected second printing (1994), equation 25.2.11, Theorem 25.2.4 and Lemma 25.2.5.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Self-checked by the writing AI. Original text: public domain (CC0).*

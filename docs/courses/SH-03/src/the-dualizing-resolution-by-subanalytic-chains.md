@@ -1,12 +1,12 @@
 # The dualizing resolution by subanalytic chains
 
-A cycle germ below the dimension of its ambient manifold can be swept along a half-ray to produce a primitive. The sweep may be unbounded. What makes it a legitimate chain construction is properness on its closed carrier. Once this local argument is proved, the chain complex resolves the dualizing complex, and its cycle sheaves remain flat with arbitrary sheaf coefficients.
+A cycle germ below the dimension of its ambient manifold can be swept along a half-ray to produce a primitive. The sweep may be unbounded. What makes it a legitimate chain construction is properness on its closed carrier. This local argument proves that the chain complex resolves the dualizing complex. Its untensored cycle sheaves are flat, so tensoring with arbitrary sheaf coefficients preserves the cycle kernels.
 
-*Original text by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. New original text and figure/source are public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Subanalytic chains and closed cycle supports constructs the complex and its canonical orientation map. Supports, products and proper images of chains proves chain-stalk flatness, proper pushforward, its boundary compatibility, ordered external products and softness with arbitrary coefficients. We retain their exact current SH-02 duality/trace and Stacks/Claude DC module prerequisites. The geometric inputs are the subanalytic closure and compatible locally finite triangulation prerequisites recorded in Subanalytic sets and limiting tangent directions. Their own prerequisites are not proved here.
+Subanalytic chains and closed cycle supports constructs the complex and its canonical orientation map. Supports, products and proper images of chains proves chain-stalk flatness, proper pushforward, boundary compatibility and ordered products. Its proofs retain arbitrary coefficients. The geometry below uses subanalytic set calculus and the compatible triangulation theorem. The algebraic steps will use the proved flat-quotient, Tor and tensor-comparison maps at their points of application.
 
-This lesson proves that subanalytic chains resolve the dualizing complex, after M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §1. The proof below includes the local proper-projection argument.
+M. Kashiwara's [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.3–1.6, defines subanalytic chains without a compact-support requirement and states the chain resolution and its coefficient form. We prove the local exactness by a proper transverse projection and a signed half-ray sweep, then derive the coefficient statement from flat cycle sheaves.
 
 ## The local problem and its degrees
 
@@ -32,7 +32,7 @@ The complex is concentrated in degrees \([-n,0]\), and the top cycles are the or
 The map in (2) is the canonical map already constructed from oriented top-dimensional pieces. To prove it is a quasi-isomorphism, it suffices to show that every germ in \(\mathcal Z_p\) is a boundary for
 \(0\leq p<n\). The degree \(p=0\) is included: every zero-chain is a cycle, since its outgoing boundary is zero.
 
-Choose such a germ \(\alpha_x\). The closed-cycle presentation gives, after shrinking around \(x\), a closed subanalytic set \(S\) of dimension at most \(p\) and a section
+Choose such a germ \(\alpha_x\). The closed-cycle presentation gives a representative on a closed subanalytic carrier after shrinking around \(x\). A germ of a section of the kernel sheaf is represented by an actual cycle on a neighborhood: first choose a chain section, and then shrink until its boundary is zero. The supported-cycle identity then represents that cycle on a closed \(S\) of dimension at most \(p\). In (3) and the local construction that follows, \(X\) denotes this open neighborhood, not the original whole manifold. We have a section
 
 \[
  \alpha\in H^{-p}(S;\omega_S)
@@ -53,7 +53,7 @@ Place \(x\) at \(0\) in an analytic chart in \(\mathbb R^n\). If the cycle germ 
  \qquad\text{(4)}
 \]
 
-It is a closed positive-conic subanalytic set. It is the cone at the point \(0\), rather than a cone formed from differences of two moving points of \(S\).
+This is the cone at the fixed point \(0\), formed from the radial displacements \(z_j-0\). It is not the cone of differences of two moving points of \(S\). The positive-parameter deformation below will prove its closedness, subanalyticity and dimension bound together.
 
 We need its dimension bound. Consider the positive-parameter deformation
 
@@ -62,22 +62,18 @@ We need its dimension bound. Consider the positive-parameter deformation
  \qquad\text{(5)}
 \]
 
-The analytic diffeomorphism
-\((z,t)\mapsto(z/t,t)\) identifies it with \(S\times\mathbb R_{>0}\); hence
-\(\dim E\leq p+1\). The set \(E\) is locally closed and subanalytic.
+The analytic diffeomorphism \((z,t)\mapsto(z/t,t)\), for \(t>0\), identifies \(E\) with \(S\times\mathbb R_{>0}\); hence \(\dim E\leq p+1\). Near a point \((w,0)\), multiplication \((v,t)\mapsto tv\) takes a sufficiently small neighborhood into the chosen chart at \(0\). Thus the analytic inverse-image calculus applied to the closed subanalytic \(S\), and then intersection with \(t>0\), makes \(E\) locally closed and subanalytic also near the zero-parameter fibre. No assertion about an image under an uncontrolled nonproper map is needed.
 
-Here is the frontier argument behind the dimension loss. In a locally finite compatible triangulation of \(E\), its closure and its frontier, a frontier cell is approached by cells in \(E\). Near any point only finitely many cells occur. At least one of those cells has the frontier cell as a proper face; it cannot be the same cell because the cell in the frontier is disjoint from \(E\). Thus the dimension of each frontier cell is strictly smaller than the dimension of some cell in \(E\). Consequently
-\(\dim(\overline E\setminus E)\leq p\).
-The sequence description (4) puts \(C_0S\times\{0\}\) inside this frontier, so
+In fact \(\overline E\cap\{t=0\}=C_0S\times\{0\}\). If \((v_j,t_j)\in E\) tends to \((w,0)\), take \(z_j=t_jv_j\) and \(\lambda_j=1/t_j\) in (4). Conversely, for a nonzero \(w\) represented in (4), \(\lambda_j\to\infty\), since \(z_j\to0\) while \(\lambda_jz_j\to w\ne0\). Then \((\lambda_jz_j,1/\lambda_j)\in E\) tends to \((w,0)\). The zero vector is obtained from \((0,t_j)\in E\), using \(0\in S\). This equality proves closedness and subanalyticity of \(C_0S\); positive dilation preserves its sequence description, and it contains zero.
+
+Apply compatible locally finite triangulation to \(E\), \(\overline E\) and their difference in a neighborhood of the zero-parameter fibre. To see the dimension loss, choose a point in an open simplex \(\sigma\) of \(\overline E\setminus E\). A sequence from \(E\) approaching that point meets only finitely many simplices near it; pass to one open simplex \(\tau\subset E\) containing a subsequence. The closure of \(\tau\) contains the chosen point, so the simplicial face property makes \(\sigma\) a face of \(\tau\). They are distinct, because one is disjoint from \(E\) and the other lies in \(E\). Hence \(\dim\sigma<\dim\tau\leq p+1\). Taking the supremum over frontier simplices proves \(\dim(\overline E\setminus E)\leq p\). The zero fibre is in this frontier, so the equality just proved gives
 
 \[
  \dim C_0S\leq p<n.
  \qquad\text{(6)}
 \]
 
-Both \(C_0S\) and \(-C_0S\) have dimension at most \(p\). Their union therefore cannot fill \(\mathbb R^n\). Choose a unit vector \(v\) with
-\(v,-v\notin C_0S\). Write a point in orthogonal coordinates as
-\(z=(s,y)\in\mathbb R_v\times v^\perp\), and denote the transverse projection by \(Pz=y\).
+The finite union \(C_0S\cup(-C_0S)\) also has dimension at most \(p<n\), so it cannot equal \(\mathbb R^n\). Choose a nonzero vector outside that union and normalize it to a unit vector \(v\). Positive conicity ensures that normalization preserves avoidance, so \(v,-v\notin C_0S\). Both signs are needed to exclude the entire projection kernel. Write \(z=(s,y)\in\mathbb R_v\times v^\perp\) in orthogonal coordinates and let \(Pz=y\).
 
 There are \(\rho,c>0\) such that
 
@@ -87,8 +83,7 @@ There are \(\rho,c>0\) such that
  \qquad\text{(7)}
 \]
 
-**Proof.** Otherwise choose nonzero \(z_j\in S\) tending to \(0\) with
-\(|Pz_j|/|z_j|\to0\). A subsequence of \(z_j/|z_j|\) converges on the unit sphere. Its transverse coordinate is zero, so the limit is \(v\) or \(-v\). Taking \(\lambda_j=1/|z_j|\) in (4) puts that limit in \(C_0S\), a contradiction. The second inequality follows from the first and \(|s|\leq|z|\). \(\square\)
+**Proof.** If no such \(\rho,c\) existed, for every positive integer \(j\) we could choose \(z_j\in S\) with \(0<|z_j|<1/j\) and \(|Pz_j|<|z_j|/j\). After passing to a subsequence, \(z_j/|z_j|\) converges on the unit sphere. Its transverse coordinate is zero, so its limit is \(v\) or \(-v\). With \(\lambda_j=1/|z_j|\), (4) would put that limit in \(C_0S\), a contradiction. The second inequality follows from \(|s|\leq|z|\leq |y|/c\). The point \(z=0\) satisfies both inequalities as well. \(\square\)
 
 Choose positive \(\epsilon,\delta\) with
 \(\sqrt{\epsilon^2+\delta^2}<\rho\) and \(C\delta<\epsilon/2\).
@@ -100,10 +95,7 @@ In the box
  \qquad\text{(8)}
 \]
 
-the projection \(S_Q\to B_\delta\) is proper. Indeed, for a compact
-\(K\subset B_\delta\), its inverse image is a closed subset of
-\([-\epsilon/2,\epsilon/2]\times K\), which is compact and lies in \(Q\).
-Closedness of \(S_Q\) is relative to \(Q\), precisely the ambient space used in this argument.
+the projection \(S_Q\to B_\delta\) is proper. For a compact \(K\subset B_\delta\), every point of its inverse image satisfies \(|s|\leq C|y|<\epsilon/2\). Hence that inverse image equals \(S_Q\cap([-\epsilon/2,\epsilon/2]\times K)\). The product on the right is compact and lies entirely in \(Q\); since \(S_Q\) is closed relative to \(Q\), the intersection is closed in this compact product. It is therefore compact. This uses neither smoothness of \(S_Q\) nor finiteness or constancy of its fibres. When \(n=1\), the transverse ball is a point and the same argument gives a compact carrier.
 
 Finally replace \(s\) by the analytic coordinate
 
@@ -112,11 +104,7 @@ Finally replace \(s\) by the analytic coordinate
  \qquad\text{(9)}
 \]
 
-This identifies \(Q\) with \(X'=\mathbb R_\sigma\times B_\delta\).
-The transformed \(S_Q\) is closed and subanalytic in \(X'\), has
-\(|\sigma|<1\), and still projects properly to \(B_\delta\). The change preserves subanalyticity by analytic inverse image under its inverse diffeomorphism. We have obtained the required local product
-\(X'=\mathbb R\times Y\), with \(f:X'\to Y\) proper on the closed carrier \(S'\).
-We now rename these \(X,S\).
+This is an analytic diffeomorphism from \(Q\) onto \(X'=\mathbb R_\sigma\times B_\delta\), with analytic inverse \(s=(2\epsilon/\pi)\arctan\sigma\). It commutes with transverse projection. Its image \(S'\) of \(S_Q\) is closed, is subanalytic by analytic inverse image under the inverse diffeomorphism, and satisfies \(|\sigma|<1\). Every compact transverse inverse image is the homeomorphic image of the compact inverse image already proved, so \(S'\to B_\delta\) remains proper. Transport the cycle and its orientations by this analytic diffeomorphism. The chain pushforward for a diffeomorphism and its inverse commutes with the boundary and gives inverse maps, so any primitive constructed on \(X'\) returns to a primitive on \(Q\). We have obtained \(X'=\mathbb R\times Y\) with a closed carrier proper over \(Y\); now rename these \(X,S\).
 
 ## The half-ray contracts every lower cycle germ
 
@@ -138,7 +126,7 @@ Place the half-ray factor **first** and form
  \qquad\text{(11)}
 \]
 
-The ordered product rule, and \(\partial\alpha=0\), yield
+Use the ordered product boundary rule (17), with the ray of geometric degree one placed first. The product \([0]\boxtimes\alpha\) equals \(i_*\alpha\): the point orientation contributes the degree-zero unit, and the product trace is the closed-embedding trace of \(i\). Thus \(\partial\alpha=0\) gives
 
 \[
  \partial\gamma
@@ -159,8 +147,7 @@ Use the analytic addition map
  \qquad\text{(13)}
 \]
 
-Its restriction to \(\mathbb R\times S\) is proper. To check this, let \(K\) be compact in the target and let \(K_Y\) be its projection to \(Y\). Since \(S\to Y\) is proper, \(S_{K_Y}\) is compact. In particular its \(s\)-coordinate is bounded. The coordinate \(r=t+s\) is bounded on \(K\), so \(t\) is bounded on
-\(\varphi^{-1}K\cap(\mathbb R\times S)\). This inverse image is closed in a product of a bounded closed \(t\)-interval with \(S_{K_Y}\); it is compact. The same holds on the closed half-ray carrier.
+Its restriction to \(\mathbb R\times S\) is proper. Let \(K\) be compact in \(\mathbb R_r\times Y\), and let \(K_Y\) be its compact projection to \(Y\). Properness of \(S\to Y\) makes \(S_{K_Y}\) compact. Choose \(R_0,M\) bounding \(|r|\) on \(K\) and \(|s|\) on \(S_{K_Y}\). On \(\varphi^{-1}K\cap(\mathbb R\times S)\), the identity \(t=r-s\) gives \(|t|\leq R_0+M\). This inverse image is a closed subset of the compact product \([-R_0-M,R_0+M]\times S_{K_Y}\), and is therefore compact. The closed half-ray carrier \([0,\infty)\times S\), and the closed support of \(\gamma\) inside it, inherit this properness. The proof allows an unbounded carrier and an unbounded primitive; it controls inverse images of every compact target set.
 
 Thus the proper-chain operation from the preceding lesson applies to \(\gamma\). Put
 
@@ -172,8 +159,7 @@ Thus the proper-chain operation from the preceding lesson applies to \(\gamma\).
  \qquad\text{(14)}
 \]
 
-The first equality uses its proved trace/localization boundary compatibility. The last uses composition of the actual proper traces and
-\(\varphi i=\operatorname{id}_X\); it introduces no additional sign.
+The first equality uses the proper trace and boundary compatibility (12). For the last equality, \(i\) is a closed embedding and is proper on \(S\); the restriction of \(\varphi\) to its image \(i(S)\) is the identity onto the closed \(S\), hence proper. These are the actual support hypotheses for composing the two chain pushforwards. Their normalized traces compose to the identity trace of \(\varphi i=\mathrm{id}_X\). No factor is exchanged and no extra sign is introduced.
 
 We have produced a primitive of each lower cycle germ after a suitable shrink. It depends on the carrier and the chosen coordinates. This is a proof of stalkwise exactness, with no assertion of a single global contracting operator or a compactly supported primitive.
 
@@ -199,8 +185,7 @@ When \(n=0\), \(X\) is discrete locally, \(\mathcal C_0=A_X\), and (15) is the i
 
 ## Flat cycles preserve coefficient kernels
 
-Each \(\mathcal C_p\) is flat by the earlier finite-refinement proof.
-The new exactness gives, for \(1\leq p\leq n\),
+Each \(\mathcal C_p\) is flat by the finite-free stalk presentation. That proof uses only the chain presentation, not the local exactness being proved here. The new local exactness now gives, for \(1\leq p\leq n\),
 
 \[
  0\longrightarrow\mathcal Z_p
@@ -212,15 +197,9 @@ The new exactness gives, for \(1\leq p\leq n\),
 
 The final map lands in cycles because \(\partial^2=0\), and is surjective because \(p-1<n\). Thus (16) includes \(p=n\).
 
-**Proof of flatness.** Work on a stalk. The base module \((\mathcal Z_0)_x\) is flat. Suppose \((\mathcal Z_{p-1})_x\) is flat. In the Tor sequence of (16), the neighboring terms
-\(\operatorname{Tor}_2^A((\mathcal Z_{p-1})_x,M)\) and
-\(\operatorname{Tor}_1^A((\mathcal C_p)_x,M)\) vanish for every module \(M\). Hence
-\(\operatorname{Tor}_1^A((\mathcal Z_p)_x,M)=0\), proving flatness. Induction proves it for every \(p\). \(\square\)
+**Proof of flatness.** Work at an arbitrary stalk and test against an arbitrary \(A\)-module \(M\). The base module \((\mathcal Z_0)_x=(\mathcal C_0)_x\) is flat. Assuming \((\mathcal Z_{p-1})_x\) flat, the long exact Tor sequence and flatness criterion, Proposition 3.2 and Theorem 3.3, applied to (16), have the exact segment \(\operatorname{Tor}_2((\mathcal Z_{p-1})_x,M)\to\operatorname{Tor}_1((\mathcal Z_p)_x,M)\to\operatorname{Tor}_1((\mathcal C_p)_x,M)\). The outside groups vanish because their first inputs are flat. The middle group therefore vanishes for every \(M\), making \((\mathcal Z_p)_x\) flat. Induction reaches \(p=n\); degrees outside the range have zero sheaf. The stalk criterion for flatness, Lemma 1.2, proves sheaf flatness. No finite-generation or field hypothesis is used. \(\square\)
 
-For an arbitrary sheaf \(F\), write
-\(\mathcal C_p(F)=\mathcal C_p\otimes_A F\) and
-\(\mathcal Z_p(F)=\mathcal Z_p\otimes_A F\).
-Flatness of the quotient in (16) makes its tensor sequence exact:
+For any sheaf \(F\) of \(A\)-modules put \(\mathcal C_p(F)=\mathcal C_p\otimes_A F\) and \(\mathcal Z_p(F)=\mathcal Z_p\otimes_A F\). On every stalk, the term immediately before \((\mathcal Z_p)_x\otimes_A F_x\) in the tensor exact sequence is \(\operatorname{Tor}_1((\mathcal Z_{p-1})_x,F_x)\). It vanishes because the quotient \(\mathcal Z_{p-1}\) in (16) is flat. Thus tensor preserves the injection as well as the right-exact part, giving
 
 \[
  0\longrightarrow\mathcal Z_p(F)
@@ -230,8 +209,7 @@ Flatness of the quotient in (16) makes its tensor sequence exact:
  \qquad\text{(17)}
 \]
 
-In degree \(p-1\), that cycle sheaf embeds into \(\mathcal C_{p-1}(F)\).
-Since the coefficient boundary factors through this embedding, (17) proves
+For \(p=1\), the target \(\mathcal Z_0(F)=\mathcal C_0(F)\) is already the next chain sheaf. For \(p>1\), apply (17) also in degree \(p-1\); it embeds \(\mathcal Z_{p-1}(F)\) into \(\mathcal C_{p-1}(F)\). The boundary \(\mathcal C_p(F)\to\mathcal C_{p-1}(F)\) factors as the surjection in (17) followed by this injection. Its kernel is therefore precisely the first term of (17), proving
 
 \[
  \mathcal Z_p(F)=
@@ -240,12 +218,9 @@ Since the coefficient boundary factors through this embedding, (17) proves
  \qquad\text{(18)}
 \]
 
-The case \(p=0\) follows from \(\mathcal C_{-1}=0\).
-This is an actual underived kernel identity. It requires no flatness, local constancy or finite-rank hypothesis on \(F\).
+The case \(p=0\) follows from \(\mathcal C_{-1}=0\). This is an underived kernel identity for every \(F\), with no flatness, local constancy or finite-rank hypothesis. It does not assert that \(\mathcal Z_p(F)\) is flat: tensoring a flat cycle sheaf with a nonflat coefficient sheaf need not preserve flatness. Exercise 5 gives such a coefficient sheaf.
 
-The coefficient complex has no lower cohomology and has
-\(H^{-n}(\mathcal C(F))=\operatorname{or}_X\otimes_A F\).
-Tensoring the canonical orientation map gives its natural identification
+For \(0\leq p<n\), the surjection in (17) in degree \(p+1\), together with (18), makes the image of the incoming boundary equal to the kernel of the outgoing boundary in degree \(-p\). In degree \(-n\) there is no incoming term and the kernel is \(\mathcal Z_n\otimes_A F=\operatorname{or}_X\otimes_A F\). Thus the coefficient complex has cohomology only in degree \(-n\). Tensor the canonical inclusion of top cycles in (2) with \(F\); the map just computed induces the identity of this surviving cohomology sheaf. This proves its natural identification
 
 \[
  \omega_X\otimes_A^L F
@@ -254,13 +229,13 @@ Tensoring the canonical orientation map gives its natural identification
  \qquad\text{(19)}
 \]
 
-Here \(\operatorname{or}_X\) is locally free of rank one, and the bounded complex \(\mathcal C\) consists of flat sheaves. Thus both tensor models compute the derived tensor. One may also use bounded complexes \(F^\bullet\): totalize with degree \(-p+q\); bounded flatness and the finite filtration by coefficient degrees give the same derived comparison. No unbounded-complex assertion is needed.
+The derived-tensor comparison uses bounded flat complexes. The orientation sheaf is locally free of rank one, and \(\mathcal C\) has only the flat terms in degrees \(-n,\ldots,0\). To see why such a bounded complex is K-flat, tensor it with an acyclic complex and filter by its finitely many chain degrees. Each associated quotient is the tensor with one flat sheaf in one degree and is acyclic; the finite filtration makes the total tensor acyclic. This is Lemma 2.3 of the K-flat construction. Consequently either displayed model computes \(\omega_X\otimes_A^L F\), and the tensor comparison for a quasi-isomorphism between K-flat models identifies the map in (19) with tensoring the canonical map (2).
+
+For a bounded complex \(F^\bullet\), take total degree \(-p+q\) on \(\mathcal C_p\otimes_A F^q\), with differential \(c\otimes u\mapsto\partial c\otimes u+(-1)^p c\otimes d_Fu\). In each fixed coefficient degree, the sheaf case of (19) is a quasi-isomorphism. Filtering by the finitely many coefficient degrees and using the long exact cohomology sequence of successive filtration steps proves the total comparison. It is natural in coefficient chain maps and, by K-flatness, in their derived morphisms. This includes arbitrary bounded coefficients without a perfection assumption.
 
 ## What global sections compute
 
-The cutoff argument in the first chain lesson proves that every
-\(\mathcal C_p(F)\) is soft and c-soft on these manifolds.
-The bounded complex is therefore an acyclic resolution for both ordinary and compactly supported global sections. Formula (19) gives
+The cutoff extension argument proves that every \(\mathcal C_p(F)\) is soft, even when \(F\) is arbitrary. It is in particular c-soft. On the locally compact, countable-at-infinity manifolds used here these sheaves are acyclic for both ordinary and compactly supported sections, by the soft-section acyclicity theorem. The chain complex is bounded, so its finite hypercohomology filtration has only the row of ordinary sections, or the row of compactly supported sections, of its terms: all higher derived sections of those terms vanish. Thus the two underived section complexes compute \(R\Gamma(X;\omega_X\otimes_A^L F)\) and \(R\Gamma_c(X;\omega_X\otimes_A^L F)\). Applying (19) gives
 
 \[
  \begin{aligned}
@@ -377,7 +352,7 @@ Take \(A=\mathbb Z\), \(M=\mathbb Z/5\), and the oriented line. Compare the reso
 \]
 Outside \(0\) every coefficient stalk vanishes. The kernel is the diagonal copy of \(M\); the differential is surjective. Thus ordinary and compactly supported cohomology of this two-term complex are \(M\) in degree \(-1\) and zero in degree zero. All its sections have compact point support. For any \(m\in M\), the section \((m,0)\) is a compact primitive of the zero-chain coefficient \(m\).
 
-The kernel identity uses flatness of \(\mathcal Z_1\), not flatness of \(M\); \(M\) is not flat over \(\mathbb Z\). Formula (19) gives exactly
+The kernel identity comes from tensoring \(0\to\mathcal Z_1\to\mathcal C_1\to\mathcal Z_0\to0\): its flat quotient \(\mathcal Z_0\) preserves the injection after tensoring. It does not require \(M\) to be flat; \(M=\mathbb Z/5\) is not flat over \(\mathbb Z\). Formula (19) gives exactly
 \(\omega_{\mathbb R}\otimes i_*M=i_*M[1]\). Its shift comes from
 \(i^{-1}\omega_{\mathbb R}=\mathbb Z[1]\). By contrast
 \(i^!\omega_{\mathbb R}=\omega_{\{0\}}=\mathbb Z\), which is a different operation.
@@ -405,3 +380,9 @@ The first group contains the global oriented circle. The second is detected by t
 
 Locally every zero-cycle has a primitive as in (14). A choice of local primitives need not glue to a global one. Although \(\mathcal C_1\) and \(\mathcal C_0\) are soft, the surjection
 \(\mathcal C_1\to\mathcal Z_0\) need not be surjective after global sections. The soft complex computes the nonzero global cohomology of the dualizing complex, exactly as its resolution should.
+
+## Mathematical sources
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.3–1.6, pp. 195–196, is the source for the subanalytic-chain framework, the resolution statement and its coefficient cohomology comparisons. The paper refers the resolution to triangulation. Here the primitive is constructed by a transverse projection, an analytic coordinate change and a properly supported half-ray sweep; the flat-quotient argument proves the arbitrary-coefficient kernel statement.
+
+P. Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=106), edition dated 01/08/2026, Lemma 5.1.3, equation (5.1.1) and Proposition 5.1.5(a)–(c), pp. 106–107, describes the shifted orientation object and its integral coefficient origin. The preceding programme lessons prove the soft chain terms and their flat stalks; the proof here adds exactness and the actual coefficient comparison. The six worked exercises distinguish local primitives, compact primitives, ambient orientation shifts and global homology. The cited works retain their authorship and their own terms.

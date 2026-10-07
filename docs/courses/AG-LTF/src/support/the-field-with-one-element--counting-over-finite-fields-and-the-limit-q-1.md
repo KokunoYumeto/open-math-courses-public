@@ -683,7 +683,7 @@ families collect those of a fixed dimension, and the group is the group of proje
 spaces of \(G\), and the number of elements of each family is a quotient of two orders.
 
 No. 13 then introduces the "field of characteristic 1", written \(K_1\). Its only element is
-\(1=0\), and a footnote there says that \(K_1\) is generally not regarded as a field. The projective space of
+\(1=0\). Knus reproduces Tits's footnote that \(K_1\) is generally not regarded as a field [Knus 2012, slide 29]. The projective space of
 dimension \(n\) over \(K_1\) is a set of \(n+1\) points. All its subsets are linear varieties, the dimension of a
 subset is its number of points minus one, and the projectivities are all permutations of the points. In the
 quotient that counts a family of the geometry of a Chevalley group over \(\mathbb F_q\), numerator and denominator
@@ -1419,3 +1419,4 @@ of its no. 13, which [Soulé 2004, §1.1] and [Connes–Consani 2011a, §1] cite
   Astérisque 228 (1995), 121–163. [Numdam](https://www.numdam.org/item/AST_1995__228__121_0/).
 - [Higman 1940] G. Higman, *Units in group rings*, DPhil thesis, University of Oxford, 1940. [Oxford University Research Archive](https://doi.org/10.5287/ora-bmo6o5bjx).
 - [Lorscheid–Thas 2023] O. Lorscheid, K. Thas, *Towards the horizons of Tits's vision: on band schemes, crowds and \(\mathbb F_1\)-structures*, [arXiv:2305.13809](https://arxiv.org/pdf/2305.13809).
+- [Knus 2012] M.-A. Knus, *Triality over arbitrary fields and over F1*, slides for the Workshop on Exceptional Algebras and Groups, Ottawa, April 2012, slide 29. [Conference slides](https://www.fieldsinstitute.ca/programs/scientific/11-12/exceptional/Knus.pdf).

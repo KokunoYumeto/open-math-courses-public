@@ -1,6 +1,6 @@
 # Fredholm modules and analytic K-homology
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 The shift obstruction in extension theory can be recorded before taking a quotient. A representation supplies the algebra action; an operator that commutes with this action modulo compacts supplies the obstruction. A Fredholm module is this pair of data, together with a parity. The parity determines whether we will test it against projections or unitaries.
 

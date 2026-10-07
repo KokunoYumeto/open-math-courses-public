@@ -2,17 +2,17 @@
 
 The weak operation theorem preserves the geometry of constructibility. Perfect coefficients require separate arguments. Ordinary inverse image reads the same stalks; exceptional inverse image and internal Hom are controlled by constructible Verdier duality. Compact cohomology then follows by imposing the right support. Fourier–Sato uses radial contraction because its projection is usually nonproper.
 
-Use Constructible costalks and Verdier duality for canonical biduality, Perfect coefficients on compact fibres for proper perfect direct image, and Weak constructibility under sheaf operations for boundedness and the deformation/diagonal definitions. The existing prerequisites supply normalized exceptional adjunction, the two conic zero-section contractions, and the Fourier comparison between the negative cutoff and positive supported kernel. Their individual foundational dependencies remain explicit.
+The proof combines evaluation biduality, perfect cohomology on compact fibres, and the weak operation theorem. For Fourier transformation we check both zero-section maps and derive the comparison between the negative cut and positive local support. This identifies the actual maps that preserve perfect coefficients, including at the zero covector.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 ## Perfect inverse images, tensors and internal Hom
 
-Throughout, \(k\) is commutative of finite global dimension. Manifolds and maps are real analytic, finite dimensional with uniform dimension bounds, Hausdorff and countable at infinity. Complexes are globally bounded. No Noetherianity, field, global orientation or properness of an arbitrary map is assumed.
+Throughout, \(k\) is commutative of finite global dimension. Manifolds and maps are real analytic, finite dimensional with uniform dimension bounds, Hausdorff and countable at infinity. Complexes are globally bounded. Here \(\mathbb R\)-constructibility includes perfect stalk complexes: each has a bounded finite-projective representative. Finite generation alone does not replace this condition over an arbitrary ring. No Noetherianity, field, global orientation or properness of an arbitrary map is assumed.
 
 **Theorem.** For an analytic map \(f:Y\to X\) and \(F\in D^b_{\mathbb R\text{-}c}(k_X)\), both \(f^{-1}F\) and \(f^!F\) are \(\mathbb R\)-constructible. For \(F,G\in D^b_{\mathbb R\text{-}c}(k_X)\), so are \(G\otimes^LF\) and \(R\mathcal Hom(G,F)\).
 
-**Proof.** The weak theorem has already proved bounded weak constructibility of every output. Ordinary inverse image has stalk \((f^{-1}F)_y=F_{f(y)}\), so it preserves perfection.
+**Proof.** The weak operation theorem gives bounded weak constructibility of the inverse images and tensor/internal-Hom outputs. Ordinary inverse image has stalk \((f^{-1}F)_y=F_{f(y)}\), so it preserves perfection.
 
 For exceptional inverse image use the actual constructible evaluation and the normalized exceptional-duality identity:
 
@@ -26,7 +26,7 @@ The second isomorphism follows by applying
 \(f^!R\mathcal Hom(A,\omega_X)\simeq
 R\mathcal Hom(f^{-1}A,f^!\omega_X)\)
 to \(A=D_XF\), with \(f^!\omega_X=\omega_Y\).
-It is the exceptional internal-Hom comparison constructed from evaluation and adjunction; it is valid for bounded \(A\). The objects \(D_XF\), \(f^{-1}D_XF\), and their Verdier dual on \(Y\) are constructible by the preceding lesson and ordinary inverse image. This proves the exceptional assertion, without replacing \(f^!\) by a fixed shift of \(f^{-1}\).
+It is the exceptional internal-Hom comparison (EX.26), constructed from evaluation and adjunction and valid for bounded \(A\). The objects \(D_XF\), \(f^{-1}D_XF\), and their Verdier dual on \(Y\) are constructible by constructible duality and ordinary inverse image. This proves the exceptional assertion, without replacing \(f^!\) by a fixed shift of \(f^{-1}\).
 
 Tensor stalks are \(G_x\otimes_k^LF_x\). Bounded finite-projective representatives for these two perfect complexes have a finite total tensor complex of finite-projective terms. Every output stalk is therefore perfect.
 
@@ -53,7 +53,7 @@ If \(Z\) is locally closed and subanalytic, \(k_Z\) is constructible: a compatib
 1. If \(K\subset X\) is compact and subanalytic, both \(R\Gamma(K;F|_K)\) and \(R\Gamma_K(X;F)\) are perfect.
 2. If \(\Omega\subset X\) is relatively compact, open and subanalytic, both \(R\Gamma(\Omega;F|_\Omega)\) and \(R\Gamma_c(\Omega;F|_\Omega)\) are perfect.
 
-**Proof.** Ordinary compact-set cohomology was proved in the compact-fibre lesson by finite triangulation and derived Čech descent. For supported cohomology set
+**Proof.** Finite triangulation and derived Čech descent prove perfection of ordinary compact-set cohomology. For supported cohomology set
 
 \[
 H_K=R\Gamma_KF=R\mathcal Hom(k_K,F).
@@ -108,9 +108,9 @@ F^\wedge=Rq_!L_N,
 \tag{7}
 \]
 
-The object \(L_N\) is constructible by inverse image and tensor. It is conic in the first vector coordinate over \(E^*\): first-coordinate dilation pulls back the conic transport of \(F\), and preserves the negative inequality. The bounded conic operation theorem gives the coherent tensor transport.
+The object \(L_N\) is constructible by inverse image and tensor. It is conic in the first vector coordinate over \(E^*\): first-coordinate dilation pulls back the conic transport of \(F\), and preserves the negative inequality. Conic transport through tensor and inverse image gives this coherent transport. The conicity includes the first-coordinate zero section.
 
-The proper-support conic contraction prerequisite supplies the actual isomorphism
+The proper-support conic contraction theorem supplies the actual isomorphism
 
 \[
 i^!L_N\simeq Rq_!i_*i^!L_N
@@ -118,16 +118,21 @@ i^!L_N\simeq Rq_!i_*i^!L_N
 \tag{8}
 \]
 
-It is the closed zero-section counit followed by proper-support composition. Its proof compares support on the zero section with support on closed fibre disks, using radial restriction on their complements and the disks' local cofinality among proper supports. Thus it does not assume that \(q\) is proper on \(\operatorname{supp}(L_N)\). Perfect exceptional inverse image makes its source constructible, proving perfection of \(F^\wedge\).
+The arrow is the closed zero-section counit \(i_*i^!L_N\to L_N\), after applying \(Rq_!\); its source is identified using \(qi=\operatorname{id}_{E^*}\). To see why this particular map is invertible, work over a trivializing open \(V\subset E^*\). Write \(r=\operatorname{rank}E\), \(Y_V=V\times\mathbb R^r\), \(S_V=V\times\{0\}\), and \(B_{V,R}=V\times\overline B_R\). On the punctured bundle, restriction to the exterior of \(B_{V,R}\) induces an isomorphism on sections of any conic complex: the dilation parameter fibre at a nonzero vector \(v\) is \((0,|v|/R)\), a nonempty interval. This is radial restriction along interval fibres.
 
-The ordinary-image route is the one used in source 8.4.12. Set
+Compare the localization triangles for support in \(S_V\) and in \(B_{V,R}\). The map on unrestricted sections is the identity, and the map on their complements is the restriction just proved invertible. The resulting inclusion-of-supports map
+\(R\Gamma_{S_V}(Y_V;L_N)\to R\Gamma_{B_{V,R}}(Y_V;L_N)\) is therefore an isomorphism.
+
+These disk supports are cofinal among proper supports after passage to a base stalk. Indeed, a closed support proper over \(V\) becomes compact over the compact closure of a smaller base neighborhood. Its fibre norm is bounded there, so it lies in one of the displayed disks after shrinking. Taking the compatible support colimits thus proves that the induced map \(i^!L_N\to Rq_!L_N\) is an isomorphism. The construction is precisely (8), since its maps are inclusion of zero-section support into proper support. No properness of \(q\) on the whole coefficient support is used. Perfect exceptional inverse image makes its source constructible, proving perfection of \(F^\wedge\).
+
+The positive local-support presentation gives a second proof using ordinary inverse image at the zero section. Set
 
 \[
 H_C=R\Gamma_C L=R\mathcal Hom(k_C,L).
 \tag{9}
 \]
 
-It is constructible by (2) and conic in the first coordinate by the bounded conic internal-Hom theorem. The positive supported-kernel comparison and ordinary conic contraction give
+It is constructible by (2). Both \(k_C\) and \(L\) are conic in the first coordinate, and the first internal-Hom input \(k_C\) is bounded. Thus the conic internal-Hom comparison makes \(H_C\) conic. The negative-cut/positive-support comparison proved below, followed by ordinary conic contraction, gives
 
 \[
 F^\wedge\simeq Rq_*H_C
@@ -135,10 +140,24 @@ F^\wedge\simeq Rq_*H_C
 \tag{10}
 \]
 
-The last map is the restriction of the projection counit to its zero section. Its proof uses compatible radial restrictions from full fibres to small disks and then stalk colimits. Ordinary inverse image preserves perfect stalks, so this also proves the claim.
+The last map is the restriction to \(i\) of the projection counit \(q^{-1}Rq_*H_C\to H_C\). In a trivialization, restriction from \(V\times\mathbb R^r\) to \(V\times B_\epsilon\) is an isomorphism on conic sections: the dilation parameter fibre is \((|v|/\epsilon,\infty)\) at \(v\ne0\), and all of \(\mathbb R_{>0}\) at \(v=0\). The same radial restriction theorem applies. These actual restrictions commute when \(V\) and \(\epsilon\) shrink, and the products form a neighborhood basis of the zero vector. Exact filtered stalk colimits identify the displayed counit with an isomorphism. Ordinary inverse image preserves perfect stalks, so (10) proves the claim as well.
 
-For clarity, the first comparison in (10) is a specific Fourier theorem, with its positive support and negative cutoff. Its actual construction uses
-\(R\Gamma_C(L_N)\simeq(H_C)_N\), then the fact that \((H_C)_N\) is supported on the first-coordinate zero section. This fact is obtained at a nonzero \(v\) by using \(t=\langle v,\eta\rangle\) as a transverse coordinate: local support on \(t\geq0\) restricts to zero on \(t\leq0\) for the coefficient pulled back from the other variables. On the zero section \(q\) is proper. The resulting chain compares \(Rq_!L_N\), \(Rq_!(H_C)_N\), \(Rq_*(H_C)_N\), and \(Rq_*H_C\) using the two contraction maps and support localization. This is the exact existing comparison theorem, whose full proof and map directions are retained as prerequisites.
+We now construct the first comparison in (10), with every arrow in its direction. Put \(O=W\setminus N=\{\langle v,\eta\rangle>0\}\) and \(J=(H_C)_N\). The closure of \(O\) lies in \(C\), so \(R\Gamma_C(L_O)\simeq L_O\); on \(O\), \(H_C\) is just \(L\). Apply \(R\Gamma_C\) to the localization triangle \(L_O\to L\to L_N\to\), and compare with the localization triangle \((H_C)_O\to H_C\to(H_C)_N\to\). Their first two objects and maps agree. The resulting natural identification is
+\(R\Gamma_C(L_N)\simeq J\).
+
+The object \(J\) is supported on \(i(E^*)\). To check this, fix \(v\ne0\) and use \(t=\langle v,\eta\rangle\) as one dual-fibre coordinate, keeping \(v\) and the remaining coordinates as parameters. Then \(L\) is pulled back from those parameters. The local-support triangle for \(t\geq0\) compares its sections on an interval with sections on the negative half-interval. At \(t=0\) this restriction is the identity on the pulled-back coefficient complex, by interval descent; at \(t<0\) the local-support object is zero. Hence \(H_C\) restricts to zero on \(N\) near every nonzero \(v\). This proves the asserted support, including the boundary case \(\langle v,\eta\rangle=0\).
+
+The required chain is
+
+\[
+Rq_!L_N
+\xleftarrow{\sim}Rq_!R\Gamma_C(L_N)
+\xrightarrow{\sim}Rq_!J
+\xrightarrow{\sim}Rq_*J
+\xleftarrow{\sim}Rq_*H_C.
+\]
+
+The first arrow forgets local support. Both its inputs are conic, so the natural proper-support contractions identify its image with \(i^!R\Gamma_C(L_N)\to i^!L_N\), an isomorphism because \(i(E^*)\subset C\). The second arrow is the preceding localization identification. For the third, \(J\) is the closed extension of its zero-section restriction, and \(q\) is the identity on that section; forgetting proper support is therefore invertible on \(J\). The last arrow is induced by the restriction \(H_C\to J\). Under the natural ordinary contractions it is \(i^{-1}H_C\to i^{-1}J\), an isomorphism because \(i(E^*)\subset N\). Invert the indicated arrows to obtain the first comparison in (10). This is the negative-cut/positive-support Fourier comparison (FS4–FS6), now with its localization, support and counit maps explicit. Every operation is natural in \(F\), so the comparison glues over the base.
 
 Neither (8) nor the last map of (10) inserts a further shift or orientation factor. They use different zero-section operations, \(i^!\) and \(i^{-1}\), on different kernels. Their eventual costalk or stalk computations contain whatever shifts the coefficients require. For rank zero all bundle maps are identities and the Fourier transform is the identity.
 
@@ -170,8 +189,8 @@ The positive chamber is subanalytic; no properness of its open inclusion is asse
 \tag{13}
 \]
 
-Its boundedness and positive conicity are the previously proved deformation contracts. Fourier perfection now gives
-\(\mu_MF=(\nu_MF)^\wedge\in D^b_{\mathbb R\text{-}c}(k_{T_M^*X})\).
+The positive deformation and its scaling action give conicity of \(\nu_MF\); the bounded open-extension and inverse-image operations in (12)–(13) give its boundedness. Fourier perfection now gives
+\(\mu_MF=(\nu_MF)^\wedge\in D^b_{\mathbb R\text{-}c}(k_{T_M^*X})\), using the negative-transform definition (MIC1).
 For a locally closed \(M\), restriction to neighborhoods where it is closed gives the same statement, since the construction and its maps are local.
 
 Finally, for constructible \(F,G\), the exact defining diagonal kernel
@@ -189,7 +208,7 @@ on \(X\times X\) is constructible by inverse, exceptional inverse and internal H
 \tag{15}
 \]
 
-The identification is \((x,x;\xi,-\xi)\mapsto(x;\xi)\), and the order of inputs is exactly that in (14). The exceptional projection retains its orientation and dimension shift. Boundedness comes from the full bounded-Hom and finite-amplitude specialization/Fourier contracts, rather than a bound inferred separately for each stalk. This proves perfect coefficient stability; the natural comparisons between these objects and their Verdier duals require the further arguments that follow.
+The identification is \((x,x;\xi,-\xi)\mapsto(x;\xi)\), and the order of inputs is exactly that in (14). The exceptional projection retains its orientation and dimension shift. The bounded-Hom theorem (M44), the bounded operations in (12)–(13), and the fixed-rank Fourier cohomological bound give global boundedness; pointwise perfection alone would not supply a uniform degree bound. This proves perfect coefficient stability. Natural duality comparisons must also retain the maps, antipodes and relative orientation factors.
 
 ## Examples and exercises with solutions
 
@@ -274,12 +293,14 @@ The shifts \([1]\) and \([-1]\) cancel. Thus
 
 ## References
 
-Kashiwara and Schapira, *Microlocal study of sheaves*, Propositions 8.3.3–8.3.6 supplies the readable inverse-image, specialization, Fourier and tensor/Hom comparison. The source separates weak geometric control from the perfect coefficient condition and requires finite weak global dimension for the tensor statement.
-- The conic zero-section contractions are the precise prerequisites used here. Ordinary positive supported Fourier presentation uses ordinary zero-section inverse image; the negative cutoff presentation uses exceptional inverse image. Their maps and the full positive/negative comparison are retained from the existing conic and Fourier lessons.
-- Normal deformation, its positive-chamber open-extension formula, and the exceptional diagonal definition of microlocal Hom are the bounded specialization/microlocal prerequisites. Their transitive topology and operation contracts remain separately open.
+Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), supplies the classical statements underlying these constructions:
 
-## Readable source and dependency account
+- Proposition 2.1.1 and Definition 2.1.2 in §2.1, printed pp. 39–40 (PDF pp. 42–43), compare the negative-pairing cutoff with positive-pairing local support and define the Fourier transform. That section states its results without proofs. The localization and contraction argument above proves the precise comparison used in (10), with the current programme's actual counits.
+- Remark 8.2.8, printed p. 148 (PDF p. 151), gives the compact perfect-cohomology result. Here finite triangulation and compact-fibre descent supply the perfect complexes used in (3)–(5), while the cutoff objects distinguish ordinary restriction from supported cohomology.
+- Propositions 8.3.3–8.3.6, printed pp. 149–150 (PDF pp. 152–153), give constructibility under inverse operations (8.3.3), specialization and microlocalization (8.3.4), conic Fourier transformation (8.3.5), and tensor and internal Hom (8.3.6). The tensor statement assumes finite weak global dimension. The hypotheses in this lesson impose finite global dimension and keep the boundedness and perfect coefficient arguments explicit.
 
-The proof here uses actual constructible biduality to control exceptional inverse image and internal Hom, and finite compact cohomology for the perfect image argument. Fourier perfection uses the appropriate zero-section contraction because the vector-bundle projection is not generally proper. The orientation shift in the exceptional factor and the positive/negative Fourier comparison are retained. The named conic and duality providers, including their map normalizations and unresolved foundations, are not replaced by a citation.
+## Two zero-section tests for the same Fourier transform {#readable-source-and-dependency-account}
 
-Checked editions: [Kashiwara–Schapira, Astérisque 128 (1985)](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf); [Schapira, sheaf lecture notes](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf); [Schapira, microlocal review (2016)](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf). The locators above identify the passages used; these links do not claim that all three works prove every statement or every prerequisite of this lesson. Original programme exposition remains CC0; the human works retain their own rights.
+The negative-cut description represents the transform by the exceptional restriction \(i^!L_N\), using the closed-section counit. The positive-support description represents it by the ordinary restriction \(i^{-1}R\Gamma_C L\), using the projection counit. The localization chain above identifies these two presentations of the same transform. The projection \(q\) is not assumed proper on either full kernel support, and neither contraction adds a degree or a trivialization of an orientation line.
+
+Perfect inverse operations and tensor/internal-Hom closure make the two restricted objects constructible. Compact cohomology uses cutoffs with genuinely proper support. Specialization uses the analytic deformation and positive-chamber open extension, and microlocal Hom uses the exceptional diagonal kernel. These constructions explain why the boundary, orientation and torsion degrees in the examples survive all the operations.

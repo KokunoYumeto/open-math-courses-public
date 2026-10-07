@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
-The objects of the Satake category are perverse sheaves on the affine Grassmannian whose equivariance records the integral loop-group action. Each object has support in finitely many Schubert varieties. This makes the definition a finite-dimensional question, despite the infinite-dimensional notation. We construct that category, prove independence of the jet level, classify its simple objects, and establish duality and the exact faithful cohomology functor. We also prove the precise implication from IC parity to semisimplicity, a finite-generator reduction of the parity question, ordinary Lefschetz and IC parity for homogeneous affine cones, and parity for every quasi-minuscule label. The general parity theorem is concluded in Lesson 11 after the classical tensor equivalence; this lesson proves its geometric inputs and conditional generator criterion.
+The objects of the Satake category are perverse sheaves on the affine Grassmannian whose equivariance records the integral loop-group action. Each object has support in finitely many Schubert varieties. This makes the definition a finite-dimensional question, despite the infinite-dimensional notation. We construct that category, prove independence of the jet level, classify its simple objects, and establish duality and the exact faithful cohomology functor. We also prove the precise implication from IC parity to semisimplicity, a finite-generator reduction of the parity question, ordinary Lefschetz and IC parity for homogeneous affine cones, and parity for every quasi-minuscule label. The root-coordinate resolution and bounded flag comparison hold over other algebraically closed ground fields. The rational-adic Euler calculation in §5.14 proves the parity implication under an explicit supported-localization hypothesis; that geometric hypothesis remains to be proved in this generality. The general parity theorem is concluded in Lesson 11 after the classical tensor equivalence; this lesson proves its geometric inputs and conditional generator criterion.
 
 Full classical characteristic-zero semisimplicity is proved later in Identifying the dual group, Theorem 8.3, using the convolution and reconstruction developed after this lesson and the vanishing of IC self-extensions. That proof also gives every standard-object equality. It is proved before general ordinary IC parity, which is then concluded in that lesson, Theorem 8.4. The later equivalence is not an input to the constructions in this lesson.
 
@@ -14,7 +14,7 @@ d_\lambda=\langle2\rho,\lambda\rangle.
 \]
 The closures are reduced. Their underlying complex analytic spaces determine the classical constructible sheaves used here; the nonreduced test-ring directions of the full Grassmannian do not change that space.
 
-The geometric inputs are Loop groups and the affine Grassmannian, Theorem 7.1, and Orbits and Schubert varieties, §§2–5. The perverse heart, finite length, localization and intermediate extension are proved in The perverse t-structure, Theorems 2.1 and 5.2; Gluing t-structures, §3 and Appendix A.3; and Intermediate extensions and intersection complexes, §§1–2. We use the classical operations constructed in Constructible complexes on algebraic varieties, Appendices C–K, in the exact finite-stage scope explained in Semi-infinite orbits and weight functors, §11. No étale or rational-adic comparison is asserted here.
+The geometric inputs are Loop groups and the affine Grassmannian, Theorem 7.1, and Orbits and Schubert varieties, §§2–5. The perverse heart, finite length, localization and intermediate extension are proved in The perverse t-structure, Theorems 2.1 and 5.2; Gluing t-structures, §3 and Appendix A.3; and Intermediate extensions and intersection complexes, §§1–2. We use the classical operations constructed in Constructible complexes on algebraic varieties, Appendices C–K, in the exact finite-stage scope explained in Semi-infinite orbits and weight functors, §11. The category arguments use those classical operations. Sections 5.12–5.14 separately prove the uniform root-coordinate resolution, bounded rational-adic flag Lefschetz, and quasi-minuscule IC parity in every ground characteristic.
 
 ## 1. A bounded support has a finite jet action
 
@@ -803,6 +803,387 @@ Equations (5.28)–(5.29) make \(B_\lambda*Q\) pure of parity \(d_\lambda+\eta\)
 
 The hypothesis of this corollary will be established in Lesson 11 before it is applied there. The geometric and derived proofs in §§5.8–5.11 use no general Satake equivalence or general IC parity assertion as an input.
 
+
+### 5.12. A root-coordinate resolution in every characteristic
+
+For this section let \(k\) be any field and \(G/k\) split connected reductive with a pinning. All quotient coordinates below commute with extension to a \(k\)-algebra, including a nonreduced algebra. Let \(\xi\) be the dominant short coroot in one irreducible factor, and choose the dominant long root \(\theta\) with \(\theta^\vee=\xi\). Put
+\[
+P=P_G(\xi),\qquad Y=G/P,\qquad
+L_\theta=G\times^P\mathbf A^1_\theta,
+\quad (gp,z)\sim(g,\theta(p)z).
+\tag{5.30}
+\]
+The root groups in \(P\) have nonnegative pairing with \(\xi\). The character \(\theta\) is trivial on its unipotent and Levi root groups, so (5.30) defines a line bundle. Its complex fibre is precisely the negative tautological line in §5.10; that fixes the line convention.
+
+**Proposition 5.12.** The smooth projective bundle
+\[
+\widetilde Z=\mathbf P_Y(\mathcal O_Y\oplus L_\theta)
+\]
+has a \(G\)-equivariant proper map to the reduced \(Z_\xi\), contracting its zero section to the unit and inducing an isomorphism from its complement onto \(O_\xi\). It has exactly the two spherical strata \(O_\xi\) and the unit, in every ground characteristic. Over a split finite field, the reduced inverse image of \(S_0\) admits a closed affine paving, including compatible pavings of each cell closure and boundary.
+
+**Proof.** The root-length bound gives
+\(\langle\alpha,\xi\rangle\in\{-2,-1,0,1,2\}\), with \(\pm\theta\) the unique roots of degree \(\pm2\), just as in §5.10. This is a statement about the root datum, with no restriction on \(k\).
+
+Let \(K_r\) be the \(r\)-th congruence subgroup of \(G(k[[t]])\), interpreted as its group functor on parameter rings, and let \(H\) stabilize \(t^{-\xi}\). The rootwise stabilizer formula of Orbits and Schubert varieties, §2 gives \(K_2\subset H\) and constant stabilizer \(P\). The square-zero jet construction of Loop groups and the affine Grassmannian, §2 identifies \(K_1/K_2\) with the additive first-order Lie module. In \(H\) it retains every torus and root direction except the order-one \(-\theta\) coefficient. Therefore its quotient is the affine line represented by
+\[
+c\longmapsto x_{-\theta}(ct)t^{-\xi}K^+.
+\tag{5.31}
+\]
+Conjugation by \(P\) on this quotient has character \(-\theta\). A torus element has that character. A degree-zero root group cannot add a distinct degree-minus-two root, because \(-\theta\) is unique; a positive-degree root group adds only higher-degree terms. Thus the root groups act trivially on the quotient. This calculation divides by no structure constant. The ordered root charts and their local congruence-torsor sections, proved in Lessons 02 and 04, give actual inverse quotient coordinates on every parameter ring. We obtain
+\[
+O_\xi=K^+t^{-\xi}
+ \simeq G\times^P\mathbf A^1_{-\theta}=L_\theta^{-1}.
+\tag{5.32}
+\]
+In particular this is a scheme identification, including its first-order directions.
+
+On the finite \(L_\theta\)-chart of \(\widetilde Z\), define
+\[
+f[g,a]=g x_\theta(a/t)K^+.
+\]
+The root groups of \(P\) commute with \(U_\theta\): a putative additional root would have degree at least two and uniqueness of the degree-two root excludes it. Its torus scales the coordinate by \(\theta\). These facts prove descent of the formula. On the infinity chart, with \(c\in L_\theta^{-1}\), set
+\[
+f[g,c]=g x_{-\theta}(ct)t^{-\xi}K^+.
+\tag{5.33}
+\]
+Its descent is the quotient calculation (5.31). On the overlap \(ac=1\), the linked integral homomorphism \(SL_2\to G\) of Roots and reductive groups of rank one, Theorem 7.1 identifies the two cosets. In its matrix coordinates,
+\[
+\begin{pmatrix}1&a/t\\0&1\end{pmatrix}^{-1}
+\begin{pmatrix}1&0\\ct&1\end{pmatrix}
+\begin{pmatrix}t^{-1}&0\\0&t\end{pmatrix}
+=\begin{pmatrix}(1-ac)/t&-a\\c&t\end{pmatrix}
+\in SL_2(R[[t]]).
+\tag{5.34}
+\]
+The equality is integral on the overlap for every ring \(R\), including in bad characteristic. Root maps are polynomial in any fixed faithful matrix representation, so the pole bounds are uniform. Lesson 02's finite-stage construction places the map in a separated Grassmannian stage.
+
+The zero section maps to the unit. Its complement is the entire infinity affine chart, and (5.32) makes its map an isomorphism onto \(O_\xi\). The source is smooth projective, so \(f\) is proper. Its image is closed, contains \(O_\xi\), and every geometric point maps either there or to the unit. Its dense complement therefore has reduced image \(Z_\xi\). Reducedness of the source makes its map factor scheme-theoretically through that closure. This proves both the resolution and the two-stratum assertion. The closed infinity section maps isomorphically to \(Gt^{-\xi}\subset O_\xi\); removing that image gives the proper map
+\[
+f_L:L_\theta\longrightarrow
+U=Z_\xi\setminus Gt^{-\xi},
+\qquad L_\theta^\times\simeq U\setminus\{t^0\}.
+\tag{5.35}
+\]
+The inverse-image open is the finite line chart by (5.33).
+
+Choose a strictly dominant cocharacter \(\delta\) avoiding the root-weight hyperplanes. On a positive Bruhat cell \(C_w\simeq\mathbf A^{e_w}\) of \(Y\), the root-coordinate section trivializes the line. Every base coordinate has positive \(\delta\)-weight, while its fibre has the nonzero weight \(\langle w\theta,\delta\rangle\). Hence the zero-section attracting cell has dimension \(e_w+\epsilon_w\), where \(\epsilon_w=1\) for positive fibre weight and zero for negative weight. Its chart is respectively the whole affine line over \(C_w\), or the zero section over it. The infinity fixed point maps to \(t^{-w\xi}\ne t^0\), whereas the zero fixed points map to \(t^0\).
+
+The reduced finite-stage attracting description of the semi-infinite loci in Semi-infinite orbits and weight functors, §5 therefore gives
+\[
+X=\bigl(f^{-1}(S_0\cap Z_\xi)\bigr)_{\mathrm{red}},
+\qquad X|_{C_w}\simeq\mathbf A^{e_w+\epsilon_w}.
+\tag{5.36}
+\]
+Only the reduced locus is asserted here; étale cohomology is invariant under nilpotent thickening. Pull back the finite closed Bruhat filtration of \(Y\). Its successive differences are exactly these affine cells, proving a closed paving. For a large cell, \(\epsilon_w=1\), its ambient closure is the whole projective-line bundle over \(\overline C_w\); its closure in \(X\) is \(X\) over that closure. Boundary cells have dimensions \(e_v+\epsilon_v\le e_w<e_w+1\). For a small cell, its closure is the global zero section over \(\overline C_w\); its boundary has cells of dimensions \(e_v<e_w\). Thus all closures and boundaries inherit closed affine pavings as well. All these coordinates and filtrations are defined over the split field. \(\square\)
+
+### 5.13. Rational-adic Lefschetz for every homogeneous flag
+
+**Theorem 5.13.** Let \(k\) be algebraically closed, \(G/k\) connected reductive, \(P\) parabolic, \(X=G/P\) of dimension \(n\), and \(\mathcal L\) ample. If \(\ell\ne\operatorname{char}k\) and \(E/\mathbf Q_\ell\) is finite, then
+\[
+c_1(\mathcal L)^{n-q}:H^q_{\mathrm{\acute et}}(X,E)
+ \xrightarrow{\sim}
+ H^{2n-q}_{\mathrm{\acute et}}(X,E(n-q)),
+\qquad 0\le q\le n.
+\tag{5.37}
+\]
+The class is the compatible Kummer class. In this bounded calculation integral cohomology is the cohomology of
+\[
+R\varprojlim_m R\Gamma(X,\mathbf Z/\ell^m),
+\tag{5.38}
+\]
+and rational cohomology is its tensor with \(E\). This finite-coefficient-system convention also gives the \(\overline{\mathbf Q}_\ell\) version by the filtered union over finite extensions. We prove the actual specialization and complex comparison for flags, retaining the class and target twist.
+
+**Proof.**
+#### (a) The integral flag and its line
+
+Choose a pinning over \(k\), conjugating \(P\) to \(P_J\). Pinnings and the classification of split reductive groups, Theorem 10.1 constructs \(\mathscr G/\mathbf Z\) for the full datum, and Automorphisms, forms and parabolic subgroups, Theorem 2.1 constructs
+\[
+\mathscr X=\mathscr G/\mathscr P_J\longrightarrow\operatorname{Spec}\mathbf Z
+\tag{5.39}
+\]
+smooth projective of relative dimension
+\[
+n=|\Phi^+\setminus\Phi_J^+|.
+\]
+Its \(k\)-fibre is the original pinned flag variety. This uses the full root datum, not a naive classical matrix stabilizer that might cease to be smooth in a bad characteristic.
+
+First suppose the line is specified by a \(\mathscr P_J\)-character \(\chi\in X^*(T)\), with \(\langle\chi,\alpha_j^\vee\rangle=0\) for \(j\in J\). Use the convention
+\[
+\mathscr L_\chi=(\mathscr G\times\mathbf A^1)/\mathscr P_J,\qquad
+(g,z)\sim(gp,\chi(p)^{-1}z).
+\tag{5.40}
+\]
+Thus the action on the fibre over the identity coset is \(\chi\). The character extends over \(\mathbf Z\): kill the unipotent radical and the Levi root groups, and use \(\chi\) on the torus. The root-group relations respect this prescription; the rank-one Gauss relation in the Levi requires exactly \(\chi(\alpha_j^\vee(u))=1\). Consequently (5.40) is an associated line over (5.39), not a line chosen separately on two fibres.
+
+For \(i\notin J\), the rank-one Schubert curve is \(\mathbf P^1\). The integral rank-one quotient and its two root charts give
+\[
+\deg(\mathscr L_\chi|_{\mathbf P^1_i})
+=-\langle\chi,\alpha_i^\vee\rangle.
+\tag{5.41}
+\]
+This fixes the sign: a positive dominant weight \(\lambda\) is the highest-line character, and \(\mathscr L_{-\lambda}\) is the restriction of \(\mathcal O(1)\).
+
+If \(\mathcal L_\chi\) is ample on the given fibre, the integers \(d_i=-\langle\chi,\alpha_i^\vee\rangle\), \(i\notin J\), are positive. Its complex fibre is therefore ample. Here is a bounded justification rather than an appeal to a fibrewise-ampleness slogan. Pass to the simply connected central cover of Theorem 10.1; its flag quotient is the same scheme, as proved in (5.55) below. Use the rational fundamental modules \(V_i\) that are used in the group construction in AG-RG-05 part (d). Their finite presentations are proved in Lie proofs for the characteristic-zero group construction, §7 and Weights, Verma modules and the theorem of the highest weight, §§4–4.5; they are representations of that group by its explicit construction inside \(\prod_i\operatorname{GL}(V_i)\). Thus no unproved integration theorem for an arbitrary Lie module is needed.
+
+For \(i\notin J\), take the highest line of \(V_i\). The joint stabilizer of these lines is exactly \(P_J\). Positive root groups and the Levi root groups fix every such line. A negative root outside the Levi has positive pairing with at least one omitted fundamental weight, and therefore acts nontrivially on the corresponding highest vector by the rank-one string formula. The infinitesimal joint stabilizer is consequently \(\mathfrak p_J\). In characteristic zero the stabilizer is smooth by Supporting proofs for the consumed group-scheme foundations, Theorem G.3.4; its identity component is \(P_J\), and any additional component would normalize \(P_J\), contrary to \(N_G(P_J)=P_J\). The orbit map is an immersion
+\[
+G_{\mathrm{sc}}/P_{\mathrm{sc},J}
+\longrightarrow\prod_{i\notin J}\mathbf P(V_i),
+\tag{5.42}
+\]
+and properness makes it a closed immersion. Pullback of the \(i\)-th \(\mathcal O(1)\) is \(\mathcal L_{-\omega_i}\). The pullback of \(\mathcal L_\chi\) to this identical flag has character \(-\sum_{i\notin J}d_i\omega_i\); a central torus character contributes only a constant line. Hence it is the pullback of the external product \(\boxtimes_i\mathcal O(d_i)\). The Segre and Veronese embeddings make this external product ample when every \(d_i>0\), proving the assertion. If \(P=G\), the flag is a point and the assertion is immediate.
+
+Part (f) removes the character hypothesis and proves the statement for every ample line bundle, without assuming an unproved integral Picard lifting theorem.
+
+#### (b) A characteristic-zero trait
+
+Suppose \(\operatorname{char}k=p>0\). Put
+\[
+R=(\mathbf Z_{(p)})^{\mathrm{sh}},
+\qquad \kappa(R)=\overline{\mathbf F}_p,
+\qquad K=\operatorname{Frac}(R).
+\tag{5.43}
+\]
+Use the strict henselization with this chosen residue closure. It is strictly henselian, local, and faithfully flat over \(\mathbf Z_{(p)}\), by the construction in Henselian local rings and henselization, Theorem 5.1.
+
+For completeness it is a DVR. A localized pointed étale neighborhood \(A\) of \(\mathbf Z_{(p)}\) is Noetherian and flat, has maximal ideal \(pA\), and has field residue ring. The uniformizer is regular. Krull intersection gives \(\bigcap_r p^rA=0\); hence each nonzero element has a unique expression \(p^r u\) with \(u\) a unit. Local transition maps preserve \(p\) and units, and are injective by this expression. Their colimit has the same expression for every nonzero element. Every nonzero ideal of the colimit has an element of least valuation and is generated by that element. Thus \(R\) itself is a Noetherian DVR with uniformizer \(p\). Its fraction field has characteristic zero.
+
+Each neighborhood's generic étale algebra is a finite product of finite separable extensions of \(\mathbf Q\); the selected local domain has a fraction field algebraic over \(\mathbf Q\). Therefore \(K/\mathbf Q\) is algebraic. Choose an algebraic closure \(\overline K\) and an embedding \(\overline K\hookrightarrow\mathbf C\). The closed field \(\overline{\mathbf F}_p\) embeds in \(k\). No Cohen ring, Witt-vector existence, lifting of the original \(k\), or embedding of \(k\) in \(\mathbf C\) has been asserted.
+
+Base change (5.39) and (5.40) to \(R\). Since \(\ell\ne p\), every \(\ell^m\) is invertible on \(R\). The family is smooth projective and the finite coefficient sheaves \(\mathbf Z/\ell^m(a)\) are locally constant. These are exactly the proper smooth finite-coefficient hypotheses.
+
+#### (c) Finite specialization for the flag family
+
+Write \(\Lambda_m=\mathbf Z/\ell^m\). For a chosen geometric generic point \(\bar\eta=\operatorname{Spec}\overline K\) and closed point \(\bar s=\operatorname{Spec}\overline{\mathbf F}_p\), the usual proper smooth specialization map is
+\[
+\operatorname{sp}_{m,a}:
+H^j(\mathscr X_{\bar s},\Lambda_m(a))
+\longrightarrow H^j(\mathscr X_{\bar\eta},\Lambda_m(a)).
+\tag{5.44}
+\]
+The proper base change theorem, Proposition 11.2 and Corollary 11.4 identifies the first group with \(H^j(\mathscr X_R,\Lambda_m(a))\), because sections on a strictly henselian local base are the closed geometric stalk and form an exact functor. Under that identification, (5.44) is **the generic restriction map**. This description fixes the specialization map; it preserves restrictions, cup products and Kummer boundaries.
+
+The closed affine paving proves that this generic restriction is an isomorphism.
+
+##### A relative closed affine paving
+
+The relative cells \(C_w\simeq\mathbf A_R^{\ell(w)}\) are proved in Automorphisms, forms and parabolic subgroups, Theorem 7.1. One also needs a **closed filtration**; a locally closed stratification by itself is insufficient. Here is that step.
+
+For a reduced word \(w=s_{i_1}\cdots s_{i_d}\), form the successive contracted products of the integral minimal parabolics over \(\mathscr B\), then quotient by the final \(\mathscr B\), and map by multiplication to \(\mathscr X_R\). Each minimal-parabolic quotient is the integral rank-one \(\mathbf P^1\), so this is an iterated \(\mathbf P^1\)-bundle, proper over \(R\). The open rank-one cells multiply isomorphically to \(C_w\): their conjugated roots are the distinct inversion roots, and the arbitrary-base root-coordinate product is an isomorphism. These are precisely the constructions used in the body of AG-RG-06 Theorem 1.1, now on their integral models.
+
+On each geometric fibre, the image is \(\overline{C_w}\). Its other cells have smaller dimension. Indeed the complement of the product of open rank-one cells is a union of the rank-one boundary faces, each of dimension at most \(d-1\), and the image is Borel-stable; any other orbit is contained in the image of those faces. Properness makes the image closed, also over \(R\).
+
+For every \(d\), the union of these proper images over all \(\ell(w)\le d\) is closed and has underlying set exactly the union of those cells. Within one length, add the proper images one at a time: all their boundary cells have already been added. Give the stages their reduced closed structures. The successive difference is exactly \(C_w=\mathbf A_R^{\ell(w)}\), since it is reduced and is the unique reduced locally closed subscheme with that underlying subset. This constructs a finite closed affine paving of \(\mathscr X_R\). On a geometric fibre the same closed subsets and affine cells occur. A closed stage's fibre can acquire nilpotents; removing them does not change its étale topos. No flatness assertion about individual Schubert closures is needed.
+
+##### The relative affine-space calculation
+
+For any of the bases in question and \(p:\mathbf P^1_T\to T\), the unit and \(h=c_1(\mathcal O(1))\) give a map
+\[
+\Lambda_{m,T}\oplus\Lambda_{m,T}(-1)[-2]
+\longrightarrow Rp_*\Lambda_{m,\mathbf P^1_T}.
+\tag{5.45}
+\]
+On every geometric stalk, proper base change identifies it with the projective-line calculation of The multiplicative group on a curve, §6: constants generate degree zero, \(h\) generates the twisted degree two, and all other groups vanish. Thus (5.45) is a quasi-isomorphism. It commutes with base change and coefficient reduction because its two maps are the unit and the Kummer class.
+
+For the infinity section, restriction is \((1,0)\) under (5.45). The second component is zero as a derived map, because \(\mathcal O(1)\) restricts to a trivial line on that section. The localization triangle therefore gives, for \(a:\mathbf A^1_T\to T\),
+\[
+Ra_!\Lambda_m=\Lambda_m(-1)[-2].
+\tag{5.46}
+\]
+Iterating the affine-line projections and their explicit projective-line compactifications gives
+\[
+R(\mathbf A_T^d\to T)_!\Lambda_m(a)
+=\Lambda_{m,T}(a-d)[-2d],
+\tag{5.47}
+\]
+compatibly with every base change used here. Alternatively, the finite boundary Čech resolution of extension by zero in \((\mathbf P^1_T)^d\) gives the same formula: each factor is the fibre of the restriction in (5.45). This uses only explicit projective compactifications, so neither general Nagata compactification nor an unbounded six-operation theorem is required.
+
+Taking sections of (5.47) over strictly henselian \(R\), or over either algebraically closed fibre field, gives a single free rank-one group in degree \(2d\). Generic restriction is an isomorphism. Twists remain \(\Lambda_m(a-d)\). Choosing a compatible basis of the root-of-unity tower trivializes them for checking matrices; that choice is not part of the twist-free statement.
+
+##### Induction through the closed filtration
+
+For a paving stage \(Y_i\), previous stage \(Y_{i-1}\), and open cell \(C_i\), excision gives
+\[
+R\Gamma_c(C_i/R,\Lambda_m(a))
+\longrightarrow R\Gamma(Y_i,\Lambda_m(a))
+\longrightarrow R\Gamma(Y_{i-1},\Lambda_m(a)).
+\tag{5.48}
+\]
+Each stage is proper over \(R\). The compact-support object of \(C_i\) in this triangle agrees with the explicit compactification used for (5.47). To see independence here directly, close the graph of the common open cell in the product of the two projective compactifications. Both projections are proper and isomorphisms over the cell. Proper base change applied to its extension-by-zero coefficient makes its proper pushforward the corresponding extension by zero: the fibres outside the cell have zero coefficients. The units identify the two complexes and their restriction maps.
+
+Generic restriction compares (5.48) with its generic-fibre triangle. It is an isomorphism on the first term by (5.47), and on the third term by induction. Hence it is an isomorphism on the middle term. Beginning with the empty stage and ending with \(\mathscr X_R\) proves (5.44) in every degree.
+
+Thus generic restriction is an isomorphism in every degree for this flag family.
+
+##### The line class and its twists
+
+Special and generic restriction preserve cup products, and send the Kummer class of \(\mathscr L_\chi\) to the Kummer class of its fibre, by naturality of the Kummer sequence. Therefore (5.44) commutes with all powers of that class. It also commutes with reduction \(m+1\to m\). The sheaves \(\mu_{\ell^m}\) are finite étale on \(R\), and their compatible pullbacks are the stated twists. This proves compatibility before making any root-of-unity choice.
+
+#### (d) The complex comparison and Chern class
+
+For a proper finite-type scheme over an algebraically closed field \(F\), proper base change along \(F\subset F'\), with both fields algebraically closed, gives
+\[
+H^j(Y_F,\Lambda_m(a))\xrightarrow{\;\sim\;}
+H^j(Y_{F'},\Lambda_m(a)).
+\tag{5.49}
+\]
+Indeed étale sheaves over the two fields are just modules, and their global-section functors are exact. This is a direct application of proper base change; no nonproper field-invariance theorem is necessary. It is the canonical pullback and preserves products and Chern classes.
+
+Apply (5.49) to \(\overline K\hookrightarrow\mathbf C\). Proper singular/étale comparison identifies the result with
+\[
+H^j(\mathscr X_{\mathbf C}^{\mathrm{an}},\Lambda_m),
+\tag{5.50}
+\]
+after trivializing twists by the compatible positive complex roots
+\(\zeta_m=\exp(2\pi i/\ell^m)\).
+
+The following closed-paving computation proves this comparison for flags. The proved finite projective-line calculation compares \(\mathbf P^1_{\mathbf C}\) with the sphere \(\mathbf{CP}^1\): both have just the degree-zero unit and the degree-two class of \(\mathcal O(1)\). The Čech-logarithm calculation in the next paragraph identifies those degree-two classes, so this particular comparison requires neither general Riemann existence nor general curve GAGA. The analytification comparison and its cup compatibility are constructed in Comparison with singular cohomology, Lemma 3.1 and Theorem 5.1. Repeated application of (5.45) gives the basis of monomials \(\prod h_i^{\epsilon_i}\), \(\epsilon_i\in\{0,1\}\), on products of projective lines; the classical product computation gives the same basis, with the same maps. Thus these product compactifications and every boundary intersection compare. The finite boundary Čech resolution compares compactly supported cohomology of each affine cell \(\mathbf A^d_{\mathbf C}\) with that of \(\mathbf C^d\). Compactification independence for these explicit compactifications follows by the graph argument in part (c) on both sides. Induction through the closed Schubert paving, using algebraic and classical localization, proves (5.50) for the flag variety. All comparison maps are the usual analytification maps, because the units, restriction maps, and localization boundaries commute in Lemma 3.1.
+
+For any algebraic line, the finite comparison sends its Kummer class to the reduction of its integral classical first Chern class under the positive-root convention. This can also be checked on a good cover: choose transition functions \(g_{ij}\), logarithms \(u_{ij}\) with \(g_{ij}=\exp(2\pi i u_{ij})\), and form the integral Čech Chern cocycle \(u_{ij}+u_{jk}-u_{ik}\). The roots \(\exp(2\pi i u_{ij}/\ell^m)\) have exactly its reduction modulo \(\ell^m\) as their Kummer boundary, expressed in \(\zeta_m\). Analytification pulls back the same transition functions. Thus the line character and Chern class, including their sign, survive comparison.
+
+Combining (5.44), (5.49), and (5.50) gives coefficient-compatible, multiplicative identifications between the special flag's finite étale groups and the complex flag's finite singular groups, carrying \(c_1(\mathcal L_\chi)\) to the same classical Chern class. These identifications are relative to the chosen geometric specialization and complex embedding; the final isomorphism assertion does not require their choice-independence.
+
+#### (e) Compatible bases and rational Lefschetz
+
+Excision through an affine paving proves, for every algebraically closed fibre \(F\),
+\[
+H^{2r+1}(\mathscr X_F,\Lambda_m)=0,\qquad
+H^{2r}(\mathscr X_F,\Lambda_m)
+\simeq\Lambda_m(-r)^{b_{2r}},
+\tag{5.51}
+\]
+where \(b_{2r}\) is the number of cells of dimension \(r\). More explicitly, adding a cell of dimension \(r\) gives
+\[
+0\longrightarrow\Lambda_m(-r)
+\longrightarrow H_c^{2r}(Y_i,\Lambda_m)
+\longrightarrow H_c^{2r}(Y_{i-1},\Lambda_m)
+\longrightarrow0,
+\tag{5.52}
+\]
+and in the other even degrees gives the previous group. Odd groups vanish by the same long exact sequence. The quotient in (5.52) is free, so the sequence splits.
+
+These bases can be chosen **compatibly in \(m\)**. Reduction is surjective on the cell summand and, inductively, on the previous-stage group; (5.52) then makes it surjective on the middle group. Given compatible previous-stage bases and the compatible cell generator, lift them successively. At stage \(m+1\), first lift a required quotient basis vector; its reduction differs from the already chosen stage-\(m\) lift by an element of the cell summand, which lifts and can be subtracted. The resulting compatible lifts and cell generator form a basis by the split exact sequence. This proves the compatibility rather than assuming canonical integral cell classes.
+
+Hence the cohomology towers are surjective and have vanishing \(\varprojlim^1\). The Milnor sequence for (5.38) gives finite free \(\mathbf Z_\ell\)-modules in even degrees and zero odd groups. The finite comparison maps of part (d) pass to their inverse limits and identify the same Chern-class cup maps.
+
+On the classical side the identical closed affine paving, now with \(\mathbf Z\) coefficients, gives finite free even integral cohomology and zero odd groups. Use the finite integral cochain complex in Comparison with singular cohomology, §14. Its coefficient universal-coefficient sequence has last term \(\operatorname{Tor}_1^{\mathbf Z}(H^{j+1}(X^{\mathrm{an}},\mathbf Z),\Lambda_m)=0\), because this integral cohomology is free. Therefore the reduction map
+\[
+H^j(\mathscr X_{\mathbf C}^{\mathrm{an}},\mathbf Z)\otimes\Lambda_m
+\xrightarrow{\;\sim\;}
+H^j(\mathscr X_{\mathbf C}^{\mathrm{an}},\Lambda_m)
+\tag{5.53}
+\]
+is an isomorphism, compatible with cup products and Chern classes. Thus the inverse-limit cup matrix is the integral classical cup matrix tensored with \(\mathbf Z_\ell\).
+
+Theorem 5.7 above proves that, for the ample complex fibre,
+\[
+c_1(\mathcal L_\chi)^{n-q}:
+H^q(\mathscr X_{\mathbf C}^{\mathrm{an}},\mathbf Q)
+\xrightarrow{\;\sim\;}
+H^{2n-q}(\mathscr X_{\mathbf C}^{\mathrm{an}},\mathbf Q).
+\tag{5.54}
+\]
+In integral bases, the matrix therefore has a nonzero integer determinant. Its tensor with \(\mathbf Q_\ell\), and then with \(E\), is invertible. Equations (5.44), (5.49), and (5.50) transport that exact matrix to the special fibre, retaining the target twist \(n-q\), and prove (5.37) for \(\mathcal L_\chi\).
+
+There is no requirement that this determinant be prime to \(\ell\). If \(\ell\) divides it, some finite-coefficient maps may fail to be isomorphisms, but their compatible inverse-limit matrix is still invertible after rationalization. For example, on \(\mathbf P^1\), the ample bundle \(\mathcal O(\ell)\) gives multiplication by \(\ell\) from \(H^0\) to \(H^2(1)\); modulo \(\ell\) it is zero, whereas over \(\mathbf Q_\ell\) it is an isomorphism.
+
+For finite \(E/\mathbf Q_\ell\), its integer ring is finite free over \(\mathbf Z_\ell\). Use the cofinal quotients \(O/\ell^mO\). Constant finite-free scalar extension commutes with the finite computations and inverse limit, and localization is flat. This verifies the coefficient extension without asserting a direct torsion comparison for a nontorsion sheaf.
+
+#### (f) Arbitrary ground fields and ample lines
+
+For characteristic \(p>0\), (5.49) for \(\overline{\mathbf F}_p\subset k\) transports the result to the given \(k\). For characteristic zero, choose an algebraic closure of \(\mathbf Q\) inside \(k\), embed that closure in \(\mathbf C\), and use (5.49) on the two proper flag fibres. The field \(k\) itself need not embed in \(\mathbf C\).
+
+To cover a line bundle with no given \(G\)-linearization, first replace the group by the simply connected semisimple group of the same roots. This does not change the flag variety: the integral presentation
+\[
+G=(G_{\mathrm{sc}}\times D(L))/H
+\]
+in the integral classification theorem cited in part (a) has central \(H\) contained in the standard parabolic \(P_{\mathrm{sc},J}\times D(L)\). Taking the two fppf quotients gives
+\[
+(G_{\mathrm{sc}}\times D(L))/(P_{\mathrm{sc},J}\times D(L))
+\simeq G/P_J.
+\tag{5.55}
+\]
+Thus this is a scheme isomorphism, also in bad characteristic and with a nonreduced central kernel.
+
+For each omitted simple root \(i\notin J\), let \(\omega_i\) be its fundamental weight, and let \(\mathscr M_i=\mathscr L_{-\omega_i}\) on the simply connected integral flag. Its degree on the rank-one Schubert curve \(C_j\simeq\mathbf P^1\) is \(\delta_{ij}\), by (5.41). The paving has precisely \(|\Delta\setminus J|\) one-dimensional cells. Therefore \(H^2(X_F,\Lambda_m(1))\) is free of this rank, and restriction
+\[
+H^2(X_F,\Lambda_m(1))
+\longrightarrow\bigoplus_{j\notin J}H^2(C_j,\Lambda_m(1))
+\tag{5.56}
+\]
+is an isomorphism: the classes \(c_1(\mathscr M_i)\) give a right inverse whose matrix is the identity, and source and target are finite free modules of the same rank. A split surjection of such modules over the local ring \(\Lambda_m\) is an isomorphism, by Nakayama. This argument works for every \(m\) and every algebraically closed fibre and retains the restriction maps.
+
+Let \(d_j=\deg(\mathcal L|_{C_j})\). Ampleness gives \(d_j>0\). The Kummer curve calculation identifies restriction of \(c_1(\mathcal L)\) with \(d_j\) times the positive degree-one class. Consequently (5.56) proves
+\[
+c_1(\mathcal L)
+=c_1\!\left(\bigotimes_{j\notin J}\mathscr M_j^{d_j}\Big|_k\right)
+\quad\text{in }H^2(X,\Lambda_m(1)),
+\tag{5.57}
+\]
+for every \(m\), and hence in integral and rational adic cohomology. The comparison line on the right is specified by the integral character
+\(\chi=-\sum_{j\notin J}d_j\omega_j\).
+Its complex fibre is ample by the product of fundamental highest-line embeddings proved in part (a). The already proved Lefschetz theorem for this character line and equality (5.57) therefore prove (5.37) for the original \(\mathcal L\). No assertion that \(\mathcal L\) itself lifts to \(R\), or that every line is linearized for the original isogeny type, is required. \(\square\)
+
+
+### 5.14. The isolated IC calculation in rational-adic coefficients
+
+**Proposition 5.14 (conditional isolated-stratum calculation).** Let \(k\) be algebraically closed, \(\ell\) invertible, \(E/\mathbf Q_\ell\) finite, and \(\xi\) a dominant short coroot. Use the proper line resolution (5.35), and put \(d=\langle2\rho,\xi\rangle\), \(n=\dim Y=d-1\), \(L=L_\theta\). Write \(i:\{t^0\}\to U\), \(j:U\setminus\{t^0\}\to U\), and \(i_Y:Y\to L\), \(j_L:L^\times\to L\). In a constructible finite-system theory with proper base change and the recollement properties used in §1, assume that \(E[d]\) is perverse on this open stratum and that the following supported comparison holds, compatibly with coefficient reduction:
+\[
+\Lambda_{m,Y}(-1)[-2]
+ \xrightarrow{\ c_1(L)\ }\Lambda_{m,Y}
+ \longrightarrow i_Y^*Rj_{L*}\Lambda_m,
+ \qquad \Lambda_m=\mathbf Z/\ell^m.
+\tag{P06}
+\]
+Here (P06) is a distinguished triangle, with its specified Kummer orientation and forget-support map. Assume also that its rational finite-system realization respects this triangle and closed restriction. Then the stalk and costalk of the intermediate extension at \(t^0\) vanish outside parity \(d\).
+
+The geometric comparison (P06) is an additional hypothesis. The one-dimensional Kummer calculation in Poincaré duality for curves, Lemma 4.2 identifies the orientation at zero of \(\mathbf A^1\). Pulling it to \(\mathbf A^1\times V\), for a line-bundle chart \(V\subset Y\), also requires comparison of the complementary open direct image. That comparison is not supplied by the trait calculation alone. Thus the argument here proves the implication from (P06), rather than an unconditional rational-adic parity theorem over every ground field.
+
+**Proof.** Put \(e=c_1(L)\). The stated sign can be checked from the specified orientation: the zero section is a Cartier divisor with fibre coordinate as local equation. Ratios of these equations are the transition units of \(\mathcal O(Y)\). Their Kummer boundary is its first Chern class, and restriction of \(\mathcal O(Y)\) to \(Y\) is the normal line \(L\). This verifies the negative-tautological sign in (P06); it does not establish the supported comparison itself.
+
+Applying sections to the assumed triangle (P06) gives
+\[
+C_m=\operatorname{cone}\left(
+R\Gamma(Y,\Lambda_m(-1))[-2]
+ \xrightarrow{\ e\ }R\Gamma(Y,\Lambda_m)\right)
+ \simeq i^*Rj_*\Lambda_m.
+\tag{5.58}
+\]
+Indeed \(Rj_*=Rf_{L*}Rj_{L*}\), by composition and the isomorphism of punctured opens. Proper base change for \(f_L\) then computes its point stalk by \(R\Gamma(Y,i_Y^*Rj_{L*}\Lambda_m)\). This uses a proper comparison after composition.
+
+Theorem 5.13 gives finite free even flag cohomology and coefficient-compatible bases. The integral flag complex is bounded perfect, with these reductions; its Euler map is the same Kummer class. The cones in (5.58) are therefore reductions of a bounded perfect complex. Their derived inverse limit, tensored with \(E\), gives
+\[
+C=\operatorname{cone}\left(
+R\Gamma(Y,E(-1))[-2]\xrightarrow{\ e\ }R\Gamma(Y,E)\right)
+ =i^*Rj_*E.
+\tag{5.59}
+\]
+This also proves bounded constructibility of this particular open image: it is constant on its smooth open, and has the displayed finite cohomology at its only boundary point. Ordinary image preserves the integral inverse limit because it is a right adjoint. The assumed compatibility of the rational realization with closed restriction and (P06) gives the displayed stalk identity. Perfectness establishes the coefficient passage for the Euler cone; it does not prove that compatibility for arbitrary open images.
+
+The complex fibre of \(L^{-1}\) is ample by §5.10. Its integral character and Chern matrix are preserved by the flag-family proof of Theorem 5.13, parts (a)–(e). Hence \(e\) has the same Lefschetz injectivity and surjectivity in every ground characteristic; its negative sign does not affect either. More precisely,
+\[
+e:H^a(Y,E(-1))\to H^{a+2}(Y,E)
+\]
+is injective for \(a<n\) and surjective for \(a\ge n-1\). For injectivity, a class killed by \(e\) is killed by the Lefschetz isomorphism \(e^{n-a}\). For surjectivity to degree \(b=a+2\ge n+1\), factor one \(e\) off the isomorphism \(e^{b-n}:H^{2n-b}\to H^b\). Groups outside degrees \([0,2n]\) vanish.
+
+Since flag cohomology is even, (5.59) identifies its even \(H^s(C)\) with the cokernel of \(e:H^{s-2}(Y,E(-1))\to H^s(Y,E)\), and its odd \(H^s(C)\) with the kernel of \(e:H^{s-1}(Y,E(-1))\to H^{s+1}(Y,E)\). Consequently
+\[
+H^s(C)=0\quad
+\begin{cases}
+s\text{ odd and }s\le n,\\
+s\text{ even and }s\ge n+1.
+\end{cases}
+\tag{5.60}
+\]
+
+The two-stratum intermediate extension can now be constructed explicitly. Put \(A=Rj_*E[d]\) and define \(K\) by
+\[
+K\longrightarrow A\longrightarrow i_*\tau_{\ge0}i^*A.
+\]
+Its open restriction is \(E[d]\), its point stalk is \(\tau_{\le-1}i^*A\), and \(i^!A=0\) by open-image/closed-support adjunction. Therefore its point costalk is \((\tau_{\ge0}i^*A)[-1]\). The stalk vanishes in degrees at least zero and the costalk in degrees at most zero. These are the strict perverse bounds excluding point quotients and subobjects. The intermediate-extension characterization in Intermediate extensions and intersection complexes, §1 identifies \(K=IC_U^{\mathrm{raw}}\).
+
+For a negative stalk degree \(r\), set \(s=r+d\le d-1=n\). If \(r\) has parity opposite to \(d\), then \(s\) is odd, so (5.60) makes its group zero. For a positive costalk degree \(r\), the group is \(H^{r-1+d}(C)\). Its index \(s=r-1+d\ge d=n+1\) is even when \(r\) has parity opposite to \(d\), and again the group is zero. Thus both point groups have parity \(d\), proving the asserted conditional calculation. Locality identifies this intermediate extension with the restriction of \(IC_{Z_\xi}^{\mathrm{raw}}\) whenever the latter is defined in the stated theory. To conclude parity at every point of its smooth orbit also requires the corresponding smooth point orientations. Neither those orientations nor (P06) are asserted without proof here. \(\square\)
+
 ## 6. Exact and faithful total cohomology
 
 In this section \(\Lambda\) has characteristic zero, as in the classical weight-functor theorem of the preceding lesson.
@@ -1171,11 +1552,13 @@ The other two slices lie in the smooth orbit: \(\mathbb A^2\) has shifted compac
 
 ## 10. Remaining general assertions
 
-The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, and the bounded examples and modular counterexamples are proved above. Proposition 5.3 gives the standard-object criterion and Lemma 5.4 the intersection-map splitting step. Lemma 5.6 proves the minimum-norm lattice assertion and a conditional faithful tensor-generator statement. Theorems 5.7–5.10 prove ordinary homogeneous Lefschetz, cone IC parity, every quasi-minuscule IC's parity, and parity under convolution with a parity IC. Corollary 5.11 combines those inputs under its explicit tensor-equivalence hypothesis.
+The category, jet-level independence, characteristic-zero constructible-equivariant equivalence, simple classification, duality, orbit even cohomology, affine pavings of resolution fibres, exact faithful total cohomology, and the bounded examples and modular counterexamples are proved above. Proposition 5.3 gives the standard-object criterion and Lemma 5.4 the intersection-map splitting step. Lemma 5.6 proves the minimum-norm lattice assertion and a conditional faithful tensor-generator statement. Theorems 5.7–5.10 prove ordinary homogeneous Lefschetz, cone IC parity, every quasi-minuscule IC's parity, and parity under convolution with a parity IC. Corollary 5.11 combines those inputs under its explicit tensor-equivalence hypothesis. Sections 5.12–5.13 prove the uniform root-jet resolution and rational-adic flag Lefschetz with its actual line and twists. Section 5.14 proves the isolated-stratum Euler-cone and truncation implication under the explicit supported comparison (P06).
 
-General characteristic-zero semisimplicity, standard–IC equality and the full classical equivalence are proved subsequently in Identifying the dual group, §§8.4–8.5. Its Theorem 8.4 then applies the conditional generator criterion and concludes general ordinary IC stalk and costalk parity. It also resolves the rootwise identity-lift criterion (5.9). This order does not use general parity in reconstruction. The relative-Lefschetz and intersection-form premises in §5.5 remain alternative sufficient conditions, and are not needed for the proved classical theorem. Perversity, tensor duals and the commutativity constraint have their separate proofs in Lessons 7–8. No extension to other algebraically closed ground fields with rational-adic coefficients is proved in this lesson.
+General characteristic-zero semisimplicity, standard–IC equality and the full classical equivalence are proved subsequently in Identifying the dual group, §§8.4–8.5. Its Theorem 8.4 then applies the conditional generator criterion and concludes general ordinary IC stalk and costalk parity. It also resolves the rootwise identity-lift criterion (5.9). This order does not use general parity in reconstruction. The relative-Lefschetz and intersection-form premises in §5.5 remain alternative sufficient conditions, and are not needed for the proved classical theorem. Perversity, tensor duals and the commutativity constraint have their separate proofs in Lessons 7–8. Proposition 5.12 and Theorem 5.13 prove the uniform quasi-minuscule resolution and rational-adic homogeneous flag Lefschetz over every algebraically closed ground field with ell invertible. The supported comparison (P06), its finite-system compatibility and the smooth point orientations remain inputs to be proved before the all-ground-field quasi-minuscule parity theorem is concluded. The full rational-adic category, general hyperbolic localization and general Satake equivalence remain unfinished.
 
 ## References
+
+- B. Ngô and P. Polo, [*Résolutions de Demazure affines et formule de Casselman–Shalika géométrique*](https://arxiv.org/abs/math/0005022), §§7–9, for further reading on the rootwise quasi-minuscule resolution.
 
 - I. Mirković and K. Vilonen, [*Geometric Langlands duality and representations of algebraic groups over commutative rings*](https://arxiv.org/abs/math/0401222v5), freely accessible corrected preprint, §2, §7 and Appendix A, for reading alongside the finite-support category and the equivariance question.
 - X. Zhu, [*An introduction to affine Grassmannians and the geometric Satake equivalence*](https://arxiv.org/abs/1603.05593v2), freely accessible lecture notes, §5.1 and Appendix A, for the geometric Satake category and finite-dimensional equivariant conventions.

@@ -2309,9 +2309,9 @@ The four panels show the original full \(p\), its strength, all nine grid values
 
 The second figure shows the proved \(S_U,T^{-1},E,P,q(D)\) maps, with their original domains and constants. Equations (CE25)–(CE34) prove the coefficient, strength, graph-domain realization and both inverse identities. The specified local square and the nonzero imaginary coefficient remain part of the calculation.
 
-[Reproducible figure source](../figures/render_constant_strength_example.py) retains the original polynomial and every strength contribution. The exact formulas, finite selectors, matrix and roots above determine its coordinates. The two vector versions are [the circle figure](../figures/constant_strength_circle_example.svg) and [the solver maps](../figures/constant_strength_solver_maps.svg).
+Reproducible figure source retains the original polynomial and every strength contribution. The exact formulas, finite selectors, matrix and roots above determine its coordinates. The two vector versions are [the circle figure](../figures/constant_strength_circle_example.svg) and [the solver maps](../figures/constant_strength_solver_maps.svg).
 
-The new Section14 text, these two figures and their reproducible source are available under CC0-1.0. The earlier portions retain their existing lesson terms.
+The new Section14 text, these two figures and their reproducible source are available under CC0-1.0.
 
 ## References
 

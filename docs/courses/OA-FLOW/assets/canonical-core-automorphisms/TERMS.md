@@ -1,0 +1,3 @@
+# Figure terms
+
+Original diagram, renderer and exact mathematical data: CC0-1.0 to the extent of rights held. DejaVu font terms are retained in FONT-LICENSE.txt. No external images, excerpts or downloaded data are included. Run python render.py with NumPy and Matplotlib to reproduce PNG, editable SVG and data. The matrix panels are exact algebraic identities. The infinite-model plot renders eight values of exact formulas; the complete all-vector strong/strong-star and normal-functional u-convergence proofs are retained in the lesson. The constant norm obstruction and all displayed limiting claims have analytic proofs, not extrapolations from the plot.

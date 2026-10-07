@@ -74,7 +74,7 @@ Finite character extension and separation are proved before section 4 of [lesson
 
 Cyclotomic irreducibility, degree and Galois group; inertia and arithmetic Frobenius for every prime, including the factor 2 of a modulus congruent to 2 modulo 4. The existing supporting reading supplies Theorem 12.1 only.
 
-The full result-level proof is supplied in the existing NT-ANT lesson cyclotomic-fields. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ANT lesson cyclotomic-fields. Its proof is not given in these courses.
 
 [Read the already published full proof of Theorem 12.1](cyclotomic-polynomials-and-their-automorphisms.html). That excerpt does not include Theorem 12.3.
 
@@ -86,7 +86,7 @@ Used in NT-CFT-01, NT-CFT-20.
 
 Finite extensions of complete valued fields have a unique extended absolute value and are complete; coordinate norms are equivalent. For complete discrete valuation fields the residue-digit integral basis gives degree ef, including inseparable extensions and imperfect residues.
 
-The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-04. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-04. Its proof is not given in these courses.
 
 Used in NT-CFT-06, NT-CFT-07, NT-CFT-08.
 
@@ -96,7 +96,7 @@ Used in NT-CFT-06, NT-CFT-07, NT-CFT-08.
 
 Unramified residue lifting uses finite separable residue extensions, without a perfectness assumption. The cyclic tower and surjective unit norm use finite residue fields. Eisenstein extensions are totally ramified over a complete discrete valuation field.
 
-The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-07. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-07. Its proof is not given in these courses.
 
 Used in NT-CFT-06, NT-CFT-07, NT-CFT-08, NT-CFT-09, NT-CFT-10, NT-CFT-11, NT-CFT-13.
 
@@ -106,7 +106,7 @@ Used in NT-CFT-06, NT-CFT-07, NT-CFT-08, NT-CFT-09, NT-CFT-10, NT-CFT-11, NT-CFT
 
 Completion and extension of isometries; integer density and residue approximation in the p-adic integers. No claim that an arbitrary infinite algebraic extension is complete.
 
-The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-02. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-02. Its proof is not given in these courses.
 
 Used in NT-CFT-07.
 
@@ -116,7 +116,7 @@ Used in NT-CFT-07.
 
 Lower ramification groups and Hilbert different formula for finite Galois local extensions; normalized integer valuation and the inertia term are retained.
 
-The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-09. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-09. Its proof is not given in these courses.
 
 Used in NT-CFT-10.
 
@@ -126,7 +126,7 @@ Used in NT-CFT-10.
 
 Herbrand quotient compatibility and upper numbering for finite Galois local extensions. The proof uses coset motion and tower composition, without assuming Hasse–Arf.
 
-The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-10. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-10. Its proof is not given in these courses.
 
 Used in NT-CFT-10.
 
@@ -136,7 +136,7 @@ Used in NT-CFT-10.
 
 Weak approximation for finitely many inequivalent nontrivial absolute values on an arbitrary field; this covers the function-field use in lesson 14.
 
-The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-01. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-LOC lesson NT-LOC-01. Its proof is not given in these courses.
 
 Used in NT-CFT-14.
 
@@ -146,7 +146,7 @@ Used in NT-CFT-14.
 
 Finite-place rank-one Tate integrals and their functional equation, primitive Gauss sums and changes of measures and additive character. Its number-field local presentation is extended to equal characteristic in NT-CFT-12, section 4.
 
-The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-07. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-07. Its proof is not given in these courses.
 
 Used in NT-CFT-12.
 
@@ -156,7 +156,7 @@ Used in NT-CFT-12.
 
 Rank-one real and complex Schwartz integrals. Negative trace character and self-dual measure give phases (-i)^epsilon and (-i)^|n|; the complex angular parameter uses its absolute value.
 
-The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-08. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-08. Its proof is not given in these courses.
 
 Used in NT-CFT-12.
 
@@ -166,7 +166,7 @@ Used in NT-CFT-12.
 
 Restricted-product topology, principal idèles, number-field norm-one compactness and units. NT-CFT-13 uses the topology rather than importing a number-field-only cohomology theorem; NT-CFT supplies its own function-field arguments.
 
-The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-03. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-03. Its proof is not given in these courses.
 
 Used in NT-CFT-13, NT-CFT-14.
 
@@ -176,7 +176,7 @@ Used in NT-CFT-13, NT-CFT-14.
 
 Dirichlet units and S-units for number fields with S finite and containing every infinite place. The approximation-lattice proof and valuation exact sequence are supplied.
 
-The full result-level proof is supplied in the existing NT-ANT lesson dirichlets-unit-theorem. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ANT lesson dirichlets-unit-theorem. Its proof is not given in these courses.
 
 Used in NT-CFT-14.
 
@@ -186,7 +186,7 @@ Used in NT-CFT-14.
 
 Completed Hecke L-functions of all unitary number-field Hecke characters; only norm twists allow the two shifted simple poles. Intrinsic conductor is |d_K| Norm(f), with the local phases above. In particular nontrivial finite-order characters are holomorphic at 1 and the Dedekind zeta residue is positive. The global proof is in NT-ADL-09 and the local computations in NT-ADL-07/08.
 
-The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-10. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-10. Its proof is not given in these courses.
 
 Used in NT-CFT-15, NT-CFT-21, NT-CFT-22.
 
@@ -196,7 +196,7 @@ Used in NT-CFT-15, NT-CFT-21, NT-CFT-22.
 
 Extension–contraction for ideals prime to the conductor, Picard-group exact sequence and quadratic order class-number formula. NT-CFT-19, section 4 also proves the calculations needed for its examples.
 
-The full result-level proof is supplied in the existing NT-ANT lesson orders-in-number-fields-and-their-picard-groups. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ANT lesson orders-in-number-fields-and-their-picard-groups. Its proof is not given in these courses.
 
 Used in NT-CFT-19.
 
@@ -206,7 +206,7 @@ Used in NT-CFT-19.
 
 Oriented quadratic ideal–form correspondence uses narrow classes; positive definite reduction includes the boundary convention. The real narrow-to-ordinary kernel depends on whether a fundamental unit has norm -1.
 
-The full result-level proof is supplied in the existing NT-ANT lesson quadratic-fields-ideal-classes-and-binary-quadratic-forms. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ANT lesson quadratic-fields-ideal-classes-and-binary-quadratic-forms. Its proof is not given in these courses.
 
 Used in NT-CFT-19.
 
@@ -216,7 +216,7 @@ Used in NT-CFT-19.
 
 Ideal/idèle character correspondence, finite conductors and finite-order ray characters. The finite unit character is the inverse of the corresponding ideal character, matching arithmetic reciprocity.
 
-The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-06. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ADL lesson NT-ADL-06. Its proof is not given in these courses.
 
 Used in NT-CFT-20.
 
@@ -226,7 +226,7 @@ Used in NT-CFT-20.
 
 Positive simple Dedekind zeta pole at 1 from the earlier ideal-counting estimate, by a holomorphic error integral on Re(s)>1-1/[K:Q]. It does not require Chebotarev or full-plane continuation.
 
-The full result-level proof is supplied in the existing NT-ANT lesson the-dedekind-zeta-function-and-the-analytic-class-number-formula. Its proof is not yet published in these courses.
+The full result-level proof is supplied in the existing NT-ANT lesson the-dedekind-zeta-function-and-the-analytic-class-number-formula. Its proof is not given in these courses.
 
 Used in NT-CFT-22.
 

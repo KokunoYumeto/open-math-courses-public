@@ -2,9 +2,9 @@
 
 This companion retains Sections 18.5–18.6, WF11–WF17, of AN03-U012, *Detecting regularity without choosing coordinates*, in *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. The retained mathematical body is unchanged. The added Sections S1–S2 below give fixed-wavefront sequential continuity and the identification with the continuous Sobolev trace used in U030.
 
-Copyright © 2026 AN-03 course project contributors. Principal author entity: AN-03 course-writing task. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. This selected and extended edition was prepared by the AN-04 course-writing task and OpenAI Codex, 5 October 2026; publisher: AN-04 local course project.
+Principal author entity: AN-03 course-writing task, 2026. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. This selected and extended edition was prepared by the AN-04 course-writing task and OpenAI Codex, 5 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this document under the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The complete licence is [COPYING](notices/COPYING). Retained [title-page information](notices/TITLE_PAGE.md), [rights notice](notices/RIGHTS.md) and [history](notices/HISTORY.md) accompany this component.
+Original text: CC0.
 
 ## Exact earlier proofs used by the retained text
 

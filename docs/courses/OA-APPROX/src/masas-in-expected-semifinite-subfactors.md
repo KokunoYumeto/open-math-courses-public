@@ -1,6 +1,6 @@
 # MASAs in expected semifinite subfactors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text: public domain (CC0).*
 
 An abelian algebra can be maximal inside a subfactor and still commute with extra operators in the ambient algebra. The [pinching test](abelian-pinching-and-relative-commutants.md#theorem-2-1) lets us rule out those extra operators during an increasing matrix construction. Its diagonal will be a MASA in the ambient factor, while the matrix permutations guarantee enough normalizers inside the subfactor.
 
@@ -159,7 +159,7 @@ The relative commutant of this factor in \(N\) is
 
 If \(N\) is AFD, finite-corner permanence makes \(eNe\) AFD. Then the final clause of Theorem 2.1 allows \(R_1=eNe\), and (17) is all of \(N\). This proves regularity. \(\square\)
 
-The finite-corner permanence input for an AFD \(\mathrm{II}_\infty\) factor follows from [AFD-to-injectivity](central-traces-and-afd-finite-algebras.md#theorem-4-1), corner permanence of injectivity, and the [finite injective-factor theorem](unitary-couplings-and-finite-injective-factors.md#theorem-5-1). The latter is supplied in full later in the course and also proves XVI.1.22. This closes the substantive later-proof input for the final regularity step. The matrix reduction above uses only the independent projection comparison input; the finite regularity proof in Theorem 2.1 uses the earlier finite corner and containment results.
+The finite-corner permanence input for an AFD \(\mathrm{II}_\infty\) factor follows from [AFD-to-injectivity](central-traces-and-afd-finite-algebras.md#theorem-4-1), corner permanence of injectivity, and the [finite injective-factor theorem](unitary-couplings-and-finite-injective-factors.md#theorem-5-1). Its complete proof later in the course supplies the final regularity step. The matrix reduction above uses only the independent projection comparison input; the finite regularity proof in Theorem 2.1 uses the earlier finite corner and containment results.
 
 ## 4. MASAs in a state centralizer
 

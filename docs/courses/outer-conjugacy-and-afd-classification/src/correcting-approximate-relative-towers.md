@@ -1,6 +1,6 @@
 # Correcting approximate relative towers
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the AI that wrote it (GPT-6.1 Sol) under the stated prerequisites. Original text is public domain (CC0), except for the credited adaptation in Lemma 1.2, which retains CC BY-NC 4.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026; Lemma 1.2 by Claude Opus 5.5 (Anthropic). Self-checked by the AI that wrote it (GPT-6.1 Sol) under the stated prerequisites. Original text: CC0.*
 
 *Source and prerequisite revision by GPT-6 Astra (OpenAI), Ultra, October 2026. The remaining programme foundations are identified below.*
 
@@ -10,7 +10,7 @@ A finite family of tower projections can almost commute with a cocycle without c
 
 The estimate has five contributions: commutation error, covariance error, the two weighted boundary masses, and uncovered trace. It gives a more flexible condition for the exact cohomology theorem in [From approximate cocycles to exact coboundaries](from-approximate-cocycles-to-exact-coboundaries.md), Theorem 2.1. Constructing the required projections for a general amenable action remains a separate step.
 
-We use polar decomposition and spectral calculus. The complete central comparison argument is [Finite free actions and exact coboundaries](finite-free-actions-and-coboundaries.md), Section 2.3 (NP2), applied inside the corner; it uses the orthogonal-sum and central-support arguments in Sections 2.1–2.2. Lemma 1.1 below supplies the additional central-cut trace and faithfulness argument, without a factor hypothesis. The inequalities and all eight solutions are written out here. Lemma 1.2 is an explicitly licensed adaptation of [Axler]; [Connes] and [Jones–Takesaki] provide the precise historical context for the central-sequence cohomology application, not substitutes for the local estimates.
+We use polar decomposition and spectral calculus. The complete central comparison argument is [Finite free actions and exact coboundaries](finite-free-actions-and-coboundaries.md), Section 2.3 (NP2), applied inside the corner; it uses the orthogonal-sum and central-support arguments in Sections 2.1–2.2. Lemma 1.1 below supplies the additional central-cut trace and faithfulness argument, without a factor hypothesis. The inequalities and all eight solutions are written out here. [Connes] and [Jones–Takesaki] provide the precise historical context for the central-sequence cohomology application, not substitutes for the local estimates.
 
 ## 1. Completing a compressed unitary
 
@@ -78,26 +78,25 @@ The polar supports can have nonzero kernels. Completing the partial isometry on 
  |\tau(y^*x)|\leq\|x\|_2\|y\|_2.
  \tag{1.8}
 \]
-*Adapted from Sheldon Axler, [Axler], Section 8A, results 8.9–8.11, under [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/). AI changes specialize the inner product to a trace and change notation and exposition. This lemma and proof retain that licence; see the [component notice](../notices/Axler-adaptation.md).*
 
-*Proof.* The pairing \(\langle x,y\rangle=\tau(y^*x)\) is an inner product: positivity and faithfulness give definiteness, and the adjoint identity gives conjugate symmetry. If \(y=0\), the assertion holds. Otherwise put
+*Proof.* Only the positivity of \(\tau\) on \(F\) is used. Positivity makes \(\tau\) real on self-adjoint elements, because spectral calculus writes each self-adjoint \(h\) as a difference \(h_+-h_-\) of positive elements. Writing a general \(a\in F\) as \(h+ik\), with \(h=(a+a^*)/2\) and \(k=(a-a^*)/(2i)\) self-adjoint, therefore gives \(\tau(a^*)=\overline{\tau(a)}\). Put \(\alpha=\tau(y^*x)\), so that \(\tau(x^*y)=\overline\alpha\), and choose \(\lambda\in\mathbb C\) with \(|\lambda|=1\) and \(\bar\lambda\alpha=|\alpha|\); then also \(\lambda\overline\alpha=|\alpha|\). For \(s>0\), the element \(d=sx-s^{-1}\lambda y\) satisfies
 \[
  \begin{aligned}
- c&=\frac{\langle x,y\rangle}{\|y\|_2^2},\\
- h&=x-cy.
+ 0\leq\tau(d^*d)
+ &=s^2\|x\|_2^2-\lambda\overline\alpha-\bar\lambda\alpha+s^{-2}\|y\|_2^2\\
+ &=s^2\|x\|_2^2-2|\alpha|+s^{-2}\|y\|_2^2.
  \end{aligned}
  \tag{1.9}
 \]
-Then \(\langle h,y\rangle=0\). Expanding the squared norm cancels the cross terms:
+Consequently
 \[
- \begin{aligned}
- \|x\|_2^2
- &=|c|^2\|y\|_2^2+\|h\|_2^2\\
- &\geq\frac{|\langle x,y\rangle|^2}{\|y\|_2^2}.
- \end{aligned}
+ 2|\tau(y^*x)|\leq s^2\|x\|_2^2+s^{-2}\|y\|_2^2
+ \qquad(s>0).
  \tag{1.10}
 \]
-Multiply by \(\|y\|_2^2\) and take square roots. \(\square\)
+If \(\|x\|_2\) and \(\|y\|_2\) are both nonzero, the choice \(s^2=\|y\|_2/\|x\|_2\) turns the right side into \(2\|x\|_2\|y\|_2\). If \(\|x\|_2=0\), letting \(s\to\infty\) in (1.10) gives \(\tau(y^*x)=0\); if \(\|y\|_2=0\), letting \(s\to0\) does the same. This proves (1.8). \(\square\)
+
+The same inequality for an arbitrary inner product is treated in [Axler], Section 8A.
 
 Taking \(y=1\) gives \(|\tau(x)|\leq\|x\|_2\), since \(\tau(1)=1\). This is the trace estimate used in Lemma 3.2.
 
@@ -330,6 +329,6 @@ The same operator-norm argument does not apply to a raw sum that has not been co
 
 ## References
 
-- [Axler] Sheldon Axler, *Measure, Integration & Real Analysis*, online edition dated 12 June 2026, Section 8A, results 8.9–8.11, printed pages 217–218 / PDF pages 232–233. [Author's complete text](https://measure.axler.net/MIRA.pdf). Copyright Sheldon Axler 2020; CC BY-NC 4.0. Lemma 1.2 adapts its inner-product argument.
+- [Axler] Sheldon Axler, *Measure, Integration & Real Analysis*, online edition dated 12 June 2026, Section 8A, results 8.9–8.11, printed pages 217–218 / PDF pages 232–233. [Author's complete text](https://measure.axler.net/MIRA.pdf). Section 8A treats the Cauchy–Schwarz inequality for general inner products.
 - [Connes] Alain Connes, “Outer conjugacy classes of automorphisms of factors,” *Annales scientifiques de l'École Normale Supérieure*, série 4, **8** (1975), 383–419. [Article and original text](https://www.numdam.org/item/ASENS_1975_4_8_3_383_0/). Theorem 2.1.3 supplies the classical cyclic cohomology context. The weighted, approximately commuting tower estimate above is proved from its own stated corner data.
 - [Jones–Takesaki] Vaughan F. R. Jones and Masamichi Takesaki, “Actions of compact abelian groups on semifinite injective factors,” *Acta Mathematica* **153** (1984), 213–258. [Publisher text](https://projecteuclid.org/journals/acta-mathematica/volume-153/issue-none/Actions-of-compact-abelian-groups-on-semifinite-injective-factors/10.1007/BF02392378.pdf). Lemma 2.5.6 gives the characteristic-compatible approximation context; its general cohomology input is not silently imported into this conditional conversion theorem.

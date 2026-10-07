@@ -1,6 +1,6 @@
 # Finite Lie-algebra tools for the receiving editions
 
-*Written by GPT-6.1 Sol (OpenAI), at Ultra, 5 October 2026. Self-checked draft. Original text and proofs: CC0 1.0. Linked primary works keep their authors' copyrights; no licence for their prose is inferred.*
+*Written by GPT-6.1 Sol (OpenAI). Original text and proofs: CC0 1.0. Linked primary works keep their authors' copyrights; no licence for their prose is inferred.*
 
 This companion precedes the four receiving editions of RT-LIE-03, 07, 08 and 11 used in KT–KK Lesson 18. It proves their actual imported algebraic tools without requiring a compact real form, Lie-group integration, the classification of root systems, or complete reducibility for general semisimple algebras. Lie algebras, modules and representations are finite dimensional unless expressly stated otherwise. Brackets are bilinear, alternating and satisfy Jacobi. A representation respects brackets. Sections 1–2 apply over the fields stated there; Section 3 is over an algebraically closed field of characteristic zero, and Section 4 allows arbitrary dimension in characteristic zero. Section 5 is real or complex finite matrix analysis.
 

@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Compact support and the Carleman condition</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L137.html">Previous lesson</a> · <a href="#CN1">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#CN10">Proof exercises and solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="compact-support-and-the-carleman-condition">Compact support and the Carleman condition</h1>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition, examples, solutions and diagrams: CC0 1.0.</p>
+<p>How slowly can the uniform derivative bounds of a nonzero compact bump grow? We will convert this question into a precise budget for its Fourier transform. Each derivative threshold contributes a logarithmic loss; the total loss must be integrable, which forces the reciprocals of those thresholds to have a finite sum.</p>
+<p>The <a href="#complete-proof">complete proof</a> includes the Fourier injectivity, zero factorization, local logarithmic trace and all estimates below. Its global input is the weighted boundary measure and weak trace in <a href="AN02-L135.html#GR1">the half-space representation theorem, GR1 and GR10</a>. The planar logarithmic kernel is proved in <a href="AN02-L131.html#NP4">L131, NP4–NP6</a>.</p>
+<h2 id="1-the-exact-question">1. The exact question</h2>
+<p>Suppose <span class="math" data-index="0" data-tex="\(u\in C_c^\infty(\mathbb R)\)">\(u\in C_c^\infty(\mathbb R)\)</span> is nonzero and</p>
+<span class="math math-display" id="L138.1" data-index="1" data-tex="\[
+ |u^{(k)}(x)|\le M_1M_2\cdots M_k,\qquad
+ k\ge1,\quad x\in\mathbb R,                               \tag{L138.1}
+\]">\[
+ |u^{(k)}(x)|\le M_1M_2\cdots M_k,\qquad
+ k\ge1,\quad x\in\mathbb R,                               \tag{L138.1}
+\]</span>
+<p>where <span class="math" data-index="2" data-tex="\(0&lt;M_1\le M_2\le\cdots\)">\(0&lt;M_1\le M_2\le\cdots\)</span>. Then</p>
+<span class="math math-display" id="L138.2" data-index="3" data-tex="\[
+ \sum_{j\ge1}\frac1{M_j}&lt;\infty.                          \tag{L138.2}
+\]">\[
+ \sum_{j\ge1}\frac1{M_j}&lt;\infty.                          \tag{L138.2}
+\]</span>
+<p>Compact support, nontriviality and ordering each have a separate role. No zeroth derivative bound is assumed. The conclusion is necessary; it alone is not a construction of a bump for every possible threshold sequence.</p>
+<p><strong>Worked example: analytic-size bounds.</strong> If <span class="math" data-index="4" data-tex="\(M_j=Hj\)">\(M_j=Hj\)</span>, then the product is <span class="math" data-index="5" data-tex="\(H^k k!\)">\(H^k k!\)</span>, but the reciprocal sum diverges. Indeed, each dyadic block <span class="math" data-index="6" data-tex="\(2^{m-1}&lt;j\le2^m\)">\(2^{m-1}&lt;j\le2^m\)</span> contributes at least <span class="math" data-index="7" data-tex="\(1/(2H)\)">\(1/(2H)\)</span>. Consequently a compact smooth function with these bounds must be zero. A fixed multiplicative constant does not change this conclusion: divide the function by that constant first.</p>
+<p>Without compact support, <span class="math" data-index="8" data-tex="\(\sin x\)">\(\sin x\)</span> is a nonzero smooth counterexample to that conclusion. Every derivative has norm at most one, hence at most <span class="math" data-index="9" data-tex="\(k!\)">\(k!\)</span>. Its support is the whole real line.</p>
+<h2 id="2-derivatives-become-a-fourier-envelope">2. Derivatives become a Fourier envelope</h2>
+<p>Choose <span class="math" data-index="10" data-tex="\(R\ge1\)">\(R\ge1\)</span> with <span class="math" data-index="11" data-tex="\(\operatorname{supp}u\subset[-R,R]\)">\(\operatorname{supp}u\subset[-R,R]\)</span>, and define</p>
+<span class="math math-display" id="L138.3" data-index="12" data-tex="\[
+ F(z)=\int u(t)e^{-izt}dt,\qquad
+ a=\|u\|_1&gt;0,\qquad C=\max(a,2R).                        \tag{L138.3}
+\]">\[
+ F(z)=\int u(t)e^{-izt}dt,\qquad
+ a=\|u\|_1&gt;0,\qquad C=\max(a,2R).                        \tag{L138.3}
+\]</span>
+<p>The compact integration interval lets the exponential power series be integrated term by term, so <span class="math" data-index="13" data-tex="\(F\)">\(F\)</span> is entire. It also gives</p>
+<span class="math math-display" id="L138.4" data-index="14" data-tex="\[
+ |F(\xi+iy)|\le a e^{Ry},\qquad y\ge0.                    \tag{L138.4}
+\]">\[
+ |F(\xi+iy)|\le a e^{Ry},\qquad y\ge0.                    \tag{L138.4}
+\]</span>
+<p>Why is <span class="math" data-index="15" data-tex="\(F\)">\(F\)</span> nonzero? If it vanished on the real line, multiplying it by <span class="math" data-index="16" data-tex="\(e^{-\tau\xi^2}\)">\(e^{-\tau\xi^2}\)</span> and integrating would give</p>
+<span class="math math-display" id="L138.5" data-index="17" data-tex="\[
+ 0=\frac1{2\pi}\int e^{-\tau\xi^2}F(\xi)e^{i\xi x}d\xi
+   =(u*K_\tau)(x),\qquad
+ K_\tau(q)=\frac{e^{-q^2/(4\tau)}}{\sqrt{4\pi\tau}}.        \tag{L138.5}
+\]">\[
+ 0=\frac1{2\pi}\int e^{-\tau\xi^2}F(\xi)e^{i\xi x}d\xi
+   =(u*K_\tau)(x),\qquad
+ K_\tau(q)=\frac{e^{-q^2/(4\tau)}}{\sqrt{4\pi\tau}}.        \tag{L138.5}
+\]</span>
+<p>Absolute Fubini is justified by <span class="math" data-index="18" data-tex="\(\|u\|_1\int e^{-\tau\xi^2}d\xi&lt;\infty\)">\(\|u\|_1\int e^{-\tau\xi^2}d\xi&lt;\infty\)</span>. These positive normalized Gaussian kernels approximate the identity uniformly on the continuous compact function <span class="math" data-index="19" data-tex="\(u\)">\(u\)</span>. Thus <span class="math" data-index="20" data-tex="\(u=0\)">\(u=0\)</span>, a contradiction. <a href="#CN2">CN2</a> proves both the Gaussian transform formula and this approximation.</p>
+<p>For real <span class="math" data-index="21" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, integration by parts <span class="math" data-index="22" data-tex="\(k\)">\(k\)</span> times has no endpoint terms and gives</p>
+<span class="math math-display" id="L138.6" data-index="23" data-tex="\[
+ |F(\xi)|\le C\,\frac{M_1\cdots M_k}{|\xi|^k},\qquad k\ge1.
+                                                                    \tag{L138.6}
+\]">\[
+ |F(\xi)|\le C\,\frac{M_1\cdots M_k}{|\xi|^k},\qquad k\ge1.
+                                                                    \tag{L138.6}
+\]</span>
+<p>The <span class="math" data-index="24" data-tex="\(k=0\)">\(k=0\)</span> estimate is <span class="math" data-index="25" data-tex="\(|F|\le a\le C\)">\(|F|\le a\le C\)</span>. Bounded thresholds would force <span class="math" data-index="26" data-tex="\(F(\xi)=0\)">\(F(\xi)=0\)</span> for all sufficiently large <span class="math" data-index="27" data-tex="\(|\xi|\)">\(|\xi|\)</span>, contradicting the identity principle for its nontrivial entire extension. Therefore <span class="math" data-index="28" data-tex="\(M_j\to\infty\)">\(M_j\to\infty\)</span>.</p>
+<p>At frequency <span class="math" data-index="29" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, use precisely the factors with <span class="math" data-index="30" data-tex="\(M_j&lt;r\)">\(M_j&lt;r\)</span>. Ordered thresholds make these a finite initial segment. Define</p>
+<span class="math math-display" id="L138.7" data-index="31" data-tex="\[
+ T(r)=\sum_{j\ge1}\log^+(r/M_j),\qquad
+ |F(\xi)|\le C e^{-T(|\xi|)}.                            \tag{L138.7}
+\]">\[
+ T(r)=\sum_{j\ge1}\log^+(r/M_j),\qquad
+ |F(\xi)|\le C e^{-T(|\xi|)}.                            \tag{L138.7}
+\]</span>
+<p>Before a threshold crosses <span class="math" data-index="32" data-tex="\(r\)">\(r\)</span>, its factor <span class="math" data-index="33" data-tex="\(M_j/r\)">\(M_j/r\)</span> improves the bound. After that crossing, factors are at least one and cannot improve it. Equal thresholds contribute zero logarithmic loss. This proves the optimization rather than presuming one derivative order works at every frequency.</p>
+<figure><img class="course-figure" width="2652" height="866" src="reproduce/L138/figures/frequency-budget.png" alt="Frequency thresholds, Fourier envelopes and exact finite reciprocal budgets." /><figcaption class="native"><a href="reproduce/L138/figures/frequency-budget.png">Open full-size PNG</a> · <a href="reproduce/L138/figures/frequency-budget.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> The two threshold models are <span class="math" data-index="34" data-tex="\(M_j=j\)">\(M_j=j\)</span> and <span class="math" data-index="35" data-tex="\(M_j=j^2\)">\(M_j=j^2\)</span>. The first panel shows their exact <span class="math" data-index="36" data-tex="\(T\)">\(T\)</span> in the plotted range; the second shows the normalized algebraic envelopes <span class="math" data-index="37" data-tex="\(e^{-T}\)">\(e^{-T}\)</span>. They are bounds, not asserted transforms of compact bumps. The final panel gives the exact finite-budget integral <span class="math" data-index="38" data-tex="\(\int_1^\infty T_N(r)r^{-2}dr=\sum_{j=1}^N1/M_j\)">\(\int_1^\infty T_N(r)r^{-2}dr=\sum_{j=1}^N1/M_j\)</span>. The infinite conclusion follows from the proof, not from those finite samples.</p>
+<h2 id="3-why-the-logarithm-has-a-genuine-boundary-density">3. Why the logarithm has a genuine boundary density</h2>
+<p>The function <span class="math" data-index="39" data-tex="\(v(z)=\log|F(z)|\)">\(v(z)=\log|F(z)|\)</span> is subharmonic, with value <span class="math" data-index="40" data-tex="\(-\infty\)">\(-\infty\)</span> at its isolated zeros. Near a zero <span class="math" data-index="41" data-tex="\(b\)">\(b\)</span> of multiplicity <span class="math" data-index="42" data-tex="\(m\)">\(m\)</span>,</p>
+<span class="math math-display" id="L138.8" data-index="43" data-tex="\[
+ F(z)=(z-b)^mG(z),\qquad G(b)\ne0,\qquad
+ \log|F(z)|=m\log|z-b|+\log|G(z)|.                        \tag{L138.8}
+\]">\[
+ F(z)=(z-b)^mG(z),\qquad G(b)\ne0,\qquad
+ \log|F(z)|=m\log|z-b|+\log|G(z)|.                        \tag{L138.8}
+\]</span>
+<p>The second term is harmonic on a sufficiently small zero-free disc, by the Cauchy–Riemann calculation in CN3. The first is the positive-Laplacian logarithmic kernel from L131. A nontrivial entire function has only finitely many zeros on a compact set; CN3 proves the factorization and identity principle used for this fact.</p>
+<p>Let <span class="math" data-index="44" data-tex="\(g(x)=\log|F(x)|\)">\(g(x)=\log|F(x)|\)</span>. At a real zero, the singular part has the exact estimate</p>
+<span class="math math-display" id="L138.9" data-index="45" data-tex="\[
+ \int_{\mathbb R}
+ \left(m\log|x+iy|-m\log|x|\right)dx=m\pi y,\qquad y&gt;0.     \tag{L138.9}
+\]">\[
+ \int_{\mathbb R}
+ \left(m\log|x+iy|-m\log|x|\right)dx=m\pi y,\qquad y&gt;0.     \tag{L138.9}
+\]</span>
+<p>Its integrand is nonnegative, so the same upper bound holds on every interval. The regular factor's logarithm converges uniformly there. Away from the finitely many real zeros of a compact interval, <span class="math" data-index="46" data-tex="\(F\)">\(F\)</span> is uniformly separated from zero. These facts give</p>
+<span class="math math-display" id="L138.10" data-index="47" data-tex="\[
+ v(x+iy)\longrightarrow g(x)\quad\text{in }L^1_{\rm loc}(\mathbb R).
+                                                                    \tag{L138.10}
+\]">\[
+ v(x+iy)\longrightarrow g(x)\quad\text{in }L^1_{\rm loc}(\mathbb R).
+                                                                    \tag{L138.10}
+\]</span>
+<p>The estimate follows by scaling and integration by parts; <a href="#CN4">CN4</a> includes every endpoint and the exact finite-interval formula.</p>
+<p>By (L138.4), <span class="math" data-index="48" data-tex="\(v(\xi+iy)\le\log a+Ry\)">\(v(\xi+iy)\le\log a+Ry\)</span>. The exact half-plane theorem therefore supplies a signed boundary measure <span class="math" data-index="49" data-tex="\(\sigma\)">\(\sigma\)</span> with finite weighted variation and weak trace. The local <span class="math" data-index="50" data-tex="\(L^1\)">\(L^1\)</span> trace identifies that measure:</p>
+<span class="math math-display" id="L138.11" data-index="51" data-tex="\[
+ d\sigma=g(x)dx,\qquad
+ \int_{\mathbb R}\frac{|\log|F(x)||}{1+x^2}dx&lt;\infty.       \tag{L138.11}
+\]">\[
+ d\sigma=g(x)dx,\qquad
+ \int_{\mathbb R}\frac{|\log|F(x)||}{1+x^2}dx&lt;\infty.       \tag{L138.11}
+\]</span>
+<p>There is no unidentified atom at a real zero. Its logarithm is locally integrable, and equality of all continuous compact test pairings fixes the density measure. The comparable weights <span class="math" data-index="52" data-tex="\((1+|x|)^{-2}\)">\((1+|x|)^{-2}\)</span> and <span class="math" data-index="53" data-tex="\((1+x^2)^{-1}\)">\((1+x^2)^{-1}\)</span> give the displayed integral.</p>
+<h2 id="4-the-exact-reciprocal-budget">4. The exact reciprocal budget</h2>
+<p>Taking logarithms of the envelope gives</p>
+<span class="math math-display" id="L138.12" data-index="54" data-tex="\[
+ 0\le T(r)\le\log C-\log|F(r)|.                           \tag{L138.12}
+\]">\[
+ 0\le T(r)\le\log C-\log|F(r)|.                           \tag{L138.12}
+\]</span>
+<p>For <span class="math" data-index="55" data-tex="\(r\ge M_1&gt;0\)">\(r\ge M_1&gt;0\)</span>, <span class="math" data-index="56" data-tex="\(r^{-2}\le(1+M_1^{-2})(1+r^2)^{-1}\)">\(r^{-2}\le(1+M_1^{-2})(1+r^2)^{-1}\)</span>. The logarithmic boundary integral in (L138.11) consequently makes <span class="math" data-index="57" data-tex="\(\int_{M_1}^\infty T(r)r^{-2}dr\)">\(\int_{M_1}^\infty T(r)r^{-2}dr\)</span> finite.</p>
+<p>Now every summand is nonnegative, so Tonelli gives</p>
+<span class="math math-display" id="L138.13" data-index="58" data-tex="\[
+ \int_{M_1}^{\infty}T(r)\frac{dr}{r^2}
+ =\sum_{j\ge1}\int_{M_j}^{\infty}\log(r/M_j)\frac{dr}{r^2}
+ =\sum_{j\ge1}\frac1{M_j}.                               \tag{L138.13}
+\]">\[
+ \int_{M_1}^{\infty}T(r)\frac{dr}{r^2}
+ =\sum_{j\ge1}\int_{M_j}^{\infty}\log(r/M_j)\frac{dr}{r^2}
+ =\sum_{j\ge1}\frac1{M_j}.                               \tag{L138.13}
+\]</span>
+<p>Integration by parts evaluates each scalar integral: the logarithmic endpoint term vanishes at <span class="math" data-index="59" data-tex="\(M_j\)">\(M_j\)</span> and at infinity, leaving <span class="math" data-index="60" data-tex="\(\int_{M_j}^\infty r^{-2}dr=1/M_j\)">\(\int_{M_j}^\infty r^{-2}dr=1/M_j\)</span>. This proves the necessity theorem without exchanging a signed infinite series.</p>
+<p><strong>Worked example: power thresholds.</strong> For <span class="math" data-index="61" data-tex="\(M_j=j^\alpha\)">\(M_j=j^\alpha\)</span>, <span class="math" data-index="62" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>, the budget at <span class="math" data-index="63" data-tex="\(r\ge1\)">\(r\ge1\)</span> is</p>
+<span class="math math-display" id="L138.14" data-index="64" data-tex="\[
+ T(r)=m\log r-\alpha\log(m!),\qquad
+ m=\lfloor r^{1/\alpha}\rfloor.                          \tag{L138.14}
+\]">\[
+ T(r)=m\log r-\alpha\log(m!),\qquad
+ m=\lfloor r^{1/\alpha}\rfloor.                          \tag{L138.14}
+\]</span>
+<p>The reciprocal series converges for <span class="math" data-index="65" data-tex="\(\alpha&gt;1\)">\(\alpha&gt;1\)</span>, because it is at most <span class="math" data-index="66" data-tex="\(1+1/(\alpha-1)\)">\(1+1/(\alpha-1)\)</span> by comparison with an integral. For <span class="math" data-index="67" data-tex="\(0&lt;\alpha\le1\)">\(0&lt;\alpha\le1\)</span>, it dominates the divergent harmonic series. Thus the latter range cannot bound all derivatives of a nonzero compact bump in the stated product form.</p>
+<h2 id="5-an-actual-compact-bump-in-a-compatible-class">5. An actual compact bump in a compatible class</h2>
+<p>Set</p>
+<span class="math math-display" id="L138.15" data-index="68" data-tex="\[
+ f(t)=\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}
+ \qquad
+ u(x)=f(1-x)f(1+x)
+ =\begin{cases}e^{-2/(1-x^2)},&amp;|x|&lt;1,\\0,&amp;|x|\ge1.\end{cases}
+                                                                    \tag{L138.15}
+\]">\[
+ f(t)=\begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}
+ \qquad
+ u(x)=f(1-x)f(1+x)
+ =\begin{cases}e^{-2/(1-x^2)},&amp;|x|&lt;1,\\0,&amp;|x|\ge1.\end{cases}
+                                                                    \tag{L138.15}
+\]</span>
+<p><strong>Worked example: explicit derivative bounds.</strong> On <span class="math" data-index="69" data-tex="\(|z-t|=t/2\)">\(|z-t|=t/2\)</span>, <span class="math" data-index="70" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, one has <span class="math" data-index="71" data-tex="\(\operatorname{Re}(1/z)\ge2/(9t)\)">\(\operatorname{Re}(1/z)\ge2/(9t)\)</span>. Picking the <span class="math" data-index="72" data-tex="\(k\)">\(k\)</span>-th coefficient of the convergent Taylor series for <span class="math" data-index="73" data-tex="\(e^{-1/z}\)">\(e^{-1/z}\)</span> on that circle gives</p>
+<span class="math math-display" id="L138.16" data-index="74" data-tex="\[
+ |f^{(k)}(t)|\le k!(2/t)^k e^{-2/(9t)}
+ \le9^k(k!)^2.                                          \tag{L138.16}
+\]">\[
+ |f^{(k)}(t)|\le k!(2/t)^k e^{-2/(9t)}
+ \le9^k(k!)^2.                                          \tag{L138.16}
+\]</span>
+<p>The first bound tends to zero at <span class="math" data-index="75" data-tex="\(t=0\)">\(t=0\)</span> for each fixed order, even after division by <span class="math" data-index="76" data-tex="\(t\)">\(t\)</span>, so extending by zero gives a smooth function. For the second inequality, maximize <span class="math" data-index="77" data-tex="\(t^{-k}e^{-c/t}\)">\(t^{-k}e^{-c/t}\)</span> at <span class="math" data-index="78" data-tex="\(t=c/k\)">\(t=c/k\)</span>, <span class="math" data-index="79" data-tex="\(c=2/9\)">\(c=2/9\)</span>, and use <span class="math" data-index="80" data-tex="\((k/e)^k\le k!\)">\((k/e)^k\le k!\)</span>, proved by integrating <span class="math" data-index="81" data-tex="\(\log s\)">\(\log s\)</span>. For <span class="math" data-index="82" data-tex="\(k=0\)">\(k=0\)</span>, <span class="math" data-index="83" data-tex="\(f\le1\)">\(f\le1\)</span>.</p>
+<p>Leibniz's rule gives</p>
+<span class="math math-display" id="L138.17" data-index="84" data-tex="\[
+ \|u^{(k)}\|_\infty
+ \le9^k(k!)^2\sum_{j=0}^k\binom{k}{j}^{-1}
+ \le18^k(k!)^2,\qquad k\ge1.                             \tag{L138.17}
+\]">\[
+ \|u^{(k)}\|_\infty
+ \le9^k(k!)^2\sum_{j=0}^k\binom{k}{j}^{-1}
+ \le18^k(k!)^2,\qquad k\ge1.                             \tag{L138.17}
+\]</span>
+<p>Indeed the sum has <span class="math" data-index="85" data-tex="\(k+1\)">\(k+1\)</span> terms at most one, and <span class="math" data-index="86" data-tex="\(k+1\le2^k\)">\(k+1\le2^k\)</span>. This is the product bound for <span class="math" data-index="87" data-tex="\(M_j=18j^2\)">\(M_j=18j^2\)</span>. The function vanishes outside <span class="math" data-index="88" data-tex="\([-1,1]\)">\([-1,1]\)</span> and <span class="math" data-index="89" data-tex="\(u(0)=e^{-2}&gt;0\)">\(u(0)=e^{-2}&gt;0\)</span>. Its reciprocal budget is at most <span class="math" data-index="90" data-tex="\(1/9\)">\(1/9\)</span>. <a href="#CN9">CN9</a> gives the full coefficient calculation, smoothness proof and constants. This verifies one real example of compatibility.</p>
+<figure><img class="course-figure" width="2652" height="866" src="reproduce/L138/figures/trace-and-bump.png" alt="The logarithmic trace near a real zero and a nonzero compact bump with proved derivative bounds." /><figcaption class="native"><a href="reproduce/L138/figures/trace-and-bump.png">Open full-size PNG</a> · <a href="reproduce/L138/figures/trace-and-bump.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> The local model <span class="math" data-index="91" data-tex="\(F(z)=z^2\)">\(F(z)=z^2\)</span> gives <span class="math" data-index="92" data-tex="\(\log(x^2+y^2)\to2\log|x|\)">\(\log(x^2+y^2)\to2\log|x|\)</span> in integral norm near its real zero. The exact error on <span class="math" data-index="93" data-tex="\([-1,1]\)">\([-1,1]\)</span> is <span class="math" data-index="94" data-tex="\(2\log(1+y^2)+4y\arctan(1/y)\)">\(2\log(1+y^2)+4y\arctan(1/y)\)</span>, at most <span class="math" data-index="95" data-tex="\(2\pi y\)">\(2\pi y\)</span>. The final panel shows the compact function in (L138.15). The local polynomial model illustrates a zero factor; it is not asserted to satisfy the global horizontal bound of the Fourier transform.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<ol>
+<li>Evaluate the single-threshold integral <span class="math" data-index="96" data-tex="\(\int_M^\infty\log(r/M)r^{-2}dr\)">\(\int_M^\infty\log(r/M)r^{-2}dr\)</span>.</li>
+<li>Optimize the first three thresholds <span class="math" data-index="97" data-tex="\(2,2,5\)">\(2,2,5\)</span> at frequency <span class="math" data-index="98" data-tex="\(r=4\)">\(r=4\)</span>, and find their complete finite reciprocal budget.</li>
+<li>Derive the exact trace error on <span class="math" data-index="99" data-tex="\([-d,d]\)">\([-d,d]\)</span> for a zero of multiplicity <span class="math" data-index="100" data-tex="\(m\)">\(m\)</span>.</li>
+<li>Explain why the proof requires a nonzero Fourier transform and prove its nontriviality using Gaussian smoothing.</li>
+<li>Locate the roles of compact support and ordering; explain why <span class="math" data-index="101" data-tex="\(\sin x\)">\(\sin x\)</span> does not contradict the theorem.</li>
+<li>Verify the constants and reciprocal budget for the compact bump with thresholds <span class="math" data-index="102" data-tex="\(18j^2\)">\(18j^2\)</span>.</li>
+</ol>
+<h2 id="7-complete-solutions">7. Complete solutions</h2>
+<p><strong>1.</strong> Integrate by parts with antiderivative <span class="math" data-index="103" data-tex="\(-1/r\)">\(-1/r\)</span>. The boundary term is zero at <span class="math" data-index="104" data-tex="\(r=M\)">\(r=M\)</span>, since the logarithm is zero, and tends to zero at infinity, since <span class="math" data-index="105" data-tex="\(\log r/r\to0\)">\(\log r/r\to0\)</span>. The remaining integral is <span class="math" data-index="106" data-tex="\(\int_M^\infty r^{-2}dr=1/M\)">\(\int_M^\infty r^{-2}dr=1/M\)</span>.</p>
+<p><strong>2.</strong> At <span class="math" data-index="107" data-tex="\(r=4\)">\(r=4\)</span>, only the first two factors improve the estimate. Their product is <span class="math" data-index="108" data-tex="\(2^2/4^2=1/4\)">\(2^2/4^2=1/4\)</span>, and <span class="math" data-index="109" data-tex="\(T_3(4)=2\log2\)">\(T_3(4)=2\log2\)</span>. The third factor would multiply by <span class="math" data-index="110" data-tex="\(5/4&gt;1\)">\(5/4&gt;1\)</span>. The finite budget is <span class="math" data-index="111" data-tex="\(1/2+1/2+1/5=6/5\)">\(1/2+1/2+1/5=6/5\)</span>, by summing the three single-threshold integrals.</p>
+<p><strong>3.</strong> Evenness gives the error <span class="math" data-index="112" data-tex="\(m\int_0^d\log(1+y^2/x^2)dx\)">\(m\int_0^d\log(1+y^2/x^2)dx\)</span>. Integration by parts produces <span class="math" data-index="113" data-tex="\(md\log(1+y^2/d^2)+2my^2\int_0^d(x^2+y^2)^{-1}dx\)">\(md\log(1+y^2/d^2)+2my^2\int_0^d(x^2+y^2)^{-1}dx\)</span>. The endpoint at zero vanishes because <span class="math" data-index="114" data-tex="\(x|\log x|\to0\)">\(x|\log x|\to0\)</span>. Evaluating the arctangent gives <span class="math" data-index="115" data-tex="\(md\log(1+y^2/d^2)+2my\arctan(d/y)\)">\(md\log(1+y^2/d^2)+2my\arctan(d/y)\)</span>, at most <span class="math" data-index="116" data-tex="\(m\pi y\)">\(m\pi y\)</span> by the whole-line nonnegative integral.</p>
+<p><strong>4.</strong> An identically zero Fourier transform would make its logarithm identically <span class="math" data-index="117" data-tex="\(-\infty\)">\(-\infty\)</span>, outside the half-plane theorem's hypotheses. Formula (L138.5), with absolute Fubini, would give <span class="math" data-index="118" data-tex="\(u*K_\tau=0\)">\(u*K_\tau=0\)</span> for every <span class="math" data-index="119" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>. The positive normalized Gaussian kernels converge to the identity on the uniformly continuous compact function <span class="math" data-index="120" data-tex="\(u\)">\(u\)</span>: split the error into a small neighborhood controlled by uniform continuity and a tail controlled by its sup norm. Hence <span class="math" data-index="121" data-tex="\(u=0\)">\(u=0\)</span>, contradicting the assumption.</p>
+<p><strong>5.</strong> Compact support gives the entire exponential integral, the linear upper bound in the height and boundary-free integration by parts. Ordering makes all useful factors at a frequency one initial segment, and ensures <span class="math" data-index="122" data-tex="\(M_j\ge M_1\)">\(M_j\ge M_1\)</span> when integrating the budget. The derivatives of <span class="math" data-index="123" data-tex="\(\sin x\)">\(\sin x\)</span> are bounded by one, but the function is not compactly supported. It therefore illustrates the need for that hypothesis.</p>
+<p><strong>6.</strong> The coefficient estimate gives <span class="math" data-index="124" data-tex="\(\|f^{(k)}\|_\infty\le9^k(k!)^2\)">\(\|f^{(k)}\|_\infty\le9^k(k!)^2\)</span>. In the product <span class="math" data-index="125" data-tex="\(f(1-x)f(1+x)\)">\(f(1-x)f(1+x)\)</span>, Leibniz's rule yields <span class="math" data-index="126" data-tex="\(9^k(k!)^2\sum_{j=0}^k\binom{k}{j}^{-1}\le9^k(k!)^2(k+1)\le18^k(k!)^2\)">\(9^k(k!)^2\sum_{j=0}^k\binom{k}{j}^{-1}\le9^k(k!)^2(k+1)\le18^k(k!)^2\)</span>. This equals <span class="math" data-index="127" data-tex="\(\prod_{j=1}^k18j^2\)">\(\prod_{j=1}^k18j^2\)</span>. Smooth extension by zero and positivity at zero were proved above. Finally <span class="math" data-index="128" data-tex="\(\sum1/(18j^2)\le(1+\int_1^\infty t^{-2}dt)/18=1/9\)">\(\sum1/(18j^2)\le(1+\int_1^\infty t^{-2}dt)/18=1/9\)</span>.</p>
+<h2 id="source-credit">Source credit</h2>
+<p>The classical target is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Theorem 16.1.10, printed page 314: first edition 1983, second revised printing 1990, reprint 2005. Its compact-support hypothesis and derivative orders <span class="math" data-index="129" data-tex="\(k\ge1\)">\(k\ge1\)</span> are retained. The <a href="#complete-proof">full independent proof</a>, worked examples, complete solutions and reproducible diagrams accompany this exposition.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition, examples, solutions and diagrams: CC0 1.0.</p>
+<p>A compactly supported smooth function cannot have arbitrarily inexpensive derivatives. Integration by parts converts derivative bounds into an envelope for its Fourier transform. The logarithm of that envelope records one nonnegative contribution from every derivative threshold. A half-plane boundary theorem limits the total logarithmic loss, and an exact integral turns that loss into the reciprocal series.</p>
+<p>The only global analytic input used below is the weighted signed boundary measure and weak trace in <a href="AN02-L135.html#GR1">Boundary measures and Green potentials in a half-space, GR1 and GR10</a>. The logarithmic kernel used to verify subharmonicity is proved in <a href="AN02-L131.html#NP4">Local Newtonian potentials, NP4 and NP6</a>. Entire extension, Fourier injectivity, isolated zeros, logarithmic boundary convergence and the optimization of the derivative bounds are proved here. Ordinary Lebesgue integration, Tonelli, dominated convergence and elementary real and complex calculus are used with the displayed bounds.</p>
+<p><a id="CN1"></a></p>
+<h2 id="cn1-the-exact-compact-support-statement">CN1. The exact compact-support statement</h2>
+<p>Let <span class="math" data-index="130" data-tex="\(u\in C_c^\infty(\mathbb R)\)">\(u\in C_c^\infty(\mathbb R)\)</span> be nonzero. Let <span class="math" data-index="131" data-tex="\(M_1,M_2,\ldots\)">\(M_1,M_2,\ldots\)</span> be positive numbers with <span class="math" data-index="132" data-tex="\(M_{j+1}\ge M_j\)">\(M_{j+1}\ge M_j\)</span>, and suppose</p>
+<span class="math math-display" id="CN1.1" data-index="133" data-tex="\[
+ |u^{(k)}(x)|\le A_k,\qquad
+ A_k=\prod_{j=1}^k M_j,\qquad
+ x\in\mathbb R,\quad k=1,2,\ldots.                         \tag{CN1.1}
+\]">\[
+ |u^{(k)}(x)|\le A_k,\qquad
+ A_k=\prod_{j=1}^k M_j,\qquad
+ x\in\mathbb R,\quad k=1,2,\ldots.                         \tag{CN1.1}
+\]</span>
+<p><strong>Theorem CN.</strong> These hypotheses imply</p>
+<span class="math math-display" id="CN1.2" data-index="134" data-tex="\[
+ \sum_{j=1}^{\infty}\frac1{M_j}&lt;\infty.                    \tag{CN1.2}
+\]">\[
+ \sum_{j=1}^{\infty}\frac1{M_j}&lt;\infty.                    \tag{CN1.2}
+\]</span>
+<p>Here <span class="math" data-index="135" data-tex="\(C_c^\infty\)">\(C_c^\infty\)</span> means smooth with compact support. A bound for the zeroth derivative is not an extra hypothesis. We use <span class="math" data-index="136" data-tex="\(A_0=1\)">\(A_0=1\)</span> only to organize a Fourier estimate with its own constant. The proof allows complex-valued <span class="math" data-index="137" data-tex="\(u\)">\(u\)</span>; the real-valued case is included. Nondecreasing thresholds may repeat.</p>
+<p>The conclusion is a necessity statement. We will construct one compatible compact bump in CN9, without inferring a general existence theorem from convergence of the series.</p>
+<p><a id="CN2"></a></p>
+<h2 id="cn2-the-entire-fourier-transform-and-its-nontriviality">CN2. The entire Fourier transform and its nontriviality</h2>
+<p>Choose <span class="math" data-index="138" data-tex="\(R\ge1\)">\(R\ge1\)</span> such that <span class="math" data-index="139" data-tex="\(\operatorname{supp}u\subset[-R,R]\)">\(\operatorname{supp}u\subset[-R,R]\)</span>, and set</p>
+<span class="math math-display" id="CN2.1" data-index="140" data-tex="\[
+ F(z)=\int_{\mathbb R}u(t)e^{-izt}\,dt,\qquad z\in\mathbb C,
+ \qquad a=\|u\|_{L^1}&gt;0.                                  \tag{CN2.1}
+\]">\[
+ F(z)=\int_{\mathbb R}u(t)e^{-izt}\,dt,\qquad z\in\mathbb C,
+ \qquad a=\|u\|_{L^1}&gt;0.                                  \tag{CN2.1}
+\]</span>
+<p>For any center <span class="math" data-index="141" data-tex="\(z_0\)">\(z_0\)</span>, expand the exponential in <span class="math" data-index="142" data-tex="\(z-z_0\)">\(z-z_0\)</span>. On every bounded set of that difference, the series is absolutely dominated by
+<span class="math" data-index="143" data-tex="\(|u(t)|e^{R|\operatorname{Im}z_0|}e^{R|z-z_0|}\)">\(|u(t)|e^{R|\operatorname{Im}z_0|}e^{R|z-z_0|}\)</span>.
+Termwise integration gives a power series of infinite radius and</p>
+<span class="math math-display" id="CN2.2" data-index="144" data-tex="\[
+ F^{(m)}(z)=\int(-it)^m u(t)e^{-izt}\,dt,\qquad
+ |F(\xi+iy)|\le a e^{Ry}\quad(y\ge0).                      \tag{CN2.2}
+\]">\[
+ F^{(m)}(z)=\int(-it)^m u(t)e^{-izt}\,dt,\qquad
+ |F(\xi+iy)|\le a e^{Ry}\quad(y\ge0).                      \tag{CN2.2}
+\]</span>
+<p>Thus <span class="math" data-index="145" data-tex="\(F\)">\(F\)</span> is entire. We now prove that it is not identically zero, rather than assuming an inversion theorem.</p>
+<p>For <span class="math" data-index="146" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>, direct Gaussian integration gives</p>
+<span class="math math-display" id="CN2.3" data-index="147" data-tex="\[
+ \frac1{2\pi}\int_{\mathbb R}e^{-\tau\xi^2}e^{iq\xi}\,d\xi
+ =K_\tau(q),\qquad
+ K_\tau(q)=\frac{e^{-q^2/(4\tau)}}{\sqrt{4\pi\tau}}.        \tag{CN2.3}
+\]">\[
+ \frac1{2\pi}\int_{\mathbb R}e^{-\tau\xi^2}e^{iq\xi}\,d\xi
+ =K_\tau(q),\qquad
+ K_\tau(q)=\frac{e^{-q^2/(4\tau)}}{\sqrt{4\pi\tau}}.        \tag{CN2.3}
+\]</span>
+<p>Here is a derivation. The integral <span class="math" data-index="148" data-tex="\(J(q)=\int e^{-\tau\xi^2}e^{iq\xi}d\xi\)">\(J(q)=\int e^{-\tau\xi^2}e^{iq\xi}d\xi\)</span> is differentiable under its absolutely integrable Gaussian majorant. Integration by parts in <span class="math" data-index="149" data-tex="\(\xi\)">\(\xi\)</span>, with vanishing endpoint terms, gives <span class="math" data-index="150" data-tex="\(J&#x27;(q)=-qJ(q)/(2\tau)\)">\(J&#x27;(q)=-qJ(q)/(2\tau)\)</span>. Also <span class="math" data-index="151" data-tex="\(J(0)=\sqrt{\pi/\tau}\)">\(J(0)=\sqrt{\pi/\tau}\)</span>: square the positive Gaussian integral and use polar coordinates in the plane. Solving the scalar differential equation gives (CN2.3).</p>
+<p>If <span class="math" data-index="152" data-tex="\(F(\xi)=0\)">\(F(\xi)=0\)</span> on the whole real line, absolute Fubini gives</p>
+<span class="math math-display" id="CN2.4" data-index="153" data-tex="\[
+ 0=\frac1{2\pi}\int e^{-\tau\xi^2}F(\xi)e^{i\xi x}\,d\xi
+   =\int u(t)K_\tau(x-t)\,dt.                             \tag{CN2.4}
+\]">\[
+ 0=\frac1{2\pi}\int e^{-\tau\xi^2}F(\xi)e^{i\xi x}\,d\xi
+   =\int u(t)K_\tau(x-t)\,dt.                             \tag{CN2.4}
+\]</span>
+<p>The absolute double integral is at most <span class="math" data-index="154" data-tex="\(a\int e^{-\tau\xi^2}d\xi/(2\pi)\)">\(a\int e^{-\tau\xi^2}d\xi/(2\pi)\)</span>. The kernel <span class="math" data-index="155" data-tex="\(K_\tau\)">\(K_\tau\)</span> is nonnegative and has integral one. Since <span class="math" data-index="156" data-tex="\(u\)">\(u\)</span> is bounded and uniformly continuous, its convolution with <span class="math" data-index="157" data-tex="\(K_\tau\)">\(K_\tau\)</span> tends uniformly to <span class="math" data-index="158" data-tex="\(u\)">\(u\)</span>: inside distance <span class="math" data-index="159" data-tex="\(\delta\)">\(\delta\)</span> use the modulus of continuity, and outside it use <span class="math" data-index="160" data-tex="\(2\|u\|_\infty\)">\(2\|u\|_\infty\)</span> times the Gaussian tail, which tends to zero after scaling <span class="math" data-index="161" data-tex="\(q=\sqrt\tau\,s\)">\(q=\sqrt\tau\,s\)</span>. Equation (CN2.4) would therefore force <span class="math" data-index="162" data-tex="\(u=0\)">\(u=0\)</span>. This proves Fourier injectivity in the exact class needed here and proves that <span class="math" data-index="163" data-tex="\(F\)">\(F\)</span> is nontrivial.</p>
+<p><a id="CN3"></a></p>
+<h2 id="cn3-finite-zeros-and-the-subharmonic-logarithm">CN3. Finite zeros and the subharmonic logarithm</h2>
+<p>At a zero <span class="math" data-index="164" data-tex="\(b\)">\(b\)</span> of a nontrivial entire function, its first nonzero Taylor coefficient gives</p>
+<span class="math math-display" id="CN3.1" data-index="165" data-tex="\[
+ F(z)=(z-b)^m G(z),\qquad m\ge1,\qquad G(b)\ne0,            \tag{CN3.1}
+\]">\[
+ F(z)=(z-b)^m G(z),\qquad m\ge1,\qquad G(b)\ne0,            \tag{CN3.1}
+\]</span>
+<p>on a small disc. There must be a first nonzero coefficient. If all coefficients vanished at some point, the function would vanish on a neighborhood. The set of points where it vanishes on a neighborhood is open; it is also closed when nonempty, since at a limit point all derivatives vanish by continuity and the Taylor series again vanishes. Connectedness of the plane would then make the function identically zero. This is the identity principle needed here.</p>
+<p>The factorization (CN3.1) makes each zero isolated. Consequently there are only finitely many zeros in any compact subset of the plane: otherwise a sequence of distinct zeros has a convergent subsequence in that compact set, and its limit contradicts isolation or the identity principle. In particular the real zeros are locally finite and have Lebesgue measure zero.</p>
+<p>Define <span class="math" data-index="166" data-tex="\(v(z)=\log|F(z)|\)">\(v(z)=\log|F(z)|\)</span>, with value <span class="math" data-index="167" data-tex="\(-\infty\)">\(-\infty\)</span> at a zero. It is upper semicontinuous. On a zero-free disc, <span class="math" data-index="168" data-tex="\(\log|G|\)">\(\log|G|\)</span> is harmonic. For completeness, if <span class="math" data-index="169" data-tex="\(G=a+ib\)">\(G=a+ib\)</span>, the Cauchy–Riemann equations give <span class="math" data-index="170" data-tex="\(\Delta a=\Delta b=0\)">\(\Delta a=\Delta b=0\)</span>, equal orthogonal gradients, and</p>
+<span class="math math-display" id="CN3.2" data-index="171" data-tex="\[
+ \Delta\log|G|
+ =\frac{|\nabla a|^2+|\nabla b|^2}{a^2+b^2}
+  -\frac{2|a\nabla a+b\nabla b|^2}{(a^2+b^2)^2}=0.         \tag{CN3.2}
+\]">\[
+ \Delta\log|G|
+ =\frac{|\nabla a|^2+|\nabla b|^2}{a^2+b^2}
+  -\frac{2|a\nabla a+b\nabla b|^2}{(a^2+b^2)^2}=0.         \tag{CN3.2}
+\]</span>
+<p>Near a zero, (CN3.1) gives
+<span class="math" data-index="172" data-tex="\(v=m\log|z-b|+\log|G(z)|\)">\(v=m\log|z-b|+\log|G(z)|\)</span>.
+The planar logarithmic kernel is subharmonic with
+<span class="math" data-index="173" data-tex="\(\Delta\log|z-b|=2\pi\delta_b\)">\(\Delta\log|z-b|=2\pi\delta_b\)</span>, by L131 NP4–NP6. Adding the harmonic term proves local subharmonicity also at the zero. These neighborhoods prove that <span class="math" data-index="174" data-tex="\(v\)">\(v\)</span> is subharmonic on the plane, and hence on the upper half-plane. Its local Laplacian is the positive measure <span class="math" data-index="175" data-tex="\(2\pi\sum m_b\delta_b\)">\(2\pi\sum m_b\delta_b\)</span>. Nontriviality of <span class="math" data-index="176" data-tex="\(F\)">\(F\)</span> excludes the identically minus-infinite function.</p>
+<p>The upper bound in (CN2.2) now gives the exact half-plane hypothesis:</p>
+<span class="math math-display" id="CN3.3" data-index="177" data-tex="\[
+ v(\xi+iy)\le\log a+Ry,\qquad y&gt;0.                         \tag{CN3.3}
+\]">\[
+ v(\xi+iy)\le\log a+Ry,\qquad y&gt;0.                         \tag{CN3.3}
+\]</span>
+<p><a id="CN4"></a></p>
+<h2 id="cn4-the-logarithmic-trace-at-real-zeros">CN4. The logarithmic trace at real zeros</h2>
+<p>Write <span class="math" data-index="178" data-tex="\(g(x)=\log|F(x)|\)">\(g(x)=\log|F(x)|\)</span> on the real line, with the same extended values at its locally finite zeros. We prove, on every compact interval <span class="math" data-index="179" data-tex="\(I\)">\(I\)</span>,</p>
+<span class="math math-display" id="CN4.1" data-index="180" data-tex="\[
+ \log|F(x+iy)|\longrightarrow g(x)
+ \quad\text{in }L^1(I)\quad(y\downarrow0).                 \tag{CN4.1}
+\]">\[
+ \log|F(x+iy)|\longrightarrow g(x)
+ \quad\text{in }L^1(I)\quad(y\downarrow0).                 \tag{CN4.1}
+\]</span>
+<p>The elementary singularity estimate is</p>
+<span class="math math-display" id="CN4.2" data-index="181" data-tex="\[
+ \int_{\mathbb R}
+ \left(\log|x+iy|-\log|x|\right)\,dx=\pi y,\qquad y&gt;0.      \tag{CN4.2}
+\]">\[
+ \int_{\mathbb R}
+ \left(\log|x+iy|-\log|x|\right)\,dx=\pi y,\qquad y&gt;0.      \tag{CN4.2}
+\]</span>
+<p>The integrand is nonnegative. Substitute <span class="math" data-index="182" data-tex="\(x=yt\)">\(x=yt\)</span>. On the positive half-line its integral becomes
+<span class="math" data-index="183" data-tex="\(\frac y2\int_0^\infty\log(1+t^{-2})dt\)">\(\frac y2\int_0^\infty\log(1+t^{-2})dt\)</span>.
+Integration by parts gives
+<span class="math" data-index="184" data-tex="\(\int_0^\infty\log(1+t^{-2})dt=2\int_0^\infty(1+t^2)^{-1}dt=\pi\)">\(\int_0^\infty\log(1+t^{-2})dt=2\int_0^\infty(1+t^2)^{-1}dt=\pi\)</span>.
+The endpoint terms <span class="math" data-index="185" data-tex="\(t\log(1+t^{-2})\)">\(t\log(1+t^{-2})\)</span> vanish at zero and infinity. Doubling the half-line integral proves (CN4.2).</p>
+<p>For a real zero <span class="math" data-index="186" data-tex="\(b\)">\(b\)</span> of multiplicity <span class="math" data-index="187" data-tex="\(m\)">\(m\)</span>, choose a disc in (CN3.1) on which <span class="math" data-index="188" data-tex="\(G\)">\(G\)</span> is nonzero. On a smaller closed rectangle above a real interval in that disc,
+<span class="math" data-index="189" data-tex="\(\log|G(x+iy)|\to\log|G(x)|\)">\(\log|G(x+iy)|\to\log|G(x)|\)</span> uniformly. The singular part's <span class="math" data-index="190" data-tex="\(L^1\)">\(L^1\)</span> difference on that interval is at most <span class="math" data-index="191" data-tex="\(m\pi y\)">\(m\pi y\)</span>, by translating and restricting (CN4.2). Also <span class="math" data-index="192" data-tex="\(\log|x-b|\)">\(\log|x-b|\)</span> is locally integrable.</p>
+<p>Enlarge <span class="math" data-index="193" data-tex="\(I\)">\(I\)</span> slightly and choose disjoint small intervals around its finitely many real zeros. Their factors give the preceding estimates. On the remaining compact real set, <span class="math" data-index="194" data-tex="\(F\)">\(F\)</span> is bounded away from zero; continuity preserves a positive lower bound in a sufficiently shallow strip, giving uniform logarithmic convergence there. Combining the finitely many regions proves both local integrability of <span class="math" data-index="195" data-tex="\(g\)">\(g\)</span> and (CN4.1). No pointwise dominated bound through a zero was assumed.</p>
+<p>The exact error on a centered interval is useful for the diagram and an exercise:</p>
+<span class="math math-display" id="CN4.3" data-index="196" data-tex="\[
+ \int_{-d}^{d}
+ \left(m\log|x+iy|-m\log|x|\right)dx
+ =m d\log(1+y^2/d^2)+2my\arctan(d/y)
+ \le m\pi y.                                             \tag{CN4.3}
+\]">\[
+ \int_{-d}^{d}
+ \left(m\log|x+iy|-m\log|x|\right)dx
+ =m d\log(1+y^2/d^2)+2my\arctan(d/y)
+ \le m\pi y.                                             \tag{CN4.3}
+\]</span>
+<p>The identity follows by integrating <span class="math" data-index="197" data-tex="\(\log(1+y^2/x^2)\)">\(\log(1+y^2/x^2)\)</span> by parts; the inequality follows by restricting (CN4.2). This is a local model of a zero, not an entire function satisfying a uniform horizontal upper bound.</p>
+<p><a id="CN5"></a></p>
+<h2 id="cn5-identify-the-actual-boundary-measure">CN5. Identify the actual boundary measure</h2>
+<p>Apply the exact L135 theorem to <span class="math" data-index="198" data-tex="\(v=\log|F|\)">\(v=\log|F|\)</span> on the upper half-plane, using (CN3.3). Its dimension-two boundary conclusion supplies a real signed Radon measure <span class="math" data-index="199" data-tex="\(\sigma\)">\(\sigma\)</span> such that</p>
+<span class="math math-display" id="CN5.1" data-index="200" data-tex="\[
+ \int_{\mathbb R}(1+|x|)^{-2}\,d|\sigma|(x)&lt;\infty,\qquad
+ \int v(x+iy)\phi(x)dx\longrightarrow\int\phi\,d\sigma
+ \quad(\phi\in C_c(\mathbb R)).                           \tag{CN5.1}
+\]">\[
+ \int_{\mathbb R}(1+|x|)^{-2}\,d|\sigma|(x)&lt;\infty,\qquad
+ \int v(x+iy)\phi(x)dx\longrightarrow\int\phi\,d\sigma
+ \quad(\phi\in C_c(\mathbb R)).                           \tag{CN5.1}
+\]</span>
+<p>For each such test, (CN4.1) also makes the limit equal to <span class="math" data-index="201" data-tex="\(\int g\phi\,dx\)">\(\int g\phi\,dx\)</span>. Equality of all continuous compact pairings determines a Radon measure, so</p>
+<span class="math math-display" id="CN5.2" data-index="202" data-tex="\[
+ d\sigma(x)=g(x)\,dx,\qquad
+ d|\sigma|(x)=|g(x)|\,dx.                                \tag{CN5.2}
+\]">\[
+ d\sigma(x)=g(x)\,dx,\qquad
+ d|\sigma|(x)=|g(x)|\,dx.                                \tag{CN5.2}
+\]</span>
+<p>The variation assertion follows directly from the positive and negative parts of the real density; the sets where <span class="math" data-index="203" data-tex="\(g\ge0\)">\(g\ge0\)</span> and <span class="math" data-index="204" data-tex="\(g&lt;0\)">\(g&lt;0\)</span> realize its variation. The extended values at a locally finite zero set do not alter this measure.</p>
+<p>Since
+<span class="math" data-index="205" data-tex="\(1+x^2\le(1+|x|)^2\le2(1+x^2)\)">\(1+x^2\le(1+|x|)^2\le2(1+x^2)\)</span>,
+the weighted variation in (CN5.1) gives</p>
+<span class="math math-display" id="CN5.3" data-index="206" data-tex="\[
+ \int_{\mathbb R}\frac{|\log|F(x)||}{1+x^2}\,dx&lt;\infty,
+ \qquad
+ \int_{\mathbb R}\frac{\log|F(x)|}{1+x^2}\,dx&gt;-\infty.      \tag{CN5.3}
+\]">\[
+ \int_{\mathbb R}\frac{|\log|F(x)||}{1+x^2}\,dx&lt;\infty,
+ \qquad
+ \int_{\mathbb R}\frac{\log|F(x)|}{1+x^2}\,dx&gt;-\infty.      \tag{CN5.3}
+\]</span>
+<p>The passage from the signed boundary theorem to a logarithmic integral required the local trace calculation. Merely evaluating an almost-everywhere boundary expression would not identify the measure at zeros.</p>
+<p><a id="CN6"></a></p>
+<h2 id="cn6-convert-derivative-bounds-into-a-logarithmic-budget">CN6. Convert derivative bounds into a logarithmic budget</h2>
+<p>Integration by parts has no boundary terms because <span class="math" data-index="207" data-tex="\(u\)">\(u\)</span> and all its derivatives vanish outside a compact interval. For real <span class="math" data-index="208" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span> and <span class="math" data-index="209" data-tex="\(k\ge1\)">\(k\ge1\)</span>,</p>
+<span class="math math-display" id="CN6.1" data-index="210" data-tex="\[
+ (i\xi)^k F(\xi)=\int u^{(k)}(t)e^{-i\xi t}dt,\qquad
+ |F(\xi)|\le2R\,A_k|\xi|^{-k}.                            \tag{CN6.1}
+\]">\[
+ (i\xi)^k F(\xi)=\int u^{(k)}(t)e^{-i\xi t}dt,\qquad
+ |F(\xi)|\le2R\,A_k|\xi|^{-k}.                            \tag{CN6.1}
+\]</span>
+<p>Set <span class="math" data-index="211" data-tex="\(C=\max(a,2R)&gt;0\)">\(C=\max(a,2R)&gt;0\)</span>. The zeroth bound is <span class="math" data-index="212" data-tex="\(|F(\xi)|\le a\le C\)">\(|F(\xi)|\le a\le C\)</span>. Thus all <span class="math" data-index="213" data-tex="\(k\ge0\)">\(k\ge0\)</span> are covered with this one constant.</p>
+<p>First <span class="math" data-index="214" data-tex="\(M_j\to\infty\)">\(M_j\to\infty\)</span>. Otherwise monotonicity gives a finite <span class="math" data-index="215" data-tex="\(L\)">\(L\)</span> with <span class="math" data-index="216" data-tex="\(M_j\le L\)">\(M_j\le L\)</span> for all <span class="math" data-index="217" data-tex="\(j\)">\(j\)</span>. For <span class="math" data-index="218" data-tex="\(|\xi|&gt;L\)">\(|\xi|&gt;L\)</span>, (CN6.1) gives <span class="math" data-index="219" data-tex="\(|F(\xi)|\le2R(L/|\xi|)^k\)">\(|F(\xi)|\le2R(L/|\xi|)^k\)</span> for every <span class="math" data-index="220" data-tex="\(k\)">\(k\)</span>, forcing <span class="math" data-index="221" data-tex="\(F(\xi)=0\)">\(F(\xi)=0\)</span>. An interval of zeros contradicts CN2–CN3. This proves the claim.</p>
+<p>For <span class="math" data-index="222" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, define</p>
+<span class="math math-display" id="CN6.2" data-index="223" data-tex="\[
+ T(r)=\sum_{j\ge1}\log^+(r/M_j),\qquad
+ \log^+s=\max(0,\log s).                                 \tag{CN6.2}
+\]">\[
+ T(r)=\sum_{j\ge1}\log^+(r/M_j),\qquad
+ \log^+s=\max(0,\log s).                                 \tag{CN6.2}
+\]</span>
+<p>Only finitely many terms are nonzero on any bounded interval of <span class="math" data-index="224" data-tex="\(r\)">\(r\)</span>. If <span class="math" data-index="225" data-tex="\(q\)">\(q\)</span> is the number of <span class="math" data-index="226" data-tex="\(M_j&lt;r\)">\(M_j&lt;r\)</span>, the product <span class="math" data-index="227" data-tex="\(A_k/r^k\)">\(A_k/r^k\)</span> decreases through those <span class="math" data-index="228" data-tex="\(q\)">\(q\)</span> factors and thereafter multiplies by factors at least one. Repeated values equal to <span class="math" data-index="229" data-tex="\(r\)">\(r\)</span> change neither the product nor <span class="math" data-index="230" data-tex="\(T\)">\(T\)</span>. Therefore</p>
+<span class="math math-display" id="CN6.3" data-index="231" data-tex="\[
+ \inf_{k\ge0}\frac{A_k}{r^k}
+ =\prod_{j=1}^{q}\frac{M_j}{r}
+ =e^{-T(r)},\qquad
+ |F(\xi)|\le C e^{-T(|\xi|)}.                             \tag{CN6.3}
+\]">\[
+ \inf_{k\ge0}\frac{A_k}{r^k}
+ =\prod_{j=1}^{q}\frac{M_j}{r}
+ =e^{-T(r)},\qquad
+ |F(\xi)|\le C e^{-T(|\xi|)}.                             \tag{CN6.3}
+\]</span>
+<p>At a zero the logarithmic inequality retains its extended meaning. On the positive axis it reads</p>
+<span class="math math-display" id="CN6.4" data-index="232" data-tex="\[
+ 0\le T(r)\le\log C-\log|F(r)|.                           \tag{CN6.4}
+\]">\[
+ 0\le T(r)\le\log C-\log|F(r)|.                           \tag{CN6.4}
+\]</span>
+<p>This optimization is exactly where the ordered thresholds are used.</p>
+<figure><img class="course-figure" width="2652" height="866" src="reproduce/L138/figures/frequency-budget.png" alt="Derivative thresholds determine a Fourier envelope and an exact reciprocal budget." /><figcaption class="native"><a href="reproduce/L138/figures/frequency-budget.png">Open full-size PNG</a> · <a href="reproduce/L138/figures/frequency-budget.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 1.</em> The first panel gives <span class="math" data-index="233" data-tex="\(T(r)\)">\(T(r)\)</span> for the model thresholds <span class="math" data-index="234" data-tex="\(M_j=j\)">\(M_j=j\)</span> and <span class="math" data-index="235" data-tex="\(M_j=j^2\)">\(M_j=j^2\)</span>, and the second gives their normalized envelopes <span class="math" data-index="236" data-tex="\(e^{-T(r)}\)">\(e^{-T(r)}\)</span> with <span class="math" data-index="237" data-tex="\(C=1\)">\(C=1\)</span>. These are algebraic envelopes, not asserted Fourier transforms of compact bumps. Every active threshold is included in the displayed frequency range. The final panel shows the exact finite-budget integrals <span class="math" data-index="238" data-tex="\(\int_1^\infty T_N(r)r^{-2}dr=\sum_{j=1}^N1/M_j\)">\(\int_1^\infty T_N(r)r^{-2}dr=\sum_{j=1}^N1/M_j\)</span>. Their different limiting behavior is proved in CN7 and CN9; finite plotted budgets illustrate that proof.</p>
+<p><a id="CN7"></a></p>
+<h2 id="cn7-tonelli-turns-the-budget-into-the-reciprocal-series">CN7. Tonelli turns the budget into the reciprocal series</h2>
+<p>For <span class="math" data-index="239" data-tex="\(r\ge M_1&gt;0\)">\(r\ge M_1&gt;0\)</span>,</p>
+<span class="math math-display" id="CN7.1" data-index="240" data-tex="\[
+ r^{-2}\le(1+M_1^{-2})(1+r^2)^{-1}.                       \tag{CN7.1}
+\]">\[
+ r^{-2}\le(1+M_1^{-2})(1+r^2)^{-1}.                       \tag{CN7.1}
+\]</span>
+<p>The right side of (CN6.4) is nonnegative and at most
+<span class="math" data-index="241" data-tex="\(|\log C|+|\log|F(r)||\)">\(|\log C|+|\log|F(r)||\)</span>.
+Equation (CN5.3) and (CN7.1) therefore give</p>
+<span class="math math-display" id="CN7.2" data-index="242" data-tex="\[
+ \int_{M_1}^{\infty}T(r)\frac{dr}{r^2}&lt;\infty.             \tag{CN7.2}
+\]">\[
+ \int_{M_1}^{\infty}T(r)\frac{dr}{r^2}&lt;\infty.             \tag{CN7.2}
+\]</span>
+<p>Each summand of <span class="math" data-index="243" data-tex="\(T\)">\(T\)</span> is nonnegative. Tonelli applies before any conclusion about convergence of the sum. Since <span class="math" data-index="244" data-tex="\(M_j\ge M_1\)">\(M_j\ge M_1\)</span>,</p>
+<span class="math math-display" id="CN7.3" data-index="245" data-tex="\[
+ \begin{aligned}
+ \int_{M_1}^{\infty}T(r)\frac{dr}{r^2}
+ &amp;=\sum_{j\ge1}\int_{M_j}^{\infty}\log(r/M_j)\frac{dr}{r^2}\\
+ &amp;=\sum_{j\ge1}\frac1{M_j}.
+ \end{aligned}                                             \tag{CN7.3}
+\]">\[
+ \begin{aligned}
+ \int_{M_1}^{\infty}T(r)\frac{dr}{r^2}
+ &amp;=\sum_{j\ge1}\int_{M_j}^{\infty}\log(r/M_j)\frac{dr}{r^2}\\
+ &amp;=\sum_{j\ge1}\frac1{M_j}.
+ \end{aligned}                                             \tag{CN7.3}
+\]</span>
+<p>To verify the last identity, integrate by parts. The boundary term
+<span class="math" data-index="246" data-tex="\(-\log(r/M_j)/r\)">\(-\log(r/M_j)/r\)</span> vanishes at <span class="math" data-index="247" data-tex="\(M_j\)">\(M_j\)</span> and infinity; the remaining integral is <span class="math" data-index="248" data-tex="\(\int_{M_j}^\infty r^{-2}dr=1/M_j\)">\(\int_{M_j}^\infty r^{-2}dr=1/M_j\)</span>. Finiteness in (CN7.2) proves the theorem. <span class="math" data-index="249" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The zero function satisfies every such derivative bound, even for divergent reciprocal series. Nontriviality is essential both for the conclusion and for the subharmonic logarithm.</p>
+<p><a id="CN8"></a></p>
+<h2 id="cn8-constant-factors-and-the-compact-support-restriction">CN8. Constant factors and the compact-support restriction</h2>
+<p>The proof also handles</p>
+<span class="math math-display" id="CN8.1" data-index="250" data-tex="\[
+ \|u^{(k)}\|_\infty\le B H^k\prod_{j=1}^k M_j,
+ \qquad B,H&gt;0,\quad k\ge1.                               \tag{CN8.1}
+\]">\[
+ \|u^{(k)}\|_\infty\le B H^k\prod_{j=1}^k M_j,
+ \qquad B,H&gt;0,\quad k\ge1.                               \tag{CN8.1}
+\]</span>
+<p>Apply Theorem CN to <span class="math" data-index="251" data-tex="\(u/B\)">\(u/B\)</span> and <span class="math" data-index="252" data-tex="\(N_j=HM_j\)">\(N_j=HM_j\)</span>. They are still positive and nondecreasing. The conclusion <span class="math" data-index="253" data-tex="\(\sum1/N_j&lt;\infty\)">\(\sum1/N_j&lt;\infty\)</span> is equivalent to <span class="math" data-index="254" data-tex="\(\sum1/M_j&lt;\infty\)">\(\sum1/M_j&lt;\infty\)</span>. No bound for <span class="math" data-index="255" data-tex="\(k=0\)">\(k=0\)</span> is needed.</p>
+<p>Compact support cannot be replaced by arbitrary smoothness. The function <span class="math" data-index="256" data-tex="\(u(x)=\sin x\)">\(u(x)=\sin x\)</span> has <span class="math" data-index="257" data-tex="\(\|u^{(k)}\|_\infty=1\le k!\)">\(\|u^{(k)}\|_\infty=1\le k!\)</span> for every <span class="math" data-index="258" data-tex="\(k\ge1\)">\(k\ge1\)</span>. With the strictly increasing thresholds <span class="math" data-index="259" data-tex="\(M_j=j\)">\(M_j=j\)</span>, its reciprocal series diverges. The function is nonzero and smooth, but its support is the whole line. There is no ordinary absolutely integrable Fourier transform of the form (CN2.1), and the compact-support argument does not apply.</p>
+<p><a id="CN9"></a></p>
+<h2 id="cn9-three-worked-examples">CN9. Three worked examples</h2>
+<p><strong>Example 1: the analytic-size obstruction.</strong> For <span class="math" data-index="260" data-tex="\(M_j=Hj\)">\(M_j=Hj\)</span>, the product is <span class="math" data-index="261" data-tex="\(A_k=H^k k!\)">\(A_k=H^k k!\)</span>. The series <span class="math" data-index="262" data-tex="\(\sum1/(Hj)\)">\(\sum1/(Hj)\)</span> diverges: each block <span class="math" data-index="263" data-tex="\(2^{m-1}&lt;j\le2^m\)">\(2^{m-1}&lt;j\le2^m\)</span> contributes at least <span class="math" data-index="264" data-tex="\(1/(2H)\)">\(1/(2H)\)</span>. Hence a compactly supported smooth <span class="math" data-index="265" data-tex="\(u\)">\(u\)</span> with these bounds must be zero. By CN8 the same holds with an additional fixed factor <span class="math" data-index="266" data-tex="\(B\)">\(B\)</span>. This conclusion concerns the stated derivative bounds, not a pointwise estimate at a single point.</p>
+<p><strong>Example 2: power thresholds and their exact budget.</strong> Let <span class="math" data-index="267" data-tex="\(M_j=j^\alpha\)">\(M_j=j^\alpha\)</span>, <span class="math" data-index="268" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>. For <span class="math" data-index="269" data-tex="\(r\ge1\)">\(r\ge1\)</span>, put <span class="math" data-index="270" data-tex="\(m=\lfloor r^{1/\alpha}\rfloor\)">\(m=\lfloor r^{1/\alpha}\rfloor\)</span>. Equal-threshold terms are zero, so</p>
+<span class="math math-display" id="CN9.1" data-index="271" data-tex="\[
+ T(r)=m\log r-\alpha\log(m!),\qquad
+ T(r)=\int_1^r\frac{\lfloor t^{1/\alpha}\rfloor}{t}\,dt.   \tag{CN9.1}
+\]">\[
+ T(r)=m\log r-\alpha\log(m!),\qquad
+ T(r)=\int_1^r\frac{\lfloor t^{1/\alpha}\rfloor}{t}\,dt.   \tag{CN9.1}
+\]</span>
+<p>The integral expression follows by writing each contribution as
+<span class="math" data-index="272" data-tex="\(\log^+(r/j^\alpha)=\int_1^r\mathbf1_{\{t&gt;j^\alpha\}}dt/t\)">\(\log^+(r/j^\alpha)=\int_1^r\mathbf1_{\{t&gt;j^\alpha\}}dt/t\)</span>
+and summing finitely many terms. The discrete threshold points <span class="math" data-index="273" data-tex="\(t=j^\alpha\)">\(t=j^\alpha\)</span> do not change the integral. Since
+<span class="math" data-index="274" data-tex="\(t^{1/\alpha}-1\le\lfloor t^{1/\alpha}\rfloor\le t^{1/\alpha}\)">\(t^{1/\alpha}-1\le\lfloor t^{1/\alpha}\rfloor\le t^{1/\alpha}\)</span>,</p>
+<span class="math math-display" id="CN9.2" data-index="275" data-tex="\[
+ \alpha(r^{1/\alpha}-1)-\log r
+ \le T(r)\le\alpha(r^{1/\alpha}-1).                       \tag{CN9.2}
+\]">\[
+ \alpha(r^{1/\alpha}-1)-\log r
+ \le T(r)\le\alpha(r^{1/\alpha}-1).                       \tag{CN9.2}
+\]</span>
+<p>The reciprocal series converges exactly when <span class="math" data-index="276" data-tex="\(\alpha&gt;1\)">\(\alpha&gt;1\)</span>. For that case monotonicity and integration give
+<span class="math" data-index="277" data-tex="\(\sum_{j\ge1}j^{-\alpha}\le1+1/(\alpha-1)\)">\(\sum_{j\ge1}j^{-\alpha}\le1+1/(\alpha-1)\)</span>.
+For <span class="math" data-index="278" data-tex="\(0&lt;\alpha\le1\)">\(0&lt;\alpha\le1\)</span>, <span class="math" data-index="279" data-tex="\(j^{-\alpha}\ge j^{-1}\)">\(j^{-\alpha}\ge j^{-1}\)</span>, and the block proof in Example 1 gives divergence. Thus the necessity theorem rules out a nonzero compact function in the latter range. It does not supply a function in every case of convergence.</p>
+<p><strong>Example 3: one actual compatible compact bump.</strong> Define</p>
+<span class="math math-display" id="CN9.3" data-index="280" data-tex="\[
+ f(t)=
+ \begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}
+ \qquad
+ u(x)=f(1-x)f(1+x)
+ =\begin{cases}e^{-2/(1-x^2)},&amp;|x|&lt;1,\\0,&amp;|x|\ge1.\end{cases} \tag{CN9.3}
+\]">\[
+ f(t)=
+ \begin{cases}e^{-1/t},&amp;t&gt;0,\\0,&amp;t\le0,\end{cases}
+ \qquad
+ u(x)=f(1-x)f(1+x)
+ =\begin{cases}e^{-2/(1-x^2)},&amp;|x|&lt;1,\\0,&amp;|x|\ge1.\end{cases} \tag{CN9.3}
+\]</span>
+<p>We prove the uniform bounds</p>
+<span class="math math-display" id="CN9.4" data-index="281" data-tex="\[
+ \|f^{(k)}\|_\infty\le9^k(k!)^2\quad(k\ge0),\qquad
+ \|u^{(k)}\|_\infty\le18^k(k!)^2\quad(k\ge1).              \tag{CN9.4}
+\]">\[
+ \|f^{(k)}\|_\infty\le9^k(k!)^2\quad(k\ge0),\qquad
+ \|u^{(k)}\|_\infty\le18^k(k!)^2\quad(k\ge1).              \tag{CN9.4}
+\]</span>
+<p>For <span class="math" data-index="282" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-index="283" data-tex="\(e^{-1/z}\)">\(e^{-1/z}\)</span> has a convergent Taylor series on <span class="math" data-index="284" data-tex="\(|z-t|&lt;t\)">\(|z-t|&lt;t\)</span>. This follows by substituting the geometric series for <span class="math" data-index="285" data-tex="\(1/(t+w)\)">\(1/(t+w)\)</span> into the entire exponential; on smaller discs the series converge uniformly and absolutely. On the circle <span class="math" data-index="286" data-tex="\(|z-t|=t/2\)">\(|z-t|=t/2\)</span>,
+<span class="math" data-index="287" data-tex="\(\operatorname{Re}(1/z)\ge2/(9t)\)">\(\operatorname{Re}(1/z)\ge2/(9t)\)</span>.
+Indeed <span class="math" data-index="288" data-tex="\(\operatorname{Re}z\ge t/2\)">\(\operatorname{Re}z\ge t/2\)</span> and <span class="math" data-index="289" data-tex="\(|z|\le3t/2\)">\(|z|\le3t/2\)</span>. Averaging the Taylor series against <span class="math" data-index="290" data-tex="\(e^{-ik\theta}\)">\(e^{-ik\theta}\)</span> picks out its <span class="math" data-index="291" data-tex="\(k\)">\(k\)</span>-th coefficient. Taking absolute values gives</p>
+<span class="math math-display" id="CN9.5" data-index="292" data-tex="\[
+ |f^{(k)}(t)|\le k!(2/t)^k e^{-2/(9t)}.                  \tag{CN9.5}
+\]">\[
+ |f^{(k)}(t)|\le k!(2/t)^k e^{-2/(9t)}.                  \tag{CN9.5}
+\]</span>
+<p>This is the coefficient estimate just proved, not an assumed derivative estimate for a bump. For each fixed <span class="math" data-index="293" data-tex="\(k\)">\(k\)</span>, the right side tends to zero as <span class="math" data-index="294" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>. Extending all derivatives by zero is valid inductively: the derivative at zero of the preceding extended derivative is zero because its bound, divided by <span class="math" data-index="295" data-tex="\(t\)">\(t\)</span>, still tends to zero. Thus <span class="math" data-index="296" data-tex="\(f\)">\(f\)</span> is smooth on the whole line.</p>
+<p>For <span class="math" data-index="297" data-tex="\(k\ge1\)">\(k\ge1\)</span>, the maximum of <span class="math" data-index="298" data-tex="\(t^{-k}e^{-c/t}\)">\(t^{-k}e^{-c/t}\)</span>, <span class="math" data-index="299" data-tex="\(c=2/9\)">\(c=2/9\)</span>, is <span class="math" data-index="300" data-tex="\((k/(ec))^k\)">\((k/(ec))^k\)</span>. Also
+<span class="math" data-index="301" data-tex="\(\log(k!)\ge\int_1^k\log s\,ds=k\log k-k+1\)">\(\log(k!)\ge\int_1^k\log s\,ds=k\log k-k+1\)</span>,
+so <span class="math" data-index="302" data-tex="\((k/e)^k\le k!\)">\((k/e)^k\le k!\)</span>. These facts give the first estimate in (CN9.4); the <span class="math" data-index="303" data-tex="\(k=0\)">\(k=0\)</span> estimate is <span class="math" data-index="304" data-tex="\(0\le f\le1\)">\(0\le f\le1\)</span>.</p>
+<p>Leibniz's rule and reflection of the argument now give</p>
+<span class="math math-display" id="CN9.6" data-index="305" data-tex="\[
+ \begin{aligned}
+ |u^{(k)}|
+ &amp;\le9^k\sum_{j=0}^k\binom{k}{j}(j!)^2((k-j)!)^2\\
+ &amp;=9^k(k!)^2\sum_{j=0}^k\binom{k}{j}^{-1}
+ \le9^k(k!)^2(k+1)\le18^k(k!)^2.
+ \end{aligned}                                             \tag{CN9.6}
+\]">\[
+ \begin{aligned}
+ |u^{(k)}|
+ &amp;\le9^k\sum_{j=0}^k\binom{k}{j}(j!)^2((k-j)!)^2\\
+ &amp;=9^k(k!)^2\sum_{j=0}^k\binom{k}{j}^{-1}
+ \le9^k(k!)^2(k+1)\le18^k(k!)^2.
+ \end{aligned}                                             \tag{CN9.6}
+\]</span>
+<p>The last inequality uses <span class="math" data-index="306" data-tex="\(k+1\le2^k\)">\(k+1\le2^k\)</span> for <span class="math" data-index="307" data-tex="\(k\ge1\)">\(k\ge1\)</span>, which follows by induction. The function has compact support <span class="math" data-index="308" data-tex="\([-1,1]\)">\([-1,1]\)</span> and <span class="math" data-index="309" data-tex="\(u(0)=e^{-2}&gt;0\)">\(u(0)=e^{-2}&gt;0\)</span>. Thus it satisfies the exact theorem hypotheses with <span class="math" data-index="310" data-tex="\(M_j=18j^2\)">\(M_j=18j^2\)</span>. Its reciprocal series is at most <span class="math" data-index="311" data-tex="\(2/18=1/9\)">\(2/18=1/9\)</span>, by the integral bound in Example 2. This proves compatibility for a concrete function without claiming a general converse.</p>
+<figure><img class="course-figure" width="2652" height="866" src="reproduce/L138/figures/trace-and-bump.png" alt="A real zero has an integrable logarithmic trace, and an explicit compact bump has compatible derivative growth." /><figcaption class="native"><a href="reproduce/L138/figures/trace-and-bump.png">Open full-size PNG</a> · <a href="reproduce/L138/figures/trace-and-bump.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure 2.</em> The left panel is the local zero factor <span class="math" data-index="312" data-tex="\(F(z)=z^2\)">\(F(z)=z^2\)</span>, so its horizontal logarithm is <span class="math" data-index="313" data-tex="\(\log(x^2+y^2)\)">\(\log(x^2+y^2)\)</span> and its boundary density is <span class="math" data-index="314" data-tex="\(2\log|x|\)">\(2\log|x|\)</span>. This is a local model, not the global half-plane class in CN5. The middle panel gives the exact interval error in (CN4.3) for <span class="math" data-index="315" data-tex="\(m=2,d=1\)">\(m=2,d=1\)</span>, together with the proved bound <span class="math" data-index="316" data-tex="\(2\pi y\)">\(2\pi y\)</span>. The final panel is the actual compact bump in (CN9.3), with the complete derivative estimate <span class="math" data-index="317" data-tex="\(18^k(k!)^2\)">\(18^k(k!)^2\)</span> proved above. The plotted values illustrate the formulas; they do not replace the infinite-order argument.</p>
+<p><a id="CN10"></a></p>
+<h2 id="cn10-exercises-with-complete-solutions">CN10. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> Prove <span class="math" data-index="318" data-tex="\(\int_M^\infty\log(r/M)r^{-2}dr=1/M\)">\(\int_M^\infty\log(r/M)r^{-2}dr=1/M\)</span>, including both endpoint terms.</p>
+<p><strong>Solution.</strong> Use <span class="math" data-index="319" data-tex="\(\log(r/M)\)">\(\log(r/M)\)</span> as the differentiable factor and <span class="math" data-index="320" data-tex="\(-1/r\)">\(-1/r\)</span> as the antiderivative of <span class="math" data-index="321" data-tex="\(r^{-2}\)">\(r^{-2}\)</span>. At <span class="math" data-index="322" data-tex="\(r=M\)">\(r=M\)</span> the logarithm is zero. At infinity <span class="math" data-index="323" data-tex="\(\log(r/M)/r\to0\)">\(\log(r/M)/r\to0\)</span>. The remaining integral is <span class="math" data-index="324" data-tex="\(\int_M^\infty r^{-2}dr=1/M\)">\(\int_M^\infty r^{-2}dr=1/M\)</span>. Positivity of <span class="math" data-index="325" data-tex="\(M\)">\(M\)</span> makes every step legitimate.</p>
+<p><strong>Exercise 2.</strong> For the repeated thresholds <span class="math" data-index="326" data-tex="\(M_1=M_2=2,M_3=5\)">\(M_1=M_2=2,M_3=5\)</span>, calculate the finite envelope <span class="math" data-index="327" data-tex="\(T_3(r)\)">\(T_3(r)\)</span> and the corresponding minimizing product.</p>
+<p><strong>Solution.</strong> If <span class="math" data-index="328" data-tex="\(r\le2\)">\(r\le2\)</span>, <span class="math" data-index="329" data-tex="\(T_3=0\)">\(T_3=0\)</span> and <span class="math" data-index="330" data-tex="\(k=0\)">\(k=0\)</span> minimizes the product. For <span class="math" data-index="331" data-tex="\(2&lt;r\le5\)">\(2&lt;r\le5\)</span>, <span class="math" data-index="332" data-tex="\(T_3=2\log(r/2)\)">\(T_3=2\log(r/2)\)</span>, and the minimum is <span class="math" data-index="333" data-tex="\(4/r^2\)">\(4/r^2\)</span>, attained at <span class="math" data-index="334" data-tex="\(k=2\)">\(k=2\)</span> (also <span class="math" data-index="335" data-tex="\(k=3\)">\(k=3\)</span> at <span class="math" data-index="336" data-tex="\(r=5\)">\(r=5\)</span>). For <span class="math" data-index="337" data-tex="\(r&gt;5\)">\(r&gt;5\)</span>, <span class="math" data-index="338" data-tex="\(T_3=2\log(r/2)+\log(r/5)\)">\(T_3=2\log(r/2)+\log(r/5)\)</span>, and the minimum is <span class="math" data-index="339" data-tex="\(20/r^3\)">\(20/r^3\)</span>. Equality of the first two thresholds causes no difficulty. The finite reciprocal budget is <span class="math" data-index="340" data-tex="\(1/2+1/2+1/5=6/5\)">\(1/2+1/2+1/5=6/5\)</span>.</p>
+<p><strong>Exercise 3.</strong> Derive the local trace error (CN4.3).</p>
+<p><strong>Solution.</strong> By evenness the error is
+<span class="math" data-index="341" data-tex="\(m\int_0^d\log(1+y^2/x^2)dx\)">\(m\int_0^d\log(1+y^2/x^2)dx\)</span>.
+Integration by parts gives
+<span class="math" data-index="342" data-tex="\(md\log(1+y^2/d^2)+2my^2\int_0^d(x^2+y^2)^{-1}dx\)">\(md\log(1+y^2/d^2)+2my^2\int_0^d(x^2+y^2)^{-1}dx\)</span>.
+The endpoint at zero vanishes because <span class="math" data-index="343" data-tex="\(x|\log x|\to0\)">\(x|\log x|\to0\)</span>. Evaluating the arctangent gives the stated formula. Its upper bound <span class="math" data-index="344" data-tex="\(m\pi y\)">\(m\pi y\)</span> follows by enlarging the nonnegative integration region to the whole line in (CN4.2).</p>
+<p><strong>Exercise 4.</strong> Why does local <span class="math" data-index="345" data-tex="\(L^1\)">\(L^1\)</span> convergence identify the signed boundary measure, including at a real zero?</p>
+<p><strong>Solution.</strong> On the compact support of <span class="math" data-index="346" data-tex="\(\phi\in C_c\)">\(\phi\in C_c\)</span>, the difference of its two density pairings is at most <span class="math" data-index="347" data-tex="\(\|\phi\|_\infty\)">\(\|\phi\|_\infty\)</span> times the <span class="math" data-index="348" data-tex="\(L^1\)">\(L^1\)</span> difference. CN4 makes this tend to zero. L135 gives the same limit as the pairing with <span class="math" data-index="349" data-tex="\(\sigma\)">\(\sigma\)</span>, so every continuous compact test agrees with <span class="math" data-index="350" data-tex="\(g\,dx\)">\(g\,dx\)</span>. These pairings determine the Radon measure. A logarithmic zero is locally integrable; its infinite value at the single zero has zero volume measure and produces no extra boundary atom in this identification.</p>
+<p><strong>Exercise 5.</strong> Suppose the uniform derivative bounds are <span class="math" data-index="351" data-tex="\(B H^k k!\)">\(B H^k k!\)</span>. Explain the conclusion for a nonzero compactly supported smooth function, and give a noncompact function showing that the support assumption matters.</p>
+<p><strong>Solution.</strong> Divide the function by <span class="math" data-index="352" data-tex="\(B&gt;0\)">\(B&gt;0\)</span> and choose <span class="math" data-index="353" data-tex="\(M_j=Hj\)">\(M_j=Hj\)</span>. The product is <span class="math" data-index="354" data-tex="\(H^k k!\)">\(H^k k!\)</span>, but <span class="math" data-index="355" data-tex="\(\sum1/(Hj)\)">\(\sum1/(Hj)\)</span> diverges by the dyadic-block estimate. Theorem CN therefore excludes such a nonzero compact function. On the full line, <span class="math" data-index="356" data-tex="\(\sin x\)">\(\sin x\)</span> has derivatives of absolute value at most one, hence at most <span class="math" data-index="357" data-tex="\(k!\)">\(k!\)</span>. It is nonzero and smooth but not compactly supported. Its example satisfies all those derivative inequalities while lying outside the theorem.</p>
+<p><strong>Exercise 6.</strong> Verify that the bump in (CN9.3) meets the exact product bounds for <span class="math" data-index="358" data-tex="\(M_j=18j^2\)">\(M_j=18j^2\)</span>, and locate each place where compact support, nontriviality and ordering enter the general proof.</p>
+<p><strong>Solution.</strong> Formula (CN9.6) is
+<span class="math" data-index="359" data-tex="\(\|u^{(k)}\|_\infty\le18^k(k!)^2=\prod_{j=1}^k18j^2\)">\(\|u^{(k)}\|_\infty\le18^k(k!)^2=\prod_{j=1}^k18j^2\)</span>.
+The bump is smooth by (CN9.5), vanishes outside <span class="math" data-index="360" data-tex="\([-1,1]\)">\([-1,1]\)</span>, and is positive at zero. In the general proof compact support supplies the entire extension, the linear height bound and boundary-free integration by parts. Nontriviality supplies a nonzero Fourier transform and a genuine subharmonic logarithm, and excludes bounded thresholds. Ordering makes the factors <span class="math" data-index="361" data-tex="\(M_j/r\)">\(M_j/r\)</span> cross one in a single prefix and ensures <span class="math" data-index="362" data-tex="\(M_j\ge M_1\)">\(M_j\ge M_1\)</span> in Tonelli's identity. These uses are distinct.</p>
+<p><a id="CN11"></a></p>
+<h2 id="cn11-source-credit">CN11. Source credit</h2>
+<p>The classical target is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, Theorem 16.1.10, printed page 314: first edition 1983, second revised printing 1990, reprint 2005. Its hypothesis is <span class="math" data-index="363" data-tex="\(C_c^\infty(\mathbb R)\)">\(C_c^\infty(\mathbb R)\)</span>, and its derivative bounds start at order one. The Fourier and trace proof, Gaussian injectivity argument, logarithmic error formula, explicit bump estimate, examples, solutions and diagrams here are independently written. The exact half-plane theorem and signed logarithmic kernel are linked at the beginning.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/compact-support-and-the-carleman-condition.md" download>Download the complete lesson source</a>. Original proof exposition, examples, solutions and figures use CC0 1.0. The figure font notice is included below.</p><ul><li><a href="reproduce/L138/carleman-necessity-formal.md" download>carleman-necessity-formal.md</a></li>
+<li><a href="reproduce/L138/carleman-necessity-learner.md" download>carleman-necessity-learner.md</a></li>
+<li><a href="reproduce/L138/make_figures132.py" download>make_figures132.py</a></li>
+<li><a href="reproduce/L138/README-reproduce.md" download>README-reproduce.md</a></li>
+<li><a href="reproduce/L138/LICENSE.txt" download>LICENSE.txt</a></li>
+<li><a href="reproduce/L138/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li>
+<li><a href="reproduce/L138/figures/geometry.json" download>figures/geometry.json</a></li>
+<li><a href="reproduce/L138/figures/frequency-budget.png" download>figures/frequency-budget.png</a></li>
+<li><a href="reproduce/L138/figures/frequency-budget.svg" download>figures/frequency-budget.svg</a></li>
+<li><a href="reproduce/L138/figures/trace-and-bump.png" download>figures/trace-and-bump.png</a></li>
+<li><a href="reproduce/L138/figures/trace-and-bump.svg" download>figures/trace-and-bump.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a> · <a href="index.html">Course contents</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

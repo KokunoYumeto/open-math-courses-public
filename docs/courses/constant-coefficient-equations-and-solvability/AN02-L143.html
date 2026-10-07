@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Local compactness and Hartogs bounds</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L142.html">Previous lesson</a> · <a href="#psh-local-compactness">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#HC12">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="learning-local-compactness-and-hartogs-bounds">Learning local compactness and Hartogs bounds</h1>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original learner exposition, examples and solutions: CC0 1.0.</p>
+<p>A locally uniform upper bound controls positive peaks. For a subharmonic function, the mean inequality then says that a single finite value also controls the amount of negative mass nearby. Connectedness carries that control to the rest of the domain. This is the mechanism behind the compactness alternative.</p>
+<p>The exact formal argument is in <a href="#psh-local-compactness">Local compactness and Hartogs bounds</a>. Its classical real-subharmonic comparison is Hörmander I, Theorem 4.1.9, in <em>Distribution Theory and Fourier Analysis</em>, first edition 1983, second edition 1990, reprint 2003. The proof and illustrations here are original.</p>
+<p><a id="learner-statement"></a></p>
+<h2 id="the-statement-to-keep-in-view">The statement to keep in view</h2>
+<p>Let <span class="math" data-index="0" data-tex="\(\Omega\subset\mathbb C^n\)">\(\Omega\subset\mathbb C^n\)</span> be nonempty, open and connected, with <span class="math" data-index="1" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Suppose each <span class="math" data-index="2" data-tex="\(v_j\)">\(v_j\)</span> is plurisubharmonic, abbreviated PSH, and the family is bounded above on every compact subset:</p>
+<span class="math math-display" data-index="3" data-tex="\[
+\forall K\subset\Omega\text{ compact},\quad
+\exists C_K\in\mathbb R,\quad
+v_j(z)\le C_K\quad(z\in K,\ j\ge1).
+\]">\[
+\forall K\subset\Omega\text{ compact},\quad
+\exists C_K\in\mathbb R,\quad
+v_j(z)\le C_K\quad(z\in K,\ j\ge1).
+\]</span>
+<p>PSH functions may take the value minus infinity. Their restrictions to complex lines obey the subharmonic circle-mean inequality or are identically minus infinite. We call a function proper if it is not identically minus infinite.</p>
+<p>Exactly one alternative holds:</p>
+<ul>
+<li>The entire sequence tends to minus infinity uniformly on every compact set.</li>
+<li>A subsequence of proper members converges in local <span class="math" data-index="4" data-tex="\(L^1\)">\(L^1\)</span> to a proper PSH function <span class="math" data-index="5" data-tex="\(v\)">\(v\)</span>.</li>
+</ul>
+<p>For the convergent subsequence, written <span class="math" data-index="6" data-tex="\(w_m\)">\(w_m\)</span>,</p>
+<span class="math math-display" data-index="7" data-tex="\[
+\limsup_m w_m(z)\le v(z)\quad\text{at every point},\qquad
+\limsup_m w_m(z)=v(z)\in\mathbb R\quad\text{almost everywhere}.
+\]">\[
+\limsup_m w_m(z)\le v(z)\quad\text{at every point},\qquad
+\limsup_m w_m(z)=v(z)\in\mathbb R\quad\text{almost everywhere}.
+\]</span>
+<p>A further subsequence converges almost everywhere. This does not make every original index converge pointwise.</p>
+<p>The Hartogs bound adds something that an almost-everywhere statement cannot supply. If a proper PSH sequence converges in distributions to a proper PSH <span class="math" data-index="8" data-tex="\(v\)">\(v\)</span> under the same local upper bounds, then for every compact <span class="math" data-index="9" data-tex="\(K\subset\Omega\)">\(K\subset\Omega\)</span> and every continuous real <span class="math" data-index="10" data-tex="\(f\)">\(f\)</span> on <span class="math" data-index="11" data-tex="\(K\)">\(K\)</span>,</p>
+<span class="math math-display" data-index="12" data-tex="\[
+\limsup_j\sup_K(v_j-f)\le\sup_K(v-f).
+\]">\[
+\limsup_j\sup_K(v_j-f)\le\sup_K(v-f).
+\]</span>
+<p>It holds even when <span class="math" data-index="13" data-tex="\(K\)">\(K\)</span> is a singleton or the right side is minus infinity. If <span class="math" data-index="14" data-tex="\(v\le f\)">\(v\le f\)</span> on <span class="math" data-index="15" data-tex="\(K\)">\(K\)</span>, every positive error allowance eventually bounds the whole compact set: <span class="math" data-index="16" data-tex="\(v_j\le f+\varepsilon\)">\(v_j\le f+\varepsilon\)</span>.</p>
+<p><a id="learner-mechanism"></a></p>
+<h2 id="from-one-finite-value-to-a-local-integral-bound">From one finite value to a local integral bound</h2>
+<p>Failure of uniform collapse produces infinitely many indices and moving points <span class="math" data-index="17" data-tex="\(x_m\)">\(x_m\)</span> in one compact set with <span class="math" data-index="18" data-tex="\(w_m(x_m)\ge-A\)">\(w_m(x_m)\ge-A\)</span>. Choose a subsequence so the points tend to <span class="math" data-index="19" data-tex="\(x_0\)">\(x_0\)</span>. Pick <span class="math" data-index="20" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with the closed ball of radius <span class="math" data-index="21" data-tex="\(4r\)">\(4r\)</span> about <span class="math" data-index="22" data-tex="\(x_0\)">\(x_0\)</span> inside the domain. Let <span class="math" data-index="23" data-tex="\(C\)">\(C\)</span> be a common upper bound there. Eventually <span class="math" data-index="24" data-tex="\(|x_m-x_0|&lt;r/2\)">\(|x_m-x_0|&lt;r/2\)</span>.</p>
+<p>Set <span class="math" data-index="25" data-tex="\(q_m=C-w_m\)">\(q_m=C-w_m\)</span>. This is nonnegative. The subharmonic mean inequality for <span class="math" data-index="26" data-tex="\(w_m\)">\(w_m\)</span> reverses into a supermean inequality for <span class="math" data-index="27" data-tex="\(q_m\)">\(q_m\)</span>:</p>
+<span class="math math-display" data-index="28" data-tex="\[
+\int_{B(x_m,2r)}q_m
+\le |B(0,2r)|q_m(x_m)
+\le |B(0,2r)|(|C|+A).
+\]">\[
+\int_{B(x_m,2r)}q_m
+\le |B(0,2r)|q_m(x_m)
+\le |B(0,2r)|(|C|+A).
+\]</span>
+<p>That moving ball contains the fixed ball <span class="math" data-index="29" data-tex="\(B(x_0,r)\)">\(B(x_0,r)\)</span>. The elementary inequality <span class="math" data-index="30" data-tex="\(|w_m|\le |C|+q_m\)">\(|w_m|\le |C|+q_m\)</span> gives</p>
+<span class="math math-display" data-index="31" data-tex="\[
+\int_{B(x_0,r)}|w_m|
+\le |C|\,|B(0,r)|+(|C|+A)|B(0,2r)|.
+\]">\[
+\int_{B(x_0,r)}|w_m|
+\le |C|\,|B(0,r)|+(|C|+A)|B(0,2r)|.
+\]</span>
+<p>The PSH-to-real-subharmonic and local-integrability steps used here are the local statements <a href="AN02-L140.html#UE2">L140, UE2</a> and <a href="AN02-L131.html#NP2">L131, NP2</a>.</p>
+<figure><img class="course-figure" width="2880" height="1170" src="reproduce/L143/figures/mean-propagation-and-components.png" alt="A controlled ball supplies a finite centre for a larger mean ball; connectedness carries the construction to other points." /><figcaption class="native"><a href="reproduce/L143/figures/mean-propagation-and-components.png">Open full-size PNG</a> · <a href="reproduce/L143/figures/mean-propagation-and-components.svg">Open SVG</a></figcaption></figure>
+<p>To move the control, suppose a small ball already has <span class="math" data-index="32" data-tex="\(\int |w_m|\le B\)">\(\int |w_m|\le B\)</span> for every <span class="math" data-index="33" data-tex="\(m\)">\(m\)</span>. If its volume is <span class="math" data-index="34" data-tex="\(b&gt;0\)">\(b&gt;0\)</span>, then each member has a finite point <span class="math" data-index="35" data-tex="\(y_m\)">\(y_m\)</span> in that ball with</p>
+<span class="math math-display" data-index="36" data-tex="\[
+w_m(y_m)\ge-D,\qquad D=B/b+1.
+\]">\[
+w_m(y_m)\ge-D,\qquad D=B/b+1.
+\]</span>
+<p>Otherwise the integral would exceed <span class="math" data-index="37" data-tex="\(Db&gt;B\)">\(Db&gt;B\)</span>. If this controlled ball lies close to a new target point <span class="math" data-index="38" data-tex="\(x\)">\(x\)</span>, a mean ball about <span class="math" data-index="39" data-tex="\(y_m\)">\(y_m\)</span> contains a fixed target ball about <span class="math" data-index="40" data-tex="\(x\)">\(x\)</span>. Repeating the estimate bounds the integral on that target ball.</p>
+<p>The set of points reached in this way is nonempty and open. The calculation also reaches every point in its relative closure, so the set is closed. Connectedness makes it the whole domain. Finite covers then give a uniform integral bound on each compact set. The full ball radii and constants are in <a href="#HC2">HC2–HC3</a>.</p>
+<p><a id="learner-selection"></a></p>
+<h2 id="why-this-really-produces-a-subsequence">Why this really produces a subsequence</h2>
+<p>The integral bounds do not by themselves give strong convergence. We first select a distributional limit, then use subharmonicity to strengthen it.</p>
+<p>Take a countable family of continuous compactly supported tests made from rational grids, rational vertex values and fixed smooth cutoffs. Uniform continuity shows that every continuous compact test can be approximated uniformly by members of this family with one common compact support. For each test, the integrals against <span class="math" data-index="41" data-tex="\(w_m\)">\(w_m\)</span> form a bounded scalar sequence. Select successive convergent subsequences, one for each test, and take the diagonal.</p>
+<p>Uniform approximation extends convergence from this countable family to every test, because</p>
+<span class="math math-display" data-index="42" data-tex="\[
+\left|\int (w_m-w_k)(\phi-\psi)\right|
+\le 2\sup_\ell\int_Q|w_\ell|\,\|\phi-\psi\|_\infty
+\]">\[
+\left|\int (w_m-w_k)(\phi-\psi)\right|
+\le 2\sup_\ell\int_Q|w_\ell|\,\|\phi-\psi\|_\infty
+\]</span>
+<p>when <span class="math" data-index="43" data-tex="\(Q\)">\(Q\)</span> contains the common supports. The resulting functional <span class="math" data-index="44" data-tex="\(T\)">\(T\)</span> is a distribution of order zero. Its Laplacian is positive, since for nonnegative smooth <span class="math" data-index="45" data-tex="\(\phi\)">\(\phi\)</span>,</p>
+<span class="math math-display" data-index="46" data-tex="\[
+\langle\Delta T,\phi\rangle
+=\lim_m\int w_m\Delta\phi\ge0.
+\]">\[
+\langle\Delta T,\phi\rangle
+=\lim_m\int w_m\Delta\phi\ge0.
+\]</span>
+<p>The selection and its explicit cutoff construction are proved in <a href="#HC4">HC4</a>; no compactness theorem for PSH functions is assumed.</p>
+<p>How does a distribution become a function? By <a href="AN02-L131.html#NP3">L131, NP3–NP7</a>, its positive Laplacian is a measure <span class="math" data-index="47" data-tex="\(\mu\)">\(\mu\)</span>. On a relatively compact region, cut this measure off outside a slightly larger region and form its Newtonian or logarithmic potential <span class="math" data-index="48" data-tex="\(P\)">\(P\)</span>. Then <span class="math" data-index="49" data-tex="\(T-P\)">\(T-P\)</span> has zero Laplacian and is represented by a smooth harmonic function <span class="math" data-index="50" data-tex="\(h\)">\(h\)</span>. Thus <span class="math" data-index="51" data-tex="\(P+h\)">\(P+h\)</span> is a proper real subharmonic representative. Radial recovery makes these local representatives agree at all overlap points, including their minus-infinite values. See <a href="#HC5">HC5</a>.</p>
+<p>We must still check PSH. At a fixed small radius, positive radial smoothing makes each <span class="math" data-index="52" data-tex="\(w_m*\rho_t\)">\(w_m*\rho_t\)</span> PSH. The integral bounds and a finite net of translated kernels show that these smoothings converge uniformly on compact sets to <span class="math" data-index="53" data-tex="\(v*\rho_t\)">\(v*\rho_t\)</span>. Their complex-circle inequalities pass to that limit. Now decrease the radius to zero: radial recovery gives the point values of <span class="math" data-index="54" data-tex="\(v\)">\(v\)</span>, and Fatou applied to a common upper bound minus the functions passes the circle inequality once more. This is the explicit closure proof in <a href="#HC6">HC6</a>.</p>
+<p>Finally <a href="AN02-L134.html#SC1">L134, SC1</a> upgrades this subharmonic distributional convergence to local <span class="math" data-index="55" data-tex="\(L^1\)">\(L^1\)</span>. <a href="AN02-L134.html#SC6">SC6</a> supplies the everywhere upper-limit ceiling.</p>
+<p><a id="learner-ae"></a></p>
+<h2 id="what-almost-everywhere-does-and-does-not-mean">What almost everywhere does and does not mean</h2>
+<p>From local <span class="math" data-index="56" data-tex="\(L^1\)">\(L^1\)</span> convergence, select a further sequence with error less than <span class="math" data-index="57" data-tex="\(2^{-q}\)">\(2^{-q}\)</span> on the <span class="math" data-index="58" data-tex="\(q\)">\(q\)</span>-th set of a compact exhaustion. On any fixed exhaustion set, the sum of those errors is integrable:</p>
+<span class="math math-display" data-index="59" data-tex="\[
+\int_{Q_p}\sum_{q\ge p}|w_{m_q}-v|
+\le\sum_{q\ge p}2^{-q}&lt;\infty.
+\]">\[
+\int_{Q_p}\sum_{q\ge p}|w_{m_q}-v|
+\le\sum_{q\ge p}2^{-q}&lt;\infty.
+\]</span>
+<p>The summands therefore tend to zero almost everywhere. At these points the upper limit of the larger convergent sequence is at least <span class="math" data-index="60" data-tex="\(v\)">\(v\)</span>, because one further subsequence tends to <span class="math" data-index="61" data-tex="\(v\)">\(v\)</span>; the everywhere ceiling makes it equal to <span class="math" data-index="62" data-tex="\(v\)">\(v\)</span>.</p>
+<p>Ordinary pointwise convergence of the larger sequence can fail. The complete moving logarithmic-well construction in <a href="AN02-L134.html#SC9">L134, SC9</a> gives this failure despite local <span class="math" data-index="63" data-tex="\(L^1\)">\(L^1\)</span> convergence. Those functions are PSH in one complex variable because they are positive multiples of logarithms of distances plus constants.</p>
+<p><a id="learner-hartogs"></a></p>
+<h2 id="why-moving-maxima-are-controlled">Why moving maxima are controlled</h2>
+<p>Fix a compact <span class="math" data-index="64" data-tex="\(K\)">\(K\)</span>, a continuous <span class="math" data-index="65" data-tex="\(f\)">\(f\)</span> on <span class="math" data-index="66" data-tex="\(K\)">\(K\)</span>, and a small smoothing radius <span class="math" data-index="67" data-tex="\(t\)">\(t\)</span>. Strong local <span class="math" data-index="68" data-tex="\(L^1\)">\(L^1\)</span> convergence gives</p>
+<span class="math math-display" data-index="69" data-tex="\[
+\sup_K |v_j*\rho_t-v*\rho_t|
+\le \|\rho_t\|_\infty\int_{K_t}|v_j-v|
+\longrightarrow0.
+\]">\[
+\sup_K |v_j*\rho_t-v*\rho_t|
+\le \|\rho_t\|_\infty\int_{K_t}|v_j-v|
+\longrightarrow0.
+\]</span>
+<p>Also <span class="math" data-index="70" data-tex="\(v_j\le v_j*\rho_t\)">\(v_j\le v_j*\rho_t\)</span>. Choose maximizing points <span class="math" data-index="71" data-tex="\(x_j\in K\)">\(x_j\in K\)</span> along indices realizing the upper limit of the compact suprema, and select <span class="math" data-index="72" data-tex="\(x_j\to x_*\in K\)">\(x_j\to x_*\in K\)</span>. For each fixed <span class="math" data-index="73" data-tex="\(t\)">\(t\)</span>,</p>
+<span class="math math-display" data-index="74" data-tex="\[
+\limsup_j\sup_K(v_j-f)
+\le (v*\rho_t)(x_*)-f(x_*).
+\]">\[
+\limsup_j\sup_K(v_j-f)
+\le (v*\rho_t)(x_*)-f(x_*).
+\]</span>
+<p>Let <span class="math" data-index="75" data-tex="\(t\)">\(t\)</span> tend to zero and recover <span class="math" data-index="76" data-tex="\(v(x_*)\)">\(v(x_*)\)</span>. This is at most <span class="math" data-index="77" data-tex="\(\sup_K(v-f)\)">\(\sup_K(v-f)\)</span>. If that value is minus infinity, the same inequalities force the left side to minus infinity. This is <a href="#hartogs-compact-comparison">HC8</a>. It is a pointwise smoothing argument, so it works on zero-measure compact sets too.</p>
+<p><a id="learner-examples"></a></p>
+<h2 id="worked-examples">Worked examples</h2>
+<p><strong>1. Collapse on a connected domain.</strong> On <span class="math" data-index="78" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>, <span class="math" data-index="79" data-tex="\(v_j(z)=j\log|z|\)">\(v_j(z)=j\log|z|\)</span> is PSH. On a compact set choose <span class="math" data-index="80" data-tex="\(r&lt;1\)">\(r&lt;1\)</span> bounding all radii. Then <span class="math" data-index="81" data-tex="\(v_j\le j\log r\to-\infty\)">\(v_j\le j\log r\to-\infty\)</span> uniformly there. A compact set cannot include the boundary circle <span class="math" data-index="82" data-tex="\(|z|=1\)">\(|z|=1\)</span>, which lies outside the domain.</p>
+<p><strong>2. A singular limit in local <span class="math" data-index="83" data-tex="\(L^1\)">\(L^1\)</span>.</strong> On <span class="math" data-index="84" data-tex="\(|z|&lt;2\)">\(|z|&lt;2\)</span>, take <span class="math" data-index="85" data-tex="\(v_j=\max(\log|z|,-j)\)">\(v_j=\max(\log|z|,-j)\)</span> and <span class="math" data-index="86" data-tex="\(v=\log|z|\)">\(v=\log|z|\)</span>. The functions are PSH and bounded above by <span class="math" data-index="87" data-tex="\(\log2\)">\(\log2\)</span>. Their difference is supported in <span class="math" data-index="88" data-tex="\(|z|&lt;e^{-j}\)">\(|z|&lt;e^{-j}\)</span>, and</p>
+<span class="math math-display" data-index="89" data-tex="\[
+\int_{|z|\le1}|v_j-v|\,dA
+=2\pi\int_0^{e^{-j}}(-j-\log r)r\,dr
+=\frac{\pi}{2}e^{-2j}.
+\]">\[
+\int_{|z|\le1}|v_j-v|\,dA
+=2\pi\int_0^{e^{-j}}(-j-\log r)r\,dr
+=\frac{\pi}{2}e^{-2j}.
+\]</span>
+<p>The error over any compact set is at most this full difference integral. On <span class="math" data-index="90" data-tex="\(K=\{|z|\le e^{-2}\}\)">\(K=\{|z|\le e^{-2}\}\)</span> the compact suprema are <span class="math" data-index="91" data-tex="\(\max(-2,-j)\to-2\)">\(\max(-2,-j)\to-2\)</span>. On <span class="math" data-index="92" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span> they are <span class="math" data-index="93" data-tex="\(-j\to-\infty\)">\(-j\to-\infty\)</span>. The point at zero is a valid Hartogs test despite having area zero.</p>
+<figure><img class="course-figure" width="2880" height="1062" src="reproduce/L143/figures/truncated-logs-and-hartogs.png" alt="The same truncated logarithms exhibit small integral error, a finite disc maximum, and a minus-infinite singleton limit." /><figcaption class="native"><a href="reproduce/L143/figures/truncated-logs-and-hartogs.png">Open full-size PNG</a> · <a href="reproduce/L143/figures/truncated-logs-and-hartogs.svg">Open SVG</a></figcaption></figure>
+<p><strong>3. A subsequence ceiling needs its indices.</strong> If even terms are the constant <span class="math" data-index="94" data-tex="\(0\)">\(0\)</span> and odd terms the constant <span class="math" data-index="95" data-tex="\(-1\)">\(-1\)</span>, the odd subsequence has limit <span class="math" data-index="96" data-tex="\(-1\)">\(-1\)</span>, while the whole upper limit is <span class="math" data-index="97" data-tex="\(0\)">\(0\)</span>. The theorem bounds the selected upper limit.</p>
+<p><strong>4. A disconnected domain.</strong> On two disjoint unit discs let <span class="math" data-index="98" data-tex="\(v_j=0\)">\(v_j=0\)</span> on one and <span class="math" data-index="99" data-tex="\(v_j=-j\)">\(v_j=-j\)</span> on the other. The upper bound is zero. The first disc prevents whole-domain collapse; the second prevents a locally integrable global subsequential limit because its integrals tend to minus infinity on every ball of positive area.</p>
+<p><strong>5. The upper bound is necessary.</strong> On the unit disc the smooth PSH functions <span class="math" data-index="100" data-tex="\(j|z|^2\)">\(j|z|^2\)</span> do not collapse, but their integrals on any fixed disc of positive radius tend to positive infinity. They have no locally <span class="math" data-index="101" data-tex="\(L^1\)">\(L^1\)</span>-convergent subsequence, and fail the locally uniform upper-bound hypothesis.</p>
+<p><a id="learner-exercises"></a></p>
+<h2 id="exercises-and-complete-solutions">Exercises and complete solutions</h2>
+<p><strong>Exercise 1.</strong> Derive the seed estimate using a centre within <span class="math" data-index="102" data-tex="\(r/3\)">\(r/3\)</span> of the target centre.</p>
+<p><strong>Solution.</strong> Use the mean ball of radius <span class="math" data-index="103" data-tex="\(4r/3\)">\(4r/3\)</span>. It contains the target ball of radius <span class="math" data-index="104" data-tex="\(r\)">\(r\)</span> and lies inside the ball of radius <span class="math" data-index="105" data-tex="\(5r/3\)">\(5r/3\)</span> about the target centre. For <span class="math" data-index="106" data-tex="\(w_m(x_m)\ge-A\)">\(w_m(x_m)\ge-A\)</span> and common upper bound <span class="math" data-index="107" data-tex="\(C\)">\(C\)</span>, integrate <span class="math" data-index="108" data-tex="\(C-w_m\)">\(C-w_m\)</span>, use the supermean inequality, and obtain</p>
+<span class="math math-display" data-index="109" data-tex="\[
+\int_{B(x_0,r)}|w_m|
+\le |C|\,|B(0,r)|+(|C|+A)|B(0,4r/3)|.
+\]">\[
+\int_{B(x_0,r)}|w_m|
+\le |C|\,|B(0,r)|+(|C|+A)|B(0,4r/3)|.
+\]</span>
+<p>All relevant balls lie inside the closed <span class="math" data-index="110" data-tex="\(4r\)">\(4r\)</span> ball used for the upper bound.</p>
+<p><strong>Exercise 2.</strong> If the controlled ball has volume <span class="math" data-index="111" data-tex="\(3\)">\(3\)</span> and the integral bound is <span class="math" data-index="112" data-tex="\(12\)">\(12\)</span>, give a uniform finite lower bound at one chosen point for each function.</p>
+<p><strong>Solution.</strong> Use <span class="math" data-index="113" data-tex="\(D=12/3+1=5\)">\(D=12/3+1=5\)</span>. If every value were below <span class="math" data-index="114" data-tex="\(-5\)">\(-5\)</span>, the integral of the absolute value would be at least <span class="math" data-index="115" data-tex="\(15&gt;12\)">\(15&gt;12\)</span>. A point with value at least <span class="math" data-index="116" data-tex="\(-5\)">\(-5\)</span> therefore exists for each member; a locally integrable function has finite values almost everywhere. The point may vary with the member.</p>
+<p><strong>Exercise 3.</strong> Why does the diagonal limit apply to a smooth test that was not in the chosen countable family?</p>
+<p><strong>Solution.</strong> Approximate that test uniformly, to error <span class="math" data-index="117" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, by a countable-family test with the same fixed compact support bound. If the integral norm bound there is <span class="math" data-index="118" data-tex="\(A\)">\(A\)</span>, the difference between the two pairings is at most <span class="math" data-index="119" data-tex="\(A\varepsilon\)">\(A\varepsilon\)</span> for every sequence member. Thus the difference between two late pairings of the original test is at most <span class="math" data-index="120" data-tex="\(2A\varepsilon\)">\(2A\varepsilon\)</span> plus the Cauchy difference for the approximating test. First make <span class="math" data-index="121" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> small, then take the indices large. This proves convergence.</p>
+<p><strong>Exercise 4.</strong> Explain why taking a distributional limit of PSH functions requires more than positivity of the real Laplacian.</p>
+<p><strong>Solution.</strong> A positive real Laplacian only gives a real subharmonic representative. In complex dimension at least two, real subharmonicity alone does not enforce all complex-line means. For example, <span class="math" data-index="122" data-tex="\(u(z_1,z_2)=|z_1|^2-\tfrac12|z_2|^2\)">\(u(z_1,z_2)=|z_1|^2-\tfrac12|z_2|^2\)</span> has positive real Laplacian <span class="math" data-index="123" data-tex="\(4-2=2\)">\(4-2=2\)</span>, but its restriction to the second coordinate line has negative planar Laplacian <span class="math" data-index="124" data-tex="\(-2\)">\(-2\)</span>, so is not subharmonic. HC6 retains the complex-line inequalities by passing through the uniformly convergent fixed-radius PSH smoothings and then radial recovery.</p>
+<p><strong>Exercise 5.</strong> Verify the exact error for the truncated logarithms without numerical integration.</p>
+<p><strong>Solution.</strong> A primitive of <span class="math" data-index="125" data-tex="\((-j-\log r)r\)">\((-j-\log r)r\)</span> is <span class="math" data-index="126" data-tex="\(r^2(-j-\log r)/2+r^2/4\)">\(r^2(-j-\log r)/2+r^2/4\)</span>. At <span class="math" data-index="127" data-tex="\(r=e^{-j}\)">\(r=e^{-j}\)</span> this equals <span class="math" data-index="128" data-tex="\(e^{-2j}/4\)">\(e^{-2j}/4\)</span>, and at zero its limiting value is zero. Multiply by <span class="math" data-index="129" data-tex="\(2\pi\)">\(2\pi\)</span> to obtain <span class="math" data-index="130" data-tex="\((\pi/2)e^{-2j}\)">\((\pi/2)e^{-2j}\)</span>. This calculation also proves local <span class="math" data-index="131" data-tex="\(L^1\)">\(L^1\)</span> convergence, since the entire difference is supported in that radius.</p>
+<p><strong>Exercise 6.</strong> If <span class="math" data-index="132" data-tex="\(v&lt;f\)">\(v&lt;f\)</span> at every point of a compact set, prove the eventual strict bound for the approximating functions.</p>
+<p><strong>Solution.</strong> Upper semicontinuity of <span class="math" data-index="133" data-tex="\(v-f\)">\(v-f\)</span> makes its finite maximum <span class="math" data-index="134" data-tex="\(S\)">\(S\)</span> strictly negative; if every value is minus infinite then <span class="math" data-index="135" data-tex="\(S=-\infty\)">\(S=-\infty\)</span>. In the finite case choose <span class="math" data-index="136" data-tex="\(0&lt;\delta&lt;-S\)">\(0&lt;\delta&lt;-S\)</span>. The Hartogs inequality makes <span class="math" data-index="137" data-tex="\(\sup_K(v_j-f)&lt;-\delta\)">\(\sup_K(v_j-f)&lt;-\delta\)</span> for all sufficiently large <span class="math" data-index="138" data-tex="\(j\)">\(j\)</span>. In the minus-infinite case it makes that supremum less than <span class="math" data-index="139" data-tex="\(-1\)">\(-1\)</span> eventually. In both cases <span class="math" data-index="140" data-tex="\(v_j&lt;f\)">\(v_j&lt;f\)</span> throughout the compact set.</p>
+<p><strong>Exercise 7.</strong> If neither of two disconnected components has whole-sequence collapse, must there be one proper locally <span class="math" data-index="141" data-tex="\(L^1\)">\(L^1\)</span>-convergent subsequence on both?</p>
+<p><strong>Solution.</strong> No. At odd index <span class="math" data-index="142" data-tex="\(j\)">\(j\)</span>, use constants <span class="math" data-index="143" data-tex="\(0\)">\(0\)</span> on the first component and <span class="math" data-index="144" data-tex="\(-j\)">\(-j\)</span> on the second; at even index <span class="math" data-index="145" data-tex="\(j\)">\(j\)</span>, interchange them. Each component has a zero subsequence and hence no whole-sequence collapse. Any infinite selection contains infinitely many odd or infinitely many even indices. On one component the integrals along those indices then tend to minus infinity. A common locally integrable limit on both components is impossible. Connectedness avoids this failure of synchronized selection.</p>
+<p>The <a href="#HC12">formal exercises</a> also give the finite-net convolution estimate and the singleton version of the Hartogs proof. <a href="reproduce/L143/README-reproduce.md">Reproduction notes</a> link the native figures, source code and exact geometry.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proof exposition, examples, solutions and figures: CC0 1.0.</p>
+<p>A local upper bound for plurisubharmonic functions leaves two possibilities: the whole sequence falls to minus infinity on every compact set, or a subsequence has a locally integrable plurisubharmonic limit. The convergence also controls maxima on compact sets, including sets of measure zero. We prove the selection and the compact comparison explicitly.</p>
+<p>The classical real-subharmonic comparison is Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Theorem 4.1.9; first edition 1983, second edition 1990, reprint 2003. This lesson gives an independent argument and proves the additional plurisubharmonic closure step. The full proof uses the following already proved local statements:</p>
+<ul>
+<li><a href="AN02-L131.html#NP2">L131, NP2</a>: local integrability of proper real subharmonic functions and recovery of their values by nonnegative radial smoothing.</li>
+<li><a href="AN02-L131.html#NP3">L131, NP3–NP7</a>: positive distributions are measures, the fundamental solution of the Laplacian, canonical positive-measure potentials, and the harmonic remainder.</li>
+<li><a href="AN02-L134.html#SC1">L134, SC1 and SC6</a>: distributional convergence of subharmonic functions upgrades to strong local <span class="math" data-index="146" data-tex="\(L^1\)">\(L^1\)</span>, with the everywhere upper-limit inequality.</li>
+<li><a href="AN02-L140.html#UE2">L140, UE2</a>: a proper PSH function is real subharmonic; positive radial smoothing preserves PSH on every interior domain on which the translations are defined. Only this local statement is used.</li>
+<li><a href="prerequisites/metric-foundation-bridges.html#the-actual-smooth-cutoff-with-all-endpoint-constants">Metric and topological foundations, the explicit smooth cutoff</a>: smooth ball cutoffs with prescribed inner and outer radii.</li>
+</ul>
+<p>No global growth condition enters the argument. Lebesgue integration, Tonelli and dominated convergence have their usual meanings. An <span class="math" data-index="147" data-tex="\(L^1\)">\(L^1\)</span> statement concerns Lebesgue measure in real dimension <span class="math" data-index="148" data-tex="\(2n\)">\(2n\)</span>.</p>
+<p><a id="HC1"></a>
+<a id="psh-local-compactness"></a></p>
+<h2 id="hc1-the-precise-alternative-and-compact-comparison">HC1. The precise alternative and compact comparison</h2>
+<p>Let <span class="math" data-index="149" data-tex="\(\Omega\)">\(\Omega\)</span> be a nonempty connected open subset of <span class="math" data-index="150" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, <span class="math" data-index="151" data-tex="\(n\ge1\)">\(n\ge1\)</span>, identified with <span class="math" data-index="152" data-tex="\(\mathbb R^{2n}\)">\(\mathbb R^{2n}\)</span>. A PSH function is upper semicontinuous, takes values in <span class="math" data-index="153" data-tex="\([-\infty,\infty)\)">\([-\infty,\infty)\)</span>, and has a subharmonic or identically minus-infinite restriction to every complex affine line. We allow the identically minus-infinite function. A PSH function is <strong>proper</strong> here if it is not identically minus infinite.</p>
+<p><strong>Local compactness theorem.</strong> Suppose <span class="math" data-index="154" data-tex="\(v_j\)">\(v_j\)</span> is PSH on <span class="math" data-index="155" data-tex="\(\Omega\)">\(\Omega\)</span>, and for every compact <span class="math" data-index="156" data-tex="\(K\subset\Omega\)">\(K\subset\Omega\)</span> there is a finite real <span class="math" data-index="157" data-tex="\(C_K\)">\(C_K\)</span> such that</p>
+<span class="math math-display" id="eq-HC1.1" data-index="158" data-tex="\[
+v_j(x)\le C_K\quad(x\in K,\ j\ge1).
+\tag{HC1.1}
+\]">\[
+v_j(x)\le C_K\quad(x\in K,\ j\ge1).
+\tag{HC1.1}
+\]</span>
+<p>Exactly one of the following occurs:</p>
+<ol>
+<li>The whole sequence tends to minus infinity uniformly on every compact set: for each compact <span class="math" data-index="159" data-tex="\(K\)">\(K\)</span> and each real <span class="math" data-index="160" data-tex="\(A\)">\(A\)</span>, eventually <span class="math" data-index="161" data-tex="\(v_j\le A\)">\(v_j\le A\)</span> on <span class="math" data-index="162" data-tex="\(K\)">\(K\)</span>.</li>
+<li>There are strictly increasing indices <span class="math" data-index="163" data-tex="\(j_m\)">\(j_m\)</span> and a proper PSH function <span class="math" data-index="164" data-tex="\(v\)">\(v\)</span> on <span class="math" data-index="165" data-tex="\(\Omega\)">\(\Omega\)</span> such that every selected <span class="math" data-index="166" data-tex="\(v_{j_m}\)">\(v_{j_m}\)</span> is proper and</li>
+</ol>
+<span class="math math-display" id="eq-HC1.2" data-index="167" data-tex="\[
+\int_K |v_{j_m}-v|\,dx\longrightarrow0
+\quad\text{for every compact }K\subset\Omega.
+\tag{HC1.2}
+\]">\[
+\int_K |v_{j_m}-v|\,dx\longrightarrow0
+\quad\text{for every compact }K\subset\Omega.
+\tag{HC1.2}
+\]</span>
+<p>For the sequence selected in alternative 2,</p>
+<span class="math math-display" id="eq-HC1.3" data-index="168" data-tex="\[
+\limsup_{m\to\infty}v_{j_m}(x)\le v(x)\quad(x\in\Omega),
+\qquad
+\limsup_{m\to\infty}v_{j_m}(x)=v(x)\in\mathbb R
+\quad\text{for almost every }x.
+\tag{HC1.3}
+\]">\[
+\limsup_{m\to\infty}v_{j_m}(x)\le v(x)\quad(x\in\Omega),
+\qquad
+\limsup_{m\to\infty}v_{j_m}(x)=v(x)\in\mathbb R
+\quad\text{for almost every }x.
+\tag{HC1.3}
+\]</span>
+<p>A further subsequence converges to <span class="math" data-index="169" data-tex="\(v\)">\(v\)</span> almost everywhere. The upper limit in (HC1.3) refers to the selected sequence; it says nothing about discarded indices.</p>
+<p><strong>Hartogs comparison.</strong> Suppose instead that a sequence of proper PSH functions <span class="math" data-index="170" data-tex="\(v_j\)">\(v_j\)</span>, satisfying (HC1.1), converges to a proper PSH function <span class="math" data-index="171" data-tex="\(v\)">\(v\)</span> in distributions:</p>
+<span class="math math-display" id="eq-HC1.4" data-index="172" data-tex="\[
+\int_\Omega v_j\phi\,dx\longrightarrow
+\int_\Omega v\phi\,dx
+\quad(\phi\in C_c^\infty(\Omega)).
+\tag{HC1.4}
+\]">\[
+\int_\Omega v_j\phi\,dx\longrightarrow
+\int_\Omega v\phi\,dx
+\quad(\phi\in C_c^\infty(\Omega)).
+\tag{HC1.4}
+\]</span>
+<p>Then it converges strongly in <span class="math" data-index="173" data-tex="\(L^1_{\mathrm{loc}}\)">\(L^1_{\mathrm{loc}}\)</span>, obeys (HC1.3) with <span class="math" data-index="174" data-tex="\(j\)">\(j\)</span> in place of <span class="math" data-index="175" data-tex="\(j_m\)">\(j_m\)</span>, and, for every nonempty compact <span class="math" data-index="176" data-tex="\(K\subset\Omega\)">\(K\subset\Omega\)</span> and every continuous real function <span class="math" data-index="177" data-tex="\(f\)">\(f\)</span> on <span class="math" data-index="178" data-tex="\(K\)">\(K\)</span>,</p>
+<span class="math math-display" id="eq-HC1.5" data-index="179" data-tex="\[
+\limsup_{j\to\infty}\ \sup_{x\in K}\bigl(v_j(x)-f(x)\bigr)
+\le
+\sup_{x\in K}\bigl(v(x)-f(x)\bigr).
+\tag{HC1.5}
+\]">\[
+\limsup_{j\to\infty}\ \sup_{x\in K}\bigl(v_j(x)-f(x)\bigr)
+\le
+\sup_{x\in K}\bigl(v(x)-f(x)\bigr).
+\tag{HC1.5}
+\]</span>
+<p>The supremum on the right may be minus infinity. The function <span class="math" data-index="180" data-tex="\(f\)">\(f\)</span> need only be defined on <span class="math" data-index="181" data-tex="\(K\)">\(K\)</span>. In particular, if <span class="math" data-index="182" data-tex="\(v\le f\)">\(v\le f\)</span> on <span class="math" data-index="183" data-tex="\(K\)">\(K\)</span>, then for every <span class="math" data-index="184" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, eventually <span class="math" data-index="185" data-tex="\(v_j\le f+\varepsilon\)">\(v_j\le f+\varepsilon\)</span> throughout <span class="math" data-index="186" data-tex="\(K\)">\(K\)</span>. No ordinary pointwise convergence of the entire convergent sequence is asserted.</p>
+<p><a id="HC2"></a></p>
+<h2 id="hc2-a-finite-seed-controls-one-ball">HC2. A finite seed controls one ball</h2>
+<p>If alternative 1 fails, some compact <span class="math" data-index="187" data-tex="\(K\)">\(K\)</span>, a real <span class="math" data-index="188" data-tex="\(A\ge0\)">\(A\ge0\)</span>, infinitely many strictly increasing indices, and points <span class="math" data-index="189" data-tex="\(x_m\in K\)">\(x_m\in K\)</span> satisfy</p>
+<span class="math math-display" id="eq-HC2.1" data-index="190" data-tex="\[
+v_{j_m}(x_m)\ge-A.
+\tag{HC2.1}
+\]">\[
+v_{j_m}(x_m)\ge-A.
+\tag{HC2.1}
+\]</span>
+<p>Compactness of <span class="math" data-index="191" data-tex="\(K\)">\(K\)</span> permits a subsequence with <span class="math" data-index="192" data-tex="\(x_m\to x_0\in K\)">\(x_m\to x_0\in K\)</span>. Every selected member is proper, because it has a finite value at <span class="math" data-index="193" data-tex="\(x_m\)">\(x_m\)</span>. Write this selected sequence temporarily as <span class="math" data-index="194" data-tex="\(u_m\)">\(u_m\)</span>. By local UE2 and NP2, its members are real subharmonic and locally integrable.</p>
+<p>Choose <span class="math" data-index="195" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with <span class="math" data-index="196" data-tex="\(\overline{B(x_0,4r)}\subset\Omega\)">\(\overline{B(x_0,4r)}\subset\Omega\)</span>. A common upper bound <span class="math" data-index="197" data-tex="\(C\)">\(C\)</span> holds there. Discard finitely many indices so that <span class="math" data-index="198" data-tex="\(|x_m-x_0|&lt;r/2\)">\(|x_m-x_0|&lt;r/2\)</span>. On the larger ball the nonnegative function <span class="math" data-index="199" data-tex="\(w_m=C-u_m\)">\(w_m=C-u_m\)</span> obeys the supermean inequality at <span class="math" data-index="200" data-tex="\(x_m\)">\(x_m\)</span>. Consequently</p>
+<span class="math math-display" id="eq-HC2.2" data-index="201" data-tex="\[
+\begin{aligned}
+\int_{B(x_0,r)}w_m\,dx
+&amp;\le \int_{B(x_m,2r)}w_m\,dx\\
+&amp;\le |B(0,2r)|\,w_m(x_m)
+\le |B(0,2r)|\,(|C|+A).
+\end{aligned}
+\tag{HC2.2}
+\]">\[
+\begin{aligned}
+\int_{B(x_0,r)}w_m\,dx
+&amp;\le \int_{B(x_m,2r)}w_m\,dx\\
+&amp;\le |B(0,2r)|\,w_m(x_m)
+\le |B(0,2r)|\,(|C|+A).
+\end{aligned}
+\tag{HC2.2}
+\]</span>
+<p>The inclusions used are <span class="math" data-index="202" data-tex="\(B(x_0,r)\subset B(x_m,2r)\subset B(x_0,3r)\)">\(B(x_0,r)\subset B(x_m,2r)\subset B(x_0,3r)\)</span>. Since <span class="math" data-index="203" data-tex="\(|u_m|\le |C|+w_m\)">\(|u_m|\le |C|+w_m\)</span>,</p>
+<span class="math math-display" id="eq-HC2.3" data-index="204" data-tex="\[
+\int_{B(x_0,r)}|u_m|\,dx
+\le |C|\,|B(0,r)|+(|C|+A)|B(0,2r)|.
+\tag{HC2.3}
+\]">\[
+\int_{B(x_0,r)}|u_m|\,dx
+\le |C|\,|B(0,r)|+(|C|+A)|B(0,2r)|.
+\tag{HC2.3}
+\]</span>
+<p>The seed is a finite lower bound at one moving point, rather than a lower bound everywhere.</p>
+<p><a id="HC3"></a></p>
+<h2 id="hc3-connectedness-propagates-local-integral-bounds">HC3. Connectedness propagates local integral bounds</h2>
+<p>Let <span class="math" data-index="205" data-tex="\(G\)">\(G\)</span> be the set of points of <span class="math" data-index="206" data-tex="\(\Omega\)">\(\Omega\)</span> that have an open ball on which <span class="math" data-index="207" data-tex="\(\sup_m\int |u_m|&lt;\infty\)">\(\sup_m\int |u_m|&lt;\infty\)</span>. It is nonempty by HC2 and open by its definition. We prove it is relatively closed.</p>
+<p>Take <span class="math" data-index="208" data-tex="\(x\)">\(x\)</span> in the relative closure of <span class="math" data-index="209" data-tex="\(G\)">\(G\)</span>, and choose <span class="math" data-index="210" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> with <span class="math" data-index="211" data-tex="\(\overline{B(x,4r)}\subset\Omega\)">\(\overline{B(x,4r)}\subset\Omega\)</span>. Choose <span class="math" data-index="212" data-tex="\(a\in G\cap B(x,r/4)\)">\(a\in G\cap B(x,r/4)\)</span>. Shrink a ball <span class="math" data-index="213" data-tex="\(B(a,s)\)">\(B(a,s)\)</span> on which the integral bound holds so that</p>
+<span class="math math-display" id="eq-HC3.1" data-index="214" data-tex="\[
+B(a,s)\subset B(x,r/2),
+\qquad
+\int_{B(a,s)}|u_m|\,dx\le B
+\quad\text{for all }m.
+\tag{HC3.1}
+\]">\[
+B(a,s)\subset B(x,r/2),
+\qquad
+\int_{B(a,s)}|u_m|\,dx\le B
+\quad\text{for all }m.
+\tag{HC3.1}
+\]</span>
+<p>Set <span class="math" data-index="215" data-tex="\(D=B/|B(a,s)|+1\)">\(D=B/|B(a,s)|+1\)</span>. For every <span class="math" data-index="216" data-tex="\(m\)">\(m\)</span> there is a point <span class="math" data-index="217" data-tex="\(y_m\in B(a,s)\)">\(y_m\in B(a,s)\)</span> with <span class="math" data-index="218" data-tex="\(u_m(y_m)\ge-D\)">\(u_m(y_m)\ge-D\)</span>. Otherwise <span class="math" data-index="219" data-tex="\(u_m&lt;-D\)">\(u_m&lt;-D\)</span> throughout that ball would give <span class="math" data-index="220" data-tex="\(\int |u_m|\ge D|B(a,s)|&gt;B\)">\(\int |u_m|\ge D|B(a,s)|&gt;B\)</span>. The chosen value is finite.</p>
+<p>Let <span class="math" data-index="221" data-tex="\(C\)">\(C\)</span> bound all <span class="math" data-index="222" data-tex="\(u_m\)">\(u_m\)</span> on <span class="math" data-index="223" data-tex="\(\overline{B(x,4r)}\)">\(\overline{B(x,4r)}\)</span>. Since <span class="math" data-index="224" data-tex="\(|y_m-x|&lt;r/2\)">\(|y_m-x|&lt;r/2\)</span>, we have <span class="math" data-index="225" data-tex="\(B(x,r)\subset B(y_m,2r)\subset B(x,3r)\)">\(B(x,r)\subset B(y_m,2r)\subset B(x,3r)\)</span>. The same supermean calculation gives</p>
+<span class="math math-display" id="eq-HC3.2" data-index="226" data-tex="\[
+\int_{B(x,r)}|u_m|\,dx
+\le |C|\,|B(0,r)|+(|C|+D)|B(0,2r)|.
+\tag{HC3.2}
+\]">\[
+\int_{B(x,r)}|u_m|\,dx
+\le |C|\,|B(0,r)|+(|C|+D)|B(0,2r)|.
+\tag{HC3.2}
+\]</span>
+<p>Thus <span class="math" data-index="227" data-tex="\(x\in G\)">\(x\in G\)</span>. A connected space has no nonempty proper subset that is both open and closed: otherwise that subset and its complement would separate the space. Hence <span class="math" data-index="228" data-tex="\(G=\Omega\)">\(G=\Omega\)</span>. Covering a compact set by finitely many of these balls proves</p>
+<span class="math math-display" id="eq-HC3.3" data-index="229" data-tex="\[
+\sup_m\int_K |u_m|\,dx&lt;\infty
+\quad\text{for every compact }K\subset\Omega.
+\tag{HC3.3}
+\]">\[
+\sup_m\int_K |u_m|\,dx&lt;\infty
+\quad\text{for every compact }K\subset\Omega.
+\tag{HC3.3}
+\]</span>
+<p>The constants may change from one compact set to another.</p>
+<figure><img class="course-figure" width="2880" height="1170" src="reproduce/L143/figures/mean-propagation-and-components.png" alt="Mean-ball transfer, propagation along a connected domain, and different alternatives on disconnected components." /><figcaption class="native"><a href="reproduce/L143/figures/mean-propagation-and-components.png">Open full-size PNG</a> · <a href="reproduce/L143/figures/mean-propagation-and-components.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure 1.</strong> The left panel uses the exact ball inclusions in HC3. The centre panel illustrates finite local transfer along overlapping balls; it does not assert a uniform constant on the whole domain. In the right panel, the functions <span class="math" data-index="230" data-tex="\(0\)">\(0\)</span> on one disc and <span class="math" data-index="231" data-tex="\(-j\)">\(-j\)</span> on the other provide the disconnected counterexample in HC11.</p>
+<p><a id="HC4"></a></p>
+<h2 id="hc4-explicit-selection-of-a-distributional-limit">HC4. Explicit selection of a distributional limit</h2>
+<p>We construct the weak limit, including the selection that compactness must supply. Set</p>
+<span class="math math-display" id="eq-HC4.1" data-index="232" data-tex="\[
+V_q=\{x\in\Omega:|x|&lt;q,\ \operatorname{dist}(x,\mathbb R^{2n}\setminus\Omega)&gt;1/q\}.
+\tag{HC4.1}
+\]">\[
+V_q=\{x\in\Omega:|x|&lt;q,\ \operatorname{dist}(x,\mathbb R^{2n}\setminus\Omega)&gt;1/q\}.
+\tag{HC4.1}
+\]</span>
+<p>When <span class="math" data-index="233" data-tex="\(\Omega=\mathbb R^{2n}\)">\(\Omega=\mathbb R^{2n}\)</span>, interpret the distance as infinity. These bounded open sets exhaust <span class="math" data-index="234" data-tex="\(\Omega\)">\(\Omega\)</span>, and <span class="math" data-index="235" data-tex="\(\overline{V_q}\)">\(\overline{V_q}\)</span> is a compact subset of <span class="math" data-index="236" data-tex="\(V_{q+1}\)">\(V_{q+1}\)</span>; empty initial sets cause no problem.</p>
+<p>For each nonempty <span class="math" data-index="237" data-tex="\(\overline{V_q}\)">\(\overline{V_q}\)</span>, take a smooth cutoff <span class="math" data-index="238" data-tex="\(\chi_q\)">\(\chi_q\)</span>, equal to one on a neighbourhood of that compact set, supported in <span class="math" data-index="239" data-tex="\(\Omega\)">\(\Omega\)</span>, and between zero and one. Here is the construction from the cited ball cutoff: cover the compact set by finitely many inner balls with their closed outer balls contained in <span class="math" data-index="240" data-tex="\(\Omega\)">\(\Omega\)</span>; let their cutoffs be <span class="math" data-index="241" data-tex="\(\psi_1,\ldots,\psi_\ell\)">\(\psi_1,\ldots,\psi_\ell\)</span>; then <span class="math" data-index="242" data-tex="\(1-\prod_{\nu=1}^{\ell}(1-\psi_\nu)\)">\(1-\prod_{\nu=1}^{\ell}(1-\psi_\nu)\)</span> has all the required properties.</p>
+<p>On a rational box whose interior contains <span class="math" data-index="243" data-tex="\(\operatorname{supp}\chi_q\)">\(\operatorname{supp}\chi_q\)</span>, take all uniform finite rational grids and all assignments of rational values to their vertices. Interpolate multilinearly inside each grid cell, and multiply the result by <span class="math" data-index="244" data-tex="\(\chi_q\)">\(\chi_q\)</span>. The products, extended by zero off the box, form a countable family of continuous compactly supported functions. The vanishing of <span class="math" data-index="245" data-tex="\(\chi_q\)">\(\chi_q\)</span> near the box boundary makes the extension continuous.</p>
+<p>These families approximate every continuous compactly supported function <span class="math" data-index="246" data-tex="\(\phi\)">\(\phi\)</span>. Indeed, choose <span class="math" data-index="247" data-tex="\(q\)">\(q\)</span> with <span class="math" data-index="248" data-tex="\(\operatorname{supp}\phi\subset V_q\)">\(\operatorname{supp}\phi\subset V_q\)</span>, extend <span class="math" data-index="249" data-tex="\(\phi\)">\(\phi\)</span> by zero, and use its uniform continuity on the chosen box. On a sufficiently fine grid, interpolation of its vertex values differs from <span class="math" data-index="250" data-tex="\(\phi\)">\(\phi\)</span> by less than any prescribed <span class="math" data-index="251" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>; approximating the finitely many vertex values by rationals contributes less than <span class="math" data-index="252" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. Multiplication by <span class="math" data-index="253" data-tex="\(\chi_q\)">\(\chi_q\)</span> does not increase the error and fixes <span class="math" data-index="254" data-tex="\(\phi\)">\(\phi\)</span>. The approximants have a common compact support.</p>
+<p>Enumerate all such functions as <span class="math" data-index="255" data-tex="\(\phi_1,\phi_2,\ldots\)">\(\phi_1,\phi_2,\ldots\)</span>. By (HC3.3), each scalar sequence <span class="math" data-index="256" data-tex="\(\int u_m\phi_\ell\)">\(\int u_m\phi_\ell\)</span> is bounded. A bounded real sequence has a convergent subsequence: repeatedly halve a closed bounding interval, retaining a half that contains infinitely many terms, and choose increasing indices inside the resulting nested intervals. Their lengths tend to zero, so the chosen terms converge. Apply this selection first to <span class="math" data-index="257" data-tex="\(\phi_1\)">\(\phi_1\)</span>, then within that subsequence to <span class="math" data-index="258" data-tex="\(\phi_2\)">\(\phi_2\)</span>, and so on; the diagonal subsequence converges on every listed test. Complex tests can be handled by their real and imaginary parts.</p>
+<p>Write the diagonal sequence again as <span class="math" data-index="259" data-tex="\(u_m\)">\(u_m\)</span>. For any <span class="math" data-index="260" data-tex="\(\phi\in C_c(\Omega)\)">\(\phi\in C_c(\Omega)\)</span>, choose an approximant <span class="math" data-index="261" data-tex="\(\psi\)">\(\psi\)</span> supported in one fixed compact <span class="math" data-index="262" data-tex="\(Q\)">\(Q\)</span>. Then</p>
+<span class="math math-display" id="eq-HC4.2" data-index="263" data-tex="\[
+\left|\int_\Omega (u_m-u_k)(\phi-\psi)\,dx\right|
+\le
+2\left(\sup_\ell\int_Q|u_\ell|\,dx\right)\|\phi-\psi\|_\infty.
+\tag{HC4.2}
+\]">\[
+\left|\int_\Omega (u_m-u_k)(\phi-\psi)\,dx\right|
+\le
+2\left(\sup_\ell\int_Q|u_\ell|\,dx\right)\|\phi-\psi\|_\infty.
+\tag{HC4.2}
+\]</span>
+<p>The integrals against <span class="math" data-index="264" data-tex="\(\psi\)">\(\psi\)</span> form a Cauchy sequence. First making the right side small and then taking large <span class="math" data-index="265" data-tex="\(m,k\)">\(m,k\)</span> proves convergence against <span class="math" data-index="266" data-tex="\(\phi\)">\(\phi\)</span>. Define the linear functional <span class="math" data-index="267" data-tex="\(T\)">\(T\)</span> by these limits. For every fixed compact support <span class="math" data-index="268" data-tex="\(Q\)">\(Q\)</span>,</p>
+<span class="math math-display" id="eq-HC4.3" data-index="269" data-tex="\[
+|T(\phi)|\le
+\left(\sup_m\int_Q|u_m|\,dx\right)\|\phi\|_\infty.
+\tag{HC4.3}
+\]">\[
+|T(\phi)|\le
+\left(\sup_m\int_Q|u_m|\,dx\right)\|\phi\|_\infty.
+\tag{HC4.3}
+\]</span>
+<p>In particular <span class="math" data-index="270" data-tex="\(T\)">\(T\)</span> is a distribution of order zero. For every nonnegative smooth compact test <span class="math" data-index="271" data-tex="\(\phi\)">\(\phi\)</span>, real subharmonicity gives</p>
+<span class="math math-display" id="eq-HC4.4" data-index="272" data-tex="\[
+\langle\Delta T,\phi\rangle
+=\lim_m\int_\Omega u_m\,\Delta\phi\,dx
+\ge0.
+\tag{HC4.4}
+\]">\[
+\langle\Delta T,\phi\rangle
+=\lim_m\int_\Omega u_m\,\Delta\phi\,dx
+\ge0.
+\tag{HC4.4}
+\]</span>
+<p>This construction uses only scalar selection and uniform approximation. It does not assume a compactness theorem for distributions, measures or PSH functions.</p>
+<p><a id="HC5"></a></p>
+<h2 id="hc5-construct-the-canonical-subharmonic-representative">HC5. Construct the canonical subharmonic representative</h2>
+<p>By NP3, <span class="math" data-index="273" data-tex="\(\Delta T\)">\(\Delta T\)</span> is a positive Radon measure <span class="math" data-index="274" data-tex="\(\mu\)">\(\mu\)</span>. Given a relatively compact open <span class="math" data-index="275" data-tex="\(Y\subset\Omega\)">\(Y\subset\Omega\)</span>, choose a nonnegative smooth compact cutoff <span class="math" data-index="276" data-tex="\(\chi\)">\(\chi\)</span>, equal to one on a neighbourhood of <span class="math" data-index="277" data-tex="\(\overline Y\)">\(\overline Y\)</span>. The measure <span class="math" data-index="278" data-tex="\(\nu=\chi\mu\)">\(\nu=\chi\mu\)</span> is finite and compactly supported.</p>
+<p>In real dimension <span class="math" data-index="279" data-tex="\(N=2n\ge2\)">\(N=2n\ge2\)</span>, NP4 supplies the locally integrable fundamental solution <span class="math" data-index="280" data-tex="\(E_N\)">\(E_N\)</span> with <span class="math" data-index="281" data-tex="\(\Delta E_N=\delta_0\)">\(\Delta E_N=\delta_0\)</span>. The canonical potential</p>
+<span class="math math-display" id="eq-HC5.1" data-index="282" data-tex="\[
+P=E_N*\nu
+\tag{HC5.1}
+\]">\[
+P=E_N*\nu
+\tag{HC5.1}
+\]</span>
+<p>is locally integrable and subharmonic by NP6, and its distributional Laplacian is <span class="math" data-index="283" data-tex="\(\nu\)">\(\nu\)</span>. Thus <span class="math" data-index="284" data-tex="\(\Delta(T-P)=0\)">\(\Delta(T-P)=0\)</span> on a neighbourhood of <span class="math" data-index="285" data-tex="\(\overline Y\)">\(\overline Y\)</span>. NP5 gives a smooth harmonic function <span class="math" data-index="286" data-tex="\(h\)">\(h\)</span> representing <span class="math" data-index="287" data-tex="\(T-P\)">\(T-P\)</span> there. The function <span class="math" data-index="288" data-tex="\(P+h\)">\(P+h\)</span> is a proper subharmonic representative of <span class="math" data-index="289" data-tex="\(T\)">\(T\)</span> on <span class="math" data-index="290" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p>Such local representatives agree at every point on overlaps. They agree almost everywhere as representatives of the same distribution. Their radial smoothings therefore agree at every centre for all sufficiently small radii. Letting the radius decrease to zero and using NP2 gives equality of their point values, including minus infinity. They consequently define a global proper real subharmonic function <span class="math" data-index="291" data-tex="\(u\in L^1_{\mathrm{loc}}(\Omega)\)">\(u\in L^1_{\mathrm{loc}}(\Omega)\)</span> representing <span class="math" data-index="292" data-tex="\(T\)">\(T\)</span>.</p>
+<p>The conclusion that <span class="math" data-index="293" data-tex="\(u\)">\(u\)</span> is proper is substantive: the potential is locally integrable, and adding a finite harmonic function cannot make it identically minus infinite on a nonempty open set.</p>
+<p><a id="HC6"></a></p>
+<h2 id="hc6-the-limit-is-plurisubharmonic">HC6. The limit is plurisubharmonic</h2>
+<p>Fix a nonnegative smooth radial kernel <span class="math" data-index="294" data-tex="\(\rho\)">\(\rho\)</span>, supported in the unit ball, with integral one, and put <span class="math" data-index="295" data-tex="\(\rho_t(x)=t^{-2n}\rho(x/t)\)">\(\rho_t(x)=t^{-2n}\rho(x/t)\)</span>. On every domain of centres whose closed <span class="math" data-index="296" data-tex="\(t\)">\(t\)</span>-neighbourhood lies in <span class="math" data-index="297" data-tex="\(\Omega\)">\(\Omega\)</span>, local UE2 gives smooth PSH functions <span class="math" data-index="298" data-tex="\(u_m*\rho_t\)">\(u_m*\rho_t\)</span>.</p>
+<p>For fixed <span class="math" data-index="299" data-tex="\(t\)">\(t\)</span>, these converge uniformly on any compact set of such centres to <span class="math" data-index="300" data-tex="\(u*\rho_t\)">\(u*\rho_t\)</span>. To see this without assuming strong convergence, all translated kernels <span class="math" data-index="301" data-tex="\(x\mapsto\rho_t(a-x)\)">\(x\mapsto\rho_t(a-x)\)</span> have a common compact support as <span class="math" data-index="302" data-tex="\(a\)">\(a\)</span> ranges over that set. Their dependence on <span class="math" data-index="303" data-tex="\(a\)">\(a\)</span> is continuous in the uniform norm. The quantities <span class="math" data-index="304" data-tex="\(\int |u_m|\)">\(\int |u_m|\)</span> and <span class="math" data-index="305" data-tex="\(\int |u|\)">\(\int |u|\)</span> on that support are uniformly bounded. A finite net of centres makes the difference between any kernel and a net kernel uniformly small, and distributional convergence applies to each of the finitely many net kernels. This proves the asserted uniform convergence.</p>
+<p>A uniform limit on a neighbourhood of a closed complex circle preserves its circle-mean inequality. Hence the smooth function <span class="math" data-index="306" data-tex="\(u*\rho_t\)">\(u*\rho_t\)</span> is PSH. By NP2,</p>
+<span class="math math-display" id="eq-HC6.1" data-index="307" data-tex="\[
+(u*\rho_t)(z)\longrightarrow u(z)
+\quad(t\downarrow0,\ z\in\Omega).
+\tag{HC6.1}
+\]">\[
+(u*\rho_t)(z)\longrightarrow u(z)
+\quad(t\downarrow0,\ z\in\Omega).
+\tag{HC6.1}
+\]</span>
+<p>Take any closed complex disc contained in <span class="math" data-index="308" data-tex="\(\Omega\)">\(\Omega\)</span>, with centre <span class="math" data-index="309" data-tex="\(z\)">\(z\)</span>, direction <span class="math" data-index="310" data-tex="\(a\in\mathbb C^n\)">\(a\in\mathbb C^n\)</span>, <span class="math" data-index="311" data-tex="\(|a|=1\)">\(|a|=1\)</span>, and radius <span class="math" data-index="312" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>. The smooth PSH mean inequality reads</p>
+<span class="math math-display" id="eq-HC6.2" data-index="313" data-tex="\[
+(u*\rho_t)(z)\le
+\frac1{2\pi}\int_0^{2\pi}(u*\rho_t)(z+s e^{i\theta}a)\,d\theta.
+\tag{HC6.2}
+\]">\[
+(u*\rho_t)(z)\le
+\frac1{2\pi}\int_0^{2\pi}(u*\rho_t)(z+s e^{i\theta}a)\,d\theta.
+\tag{HC6.2}
+\]</span>
+<p>For all sufficiently small <span class="math" data-index="314" data-tex="\(t\)">\(t\)</span>, the functions on this disc are bounded above by one finite constant: the original <span class="math" data-index="315" data-tex="\(u_m\)">\(u_m\)</span> have a common upper bound on a fixed compact neighbourhood, and their positive averages, and then their uniform limits, have that bound too. Apply Fatou to that constant minus the integrands. Using (HC6.1) yields</p>
+<span class="math math-display" id="eq-HC6.3" data-index="316" data-tex="\[
+u(z)\le\frac1{2\pi}\int_0^{2\pi}u(z+s e^{i\theta}a)\,d\theta.
+\tag{HC6.3}
+\]">\[
+u(z)\le\frac1{2\pi}\int_0^{2\pi}u(z+s e^{i\theta}a)\,d\theta.
+\tag{HC6.3}
+\]</span>
+<p>If the integral is minus infinity, the same inequality forces <span class="math" data-index="317" data-tex="\(u(z)=-\infty\)">\(u(z)=-\infty\)</span>. Upper semicontinuity already holds by HC5. Thus every line restriction satisfies the subharmonic mean condition, with the identically minus-infinite restriction permitted, and <span class="math" data-index="318" data-tex="\(u\)">\(u\)</span> is PSH.</p>
+<p><a id="HC7"></a></p>
+<h2 id="hc7-strong-convergence-the-upper-limit-and-almost-everywhere-selection">HC7. Strong convergence, the upper limit and almost-everywhere selection</h2>
+<p>We have proved <span class="math" data-index="319" data-tex="\(u_m\to u\)">\(u_m\to u\)</span> in distributions, with proper real subharmonic members and representative. The exact strong-convergence statement SC1 applies in real dimension <span class="math" data-index="320" data-tex="\(2n\)">\(2n\)</span>: <span class="math" data-index="321" data-tex="\(p=1\)">\(p=1\)</span> lies in its stated range. Therefore <span class="math" data-index="322" data-tex="\(u_m\to u\)">\(u_m\to u\)</span> in <span class="math" data-index="323" data-tex="\(L^1_{\mathrm{loc}}\)">\(L^1_{\mathrm{loc}}\)</span>. SC6 gives</p>
+<span class="math math-display" id="eq-HC7.1" data-index="324" data-tex="\[
+\limsup_m u_m(x)\le u(x)\quad(x\in\Omega).
+\tag{HC7.1}
+\]">\[
+\limsup_m u_m(x)\le u(x)\quad(x\in\Omega).
+\tag{HC7.1}
+\]</span>
+<p>For completeness, the extraction needed for the almost-everywhere statement is elementary. Let <span class="math" data-index="325" data-tex="\(Q_q\)">\(Q_q\)</span> be an increasing compact exhaustion of <span class="math" data-index="326" data-tex="\(\Omega\)">\(\Omega\)</span>, for example <span class="math" data-index="327" data-tex="\(\overline{V_q}\)">\(\overline{V_q}\)</span>. Choose strictly increasing indices <span class="math" data-index="328" data-tex="\(m_q\)">\(m_q\)</span> so that</p>
+<span class="math math-display" id="eq-HC7.2" data-index="329" data-tex="\[
+\int_{Q_q}|u_{m_q}-u|\,dx&lt;2^{-q}.
+\tag{HC7.2}
+\]">\[
+\int_{Q_q}|u_{m_q}-u|\,dx&lt;2^{-q}.
+\tag{HC7.2}
+\]</span>
+<p>For a fixed <span class="math" data-index="330" data-tex="\(p\)">\(p\)</span>, Tonelli gives</p>
+<span class="math math-display" id="eq-HC7.3" data-index="331" data-tex="\[
+\int_{Q_p}\sum_{q\ge p}|u_{m_q}-u|\,dx
+\le\sum_{q\ge p}2^{-q}&lt;\infty.
+\tag{HC7.3}
+\]">\[
+\int_{Q_p}\sum_{q\ge p}|u_{m_q}-u|\,dx
+\le\sum_{q\ge p}2^{-q}&lt;\infty.
+\tag{HC7.3}
+\]</span>
+<p>Consequently the summands tend to zero almost everywhere on <span class="math" data-index="332" data-tex="\(Q_p\)">\(Q_p\)</span>. Taking the countable union over <span class="math" data-index="333" data-tex="\(p\)">\(p\)</span> proves almost-everywhere convergence on <span class="math" data-index="334" data-tex="\(\Omega\)">\(\Omega\)</span>; <span class="math" data-index="335" data-tex="\(u\)">\(u\)</span> is finite almost everywhere because it is locally integrable. At these points the further subsequence gives <span class="math" data-index="336" data-tex="\(\limsup_m u_m\ge u\)">\(\limsup_m u_m\ge u\)</span>, and (HC7.1) gives the reverse inequality. This proves (HC1.3).</p>
+<p>The alternatives are mutually exclusive. If the whole sequence collapsed uniformly on every compact set, then on a closed ball of positive volume, for every <span class="math" data-index="337" data-tex="\(B&gt;0\)">\(B&gt;0\)</span> all sufficiently late selected members would be at most <span class="math" data-index="338" data-tex="\(-B\)">\(-B\)</span>. Their integrals would tend to minus infinity. <span class="math" data-index="339" data-tex="\(L^1\)">\(L^1\)</span> convergence to a locally integrable <span class="math" data-index="340" data-tex="\(u\)">\(u\)</span> forces convergence of those integrals to a finite number, a contradiction. HC2–HC7 prove that failure of collapse supplies alternative 2, so the theorem is proved.</p>
+<p><a id="HC8"></a>
+<a id="hartogs-compact-comparison"></a></p>
+<h2 id="hc8-moving-maxima-prove-the-hartogs-comparison">HC8. Moving maxima prove the Hartogs comparison</h2>
+<p>For the sequence in (HC1.4), SC1 and SC6 first give strong local <span class="math" data-index="341" data-tex="\(L^1\)">\(L^1\)</span> convergence and the everywhere upper-limit bound; HC7 supplies the almost-everywhere assertions. Fix <span class="math" data-index="342" data-tex="\(K,f\)">\(K,f\)</span> as in HC1.</p>
+<p>For every sufficiently small fixed <span class="math" data-index="343" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, the closed <span class="math" data-index="344" data-tex="\(t\)">\(t\)</span>-neighbourhood <span class="math" data-index="345" data-tex="\(K_t\)">\(K_t\)</span> is compact in <span class="math" data-index="346" data-tex="\(\Omega\)">\(\Omega\)</span>, and</p>
+<span class="math math-display" id="eq-HC8.1" data-index="347" data-tex="\[
+\sup_{x\in K}|(v_j*\rho_t)(x)-(v*\rho_t)(x)|
+\le\|\rho_t\|_\infty\int_{K_t}|v_j-v|\,dx
+\longrightarrow0.
+\tag{HC8.1}
+\]">\[
+\sup_{x\in K}|(v_j*\rho_t)(x)-(v*\rho_t)(x)|
+\le\|\rho_t\|_\infty\int_{K_t}|v_j-v|\,dx
+\longrightarrow0.
+\tag{HC8.1}
+\]</span>
+<p>Moreover <span class="math" data-index="348" data-tex="\(v_j(x)\le(v_j*\rho_t)(x)\)">\(v_j(x)\le(v_j*\rho_t)(x)\)</span>, by the subharmonic radial mean inequality.</p>
+<p>Let <span class="math" data-index="349" data-tex="\(H=\limsup_j\sup_K(v_j-f)\)">\(H=\limsup_j\sup_K(v_j-f)\)</span>. A common upper bound and continuity of <span class="math" data-index="350" data-tex="\(f\)">\(f\)</span> make <span class="math" data-index="351" data-tex="\(H&lt;+\infty\)">\(H&lt;+\infty\)</span>. If <span class="math" data-index="352" data-tex="\(H=-\infty\)">\(H=-\infty\)</span>, the required inequality is immediate. Otherwise choose a subsequence of indices for which the suprema tend to the finite number <span class="math" data-index="353" data-tex="\(H\)">\(H\)</span>. Since an upper semicontinuous function on a compact set attains its finite supremum, choose maximizing points <span class="math" data-index="354" data-tex="\(x_j\in K\)">\(x_j\in K\)</span>; eventually these suprema are finite. Extract a subsequence with <span class="math" data-index="355" data-tex="\(x_j\to x_*\in K\)">\(x_j\to x_*\in K\)</span>. For each fixed small <span class="math" data-index="356" data-tex="\(t\)">\(t\)</span>, (HC8.1) and continuity of <span class="math" data-index="357" data-tex="\(v*\rho_t\)">\(v*\rho_t\)</span> and <span class="math" data-index="358" data-tex="\(f\)">\(f\)</span> imply</p>
+<span class="math math-display" id="eq-HC8.2" data-index="359" data-tex="\[
+H\le (v*\rho_t)(x_*)-f(x_*).
+\tag{HC8.2}
+\]">\[
+H\le (v*\rho_t)(x_*)-f(x_*).
+\tag{HC8.2}
+\]</span>
+<p>Let <span class="math" data-index="360" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>. Radial recovery gives</p>
+<span class="math math-display" id="eq-HC8.3" data-index="361" data-tex="\[
+H\le v(x_*)-f(x_*)\le\sup_K(v-f),
+\tag{HC8.3}
+\]">\[
+H\le v(x_*)-f(x_*)\le\sup_K(v-f),
+\tag{HC8.3}
+\]</span>
+<p>also if <span class="math" data-index="362" data-tex="\(v(x_*)=-\infty\)">\(v(x_*)=-\infty\)</span>: then (HC8.2) for arbitrarily small <span class="math" data-index="363" data-tex="\(t\)">\(t\)</span> would rule out finite <span class="math" data-index="364" data-tex="\(H\)">\(H\)</span>. This proves (HC1.5), including a right side of minus infinity. It works for a singleton <span class="math" data-index="365" data-tex="\(K\)">\(K\)</span>, and never extends <span class="math" data-index="366" data-tex="\(f\)">\(f\)</span> beyond <span class="math" data-index="367" data-tex="\(K\)">\(K\)</span>.</p>
+<p>If <span class="math" data-index="368" data-tex="\(v&lt;f\)">\(v&lt;f\)</span> at every point of <span class="math" data-index="369" data-tex="\(K\)">\(K\)</span>, upper semicontinuity implies that <span class="math" data-index="370" data-tex="\(\sup_K(v-f)&lt;0\)">\(\sup_K(v-f)&lt;0\)</span>, or it is minus infinity. Thus the approximating functions also satisfy <span class="math" data-index="371" data-tex="\(v_j&lt;f\)">\(v_j&lt;f\)</span> throughout <span class="math" data-index="372" data-tex="\(K\)">\(K\)</span> eventually. If <span class="math" data-index="373" data-tex="\(v\le f\)">\(v\le f\)</span>, (HC1.5) gives the stated <span class="math" data-index="374" data-tex="\(f+\varepsilon\)">\(f+\varepsilon\)</span> conclusion.</p>
+<p><a id="HC9"></a></p>
+<h2 id="hc9-relation-to-the-real-theorem-and-its-one-dimensional-case">HC9. Relation to the real theorem and its one-dimensional case</h2>
+<p>For proper real subharmonic functions on connected open subsets of <span class="math" data-index="375" data-tex="\(\mathbb R^N\)">\(\mathbb R^N\)</span>, <span class="math" data-index="376" data-tex="\(N\ge2\)">\(N\ge2\)</span>, HC2–HC5, HC7 and HC8 prove the same alternative and compact comparison, omitting only the PSH closure step HC6. This is the real scope of the classical source theorem.</p>
+<p>In <span class="math" data-index="377" data-tex="\(N=1\)">\(N=1\)</span>, a subharmonic function is convex. The selection and integral propagation HC2–HC4 remain valid with intervals as balls. The measure <span class="math" data-index="378" data-tex="\(\mu=T&#x27;&#x27;\)">\(\mu=T&#x27;&#x27;\)</span> is positive. NP9 gives <span class="math" data-index="379" data-tex="\(E_1(x)=|x|/2\)">\(E_1(x)=|x|/2\)</span>, and <span class="math" data-index="380" data-tex="\(P=E_1*(\chi\mu)\)">\(P=E_1*(\chi\mu)\)</span> is a finite continuous convex function on bounded intervals. The difference <span class="math" data-index="381" data-tex="\(T-P\)">\(T-P\)</span> has second derivative zero and is affine as a distribution. Indeed, a smooth compact test of integral zero is the derivative of its compactly supported primitive; a distribution whose derivative vanishes therefore depends only on the integral of the test and is constant. Applying this twice shows that a distribution with second derivative zero is an affine function. This constructs a finite convex representative of <span class="math" data-index="382" data-tex="\(T\)">\(T\)</span>. SC10 then gives local uniform convergence. The compact comparison follows directly from local uniform convergence, and the pointwise upper limit is the ordinary limit in this one-dimensional real case.</p>
+<p>This supplement preserves the source's real dimension scope. The complex theorem uses real dimension <span class="math" data-index="383" data-tex="\(2n\)">\(2n\)</span>, so it always uses the <span class="math" data-index="384" data-tex="\(N\ge2\)">\(N\ge2\)</span> route.</p>
+<p><a id="HC10"></a></p>
+<h2 id="hc10-worked-logarithmic-examples">HC10. Worked logarithmic examples</h2>
+<p><strong>Example 1: a whole-sequence collapse.</strong> On the unit disc take <span class="math" data-index="385" data-tex="\(v_j(z)=j\log|z|\)">\(v_j(z)=j\log|z|\)</span>, with value minus infinity at zero. The logarithm is harmonic off zero and has the subharmonic pole at zero; the pole inequality is immediate, and circle means away from it follow either harmonicity or the positive Laplacian of the logarithmic potential in NP4–NP6. Thus <span class="math" data-index="386" data-tex="\(v_j\)">\(v_j\)</span> is PSH in one complex variable. For any compact <span class="math" data-index="387" data-tex="\(K\)">\(K\)</span> in the disc, choose <span class="math" data-index="388" data-tex="\(0&lt;r&lt;1\)">\(0&lt;r&lt;1\)</span> with <span class="math" data-index="389" data-tex="\(|z|\le r\)">\(|z|\le r\)</span> on <span class="math" data-index="390" data-tex="\(K\)">\(K\)</span>. Then <span class="math" data-index="391" data-tex="\(\sup_K v_j\le j\log r\to-\infty\)">\(\sup_K v_j\le j\log r\to-\infty\)</span>.</p>
+<p><strong>Example 2: convergence to a genuine singular limit.</strong> On <span class="math" data-index="392" data-tex="\(|z|&lt;2\)">\(|z|&lt;2\)</span>, set</p>
+<span class="math math-display" id="eq-HC10.1" data-index="393" data-tex="\[
+v_j(z)=\max\{\log|z|,-j\},
+\qquad v(z)=\log|z|.
+\tag{HC10.1}
+\]">\[
+v_j(z)=\max\{\log|z|,-j\},
+\qquad v(z)=\log|z|.
+\tag{HC10.1}
+\]</span>
+<p>The maximum of two PSH functions is PSH by UE2; <span class="math" data-index="394" data-tex="\(v_j\)">\(v_j\)</span> is finite, and all functions have the common local upper bound <span class="math" data-index="395" data-tex="\(\log2\)">\(\log2\)</span>. They converge pointwise to <span class="math" data-index="396" data-tex="\(v\)">\(v\)</span>, including at zero in the extended sense. The difference is supported where <span class="math" data-index="397" data-tex="\(|z|&lt;e^{-j}\)">\(|z|&lt;e^{-j}\)</span>. Polar integration gives the exact unit-disc error</p>
+<span class="math math-display" id="eq-HC10.2" data-index="398" data-tex="\[
+\begin{aligned}
+\int_{|z|\le1}|v_j-v|\,dA
+&amp;=2\pi\int_0^{e^{-j}}(-j-\log r)\,r\,dr\\
+&amp;=\frac{\pi}{2}e^{-2j}.
+\end{aligned}
+\tag{HC10.2}
+\]">\[
+\begin{aligned}
+\int_{|z|\le1}|v_j-v|\,dA
+&amp;=2\pi\int_0^{e^{-j}}(-j-\log r)\,r\,dr\\
+&amp;=\frac{\pi}{2}e^{-2j}.
+\end{aligned}
+\tag{HC10.2}
+\]</span>
+<p>The same error applies on every disc of radius at least <span class="math" data-index="399" data-tex="\(e^{-j}\)">\(e^{-j}\)</span>, and vanishes outside that small disc, proving local <span class="math" data-index="400" data-tex="\(L^1\)">\(L^1\)</span> convergence on <span class="math" data-index="401" data-tex="\(|z|&lt;2\)">\(|z|&lt;2\)</span>.</p>
+<p>For <span class="math" data-index="402" data-tex="\(K=\{|z|\le e^{-2}\}\)">\(K=\{|z|\le e^{-2}\}\)</span> and <span class="math" data-index="403" data-tex="\(f=0\)">\(f=0\)</span>,</p>
+<span class="math math-display" id="eq-HC10.3" data-index="404" data-tex="\[
+\sup_K v_j=\max\{-2,-j\}\longrightarrow-2=\sup_K v.
+\tag{HC10.3}
+\]">\[
+\sup_K v_j=\max\{-2,-j\}\longrightarrow-2=\sup_K v.
+\tag{HC10.3}
+\]</span>
+<p>For the different compact set <span class="math" data-index="405" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span>, <span class="math" data-index="406" data-tex="\(\sup_Kv_j=-j\to-\infty=\sup_Kv\)">\(\sup_Kv_j=-j\to-\infty=\sup_Kv\)</span>. Both applications use the same Hartogs comparison, despite the different measures of the compact sets.</p>
+<figure><img class="course-figure" width="2880" height="1062" src="reproduce/L143/figures/truncated-logs-and-hartogs.png" alt="Truncated logarithmic profiles, their exact local integral error, and compact suprema for a disc and a singular singleton." /><figcaption class="native"><a href="reproduce/L143/figures/truncated-logs-and-hartogs.png">Open full-size PNG</a> · <a href="reproduce/L143/figures/truncated-logs-and-hartogs.svg">Open SVG</a></figcaption></figure>
+<p><strong>Figure 2.</strong> Profiles are plotted for positive radii; the point value at zero is specified separately. The middle panel is the exact expression in (HC10.2), rather than numerical quadrature. The right panel uses the two distinct compact sets in (HC10.3) and the singleton calculation.</p>
+<p><strong>Example 3: upper limits do not imply ordinary pointwise convergence.</strong> The moving logarithmic wells in <a href="AN02-L134.html#SC9">L134, SC9</a> converge to zero in local <span class="math" data-index="407" data-tex="\(L^1\)">\(L^1\)</span>, but their ordinary pointwise limit fails at every point of the illustrated square. They are also PSH: each is a positive multiple of <span class="math" data-index="408" data-tex="\(\log|z-a|\)">\(\log|z-a|\)</span>, plus a real constant, on a plane domain. The local upper bound follows from the bounded distances and the coefficients used there. The proved <span class="math" data-index="409" data-tex="\(L^1\)">\(L^1\)</span> error and the two pointwise subsequences are exactly those in SC9. HC7 predicts that their upper limit equals zero almost everywhere, and HC8 controls their compact maxima; neither conclusion replaces the failure of the ordinary pointwise limit. This example reuses the full written SC9 construction.</p>
+<p><a id="HC11"></a></p>
+<h2 id="hc11-why-the-qualifiers-matter">HC11. Why the qualifiers matter</h2>
+<p><strong>Example 4: discarded indices.</strong> Let <span class="math" data-index="410" data-tex="\(v_{2j}=0\)">\(v_{2j}=0\)</span>, <span class="math" data-index="411" data-tex="\(v_{2j-1}=-1\)">\(v_{2j-1}=-1\)</span> on a connected domain. All functions are PSH and uniformly bounded. The odd subsequence converges to <span class="math" data-index="412" data-tex="\(-1\)">\(-1\)</span>, but the upper limit of the whole sequence is <span class="math" data-index="413" data-tex="\(0\)">\(0\)</span>. Thus the ceiling in (HC1.3) must be stated for the convergent subsequence.</p>
+<p><strong>Example 5: disconnected components.</strong> Let <span class="math" data-index="414" data-tex="\(\Omega=B(-1.4,1)\cup B(1.4,1)\subset\mathbb C\)">\(\Omega=B(-1.4,1)\cup B(1.4,1)\subset\mathbb C\)</span>, and let <span class="math" data-index="415" data-tex="\(v_j=0\)">\(v_j=0\)</span> on the left disc and <span class="math" data-index="416" data-tex="\(v_j=-j\)">\(v_j=-j\)</span> on the right. These locally constant functions are PSH and bounded above by zero. The sequence cannot collapse on compacts in the left disc. On every closed ball of positive area in the right disc its integral is minus <span class="math" data-index="417" data-tex="\(j\)">\(j\)</span> times that area, so no subsequence can converge in <span class="math" data-index="418" data-tex="\(L^1\)">\(L^1\)</span> there to a proper locally integrable limit. Connectedness prevents precisely this split behaviour.</p>
+<p><strong>Example 6: no local uniform upper bound.</strong> On the unit disc <span class="math" data-index="419" data-tex="\(v_j(z)=j|z|^2\)">\(v_j(z)=j|z|^2\)</span> is smooth PSH. It has no common upper bound on any fixed disc of positive radius, does not collapse, and has unbounded <span class="math" data-index="420" data-tex="\(L^1\)">\(L^1\)</span> norm on such a disc. No subsequence converges locally in <span class="math" data-index="421" data-tex="\(L^1\)">\(L^1\)</span> to a proper function. This is why a locally uniform upper bound is an actual hypothesis.</p>
+<p><a id="HC12"></a></p>
+<h2 id="hc12-exercises-with-complete-solutions">HC12. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> In HC2 replace <span class="math" data-index="422" data-tex="\(|x_m-x_0|&lt;r/2\)">\(|x_m-x_0|&lt;r/2\)</span> by <span class="math" data-index="423" data-tex="\(|x_m-x_0|&lt;\alpha r\)">\(|x_m-x_0|&lt;\alpha r\)</span>, with <span class="math" data-index="424" data-tex="\(0&lt;\alpha&lt;1\)">\(0&lt;\alpha&lt;1\)</span>. Give a valid mean radius and an integral bound.</p>
+<p><strong>Solution.</strong> The ball <span class="math" data-index="425" data-tex="\(B(x_m,(1+\alpha)r)\)">\(B(x_m,(1+\alpha)r)\)</span> contains <span class="math" data-index="426" data-tex="\(B(x_0,r)\)">\(B(x_0,r)\)</span>, and is contained in <span class="math" data-index="427" data-tex="\(B(x_0,(1+2\alpha)r)\subset B(x_0,3r)\)">\(B(x_0,(1+2\alpha)r)\subset B(x_0,3r)\)</span>. Its supermean inequality gives</p>
+<span class="math math-display" id="eq-HC12.1" data-index="428" data-tex="\[
+\int_{B(x_0,r)}|u_m|
+\le |C|\,|B(0,r)|+(|C|+A)|B(0,(1+\alpha)r)|.
+\tag{HC12.1}
+\]">\[
+\int_{B(x_0,r)}|u_m|
+\le |C|\,|B(0,r)|+(|C|+A)|B(0,(1+\alpha)r)|.
+\tag{HC12.1}
+\]</span>
+<p>The common upper bound on the closed <span class="math" data-index="429" data-tex="\(4r\)">\(4r\)</span> ball suffices.</p>
+<p><strong>Exercise 2.</strong> Explain why a uniformly bounded integral on one small ball yields a suitable finite centre even if every member has some minus-infinite values.</p>
+<p><strong>Solution.</strong> Let the ball have positive volume <span class="math" data-index="430" data-tex="\(b\)">\(b\)</span>, and <span class="math" data-index="431" data-tex="\(\int |u_m|\le B\)">\(\int |u_m|\le B\)</span>. Taking <span class="math" data-index="432" data-tex="\(D=B/b+1\)">\(D=B/b+1\)</span>, absence of any point with <span class="math" data-index="433" data-tex="\(u_m\ge-D\)">\(u_m\ge-D\)</span> would imply <span class="math" data-index="434" data-tex="\(|u_m|&gt;D\)">\(|u_m|&gt;D\)</span> at all points where its finite value is defined, hence <span class="math" data-index="435" data-tex="\(\int|u_m|\ge Db&gt;B\)">\(\int|u_m|\ge Db&gt;B\)</span>. Local integrability already makes the minus-infinite set null. Thus some finite point has <span class="math" data-index="436" data-tex="\(u_m\ge-D\)">\(u_m\ge-D\)</span>. The point may depend on <span class="math" data-index="437" data-tex="\(m\)">\(m\)</span>, which is sufficient for the ball inclusions and supermean estimate.</p>
+<p><strong>Exercise 3.</strong> Complete the uniform convergence of the fixed-radius convolutions in HC6 with an explicit error estimate.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-index="438" data-tex="\(Q\)">\(Q\)</span> contain all kernel supports, and let <span class="math" data-index="439" data-tex="\(\int_Q|u_m|+\int_Q|u|\le A\)">\(\int_Q|u_m|+\int_Q|u|\le A\)</span>. Choose centres <span class="math" data-index="440" data-tex="\(a_1,\ldots,a_\ell\)">\(a_1,\ldots,a_\ell\)</span> so that each centre <span class="math" data-index="441" data-tex="\(a\)">\(a\)</span> has <span class="math" data-index="442" data-tex="\(\|\rho_t(a-\cdot)-\rho_t(a_\nu-\cdot)\|_\infty&lt;\varepsilon/(2(A+1))\)">\(\|\rho_t(a-\cdot)-\rho_t(a_\nu-\cdot)\|_\infty&lt;\varepsilon/(2(A+1))\)</span>. Then</p>
+<span class="math math-display" id="eq-HC12.2" data-index="443" data-tex="\[
+\left|\int_Q(u_m-u)\rho_t(a-\cdot)\right|
+\le\frac{\varepsilon}{2}
++\max_{\nu\le\ell}\left|\int_Q(u_m-u)\rho_t(a_\nu-\cdot)\right|.
+\tag{HC12.2}
+\]">\[
+\left|\int_Q(u_m-u)\rho_t(a-\cdot)\right|
+\le\frac{\varepsilon}{2}
++\max_{\nu\le\ell}\left|\int_Q(u_m-u)\rho_t(a_\nu-\cdot)\right|.
+\tag{HC12.2}
+\]</span>
+<p>The finite maximum tends to zero by distributional convergence. Hence the uniform error is less than <span class="math" data-index="444" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> eventually.</p>
+<p><strong>Exercise 4.</strong> Does convergence on a set of full measure suffice to prove the compact comparison for a singleton? Explain the proof that actually supplies it.</p>
+<p><strong>Solution.</strong> A singleton has Lebesgue measure zero, so an almost-everywhere assertion gives no information there. For <span class="math" data-index="445" data-tex="\(K=\{x\}\)">\(K=\{x\}\)</span>, (HC8.1) gives convergence of the fixed-radius smoothings at <span class="math" data-index="446" data-tex="\(x\)">\(x\)</span>, while <span class="math" data-index="447" data-tex="\(v_j(x)\le(v_j*\rho_t)(x)\)">\(v_j(x)\le(v_j*\rho_t)(x)\)</span>. First take the upper limit in <span class="math" data-index="448" data-tex="\(j\)">\(j\)</span>, then decrease <span class="math" data-index="449" data-tex="\(t\)">\(t\)</span> to zero. Radial recovery gives <span class="math" data-index="450" data-tex="\(\limsup_jv_j(x)\le v(x)\)">\(\limsup_jv_j(x)\le v(x)\)</span>, including <span class="math" data-index="451" data-tex="\(v(x)=-\infty\)">\(v(x)=-\infty\)</span>. The moving-centre version gives the same statement for all compact maxima.</p>
+<p><strong>Exercise 5.</strong> Derive (HC10.2) and the estimate needed on an arbitrary compact subset of <span class="math" data-index="452" data-tex="\(|z|&lt;2\)">\(|z|&lt;2\)</span>.</p>
+<p><strong>Solution.</strong> An antiderivative of <span class="math" data-index="453" data-tex="\((-j-\log r)r\)">\((-j-\log r)r\)</span> is</p>
+<span class="math math-display" id="eq-HC12.3" data-index="454" data-tex="\[
+\frac{r^2}{2}(-j-\log r)+\frac{r^2}{4}.
+\tag{HC12.3}
+\]">\[
+\frac{r^2}{2}(-j-\log r)+\frac{r^2}{4}.
+\tag{HC12.3}
+\]</span>
+<p>At <span class="math" data-index="455" data-tex="\(r=e^{-j}\)">\(r=e^{-j}\)</span> the first term vanishes, giving <span class="math" data-index="456" data-tex="\(e^{-2j}/4\)">\(e^{-2j}/4\)</span>; both terms vanish at zero. Multiplication by <span class="math" data-index="457" data-tex="\(2\pi\)">\(2\pi\)</span> gives <span class="math" data-index="458" data-tex="\((\pi/2)e^{-2j}\)">\((\pi/2)e^{-2j}\)</span>. Since the difference is nonnegative and supported in that small disc, its integral over any compact set is at most this full-plane difference integral, and tends to zero.</p>
+<p><strong>Exercise 6.</strong> If <span class="math" data-index="459" data-tex="\(v&lt;f\)">\(v&lt;f\)</span> on a compact <span class="math" data-index="460" data-tex="\(K\)">\(K\)</span>, prove that <span class="math" data-index="461" data-tex="\(v_j&lt;f\)">\(v_j&lt;f\)</span> there eventually. Include the case that <span class="math" data-index="462" data-tex="\(v\)">\(v\)</span> is minus infinite throughout <span class="math" data-index="463" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Solution.</strong> The upper semicontinuous function <span class="math" data-index="464" data-tex="\(v-f\)">\(v-f\)</span> attains its supremum <span class="math" data-index="465" data-tex="\(S\)">\(S\)</span> if <span class="math" data-index="466" data-tex="\(S\)">\(S\)</span> is finite. Since every value is negative, <span class="math" data-index="467" data-tex="\(S&lt;0\)">\(S&lt;0\)</span>. Choose <span class="math" data-index="468" data-tex="\(0&lt;\delta&lt;-S\)">\(0&lt;\delta&lt;-S\)</span>. Hartogs gives <span class="math" data-index="469" data-tex="\(\limsup_j\sup_K(v_j-f)\le S\)">\(\limsup_j\sup_K(v_j-f)\le S\)</span>, so these suprema are less than <span class="math" data-index="470" data-tex="\(-\delta\)">\(-\delta\)</span> eventually. If <span class="math" data-index="471" data-tex="\(S=-\infty\)">\(S=-\infty\)</span>, the same bound makes the suprema eventually less than <span class="math" data-index="472" data-tex="\(-1\)">\(-1\)</span>. Both cases imply the desired strict inequality.</p>
+<p><strong>Exercise 7.</strong> On a disconnected domain can one still apply the theorem, and what exactly results?</p>
+<p><strong>Solution.</strong> Each connected component is open: a small Euclidean ball about any point lies in its component. Apply the proof separately on each component, where the hypotheses remain true. A component either has compact-uniform collapse or has a locally <span class="math" data-index="473" data-tex="\(L^1\)">\(L^1\)</span>-convergent subsequence. These outcomes may differ, and the choices of subsequence need not agree. For a stronger counterexample on two discs, let the values be <span class="math" data-index="474" data-tex="\(0,-j\)">\(0,-j\)</span> on the left and right components at odd index <span class="math" data-index="475" data-tex="\(j\)">\(j\)</span>, and <span class="math" data-index="476" data-tex="\(-j,0\)">\(-j,0\)</span> at even index <span class="math" data-index="477" data-tex="\(j\)">\(j\)</span>. Neither component's whole sequence collapses; each has a constant-zero subsequence. Yet any infinite set of indices contains infinitely many odd indices or infinitely many even indices. On one of the components the integrals along those indices tend to minus infinity, preventing a common subsequence with a locally integrable limit on both. Thus separate noncollapse assertions do not justify a simultaneous selection.</p>
+<p><a id="HC13"></a></p>
+<h2 id="hc13-reproduction-and-scope">HC13. Reproduction and scope</h2>
+<p>The figures are generated by <a href="reproduce/L143/make_figures142.py">make_figures142.py</a> from the exact coordinates and formulas in <a href="reproduce/L143/figure-geometry.json">figure-geometry.json</a>. <a href="reproduce/L143/README-reproduce.md">Reproduction notes</a> specify the commands and numerical checks. Native SVG sources are <a href="reproduce/L143/figures/mean-propagation-and-components.svg">Figure 1</a> and <a href="reproduce/L143/figures/truncated-logs-and-hartogs.svg">Figure 2</a>; the PNGs are their reader images. The code and figure geometry do not enter the proof of compactness.</p>
+<p>The theorem supplies a local PSH compactness and Hartogs input. It does not assert uniqueness of all subsequential limits, ordinary pointwise convergence of the entire sequence, a global growth estimate, or completion of other course dependencies.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/local-compactness-and-hartogs-bounds.md" download>Download the complete lesson source</a>. Original proofs,examples,solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L143/psh-local-compactness-formal.md" download>psh-local-compactness-formal.md</a></li><li><a href="reproduce/L143/psh-local-compactness-learner.md" download>psh-local-compactness-learner.md</a></li><li><a href="reproduce/L143/make_figures142.py" download>make_figures142.py</a></li><li><a href="reproduce/L143/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L143/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L143/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L143/figure-geometry.json" download>figure-geometry.json</a></li><li><a href="reproduce/L143/figures/mean-propagation-and-components.png" download>figures/mean-propagation-and-components.png</a></li><li><a href="reproduce/L143/figures/mean-propagation-and-components.svg" download>figures/mean-propagation-and-components.svg</a></li><li><a href="reproduce/L143/figures/truncated-logs-and-hartogs.png" download>figures/truncated-logs-and-hartogs.png</a></li><li><a href="reproduce/L143/figures/truncated-logs-and-hartogs.svg" download>figures/truncated-logs-and-hartogs.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

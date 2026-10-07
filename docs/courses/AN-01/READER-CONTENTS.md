@@ -2,7 +2,7 @@
 
 All 72 authored lessons and their used prerequisite routes are self-checked by the writing AI. The reader includes exact prerequisite copies, editable sources and a verified offline archive.
 
-[Learning guide](LEARNING_GUIDE.md) · [Supplied prerequisites](ONLINE-PREREQUISITES.md) · [Offline reader and editable sources](downloads/README.md)
+[Learning guide](LEARNING_GUIDE.md) · [Supplied prerequisites](ONLINE-PREREQUISITES.md) · Offline reader and editable sources
 
 - [Distributions as kernels of continuous operators](reader/AN01-U001.html)
 - [When a kernel is smooth](reader/AN01-U002.html)
@@ -73,6 +73,6 @@ All 72 authored lessons and their used prerequisite routes are self-checked by t
 - [Stationary concentration and point jets](reader/AN01-U067.html)
 - [Polynomial phases and Fourier tails](reader/AN01-U068.html)
 - [Hölder Gaussian bounds and operator remainders](reader/AN01-U069.html)
-- [Classical finite-order preparation and division](reader/AN01-U070.html)
+- Classical finite-order preparation and division
 - [Smooth complex equations and flat remainders](reader/AN01-U071.html)
 - [An oriented coordinate normal form for a real finite-order zero](reader/AN01-U072.html)

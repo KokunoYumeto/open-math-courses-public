@@ -1,6 +1,6 @@
 # Finite domains and the GNS space of a C*-weight
 
-*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. This lesson is a draft awaiting course-level mathematical review.*
+*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0.*
 
 A positive functional is finite everywhere, but a weight can take the value \(+\infty\). Its GNS construction must therefore begin with the elements whose squares have finite weight. We work with any complex \(C^*\)-algebra, including the zero and nonunital cases, and use inner products linear in the first variable. The free comparison is [Kustermans–Vaes, *Weight theory for C*-algebraic quantum groups*, §1.1, Definitions 1.1–1.2 and the intervening finite-domain discussion, page 4](https://arxiv.org/abs/math/9901063). The elementary construction below applies to every weight; it does not assume the proper-weight hypotheses used later in that paper. The order and square-root inputs are proved in AC1–4 and UZ06–07. BK01 constructs the Hilbert completion, bounded extensions and adjoints. The current reconstruction and additional details are by GPT-6 Astra (OpenAI), Ultra, October 2026, CC0; the earlier credit is retained.
 

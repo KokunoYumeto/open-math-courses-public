@@ -4,9 +4,9 @@
 
 An oper is a connection with a maximally transverse Borel reduction. The reduction produces scalar differential equations and gives concrete affine families of local systems. At critical level, an affine Lie algebra's center is described by functions on opers. Localization assigns to a global oper a system of differential equations on the bundle stack with a tensor-compatible Hecke eigenproperty.
 
-We construct the adjoint-semisimple principal slice, prove its unique gauge normal form in ordinary families, and derive the coordinate action and global affine oper space. We also prove the homogeneous invariant ring over the stated characteristic-zero field, identify its degrees with the principal heights and construct the weighted Kostant section. A separate scalar proof treats \(PGL_n\) through jets. We also prove the Schwarzian rule, algebraic \(PGL_2\) irreducibility and the critical \(\mathfrak{sl}_2\) invariant. Section 3.2 extends that calculation to the entire rank-one polynomial vacuum center and its coordinate-equivariant ordinary disc-oper comparison. Section 3.3 proves the general current-jet invariant algebra, PBW symbol bound, ordinary-family base change and vacuum commutativity; it constructs every basic type A lift and proves the whole type A polynomial vacuum algebra. Section 3.4 proves the exact quantum coordinate laws and the coordinate-equivariant ordinary disc-oper comparison for every type A factor, including nilpotent parameter families. Section 3.5 proves reductive vacuum factorization, the whole type A reductive polynomial algebra and its framed central coefficient comparison, and the exact algebraic distinction between central frames and gauges. Section 3.6 constructs the smooth affine completion, proves its full type A center and ordinary punctured-disc coordinate comparison, and computes the complete abelian center at every fixed form. The center theorem in other types, localization, quantization and fundamental local equivalence remain unproved; their precise statements below retain their complete scope.
+We construct the adjoint-semisimple principal slice, prove its unique gauge normal form in ordinary families, and derive the coordinate action and global affine oper space. We also prove the homogeneous invariant ring over the stated characteristic-zero field, identify its degrees with the principal heights and construct the weighted Kostant section. A separate scalar proof treats \(PGL_n\) through jets. We also prove the Schwarzian rule, algebraic \(PGL_2\) irreducibility and the critical \(\mathfrak{sl}_2\) invariant. Section 3.2 extends that calculation to the entire rank-one polynomial vacuum center and its coordinate-equivariant ordinary disc-oper comparison. Section 3.3 proves the general current-jet invariant algebra, PBW symbol bound, ordinary-family base change and vacuum commutativity; it constructs every basic type A lift and proves the whole type A polynomial vacuum algebra. Section 3.4 proves the exact quantum coordinate laws and the coordinate-equivariant ordinary disc-oper comparison for every type A factor, including nilpotent parameter families. Section 3.5 proves reductive vacuum factorization, the whole type A reductive polynomial algebra and its framed central coefficient comparison, and the exact algebraic distinction between central frames and gauges. Section 3.6 constructs the smooth affine completion, proves its full type A center and ordinary punctured-disc coordinate comparison, and computes the complete abelian center at every fixed form. Section 3.7 constructs the intrinsic critical Poisson vertex structure and jointly continuous completed bracket for every finite-dimensional affine datum, proves the ordered Miura injection and its actual type A affine-to-boson Poisson comparison, and identifies the full type A oper Poisson bracket. Section 3.8 constructs the ordinary principal matrix Hamiltonian reduction in type A, proves its regular-jet and Laurent gauge quotients and actual classical Miura reduction, and identifies its complete scalar Adler bracket and coordinate action. Section 3.9 proves the ordinary principal classical reduction for the general specified graded semisimple datum: its affine PVA normalizer, polynomial regular-jet invariants, cofinal full Laurent quotient, all-mode reduced Poisson bracket and full ordinary coordinate action, including the quadratic Virasoro and Schwarzian laws at the chosen invariant form. The quantum-center and center/oper-Poisson comparison in other types, exact dual-form normalization, derived/global reduction, localization, quantization and fundamental local equivalence remain unproved; their precise statements below retain their complete scope.
 
-The classical calculations use a fixed smooth projective connected curve over an algebraically closed characteristic-zero field, \(g\ge2\). The regular singular example separately uses the punctured projective line. The classical center and eigenobject statements in §§4–5 have their stated complex semisimple or simply connected hypotheses. The type A center and framed reductive coefficient comparison in §§3.3–3.6 hold over every characteristic-zero field and ordinary coefficient algebra at their stated foundations. The full eigenobject theorem and intrinsic/global reductive extensions remain unproved. Connections are algebraic de Rham connections; localization uses left D-modules. Ordinary-family assertions concern the fixed curve. Analytic comparisons and full derived moduli retain separate foundations.
+The classical calculations use a fixed smooth projective connected curve over an algebraically closed characteristic-zero field, \(g\ge2\). The regular singular example separately uses the punctured projective line. The classical center and eigenobject statements in §§4–5 have their stated complex semisimple or simply connected hypotheses. The type A center, Poisson and framed reductive coefficient comparisons in §§3.3–3.8, and the general principal classical reduction at its fixed structural data in §3.9, hold over every characteristic-zero field and ordinary coefficient algebra at their stated foundations. The full eigenobject theorem and intrinsic/global reductive extensions remain unproved. Connections are algebraic de Rham connections; localization uses left D-modules. Ordinary-family assertions concern the fixed curve. Analytic comparisons and full derived moduli retain separate foundations.
 
 ## 1. General oper condition and the full adjoint target
 
@@ -1386,7 +1386,7 @@ For mode two, the \(e_2,f_2\) terms end in \(e_0v,f_0v\), hence vanish. For \(h_
 
 At \(\ell=-2\), therefore, \(Q\in V_{-2}^{\mathfrak{sl}_2[[t]]}\), and (K2.3) gives an actual affine-module endomorphism. At any other level \(e_1Q\ne0\), since \(e_{-1}v\) is a basis vector and the field has characteristic zero. This proves the central-vector calculation at exactly the critical level.
 
-The result just proved is a vacuum invariant and its corresponding endomorphism. A claim that all normally ordered Fourier coefficients are central in a completed enveloping algebra also requires the completion, vertex operations and their compatibility. Section 3.2 supplies all quadratic mode operators, their commutativity and the full rank-one vacuum-center proof. Section 3.6 proves completed centrality and the full type A completed center. Chiral compatibility and quantum lifting in other types retain their separate proof obligations.
+The result just proved is a vacuum invariant and its corresponding endomorphism. A claim that all normally ordered Fourier coefficients are central in a completed enveloping algebra also requires the completion, vertex operations and their compatibility. Section 3.2 supplies all quadratic mode operators, their commutativity and the full rank-one vacuum-center proof. Section 3.6 proves completed centrality and the full type A completed center. Section 3.7 supplies the intrinsic critical Poisson vertex structure and completed bracket, and the full type A oper-Poisson comparison. Chiral/factorization compatibility and quantum lifting in other types retain their separate proof obligations.
 
 
 ### 3.2. The full rank-one vacuum center and its coordinate action
@@ -1988,7 +1988,7 @@ Combining (RC.P5), (RC.P6) and (RC.C6) proves the coordinate-independent rank-on
 \simeq R[\operatorname{Op}_{PGL_2}(D_R)]
 \tag{RC.C9}
 \]
-for every ordinary parameter algebra, with the exact current cocycle and scalar-oper convention of this lesson. The proof supplies all generators, their independence, exhaustion and coordinate action. It does not supply the analogous higher-rank lifting theorem, the completed-enveloping-algebra center on the punctured disc, chiral or Satake compatibility, or a derived-family center. Those remain the additional scopes of §4.
+for every ordinary parameter algebra, with the exact current cocycle and scalar-oper convention of this lesson. The proof supplies all generators, their independence, exhaustion and coordinate action. Sections 3.3–3.7 supply the type A basic lifts, polynomial and completed centers, intrinsic critical Poisson structures and full scalar-oper Poisson comparison. Basic lifting and the full center/oper-Poisson comparison in other types, derived/global Hamiltonian reduction, chiral/factorization, Satake and derived-family compatibility remain the additional scopes of §4.
 
 
 ### 3.3. General current invariants and the quantum-lifting problem
@@ -2601,7 +2601,7 @@ The proof separates the relevant statements as follows:
 | Polynomial independence and exhaustion after quantum lifting | Translation (GJ.P7), unconditional commutativity (VC.20), and the finite degree induction in (GJ.Q1)–(GJ.Q2) | Actual invariant basic lifts with the prescribed leading symbols. |
 | Functions on dual-group opers with the full coordinate action | The ordinary oper construction in §§1.1–1.2, the rank-one comparison in §3.2 and the full type A comparison in §3.4 | In other simple types, construct the basic lifts and identify every lower-filtration coordinate term. |
 
-The general basic-lift hypothesis remains open for the other simple types; §3.3.5 supplies the full list for every type A factor. Once such lifts are supplied, the written argument proves the whole polynomial vacuum algebra and its ordinary coefficient extensions. Section 3.6 proves the full type A completed punctured-disc center and its ordinary coordinate action. The completed center in other types, critical-level Poisson/chiral structures, Satake compatibility, derived parameter families and geometric central-convention comparison retain their separate proof obligations in §4.
+The general basic-lift hypothesis remains open for the other simple types; §3.3.5 supplies the full list for every type A factor. Once such lifts are supplied, the written argument proves the whole polynomial vacuum algebra and its ordinary coefficient extensions. Section 3.6 proves the full type A completed punctured-disc center and its ordinary coordinate action. Section 3.7 supplies the intrinsic critical Poisson structures in every finite-dimensional affine datum and the full type A oper-Poisson comparison. The completed center and oper-Poisson comparison in other types, derived/global Hamiltonian reduction, full chiral/factorization structures, Satake compatibility, derived parameter families and geometric central-convention comparison retain their separate proof obligations in §4.
 
 #### 3.3.5. Basic critical \(\mathfrak{sl}_n\) lifts and the polynomial vacuum center
 
@@ -2877,7 +2877,7 @@ Give \(\tau\), \(u\), and \(E_{ab}[-j]\) energies \(1\), \(1\), and \(j\), respe
 \]
 All listed generators are algebraically independent. Equation (GJ.P5) extends this algebra identity to every ordinary \(k\)-algebra \(R\), including nonreduced ones. Each endomorphism is a finite polynomial; no completed polynomial algebra is asserted.
 
-For a direct sum of type A factors, the critical bracket has no cross-factor terms. A basic lift from one factor, with the vacuum in every other factor, is invariant for the entire sum. Its symbol is the corresponding basic polynomial of that factor. Thus the same general reduction proves (SL.C1) with the concatenated lists of generators. The zero Lie algebra gives the coefficient ring. Section 3.4 proves the full quantum coordinate law and ordinary oper comparison for these type A factors. Section 3.6 proves the type A completed center and its punctured-disc comparison. Basic lifting and the coordinate comparison in other simple types, their completed center, and chiral/Poisson/Satake/derived comparisons remain separate proof obligations.
+For a direct sum of type A factors, the critical bracket has no cross-factor terms. A basic lift from one factor, with the vacuum in every other factor, is invariant for the entire sum. Its symbol is the corresponding basic polynomial of that factor. Thus the same general reduction proves (SL.C1) with the concatenated lists of generators. The zero Lie algebra gives the coefficient ring. Section 3.4 proves the full quantum coordinate law and ordinary oper comparison for these type A factors. Section 3.6 proves the type A completed center and its punctured-disc comparison. Section 3.7 supplies the intrinsic critical Poisson structures and the full type A scalar-oper Poisson comparison. Basic lifting and the full coordinate and oper-Poisson comparison in other simple types, their completed center, and derived/global Hamiltonian reduction, chiral/factorization, Satake and derived comparisons remain separate proof obligations.
 
 
 ### 3.4. Coordinate laws of scalar opers and critical vacuum centers
@@ -3359,7 +3359,7 @@ For the inverse action replace \(a\) by \(-a\). Thus nilpotent translations are 
 
 For \(n=1\), the normalized operator is \(\partial_t:F_0\to F_1\); (SC.O7) gives \(\mathcal T_\eta(\partial_t)=\partial_u\). There are no scalar coefficients and the \(PGL_1\) coefficient functor is a point.
 
-These are complete algebraic coordinate formulas for the ordinary scalar-oper coefficient functor. Their identification with intrinsic opers uses the finite-jet, vector-lift and ordinary bundle-descent inputs specified in §§2.2–2.6. The recursive global curve/Picard foundations in §2.1 and the bundle-algebraization foundation in §2.8 remain unproved in their stated global uses. No such global theorem is needed for the coefficient recursion or its ordinary base change. The coefficients here are those of the scalar differential operator (SC.O1); Section 3.4.3 compares these coefficients with the quantum determinant generators. Completed centers, chiral or Poisson structures and derived parameter spaces require their separate mathematical arguments.
+These are complete algebraic coordinate formulas for the ordinary scalar-oper coefficient functor. Their identification with intrinsic opers uses the finite-jet, vector-lift and ordinary bundle-descent inputs specified in §§2.2–2.6. The recursive global curve/Picard foundations in §2.1 and the bundle-algebraization foundation in §2.8 remain unproved in their stated global uses. No such global theorem is needed for the coefficient recursion or its ordinary base change. The coefficients here are those of the scalar differential operator (SC.O1); Section 3.4.3 compares these coefficients with the quantum determinant generators. Sections 3.6–3.7 supply the smooth completed center in type A, the intrinsic critical Poisson structures and the full type A scalar-oper Poisson comparison. Completed centers and oper-Poisson comparison in other types, derived/global Hamiltonian reduction, chiral/factorization and derived parameter spaces retain their separate mathematical requirements.
 
 #### 3.4.3. Quantum coordinate law of the critical determinant
 
@@ -3681,7 +3681,7 @@ Finally, (SL.C1) gives the whole ordinary type-A polynomial vacuum algebra, and 
 A_{k,r}\longmapsto s_{k,r}\qquad(2\leq k\leq n,\ r\geq0)
 \tag{SL.X26}
 \]
-is therefore an algebra isomorphism, with the specified determinant normalization. Equations (SL.X18)–(SL.X24) and the integration argument prove its coordinate equivariance over every ordinary parameter algebra. Products of type-A factors are handled componentwise. This establishes the type-A ordinary formal-disc coordinate comparison at the previously stated scalar-oper and invariant-theory foundations. It does not prove a punctured-disc completed center, chiral/Poisson/Satake compatibility, a derived-family comparison, or basic lifting and coordinate identification in other types.
+is therefore an algebra isomorphism, with the specified determinant normalization. Equations (SL.X18)–(SL.X24) and the integration argument prove its coordinate equivariance over every ordinary parameter algebra. Products of type-A factors are handled componentwise. This establishes the type-A ordinary formal-disc coordinate comparison at the previously stated scalar-oper and invariant-theory foundations. Sections 3.6–3.7 prove the type A punctured-disc completed center and its full scalar-oper Poisson comparison; the regular comparison is a Poisson vertex comparison. Ordinary principal Hamiltonian reduction in other types and derived/global reduction, chiral/factorization, Satake and derived-family compatibility, and basic lifting and full coordinate/oper-Poisson identification in other types retain their separate proof obligations.
 
 #### 3.4.4. General quadratic critical states and their coordinate action
 
@@ -4045,7 +4045,7 @@ On a vector of energy \(E\), the derivation \(D_l\) lowers energy by \(l\). Thus
 
 There is no hidden infinite product on an individual vector or polynomial. All \(l>E\) act trivially, and the remaining positive flows lower energy, so only finitely many terms contribute. For completeness, a coordinate differing from \(t\) first in order \(E+2\) acts trivially on an energy-\(E\) vacuum word. Every new substituted term in a factor of index \(-j\) has index at least \(E+1-j\), larger than the sum of the other negative indices; commuting it to the right leaves a positive mode and no possible central remainder. It kills the vacuum. The corresponding scalar-coefficient statement follows either from its weighted formula or the finite flow factors. Thus the successive flow product equals the actual full substitution on both sides.
 
-A general continuous substitution is a nilpotent translation composed with a pointed substitution; factor its pointed linear coefficient as the scaling just treated. Equality for these factors proves the assertion for the entire ordinary continuous coordinate group, including nonreduced \(R\). The conclusion does not include derived parameter algebras, a completed punctured-disc center or a chiral/factorization construction.
+A general continuous substitution is a nilpotent translation composed with a pointed substitution; factor its pointed linear coefficient as the scaling just treated. Equality for these factors proves the assertion for the entire ordinary continuous coordinate group, including nonreduced \(R\). Section 3.6 supplies the completed type A punctured-disc center, and §3.7 supplies its full coordinate-equivariant scalar-oper Poisson comparison. Derived parameter algebras and a full chiral/factorization construction retain their separate proof obligations.
 
 #### 3.4.6. Matched generators and the cubic correction
 
@@ -4099,7 +4099,7 @@ b_3=s_3-\frac{n-2}{2}s_2',\qquad
 To verify the second equality, differentiate (TC.A11), substitute it together with (TC.A12), and cancel the \(v''s_2\) and \(v''''\) terms. The remaining derivative and weight terms are exactly those displayed. Thus \(b_3\) transforms as a cubic differential under the full ordinary coordinate group, by the same integration argument. On the vacuum side its matching vector is
 \(w_3-\tfrac{n-2}{2}Tw_2\). The derivative correction has lower PBW degree than the cubic leading symbol. This example exhibits why the coordinate law of quantum generators cannot be read from their highest symbols alone.
 
-For products of type A factors, use the factor generators and scalar oper operators. Cross-factor currents commute and the critical form is their direct sum. The proved polynomial algebra (SL.C1), the coordinate laws and the map (TC.A9) therefore give the product comparison as well. The proof concerns the regular algebraic vacuum algebra and the ordinary disc-oper coefficient functor. Section 3.5 supplies reductive vacuum factorization and the framed central coefficient comparison. Section 3.6 proves the full smooth completed type A center and its punctured-disc coefficient and coordinate comparison. Non-type-A basic lifting, coordinate comparison and completed center, Poisson/chiral/Satake compatibility, full derived families and intrinsic nonadjoint/global central conventions retain their separate proof obligations.
+For products of type A factors, use the factor generators and scalar oper operators. Cross-factor currents commute and the critical form is their direct sum. The proved polynomial algebra (SL.C1), the coordinate laws and the map (TC.A9) therefore give the product comparison as well. The proof concerns the regular algebraic vacuum algebra and the ordinary disc-oper coefficient functor. Section 3.5 supplies reductive vacuum factorization and the framed central coefficient comparison. Section 3.6 proves the full smooth completed type A center and its punctured-disc coefficient and coordinate comparison. Section 3.7 supplies the intrinsic critical Poisson structures and the full type A oper-Poisson comparison. Non-type-A basic lifting, full coordinate/oper-Poisson comparison and completed center, derived/global Hamiltonian reduction, chiral/factorization/Satake compatibility, full derived families and intrinsic nonadjoint/global central conventions retain their separate proof obligations.
 
 
 ### 3.5. Reductive vacuum algebras and central data
@@ -4851,10 +4851,7 @@ bundle and automorphism data; it is a different functor. No intrinsic
 \(GL_n\)-oper equivalence follows merely from (TR.19).
 The proved scope is the entire regular critical \(GL_n\) vacuum algebra
 and its full ordinary formal-disc comparison with a normalized type-A
-scalar operator plus a framed central one-form. Global nonadjoint
-bundle conventions, completed punctured-disc centres, chiral or Poisson
-structures, and derived coefficient algebras require their separate
-arguments.
+scalar operator plus a framed central one-form. Sections 3.6–3.7 supply the completed type A centre and its full framed scalar coefficient Poisson comparison. Global nonadjoint bundle conventions, derived/global Hamiltonian reduction, chiral/factorization structures and derived coefficient algebras require their separate arguments.
 
 #### 3.5.3. Residue direction, the central line and critical normalization
 
@@ -5133,7 +5130,7 @@ The central square showing the exact coordinate convention is
 
 In the \(\mathfrak{gl}_n\) example, the trace current represents the central direction \(I\), and the determinant character of the dual group pairs with that direction by the trace. The coefficient called \(c\) in §3.5.2 is one \(n\)-th of the trace coefficient; the raw scalar operator has subprincipal coefficient \(s_1=nc\). Thus the trace decomposition gives a concrete realization of (CF.12). Its framed scalar operators are acted on by central gauge through \(c\mapsto c-u'/u\); the normalized trace-free oper is unchanged because scalar conjugation sends every \(\partial+c\) to \(\partial+c-u'/u\). The proof of (CF.8) shows exactly which central coefficients disappear if this gauge quotient is taken.
 
-These results establish the regular algebraic reductive vacuum factorization and its framed central coefficient comparison. A statement about intrinsic nonadjoint opers must specify its retained central data, gauge group and torsor descent. Section 3.6 supplies the full completed type A center and ordinary punctured-disc comparison. The completed center in other types, central-line geometry in localization, chiral or Poisson structures, Satake compatibility and derived parameter families retain their separate mathematical requirements.
+These results establish the regular algebraic reductive vacuum factorization and its framed central coefficient comparison. A statement about intrinsic nonadjoint opers must specify its retained central data, gauge group and torsor descent. Section 3.6 supplies the full completed type A center and ordinary punctured-disc comparison. Section 3.7 supplies the intrinsic critical Poisson structures and the full type A framed scalar coefficient comparison. The completed center and oper-Poisson comparison in other types, central-line geometry in localization, derived/global Hamiltonian reduction, chiral/factorization structures, Satake compatibility and derived parameter families retain their separate mathematical requirements.
 
 
 ### 3.6. Smooth affine completion and punctured-disc centers
@@ -5979,7 +5976,7 @@ Z(\widehat A_R)\simeq\varprojlim_N\mathscr P_R/J_{N,R}.&&
 \]
 *Finite PBW degree is used only on the right, at an individual cutoff. Normalizer representatives supply its polynomial products; exact independence supplies compatibility. Completion and continuity supply the final central limit.*
 
-Applying the preceding CW/UC constructions, the theorem proves the full completed center for the stated type A and zero-form central factors at the exact classical structural premises retained above. It does not supply chiral or Poisson structures, Satake compatibility, a derived-family comparison, non-type-A basic lifts, or the geometric central-line convention needed by localization. Those remain their separate mathematical statements.
+Applying the preceding CW/UC constructions, the theorem proves the full completed center for the stated type A and zero-form central factors at the exact classical structural premises retained above. Section 3.7 supplies the intrinsic critical Poisson structures and the full type A scalar-oper Poisson comparison. Chiral/factorization structures, Satake compatibility, a derived-family comparison, non-type-A basic lifts and full oper-Poisson comparison, derived/global Hamiltonian reduction and the geometric central-line convention needed by localization remain their separate mathematical statements.
 
 #### 3.6.4. The complete abelian center at an arbitrary fixed form
 
@@ -6121,7 +6118,7 @@ w_{-r-1}v\longmapsto
 \]
 The sum is finite if \(\psi(0)\) is nilpotent, as proved in (RV.24)–(RV.27). This verifies the compatibility of the complete central algebra with its ordinary vacuum coefficient quotient.
 
-The construction and the entire abelian completed-center calculation are proved here. They establish neither the presentation of the completed semisimple center nor its geometric, chiral, Poisson, Satake or derived comparisons. Those assertions, and all intrinsic reductive-oper and global central-convention questions, retain their separate mathematical scope.
+The construction and the entire abelian completed-center calculation are proved here. The semisimple presentation is supplied in type A by §3.6.3, and §3.7 constructs the intrinsic critical completed Poisson bracket. Non-type-A completed centers and oper-Poisson comparison, derived/global Hamiltonian reduction, chiral/factorization, Satake and derived comparisons, and all intrinsic reductive-oper and global central-convention questions retain their separate mathematical scope.
 
 #### 3.6.5. Laurent coefficients, coordinates and restriction to the vacuum
 
@@ -6275,7 +6272,4758 @@ The following cases show what the vacuum forgets. In the abelian rows, the coeff
 
 *The difference in the last two rows comes from the paired nonzero modes, not from the zero modes. Zero modes are central for every abelian form. The exact center at an intermediate radical is (HC.1)–(HC.12); its vacuum restriction retains precisely the negative radical modes by (RV.11).*
 
-These arguments prove the full smooth completed type A center and its ordinary punctured-disc coefficient comparison, at the explicit finite invariant-theory and scalar-oper foundations already stated. They do not supply basic quantum lifts in other types, a chiral or Poisson comparison, a Satake construction, a derived-family comparison, or the intrinsic and global central-convention comparisons of §3.5.3. Those retain their distinct proof obligations.
+These arguments prove the full smooth completed type A center and its ordinary punctured-disc coefficient comparison, at the explicit finite invariant-theory and scalar-oper foundations already stated. Section 3.7 supplies the intrinsic critical Poisson structures and the full type A oper-Poisson comparison. Basic quantum lifts and full oper-Poisson comparison in other types, derived/global Hamiltonian reduction, chiral/factorization comparison, a Satake construction, a derived-family comparison and the intrinsic and global central-convention comparisons of §3.5.3 retain their distinct proof obligations.
+
+
+### 3.7. Critical Poisson brackets and Miura operators
+
+#### 3.7.1. The intrinsic critical Poisson vertex algebra
+
+Fix a characteristic-zero field \(k\), an ordinary commutative \(k\)-algebra \(R\), and a finite-dimensional Lie algebra \(\mathfrak g\). Let
+\[
+ \kappa_\varepsilon=\kappa_{\mathrm{crit}}+\varepsilon B,
+ \qquad \kappa_{\mathrm{crit}}=-\frac12\mathrm{Kil},
+ \qquad S=R[\varepsilon],
+ \tag{PV.1}
+\]
+where \(B\) is an invariant symmetric form. Nondegeneracy of \(B\) is not required for this construction. The choice of \(B\) specifies the direction and normalization of the bracket. The affine cocycle uses
+\([x_m,y_q]=[x,y]_{m+q}+m\kappa_\varepsilon(x,y)\delta_{m+q,0}\,1\).
+PBW identifies the vacuum \(V_S\), uniformly in \(\varepsilon\), with the free \(S\)-module on ordered negative-current words. Its reduction is \(V_R\) at the critical form. In particular multiplication by \(\varepsilon\), and by \(\varepsilon^2\), is injective even if \(R\) is nonreduced. Every fixed state product is a finite expression with coefficients in \(S\).
+
+The level-deformation construction is described by Edward Frenkel in the freely available author edition of [*Lectures on the Langlands Program and Conformal Field Theory*, §§8.1–8.2 and 8.4, arXiv hep-th/0512172v1](https://arxiv.org/abs/hep-th/0512172v1). We prove the residue and first-order identities here. The Poisson comparison with the oper Hamiltonian reduction requires the additional type A matrix, normalizer and classical free-field arguments of §3.8.
+
+**Residue products, with their algebraic identity proved.** We use the universal current fields proved in §3.6.2 over \(S\), as well as over \(R\). For every smooth target \(M\), those fields are coefficient-finite, natural in \(M\), independent of negative-word representatives, and pairwise local. For two such fields put
+\[
+ (A_{(p)}B)(z)=\operatorname{Res}_s
+ \bigl(\iota_{s,z}(s-z)^pA(s)B(z)
+             -\iota_{z,s}(s-z)^pB(z)A(s)\bigr),
+ \quad p\in\mathbb Z.
+ \tag{PV.2}
+\]
+The geometric expansions give the derivative normal product when \(p<0\). For \(p\geq0\) they give the finite commutator sum. Their field property, locality closure and common input cutoffs were proved in (UC.12). No translation operator on the target is used.
+
+We will need the full three-field residue identity. Its proof is elementary partial fractions, which we give explicitly. For a Laurent expression \(G(u,v)\) with possible diagonal poles only at \(u=0\), \(v=0\) and \(u=v\), let the two successive residues at \(0\) use respectively the expansions \(|v|<|u|\) and \(|u|<|v|\). Then
+\[
+ \operatorname{Res}_{v=0}\operatorname{Res}_{u=v}G
+ =
+ \operatorname{Res}_{u=0}^{\,|v|<|u|}
+              \operatorname{Res}_{v=0}G
+ -
+ \operatorname{Res}_{v=0}^{\,|u|<|v|}
+              \operatorname{Res}_{u=0}G.
+ \tag{PV.3}
+\]
+Here \(\operatorname{Res}_{u=v}\) expands in \(u-v\). To prove (PV.3), take partial fractions in \(u\), with \(v\) invertible as a Laurent variable:
+\[
+ G=P(u,v)+\sum_a\alpha_a(v)u^{-a}
+                      +\sum_b\beta_b(v)(u-v)^{-b}.
+\]
+The polynomial part has zero residue in \(u\). The \(u^{-a}\) terms have the same two successive residues and no diagonal residue. For a \((u-v)^{-b}\) term, the expansion with \(|u|<|v|\) has only nonnegative powers of \(u\), so its \(u\)-residue is zero. In the other expansion,
+\[
+ (u-v)^{-b}=\sum_{h\geq0}\binom{b+h-1}{h}v^hu^{-b-h}.
+\]
+The final \(u\)-residue is possible only for \(b=1,h=0\), and is then
+\(\operatorname{Res}_v\beta_1(v)\), exactly the left side. This proves the identity term by term. The same calculation applies to a formal power-series numerator: at a specified final coefficient only a finite numerator jet can contribute to the fixed pole orders and residues. Partial fractions use only powers of the Laurent unit \(v\), not a division by an element of \(R\).
+
+Here is why this scalar calculation applies to local operator fields. For a fixed input \(\mu\), multiply \(A(s)B(t)C(z)\mu\) by a product
+\[
+ (s-t)^a(s-z)^b(t-z)^c
+\]
+of pairwise locality factors. Adjacent locality exchanges show that the resulting numerator is the same for all six orders. Moving each of the three fields to the rightmost position gives a lower bound in its variable from its action on \(\mu\); polynomial locality factors shift those bounds only finitely. The common numerator therefore belongs to
+\(M[[s,t,z]][s^{-1},t^{-1},z^{-1}]\).
+Each original ordered product is its indicated iterated Laurent expansion after division by the locality factors. These divisions are unique in the corresponding iterated Laurent space.
+
+For two fields, the difference of the two expansions in (PV.2) has residue exactly at \(s=t\). Indeed take partial fractions in \(s\); the polynomial and \(s^{-a}\) parts have equal residues in the two expansions, and a term \(\beta_b(t)(s-t)^{-b}\) contributes only \(\beta_1(t)\). This verifies the residue interpretation directly, without a contour theorem. For three fields, set \(u=s-z\), \(v=t-z\), and apply (PV.3) to the common numerator divided by the locality factors, multiplied by
+\[
+ u^m(u-v)^p v^q.
+\]
+The individual-variable poles at \(s=0,t=0\) are regular Taylor units near \(s=t=z\); their coefficients lie in the Laurent series in \(z\). The only remaining local poles are those of (PV.3). At each coefficient the finite numerator-jet argument just given applies.
+
+In the diagonal residue expand \(u^m=((u-v)+v)^m\). In the first successive residue expand
+\((u-v)^p=\sum_i(-1)^i\binom pi u^{p-i}v^i\).
+In the second expand
+\((u-v)^p=(-1)^p\sum_i(-1)^i\binom pi v^{p-i}u^i\).
+Consequently
+\[
+ \begin{aligned}
+ &\sum_{i\geq0}\binom mi
+             (A_{(p+i)}B)_{(m+q-i)}C\\
+ &\quad=\sum_{i\geq0}(-1)^i\binom pi
+   \left(A_{(m+p-i)}(B_{(q+i)}C)
+          -(-1)^p B_{(p+q-i)}(A_{(m+i)}C)\right).
+ \end{aligned}
+ \tag{PV.4}
+\]
+This holds for all integers \(m,p,q\). Each sum of field products is finite: on the left \(A_{(p+i)}B\) vanishes for sufficiently large \(i\) by locality; on the right the indicated positive products with \(C\) do so. The signs and generalized binomial coefficients are precisely the three expansions above. For an actual operator coefficient, first take the common cutoffs for the input and the finite family of intermediate states. Thus (PV.4) is proved as a residue identity on every smooth module, not introduced as a vertex-algebra axiom.
+
+**State products and their universal targets.** On the source vacuum write
+\(Y(a,z)=\sum_{j\in\mathbb Z}a_{(j)}z^{-j-1}\).
+Creation, translation and current-local uniqueness were proved in (VC.9)–(VC.10): \(Y(a,z)v=e^{zT}a\),
+\([T,Y(a,z)]=\partial_zY(a,z)\), and a field local with all currents and zero on \(v\) is zero. These facts hold over \(S\) by the same finite word proofs.
+
+First locality and translation give state skew symmetry:
+\[
+ Y(a,z)b=e^{zT}Y(b,-z)a.
+ \tag{PV.5}
+\]
+For a proof, apply the locality relation for \(Y(a,s),Y(b,t)\) to \(v\), use creation, and commute the translation exponential through each field by the coefficientwise identity following from \([T,Y]=\partial Y\). Put \(u=s-t\). After multiplication by \(u^L\), with \(L\) large enough for both state Laurent bounds, the relation becomes
+\[
+ u^Le^{tT}Y(a,u)b=u^Le^{(t+u)T}Y(b,-u)a.
+\]
+Both sides are now regular in \(u\). Setting \(t=0\) and cancelling the Laurent monomial \(u^L\) proves (PV.5). All exponentials are source-state power series, with an algebraic state at each coefficient.
+
+Next let \(F=Y(a)_{(p)}Y(b)\). The two terms of \(F(z)v\), after creation and translation, are the two indicated expansions of
+\(e^{zT}(s-z)^pY(a,s-z)b\), by (PV.5).
+For an integer \(d\),
+\[
+ \operatorname{Res}_s\bigl(
+   \iota_{s,z}(s-z)^d-\iota_{z,s}(s-z)^d\bigr)
+   =\delta_{d,-1}.
+\]
+For \(d\geq0\) the expansions coincide; for \(d<-1\) their difference is a derivative of the delta distribution with zero residue; for \(d=-1\) the geometric expansions have residue one. Only finitely many negative powers occur in \(Y(a,u)b\). Extracting the residue gives
+\(F(z)v=e^{zT}a_{(p)}b\).
+The field \(F\) is local with currents by product closure, so current-local uniqueness proves
+\[
+ Y(a_{(p)}b,z)=\bigl(Y(a)_{(p)}Y(b)\bigr)(z)
+                     \qquad(p\in\mathbb Z).
+ \tag{PV.6}
+\]
+This is a proof on the source vacuum. We now extend it to arbitrary targets by an independent residue induction.
+
+For the identity state, (PV.2) gives
+\(\operatorname{Id}_{(p)}F=\delta_{p,-1}F\).
+For a current state \(x=x_{-1}v\), (UC.10) gives
+\(Y_M(x_{(p)}b)=x(z)_{(p)}Y_M(b)\) for every integer \(p\).
+Suppose the full product identity is known for a first argument \(u\), and all second arguments. For \(a=x_{-r}u=x_{(-r)}u\), take \(m=0,p=-r,q=n\) in (PV.4). On the vacuum, (PV.6) and injectivity of \(Y\) give the state identity
+\[
+ (x_{(-r)}u)_{(n)}b
+ =\sum_{i\geq0}(-1)^i\binom{-r}{i}
+   \left(x_{(-r-i)}(u_{(n+i)}b)
+          -(-1)^r u_{(n-r-i)}(x_{(i)}b)\right).
+ \tag{PV.7}
+\]
+Apply \(Y_M\) and use the induction hypothesis on every \(u\)-product, and the current identity on every \(x\)-product. Formula (PV.4) on \(M\) makes the result precisely
+\((x_{(-r)}Y_M(u))_{(n)}Y_M(b)=Y_M(a)_{(n)}Y_M(b)\).
+The sums are finite by the positive-product bounds; the generalized negative binomial series has not introduced an infinite state sum. Induction on negative-word length, and linearity, therefore prove
+\[
+ \boxed{Y_M(a_{(p)}b,z)
+       =\bigl(Y_M(a)_{(p)}Y_M(b)\bigr)(z)
+       \quad\text{on every smooth }M,\quad p\in\mathbb Z.}
+ \tag{PV.8}
+\]
+No target vacuum or target translation operator was used. The identity is natural in module maps and ordinary coefficient changes, since every residue and coefficient comparison uses the common finite cutoffs of UC.
+
+Expansion of (PV.2) also gives every coefficient of an iterated product:
+\[
+ (a_{(p)}b)^M_{(q)}
+ =\sum_{i\geq0}(-1)^i\binom pi
+   \left(a^M_{(p-i)}b^M_{(q+i)}
+              -(-1)^p b^M_{(p+q-i)}a^M_{(i)}\right).
+ \tag{PV.9}
+\]
+This is a sum of operators, finite on any specified input: the rightmost positive modes kill that input for large \(i\). Thus (PV.8) includes the full iterate identities, not only nonnegative products.
+
+Locality of \(Y_M(a),Y_M(b)\), (PV.8), and the finite delta expansion proved in UC give
+\[
+ \boxed{[a^M_{(m)},b^M_{(n)}]
+    =\sum_{j\geq0}\binom mj
+            (a_{(j)}b)^M_{(m+n-j)}
+                \qquad(m,n\in\mathbb Z).}
+ \tag{PV.10}
+\]
+Its delta residues are exactly \(Y_M(a_{(j)}b)\) by (PV.8). The upper support is a locality bound, independent of \(m,n\). Negative \(m\) uses generalized binomial coefficients. The same formula on the source vacuum gives the exact nonnegative-product Jacobi identity
+\[
+ a_{(m)}(b_{(n)}c)-b_{(n)}(a_{(m)}c)
+   =\sum_{j=0}^m\binom mj(a_{(j)}b)_{(m+n-j)}c
+                   \quad(m,n\geq0).
+ \tag{PV.11}
+\]
+These are the universal state-product and commutator identities required to compare Fourier brackets later.
+
+**The critical commutative differential algebra.** Put
+\[
+ Z_R=V_R^{\mathfrak g[[t]]}.
+\]
+By UC, each critical invariant \(a\) has a field all of whose modes commute with every current, hence with every reconstructed field. Its nonnegative modes vanish on \(V_R\), by creation and cyclicity, as explicitly proved in (UC.21). Therefore
+\[
+ a_{(j)}u=0,\qquad u_{(j)}a=0
+        \quad(a\in Z_R,\ u\in V_R,\ j\geq0).
+ \tag{PV.12}
+\]
+The first equality is this operator vanishing. The second also follows from (PV.5): its coefficient is a finite sum of translates of \(a_{(j+s)}u\), all zero.
+
+The product \(ab=a_{(-1)}b\) is the vacuum image of the composition of the corresponding invariant endomorphisms. Thus it belongs to \(Z_R\), is associative and commutative, and has unit \(v\), by the induction correspondence and the commutativity already proved in VC and UC. Translation preserves invariants:
+\(x_jTa=Tx_ja+jx_{j-1}a=0\) for \(j\geq0\), with the \(j=0\) boundary coefficient zero. Moreover
+\[
+ T(ab)=(Ta)b+a(Tb),\qquad Tv=0.
+ \tag{PV.13}
+\]
+Indeed \([T,a_{(-1)}]=(Ta)_{(-1)}\), from \([T,Y(a)]=\partial Y(a)\). Hence \(Z_R\) is an ordinary commutative differential algebra.
+
+Choose any PBW lifts \(\widetilde a,\widetilde b\in V_S\) of \(a,b\in Z_R\). By (PV.12), their nonnegative products reduce to zero, and therefore uniquely have the form
+\[
+ \widetilde a_{(j)}\widetilde b=\varepsilon h_j,
+ \qquad j\geq0,\qquad h_j\in V_S.
+\]
+Define
+\[
+ \boxed{\{a_\lambda b\}_B
+   =\sum_{j\geq0}\frac{\lambda^j}{j!}\,
+       \overline h_j
+   =\left.\frac1\varepsilon
+          [\widetilde a_\lambda\widetilde b]_\varepsilon
+     \right|_{\varepsilon=0},\qquad
+ [u_\lambda v]_\varepsilon=\sum_{j\geq0}
+                      \frac{\lambda^j}{j!}u_{(j)}v.}
+ \tag{PV.14}
+\]
+The sum is a polynomial by locality. Multiplication by \(\varepsilon\) is injective in the free PBW module, so the division is defined without a torsion choice.
+
+Changing \(\widetilde a\) by \(\varepsilon u\) changes its quotient at order zero by \(u_{(j)}b=0\); changing \(\widetilde b\) by \(\varepsilon w\) changes it by \(a_{(j)}w=0\). The simultaneous change has an additional \(\varepsilon^2u_{(j)}w\) before division, which also disappears. This proves independence of all PBW lifts, and \(R\)-bilinearity.
+
+We must also prove that every \(\overline h_j\) is central. Fix a physical current \(x_m\), \(m\geq0\). Write
+\(x_\ell\widetilde a=\varepsilon u_\ell\) for \(\ell\geq0\) and
+\(x_m\widetilde b=\varepsilon v_m\).
+The universal current commutator (UC.14), applied on the source family, gives
+\[
+ \left.x_mh_j\right|_0
+  =\sum_{\ell=0}^m\binom m\ell
+           (u_\ell|_0)_{(j+m-\ell)}b
+               +a_{(j)}(v_m|_0)=0.
+ \tag{PV.15}
+\]
+Every index \(j+m-\ell\) is nonnegative, so the first terms vanish by the second-slot equality of (PV.12); the last term vanishes by its first-slot equality. Thus
+\(\overline h_j\in Z_R\). Smoothness handles formal nonnegative currents. This establishes closure without presuming that the lifts themselves are central away from \(\varepsilon=0\).
+
+**Sesquilinearity and skew symmetry.** Translation of the state fields gives
+\[
+ (Ta)_{(j)}b=-j\,a_{(j-1)}b,\qquad
+ a_{(j)}Tb=T(a_{(j)}b)+j\,a_{(j-1)}b.
+\]
+These exact family identities follow respectively from \(Y(Ta)=\partial Y(a)\) and \([T,a_{(j)}]=-j a_{(j-1)}\). Division by \(\varepsilon\) and coefficient collection prove
+\[
+ \boxed{\{Ta_\lambda b\}=-\lambda\{a_\lambda b\},\qquad
+ \{a_\lambda Tb\}=(T+\lambda)\{a_\lambda b\}.}
+ \tag{PV.16}
+\]
+Taking the coefficient \(z^{-j-1}\) in (PV.5) gives
+\[
+ a_{(j)}b=\sum_{r\geq0}
+       \frac{(-1)^{j+r+1}}{r!}\,T^r(b_{(j+r)}a).
+\]
+The positive-product support makes this finite for \(j\geq0\).
+Consequently
+\[
+ \boxed{\{a_\lambda b\}=-\{b_{-\lambda-T}a\}.}
+ \tag{PV.17}
+\]
+The substitution on the right means that powers of \(T\) act on the resulting coefficients, not on the input \(a\) before forming the bracket. To check the collection explicitly, the coefficient of \(\lambda^j/j!\) in
+\(-\sum_q(-\lambda-T)^q h_q/q!\)
+is exactly the preceding translated coefficient formula.
+
+**Jacobi, with the second-order division justified.** Formula (PV.11) holds in \(V_S\). For central \(a,b,c\), every inner nonnegative product of their lifts is \(\varepsilon\) times a state whose reduction is central, by (PV.15). Its outer nonnegative product with another central lift is therefore divisible by a further \(\varepsilon\). Both sides of (PV.11) are divisible by \(\varepsilon^2\). Divide by \(\varepsilon^2\), then specialize:
+\[
+ \{a_\lambda\{b_\mu c\}\}
+  -\{b_\mu\{a_\lambda c\}\}
+       =\{\{a_\lambda b\}_{\lambda+\mu}c\}.
+ \tag{PV.18}
+\]
+For a direct coefficient check, the coefficient of
+\(\lambda^m/m!\,\mu^n/n!\) on the right is
+\(\sum_{j=0}^m\binom mj
+ \{\overline h_j{}_{\,m+n-j}c\}\)
+in mode notation: expanding \((\lambda+\mu)^{m+n-j}\) gives the factor
+\(m!/(j!(m-j)!)\). This is exactly (PV.11) after the two divisions. Inner-bracket lift independence permits the particular quotients \(h_j\) used here. Injectivity of \(\varepsilon^2\) makes the division unambiguous. Thus Jacobi has been proved, not deduced from a presumed Poisson vertex axiom.
+
+**The exact Wick identity and first-order Leibniz.** For arbitrary states in the family, the commutator (PV.10) gives, for \(m\geq0\),
+\[
+ a_{(m)}(b_{(-1)}c)
+  =b_{(-1)}(a_{(m)}c)
+       +(a_{(m)}b)_{(-1)}c
+       +\sum_{j=0}^{m-1}\binom mj
+                        (a_{(j)}b)_{(m-j-1)}c.
+ \tag{PV.19}
+\]
+Multiply by \(\lambda^m/m!\) and sum. In the last term put
+\(q=m-j-1\); its coefficient is
+\(\lambda^{j+q+1}/(j!(q+1)!)\).
+We obtain the full noncommutative Wick identity
+\[
+ \begin{aligned}
+ [a_\lambda(b_{(-1)}c)]_\varepsilon
+ &=([a_\lambda b]_\varepsilon)_{(-1)}c
+      +b_{(-1)}[a_\lambda c]_\varepsilon\\
+ &\quad+\int_0^\lambda
+                  [[a_\lambda b]_\varepsilon{}_\mu c]_\varepsilon\,d\mu .
+ \end{aligned}
+ \tag{PV.20}
+\]
+The integral is the formal polynomial antiderivative with zero constant. It follows from the displayed factorial coefficients and needs no analytic integration. This derivation retains every nonnegative-product correction.
+
+Use the lift \(\widetilde b_{(-1)}\widetilde c\) of \(bc\), which is permitted by lift independence. For central reductions,
+\([\widetilde a_\lambda\widetilde b]_\varepsilon=\varepsilon h(\lambda)\)
+and \(h(\lambda)|_0\) is central. Thus the integrand of the correction in (PV.20) is
+\[
+ \varepsilon[h(\lambda)_\mu\widetilde c]_\varepsilon
+                           \in\varepsilon^2V_S[\lambda,\mu].
+ \tag{PV.21}
+\]
+This is the required first-order correction cancellation. Division of (PV.20) by \(\varepsilon\), followed by specialization, gives
+\[
+ \boxed{\{a_\lambda bc\}=\{a_\lambda b\}c+b\{a_\lambda c\}.}
+ \tag{PV.22}
+\]
+Skew symmetry and (PV.16) also give the left Leibniz rule
+\[
+ \{ab_\lambda c\}
+   =\{a_{\lambda+T}c\}_{\to}b
+                      +\{b_{\lambda+T}c\}_{\to}a,
+\]
+where the shifted \(T\)'s act on the factor to their right. For an explicit verification, apply (PV.17) to \(\{ab_\lambda c\}\), apply (PV.22) to \(\{c_\nu ab\}\), then substitute \(\nu=-\lambda-T\). Expanding each shifted power by the binomial theorem and using
+\(T^r(xy)=\sum_s\binom rs(T^sx)(T^{r-s}y)\)
+moves the derivatives between its coefficient and the right factor. The resulting two expressions are precisely the arrow convention above.
+
+We have proved that
+\[
+ \boxed{(Z_R,\;ab=a_{(-1)}b,\;v,\;T,\;\{\,{}_\lambda\,\}_B)}
+ \tag{PV.23}
+\]
+is a Poisson vertex algebra: a commutative associative unital differential algebra with a polynomial \(\lambda\)-bracket satisfying sesquilinearity, skew symmetry, Jacobi and Leibniz. Its unit has zero bracket because the identity field has no nonnegative products. Every step used explicit field residues or finite PBW division.
+
+All of this commutes with ordinary coefficient maps \(R\to R'\). PBW makes the level family free, reconstruction and residue identities are finite at every specified coefficient, and \(\varepsilon\)-division is coefficient shifting in that free module. Invariance over \(R\) is obtained from the finite current equations on each source energy space over \(k\); tensoring over the field preserves their kernels. Thus the stated \(Z_R\) and its operations are the ordinary extension of the critical state algebra, including for nonreduced \(R\). No derived coefficient or completed tensor product has been substituted.
+
+**Fourier brackets and the precise completion boundary.** Let \(a,b\in Z_R\) be homogeneous of source energies \(D_a,D_b\), and write
+\[
+ Y_M(a,z)=\sum_n S^M_{a,n}z^{-n-D_a},\qquad
+ \{a_\lambda b\}=\sum_{j\geq0}\frac{\lambda^j}{j!}h_j.
+\]
+The coefficient \(h_j\) has energy \(D_a+D_b-j-1\); a negative energy means it is zero. Lift \(a,b\) in the level family and use (PV.10) on every smooth level-family target, or equivalently on its universal cutoff modules. The unique first-order commutator quotient is
+\[
+ \boxed{\{S_{a,n},S_{b,m}\}_{\mathrm{completed}}
+   =\sum_{j\geq0}\binom{n+D_a-1}{j}
+                          S_{h_j,n+m}.}
+ \tag{PV.24}
+\]
+Indeed the ordinary field indices are \(n+D_a-1\) and \(m+D_b-1\); after subtracting the energy of \(h_j\), its normalized index is exactly \(n+m\). Scalar states use the weight-zero convention
+\(S_{v,q}=\delta_{q,0}\operatorname{Id}\).
+The sum over \(j\) is finite. Formula (PV.8) on every smooth module is what identifies its right side with universal Fourier coefficients; a source-vacuum check alone would not suffice.
+
+The completed bracket in (PV.24) is the first-order associative-commutator construction of §3.7.5. That section supplies the stage-compatible PBW lifting, saturated division, completed algebra and continuity argument. Here we have proved its correspondence with the intrinsic \(\lambda\)-bracket for every pair of state Fourier generators and hence for their polynomial algebra. We do not declare the fixed cutoff quotients Poisson algebras: negative mode indices can carry a high mode back below a cutoff in (PV.24). Continuity of the full completed bracket requires the completed construction just specified, rather than quotienting this formula by a presumed Poisson cutoff ideal.
+
+In general, restriction of the completed ordinary centre to
+\(\operatorname{End}(V_{\mathrm{crit}})\) is not a Poisson quotient. For a deformation direction with a nonzero quadratic bracket, a Fourier mode may vanish on that vacuum, by (UC.21), while its bracket with a negative mode restricts nontrivially; §3.7.5 gives the quadratic example. The PVA (PV.23) concerns state products and the translation-labelled \(\lambda\)-bracket. It does not arise by imposing the vacuum's forbidden-mode relations as Poisson relations.
+
+The two mechanisms are displayed below:
+\[
+ \begin{array}{ccc}
+ \widetilde a_{(j)}\widetilde b
+       =\varepsilon h_j
+ &\xrightarrow{\ /\varepsilon,\;\varepsilon=0\ }&
+                   h_j|_0\in Z_R\\[2pt]
+ \text{(PV.8), every smooth }M\downarrow
+ &&\downarrow\text{(PV.24)}\\[2pt]
+ [\widetilde S_{a,n},\widetilde S_{b,m}]
+ &\xrightarrow{\ /\varepsilon,\;\varepsilon=0\ }&
+ \displaystyle\sum_j\binom{n+D_a-1}{j}S_{h_j,n+m}.
+ \end{array}
+\]
+*The upper arrow defines the intrinsic PVA coefficient (PV.14).
+The lower arrow uses the independent completed commutator construction.
+The vertical correspondence is the universal product and commutator
+identity (PV.8)–(PV.10), with all integer indices and finite locality
+support. The Wick double product (PV.21) explains first-order Leibniz.
+The square is a correspondence of bracket coefficients; it is not a
+claim that a cutoff quotient or vacuum restriction is Poisson.*
+
+This establishes the intrinsic critical PVA and the universal Fourier formula. Identifying it with a specified oper or Drinfeld–Sokolov Poisson structure, including its normalization and all geometric reduction premises, remains a separate comparison theorem. Neither the ordinary oper-coordinate algebra isomorphism nor coordinate equivariance alone proves that Poisson comparison.
+
+#### 3.7.2. The ordered Miura map and its exact injectivity
+
+We first construct the algebraic Miura map. Its Poisson property is a separate assertion, proved by the affine deformation comparison in §3.7.4 together with §3.7.3. Let \(\mathfrak g=\mathfrak{gl}_n\), or \(\mathfrak{sl}_n\), with the forms and determinant states already proved in §3.3.5. Positive finite roots are the matrix units \(E_{ab}\), \(a<b\). Put
+\[
+\ell=\mathfrak g\otimes t^{-1}k[t^{-1}],\qquad
+\ell_-=\mathfrak n_-\otimes t^{-1}k[t^{-1}],\quad
+\ell_h=\mathfrak h\otimes t^{-1}k[t^{-1}],\quad
+\ell_+=\mathfrak n_+\otimes t^{-1}k[t^{-1}].
+\tag{MC.1}
+\]
+The PBW proof preceding (K2.3) identifies the vacuum as a module with \(U(\ell)\), by its value on the vacuum vector. Order lower-root letters first, diagonal letters next and upper-root letters last. PBW gives the vector-space decomposition
+\[
+U(\ell)=U(\ell_-)\otimes\operatorname{Sym}(\ell_h)\otimes U(\ell_+).
+\tag{MC.2}
+\]
+There is no scalar bracket among negative modes. In particular the diagonal negative modes commute. The zero diagonal modes act on (MC.2) by their finite root weights. Let \(U(\ell)^0\) be the subalgebra of weight zero, and let \(\operatorname{HC}\) be projection to its all-diagonal PBW summand.
+
+We prove exactly why this projection is multiplicative on weight zero. A positive root \(\epsilon_a-\epsilon_b\), \(a<b\), is the sum of the consecutive simple roots \(\epsilon_a-\epsilon_{a+1},\ldots,\epsilon_{b-1}-\epsilon_b\). The cone of their nonnegative combinations is pointed: a nonempty sum of positive roots cannot be zero, by comparing its coefficients in the simple-root basis. A weight-zero PBW monomial therefore either is entirely diagonal or has both a nonempty lower-root block and a nonempty upper-root block. Consequently
+\[
+\ker(\operatorname{HC}|_{U(\ell)^0})
+=U(\ell)^0\cap\ell_-U(\ell)
+=U(\ell)^0\cap U(\ell)\ell_+.
+\tag{MC.3}
+\]
+Here \(\ell_-U(\ell)\) is the right ideal whose generator is at the left, and \(U(\ell)\ell_+\) is the left ideal whose generator is at the right. Their PBW spans are respectively the monomials with a nonempty lower or upper block: reordering lower letters among themselves, or upper letters among themselves, keeps a letter in that root cone. If \(a\) lies in the kernel and \(b\) has weight zero, the right-ideal description puts \(ab\) in the kernel and the left-ideal description puts \(ba\) in it. Hence the kernel is a two-sided ideal in the weight-zero subalgebra. The quotient is precisely \(\operatorname{Sym}(\ell_h)\), with its usual multiplication. This proves
+\[
+\operatorname{HC}:U(\ell)^0\longrightarrow\operatorname{Sym}(\ell_h)
+\quad\text{is a unital algebra homomorphism.}
+\tag{MC.4}
+\]
+It is not asserted to be an algebra homomorphism on all of \(U(\ell)\).
+
+Translation is \(T(x_{-a})=a x_{-a-1}\). It preserves all three root blocks, their ideal spans and the all-diagonal summand. The product rule proves
+\[
+\operatorname{HC}(Ta)=T\operatorname{HC}(a)
+\qquad(a\in U(\ell)^0).
+\tag{MC.5}
+\]
+All statements remain valid over every ordinary \(k\)-algebra \(R\). Indeed the PBW monomials are free over \(R\). A nonzero finite weight has a nonzero value on some diagonal element over \(k\); this value is a unit in every nonzero \(R\). Thus being killed by all diagonal zero modes removes exactly the nonzero weight summands, including over rings with nilpotents. The same coefficient and ideal proofs establish (MC.3)–(MC.5) over \(R\).
+
+Every invariant vacuum state has weight zero. Identify it with its unique negative-mode representative \(a\in U(\ell)\). The product of invariant states is endomorphism composition, as in (K2.3) and (VC.19). If their representatives are \(a,b\), its vacuum value is \(ba v\): the endomorphism with value \(a v\) commutes with the currents used to form \(b v\). Equations (MC.4)–(MC.5) therefore give a homomorphism of commutative differential algebras
+\[
+\nu_R:Z^{\mathrm{vac}}_{\mathrm{crit},R}
+ \longrightarrow \operatorname{Sym}_R(\ell_{h,R}),
+\qquad a v\longmapsto\operatorname{HC}(a).
+\tag{MC.6}
+\]
+The target is commutative, so reversing the order in \(ba\) makes no difference. The affine critical form restricted to the source Cartan is generally nonzero. Equation (MC.6) is a differential-algebra map into diagonal negative variables; it has not identified the source affine Cartan vertex algebra with a zero-form boson vertex algebra.
+
+Write \(h_a=E_{aa}[-1]\) in the raw matrix case, and \(h_a=F_{aa}[-1]\) with \(\sum_a h_a=0\) in the traceless case. Extend (MC.4) to the weight-zero Ore algebra by keeping \(\tau\), where \(\tau c=c\tau+Tc\). This extension is well defined by (MC.5). The column determinant obeys the exact identity
+\[
+\operatorname{HC}\!\left(\operatorname{cdet}(\delta_{ab}\tau+E_{ab}[-1])\right)
+=(\tau+h_1)(\tau+h_2)\cdots(\tau+h_n).
+\tag{MC.7}
+\]
+To prove it, each permutation term has weight zero. For a nonidentity permutation \(\pi\), let \(j\) be its first nonfixed column. Its preceding columns are fixed, so \(\pi(j)>j\). The factor at column \(j\) is the lower-root letter \(E_{\pi(j),j}[-1]\). Moving it to the left through the preceding diagonal and \(\tau\) factors gives only lower-root letters: a diagonal commutator preserves its root, and a \(\tau\) commutator differentiates its negative mode. Thus the whole term belongs to the kernel in (MC.3), including every derivative term. Only the identity permutation remains, giving the displayed ordered product. Passing to the trace-zero quotient gives the same formula with \(E\) replaced by \(F\). This argument explains the order; it is not a commutative determinant substitution.
+
+Define the differential polynomials \(M_i\) by right-ordering that product:
+\[
+(\tau+h_1)\cdots(\tau+h_n)
+=\tau^n+\sum_{i=1}^n M_i(h)\tau^{n-i}.
+\tag{MC.8}
+\]
+Their first two terms are
+\[
+M_1=\sum_a h_a,\qquad
+M_2=\sum_{a<b}h_ah_b+\sum_{a=1}^n(a-1)Th_a.
+\tag{MC.9}
+\]
+For the second identity, a product choosing two diagonal factors contributes the first sum. Choosing one diagonal factor in position \(a\), with one of its \(a-1\) earlier derivatives acting on it, contributes \((a-1)Th_a\). All remaining derivatives move to the right. This exhausts the terms of differential order \(n-2\). At \(n=2\), it gives \(h_1h_2+Th_2\); the derivative on the second factor fixes the Miura convention.
+
+For each \(a\), let
+\(H_a(t)=\sum_{r\ge0}h_{a,-r-1}t^r\). Translation gives this as \(e^{tT}h_a\), and the product rule says that \(e^{tT}\) is a differential-algebra homomorphism, coefficient by coefficient. Hence (MC.7)–(MC.8) imply
+\[
+\nu_R(A_{i,r})=[t^r]M_i(H(t),H'(t),\ldots)
+=\frac{T^rM_i(h)}{r!}.
+\tag{MC.10}
+\]
+There are finitely many differentiated variables in each such coefficient. In the traceless case \(M_1=0\), and the list starts at \(i=2\).
+
+We prove independence on the diagonal jets directly. Choose distinct \(\lambda_1,\ldots,\lambda_n\in k\), with sum zero when needed. Such a choice exists explicitly: \(\lambda_a=a-(n+1)/2\). The differential of the characteristic-coefficient map at these constants is invertible. Indeed if every coefficient of
+\[
+\sum_a\delta\lambda_a\prod_{b\ne a}(u+\lambda_b)
+\tag{MC.11}
+\]
+vanishes, evaluating at \(u=-\lambda_a\) gives
+\(\delta\lambda_a\prod_{b\ne a}(\lambda_b-\lambda_a)=0\), so every variation vanishes. In the trace-zero case the missing first coefficient is already zero because \(\sum_a\delta\lambda_a=0\); thus the differential of \(e_2,\ldots,e_n\) on that hyperplane is an invertible square matrix too.
+
+At jets of order at most \(q\), take constant terms \(\lambda_a\) and all higher terms zero. The differential of
+\[
+(H_{a,0},\ldots,H_{a,q})_a
+\longmapsto(e_i(H)_0,\ldots,e_i(H)_q)_i
+\tag{MC.12}
+\]
+is block diagonal, with that same invertible matrix at each order. This already proves algebraic independence without an unproved dominance theorem. If a nonzero polynomial relation existed, translate its variables by the values at this point and take its least nonzero homogeneous part. Formal substitution in the input variations has invertible linear part (MC.12); the least homogeneous part of the composite is the original nonzero part composed with an invertible linear map. It cannot vanish. This contradicts the proposed relation. Every relation uses a finite jet order, so all the characteristic coefficients are independent. Tensoring the resulting injection of \(k\)-vector spaces proves the same independence over every ordinary \(R\).
+
+Each \(M_i\) has letter degree at most \(i\) and top letter-degree part \(e_i(h_1,\ldots,h_n)\). A derivative does not change letter degree, whereas a term containing derivatives in (MC.8) uses fewer than \(i\) diagonal letters. Therefore the top parts of (MC.10) are exactly the independent coefficients in (MC.12). A nonzero polynomial in the \(A_{i,r}\) has a nonzero highest part for the weights \(\deg A_{i,r}=i\). Its image under \(\nu_R\) has that highest part evaluated in the independent characteristic coefficients, and is nonzero. The full polynomial vacuum theorem (SL.C1), or (TR.19) in the raw matrix case, now proves
+\[
+\nu_R\text{ is injective on the entire type A vacuum center.}
+\tag{MC.13}
+\]
+No reduced-point test over \(R\) replaces this free polynomial argument.
+
+There is an equally precise completed Miura injection. Let
+\[
+\mathcal H_{N,R}=R[h_{a,m}:m<N],\qquad
+\widehat{\mathcal H}_R=\varprojlim_{N\ge1}\mathcal H_{N,R},
+\tag{MC.14}
+\]
+imposing \(\sum_a h_{a,m}=0\) at each mode in the traceless case. These are the zero-form abelian completed coefficient algebras of (HC.8). Define
+\(H_a(z)=\sum_{m\in\mathbb Z}h_{a,m}z^{-m-1}\) and right-order the product \(\prod_{a=1}^n(\partial_z+H_a(z))\). Denote its \(i\)-th coefficient mode by \(M_{i,m}\), using exponent \(-m-i\).
+
+Every term in that coefficient has \(q\le i\) diagonal factors and total current index \(m\). The derivatives account for the remaining weight \(i-q\); the exponent of the term is therefore \(-m-i\), exactly as in (UC.17). Modulo the cutoff, all current indices are less than \(N\), and each is at least \(m-(q-1)(N-1)\). Thus a coefficient is a finite polynomial. If \(m>i(N-1)\), no index tuple survives. Its leading letter-degree part for an allowed index is
+\([z^{-m-i}]e_i(H(z))\).
+To see independence of all these allowed top parts, rescale the Laurent diagonal series to \(z^NH_a(z)\). Homogeneity turns their coefficient list into every nonnegative characteristic coefficient of these regular series. The finite-jet proof (MC.11)–(MC.12) applies unchanged.
+
+It follows by highest weighted degree, exactly as for (MC.13), that every stage map
+\[
+R[S_{i,m}:m\le i(N-1)]\longrightarrow\mathcal H_{N,R},
+\qquad S_{i,m}\longmapsto M_{i,m},
+\tag{MC.15}
+\]
+is injective. Setting newly admitted positive diagonal modes to zero sends each coefficient to its coefficient at the smaller cutoff; all disallowed \(M_{i,m}\) then vanish exactly. The maps are compatible. Taking the inverse limit and using the proved full completed center (CT.4) gives
+\[
+\widehat\nu_R:Z(\widehat A_{\mathrm{crit},R})
+\hookrightarrow\widehat{\mathcal H}_R,
+\qquad S_{i,m}\longmapsto M_{i,m}.
+\tag{MC.16}
+\]
+Injectivity holds stage by stage. Its inverse on its image is continuous as well: by (MC.15), the inverse image of the target cutoff kernel is exactly the corresponding center cutoff kernel. This proves a topological algebra embedding, without a global PBW degree bound. The construction and the proof commute with every ordinary coefficient extension in the completed sense of (CW.19) and (CT.21).
+
+Setting every nonnegative diagonal mode to zero makes each \(H_a(z)\) regular. Its differentiated coefficient polynomials are regular too, so their modes with \(m>-i\) vanish. The remaining coefficient is exactly (MC.10). Thus the completed and regular injections give the square
+\[
+\begin{array}{ccc}
+Z(\widehat A_{\mathrm{crit},R})
+&\xrightarrow{\ \widehat\nu_R\ }&\widehat{\mathcal H}_R\\
+\downarrow&&\downarrow{\scriptstyle h_{a,m}=0\ (m\ge0)}\\
+Z^{\mathrm{vac}}_{\mathrm{crit},R}
+&\xrightarrow{\ \nu_R\ }&R[h_{a,-r-1}:r\ge0].
+\end{array}
+\tag{MC.17}
+\]
+*The ordered product (MC.7) supplies the lower map, including its derivative terms. Exact mode cutoffs and the independent highest symbols supply the upper map (MC.16). The vacuum creation formula (PC.14) identifies the left restriction. This is a square of topological or ordinary commutative algebras, respectively. Its construction alone asserts no Poisson quotient on the vertical arrows.*
+
+**The density shift and coordinate equivariance.** The diagonal target has an affine coordinate action appropriate to its ordered factors. Put
+\[
+b=\frac{1-n}{2},\qquad d_a=b+n-a=\frac{n+1}{2}-a,
+\qquad \rho_a=-d_a=a-\frac{n+1}{2}.
+\tag{MC.18}
+\]
+The factor in position \(a\), counted from the left, maps densities of weight \(d_a\) to densities of weight \(d_a+1\). Thus adjacent weights agree and the product maps weight \(b\) to weight \(b+n\). Let \(\psi=\phi^{-1}\), \(\alpha=\psi'\), and \(C_\psi f=f\circ\psi\). Direct multiplication gives
+\[
+\begin{aligned}
+\alpha^{d_a+1}C_\psi(\partial+H_a)C_\psi^{-1}\alpha^{-d_a}
+&=\alpha^{d_a+1}(\alpha^{-1}\partial+H_a\circ\psi)\alpha^{-d_a}\\
+&=\partial+\alpha H_a\circ\psi+\rho_a\frac{\alpha'}{\alpha}.
+\end{aligned}
+\tag{MC.19}
+\]
+For half-integer weights use the free rank-two square-root extension and sign-independent descent proved in (SC.O4)–(SC.O6). The final coefficient formula has no square root. It defines the action
+\[
+\sigma_\phi^\rho H_a(t)
+=\psi'(t)H_a(\psi(t))
+ +\rho_a\frac{\psi''(t)}{\psi'(t)}.
+\tag{MC.20}
+\]
+The derivative \(\psi'\) is a unit and its logarithmic derivative is regular. The substitution and inverse exist also for nilpotent constant terms by the formal-coordinate proof already used in (PC.8). The first summand has exactly the cofinal cutoff bounds of the Laurent one-form action (HC.12); the second is a fixed regular scalar series. Consequently each coefficient is finite modulo a sufficiently high cutoff, and (MC.20) defines a continuous automorphism of \(\widehat{\mathcal H}_R\). The chain rule
+\[
+\frac{(F\circ G)''}{(F\circ G)'}
+=G'\left(\frac{F''}{F'}\circ G\right)+\frac{G''}{G'}
+\]
+proves composition and the inverse law. Since \(\sum_a\rho_a=0\), the trace transforms as an ordinary Laurent one-form, so its zero relation is preserved.
+
+In the product of (MC.19), the intermediate powers of \(\alpha\) cancel because \(d_a=d_{a+1}+1\). Its result is exactly
+\[
+\prod_a(\partial+\sigma_\phi^\rho H_a)
+=\alpha^{b+n}C_\psi L C_\psi^{-1}\alpha^{-b},
+\qquad L=\prod_a(\partial+H_a).
+\tag{MC.21}
+\]
+This is the scalar-oper density transport (SC.O6), including all lower derivative corrections. The full center/scalar coefficient comparison (PC.13) therefore gives
+\[
+\widehat\nu_R\,\sigma_\phi
+=\sigma_\phi^\rho\,\widehat\nu_R.
+\tag{MC.22}
+\]
+The equality holds first on every basic coefficient, by (MC.21) and (PC.13), then on the dense polynomial algebra and its completion by continuity. The shift in (MC.20) is essential: separate unshifted one-form transformations do not give the density transport of the ordered product. Infinitesimally, \(\psi=t-\epsilon v\) gives
+\(\delta_vH_a=-vH_a'-v'H_a-\rho_av''\).
+For \(n=2\), \(H_1=-u,H_2=u\), this gives
+\(\delta_vu=-vu'-v'u-v''/2\) and
+\[
+\delta_v(u'-u^2)=-v(u'-u^2)'-2v'(u'-u^2)-v'''/2.
+\]
+
+The same action preserves the free-boson Poisson bracket when that bracket is placed on the target, independently of whether \(\widehat\nu_R\) is Poisson. Indeed linear residue functionals have bracket
+\[
+\{\operatorname{Res}fH_a\,dt,\operatorname{Res}gH_c\,dt\}
+=P_{ac}\operatorname{Res}f'g\,dt,
+\quad P_{ac}=\delta_{ac}\text{ or }\delta_{ac}-1/n.
+\tag{MC.23}
+\]
+Under (MC.20) the functional is the one with test function \(f\circ\phi\), plus a scalar. Scalars have zero bracket; residue substitution gives
+\(\operatorname{Res}(f\circ\phi)'(g\circ\phi)dt=\operatorname{Res}f'g\,dt\).
+The finite-cutoff substitution arguments justify this identity with nilpotent translations as well. Leibniz and the continuous completed bracket of §3.7.5 extend it from linear coefficients to the completed target. This establishes the coordinate Poisson action itself, without deducing an affine-center comparison from it.
+
+Products of type A factors use the componentwise lists and one common cutoff. The zero Lie algebra gives the coefficient ring, and the rank-one abelian raw matrix case gives \(L=\partial+H_1\) and the identity coefficient map. Extra zero-form reductive central directions are already independent linear Laurent one-form variables by (HC.8) and (CF.12). This proves the entire algebraic and completed Miura coefficient embedding and its affine density coordinate action in the stated type A scope. Establishing that it preserves the critical Poisson bracket requires the deformation and affine-to-boson comparison, not only these determinant and independence calculations.
+
+#### 3.7.3. The Miura product and the scalar Adler–Gelfand–Dickey bracket
+
+Let \(k\) be a characteristic-zero field and \(R\) any ordinary commutative \(k\)-algebra. Take \(n\ge1\) in the raw matrix calculation and \(n\ge2\) in the trace-zero calculation. All identities below are polynomial identities over \(k\), hence hold over nonreduced \(R\) as well. Write \(\partial\) for the differential-algebra derivation and for its corresponding differential-operator symbol, distinguished by context. Start with the differential polynomial algebra on \(h_1,\ldots,h_n\), and the brackets
+\[
+\begin{aligned}
+\{h_i{}_{\lambda}h_j\}&=P_{ij}\lambda,\\
+P_{ij}&=\delta_{ij}\quad\text{in the raw matrix case},\\
+P_{ij}&=\delta_{ij}-\frac1n\quad\text{in the trace-zero case}.
+\end{aligned}
+\tag{AP.1}
+\]
+The normalized trace-zero scalar operator will have no \(\partial^{n-1}\) term. We prove its entire bracket from (AP.1), including its Dirac term and its sign. This is a calculation on scalar operators and free bosons; it does not assert that any affine center map is Poisson.
+
+**The differential polynomial bracket.** Put \(h_i^{(r)}=\partial^rh_i\). There is a unique bracket with (AP.1), sesquilinearity
+\(\{\partial f{}_{\lambda}g\}=-\lambda\{f{}_{\lambda}g\}\) and
+\(\{f{}_{\lambda}\partial g\}=(\lambda+\partial)\{f{}_{\lambda}g\}\), and the two Leibniz rules. Its explicit finite formula is
+\[
+\{f{}_{\lambda}g\}
+=\sum_{i,j,a,b}
+ \frac{\partial g}{\partial h_j^{(b)}}
+ (\lambda+\partial)^b P_{ij}(\lambda+\partial)
+ (-\lambda-\partial)^a
+ \frac{\partial f}{\partial h_i^{(a)}}.
+\tag{AP.2}
+\]
+Every displayed \(\partial\) acts on all factors to its right. Finiteness follows because \(f,g\) are differential polynomials. Repeated Leibniz and sesquilinearity give (AP.2), so they also give uniqueness. Symmetry of \(P\) gives skewsymmetry on generators, and its extension follows by those same rules. The Jacobiator is a derivation in its third entry; skewsymmetry gives the corresponding shifted Leibniz rules in its first two entries. Sesquilinearity handles derivatives. Induction on the numbers of factors and derivatives therefore reduces Jacobi to three undifferentiated generators. There it is zero because their brackets are central constants times \(\lambda\). Thus (AP.2) is a Poisson vertex bracket without an imported reduction theorem.
+
+For a local functional write \(\int f\) for the class of \(f\) modulo \(\partial\)-derivatives. Our Hamiltonian convention is that the flow of \(\int f\) on a generator is
+\(\delta_fh_i=\sum_jP_{ij}\partial(\delta f/\delta h_j)\).
+Equivalently the Hamiltonian matrix of \(\{u_j{}_{\lambda}u_i\}\) sends its test function \(f_j\) to the variation of \(u_i\). This fixes the signs throughout.
+
+Expand the ordered Miura product
+\[
+A_i=\partial+h_i,\qquad
+L=A_1\cdots A_n
+ =\partial^n+\sum_{i=1}^ns_i\partial^{n-i},
+\qquad s_0=1.
+\tag{AP.3}
+\]
+The ordering matters: for example \(s_2=\sum_{i<j}h_ih_j+\sum_j(j-1)h_j'\). No permutation of these differential factors is used.
+
+**Pseudodifferential multiplication and residue, proved algebraically.** A formal pseudodifferential operator is \(Q=\sum_{p\le p_0}q_p\partial^p\), with a finite upper order. Define
+\[
+\partial^pf=\sum_{r\ge0}\binom pr f^{(r)}\partial^{p-r},
+\qquad
+\binom pr=\frac{p(p-1)\cdots(p-r+1)}{r!},
+\qquad
+\operatorname{res}Q=q_{-1}.
+\tag{AP.4}
+\]
+At every operator coefficient the product is finite: if the two upper orders are \(p_0,q_0\), the condition \(p+q-r=d\) bounds \(p\) and \(q\) from below for fixed \(d\). The symbol product is
+\(Q(z)\star U(z)=\sum_r(\partial_z^rQ(z))\partial^rU(z)/r!\).
+For three symbols both parenthesizations expand into the identical sum
+\[
+\sum_{a,b,c\ge0}\frac{
+ (\partial_z^{a+b}Q)
+ (\partial^a\partial_z^cU)
+ (\partial^{b+c}V)}{a!b!c!}.
+\]
+The ordinary product rule supplies these three pairwise derivative indices. This proves associativity coefficient by coefficient, including negative orders. The generalized binomial formula is exactly the derivative formula for \(z^p\), so it covers every integer \(p\).
+
+Residues are cyclic modulo derivatives, with an explicit primitive. For \(Q=a\partial^p\), \(U=b\partial^q\), put \(r=p+q+1\). If \(r<0\), both residues vanish; if \(r=0\), their difference is zero. For \(r\ge1\), the identity \(\binom qr=(-1)^r\binom pr\) follows by reversing the \(r\) factors, because \(q=r-p-1\). Therefore
+\[
+\operatorname{res}[a\partial^p,b\partial^q]
+=\partial\left[
+ \binom pr\sum_{v=0}^{r-1}(-1)^v a^{(v)}b^{(r-1-v)}
+ \right].
+\tag{AP.5}
+\]
+Differentiating the finite sum cancels its interior terms and gives the two residue terms. The relevant pairs \((p,q)\) are finite for general operators, so (AP.5) proves \(\int\operatorname{res}QU=\int\operatorname{res}UQ\). Write \(Q_+\) for its nonnegative-order part and \(Q_-\) for its negative-order part. Both are subalgebras. The residue of a product of two positive parts or two negative parts is zero. In particular
+\(\int\operatorname{res}(Q_+U)=\int\operatorname{res}(QU_-)\).
+These elementary identities justify every cyclic step below.
+
+The formal adjoint is defined by \(f^*=f\), \(\partial^*=-\partial\) and reversal of products. It respects the defining relation: the adjoint of \(\partial f-f\partial-f'\) is again zero. It consequently extends to the calculus (AP.4) and to negative powers. In particular
+\(L^*(x)=\sum_{a=0}^n(-x-\partial)^{n-a}s_a\), with derivatives acting on \(s_a\).
+
+**The Adler identity and its factorization.** For a functional in the coefficients of \(L\), put \(f_j=\delta F/\delta s_j\), and choose its operator gradient
+\[
+X_F=\sum_{j=1}^n\partial^{j-n-1}f_j.
+\qquad
+\int\operatorname{res}(\delta L\,X_F)
+ =\int\sum_j\delta s_j f_j.
+\tag{AP.6}
+\]
+The last identity is exact even before passing to the integral: the term
+\(\delta s_i\partial^{j-i-1}f_j\) has residue \(\delta s_i f_i\) precisely when \(j=i\), and zero otherwise. Define the Adler Hamiltonian map with the sign appropriate to the positive bracket (AP.1):
+\[
+\mathcal H_L(X)=L(XL)_+-(LX)_+L
+             =(LX)_-L-L(XL)_-.
+\tag{AP.7}
+\]
+The first expression is differential. The second shows its order is at most \(n-1\). Adding a differential operator to \(X\) changes neither expression. For a first-order factor it is simply
+\(\mathcal H_{A_i}(Y)=\partial\operatorname{res}Y\): both positive products have constant coefficient \(\operatorname{res}Y\), and their difference is its derivative. Thus its sign gives \(\{h_i{}_{\lambda}h_i\}=+\lambda\), as required.
+
+For any two differential operators \(A,B\), direct cancellation proves the product identity
+\[
+\boxed{\mathcal H_{AB}(X)
+ =\mathcal H_A(BX)B+A\mathcal H_B(XA).}
+\tag{AP.8}
+\]
+Indeed the two middle terms are respectively
+\(+A(BXA)_+B\) and \(-A(BXA)_+B\); the surviving terms are
+\(AB(XAB)_+-(ABX)_+AB\). This proves factorization, without a cited product or reduction theorem.
+
+Let \(B_i=A_1\cdots A_{i-1}\) and \(C_i=A_{i+1}\cdots A_n\). Cyclicity (AP.5) gives the actual boson gradient
+\(\delta F/\delta h_i=\operatorname{res}(C_iX_FB_i)\).
+For the raw independent bosons, their Hamiltonian variation and (AP.8) therefore give
+\[
+\delta_FL
+ =\sum_i B_i\partial\operatorname{res}(C_iX_FB_i)C_i
+ =\boxed{\mathcal H_L(X_F)}.
+\tag{AP.9}
+\]
+This is the complete Adler–Gelfand–Dickey formula for the raw coefficients in our sign convention.
+
+The free primary exposition by [A. De Sole, V. G. Kac and D. Valeri, arXiv:1401.2082v1](https://arxiv.org/abs/1401.2082v1), equations (2.1), (2.45), (2.51) and (2.57), uses the opposite boson sign. Consequently its Adler map and scalar bracket have the opposite overall sign. The calculation here fixes our positive boson convention directly; it does not use that paper's product, reduction or injectivity theorem as an unproved input.
+
+Here is a fully finite coefficient version. For \(X_j=\partial^{j-n-1}f\), (AP.4) gives
+\[
+\begin{aligned}
+(X_jL)_+
+ &=\sum_{a=0}^{j-1}\sum_{r=0}^{j-a-1}
+   \binom{j-n-1}{r}(fs_a)^{(r)}\partial^{j-a-1-r},\\
+(LX_j)_+
+ &=\sum_{a=0}^{j-1}\sum_{r=0}^{j-a-1}
+   \binom{j-a-1}{r}s_af^{(r)}\partial^{j-a-1-r}.
+\end{aligned}
+\tag{AP.10}
+\]
+Put \(q=i+j-a-b-1-r\), and treat any binomial with a negative lower index or lower index above a nonnegative upper index as zero. The coefficient of \(\partial^{n-i}\) in (AP.7) is the following explicit differential operator on \(f\):
+\[
+\boxed{
+\begin{aligned}
+H_{ij}(f)=\sum_{a=0}^{j-1}\sum_{r=0}^{j-a-1}\sum_{b=0}^n
+\biggl[&
+ \binom{j-n-1}{r}\binom{n-b}{q}
+ s_b(fs_a)^{(r+q)}\\
+&-\binom{j-a-1}{r}\binom{j-a-1-r}{q}
+ s_af^{(r)}s_b^{(q)}\biggr].
+\end{aligned}}
+\tag{AP.11}
+\]
+Only the terms with \(q\ge0\) are included. Each derivative is explicit: expand
+\((fs_a)^{(d)}=\sum_{v=0}^d\binom dv f^{(v)}s_a^{(d-v)}\).
+Then replacing \(f^{(v)}\) by \(\lambda^v\) gives exactly
+\(\{s_j{}_{\lambda}s_i\}=H_{ij}(\lambda)\).
+This formula is a finite polynomial in all coefficients and their derivatives, and supplies every coefficient bracket, rather than only a highest symbol.
+
+For comparison with the compact generating Adler identity, the same formula is
+\[
+\boxed{
+\begin{aligned}
+\{L(z){}_{\lambda}L(w)\}
+={}&L(w+\lambda+\partial)
+ \iota_z\frac1{z-w-\lambda-\partial}L^*(\lambda-z)\\
+&-L(z)\iota_z\frac1{z-w-\lambda-\partial}L(w).
+\end{aligned}}
+\tag{AP.12}
+\]
+Here \(\iota_z\) expands in descending powers of \(z\), and every \(\partial\) acts to its right. We give the algebraic kernel derivation to fix these orderings. The gradient for the polynomial \(L(z)\) is
+\(\sum_{v=0}^{n-1}z^v\partial^{-v-1}f\). Terms with order below \(-n\) are killed by (AP.7), so extend this to \((\partial-z)^{-1}f\). To extract the bracket, adjoin an invertible Poisson-central test symbol satisfying \(f'=\lambda f\). Moving it left gives \(X=fK^{-1}\), where \(K=\partial+\lambda-z\), and \(L\) moving past \(f\) becomes \(L_\lambda=L(\partial+\lambda)\). Right polynomial division gives
+\(L_\lambda=(L_\lambda K^{-1})_+K+L(z)\).
+Left division gives
+\(L=K(K^{-1}L)_++L^*(\lambda-z)\).
+For the second identity, \(a\partial=Ka+(z-\lambda-\partial)a\), and induction gives remainder \((z-\lambda-\partial)^pa\) for \(a\partial^p\). Thus no division theorem is being assumed. Substituting these two finite divisions into (AP.7) gives
+\[
+f^{-1}\mathcal H_L(X)
+=L(z)K^{-1}L-L_\lambda K^{-1}L^*(\lambda-z).
+\]
+The symbol composition rule (AP.4) and \(K^{-1}=-(z-\lambda-\partial)^{-1}\) give (AP.12). The result is polynomial in \(z,w\), since the finite gradient and (AP.10) already give that polynomial; equivalently both division remainders cancel the inverse tails. The kernel expression and (AP.11) are therefore the same finite identity, regardless of which inverse expansion was used to derive it.
+
+Skewsymmetry can also be checked directly on (AP.7). Write \(\operatorname{Tr}Q=\int\operatorname{res}Q\). Isotropy of the two order parts gives
+\(\operatorname{Tr}(AB_+)+\operatorname{Tr}(BA_+)=\operatorname{Tr}(AB)\).
+Hence
+\[
+\begin{aligned}
+\operatorname{Tr}(X\mathcal H_L(Y))&+\operatorname{Tr}(Y\mathcal H_L(X))\\
+&=\operatorname{Tr}(XL\,YL)-\operatorname{Tr}(LX\,LY)=0
+\end{aligned}
+\]
+by cyclicity. This check agrees with the bracket derived from the bosons.
+
+The coefficient algebra embeds in the boson algebra. The highest ordinary letter degree of \(s_i\) is \(e_i(h_1,\ldots,h_n)\); any derivative incurred while expanding (AP.3) uses a differential-operator degree and thus has fewer than \(i\) letters. The same statement holds after any number of derivatives. All \(\partial^re_i\) are algebraically independent. To see this, the \(e_i\) at order zero are independent: the \(h_j\) are integral roots of their monic characteristic polynomial, so the extension of fraction fields is algebraic and has transcendence degree \(n\). At each higher jet order the new \(\partial^re_i\) have linear highest-jet term
+\(\sum_j(\partial e_i/\partial h_j)h_j^{(r)}\), plus lower jets. The Jacobian determinant is a nonzero Vandermonde up to sign: its columns are the coefficient lists of \(\prod_{a\ne j}(z+h_a)\), and evaluating at \(-h_j\) makes that matrix diagonal with nonzero products \(\prod_{a\ne j}(h_a-h_j)\). Inverting this determinant gives an invertible triangular change of higher-jet variables. This proves independence at every finite jet order. Therefore the highest weighted part, with weight \(i\) on \(\partial^rs_i\), proves the injectivity
+\[
+R[s_i^{(r)}:1\le i\le n,\ r\ge0]
+\lhook\joinrel\longrightarrow R[h_j^{(r)}:1\le j\le n,\ r\ge0].
+\tag{AP.13}
+\]
+It is first proved over \(k\); extension to ordinary \(R\) preserves injection because every \(k\)-module is flat. Consequently (AP.11) defines a Poisson vertex bracket on the abstract coefficient algebra: closure is explicit, and all its identities follow from the proved boson identities and injection.
+
+**Trace-zero restriction and its precise Dirac term.** For the raw bracket put \(u=s_1=\sum_i h_i\). Then \(\{u{}_{\lambda}u\}=n\lambda\). Replace its boson matrix by the projection \(P=I-\mathbf1\mathbf1^t/n\). The element \(u\), and every derivative of \(u\), is now central, so the differential ideal \((u,u',\ldots)\) is Poisson. This gives the actual trace-zero quotient; it is not the false operation of setting \(u=0\) in the unreduced raw bracket.
+
+For any operator gradient \(X\), write \(f_i=\operatorname{res}(C_iXB_i)\) and \(F=\sum_if_i\). The projected boson flows are
+\[
+\delta h_i=f_i'-\frac1nF',\qquad
+\delta L=\mathcal H_L(X)-\frac1n[L,F].
+\tag{AP.14}
+\]
+The commutator identity follows directly by the product rule:
+\([L,F]=\sum_iB_i[A_i,F]C_i=\sum_iB_iF'C_i\).
+The coefficient of \(\partial^{n-1}\) in (AP.7) is
+\(\operatorname{res}(LX)-\operatorname{res}(XL)=\operatorname{res}[L,X]\).
+The same coefficient in the Miura flow is \(\sum_i f_i'=F'\). Thus \(F\) is a genuine polynomial primitive of this residue, and the projected flow has zero trace coefficient.
+
+We make that primitive explicit in scalar coefficients. The Hamiltonian for \(\int f u\) changes every \(h_i\) by \(f'\), so changes \(L\) by \([L,f]\). Its coefficient operators are
+\[
+Q_i(f)=H_{i1}(f)
+=\sum_{a=0}^{i-1}\binom{n-a}{i-a}s_af^{(i-a)}.
+\tag{AP.15}
+\]
+Skewsymmetry just proved gives \(H_{1j}=-Q_j^*\). Therefore
+\[
+\boxed{
+\operatorname{res}[L,X_j]=\partial F_j(f),\qquad
+F_j(f)=\sum_{a=0}^{j-1}(-1)^{j-a+1}
+ \binom{n-a}{j-a}(fs_a)^{(j-a-1)}.}
+\tag{AP.16}
+\]
+This primitive agrees with \(\sum_if_i\): both differentiate to the same expression, and their difference is linear in a free test symbol and its jets. A finite differential polynomial with derivative zero in these free jets is a constant; inspecting its highest jet proves this by descending induction, since the positive integers are units. Linearity in the test symbol excludes a nonzero constant. There is consequently no ambiguity from choosing an integration constant.
+
+For \(s_1=0\), and \(2\le i,j\le n\), the entire reduced bracket is
+\[
+\boxed{
+\begin{aligned}
+\mathcal H_L^{\mathrm{sl}}(X)
+ &=L(XL)_+-(LX)_+L
+       -\frac1n[L,\partial^{-1}\operatorname{res}[L,X]],\\
+H^{\mathrm{sl}}_{ij}(f)
+ &=H_{ij}(f)-\frac1n Q_i(F_j(f)),
+\qquad
+\{s_j{}_{\lambda}s_i\}=H^{\mathrm{sl}}_{ij}(\lambda).
+\end{aligned}}
+\tag{AP.17}
+\]
+The symbol \(\partial^{-1}\) in the first line means precisely the explicit primitive (AP.16), extended linearly to the finite operator gradient (AP.6). It is not a new nonlocal field. The second line, with (AP.11), (AP.15), (AP.16) and the rule \(f^{(v)}\mapsto\lambda^v\), is a complete finite formula for every derivative and every sign of the normalized scalar-oper bracket. It is the raw Dirac expression \(H_{ij}-H_{i1}(n\partial)^{-1}H_{1j}\), proved here by the actual boson projection. This also proves coefficient closure.
+
+In the compact kernel notation the extra term added to the right side of (AP.12) is
+\[
+\boxed{-\frac1n
+ \bigl(L(w+\lambda+\partial)-L(w)\bigr)
+ (\lambda+\partial)^{-1}
+ \bigl(L(z)-L^*(\lambda-z)\bigr),
+ \qquad s_1=0.}
+\tag{AP.18}
+\]
+Indeed the first parenthesis is the generating operator (AP.15), and the second is the generating \(H_{1j}(\lambda)=-Q_j^*(\lambda)\). The first parenthesis has \(\lambda+\partial\) as a right factor, so the displayed inverse cancels and leaves a differential polynomial. Thus (AP.18) has no nonlocal tail. On the hyperplane \(\sum_i h_i=0\), the independence proof of (AP.13) applies with \(e_1\) and its jets eliminated. At order zero, the \(n-1\) independent coordinates \(h_1,\ldots,h_{n-1}\), with \(h_n=-\sum_{i<n}h_i\), are algebraic over \(k(e_2,\ldots,e_n)\), proving independence of the latter. The Vandermonde is still nonzero on this hyperplane, as the specialization \(h_j=j-(n+1)/2\) shows. At higher jets its invertible linear change, with \(\partial^re_1=\sum_jh_j^{(r)}=0\), solves the remaining \(n-1\) jet coordinates just as before. Hence the reduced coefficient algebra \(R[s_i^{(r)}:2\le i\le n]\) also injects into the trace-zero bosons; its Jacobi identity follows without an assumed Drinfeld–Sokolov theorem.
+
+**The quadratic coefficient and its exact central term.** In trace-zero bosons let
+\[
+\begin{aligned}
+\rho_j&=j-\frac{n+1}{2},\qquad \sum_j\rho_j=0,\\
+s_2&=-\frac12\sum_jh_j^2+\sum_j\rho_jh_j',\\
+\gamma_n&=\sum_j\rho_j^2=\frac{n(n^2-1)}{12}.
+\end{aligned}
+\tag{AP.19}
+\]
+The final equality follows by inserting \(\sum j=n(n+1)/2\) and
+\(\sum j^2=n(n+1)(2n+1)/6\); these two sums follow respectively by pairing the ends and by telescoping \((j+1)^3-j^3\). The expression for \(s_2\) follows from (AP.3), using \(\sum h_j=\sum h_j'=0\).
+
+Put \(U=-\sum h_j^2/2\), \(V=\sum\rho_jh_j'\). Formula (AP.2) gives
+\(\{U{}_{\lambda}U\}=-(\partial+2\lambda)U\).
+Moreover \(\{U{}_{\lambda}h_j\}=-\lambda h_j-h_j'\), so
+\(\{U{}_{\lambda}V\}=-\lambda^2\sum\rho_jh_j-2\lambda V-V'\).
+The reverse cross term is \(+\lambda^2\sum\rho_jh_j\). Finally sesquilinearity gives
+\(\{V{}_{\lambda}V\}=-\rho^tP\rho\lambda^3=-\gamma_n\lambda^3\).
+Consequently
+\[
+\boxed{\{s_2{}_{\lambda}s_2\}
+ =-(\partial+2\lambda)s_2-\frac{n(n^2-1)}{12}\lambda^3.}
+\tag{AP.20}
+\]
+The positive boson convention therefore gives a negative cubic central term. For \(n=2\), \(h_2=-h_1\) gives \(s_2=-h_1'-h_1^2\), \(\{h_1{}_{\lambda}h_1\}=\lambda/2\), and (AP.20) is
+\(-s_2'-2\lambda s_2-\lambda^3/2\). This fixes the sign independently of any terminology for a second Gelfand–Dickey bracket.
+
+**Scalar density covariance and the inverse-coordinate convention.** The Hamiltonian \(\int v s_2\), with \(v\) an external differential test function, gives
+\[
+\delta_vh_i=\partial(-v h_i-\rho_i v')
+ =-v h_i'-v'h_i-\rho_iv''.
+\tag{AP.21}
+\]
+The projected bracket does not change this expression: its sum is zero, by \(\sum h_i=\sum\rho_i=0\). Set \(a_i=-\rho_i=(n+1)/2-i\) and \(b=(1-n)/2\). Thus \(a_n=b\), \(a_1+1=b+n\), and \(a_i=a_{i+1}+1\). A direct first-order multiplication gives
+\[
+\delta_vA_i
+ =-(v\partial+(a_i+1)v')A_i
+       +A_i(v\partial+a_iv').
+\tag{AP.22}
+\]
+Its derivative coefficient cancels, and its constant coefficient is exactly
+\(-v h_i'-v'h_i+a_iv''\), proving (AP.22). In the product the adjacent terms cancel because \(a_i=a_{i+1}+1\). Therefore
+\[
+\boxed{\delta_vL
+ =-(v\partial+(b+n)v')L+L(v\partial+bv'),
+ \qquad b=\frac{1-n}{2}.}
+\tag{AP.23}
+\]
+This is precisely the inverse-coordinate infinitesimal transport of an order-\(n\) density operator from weight \(b\) to weight \(b+n\). Expanding by (AP.4) proves the complete coefficient law
+\[
+\begin{aligned}
+\delta_vs_i
+ &=-v s_i'-iv's_i+
+       \sum_{j<i}C_{ij}v^{(i-j+1)}s_j,\\
+C_{ij}
+ &=\binom{n-j}{i-j+1}
+       +\frac{1-n}{2}\binom{n-j}{i-j},
+\qquad s_0=1,\ s_1=0.
+\end{aligned}
+\tag{AP.24}
+\]
+The two binomials come respectively from \(s_j\partial^{n-j}(v\partial)\) and \(s_j\partial^{n-j}(bv')\). The diagonal terms, including the two left terms in (AP.23), sum to \(-v s_i'-iv's_i\). In particular \(C_{20}=-\gamma_n\), so (AP.24) agrees with (AP.20). For \(n=3\), it gives
+\(\delta_vs_3=-v s_3'-3v's_3-s_2v''-v''''\); hence
+\(s_3-s_2'/2\) is a primary coefficient of weight three. This is also a check on the order of the Miura factors and the cubic correction.
+
+The finite scalar-coordinate comparison retains the already stated scalar-oper foundations: formal substitution and its inverse over ordinary rings, including nilpotent constants; residue change of variable; and the half-density descent of (SC.O4)–(SC.O6). At those premises it has a direct boson proof too. For \(\psi=\phi^{-1}\), the first-order density transport gives
+\[
+\boxed{h_i^{\phi}(t)
+ =\psi'(t)h_i(\psi(t))
+       +\rho_i\frac{\psi''(t)}{\psi'(t)}.}
+\tag{AP.25}
+\]
+Indeed if \(C_\psi f=f\circ\psi\), then
+\[
+(\psi')^{a_i+1}C_\psi A_iC_\psi^{-1}(\psi')^{-a_i}
+=\partial+\psi'h_i\circ\psi-a_i\psi''/\psi'.
+\]
+The intermediate density factors cancel in the product, giving the finite version of (AP.23). When half-integer weights need a square root, use exactly the free rank-two square-root extension and sign-independent descent already proved for scalar operators; the final expression (AP.25) itself has only integral powers and rational \(\rho_i\). It preserves \(\sum h_i=0\). Differentiating \(\psi=t-\epsilon v\) gives (AP.21), so the inverse action, rather than its opposite, is fixed.
+
+This finite action is Poisson, not only an action with the correct infinitesimal law. Define the mode bracket equivalently by its linear residue functionals
+\(H_{i,f}=\operatorname{Res}f(t)h_i(t)dt\):
+\(\{H_{i,f},H_{j,g}\}=P_{ij}\operatorname{Res}f'(t)g(t)dt\).
+For \(f=t^m,g=t^q\) this is \(mP_{ij}\delta_{m+q,0}\), the current-mode version of (AP.1). Under (AP.25) a linear functional becomes
+\(H_{i,f\circ\phi}\) plus a central coordinate-dependent constant. Residue substitution gives
+\(\operatorname{Res}(f\circ\phi)'(g\circ\phi)dt=\operatorname{Res}f'g\,dt\).
+Thus the bracket is preserved on all linear generators, and Leibniz proves it on their polynomial coefficient algebra. This argument includes nilpotent translations: their inverse expansions are finite on every negative Laurent power, and positive tails contribute finitely at each output coefficient, precisely at the retained substitution premises. It then descends through the coefficient closure just proved to the scalar-oper bracket. No vertex or affine-center comparison is needed for this conclusion.
+
+For raw independent bosons (AP.25) is Poisson by the same calculation with \(P=I\). Its coordinate Hamiltonian is
+\[
+\begin{aligned}
+T&=-\sum h_i^2/2+\sum\rho_i h_i'\\
+ &=s_2-s_1^2/2-(n-1)s_1'/2.
+\end{aligned}
+\]
+After trace-zero restriction it becomes \(s_2\). This distinguishes the raw coordinate Hamiltonian from the quadratic coefficient and prevents a false trace contribution to the normalized density law.
+
+The proved mechanism is the following exact comparison:
+
+| Input and operation | Proved output | Exact locator |
+|---|---|---|
+| Independent bosons with \(+\delta_{ij}\lambda\); multiply the ordered first-order factors | Raw scalar Adler identity and every coefficient bracket | (AP.7)–(AP.12) |
+| Project the boson matrix to \(I-\mathbf1\mathbf1^t/n\); impose \(\sum h_i=0\) | Local trace-zero Dirac bracket, with its finite primitive | (AP.14)–(AP.18) |
+| Quadratic coefficient and the vector \(\rho_i=i-(n+1)/2\) | Central term \(-\gamma_n\lambda^3\) and inverse-density Hamiltonian action | (AP.19)–(AP.24) |
+| Inverse coordinate and first-order density transport | Finite scalar-coordinate Poisson compatibility | (AP.25) |
+
+*The arrows are actual algebraic operations: product factorization, orthogonal trace projection, finite coefficient extraction and inverse density transport. Their proofs retain all signs and lower derivative terms. Related human-source exposition is De Sole–Kac–Valeri, [§§2.7–2.9 of the free exact v1 edition](https://arxiv.org/pdf/1401.2082v1), with the opposite boson sign. The diagram establishes no affine-to-boson arrow.*
+
+The scalar Poisson formula is thus complete for every \(n\) over ordinary characteristic-zero coefficient rings, with the explicit scalar-oper premises above. A Poisson comparison from the affine critical center requires its own constructed homomorphism and its exact level/form normalization. Equality of leading PBW symbols alone cannot supply that homomorphism. Chiral, Satake, derived-family and global localization comparisons remain separate statements.
+
+#### 3.7.4. The affine Miura map and the root anomaly
+
+The Cartan projection of negative current words is useful for computing a determinant. It is not a map of current fields: the Cartan currents at the critical affine form have a nonzero central contraction. To obtain the Poisson Miura map, we construct a family of maps of fields before taking its critical fibre.
+
+We work over a characteristic-zero field \(k\). Every construction below is defined over \(k[\varepsilon]\) and extends to every ordinary coefficient algebra \(R\), including a nonreduced one. For the raw matrix algebra put
+\[
+ \kappa_{n,\varepsilon}(X,Y)
+ =(-n+\varepsilon)\operatorname{tr}(XY)
+             +\operatorname{tr}(X)\operatorname{tr}(Y).
+ \tag{WP.1}
+\]
+The scalar current is retained. On \(\mathfrak{sl}_n\) this form is
+\((-n+\varepsilon)\operatorname{tr}(XY)\). The critical fibre is precisely the form of (SL.L1), and the deformation direction is \(\operatorname{tr}(XY)\).
+
+We use the ordered-current basis proved in §3, (K2.1)–(K2.3), the finite normal reconstruction in §3.6.2, (UC.2)–(UC.14), and the actual invariant determinant states of §3.3.5, (SL.L4)–(SL.L23). These are the earlier proofs in [*Opers, critical level and the Beilinson–Drinfeld construction*](opers-critical-level-and-the-beilinson-drinfeld-construction.md). We retain their mode convention
+\([x_r,y_s]=[x,y]_{r+s}+r\kappa(x,y)\delta_{r,-s}\), with the central generator acting as \(1\). No assertion about a sheaf of chiral differential operators, a flag-variety descent or a geometric Wakimoto module is used.
+
+For the varying form (WP.1), freeness is a direct use of that proof,
+rather than scalar extension of a fixed form. Order the matrix-current
+basis and the central generator as in (K2.2). Pair reductions are monic
+over \(R[\varepsilon]\); their sole overlapping ambiguity is the same
+Jacobi identity, which holds because (WP.1) is invariant. The terminating
+normal-form argument therefore gives a free ordered basis over this
+coefficient ring. After imposing the vacuum relations its basis is
+again the ordered negative-current words. Likewise the finite
+identities in (UC.2)–(UC.14) use only the current brackets and rational
+binomial coefficients. Substituting (WP.1) into their scalar terms
+proves those identities for the varying form itself.
+
+##### The free fields as explicit operators
+
+For each pair \(i<j\), introduce a beta-gamma pair with modes
+\[
+ [\beta_{ij,r},\gamma_{ij,s}]=\delta_{r,-s},\qquad
+ [\beta_{ij,r},\beta_{ij,s}]=[\gamma_{ij,r},\gamma_{ij,s}]=0.
+\]
+Different pairs commute. Introduce \(n\) bosons with
+\[
+ [b_{i,r},b_{j,s}]
+     =\varepsilon r\delta_{ij}\delta_{r,-s}.
+ \tag{WP.2}
+\]
+The Fock module is the polynomial module on the creation variables
+\[
+ \beta_{ij,-a}\ (a\geq1),\qquad
+ \gamma_{ij,-r}\ (r\geq0),\qquad
+ b_{i,-a}\ (a\geq1).
+ \tag{WP.3}
+\]
+They act by multiplication. The annihilation operators are
+\(\beta_{ij,r}=\partial/\partial\gamma_{ij,-r}\) for \(r\geq0\),
+\(\gamma_{ij,s}=-\partial/\partial\beta_{ij,-s}\) for \(s>0\), and
+\(b_{i,r}=\varepsilon r\,\partial/\partial b_{i,-r}\) for \(r>0\);
+\(b_{i,0}=0\). These formulas prove all relations and the freeness over
+\(k[\varepsilon]\), rather than assuming a representation exists.
+
+Our fields and translation are
+\[
+ \beta_{ij}(z)=\sum_r\beta_{ij,r}z^{-r-1},\qquad
+ \gamma_{ij}(z)=\sum_r\gamma_{ij,r}z^{-r},\qquad
+ b_i(z)=\sum_r b_{i,r}z^{-r-1},
+\]
+\[
+ [T,\beta_{ij,r}]=-r\beta_{ij,r-1},\qquad
+ [T,\gamma_{ij,r}]=-(r-1)\gamma_{ij,r-1},\qquad
+ [T,b_{i,r}]=-r b_{i,r-1},\qquad T1=0.
+ \tag{WP.4}
+\]
+For example \(T\gamma_{ij,0}=\gamma_{ij,-1}\). The rules are consistent with
+(WP.2): in a beta-gamma bracket the possible delta has \(r+s=1\), and its
+coefficient after applying \(T\) is \(-r-s+1=0\). The boson check is the
+same affine translation calculation as (SL.L3). They preserve the vacuum
+annihilation relations. Thus \(T\) is an actual operator on the Fock module.
+
+Creation parts stand on the left of annihilation parts. A simultaneous
+normal product of elementary free fields means that all their creation
+parts are moved left, without retaining the contractions produced by that
+movement. In particular the cubic normal product below is simultaneous;
+an unspecified iterated binary normal product would be ambiguous. The
+singular contractions are
+\[
+ \beta_i(z)\gamma_j(w)\sim\frac{\delta_{ij}}{z-w},\qquad
+ \gamma_i(z)\beta_j(w)\sim-\frac{\delta_{ij}}{z-w},\qquad
+ b_i(z)b_j(w)\sim\frac{\varepsilon\delta_{ij}}{(z-w)^2}.
+ \tag{WP.5}
+\]
+Here and below a suppressed root-pair label is specified by the relevant
+recursion step.
+
+We spell out the finite rule for the calculations. In the product of two
+simultaneously normal elementary monomials, choose disjoint pairs, one
+factor from each monomial, replace them by their contractions, and normal
+order the unpaired factors. Sum over all such matchings. If the resulting
+pole is \((z-w)^{-q}\), expand the unpaired \(z\)-factors only through
+Taylor order \(q-1\). Derivatives differentiate their contractions with
+respect to their own variable. This rule follows by moving each
+annihilation operator in the left monomial through the right creation
+operators: at each passage the commutator gives either the moved term or
+one contracted pair. Induction on the number of passages lists each
+matching exactly once. All elementary contractions are scalar, so their
+order introduces no further terms. When a monomial also contains one
+inner affine current, its single current-current contraction is inserted
+in the same calculation; there is never more than one such current in
+either monomial below.
+
+The sums define fields on the polynomial Fock module. On a fixed input
+there are only finitely many annihilation choices; for a fixed output
+coefficient the remaining creation indices have a fixed sum and
+nonnegative powers, so only finitely many possibilities occur. Taking
+common bounds before a commutator proves the contraction identities as
+identities of actual mode operators. Their finite pole bounds prove
+locality.
+
+For clarity, these operators also provide the state-field products used
+here. Assign a field to a creation word by derivatives and simultaneous
+normal products, with the appropriate factorials. The creation expansion
+is \(Y(a,z)1=e^{zT}a\). The locality product
+\[
+ (A_{(q)}B)(w)=\operatorname{Res}_z\!
+ \left(\iota_{z,w}(z-w)^q A(z)B(w)
+       -\iota_{w,z}(z-w)^q B(w)A(z)\right)
+ \tag{WP.6}
+\]
+is coefficient-finite; for \(q=-r<0\) it is
+\(:\partial^{r-1}A\,B:/(r-1)!\). The locality closure proof of
+(UC.12) uses only the commutator, the two kernel expansions and common
+coefficient bounds, and therefore applies to these free fields as well.
+The constant term of its creation expansion is the state \(a_{(q)}b\).
+
+Here is the needed uniqueness argument. A field local with every
+elementary free field, translation covariant, and with zero creation
+expansion vanishes on every creation word. Indeed multiply its
+commutator with an elementary field by a sufficient power of \(z-w\).
+On a previously killed word the reversed product is zero. In the
+creation expansion in \(w\), the constant coefficient of that power is
+the invertible Laurent monomial \(z^L\). Successive coefficients
+therefore show that the field kills each next creation mode. Induction
+on the word length proves the assertion. Thus (WP.6), its creation state
+and translation determine precisely the field of the state
+\(a_{(q)}b\). In particular all normal-product and singular-product
+identifications used below follow from these explicit operators.
+
+##### A recursive affine homomorphism
+
+Suppose \(m=n-1\), and assume that the \(\mathfrak{gl}_m\) currents
+\(J_{ab}\) at form \(\kappa_{m,\varepsilon}\) have already been constructed.
+Use \(m\) new beta-gamma pairs, independent of those inner currents, and
+a new independent boson \(b=b_n\). Set
+\[
+ \ell=-n+\varepsilon,\qquad
+ \Gamma_i=\sum_a:\gamma_aJ_{ai}:,\quad
+ U_i=-:\gamma_i b:,\quad
+ C_i=-\sum_a:\gamma_i\gamma_a\beta_a:,\quad
+ D_i=\ell\,\partial\gamma_i .
+ \tag{WP.7}
+\]
+All sums in this step run from \(1\) to \(m\). Define
+\[
+ \begin{aligned}
+ A_{ij}&=J_{ij}-:\gamma_j\beta_i:,&
+ H&=b+\sum_a:\gamma_a\beta_a:,\\
+ E_i&=\beta_i,& F_i&=\Gamma_i+U_i+C_i+D_i,
+ \end{aligned}
+\]
+\[
+ E_{ij}(z)\longmapsto A_{ij}(z),\quad
+ E_{in}(z)\longmapsto E_i(z),\quad
+ E_{ni}(z)\longmapsto F_i(z),\quad
+ E_{nn}(z)\longmapsto H(z).
+ \tag{WP.8}
+\]
+The inner current form is
+\((\ell+1)\operatorname{tr}(XY)+\operatorname{tr}(X)\operatorname{tr}(Y)\).
+The new boson form is \(\varepsilon=\ell+m+1\).
+
+We prove the entire affine relation. Put \(u=z-w\), and temporarily
+keep \(\ell,\varepsilon\) independent, so that the possible defect is
+\[
+ \Delta=\ell+m+1-\varepsilon.
+ \tag{WP.9}
+\]
+The complete singular-product table is
+\[
+ \begin{array}{c|l}
+ \text{pair}&\text{singular product}\\ \hline
+ A_{ij}(z)A_{ab}(w)&
+ (\delta_{ja}A_{ib}-\delta_{ib}A_{aj})/u
+ +(\ell\delta_{ib}\delta_{ja}+\delta_{ij}\delta_{ab})/u^2\\
+ A_{ij}(z)H(w)&\delta_{ij}/u^2\\
+ H(z)H(w)&(\varepsilon-m)/u^2\\
+ A_{ij}(z)E_a(w)&\delta_{ja}E_i/u\\
+ H(z)E_a(w)&-E_a/u\\
+ A_{ij}(z)F_a(w)&-\delta_{ia}F_j/u\\
+ H(z)F_a(w)&F_a/u+\Delta\gamma_a/u^2\\
+ E_i(z)F_j(w)&(A_{ij}-\delta_{ij}H)/u
+                         +\ell\delta_{ij}/u^2\\
+ E_i(z)E_j(w)&0\\
+ F_i(z)F_j(w)&-\Delta\gamma_i\gamma_j/u^2
+                         -\Delta(\partial\gamma_i)\gamma_j/u .
+ \end{array}
+ \tag{WP.10}
+\]
+The reverse ordered products follow from the antisymmetric mode
+commutator; thus this table covers every matrix-unit pair.
+
+We give the full cancellations, including those which determine the
+level. For two ghost matrix currents \(-:\gamma_j\beta_i:\), their
+double contraction is
+\(-\delta_{ib}\delta_{ja}/u^2\); their single contractions have the
+matrix-unit bracket. Adding the inner \(J\) contraction changes its
+coefficient \(\ell+1\) to \(\ell\). The mixed ghost-trace double
+contraction is \(+\delta_{ij}/u^2\). The trace ghost with itself gives
+\(-m/u^2\), producing the first three rows. The rows with \(E_a=\beta_a\)
+use one contraction. In particular
+\[
+ \beta_i(z)F_j(w)\sim
+ \frac{J_{ij}-\gamma_j\beta_i-\delta_{ij}
+                    (b+\sum_a\gamma_a\beta_a)}u
+       +\frac{\ell\delta_{ij}}{u^2},
+ \tag{WP.11}
+\]
+which is exactly its displayed row.
+
+For \(A_{ab}F_i\), the double-pole contributions from \(J_{ab}\Gamma_i\),
+the ghost part of \(A_{ab}\) against \(C_i\), and that ghost part against
+\(D_i\) are respectively
+\[
+ (\ell+1)\delta_{ai}\gamma_b+\delta_{ab}\gamma_i,\quad
+ -\delta_{ai}\gamma_b-\delta_{ab}\gamma_i,\quad
+ -\ell\delta_{ai}\gamma_b.
+\]
+Their sum is zero. The single pole from \(J_{ab}\Gamma_i\) is
+\(\gamma_bJ_{ai}-\delta_{ai}\Gamma_b\). The ghost against \(\Gamma_i\)
+cancels \(\gamma_bJ_{ai}\). Its products with \(U_i,C_i\) give
+\(-\delta_{ai}U_b,-\delta_{ai}C_b\); the remaining single contractions
+inside the product with \(C_i\) cancel each other. The Taylor term in
+the product with \(D_i\) is
+\(-\ell\delta_{ai}\partial\gamma_b\). Hence the single pole is exactly
+\(-\delta_{ai}F_b\).
+
+For \(HF_i\), write \(N=\sum_a:\gamma_a\beta_a:\). Its single
+contractions with \(\Gamma_i,U_i,C_i\) give these same three fields.
+The double contractions in \(NC_i\) give
+\((m+1)\gamma_i/u^2\): one chooses the distinguished \(\gamma_i\),
+or one of the \(m\) summed gamma factors. The product \(ND_i\) gives
+\[
+ \ell\gamma_i(z)/u^2
+ =\ell\gamma_i(w)/u^2+\ell\partial\gamma_i(w)/u
+                  +\text{regular terms}.
+\]
+The product \(bU_i\) gives \(-\varepsilon\gamma_i/u^2\).
+This proves the \(HF_i\) row, including \(\Delta\).
+
+Finally consider \(F_iF_j\). There are no poles of order greater than
+two. The single contractions in \(\Gamma_i\Gamma_j\) give
+\(\gamma_i\Gamma_j-\gamma_j\Gamma_i\). Those in
+\(\Gamma_iC_j+C_i\Gamma_j\) give the opposite expression.
+The products \(U_iC_j+C_iU_j\) cancel their single poles; the four
+single-contraction terms in \(C_iC_j\) also cancel. Thus only the
+following double contractions and their first Taylor terms remain:
+\[
+ \begin{array}{c|l}
+ \text{pair}&u^2\text{ times its double contraction before Taylor expansion}\\ \hline
+ \Gamma_i\Gamma_j&
+   (\ell+1)\gamma_j(z)\gamma_i(w)+\gamma_i(z)\gamma_j(w)\\
+ U_iU_j&\varepsilon\gamma_i(z)\gamma_j(w)\\
+ C_iC_j&-\gamma_j(z)\gamma_i(w)-(m+2)\gamma_i(z)\gamma_j(w)\\
+ C_iD_j&-\ell\gamma_i(z)\gamma_j(z)\\
+ D_iC_j&-\ell\gamma_i(w)\gamma_j(w).
+ \end{array}
+ \tag{WP.12}
+\]
+For the third row there are four pairing patterns: pairing the left
+beta with the distinguished or summed right gamma, and the right beta
+with the distinguished or summed left gamma. Their contributions are
+\(-\gamma_j(z)\gamma_i(w)\), two copies of
+\(-\gamma_i(z)\gamma_j(w)\), and \(m\) further copies of the latter.
+This explains the coefficient \(m+2\), also when \(i=j\); labelled
+factors count their multiplicities. At Taylor order zero the sum is
+\(-\Delta\gamma_i\gamma_j\). At order one the
+\(\gamma_i\partial\gamma_j\) terms cancel, and the remaining term is
+\(-\Delta(\partial\gamma_i)\gamma_j\). This proves the final row
+without an omitted normal-order boundary.
+
+In our recursion \(\Delta=0\). Every row of (WP.10) is therefore exactly
+the affine bracket at (WP.1). The base case \(n=1\) is just the boson
+\(E_{11}=b_1\), whose form is \(\varepsilon\). Induction constructs all
+matrix currents in a tensor product of one beta-gamma pair per positive
+root and \(n\) independent bosons. Every formula is a finite polynomial
+in fields and their derivatives.
+
+Each constructed current annihilates the Fock vacuum in nonnegative
+modes. Indeed its creation expansion has no negative power of \(z\):
+gamma starts at \(\gamma_0\), while beta, the inner currents and bosons
+start at their \(-1\) creation modes; \(\partial\gamma\) starts at
+\(\gamma_{-1}\). The induced-module property consequently gives a map
+\[
+ \rho_\varepsilon:V_{\kappa_{n,\varepsilon}}
+      \longrightarrow\mathcal F_n\otimes\mathcal H_{\varepsilon,n}.
+ \tag{WP.13}
+\]
+It preserves the vacuum, \(T\), and every state-field product. To verify
+the last assertion rather than postulate it, apply the negative-current
+normal recursion (UC.3)–(UC.5) to a source PBW word. On the target its
+current images obey exactly the same recursion, by (WP.6) and its
+creation uniqueness. Thus
+\(\rho_\varepsilon(Y(a,z)c)=Y(\rho_\varepsilon a,z)\rho_\varepsilon c\),
+first for current words and then by linearity. Extracting every
+coefficient proves preservation of both singular and normal products.
+The coefficient bounds preceding (WP.6) justify this on actual vectors.
+Injectivity of the entire affine map is not needed here.
+
+##### The exact Cartan anomaly
+
+The recursive diagonal formulas simplify to
+\[
+ \begin{aligned}
+ \rho_\varepsilon(H(z))
+ &=b_H(z)-\sum_{i<j}(H_i-H_j):\gamma_{ij}\beta_{ij}:,\\
+ b_H&=\sum_iH_i b_i,
+ \qquad H=\operatorname{diag}(H_1,\ldots,H_n).
+ \end{aligned}
+ \tag{WP.14}
+\]
+This follows immediately by induction: the new pair \((i,n)\)
+subtracts its ghost from \(E_{ii}\) and adds it to \(E_{nn}\).
+
+A ghost trace has double contraction \(-1/u^2\). Moreover
+\[
+ \sum_{i<j}(H_i-H_j)(K_i-K_j)
+ =n\sum_iH_iK_i-\left(\sum_iH_i\right)\left(\sum_iK_i\right).
+ \tag{WP.15}
+\]
+Expand the left side: each diagonal term occurs \(n-1\) times and the
+off-diagonal terms give minus the sum over distinct indices. Thus the
+ghost form in (WP.14) is
+\(-n\operatorname{tr}(HK)+\operatorname{tr}(H)\operatorname{tr}(K)\),
+exactly the critical form. Adding the boson form gives (WP.1).
+Equivalently the bosons necessarily have
+\[
+ \kappa_{n,\varepsilon}|_{\mathfrak h}
+             -\kappa_{\rm ghost}
+                  =\varepsilon\operatorname{tr}|_{\mathfrak h}.
+ \tag{WP.16}
+\]
+This is the root anomaly cancellation. In particular the critical
+Cartan bosons have zero contraction. Using
+\(\kappa_{\rm crit}|_{\mathfrak h}\) for their form would give the wrong
+Poisson map.
+
+##### Why critical invariant states have no ghosts
+
+Specialize to \(\varepsilon=0\), and let \(w\) be an actual critical
+invariant state. Its image is killed by every nonnegative current.
+At the outer recursion step \(E_{in,r}=\beta_{i,r}\), \(r\geq0\).
+These operators are exactly the partial derivatives with respect to
+all outer gamma creation variables. A polynomial killed by them is
+independent of those variables: a nonzero positive exponent has a
+nonzero, invertible integer as its derivative coefficient. This
+argument works over every ordinary \(R\).
+
+On a gamma-free polynomial the zero mode
+\(H_0=b_0+\sum_a(:\gamma_a\beta_a:)_0\) is minus the total number of
+outer beta variables. More explicitly its commutators with beta and
+gamma creation modes are \(-\beta\) and \(+\gamma\), and it kills the
+vacuum. Since \(H_0\) kills the image, that image is independent of
+outer beta variables too. On this ghost-free subspace all nonnegative
+modes of \(:\gamma_j\beta_i:\) kill the outer vacuum, so invariance under
+\(A_{ij,r}\), \(r\geq0\), is invariance under the inner \(J_{ij,r}\).
+Induction removes every root pair. Therefore
+\[
+ \rho_0(w)\in\mathcal H_{0,n}
+        =k[b_{i,-a}:1\leq i\leq n,\ a\geq1].
+ \tag{WP.17}
+\]
+This entire boson algebra is central in the critical free-field algebra:
+its modes commute with ghosts and with all boson modes. The conclusion
+is stronger than commutation within the image of the affine center.
+
+We also compute this ghost-free image exactly. Let \(q\) set all outer
+ghost creation variables to zero. Use parabolic PBW order
+\[
+ \langle E_{in,r}:i<n,r<0\rangle,\quad
+ \langle E_{ij,r},E_{nn,r}:i,j<n,r<0\rangle,\quad
+ \langle E_{ni,r}:i<n,r<0\rangle
+ \tag{WP.18}
+\]
+from left to right. Each displayed outer root space is an abelian Lie
+algebra, and the middle block is the Levi algebra; the ordered-basis
+proof applies.
+
+A word with a nonempty left block maps to a polynomial with an outer
+beta multiplication factor on its left, since a negative \(E_{in}\)
+mode is negative beta multiplication. Its \(q\)-image is zero. If the
+left block is empty but the right block is nonempty, its image has
+strictly positive outer ghost charge, measured by \(H_0\); each
+\(F_i\) has charge \(+1\), and the middle block has charge zero. The
+ghost-free component has charge zero, so again its \(q\)-image vanishes.
+For a word solely in the middle block, write \(A_{ij}=J_{ij}\) plus
+an outer ghost current and \(H=b\) plus the outer ghost trace. These
+ghost currents commute with the inner fields. Any nonempty word of
+their negative modes has positive ghost energy, whereas a constant
+ghost polynomial has energy zero. Its \(q\)-image is zero. The surviving
+word is exactly the same ordered word in \(J_{ij},b\).
+
+It follows that, on every source state, \(q\rho_0\) is the parabolic
+PBW projection followed by the inner map and the identity on \(b\).
+For an invariant state the image is already ghost-free by (WP.17).
+Repeating the argument proves
+\[
+ \rho_0(w)=\operatorname{HC}_+(w),
+ \tag{WP.19}
+\]
+with diagonal negative currents replaced by the boson creation modes.
+Here \(\operatorname{HC}_+\) has positive finite roots on the left,
+Cartan in the middle and negative finite roots on the right. Internal
+orders in the positive and negative root algebras do not change this
+projection: it is the projection modulo the sum of the left
+positive-root and right negative-root PBW subspaces. The parabolic
+orders in (WP.18) give precisely that projection recursively.
+Equation (WP.19) is a state calculation following from the field map,
+not an assertion that PBW projection itself preserves fields.
+
+##### Determinant images, with their order
+
+Let \(S_i v\) be the raw determinant states of (SL.L4)–(SL.L7).
+We calculate their images with every derivative correction. First
+use the opposite PBW projection \(\operatorname{HC}_-\), with negative
+finite roots before Cartan before positive finite roots. In a
+nonidentity determinant permutation, take the first column \(j\)
+which is not fixed. The preceding columns are fixed, and
+\(\sigma(j)>j\); thus its first off-diagonal entry is a negative
+root current. Move it left across the preceding diagonal entries
+and translations. Its commutators remain negative root currents,
+including their \(T\)-derivatives. Every resulting term therefore
+belongs to the left negative-root PBW subspace and has zero
+\(\operatorname{HC}_-\)-projection. Only the identity permutation
+survives:
+\[
+ \operatorname{HC}_-\operatorname{cdet}(\tau\mathbf1+E[-1])
+                  =(\tau+h_1)\cdots(\tau+h_n),\qquad
+ [\tau,h_i]=T h_i .
+ \tag{WP.20}
+\]
+The reasoning also applies with \(\tau+u\), so it determines every
+coefficient state, not just the constant determinant coefficient.
+
+Simultaneously reverse the row and column indices. The precise Manin
+identity and exterior calculation (SL.L8)–(SL.L10) prove that a column
+permutation multiplies the determinant by its sign; a row permutation
+does likewise. Hence this simultaneous reversal fixes the determinant.
+It interchanges the two root orders and sends \(h_i\) to \(h_{n+1-i}\).
+Applying (WP.19) to every invariant coefficient consequently gives
+\[
+ \boxed{\quad
+ \rho_0\!\left(\sum_{i=0}^n S_i v\,u^{n-i}\right)
+ =\left.(T+u+b_n)\cdots(T+u+b_1)1\right.,
+ \quad S_0v=v .\quad}
+ \tag{WP.21}
+\]
+Equivalently, normal order the scalar differential operator
+\[
+ (\partial+b_n)\cdots(\partial+b_1)
+       =\partial^n+\mu(S_1)\partial^{n-1}
+                       +\cdots+\mu(S_n).
+ \tag{WP.22}
+\]
+Then \(\mu(S_i)=\rho_0(S_i v)\), with \(b_i=b_{i,-1}\) as a
+differential-algebra generator and \(\partial a=a\partial+Ta\).
+This uses the invariance of the determinant states already proved in
+(SL.L22), not their symbols alone.
+
+To agree with the ordered factors in (WP.20), set
+\(h_r=b_{n+1-r}\). This is a permutation of independent bosons and
+preserves their form. The affine Miura map is then exactly
+\[
+ \mu:\ S_i v\longmapsto
+ [\partial^{n-i}]\,
+           (\partial+h_1)\cdots(\partial+h_n).
+ \tag{WP.23}
+\]
+The bracket denotes the coefficient after moving all derivatives right.
+
+For \(n=2\), before the traceless restriction, this is
+\(S_1\mapsto b_1+b_2\) and \(S_2\mapsto b_1b_2+T b_1\).
+With \(b_2=-b_1\), \(Q/2=-S_2\) by the actual calculation following
+(SL.L23). Writing \(b=2b_1\), we obtain
+\[
+ Q/2\longmapsto b^2/4-Tb/2,\qquad \{b_\lambda b\}=2\lambda.
+ \tag{WP.24}
+\]
+Thus the derivative sign agrees with the rank-one free-field Miura
+formula. For three factors in the \(h\)-ordering, the two nonleading
+coefficients are
+\[
+ \begin{aligned}
+ \mu(S_2)&=h_1h_2+h_1h_3+h_2h_3+T h_2+2T h_3,\\
+ \mu(S_3)&=h_1h_2h_3+(h_1+h_2)T h_3
+                    +(T h_2)h_3+T^2h_3.
+ \end{aligned}
+ \tag{WP.25}
+\]
+These follow by twice using \(\partial a=a\partial+Ta\); they display
+the order-dependent lower terms explicitly.
+
+##### Trace-zero restriction in the deformed family
+
+It would be incorrect to impose \(\sum_i b_i=0\) as a quotient of
+the deformed raw Heisenberg algebra: its trace boson has nonzero form
+\(\varepsilon n\). Instead split it orthogonally. Put
+\[
+ c=\frac1n\sum_i b_i,\qquad \bar b_i=b_i-c,\qquad
+ \sum_i\bar b_i=0.
+\]
+Then
+\[
+ [\bar b_i{}_\lambda\bar b_j]
+       =\varepsilon(\delta_{ij}-1/n)\lambda,\qquad
+ [c_\lambda\bar b_i]=0,\qquad
+ [c_\lambda c]=(\varepsilon/n)\lambda .
+ \tag{WP.26}
+\]
+The same relations hold in every mode, and an invertible linear
+change of the free polynomial variables gives this tensor splitting.
+
+The image of the trace current is \(\sum_i b_i\): all ghosts cancel
+in (WP.14). Every off-diagonal current in (WP.8) is independent of
+the common boson component \(c\), and every diagonal current is \(c\)
+plus a field in the trace-zero bosons and ghosts. This is an induction
+on (WP.8). If \(J_{ab}\) is shifted by \(\delta_{ab}c\) and \(b\)
+by \(c\), the two new terms in \(F_i\) are
+\(+\gamma_i c-\gamma_i c=0\); the other off-diagonal entries are
+unchanged. The diagonal entries acquire exactly \(c\).
+Thus restriction to the affine \(\mathfrak{sl}_n\) subalgebra has
+target
+\[
+ \rho_\varepsilon^{\,0}:V_{(-n+\varepsilon)\operatorname{tr},\,\mathfrak{sl}_n}
+          \longrightarrow\mathcal F_n\otimes
+                               \mathcal H_{\varepsilon,\mathfrak h_0}.
+ \tag{WP.27}
+\]
+No quotient killing a nonzero Heisenberg form was taken. In the
+critical fibre its determinant images are (WP.22) with the \(b_i\)
+replaced by \(\bar b_i\), so the coefficient of \(\partial^{n-1}\)
+is zero. The form on \(\mathfrak h_0\) is exactly
+\(\varepsilon\operatorname{tr}|_{\mathfrak h_0}\), as required.
+
+##### Taking the first-order bracket
+
+Use the intrinsic critical Poisson vertex algebra proved in §3.7.1,
+(PV.14)–(PV.23), with deformation direction \(B=\operatorname{tr}\).
+We give the exact lift and coefficient comparison needed here. For a
+critical invariant state \(a\), choose a PBW lift
+\(\widetilde a\) in the deformed vacuum. Its coefficients are in
+\(R[\varepsilon]\); the PBW basis makes this module free there.
+Write the singular state-field bracket as
+\([a_\lambda b]=\sum_{j\geq0}\lambda^j a_{(j)}b/j!\).
+The intrinsic critical bracket is
+\[
+ \{a_\lambda b\}_{\rm crit}
+    =\left.\varepsilon^{-1}
+          [\widetilde a_\lambda\widetilde b]\right|_{\varepsilon=0}.
+ \tag{WP.28}
+\]
+The divisibility and lift independence used here can be checked
+directly. At the critical fibre invariant fields commute with every
+current by (UC.14), and then with every reconstructed field by the
+finite normal recursion. Thus their singular bracket with every
+state is zero. This gives divisibility by \(\varepsilon\).
+Replacing a lift by \(\varepsilon d\) changes (WP.28) by a
+critical singular bracket with the other invariant state, hence by
+zero. Jacobi with a current shows that every coefficient of (WP.28)
+is invariant: divide
+\[
+ [x_\nu[\widetilde a_\lambda\widetilde b]]
+ =[[x_\nu\widetilde a]_{\lambda+\nu}\widetilde b]
+       +[\widetilde a_\lambda[x_\nu\widetilde b]]
+\]
+by \(\varepsilon\). Each inner current bracket on the right is
+divisible by \(\varepsilon\); its quotient has zero critical
+bracket with the remaining invariant. This is the same operation as
+(PV.14). Its sesquilinearity, skew symmetry, Jacobi and Leibniz were
+proved in (PV.16)–(PV.23) by finite residues and first- and second-order
+parameter division. The present comparison needs no additional center
+theorem.
+
+The free-boson first-order bracket is
+\[
+ \{b_i{}_\lambda b_j\}_{\rm bos}=\delta_{ij}\lambda,\qquad
+ \{\bar b_i{}_\lambda\bar b_j\}_{\rm bos}
+                         =(\delta_{ij}-1/n)\lambda .
+ \tag{WP.29}
+\]
+It is obtained by dividing (WP.2) or (WP.26) by \(\varepsilon\).
+The derivative and polynomial product rules follow from the same
+finite contraction rule: two or more boson contractions contribute
+at least \(\varepsilon^2\), so only one contraction remains to first
+order. This defines the bracket on every differential polynomial.
+
+The map (WP.13) preserves the deformed singular products. Moreover
+its critical invariant images \(\mu(a),\mu(b)\) are central in the
+*entire* critical free-field target, by (WP.17). Write
+\[
+ \rho_\varepsilon(\widetilde a)=\mu(a)+\varepsilon A,\qquad
+ \rho_\varepsilon(\widetilde b)=\mu(b)+\varepsilon B
+\]
+in the free polynomial Fock module. Every coefficient is a finite
+polynomial, so this is an ordinary divisibility assertion. After
+taking the bracket and dividing by \(\varepsilon\), the two possible
+correction terms specialize to
+\([A_\lambda\mu(b)]_0+[\mu(a)_\lambda B]_0=0\).
+The term with both corrections is already divisible by
+\(\varepsilon^2\). Therefore
+\[
+ \boxed{\quad
+ \mu\bigl(\{a_\lambda b\}_{\rm crit}\bigr)
+             =\{\mu(a)_\lambda\mu(b)\}_{\rm bos}.
+ \quad}
+ \tag{WP.30}
+\]
+Normal products and \(T\) are preserved by (WP.13); on the critical
+boson algebra they are the ordinary polynomial product and
+derivation. Equations (WP.23), (WP.27), (WP.29) and (WP.30)
+prove the all-\(n\) affine-critical-to-boson Miura Poisson map.
+The correction terms would not vanish for a general Cartan
+projection. Their vanishing here comes from the deformed field
+homomorphism and critical ghost cancellation.
+
+##### Independence and ordinary families
+
+One can also verify injectivity for the stated polynomial centers.
+Give every boson creation variable polynomial degree one.
+The highest degree part of \(T^r\mu(S_i)/r!\) is the coefficient
+of \(t^r\) in \(e_i(b_1(t),\ldots,b_n(t))\), where
+\(b_j(t)=\sum_{r\geq0}b_{j,-r-1}t^r\). This follows because
+\(T^r b_{j,-1}/r!=b_{j,-r-1}\) and Leibniz gives the coefficient
+convolution. Terms involving a commutation with \(\partial\) have
+fewer boson factors.
+
+These elementary-symmetric jet coefficients are algebraically
+independent. At jet order zero the Jacobian of
+\((b_1,\ldots,b_n)\mapsto(e_1,\ldots,e_n)\) is invertible whenever
+the \(b_i\) are distinct. Indeed if a tangent vector leaves all
+coefficients of \(\prod_j(z+b_j)\) unchanged, evaluation at
+\(z=-b_i\) gives
+\(\dot b_i\prod_{j\ne i}(b_j-b_i)=0\), hence \(\dot b_i=0\).
+At every higher jet order the new coefficient depends on the new
+\(b_{j,-r-1}\) with exactly this same Jacobian; all other terms
+involve earlier coefficients. The finite-jet differential is
+therefore block triangular and invertible at a tuple of distinct
+constant entries.
+
+For completeness, invertible differential implies dominance here
+without a smooth-image theorem. Translate that tuple and its image
+to zero. The substitution in formal power series has an invertible
+linear part. A nonzero polynomial relation has a lowest nonzero
+homogeneous term, whose substitution by that linear part is still
+nonzero; higher terms cannot cancel it. Thus no polynomial relation
+exists. In the trace-zero case choose distinct entries summing to
+zero. Restrict the same tangent argument to \(\sum_i\dot b_i=0\);
+with \(e_1\) fixed, the remaining coefficients \(e_2,\ldots,e_n\)
+have invertible differential. Such entries exist over every
+characteristic-zero field, for example distinct integers shifted
+by their average. Any relation among infinitely many coefficients
+occurs already at a finite jet order.
+
+The polynomial critical-center theorem (SL.C1), and the scalar
+factor of §3.5, identify the source generators with the divided
+translates of these actual determinant states. A nonzero polynomial
+in them has a nonzero component of highest weighted degree, with
+weight \(i\) for the degree-\(i\) determinant generator. Its image
+has the nonzero highest boson-degree polynomial just described.
+Hence the Miura map is injective on these centers:
+\[
+ k[T^rS_i/r!:1\leq i\leq n,\ r\geq0]
+           \hookrightarrow k[b_{j,-a}:1\leq j\leq n,\ a\geq1],
+ \tag{WP.31}
+\]
+and on the traceless source retain \(2\leq i\leq n\) and
+\(\sum_j b_{j,-a}=0\). This is not a surjectivity claim onto the
+boson algebra.
+
+All relations, normal products, coefficient comparisons and
+cancellations above are finite rational formulas. Their field
+constructions have polynomial Fock bases over \(R[\varepsilon]\);
+in particular multiplication by \(\varepsilon\) is injective even
+when \(R\) has nilpotents. The polynomial critical-center identities
+extend to every ordinary \(R\) by the earlier finite-energy kernel
+argument (GJ.P5). The injective map over \(k\) also remains injective
+after tensoring with \(R\), because every \(k\)-linear injection
+has a basis splitting. Thus (WP.30) and (WP.31) hold for all such
+families, with no inference from their field-valued points.
+
+The construction for a direct sum uses the tensor product of the
+separate Fock modules. Cross-current and cross-boson contractions
+are zero, so it gives the product Miura Poisson map. For
+\(\mathfrak{gl}_1\) it is the identity boson construction. For the
+trivial Lie algebra, or \(\mathfrak{sl}_1=0\), it is the identity
+of the coefficient ring.
+
+The comparison below summarizes the proved mechanism; each arrow
+has the indicated construction.
+\[
+ \begin{array}{ccc}
+ V_{\kappa_{\rm crit}+\varepsilon\operatorname{tr}}
+    &\xrightarrow{\ \rho_\varepsilon\ {\rm of}\ (WP.7)-(WP.13)\ }
+    &\mathcal F_n\otimes\mathcal H_{\varepsilon}\\
+ \mathcal Z_{\rm crit}\ \subset\
+             V_{\kappa_{\rm crit}}
+    &\xrightarrow{\ \mu\ {\rm of}\ (WP.17)-(WP.23)\ }
+    &1\otimes\mathcal H_0 .
+ \end{array}
+ \tag{WP.32}
+\]
+The lower arrow is the critical restriction of the upper one.
+The root contribution is (WP.15)–(WP.16); division of singular
+products by the same \(\varepsilon\) is (WP.28)–(WP.30).
+The trace-zero target is the orthogonal subalgebra (WP.26), not a
+quotient of a nonzero-form boson.
+
+##### Every Fourier mode and the full completed map
+
+The same comparison preserves the brackets on the completed centers,
+with their actual smooth topology. Let \(a,b\) be homogeneous critical
+states of energies \(D_a,D_b\), and write
+\(\{a_\lambda b\}=\sum_j\lambda^j h_j/j!\).
+Use normalized Fourier fields
+\(Y(a,z)=\sum_p S_{a,p}z^{-p-D_a}\), and similarly for \(b\)
+and the boson states \(\mu(a),\mu(b)\). The universal product and
+commutator proof (PV.8)–(PV.10) gives, by (PV.24), for every pair of
+integer indices,
+\[
+ \{S_{a,p},S_{b,q}\}_{\rm completed}
+  =\sum_{j\geq0}\binom{p+D_a-1}{j}S_{h_j,p+q}.
+ \tag{WP.33}
+\]
+The sum is finite by locality, including for negative \(p\).
+Applying the same formula to the abelian datum of the boson algebra
+uses exactly \(\{b_{i,p},b_{j,q}\}=p\delta_{ij}\delta_{p,-q}\),
+or its trace-zero restriction. Equation (WP.30) identifies its state
+coefficients with \(\mu(h_j)\).
+
+The continuous ordered Miura algebra embedding (MC.14)–(MC.16) sends
+each actual determinant Fourier mode to the corresponding coefficient
+of \((\partial+h_1(z))\cdots(\partial+h_n(z))\). Our boson relabeling
+in (WP.23) gives exactly this map; normal products and derivatives give
+the same assertion for every polynomial state \(h_j\). Thus (WP.33)
+proves bracket preservation on the polynomial algebra of all central
+Fourier generators. The universal product identity is used here on
+every smooth boson module, so its zero modes and nonnegative modes are
+retained. An action on the boson vacuum alone, where those modes
+vanish, would not establish this conclusion.
+
+The completed brackets of §3.7.5, (CP.2)–(CP.6), are jointly
+continuous: the PBW parameter division is unique, its cutoff kernels
+are saturated, and completed multiplication is continuous. The
+ordered Miura embedding is continuous by its exact finite mode
+cutoffs. The polynomial Fourier algebra is dense in the full type A
+center by the finite-cutoff exhaustion of §3.6.3. Take polynomial
+approximants to both inputs. The equality just proved passes to their
+limits in the separated completed boson algebra. Hence
+\[
+ \boxed{\quad
+ \widehat\mu\bigl(\{u,v\}_{\rm crit}\bigr)
+       =\{\widehat\mu(u),\widehat\mu(v)\}_{\rm bos}
+ \quad\bigl(u,v\in Z(\widehat A_{\rm crit})\bigr).
+ \quad}
+ \tag{WP.34}
+\]
+This is the full continuous type A Miura Poisson embedding, over
+every ordinary coefficient algebra in the completed coefficient sense.
+It does not make a cutoff quotient or the ordinary vacuum restriction
+a Poisson quotient; (CP.17)–(CP.18) show why those different claims
+fail. Products use the componentwise map and a common cutoff.
+
+**Reading and scope.** Edward Frenkel's freely available
+[*Lectures on the Langlands program and conformal field theory*,
+hep-th/0512172v1](https://arxiv.org/abs/hep-th/0512172v1),
+subsection “Free field realization”, explains the rescaled
+rank-one construction and the Miura formula. The recursive matrix
+formulas, all their contraction cancellations, the determinant
+ordering and the first-order argument have been given here.
+They prove the ordinary differential-algebra Poisson Miura map
+and its full smooth completed extension for all type A factors.
+They do not prove a global sheaf comparison,
+a geometric or Satake central-line convention, a derived-family
+statement, or a chiral factorization comparison. Such conclusions
+require their own constructions.
+
+#### 3.7.5. The Poisson bracket on the full completion and its quadratic normalization
+
+Fix an invariant symmetric form \(B\) on the finite-dimensional Lie algebra \(\mathfrak g\). For the construction of the Poisson bracket it may be degenerate. For the quadratic calculation below we require it to be nondegenerate. Let \(R\) be any ordinary commutative characteristic-zero coefficient algebra. Use the form family
+\[
+\kappa_\varepsilon=-\tfrac12\mathrm{Kil}+\varepsilon B,
+\qquad R_\varepsilon=R[\varepsilon],\qquad K=1.
+\tag{CP.1}
+\]
+Denote its polynomial affine enveloping algebra by \(A_\varepsilon\), and form its smooth completion using the left ideals
+\(I_{N,\varepsilon}=A_\varepsilon t^N\mathfrak g_R[t]\), as in (CW.1). The bracket Jacobi identity uses only invariance of the coefficient form, so the polynomial family is an affine Lie algebra over \(R_\varepsilon\). The ordered-word PBW proof and the finite-word bounds (CW.2)–(CW.5) apply over this ring. Consequently its quotients are free \(R_\varepsilon\)-modules with the same ordered monomial lists as at \(\varepsilon=0\), and (CW.7)–(CW.14) construct its complete algebra and continuous multiplication.
+
+Write \(\widehat A_\varepsilon\) for this completion and \(\widehat A_0\) for the critical completion over \(R\). Stagewise reduction gives a continuous surjective algebra homomorphism \(\rho:\widehat A_\varepsilon\to\widehat A_0\). It has a continuous \(R\)-linear section \(s\): keep the coefficients of every ordered monomial constant in \(\varepsilon\), at each cutoff. The transition maps retain or delete exactly the same monomials, so these sections are compatible. Multiplication by \(\varepsilon\) is injective on every quotient, since its PBW coordinates are polynomials in \(\varepsilon\), and hence on the completion. If \(a\) reduces to zero, each component uniquely equals \(\varepsilon b_N\); the uniqueness makes the \(b_N\) compatible. Thus
+\[
+0\longrightarrow\widehat A_\varepsilon
+ \xrightarrow{\ \varepsilon\ }\widehat A_\varepsilon
+ \xrightarrow{\ \rho\ }\widehat A_0\longrightarrow0
+\tag{CP.2}
+\]
+is exact. These statements use free PBW quotients and exact division by the parameter, not an unproved flatness assertion for an infinite inverse limit over \(R[\varepsilon]\).
+
+Let \(J_{N,\varepsilon}\) be the kernel of projection to the \(N\)-th quotient. It is saturated for multiplication by \(\varepsilon\): if \(\varepsilon a\in J_{N,\varepsilon}\), the injectivity on that free quotient gives \(a\in J_{N,\varepsilon}\). Also \(s(J_{N,0})\subset J_{N,\varepsilon}\). These two facts are the topology control needed for parameter division.
+
+Put \(Z_R=Z(\widehat A_0)\). For \(u,v\in Z_R\), choose any lifts \(\widetilde u,\widetilde v\in\widehat A_\varepsilon\). Their commutator reduces to zero and is uniquely divisible by \(\varepsilon\), by (CP.2). Define
+\[
+\{u,v\}_B=\rho\left(\frac{[\widetilde u,\widetilde v]}{\varepsilon}\right).
+\tag{CP.3}
+\]
+This is independent of both lifts. Indeed replacing them by
+\(\widetilde u+\varepsilon a,\widetilde v+\varepsilon b\) changes the quotient by
+\([a,\widetilde v]+[\widetilde u,b]+\varepsilon[a,b]\). Its reduction is
+\([\rho(a),v]+[u,\rho(b)]=0\), because \(u,v\) are central in the entire critical completion. They need not have lifts which are central at the deformed level.
+
+The result is central. If \(x_m\) is any polynomial current, both \([x_m,\widetilde u]\) and \([x_m,\widetilde v]\) are divisible by \(\varepsilon\). Associative Jacobi gives
+\[
+\left[x_m,\frac{[\widetilde u,\widetilde v]}{\varepsilon}\right]
+=\left[\frac{[x_m,\widetilde u]}{\varepsilon},\widetilde v\right]
+ +\left[\widetilde u,\frac{[x_m,\widetilde v]}{\varepsilon}\right].
+\tag{CP.4}
+\]
+Each bracket on the right reduces to zero by centrality of \(u,v\). Therefore (CP.3) commutes with every current, and the completed-center criterion (CW.16) proves that it lies in \(Z_R\).
+
+The bracket is \(R\)-bilinear and antisymmetric because the commutator is. For the product rule choose \(\widetilde u\widetilde v\) as a lift of \(uv\). Its commutator with a lift of \(w\) is
+\(\widetilde u[\widetilde v,\widetilde w]+[\widetilde u,\widetilde w]\widetilde v\). Exact division and reduction give
+\[
+\{uv,w\}_B=u\{v,w\}_B+\{u,w\}_Bv.
+\tag{CP.5}
+\]
+For Jacobi, the element \([\widetilde u,\widetilde v]/\varepsilon\) is a lift of the central element \(\{u,v\}_B\), by (CP.4). Its commutator with \(\widetilde w\) is again divisible by \(\varepsilon\). Hence every double commutator
+\([[\widetilde u,\widetilde v],\widetilde w]\) is uniquely divisible by \(\varepsilon^2\). The sum of the three such commutators is zero in an associative algebra. Divide that equality twice and reduce to obtain
+\[
+\{\{u,v\}_B,w\}_B+\{\{v,w\}_B,u\}_B+\{\{w,u\}_B,v\}_B=0.
+\tag{CP.6}
+\]
+Thus (CP.3) makes the entire completed center a Poisson algebra.
+
+Its bracket is jointly continuous. Use the continuous section \(s\) in (CP.3). Given a required output cutoff \(N\) and a pair \((u,v)\), joint continuity of completed multiplication gives sufficiently small neighborhoods of \(s(u),s(v)\) for the commutator difference to lie in \(J_{N,\varepsilon}\). The section carries sufficiently small center perturbations into those neighborhoods. Both commutators, and hence their difference, are divisible by \(\varepsilon\); saturation of \(J_{N,\varepsilon}\) places the divided difference in that same kernel. Reduction then places the bracket difference in \(J_{N,0}\). This proves the stated continuity at every pair. It does not require any individual cutoff kernel to be a Poisson ideal.
+
+Every ordinary map \(R\to R'\) gives the stagewise PBW coefficient maps and the corresponding completed algebra maps. These preserve products, parameter multiplication and reduction. The unique division by \(\varepsilon\) is coefficientwise polynomial division and commutes with the coefficient map. Therefore (CP.3) commutes with every such base change, without a flatness assumption on \(R'\) over \(R\).
+
+Coordinate substitution preserves the residue cocycle for the whole form family (CP.1), by (RC.C7). The cofinality proof (CW.22)–(CW.23) gives its continuous algebra automorphism on \(\widehat A_\varepsilon\), including nilpotent coordinate constants. It fixes \(\varepsilon\) and commutes with reduction. Applying it to any two lifts in (CP.3), and using lift independence, proves
+\[
+\sigma_\phi(\{u,v\}_B)=\{\sigma_\phi(u),\sigma_\phi(v)\}_B.
+\tag{CP.7}
+\]
+The completed critical center is therefore a coordinate-equivariant topological Poisson algebra for the chosen deformation direction \(B\).
+
+The quotient mechanism can be displayed accurately. Set
+\(\mathcal P_\varepsilon=\rho^{-1}(Z_R)\). Equation (CP.4) says that the divided commutator of two of its elements again lies in \(\mathcal P_\varepsilon\), so
+\[
+\begin{array}{ccc}
+\mathcal P_\varepsilon\times\mathcal P_\varepsilon
+&\xrightarrow{\ [\ ,\ ]/\varepsilon\ }&\mathcal P_\varepsilon\\
+{\scriptstyle \rho\times\rho}\downarrow&&\downarrow{\scriptstyle\rho}\\
+Z_R\times Z_R&\xrightarrow{\ \{\ ,\ \}_B\ }&Z_R.
+\end{array}
+\tag{CP.8}
+\]
+*The upper row concerns lifts whose reductions are central; it does not require the lifts themselves to be central. Exact PBW parameter division (CP.2), lift independence and (CP.4) prove the square. The saturated cutoff kernels prove continuity. Coordinate substitution on the same family proves (CP.7).*
+
+We compute the quadratic bracket without a presumed Virasoro representation. Now assume \(B\) nondegenerate, choose dual bases \(a_\alpha,a^\alpha\), and retain the half-Casimir state and universal modes from (GQ.2)–(GQ.3):
+\[
+Q_B=\tfrac12\sum_\alpha(a_\alpha)_{-1}(a^\alpha)_{-1}v,
+\qquad
+\mathcal Q(z)=\sum_{m\in\mathbb Z}S_m z^{-m-2}.
+\tag{CP.9}
+\]
+The finite current calculation (GQ.7) is valid at every coefficient form, hence at (CP.1). With
+\(B(C_Bx,y)=\mathrm{Kil}(x,y)\), the operator \(K_{\kappa_\varepsilon}\) is \(-C_B/2+\varepsilon\operatorname{Id}\). Therefore the actual universal commutators are
+\[
+[x_r,S_m]=\varepsilon r x_{r+m}.
+\tag{CP.10}
+\]
+Their validity on all smooth modules, already proved in (GQ.7), and the natural-operator interpretation of §3.6.1 make them equalities in \(\widehat A_\varepsilon\).
+
+For every integer \(l\), including \(l<-1\), define the coefficient derivation
+\(D_l(x_r)=r x_{r+l}\), \(D_l(1)=0\). Its bracket defect is
+\(r(r+s+l)\kappa_\varepsilon(x,y)\delta_{r+s+l,0}=0\), so it is a derivation of the polynomial current algebra. Taking a tail bound \(M\ge\max(N,N-l)\) proves \(D_l I_{M,\varepsilon}\subset I_{N,\varepsilon}\); thus it extends continuously to the completion. Unlike the vacuum operator in (GQ.11), this is a coefficient derivation. No action on the vacuum is asserted when \(l<-1\).
+
+We extend the normal-order calculation (GQ.12) to all these integers, retaining its finite boundary. Put \(\theta(j)=1\) for \(j\ge0\) and zero otherwise. Differentiating a normally ordered pair gives
+\[
+\begin{aligned}
+D_l(:a_jb_{n-j}:)
+&=j:a_{j+l}b_{n-j}:+(n-j):a_jb_{n-j+l}:\\
+&\quad+j(\theta(j+l)-\theta(j))[a_{j+l},b_{n-j}].
+\end{aligned}
+\tag{CP.11}
+\]
+This follows by comparing the two factor orders before and after the first index crosses zero. Reindex the first ordinary sum: its coefficient becomes \(j-l\), and adding the second gives \(n-l\). The sum of the boundary Lie brackets is zero because
+\(\sum_\alpha[a_\alpha,a^\alpha]=0\), as proved in (GQ.4) by the symmetry of the inverse-form tensor. The scalar boundary is
+\[
+\tfrac12\operatorname{tr}(K_{\kappa_\varepsilon})\delta_{n+l,0}
+\sum_jj(j+l)(\theta(j+l)-\theta(j)).
+\]
+For \(l>0\), set \(j=-s\), \(1\le s\le l\), obtaining the sum of \(s^2-ls\), equal to \(-(l^3-l)/6\) by the finite sums already evaluated before (GQ.12). For \(l=-d<0\), the crossing indices are \(j=0,\ldots,d-1\), with crossing sign minus. Their sum is
+\(\sum_{j=0}^{d-1}j(d-j)=(d^3-d)/6=-(l^3-l)/6\).
+For \(l=0\), it is empty. This proves all integer cases. Every computation is finite modulo a required cutoff after choosing the larger tail bound for \(D_l\); only this finite crossing interval remains after reindexing. Consequently
+\[
+D_lS_n=(n-l)S_{n+l}
+ +\gamma_{\kappa_\varepsilon}(l^3-l)\delta_{n+l,0},
+\qquad
+\gamma_{\kappa_\varepsilon}
+=\frac{\operatorname{tr}(C_B)}{24}
+ -\varepsilon\frac{\dim\mathfrak g}{12}.
+\tag{CP.12}
+\]
+
+Equation (CP.10) says that \(\operatorname{ad}(S_l)=-\varepsilon D_l\) on every current generator. Both sides are continuous derivations on the actual completed algebra. Their equality extends to finite products, and density of the polynomial algebra extends it to every completed element. Applying it to (CP.12) gives the exact level-family formula
+\[
+[S_l,S_n]
+=\varepsilon(l-n)S_{l+n}
+ -\varepsilon\gamma_{\kappa_\varepsilon}(l^3-l)\delta_{l+n,0}.
+\tag{CP.13}
+\]
+This supplies every Fourier mode, rather than only the vacuum-negative modes. Write \(\gamma_B=\operatorname{tr}(C_B)/24\), as in (GQ.14). Division and reduction in (CP.3) now yield
+\[
+\boxed{\{S_l,S_n\}_B=(l-n)S_{l+n}
+ -\gamma_B(l^3-l)\delta_{l+n,0}.}
+\tag{CP.14}
+\]
+
+The same calculation determines the intrinsic vacuum \(\lambda\)-bracket of §3.7.1. The vertex index \(j\) of the weight-two field corresponds to \(S_{j-1}\). At every level its vacuum creation series implies \(S_m v=0\) for \(m\ge-1\), \(S_{-2}v=Q_B\), and \(S_{-3}v=TQ_B\). Thus
+\(S_{j-1}Q_B=[S_{j-1},S_{-2}]v\).
+By (CP.13), its parameter quotient at the critical level is \(TQ_B\) for \(j=0\), \(2Q_B\) for \(j=1\), zero for \(j=2\), and \(-6\gamma_Bv\) for \(j=3\); all higher \(j\) give zero. Multiplying by \(\lambda^j/j!\) proves
+\[
+\boxed{\{Q_B{}_{\lambda}Q_B\}_B=(T+2\lambda)Q_B-\gamma_B\lambda^3.}
+\tag{CP.15}
+\]
+This proof uses the actual level-family operators, their source creation values and the definition of the first-order bracket. It does not infer (CP.15) merely from the coordinate anomaly.
+
+For \(\mathfrak{sl}_n\) with \(B=\operatorname{tr}\), (GQ.20) proves
+\(\gamma_B=\gamma_n=n(n^2-1)/12\). The exact determinant identity after (GQ.20) gives \(w_2=-Q_B\). Hence its raw normalized scalar coefficient has
+\[
+\boxed{\{w_2{}_{\lambda}w_2\}
+=-(T+2\lambda)w_2-\gamma_n\lambda^3.}
+\tag{CP.16}
+\]
+This is the quadratic Miura and scalar-oper normalization in §3.7.3. The sign of the cubic term and the ordered derivative in (MC.9) are both retained. An unnormalized matrix operator with nonzero first coefficient has its separate trace terms; (CP.16) concerns the traceless normalized operator. The generic quadratic field still has (CP.14)–(CP.15) for the half-Casimir of every nondegenerate invariant \(B\).
+
+We can now exhibit why continuity does not make every displayed quotient Poisson. Take \(\mathfrak{sl}_2\) and \(B=\operatorname{tr}\), so the critical quadratic state is nonzero by its PBW symbol. At cutoff \(N=1\), (UC.20) gives \(S_1\in J_{1,0}\). But
+\[
+\{S_1,S_{-3}\}_B=4S_{-2}\notin J_{1,0}.
+\tag{CP.17}
+\]
+The last nonvanishing follows from (CT.13): at this cutoff \(S_{-2}\) has the nonzero quadratic invariant symbol of Laurent coefficient order zero. Thus the cutoff kernel is not a Poisson ideal. The ordinary vacuum restriction (PC.15) has the same issue in a different range: it kills \(S_0\), while
+\[
+\{S_0,S_{-2}\}_B=2S_{-2}
+\tag{CP.18}
+\]
+has nonzero vacuum value \(2Q_B\). Its kernel is therefore not a Poisson ideal either. The square (PC.16) is a commutative-algebra and coordinate square; it is not a quotient square of ordinary Poisson algebras. The vacuum center instead retains the differential \(\lambda\)-bracket of §3.7.1, whose explicit quadratic identity is (CP.15).
+
+For an abelian direction the construction is equally concrete:
+\[
+\{z_m,y_n\}_B=mB(z,y)\delta_{m+n,0}.
+\tag{CP.19}
+\]
+It follows immediately by dividing the affine bracket at \(\kappa_\varepsilon=\varepsilon B\). All zero modes have zero Poisson bracket here, although they remain nonzero central variables in (HC.8). This also shows explicitly that the deformation direction is part of the Poisson normalization.
+
+**The full type A scalar-oper Poisson comparison.** Put \(P_R\) for the completed scalar coefficient algebra of (PC.3), and \(\Phi_R\) for the topological algebra isomorphism (PC.5). For the raw matrix case include all degrees \(1,\ldots,n\); for the trace-zero case include \(2,\ldots,n\). Let \(j_R:P_R\hookrightarrow\widehat{\mathcal H}_R\) send each scalar coefficient mode to the corresponding ordered Miura coefficient. Equations (MC.15)–(MC.16) give
+\[
+j_R\Phi_R=\widehat\nu_R=\widehat\mu_R.
+\tag{CP.20}
+\]
+The last equality is the exact determinant image (WP.23), with its proved boson relabeling, on every Fourier coefficient; continuity extends it to the completion.
+
+The image of \(j_R\) is closed. Indeed it is exactly the intersection, over all \(N\), of the inverse images of the stage images in the discrete algebras \(\mathcal H_{N,R}\). For the nontrivial inclusion, an element in this intersection has a unique preimage in each scalar stage by (MC.15). Compatibility of the stage maps and their injectivity makes those preimages compatible, producing an element of \(P_R\). Thus the image is closed, and its inverse carries the induced topology by the same exact cutoff argument.
+
+The finite coefficient formulas (AP.11), or (AP.17) after trace-zero reduction, define the scalar Poisson vertex bracket. Their Fourier coefficients use the universal finite locality sum (PV.24). A nonlinear coefficient expression can involve an infinite mode convolution before imposing a cutoff. It nevertheless defines an element of \(P_R\): at cutoff \(N\), each coefficient mode of degree \(i\) has upper bound \(i(N-1)\); a fixed sum of the indices in a finite monomial then bounds each index below as well. Each convolution is thus finite at that cutoff, and these finite polynomials are compatible. Derivatives contribute their explicit integer mode factors and do not invalidate the bounds.
+
+The resulting bracket of scalar generators has exactly the boson Miura image. Equations (AP.9) and (AP.14) prove every differential coefficient bracket, and the same universal residue argument gives the Fourier formula for every integer index. Leibniz consequently defines brackets of polynomial scalar inputs with values in the completed image \(j_R(P_R)\). No closure of the uncompleted polynomial mode algebra is asserted. Polynomial inputs are dense in \(P_R\), because every finite stage is a polynomial algebra. The boson bracket is jointly continuous by the abelian instance of (CP.1)–(CP.7). Closedness of the completed image and continuity of the inverse therefore give a unique jointly continuous extension of the scalar bracket to all of \(P_R\). Its Poisson identities follow by injection into the already proved boson Poisson algebra. We denote it by \(\{\ ,\ \}_{\mathrm{AGD}}\), with the positive boson sign of (AP.1).
+
+For \(u,v\) in the full type A completed center, (WP.34) and (CP.20) now give
+\[
+\begin{aligned}
+j_R\Phi_R(\{u,v\}_{\operatorname{tr}})
+&=\{j_R\Phi_R(u),j_R\Phi_R(v)\}_{\mathrm{bos}}\\
+&=j_R\{\Phi_R(u),\Phi_R(v)\}_{\mathrm{AGD}}.
+\end{aligned}
+\]
+Cancel the injective map \(j_R\). We have proved the complete topological Poisson isomorphism
+\[
+\boxed{\Phi_R:
+\bigl(Z(\widehat A_{\mathrm{crit},R}),\{\ ,\ \}_{\operatorname{tr}}\bigr)
+\xrightarrow{\ \sim\ }
+\bigl(P_R,\{\ ,\ \}_{\mathrm{AGD}}\bigr).}
+\tag{CP.21}
+\]
+All lower terms and signs in this second scalar Adler–Gelfand–Dickey bracket are the explicit formulas (AP.11)–(AP.18); its quadratic normalization is (CP.16). The scalar-oper interpretation retains the geometric and invariant-theory premises explicitly stated before (PC.5). Section 3.8 independently constructs the ordinary principal type A matrix Hamiltonian reduction and proves its equality with this bracket; that equality requires the actual moment-normalizer and classical free-field arguments there.
+
+The coordinate actions agree by (PC.13), (MC.22) and the density transport (AP.25). Their Poisson property follows from (CP.7) and (MC.23). Consequently the following is a square of continuous Poisson maps:
+\[
+\begin{array}{ccc}
+Z(\widehat A_{\mathrm{crit},R})&\xrightarrow{\ \Phi_R\ }&P_R\\
+{\scriptstyle\sigma_\phi}\downarrow&&\downarrow{\scriptstyle\sigma_\phi^{\mathrm{Op}}}\\
+Z(\widehat A_{\mathrm{crit},R})&\xrightarrow{\ \Phi_R\ }&P_R.
+\end{array}
+\tag{CP.22}
+\]
+*The horizontal maps are the coefficient isomorphism (PC.5), now Poisson by the actual deformed field map (WP.30)–(WP.34) and the scalar factorization formulas (AP.7)–(AP.18). The vertical maps use the inverse density action, with the essential Cartan shift (MC.20). Exact mode cutoffs give the topology. This square concerns the whole completion; the forbidden-mode counterexamples (CP.17)–(CP.18) still apply to cutoff and vacuum restrictions.*
+
+The regular vacuum comparison likewise gives a Poisson vertex algebra isomorphism onto the scalar differential coefficient algebra: both sides inject into the regular bosons by (MC.13) and (AP.13), their generator images agree by (WP.23), and (WP.30) proves preservation of every \(\lambda\)-bracket. This is a state-algebra comparison, rather than an ordinary Poisson quotient of (CP.21). Direct sums of type A factors use the componentwise brackets and a common cutoff. Additional framed central directions have exactly the linear bracket (CP.19) for their specified deformation form, and cross brackets vanish when that form is a direct sum.
+
+The construction proves the complete intrinsic critical Poisson algebra for every finite-dimensional affine datum, naturality under ordinary coefficient maps and the full coordinate action. Naturality does not assert an unproved center base-change isomorphism in other types. It proves the quadratic coefficient normalization for every nondegenerate invariant form and the full type A scalar-oper Poisson comparison at the stated premises. It supplies no basic lifts in other types, geometric Satake theorem, localization argument, factorization descent or derived-family theorem.
+
+
+### 3.8. Principal Drinfeld–Sokolov Hamiltonian reduction
+
+#### 3.8.1. The classical affine PVA and principal Hamiltonian reduction
+
+Let \(k\) be a characteristic-zero field, \(R\) an ordinary commutative \(k\)-algebra, and \(n\geq1\). We first take \(\mathfrak g=\mathfrak{gl}_n(k)\), with
+\[
+ B(x,y)=\operatorname{tr}(xy),\qquad
+ \mathcal A_R=R[J_x^{(r)}:x\in\mathfrak g,\ r\geq0]_{\text{linear in }x},
+ \qquad TJ_x^{(r)}=J_x^{(r+1)},\quad T|_R=0.
+ \tag{DP.1}
+\]
+The current labels are linear over \(k\). Thus choosing a basis \(e_i\) identifies \(\mathcal A_R\) with the polynomial algebra in \(u_i^{(r)}=J_{e_i}^{(r)}\). No algebraic closure or reducedness is required. For \(n\geq2\), exactly the same construction works with \(\mathfrak{sl}_n(k)\) and the restricted trace form. We construct that algebra directly, rather than imposing the trace-zero relation on the unreduced \(\mathfrak{gl}_n\) bracket.
+
+**The current bracket and its complete extension.** Prescribe the positive convention
+\[
+ H_{ij}(\lambda)=\{u_i{}_\lambda u_j\}
+   =J_{[e_i,e_j]}+B(e_i,e_j)\lambda,
+ \qquad
+ \{J_x{}_\lambda J_y\}=J_{[x,y]}+\operatorname{tr}(xy)\lambda.
+ \tag{DP.2}
+\]
+It agrees with the positive boson convention of (AP.1). For differential polynomials \(F,G\), define
+\[
+ \boxed{\{F_\lambda G\}
+  =\sum_{i,j,r,s}
+    \frac{\partial G}{\partial u_j^{(s)}}
+    (\lambda+T)^s
+    H_{ij}(\lambda+T)
+    (-\lambda-T)^r
+    \frac{\partial F}{\partial u_i^{(r)}}.}
+ \tag{DP.3}
+\]
+Here \(H_{ij}(\lambda+T)=J_{[e_i,e_j]}+B(e_i,e_j)(\lambda+T)\), and each displayed \(T\) acts on everything to its right. Each sum is finite because \(F,G\) involve finitely many jet variables. The formula is a polynomial in \(\lambda\) with coefficients in \(\mathcal A_R\), and is independent of the chosen basis: it is the contraction of the two polynomial differentials with the bilinear current bracket (DP.2).
+
+We prove all its identities. Differentiating \(TF=\sum_{i,r}u_i^{(r+1)}F_{i,r}\), where \(F_{i,r}=\partial F/\partial u_i^{(r)}\), gives
+\[
+ (TF)_{i,r}=T F_{i,r}+F_{i,r-1},\qquad F_{i,-1}=0.
+ \tag{DP.4}
+\]
+In (DP.3), the second term is reindexed by \(r\mapsto r+1\). Its operator \(-\lambda-T\) combines with the first term's \(T\) to give \(-\lambda\). Applying (DP.4) to \(G\) instead, the derivative of its coefficient and the extra \(\lambda+T\) combine by the ordinary product rule. Therefore
+\[
+ \{TF_\lambda G\}=-\lambda\{F_\lambda G\},\qquad
+ \{F_\lambda TG\}=(\lambda+T)\{F_\lambda G\}.
+ \tag{DP.5}
+\]
+Differentiating \(GH\) in the second argument of (DP.3) proves
+\[
+ \{F_\lambda GH\}=\{F_\lambda G\}H+G\{F_\lambda H\}.
+ \tag{DP.6}
+\]
+For the first argument, normal-order the finite differential operators of (DP.3), with their coefficients to the left. For each power, the identity
+\[
+ (\lambda+T)^q(ab)
+   =\sum_{v=0}^q\binom qv
+       \bigl((\lambda+T)^{q-v}a\bigr)T^vb
+\]
+is the ordinary product rule. Applying it to the derivative of \(FH\) proves
+\[
+ \{FH_\lambda G\}
+   =\{F_{\lambda+T}G\}_{\to}H
+       +\{H_{\lambda+T}G\}_{\to}F.
+ \tag{DP.7}
+\]
+The arrow means that the newly inserted \(T\)'s act on the factor to their right. These four rules, together with (DP.2), also prove uniqueness: expand a polynomial into products of jet generators, use both Leibniz rules, and then remove the jets by (DP.5). This expansion gives exactly (DP.3).
+
+For clarity, we provide the algebraic locality calculation that establishes skew symmetry and Jacobi for this extension; we do not appeal to a PVA extension theorem. Use independent spatial labels \(s,t,u\). The finite local kernel for the currents is
+\[
+ K_{xy}(s,t)
+   =J_{[x,y]}(t)\delta(s,t)
+          +B(x,y)\partial_t\delta(s,t).
+ \tag{DP.8}
+\]
+Write \(\delta(s,t)=\sum_{m\in\mathbb Z}s^{-m-1}t^m\) for the scalar formal delta. Its residue against a Laurent polynomial in \(s\) is that polynomial evaluated at \(t\); differentiation proves its derivative residue rules and \(\partial_s\delta=-\partial_t\delta\). Multiplying a coefficient at \(s\) into a delta derivative of order \(q\) uses only its Taylor jet of order \(q\) at \(t\).
+
+These are jet-distribution symbols, not reconstructed operators on a module. Their precise algebraic meaning is finite sums of derivatives of the diagonal delta, with coefficients that are differential polynomials. The rule
+\[
+ a(s)\partial_t^q\delta(s,t)
+   =\sum_{v=0}^q\binom qv
+          (T^va)(t)\partial_t^{q-v}\delta(s,t)
+ \tag{DP.9}
+\]
+follows by differentiating \(a(s)\delta(s,t)=a(t)\delta(s,t)\) \(q\) times. For three variables, use its two successive diagonal versions. A distribution supported on \(s=t=u\) has a unique finite form
+\[
+ \sum_{p,q}a_{pq}(u)
+       \frac{\partial_u^p\delta(s,u)}{p!}
+       \frac{\partial_u^q\delta(t,u)}{q!}.
+ \tag{DP.10}
+\]
+Each derivative in (DP.10) acts on its indicated delta only. Uniqueness is checked by the double residue against
+\((s-u)^p(t-u)^q\): it extracts \(a_{pq}\), since a derivative of a monomial is nonzero at zero at precisely its own degree. Existence in the products used here follows by the finite rule (DP.9), after replacing both diagonal conditions by \(s=u,t=u\). Equivalently these symbols act on a test polynomial by its finite Taylor jet on the diagonal. Multiplication of the two delta kernels uses two independent differences, and is therefore defined without an infinite convolution. Derivatives commute with this finite Taylor evaluation. Applying the product rule to coefficients and then (DP.9) respects the same identities, so subsequent brackets of coefficients are well defined.
+
+Extend (DP.8) to polynomials at distinct spatial labels by the ordinary biderivation rule in both arguments, and differentiate it for jet arguments. All sums are finite sums over pairs of labelled factors. Rule (DP.9) puts each resulting kernel into diagonal normal form. Taking its formal exponential residue,
+\[
+ \operatorname{Res}_s e^{\lambda(s-t)}K(F(s),G(t)),
+\]
+is finite on that normal form. A derivative of the delta contributes a power of \(\lambda\). Differentiation in \(s\) contributes \(-\lambda\); differentiation in \(t\) contributes \(\lambda+T\). For monomials, summing over the first selected factor \(u_i^{(r)}\) and the second selected factor \(u_j^{(s)}\), and applying (DP.9) to the unselected factors, gives (DP.3). This proves that the kernel calculation is exactly our polynomial bracket, including all arrow shifts.
+
+The kernel is antisymmetric under exchanging its two arguments and their labels. Indeed \([y,x]=-[x,y]\), \(B\) is symmetric, and
+\(\partial_s\delta(t,s)=-\partial_t\delta(s,t)\). Moving its first coefficient to the second label uses (DP.9) with \(q=0\). Biderivation and differentiation preserve this antisymmetry. Its exponential residue is consequently
+\[
+ \{F_\lambda G\}=-\{G_{-\lambda-T}F\},
+ \tag{DP.11}
+\]
+where the powers of \(T\) in the substitution act on the resulting coefficients. The shifts are exactly (DP.9), rather than an assumed skew-symmetry axiom.
+
+Here is the corresponding complete reduction of Jacobi to currents. Before diagonal normal ordering, take the cyclic kernel Jacobiator. Since the bracket is an antisymmetric biderivation, its Jacobiator is a derivation in each spatial argument. For example, expanding the Jacobiator on \(H_1H_2\), the terms in which the two brackets hit different factors cancel in pairs:
+\[
+ K(F,H_1)K(G,H_2)+K(G,H_1)K(F,H_2)
+ -K(G,H_1)K(F,H_2)-K(F,H_1)K(G,H_2)=0.
+\]
+The remaining terms are the Jacobiator on \(H_1\), multiplied by \(H_2\), and its counterpart on \(H_2\). Antisymmetry makes the cyclic Jacobiator alternating, giving the same assertion in the other two arguments. Differentiating an argument differentiates the Jacobiator at its spatial label. Thus induction on numbers of factors and derivatives reduces its vanishing to three undifferentiated currents.
+
+For these currents its double exponential residue is
+\[
+ \begin{aligned}
+ &J_{[x,[y,z]]}-J_{[y,[x,z]]}-J_{[[x,y],z]}\\
+ &\quad+B(x,[y,z])\lambda
+        -B(y,[x,z])\mu-B([x,y],z)(\lambda+\mu)=0.
+ \end{aligned}
+ \tag{DP.12}
+\]
+The first line vanishes by expanding the matrix commutators; their associative products cancel in pairs. Cyclic matrix trace gives
+\(B(x,[y,z])=B([x,y],z)\) and
+\(B(y,[x,z])=-B([x,y],z)\), cancelling the second line. To check the parameter \(\lambda+\mu\), write
+\(e^{\lambda(s-u)+\mu(t-u)}
+ =e^{\lambda(s-t)}e^{(\lambda+\mu)(t-u)}\)
+in the term supported first on \(s=t\). The unique normal form (DP.10) implies that a zero polynomial residue has every kernel coefficient zero. Hence the current kernel Jacobiator is zero; the preceding factor and derivative induction proves it for all polynomials. Translating the same residues back to \(\lambda\)-notation proves
+\[
+ \boxed{\{F_\lambda\{G_\mu H\}\}
+    -\{G_\mu\{F_\lambda H\}\}
+       =\{\{F_\lambda G\}_{\lambda+\mu}H\}.}
+ \tag{DP.13}
+\]
+This establishes the classical affine PVA directly. Its unit has zero bracket. Every calculation is polynomial over \(k\), so the construction and its identities hold under every ordinary coefficient map \(R\to R'\), including nilpotent coefficients.
+
+**The principal constraints are coisotropic.** Put
+\[
+ \begin{aligned}
+ f&=\sum_{i=1}^{n-1}E_{i+1,i},&
+ \mathfrak n_+&=\{x:x\text{ is strictly upper triangular}\},\\
+ \chi(x)&=\operatorname{tr}(fx),&c_x&=J_x-\chi(x).
+ \end{aligned}
+ \tag{DP.14}
+\]
+For \(n=1\), \(\mathfrak n_+=0\) and all subsequent reductions are the identity reduction. In general define the differential ideal
+\[
+ I_R=(T^rc_x:x\in\mathfrak n_+,\ r\geq0)
+           \ \subset\ \mathcal A_R.
+ \tag{DP.15}
+\]
+The trace of a product of two strictly upper triangular matrices is zero. Moreover
+\(\chi(v)=\sum_i v_{i,i+1}\), and every first-superdiagonal entry of a commutator in \(\mathfrak n_+\) is zero: the matrix-product sum would require an integer strictly between \(i\) and \(i+1\). Consequently
+\[
+ B(\mathfrak n_+,\mathfrak n_+)=0,\qquad
+ \chi([\mathfrak n_+,\mathfrak n_+])=0,\qquad
+ \{c_x{}_\lambda c_y\}=c_{[x,y]}\in I_R[\lambda].
+ \tag{DP.16}
+\]
+For example, in rank two \(\{c_{E_{12}}{}_\lambda J_{E_{21}}\}=J_{E_{11}-E_{22}}+\lambda\), whose reduction is a nonzero polynomial. Thus the unrestricted constraint quotient does not inherit the affine bracket.
+
+Sesquilinearity proves the same containment for derivatives of the constraints. Applying both Leibniz rules to their multiples proves
+\(\{I_R{}_\lambda I_R\}\subset I_R[\lambda]\).
+This is coisotropy. It does not say that \(I_R\) is a PVA ideal in the whole affine algebra.
+
+Define the normalizer
+\[
+ U_R=\{a\in\mathcal A_R:
+          \{J_x{}_\lambda a\}\in I_R[\lambda]
+                       \text{ for every }x\in\mathfrak n_+\}.
+ \tag{DP.17}
+\]
+Since constants have zero bracket, \(J_x\) can be replaced here by \(c_x\). Coisotropy, sesquilinearity and the right Leibniz rule show \(I_R\subset U_R\). The normalizer is closed under products and \(T\), by (DP.5)–(DP.6).
+
+We first prove the stronger ideal test needed for bracket closure. If \(a\in U_R\), skew symmetry gives
+\(\{a_\lambda c_x\}\in I_R[\lambda]\); the shifted coefficients remain in \(I_R\) because it is differential. Right sesquilinearity handles \(T^rc_x\), and right Leibniz handles any multiple of that generator by an arbitrary polynomial. Skew symmetry gives the reverse containment as well. Therefore
+\[
+ a\in U_R\ \Longrightarrow
+   \{a_\lambda I_R\}\subset I_R[\lambda],\qquad
+   \{I_R{}_\lambda a\}\subset I_R[\lambda].
+ \tag{DP.18}
+\]
+Conversely either ideal test implies (DP.17), since every \(c_x\) belongs to \(I_R\).
+
+If \(a,b\in U_R\), Jacobi gives
+\[
+ \{J_x{}_\mu\{a_\lambda b\}\}
+   =\{\{J_x{}_\mu a\}_{\mu+\lambda}b\}
+       +\{a_\lambda\{J_x{}_\mu b\}\}
+       \in I_R[\lambda,\mu].
+ \tag{DP.19}
+\]
+The two containments use (DP.18), coefficient by coefficient, including the parameter substitution. Thus every coefficient of \(\{a_\lambda b\}\) lies in \(U_R\). We have proved that \(U_R\) is a differential PVA subalgebra and \(I_R\) is a differential PVA ideal in \(U_R\). In particular
+\[
+ \boxed{\mathcal W_R=U_R/I_R}
+ \tag{DP.20}
+\]
+is a PVA. Products, \(T\) and all bracket coefficients descend independently of representatives: changing a representative by \(I_R\) changes the bracket by \(I_R[\lambda]\), by (DP.18).
+
+**The quotient action and its invariant algebra.** Let \(\mathcal Q_R=\mathcal A_R/I_R\), with its differential-algebra structure, and write \(\pi:\mathcal A_R\to\mathcal Q_R\). There is a well-defined current action
+\[
+ \rho_x(\lambda)\pi(a)=\pi\{J_x{}_\lambda a\}
+       =\sum_{j\geq0}\frac{\lambda^j}{j!}D_{x,j}\pi(a),
+           \qquad x\in\mathfrak n_+.
+ \tag{DP.21}
+\]
+It is independent of the lift \(a\), because the constraints preserve \(I_R\), as already proved. Each \(D_{x,j}\) is an \(R\)-linear derivation by right Leibniz. Jacobi, together with \(B|_{\mathfrak n_+}=0\), gives
+\[
+ [D_{x,p},D_{y,q}]=D_{[x,y],p+q}.
+ \tag{DP.22}
+\]
+Indeed the polynomial identity for the two actions has right side
+\(\rho_{[x,y]}(\lambda+\mu)\). Taking the coefficient of
+\(\lambda^p/p!\,\mu^q/q!\) gives (DP.22). Thus \(x t^j\mapsto D_{x,j}\) is the polynomial current Lie action. Its exact formula on all jet generators is
+\[
+ \boxed{D_{x,j}\pi(J_y^{(r)})
+   =\begin{cases}
+       \displaystyle\frac{r!}{(r-j)!}\pi(J_{[x,y]}^{(r-j)}),&0\leq j\leq r,\\
+       (r+1)!B(x,y),&j=r+1,\\
+       0,&j>r+1.
+     \end{cases}}
+ \tag{DP.23}
+\]
+This is the coefficient extraction from
+\((\lambda+T)^r(J_{[x,y]}+B(x,y)\lambda)\). It is an identity over \(R\), not a formula checked only at field-valued points.
+
+Define \(\mathcal Q_R^{\mathfrak n_+[[t]]}\) as the common kernel of all \(D_{x,j}\). An invariant quotient class has any lift \(a\) satisfying (DP.17), because its polynomial coefficients in (DP.21) are zero; conversely a normalizer representative maps to an invariant. The kernel of this map is exactly \(I_R\), already contained in \(U_R\). Therefore there is a canonical differential-algebra identification
+\[
+ \boxed{\mathcal W_R
+      \simeq\mathcal Q_R^{\mathfrak n_+[[t]]}.}
+ \tag{DP.24}
+\]
+No special invariant lift has been chosen. The PVA bracket on the right means the normalizer bracket transported through this identification. The whole \(\mathcal Q_R\) has not been declared an affine-PVA quotient.
+
+**Matrix geometry and the gauge sign.** The trace pairing identifies a current with a matrix:
+\[
+ J_y=\operatorname{tr}(Ay),\qquad A_{ji}=J_{E_{ij}}.
+ \tag{DP.25}
+\]
+For \(\mathfrak{sl}_n\), take \(A\) traceless; off-diagonal entries use the same formula, and \(A_{ii}=J_{E_{ii}-\mathbf1/n}\). The full trace-dual basis is \(E_{ij}^{\vee}=E_{ji}\), since
+\(\operatorname{tr}(E_{ij}E_{ab})=\delta_{ja}\delta_{ib}\).
+The restricted trace form is nondegenerate as well: orthogonality to off-diagonal matrices makes a matrix diagonal, and orthogonality to all \(E_{ii}-E_{jj}\) makes it scalar; its zero trace then makes it zero because \(n\) is invertible. This proves the required pairing statements over \(k\) and their ordinary extensions.
+No diagonal generator outside \(\mathfrak{sl}_n\) is introduced. The constraints fix
+\(A_{i+1,i}=1\) and every other strictly lower entry to zero. Hence
+\[
+ \mathcal Q_R
+  =\mathcal O_{\mathrm{diff}}(f+\mathfrak b_+)_R,
+ \tag{DP.26}
+\]
+where \(\mathfrak b_+\) is the upper triangular algebra, traceless in the \(\mathfrak{sl}_n\) case. Concretely this is a polynomial algebra on its remaining upper-triangular entries and all their derivatives: eliminate the constraint coordinates at order zero, and all their positive jets. This description is valid over nonreduced \(R\). Its formal-disc matrix is
+\(A(t)=\sum_{r\geq0}A^{(r)}t^r/r!\).
+An ordinary coefficient point of the differential polynomial algebra specifies precisely all these jets; finite Taylor formulas are valid because every factorial is a unit.
+
+For a local functional \(\int F\), modulo \(T\)-derivatives, set
+\(\delta_{\int F}a=\{F_\lambda a\}|_{\lambda=0}\).
+First sesquilinearity makes this independent of the representative of \(F\); right Leibniz makes it a derivation, and second sesquilinearity makes it commute with \(T\). To accommodate a variable matrix test function, adjoin Poisson-central test coefficients with their derivatives. This is an algebraic test extension; it presumes no translation operator on a target module. Use the same bracket-coefficient derivations before reduction to compute the flow; for \(x\in\mathfrak n_+\) they descend to (DP.21). Formula (DP.7) then gives, for an external scalar \(\phi\),
+\[
+ \delta_{\int\phi J_x}a
+       =\sum_{j\geq0}\frac{\phi^{(j)}}{j!}D_{x,j}a.
+ \tag{DP.27}
+\]
+The sum is finite for each differential polynomial \(a\). Applying it to \(J_y\), and adding the entries of \(x(t)\), gives
+\[
+ \delta_xJ_y
+   =J_{[x,y]}+\operatorname{tr}(x'y)
+   =\operatorname{tr}\bigl(([A,x]+x')y\bigr).
+\]
+Nondegeneracy of the trace pairing on matrices, or its traceless restriction, proves
+\[
+ \boxed{\delta_xA=[A,x]+x'.}
+ \tag{DP.28}
+\]
+This is precisely the derivative of
+\[
+ A\longmapsto A^g=g^{-1}Ag+g^{-1}g',
+       \qquad g\in N_+(R[[t]]).
+ \tag{DP.29}
+\]
+Indeed \(g=1+\eta x\), \(\eta^2=0\), gives (DP.28). It is the inverse gauge action on the connection \(\partial+A\): \(g^{-1}(\partial+A)g=\partial+A^g\). The forward conjugation convention would have the opposite infinitesimal sign. The inverse action is a right action on matrices and gives the positive Lie action on functions in (DP.22).
+
+It preserves \(f+\mathfrak b_+\). Infinitesimally,
+\([f,\mathfrak n_+]\subset\mathfrak b_+\),
+\([\mathfrak b_+,\mathfrak n_+]\subset\mathfrak n_+\), and \(x'\in\mathfrak n_+\).
+The first inclusion is checked on \(E_{ij}\), \(i<j\):
+\([f,E_{ij}]=E_{i+1,j}-E_{i,j-1}\), with missing boundary terms omitted; both entries are upper triangular, including diagonal entries when \(j=i+1\). Finite preservation follows from the exponential argument below. Trace is also preserved, since the trace of \(g^{-1}g'\) is zero for upper unipotent \(g\). In rank two, with \(A=\left(\begin{smallmatrix}a&b\\1&d\end{smallmatrix}\right)\) and \(x=uE_{12}\), the sign check is
+\[
+ \delta a=-u,\qquad \delta d=u,\qquad
+ \delta b=(a-d)u+u'.
+ \tag{DP.30}
+\]
+
+**All formal upper-unipotent families and ordinary base change.** Give \(A_{ij}^{(r)}\), \(i\leq j\), weight \(j-i+1+r\). All generator weights in \(\mathcal Q_R\) are positive; its weight-\(d\) piece is the ordinary extension of a finite-dimensional \(k\)-space. For \(x=E_{ab}\in\mathfrak n_+\), of height \(h=b-a\), (DP.23) lowers that weight by \(h+j\):
+\[
+ D_{x,j}:(\mathcal Q_R)_d
+       \longrightarrow(\mathcal Q_R)_{d-h-j}.
+ \tag{DP.31}
+\]
+One way to verify this is to assign \(J_y\) weight \(1-\operatorname{height}(y)\) before reduction and give \(\lambda,T\) weight one. Then (DP.2) has weight equal to the sum of its inputs minus one. The only nonzero character values occur at height one and weight zero, so all constraint specializations respect this weighting. Formula (DP.23) gives exactly (DP.31) on the remaining coordinates.
+
+Thus every polynomial is killed by sufficiently high current jets, and each \(D_{x,j}\) is locally nilpotent. A formal \(x(t)\in\mathfrak n_+\otimes R[[t]]\) acts on a bounded-weight polynomial by a finite sum of these derivations and lowers weight at least one. Its exponential is finite on that polynomial.
+Explicitly, for \(x(t)=\sum_{j\geq0}x_jt^j\), define \(D_x=\sum_jD_{x_j,j}\).
+Formula (DP.23), summed against \(t^r/r!\), gives
+\[
+ D_xA(t)=[A(t),x(t)]+x'(t).
+\]
+The first sum has coefficient
+\(\sum_{j\leq r}r!/(r-j)!\,[A^{(r-j)},x_j]\);
+the central term is \((r+1)!x_{r+1}\).
+Thus the same action is detected on every Taylor coefficient, not merely on the matrix value at the origin.
+
+Every upper unipotent matrix \(g(t)\) is an exponential \(g=\exp x\): put
+\[
+ x=\log(1+(g-1))
+   =\sum_{v=1}^{n-1}\frac{(-1)^{v+1}}v(g-1)^v.
+\]
+The finite exponential and logarithm are inverse because the corresponding power-series identities hold modulo the \(n\)-th power of one variable, and \(g-1\) is nilpotent of order at most \(n\). Those identities follow, for example, by differentiating the scalar series and comparing their constant terms; only the positive integers are divided.
+
+The pullback of (DP.29) for \(g_s=\exp(sx(t))\) agrees with \(\exp(sD_x)\). In fact differentiating the displayed matrix formula with respect to \(s\) gives
+\[
+ \frac{d}{ds}A^{g_s}=[A^{g_s},x]+x'.
+ \tag{DP.32}
+\]
+The same equation holds for \(\exp(sD_x)A\), by (DP.28). Both have value \(A\) at \(s=0\); coefficient recursion divides only by \(1,2,\ldots\), so their polynomial solutions agree, including all jets. This also proves finite preservation of the constrained matrix space.
+
+Consequently a class killed by all current jets is fixed by every \(N_+\) gauge family over every ordinary coefficient extension. Conversely, invariance as an action of this group functor implies current-jet invariance by testing
+\(g=1+\eta x t^j\) over \(R[\eta]/(\eta^2)\). This detects the exact derivation, including nilpotent coefficients. Therefore
+\[
+ \boxed{\mathcal W_R
+   \simeq\mathcal Q_R^{N_+[[t]]}}
+ \tag{DP.33}
+\]
+with invariants understood as equality for the group action functor, rather than just equality at reduced points.
+
+The reduction mechanism is the following square of coordinate algebras:
+\[
+ \begin{array}{ccc}
+ U_R&\lhook\joinrel\longrightarrow&\mathcal A_R\\
+ \downarrow&&\downarrow\\
+ \mathcal W_R&\lhook\joinrel\longrightarrow&\mathcal Q_R
+       =\mathcal O_{\mathrm{diff}}(f+\mathfrak b_+)_R .
+ \end{array}
+\]
+*The left quotient carries the reduced PVA bracket by (DP.18)–(DP.20).
+Its lower image is exactly the common current-jet kernel (DP.24), equivalently the inverse-gauge invariant algebra (DP.33).
+The right quotient imposes the principal matrix entries (DP.26) as differential-algebra relations.
+The matrix flow (DP.28) explains which action is detected; it fixes the cocycle and gauge signs.*
+
+This construction commutes with all ordinary extensions \(k\to R\to R'\) obtained from the fixed \(k\)-model. Indeed in each weight \(d\), only finitely many \(D_{x,j}\) can act nontrivially, by (DP.31). Their common kernel is the kernel of one finite matrix over \(k\). Tensoring over the field preserves it. Summing the weight spaces gives
+\[
+ U_R/I_R=\mathcal W_R\simeq R\otimes_k\mathcal W_k.
+ \tag{DP.34}
+\]
+The bracket and derivation agree with this identification because all their polynomial formulas were defined over \(k\). The invariant algebra is \(T\)-stable even though a fixed nonconstant gauge need not commute with \(T\): (DP.5) gives
+\(D_{x,j}T=TD_{x,j}+jD_{x,j-1}\), with the final term zero for \(j=0\).
+Thus all those actions kill \(Ta\) when they kill \(a\). No assertion that an arbitrary invariant kernel commutes with every nonflat base change has been used; the finite matrices here come from the fixed field model.
+
+The construction above uses regular jets and the action of \(N_+[[t]]\). Its grading is the principal weight \(D(J_x)=1-\operatorname{height}(x)\), with \(D(T)=1\); the character relations are homogeneous in this grading. The full Laurent Hamiltonian reduction requires all integer moment-mode relations and a completed coisotropic normalizer. Its topology and pole bounds require the separate Laurent construction.
+
+**Exactly when a Poisson arrow descends.** Let \(\Phi:\mathcal A\to\mathcal B\) be an actual homomorphism of ordinary PVAs: it preserves the unit, products, \(T\), and every coefficient of the \(\lambda\)-bracket. Let \(I\subset\mathcal A\), \(J\subset\mathcal B\) be coisotropic differential ideals of the preceding kind, with normalizers \(U_I,U_J\). If
+\[
+ \Phi(I)\subset J,\qquad \Phi(U_I)\subset U_J,
+ \tag{DP.35}
+\]
+then \([a]\mapsto[\Phi(a)]\) is a well-defined PVA homomorphism
+\(U_I/I\to U_J/J\). The first containment proves lift independence; the second gives the correct target. Preservation of the bracket follows by applying \(\Phi\) to its actual polynomial coefficients and then reducing. This is the commutative square
+\[
+ \begin{array}{ccc}
+ U_I&\xrightarrow{\ \Phi\ }&U_J\\
+ \downarrow&&\downarrow\\
+ U_I/I&\xrightarrow{\ \overline\Phi\ }&U_J/J .
+ \end{array}
+ \tag{DP.36}
+\]
+*The vertical arrows are PVA quotients because (DP.18) was proved. The unrestricted quotients \(\mathcal A/I\) and \(\mathcal B/J\) enter as differential algebras with constraint actions; their full brackets are not presumed to descend.*
+
+A useful sufficient condition for the second containment is
+\[
+ J=\text{the differential ideal in }\mathcal B
+                         \text{ generated by }\Phi(I).
+ \tag{DP.37}
+\]
+For \(a\in U_I\), its bracket with each \(\Phi(i)\), \(i\in I\), lies in \(J[\lambda]\), by (DP.18) and the homomorphism identity. Sesquilinearity handles derivatives; left Leibniz handles multiplication of a generator by arbitrary elements of \(\mathcal B\), since the additional coefficient is multiplied by the generator or its derivatives in \(J\). Thus \(\{J_\lambda\Phi(a)\}\subset J[\lambda]\), which is precisely the target normalizer test. Equality of constraint ideals, or an explicit normalizer test, is needed; mere containment \(\Phi(I)\subset J\) supplies only a differential-algebra map of the unrestricted quotients.
+
+Finally, the reduced arrow is injective if \(\Phi^{-1}(J)\cap U_I=I\). It is surjective exactly when every class of \(U_J/J\) has a representative in \(\Phi(U_I)\). Both assertions follow directly by taking the kernel and image of (DP.36), and require their stated hypotheses. An ordinary algebra map with matching highest symbols cannot replace the actual PVA homomorphism or these normalizer comparisons.
+
+The result established here is the ordinary classical affine PVA and its principal coisotropic Hamiltonian reduction, with the complete jet action and inverse-gauge convention. Polynomiality of its gauge slice and a specific affine-to-free-field or oper comparison require their own constructions. The finite jet-distribution proof above does not assert a universal operator-field reconstruction or Poisson closure of an uncompleted algebra of arbitrary Laurent Fourier coefficients; such completion questions retain the topology and cutoff arguments of §3.7.5.
+
+#### 3.8.2. Principal matrix gauge and polynomial jet invariants
+
+The covector construction and companion signs were already proved in [Opers, critical level and the Beilinson–Drinfeld construction](opers-critical-level-and-the-beilinson-drinfeld-construction.md), §2.5, equations (O4.2)–(O4.7). We retain them and prove the additional ordinary differential-ring quotient, exact polynomial jet invariants and cofinal Laurent geometry. The argument needs no intrinsic bundle-gluing theorem beyond the earlier oper interpretation when that interpretation is applied.
+
+Let \(k\) have characteristic zero, let \((B,\partial)\) be any ordinary commutative differential \(k\)-algebra, and let \(n\ge2\) in the trace-zero case. Nilpotents in \(B\) are allowed. The raw matrix case also permits \(n=1\). Put
+\[
+ \begin{aligned}
+ f&=\sum_{i=1}^{n-1}E_{i+1,i},&\mathcal X(B)&=f+\mathfrak b_+(B),\\
+ N(B)&=\{\text{upper unitriangular }n\times n\text{ matrices over }B\}.
+ \end{aligned}
+\tag{MG.1}
+\]
+For \(\mathfrak{sl}_n\), impose \(\operatorname{tr}A=0\) on \(\mathcal X\); for \(\mathfrak{gl}_n\), retain the trace. The action is
+\(g\cdot A=gAg^{-1}-g'g^{-1}\), so it is the left gauge action on \(\partial+A\), exactly (DS.A11). All inverses in \(N\) are finite polynomials: if \(g=1+U\), then \(g^{-1}=\sum_{j=0}^{n-1}(-U)^j\). The action preserves \(\mathcal X\). Indeed \((gf)_{ij}=g_{i,j+1}\) is zero for \(j<i-1\), and right multiplication by an upper unitriangular inverse retains those zero entries and the subdiagonal entries one. Both \(gbg^{-1}\) and \(g'g^{-1}\) are upper triangular, the latter strictly upper triangular. Trace is consequently preserved too.
+
+**The complete matrix construction, with the earlier signs.** On row covectors define
+\[
+ D_Aq=q'-qA,\qquad
+ q_n=e_n^t,\qquad
+ q_i=(-1)^{n-i}D_A^{n-i}e_n^t,
+ \qquad q_{i-1}=-D_Aq_i.
+\tag{MG.2}
+\]
+Each \(q_i\) has zero entries in columns below \(i\), and entry one in column \(i\). The claim starts with \(q_n\). If it holds for \(q_i\), then in a column \(j<i-1\) every summand \((q_i)_rA_{rj}\) is zero, since \(r\ge i\) and \(A_{rj}=0\) for \(j<r-1\). In column \(i-1\), only \(r=i\) contributes and gives one. The derivative of that column of \(q_i\) is zero. Thus \(-D_Aq_i\) has the asserted leading entry and support. This proves the induction, over \(B\) itself rather than over its reduced points.
+
+Let \(Q(A)\) have rows \(q_i\). It is upper unitriangular, with polynomial entries in the entries of \(A\) and their derivatives. In particular
+\[
+ \begin{aligned}
+ Q(A)^{-1}&=\sum_{j=0}^{n-1}(1-Q(A))^j,\\
+ C(A)&=Q(A)AQ(A)^{-1}-Q(A)'Q(A)^{-1}\\
+     &=-(D_AQ(A))Q(A)^{-1}.
+ \end{aligned}
+\tag{MG.3}
+\]
+For \(i\ge2\), (MG.2) makes row \(i\) of \(C(A)\) equal to \(e_{i-1}^t\). Its only remaining entries are in its first row. Since \(Q'Q^{-1}\) is strictly upper triangular,
+\[
+ C(A)=
+ \begin{pmatrix}
+ a_{11}&a_{12}&\cdots&a_{1n}\\
+ 1&0&\cdots&0\\
+ 0&1&\cdots&0\\
+ \vdots&&\ddots&\vdots
+ \end{pmatrix},
+ \qquad a_{11}=\operatorname{tr}A.
+\tag{MG.4}
+\]
+The displayed lower rows are precisely the subdiagonal ones and zeros; hence the last row has its one in column \(n-1\). This description, unlike the abbreviated display, specifies every matrix entry. In the trace-zero case \(a_{11}=0\).
+
+Set \(s_j=(-1)^{j-1}a_{1j}\). The resulting scalar operator is
+\[
+ L=\partial^n+\sum_{j=1}^ns_j\partial^{n-j},
+ \qquad a_{1j}=(-1)^{j-1}s_j,\qquad s_1=0\text{ for }\mathfrak{sl}_n.
+\tag{MG.5}
+\]
+For example, the lower horizontal equations give
+\(v_j=(-1)^{n-j}\partial^{n-j}y\), with \(y=v_n\). Substitution in the first horizontal equation gives exactly \(Ly=0\). This is an algebraic calculation, not an assumption that analytic solutions exist. More intrinsically, the row basis (MG.2) gives the relation
+\(D_A^ne_n^t+\sum_js_jD_A^{n-j}e_n^t=0\); it is the same scalar relation in the cyclic differential module.
+
+**Equivariance, uniqueness and a polynomial inverse.** If \(A^g=g\cdot A\), the product rule gives the exact identity
+\[
+ D_{A^g}(qg^{-1})=(D_Aq)g^{-1}.
+ \qquad
+ Q(A^g)=Q(A)g^{-1},\qquad C(A^g)=C(A).
+\tag{MG.6}
+\]
+For the second identity use \(e_n^tg^{-1}=e_n^t\) and iterate the first. The third follows from the composition law of left gauge. A companion matrix \(C(s)\) has \(D_Ce_i^t=-e_{i-1}^t\) for \(i\ge2\), so
+\[
+ Q(C(s))=1.
+\tag{MG.7}
+\]
+If \(g\cdot A=C(s)\), equations (MG.6)–(MG.7) force \(g=Q(A)\) and \(C(s)=C(A)\). Thus the normalizing gauge is unique, and every stabilizer is trivial. This proof holds over any \(B\), including its nilpotents.
+
+Write \(\mathcal S(B)=B^{n-1}\) in the trace-zero case, with coordinates \(s_2,\ldots,s_n\), or \(B^n\) in the raw case. We have mutually inverse polynomial differential operations
+\[
+\begin{aligned}
+ \Phi:N(B)\times\mathcal S(B)&\longrightarrow\mathcal X(B),
+             &(u,s)&\longmapsto u\cdot C(s),\\
+ \Phi^{-1}:\mathcal X(B)&\longrightarrow N(B)\times\mathcal S(B),
+             &A&\longmapsto(Q(A)^{-1},s(A)).
+\end{aligned}
+\tag{MG.8}
+\]
+There is no division by a matrix-entry function. Inverses of unipotent matrices are finite polynomials, and all the differentiations in (MG.2)–(MG.3) are finite. Under a gauge \(g\), the coordinates of (MG.8) change by
+\((u,s)\mapsto(gu,s)\). This is the explicit product quotient, with no dominance or orbit-separation theorem imported.
+
+For later bounds, assign \(\partial\) weight one, an upper entry \(A_{ab}\) weight \(b-a+1\), and the fixed subdiagonal entries weight zero. Induction in (MG.2) shows that \(Q_{ij}\) and \((Q^{-1})_{ij}\) have weight \(j-i\). In a product \(Q_{ir}A_{rs}(Q^{-1})_{sj}\) the three weights add to \(j-i+1\); the derivative term has that weight too. Therefore
+\[
+ \operatorname{wt}s_j=j,\qquad
+ \operatorname{wt}u_{ab}=b-a,
+ \qquad\operatorname{wt}(u\cdot C(s))_{ab}=b-a+1.
+\tag{MG.9}
+\]
+The inverse entries have the claimed weights because each strictly increasing index path has total weight \(j-i\). These are actual homogeneous differential polynomial identities, not only highest terms.
+
+**The ordinary polynomial invariant algebra.** Fix an ordinary coefficient algebra \(R\), with the derivation zero on \(R\). Let
+\(\mathscr X_R\) be the differential polynomial algebra freely generated by the upper entries of \(A\), with the trace and all its derivatives eliminated in the trace-zero case. Let \(\mathscr N_R\) be the free differential polynomial algebra on upper entries of a unipotent \(u\). Let
+\(\mathscr S_R=R[s_j^{(r)}]\), \(r\ge0\), with \(2\le j\le n\) or \(1\le j\le n\) as appropriate. Applying (MG.8) to the universal differential rings proves the isomorphism
+\[
+ \mathscr X_R\simeq\mathscr N_R\otimes_R\mathscr S_R.
+\tag{MG.10}
+\]
+Both directions are given by the explicit polynomial formulas, so this also proves independence of every \(s_j^{(r)}\). Arbitrary ordinary coefficient extension preserves the formulas and their inverse identities. No invariant-kernel base change is being guessed from reduced fibers.
+
+Invariance means a universal polynomial coaction identity, or equivalently equality after every ordinary coefficient extension and every gauge therein. If \(F\) is invariant, apply (MG.8) and specialize the universal gauge to \(u^{-1}\). This gives
+\(F(u\cdot C(s))=F(C(s))\). The right side is a polynomial in only \(s_j\) and their derivatives. Conversely those polynomials are invariant by (MG.6). Consequently
+\[
+ \boxed{\mathscr X_R^{N\text{ differential gauge}}=\mathscr S_R.}
+\tag{MG.11}
+\]
+Specialization to the universal inverse is legitimate in the free polynomial differential ring: the inverse entries and their derivatives are polynomial there. This proves a ring identity rather than just a bijection on field-valued orbits.
+
+**Why polynomial-current invariance is exactly jet-gauge invariance.** Identify differential jets with Taylor coefficients by
+\(A^{(r)}(0)=r!A_r\) in \(A(t)=f+\sum_{r\ge0}b_rt^r\). A current \(x(t)\in\mathfrak n_+[t]\) gives the infinitesimal variation
+\[
+ \delta_xA=[A,x]+x'.
+\tag{MG.12}
+\]
+It is the derivative of \((1-cx)\cdot A\) at \(c=0\), so its sign is fixed by the gauge convention. It preserves the normalized lower entries and trace, since the actual gauge action does. On Taylor coefficient rings it defines an ordinary derivation.
+
+For a single matrix root let \(E=E_{ab}\), \(a<b\), and let \(\varphi(t)\) be a scalar series. Since \(E^2=0\), its full one-parameter transformation is exactly
+\[
+ (1-c\varphi E)\cdot A
+ =A+c\bigl([A,\varphi E]+\varphi'E\bigr)
+       -c^2\varphi^2EAE.
+\tag{MG.13}
+\]
+The infinitesimal derivation has
+\(\delta_{\varphi E}^2A=-2\varphi^2EAE\) and
+\(\delta_{\varphi E}^3A=0\): differentiating the first variation treats \(\varphi\) as fixed, \([\varphi'E,\varphi E]=0\), and the next commutator is zero because \(E^2=0\). The same assertion holds on every jet coefficient. Thus this derivation is locally nilpotent on each finite polynomial, and the product rule proves that (MG.13) induces exactly
+\[
+ \exp(c\delta_{\varphi E})F
+ =\sum_{r\ge0}\frac{c^r}{r!}\delta_{\varphi E}^rF.
+\tag{MG.14}
+\]
+This is finite for every \(F\). It follows that its infinitesimal kernel equals its universal one-parameter invariant ring: one direction uses the finite exponential; the other extracts the coefficient of \(c\) over \(R[c]\). Characteristic zero, rather than a reduced-point argument, makes these factorials units.
+
+If \(F\) uses only Taylor coefficients through order \(M\), currents \(t^rE\) with \(r>M+1\) act trivially on it. The commutator term starts in order \(r\), and the derivative term in order \(r-1\). Hence invariance under every polynomial mode implies invariance under \(\varphi(t)E\) for every \(\varphi\in R[[t]]\): on \(F\) its infinitesimal action is the finite linear sum of the modes through \(M+1\). Formula (MG.14) then supplies the actual formal-root action.
+
+Every upper unitriangular series matrix is a finite product of those root matrices, over \(R[[t]]\) itself. For a direct proof, eliminate upper entries by increasing height \(b-a\). Left multiplication by \(1-u_{ab}E_{ab}\) kills entry \((a,b)\); its only other changes are in row \(a\), in columns \(j>b\), hence at strictly higher height. Previously killed entries are retained. After the finitely many heights the matrix is the identity. The parameters and the reverse factorization are polynomial in the original entries. Combining this with (MG.11)–(MG.14) proves
+\[
+ \boxed{\mathscr X_R^{\mathfrak n_+[t]}
+       =\mathscr X_R^{N(R[[t]])\text{ universal jet gauge}}
+       =R[s_j^{(r)}].}
+\tag{MG.15}
+\]
+Here the middle notation denotes the coaction invariant ring, including after every ordinary coefficient extension. Thus it does not omit nilpotent gauge parameters.
+
+There is a finite-jet statement behind this infinite notation. From (MG.2), row \(q_i\) uses derivatives of \(A\) only through order \(n-i-1\) when \(i<n\). Thus the normalizing matrix through Taylor order \(M\) needs \(A\) only through order \(M+n-2\), and its scalar coefficients through order \(M\) need \(A\) only through \(M+n-1\). Conversely \(u\cdot C(s)\) through order \(M\) needs \(u\) through \(M+1\) and \(s\) through \(M\). These polynomial maps are inverse on the full jet algebras and have those uniform cofinal truncation bounds:
+\[
+ \begin{array}{c|c}
+ \text{required output through order }M&\text{sufficient input order}\\\hline
+ Q(A),\ Q(A)^{-1}&M+n-2\\
+ s(A)&M+n-1\\
+ u\cdot C(s)&u:\ M+1,\quad s:\ M.
+ \end{array}
+\tag{MG.16}
+\]
+For \(n=1\), the normalizing matrix is constant and the scalar map is the identity. In general (MG.16) does **not** assert an isomorphism of equally truncated order-\(M\) jet spaces; derivative gauge terms require the higher input jets displayed. Each finite polynomial invariant is obtained by the universal gauge identity at a finite sufficient truncation, and is the scalar polynomial obtained by restricting to \(C(s)\). This proves the finite/cofinal content without a hidden infinite existence step.
+
+**The underlying current normalizer.** We can now match the ordinary invariant algebra to the algebra underlying the affine Hamiltonian reduction, keeping its Poisson construction separate. Use the trace pairing \(B(x,y)=\operatorname{tr}(xy)\), restricted to \(\mathfrak{sl}_n\) when appropriate. Write \(J_y=B(y,A)\) for its linear coordinate and use the affine current relation
+\[
+ \{J_x{}_{\lambda}J_y\}=J_{[x,y]}+B(x,y)\lambda.
+\tag{MG.17}
+\]
+The trace pairing is nondegenerate on matrices by the matrix-unit dual pairs, and on traceless matrices because their orthogonal complement is the scalar line, whose intersection with the traceless subspace is zero when \(n\) is a unit. This remains a perfect pairing after ordinary coefficient extension. The affine Poisson vertex construction and reduced Poisson comparison are distinct arguments. What we need here is its explicit current action: the Hamiltonian \(\int\varphi J_x\) changes \(J_y\) by
+\(\varphi J_{[x,y]}+\varphi'B(x,y)\). Invariance of trace rewrites this as
+\(B(y,[A,\varphi x]+\varphi'x)\). Since the pairing is nondegenerate, it is exactly (MG.12), with the positive derivative and the same matrix gauge sign.
+
+Let \(\mathscr V_R\) be the ordinary differential polynomial algebra on all \(J_y\), and let \(I\) be the differential ideal generated by
+\(J_x-\chi(x)\), \(x\in\mathfrak n_+\), with
+\(\chi(x)=\operatorname{tr}(fx)\). These equations set every strictly lower matrix entry to its value in \(f\), so
+\[
+ \mathscr V_R/I=\mathscr X_R.
+ \qquad
+ \chi(E_{ab})=\begin{cases}1&b=a+1,\\0&b>a+1.\end{cases}
+\tag{MG.18}
+\]
+For two positive roots the trace pairing is zero, and their bracket has height at least two, so \(\chi([x,y])=0\). Thus the brackets of the constraint generators lie in \(I[\lambda]\). The derivation (MG.12) preserves the slice ideal as already proved by actual gauges. These observations fix the constraint and normalizer conventions; they do not infer a scalar Poisson formula from the gauge classification.
+
+Write \(\{J_x{}_{\lambda}F\}\bmod I=\sum_r c_r\lambda^r\). The first-slot Leibniz rule with an external scalar test series gives the evolutionary variation \(\sum_r c_r\varphi^{(r)}\). At the origin, taking \(\varphi=t^p\) gives precisely
+\[
+ \delta_{t^px}F=p!c_p
+ \quad\text{under the identification }J_y^{(r)}\leftrightarrow r!B(y,A_r).
+\tag{MG.19}
+\]
+One may check this on a linear jet without any general identity: expanding
+\((\lambda+\partial)^r(J_{[x,y]}+B(x,y)\lambda)\), its \(\lambda^p\) coefficient times \(p!\) is the derivative-at-zero of
+\(\varphi[A,x]+\varphi'x\). The product rule then proves (MG.19) for every differential polynomial. Only finitely many \(p\) occur for a fixed \(F\).
+
+Consequently the current-normalizer condition is exactly the invariant condition in (MG.15):
+\[
+ \mathcal N(I)=\{F\in\mathscr V_R:
+     \{J_x{}_{\lambda}F\}\in I[\lambda]\ \text{for all }x\in\mathfrak n_+\},
+ \qquad
+ \boxed{\mathcal N(I)/I\simeq R[s_j^{(r)}].}
+\tag{MG.20}
+\]
+The generator condition defines a differential subalgebra: sesquilinearity and the second-slot Leibniz rule preserve \(I[\lambda]\). It contains \(I\), by the constraint calculation after (MG.18) and the two Leibniz rules. Every invariant class has a polynomial lift, and (MG.19) makes any such lift satisfy the stated normalizer condition. Conversely every normalizer class is invariant. This proves both directions of the algebra identification. Its Poisson vertex reduction and the full Adler comparison require the separate current-reduction and free-field arguments; they are not consequences of (MG.8) or of orbit uniqueness.
+
+**Cofinal Laurent gauge geometry.** The same finite formulas work over \(B=R((t))\), with its derivative, and over \(R[[t]]\). In the Laurent case the gauge group is \(N(R((t)))\); it cannot be silently replaced by \(N(R[[t]])\). For example, in rank two a pole in the second diagonal entry requires the same pole in \(Q_{12}\), whereas a regular upper gauge changes that diagonal entry only by a regular series.
+
+There are exact cofinal pole-bounded products, with bounds determined by (MG.9). For \(N\ge1\), define
+\[
+\begin{aligned}
+ \mathcal X_N(R)&=\{A\in\mathcal X(R((t))):
+               A_{ab}\in t^{-(b-a+1)N}R[[t]]\ (a\le b)\},\\
+ \mathcal G_N(R)&=\{u\in N(R((t))):
+               u_{ab}\in t^{-(b-a)N}R[[t]]\ (a<b)\},\\
+ \mathcal S_N(R)&=\{s:s_j\in t^{-jN}R[[t]]\}.
+\end{aligned}
+\tag{MG.21}
+\]
+Retain trace zero and omit \(s_1\) when required. These bounds are cofinal because there are finitely many entries and every relevant weight is positive. The group \(\mathcal G_N\) is closed under multiplication and inverse: upper-entry weights add along every matrix path. A derivative raises a pole order by at most one, which is at most \(N\). Thus every homogeneous differential polynomial of weight \(w\) evaluated in entries of pole order at most their weight times \(N\) has pole order at most \(wN\). Equations (MG.3), (MG.8), (MG.9) consequently give exact mutually inverse maps
+\[
+ \boxed{\mathcal X_N(R)\simeq
+        \mathcal G_N(R)\times\mathcal S_N(R),
+        \qquad A\leftrightarrow(Q(A)^{-1},s(A)).}
+\tag{MG.22}
+\]
+They commute with the inclusions as \(N\) increases and with every ordinary coefficient extension. These are coefficientwise naturality and polynomial coefficient-ring base change; they do not assert that ordinary tensor product commutes with the formal-series construction. Hence the full Laurent quotient functor is exactly the scalar Laurent coefficient functor, and every object has trivial unipotent stabilizer.
+
+At a fixed bound these are polynomial maps of coefficient functors, not merely formal substitutions. A monomial of weight \(w\) in inputs of weights \(w_\nu\) and total derivative order \(d\) has \(\sum w_\nu+d=w\). For its coefficient of \(t^r\), input indices \(m_\nu\) satisfy \(\sum m_\nu-d=r\) and \(m_\nu\ge-w_\nu N\). Therefore
+\(m_\nu\le r+d+\sum_{\mu\ne\nu}w_\mu N\le r+(w-w_\nu)N\).
+Only finitely many tuples survive. Every output matrix or scalar coordinate has weight at most \(n\), so an output through coefficient index \(M\) uses only input indices through \(M+(n-1)N\), besides their specified finite lower bounds. This proves the finite-jet/cofinal nature of (MG.22), including nilpotent coefficients.
+
+The coefficient algebras at that bound therefore have the same exact invariant identification
+\[
+ R[\mathcal X_N]^{\mathcal G_N}
+   =R[s_{j,r}:r\ge-jN],
+ \qquad s_j(t)=\sum_{r\ge-jN}s_{j,r}t^r.
+\tag{MG.23}
+\]
+Here each coordinate ring is an ordinary polynomial ring on the allowed coefficient list. The proof uses the universal inverse specialization from (MG.11) and the actual polynomial isomorphism (MG.22). The elementary-root elimination also stays within \(\mathcal G_N\), by its height bounds, so the finite one-parameter proof applies to its allowed Laurent root parameters. In this statement those parameters have lower bound \(-(b-a)N\) at root \(E_{ab}\); it is **not** a claim that positive polynomial currents alone have these Laurent invariants. The inverse limit of these scalar coefficient rings describes continuous functions on the cofinal Laurent coefficient functor. This does not identify all discontinuous characters of an abstract inverse-limit ring with that functor.
+
+**The ordered diagonal comparison and the sign check.** On \(A=f+\operatorname{diag}(h_1,\ldots,h_n)\), eliminate the horizontal components from the bottom: \(v_{i-1}=-(\partial+h_i)v_i\). The first equation then gives, with exactly the order retained in §3.7,
+\[
+ L=(\partial+h_1)(\partial+h_2)\cdots(\partial+h_n).
+\tag{MG.24}
+\]
+For a solution-free verification, recursively form \(q_{i-1}=q_iA-q_i'\) and its unique scalar relation (MG.5); the same elimination is an identity in the cyclic differential module, so the relation is precisely that product. Trace zero gives \(\sum h_i=0\), removing its subprincipal coefficient.
+
+The rank-two calculation shows every sign in concrete matrices:
+\[
+ A=\begin{pmatrix}a&b\\1&c\end{pmatrix},\qquad
+ Q=\begin{pmatrix}1&c\\0&1\end{pmatrix},\qquad
+ Q\cdot A=\begin{pmatrix}a+c&b-ac-c'\\1&0\end{pmatrix}.
+\]
+Thus \(s_1=a+c\), \(s_2=ac+c'-b\), and a diagonal input gives
+\((\partial+a)(\partial+c)\). When \(c=-a\), the normalized quadratic coefficient is \(-a'-a^2-b\), consistent with (AP.19) on \(b=0\).
+
+| Exact operation | Gauge coordinate | Quotient coordinate |
+|---|---|---|
+| Build the covector rows (MG.2) | \(Q(A)\), upper unitriangular | \(s_j=(-1)^{j-1}C_{1j}\) |
+| Apply \(g\in N\), (MG.6) | \(Q(A)\mapsto Q(A)g^{-1}\) | Every \(s_j\) is unchanged |
+| Use the polynomial inverse (MG.8) | \(u=Q(A)^{-1}\) | \(A=u\cdot C(s)\) |
+| Impose the ordinary current-normalizer condition, (MG.19)–(MG.20) | Remove the unipotent jet coordinate | Retain exactly \(R[s_j^{(r)}]\) |
+| Use weighted Laurent bounds, (MG.21)–(MG.23) | Root-height pole bound \((b-a)N\) | Scalar pole bound \(jN\) |
+
+*The table displays the actual polynomial maps and their exact invariants. The matrix mechanism is (O4.2)–(O4.7); the new ordinary-ring, jet and Laurent quotient proofs are (MG.8)–(MG.23). For the human-source Poisson context, see De Sole–Kac–Valeri, [Adler–Gelfand–Dickey approach to classical W-algebras within the theory of Poisson vertex algebras, free arXiv:1401.2082v1, §§2.8–2.9](https://arxiv.org/abs/1401.2082v1). No theorem from that source substitutes for the gauge or invariant proof here.*
+
+This establishes the all-\(n\) ordinary principal matrix gauge quotient and its exact polynomial invariant algebra, with cofinal Laurent functors and the current-normalizer algebra comparison. Its application to intrinsic opers retains the earlier scalar-oper and frame foundations. The Poisson reduction, its identification with the Adler bracket and its actual free-field map remain distinct constructions. No chiral/factorization, Satake, derived-family or global localization comparison follows from this gauge uniqueness.
+
+#### 3.8.3. Classical free fields and the principal Miura reduction
+
+Let \(k\) have characteristic zero, and let \(R\) be any ordinary
+commutative \(k\)-algebra. We use differential polynomial algebras over
+\(R\), with \(T(R)=0\). Their identities can also be evaluated in any
+ordinary differential \(k\)-algebra. For the matrix currents write
+\(J_{ij}=J_{E_{ij}}\), and use the positive trace form:
+\[
+ \{J_x{}_\lambda J_y\}=J_{[x,y]}+\operatorname{tr}(xy)\lambda .
+ \tag{WF.1}
+\]
+The matrix of coordinate functions is trace-dual:
+\[
+ A_{ji}=J_{ij},\qquad J_x=\operatorname{tr}(Ax).
+ \tag{WF.2}
+\]
+This transpose is needed to put the principal moment value in the
+lower subdiagonal.
+
+The quantum recursive formulas and their normal-order anomaly were
+proved in §3.7.4, (WP.7)–(WP.16), of
+[*Opers, critical level and the Beilinson–Drinfeld construction*](opers-critical-level-and-the-beilinson-drinfeld-construction.md).
+We now construct the classical map directly. Its products are
+commutative differential-polynomial products, and its inner current
+form remains the same trace form at every recursion step. The
+differential-polynomial and scalar Adler conventions are those proved
+in §3.7.3, (AP.1)–(AP.18). No quantum contraction is used as a
+classical bracket.
+
+##### The classical current and free-field brackets
+
+For a finite list of differential generators \(u_a\), with specified
+brackets \(H_{ab}(\lambda)=\{u_a{}_\lambda u_b\}\), their extension is
+the finite formula
+\[
+ \{F_\lambda G\}
+ =\sum_{a,b;r,s}
+ \frac{\partial G}{\partial u_b^{(s)}}
+ (\lambda+T)^s H_{ab}(\lambda+T)_{\to}
+ (-\lambda-T)^r
+ \frac{\partial F}{\partial u_a^{(r)}} .
+ \tag{WF.3}
+\]
+Here \(u_a^{(r)}=T^r u_a\). Every derivative in the indicated operator
+acts on the factors to its right; coefficients in \(H_{ab}\) stay
+to the left of those derivatives. Repeated use of the two Leibniz
+rules and sesquilinearity gives this formula and its uniqueness.
+It is finite because \(F,G\) have finitely many variables.
+The affine-generator extension, arrow rules and
+generator-to-polynomial Jacobi reduction were proved
+in §3.8.1, (DP.3)–(DP.13). We use exactly those
+conventions and check every recursive image below.
+
+The current brackets at a temporary scalar form
+\(\ell\operatorname{tr}\) are
+\[
+ \{J_{ij}{}_\lambda J_{ab}\}
+ =\delta_{ja}J_{ib}-\delta_{ib}J_{aj}
+                         +\ell\delta_{ib}\delta_{ja}\lambda .
+ \tag{WF.4}
+\]
+Their Jacobi identity on three generators is the matrix Lie Jacobi
+identity together with trace invariance. Explicitly, the central
+part in the first two Jacobi terms is
+\[
+ \ell\operatorname{tr}(x[y,z])\lambda
+          -\ell\operatorname{tr}(y[x,z])\mu
+ =\ell\operatorname{tr}([x,y]z)(\lambda+\mu),
+\]
+which is the central part of the third term. Symmetry of the trace
+form proves skew symmetry. Formula (WF.3) then proves all identities
+on differential polynomials: sesquilinearity handles derivatives,
+and the Jacobiator's Leibniz rules reduce its vanishing successively
+to three generators. Thus the current PVA is constructed over \(R\),
+not inferred from field-valued points.
+
+For each positive root \(i<j\), take free generators
+\(\beta_{ij},\gamma_{ij}\), and take \(n\) bosons. Their only
+nonzero basic brackets are
+\[
+ \{\beta_{ij}{}_\lambda\gamma_{ab}\}
+       =\delta_{ia}\delta_{jb},\quad
+ \{\gamma_{ij}{}_\lambda\beta_{ab}\}
+       =-\delta_{ia}\delta_{jb},\quad
+ \{b_i{}_\lambda b_j\}=\delta_{ij}\lambda .
+ \tag{WF.5}
+\]
+The basic Jacobiators are zero because these brackets are constants
+or constants times \(\lambda\). The same finite extension proves
+that their differential polynomial algebra is a PVA. Independent
+current and free-field factors have zero cross brackets.
+
+##### Every matrix bracket in the recursion
+
+Put \(m=n-1\). In a single step let \(J_{ij}\), \(i,j\leq m\),
+be inner currents at form \(\ell\operatorname{tr}\). Use new
+pairs \(\beta_i,\gamma_i\), and an independent new boson \(b\)
+with bracket \(\{b_\lambda b\}=\epsilon\lambda\).
+Keep \(\ell,\epsilon\) independent while computing. Define
+\[
+ \begin{aligned}
+ \mathsf A_{ij}&=J_{ij}-\gamma_j\beta_i,&H&=b+\sum_a\gamma_a\beta_a,\\
+ E_i&=\beta_i,&\Gamma_i&=\sum_a\gamma_aJ_{ai},\\
+ U_i&=-\gamma_i b,&C_i&=-\sum_a\gamma_i\gamma_a\beta_a,\\
+ D_i&=\ell\,T\gamma_i,&F_i&=\Gamma_i+U_i+C_i+D_i,\\
+ \Delta&=\ell-\epsilon.
+ \end{aligned}
+ \tag{WF.6}
+\]
+All sums here run from \(1\) to \(m\). The full bracket table is
+\[
+ \begin{array}{c|l}
+ \text{pair}&\lambda\text{-bracket}\\ \hline
+ \{\mathsf A_{ij}{}_\lambda\mathsf A_{ab}\}&
+ \delta_{ja}\mathsf A_{ib}-\delta_{ib}\mathsf A_{aj}
+                          +\ell\delta_{ib}\delta_{ja}\lambda\\
+ \{\mathsf A_{ij}{}_\lambda H\}&0\\
+ \{H_\lambda H\}&\epsilon\lambda\\
+ \{\mathsf A_{ij}{}_\lambda E_a\}&\delta_{ja}E_i\\
+ \{H_\lambda E_a\}&-E_a\\
+ \{\mathsf A_{ij}{}_\lambda F_a\}&-\delta_{ia}F_j\\
+ \{H_\lambda F_a\}&F_a+\Delta\gamma_a\lambda\\
+ \{E_i{}_\lambda F_j\}&\mathsf A_{ij}-\delta_{ij}H
+                                             +\ell\delta_{ij}\lambda\\
+ \{E_i{}_\lambda E_j\}&0\\
+ \{F_i{}_\lambda F_j\}&
+ -\Delta\gamma_i\gamma_j\lambda-\Delta(T\gamma_i)\gamma_j .
+ \end{array}
+ \tag{WF.7}
+\]
+Skew symmetry determines the reverse pairs, so this is every
+matrix-unit bracket.
+
+Here are the calculations, including the possible defects. Write
+\(N=\sum_a\gamma_a\beta_a\). The product rules give
+\(\{-\gamma_j\beta_i{}_\lambda-\gamma_b\beta_a\}
+=\delta_{ja}(-\gamma_b\beta_i)
+-\delta_{ib}(-\gamma_j\beta_a)\).
+It has no central term. Adding the independent inner bracket gives
+the first row. The trace \(N\) commutes with these ghost matrix
+currents and has \(\{N_\lambda N\}=0\). This proves the second
+and third rows. The rows containing \(E_a\) follow by taking one
+beta-gamma bracket. In particular
+\[
+ \{\beta_i{}_\lambda F_j\}
+ =J_{ij}-\gamma_j\beta_i
+          -\delta_{ij}\left(b+\sum_a\gamma_a\beta_a\right)
+                         +\ell\delta_{ij}\lambda .
+ \tag{WF.8}
+\]
+
+For the \(\mathsf A_{ab},F_i\) row, the contributions from
+\(J_{ab}\Gamma_i\) and the ghost against \(\Gamma_i\) are
+\[
+ \gamma_bJ_{ai}-\delta_{ai}\Gamma_b
+                    +\ell\delta_{ai}\gamma_b\lambda,
+ \qquad -\gamma_bJ_{ai}.
+\]
+The ghost brackets with \(U_i,C_i\) give
+\(-\delta_{ai}U_b,-\delta_{ai}C_b\); the two extra terms in
+its bracket with \(C_i\) cancel. Its bracket with \(D_i\) is
+\(-\ell\delta_{ai}(\lambda+T)\gamma_b\).
+The lambda terms cancel, and the sum is
+\(-\delta_{ai}F_b\).
+
+For \(HF_i\), the brackets of \(N\) with
+\(\Gamma_i,U_i,C_i\) give those same three fields.
+Its bracket with \(D_i\) is
+\(\ell(\lambda+T)\gamma_i\), whereas
+\(\{b_\lambda U_i\}=-\epsilon\gamma_i\lambda\).
+Their sum is the displayed row. There is no additional term
+depending on \(m\).
+
+For the final row, the nondifferentiated single-bracket terms in
+\(\Gamma_i\Gamma_j\) are
+\(\gamma_i\Gamma_j-\gamma_j\Gamma_i\).
+Those in \(\Gamma_iC_j+C_i\Gamma_j\) are their negatives.
+The terms in \(U_iC_j+C_iU_j\) cancel, and the four
+single beta-gamma terms in \(C_iC_j\) cancel as well.
+The complete remaining terms, from the inner central bracket,
+the boson bracket and the differentiated gamma terms, are
+\[
+ \begin{array}{c|l}
+ \text{pair}&\text{remaining term}\\ \hline
+ \{\Gamma_i{}_\lambda\Gamma_j\}&
+       \ell\gamma_i(\lambda+T)\gamma_j\\
+ \{U_i{}_\lambda U_j\}&
+       \epsilon\gamma_j(\lambda+T)\gamma_i\\
+ \{C_i{}_\lambda D_j\}&
+       -\ell(\lambda+T)(\gamma_i\gamma_j)\\
+ \{D_i{}_\lambda C_j\}&-\ell\lambda\gamma_i\gamma_j .
+ \end{array}
+ \tag{WF.9}
+\]
+Expanding gives lambda coefficient
+\((\epsilon-\ell)\gamma_i\gamma_j\).
+The \(\gamma_iT\gamma_j\) terms cancel, leaving
+\((\epsilon-\ell)(T\gamma_i)\gamma_j\).
+This proves the whole last row. It is also a direct check when
+\(i=j\), with all repeated-factor multiplicities retained.
+
+Set \(\ell=\epsilon=1\). The table is exactly (WF.4) at the
+positive trace form for the assignments
+\[
+ J^{[n]}_{ij}\mapsto\mathsf A_{ij},\quad
+ J^{[n]}_{in}\mapsto E_i,\quad
+ J^{[n]}_{ni}\mapsto F_i,\quad
+ J^{[n]}_{nn}\mapsto H.
+ \tag{WF.10}
+\]
+For \(n=1\) start with \(J_{11}=b_1\). Induction constructs
+\[
+ \phi_n:\mathcal V_n
+       =R[J_{ij}^{(r)}:1\leq i,j\leq n,\ r\geq0]
+       \longrightarrow
+ \mathcal F_n
+       =R[\beta_{ij}^{(r)},\gamma_{ij}^{(r)},b_i^{(r)}
+                               :i<j,\ r\geq0].
+ \tag{WF.11}
+\]
+It is a differential-algebra homomorphism. Formula (WF.3) and
+the checked generator brackets prove preservation of every
+PVA bracket. In this classical construction the defect is
+\(\ell-\epsilon\), not \(\ell+m+1-\epsilon\), and the
+current form has no trace-tensor-trace summand.
+
+##### Coisotropic ideals and their normalizers
+
+We give the quotient construction used below. For a differential
+ideal \(I\) in a PVA \(\mathcal V\), call it coisotropic when
+\(\{I_\lambda I\}\subset I[\lambda]\), and put
+\[
+ U_I=\{a\in\mathcal V:\{c_\lambda a\}\in I[\lambda]
+                                          \text{ for all }c\in I\}.
+ \tag{WF.12}
+\]
+Then \(I\subset U_I\). This normalizer is a differential
+subalgebra: the right Leibniz rule and sesquilinearity prove
+closure under products and \(T\). It is also closed under
+all coefficients of its lambda bracket. Indeed for
+\(a,b\in U_I,c\in I\), Jacobi writes
+\(\{c_\nu\{a_\lambda b\}\}\) as a sum of brackets of an
+element of \(I\) with a normalizer element. Both sums are
+in \(I[\lambda,\nu]\). The reverse-slot property follows
+from skew symmetry and differential stability of \(I\).
+
+Thus \(U_I/I\) is a PVA, with bracket computed by representatives.
+Changing a representative by \(I\) changes its bracket with a
+normalizer element by \(I[\lambda]\). This proves the quotient
+operation; \(I\) need not be a Poisson ideal in the whole
+ambient algebra.
+
+It is enough to test the displayed normalizer condition on
+differential generators \(c_\alpha\) of \(I\). For
+\(qT^r c_\alpha\), the left Leibniz rule expresses its
+bracket with \(a\) as the bracket of \(T^r c_\alpha\)
+multiplied by derivatives of \(q\), plus terms containing
+a derivative of \(c_\alpha\). The first terms lie in
+\(I[\lambda]\) by sesquilinearity and the hypothesis,
+and the latter by differential ideal stability.
+Finite sums give the assertion for all of \(I\).
+This reasoning allows coefficients \(q\) involving any
+ambient generators.
+
+More generally, let \(\phi:\mathcal V\to\mathcal F\) be a PVA
+homomorphism and suppose
+\[
+ K=\langle\phi(I)\rangle_{\mathcal F,\,T}
+ \tag{WF.13}
+\]
+is the differential ideal generated by its moment images.
+If \(K\) is coisotropic, then \(\phi(U_I)\subset U_K\):
+for each source moment, bracket preservation gives the
+normalizer condition modulo \(K\); the preceding product
+argument extends it to every element of \(K\), including
+combinations with coefficients not in the image of \(\phi\).
+Also \(\phi(I)\subset K\). Therefore the induced map
+\[
+ U_I/I\longrightarrow U_K/K
+ \tag{WF.14}
+\]
+is a homomorphism of PVAs. The equality in (WF.13) is an
+equality of *extended* differential ideals, not an assertion
+that \(\phi\) is surjective.
+
+##### The principal constraints are exactly the free beta constraints
+
+Let
+\[
+ f_n=\sum_{i=1}^{n-1}E_{i+1,i},\qquad
+ \chi(E_{ij})=\operatorname{tr}(f_nE_{ij})
+                      =\delta_{j,i+1}\quad(i<j).
+\]
+In \(\mathcal V_n\) impose the differential ideal
+\[
+ I_n=\langle J_{ij}-\delta_{j,i+1}:i<j\rangle_T .
+ \tag{WF.15}
+\]
+The trace form is zero on two strictly upper triangular matrices,
+and \(\chi\) kills their commutators: a product of two such
+matrices has height at least two. Hence the bracket of two
+moment generators is the moment generator of their commutator.
+Leibniz and sesquilinearity give
+\(\{I_n{}_\lambda I_n\}\subset I_n[\lambda]\).
+The principal reduced PVA is
+\[
+ \mathcal W_n=U_{I_n}/I_n .
+ \tag{WF.16}
+\]
+By (WF.2), its moment space has \(A=f_n+B\) with \(B\)
+upper triangular, including the diagonal.
+
+In the free-field algebra define
+\[
+ K_n=\langle\beta_{ij}-\delta_{j,i+1}:i<j\rangle_T .
+ \tag{WF.17}
+\]
+Its generators and all their derivatives bracket to zero
+with one another, so it is coisotropic. We prove
+\[
+ \boxed{\langle\phi_n(I_n)\rangle_{\mathcal F_n,\,T}=K_n.}
+ \tag{WF.18}
+\]
+At the outer step the constraints \(J^{[n]}_{in}\) give
+exactly \(\beta_i-\delta_{i,m}\), \(m=n-1\).
+For \(i<j\leq m\) the image of a moment generator is
+\[
+ \phi_{m}(J^{[m]}_{ij}-\delta_{j,i+1})
+                        -\gamma_j\beta_i .
+\]
+Here \(i\leq m-1\), so its outer beta satisfies
+\(\beta_i=0\) modulo the outer constraints. Thus the inner
+moment images are unchanged modulo them. Induction gives
+both inclusions in (WF.18): the outer beta constraints
+are already source images; each inner moment image differs
+from a source image by an outer-constraint multiple; and
+the inner beta constraints are obtained recursively from
+these images. Conversely every source image is a sum of
+these inner constraints and such an outer multiple.
+Applying \(T\) proves the same assertions for every jet.
+This proves the equality over \(R\) itself.
+
+The target reduction is exactly the boson algebra
+\[
+ U_{K_n}/K_n\simeq
+       \mathcal H_n=R[b_i^{(r)}:1\leq i\leq n,\ r\geq0].
+ \tag{WF.19}
+\]
+Indeed \(\mathcal F_n/K_n\) is the free polynomial algebra
+on gamma and boson jets. For a class represented by \(a\),
+\[
+ \{\beta_{ij}{}_\lambda a\}\bmod K_n
+   =\sum_{r\geq0}\lambda^r
+             \frac{\partial\overline a}{\partial\gamma_{ij}^{(r)}}.
+ \tag{WF.20}
+\]
+Its vanishing forces every gamma partial derivative to
+vanish. In a polynomial ring over \(R\), a positive
+exponent has an invertible positive integer as derivative
+coefficient, so this means precisely that \(\overline a\)
+is a boson polynomial. Conversely every boson polynomial
+normalizes \(K_n\), since it brackets to zero with beta
+constraints, and the full-ideal condition follows from
+the product argument after (WF.12). Adding an element
+of \(K_n\) preserves normalizer membership. This proves
+(WF.19), including its uniqueness and surjectivity.
+The bracket on the right is exactly (WF.5), since these
+boson representatives already form a PVA subalgebra.
+
+Combining (WF.14), (WF.18) and (WF.19) constructs the actual
+principal Miura homomorphism
+\[
+\mu_n:\mathcal W_n\longrightarrow\mathcal H_n .
+ \tag{WF.21}
+\]
+It preserves every lambda bracket. As an evaluation it
+sets all beta jets to their moment values and all gamma
+jets to zero, but only *after restriction to the
+normalizer*. That evaluation is not a PVA map on the
+whole free-field algebra: a beta constraint evaluates
+to zero, and a gamma evaluates to zero, whereas their
+bracket is \(1\).
+
+The descent can equally be performed one rank at a time.
+In the outer-step target take the ideal generated by
+\(\beta_i-\delta_{i,m}\) and the inner moment ideal
+\(I_m\). The same computation preceding (WF.18) shows
+that this is the extended ideal of the source moments.
+Its quotient is a polynomial algebra on outer gamma
+jets over the inner moment quotient and the new boson
+algebra. Outer beta brackets remove exactly those gamma
+jets. The remaining normalizer tests are the inner
+moment tests. Expanding a polynomial in the new boson
+monomial basis, which is free over \(R\), shows that
+each coefficient is an inner invariant class. Thus the
+partial normalizer quotient is
+\(\mathcal W_m\otimes_R R[b_n^{(r)}:r\geq0]\), with
+its tensor-product PVA bracket. This gives an actual
+reduced map at every outer step, and their iteration is
+(WF.21). No Cartan-zero-mode invariance condition is
+needed to remove the classical ghosts.
+
+The reduction mechanism is the commuting square
+\[
+ \begin{array}{ccc}
+ U_{I_n}&\xrightarrow{\ \phi_n\ }&U_{K_n}\\
+ \downarrow&&\downarrow\\
+ \mathcal W_n=U_{I_n}/I_n
+       &\xrightarrow{\ \mu_n\ }&
+ U_{K_n}/K_n\simeq\mathcal H_n .
+ \end{array}
+ \tag{WF.22}
+\]
+*The upper arrow is the actual matrix PVA homomorphism
+(WF.11). The extended-ideal equality (WF.18) supplies
+normalizer descent, even for moment combinations with
+gamma coefficients. The right quotient is the canonical
+beta-gamma reduction (WF.19)–(WF.20). Thus the lower
+arrow is Poisson by quotient construction, not by an
+assumed Poisson property of a Cartan projection.*
+
+##### A matrix identity and injectivity of the reduced map
+
+There is a useful exact description before setting the
+gammas to zero. Let \(\mathbf J=(\phi_n(J_{ij}))\) be
+the current-entry matrix, and let \(\gamma\) be the
+column of outer gamma variables. For \(\ell=1\), direct
+block multiplication in the commutative differential
+ring gives
+\[
+ \mathbf J=
+ G\begin{pmatrix}J&\beta\\0&b\end{pmatrix}G^{-1}
+                   +(TG)G^{-1},
+ \qquad
+ G=\begin{pmatrix}I&0\\\gamma^t&1\end{pmatrix}.
+ \tag{WF.23}
+\]
+Its lower-left block is exactly \(F\) in (WF.6),
+including \(T\gamma\). Transpose, and put \(g=G^t\);
+the trace-dual matrix satisfies
+\[
+ \phi_n(A)=
+ g^{-1}\begin{pmatrix}J^t&0\\\beta^t&b\end{pmatrix}g
+                                     +g^{-1}Tg .
+ \tag{WF.24}
+\]
+Modulo \(K_n\), \(\beta^t=e_m^t\).
+The last row of an upper unipotent inner matrix \(g_m\)
+is \(e_m^t\), so that \(e_m^tg_m=e_m^t\).
+Induction in (WF.24) therefore proves
+\[
+ \boxed{\quad
+ \partial+\overline{\phi_n(A)}
+   =g_n^{-1}\bigl(\partial+f_n+\operatorname{diag}(b_1,\ldots,b_n)\bigr)g_n,
+ \qquad g_n\in N_n .
+ \quad}
+ \tag{WF.25}
+\]
+Here \(g_n=\operatorname{diag}(g_m,1)g\).
+All identities use \(\partial a=a\partial+Ta\).
+They hold in an ordinary differential-operator ring.
+
+The gamma coordinates and the entries of \(g_n\) are
+polynomially interchangeable. In blocks,
+\(g_n=\left(\begin{smallmatrix}g_m&g_m\gamma\\0&1\end{smallmatrix}\right)\);
+recover \(\gamma\) by multiplying the last column by
+\(g_m^{-1}\). An upper unipotent inverse is the finite
+sum \(I-U+U^2-\cdots+(-U)^{n-1}\).
+Induction gives a polynomial inverse in all entries;
+differentiating gives the same invertible change of
+differential generators. No rational-point argument or
+group integration theorem is required.
+
+In fact the induced differential-algebra map
+\[
+ \theta_n:\mathcal V_n/I_n\longrightarrow\mathcal F_n/K_n
+ \tag{WF.26}
+\]
+is injective. We prove this at every finite set of source
+jets. The source quotient is the polynomial ring on
+the upper and diagonal entries of \(A-f_n\) and their
+jets. Linearize (WF.25) at \(g_n=I\), with all its
+positive jets zero, and \(b=0\). Its tangent formula is
+\[
+ \dot A=\operatorname{diag}(\dot b)+[f_n,u]+Tu ,
+ \qquad u\in\mathfrak n_+ .
+ \tag{WF.27}
+\]
+The commutator \([f_n,u]\) is upper triangular:
+on \(E_{ab}\), \(a<b\), it is
+\(E_{a+1,b}-E_{a,b-1}\), with diagonal entries when
+\(b=a+1\) and nonexistent boundary terms omitted.
+
+At source jet order \(q\), set \(u^{(0)}=0\) and retain
+the input variables \(u^{(1)},\ldots,u^{(q+1)}\) and
+\(\dot b^{(0)},\ldots,\dot b^{(q)}\).
+For any prescribed upper-triangular variations \(V_r\),
+\(0\leq r\leq q\), solve successively
+\[
+ u^{(r+1)}=(V_r-[f_n,u^{(r)}])_{\rm strictly\ upper},
+ \qquad
+ \operatorname{diag}(\dot b^{(r)})
+                    =(V_r-[f_n,u^{(r)}])_{\rm diagonal}.
+ \tag{WF.28}
+\]
+This is an inverse to the square linear tangent map.
+The original map in these variables is polynomial:
+set the zeroth upper entries of \(g_n\) to zero, retain
+jets through \(q+1\), and use its finite inverse in
+(WF.25). It has this invertible linear part. A nonzero
+polynomial relation in the source, translated to the
+image of the indicated point, has a lowest nonzero
+homogeneous part; substitution by an invertible linear
+part keeps that part nonzero. Higher terms cannot
+cancel it. This proves injectivity over \(k\) at every
+finite source jet order. Tensoring its split
+\(k\)-linear injection with \(R\) proves it over every
+ordinary \(R\). Any polynomial uses finitely many jets,
+so (WF.26) is injective.
+
+A reduced source class belongs to the subalgebra
+\(\mathcal W_n\subset\mathcal V_n/I_n\).
+Its image under (WF.26) is gamma-free by (WF.20).
+Therefore (WF.21) is injective on the *entire*
+coisotropic normalizer quotient. This argument does
+not require a polynomial-exhaustion theorem for
+\(\mathcal W_n\).
+
+##### The scalar generators and the order of the factors
+
+For \(A=f_n+B\), with \(B\) upper triangular, eliminate
+the first \(n-1\) components from
+\((\partial+A)y=0\), starting with the last row.
+The row \(n\) expresses \(y_{n-1}\) as a differential
+operator on \(y_n\); row \(n-1\) then expresses
+\(y_{n-2}\), and so on. Each step has coefficient one
+on the component being eliminated. The final first
+row, multiplied by \((-1)^{n-1}\), gives a unique
+monic operator
+\[
+ D_A=\partial^n+\sum_{i=1}^n w_i(A)\partial^{n-i},
+ \tag{WF.29}
+\]
+whose coefficients are finite differential
+polynomials in the entries of \(B\).
+The corresponding left differential module is
+cyclic on \(y_n\), with annihilator generated by
+\(D_A\): these substitutions give inverse
+presentations with one generator and with the \(n\)
+row relations.
+
+These coefficients are invariant under upper
+unipotent gauge transformations, with the convention
+\(A^g=g^{-1}Ag+g^{-1}Tg\) of (DP.29).
+Such a transformation
+preserves the form \(f_n+B\): multiplying \(f_n\) by
+upper unipotent matrices leaves all entries below
+the subdiagonal zero and every subdiagonal entry one;
+the derivative term is upper triangular. It also
+preserves \(y_n\), since its last row is \(e_n^t\).
+Consequently the transformed cyclic presentation has
+the same generator and annihilator left ideal.
+Two monic operators of order \(n\) with that same
+left ideal are equal. Their difference has order
+less than \(n\); a nonzero left multiple of a monic
+order-\(n\) operator has order at least \(n\), even
+over rings with zero divisors, since the leading
+coefficient of the monic operator is \(1\).
+This proves equality of the operators over \(R\).
+
+It also proves that every \(w_i\) represents a class
+in \(U_{I_n}/I_n\). To see the normalizer condition
+directly, take an independent differential test
+symbol \(v\), \(x\in\mathfrak n_+\), and
+\(g=1+\eta vx\), \(\eta^2=0\). The infinitesimal
+gauge action is
+\[
+ \dot A=[A,vx]+T(vx).
+ \tag{WF.30}
+\]
+By (WF.1)–(WF.3) this is exactly the Hamiltonian
+variation of \(\int vJ_x\). If
+\(\{J_x{}_\lambda w_i\}=\sum_j c_j\lambda^j\),
+its induced variation is \(\sum_j c_jT^jv\).
+Gauge invariance gives zero modulo \(I_n\);
+the test jets are independent polynomial variables,
+so every \(c_j\) lies in \(I_n\). This proves the
+condition on each moment generator, hence on the
+whole ideal by (WF.12). Choosing a different lift
+of \(w_i\) from the moment quotient changes it by
+\(I_n\) and changes no reduced class.
+
+Now evaluate (WF.25) at gamma zero and the beta
+moment values. The trace-dual matrix is exactly
+\(f_n+\operatorname{diag}(b_1,\ldots,b_n)\).
+Its rows give
+\(y_{i-1}=-(\partial+b_i)y_i\), \(i=2,\ldots,n\).
+Substitute them into
+\((\partial+b_1)y_1=0\). Therefore
+\[
+ \boxed{\quad
+ \mu_n(D_A)
+     =(\partial+b_1)(\partial+b_2)\cdots(\partial+b_n).
+ \quad}
+ \tag{WF.31}
+\]
+The factors appear in this forward order. There
+are no ghost state contractions to reverse them.
+
+For \(n=2\), write \(\beta=\beta_{12}\),
+\(\gamma=\gamma_{12}\). Modulo \(\beta-1\), the
+whole dual matrix is
+\[
+ \overline{\phi_2(A)}=
+ \begin{pmatrix}
+ b_1-\gamma&\gamma(b_1-b_2)-\gamma^2+T\gamma\\
+ 1&b_2+\gamma
+ \end{pmatrix}.
+ \tag{WF.32}
+\]
+For \(A=\left(\begin{smallmatrix}a&c\\1&d\end{smallmatrix}\right)\),
+the scalar coefficients are \(w_1=a+d\) and
+\(w_2=ad+Td-c\). Substitution in (WF.32) cancels
+every gamma term and gives
+\[
+ \mu_2(w_1)=b_1+b_2,\qquad
+ \mu_2(w_2)=b_1b_2+Tb_2 .
+ \tag{WF.33}
+\]
+This checks both the trace-dual convention and
+the derivative sign by actual reduction.
+
+The full coefficient brackets of the ordered product
+were proved in (AP.7)–(AP.12). Let their polynomial
+expressions be \(H_{ij}(\lambda;w,Tw,\ldots)\),
+with the convention
+\(\{w_j{}_\lambda w_i\}=H_{ij}\).
+Since \(\mu_n\) is an injective PVA map and
+(WF.31) gives those same factors,
+\[
+ \{w_j{}_\lambda w_i\}_{\mathcal W_n}
+                     =H_{ij}(\lambda;w,Tw,\ldots).
+ \tag{WF.34}
+\]
+Indeed the difference has zero image, so each
+coefficient is zero by injectivity. The scalar
+coefficient classes and all their derivatives
+are algebraically independent: their images are
+the independent differential Miura coefficients
+of (AP.13), equivalently the highest-degree jet
+calculation (MC.11)–(MC.13). The matching source
+polynomial-exhaustion theorem (MG.20) proves
+\(\mathcal W_n=R[w_i^{(r)}]\); its covector
+scalar relation (MG.5) and ordered diagonal
+evaluation (MG.24) are exactly (WF.29) and
+(WF.31). Consequently (WF.34) is the entire
+principal reduced PVA bracket, identified with
+the positive scalar Adler bracket of
+(AP.7)–(AP.12). The free-field descent and
+injectivity above were proved independently
+of that polynomial-exhaustion theorem.
+
+##### Orthogonal trace restriction and ordinary parameters
+
+For \(\mathfrak{sl}_n\), take an orthogonal
+subalgebra of the raw current and boson PVAs.
+The source scalar generator
+\(c_{\rm src}=J_I/n\) has bracket
+\(\{c_{\rm src}{}_\lambda c_{\rm src}\}=\lambda/n\)
+and commutes with all traceless currents.
+On the target put
+\[
+ c=\frac1n\sum_i b_i,\qquad
+ \bar b_i=b_i-c,\qquad \sum_i\bar b_i=0.
+\]
+Then
+\[
+ \{\bar b_i{}_\lambda\bar b_j\}
+    =(\delta_{ij}-1/n)\lambda,\quad
+ \{c_\lambda\bar b_i\}=0,\quad
+ \{c_\lambda c\}=\lambda/n .
+ \tag{WF.35}
+\]
+The trace of (WF.10) is \(\sum_i b_i\).
+A common shift \(b_i\mapsto b_i+c\) adds \(c\)
+to each diagonal current, and leaves every
+off-diagonal current unchanged: in \(F_i\) the
+new terms are \(\gamma_i c-\gamma_i c=0\).
+Induction proves that the traceless source
+lands in the subalgebra generated by ghosts
+and trace-zero bosons. Thus the source and
+target in (WF.11) restrict to their true
+orthogonal trace-zero subalgebras.
+
+All upper moment constraints are traceless.
+Their extended ideal remains (WF.18).
+The canonical quotient gives the trace-zero
+boson algebra, with the projected matrix
+\(P=I-\mathbf1\mathbf1^t/n\) in (WF.35).
+Every normalizer descent proof still applies.
+The finite-jet injectivity proof also restricts:
+\([f_n,u]\) and \(Tu\) have trace zero, and
+the prescribed diagonal variations in (WF.28)
+sum to zero, so the recovered boson variations
+do as well. Hence the reduced map remains
+injective. In (WF.31) replace \(b_i\) by
+\(\bar b_i\); its first coefficient is zero.
+The resulting reduced scalar brackets are
+exactly (AP.14)–(AP.18). This is an
+orthogonal-subalgebra construction; imposing
+the trace current as a quotient of the raw
+positive-form PVA would be invalid, since
+its bracket is \(n\lambda\).
+
+All arguments are direct over ordinary \(R\).
+There is also exact ordinary base change of
+the source reduction. In its free moment
+quotient retain jets through order \(q\) and
+polynomials of ordinary entry degree at most
+\(d\). This is a finite-dimensional \(k\)-space.
+The coefficient moment actions preserve these
+bounds: (WF.30) is affine linear in the entries
+of \(A-f_n\), its \(r\)-th derivative uses entry
+jets of order at most \(r\), and its test
+symbol uses jets of order at most \(r+1\).
+The normalizer classes in that space are
+therefore the kernel of a finite matrix of
+linear moment equations. Tensoring with \(R\)
+preserves that kernel, because \(R\) is flat
+over \(k\). Taking the union over \(q,d\)
+gives
+\[
+ \mathcal W_{n,R}=R\otimes_k\mathcal W_{n,k},
+ \qquad
+ \mu_{n,R}=R\otimes_k\mu_{n,k}.
+ \tag{WF.36}
+\]
+The ideal quotient, canonical target reduction,
+polynomial gauge formulas and all lambda
+brackets commute with these coefficient maps.
+This includes nilpotent parameters without
+testing their field-valued points.
+
+Products use independent current, ghost
+and boson lists, so cross brackets vanish
+and the componentwise construction gives
+the product principal Miura map. For
+\(\mathfrak{gl}_1\) it is the identity of
+the positive-form boson PVA; for
+\(\mathfrak{sl}_1=0\) or the trivial algebra
+it is the coefficient ring with zero bracket.
+The theorem concerns the classical matrix
+coisotropic principal reduction. It makes
+no factorization-sheaf, geometric Satake,
+global localization or derived-family claim.
+
+#### 3.8.4. Laurent reduction, topology and coordinate transport
+
+The regular differential-polynomial reduction and the reduction of Laurent connections have different coefficient algebras. The former is a Poisson vertex algebra. The latter uses all integer current modes and a jointly continuous ordinary Poisson bracket. We construct the latter directly, rather than imposing regularity as an ordinary Poisson relation.
+
+Fix \(\mathfrak g=\mathfrak{gl}_n\), or its trace-zero subalgebra, and \(B(X,Y)=\operatorname{tr}(XY)\). Let \(R\) be an ordinary commutative algebra over a characteristic-zero field. For \(N\geq1\), put
+\[
+\mathcal C_{N,R}=R[J_{x,m}:m<N],\qquad
+\widehat{\mathcal C}_R=\varprojlim_N\mathcal C_{N,R}.
+\tag{DL.1}
+\]
+Here \(x\) ranges through a fixed basis of \(\mathfrak g\), the variables are linear in \(x\), and the transition sets newly admitted modes to zero. In the trace-zero case use a basis of that subalgebra. Trace duality identifies \(J_{x,m}\) with \(\operatorname{tr}(xA_m)\), where
+\(A(t)=\sum_mA_m t^{-m-1}\). Thus a continuous character to a discrete coefficient algebra specifies a Laurent matrix with a common finite pole bound. The argument is the same explicit factor-through-a-stage argument as (PC.4); no assertion about arbitrary discontinuous characters is used.
+
+On the polynomial algebra in all modes define
+\[
+\{J_{x,m},J_{y,r}\}
+=J_{[x,y],m+r}+mB(x,y)\delta_{m+r,0}.
+\tag{DL.2}
+\]
+The affine Jacobi proof preceding (K2.2), using invariance of \(B\), proves Jacobi on these linear generators. Extension by the ordinary Leibniz rule reduces Jacobi on polynomials to that calculation. This gives a polynomial Poisson bracket before completion.
+
+We prove its continuous extension. Let \(K_N\) be the kernel of the \(N\)-th projection. For finite polynomials, the ideal generated by modes \(m\geq N\) has
+\[
+\{K_N,K_M\}\subset K_N\quad(M\geq N\geq1).
+\tag{DL.3}
+\]
+Initially this formula refers to the polynomial ideals. In a bracket of two monomials, if the chosen bracket does not remove the distinguished high factor in both monomials, one such factor remains. If it removes both, (DL.2) supplies a mode of index at least \(N+M\); the scalar term is zero because both indices are positive. Every term therefore lies in the displayed ideal. This proves (DL.3) by Leibniz.
+
+For any fixed polynomial \(p\), let \(a\) be the least mode index among its variables, taking \(a=0\) when it is constant. Then
+\[
+\{p,K_M\}\subset K_N
+\quad\text{if }M\geq\max(N,N-a).
+\tag{DL.4}
+\]
+Indeed a bracket which removes the only high factor has new index at least \(M+a\geq N\), and cannot have a scalar term; every other term retains a high factor.
+
+Take compatible finite polynomial approximants to \(u,v\in\widehat{\mathcal C}_R\). For a required output cutoff \(N\), fix their polynomial representatives \(u_N,v_N\). Each later approximant differs from these by a polynomial in the \(N\)-th tail ideal. If a perturbation is in the \(M\)-th tail ideal, (DL.4) bounds its bracket with \(u_N,v_N\), while (DL.3) bounds its bracket with those remaining \(N\)-tails. For sufficiently large \(M\), every resulting difference lies in \(K_N\). Thus the brackets of approximants are Cauchy, independently of the approximants. Completeness defines their limit. The same bounds prove joint continuity at \((u,v)\), and prove (DL.3)–(DL.4) for the completed ideals as well. Leibniz, skew symmetry and Jacobi pass to limits of polynomial inputs. We have constructed a unique jointly continuous bracket (DL.2) on the entire completion. Each ordinary coefficient map commutes with it, by the finite formulas and continuity. As in (CW.19), its coefficient extension is stagewise and completed, not an unproved interchange of tensor product and inverse limit. Individual \(K_N\) are not asserted to be Poisson ideals against the whole algebra.
+
+**The closed moment ideal.** Let
+\[
+\mathfrak n_+=\langle E_{ij}:i<j\rangle,\qquad
+f=\sum_{i=1}^{n-1}E_{i+1,i},\qquad
+\chi(x)=\operatorname{tr}(fx).
+\tag{DL.5}
+\]
+The full Laurent moment constraints are
+\[
+\mu_{x,m}=J_{x,m}-\chi(x)\delta_{m,-1},
+\qquad x\in\mathfrak n_+,\quad m\in\mathbb Z.
+\tag{DL.6}
+\]
+The index \(-1\) is forced by a constant connection coefficient, whose current-field expansion has exponent zero. Let \(I\) be the closed ideal generated by these constraints. At every cutoff their quotient simply eliminates the corresponding independent linear coordinates, leaving the upper-triangular coefficients of \(A=f+b_+\). The sections which use only those remaining coordinates are compatible. The quotient is therefore exactly the completed coefficient algebra of these Laurent matrices; reduction is surjective and has this continuous linear section. Kernel equality follows by choosing an ideal polynomial representative at each cutoff. This also proves that the finite polynomial moment ideal is dense in \(I\).
+
+The restriction of \(B\) to \(\mathfrak n_+\) is zero and \(\chi([\mathfrak n_+,\mathfrak n_+])=0\). Formula (DL.2) consequently gives
+\(\{\mu_{x,m},\mu_{y,r}\}=\mu_{[x,y],m+r}\).
+Leibniz and the density just proved give
+\[
+\{I,I\}\subset I.
+\tag{DL.7}
+\]
+Define the closed normalizer
+\[
+\mathcal U_R=
+\{u\in\widehat{\mathcal C}_R:
+       \{\mu_{x,m},u\}\in I\text{ for all }x,m\},
+\qquad
+\widehat W^{\mathrm{DS}}_R=\mathcal U_R/I.
+\tag{DL.8}
+\]
+Here \(I\subset\mathcal U_R\) by (DL.7). For \(u\in\mathcal U_R\), Leibniz first proves \(\{u,I\}\subset I\) on the finite ideal and then on its closure. Jacobi now proves closure of \(\mathcal U_R\) under brackets; Leibniz proves closure under products. Hence \(I\) is a Poisson ideal in this normalizer and its quotient has a bracket independent of representatives. This is an actual coisotropic reduction. It does not make the entire ambient quotient by \(I\) a Poisson algebra.
+
+We identify its invariants and its topology. For a Laurent test matrix \(X(t)\), put
+\[
+\ell_X(A)=\operatorname{Res}\operatorname{tr}(X(t)A(t))dt.
+\tag{DL.9}
+\]
+It is a completed linear function, since \(X\) has a finite negative tail and only finitely many of its positive coefficients contribute at a fixed cutoff. Formula (DL.2) reads
+\[
+\{\ell_X,\ell_Y\}(A)
+=\operatorname{Res}\operatorname{tr}(A[X,Y]+X'Y)dt.
+\tag{DL.10}
+\]
+Its Hamiltonian vector field on \(A\) is \([A,X]+X'\). On the moment fibre this is the infinitesimal action of the inverse unipotent gauge \(g=1-sX+O(s^2)\) in the convention \(A\mapsto gAg^{-1}-g'g^{-1}\). All moment modes in (DL.6), including negative ones, are needed here. Positive currents alone give the regular-jet invariant condition of §3.8.1, rather than this full Laurent action.
+
+For a root test \(X=q(t)E_{ij}\), \(i<j\), the one-parameter gauge is \(1-sq(t)E_{ij}\), with polynomial inverse. For an input of fixed pole bound its transformed matrix has a pole bound independent of \(s\). A completed function restricts at that bound to a polynomial in finitely many coefficients, so its pullback is a polynomial in \(s\). Vanishing of its infinitesimal derivative at every input makes this polynomial constant: differentiate at an arbitrary \(s\) using the group law and the same infinitesimal condition, then use that the positive integers are units in \(R\). Every upper unipotent Laurent matrix is a finite product of these elementary matrices, by successive upper-entry elimination. Normalizer invariance therefore implies the whole \(N_+(R((t)))\)-gauge invariance. Conversely, differentiating this action over \(R[s]/(s^2)\) proves the moment normalizer condition. Formal positive tails cause no extra assumption: the completed linear functions (DL.9) are the limits of their finite tests, and each fixed coefficient calculation uses only finitely many test coefficients.
+
+The matrix theorem of §3.8.2 supplies a unique gauge and scalar operator for each such connection. Its weighted pole bounds are
+\[
+\operatorname{pole}(A_{ab})\leq(b-a+1)N,
+\quad
+\operatorname{pole}(g_{ab})\leq(b-a)N,
+\quad
+\operatorname{pole}(s_j)\leq jN.
+\tag{DL.11}
+\]
+These weighted charts are cofinal with common finite pole bounds. Their normal-form map and inverse are coefficientwise polynomial maps and identify the constraint chart with the product of its gauge chart and scalar chart. An invariant function on this product is independent of its gauge coordinate: translate that coordinate to the identity using its own inverse, over the universal coefficient algebra. This argument is a polynomial identity and remains valid over nonreduced \(R\). Taking the compatible charts shows that the algebra of invariant completed functions is precisely the \(P_R\) of (PC.3).
+
+The resulting map
+\[
+\Theta_R:\widehat W^{\mathrm{DS}}_R\xrightarrow{\sim}P_R
+\tag{DL.12}
+\]
+is a topological algebra isomorphism. One can check its inverse directly: the scalar normal-form coefficient \(s_j(A)\) is a fixed differential polynomial in the upper entries. Substituting these polynomials gives a continuous algebra map from \(P_R\) into the ambient completion. Its reductions are gauge invariant, so its image lies in \(\mathcal U_R\). The exact pole bounds (DL.11) give continuity at every cutoff; evaluation in companion form gives its inverse modulo \(I\). This proves completeness of the reduced algebra through the explicit isomorphism. No general theorem about completeness of a quotient is assumed. All constructions commute with ordinary coefficient maps.
+
+**Coordinate action, with the normalization gauge proved.** First any fixed Laurent gauge \(g\) preserves the ambient Poisson bracket. Indeed
+\[
+\ell_X(gAg^{-1}-g'g^{-1})
+=\ell_{g^{-1}Xg}(A)
+ -\operatorname{Res}\operatorname{tr}(Xg'g^{-1})dt.
+\tag{DL.13}
+\]
+Writing \(V=g'g^{-1}\), direct differentiation gives
+\((g^{-1}Xg)'=g^{-1}(X'+[X,V])g\).
+Thus the transformed cocycle is
+\[
+\operatorname{Res}\operatorname{tr}
+ ((g^{-1}Xg)'g^{-1}Yg)dt
+=\operatorname{Res}\operatorname{tr}(X'Y-V[X,Y])dt.
+\]
+This is exactly the correction to the Lie term in (DL.10) under (DL.13). The linear generators determine polynomial brackets; finite pole bounds and continuity extend the equality to the completion. For a trace-zero algebra, take the trace-free part of the gauge connection; the discarded scalar does not pair with traceless tests. The same identity proves the result directly for those tests.
+
+Let \(\psi=\phi^{-1}\), \(\alpha=\psi'\), \(c=\alpha'/\alpha\), and
+\(D=\operatorname{diag}(\alpha^{n-1},\alpha^{n-2},\ldots,1)\).
+There are no square roots in the following normalized formula:
+\[
+A^\phi
+=D\bigl(\alpha A\circ\psi\bigr)D^{-1}
+  -D'D^{-1}+\frac{n-1}{2}c\,\mathbf1.
+\tag{DL.14}
+\]
+Inverse one-form substitution preserves (DL.10) by residue change of variable (RC.C7). The gauge part is Poisson by (DL.13). Addition of a fixed scalar matrix is Poisson in the raw matrix case: its Lie contribution is \(\operatorname{tr}[X,Y]=0\), and the cocycle is unchanged. In the trace-zero case this last term is precisely the trace correction just described. Formula (DL.14) is therefore Poisson.
+
+Its lower adjacent entry is \(\alpha\alpha^{n-i-1}/\alpha^{n-i}=1\); the lower entries further from the diagonal remain zero. Its trace is \(\alpha\operatorname{tr}(A)\circ\psi\), since the trace of \(D'D^{-1}\) is \(n(n-1)c/2\). Thus it preserves the moment fibre and the trace-zero relation. It conjugates an upper gauge \(u\) to \(D(u\circ\psi)D^{-1}\), so it induces the action on the reduction. Finite pole bounds, and the nilpotent-translation cofinality already proved in (PC.8), give continuity for every ordinary coordinate, including nilpotent constants.
+
+On a diagonal Miura representative its diagonal entries are exactly
+\[
+h_i^\phi=\alpha h_i\circ\psi+
+       \left(i-\frac{n+1}{2}\right)c.
+\tag{DL.15}
+\]
+This is the affine density shift (MC.20), not a collection of unshifted one-forms. Formally multiply \(D\) by the common scalar \(\alpha^{-(n-1)/2}\). The last component of a horizontal vector then transforms as a density of weight \((1-n)/2\). The covector construction (O4.2) consequently transforms its scalar equation by the density law (SC.O6). Where half-integer powers occur, the free rank-two square-root extension and sign-independent descent (SC.O4)–(SC.O6) apply; the actual matrix formula (DL.14) has already descended without a root. Normal-form uniqueness proves
+\[
+\Theta_R\sigma_\phi^{\mathrm{DS}}
+ =\sigma_\phi^{\mathrm{Op}}\Theta_R.
+\tag{DL.16}
+\]
+The chain rule for \(c\), together with ordinary substitution, gives composition and inverses in (DL.14); equivalently these follow from the density transport and the unique normalization gauge. This proves the coordinate action itself as well as its compatibility with the quotient.
+
+The construction has the following precise square:
+\[
+\begin{array}{ccc}
+\mathcal U_R&\longrightarrow&\widehat W_R^{\mathrm{DS}}\\
+{\scriptstyle\sigma_\phi}\downarrow&&
+\downarrow{\scriptstyle\sigma_\phi^{\mathrm{DS}}}\\
+\mathcal U_R&\longrightarrow&\widehat W_R^{\mathrm{DS}}.
+\end{array}
+\tag{DL.17}
+\]
+*The horizontal arrows divide by the closed coisotropic moment ideal (DL.6)–(DL.8). The complete ambient bracket is constructed by the explicit tail estimates (DL.3)–(DL.4). The vertical arrows use inverse substitution and the normalization gauge (DL.14); the residue calculation (DL.13) proves their Poisson property. The coefficient isomorphism (DL.12) identifies the reduced space with the Laurent scalar-oper coefficient functor. Its comparison with the explicit scalar Adler bracket is proved next.*
+
+This is the ordinary Laurent reduction. The regular differential-polynomial comparison of §3.8.1 is a Poisson vertex comparison. Passing from the Laurent algebra to regular coefficient functions is not declared an ordinary Poisson quotient; the forbidden-mode examples (CP.17)–(CP.18) still distinguish those notions.
+
+#### 3.8.5. The full matrix Hamiltonian-reduction comparison
+
+We now compare the actual reduction with the scalar bracket. All forms in this comparison are specified. The classical affine Poisson vertex algebra of §3.8.1 has form \(+\operatorname{tr}\). The quantum center of §3.7 instead has critical form \(-n\operatorname{tr}\) on \(\mathfrak{sl}_n\), with deformation direction \(+\operatorname{tr}\). These are different affine algebras. Their reduced coefficient brackets agree through the proved scalar and Miura maps; equality is not an identification of their current fields.
+
+Write \(W_R^{\mathrm{DS}}\) for the differential-polynomial coisotropic reduction of §3.8.1. The normal-form invariant theorem of §3.8.2 identifies it, as a differential algebra, with
+\[
+\theta_R:W_R^{\mathrm{DS}}\xrightarrow{\sim}
+R[s_j^{(r)}:r\geq0],
+\quad
+\begin{cases}
+1\leq j\leq n&\text{for raw matrices},\\
+2\leq j\leq n&\text{for trace-zero matrices}.
+\end{cases}
+\tag{DC.1}
+\]
+The classical field map and moment-normalizer descent of §3.8.3 prove the Miura Poisson vertex map \(\mu_R\). Its exact generator images are the coefficients of \((\partial+h_1)\cdots(\partial+h_n)\). They are precisely the injection \(j_R^{\mathrm{reg}}\) of (AP.13), with the orthogonal trace-zero boson matrix in that case. Consequently
+\[
+\mu_R=j_R^{\mathrm{reg}}\theta_R.
+\tag{DC.2}
+\]
+This is an identity on actual invariant generators and all their derivatives, rather than an equality of highest symbols. The normalizer quotient in §3.8.3 proves the Poisson property of \(\mu_R\); ordinary Cartan evaluation on the ambient affine algebra would not prove it.
+
+For \(a,b\in W_R^{\mathrm{DS}}\), apply that property and the proved scalar factorization (AP.9), or its orthogonal reduction (AP.14):
+\[
+\begin{aligned}
+j_R^{\mathrm{reg}}\theta_R(\{a_\lambda b\}_{\mathrm{DS}})
+&=\{j_R^{\mathrm{reg}}\theta_R(a){}_{\lambda}
+                 j_R^{\mathrm{reg}}\theta_R(b)\}_{\mathrm{bos}}\\
+&=j_R^{\mathrm{reg}}
+     \{\theta_R(a){}_{\lambda}\theta_R(b)\}_{\mathrm{AGD}}.
+\end{aligned}
+\tag{DC.3}
+\]
+The injection (AP.13) cancels. Thus (DC.1) is a Poisson vertex isomorphism onto the explicit scalar Adler–Gelfand–Dickey algebra. Every bracket is the finite formula (AP.11), or (AP.17) with its polynomial primitive (AP.16). In particular the principal matrix Hamiltonian reduction, rather than a merely named scalar reference bracket, has now been identified in every degree and derivative order.
+
+**Why the same statement controls every Laurent Fourier mode.** We give the coefficient argument independently of a general vertex reconstruction theorem. Put
+\[
+\delta(z,w)=\sum_{m\in\mathbb Z}z^{-m-1}w^m.
+\]
+The current bracket (DL.2) is exactly
+\[
+\{J_x(z),J_y(w)\}
+=J_{[x,y]}(w)\delta(z,w)+B(x,y)\partial_w\delta(z,w).
+\tag{DC.4}
+\]
+Extracting \(\operatorname{Res}_z z^m\operatorname{Res}_w w^q\) gives its Lie mode \(J_{[x,y],m+q}\) and scalar \(mB(x,y)\delta_{m+q,0}\). For differential-polynomial fields, the kernel form of their Poisson vertex bracket is proved from this identity by the two elementary rules
+\[
+\partial_z\delta=-\partial_w\delta,
+\qquad
+a(z)\partial_w^r\delta
+=\sum_{v=0}^r\binom rv a^{(v)}(w)
+                       \partial_w^{r-v}\delta.
+\tag{DC.5}
+\]
+The second follows by differentiating \(a(z)\delta=a(w)\delta\) exactly \(r\) times. Derivatives in the first argument therefore give \(-\lambda\), derivatives in the second give \(T+\lambda\), the right product gives ordinary Leibniz, and moving left factors by (DC.5) gives precisely the shifted left Leibniz rule. Induction on products and derivatives proves that if
+\(\{a_\lambda b\}=\sum_{r\geq0}\lambda^r c_r/r!\), then its field kernel is
+\(\sum_r c_r(w)\partial_w^r\delta/r!\). The sum is finite. At any desired Fourier coefficient all products are finite after a cutoff, because their index sum is fixed and each input index has an upper bound. Thus the distribution argument is an identity of the actual completed coefficient functions, not an analytic distribution argument.
+
+The grading used after the principal reduction is the principal weight
+\(\deg J_x=1-\operatorname{ht}(x)\), \(\deg T=1\), for root-homogeneous \(x\). The affine bracket has degree \(-1\), as one checks on its Lie and scalar terms. A simple positive moment current has weight zero, so its equality to \(1\) is homogeneous; all other moment characters are zero. The scalar normal-form coefficient \(s_i\) has weight \(i\), either by the covector construction or by its injective ordered Miura image. Hence \(c_r\) in a bracket of weights \(i,j\) has weight \(i+j-r-1\). This grading is not the ordinary energy-one grading of every unreduced current. Physical current indices still refer to exponent \(-m-1\); a chosen normalized field weight merely relabels them.
+
+Write the scalar field as \(s_i(z)=\sum_p s_{i,p}z^{-p-i}\), and use the corresponding weight for each \(c_r\). Extracting residues in (DC.4)–(DC.5) now gives, for every pair of integers,
+\[
+\{s_{i,p},s_{j,q}\}_{\mathrm{DS}}
+=\sum_{r\geq0}\binom{p+i-1}{r}
+                             (c_r)_{p+q}.
+\tag{DC.6}
+\]
+Indeed the two residue test exponents are \(p+i-1\) and \(q+j-1\). After differentiating the first test \(r\) times, the output exponent is \(p+q+i+j-r-2\), exactly the exponent selecting normalized mode \(p+q\) of weight \(i+j-r-1\). Generalized binomial coefficients handle negative \(p+i-1\). Scalar coefficients use the weight-zero identity-field convention. This proves the all-integer formula with the correct moment normalization (DL.6).
+
+The same extraction in the boson coefficient algebra proves its Fourier brackets from (AP.1)–(AP.2). By (DC.3), the differential coefficients \(c_r\) have identical scalar Adler formulas. Products of scalar fields can have infinite mode convolutions, but each convolution is a finite polynomial at a weighted pole cutoff, exactly as proved before (CP.21). Formula (DC.6) therefore proves equality of the reduced bracket and the scalar bracket on all coefficient generators, with values in the completion. Leibniz proves equality on polynomial inputs. These are dense in \(P_R\); the reduced bracket is jointly continuous by (DL.2)–(DL.12), and the scalar bracket by (CP.20)–(CP.21). Equality passes to arbitrary pairs of completed inputs. We obtain
+\[
+\boxed{\Theta_R:
+ (\widehat W_R^{\mathrm{DS}},\{\ ,\ \}_{\mathrm{DS}})
+ \xrightarrow{\sim}(P_R,\{\ ,\ \}_{\mathrm{AGD}}).}
+\tag{DC.7}
+\]
+This proves the full ordinary Laurent Hamiltonian-reduction Poisson comparison. It does not require a bound on the degree of a whole completed element, or a Poisson structure on an individual pole-cutoff quotient.
+
+**A rank-two check of the moment ideal and sign.** In the trace-zero matrix fibre write
+\(A=\begin{pmatrix}H/2&F\\1&-H/2\end{pmatrix}\).
+The scalar coefficient is
+\[
+w_2=-F-\tfrac12TH-\tfrac14H^2.
+\tag{DC.8}
+\]
+Before imposing the moment relation, the affine generator \(E=J_{E_{12}}\) has \(\{E_\lambda F\}=H+\lambda\) and \(\{E_\lambda H\}=-2E\). Sesquilinearity and Leibniz give
+\[
+\{E_\lambda w_2\}=(E-1)(H+\lambda)+TE\in I[\lambda].
+\tag{DC.9}
+\]
+Thus its invariance is an actual moment-normalizer calculation. On the diagonal representative \(F=0,H=2h\), it becomes \(-h'-h^2\), with \(\{h_\lambda h\}=\lambda/2\). Equation (AP.20) gives
+\(\{w_2{}_{\lambda}w_2\}=-(T+2\lambda)w_2-\lambda^3/2\), the same sign and normalization as the critical determinant coefficient (CP.16). The diagonal evaluation is Poisson on this reduced algebra by §3.8.3; it is not a Poisson projection on arbitrary \(E,F,H\).
+
+Combining (DC.7) with the already proved critical-center isomorphism (CP.21) gives the coordinate-equivariant comparison
+\[
+\begin{array}{ccc}
+Z(\widehat A_{\mathrm{crit},R})
+&\xrightarrow{\ \Phi_R\ }&P_R\\
+& &\uparrow{\scriptstyle\Theta_R}\\
+&&\widehat W_R^{\mathrm{DS}}.
+\end{array}
+\tag{DC.10}
+\]
+*Both arrows are topological Poisson isomorphisms. The upper arrow uses the critical level deformation, actual quantum free-field map and scalar bracket of §3.7. The lower arrow uses the classical affine form \(+\operatorname{tr}\), its coisotropic moment ideal, the matrix gauge theorem and the classical free-field descent of §3.8. The scalar Adler formulas make their brackets identical. Coordinate compatibility is (PC.13) and (DL.16), with the exact density shift (DL.15). This diagram does not identify the two unreduced affine algebras.*
+
+The regular version compares Poisson vertex algebras; the Laurent version compares completed ordinary Poisson algebras. Products of type A factors use these maps componentwise and a common pole bound. For \(\mathfrak{gl}_1\) there is no unipotent moment constraint and the comparison is the identity \(L=\partial+h\); for \(\mathfrak{sl}_1=0\) it is the coefficient ring. All calculations use matrix units, positive integer divisions, polynomial differentiation and cofinal finite pole bounds, and hold over every ordinary characteristic-zero coefficient algebra.
+
+The result identifies the ordinary principal matrix Hamiltonian reduction, including its exact local coordinate normalization. It does not construct a derived reduction, a global chiral or factorization comparison, geometric Satake, critical localization or the global eigenobject theorem. Section 3.9 proves the general ordinary principal classical reduction at the specified structural datum and form. Quantum center identifications in other types, exact dual-form normalization, derived/global reduction and intrinsic nonadjoint/global central conventions retain their separate proof obligations.
+
+
+### 3.9. General principal Hamiltonian reduction
+
+For the supplied pinned semisimple principal datum, the following four proofs use the fixed height splittings and positive polynomial gauge group of §1.1, and a specified perfect invariant symmetric form \(B\). They establish the actual classical reduction over every ordinary characteristic-zero coefficient algebra. The abstract normalizer and Laurent arguments also allow a height-zero summand when it is specified; §§3.9.2 and 3.9.4 use the proved semisimple condition \(V_0=0\). Existence of the root/group data and intrinsic/global oper descent retain their exact earlier premises.
+
+#### 3.9.1. Principal Hamiltonian reduction for a fixed graded Lie datum
+
+Let \(k\) be a characteristic-zero field and \(R\) an ordinary commutative \(k\)-algebra. Fix a finite-dimensional Lie algebra and the following data over \(k\):
+\[
+ \begin{gathered}
+ \mathfrak g=\bigoplus_{a\in\mathbb Z}\mathfrak g_a,\qquad
+ [\mathfrak g_a,\mathfrak g_b]\subset\mathfrak g_{a+b},\\
+ e\in\mathfrak g_1,\quad f\in\mathfrak g_{-1},\quad
+ r\in\mathfrak g_0,\quad h=2r,\qquad
+ [r,x]=a x\quad(x\in\mathfrak g_a),\\
+ [h,e]=2e,\qquad[h,f]=-2f,\qquad[e,f]=h,\\
+ B:\mathfrak g\otimes_k\mathfrak g\longrightarrow k
+ \quad\text{symmetric, invariant and perfect}.
+ \end{gathered}
+ \tag{GR.1}
+\]
+Here invariance means \(B([x,y],z)=B(x,[y,z])\), and perfectness means that \(B\) identifies \(\mathfrak g\) with its linear dual. All direct sums in the grading are finite. Put
+\[
+ \mathfrak n=\bigoplus_{a>0}\mathfrak g_a,\qquad
+ \mathfrak b=\bigoplus_{a\geq0}\mathfrak g_a,\qquad
+ V=\ker(\operatorname{ad}e).
+ \tag{GR.2}
+\]
+These are fixed linear and Lie data. The construction below does not require \(k\) to be algebraically closed.
+
+For completeness, the splittings used in the subsequent principal slice have the precise form
+\[
+ \mathfrak g_a=[f,\mathfrak g_{a+1}]\oplus V_a,\qquad
+ \operatorname{ad}f:\mathfrak g_{a+1}\hookrightarrow\mathfrak g_a
+ \quad(a\geq0).
+ \tag{GR.3}
+\]
+The finite \(\mathfrak{sl}_2\) argument in (DS.A5)–(DS.A9) proves them under (GR.1). Each string has grades \(d,d-1,\ldots,-d\), where its highest \(h\)-weight is \(2d\). On this string, \(f\) maps each nonbottom vector nontrivially to the next one; the coefficient \(j(2d-j+1)\) obtained by applying \(e\) is a nonzero integer. At a nonnegative grade, every vector except a highest vector is consequently in the image of \(f\), and a vector of grade \(a+1>0\) cannot be at the bottom. The explicit string decomposition proved there gives (GR.3), with no further complete-reducibility input. These \(k\)-linear splittings remain splittings after tensoring with \(R\). A trivial string can give \(V_0\ne0\); the extra assertion \(V_0=0\) for the pinned adjoint semisimple example uses its separate simple-coroot argument.
+
+**The pairing and the moment constraints.** Invariance gives
+\[
+ B([r,x],y)+B(x,[r,y])=0,\qquad
+ (a+b)B(x,y)=0
+ \quad(x\in\mathfrak g_a,\ y\in\mathfrak g_b).
+ \tag{GR.4}
+\]
+If \(a+b\ne0\), this integer is invertible in \(k\), so the pairing is zero. For each \(a\), the induced map
+\(\mathfrak g_a\to\mathfrak g_{-a}^{*}\) is injective: an element in its kernel pairs with no homogeneous summand and hence is zero by perfectness. The same argument with \(-a\) interchanged gives the opposite dimension inequality. Thus
+\[
+ B:\mathfrak g_a\otimes\mathfrak g_{-a}\longrightarrow k
+ \ \text{is perfect for every }a,\qquad
+ B|_{\mathfrak g_0}\ \text{is perfect},\qquad
+ \mathfrak n^\perp=\mathfrak b.
+ \tag{GR.5}
+\]
+For the last equality, the nonnegative grades pair trivially with the positive grades, while a nonzero negative component is detected by its perfect opposite-grade pairing. Each block has an inverse matrix over \(k\), so these statements, including the equality of orthogonal submodules, hold over every \(R\), including nonreduced \(R\).
+
+Define \(\chi:\mathfrak n\to k\) by \(\chi(x)=B(f,x)\). It vanishes outside grade one. Since a bracket of two positive grades has grade at least two,
+\[
+ B(\mathfrak n,\mathfrak n)=0,\qquad
+ \chi([\mathfrak n,\mathfrak n])=0.
+ \tag{GR.6}
+\]
+The second equality says exactly that \(\chi\) is a Lie character; it uses neither a matrix realization nor a choice of positive-root coordinates.
+
+**The affine bracket, constructed on all differential polynomials.** Let
+\[
+ \mathcal A_R=\operatorname{Sym}_R
+       \left(\bigoplus_{p\geq0}\mathfrak g_R^{(p)}\right),\qquad
+ J_x^{(p)}\in\mathfrak g_R^{(p)},\quad
+ TJ_x^{(p)}=J_x^{(p+1)},\quad T|_R=0.
+ \tag{GR.7}
+\]
+The labels \(J_x^{(p)}\) are linear in \(x\). For a basis \(e_i\), write \(u_i^{(p)}=J_{e_i}^{(p)}\), and prescribe the positive affine cocycle
+\[
+ H_{ij}(\lambda)=J_{[e_i,e_j]}+B(e_i,e_j)\lambda,\qquad
+ \{J_x{}_\lambda J_y\}=J_{[x,y]}+B(x,y)\lambda.
+ \tag{GR.8}
+\]
+“Positive” specifies the plus sign of this cocycle, rather than an order on \(k\). For arbitrary differential polynomials define
+\[
+ \boxed{\{F_\lambda G\}
+  =\sum_{i,j,p,q}
+       \frac{\partial G}{\partial u_j^{(q)}}
+       (\lambda+T)^q H_{ij}(\lambda+T)
+       (-\lambda-T)^p
+       \frac{\partial F}{\partial u_i^{(p)}}.}
+ \tag{GR.9}
+\]
+In this formula \(H_{ij}(\lambda+T)=J_{[e_i,e_j]}+B(e_i,e_j)(\lambda+T)\), and every displayed \(T\) acts on all factors to its right. The sum is finite, and contracts the two polynomial differentials with the bilinear map (GR.8); hence it is independent of the basis. Its values belong to \(\mathcal A_R[\lambda]\).
+
+We give the extension proof, including Jacobi for this general Lie datum. If \(F_{i,p}=\partial F/\partial u_i^{(p)}\), ordinary differentiation yields
+\[
+ (TF)_{i,p}=T F_{i,p}+F_{i,p-1},\qquad F_{i,-1}=0.
+ \tag{GR.10}
+\]
+In (GR.9) the second term is reindexed by \(p\mapsto p+1\); its factor \(-\lambda-T\), added to the first term's \(T\), leaves \(-\lambda\). In the second argument the extra \(\lambda+T\) combines with the derivative of the coefficient by the product rule. Thus
+\[
+ \{TF_\lambda G\}=-\lambda\{F_\lambda G\},\qquad
+ \{F_\lambda TG\}=(\lambda+T)\{F_\lambda G\}.
+ \tag{GR.11}
+\]
+Differentiating a product in the second argument proves the right Leibniz rule. For the first argument use, for every nonnegative integer \(q\),
+\[
+ (\lambda+T)^q(ab)=
+   \sum_{v=0}^q\binom qv
+          \bigl((\lambda+T)^{q-v}a\bigr)T^v b.
+\]
+Putting coefficients of each finite differential operator to its left and applying this identity to the derivative of a product proves
+\[
+ \begin{aligned}
+ \{F_\lambda GH\}&=\{F_\lambda G\}H+G\{F_\lambda H\},\\
+ \{FH_\lambda G\}&=\{F_{\lambda+T}G\}_{\to}H
+                    +\{H_{\lambda+T}G\}_{\to}F.
+ \end{aligned}
+ \tag{GR.12}
+\]
+The arrow directs the newly inserted \(T\)'s to the factor on their right. These rules also prove uniqueness: expand monomials into jet factors, use the two product rules, and remove their derivatives by (GR.11). The resulting finite expansion is (GR.9).
+
+Here is a finite kernel proof of the remaining identities. At independent spatial labels \(s,t\), take
+\[
+ K_{xy}(s,t)=J_{[x,y]}(t)\delta(s,t)
+                +B(x,y)\partial_t\delta(s,t),\qquad
+ \delta(s,t)=\sum_{m\in\mathbb Z}s^{-m-1}t^m.
+ \tag{GR.13}
+\]
+The delta's residue against a Laurent polynomial in \(s\) evaluates that polynomial at \(t\). Its derivative rules follow by differentiation. We use only finite sums of derivatives supported on the diagonal: coefficients are differential-polynomial jets, and multiplication into the delta is defined by finite Taylor evaluation. In particular
+\[
+ a(s)\partial_t^q\delta(s,t)
+   =\sum_{v=0}^q\binom qv
+          (T^v a)(t)\partial_t^{q-v}\delta(s,t).
+ \tag{GR.14}
+\]
+This follows by differentiating \(a(s)\delta(s,t)=a(t)\delta(s,t)\) \(q\) times.
+
+For the nested brackets, two independent diagonal differences give the finite normal form
+\[
+ \sum_{p,q}a_{pq}(u)
+       \frac{\partial_u^p\delta(s,u)}{p!}
+       \frac{\partial_u^q\delta(t,u)}{q!}.
+ \tag{GR.15}
+\]
+Each derivative acts on its indicated delta only. Successive Taylor evaluation gives existence for the products occurring here. Double residue against \((s-u)^p(t-u)^q\) extracts \(a_{pq}\), giving uniqueness: a derivative of a monomial at zero is nonzero precisely at its own degree. Thus these products can equally be defined as functionals on the finite Taylor jets of test polynomials along \(s=t=u\). Differentiation and the coefficient product rule respect that definition. No infinite convolution of two delta series is needed.
+
+Extend (GR.13) to products at distinct labels by the ordinary biderivation rule, and to jets by differentiating at their labels. There are finitely many selected pairs of factors. Apply (GR.14) to all unselected factors and take the exponential residue
+\(\operatorname{Res}_s e^{\lambda(s-t)}K(F(s),G(t))\).
+A delta derivative contributes a power of \(\lambda\); differentiation at \(s\) contributes \(-\lambda\), while differentiation at \(t\) contributes \(\lambda+T\). Summing over the selected pair gives exactly (GR.9), with its indicated arrows.
+
+The current kernel is antisymmetric: the Lie bracket is antisymmetric, \(B\) is symmetric, and \(\partial_s\delta(t,s)=-\partial_t\delta(s,t)\). Coefficient movement for the undifferentiated term uses (GR.14) with \(q=0\). Biderivation and differentiation preserve this property. Taking the same residue consequently proves
+\[
+ \{F_\lambda G\}=-\{G_{-\lambda-T}F\},
+ \tag{GR.16}
+\]
+where the substituted \(T\)'s act on the coefficients. The shifts are the finite Taylor rule (GR.14).
+
+Before diagonal normal ordering, the cyclic kernel Jacobiator is a derivation in each argument. To verify this, expand it when one argument is \(H_1H_2\). Terms in which the two brackets hit different factors cancel as
+\[
+ \begin{aligned}
+ &K(F,H_1)K(G,H_2)+K(G,H_1)K(F,H_2)\\
+ &\quad-K(G,H_1)K(F,H_2)-K(F,H_1)K(G,H_2)=0.
+ \end{aligned}
+\]
+The remaining terms are the Jacobiator on each factor multiplied by the other. Antisymmetry makes the cyclic Jacobiator alternating, so the same proof applies in the other arguments. Differentiating an argument differentiates its Jacobiator. Induction on numbers of factors and derivatives therefore reduces vanishing to three undifferentiated currents.
+
+For those currents the double exponential residue of the Jacobiator is
+\[
+ \begin{aligned}
+ &J_{[x,[y,z]]}-J_{[y,[x,z]]}-J_{[[x,y],z]}\\
+ &\quad+B(x,[y,z])\lambda
+       -B(y,[x,z])\mu-B([x,y],z)(\lambda+\mu)=0.
+ \end{aligned}
+ \tag{GR.17}
+\]
+The first line is the Lie Jacobi identity. Invariance and antisymmetry give
+\(B(x,[y,z])=B([x,y],z)\) and
+\(B(y,[x,z])=-B([x,y],z)\), cancelling the second line. The parameter in the last term is \(\lambda+\mu\) because
+\(e^{\lambda(s-u)+\mu(t-u)}
+ =e^{\lambda(s-t)}e^{(\lambda+\mu)(t-u)}\)
+on the term first supported at \(s=t\). Uniqueness of (GR.15) implies that the zero polynomial residue has every kernel coefficient zero. The factor and derivative induction just proved then gives, for all \(F,G,H\),
+\[
+ \boxed{\{F_\lambda\{G_\mu H\}\}
+        -\{G_\mu\{F_\lambda H\}\}
+       =\{\{F_\lambda G\}_{\lambda+\mu}H\}.}
+ \tag{GR.18}
+\]
+Equations (GR.11), (GR.12), (GR.16) and (GR.18) are the PVA identities. This establishes their complete extension using the Lie axiom and invariant \(B\); no representation theorem is involved. The unit has zero bracket. Every operation is a finite polynomial expression over \(k\), so the identities hold over all ordinary \(R\) and are natural under every coefficient map.
+
+**Coisotropy and the actual PVA quotient.** Put
+\[
+ c_x=J_x-\chi(x)\quad(x\in\mathfrak n),\qquad
+ I_R=(T^p c_x:x\in\mathfrak n,\ p\geq0)\subset\mathcal A_R.
+ \tag{GR.19}
+\]
+The character and isotropy calculations (GR.6) give
+\(\{c_x{}_\lambda c_y\}=c_{[x,y]}\).
+Sesquilinearity proves the corresponding containment for derivatives. Applying both product rules to multiples of those derivatives leaves a constraint or a derivative of a constraint in every term. Hence
+\[
+ \{I_R{}_\lambda I_R\}\subset I_R[\lambda].
+ \tag{GR.20}
+\]
+This is coisotropy. Define
+\[
+ U_R=\{a\in\mathcal A_R:
+         \{J_x{}_\lambda a\}\in I_R[\lambda]
+                         \text{ for every }x\in\mathfrak n\}.
+ \tag{GR.21}
+\]
+Here \(J_x\) can be replaced by \(c_x\), since constants have zero bracket. Coisotropy gives \(I_R\subset U_R\), and right Leibniz and second sesquilinearity prove that \(U_R\) is closed under products and \(T\).
+
+If \(a\in U_R\), skew symmetry first gives
+\(\{a_\lambda c_x\}\in I_R[\lambda]\): the shifted coefficients stay in the differential ideal. Second sesquilinearity handles every \(T^p c_x\). Right Leibniz handles its multiple by an arbitrary polynomial \(d\), since the additional term \(\{a_\lambda d\}T^p c_x\) belongs to the ideal. Skew symmetry gives the reverse test. Thus
+\[
+ a\in U_R\quad\Longleftrightarrow\quad
+ \{a_\lambda I_R\}\subset I_R[\lambda]
+ \quad\Longleftrightarrow\quad
+ \{I_R{}_\lambda a\}\subset I_R[\lambda].
+ \tag{GR.22}
+\]
+For the converses, test the constraint generators in \(I_R\).
+
+For \(a,b\in U_R\), Jacobi gives
+\[
+ \{J_x{}_\mu\{a_\lambda b\}\}
+  =\{\{J_x{}_\mu a\}_{\mu+\lambda}b\}
+       +\{a_\lambda\{J_x{}_\mu b\}\}
+   \in I_R[\lambda,\mu].
+ \tag{GR.23}
+\]
+The two containments follow coefficientwise from (GR.22), including the parameter substitution. Hence every coefficient of \(\{a_\lambda b\}\) lies in \(U_R\). We have proved that \(U_R\) is a differential PVA subalgebra and \(I_R\) is a differential PVA ideal in it. Therefore
+\[
+ \boxed{\mathcal W_R=U_R/I_R}
+ \tag{GR.24}
+\]
+is a PVA. Changing either representative by an element of \(I_R\) changes every bracket coefficient by an element of \(I_R\), by (GR.22). This proves lift independence. The unrestricted quotient \(\mathcal Q_R=\mathcal A_R/I_R\) is used as a differential algebra with a constraint action.
+
+**The affine constraint space and all current jets.** By perfectness of \(B\), the universal order-zero coordinate is the unique \(A\in\mathfrak g\otimes_k\mathcal A_R\) with \(J_y=B(A,y)\). The equations \(c_x=0\), for \(x\in\mathfrak n\), say
+\(B(A-f,\mathfrak n)=0\), hence \(A\in f+\mathfrak b\), by (GR.5). In opposite-grade dual bases they eliminate exactly the negative-grade coordinates of \(A\); at order zero those coordinates are those of \(f\), and their positive jets are zero. All other coordinates remain polynomially free. This gives, over every \(R\),
+\[
+ \boxed{\mathcal Q_R=
+    \mathcal O_{\mathrm{diff}}(f+\mathfrak b)_R
+    =\operatorname{Sym}_R
+       \left(\bigoplus_{p\geq0}\mathfrak b_R^{*\, (p)}\right).}
+ \tag{GR.25}
+\]
+The displayed symmetric algebra refers to the coordinate \(A-f\). The inverse matrices of (GR.5) prove the elimination over nonreduced rings as well. An ordinary coefficient point specifies every Taylor coefficient of
+\(A(t)=f+\sum_{p\geq0}a^{(p)}t^p/p!\), with \(a^{(p)}\in\mathfrak b_R\).
+
+Let \(\pi:\mathcal A_R\to\mathcal Q_R\). Coisotropy makes the following action independent of the lift:
+\[
+ \rho_x(\lambda)\pi(a)=\pi\{J_x{}_\lambda a\}
+   =\sum_{j\geq0}\frac{\lambda^j}{j!}D_{x,j}\pi(a)
+ \quad(x\in\mathfrak n).
+ \tag{GR.26}
+\]
+Each \(D_{x,j}\) is an \(R\)-linear derivation. Coefficient extraction from second sesquilinearity gives the exact formula
+\[
+ \boxed{D_{x,j}\pi(J_y^{(p)})=
+  \begin{cases}
+    \displaystyle\frac{p!}{(p-j)!}
+                  \pi(J_{[x,y]}^{(p-j)}),&0\leq j\leq p,\\
+    (p+1)!B(x,y),&j=p+1,\\
+    0,&j>p+1.
+  \end{cases}}
+ \tag{GR.27}
+\]
+Indeed the polynomial to expand is
+\((\lambda+T)^p(J_{[x,y]}+B(x,y)\lambda)\), and \(T\) kills its constant pairing. Jacobi and \(B(\mathfrak n,\mathfrak n)=0\) imply
+\(\rho_x(\lambda)\rho_y(\mu)-\rho_y(\mu)\rho_x(\lambda)
+ =\rho_{[x,y]}(\lambda+\mu)\).
+Comparing divided-power coefficients proves
+\[
+ [D_{x,p},D_{y,q}]=D_{[x,y],p+q},\qquad
+ D_{x,j}T=TD_{x,j}+jD_{x,j-1},
+ \tag{GR.28}
+\]
+where \(D_{x,-1}=0\). Thus \(x t^j\mapsto D_{x,j}\) is precisely the current-jet Lie action. The second identity shows that its common kernel is \(T\)-stable.
+
+Define \(\mathcal Q_R^{\mathfrak n[[t]]}\) as the common kernel of all these derivations. Any lift of an invariant class satisfies (GR.21), because the polynomial coefficients in (GR.26) vanish. A normalizer representative conversely maps to an invariant class, and the kernel of that map is exactly \(I_R\). Consequently
+\[
+ \boxed{\mathcal W_R
+       \simeq\mathcal Q_R^{\mathfrak n[[t]]}.}
+ \tag{GR.29}
+\]
+This is a canonical differential-algebra identification, without a chosen invariant lift. Its right side carries the PVA bracket transported from (GR.24).
+
+**Principal weights, formal gauge flows and the sign.** For homogeneous \(y\in\mathfrak g_a\), give \(J_y^{(p)}\) principal weight \(1-a+p\), and give \(T,\lambda\) weight one. Formula (GR.8) has weight equal to the sum of its inputs minus one: its current term has weight \(1-a-b\), and a nonzero pairing term requires \(a+b=0\). The master formula preserves this rule for all homogeneous polynomials. The constraints are homogeneous, since a nonzero \(\chi(y)\) occurs only at grade one and weight zero.
+
+On \(\mathcal Q_R\), a coordinate dual to \(\mathfrak g_a\subset\mathfrak b\) has weight \(1+a\), and its \(p\)-th jet has weight \(1+a+p\). All these weights are positive. Each weight piece is the extension of a finite-dimensional \(k\)-space: only finitely many jet generators have weight at most \(d\), and each exponent in a monomial of weight \(d\) is bounded. If \(x\in\mathfrak g_a\subset\mathfrak n\), (GR.27) proves
+\[
+ D_{x,j}:(\mathcal Q_R)_d\longrightarrow
+             (\mathcal Q_R)_{d-a-j},\qquad a>0.
+ \tag{GR.30}
+\]
+The scalar term obeys the same rule: it can occur only when \(y\) has grade \(-a\) and \(j=p+1\), so the input weight is \(a+j\). Thus every polynomial has a common high-jet cutoff, and each such derivation is locally nilpotent. The reduced bracket retains principal weight minus one.
+
+For an external variable test coefficient \(\phi\), adjoin its jets as Poisson-central differential variables. The construction (GR.9) applies with their zero generator brackets. Left Leibniz at \(\lambda=0\) gives, on the constraint quotient,
+\[
+ \delta_{\int\phi J_x}a
+   :=\{\phi J_x{}_\lambda a\}\big|_{\lambda=0}
+    =\sum_{j\geq0}\frac{\phi^{(j)}}{j!}D_{x,j}a.
+ \tag{GR.31}
+\]
+The sum is finite. First sesquilinearity makes the local functional independent of adding a \(T\)-derivative; right Leibniz makes its flow a derivation. This uses the algebraic derivation \(T\) on the test algebra, without postulating an operator on another module. Apply (GR.31) to \(J_y=B(A,y)\), and allow \(x\) to have those variable coefficients. Invariance and perfectness give
+\[
+ \delta_x J_y=B(A,[x,y])+B(x',y)
+            =B([A,x]+x',y),\qquad
+ \boxed{\delta_xA=[A,x]+x'.}
+ \tag{GR.32}
+\]
+Both \([f,\mathfrak n]\subset\mathfrak b\) and
+\([\mathfrak b,\mathfrak n]\subset\mathfrak n\) follow from grades, so this flow preserves \(f+\mathfrak b\).
+
+Its full formal-jet meaning can be checked without a group representation. Let
+\(X(t)=\sum_{j\geq0}x_jt^j\in\mathfrak n_R[[t]]\) and
+\(D_X=\sum_jD_{x_j,j}\); the latter sum is finite on any bounded-weight polynomial, by (GR.30). Summing (GR.27) against \(t^p/p!\) gives
+\[
+ D_XA(t)=[A(t),X(t)]+X'(t).
+ \tag{GR.33}
+\]
+Here \(A^{(0)}=f+a^{(0)}\) and \(A^{(p)}=a^{(p)}\) for \(p>0\) denote the full Taylor coefficients. At Taylor order \(p\), the commutator sum is
+\(\sum_{j\leq p}p!/(p-j)!\,[A^{(p-j)},x_j]\);
+the derivative term is \((p+1)!x_{p+1}\).
+Thus all current jets, including nilpotent coefficient families, have the claimed action.
+
+There is also an exact finite exponential formula. In the semidirect Lie algebra with \([\partial,X]=X'\), repeated \(\operatorname{ad}X\) raises grade on \(\mathfrak g\); on \(\partial\) its first bracket lies in the positive grades. Hence sufficiently high powers vanish uniformly. The Lie Jacobi identity says that \(L=\operatorname{ad}X\) is a derivation; induction gives
+\(L^q[u,v]=\sum_{i=0}^q\binom qi[L^iu,L^{q-i}v]\).
+The finite exponential therefore preserves the bracket, and its inverse is the exponential with the opposite sign. The inverse adjoint gauge expression is the finite polynomial
+\[
+ A^{\exp X}
+  =e^{-\operatorname{ad}X}A
+     +\sum_{q\geq0}
+          \frac{(-1)^q}{(q+1)!}
+                   (\operatorname{ad}X)^qX'.
+ \tag{GR.34}
+\]
+It is the \(\mathfrak g\)-part of
+\(e^{-\operatorname{ad}X}(\partial+A)\). For a scalar parameter \(s\), its version with \(sX\) satisfies
+\(\partial_s A^{\exp(sX)}
+ =[A^{\exp(sX)},X]+X'\)
+and has initial value \(A\). The formula follows as well by solving this equation coefficientwise in \(s\); all coefficients divide only by positive integers. On functions, \(\exp(sD_X)\) is finite by weight lowering, respects products by the binomial formula for powers of a derivation, and solves the same equation on every coordinate jet. The two expressions agree by the same coefficient recursion. This proves finite preservation of \(f+\mathfrak b\).
+
+Under an actual group realization, (GR.34) is
+\(g^{-1}Ag+g^{-1}g'\) for \(g=\exp X\), equivalently
+\(g^{-1}(\partial+A)g=\partial+A^{g}\).
+The forward conjugation \(g(\partial+A)g^{-1}\) has the opposite infinitesimal sign. The fixed pinned group construction of §1.1.1 gives this realization under its stated root and group prerequisites. Formula (GR.34) itself is already defined for the fixed Lie datum.
+
+Moreover, the common kernel in (GR.29) is exactly the algebra fixed by every such exponential gauge flow, functorially over all ordinary coefficient extensions: annihilation by all current jets implies annihilation by \(D_X\) and hence invariance under its finite exponential. Conversely use \(X=\eta x t^j\) over \(R[\eta]/(\eta^2)\); invariance says \(\eta D_{x,j}a=0\), which forces \(D_{x,j}a=0\) because \(1,\eta\) is an \(R\)-basis. This tests all jets over nonreduced rings. An identification with a separately specified algebraic group functor additionally uses that functor's exponential description.
+
+**Ordinary base change and the reduction diagram.** In a fixed weight \(d\), only basis elements \(x\in\mathfrak g_a\), \(a>0\), and integers \(j\geq0\) with \(a+j\leq d\) can act nontrivially. Therefore \((\mathcal W_k)_d\) is the kernel of the single finite linear map
+\[
+ (\mathcal Q_k)_d\longrightarrow
+   \bigoplus_{\substack{x\text{ in a homogeneous basis of }\mathfrak n\\
+                        0\leq j\leq d-\operatorname{grade}(x)}}
+      (\mathcal Q_k)_{d-\operatorname{grade}(x)-j},
+ \qquad a\longmapsto(D_{x,j}a)_{x,j}.
+ \tag{GR.35}
+\]
+All its entries belong to \(k\). Tensoring over a field is exact: choose bases of the kernel and a complement, on which the map is injective, and extend those bases. This proves that its kernel over \(R\) is \(R\otimes_k(\mathcal W_k)_d\). Summing the weight pieces gives
+\[
+ \boxed{\mathcal W_R\simeq R\otimes_k\mathcal W_k,\qquad
+        R'\otimes_R\mathcal W_R\simeq\mathcal W_{R'}}
+ \tag{GR.36}
+\]
+for every ordinary map \(R\to R'\). The product, \(T\) and bracket coefficients agree under these identifications because their finite formulas were all defined over \(k\). This is a proof for this fixed field model; it does not assume that kernels of arbitrary matrices over \(R\) survive nonflat base change.
+
+The construction is summarized by the following diagram:
+\[
+ \begin{array}{ccc}
+ U_R&\hookrightarrow&\mathcal A_R\\
+ \big\downarrow{\scriptstyle /I_R}&&
+       \big\downarrow{\scriptstyle /I_R}\\
+ \mathcal W_R&\hookrightarrow&
+       \mathcal Q_R=\mathcal O_{\mathrm{diff}}(f+\mathfrak b)_R .
+ \end{array}
+ \tag{GR.37}
+\]
+*The upper inclusion is the coisotropic normalizer (GR.21). The left quotient carries the reduced PVA by (GR.22)–(GR.24). Its lower image is exactly the common current-jet kernel (GR.29), and the right quotient eliminates the moment coordinates by the perfect opposite-grade pairings (GR.25). Positive coordinate weights \(1+a+p\) give the finite kernel test (GR.35); the inverse gauge flow is \([A,x]+x'\) by (GR.32)–(GR.34).*
+
+An actual PVA homomorphism between two such constructions descends to their reduced PVAs if it sends the constraint ideal into the target constraint ideal and sends the source normalizer into the target normalizer. Indeed those two containments respectively prove representative independence and membership in the target, and applying the homomorphism to each bracket coefficient proves preservation of the reduced bracket. Thus the normalizer test, as well as the moment relations, is part of any claimed reduced comparison.
+
+For the pinned adjoint semisimple application, the root decomposition, pinning brackets, simple-coroot basis, root subgroup coordinates and group realization listed in §1.1.1 remain explicit structural premises. The present argument proves the classical Hamiltonian reduction once (GR.1) is fixed; it supplies no proof of those group prerequisites or of the existence of the chosen perfect invariant form for an unspecified Lie algebra. The form in (GR.8) is the chosen classical \(B\), with its positive cocycle sign; a quantum critical form is a separate datum. The classification of slice generators, Laurent topology and coordinate descent require their further arguments. No identification with a quantum center or an oper Poisson structure follows from this reduction alone.
+
+#### 3.9.2. General principal gauge, polynomial invariants and weighted Laurent charts
+
+Fix a characteristic-zero field \(k\) and the finite principal datum described in [Opers, critical level and the Beilinson–Drinfeld construction](opers-critical-level-and-the-beilinson-drinfeld-construction.md), §1.1.1–§1.1.4, equations (DS.A1)–(DS.A20). The following statement is conditional on that **specified datum**, rather than a new classification or existence theorem for arbitrary forms of a semisimple group. All coefficient algebras below are ordinary commutative algebras and may be nonreduced.
+
+Write \(r=h/2\), \(F=\operatorname{ad}f\), \(E=\operatorname{ad}e\). The supplied finite grading and principal triple satisfy
+\[
+\begin{aligned}
+\mathfrak g&=\bigoplus_{j=-q}^{q}\mathfrak g_j,
+&[r,x]&=jx\quad(x\in\mathfrak g_j),\\
+f&\in\mathfrak g_{-1},&e&\in\mathfrak g_1,
+&[e,f]&=2r,\\
+\mathfrak n&=\bigoplus_{a\geq1}\mathfrak g_a,
+&\mathfrak b&=\bigoplus_{j\geq0}\mathfrak g_j.
+\end{aligned}
+\tag{GG.1}
+\]
+We take \(q\geq1\); for the zero datum every coefficient and gauge space is a point. The actual finite string proof (DS.A5)–(DS.A10), including its fixed projections and inverses, gives
+\[
+V=\ker E=\bigoplus_{d\geq1}V_d,\qquad
+\mathfrak g_j=F(\mathfrak g_{j+1})\oplus V_j,\qquad
+F:\mathfrak g_{j+1}\hookrightarrow\mathfrak g_j\quad(j\geq0).
+\tag{GG.2}
+\]
+No highest line has height zero. Choose bases of the finite spaces and retain repeated heights. The split unipotent group \(N\), its finite exponential/logarithm, BCH and gauge formulas are the actual constructions (DS.A12)–(DS.A16), at their stated root/group and faithful-representation premises. They apply after tensoring with every ordinary coefficient algebra; no reduced-point test is used below.
+
+**The explicit polynomial inverse.** In any differential \(k\)-algebra \((C,T)\), put \(A=f+b\), \(b\in\mathfrak b\otimes C\), with gauge convention
+\[
+g\cdot A=\operatorname{Ad}(g)A-(Tg)g^{-1}.
+\tag{GG.3}
+\]
+Define the fixed linear maps \(P_j:\mathfrak g_j\to V_j\) and \(L_j:\mathfrak g_j\to\mathfrak g_{j+1}\) by
+\[
+z=F L_j(z)+P_j(z),\qquad L_q=0.
+\tag{GG.4}
+\]
+Starting with \(A^{[0]}=A\), at stage \(m=0,\ldots,q-1\) take
+\[
+x_{m+1}=L_m\bigl(A^{[m]}_m\bigr),\qquad
+A^{[m+1]}=\exp(x_{m+1})\cdot A^{[m]},\qquad
+Q(A)=\exp(x_q)\cdots\exp(x_1).
+\tag{GG.5}
+\]
+Here \(A^{[m]}_m\) is the height-\(m\) coefficient, with \(f\) kept separately. The finite formula used at each step is
+\[
+\exp(x)\cdot A
+=\sum_{p\geq0}\frac{(\operatorname{ad}x)^pA}{p!}
+-\sum_{p\geq0}\frac{(\operatorname{ad}x)^p(Tx)}{(p+1)!}.
+\tag{GG.6}
+\]
+For \(x=x_{m+1}\), its only change at height \(m\) is \([x,f]=-F(x)\). Its derivative has height \(m+1\); brackets with \(b_j\), \(j\geq0\), have height at least \(m+1\); the second bracket with \(f\) has height \(2m+1\geq m+1\). Thus earlier slice coefficients remain fixed and the current height becomes \(P_m(A^{[m]}_m)\). At height \(q\) the whole coefficient is already in \(V_q\). The resulting
+\[
+Q(A)\cdot A=f+s(A),\qquad s(A)\in V\otimes C
+\tag{GG.7}
+\]
+is a finite differential polynomial calculation using exactly the specified maps \(L_m,P_m\).
+
+For completeness, uniqueness is a linear comparison, including over a nonreduced \(C\). If \(g\cdot(f+s)=f+\widetilde s\) and the lowest nonzero height in \(\log g\) is \(a\), the height-\((a-1)\) difference is \(-F((\log g)_a)\). Derivatives and every other commutator have larger height. That difference is also in \(V_{a-1}\). The direct splitting and injectivity in (GG.2), which remain direct after ordinary base change, force \((\log g)_a=0\). Repeating through the finite height list gives \(g=1\) and \(s=\widetilde s\). In particular slice stabilizers are trivial.
+
+Consequently, for every differential algebra, the two maps
+\[
+\begin{aligned}
+\Phi(u,s)&=u\cdot(f+s),\qquad u\in N(C),\quad s\in V\otimes C,\\
+\Psi(A)&=\bigl(Q(A)^{-1},s(A)\bigr)
+\end{aligned}
+\quad\text{satisfy}\quad
+\Psi\Phi=\operatorname{id},\qquad \Phi\Psi=\operatorname{id}.
+\tag{GG.8}
+\]
+Indeed \(u^{-1}\) normalizes \(\Phi(u,s)\), so uniqueness identifies it with \(Q(\Phi(u,s))\). Conversely (GG.7) reconstructs \(A\). This proves the inverse identities themselves, not only existence of one point on each orbit. It also proves
+\[
+Q(g\cdot A)=Q(A)g^{-1},\qquad s(g\cdot A)=s(A),\qquad
+\Psi(g\cdot A)=\bigl(gu,s\bigr)
+\quad\text{when }\Psi(A)=(u,s).
+\tag{GG.9}
+\]
+
+**Weights and a uniform differential-order bound.** Use the finite height coordinates
+\(u=\exp(y_q)\cdots\exp(y_1)\) of (DS.A16). Assign principal weights
+\[
+\operatorname{wt}(b_{j,\alpha})=j+1,\qquad
+\operatorname{wt}(y_{a,\beta})=a,\qquad
+\operatorname{wt}(s_{d,\gamma})=d+1,\qquad
+\operatorname{wt}(T)=1.
+\tag{GG.10}
+\]
+Group multiplication and inversion are polynomial and homogeneous of weight \(a\) in each output height-\(a\) coordinate: BCH and the finite height extraction are equivariant for the grading scaling, and every bracket adds the heights. This is also checked directly by the finite BCH word expansion.
+
+In (GG.6), a commutator word with \(f\) and gauge heights \(a_1,\ldots,a_p\) has output height \(a_1+\cdots+a_p-1\) and coefficient weight \(a_1+\cdots+a_p\). A word with \(b_j\) has output height \(a_1+\cdots+a_p+j\) and weight \(a_1+\cdots+a_p+j+1\). A logarithmic-derivative word has output height \(a_1+\cdots+a_p\) and weight one larger. Thus each output \(b_j\) has weight \(j+1\). Inducting in (GG.5), \(x_a\) has weight \(a\); applying the homogeneous group-coordinate formulas proves that every coordinate of \(Q(A)\) or \(Q(A)^{-1}\) at height \(a\) has weight \(a\). Every \(s_d(A)\) has weight \(d+1\).
+
+These are **finite** differential polynomials because the algorithm has \(q\) stages and every exponential word is finite. All input coordinate weights are positive. A nonconstant monomial of output weight \(w\) has the form \(\prod_\nu T^{e_\nu}z_\nu\), where
+\[
+\sum_\nu\bigl(\operatorname{wt}(z_\nu)+e_\nu\bigr)=w.
+\tag{GG.11}
+\]
+In particular each \(e_\nu\leq w-1\). No positive-weight output can have a constant monomial. It follows from the actual finite algorithm that
+\[
+\begin{gathered}
+\begin{array}{c|c|c}
+\text{output}&\text{weight}&\text{derivative order in the original }b\\ \hline
+(Q(A)^{\pm1})_a&a&\leq a-1\\
+s_d(A)&d+1&\leq d
+\end{array}\\[4pt]
+\operatorname{ord}\Phi_j\leq1\text{ in }y,\qquad
+\operatorname{ord}\Phi_j=0\text{ in }s.
+\end{gathered}
+\tag{GG.12}
+\]
+The last bound follows directly from (GG.3): conjugation has no derivatives, and \((Tu)u^{-1}\) differentiates each finite group-coordinate monomial only once. Thus \(q\) is a uniform bound for the inverse differential order; it is not an unspecified bound hidden in an orbit theorem.
+
+Let \(R\) be any ordinary \(k\)-algebra, with \(T\) zero on \(R\). Introduce free differential polynomial rings on the chosen coefficient bases:
+\[
+\begin{aligned}
+\mathcal X_R&=R[b_{j,\alpha}^{(r)}:0\leq j\leq q,\ r\geq0],\\
+\mathcal Y_R&=R[y_{a,\beta}^{(r)}:1\leq a\leq q,\ r\geq0],\\
+\mathcal S_R&=R[s_{d,\gamma}^{(r)}:1\leq d\leq q,\ r\geq0],
+\qquad Tz^{(r)}=z^{(r+1)}.
+\end{aligned}
+\tag{GG.13}
+\]
+Omit variables belonging to a zero space. The mutually inverse polynomial maps (GG.8) induce
+\[
+\mathcal X_R\ \simeq\ \mathcal Y_R\otimes_R\mathcal S_R
+\tag{GG.14}
+\]
+as differential \(R\)-algebras. In particular the slice coordinates and their translates are algebraically independent, and (GG.14) remains an isomorphism after every ordinary base change, without a flatness hypothesis. It is the tensor extension of explicit inverse identities over \(k\).
+
+**Regular jets, the actual coaction and currents.** A differential coordinate \(z^{(r)}\) corresponds to \(r!\) times the coefficient of \(t^r\) in \(z(t)\). Factorials are units. Therefore \(\mathcal X_R\), \(\mathcal Y_R\) and \(\mathcal S_R\) are exactly the coordinate rings of the coefficient functors for \(f+\mathfrak b(R[[t]])\), \(N(R[[t]])\) and \(V\otimes R[[t]]\). We do not replace \(R[[t]]\) by \(R\otimes_k k[[t]]\).
+
+For outputs through coefficient \(M\), (GG.12) gives finite bounds:
+\[
+\begin{array}{c|c}
+\text{regular-jet output through }M&\text{input coefficients needed}\\ \hline
+Q(A)^{\pm1}&b\text{ through }M+q-1\\
+s(A)&b\text{ through }M+q\\
+\Phi(u,s)&y\text{ through }M+1,\quad s\text{ through }M
+\end{array}
+\tag{GG.15}
+\]
+All lower bounds here are zero. These are cofinal finite-jet bounds, not a claim of an isomorphism between equal-order truncated jet spaces. In particular the gauge action defines a genuine coaction on the countable polynomial ring: each coordinate has a finite polynomial image in the ordinary tensor product of the group-coordinate and connection-coordinate rings.
+
+Under (GG.14), this coaction is left multiplication on \(u\) and the identity on \(s\). Its invariant ring is precisely
+\[
+\mathcal X_R^{\,N[[t]]}=\mathcal S_R.
+\tag{GG.16}
+\]
+Here invariance means the universal coaction identity, including all ordinary extensions of \(R\). To prove exhaustion, write an invariant polynomial as \(F(u,s)\). The identity \(F(gu,s)=F(u,s)\) is an identity in the group and chart coordinate rings. Substitute the polynomial inverse coordinate \(g=u^{-1}\); it gives \(F(u,s)=F(1,s)\). Conversely every \(F(s)\) is invariant by (GG.9). This argument works with nilpotents and uses neither density nor passage to field-valued points.
+
+The current sign is determined by differentiating the **opposite** gauge \(\exp(-c x(t))\):
+\[
+\delta_x A=[A,x]+x',\qquad
+\left.\frac{d}{dc}\right|_{c=0}\bigl(\exp(-c x)\cdot A\bigr)=\delta_x A.
+\tag{GG.17}
+\]
+For a fixed homogeneous basis vector \(x\in\mathfrak n\) and a scalar series \(\phi\), the gauge is explicitly
+\[
+\exp(-c\phi x)\cdot A
+=\sum_{p\geq0}\frac{(-c\phi)^p(\operatorname{ad}x)^pA}{p!}
++c\phi'x.
+\tag{GG.18}
+\]
+Indeed \([\phi x,(\phi x)']=0\), so the logarithmic derivative has just its first term. The adjoint sum is finite by positive-height nilpotence. Each pullback of a polynomial in finitely many Taylor coefficients is therefore polynomial in \(c\). Its additive flow law, proved by multiplying \(\exp(-c\phi x)\), gives \(dF_c/dc=(\delta_{\phi x}F)_c\). Polynomial coefficient comparison then gives \(F_c=\sum c^r\delta_{\phi x}^rF/r!\); finiteness proves local nilpotence. Thus \(\delta_{\phi x}F=0\) implies actual invariance under this universal one-parameter gauge, by a proved polynomial identity.
+
+If \(F\) uses connection coefficients only through \(M\), its first variation uses \(\phi\) only through \(M+1\). Consequently annihilation by all \(\delta_{t^r x}\), \(r\geq0\), implies annihilation by \(\delta_{\phi x}\) for an arbitrary formal scalar series, over the universal coefficient algebra as well. Repeated variations still use connection coefficients through \(M\), so no additional infinite sum is introduced.
+
+These one-parameter gauges generate the full ordinary functor \(N(R[[t]])\). Here is the finite proof. For a group element whose logarithm starts in height \(a\), write that component as \(\sum_\beta\phi_\beta x_{a,\beta}\). The product \(E_a=\prod_\beta\exp(\phi_\beta x_{a,\beta})\) has the same height-\(a\) logarithm; all its BCH corrections have height at least \(2a\). Hence multiplying by \(E_a^{-1}\) removes height \(a\) and leaves only larger heights. Repeat for \(a=1,\ldots,q\). The number of operations is bounded by the finite homogeneous basis list, and the coefficients extracted are polynomial. This proves group generation on arbitrary ordinary rings, rather than only on geometric points. It follows that
+\[
+\mathcal X_R^{\,\mathfrak n[t]}
+:=\bigcap_{x\in\mathfrak n,\ r\geq0}\ker\delta_{t^r x}
+=\mathcal X_R^{\,N[[t]]}
+=R[s_{d,\gamma}^{(r)}:r\geq0].
+\tag{GG.19}
+\]
+The converse differentiates universal invariance at the identity over the ordinary dual-number algebra. This also explains why no conclusion for the full Laurent gauge group is obtained from positive currents alone.
+
+**The common-form current normalizer.** To compare with the affine reduction, fix the same nondegenerate invariant symmetric form \(B\) used there, and use the positive current convention
+\[
+J_x(A)=B(x,A),\qquad
+\{J_x{}_\lambda J_y\}=J_{[x,y]}+B(x,y)\lambda.
+\tag{GG.20}
+\]
+Invariance under \(r\) gives \((i+j)B(\mathfrak g_i,\mathfrak g_j)=0\); characteristic zero therefore makes different opposite grades orthogonal. Nondegeneracy makes the opposite-grade pairings perfect, so \(\mathfrak n^\perp=\mathfrak b\). Thus the differential ideal
+\[
+I=(T^r(J_x-\chi(x)):x\in\mathfrak n,\ r\geq0),\qquad
+\chi(x)=B(f,x)
+\tag{GG.21}
+\]
+in the free affine differential polynomial algebra has ordinary quotient exactly \(\mathcal X_R\). A basis adapted to \(\mathfrak n\), and the perfect pairing just proved, identifies the ideal with independent affine linear coordinate constraints and their jets; no dimension-only assertion is needed.
+
+The function \(\chi\) is a Lie character: \([\mathfrak n,\mathfrak n]\) has heights at least two, whereas \(f\) has height minus one. Also \(B(\mathfrak n,\mathfrak n)=0\). Thus the brackets of constraint generators are in \(I[\lambda]\). Invariance of \(B\) gives
+\[
+\{J_x{}_\lambda J_y\}\bmod I
+=B(y,[A,x])+B(x,y)\lambda,
+\tag{GG.22}
+\]
+which is exactly the current action (GG.17), with no rescaling or sign change of \(B\).
+
+More precisely, if \(\{J_x{}_\lambda F\}\bmod I=\sum_{p\geq0}c_p\lambda^p\), then on the Taylor-coordinate ring
+\[
+\delta_{t^p x}F=p!\,c_p\qquad(p\geq0).
+\tag{GG.23}
+\]
+On a generator \(T^rJ_y\), the PVA formula is \((\lambda+T)^r\bigl(B(y,[A,x])+B(x,y)\lambda\bigr)\). The coefficient of \(\lambda^p\), multiplied by \(p!\), is the derivative at zero of \([A(t),t^p x]+(t^p x)'\), using \(T^rJ_y\leftrightarrow r!B(y,A_r)\). This proves the formula for every generator, including the derivative term when \(p=r+1\). Both operations obey the ordinary product rule on \(F\), so the formula holds for every differential polynomial. Each polynomial has only finitely many such coefficients.
+
+Define the constraint normalizer by
+\[
+\mathcal N(I)=\{F:\{J_x{}_\lambda F\}\in I[\lambda]\text{ for every }x\in\mathfrak n\}.
+\qquad
+\mathcal N(I)/I\ \simeq\ \mathcal X_R^{\,\mathfrak n[t]}
+=\mathcal S_R.
+\tag{GG.24}
+\]
+The left condition descends to the quotient because the constraint brackets lie in \(I[\lambda]\); it is precisely the vanishing of (GG.23). Every invariant class has a polynomial lift, and every such lift lies in the normalizer. The product rule and sesquilinearity make this a differential subalgebra. The ideal \(I\) is contained in it. If the normalizer is instead defined with every element of \(I\), the same condition is obtained: derivative constraints follow by sesquilinearity, and a product by an arbitrary polynomial contributes either a constrained bracket or a factor in \(I\), by the left Leibniz rule and its shifted derivatives. This is the exact **commutative differential-algebra** comparison at the common form (GG.20). The Poisson-normalizer theorem and reduced bracket are separate assertions of §§3.9.1 and 3.9.3; gauge uniqueness is not used to certify a Poisson property. There is also no quantum-center identification in (GG.24).
+
+**Exact weighted Laurent stages.** For \(N\geq1\), define functors on ordinary \(R\) using the chosen homogeneous bases and height coordinates:
+\[
+\begin{aligned}
+\mathcal X_N(R)&=f+\bigoplus_{j=0}^{q}t^{-(j+1)N}\mathfrak g_j\otimes R[[t]],\\
+\mathcal G_N(R)&=\{u=\exp(y_q)\cdots\exp(y_1):
+ y_a\in t^{-aN}\mathfrak g_a\otimes R[[t]]\},\\
+\mathcal V_N(R)&=\bigoplus_{d=1}^{q}t^{-(d+1)N}V_d\otimes R[[t]].
+\end{aligned}
+\tag{GG.25}
+\]
+The finite tensor notation means coefficients in a chosen finite-dimensional space; the series ring itself is the completed coefficient ring. Group multiplication and inversion of the \(y\)-coordinates are homogeneous polynomials of weight \(a\), so their monomials have pole order at most \(aN\). This proves that \(\mathcal G_N\) is a group functor, including nonreduced coefficients. The finite homogeneous-basis generation proof above stays in \(\mathcal G_N\): a height-\(a\) parameter has lower bound \(-aN\), and subsequent BCH height-\(b\) corrections have lower bound \(-bN\).
+
+A derivative of order \(e\) increases a pole bound by at most \(e\). For a differential monomial (GG.11), the pole order is therefore at most
+\[
+\sum_\nu\operatorname{wt}(z_\nu)N+\sum_\nu e_\nu
+=(w-e)N+e\leq wN,\qquad e=\sum_\nu e_\nu,
+\tag{GG.26}
+\]
+since \(N\geq1\). This proves that the actual gauge action preserves \(\mathcal X_N\), that the normalizing coordinates lie in \(\mathcal G_N\), and that \(s_d\) lies in its exact assigned scalar bound. Both inverse maps in (GG.8) preserve the stage, giving an equivariant isomorphism
+\[
+\mathcal X_N\ \simeq\ \mathcal G_N\times\mathcal V_N,
+\qquad A\longmapsto\bigl(Q(A)^{-1},s(A)\bigr),
+\qquad g:(u,s)\longmapsto(gu,s).
+\tag{GG.27}
+\]
+These are prescribed stable bounds, not a claim that each individual coefficient necessarily attains its maximal pole order.
+
+The stage maps are ordinary polynomial maps on coefficient rings. Indeed a monomial with input weights \(w_\nu\), derivative orders \(e_\nu\), total weight \(w\), and total derivative order \(e\), contributes to output coefficient \(r\) only when
+\[
+m_\nu\geq-w_\nu N,\qquad
+\sum_\nu m_\nu-e=r,\qquad
+m_\nu\leq r+e+\sum_{\mu\ne\nu}w_\mu N
+\leq r+(w-w_\nu)N.
+\tag{GG.28}
+\]
+There are only finitely many integer tuples satisfying these bounds. Thus each coefficient is a finite polynomial, and all outputs through \(M\) use input coefficients through \(M+qN\), besides their finite assigned lower bounds. For the normalizing gauge alone the sharper upper bound is \(M+(q-1)N\). This proves finite-cutoff representability of the coaction and inverse maps, not just formal Laurent existence.
+
+The invariant-ring specialization used in (GG.16) is valid inside this group stage. Therefore
+\[
+R[\mathcal X_N]^{\,\mathcal G_N}
+=R[s_{d,\gamma,r}:r\geq-(d+1)N]
+=R[\mathcal V_N].
+\tag{GG.29}
+\]
+The notation denotes ordinary polynomial coordinate algebras on the displayed coefficient lists. The equality is the universal coaction equality, not only equality of invariant functions on field points. Allowing all \(N\) is cofinal in the Laurent functors: there are finitely many homogeneous coordinates, each Laurent series has a finite negative part, and a single sufficiently large \(N\) bounds them all. Hence
+\[
+\begin{aligned}
+\bigcup_{N\geq1}\mathcal X_N(R)&=f+\mathfrak b\otimes R((t)),\\
+\bigcup_{N\geq1}\mathcal G_N(R)&=N(R((t))),\\
+(f+\mathfrak b(R((t))))/N(R((t)))&\simeq V\otimes R((t)).
+\end{aligned}
+\tag{GG.30}
+\]
+The exact group is Laurent \(N(R((t)))\), not just \(N(R[[t]])\) or positive polynomial currents. The stages include by setting newly allowed negative coefficients to zero, so they form ordinary ind-affine coefficient charts. Their inverse-limit function rings describe continuous functions on those charts; (GG.30) makes no assertion about all discontinuous characters of an abstract completed ring. Coefficient-algebra maps act termwise. No claim that an ordinary tensor product commutes with every infinite series ring is needed.
+
+The following table is a reproducible algebraic diagram of the maps and bounds proved above; every height or scalar component appears with its full multiplicity.
+
+| Object or map | Principal weight | Regular coefficients through \(M\) | Laurent lower bound at stage \(N\) | Proof locator |
+| --- | --- | --- | --- | --- |
+| Original \(b_j\) | \(j+1\) | Input connection jets | \(-(j+1)N\) | (GG.10), (GG.25) |
+| \(A\mapsto Q(A)^{\pm1}\), height \(a\) | \(a\) | Uses \(b\) through \(M+a-1\) | \(-aN\) | (GG.5), (GG.12) |
+| \(A\mapsto s_d(A)\) | \(d+1\) | Uses \(b\) through \(M+d\) | \(-(d+1)N\) | (GG.7), (GG.12) |
+| \((u,s)\mapsto u\cdot(f+s)\) | Output \(j+1\) | Uses \(y\) through \(M+1\), \(s\) through \(M\) | Preserves \(-(j+1)N\) | (GG.8), (GG.26) |
+| Gauge action on the product chart | \((u,s)\mapsto(gu,s)\) | A finite polynomial coaction | \(\mathcal G_N\) is closed under products and inverses | (GG.9), (GG.27) |
+| Universal invariants and current normalizer | Retain all \(s_d\) and jets | \(R[s_{d,\gamma}^{(r)}]\) | \(R[s_{d,\gamma,r}:r\geq-(d+1)N]\) | (GG.19), (GG.24), (GG.29) |
+
+*The finite mechanism is the actual principal splitting and gauge formula (DS.A9), (DS.A12)–(DS.A16); the new polynomial/coaction, derivative-bound and Laurent-stage implications are (GG.8)–(GG.30). For human-source context on classical W-algebra terminology, see De Sole–Kac–Valeri, [Adler–Gelfand–Dickey approach to classical W-algebras within the theory of Poisson vertex algebras, free arXiv:1401.2082v1, §§2.8–2.9](https://arxiv.org/abs/1401.2082v1). No source theorem substitutes for the fixed-data gauge or invariant proof.*
+
+The result proves the ordinary principal gauge quotient and underlying normalizer algebra for the stated general graded datum. It preserves the earlier root/pinning, split-unipotent and faithful-group premises; intrinsic/global oper descent and full derived reduction retain their own hypotheses. Sections 3.9.1 and 3.9.3 supply any additional Poisson reduction and coordinate comparison. Non-type-A quantum lifts, quantum-center/oper identification, chiral/factorization, Satake, derived-family and global Langlands assertions are not consequences of this ordinary gauge calculation.
+
+#### 3.9.3. The full Laurent reduction and its coordinate Poisson action
+
+Let \(k\) be a characteristic-zero field. Fix a finite principal graded Lie datum
+\[
+\mathfrak g=\bigoplus_{j=-q}^{q}\mathfrak g_j,
+\qquad [r,x]=jx\quad(x\in\mathfrak g_j),
+\qquad (e,2r,f)\text{ an }\mathfrak{sl}_2\text{ triple},
+\tag{GL.1}
+\]
+with \(e\in\mathfrak g_1\), \(f\in\mathfrak g_{-1}\), a perfect symmetric invariant form \(B\), and
+\[
+\mathfrak n=\bigoplus_{j>0}\mathfrak g_j,
+\qquad \mathfrak b=\bigoplus_{j\geq0}\mathfrak g_j,
+\qquad V=\ker\operatorname{ad}e.
+\tag{GL.2}
+\]
+We use the actual direct splittings
+\[
+\mathfrak g_j=[f,\mathfrak g_{j+1}]\oplus V_j,
+\qquad \operatorname{ad}f:\mathfrak g_{j+1}\hookrightarrow\mathfrak g_j
+\quad(j\geq0),\qquad V_j=0\quad(j<0).
+\tag{GL.3}
+\]
+Their finite construction is (DS.A5)–(DS.A9) of [*Opers, critical level and the Beilinson–Drinfeld construction*](opers-critical-level-and-the-beilinson-drinfeld-construction.md), §1.1.2. The positive gauge group is the specified polynomial nilpotent group \(N\) with Lie algebra \(\mathfrak n\), exponential and logarithm coordinates, and the finite gauge convention
+\[
+g\cdot A=\operatorname{Ad}(g)A-g'g^{-1}.
+\tag{GL.4}
+\]
+Here and below the prime means \(d/dt\), acting trivially on the ordinary parameter algebra. For the supplied principal adjoint datum, the positive group construction is (DS.A12)–(DS.A16), and the preceding *General principal gauge, polynomial invariants and weighted Laurent charts*, (GG.8)–(GG.12) and (GG.25)–(GG.30), supplies the actual inverse maps and weighted stages used below. These are polynomial gauge calculations, not a quotient theorem assumed from geometry. In a split adjoint-group application, the root, pinning, split-unipotent and group-identification premises of §1.1 remain the stated group premises. The argument is over the fixed field \(k\); it does not require algebraic closure. If the specified datum includes a height-zero summand \(V_0\), its extension of the same finite calculation is justified explicitly below, with weight one.
+
+**The ambient complete Poisson algebra.** Invariance gives
+\[
+(i+j)B(x,y)=B([r,x],y)+B(x,[r,y])=0
+\quad(x\in\mathfrak g_i,\ y\in\mathfrak g_j).
+\tag{GL.5}
+\]
+Thus \(B(\mathfrak g_i,\mathfrak g_j)=0\) unless \(i+j=0\). Perfectness makes the pairing between every pair of opposite grades perfect: a vector annihilating its opposite grade annihilates all of \(\mathfrak g\). Consequently
+\[
+\mathfrak n^{\perp}=\mathfrak b,
+\qquad B(\mathfrak n,\mathfrak n)=0,
+\qquad B(f,[\mathfrak n,\mathfrak n])=0.
+\tag{GL.6}
+\]
+The last equality uses that the bracket has grade at least two, whereas \(f\) has grade minus one.
+
+For any ordinary commutative \(k\)-algebra \(R\), let \(J_{x,m}\) be linear in \(x\in\mathfrak g\), and set
+\[
+\mathcal C_{N,R}=R[J_{x,m}:m<N],\qquad
+\widehat{\mathcal C}_R=\varprojlim_{N\geq1}\mathcal C_{N,R}.
+\tag{GL.7}
+\]
+Choose a finite basis of \(\mathfrak g\) for the polynomial generators. The transition sets new modes to zero. If
+\[
+A(t)=\sum_{m\in\mathbb Z}A_m t^{-m-1},
+\qquad J_{x,m}(A)=B(x,A_m),
+\tag{GL.8}
+\]
+a continuous \(R\)-algebra character to a discrete \(R\)-algebra \(S\) factors through some \(\mathcal C_{N,R}\). It is exactly a Laurent connection coefficient in \(\mathfrak g\otimes_k S((t))\) with all exponents at least \(-N\). Conversely every such coefficient tuple gives that character. No discontinuous character is included in this statement.
+
+On the polynomial ring in all integer modes define
+\[
+\{J_{x,m},J_{y,a}\}
+=J_{[x,y],m+a}+mB(x,y)\delta_{m+a,0}.
+\tag{GL.9}
+\]
+Its Jacobi identity is elementary. The form terms in a cyclic triple have the common coefficient \(B([x,y],z)\), by invariance and symmetry. When \(m+a+c=0\), their numerical coefficients are \((m+a)+(a+c)+(c+m)=0\). Otherwise every scalar term vanishes. The Lie part is Jacobi in \(\mathfrak g\). Antisymmetry follows from \(m=-a\) in the scalar term. Leibniz now proves all Poisson identities on polynomials. This also recovers the residue-cocycle proof of (K2.1) in §3.
+
+Let \(K_N\) denote the kernel of the \(N\)-th projection. The exact tail estimates are
+\[
+\{K_N,K_M\}\subseteq K_N\quad(M\geq N\geq1),
+\qquad
+\{p,K_M\}\subseteq K_N
+\quad\bigl(M\geq\max(N,N-a(p))\bigr),
+\tag{GL.10}
+\]
+where \(p\) is a finite polynomial and \(a(p)\) is the least mode among its variables, or zero if it is constant. First prove these for polynomial tail ideals. In a monomial bracket, a high factor survives unless both chosen high factors were removed. In the latter case their replacement has index at least \(N+M\), and their scalar bracket is zero because both indices are positive. For the second estimate, removal of the high factor and a factor of \(p\) gives index at least \(M+a(p)\geq N\); it again cannot give a scalar. These are exactly (DL.3)–(DL.4), whose proof used no matrix identity.
+
+Here is the passage to complete inputs. For a requested output cutoff \(N\), fix finite polynomial representatives \(u_N,v_N\) of the \(N\)-th components of \(u,v\in\widehat{\mathcal C}_R\). Later representatives differ from these by elements of the polynomial \(N\)-tail. Their differences at a sufficiently later stage are in the \(M\)-tail. Expand a difference of brackets by bilinearity. Terms involving \(u_N,v_N\) are in \(K_N\) by the second estimate in (GL.10), for sufficiently large \(M\); terms involving the remaining \(N\)-tails are in \(K_N\) by the first estimate. The brackets are therefore Cauchy independently of representatives. Their limits define a jointly continuous bracket on \(\widehat{\mathcal C}_R\). The same argument proves both estimates for the closed tail ideals. All Poisson identities pass from dense polynomial inputs to their limits. In particular the cutoff rings themselves have not been declared Poisson quotients.
+
+**The closed moment fibre and its normalizer.** Put
+\[
+\chi(x)=B(f,x),\qquad
+\mu_{x,m}=J_{x,m}-\chi(x)\delta_{m,-1}
+\quad(x\in\mathfrak n,\ m\in\mathbb Z),
+\qquad I_R=\overline{(\mu_{x,m})}.
+\tag{GL.11}
+\]
+The index \(-1\) describes the constant coefficient \(f\), by (GL.8). At every cutoff, the moment relations eliminate exactly the coordinates dual to \(\mathfrak n\), replacing them by the corresponding constant coordinates of \(f\). The remaining coordinates are those of \(\mathfrak b\), by (GL.6). Thus there is a surjective continuous map with a compatible polynomial section
+\[
+\begin{aligned}
+q_R&:\widehat{\mathcal C}_R\longrightarrow\widehat{\mathcal F}_R,
+&\ker q_R&=I_R,\\
+\widehat{\mathcal F}_R
+&=\text{the completed coefficient algebra of }f+\mathfrak b((t)).
+\end{aligned}
+\tag{GL.12}
+\]
+For kernel equality, a finite-cutoff polynomial vanishing after these eliminations is in their polynomial ideal: divide successively by the monic linear relations \(z-a\), which works over every \(R\). Lift that ideal polynomial back to the all-mode ring. It approximates the given kernel element at the chosen cutoff. Hence the finite polynomial moment ideal is dense in the kernel, proving the displayed equality without a general exactness assertion about inverse limits.
+
+Equations (GL.6) and (GL.9) give
+\[
+\{\mu_{x,m},\mu_{y,a}\}
+=\mu_{[x,y],m+a},
+\qquad \{I_R,I_R\}\subseteq I_R.
+\tag{GL.13}
+\]
+The scalar term vanishes; so does \(\chi([x,y])\). Leibniz proves the ideal assertion on finite polynomials, and joint continuity and density prove it on the closure. Define
+\[
+\mathcal U_R=\{u\in\widehat{\mathcal C}_R:
+\{\mu_{x,m},u\}\in I_R\text{ for every }x,m\},
+\qquad \widehat W_R=\mathcal U_R/I_R.
+\tag{GL.14}
+\]
+This is a closed normalizer, since each bracket with a fixed moment is continuous and \(I_R\) is closed. It contains \(I_R\). For \(u\in\mathcal U_R\), Leibniz first proves \(\{I_R,u\}\subseteq I_R\) on the finite ideal and then on its closure. Jacobi proves that the bracket of two normalizing elements still normalizes; Leibniz proves the same for their product. Thus \(I_R\) is a Poisson ideal in \(\mathcal U_R\), and (GL.14) has a bracket independent of lifts. The unrestricted ambient quotient in (GL.12) is used only as a coefficient algebra.
+
+**All Laurent gauges, including parameter families.** For a Laurent test \(X(t)\in\mathfrak g\otimes_k S((t))\), define
+\[
+\ell_X(A)=\operatorname{Res}B(X(t),A(t))dt,
+\qquad
+\{\ell_X,\ell_Y\}(A)
+=\operatorname{Res}\bigl(B(A,[X,Y])+B(X',Y)\bigr)dt.
+\tag{GL.15}
+\]
+Only finitely many coefficients of \(X\) contribute at a fixed cutoff, so \(\ell_X\) is a completed linear function. The residue formula is (GL.9) summed at that cutoff and then passed to the limit. Its Hamiltonian vector field is
+\[
+\delta_X A=[A,X]+X'.
+\tag{GL.16}
+\]
+Indeed pairing this vector with \(Y\) gives (GL.15). For \(X\in\mathfrak n((t))\), it is the infinitesimal left gauge by \(\exp(-sX)\). All integer moment modes are needed: tests with arbitrarily negative powers belong to the full Laurent gauge algebra.
+
+An invariant here means a function whose equality under a gauge holds after every ordinary coefficient extension \(R\to S\), for every \(A\in f+\mathfrak b\otimes S((t))\) and \(g\in N(S((t)))\). The moment-normalizer condition implies this full functorial invariance. Positive formal tails of \(X\) are limits of finite tests, so (GL.14), continuity and closedness of \(I_R\) first imply \(\{\ell_X,u\}\in I_R\) for every such test. Now substitute the family \(\exp(-sX)\cdot A\), with \(s\) an independent polynomial parameter. The exponential, adjoint action and logarithmic derivative are finite height polynomials. A fixed Laurent pole bound on \(X,A\) consequently gives a bound on the whole family independent of \(s\). At that bound a completed function is a finite polynomial in coefficients; its evaluation is an ordinary polynomial in \(s\). The group law differentiates it at each \(s\) to the evaluation of \(\{\ell_X,u\}\), which is zero. Since every positive integer is a unit in \(S\), this polynomial is constant, even when \(S\) has nilpotents. Every positive gauge is \(\exp X\), so this proves invariance under all of \(N(S((t)))\).
+
+Conversely, functorial invariance applied over \(S[s]/(s^2)\) to \(\exp(-sxt^m)\) makes (GL.16) vanish on the function. This says \(\{\mu_{x,m},u\}\bmod I_R=0\). It is an equality of coefficient functions: at each cutoff test it on the universal coefficient algebra \(R[z_1,z_2,\ldots]\) and its universal Laurent coefficient tuple. A polynomial equal to zero there has all coefficients zero over \(R\). No assertion about \(k\)-points or reduced parameters is used. We have proved
+\[
+q_R(\mathcal U_R)=
+\widehat{\mathcal F}_R^{\,N((t))}
+\quad\text{with the functorial meaning just specified.}
+\tag{GL.17}
+\]
+Surjectivity onto these invariants is also explicit: lift an invariant by the section in (GL.12); its moment brackets vanish modulo \(I_R\) by the dual-number argument, so the lift belongs to \(\mathcal U_R\).
+
+**The quotient and its actual topology.** Choose a homogeneous basis \(v_{d,a}\) of \(V_d\), and write \(v(t)=\sum v_{d,a}z_{d,a,p}t^p\). For the supplied datum with \(V_0=0\), the actual weighted product theorem (GG.25)–(GG.30) gives polynomial inverse maps
+\[
+N_N\times\mathcal V_N\xrightarrow{\ \sim\ }\mathcal B_N,
+\qquad (g,v)\longmapsto g\cdot(f+v),
+\tag{GL.18}
+\]
+where grade-\(j\) Borel coefficients have poles at most \((j+1)N\), height-\(a\) exponential gauge coordinates have poles at most \(aN\), and grade-\(d\) slice coefficients have poles at most \((d+1)N\). Its BCH multiplication and inverses preserve \(N_N\). Its maps and inverse maps are coefficientwise polynomial, including over nonreduced rings. These are the particular product-chart and bound assertions used here. They are cofinal with common finite Laurent pole bounds, since only finitely many positive integer weights occur.
+
+The case of a supplied \(V_0\) requires no discarded component or additional group theorem. At height zero decompose \(b_0=[f,x_1]+v_0\) by (GL.3) and gauge by \(\exp x_1\); the derivative and every other change have higher height. Continue the same finite procedure. Lowest-height comparison with the direct splitting proves its uniqueness, and so proves the product and inverse identities. Give \(v_0\) weight one. A gauge word with \(f\), a Borel coefficient or a derivative has output weight one more than its output height; thus every output of weight \(w\) is a finite sum of differential monomials with total input weight plus total derivative order equal to \(w\). If the derivative order is \(a\), its pole is at most \((w-a)N+a\leq wN\). BCH words have total weight their gauge height, so the gauge stage is closed. Finally, in a monomial contributing to a prescribed Laurent coefficient, each input exponent has a finite lower bound and their sum is prescribed; hence every exponent has a finite upper bound as well. Every output coefficient is therefore a finite polynomial. This proves the same product charts and coefficient maps, now including \(v_0\) with lower bound \(-N\).
+
+On the product in (GL.18), the action translates the gauge factor. A functorially invariant function is independent of that factor: apply its equality to the universal gauge and translate it to identity by its own inverse. This takes place over the ordinary polynomial coefficient algebra of the chart; the BCH formulas are finite. Hence it proves equality of actual polynomials at that chart, rather than equality only at field-valued points. Taking the compatible charts gives
+\[
+\Theta_R:\widehat W_R\xrightarrow{\ \sim\ }\mathcal P_R^V,
+\qquad
+\mathcal P_R^V=
+\varprojlim_{N\geq1}R[z_{d,a,p}:p\geq-(d+1)N].
+\tag{GL.19}
+\]
+The map is evaluation in slice form. Its inverse pulls back a slice function through the unique normal-form coefficients of \(f+b\). Those coefficients are the fixed differential polynomials constructed using (GL.3) and the finite height gauges; the weighted bounds make the pullback continuous. To lift it into the ambient normalizer, extend these polynomials by first taking the linear \(\mathfrak b\)-projection of \(A-f\). The resulting continuous algebra map has gauge-invariant restriction to the fibre, so its image lies in \(\mathcal U_R\) by (GL.17). Evaluation in the slice is its inverse modulo \(I_R\). Both maps are continuous for the quotient topology on \(\mathcal U_R/I_R\). This proves the topological isomorphism and completeness of the quotient by construction. It does not assume that an arbitrary quotient of a complete ring is complete.
+
+The reduced bracket is jointly continuous: use this continuous lift, the ambient jointly continuous bracket, and slice evaluation. It equips \(\mathcal P_R^V\) with the genuine principal reduced Poisson bracket. Every construction commutes with maps of ordinary coefficient algebras. In particular
+\[
+\mathcal P_R^V=
+\varprojlim_N\bigl(R\otimes_k k[z_{d,a,p}:p\geq-(d+1)N]\bigr)
+\tag{GL.20}
+\]
+is the coefficient extension intended here. Neither \(R\otimes_k\varprojlim_N\) nor a bound on the polynomial degree of a whole completed element is assumed. Continuous characters of (GL.19) are precisely \(V\otimes_k S((t))\), the coefficient functor (DS.A21), with a cofinal weighted choice of its stages.
+
+**Coordinate transport without a matrix trace.** Let \(\phi\) be a continuous ordinary \(R\)-coordinate substitution, including a nilpotent constant term, and put
+\[
+\psi=\phi^{-1},\qquad \alpha=\psi',\qquad c=\alpha'/\alpha,
+\qquad D_\alpha(x)=\alpha^j x\quad(x\in\mathfrak g_j).
+\tag{GL.21}
+\]
+The inverse, unit derivative, coefficient-finite Laurent substitution and residue change of variable are proved in §1.1.8 and (RC.C7) of [*Opers, critical level and the Beilinson–Drinfeld construction*](opers-critical-level-and-the-beilinson-drinfeld-construction.md). Only integer powers of \(\alpha\) occur. Brackets add grades, so \(D_\alpha\) is a Lie automorphism; (GL.5) makes it preserve \(B\). The finite homogeneous BCH polynomials also make \(\exp x\mapsto\exp(D_\alpha x)\) a group automorphism of \(N(R((t)))\). Define the normalized connection transformation
+\[
+C_\phi(A)=A^\phi
+=D_\alpha\bigl(\alpha A\circ\psi\bigr)-c r.
+\tag{GL.22}
+\]
+We prove its Poisson property directly, including the correction term. For a Laurent test \(X\), set
+\[
+T_\phi X=(D_\alpha^{-1}X)\circ\phi,
+\qquad
+\ell_X(C_\phi A)=\ell_{T_\phi X}(A)
+-\operatorname{Res}cB(r,X)dt.
+\tag{GL.23}
+\]
+The first equality of functions follows from \(u=\psi(t)\), \(du=\alpha dt\), and invariance of \(B\) under \(D_\alpha\). Differentiating a homogeneous component gives
+\[
+(D_\alpha^{-1}X)'
+=D_\alpha^{-1}(X'-c[r,X]),
+\qquad [T_\phi X,T_\phi Y]=T_\phi[X,Y].
+\tag{GL.24}
+\]
+By the chain rule and residue change of variable,
+\[
+\begin{aligned}
+\operatorname{Res}_u B((T_\phi X)',T_\phi Y)du
+&=\operatorname{Res}_t B((D_\alpha^{-1}X)',D_\alpha^{-1}Y)dt\\
+&=\operatorname{Res}_t B(X',Y)dt
+-\operatorname{Res}_t cB(r,[X,Y])dt.
+\end{aligned}
+\tag{GL.25}
+\]
+The last sign follows from \(B([r,X],Y)=B(r,[X,Y])\). Substitution of (GL.23)–(GL.25) into (GL.15) now proves
+\[
+\{\ell_X\circ C_\phi,\ell_Y\circ C_\phi\}
+=\{\ell_X,\ell_Y\}\circ C_\phi.
+\tag{GL.26}
+\]
+Indeed the extra term in the transformed cocycle is exactly the constant in \(\ell_{[X,Y]}\circ C_\phi\). Thus the grading-dependent transformation requires the shift \(-cr\); a plain substitution of graded one-forms would omit this correction. Linear tests determine the polynomial bracket, and continuity extends (GL.26) to the whole complete algebra.
+
+The moment fibre is preserved, since
+\[
+C_\phi(f+b)=f+D_\alpha(\alpha b\circ\psi)-cr\in f+\mathfrak b((t)).
+\tag{GL.27}
+\]
+The grade-minus-one coefficient \(f\) stays normalized. The point \(f\) itself transforms to \(f-cr\). More explicitly, for \(X\in\mathfrak n((t))\), \(B(r,X)=0\), and \(D_\alpha f=\alpha^{-1}f\). Residue change of variable therefore gives
+\[
+\mu_X\circ C_\phi=\mu_{T_\phi X},
+\qquad \mu_X=\ell_X-\operatorname{Res}B(f,X)dt.
+\tag{GL.28}
+\]
+The tests on the right still lie in \(\mathfrak n((t))\). The inverse coordinate gives the reverse inclusion, so the continuous pullback preserves exactly the closed moment ideal, not merely its pointwise vanishing set. Its Poisson property then preserves the normalizer as well.
+
+For completeness, it also conjugates the full positive gauge action. Put \(\widetilde g=D_\alpha(g\circ\psi)\), where the grading automorphism acts on exponential coordinates. Its right logarithmic derivative satisfies
+\[
+\widetilde g'\widetilde g^{-1}
+=D_\alpha\bigl(\alpha(g'g^{-1})\circ\psi\bigr)
++c(r-\operatorname{Ad}(\widetilde g)r).
+\tag{GL.29}
+\]
+To verify this without a torus lift, write \(g\circ\psi=\exp x\) and \(z=D_\alpha x\). Then \(z'=D_\alpha x'+c[r,z]\). Apply the finite logarithmic-derivative polynomial \(\sum_{a\geq0}(\operatorname{ad}z)^a z'/(a+1)!\). Its contribution from \(c[r,z]=-c(\operatorname{ad}z)r\) is exactly \(c(r-\exp(\operatorname{ad}z)r)\); its other contribution is the first term of (GL.29). Substituting it into the left gauge formula proves
+\[
+C_\phi(g\cdot A)=\widetilde g\cdot C_\phi(A).
+\tag{GL.30}
+\]
+All these identities are finite height identities over every ordinary \(R\), including nilpotent parameter rings.
+
+We justify the remaining continuity and composition assertions. Write \(\psi=b+t a(t)\), with \(a(0)\) a unit and \(b^\nu=0\). For \(L>0\),
+\[
+\psi^{-L}=t^{-L}a(t)^{-L}
+\sum_{j=0}^{\nu-1}\binom{-L}{j}
+\left(\frac{b}{t a(t)}\right)^j,
+\qquad
+\psi^M\in t^{M-\nu+1}R[[t]]\quad(M\geq\nu).
+\tag{GL.31}
+\]
+The first expression has pole at most \(L+\nu-1\); the second is the finite nilpotent tail bound (PC.8). For a fixed output coefficient, the nonnegative part of a substituted series contributes only finitely many input coefficients. Multiplication by the regular units \(\alpha^j\) does not increase poles, and \(c\) is regular. Thus (GL.22), (GL.23) and (GL.30) are coefficientwise polynomial at cofinally larger pole charts and define continuous maps on the completed rings. On a weighted chart the possible additive increase \(\nu-1\) is bounded by replacing \(N\) with \(N+\nu-1\), since every coefficient weight is at least one. The same argument for \(\phi\) proves continuity of the inverse. It proves ordinary nilpotent-coordinate continuity directly, rather than assuming it from a field-valued substitution.
+
+For two inverse substitutions \(\psi_1,\psi_2\), let \(\alpha_i=\psi_i'\) and \(c_i=\alpha_i'/\alpha_i\). The derivative and logarithmic derivative of \(\psi_2\circ\psi_1\) are
+\[
+\alpha_{21}=\alpha_1(\alpha_2\circ\psi_1),
+\qquad c_{21}=c_1+\alpha_1(c_2\circ\psi_1).
+\tag{GL.32}
+\]
+Multiplication of the grading automorphisms and \(D_\alpha r=r\) show directly that
+\(C_{\phi_1}\circ C_{\phi_2}=C_{\phi_1\circ\phi_2}\).
+The identity coordinate is identity, and the inverse coordinate gives the inverse map. Pullbacks satisfy the corresponding reversed composition order. This specifies the action convention on both connections and coefficient functions.
+
+**The previously constructed oper normalization.** For a slice representative, (GL.22) is
+\(f-cr+\sum_d\alpha^{d+1}v_d\circ\psi\).
+Gauge by \(\exp((c/2)e)\). It fixes every \(v_d\), since \(V=\ker\operatorname{ad}e\). The triple relations give
+\[
+\operatorname{Ad}(\exp(ze))f=f+2zr-z^2e,
+\qquad \operatorname{Ad}(\exp(ze))r=r-ze.
+\tag{GL.33}
+\]
+Its derivative term is \(-z'e\). For \(z=c/2\) the Cartan component cancels, and the remaining quadratic term is \(c^2e/4-c'e/2\). Hence the unique slice coordinate action is
+\[
+v^\phi=\sum_{d\geq0}\alpha^{d+1}v_d\circ\psi
+-\tfrac12 S(\psi)e,
+\qquad S(\psi)=\frac{\psi'''}{\psi'}
+-\frac32\left(\frac{\psi''}{\psi'}\right)^2
+=c'-\tfrac12c^2.
+\tag{GL.34}
+\]
+This is exactly (DS.G3)–(DS.G5), with \(t=\psi(s)\), now endowed with its actual reduced Poisson action. It is an ordinary coefficient statement. Its interpretation as intrinsic adjoint opers uses the same explicit group and torsor-descent premises as §1.1.6; the Poisson calculation does not establish additional descent foundations.
+
+For matrices, take \(r=\operatorname{diag}((n+1)/2-i)_{i=1}^n\). On \(E_{ij}\) it has eigenvalue \(j-i\). Thus \(D_\alpha\) is conjugation by \(D=\operatorname{diag}(\alpha^{n-1},\ldots,1)\), and
+\[
+-cr=-D'D^{-1}+\frac{n-1}{2}c\mathbf1.
+\tag{GL.35}
+\]
+Formula (GL.22) therefore becomes exactly (DL.14), including its trace correction; no matrix trace was used to prove (GL.25). The scalar-density normalization and its type A bracket comparison remain the actual separate proofs of (DL.15)–(DL.16) and (DC.1)–(DC.10).
+
+The maps and topologies can be read together in this square:
+\[
+\begin{array}{ccccc}
+\mathcal U_R&\longrightarrow&\widehat W_R=\mathcal U_R/I_R
+&\xrightarrow{\ \Theta_R\ }&\mathcal P_R^V\\
+{\scriptstyle C_\phi^*}\downarrow&&
+\downarrow{\scriptstyle\overline{C_\phi^*}}&&
+\downarrow{\scriptstyle (v\mapsto v^\phi)^*}\\
+\mathcal U_R&\longrightarrow&\widehat W_R
+&\xrightarrow{\ \Theta_R\ }&\mathcal P_R^V.
+\end{array}
+\tag{GL.36}
+\]
+*The first horizontal map divides by the closed coisotropic ideal of every integer moment mode (GL.11)–(GL.14). The second is the complete coefficient isomorphism proved using the weighted product charts in (GL.18)–(GL.19). The vertical maps preserve the actual brackets by the residue correction (GL.25), preserve the full moment ideal by (GL.28), and have the cofinal nilpotent-coordinate bounds (GL.31). The rightmost map is the explicitly normalized oper-coefficient action (GL.34). This diagram records completed ordinary Poisson algebras; it does not turn a fixed pole cutoff or regularity constraint into a Poisson quotient.*
+
+Products of finitely many principal data use these constructions componentwise and a common pole bound. The zero datum gives the coefficient ring \(R\) with zero bracket. The assumptions are the finite Lie datum, perfect invariant form, actual direct splittings and polynomial positive-gauge construction used above; an algebraic-group application retains its specified root/group and intrinsic-oper descent premises. This proves the general classical Laurent reduction and its coordinate Poisson action. It supplies neither non-type-A basic quantum lifts nor a quantum-center comparison, a comparison with a different invariant form or a Langlands-dual normalization, a derived/global reduction, or a chiral, factorization or Satake theorem.
+
+#### 3.9.4. Reduced coefficient brackets and the general Virasoro law
+
+Continue with the finite principal datum and the same perfect invariant symmetric form \(B\) of §§3.9.1–3.9.3. In this subsection impose \(V_0=0\), as proved for the supplied pinned semisimple datum in §1.1.2; every slice height is therefore positive. The datum, including its height splitting and unipotent polynomial operations, has the exact structural hypotheses of §1.1. The conclusion below concerns its ordinary classical reduction. No choice of the form is suppressed.
+
+**An actual formula for every reduced coefficient bracket.** Choose homogeneous bases \(v_{d,\gamma}\) of \(V_d\), including every repeated height, and write the normal form as
+\[
+ A^{\mathrm{slice}}=f+\sum_{d,\gamma}s_{d,\gamma}v_{d,\gamma}.
+ \tag{GS.1}
+\]
+The polynomial inverse (GG.5)–(GG.8) expresses each \(s_{d,\gamma}(A)\) as a finite differential polynomial in the coordinates of \(f+\mathfrak b\). It also proves that their derivatives freely generate the invariant algebra. Thus the PVA normalizer quotient of §3.9.1 is, as a differential algebra, exactly
+\[
+ W_{B,R}=R[s_{d,\gamma}^{(a)}:a\geq0].
+ \tag{GS.2}
+\]
+This is the ordinary polynomial identity (GG.24), combined with the actual normalizer bracket, not a new bracket declared on an orbit set.
+
+Here is a finite algorithm for that bracket in every degree. Use the grading projection \(\operatorname{pr}_{\mathfrak b}:\mathfrak g\to\mathfrak b\), and extend the slice coefficients to the entire affine current algebra by
+\[
+ \widetilde s_{d,\gamma}(A)
+   =s_{d,\gamma}\bigl(f+\operatorname{pr}_{\mathfrak b}A\bigr).
+ \tag{GS.3}
+\]
+This is a polynomial extension. Restricting to the moment fibre recovers the original coefficient. Every such lift lies in the normalizer, because the quotient coefficient is invariant; changing the extension changes it by the differential moment ideal. Let \(\operatorname{ev}_{f+s}\) mean substitution of the slice coefficient and all its derivatives. With indices \(i,j\) abbreviating pairs \((d,\gamma)\), the full answer is
+\[
+ \boxed{\{s_i{}_\lambda s_j\}_{W_B}
+  =\operatorname{ev}_{f+s}
+       \{\widetilde s_i{}_\lambda\widetilde s_j\}_{\mathrm{aff},B}.}
+ \tag{GS.4}
+\]
+To prove it, compute the affine bracket by the finite master formula of §3.9.1. Normalizer closure makes every coefficient invariant modulo the moment ideal. An invariant coefficient equals its slice restriction, by (GG.16). Thus the expression on the right is precisely its quotient coefficient. Representative independence follows from the proved ideal test inside the normalizer. Every operation—fixed linear projections, finite gauge polynomials, polynomial differentiation and slice evaluation—is finite. Consequently (GS.4) gives every coefficient and derivative correction, and its skew, Jacobi and Leibniz identities are those already proved for the quotient. No assertion about highest symbols alone is needed.
+
+For Laurent coefficients use the weighted stages of (GG.25). Each coefficient of a fixed differential polynomial is a finite polynomial at a stage, by (GG.28). Every Fourier coefficient of a differential moment-ideal expression belongs to the closed Laurent moment ideal: each term contains a factor \(T^a(J_x-\chi(x))\); its coefficient is a scalar multiple of a physical moment mode, convolved with finitely many other factors at the chosen stage. Compatible finite sums lie in the closed ideal. Thus all coefficient lifts of (GS.3) normalize that ideal, and the same calculation is independent of the regular lift.
+
+If \(s_i\) has weight \(w_i=d_i+1\), write
+\[
+ \{s_i{}_\lambda s_j\}_{W_B}
+       =\sum_{a\geq0}\frac{\lambda^a}{a!}c_{ij,a},
+ \qquad
+ \operatorname{wt}c_{ij,a}=w_i+w_j-a-1.
+ \tag{GS.5}
+\]
+The weight assertion follows on affine generators from \(\operatorname{wt}J_x=1-\operatorname{ht}(x)\), the grading orthogonality of \(B\), and the two Leibniz rules; the moment character is homogeneous at weight zero. The same residue calculation (DC.4)–(DC.6), whose proof uses only the affine delta kernel and finite product and derivative rules, gives
+\[
+ \{s_{i,m},s_{j,n}\}_{W_B}
+   =\sum_{a\geq0}\binom{m+w_i-1}{a}(c_{ij,a})_{m+n},
+ \qquad m,n\in\mathbb Z.
+ \tag{GS.6}
+\]
+Here \(s_i(t)=\sum_m s_{i,m}t^{-m-w_i}\); the output field is normalized by the weight in (GS.5), and constants use weight zero. To see the indices directly, the residue test powers are \(m+w_i-1,n+w_j-1\). Differentiating the first test \(a\) times leaves the output test exponent \(m+n+w_i+w_j-a-2\), selecting normalized mode \(m+n\) of that output weight. The finite sum uses generalized binomial coefficients for negative test exponents.
+
+Formula (GS.6) has values in the completion; products of coefficient fields may involve infinitely many modes before taking a cutoff. The completed bracket of §3.9.3 is jointly continuous. Polynomials in slice coefficients are dense in the weighted inverse-limit coefficient algebra. Hence (GS.4)–(GS.6) identify the entire completed reduced Poisson algebra, including arbitrary pairs of completed functions. They do not declare an individual pole-cutoff quotient an ordinary Poisson algebra.
+
+**A quadratic representative in the actual normalizer.** Take a basis \(u_a\) of \(\mathfrak g\) and its \(B\)-dual basis \(u^a\). Put
+\[
+ Q_B=\frac12\sum_a J_{u_a}J_{u^a},\qquad
+ \tau_B=Q_B+TJ_r,
+ \qquad r=h/2.
+ \tag{GS.7}
+\]
+This does not depend on the chosen basis: in \(B\)-dual connection coordinates it is
+\[
+ Q_B(A)=\tfrac12B(A,A),\qquad
+ \tau_B(A)=\tfrac12B(A,A)+B(r,A').
+ \tag{GS.8}
+\]
+The pairing identification is the one proved in §3.9.1, and \(T\) is the ordinary derivative.
+
+We compute its brackets before reduction. Right Leibniz in \(\{J_x{}_\lambda Q_B\}\) has Lie contribution \(B(A,[A,x])=0\), by symmetry and invariance of \(B\). Its two symmetric central contributions add to \(\lambda J_x\): the dual-basis identities give \(\sum_a B(x,u_a)J_{u^a}=J_x\). Thus skew symmetry and a second right-Leibniz calculation give
+\[
+ \{J_x{}_\lambda Q_B\}=\lambda J_x,\qquad
+ \{Q_B{}_\lambda J_x\}=(T+\lambda)J_x,
+ \qquad
+ \{Q_B{}_\lambda Q_B\}=(T+2\lambda)Q_B.
+ \tag{GS.9}
+\]
+For the last formula, the derivative terms in the product sum are \(TQ_B\), while its two lambda terms are \(2\lambda Q_B\). These are classical commutative products, so there is no quantum double contraction.
+
+For homogeneous \(x\in\mathfrak g_j\subset\mathfrak n\), one has \([x,r]=-jx\) and \(B(x,r)=0\). Sesquilinearity therefore gives
+\[
+ \{J_x{}_\lambda\tau_B\}
+  =(1-j)\lambda J_x-jTJ_x.
+ \tag{GS.10}
+\]
+If \(j=1\), the right side is \(-T(J_x-\chi(x))\). If \(j>1\), \(\chi(x)=B(f,x)=0\), so both terms lie in the moment ideal. Linear combinations give the assertion for every \(x\in\mathfrak n\). Therefore \(\tau_B\) is an actual element of the normalizer and determines a reduced quadratic Hamiltonian. This proves its gauge invariance through the same current action, including every derivative moment test.
+
+Since \([r,r]=0\), \(\{J_r{}_\lambda J_r\}=B(r,r)\lambda\). The four terms in the bracket of (GS.7) are
+\[
+\begin{aligned}
+ \{Q_B{}_\lambda Q_B\}&=(T+2\lambda)Q_B,\\
+ \{Q_B{}_\lambda TJ_r\}&=(T+\lambda)^2J_r,\\
+ \{TJ_r{}_\lambda Q_B\}&=-\lambda^2J_r,\\
+ \{TJ_r{}_\lambda TJ_r\}&=-B(r,r)\lambda^3.
+\end{aligned}
+ \tag{GS.11}
+\]
+Adding them gives the complete reduced Virasoro bracket
+\[
+ \boxed{\{\tau_B{}_\lambda\tau_B\}
+       =(T+2\lambda)\tau_B-B(r,r)\lambda^3.}
+ \tag{GS.12}
+\]
+It already holds in the unreduced affine PVA. Its descent is justified by (GS.10), rather than by declaring a Cartan projection Poisson. With normalized field \(\tau_B(t)=\sum_m\tau_{B,m}t^{-m-2}\), (GS.6) gives
+\[
+ \boxed{\{\tau_{B,m},\tau_{B,n}\}
+   =(m-n)\tau_{B,m+n}
+       -B(r,r)(m^3-m)\delta_{m+n,0}.}
+ \tag{GS.13}
+\]
+Indeed the normalized mode of \(T\tau_B\), of weight three, is \(-(m+n+2)\tau_{B,m+n}\); the first-order term adds \(2(m+1)\tau_{B,m+n}\). The cubic term is \(-6B(r,r)\binom{m+1}{3}\) times the weight-zero constant mode, giving exactly (GS.13) for every pair of integers. This uses the full Laurent normalizer, not only nonnegative modes.
+
+**The Schwarzian from the exact normalized coordinate gauge.** Write \(\psi=\phi^{-1}\), \(\alpha=\psi'\), \(c=\alpha'/\alpha\), and let \(D_\alpha\) multiply \(\mathfrak g_j\) by \(\alpha^j\). The coordinate map proved in §3.9.3 is
+\[
+ A^\phi=D_\alpha(\alpha A\circ\psi)-cr.
+ \tag{GS.14}
+\]
+It preserves the grade-minus-one coefficient \(f\) and the moment fibre \(f+\mathfrak b\). The point \(f\) itself becomes \(f-cr\); the normalization gauge after substitution is essential. Grading orthogonality proves that \(D_\alpha\) preserves \(B\), and \(D_\alpha r=r\). Hence
+\[
+\begin{aligned}
+ \tfrac12B(A^\phi,A^\phi)
+ &=\tfrac12\alpha^2B(A,A)\circ\psi
+    -\alpha cB(r,A)\circ\psi+\tfrac12c^2B(r,r),\\
+ B(r,(A^\phi)')
+ &=\alpha'B(r,A)\circ\psi
+    +\alpha^2B(r,A')\circ\psi-c'B(r,r).
+\end{aligned}
+ \tag{GS.15}
+\]
+The mixed terms cancel because \(\alpha'=\alpha c\). Since
+\(c'-c^2/2=\psi'''/\psi'-3(\psi''/\psi')^2/2\), we obtain
+\[
+ \boxed{\tau_B^\phi
+   =\alpha^2\tau_B\circ\psi-B(r,r)\{\psi,t\}.}
+ \tag{GS.16}
+\]
+All coefficients make sense for the ordinary continuous coordinates, including nilpotent constants, by the exact finite substitution and cofinality bounds in §3.9.3. No analytic uniformization is used.
+
+On the slice \(A=f+s\), grading gives \(B(s,s)=B(r,s')=B(f,f)=0\). Consequently the same invariant is the actual linear functional on its height-one slice component:
+\[
+ \tau_B(f+s)=B(f,s_1),\qquad
+ B(f,e)=B([e,f],r)=2B(r,r).
+ \tag{GS.17}
+\]
+The second identity uses \([f,r]=f\) and invariance of \(B\). Thus the normal-form coordinate law (DS.G4) gives (GS.16) again: its inhomogeneous correction is \(-\{\psi,t\}e/2\). This directly compares the coisotropic Hamiltonian with the earlier ordinary oper coefficient normalization. It retains all height-one components, and divides by no possibly vanishing \(B(r,r)\).
+
+The mechanism is displayed by the commutative square
+\[
+\begin{array}{ccc}
+ f+\mathfrak b(R((t)))&\xrightarrow{\ \text{normal form}\ }&V\otimes R((t))\\
+ \downarrow{\scriptstyle\tau_B}&&\downarrow{\scriptstyle s\mapsto B(f,s_1)}\\
+ R((t))&\xrightarrow{\ \operatorname{id}\ }&R((t)).
+\end{array}
+ \tag{GS.18}
+\]
+*The top arrow is the explicit quotient by Laurent unipotent gauges (GG.27)–(GG.30), carrying the reduced Poisson bracket of §3.9.3. Both vertical arrows give the same quadratic field by (GS.8), (GS.10) and (GS.17). Its exact PVA bracket, all-integer modes and coordinate cocycle are (GS.12), (GS.13) and (GS.16). The scalar codomain here is the coefficient functor of that field; the diagram does not assert that arbitrary Laurent scalar functions have the reduced bracket.*
+
+For the trace form on \(\mathfrak{sl}_n\), \(r=\operatorname{diag}((n+1)/2-i)\), so
+\[
+ B(r,r)=\sum_{i=1}^n\left(i-\frac{n+1}{2}\right)^2
+       =\frac{n(n^2-1)}{12},\qquad \tau_B=-s_2.
+ \tag{GS.19}
+\]
+The sum follows by the finite formulas \(\sum i=n(n+1)/2\) and \(\sum i^2=n(n+1)(2n+1)/6\), each proved by induction. The equality \(\tau_B=-s_2\) follows in rank two from (DC.8), and in every rank from the injective reduced Miura map: its image is \(\sum h_i^2/2+\sum r_i h_i'\), exactly the negative of (AP.19) when \(\sum h_i=0\). Thus this general formula reproduces the fully proved type A scalar normalization. Products use the direct sums of the specified data and add their quadratic fields and constants; the zero datum gives the zero field.
+
+The theorem proves the ordinary principal classical reduction, its coefficient brackets and coordinate-equivariant Laurent extension at the stated finite structural premises. It does not identify an unspecified bilinear form with the deformation form or Langlands-dual form in a quantum-center theorem. The non-type-A basic lifts, full completed center and center/oper-Poisson comparison, as well as intrinsic/global central conventions, derived/global reduction, chiral/factorization, Satake, localization, quantization and the global Langlands equivalence, retain their distinct mathematical statements.
 
 ## 4. The exact center theorem (K4)
 
@@ -6300,7 +11048,7 @@ The center statement is formulated in Frenkel's [*Lectures on the Langlands prog
 \]
 where the superscript \(R\) retains that source's vacuum and center convention, \(\mathcal W_{\rm Op}\) comes from the universal dual-group bundle, and \(W\in\operatorname{Rep}(\check G)\). Its proof must construct that universal bundle and compatibility; the formula is not merely an equality of dimensions.
 
-Equations (K4.1)–(K4.2) in their full generality are **not yet proved in this lesson**. Section 3.2 proves (K4.1) for the rank-one vacuum, including all polynomial generators, ordinary base change and coordinate compatibility. The finite-mode, jet-invariant and filtered arguments for \(\mathfrak{sl}_2\) in §3.2 establish the full rank-one polynomial algebra and coordinate action. Section 3.3 proves the general classical current invariants, the PBW upper bound and unconditional vacuum commutativity. The finite-degree reduction to basic lifts and the determinant construction prove the entire type A polynomial vacuum algebra. Section 3.4 proves the full coordinate-equivariant ordinary disc-oper comparison for every type A factor. Basic lifts and the coordinate comparison in other simple types, and the Satake assertion (K4.2), remain unproved. The geometric route through affine Grassmannian global sections, semi-infinite cohomology and the birth of opers needs its complete argument and foundations. These classical statements are over \(\mathbb C\). The rank-one vacuum-center proof in §3.2 holds over the full characteristic-zero field convention and every ordinary parameter algebra. The type A polynomial vacuum algebra in §3.3.5 and its full ordinary coordinate comparison in §3.4 hold over every characteristic-zero field and ordinary parameter algebra. Section 3.5 proves the reductive vacuum factorization and the full framed central coefficient comparison for type A reductive Lie algebras. Section 3.6 constructs the actual smooth completion, proves the full type A completed center and its coordinate-equivariant ordinary punctured-disc comparison, computes the abelian completed center at every fixed form, and identifies the vacuum restriction kernel. The full center/oper comparison and completed center in other simple types, intrinsic/global central data, and chiral, Poisson, Satake and derived-family center comparisons remain unproved.
+Equations (K4.1)–(K4.2) in their full generality are **not yet proved in this lesson**. Section 3.2 proves (K4.1) for the rank-one vacuum, including all polynomial generators, ordinary base change and coordinate compatibility. The finite-mode, jet-invariant and filtered arguments for \(\mathfrak{sl}_2\) in §3.2 establish the full rank-one polynomial algebra and coordinate action. Section 3.3 proves the general classical current invariants, the PBW upper bound and unconditional vacuum commutativity. The finite-degree reduction to basic lifts and the determinant construction prove the entire type A polynomial vacuum algebra. Section 3.4 proves the full coordinate-equivariant ordinary disc-oper comparison for every type A factor. Basic lifts and the coordinate comparison in other simple types, and the Satake assertion (K4.2), remain unproved. The geometric route through affine Grassmannian global sections, semi-infinite cohomology and the birth of opers needs its complete argument and foundations. These classical statements are over \(\mathbb C\). The rank-one vacuum-center proof in §3.2 holds over the full characteristic-zero field convention and every ordinary parameter algebra. The type A polynomial vacuum algebra in §3.3.5 and its full ordinary coordinate comparison in §3.4 hold over every characteristic-zero field and ordinary parameter algebra. Section 3.5 proves the reductive vacuum factorization and the full framed central coefficient comparison for type A reductive Lie algebras. Section 3.6 constructs the actual smooth completion, proves the full type A completed center and its coordinate-equivariant ordinary punctured-disc comparison, computes the abelian completed center at every fixed form, and identifies the vacuum restriction kernel. Section 3.7 constructs the intrinsic critical Poisson vertex and completed brackets for every finite-dimensional affine datum and proves the full type A scalar-oper Poisson comparison. The full center/oper-Poisson comparison and completed center in other simple types, intrinsic/global central data, derived/global Hamiltonian reduction, full chiral/factorization, Satake and derived-family center comparisons remain unproved.
 
 Regular opers on \(D\) and meromorphic opers on \(D^\times\) also give different center statements: the vacuum center uses the first, and the completed enveloping-algebra center uses the second. Neither can silently replace the other.
 
@@ -6464,8 +11212,8 @@ Differences cancel the Schwarzian and are quadratic differentials. This fixes th
 
 ## 10. What this lesson does not yet prove
 
-The adjoint-semisimple argument proves the finite principal decomposition, unique ordinary-family gauge, coordinate cocycle, intrinsic oper classification, global affine parameter space and dimension from its explicit Lie/group and curve premises. It constructs regular and Laurent coefficient functors, including the continuous coordinate action over nilpotent bases. The independent scalar argument supplies intrinsic/scalar equivalence, normalized lifts, theta choices, ordinary-family representability, Schwarzian, nonsplit extension and algebraic irreducibility. The invariant-ring argument supplies characteristic-zero field transfer, arbitrary ordinary coaction base change, the Molien degree identities, a weighted polynomial Kostant section and the graded classical oper/Hitchin ring. The critical argument supplies the ordered basis, formal affine action, invariant/end correspondence and every-mode \(\mathfrak{sl}_2\) check. Section 3.2 proves the full rank-one polynomial vacuum center, current-jet invariant algebra, PBW exhaustion and coordinate-equivariant ordinary projective-connection identification. Section 3.3 proves the general classical current invariants, exact PBW upper bound, ordinary vacuum-invariant base change, coordinate action on symbols and unconditional vacuum commutativity. Its basic-lift reduction and all-n determinant construction prove the entire type A polynomial vacuum algebra over every ordinary parameter algebra. Section 3.4 proves the full ordinary coordinate-equivariant type A disc-oper comparison and the arbitrary-type quadratic coordinate law, with every anomaly and normalization retained. Section 3.5 proves reductive affine-vacuum factorization, all abelian invariants at arbitrary affine form, the trace splitting and whole polynomial vacuum algebra in reductive type A, and their exact framed central coordinate laws. It also proves the ordinary central gauge groupoid and the algebraic cocycle comparison.
+The adjoint-semisimple argument proves the finite principal decomposition, unique ordinary-family gauge, coordinate cocycle, intrinsic oper classification, global affine parameter space and dimension from its explicit Lie/group and curve premises. It constructs regular and Laurent coefficient functors, including the continuous coordinate action over nilpotent bases. The independent scalar argument supplies intrinsic/scalar equivalence, normalized lifts, theta choices, ordinary-family representability, Schwarzian, nonsplit extension and algebraic irreducibility. The invariant-ring argument supplies characteristic-zero field transfer, arbitrary ordinary coaction base change, the Molien degree identities, a weighted polynomial Kostant section and the graded classical oper/Hitchin ring. The critical argument supplies the ordered basis, formal affine action, invariant/end correspondence and every-mode \(\mathfrak{sl}_2\) check. Section 3.2 proves the full rank-one polynomial vacuum center, current-jet invariant algebra, PBW exhaustion and coordinate-equivariant ordinary projective-connection identification. Section 3.3 proves the general classical current invariants, exact PBW upper bound, ordinary vacuum-invariant base change, coordinate action on symbols and unconditional vacuum commutativity. Its basic-lift reduction and all-n determinant construction prove the entire type A polynomial vacuum algebra over every ordinary parameter algebra. Section 3.4 proves the full ordinary coordinate-equivariant type A disc-oper comparison and the arbitrary-type quadratic coordinate law, with every anomaly and normalization retained. Section 3.5 proves reductive affine-vacuum factorization, all abelian invariants at arbitrary affine form, the trace splitting and whole polynomial vacuum algebra in reductive type A, and their exact framed central coordinate laws. It also proves the ordinary central gauge groupoid and the algebraic cocycle comparison. Section 3.6 constructs the smooth affine completion and proves the full type A and fixed-form abelian centers, with the exact continuous coefficient functor and vacuum kernel. Section 3.7 constructs the intrinsic critical Poisson vertex algebra and jointly continuous completed bracket for every finite-dimensional affine datum, proves the exact ordered Miura embedding and actual affine-to-boson Poisson map in type A, and proves its full coordinate-equivariant scalar-oper Poisson isomorphism. The regular comparison is a Poisson vertex comparison; neither fixed-cutoff nor vacuum restriction is generally an ordinary Poisson quotient. Section 3.8 constructs the ordinary principal matrix Hamiltonian reduction in type A, proves its polynomial gauge quotient, classical affine/free-field normalizer descent and exact forward Miura factors, and identifies both its entire regular scalar Adler PVA and its coordinate-equivariant completed Laurent Poisson algebra. Section 3.9 proves the general principal classical normalizer reduction, its freely generated polynomial regular-jet algebra, full weighted Laurent quotient and jointly continuous all-mode bracket, its normalized ordinary coordinate Poisson action, and the exact quadratic Virasoro and Schwarzian laws for the specified invariant form.
 
-Complete proofs remain required for the recursive root-space/pinning, split-unipotent and faithful adjoint-group constructions, ordinary bundle descent, and the recursive Serre/highest-weight and finite-algebra foundations of the invariant-ring proof; non-type-A basic quantum lifts and the non-type-A coordinate-equivariant vacuum-center/oper comparison, non-type-A completed punctured-disc center, chiral/Poisson/Satake and derived-family compatibility, and the geometric/Satake/global central-convention comparison; half-root, uniformization, localization, nonzero specialization, holonomicity, tensor/fusion Hecke property and filtered quantization; full derived opers and full-field/reductive-center passages; and the critical FLE, Ran, factorization, determinant, convergence and \(\operatorname{IndCoh}^{*}/\operatorname{IndCoh}^{!}\) foundations. The fixed-curve Picard/coherent/local-algebra/Ext chains, bundle-stack algebraization and optional analytic comparison retain their explicit earlier unproved foundations. Each is a mathematical theorem or construction whose full proof is still required.
+Complete proofs remain required for the recursive root-space/pinning, split-unipotent and faithful adjoint-group constructions, ordinary bundle descent, and the recursive Serre/highest-weight and finite-algebra foundations of the invariant-ring proof; non-type-A basic quantum lifts and the non-type-A coordinate-equivariant vacuum-center/oper comparison, non-type-A completed punctured-disc center and oper-Poisson comparison, derived/global Hamiltonian reduction and full chiral/factorization, Satake and derived-family compatibility, and the geometric/Satake/global central-convention comparison; half-root, uniformization, localization, nonzero specialization, holonomicity, tensor/fusion Hecke property and filtered quantization; full derived opers and full-field/reductive-center passages; and the critical FLE, Ran, factorization, determinant, convergence and \(\operatorname{IndCoh}^{*}/\operatorname{IndCoh}^{!}\) foundations. The fixed-curve Picard/coherent/local-algebra/Ext chains, bundle-stack algebraization and optional analytic comparison retain their explicit earlier unproved foundations. Each is a mathematical theorem or construction whose full proof is still required.
 
 Further reading: [Frenkel, *Lectures on the Langlands program and conformal field theory*, §§8–9](https://arxiv.org/abs/hep-th/0512172v1); [Raskin, *A geometric proof of the Feigin–Frenkel theorem*, introduction](https://arxiv.org/abs/1106.3112v1); [Frenkel–Gaitsgory, *Local geometric Langlands correspondence and affine Kac-Moody algebras*, introduction](https://arxiv.org/abs/math/0508382v3); [Beilinson–Drinfeld, *Quantization of Hitchin's integrable system and Hecke eigensheaves*, §§2.6, 3, 7.8 and 7.14](https://math.uchicago.edu/~drinfeld/langlands/QuantizationHitchin.pdf); and [Arinkin, Beraldo, Campbell, Chen, Faergeman, Gaitsgory, Lin, Raskin and Rozenblyum, *Proof of the geometric Langlands conjecture II: Kac-Moody localization and the FLE*, introduction and §3](https://arxiv.org/abs/2405.03648v3).

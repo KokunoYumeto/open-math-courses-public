@@ -2,11 +2,13 @@
 
 A cotangent inverse image needs a map between dualizing coefficients, as well as an image of its carrier. The map comes from comparing a graph with a diagonal. Its adjoint is an isomorphism even when the derivative changes rank. Properness is a separate condition on the carrier to which the operation is applied.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Use Lagrangian cycles and proper cotangent images for the sheaf \(\mathcal L_X\), its coefficient \(E_X=\pi_X^{-1}\omega_X\), relative orientation and the direct image. Isotropic cotangent transport and discrete critical values supplies the geometric transport theorem. Our exact current SH-02 prerequisites are the graph-supported microlocalization formula, the two microlocal functorial squares and their specified adjunction compatibility, with their ordered orientation extraction.
+The construction has three distinct steps. A graph identifies the positive cotangent transpose. A restriction to the diagonal constructs its coefficient arrow, and an adjunction proves that arrow's exceptional mate invertible. Only then do we impose properness on a cycle carrier and transport its supported class. This order separates the geometry of the allowed support from the normalization of its coefficient.
 
-This lesson treats inverse images of Lagrangian cycles through a graph, in the framework of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985). We retain a general commutative coefficient ring \(A\) of finite global dimension. Manifolds are real analytic, Hausdorff and countable at infinity, with uniformly bounded finite dimensions.
+Use Lagrangian cycles and proper cotangent images for \(\mathcal L_X\) and \(E_X=\pi_X^{-1}\omega_X\). The geometric input is isotropic inverse transport. The coefficient proof uses the center-supported specialization calculation, the direct microlocal comparison, the inverse comparison, and their actual unit-and-counit identities. The applications below specify both the maps and every support hypothesis.
+
+M. Kashiwara's [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§2.1–2.3, pp. 196–197, supplies the twisted conormal and Lagrangian-chain framework. The graph coefficient arrow below is derived from the linked microlocal comparison maps, with its adjunction and orientation normalization proved explicitly. We retain a general commutative coefficient ring \(A\) of finite global dimension. Manifolds are real analytic, Hausdorff and countable at infinity, with uniformly bounded finite dimensions.
 
 ## The two cotangent properness conditions are different
 
@@ -28,7 +30,7 @@ For a closed conic subanalytic isotropic \(\Lambda_X\subset T^*X\), inverse imag
  \qquad\text{(2)}
 \]
 
-Its carrier is \(\Lambda_Y'=f_d(B_f)\). The geometric transport theorem makes this closed, conic, subanalytic and isotropic. Direct image instead assumes \(f_\pi\) proper on \(f_d^{-1}\Lambda_Y\). The domains and the maps in those two tests cannot be exchanged.
+Its carrier is \(\Lambda_Y'=f_d(B_f)\). Here is how each property enters. The correspondence maps commute with positive dilation, so the image is conic. Properness on the closed subanalytic \(B_f\) gives a closed subanalytic image. For isotropy, the canonical one-forms satisfy \(f_d^*\alpha_Y=f_\pi^*\alpha_X\): on a tangent vector based at \(y\), both evaluate as \(\xi(df_yv)\). The pullback to a smooth test of \(B_f\) therefore vanishes. The surjective form-detection proof descends this vanishing to the subanalytic image; the inverse-transport proof supplies the subanalytic image construction without a constant-rank assumption. Thus \(\Lambda_Y'\) is an allowed isotropic carrier, including any zero covectors. Direct image instead assumes \(f_\pi\) proper on \(f_d^{-1}\Lambda_Y\). The domains and maps in those two tests cannot be exchanged.
 
 Here is a useful complete test for (2). For a closed positive-conic \(\Lambda_X\),
 
@@ -99,7 +101,9 @@ On normal vectors use the differences \(v_2-v_1\) for the diagonal and \(v_X-df(
  \qquad\text{(7)}
 \]
 
-The shift of \(P\) is \(m-n\). These identities use the actual ordered exceptional transitivity and inverse pairing. In particular the inverse in (7) reverses the shift as well as the orientation ratio. It remains valid at points where the rank of \(df\) changes.
+The shift of \(P\) is \(m-n\). To determine its map, use exceptional transitivity \(f^!\omega_X\simeq\omega_Y\) and the invertible-line comparison \(\omega_f\otimes f^{-1}\omega_X\simeq f^!\omega_X\). There is a unique identification \(\omega_f\simeq P\) whose tensor product on the right with \(f^{-1}\omega_X\), followed by evaluation of the adjacent inverse pair, is this transitivity map. This is the ordered relative-dualizing construction, not a choice of a local orientation generator.
+
+For the normal map, the bundles are \(TY\) and \(f^{-1}TX\) over the same \(Y\), so the base orientation factors cancel. Their normal dualizing ratio is \(P\). The transpose goes from the dual of the second bundle to the dual of the first; the ratio and the rank difference are both reversed. Positive dual orientation and the right-tensor extraction in FF3a therefore give \(\omega_r=L^{-1}\), as a specified map of shifted lines. All later permutations use the graded symmetry. In particular exchanging shifts \([a]\) and \([b]\) contributes \((-1)^{ab}\); replacing an inverse shifted line by its unshifted sign local system would change the construction. This calculation uses the ranks of the two bundles, never the rank of \(df\).
 
 ## Construct the coefficient arrow before using a carrier
 
@@ -110,9 +114,9 @@ Put \(K=f^{-1}\omega_X\) on \(Y\), and \(\mathscr F=\delta_{f*}K\) on \(W\). Mic
  \qquad\text{(8)}
 \]
 
-It follows by specialization to the zero normal vector and Fourier transformation of that zero-vector support. There is no additional shift: the Fourier correspondence restricted to the zero normal vector projects identically to the dual bundle.
+Here is a map-level calculation of (8). For any closed smooth center \(i:M\hookrightarrow W\) and \(K\in D^b(A_M)\), let \(e\) be the zero section of its normal bundle. The center-supported calculation identifies the positive-time deformation term with the closed-axis image of \(K\boxtimes A_{(0,\infty)}[1]\). At time zero the open half-line has costalk \(A[-1]\). Its connecting morphism, fixed by restriction from the closed half-line to its endpoint, cancels the time-orientation \([1]\) and gives the identity on \(K\). Thus the actual specialization is \(e_*K\), with its prescribed counit. Fourier transformation now restricts its pairing kernel to zero normal vector, where the closed halfspace condition is automatic. Projection of this support to the dual bundle is the identity, so its proper direct image is the pulled-back \(K\), with no integration shift. This proves (8) naturally for bounded coefficients; it applies again to the diagonal.
 
-Apply the upper ordinary-inverse microlocal comparison for the pair map \(F_1:(Z,N)\to(W,M)\). The center map is the identity, so its relative line is the unit. This gives
+Apply the upper ordinary-inverse comparison MIC13 to the pair map \(F_1:(Z,N)\to(W,M)\). In its correspondence, \(r=f_d\), \(s=\operatorname{id}_{C_f}\), and the center map is the identity, whose relative line is the unit. Hence MIC13, with the identification (8), gives
 
 \[
  Rf_{d!}\pi^{-1}K
@@ -121,11 +125,10 @@ Apply the upper ordinary-inverse microlocal comparison for the pair map \(F_1:(Z
  \qquad\text{(9)}
 \]
 
-The second arrow is restriction to the diagonal. More precisely the ordinary embedding adjunction gives
+The second arrow is restriction to the diagonal. More precisely the unit of \(\delta_Y^{-1}\dashv\delta_{Y*}\) gives
 \(F_1^{-1}\mathscr F\to\delta_{Y*}\delta_Y^{-1}F_1^{-1}\mathscr F
 =\delta_{Y*}K\).
-The projection formula and
-\(\delta_Y^{-1}\omega_{F_1}=P\) then give
+Indeed \(F_1\delta_Y=\delta_f\) and \(\delta_f^{-1}\delta_{f*}K=K\), so this target identification does not require \(F_1^{-1}M=N\). Restricting the ambient relative-dualizing comparison to \(N\) cancels its common \(Y\) factor and gives \(\delta_Y^{-1}\omega_{F_1}=P\). The closed-embedding projection formula, followed by the actual evaluation \((\omega_Y\otimes K^{-1})\otimes K\to\omega_Y\) fixed in (7), now gives
 
 \[
  \omega_{F_1}\otimes F_1^{-1}\mathscr F
@@ -168,9 +171,7 @@ The ordinary direct microlocal comparison is
  \qquad\text{(13)}
 \]
 
-This arrow is an isomorphism by the full supported direct-comparison theorem. Here are its three hypotheses in this situation. The ambient map is proper on \(\operatorname{supp}\mathscr G\subset N\), since it is the closed graph identification there. The normal cone of that support along \(N\) is contained in the zero normal section, and its normal map to the graph bundle is proper on that section, again by the identity on \(Y\). Finally
-\(\operatorname{supp}\mathscr G\cap F_1^{-1}M\subset N\).
-None of these tests assumes that \(df\) is injective or surjective.
+This is the lower ordinary-direct arrow of MIC12. Its isomorphism assertion follows from all three supported hypotheses, which can be checked here without a clean-preimage assumption. First, \(F_1\) restricted to the closed support of \(\mathscr G\) factors through the closed graph embedding of \(Y\) in \(W\), so it is proper there. Second, a normal-coordinate sequence in a subset of \(N\) has identically zero normal component; its normal cone is consequently contained in the zero section over that closed support. The induced normal map takes this section to the graph's zero section by the identity on \(Y\), so its restriction is a closed embedding and is proper. Third, \(\operatorname{supp}\mathscr G\cap F_1^{-1}M\subset N\) because the whole support already lies in \(N\). These are exactly the three conditions of MIC12, and hence its specialization square and its Fourier transform are isomorphisms. None of these arguments assumes that \(df\) is injective, surjective, or of locally constant rank.
 
 To identify (13) with (12), retain the adjunction maps. In the conormal correspondence put
 
@@ -180,7 +181,7 @@ To identify (13) with (12), retain the adjunction maps. In the conormal correspo
  \qquad\text{(14)}
 \]
 
-They are adjoint. The exact microlocal adjunction identity says that (13) is
+They are adjoint: first transpose across \(Rr_!\dashv r^!\), then across tensoring by the invertible \(L^{-1}\). This second transposition uses its tensor–Hom unit and counit and the indicated order of the factors. The exact identity MIC16 says that (13) is
 
 \[
  \mu_M\mathscr F
@@ -193,7 +194,7 @@ They are adjoint. The exact microlocal adjunction identity says that (13) is
  \qquad\text{(15)}
 \]
 
-Here \(\widetilde c\) is the orientation-canceled upper inverse comparison, and \(\varepsilon':F_1^{-1}RF_{1*}\mathscr G\to\mathscr G\) is the ordinary counit. In this graph situation \(\varepsilon'\) is exactly the restriction to the diagonal used in (10).
+Here \(\widetilde c\) is the upper inverse comparison after the right-ordered orientation cancellation, and \(\varepsilon':F_1^{-1}RF_{1*}\mathscr G\to\mathscr G\) is the counit of \(F_1^{-1}\dashv RF_{1*}\). This counit agrees with the embedding unit used in (10), although the two adjunctions are different. To check equality, a map into \(\delta_{Y*}K\) is determined by its adjoint after \(\delta_Y^{-1}\). The restriction of the embedding unit is the identity of \(K\). The restriction of \(\varepsilon'\) is also the identity: identify \(RF_{1*}\delta_{Y*}K=\delta_{f*}K\) by composition, and use \(F_1\delta_Y=\delta_f\) and the two fully faithful closed-embedding adjunctions. Their triangular identities make the resulting \(K\to K\) the identity. Thus the two maps, not merely their target sheaves, coincide.
 
 Now \(\mu_N\mathscr G=\pi_Y^{-1}K\). The right-tensor extraction of the relative line identifies
 
@@ -204,7 +205,11 @@ Now \(\mu_N\mathscr G=\pi_Y^{-1}K\). The right-tensor extraction of the relative
  \qquad\text{(16)}
 \]
 
-The first is the exceptional projection comparison for the bounded invertible base line \(P\); the second uses the graded symmetry from \(K\otimes P\) to \(P\otimes K\), then the actual pairing in (10). Under (16), (15) is the adjoint of (9) followed by (10). Indeed transposing its unit gives the evaluation for (14); reinserting its inverse line recovers the upper map (9), and its last counit is (10). The two reorderings are those in the right-tensor microlocal exchange convention, including the graded symmetry. This is the exact adjunction compatibility of the current SH-02 comparison, not a new choice of orientation isomorphism.
+The first arrow is the exceptional tensor comparison, which is invertible for the bounded invertible base line \(P\); indeed \(r^{-1}\pi_Y^{-1}P=L\). The second uses the graded symmetry from \(K\otimes P\) to \(P\otimes K\), followed by the pairing in (10). Denote this composite by \(q_K:\mathcal C(\pi_Y^{-1}K)\to r^!E_Y\).
+
+To check the map, put \(H=\mu_M\mathscr F\) and \(\kappa=\mu_N\varepsilon'\circ\widetilde c_{\mathscr F}\). Formula (15) is exactly \(\mathcal C(\kappa)\circ\eta_{\mathcal D,H}\). Its \(\mathcal D\dashv\mathcal C\) transpose is \(\kappa\): the counit followed by the inserted unit cancels by the triangular identity. Now transpose \(q_K\circ d_{\mathscr G}\) across \(Rr_!\dashv r^!\). The exceptional tensor comparison is defined as the mate of the proper-image projection formula and the counit; it therefore moves the final \(L\) through this transposition by that projection formula. Evaluation of its adjacent inverse factor converts \(\widetilde c_{\mathscr F}\) back to the upper comparison (9). Its remaining factor is precisely the graded permutation \(K\otimes P\to P\otimes K\) in \(q_K\), followed by the pairing (10). Finally \(\varepsilon'\) is the restriction arrow just checked. The resulting transpose is consequently \(\rho_f\), not an unspecified scalar multiple of it.
+
+This computation uses the specified third and fourth Fourier exchanges: the third is obtained by right-ordered tensor–Hom transposition, and the fourth is its actual right mate. Their units, counits and graded permutations are the ones in MIC16. An unsigned interchange of shifted lines would not satisfy this calculation in general. We have proved \(q_K\circ d_{\mathscr G}=\beta_f\) by equality of their adjoints.
 
 Thus \(\beta_f\) is (13) under the actual identifications (8),(16). Since (13) is an isomorphism, so is (12). This proof allows changing rank and nonproper \(f\). It does not assert that \(\rho_f\) itself is an isomorphism: an adjunction counit can fail to be one when its adjoint is invertible.
 
@@ -224,7 +229,14 @@ Under (2), the operation on a cycle is the composite
  \qquad\text{(17)}
 \]
 
-The first arrow is supported inverse image under \(f_\pi\). The second uses properness of \(f_d\) on the closed \(B_f\): ordinary and proper image agree on its supported object. The last is the actual coefficient map (11). The output carrier is allowed in \(\mathcal L_Y\), so (17) defines \(f^*\). For the identity map, the graph and diagonal coincide and all comparisons and counits are identities; hence \(f^*\) is the identity. Enlarging a carrier preserves the map whenever (2) remains valid.
+Here are the support maps in (17). Write \(r=f_d\), \(H=\pi^{-1}f^{-1}\omega_X=f_\pi^{-1}E_X\), and \(S=\Lambda_Y'\). Pullback of the support-forgetting map gives
+\(f_\pi^{-1}R\Gamma_{\Lambda_X}E_X\to H\). Its source is supported on \(B_f\), so closed-support adjunction factors it canonically through \(J=R\Gamma_{B_f}H\). The ordinary inverse-image unit on global sections and this factorization give the first arrow. No properness of \(f_\pi\) is involved.
+
+The natural comparison \(Rr_!J\to Rr_*J\) is an isomorphism because \(r\) is proper on the closed support \(B_f\). Its inverse gives an actual route
+\(R\Gamma(C_f;J)=R\Gamma(T^*Y;Rr_*J)\to R\Gamma(T^*Y;Rr_!J)\).
+The object \(Rr_!J\) is supported on \(S\), and the image of \(J\to H\) factors canonically as \(Rr_!J\to R\Gamma_S(Rr_!H)\). Taking degree zero gives the second arrow in (17). Thus we invert the proper/ordinary comparison only on \(J\), never on the unrestricted coefficient \(H\). The last arrow is \(R\Gamma_S\) applied to the actual \(\rho_f\). These are the closed-support adjunction and counit maps of the exceptional-operations construction, with proper-support functoriality as in the direct cycle construction.
+
+The output carrier is allowed in \(\mathcal L_Y\), so (17) defines \(f^*\). For the identity map, \(F_1\), its normal map, the graph restriction and the relative pairing are all identities; hence so is \(\rho_f\), and (17) is the identity on supported classes. If a carrier is enlarged while (2) remains valid, the natural maps between its closed-support functors commute with pullback, the proper/ordinary comparison and \(\rho_f\). The resulting cycles therefore agree under the support-enlargement map. These facts ensure that (17) is an operation on the cycle sheaf, rather than on a particular presentation of a cycle.
 
 For a point, \(\mathcal L_{\mathrm{pt}}=A\) and its fundamental cycle \([\mathrm{pt}]\) is \(1\). For \(a_X:X\to\mathrm{pt}\), the incidence is \(X\) and its map to \(T^*X\) is the closed zero embedding \(z_X\). It is proper even when \(X\) is noncompact. Define
 
@@ -233,9 +245,9 @@ For a point, \(\mathcal L_{\mathrm{pt}}=A\) and its fundamental cycle \([\mathrm
  \qquad\text{(18)}
 \]
 
-It is a generator of the twisted zero-section cycle coefficient. To see this, (12) for \(a_X\) is the actual isomorphism
-\(A_X\to z_X^!E_X\). Adjunction identifies the class (18) with its image of \(1\). The supported smooth-cycle coefficient is
-\(\operatorname{or}_X\otimes B_X|_X\), whose integral square pairing makes it a rank-one constant line. Thus (18) fixes its generator by the actual map \(\beta_{a_X}\); a coordinate description must use that ordered dualizing normalization.
+It is a generator of the twisted zero-section cycle coefficient. In this case the first map of (17) pulls \(1\) back to \(1\in H^0(X;A_X)\). Closed-support adjunction for \(z_X\) then identifies its last two maps with the actual isomorphism \(A_X\xrightarrow{\beta_{a_X}}z_X^!E_X\). Thus (18) is the image of \(1\) under this specified isomorphism, not an independently chosen Thom class.
+
+To identify its coefficient, the relative cotangent orientation restricts to \(B_X|_X=\operatorname{or}_{T^*X/X}|_X\simeq\operatorname{or}_X\), with positive dual orientation. The smooth-cycle coefficient is \(\operatorname{or}_X\otimes B_X|_X\). The integral orientation square pairs this with the constant rank-one line: each reversal changes both factors by \(-1\). Hence the image of \(1\) is a local generator and agrees on overlaps without a global base orientation. The coefficient isomorphism, including its sign relative to an ordered chart, is the one fixed by \(\beta_{a_X}\); the square-line description does not introduce an additional normalization.
 
 If \(i:Y\hookrightarrow X\) is a closed analytic submanifold, \(i_\pi\) is a closed embedding, and
 \(i_d^{-1}(T_Y^*Y)=T_Y^*X\) in its incidence. The direct operation is therefore defined. Set
@@ -245,7 +257,13 @@ If \(i:Y\hookrightarrow X\) is a closed analytic submanifold, \(i_\pi\) is a clo
  \qquad\text{(19)}
 \]
 
-This defines the normalized conormal cycle with its relative cotangent orientation coefficient. Locally take coordinates \((u,z)\) with \(Y=\{z=0\}\). Its carrier has coordinates \((u;\zeta)\), with the tangent covector \(\xi_u=0\). Pulling back the zero-section class keeps its Thom class in the \(\xi_u\) directions. The subsequent closed embedding uses the actual \(i^!\omega_X=\omega_Y\) trace in the \(z\) directions. In this product chart the smooth vertical base change identifies \(i_\pi^!E_X\) with \(\pi^{-1}\omega_Y\): the normal costalk of the \(z=0\) embedding is its orientation line shifted by minus its codimension, canceling the same factor of \(\omega_X\). Thus the induced rank-one supported coefficient map is an isomorphism, and (19) is a generator locally. The closed trace and (18) specify its normalization on overlaps, including nonorientable ones.
+This defines the normalized conormal cycle with its relative cotangent orientation coefficient. To prove that it is a generator with the stated normalization, retain the direct-image coefficient map. In the Cartesian square with horizontal maps \(i_\pi:C_i\to T^*X\) and \(i:Y\to X\), and vertical maps \(\pi\) and \(\pi_X\), it is
+\(Ri_{\pi!}\pi^{-1}\omega_Y\simeq\pi_X^{-1}Ri_!\omega_Y\to\pi_X^{-1}\omega_X\).
+The first arrow is proper-support base change; the second is the pulled-back trace of \(i\). Its \(Ri_{\pi!}\dashv i_\pi^!\) mate is the exceptional base-change map
+\(\pi^{-1}\omega_Y=\pi^{-1}i^!\omega_X\to i_\pi^!\pi_X^{-1}\omega_X\).
+This map is an isomorphism, as can be checked with its defining trace in a product chart. There \(\pi_X\) is projection of a free cotangent coordinate factor, while \(i_\pi\) and \(i\) both impose the same equation \(z=0\) in the base coordinates. The closed-embedding costalk calculation computes both exceptional restrictions by the same normal \(z\)-orientation line shifted by minus its codimension. In EX.18, proper-support base change pulls back the same sections, and the subsequent trace evaluates the same normal generator; the additional cotangent coordinate factor is unchanged. Thus this particular base-change map is the identity on that normal costalk calculation. Cancellation against the normal factor of \(\omega_X\) makes it an isomorphism. This local trace calculation also proves the smooth base-change instance used here without substituting an arbitrary isomorphism between its two objects.
+
+More explicitly, choose coordinates \((u,z)\) with \(Y=\{z=0\}\), and dual coordinates \((\xi_u,\zeta)\). The conormal carrier is \(z=0,\xi_u=0\), with free coordinates \((u;\zeta)\). Pullback under \(i_d(u;\xi_u,\zeta)=(u;\xi_u)\) leaves the zero-section Thom class in the \(\xi_u\) directions and adds the free \(\zeta\) coordinates. The subsequent supported trace for \(i_\pi\) is adjoint to the isomorphism above; in the \(z\) directions it pairs the normal costalk generator with its dualizing factor. A generator therefore maps to a generator, with the ordered evaluation sign fixed by that counit. This assertion can also be read directly as an isomorphism of the rank-one supported coefficient sheaves before taking sections. Since both base change and trace are natural under restriction of charts, these generators agree with the definition (19) on all overlaps, including orientation-reversing ones. No separate choice of a sign for the conormal cycle remains.
 
 The formula for transverse inverse images of these normalized conormal cycles needs its own comparison of the two constructions. We have not inferred that formula merely from equality of their carrier sets.
 
@@ -260,7 +278,7 @@ Take \(f:\mathbb R_t\to\mathbb R_x\), \(f(t)=t^2\). Compute (6) and the preimage
 **Solution.** A graph covector at \((s,s^2)\) is
 \((-2s\xi,\xi)\). At a point of the diagonal, the transpose of \(dF_1\) gives \((-2s\xi,2s\xi)\), so the diagonal coordinate is \(\eta=2s\xi\). This is the positive transpose \(f_d\), with no additional sign.
 
-The preimage condition is \(t^2=s^2\). It contains both \(t=s\) and \(t=-s\), crossing at the origin. Near a point of the antidiagonal away from zero, the ordinary inverse image of a nonzero coefficient supported on \(\Gamma_f\) is nonzero while a coefficient supported on \(\Delta_Y\) has zero stalk. Thus these two sheaves are not equal. The embedding counit restricts the preimage sheaf to the diagonal and discards that other branch. At the origin the branches meet, but the same natural restriction still exists. The microlocal construction uses that arrow and does not require the ambient map to be noncharacteristic for the graph sheaf.
+The preimage condition is \(t^2=s^2\). It contains both \(t=s\) and \(t=-s\), crossing at the origin. Near a point of the antidiagonal away from zero, the ordinary inverse image of a nonzero coefficient supported on \(\Gamma_f\) is nonzero while a coefficient supported on \(\Delta_Y\) has zero stalk. Thus these two sheaves are not equal. The ordinary embedding unit restricts the preimage sheaf to the diagonal and discards that other branch. At the origin the branches meet, but the same natural restriction still exists. The microlocal construction uses that arrow and does not require the ambient map to be noncharacteristic for the graph sheaf.
 
 ### Properness is a compact uniform estimate
 
@@ -324,3 +342,9 @@ For general \(X\), the zero embedding is proper and the actual map
 \(A_X\xrightarrow{\beta_{a_X}}z_X^!E_X\) is an isomorphism. The image of \(1\) gives (18), a generator on every connected local zero-section piece. Its coefficient is \(\operatorname{or}_X\otimes B_X|_X\), so the two orientation signs cancel on an orientation-reversing chart overlap. No global choice of base orientation is needed.
 
 For a closed point \(p\hookrightarrow X\), the direct-image incidence is the full fibre \(T_p^*X\), and its map \(i_\pi\) is a closed embedding into \(T^*X\), hence proper. Its \(i_d\) maps to the point zero section. Thus (19) is the actual supported trace image of \(1\), a conormal generator with the cotangent-fibre coefficient included. The inverse operation would instead require the fibre collapse to be proper; in positive dimension it is not. The existence of this direct conormal cycle does not authorize that distinct inverse operation.
+
+## Mathematical sources
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§2.1–2.3, pp. 196–197, gives the cotangent orientation and twisted conormal-chain convention. It supplies that framework, rather than the graph/diagonal adjunction proof developed here. The exact specialization and microlocalization comparison maps used in (8)–(16), with their transformation identities, are proved in the programme lessons linked at each step.
+
+P. Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=95), edition dated 01/08/2026, Corollary 4.6.2, Propositions 4.6.4, 4.6.6–4.6.7, §4.7 and Proposition 5.1.9, pp. 95–98 and 107–108, explains the exceptional composition, tensor, support and relative-dualizing operations. Here the graph calculation retains changing derivative rank, distinguishes the diagonal restriction unit from the ambient counit, and proves equality of the two actual adjoints with the ordered orientation factors. Properness is imposed only for transport of the chosen carrier. The six worked examples separately check that domain, its shifts, and the normalized point, zero-section and conormal classes. The human sources retain their authorship and their own terms.

@@ -2,7 +2,7 @@
 
 A representation of a closed subgroup can be carried across the coset space, but its vector fields cannot simply be periodic along the subgroup. Their covariance includes the square root of the subgroup modular ratio. This lesson constructs the Hilbert space, proves its completeness and the density of elementary fields, and obtains the strongly continuous translation and imprimitivity representations.
 
-*Programme exposition written in Codex (OpenAI), September 2026; foundation integration and proof restoration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held. No human review is asserted.*
+*Programme exposition written in Codex (OpenAI), September 2026; foundation integration and proof restoration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held.*
 
 The exact earlier local inputs are [QF6](OA-FLOW-QF.md#qf-6) for compactwise strong measurability and finite-measure vector integration, [L24 Section3](OA-FLOW-L24.md#oa-flow.grp.translations) for translations and inversion, [L24 Proposition4.1](OA-FLOW-L24.md#oa-flow.grp.vectorintegration) for Bochner integration, [HR5](OA-FLOW-HR.md#hr-05) for compact Radon Fubini, and [CF8](OA-FLOW-CF.md#oa-flow.cf.8) for Hilbert orthogonal complements. Sequential convergence, scalar Cauchy–Schwarz and Fatou are [SC4–7](OA-FLOW-SC.md#sc-04). The quotient measures and their exact all-Borel convention are the whole preceding chapter.
 

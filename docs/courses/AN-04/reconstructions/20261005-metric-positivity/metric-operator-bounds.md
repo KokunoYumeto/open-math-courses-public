@@ -2,9 +2,9 @@
 
 This companion proves the metric \(L^2\) estimate with constants independent of the coefficient Hilbert spaces. The argument includes the ordered norm-valued calculus, both interaction matrices, the full neighborhood count and all differentiated separated-center estimates. It then proves the symplectic normal form needed for scalar positivity. The source's converse and compactness results and its unrestricted Banach distribution extension are separate selections.
 
-This is a modified selection of AN03-U018, *When a moving symbol scale controls an operator*, from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. Copyright © 2026 AN-03 course project contributors. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection, exact prerequisite connections and identified additions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
+This is a modified selection of AN03-U018, *When a moving symbol scale controls an operator*, from *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Original principal author: AN-03 course-writing task. Original publisher: AN-03 local course project. The AN-03 course-writing task and OpenAI Codex are responsible for the renewed edition. Selection, exact prerequisite connections and identified additions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this component under the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The [complete licence](notices/COPYING), [title information](notices/TITLE_PAGE.md), [history](notices/HISTORY.md) and [rights notice](notices/RIGHTS.md) accompany it.
+Original text: CC0. See the rights notice.
 
 ## B0. Complete current prerequisites
 

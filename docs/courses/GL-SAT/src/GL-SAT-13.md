@@ -6,7 +6,7 @@ For a connected group, equivariance on a point leaves only vector spaces in the 
 
 ## 1. Which derived category?
 
-Work with complex algebraic groups and their classical topology. Cohomological grading means \(H^i(K[s])=H^{i+s}(K)\); in particular a vector space \(V[-2]\) has its vectors in degree \(2\). Write \(\Lambda\) for a characteristic-zero field. The explicit commutative differential-form model in §5 uses \(\Lambda=\mathbf R\) or \(\mathbf C\). The integral topological calculations, and their characteristic-zero scalar extensions, are identified separately.
+Work with complex algebraic groups and their classical topology. Cohomological grading means \(H^i(K[s])=H^{i+s}(K)\); in particular a vector space \(V[-2]\) has its vectors in degree \(2\). Write \(\Lambda\) for a characteristic-zero field. The commutative polynomial-simplex model in §5 applies to every such field. Smooth complex forms are used in §3 to prove restriction of classifying-space cohomology; the rational descent there proves its general coefficient-field statement.
 
 There are two constructions to distinguish:
 
@@ -135,7 +135,137 @@ Place each linear coordinate on \(\mathfrak{sl}_2\) in degree two. Then \(p\) ha
 \tag{3.9}
 \]
 
-Equations (3.7) and (3.9) have the same graded polynomial structure; choosing the generator normalization identifies them. No nonzero degree-two invariant is available. The general invariant-polynomial description of \(H^*(BG)\) requires the general characteristic-class theorem; it is not needed for the two computations above.
+Equations (3.7) and (3.9) have the same graded polynomial structure; choosing the generator normalization identifies them. No nonzero degree-two invariant is available. The next three sections prove the general invariant-polynomial description, including its coefficient-field passage.
+
+### 3.4. Restriction to a maximal torus
+
+Choose the split rational group \(G_{\mathbf Q}\) with the datum of a connected complex reductive \(G\), using Pinnings and the classification of split reductive groups, Theorem 10.1. For a characteristic-zero field \(\Lambda\), put \(G_\Lambda=G_{\mathbf Q}\otimes\Lambda\) and \(\mathfrak g_\Lambda=\operatorname{Lie}(G_\Lambda)\). We will prove
+\[
+H^*(BG;\Lambda)\simeq\operatorname{Sym}(\mathfrak g_\Lambda^*[-2])^{G_\Lambda}.
+\tag{3.11}
+\]
+This specifies the coefficient model even when \(\Lambda\) has no chosen embedding into \(\mathbf C\). Let \(B\supset T\) be a Borel, and \(W=N_G(T)/T\). Work in a prescribed finite cohomology range and choose a common sufficiently acyclic frame \(V=V_{N,d}\) for a faithful \(G\subset GL_d\). GL-PERV Propositions B.6–B.6a construct the smooth separated quotients, the torsor charts and all the maps used below.
+
+The map
+\[
+q:V/B\longrightarrow V/G
+\]
+is a proper smooth bundle with fibre \(G/B\), of complex dimension \(m\). AG-RG-03 Lemma 5.1 gives the ample \(G\)-equivariant line \(\det(\operatorname{Lie}\mathcal B)^*\) on that flag variety, and AG-RG-06 Theorem 1.1 gives its smooth projective quotient. Its equivariant descent to \(V/B\) has a global Chern class \(\eta\).
+
+We first prove injectivity with complex coefficients by direct integration over the flag fibre. Its real dimension is \(2m\), and its complex orientation is preserved by every transition of the bundle. On a local product chart integrate the fibre-degree-\(2m\) part of a smooth form. Change of fibre coordinates preserves this integral, so these local formulas define
+\[
+q_*:\Omega^\bullet(V/B;\mathbf C)
+ \longrightarrow\Omega^{\bullet-2m}(V/G;\mathbf C).
+\]
+The fibre is compact and has no boundary. Differentiation under its integral is valid in each product chart; the fibre derivative integrates to zero by Stokes. Since \(2m\) is even, the base-derivative sign is positive. Hence \(dq_*=q_*d\). Directly on product forms,
+\[
+q_*(q^*\beta\wedge\eta^m)=s\beta,
+\qquad s=\int_{G/B}c_1(\mathcal L)^m>0.
+\tag{3.12}
+\]
+Here \(\eta\) is a closed curvature representative of the global Chern class. Its fibre integral is the same Chern number on every fibre by local trivialization and naturality. A positive power of the ample line embeds \(G/B\) in projective space. Divide its restricted positive Fubini--Study form by that power; its positive top volume proves \(s>0\). The Chern and orientation comparisons identify it with the integral Chern number. These comparisons and positivity are proved in The Satake category, Theorem 5.7 and Connections, curvature and characteristic forms, Parts A and D. Equation (3.12) proves that pullback along \(q\) is injective over \(\mathbf C\).
+
+It is also injective over \(\mathbf Q\). For any space, split its rational singular-chain complex into its homology and two-term contractible summands by choosing complements to boundaries in cycles and to cycles in chains. Its cohomology with values in a field \(K\supset\mathbf Q\) is therefore \(\operatorname{Hom}_{\mathbf Q}(H_j(-;\mathbf Q),K)\). The coefficient map from \(K=\mathbf Q\) to \(K=\mathbf C\) is injective, without a finite-dimensionality assumption. A rational class killed by flag pullback is killed after extension to \(\mathbf C\), where the preceding paragraph proves injectivity. It is thus zero already over \(\mathbf Q\).
+
+The map \(V/T\to V/B\) has fibre \(B/T\), an affine space by the ordered root coordinates of AG-RG-04 §5. Its torsor product charts make it a locally trivial contractible-fibre bundle. GL-PERV Lemma B.5 proves its adjunction unit is an isomorphism, without a nonproper fibre-base-change assumption. We have therefore proved, initially for \(K=\mathbf Q,\mathbf C\),
+\[
+H^*(BG;K)\hookrightarrow H^*(BT;K)
+\tag{3.13}
+\]
+in each prescribed range, and hence in every degree by increasing the frame.
+
+At the same finite frame the right action of \(N_G(T)\) on \(V/T\) preserves its map to \(V/G\). It factors through \(W\), and acts on the character Chern classes by the ordinary Weyl action. Thus the image of (3.13) lies in \(H^*(BT;K)^W\). This invariance does not require an unproved statement about arbitrary group actions on classifying spaces.
+
+### 3.5. Invariant polynomials and characteristic classes
+
+The centre of the enveloping algebra and Harish-Chandra’s theorem, Theorem 3.1 proves Chevalley restriction for a complex semisimple Lie algebra, with an actual graded polynomial proof:
+\[
+\mathbf C[\mathfrak g]^{\mathfrak g}
+\xrightarrow{\sim}\mathbf C[\mathfrak t]^W.
+\tag{3.14}
+\]
+For reductive \(\mathfrak g=\mathfrak z\oplus[\mathfrak g,\mathfrak g]\), tensor that proof with the polynomial algebra on the centre. The Weyl group fixes the centre, so the same statement follows. Infinitesimal invariants equal \(G\)-invariants here. Root-vector infinitesimal invariance integrates by its finite polynomial exponential; torus infinitesimal invariance means weight zero; the torus and root groups generate the connected group by the proved Bruhat coordinates of AG-RG-04. Thus the notation in (3.14) really gives the algebraic adjoint invariants.
+
+We need the characteristic-class map for this general \(G\), not merely the matrix-group version in DG-CHAR. It has the following short proof from the existing principal-connection foundations.
+
+A smooth principal \(G\)-bundle has a connection by Connections and parallel transport, Theorem B.1. That theorem patches local product connections with a partition of unity and works for every finite-dimensional Lie group. For a complex group regard its connection as a form valued in its complex Lie algebra on the real base. Principal curvature, transformation, and Bianchi are proved in Curvature and holonomy groups, Theorems A.4, A.6–A.7.
+
+Let \(f\) be an invariant homogeneous polynomial of degree \(a\), and \(p\) its symmetric polarization. If \(\omega\) is the connection and \(F=d\omega+\tfrac12[\omega,\omega]\), put
+\[
+\mathrm{CW}_f=p\bigl(iF/(2\pi),\ldots,iF/(2\pi)\bigr).
+\tag{3.15}
+\]
+Invariance makes this horizontal and invariant, hence a base form. To verify closedness and independence explicitly, for homogeneous valued forms \(\beta_j\) of degrees \(b_j\), differentiate the polarization identity
+\[
+\sum_j p(X_1,\ldots,[Z,X_j],\ldots,X_a)=0.
+\]
+Move the connection one-form to the front in each term. Its Koszul sign cancels the differentiation sign, so
+\[
+d\,p(\beta_1,\ldots,\beta_a)
+=\sum_j(-1)^{b_1+\cdots+b_{j-1}}
+p(\beta_1,\ldots,D\beta_j,\ldots,\beta_a).
+\tag{3.16}
+\]
+Since \(DF=0\), (3.15) is closed. For two connections take their affine path, with difference \(\alpha\) and curvature \(F_t\). The local bracket formula gives \(\dot F_t=D_t\alpha\). Equation (3.16) then gives
+\[
+\mathrm{CW}_f(F_1)-\mathrm{CW}_f(F_0)
+=d\left[
+a\left(\frac{i}{2\pi}\right)^a
+\int_0^1p(\alpha,F_t,\ldots,F_t)\,dt\right].
+\tag{3.17}
+\]
+The difference is horizontal and equivariant; hence its displayed primitive is global. Pullback of the connection proves naturality. Sums and products of polynomials give sums and products of their curvature forms because two-form coefficients commute. This proves the required general Chern–Weil map. It is the invariant-contraction proof of Connections, curvature and characteristic forms, Theorem B.2 with its matrix-group restriction removed by the actual principal-group bracket calculation (3.16).
+
+Apply it to the finite principal bundle \(V\to V/G\). Restricting to \(V/T\) gives the principal \(T\)-reduction; connection independence permits a connection induced from that reduction. Thus restriction of (3.15) is the torus characteristic polynomial of \(f|_{\mathfrak t}\). For a character \(\chi\), Connections, curvature and characteristic forms, Theorem D.1 in the line-bundle case identifies its normalized curvature with \(c_1(\mathcal L_\chi)\). Therefore
+\[
+\operatorname{res}(\mathrm{CW}_f)
+=f|_{\mathfrak t}\bigl(c_1(\mathcal L_{\chi_1}),\ldots,
+c_1(\mathcal L_{\chi_r})\bigr),
+\tag{3.18}
+\]
+when expressed in the linear coordinates \(d\chi_j\). These character classes generate \(H^*(BT;\mathbf C)\).
+
+If the associated standard-character line is taken to be the tautological line, its Chern class is the negative of the positive generator \(c_j\) of Lesson 13. Equation (3.18) retains that sign: identify \(d\chi_j\) with \(c_1(\mathcal L_{\chi_j})\), not silently with its negative. Choosing the dual character line gives the positive generator. Either convention gives the same polynomial-ring assertion.
+
+Every Weyl-invariant polynomial in these degree-two classes lifts through (3.14) to some \(f\). Equation (3.18) proves it lies in the image of (3.13). We have proved
+\[
+H^*(BG;\mathbf C)\xrightarrow{\sim}H^*(BT;\mathbf C)^W.
+\tag{3.19}
+\]
+All constructions were performed on genuine finite smooth manifolds in the relevant range. No infinite-dimensional differential-form manifold or imported Borel theorem was used.
+
+### 3.6. Rational descent and all characteristic-zero coefficients
+
+The rational injection (3.13) first gives finiteness in each degree over \(\mathbf Q\), because the torus groups are finite dimensional in each degree. On a sufficiently large finite frame, that torus calculation is the projective model calculation by the same common-product comparison used in GL-SAT-06, equation (5.26).
+
+Here is the coefficient passage without a finite-CW assumption. For the singular chain complex over \(\mathbf Q\), choose degreewise complements to boundaries in cycles and to cycles in chains. It splits as its homology with zero differential plus two-term contractible summands. Applying \(\operatorname{Hom}_{\mathbf Q}(-,\Lambda)\) therefore gives
+\[
+H^j(Y;\Lambda)=\operatorname{Hom}_{\mathbf Q}
+(H_j(Y;\mathbf Q),\Lambda).
+\tag{3.20}
+\]
+If \(H^j(Y;\mathbf Q)=\operatorname{Hom}(H_j(Y;\mathbf Q),\mathbf Q)\) is finite dimensional, then \(H_j(Y;\mathbf Q)\) is finite dimensional: any arbitrarily large independent finite family in the latter has arbitrarily large independent dual functionals, extended from its span by a vector-space complement. In that case (3.20) is the canonical scalar-extension isomorphism
+\[
+H^j(Y;\mathbf Q)\otimes_{\mathbf Q}\Lambda
+\xrightarrow{\sim}H^j(Y;\Lambda).
+\tag{3.21}
+\]
+Apply this degreewise to the sufficiently large finite Borel models. Finiteness follows from the trace injection and the bounded torus comparison, so (3.21) applies. The maps are natural and preserve products. Thus it also applies to the stable \(BG\) groups.
+
+Finite-group invariants commute with field extension by the averaging projector \(|W|^{-1}\sum_w w\). The map
+\[
+H^*(BG;\mathbf Q)\longrightarrow H^*(BT;\mathbf Q)^W
+\]
+becomes (3.19) after extension to \(\mathbf C\), by (3.21). Faithful extension reflects kernel and cokernel degreewise, so it is already an isomorphism over \(\mathbf Q\), and then over every \(\Lambda\):
+\[
+H^*(BG;\Lambda)\xrightarrow{\sim}H^*(BT;\Lambda)^W.
+\tag{3.22}
+\]
+
+Likewise (3.14) descends to the rational split model and extends to \(\Lambda\). In each polynomial degree, infinitesimal invariants are the simultaneous kernels of finitely many rational linear matrices, one for each element of a rational Lie basis. Kernels commute with field extension. The root-group and torus argument of §7 identifies them with the algebraic group invariants over every characteristic-zero field. The restriction map is rational, becomes an isomorphism over \(\mathbf C\), and therefore is an isomorphism over \(\mathbf Q\) and \(\Lambda\). Combining it with the character Chern-class identification of the torus and (3.22) proves (3.11).
+
+This also proves odd cohomology vanishing for \(BG\), but the stronger invariant-polynomial identification is what closes Lesson 13's general outline assertion. It is a cohomology-ring theorem; it does not claim commutative differential graded formality of \(BG\) or the general derived Satake equivalence.
+
 
 ## 4. Why the abelian equivalence cannot simply be derived
 
@@ -165,46 +295,217 @@ F=R\operatorname{Hom}(\Lambda,-):
 
 is an equivalence. Here is the generator proof. It sends \(\Lambda\) to the free module \(A_T\), and the comparison of mapping complexes is an isomorphism on that generator by the definition of \(A_T\). Fixing one argument, the objects for which the comparison is an isomorphism form a stable subcategory closed under direct summands, because both mapping functors turn triangles into triangles. First extend in the second argument, then in the first. This proves full faithfulness on the thick subcategory. Its image contains the free module and is closed under shifts, cones and summands; full faithfulness lifts an idempotent and its splitting. It is therefore all of \(\operatorname{Perf}(A_T)\). This is differential graded Morita equivalence on the generated category, proved here.
 
-For \(\Lambda=\mathbf R\) or \(\mathbf C\), its algebra has the explicit commutative model
-
+For every characteristic-zero field, we now construct a commutative model
 \[
-A_T\simeq\Lambda[c_1,\ldots,c_r],\qquad |c_i|=2,
-\quad d=0.
+A_T\simeq P_\Lambda=\Lambda[c_1,\ldots,c_r],
+\qquad |c_i|=2,\quad d=0.
 \tag{5.2}
 \]
+The generators retain the projective normalization \(c_i=-c_1(\text{tautological line})\).
 
-To justify the algebra assertion, use the finite models \(X_n=(\mathbf {CP}^n)^r\). On each factor choose the negative of the first Chern form of the tautological line, so that it represents \(c_i\). Orthogonal projection of the ordinary derivative in the trivial bundle defines its connection; projection commutes with the linear projective inclusions. Its forms are therefore compatible. The closedness, class identification and projective-line integral \(-1\) are proved in Connections, curvature and characteristic forms, Theorem D.1 and §D.3. Put \(D_n=\Omega^*(X_n;\Lambda)\), with wedge product, and \(D=\varprojlim D_n\). Sending \(c_i\) to those compatible closed forms defines a commutative differential graded algebra map \(\Lambda[c_1,\ldots,c_r]\to D\).
+### 5.1. Polynomial simplex forms
 
-Here are the comparisons behind that assertion. On a coordinate ball, integration along the radial homotopy gives \(dh+hd=1-\mathrm{ev}_0\). Thus the augmented form sheaves resolve the constant real or complex sheaf. A subordinate partition of unity contracts their augmented Čech rows by insertion of its functions and summation. Connections, curvature and characteristic forms, §A.3, equations (A.7)–(A.12) proves this comparison and its multiplicative Čech complexes: the product of bidegrees \((p,q)\) and \((p',q')\) has sign \((-1)^{qp'}\). Through their common constants complex these are multiplicative quasi-isomorphisms, rather than a claim that simplex integration itself preserves products.
-
-Restriction of forms from \(X_{n+1}\) to \(X_n\) is surjective. In charts adapted to the closed projective submanifold, extend coefficients in the normal coordinates; a partition and cutoff patch these local extensions. Consequently the map \(1-\mathrm{shift}\) on \(\prod_nD_n\) is degreewise surjective: choose its coordinates successively by lifting along the surjective restrictions. This gives the short exact sequence of complexes
-
+For the affine standard simplex define the commutative differential graded algebra
 \[
-0\longrightarrow D\longrightarrow\prod_nD_n
- \xrightarrow{1-\mathrm{shift}}\prod_nD_n\longrightarrow0.
+\Omega_{\mathrm{pol}}(\Delta^p;\mathbf Q)
+=
+\mathbf Q[t_0,\ldots,t_p,dt_0,\ldots,dt_p]/
+(\textstyle\sum t_i-1,\sum dt_i).
+\tag{5.5}
+\]
+The \(t_i\) have degree zero, the \(dt_i\) degree one, the latter anticommute, and \(d(t_i)=dt_i\). Its extension to \(\Lambda\) is defined by the same formula. Every affine map taking vertices to vertices induces a pullback of commutative differential graded algebras.
+
+**Lemma 5.1.** Compatible polynomial forms on any union of faces extend to the simplex, degree by degree. Polynomial forms on a simplex have cohomology \(\mathbf Q\) in degree zero and zero otherwise. Polynomial forms vanishing on its boundary have cohomology \(\mathbf Q\) in degree \(p\), with oriented integration giving the isomorphism.
+
+**Proof.** The ideal of restriction to face \(i\) in the differential-form algebra is \((t_i,dt_i)\). For any proper subset of the vertices, its \(t_i\)'s can be included in affine coordinates: eliminate the \(t_j\) of one remaining vertex. In these coordinates the face ideals are coordinate ideals. The monomial basis, including exterior monomials in the differentials, proves the following distributive property: the intersection of a list of face ideals is spanned by the monomials containing, for every listed index \(i\), either \(t_i\) or \(dt_i\). Successively correcting a lift on one face by a term vanishing on the previous faces therefore extends every compatible family for a proper subset of the faces.
+
+For the complete boundary, localize the coordinate ring where \(t_j\) is invertible. Face \(j\) is absent there, and the other faces have precisely the coordinate description just given. Thus the boundary restriction is locally surjective on the affine cover \(D(t_j)\). It is a map of modules over the affine polynomial coordinate ring, so its cokernel is zero when all these localizations vanish. Concretely, denominators in the finitely many local lifts can be cleared by powers \(t_j^m\); the ideal generated by these powers is the unit ideal. Indeed, expand \((\sum t_j)^{(p+1)(m-1)+1}=1\): every monomial contains one \(t_j^m\). Combining the cleared lifts with this identity gives a global polynomial lift. This proves the extension claim without a smooth partition of unity.
+
+Contract \(\Delta^p\) affinely to one vertex. Pull a form back along this polynomial homotopy, contract with the parameter vector, and integrate the polynomial parameter from zero to one. A monomial integral is a rational number \(1/(a+1)\). The product rule and the fundamental theorem of polynomial calculus give
+\[
+dh+hd=\mathrm{id}-\mathrm{ev}_{\mathrm{vertex}}.
+\tag{5.6}
+\]
+This proves the absolute cohomology calculation over \(\mathbf Q\), and after every characteristic-zero extension.
+
+Integration on an oriented \(p\)-simplex is rational: repeated polynomial integration gives rational monomial integrals. Stokes follows by repeated one-variable polynomial calculus, with the alternating face signs. Hence integration is a map to simplicial cochains.
+
+The boundary-extension assertion gives short exact sequences when a finite simplicial complex is built by adding its simplices in increasing dimension. In dimension zero integration is the identity. Induct on the dimension. For \(\partial\Delta^p\), all its simplices have smaller dimension, so integration is already a cohomology isomorphism. Compare the short exact sequences for forms and simplicial cochains of \((\Delta^p,\partial\Delta^p)\). The absolute calculation (5.6) and the boundary induction imply the relative assertion. Attaching \(p\)-simplices now proves the comparison for every finite complex. In particular the relative cohomology is one line in degree \(p\), and the oriented integration of a normalized top form is \(+1\). No multiplicativity of simplex integration is asserted. \(\square\)
+
+The proof also works with a coefficient vector space \(V\): tensor the finite-dimensional-degree diagram over the field with \(V\), or apply the formulas pointwise to locally constant \(V\)-valued coefficients.
+
+### 5.2. A commutative sheaf resolution
+
+Let \(X\) be a compact smooth manifold. Choose a finite cover \(\mathcal U=(U_i)\) by strongly convex neighborhoods. The required convex neighborhoods are proved in Riemannian connections and convex neighbourhoods, Theorem B.5. Each nonempty finite intersection is contractible: the unique globally minimizing geodesic between two of its points belongs to every member, and contraction to a fixed point is smooth. Intersecting such an intersection with any sufficiently small strongly convex neighborhood has the same property.
+
+For \(J=\{i_0<\cdots<i_p\}\), put \(U_J=\cap_{i\in J}U_i\), and let \(j_J:U_J\to X\) be the open inclusion. Empty intersections contribute zero. Define a sheaf of differential graded algebras \(\mathcal A_{\mathcal U}\) as compatible families
+\[
+\alpha_J\in
+(j_J)_*\underline{\Omega_{\mathrm{pol}}(\Delta^p;\mathbf Q)}.
+\tag{5.7}
+\]
+Compatibility means that restriction of \(\alpha_J\) to a face equals the restriction of the corresponding \(\alpha_{J\setminus i}\) to \(U_J\). Coefficients are locally constant; the differential is the polynomial differential in the simplex variables. Multiplication is pointwise wedge multiplication. There are only finitely many subsets \(J\), so this is a bounded complex of sheaves.
+
+There is a multiplicative augmentation
+\[
+\mathbf Q_X\longrightarrow\mathcal A_{\mathcal U}
+\tag{5.8}
+\]
+given by the same constant on all simplices.
+
+**Lemma 5.2.** The augmentation (5.8) is a quasi-isomorphism. Every term of \(\mathcal A_{\mathcal U}\) is acyclic for global sections. Therefore
+\[
+A_{\mathcal U}=\Gamma(X,\mathcal A_{\mathcal U})
+\tag{5.9}
+\]
+is a commutative differential graded model of \(R\Gamma(X,\mathbf Q)\), including its product. The same construction and conclusion hold with every characteristic-zero field.
+
+**Proof.** Truncate the diagram (5.7) to intersections with at most \(p+1\) indices. Lemma 5.1 makes the map to its preceding truncation surjective. Its kernel is the finite sum, over \(|J|=p+1\), of
+\[
+(j_J)_*\underline{\Omega_{\mathrm{pol}}(\Delta^p,\partial\Delta^p)}.
+\tag{5.10}
+\]
+This is an assertion about sheaves and about their degree terms: the rational linear extension operator applies pointwise to locally constant coefficient families.
+
+Integrate the component on \(p\)-simplices. This gives a map of complexes from (5.7) to the ordinary alternating Čech sheaf complex, whose degree-\(p\) term is \(\bigoplus_{|J|=p+1}(j_J)_*\mathbf Q\). Stokes gives exactly the Čech signs. On each kernel (5.10), integration is a quasi-isomorphism to that Čech term placed in degree \(p\), by Lemma 5.1. Induction on the finite diagram therefore proves that this integration map is a quasi-isomorphism of sheaf complexes.
+
+The augmented Čech sheaf complex is exact. Near a point choose one cover member containing a whole neighborhood; insertion of its index contracts that augmented complex on the neighborhood. This also applies to boundary germs of the other cover members. Thus (5.8) is a quasi-isomorphism. This argument does not interchange an infinite product with stalks.
+
+For any coefficient vector space \(V\), the open direct image \(j_{J*}\underline V\) has no higher derived direct images. Its stalk calculation uses neighborhoods \(W\) with \(W\cap U_J\) either empty or strongly convex. Such nonempty intersections have constant-sheaf cohomology \(V\) in degree zero and zero otherwise. The usual open-direct-image stalk formula follows by restricting an injective resolution and taking the filtered colimit over \(W\). The sheaf/singular comparison required here is Constructible complexes on algebraic varieties, Appendix C.2; the good-cover cochain proof is Connections, curvature and characteristic forms, §A.3. Its subdivision, prism and augmented Čech contractions are linear over the integers and apply with any coefficient vector space \(V\); thus the same comparison applies to the locally constant vector spaces used here.
+
+Consequently
+\[
+H^q(X,j_{J*}\underline V)=H^q(U_J,\underline V)=0
+\quad(q>0).
+\tag{5.11}
+\]
+Each degree term of (5.7) is a finite extension of these acyclic sheaves, by the degreewise version of the filtration (5.10). It is therefore acyclic. A bounded acyclic resolution computes derived global sections, by the earlier bounded-below sheaf-resolution argument. This proves (5.9).
+
+Finally, the product is the actual derived product: (5.8) is a map of sheaf differential graded algebras, and multiplication on its acyclic resolution represents the product of the constant sheaf. Integration was used only to prove a quasi-isomorphism of underlying complexes. It was not used as a purported multiplicative map to singular cochains. \(\square\)
+
+Because every \(U_J\) is connected, (5.9) is just the algebra of compatible polynomial forms on the finite nerve of the cover. This gives an explicit rational commutative replacement for the smooth real/complex forms used in current Lesson 13.
+
+**Naturality and coherence.** For \(f:Y\to X\), take a finite strongly convex cover \(\mathcal V\) of compact \(Y\) refining \(f^{-1}\mathcal U\). Choose an index assignment \(a\) with \(V_j\subset f^{-1}U_{a(j)}\). The induced affine vertex maps of nerves pull polynomial forms back and give a unital commutative differential graded map
+\[
+A_{\mathcal U}\longrightarrow A_{\mathcal V}.
+\tag{5.12}
+\]
+Its sheaf augmentation identifies its cohomology map with the actual pullback. For refinements of the same \(X\), it is a quasi-isomorphism.
+
+If two index assignments are chosen, their combined images on a nonempty intersection \(V_J\) lie in one simplex of the target nerve: that intersection lies in all the indicated inverse images. Linear interpolation between the two affine vertex maps gives a polynomial homotopy with parameter algebra \(\mathbf Q[s,ds]\). With several choices, barycentric interpolation gives the corresponding simplex of homotopies. It restricts to the prescribed homotopies on every face. Common strongly convex refinements therefore give explicit compatible comparisons, including higher composition comparisons. They preserve multiplication throughout.
+
+### 5.3. Compatible classifying-torus models
+
+Use \(X_n=(\mathbf {CP}^n)^r\). Lemma 5.2 supplies a rational commutative model \(A_n\) from a finite strongly convex cover. For the inclusion \(X_n\to X_{n+1}\), choose a common good refinement on \(X_n\) of its own cover and the pulled-back cover of \(X_{n+1}\). Its model \(B_n\) gives maps
+\[
+q_n:A_n\longrightarrow B_n,\qquad
+r_n:A_{n+1}\longrightarrow B_n,
+\tag{5.13}
+\]
+where \(q_n\) is a quasi-isomorphism and \(r_n\) represents restriction. This avoids assuming that arbitrarily chosen good covers are nested.
+
+Define the following commutative differential graded algebra:
+\[
+D_{\mathbf Q}=
+\left\{(a_n,p_n):
+a_n\in A_n,\ p_n\in B_n[s,ds],\
+p_n(0)=q_n(a_n),\
+p_n(1)=r_n(a_{n+1})\right\}.
+\tag{5.14}
+\]
+Products and differentials are componentwise. This is the explicit path model of the inverse system (5.13), not an unspecified commutative strictification.
+
+Projection to the \(a_n\)'s is surjective in every graded degree: interpolate prescribed endpoint values linearly in \(s\). Its kernel is
+\[
+\prod_n B_n\otimes\Omega_{\mathrm{pol}}([0,1],\{0,1\}).
+\]
+Relative polynomial integration identifies the cohomology of this kernel in degree \(j\) with \(\prod_n H^{j-1}(B_n)\). The resulting long exact sequence is the kernel/cokernel sequence for
+\[
+(x_n)\longmapsto(q_nx_n-r_nx_{n+1})
+\tag{5.15}
+\]
+on the cohomology products. This is checked by differentiating the endpoint interpolation; the overall sign in each degree depends on the tensor-order convention and does not change the kernel or cokernel.
+
+By the integral projective-space calculation of Lesson 13, §3.1, its product comparison and coefficient extension,
+\[
+H^*(X_n;\mathbf Q)=
+\mathbf Q[c_1,\ldots,c_r]/(c_1^{n+1},\ldots,c_r^{n+1}).
+\tag{5.16}
+\]
+In every degree the restriction system eventually stabilizes. The map (5.15) is consequently surjective on each cohomology product: solve on the stable tail by successive lifting, then solve the finitely many preceding coordinates backwards. Products of vector-space complexes preserve cohomology, since primitives can be chosen in every coordinate. The long exact sequence therefore gives, multiplicatively,
+\[
+H^*(D_{\mathbf Q})=\mathbf Q[c_1,\ldots,c_r].
+\tag{5.17}
 \]
 
-Products of vector-space complexes commute with cohomology, since primitives can be chosen in every coordinate. The cohomology exact sequence therefore identifies \(H^j(D)\) with \(\varprojlim H^j(D_n)\) once \(1-\mathrm{shift}\) on the preceding cohomology products is surjective. The groups in every fixed degree eventually stabilize by (3.2)–(3.4); a stable tail has that surjectivity by recursive lifting, and the finitely many initial coordinates can be solved backwards. Thus the possible \(\varprojlim^1\) correction is zero. The polynomial-to-forms map is an isomorphism on every cohomology group, proving (5.2).
+Choose a closed representative \(z_{i,n}\in A_n^2\) of each integral Chern class's rational image. The two classes in \(B_n\) agree. Hence choose \(b_{i,n}\in B_n^1\) with
+\[
+db_{i,n}=r_n(z_{i,n+1})-q_n(z_{i,n}).
+\]
+The path
+\[
+p_{i,n}=q_n(z_{i,n})+d(s b_{i,n})
+=q_n(z_{i,n})+s\,db_{i,n}+ds\,b_{i,n}
+\tag{5.18}
+\]
+is closed and has exactly the two required endpoints. Thus the families \((z_{i,n},p_{i,n})\) are actual closed degree-two elements \(z_i\in D_{\mathbf Q}\). Freeness of the polynomial algebra gives a commutative differential graded map
+\[
+\mathbf Q[c_1,\ldots,c_r]\longrightarrow D_{\mathbf Q},
+\qquad c_i\longmapsto z_i.
+\tag{5.19}
+\]
+It is a quasi-isomorphism by (5.17), not merely a ring isomorphism on an unidentified endomorphism algebra.
 
-For completeness this also supplies compatible enhanced objects, not just a graded endomorphism calculation. A finite semifree \(D\)-module \(M\) gives on \(X_n\) the sheaf complex \(\Omega^\bullet_{X_n}\otimes_D M\). Its free generator is the de Rham resolution of the constant sheaf. For any finite construction and fixed morphism-degree range, take \(n\) beyond that range. The point-resolution triples and comparisons of Theorems B.7–B.9 in the equivariant lesson apply. Maps on the free generators are the just-computed stable form complexes; extending the comparison in both arguments through their finite cones proves full faithfulness. Truncation generation proves essential surjectivity. Retracts have cohomology sheaves equal to images of idempotents on finite constant local systems, and hence remain bounded and finite. This directly realizes the torus enhancement used in (5.1).
+Repeat (5.14) with \(\Lambda\)-valued polynomial forms. The exact same relative-interval and stable-cohomology proof gives
+\[
+H^*(D_\Lambda)=\Lambda[c_1,\ldots,c_r].
+\]
+Extend the rational cycles (5.18) into \(D_\Lambda\). They give
+\[
+P_\Lambda\xrightarrow{\ \sim\ }D_\Lambda
+\tag{5.20}
+\]
+as commutative differential graded algebras. No embedding of \(\Lambda\) into \(\mathbf C\) is needed, and no claim that scalar extension commutes with unrestricted products is needed. Equivalently \(D_{\mathbf Q}\otimes\Lambda\to D_\Lambda\) is a quasi-isomorphism, because the preceding explicit calculation identifies its induced cohomology map.
 
-For the remaining tensor assertions of this section take \(\Lambda=\mathbf R\) or \(\mathbf C\); the preceding associative generator Morita assertion retains its stated characteristic-zero coefficients. The monoidal comparison is derived tensor over the commutative form algebra. For objects generated by the constant unit there is a natural map
+The sheaf resolutions of §5.2, their pullbacks, and their polynomial comparison homotopies show that (5.14) models the actual stable derived sections of the projective Borel models. In each prescribed finite morphism range the projection to a sufficiently large \(A_n\) is the corresponding comparison. The frame/product comparisons in Equivariant perverse sheaves and perverse sheaves on stacks, Lemma B.7, Proposition B.8 and Theorem B.9 identify these projective models with the bounded Borel category. We check the enhancement directly. On the finite free unit generators, the sheaf mapping complexes are the derived section complexes just resolved by \(A_n\). Their comparisons preserve composition because multiplication of the commutative sheaf resolution represents composition of the unit endomorphisms. Fixing one argument and then the other, mapping complexes of finite cones are cones of these complexes, so the quasi-isomorphism extends through every finite cone. A retract takes the image of the corresponding commuting projectors and retains the comparison. The path model records the actual refinement homotopies, and its projection to \(A_n\) is a quasi-isomorphism in every fixed range once \(n\) is large enough. Thus these compatible comparisons identify the stable mapping complexes with \(D_\Lambda\). Tensor products are supplied by the same strictly commutative sheaf multiplication, whose associativity, unit and symmetry identities commute with every refinement and polynomial homotopy. This proves the enhanced comparison used here, in addition to the earlier triangulated model construction.
 
+Start the system with \(X_0=\operatorname{pt}\) and its one-member cover, so \(A_0=\Lambda\). Projection from (5.14) to this component is an augmentation \(D_\Lambda\to\Lambda\). It represents restriction to the chosen base point of the projective Borel models, and hence forgetting equivariance on the point. Since its target has no degree-two elements, (5.20) intertwines it with the usual polynomial augmentation \(c_i\mapsto0\). This also fixes the underlying-point functor; it is not deduced from an abstract unaugmented Morita equivalence.
+
+For additional concreteness, a finite-cell \(P_\Lambda\)-module \(M\) is realized on \(X_n\) by
+\[
+\mathcal A_n\otimes_{P_\Lambda}M,
+\tag{5.21}
+\]
+using (5.18). On free generators its derived mapping complex is \(A_n\); finite cones and retracts extend this comparison. Since (5.20) is an isomorphism in every stable range, take \(n\) beyond the finitely many shifts and degrees used in any such mapping comparison. These are precisely the common-model comparisons of the bounded equivariant construction. Equivalently, use the existing associative generator equivalence with the actual unit endomorphism algebra, and replace that algebra by the explicitly identified model \(D_\Lambda\). This constructs the object by finite cones of actual equivariant unit morphisms. Its quotient component is (5.21), because that identity holds on the unit and its mapping algebra, then on finite cones and retracts.
+
+The augmented comparison just established identifies the underlying point complex as \(\Lambda\otimes_{P_\Lambda}^{\mathbf L}M\), which is bounded and finite dimensional. One can check the required resolution comparison directly: the free space \((\mathbf C^{n+1}\setminus0)^r\) has zero \(H^2\) for \(n\ge1\), so the pulled-back Chern cycles have primitives. It has a finite good cover obtained from a finite strongly convex cover of \((S^{2n+1})^r\) times its radial \(\mathbf R^r\) factor. Hence §5.2's polynomial model applies there as well. Formula (5.18), with endpoint zero, compares the polynomial action to its augmentation and gives the actual point-resolution isomorphism. The finite cones of unit maps, rather than an unsupported assertion about uniqueness of all algebra nullhomotopies, provide the compatible derived triples.
+
+### 5.4. The symmetric tensor comparison
+
+The generation argument above applies to every characteristic-zero field: at a point all equivariant cohomology objects are finite constant vector spaces, and finite ordinary truncations generate the category from its unit. Its associative generator argument therefore identifies the category at one label with perfect modules over its actual derived endomorphism algebra.
+
+The quasi-isomorphism (5.20) has the following symmetric tensor realization. On the finite model the multiplication map is
+\[
+(\mathcal A_n\otimes_P M)\otimes_\Lambda
+(\mathcal A_n\otimes_P N)
+\longrightarrow
+\mathcal A_n\otimes_P(M\otimes_P N).
+\tag{5.22}
+\]
+Use finite-cell representatives, so the displayed relative tensors already compute derived tensors. On two free generators (5.22) is multiplication
+\(\mathcal A_n\otimes_\Lambda\mathcal A_n\to\mathcal A_n\). It is a quasi-isomorphism: the augmentation \(\Lambda\to\mathcal A_n\) is a stalkwise quasi-isomorphism, and tensor over a field preserves it. Fixing one argument, the class of modules for which (5.22) is a quasi-isomorphism is closed under finite cones and retracts; then fix the other. It follows for all perfect modules.
+
+Associativity, the unit, and graded symmetry of these maps are the corresponding identities of the commutative sheaf differential graded algebra. Refinement and path comparisons preserve those identities. They therefore give a coherent symmetric tensor equivalence, rather than only an associative Morita equivalence or a cohomology-algebra calculation.
+
+Distinct reduced points of \(\operatorname{Gr}_T\) have no morphisms, bounded support is finite, and convolution adds labels. This proves (5.4) below. The character projectors of the dual torus, proved in Lesson 12, equation (7.6), identify those labels with its weight decomposition. Thus (5.4) is also the perfect dual-torus-equivariant polynomial model over every characteristic-zero field.
+
+In the generated category the resulting monoidal comparison is
 \[
 F(K)\otimes_{A_T}^{\mathbf L}F(L)
- \longrightarrow F(K\otimes L),
+ \xrightarrow{\sim}F(K\otimes L).
 \tag{5.3}
 \]
-
-formed by multiplication and evaluation in the constant-sheaf endomorphism algebra. In the real or complex form model it is the inverse of the wedge-product comparison
-
-\[
-(\Omega^\bullet_{X_n}\otimes_D M)\otimes_\Lambda
-(\Omega^\bullet_{X_n}\otimes_D N)
- \longrightarrow\Omega^\bullet_{X_n}\otimes_D(M\otimes_D N).
-\]
-
-That comparison is a quasi-isomorphism on the free generators, since the constant-to-forms augmentation is a stalkwise quasi-isomorphism. Exactness extends it through finite cones and summands in each argument. Wedge multiplication supplies its associativity, unit and graded symmetry directly. Equivalently (5.3) is an isomorphism first on the unit and then on its whole thick category. Thus (5.1) is a tensor equivalence with the derived tensor product; the commutative polynomial presentation uses the stated real or complex coefficients.
+The sheaf multiplication just proved gives this map on the unit, and finite cones and commuting projectors extend it in both variables. Its associativity, unit and graded symmetry are those of that multiplication.
 
 The reduced support of \(\mathrm{Gr}_T\) is indexed by \(L=X_*(T)\). Different supported points have no morphisms between them, as closed restriction detects; point convolution adds the labels. The full bounded finite-support torus statement is therefore
 
@@ -218,7 +519,7 @@ D^b_{L^+T,c}(\mathrm{Gr}_T)
 \tag{5.4}
 \]
 
-The dual torus has character lattice \(L\). Its adjoint action on its Lie algebra is trivial, and its representation coactions split modules into weights, by the coefficient-projector proof in Lesson 12, equation (7.6), degree by degree. Finite cell modules and their summands have finitely many weights. For real or complex coefficients, (5.2) therefore makes (5.4) the torus instance of perfect dual-torus-equivariant modules over the symmetric algebra with its degree-two generators. The unit at label zero corresponds to the **free module**, whose endomorphism algebra is \(A_T\).
+The dual torus has character lattice \(L\). Its adjoint action on its Lie algebra is trivial, and its representation coactions split modules into weights, by the coefficient-projector proof in Lesson 12, equation (7.6), degree by degree. Finite cell modules and their summands have finitely many weights. For every characteristic-zero coefficient field, (5.2) therefore makes (5.4) the torus instance of perfect dual-torus-equivariant modules over the symmetric algebra with its degree-two generators. The unit at label zero corresponds to the **free module**, whose endomorphism algebra is \(A_T\).
 
 This is not a category of ordinary graded modules with all differentials discarded. Cones, derived tensor products and mapping complexes are essential. For example the cone of multiplication by \(c\), with the suitable shift, gives the perfect module \(\Lambda=A_{\mathbf G_m}/(c)\), while the unit remains \(A_{\mathbf G_m}\). The two objects have different endomorphism algebras.
 
@@ -424,9 +725,9 @@ The relevance to geometric Langlands is a precise preview. Hecke correspondences
 
 **Solution.** By definition this is \(H^*(B\mathbf G_m,\Lambda)\). The contraction and projective bundle model in §3.1 give \(B\mathbf G_m\simeq\mathbf {CP}^{\infty}\). There is one even cell in each nonnegative even degree. The finite Gysin calculation (3.2) proves that the positive generator \(c\) in degree two has powers generating all those groups. Their restrictions stabilize, and all odd groups are zero. Hence the answer is the polynomial algebra \(\Lambda[c]\), with \(|c|=2\), including its multiplication.
 
-**Exercise 13.2 (easy).** State and verify derived Satake for a rank-\(r\) torus with real or complex coefficients. Identify the unit and convolution.
+**Exercise 13.2 (easy).** State and verify derived Satake for a rank-\(r\) torus over any characteristic-zero coefficient field. Identify the unit and convolution.
 
-**Solution.** Put \(L=X_*(T)\) and \(A=\Lambda[c_1,\ldots,c_r]\), with zero differential and each generator of degree two. At one support point, truncation triangles and constant local systems give \(\operatorname{thick}(\Lambda)\). The mapping-complex generator argument of (5.1), together with the multiplicative form model (5.2), identifies it with \(\operatorname{Perf}(A)\). Distinct support points have no morphisms; finite support therefore gives the finite sum over \(L\). The tensor comparison (5.3) proves that convolution adds labels and tensors over \(A\), exactly (5.4). Coefficient projectors identify labels with characters of \(\widehat T\). The object at label zero is the free module \(A\). Every ingredient is proved in §5, so this is the fixed-point differential graded tensor equivalence, with no claim about Ran factorization.
+**Solution.** Put \(L=X_*(T)\) and \(A=\Lambda[c_1,\ldots,c_r]\), with zero differential and each generator of degree two. At one support point, truncation triangles and constant local systems give \(\operatorname{thick}(\Lambda)\). The mapping-complex generator argument of (5.1), together with the commutative polynomial-simplex model (5.2), identifies it with \(\operatorname{Perf}(A)\). Distinct support points have no morphisms; finite support therefore gives the finite sum over \(L\). The tensor comparison (5.3) proves that convolution adds labels and tensors over \(A\), exactly (5.4). Coefficient projectors identify labels with characters of \(\widehat T\). The object at label zero is the free module \(A\). Every ingredient is proved in §5, so this is the fixed-point differential graded tensor equivalence, with no claim about Ran factorization.
 
 **Exercise 13.3 (medium).** For \(G=\mathbf G_m\), show that \(\operatorname{Ext}^1\) between simple objects in the Satake heart vanishes, while the unit has nonzero \(\operatorname{Ext}^2\) in the Borel equivariant derived category. Explain the corresponding degree for \(SL_2\).
 
@@ -446,9 +747,11 @@ The two generator mapping-complex arguments give \(\operatorname{thick}_A(k)\sim
 
 ## 11. Scope and free reading
 
-The proved statements are the unit self-Ext formula (2.3), both classifying-space rings in §3, the torus tensor Morita model with the stated coefficients in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. The general bounded, renormalized, singular-support and factorization theorems in §8 are precisely stated external results, whose proofs remain outside this lesson.
+The proved statements are the unit self-Ext formula (2.3), the general invariant-polynomial classifying-space ring in §3, the torus symmetric tensor model over every characteristic-zero field in §5, the two Koszul endomorphism calculations and generated-category equivalences in §6, and the compactness distinction in §7. The five exercises use those proofs. The general bounded, renormalized, singular-support and factorization theorems in §8 are stated here; their general proofs remain unfinished.
 
 Free further reading:
+
+- [Luigi Lunardon, *Some remarks on Dupont contraction*, arXiv:1807.02517](https://arxiv.org/abs/1807.02517), for polynomial simplex forms and simplicial comparisons.
 
 - [Bezrukavnikov–Finkelberg, *Equivariant Satake category and Kostant–Whittaker reduction*, arXiv:0707.3799v4](https://arxiv.org/abs/0707.3799v4), Theorem 5 and §6.6.
 - [Arinkin–Gaitsgory, *Singular support of coherent sheaves, and the geometric Langlands conjecture*, arXiv:1201.6343v4](https://arxiv.org/abs/1201.6343v4), §§12.2–12.5.

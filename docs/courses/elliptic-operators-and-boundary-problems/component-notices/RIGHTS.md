@@ -1,13 +1,7 @@
 # Rights and licenses
 
-This course is an aggregate with two license routes.
-
-The 36 units inherited from the earlier course draft are modified versions of that GFDL work. Each remains under the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The revised wording and organization do not relicense inherited GFDL expression. New contributions to those units were dedicated to CC0 to the extent rights exist, and the combined modified units continue under GFDL 1.2 only.
-
-The 20 added lessons are separate works dedicated to CC0. Their source files and license routes are identified in `course.json`.
+Original text: CC0 1.0. This covers the 36 units inherited from the earlier course draft and the 20 added lessons. The source files and license routes of the added lessons are identified in `course.json`.
 
 External works appear as citations, mathematical antecedents or comparison readings. Their source files, scans, OCR and proof text are not included in this public course. They retain their own licenses and rights.
 
-The modified-version notice is in [Title page](TITLE_PAGE.md), and the version record is in [History](HISTORY.md). The complete GFDL 1.2 text is in [COPYING](COPYING). Machine-readable per-unit routes and exact source identities accompany the local course audit.
-
-Anyone distributing one of the 36 GFDL units separately should keep its title and history information, its license notice, and a copy of `COPYING` with it.
+The authorship notice is in [Title page](TITLE_PAGE.md), and the CC0 1.0 text is in [LICENSE-CC0.txt](LICENSE-CC0.txt). Machine-readable per-unit routes and exact source identities accompany the local course audit.

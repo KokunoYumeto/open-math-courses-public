@@ -2,9 +2,9 @@
 
 This companion retains the complete scalar kernel proof, Sections 13.1–13.6, equations GK1–GK26, and the bundle adapter G42–G43 from AN03-U012, *Detecting regularity without choosing coordinates*, in *Elliptic Operators & Boundary Problems: Renewed 2026 Course Draft*. Both imported mathematical blocks are unchanged. Entry E0 supplies the compact exhaustion referred to in Section 13.1. Entry E1 makes the compact-distribution strong topology and its smooth approximation explicit. Entry E2 gives the same topology conventions on manifolds.
 
-Original principal author and publisher: AN-03 course-writing task / AN-03 local course project. Copyright © 2026 AN-03 course project contributors. Earlier modification: AN-03 course-writing task and OpenAI Codex. This selection, exact prerequisite bindings and added entries: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
+Original principal author and publisher: AN-03 course-writing task / AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and OpenAI Codex. This selection, exact prerequisite bindings and added entries: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this component under the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. The [licence](notices/COPYING), [title page](notices/TITLE_PAGE.md), [history](notices/HISTORY.md) and [rights notice](notices/RIGHTS.md) accompany it. Its combined text retains that licence.
+Original text: CC0.
 
 The earlier programme proofs used here are:
 
@@ -12,7 +12,7 @@ The earlier programme proofs used here are:
 - [Finite calculus and compactness](../20261004-free-stationary-phase/prerequisite-completions.md), [exponential and trigonometric series, P13–P16](../20261004-free-stationary-phase/exponential-prerequisite-completions.md), and [compact parameter integration and Fourier bounds](../20261004-free-stationary-phase/quadratic-stationary-phase.md). P16 proves the periods and trigonometric identities used in the Fejér calculation; the Fourier expansion below is proved here.
 - [Compact bumps and densities, Appendix A.4–A.6](../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md), [product integration, M4](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md), and [base exhaustion and partitions, PS5](../20261004-free-intrinsic-graph/prerequisites/global-principal-symbol.md).
 
-The [proof map](proof-map.json) binds the precise dependencies. For primary-source comparison, the approved purchased reprint of Hörmander I, second edition (1990), Sections 5.1–5.2 was read. The retained programme proof constructs its kernel by periodic Fourier series and includes a full Baire argument and strong-dual estimates; the book's existence proof uses regularized kernels and a parameter Taylor argument. The book is cited as a mathematical source and comparison, and none of its text is included.
+The [proof map](proof-map.json) binds the precise dependencies. For primary-source comparison, the reprint of Hörmander I, second edition (1990), Sections 5.1–5.2 was read. The retained programme proof constructs its kernel by periodic Fourier series and includes a full Baire argument and strong-dual estimates; the book's existence proof uses regularized kernels and a parameter Taylor argument. The book is cited as a mathematical source and comparison, and none of its text is included.
 
 ## E0. Compact exhaustion and the topology conventions
 

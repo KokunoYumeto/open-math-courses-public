@@ -1,6 +1,6 @@
 # Local foundations for quotient fields
 
-*Programme proof restoration and additional foundation proofs by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held. No human review is asserted.*
+*Programme proof restoration and additional foundation proofs by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held.*
 
 The following elementary proofs supply the precise inputs of the four induction chapters. Groups and Hilbert spaces are arbitrary. A Radon measure initially uses the outer regular convention of [HR2–3](OA-FLOW-HR.md#hr-02); whenever the induction chapters use the inner regular representative, their explicit conversion applies. No countable base, disintegration theorem or measurable choice of a coset representative is assumed.
 

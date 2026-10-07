@@ -1,0 +1,7 @@
+# Intrinsic normal jets and the compact-frame quotient
+
+*K-theory of the leaf space*, Section 11AI, constructs the actual enlarged vector-jet spectrum, its faithful Gram field and dense closable covariant metric normal connection, then the original-unit compact-frame quotient. A selected invariant compact weight descends with its localized compact inverse. Its normal derivative estimates and the physical graph operator remain unproved.
+
+Use Python 3.13.9 and Pillow 12.2.0. The unchanged font, complete font notice, CC0 dedication and Python/Pillow notices are in the adjacent labelled-geometric-kernel resources. Run `python -B draw_compact_quotient.py --output-dir out`; `--resources` may select another copy of those public resources. Compare the PNG/SVG with `../../figures/` and QUOTIENT-FIGURE-CHECKS.json with this folder. No private inputs are read.
+
+The exact toy has K=S1, P=S1 over one point and a trivial complexified one-dimensional field with weight 2. The quotient inverse has rank one and norm 1/2. The different Haar field has one inverse eigenvalue 1/2 on every Fourier mode, so its inverse is noncompact by the complete infinite sequence proof in FD.7. The three rational toy checks verify the inverse equation, positivity and squared image norms; they do not establish the general quotient theorem or Fourier orthogonality. Circle coordinates are 513 numerical samples of u(theta)=(cos(theta),sin(theta)), with marker theta=pi/3. For the real infinite sequence use sqrt(2)cos(nu), n>=1.

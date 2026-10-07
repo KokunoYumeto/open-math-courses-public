@@ -8,7 +8,7 @@ The useful distinction is between three mechanisms. Completeness turns summable 
 
 Work over \(\mathbb K=\mathbb R\) or \(\mathbb C\), with complex-linear duals when \(\mathbb K=\mathbb C\). A normed space has the metric \(d(x,y)=\|x-y\|\); it is Banach when every Cauchy sequence converges in that norm. Write \(\mathcal L(X,Y)\) for continuous linear maps. No space below is assumed separable.
 
-Begin with [Metric and topological foundations](receiving-sources/metric-foundation-bridges.md): the complete real field, its Archimedean property, finite linear algebra, scalar Cauchy–Schwarz, compactness in finite dimensions, and Zorn's maximality principle. The measure and differentiation results of that lesson are not used here. Complex scalar completeness follows coordinatewise from real completeness. Zorn's principle is the stated assumption in the Hahn–Banach proof in Section 5.
+Begin with Metric and topological foundations: the complete real field, its Archimedean property, finite linear algebra, scalar Cauchy–Schwarz, compactness in finite dimensions, and Zorn's maximality principle. The measure and differentiation results of that lesson are not used here. Complex scalar completeness follows coordinatewise from real completeness. Zorn's principle is the stated assumption in the Hahn–Banach proof in Section 5.
 
 We use the definitions of open sets, neighborhoods, closure, the subspace topology and the product topology. Closure means that every open neighborhood meets the set. A map is continuous when inverse images of open sets are open; equivalently, each neighborhood of its value contains the image of a sufficiently small neighborhood of the input. The latter equivalence follows by taking inverse images in one direction and the union of these input neighborhoods in the other. Complements give the corresponding inverse-image statement for closed sets. Sections 9–10 prove the needed compactness and net assertions.
 
@@ -22,7 +22,7 @@ N\left(\sum_j a_je_j\right)\leq C|a|,
 \qquad C=\left(\sum_jN(e_j)^2\right)^{1/2}.
 \tag{B1}
 \]
-Also \(|N(u)-N(v)|\leq N(u-v)\leq C|u-v|\), so \(N\) is continuous in coordinates. For \(d>0\) there is \(c>0\) such that \(N(a)\geq c\) on \(|a|=1\). Otherwise choose unit vectors with norms tending to zero. The compactness interface Section 4 of [Metric and topological foundations](receiving-sources/metric-foundation-bridges.md) gives a coordinate-convergent subsequence whose limit is still a unit vector; continuity makes its norm zero, a contradiction. Scaling yields
+Also \(|N(u)-N(v)|\leq N(u-v)\leq C|u-v|\), so \(N\) is continuous in coordinates. For \(d>0\) there is \(c>0\) such that \(N(a)\geq c\) on \(|a|=1\). Otherwise choose unit vectors with norms tending to zero. The compactness interface Section 4 of Metric and topological foundations gives a coordinate-convergent subsequence whose limit is still a unit vector; continuity makes its norm zero, a contradiction. Scaling yields
 \[
 c|a|\leq N\left(\sum_j a_je_j\right)\leq C|a|.
 \tag{B2}
@@ -240,7 +240,7 @@ Let \(\mathcal U\) be any open cover of \(K\). There is \(\delta>0\) such that e
  B_K(x_{j_k},1/j_k)\subset B_K(x,r)\subset U,
  \tag{B15}
 \]
-contradicting its selection. Now take a finite cover of \(K\) by \(\delta/2\)-balls. For each center, choose a member of \(\mathcal U\) containing its \(\delta\)-ball; this finite list covers \(K\). Therefore \(K\) is compact. This proves the equivalence for the actual metric, without assuming completeness or any countability of the given cover. Lebl's linked metric-space chapter gives the classical comparison. The finite-dimensional Heine–Borel consequence, including its exercise step, is proved in Section 4 of [Metric and topological foundations](receiving-sources/metric-foundation-bridges.md) and supplies the input used in Section 2 here.
+contradicting its selection. Now take a finite cover of \(K\) by \(\delta/2\)-balls. For each center, choose a member of \(\mathcal U\) containing its \(\delta\)-ball; this finite list covers \(K\). Therefore \(K\) is compact. This proves the equivalence for the actual metric, without assuming completeness or any countability of the given cover. Lebl's linked metric-space chapter gives the classical comparison. The finite-dimensional Heine–Borel consequence, including its exercise step, is proved in Section 4 of Metric and topological foundations and supplies the input used in Section 2 here.
 
 The preceding general compactness argument is what permits a compact, possibly nonmetrizable parameter space in the topological results proved here. The metric equivalence is used only for spaces that actually carry the indicated metric.
 

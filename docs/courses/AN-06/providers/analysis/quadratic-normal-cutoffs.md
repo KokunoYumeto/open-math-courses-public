@@ -4,11 +4,13 @@
 
 <a id="quadratic-normal-cutoffs"></a>
 
-A boundary multiplier may need to distinguish the two normal directions. A tangential cutoff cannot do that. This reading proves the smooth division that replaces a general normal-frequency cutoff, on a scalar quadratic characteristic set, by a polynomial of degree one in normal frequency. It includes the double-root point, smooth parameters and the region without real normal roots. We then construct a multiplier with an exactly nonnegative Dirichlet boundary form and retain its complete forcing identity. This is part of the full propagation construction; it does not assert that its incoming localization or regularity iteration has already been proved.
+A boundary multiplier may need to distinguish the two normal directions. A tangential cutoff cannot do that. This reading proves the smooth division that replaces a general normal-frequency cutoff, on a scalar quadratic characteristic set, by a polynomial of degree one in normal frequency. It includes the double-root point, smooth parameters and the region without real normal roots. We then construct a multiplier with an exactly nonnegative Dirichlet boundary form and retain its complete forcing identity.
 
-Read [Dirichlet commutators and a local diffraction estimate](dirichlet-commutator-and-diffraction.md#dirichlet-commutator), [the finite tangential products and weak traces](real-normal-root-trace.md#6-semiclassical-tangential-norms-with-the-correct-leading-constant), and [the finite scalar calculus](classical-scalar-calculus.md#finite-scalar-calculus) first. The smooth sums below are justified directly, using the elementary fundamental theorem and uniform derivative convergence already used in that calculus. No preparation or division theorem is assumed.
+Read [Dirichlet commutators and a local diffraction estimate](dirichlet-commutator-and-diffraction.md#dirichlet-green-commutator), [the finite tangential products and weak traces](real-normal-root-trace.md#real-root-cutoff-products), and [the finite scalar calculus](classical-scalar-calculus.md#finite-scalar-calculus) first. The smooth sums below are justified directly, using the elementary fundamental theorem and uniform derivative convergence already used in that calculus. No preparation or division theorem is assumed.
 
-The free comparison is Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), Section 3.4: printed pp. 260–266, especially (3.4.35)–(3.4.42) and the two-root formulas near (3.4.53)–(3.4.56). That argument invokes smooth division. Sections 1–4 below supply the quadratic case rather than replacing its proof with a citation. The root formulas and signs are derived with this course's convention.
+For further reading, see Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), Section 3.4: printed pp. 260–266, especially the normal polynomial reduction in (3.4.35)–(3.4.42) and the two-root formulas near (3.4.53)–(3.4.56).
+
+<a id="quadratic-even-root"></a>
 
 ## 1. Even functions at a double root
 
@@ -41,6 +43,8 @@ Taylor's formula, or applying this operation to each even Taylor monomial, gives
 
 The same argument applies when other variables, such as an additional normal frequency, are included among the parameters. These uniform derivative bounds will control the divided difference below.
 
+<a id="quadratic-jet-extension"></a>
+
 ## 2. A smooth extension with prescribed one-sided derivatives
 
 We will need to extend a smooth function $e(z,R)$ from $R\geq0$ across zero. We give the actual construction. Write
@@ -50,7 +54,7 @@ We will need to extend a smooth function $e(z,R)$ from $R\geq0$ across zero. We 
  \tag{C4}
 \]
 
-Fix a smooth compactly supported scalar function $\theta$, equal to one near zero. Such a function was constructed in the earlier scalar calculus. For $R\leq0$, set
+Fix a smooth compactly supported scalar function $\theta$, equal to one near zero, using the earlier [smooth cutoff construction](elementary-functions-and-cutoffs.md#smooth-flat-cutoffs). For $R\leq0$, set
 
 \[
  e_-(z,R)=\sum_{j\geq0}
@@ -61,6 +65,8 @@ Fix a smooth compactly supported scalar function $\theta$, equal to one near zer
 Choose positive $\varepsilon_j\downarrow0$ as follows. For $j\geq1$, make the supremum of every derivative $\partial_R^k\partial_z^\alpha$ of the $j$th summand at most $2^{-j}$ whenever $k+|\alpha|\leq j-1$. This is possible simultaneously for that finite set of derivatives: differentiating the cutoff costs at most $\varepsilon_j^{-k}$, whereas $|R|^j\leq C_j\varepsilon_j^j$ on its support, so the resulting bound is $C_{j,k,\alpha}\varepsilon_j^{j-k}$. The exponent is positive. The coefficients and their derivatives are bounded on the compact parameter set. Also require $\varepsilon_j<\varepsilon_{j-1}/2$.
 
 For any fixed derivative order, the tail of (C5) and all derivatives of that order converge uniformly by the geometric majorant. The finitely many initial terms are smooth. Repeated use of the fundamental theorem identifies the limits as derivatives, proving smoothness through $R=0$ from the left. At zero the $k$th derivative of the $j$th term is zero unless $j=k$, since $\theta=1$ near zero; the exceptional value is $k!e_k(z)$. Thus every derivative, including parameter derivatives, matches the one-sided jet of $e$. Gluing $e_-$ to $e$ gives a smooth extension. Matching continuous derivatives across zero again proves joint smoothness by the fundamental theorem along coordinate segments. This is a local construction on the retained parameter neighborhood and is all that is needed here.
+
+<a id="quadratic-two-root-quotient"></a>
 
 ## 3. The two real roots and their quotient
 
@@ -116,6 +122,8 @@ Here is an explicit verification. When $\rho\ne0$ and $s\ne\pm\rho$, integrate f
 \]
 
 which is the quotient in (C9) by direct multiplication. Continuity of the integrand proves the identity also at repeated nodes. Interchanging $v$ and $1-t-v$ shows that (C8) is even in $\rho$. Section 1 therefore proves its joint smoothness in $(z,s,R)$ up to $R=0$. In particular $\mu_+(z,0,0)=q_{ss}(z,0)/2$. No division by the distance between merging roots is left in this formula.
+
+<a id="quadratic-smooth-division"></a>
 
 ## 4. The region with no real roots and exact smooth division
 
@@ -173,7 +181,7 @@ with smooth bounded coefficients and any fixed finite number of their derivative
  \tag{C15}
 \]
 
-For $R<0$, let $\delta=(s^2+|R|)^{1/2}$. Differentiating the reciprocal denominator gives the bound $C_{k,l}\delta^{-2-k-2l}$ for $\partial_s^k\partial_R^l(s^2-R)^{-1}$: each $s$ derivative costs at most one power of $\delta$, and each $R$ derivative at most two. The numerator and its derivatives have weighted order at least $2J+2$, by (C15) and the product rule. Consequently, for any fixed indices with $k+2l\leq2J$,
+For $R<0$, let $\delta=(s^2+|R|)^{1/2}$. Differentiating the reciprocal denominator gives the bound $C_{k,l}\delta^{-2-k-2l}$ for $\partial_s^k\partial_R^l(s^2-R)^{-1}$. Indeed each derivative is a finite sum of terms $C s^a(s^2-R)^{-b}$ with $2b-a=2+k+2l$. Differentiation in $s$ replaces a term by multiples with exponents $(a-1,b)$ and $(a+1,b+1)$; differentiation in $R$ replaces them by $(a,b+1)$. Terms with a zero coefficient are omitted, so $a\geq0$. This proves the relation by induction. Since $|s|\leq\delta$ and $s^2-R=\delta^2$, it gives the asserted bound. The numerator and its derivatives have weighted order at least $2J+2$, by (C15) and the product rule. Consequently, for any fixed indices with $k+2l\leq2J$,
 
 \[
  |\partial_z^\alpha\partial_s^k\partial_R^l
@@ -197,6 +205,8 @@ We have proved the local smooth division theorem
 \]
 
 for both signs of $R$, with all parameter derivatives. The construction does not require $q$ to be analytic. For a smooth function $R=R(z)$, substitution in (C17) gives smooth coefficient functions of $z$. For $R\geq0$ those coefficients are exactly (C6); the smooth extension into $R<0$ is a choice, and no uniqueness there is asserted.
+
+<a id="quadratic-cutoff-sign"></a>
 
 ## 5. A decreasing cutoff and its boundary sign
 
@@ -263,6 +273,8 @@ Choose a real smooth compact tangential phase cutoff $\zeta(z)$ equal to one nea
 
 Here $H_pp=0$. Thus the desired sign holds on the characteristic set where $\zeta=1$. The second term is supported where the phase cutoff varies; it has not vanished from the propagation problem. The last term is a multiple of the principal equation symbol. Symbol division has not been promoted to an exact operator identity.
 
+<a id="quadratic-positive-quantization"></a>
+
 ## 6. Quantization with a positive Dirichlet boundary form
 
 Use $d_x=hD_x=-ih\partial_x$ and $P_h=d_x^2+R_h(x)$ from the preceding reading, with $R_h$ tangential and formally self-adjoint. All coefficients and their required derivatives are uniformly bounded on the retained coordinate extension. Put
@@ -299,6 +311,8 @@ Both the positive boundary term and the actual forcing survive. Expanding $d_xB_
 
 All norms are over the collar and tangential variables, except the boundary norm in (C25). The uniform bound follows from the finite cutoff norm bounds and their normal derivatives.
 
+<a id="quadratic-exact-interior-form"></a>
+
 There is an exact version of the interior form in (C25) that eliminates the second normal derivative using the equation. With primes denoting normal derivatives and with the inner product linear in its first entry, (D8) gives
 
 \[
@@ -327,10 +341,10 @@ Every operator multiplying $u,d_xu,f$ in (C27) is bounded on tangential $L^2$, u
 
 The bound is for the exactly expanded form, not for an unlocalized unbounded operator $R_h$ on arbitrary $L^2$ data.
 
-Equations (C25)–(C28) also hold for $H^2$ Dirichlet inputs with compact normal support and $f=P_hu\in L^2$. The odd extension across $x=0$ has no point mass in its first two normal derivatives, since its zero value and evenly extended first derivative match. Even normal mollification and tangential mollification give smooth Dirichlet approximants converging in $H^2$. The earlier norm-primitive trace bound gives convergence of their normal traces, and smooth bounded coefficients give convergence of their $P_h$ images. Thus every bounded term in (C25)–(C28) passes to the limit. The [negative-order wave reading](dirichlet-wave-regularization.md#dirichlet-wave-regularization), (W11), supplies such regularity for every rough datum needed in the boundary lesson after the proved inverse-power reduction. The source datum is not restricted to $H^2$.
+Equations (C25)–(C28) also hold for $H^2$ Dirichlet inputs with compact normal support and $f=P_hu\in L^2$. The odd extension across $x=0$ has no point mass in its first two normal derivatives, since its zero value and evenly extended first derivative match. Even normal mollification and tangential mollification give smooth Dirichlet approximants converging in $H^2$. The [norm-primitive trace bound](dirichlet-commutator-and-diffraction.md#dirichlet-weak-normal-multiplier) gives convergence of their normal traces, and smooth bounded coefficients give convergence of their $P_h$ images. Thus every bounded term in (C25)–(C28) passes to the limit. The [negative-order wave reading](dirichlet-wave-regularization.md#dirichlet-exact-wave-regularization), (W11), supplies such regularity for every rough datum needed in the boundary lesson after the proved inverse-power reduction. The source datum is not restricted to $H^2$.
 
-## 7. Exact scope of this construction
+## 7. From division to propagation
 
-The normal division, double-root smoothness, real-root sign, cutoff derivative bounds and positive boundary realization are now proved. They give a rigorous meaning to the normal-frequency cutoff step used in the free comparison and keep its actual operator forcing and boundary terms visible.
+The smooth division theorem gives a normal polynomial that agrees with the full phase cutoff on the characteristic set. Its positive boundary realization is exact, while the interior identity retains both the forcing and the derivatives of the outer cutoff. Those terms must be estimated using the actual wave and the geometry of the incoming region.
 
-The subsequent [localized glancing estimate](glancing-commutator-estimate.md#glancing-commutator-estimate) now proves an interior lower bound for this multiplier, the associated boundary estimate, and a half-step gain with all phase and normal cutoff errors retained. The subsequent [Incoming phase neighborhoods for Dirichlet waves](diffractive-phase-neighborhoods.md#diffractive-phase-neighborhoods) now constructs an oriented phase, proves the real-root sign of its divided cutoff and places its principal outer-cutoff error in a prescribed regular interior neighborhood. It proves rapid bounds for that full-phase edge operator. Its Sections 5–7 also prove the smooth divided square root at zero weights and a nonnegative elliptic extension, giving an exactly nonnegative boundary form on the whole cutoff. Its Sections 8–11 prove the whole-neighborhood bulk square estimate with its equation contribution, actual full-phase edge and an unlocalized energy remainder. Sections 12–18 of that reading now control all the bulk remainders and forcing pairings by larger shifted weights, retain the actual incoming edge, and recover the full local energy with two multipliers. Sections 19–21 control the forcing created by spatial localization of the fixed spectral wave reduction and prove a conditional semiclassical half-step gain. Sections 22–26 construct a tangential Sobolev-regularized Dirichlet family, prove its exact first-order commutator and uniform norm bounds, and verify its cutoff-forcing and incoming-edge estimates. Sections 27–31 control all three regularizer commutator energy pairings with uniform lower-norm remainders. Sections 32–35 recover the full local energy uniformly in the regularizer and prove a half-order Sobolev gain from the explicit larger-weight hypothesis. Section 36 gives the fixed-neighborhood induction criterion. Sections 37–40 prove the tangentially elliptic boundary input by positive normal energy and a full-order Sobolev induction on one fixed open set. Sections 41–47 prove local reflection at separated normal roots and interior propagation for the actual wave, including exact mode coupling, transported cutoffs and fixed-neighborhood regularity. Sections 48–50 prove a two-root reachable region, continuity through tangency, the regularity of its incoming and transversely reflected legs, and containment of the entire larger diffraction weights. Sections 51–54 prove finite-order outgoing transport, simultaneous induction on the fixed two-root region, and normal smoothness from the actual equation. This establishes strict-diffraction regularity for the fixed H² Dirichlet wave. Sections 55–62 prove a local cone-regularity estimate at arbitrary glancing contacts, using nested phase tubes, the actual Sobolev regularizer and a two-component energy recovery. Sections 63–70 construct a curve in the closed compressed singular set and prove that it satisfies the exact inward-reaction relation (G1)–(G23), including all glancing orders and accumulating reflections. This proves the singular-curve theorem for the actual H² wave on homogeneous time intervals. Sections 71–75 prove the Cauchy-data endpoint argument, including smoothness near the initial wall from compatible collar data, and transfer propagation to every compact interior distributional datum in the spectral Dirichlet realization. The curved spectral remainder is proved separately in the spectral reading, Sections 31–38. The geometric construction, including gliding and degenerate contacts, is now proved in [Existence and compactness of generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves). Sections 63–75 of the phase-neighborhood reading establish analytic propagation for that precise relation, with all required compact interior negative-order spectral data. The local choice $\phi_0=0$ at strict diffraction proves an available sign, not all of those assertions. 
+The [localized glancing estimate](glancing-commutator-estimate.md#glancing-commutator-estimate) gives the interior lower bound for this multiplier. [Incoming phase neighborhoods for Dirichlet waves](diffractive-phase-neighborhoods.md#two-root-diffraction-supports) constructs the incoming region and develops the regularity iteration; its [singular-curve argument](diffractive-phase-neighborhoods.md#singular-generalized-curves) treats the full relation defined in [Generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves). The local choice of a phase with the required sign in Section 5 is one ingredient of that argument.

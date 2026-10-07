@@ -1,6 +1,6 @@
 # Kasparov's technical theorem
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 Constructing a Kasparov product requires combining two operators whose errors are compact in different directions. A partition of the identity in a multiplier algebra lets us assign one error to one part and the other error to the complementary part. The partition must also commute modulo the ideal with the operators already present. Kasparov's technical theorem supplies exactly this partition.
 

@@ -6,12 +6,13 @@
 
 A slowly decaying coefficient changes a classical trajectory over a long time. Constructing that trajectory requires differentiating the coefficient repeatedly, even if the original equation assumes only finitely many derivatives. The useful remedy is to separate a smooth long-range part from an integrable short-range remainder. The smoothing scale must grow with distance but remain small compared with that distance.
 
-The elementary derivative rules and Taylor remainder used below are proved in Section 1; Section 4 supplies the local inverse argument. Smooth cutoffs and differentiation of convolutions are proved in [Approximation, convolution and integer Sobolev density, Sections 2–3](../providers/analysis/euclidean-approximation-and-convolution.md#finite-p-density). [Endpoint spaces and flat energy shells](endpoint-spaces-and-flat-energy-shells.md) gives the spatial scale on which a short-range remainder is measured. The freely readable proof of Hörmander's Lemma 3.3 in *The existence of wave operators in scattering theory* [HW], pp. 77–78, supplies the dyadic convolution construction corresponding to Theorem 2.1. With \(m(i)=\varepsilon+i\) and its smoothing exponent \(\delta=\rho=(K-1+b)/K\), it gives the stronger smooth-part exponents \(\varepsilon+q\) through order \(K\) and \(1+\varepsilon-b+\rho q\) afterwards; the theorem below retains the displayed weaker bounds needed later. Lemma 1.1 constructs the signed moment kernel explicitly, Proposition 1.2 proves the required vanishing normalization, and Sections 3–4 prove all derivative bookkeeping directly. Yafaev [Y] gives further scattering background. The regularization and finite derivative estimates used here are proved in this lesson.
+The derivative rules and Taylor remainder are proved in Section 1, and Section 4 gives the local inverse argument. We use the earlier [finite linear algebra and compact scalar calculus](../providers/analysis/coordinate-inverses-and-integration.md#coordinate-linear-algebra), [smooth cutoffs](../providers/analysis/elementary-functions-and-cutoffs.md#smooth-flat-cutoffs), and [convolution differentiation](../providers/analysis/euclidean-approximation-and-convolution.md#mollification). [Endpoint spaces and flat energy shells](endpoint-spaces-and-flat-energy-shells.md) explains the spatial scale of a short-range remainder. Hörmander [HW], Lemma 3.3, pp. 77–78, gives the dyadic regularization method; Yafaev [Y], Section 3, discusses the long-range scattering setting. We construct the signed moment kernel, prove the vanishing normalization and track the derivative bounds below.
 
 ## 1. A kernel that cancels Taylor terms
 
 A positive averaging kernel cannot cancel all even moments. We instead use a smooth signed kernel. This causes no difficulty: only bounded integral norms and moment identities will enter the proof.
 
+<a id="coefficient-taylor"></a>
 Here are the calculus identities needed in the construction. A differentiable real function with equal endpoint values has an interior extremum unless it is constant; the two one-sided difference quotients at that extremum give derivative zero. Subtracting the affine secant function proves the mean value theorem. For a continuously differentiable real function, apply this on each subinterval of a partition. Its increment differs from the derivative at the left endpoint times the length by at most that length times the modulus of continuity of the derivative. Summing and sending the mesh to zero proves the fundamental theorem of calculus. For complex or vector functions apply this componentwise. Repeated integration gives, along a segment,
 
 \[
@@ -22,6 +23,7 @@ Here are the calculus identities needed in the construction. A differentiable re
 
 Indeed, substitute the fundamental theorem successively for each derivative; interchanging the continuous integrals on the compact simplex leaves a section of volume \((1-t)^{K-1}/(K-1)!\), as follows by induction by integrating its preceding power. The multinomial expansion gives \((h\cdot\nabla)^r=\sum_{|\alpha|=r}(r!/\alpha!)h^\alpha\partial^\alpha\). Thus the remainder is bounded by \(C_{n,K}|h|^K\max_{|\alpha|=K,\,0\le t\le1}|\partial^\alpha f(x+th)|\). The product and chain rules follow by substituting the first-order increment expressions for the factors or the inner and outer maps; induction gives the multi-index product formula used below. These arguments apply through the stated finite differentiability order.
 
+<a id="coefficient-moments"></a>
 **Lemma 1.1.** For every integer \(K\geq1\), there is a real \(\eta\in C_c^\infty(\mathbb R^n)\) such that
 
 \[
@@ -46,6 +48,7 @@ For \(s>0\), put \(\eta_s(y)=s^{-n}\eta(y/s)\). Its \(L^1\) norm is independent 
 
 These identities explain precisely where high derivatives in a smoothed function will come from.
 
+<a id="coefficient-lower-derivatives"></a>
 **Proposition 1.2 (recovering the lower derivatives).** Let \(f\in C^K(\mathbb R^n)\), \(K\geq1\), and \(\varepsilon>0\). If \(f(x)\to0\) as \(|x|\to\infty\) and
 
 \[
@@ -93,6 +96,7 @@ Induction gives all orders through zero outside the fixed ball. Their continuity
 
 ## 2. Choosing a scale from the available regularity
 
+<a id="coefficient-dyadic-regularization"></a>
 **Theorem 2.1.** Let \(K\geq1\), \(0<\varepsilon<1\), and \(f\in C^K(\mathbb R^n)\) satisfy
 
 \[
@@ -173,6 +177,7 @@ This theorem controls the remainder itself. It does not assert all-derivative es
 
 **Example 2.2.** Let \(K=2\), \(\varepsilon=3/5\), and choose \(b=1/3\). Then \(\rho=2/3\), the remainder is \(O(\langle x\rangle^{-19/15})\), and the smooth part satisfies orders \(M(0)=1/3\), \(M(1)=4/3\), \(M(2)=7/3\), \(M(3)=3\), and \(M(4)=11/3\). The decrease in slope after the second derivative records the finite number of derivatives originally available. It cannot be replaced without proof by the bound \(b+q\) at every order.
 
+<a id="coefficient-extra-derivative"></a>
 **Corollary 2.3 (one more derivative with full decay).** Suppose the hypotheses of Theorem 2.1 hold and \(\varepsilon>1/(K+1)\). Choose
 
 \[
@@ -208,6 +213,7 @@ These are exactly all the claimed estimates. The theorem's remainder bound is un
 
 The next estimates use a parameter \(T\geq1\). A sequence \(a(0),a(1),\ldots\) is convex if its successive differences are nondecreasing. Linear interpolation makes it a convex function between integer arguments.
 
+<a id="coefficient-product-budget"></a>
 **Lemma 3.1.** Suppose, at a fixed point, that
 
 \[
@@ -230,8 +236,9 @@ Applied to powers of distance, the exponents are often negative. Convexity still
 
 ## 4. Compositions and their inverses
 
-Let \(\psi:\mathbb R^{n'}\to\mathbb R^n\) be smooth near a point \(x\). Bounds on its derivatives begin at order one; \(\psi(x)\) itself need not be bounded.
+Let \(\psi:\mathbb R^{n'}\to\mathbb R^n\) be smooth near a point \(x\). Bounds on its derivatives begin at order one; \(\psi(x)\) itself need not be bounded. The convex-exponent composition estimate and inverse estimate are discussed in [HW], Lemma 3.6 and the following remark, pp. 79–80.
 
+<a id="coefficient-local-inverse"></a>
 The local inverse fact needed when the dimensions agree has the following proof. Suppose \(B=\psi'(x_0)\) is invertible. By continuity choose a closed ball of radius \(r>0\) about \(x_0\), contained in the domain, on which \(\|I-B^{-1}\psi'(x)\|\le1/2\). If \(\|B^{-1}(y-\psi(x_0))\|<r/2\), the map \(F_y(x)=x+B^{-1}(y-\psi(x))\) sends the ball into itself and has Lipschitz constant at most \(1/2\), by integrating its derivative along segments. Starting at \(x_0\), its iterates have successive differences bounded by a geometric series. Completeness of the closed ball gives a fixed point, and the same Lipschitz estimate gives uniqueness. For two target points, subtract the fixed-point equations to obtain \(\|\phi(y)-\phi(z)\|\le2\|B^{-1}\|\|y-z\|\).
 
 All nearby derivative matrices are invertible: the finite sums of powers of \(I-B^{-1}\psi'(x)\) converge geometrically, and multiplying the finite sums by \(B^{-1}\psi'(x)\) leaves the identity minus a power tending to zero. The preceding Lipschitz bound and the first-order expansion at \(x=\phi(y)\) now give
@@ -242,6 +249,7 @@ All nearby derivative matrices are invertible: the finite sums of powers of \(I-
 
 Thus the inverse is \(C^1\). Matrix inversion is smooth on the set of invertible matrices, directly from the cofactor formula with its nonzero determinant denominator. Induction in \(\phi'= (\psi'\circ\phi)^{-1}\) proves smoothness of the inverse whenever \(\psi\) is smooth. This proves the local inverse assertion used in the theorem and exercises, without a separate inverse-function prerequisite.
 
+<a id="coefficient-composition-budget"></a>
 **Theorem 4.1.** Suppose
 
 \[
@@ -289,7 +297,8 @@ It is convex in \(j\in[1,q]\). Its endpoint values are \(b(1)+a(q)\) and \(b(q)+
 
 **Proof.** Both endpoint exponents in Theorem 4.1 are at most \(b(q)\). \(\square\)
 
-**Theorem 4.3.** Assume \(a\) is convex with \(a(1)=0\), and \(\psi\) is a local diffeomorphism at \(x\). Suppose its derivative inverse has norm at most \(L\). For \(\phi=\psi^{-1}\), at \(y=\psi(x)\),
+<a id="coefficient-inverse-budget"></a>
+**Theorem 4.3.** Assume the forward derivative bounds \(|\partial^\alpha\psi(x)|\leq A_\alpha T^{a(|\alpha|)}\), \(|\alpha|\geq1\), from Theorem 4.1, with \(a\) convex and \(a(1)=0\). Let \(\psi\) be a local diffeomorphism at \(x\). Suppose its derivative inverse has norm at most \(L\). For \(\phi=\psi^{-1}\), at \(y=\psi(x)\),
 
 \[
  |\partial^\gamma\phi(y)|\leq C_\gamma T^{a(|\gamma|)}\qquad(|\gamma|\geq1),
@@ -309,6 +318,7 @@ To verify the last inequality without a sign assumption, write \(d_r=a(r+1)-a(r)
 
 The bound on the inverse first derivative is necessary. For the map \(\psi_T(x)=T^{-1}x\), the derivative of the inverse is \(T\). Even perfect bounds on the higher derivatives of \(\psi_T\) cannot replace that missing hypothesis.
 
+<a id="coefficient-integrable-remainder"></a>
 ## 5. Why the remainder is short range
 
 The elementary coefficient condition \(|f_S(x)|\leq C\langle x\rangle^{-1-\delta}\), \(\delta=\varepsilon-b>0\), has a direct dynamical consequence. Along a straight ray \(x=tv\), \(v\ne0\), its absolute value is integrable for \(t\geq1\):
@@ -324,6 +334,7 @@ The original coefficient need not have that property. For example \(\langle tv\r
 
 Track one Taylor remainder through the chosen smoothing radius, then check the joining derivative index in the final bounds. Use the resulting split when reading the coefficient hypotheses of Admissible differential perturbations.
 
+<a id="coefficient-exercises"></a>
 ## 6. Exercises
 
 **Exercise 6.1 (foundation).** With \(K=1\), \(\varepsilon=3/4\), \(b=1/4\), compute the smoothing scale, the remainder decay and the first four values of \(M\). Explain why \(s_j/R_j\to0\). Then choose \(b=5/8\) instead and compute the promoted order-two decay exponent and the new remainder decay.
@@ -356,6 +367,6 @@ Each scaled term has the stated total mass after including its scaling factor. T
 
 ## References
 
-- [Y] Dmitri Yafaev, notes prepared by Andrew Hassell, *Lectures on scattering theory*, 2004, [arXiv:math/0403213](https://arxiv.org/abs/math/0403213), Section 3, pp. 12–13, for the long-range scattering setting. The coefficient regularization used here is proved in Section 2 above, with its exact [HW] correspondence.
+- [Y] Dmitri Yafaev, notes prepared by Andrew Hassell, *Lectures on scattering theory*, 2004, [arXiv:math/0403213](https://arxiv.org/abs/math/0403213), Section 3, pp. 12–13, for the long-range scattering setting. The coefficient regularization used here is proved in Section 2 above.
 
-- [HW] Lars Hörmander, *The existence of wave operators in scattering theory*, Mathematische Zeitschrift **146** (1976), 69–91. [Freely readable journal scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0146/LOG_0012.pdf), Lemmas 3.2–3.3, pp. 76–78. The regularization proof continues across pp. 77–78; the complete construction and its specific exponents are also derived above.
+- [HW] Lars Hörmander, *The existence of wave operators in scattering theory*, Mathematische Zeitschrift **146** (1976), 69–91. [Freely readable journal scan](https://gdz.sub.uni-goettingen.de/download/pdf/PPN266833020_0146/LOG_0012.pdf), Lemmas 3.2–3.3, pp. 76–78, and Lemma 3.6 with its inverse-function remark, pp. 79–80, for regularization and convex-exponent derivative estimates.

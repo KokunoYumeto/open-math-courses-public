@@ -950,8 +950,8 @@ This section is an additional proof of the simultaneous trace extension,
 its sharp norm and its sharp threshold. The preceding mixed-symbol mapping
 theorem and the following normal-derivative recovery theorem retain their
 original statements and proofs. New text and the reproducible figure were
-written by Codex and dedicated under CC0 1.0 to the extent rights are held;
-the combined lesson retains its existing GFDL notice.
+written by Codex and dedicated under CC0 1.0 to the extent rights are
+held.
 
 ## 10. Recovering normal derivatives on the actual half-space
 

@@ -759,7 +759,7 @@ The degrees in (7.22) vary. It does not add cocycles of different arities to obt
 
 ![Exact pointwise finite degree family](../assets/analytic-degree-family-realization.png)
 
-**Figure 7.2.** The rows display cohomological degrees and the actual support of \(z\), rather than sphere geometry. All omitted character values are zero even when the corresponding family weights are nonzero. Proof locators: (7.19)–(7.22), Example 7.13, and Appendix A. The finite-pair theorem, its signed boundary comparison and the positive cohomology Bott calibration are specified in Proposition 7.7. Reproducible drawing: [draw_analytic_degree_family.py](../../tools/draw_analytic_degree_family.py).
+**Figure 7.2.** The rows display cohomological degrees and the actual support of \(z\), rather than sphere geometry. All omitted character values are zero even when the corresponding family weights are nonzero. Proof locators: (7.19)–(7.22), Example 7.13, and Appendix A. The finite-pair theorem, its signed boundary comparison and the positive cohomology Bott calibration are specified in Proposition 7.7. Reproducible drawing: draw_analytic_degree_family.py.
 
 Open the figure at full size: [PNG](../assets/analytic-degree-family-realization.png).
 

@@ -1,1 +1,788 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Connections, curvature and holonomy</title></head><body><main><h1>Connections, curvature and holonomy</h1><p>No lessons are currently available for this course.</p><p><span class="unlinked">Open Mathematics Courses</span></p></main></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Jacobi fields, conjugate points and the Morse index theorem</title>
+<link rel="stylesheet" href="assets/site.css">
+<script>
+window.MathJax = {
+  tex: {inlineMath: [['\\(', '\\)']], displayMath: [['\\[', '\\]']], processEscapes: true},
+  options: {ignoreHtmlClass: 'no-math', processHtmlClass: 'math', enableMenu: false},
+  startup: {pageReady: () => MathJax.startup.defaultPageReady().then(() => {
+    document.documentElement.setAttribute('data-typeset', 'complete');
+  })}
+};
+</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+<style>.lesson .math:not(.math-display){padding-inline-end:2px}</style><style>.lesson .math:not(.math-display){padding-inline-end:2px}</style></head>
+<body><main><nav aria-label="Chapter contents"><ul><li><a href="#part-a">A. Variations with all endpoint terms</a></li><li><a href="#part-b">B. Endpoint Jacobi fields and conjugacy</a></li><li><a href="#part-c">C. A finite space that retains the entire index</a></li><li><a href="#part-d">D. Counting conjugate points</a></li><li><a href="#part-e">E. Negative eigenvalues without an infinite-dimensional spectral theorem</a></li><li><a href="#part-f">F. What conjugate points say about minimization</a></li><li><a href="#part-g">G. Exercises with complete solutions</a></li><li><a href="#further-reading">Further reading</a></li></ul></nav><article class="lesson"><h1 id="jacobi-fields-conjugate-points-and-the-morse-index-theorem">Jacobi fields, conjugate points and the Morse index theorem</h1>
+<p>A Jacobi field records the first-order change of a geodesic. The index form records the second-order change of its energy. We connect these two descriptions through a finite space of interpolating Jacobi fields, prove the Morse and spectral index formulas, and keep track of endpoint and torsion terms.</p>
+<p>All manifolds are smooth, Hausdorff and second countable. Piecewise smooth paths and fields are continuous and, on each closed interval in a finite subdivision, are restrictions of smooth maps on a neighbourhood of that interval. A variation has one fixed subdivision on which it is smooth in both parameters in this same sense. The curvature convention is
+<span class="math math-display" data-tex="\[
+R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z.
+\]">\[
+R(X,Y)Z=\nabla_X\nabla_YZ-\nabla_Y\nabla_XZ-\nabla_{[X,Y]}Z.
+\]</span>
+Primes denote covariant differentiation along the central curve. Only A.1 and B.2 allow an arbitrary affine connection; all energy, length and index assertions use a positive definite Riemannian metric and its Levi-Civita connection.</p>
+<h2 id="part-a">A. Variations with all endpoint terms</h2>
+<p id="theorem-a-1"><strong>Theorem A.1 (Jacobi fields for a connection with torsion).</strong> Let <span class="math" data-tex="\(\gamma:[a,b]\to M\)">\(\gamma:[a,b]\to M\)</span> be an affinely parametrized geodesic for a smooth affine connection, with <span class="math" data-tex="\(T=\dot\gamma\)">\(T=\dot\gamma\)</span> and torsion <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. The variational field of any family of such geodesics satisfies
+<span class="math math-display" data-tex="\[
+J''+\bigl(\mathcal T(J,T)\bigr)'+R(J,T)T=0.
+\tag{A.1}
+\]">\[
+J''+\bigl(\mathcal T(J,T)\bigr)'+R(J,T)T=0.
+\tag{A.1}
+\]</span>
+Every pair <span class="math" data-tex="\(J(a),J'(a)\)">\(J(a),J'(a)\)</span> determines exactly one solution on the entire interval. These solutions form a vector space of dimension <span class="math" data-tex="\(2\dim M\)">\(2\dim M\)</span>, and each is realized by a smooth geodesic variation on that interval. For a Levi-Civita connection the equation reduces to <span class="math" data-tex="\(J''+R(J,T)T=0\)">\(J''+R(J,T)T=0\)</span>.</p>
+<p><strong>Proof.</strong> For a smooth map <span class="math" data-tex="\(F(s,t)\)">\(F(s,t)\)</span>, put <span class="math" data-tex="\(V=\partial_sF\)">\(V=\partial_sF\)</span> and <span class="math" data-tex="\(T=\partial_tF\)">\(T=\partial_tF\)</span>, as sections of its pullback tangent bundle. <a href="linear-and-affine-connections.html#theorem-b-2">Linear connections B.2–B.3</a> and D.3 give
+<span class="math math-display" data-tex="\[
+D_sT-D_tV=\mathcal T(V,T),\qquad
+D_sD_tT-D_tD_sT=R(V,T)T.
+\tag{A.2}
+\]">\[
+D_sT-D_tV=\mathcal T(V,T),\qquad
+D_sD_tT-D_tD_sT=R(V,T)T.
+\tag{A.2}
+\]</span>
+These identities hold at critical points of <span class="math" data-tex="\(F\)">\(F\)</span> too. If each <span class="math" data-tex="\(t\)">\(t\)</span>-curve is geodesic, <span class="math" data-tex="\(D_tT=0\)">\(D_tT=0\)</span>. Substitute the first identity into the second and restrict to <span class="math" data-tex="\(s=0\)">\(s=0\)</span>; this is (A.1).</p>
+<p>Use a parallel frame along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, whose existence and smoothness follow from <a href="connections-and-parallel-transport.html#theorem-d-2">Connections D.2</a>. In that frame (A.1) is a linear second-order system <span class="math" data-tex="\(j''+C(t)j'+D(t)j=0\)">\(j''+C(t)j'+D(t)j=0\)</span> with smooth coefficients. On the compact interval they are bounded. Writing <span class="math" data-tex="\(z=(j,j')\)">\(z=(j,j')\)</span> gives <span class="math" data-tex="\(z'=A(t)z\)">\(z'=A(t)z\)</span>, with <span class="math" data-tex="\(\|A(t)\|\leq M\)">\(\|A(t)\|\leq M\)</span>. <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a> gives local existence, uniqueness and smooth dependence. To check that this linear solution lasts for the whole interval, on any subinterval of length <span class="math" data-tex="\(\delta\)">\(\delta\)</span> with <span class="math" data-tex="\(M\delta&lt;1/2\)">\(M\delta&lt;1/2\)</span>, its integral equation gives
+<span class="math math-display" data-tex="\[
+\sup|z|\leq |z(t_0)|+M\delta\sup|z|,\qquad \sup|z|\leq2|z(t_0)|.
+\]">\[
+\sup|z|\leq |z(t_0)|+M\delta\sup|z|,\qquad \sup|z|\leq2|z(t_0)|.
+\]</span>
+The bound holds on every shorter interval of existence. It keeps the graph in a bounded compact set as a finite endpoint is approached, so the continuation assertion of <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a> extends the solution. Finitely many such intervals reach both endpoints. The same bound locally uniform in parameters proves no loss of interval when the coefficients and data vary nearby. Linearity and uniqueness identify the solution space with its <span class="math" data-tex="\(2\dim M\)">\(2\dim M\)</span> initial coordinates.</p>
+<p>For realization, write <span class="math" data-tex="\(u=J(a)\)">\(u=J(a)\)</span>, <span class="math" data-tex="\(w=J'(a)\)">\(w=J'(a)\)</span>, <span class="math" data-tex="\(v=T(a)\)">\(v=T(a)\)</span>. Choose a smooth curve <span class="math" data-tex="\(\sigma(s)\)">\(\sigma(s)\)</span> through <span class="math" data-tex="\(\gamma(a)\)">\(\gamma(a)\)</span> with velocity <span class="math" data-tex="\(u\)">\(u\)</span>. Let <span class="math" data-tex="\(P_s\)">\(P_s\)</span> be parallel transport along <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, and prescribe the initial velocity
+<span class="math math-display" data-tex="\[
+v(s)=P_s\bigl(v+s(w+\mathcal T(u,v))\bigr).
+\tag{A.3}
+\]">\[
+v(s)=P_s\bigl(v+s(w+\mathcal T(u,v))\bigr).
+\tag{A.3}
+\]</span>
+Then <span class="math" data-tex="\(v(0)=v\)">\(v(0)=v\)</span> and <span class="math" data-tex="\(D_sv(0)=w+\mathcal T(u,v)\)">\(D_sv(0)=w+\mathcal T(u,v)\)</span>. <a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a> gives the smooth geodesic flow on an open domain in time and initial data. That domain contains the compact time segment with initial datum <span class="math" data-tex="\(v\)">\(v\)</span>. A finite product-neighbourhood cover supplies one neighbourhood of <span class="math" data-tex="\(v\)">\(v\)</span> on which every time in the segment is allowed. For sufficiently small <span class="math" data-tex="\(s\)">\(s\)</span>, start the flow at <span class="math" data-tex="\(v(s)\)">\(v(s)\)</span>, with time shifted by <span class="math" data-tex="\(a\)">\(a\)</span>. Its variation field has value <span class="math" data-tex="\(u\)">\(u\)</span> at <span class="math" data-tex="\(a\)">\(a\)</span>. By (A.2), its derivative there is <span class="math" data-tex="\(D_sv(0)-\mathcal T(u,v)=w\)">\(D_sv(0)-\mathcal T(u,v)=w\)</span>. The first part and uniqueness therefore identify it with <span class="math" data-tex="\(J\)">\(J\)</span>. For the Levi-Civita connection torsion vanishes by <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-a-1">Riemannian connections A.1</a>. □</p>
+<p id="lemma-a-2"><strong>Lemma A.2 (realizing fields and removing corners).</strong> Every piecewise smooth field <span class="math" data-tex="\(V\)">\(V\)</span> along a compact piecewise smooth curve <span class="math" data-tex="\(c\)">\(c\)</span> is the field of a piecewise smooth variation. If <span class="math" data-tex="\(V\)">\(V\)</span> vanishes at the endpoints, the variation can fix the endpoints. A continuous piecewise smooth field along a smooth curve can be approximated by smooth fields with the same endpoint values so that, in a fixed smooth frame,
+<span class="math math-display" data-tex="\[
+\sup|V_\varepsilon-V|\longrightarrow0,\qquad
+\int_a^b|V_\varepsilon'-V'|^2\,dt\longrightarrow0.
+\tag{A.4}
+\]">\[
+\sup|V_\varepsilon-V|\longrightarrow0,\qquad
+\int_a^b|V_\varepsilon'-V'|^2\,dt\longrightarrow0.
+\tag{A.4}
+\]</span>
+For normal fields along a nonconstant geodesic the approximation can stay normal.</p>
+<p><strong>Proof.</strong> <a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1–A.2</a> gives the smooth exponential map on an open neighbourhood of the zero section. Compactness of the image of <span class="math" data-tex="\(c\)">\(c\)</span> and boundedness of <span class="math" data-tex="\(V\)">\(V\)</span>, on finitely many pieces and charts, give one <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> for which
+<span class="math math-display" data-tex="\[
+F(s,t)=\exp_{c(t)}(sV(t)),\qquad |s|&lt;\varepsilon,
+\tag{A.5}
+\]">\[
+F(s,t)=\exp_{c(t)}(sV(t)),\qquad |s|&lt;\varepsilon,
+\tag{A.5}
+\]</span>
+is defined for every <span class="math" data-tex="\(t\)">\(t\)</span>. <a href="geodesics-normal-coordinates-and-curvature.html#theorem-b-1">Geodesics B.1</a> proves that its <span class="math" data-tex="\(s\)">\(s\)</span>-derivative at zero is <span class="math" data-tex="\(V(t)\)">\(V(t)\)</span>. The map is continuous across the fixed nodes and smooth on each piece. Where <span class="math" data-tex="\(V=0\)">\(V=0\)</span>, it leaves the point fixed.</p>
+<p>Here is an explicit smoothing argument for (A.4). Choose a smooth frame on the interval, for example a parallel frame, and work with the component vector <span class="math" data-tex="\(v(t)\)">\(v(t)\)</span>. At an interior break <span class="math" data-tex="\(c\)">\(c\)</span>, the two smooth pieces have smooth extensions <span class="math" data-tex="\(v_-\)">\(v_-\)</span> and <span class="math" data-tex="\(v_+\)">\(v_+\)</span> to a neighbourhood of <span class="math" data-tex="\(c\)">\(c\)</span>, with <span class="math" data-tex="\(v_-(c)=v_+(c)\)">\(v_-(c)=v_+(c)\)</span>. Choose a smooth transition function <span class="math" data-tex="\(\chi:\mathbb R\to[0,1]\)">\(\chi:\mathbb R\to[0,1]\)</span> equal to zero near <span class="math" data-tex="\((-\infty,-1]\)">\((-\infty,-1]\)</span> and one near <span class="math" data-tex="\([1,\infty)\)">\([1,\infty)\)</span>. Such a function follows explicitly from the flat factor of <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.5</a> by taking
+<span class="math" data-tex="\(\eta(x+1)/(\eta(x+1)+\eta(1-x))\)">\(\eta(x+1)/(\eta(x+1)+\eta(1-x))\)</span>.
+On <span class="math" data-tex="\([c-\varepsilon,c+\varepsilon]\)">\([c-\varepsilon,c+\varepsilon]\)</span> replace <span class="math" data-tex="\(v\)">\(v\)</span> by
+<span class="math math-display" data-tex="\[
+(1-\chi((t-c)/\varepsilon))v_-(t)
+ +\chi((t-c)/\varepsilon)v_+(t).
+\]">\[
+(1-\chi((t-c)/\varepsilon))v_-(t)
+ +\chi((t-c)/\varepsilon)v_+(t).
+\]</span>
+Outside these small disjoint intervals keep <span class="math" data-tex="\(v\)">\(v\)</span>. The replacement is smooth at the joins. Bounded first derivatives of the extensions and their agreement at <span class="math" data-tex="\(c\)">\(c\)</span> give
+<span class="math" data-tex="\(|v_+(t)-v_-(t)|\leq C\varepsilon\)">\(|v_+(t)-v_-(t)|\leq C\varepsilon\)</span>. Thus the new vector differs by <span class="math" data-tex="\(O(\varepsilon)\)">\(O(\varepsilon)\)</span> and its derivative is bounded independently of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>: the factor <span class="math" data-tex="\(1/\varepsilon\)">\(1/\varepsilon\)</span> from <span class="math" data-tex="\(\chi'\)">\(\chi'\)</span> is multiplied by that difference. The derivative error has bounded size and support of total length <span class="math" data-tex="\(O(\varepsilon)\)">\(O(\varepsilon)\)</span>, proving its squared-integral convergence. Endpoints are untouched. Passing from ordinary to covariant derivatives adds a bounded matrix times the uniformly small component difference, so (A.4) holds for those derivatives too. Use a parallel orthonormal frame with the last vector tangent to a nonconstant geodesic and smooth only the normal components to preserve normality. All estimates also hold simultaneously for any finite list of fields. □</p>
+<p id="theorem-a-3"><strong>Theorem A.3 (first variations and their critical curves).</strong> For a variation <span class="math" data-tex="\(F\)">\(F\)</span> of a piecewise smooth curve <span class="math" data-tex="\(c:[a,b]\to M\)">\(c:[a,b]\to M\)</span>, define
+<span class="math math-display" data-tex="\[
+E(s)=\frac12\int_a^b|\partial_tF(s,t)|^2\,dt,\qquad
+L(s)=\int_a^b|\partial_tF(s,t)|\,dt.
+\]">\[
+E(s)=\frac12\int_a^b|\partial_tF(s,t)|^2\,dt,\qquad
+L(s)=\int_a^b|\partial_tF(s,t)|\,dt.
+\]</span>
+Let <span class="math" data-tex="\(a=t_0&lt;\cdots&lt;t_N=b\)">\(a=t_0&lt;\cdots&lt;t_N=b\)</span> be a common subdivision, <span class="math" data-tex="\(V=\partial_sF|_0\)">\(V=\partial_sF|_0\)</span>, <span class="math" data-tex="\(T=\dot c\)">\(T=\dot c\)</span>, and let superscripts <span class="math" data-tex="\(-,+\)">\(-,+\)</span> denote one-sided values at a node. Then
+<span class="math math-display" data-tex="\[
+E'(0)=[\langle V,T\rangle]_a^b
+ +\sum_{i=1}^{N-1}\langle V(t_i),T_i^--T_i^+\rangle
+ -\sum_{i=0}^{N-1}\int_{t_i}^{t_{i+1}}\langle V,T'\rangle\,dt.
+\tag{A.6}
+\]">\[
+E'(0)=[\langle V,T\rangle]_a^b
+ +\sum_{i=1}^{N-1}\langle V(t_i),T_i^--T_i^+\rangle
+ -\sum_{i=0}^{N-1}\int_{t_i}^{t_{i+1}}\langle V,T'\rangle\,dt.
+\tag{A.6}
+\]</span>
+If the speed is positive on each closed piece, put <span class="math" data-tex="\(u=T/|T|\)">\(u=T/|T|\)</span>. Then
+<span class="math math-display" data-tex="\[
+L'(0)=[\langle V,u\rangle]_a^b
+ +\sum_{i=1}^{N-1}\langle V(t_i),u_i^--u_i^+\rangle
+ -\sum_{i=0}^{N-1}\int_{t_i}^{t_{i+1}}\langle V,u'\rangle\,dt.
+\tag{A.7}
+\]">\[
+L'(0)=[\langle V,u\rangle]_a^b
+ +\sum_{i=1}^{N-1}\langle V(t_i),u_i^--u_i^+\rangle
+ -\sum_{i=0}^{N-1}\int_{t_i}^{t_{i+1}}\langle V,u'\rangle\,dt.
+\tag{A.7}
+\]</span>
+Fixed-endpoint critical curves of energy are exactly affinely parametrized geodesics, including constant ones. Fixed-endpoint critical regular curves of length become geodesics under increasing arc-length parametrization.</p>
+<p><strong>Proof.</strong> Metric compatibility and (A.2), with zero torsion, give
+<span class="math math-display" data-tex="\[
+\partial_s\frac{|T|^2}{2}=\langle D_tV,T\rangle,\qquad
+\partial_s|T|=\langle D_tV,T/|T|\rangle.
+\]">\[
+\partial_s\frac{|T|^2}{2}=\langle D_tV,T\rangle,\qquad
+\partial_s|T|=\langle D_tV,T/|T|\rangle.
+\]</span>
+Differentiate the finitely many compact-interval integrals, justified by the uniform difference-quotient estimate of <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>. In the length case the positive minimum of the central speed keeps the nearby denominators away from zero. Integration by parts on each piece gives (A.6)–(A.7); the inner endpoints sum to the displayed jumps because <span class="math" data-tex="\(V\)">\(V\)</span> is continuous.</p>
+<p>If the energy derivative vanishes for every endpoint-fixed variation, take fields supported in one piece. A.2 realizes them. If <span class="math" data-tex="\(T'\)">\(T'\)</span> were nonzero at a point, a nonnegative smooth bump there multiplied by <span class="math" data-tex="\(T'\)">\(T'\)</span> would have a strictly positive integral against <span class="math" data-tex="\(T'\)">\(T'\)</span>, contradicting (A.6). Cutoffs are supplied by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.5</a>. Thus <span class="math" data-tex="\(T'=0\)">\(T'=0\)</span> on each piece. Fields with an arbitrary prescribed value at a single node, constructed with the same cutoffs and a smooth local frame, now force <span class="math" data-tex="\(T_i^-=T_i^+\)">\(T_i^-=T_i^+\)</span>. The pieces have identical positions and velocities at their joins. Uniqueness of the geodesic equation, <a href="geodesics-normal-coordinates-and-curvature.html#theorem-a-1">Geodesics A.1</a>, makes them one smooth affinely parametrized geodesic. The converse follows immediately from (A.6), and includes zero velocity.</p>
+<p>For length the identical argument forces <span class="math" data-tex="\(u'=0\)">\(u'=0\)</span> on each piece and <span class="math" data-tex="\(u_i^-=u_i^+\)">\(u_i^-=u_i^+\)</span> at each node. The increasing parameter <span class="math" data-tex="\(\rho(t)=\int_a^t|T|\,dt\)">\(\rho(t)=\int_a^t|T|\,dt\)</span> has positive derivative on each piece and has a smooth inverse there by <a href="local-tools-for-bundles-and-transport.html#1-contraction-and-local-inversion">Local tools 1.2</a>. In that parameter the velocity is <span class="math" data-tex="\(u\)">\(u\)</span>, with zero covariant derivative. At the joins the unit velocities agree, so geodesic uniqueness again glues the pieces. Conversely these conditions make (A.7) zero. □</p>
+<p id="theorem-a-4"><strong>Theorem A.4 (energy and length Hessians).</strong> Suppose the central curve <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> is an affinely parametrized Riemannian geodesic, and put
+<span class="math math-display" data-tex="\[
+I(V,W)=\int_a^b
+ \bigl(\langle V',W'\rangle-\langle R(V,T)T,W\rangle\bigr)\,dt,
+\qquad A=D_s\partial_sF|_{s=0}.
+\tag{A.8}
+\]">\[
+I(V,W)=\int_a^b
+ \bigl(\langle V',W'\rangle-\langle R(V,T)T,W\rangle\bigr)\,dt,
+\qquad A=D_s\partial_sF|_{s=0}.
+\tag{A.8}
+\]</span>
+For any piecewise smooth variation,
+<span class="math math-display" data-tex="\[
+E''(0)=I(V,V)+[\langle A,T\rangle]_a^b.
+\tag{A.9}
+\]">\[
+E''(0)=I(V,V)+[\langle A,T\rangle]_a^b.
+\tag{A.9}
+\]</span>
+If <span class="math" data-tex="\(|T|=c&gt;0\)">\(|T|=c&gt;0\)</span>, <span class="math" data-tex="\(u=T/c\)">\(u=T/c\)</span>, and <span class="math" data-tex="\(V^\perp=V-\langle V,u\rangle u\)">\(V^\perp=V-\langle V,u\rangle u\)</span>, then
+<span class="math math-display" data-tex="\[
+L''(0)=c^{-1}I(V^\perp,V^\perp)+[\langle A,u\rangle]_a^b.
+\tag{A.10}
+\]">\[
+L''(0)=c^{-1}I(V^\perp,V^\perp)+[\langle A,u\rangle]_a^b.
+\tag{A.10}
+\]</span>
+For fixed endpoints the boundary terms vanish. The energy Hessian is <span class="math" data-tex="\(I\)">\(I\)</span>, while the length Hessian has all endpoint-fixed tangential fields in its radical. The energy Hessian is positive on every nonzero endpoint-fixed tangential field.</p>
+<p><strong>Proof.</strong> Differentiate the energy integrand twice, using (A.2):
+<span class="math math-display" data-tex="\[
+\partial_s^2\frac{|T|^2}{2}
+ =|D_sT|^2+\langle D_sD_sT,T\rangle
+ =|D_tV|^2+\langle D_tD_sV+R(V,T)V,T\rangle.
+\]">\[
+\partial_s^2\frac{|T|^2}{2}
+ =|D_sT|^2+\langle D_sD_sT,T\rangle
+ =|D_tV|^2+\langle D_tD_sV+R(V,T)V,T\rangle.
+\]</span>
+Along the central curve <span class="math" data-tex="\(T'=0\)">\(T'=0\)</span>. Metric curvature symmetry, <a href="geodesics-normal-coordinates-and-curvature.html#corollary-c-3">Geodesics C.3</a>, changes the last curvature term into
+<span class="math" data-tex="\(-\langle R(V,T)T,V\rangle\)">\(-\langle R(V,T)T,V\rangle\)</span>. Integrating <span class="math" data-tex="\(D_tA\)">\(D_tA\)</span> by parts gives (A.9). At a subdivision node the endpoint curve <span class="math" data-tex="\(s\mapsto F(s,t_i)\)">\(s\mapsto F(s,t_i)\)</span> is the same on both sides, so its covariant acceleration <span class="math" data-tex="\(A(t_i)\)">\(A(t_i)\)</span> is the same. The central velocity is smooth; all interior boundary terms consequently cancel.</p>
+<p>Twice differentiating the square root <span class="math" data-tex="\(|T|=\langle T,T\rangle^{1/2}\)">\(|T|=\langle T,T\rangle^{1/2}\)</span> gives, at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>,
+<span class="math math-display" data-tex="\[
+L''(0)=c^{-1}I(V,V)
+ -c^{-1}\int_a^b\langle V',u\rangle^2\,dt
+ +[\langle A,u\rangle]_a^b.
+\]">\[
+L''(0)=c^{-1}I(V,V)
+ -c^{-1}\int_a^b\langle V',u\rangle^2\,dt
+ +[\langle A,u\rangle]_a^b.
+\]</span>
+Here <span class="math" data-tex="\(u'=0\)">\(u'=0\)</span>. Write <span class="math" data-tex="\(V=V^\perp+fu\)">\(V=V^\perp+fu\)</span>. The two components and their derivatives are orthogonal; <span class="math" data-tex="\(R(u,T)T=0\)">\(R(u,T)T=0\)</span>, and <span class="math" data-tex="\(R(V^\perp,T)T\)">\(R(V^\perp,T)T\)</span> is normal by <a href="geodesics-normal-coordinates-and-curvature.html#corollary-c-3">Geodesics C.3</a>. Hence
+<span class="math math-display" data-tex="\[
+I(V,V)=I(V^\perp,V^\perp)+\int_a^b(f')^2\,dt,
+\qquad \langle V',u\rangle=f',
+\]">\[
+I(V,V)=I(V^\perp,V^\perp)+\int_a^b(f')^2\,dt,
+\qquad \langle V',u\rangle=f',
+\]</span>
+which proves (A.10). For endpoint-fixed variations the endpoint accelerations are zero. Polarization of these quadratic expressions gives the bilinear Hessians; mixed variations with given two fields are obtained by replacing <span class="math" data-tex="\(sV\)">\(sV\)</span> in (A.5) by <span class="math" data-tex="\(sV+rW\)">\(sV+rW\)</span>. A nonzero endpoint-fixed <span class="math" data-tex="\(f\)">\(f\)</span> cannot have <span class="math" data-tex="\(f'\equiv0\)">\(f'\equiv0\)</span>; its derivative-square integral is positive. This proves the final statements, including the vanishing of every mixed length-Hessian term containing a tangential field. □</p>
+<h2 id="part-b">B. Endpoint Jacobi fields and conjugacy</h2>
+<p>Along a nonconstant geodesic of constant speed, parallel transport preserves the tangent line and its orthogonal complement. In a parallel orthonormal normal frame, a normal field is a function <span class="math" data-tex="\(v:[a,b]\to\mathbb R^d\)">\(v:[a,b]\to\mathbb R^d\)</span>, <span class="math" data-tex="\(d=\dim M-1\)">\(d=\dim M-1\)</span>, and
+<span class="math math-display" data-tex="\[
+B(t)v=R(v,T)T,\qquad
+I_B(v,w)=\int_a^b(v'\cdot w'-Bv\cdot w)\,dt.
+\tag{B.1}
+\]">\[
+B(t)v=R(v,T)T,\qquad
+I_B(v,w)=\int_a^b(v'\cdot w'-Bv\cdot w)\,dt.
+\tag{B.1}
+\]</span>
+The matrix <span class="math" data-tex="\(B(t)\)">\(B(t)\)</span> is smooth and symmetric by <a href="geodesics-normal-coordinates-and-curvature.html#corollary-c-3">Geodesics C.3</a>. We use the space <span class="math" data-tex="\(\mathcal V_0\)">\(\mathcal V_0\)</span> of continuous piecewise smooth normal fields vanishing at both endpoints. The <strong>index</strong> <span class="math" data-tex="\(i(I)\)">\(i(I)\)</span> is the supremum of dimensions of subspaces on which <span class="math" data-tex="\(I\)">\(I\)</span> is negative definite. The <strong>nullity</strong> <span class="math" data-tex="\(n(I)\)">\(n(I)\)</span> is the dimension of its radical
+<span class="math" data-tex="\(\{V:I(V,W)=0\text{ for all }W\in\mathcal V_0\}\)">\(\{V:I(V,W)=0\text{ for all }W\in\mathcal V_0\}\)</span>.
+Finally <span class="math" data-tex="\(a(I)\)">\(a(I)\)</span> is the supremum of dimensions of subspaces on which <span class="math" data-tex="\(I(V,V)\leq0\)">\(I(V,V)\leq0\)</span> for every <span class="math" data-tex="\(V\)">\(V\)</span>. We prove below that all three numbers are finite and attained.</p>
+<p id="lemma-b-1"><strong>Lemma B.1 (integration by parts and the radical).</strong> For continuous piecewise smooth <span class="math" data-tex="\(V,W\)">\(V,W\)</span>, using any common subdivision,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(V,W)={}&amp;[\langle V',W\rangle]_a^b
+ +\sum_i\langle V_i'^--V_i'^+,W(t_i)\rangle\\
+&amp;-\sum_i\int_{t_i}^{t_{i+1}}
+       \langle V''+R(V,T)T,W\rangle\,dt.
+\end{aligned}
+\tag{B.2}
+\]">\[
+\begin{aligned}
+I(V,W)={}&amp;[\langle V',W\rangle]_a^b
+ +\sum_i\langle V_i'^--V_i'^+,W(t_i)\rangle\\
+&amp;-\sum_i\int_{t_i}^{t_{i+1}}
+       \langle V''+R(V,T)T,W\rangle\,dt.
+\end{aligned}
+\tag{B.2}
+\]</span>
+The radical on <span class="math" data-tex="\(\mathcal V_0\)">\(\mathcal V_0\)</span> consists exactly of smooth normal Jacobi fields vanishing at both endpoints. The same assertion holds on all endpoint-fixed fields if the word normal is omitted.</p>
+<p><strong>Proof.</strong> Apply the metric product rule and integration by parts on each piece. Continuity of <span class="math" data-tex="\(W\)">\(W\)</span> combines the node contributions as displayed. Symmetry of <span class="math" data-tex="\(B\)">\(B\)</span> also proves symmetry of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p>A smooth Jacobi field zero at the endpoints makes (B.2) vanish for every endpoint-fixed <span class="math" data-tex="\(W\)">\(W\)</span>. Conversely, suppose <span class="math" data-tex="\(V\)">\(V\)</span> is in the radical. On the interior of a single smooth piece, choose a nonnegative smooth bump <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and take <span class="math" data-tex="\(W=\chi(V''+R(V,T)T)\)">\(W=\chi(V''+R(V,T)T)\)</span>. These fields are allowed, and in the normal case remain normal. Formula (B.2) gives
+<span class="math" data-tex="\(-\int\chi|V''+R(V,T)T|^2=0\)">\(-\int\chi|V''+R(V,T)T|^2=0\)</span>.
+If the residual were nonzero anywhere, a bump supported near that point would make the integral strictly negative. Thus <span class="math" data-tex="\(V\)">\(V\)</span> solves the Jacobi equation on every piece. Next choose a smooth field whose value at one interior node is the derivative jump there and which vanishes near all other nodes and endpoints. Cutoffs and a parallel frame construct it explicitly. Formula (B.2) now gives the squared length of that jump, which must vanish. Both <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(V'\)">\(V'\)</span> therefore agree at all joins. Uniqueness in A.1 glues the pieces to one smooth Jacobi field. The same proof works without the normal restriction. □</p>
+<p id="theorem-b-2"><strong>Theorem B.2 (conjugacy and the exponential differential).</strong> A time <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> on <span class="math" data-tex="\(\gamma(t)=\exp_p(tv)\)">\(\gamma(t)=\exp_p(tv)\)</span> is conjugate to <span class="math" data-tex="\(0\)">\(0\)</span> if a nonzero solution of the Jacobi equation vanishes at <span class="math" data-tex="\(0,t\)">\(0,t\)</span>. Its multiplicity <span class="math" data-tex="\(\mu(t)\)">\(\mu(t)\)</span> is the dimension of that solution space. For an arbitrary smooth affine connection use (A.1); then
+<span class="math math-display" data-tex="\[
+\mu(t)=\dim\ker(d\exp_p)_{tv}.
+\tag{B.3}
+\]">\[
+\mu(t)=\dim\ker(d\exp_p)_{tv}.
+\tag{B.3}
+\]</span>
+For a nonconstant Riemannian geodesic every endpoint-vanishing Jacobi field is normal and <span class="math" data-tex="\(\mu(t)\leq\dim M-1\)">\(\mu(t)\leq\dim M-1\)</span>. The tangential component of any Riemannian Jacobi field is affine in the geodesic parameter.</p>
+<p><strong>Proof.</strong> Differentiate <span class="math" data-tex="\(F(s,u)=\exp_p(u(v+sw))\)">\(F(s,u)=\exp_p(u(v+sw))\)</span>. A.1 makes its field Jacobi, and
+<span class="math math-display" data-tex="\[
+J_w(u)=(d\exp_p)_{uv}(uw),\qquad J_w(0)=0,\qquad J_w'(0)=w.
+\tag{B.4}
+\]">\[
+J_w(u)=(d\exp_p)_{uv}(uw),\qquad J_w(0)=0,\qquad J_w'(0)=w.
+\tag{B.4}
+\]</span>
+The last equality follows either from the initial velocity derivative or from <a href="geodesics-normal-coordinates-and-curvature.html#theorem-b-1">Geodesics B.1</a>; the torsion correction at zero is zero because <span class="math" data-tex="\(J_w(0)=0\)">\(J_w(0)=0\)</span>. Conversely A.1 says that every Jacobi field with initial value zero is precisely one such <span class="math" data-tex="\(J_w\)">\(J_w\)</span>. Since multiplication by the nonzero scalar <span class="math" data-tex="\(t\)">\(t\)</span> is a linear isomorphism, (B.4) identifies its endpoint kernel with the kernel in (B.3).</p>
+<p>In the Riemannian case,
+<span class="math math-display" data-tex="\[
+\frac{d^2}{du^2}\langle J,T\rangle
+ =-\langle R(J,T)T,T\rangle=0
+\]">\[
+\frac{d^2}{du^2}\langle J,T\rangle
+ =-\langle R(J,T)T,T\rangle=0
+\]</span>
+by <a href="geodesics-normal-coordinates-and-curvature.html#corollary-c-3">Geodesics C.3</a>. This scalar function is affine and, if zero at two distinct endpoints, is identically zero. The field is then normal, and its initial derivative is a normal vector. Uniqueness makes the map from endpoint-vanishing fields to their initial derivatives injective, giving the dimension bound. The same affine calculation proves the last assertion. □</p>
+<p id="example-b-3"><strong>Example B.3 (all constant-curvature solutions).</strong> Along a unit-speed geodesic in constant sectional curvature <span class="math" data-tex="\(k\)">\(k\)</span>, choose a parallel orthonormal frame <span class="math" data-tex="\(E_1,\ldots,E_{n-1},T\)">\(E_1,\ldots,E_{n-1},T\)</span>. Every Jacobi field is
+<span class="math math-display" data-tex="\[
+J(t)=(\alpha+\beta t)T+
+ \sum_{j=1}^{n-1}\bigl(a_jC_k(t)+b_jS_k(t)\bigr)E_j(t),
+\tag{B.5}
+\]">\[
+J(t)=(\alpha+\beta t)T+
+ \sum_{j=1}^{n-1}\bigl(a_jC_k(t)+b_jS_k(t)\bigr)E_j(t),
+\tag{B.5}
+\]</span>
+where <span class="math" data-tex="\(S_k,C_k\)">\(S_k,C_k\)</span> are the scalar functions of <a href="sectional-curvature-and-space-forms.html#lemma-b-2">Sectional curvature B.2</a>. If <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, the positive conjugate times are exactly <span class="math" data-tex="\(q\pi/\sqrt{k}\)">\(q\pi/\sqrt{k}\)</span>, <span class="math" data-tex="\(q=1,2,\ldots\)">\(q=1,2,\ldots\)</span>, when <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>, each of multiplicity <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. There are none when <span class="math" data-tex="\(k\leq0\)">\(k\leq0\)</span>.</p>
+<p><strong>Proof.</strong> <a href="sectional-curvature-and-space-forms.html#theorem-a-1">Sectional curvature A.1</a> gives <span class="math" data-tex="\(R(V,T)T=kV\)">\(R(V,T)T=kV\)</span> for <span class="math" data-tex="\(V\perp T\)">\(V\perp T\)</span>, and it vanishes for <span class="math" data-tex="\(V\)">\(V\)</span> parallel to <span class="math" data-tex="\(T\)">\(T\)</span>. In the parallel frame A.1 consequently splits into <span class="math" data-tex="\(f''=0\)">\(f''=0\)</span> in the tangent coordinate and <span class="math" data-tex="\(f''+kf=0\)">\(f''+kf=0\)</span> in each normal coordinate. <a href="sectional-curvature-and-space-forms.html#lemma-b-2">Sectional curvature B.2</a> proves all scalar solutions and their initial conditions, giving (B.5). A field vanishing at zero has <span class="math" data-tex="\(\alpha=a_j=0\)">\(\alpha=a_j=0\)</span>. If it also vanishes at positive <span class="math" data-tex="\(t\)">\(t\)</span>, then <span class="math" data-tex="\(\beta=0\)">\(\beta=0\)</span>, and the remaining condition is <span class="math" data-tex="\(b_jS_k(t)=0\)">\(b_jS_k(t)=0\)</span>. The zeros and their absence for nonpositive <span class="math" data-tex="\(k\)">\(k\)</span> follow from the same scalar formulas and <a href="connections-and-parallel-transport.html#lemma-e-1">Connections E.1</a>'s exact circle period. This proves both the list and the multiplicities. □</p>
+<h2 id="part-c">C. A finite space that retains the entire index</h2>
+<p>The next lemmas apply to any smooth symmetric matrix function <span class="math" data-tex="\(B:[0,b]\to\operatorname{Sym}(d,\mathbb R)\)">\(B:[0,b]\to\operatorname{Sym}(d,\mathbb R)\)</span> and its form (B.1), whether or not the matrix was obtained from curvature. Dimension <span class="math" data-tex="\(d=0\)">\(d=0\)</span> means the zero space and causes no exception. Fix <span class="math" data-tex="\(C\geq0\)">\(C\geq0\)</span> with <span class="math" data-tex="\(\|B(t)\|\leq C\)">\(\|B(t)\|\leq C\)</span>, which exists by compactness and <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1–0.2</a>.</p>
+<p id="lemma-c-1"><strong>Lemma C.1 (short-interval positivity and interpolation).</strong> On an interval <span class="math" data-tex="\([c,e]\)">\([c,e]\)</span> of length <span class="math" data-tex="\(\delta\)">\(\delta\)</span> satisfying <span class="math" data-tex="\(C\delta^2/2&lt;1\)">\(C\delta^2/2&lt;1\)</span>, the form <span class="math" data-tex="\(I_B\)">\(I_B\)</span> is positive definite on nonzero fields vanishing at its two ends. Every two endpoint values determine a unique solution of <span class="math" data-tex="\(j''+Bj=0\)">\(j''+Bj=0\)</span> on this interval. That solution depends smoothly on the endpoint values and on <span class="math" data-tex="\(c,e\)">\(c,e\)</span> while the strict bound holds.</p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(w(c)=0\)">\(w(c)=0\)</span>, the fundamental theorem of calculus and Cauchy–Schwarz give
+<span class="math math-display" data-tex="\[
+|w(t)|^2=\left|\int_c^tw'(s)\,ds\right|^2
+ \leq(t-c)\int_c^t|w'(s)|^2\,ds.
+\]">\[
+|w(t)|^2=\left|\int_c^tw'(s)\,ds\right|^2
+ \leq(t-c)\int_c^t|w'(s)|^2\,ds.
+\]</span>
+The integral Cauchy–Schwarz inequality here follows by integrating the nonnegative square <span class="math" data-tex="\(|f-\lambda g|^2\)">\(|f-\lambda g|^2\)</span> and considering its quadratic discriminant; this also applies to vectors by the Euclidean dot product. Integrate the displayed bound, replace the inner integral by its full-interval value, and obtain
+<span class="math math-display" data-tex="\[
+\int_c^e|w|^2\leq\frac{\delta^2}{2}\int_c^e|w'|^2,\qquad
+I_B(w,w)\geq(1-C\delta^2/2)\int_c^e|w'|^2.
+\tag{C.1}
+\]">\[
+\int_c^e|w|^2\leq\frac{\delta^2}{2}\int_c^e|w'|^2,\qquad
+I_B(w,w)\geq(1-C\delta^2/2)\int_c^e|w'|^2.
+\tag{C.1}
+\]</span>
+A nonzero continuous piecewise smooth field with both endpoints zero cannot have zero derivative on every piece, so the latter integral is positive.</p>
+<p>Solutions of the matrix equation have <span class="math" data-tex="\(2d\)">\(2d\)</span> initial coordinates by the linear-system argument in A.1. The linear map sending a solution to its two endpoint values has trivial kernel: an element of its kernel has <span class="math" data-tex="\(I_B(j,j)=0\)">\(I_B(j,j)=0\)</span> by integration by parts, so (C.1) forces zero. Between spaces of equal finite dimension an injective linear map is bijective. Its matrix depends smoothly on the interval endpoints, by <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a>. Matrix inversion is smooth where invertible, by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.4</a>. This proves the claimed smooth dependence, together with the same theorem's dependence on initial data. □</p>
+<p id="lemma-c-2"><strong>Lemma C.2 (finite symmetric forms and their variation).</strong> A symmetric bilinear form <span class="math" data-tex="\(Q\)">\(Q\)</span> on <span class="math" data-tex="\(\mathbb R^D\)">\(\mathbb R^D\)</span> has an orthogonal decomposition into a negative, a zero and a positive space of dimensions <span class="math" data-tex="\(p,k,q\)">\(p,k,q\)</span>. Its index is <span class="math" data-tex="\(p\)">\(p\)</span>, its nullity is <span class="math" data-tex="\(k\)">\(k\)</span>, and its maximal nonpositive dimension is <span class="math" data-tex="\(p+k\)">\(p+k\)</span>. If <span class="math" data-tex="\(Q(r)\)">\(Q(r)\)</span> is a continuous family and <span class="math" data-tex="\(Q(r_0)\)">\(Q(r_0)\)</span> has those dimensions, then for all nearby <span class="math" data-tex="\(r\)">\(r\)</span>,
+<span class="math math-display" data-tex="\[
+p\leq i(Q(r))\leq p+k.
+\tag{C.2}
+\]">\[
+p\leq i(Q(r))\leq p+k.
+\tag{C.2}
+\]</span>
+In particular its index is locally constant when its nullity is zero.</p>
+<p><strong>Proof.</strong> Dimension zero is immediate. Otherwise represent <span class="math" data-tex="\(Q\)">\(Q\)</span> by a real symmetric matrix <span class="math" data-tex="\(A\)">\(A\)</span>. The function <span class="math" data-tex="\(x\mapsto x\cdot Ax\)">\(x\mapsto x\cdot Ax\)</span> attains its maximum on the unit sphere by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>. Differentiation along every tangent direction at a maximizer <span class="math" data-tex="\(v\)">\(v\)</span> shows <span class="math" data-tex="\(Av=\lambda v\)">\(Av=\lambda v\)</span>. Its orthogonal complement is invariant because <span class="math" data-tex="\(A\)">\(A\)</span> is symmetric. Induction on dimension gives an orthonormal eigenbasis, including dimension zero. Split it by the signs of its eigenvalues. The kernel is exactly the zero space. Projection of a negative definite subspace to the negative space is injective, since a vector with zero such projection has <span class="math" data-tex="\(Q(x,x)\geq0\)">\(Q(x,x)\geq0\)</span>. Thus the maximal negative dimension is <span class="math" data-tex="\(p\)">\(p\)</span>. Similarly a nonpositive subspace projects injectively to the sum of the negative and zero spaces, because a nonzero vector in the positive space has positive square. This proves the dimension <span class="math" data-tex="\(p+k\)">\(p+k\)</span> and attainment.</p>
+<p>On the unit sphere of the negative space the square is bounded above by a strictly negative number. On the unit sphere of the positive space it is bounded below by a strictly positive number. Continuity of the finitely many matrix entries preserves both bounds for all sufficiently close <span class="math" data-tex="\(r\)">\(r\)</span>. Therefore <span class="math" data-tex="\(i(Q(r))\geq p\)">\(i(Q(r))\geq p\)</span>. Any negative subspace of dimension greater than <span class="math" data-tex="\(p+k=D-q\)">\(p+k=D-q\)</span> would meet that fixed positive space nontrivially, by the dimension formula for subspaces, which is impossible. This gives the upper bound. When <span class="math" data-tex="\(k=0\)">\(k=0\)</span> the bounds coincide. □</p>
+<p id="theorem-c-3"><strong>Theorem C.3 (broken-Jacobi reduction).</strong> Choose
+<span class="math" data-tex="\(0=t_0&lt;\cdots&lt;t_N=b\)">\(0=t_0&lt;\cdots&lt;t_N=b\)</span> with every interval satisfying C.1. Let <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> be the endpoint-fixed fields which solve <span class="math" data-tex="\(j''+Bj=0\)">\(j''+Bj=0\)</span> on every piece, and <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> the fields which vanish at every node. Then
+<span class="math math-display" data-tex="\[
+\mathcal V_0=\mathcal J\oplus\mathcal W,\qquad
+I_B(\mathcal J,\mathcal W)=0,\qquad I_B|_{\mathcal W}&gt;0.
+\tag{C.3}
+\]">\[
+\mathcal V_0=\mathcal J\oplus\mathcal W,\qquad
+I_B(\mathcal J,\mathcal W)=0,\qquad I_B|_{\mathcal W}&gt;0.
+\tag{C.3}
+\]</span>
+Node evaluation identifies <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> with <span class="math" data-tex="\((\mathbb R^d)^{N-1}\)">\((\mathbb R^d)^{N-1}\)</span>. If <span class="math" data-tex="\(Q=I_B|_{\mathcal J}\)">\(Q=I_B|_{\mathcal J}\)</span>, then
+<span class="math math-display" data-tex="\[
+i(I_B)=i(Q),\qquad n(I_B)=n(Q),\qquad
+a(I_B)=i(Q)+n(Q).
+\tag{C.4}
+\]">\[
+i(I_B)=i(Q),\qquad n(I_B)=n(Q),\qquad
+a(I_B)=i(Q)+n(Q).
+\tag{C.4}
+\]</span>
+All these quantities are finite and attained. In particular a subspace on which the bilinear form vanishes identically has dimension at most <span class="math" data-tex="\(a(I_B)\)">\(a(I_B)\)</span>.</p>
+<p><strong>Proof.</strong> Interpolate the values of <span class="math" data-tex="\(V\)">\(V\)</span> at every adjacent pair of nodes by C.1. The resulting unique <span class="math" data-tex="\(J\)">\(J\)</span> is continuous and piecewise smooth, and <span class="math" data-tex="\(W=V-J\)">\(W=V-J\)</span> vanishes at all nodes. Uniqueness also proves directness of the sum and the node-coordinate identification. Integration by parts on each interval gives <span class="math" data-tex="\(I_B(J,W)=0\)">\(I_B(J,W)=0\)</span>, since the equation kills its integral term and <span class="math" data-tex="\(W\)">\(W\)</span> kills its endpoint terms. C.1 on each piece shows that <span class="math" data-tex="\(I_B(W,W)&gt;0\)">\(I_B(W,W)&gt;0\)</span> unless <span class="math" data-tex="\(W=0\)">\(W=0\)</span>.</p>
+<p>Diagonalize the finite form on <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> by C.2. Its positive eigenspace together with <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> is positive definite; its zero eigenspace lies in the radical of the whole form. A radical vector must have zero <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> component, by pairing with that component, and then must be in the finite radical. Projection to the negative eigenspace is injective on any negative definite subspace of <span class="math" data-tex="\(\mathcal V_0\)">\(\mathcal V_0\)</span>; projection to the negative-plus-zero eigenspace is injective on any nonpositive subspace. Indeed a nonzero vector in either forbidden kernel would have nonnegative, respectively positive, square. These projections give the upper bounds in (C.4); the finite eigenspaces themselves attain them. A totally isotropic subspace is nonpositive, proving the final assertion. □</p>
+<p id="lemma-c-4"><strong>Lemma C.4 (there are finitely many conjugate times).</strong> Let <span class="math" data-tex="\(j''+Bj=0\)">\(j''+Bj=0\)</span> on <span class="math" data-tex="\([0,b]\)">\([0,b]\)</span>, and let <span class="math" data-tex="\(\mu(t)\)">\(\mu(t)\)</span> count its solutions with <span class="math" data-tex="\(j(0)=j(t)=0\)">\(j(0)=j(t)=0\)</span>. Then only finitely many <span class="math" data-tex="\(t\in(0,b]\)">\(t\in(0,b]\)</span> have <span class="math" data-tex="\(\mu(t)&gt;0\)">\(\mu(t)&gt;0\)</span>, and the sum of their multiplicities is finite.</p>
+<p><strong>Proof.</strong> For any finite list of such times <span class="math" data-tex="\(0=\tau_0&lt;\tau_1&lt;\cdots&lt;\tau_s\)">\(0=\tau_0&lt;\tau_1&lt;\cdots&lt;\tau_s\)</span>, extend each endpoint-vanishing solution on <span class="math" data-tex="\([0,\tau_i]\)">\([0,\tau_i]\)</span> by zero after <span class="math" data-tex="\(\tau_i\)">\(\tau_i\)</span>. These extended fields are continuous and piecewise smooth. They span a totally isotropic subspace for <span class="math" data-tex="\(I_B\)">\(I_B\)</span>: for two fields whose endpoints are ordered <span class="math" data-tex="\(\tau_i\leq\tau_j\)">\(\tau_i\leq\tau_j\)</span>, integrate by parts using the untruncated, smooth Jacobi field ending at <span class="math" data-tex="\(\tau_j\)">\(\tau_j\)</span> on <span class="math" data-tex="\([0,\tau_j]\)">\([0,\tau_j]\)</span>. The other field vanishes at both ends, so the pairing is zero by (B.2).</p>
+<p>The subspaces for distinct times are linearly independent. In a relation among their sums, restrict to <span class="math" data-tex="\((\tau_{s-1},\tau_s)\)">\((\tau_{s-1},\tau_s)\)</span>; only the final solution survives, so it vanishes on an open interval. Uniqueness of the differential equation makes it zero everywhere. Descend through the remaining times. The resulting isotropic subspace has dimension <span class="math" data-tex="\(\sum_{i=1}^s\mu(\tau_i)\)">\(\sum_{i=1}^s\mu(\tau_i)\)</span>, which is at most the finite bound <span class="math" data-tex="\(a(I_B)\)">\(a(I_B)\)</span> from C.3. If there were infinitely many conjugate times, finite lists of arbitrarily large size would violate that bound, since each contributes at least one. The same bound now proves finiteness of the full multiplicity sum. □</p>
+<p id="lemma-c-5"><strong>Lemma C.5 (strict increase after an endpoint kernel).</strong> For <span class="math" data-tex="\(0&lt;\tau&lt;b\)">\(0&lt;\tau&lt;b\)</span>,
+<span class="math math-display" data-tex="\[
+i(I_{[0,b]})\geq i(I_{[0,\tau]})+n(I_{[0,\tau]}).
+\tag{C.5}
+\]">\[
+i(I_{[0,b]})\geq i(I_{[0,\tau]})+n(I_{[0,\tau]}).
+\tag{C.5}
+\]</span>
+Here both forms use restrictions of the same matrix <span class="math" data-tex="\(B\)">\(B\)</span>. In particular, an interior conjugate time gives a negative field on the longer interval.</p>
+<p><strong>Proof.</strong> By C.3 choose a finite-dimensional negative subspace <span class="math" data-tex="\(E\)">\(E\)</span> of dimension <span class="math" data-tex="\(p=i(I_{[0,\tau]})\)">\(p=i(I_{[0,\tau]})\)</span>, and let <span class="math" data-tex="\(K\)">\(K\)</span> be the radical, of dimension <span class="math" data-tex="\(k=n(I_{[0,\tau]})\)">\(k=n(I_{[0,\tau]})\)</span>. By B.1 its members are Jacobi fields with both endpoint values zero. Extend every <span class="math" data-tex="\(x\in E\)">\(x\in E\)</span> and <span class="math" data-tex="\(j\in K\)">\(j\in K\)</span> by zero after <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, denoting the extensions by <span class="math" data-tex="\(x^0,j^0\)">\(x^0,j^0\)</span>. The form on <span class="math" data-tex="\(E^0\)">\(E^0\)</span> stays negative, and <span class="math" data-tex="\(I(x^0,j^0)=I(j^0,j^0)=0\)">\(I(x^0,j^0)=I(j^0,j^0)=0\)</span>.</p>
+<p>For <span class="math" data-tex="\(j\in K\)">\(j\in K\)</span>, its derivative <span class="math" data-tex="\(j'(\tau)\)">\(j'(\tau)\)</span> determines it injectively, by uniqueness with final data <span class="math" data-tex="\(j(\tau)=0\)">\(j(\tau)=0\)</span>. Choose a smooth scalar cutoff <span class="math" data-tex="\(\chi\)">\(\chi\)</span> supported inside <span class="math" data-tex="\((0,b)\)">\((0,b)\)</span>, with <span class="math" data-tex="\(\chi(\tau)=1\)">\(\chi(\tau)=1\)</span>, and set
+<span class="math math-display" data-tex="\[
+w_j(t)=-\chi(t)j'(\tau)
+\]">\[
+w_j(t)=-\chi(t)j'(\tau)
+\]</span>
+in the fixed parallel component frame. This is linear in <span class="math" data-tex="\(j\)">\(j\)</span> and vanishes at <span class="math" data-tex="\(0,b\)">\(0,b\)</span>. Integration by parts on <span class="math" data-tex="\([0,\tau]\)">\([0,\tau]\)</span> gives
+<span class="math math-display" data-tex="\[
+I(j^0,w_j)=-|j'(\tau)|^2.
+\tag{C.6}
+\]">\[
+I(j^0,w_j)=-|j'(\tau)|^2.
+\tag{C.6}
+\]</span>
+Give <span class="math" data-tex="\(K\)">\(K\)</span> the norm <span class="math" data-tex="\(\|j\|=|j'(\tau)|\)">\(\|j\|=|j'(\tau)|\)</span>, and choose any Euclidean coefficient norm on <span class="math" data-tex="\(E\)">\(E\)</span>. Finite-dimensional boundedness, <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.2</a>, supplies <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span> and <span class="math" data-tex="\(M&lt;\infty\)">\(M&lt;\infty\)</span> such that
+<span class="math math-display" data-tex="\[
+I(x^0,x^0)\leq-\alpha\|x\|^2,\quad
+|I(x^0,w_j)|\leq M\|x\|\|j\|,\quad
+|I(w_j,w_j)|\leq M\|j\|^2.
+\]">\[
+I(x^0,x^0)\leq-\alpha\|x\|^2,\quad
+|I(x^0,w_j)|\leq M\|x\|\|j\|,\quad
+|I(w_j,w_j)|\leq M\|j\|^2.
+\]</span>
+If <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, simply omit its terms. For <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(x^0+j^0+\varepsilon w_j,x^0+j^0+\varepsilon w_j)
+\leq{}&amp;-\alpha\|x\|^2-2\varepsilon\|j\|^2\\
+&amp;+2\varepsilon M\|x\|\|j\|
+ +\varepsilon^2M\|j\|^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+I(x^0+j^0+\varepsilon w_j,x^0+j^0+\varepsilon w_j)
+\leq{}&amp;-\alpha\|x\|^2-2\varepsilon\|j\|^2\\
+&amp;+2\varepsilon M\|x\|\|j\|
+ +\varepsilon^2M\|j\|^2.
+\end{aligned}
+\]</span>
+Completing a square bounds the mixed term by
+<span class="math" data-tex="\(\alpha\|x\|^2/2+2\varepsilon^2M^2\|j\|^2/\alpha\)">\(\alpha\|x\|^2/2+2\varepsilon^2M^2\|j\|^2/\alpha\)</span>.
+For one sufficiently small positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, the result is strictly negative unless <span class="math" data-tex="\(x=j=0\)">\(x=j=0\)</span>. With <span class="math" data-tex="\(E=0\)">\(E=0\)</span> the same conclusion follows from <span class="math" data-tex="\(-2\varepsilon+\varepsilon^2M&lt;0\)">\(-2\varepsilon+\varepsilon^2M&lt;0\)</span>. Consequently the linear map
+<span class="math" data-tex="\((x,j)\mapsto x^0+j^0+\varepsilon w_j\)">\((x,j)\mapsto x^0+j^0+\varepsilon w_j\)</span> is injective and its image is a negative subspace of dimension <span class="math" data-tex="\(p+k\)">\(p+k\)</span>. This proves (C.5), including the cases where one of the two spaces is zero. □</p>
+<h2 id="part-d">D. Counting conjugate points</h2>
+<p id="theorem-d-1"><strong>Theorem D.1 (Morse index and nullity).</strong> Let <span class="math" data-tex="\(\gamma:[0,b]\to M\)">\(\gamma:[0,b]\to M\)</span> be a nonconstant Riemannian geodesic, and let <span class="math" data-tex="\(\mu(t)\)">\(\mu(t)\)</span> be the conjugate multiplicity of B.2. Then
+<span class="math math-display" data-tex="\[
+i(I)=\sum_{0&lt;t&lt;b}\mu(t),\qquad
+n(I)=\mu(b),\qquad
+a(I)=\sum_{0&lt;t\leq b}\mu(t).
+\tag{D.1}
+\]">\[
+i(I)=\sum_{0&lt;t&lt;b}\mu(t),\qquad
+n(I)=\mu(b),\qquad
+a(I)=\sum_{0&lt;t\leq b}\mu(t).
+\tag{D.1}
+\]</span>
+All sums are finite. The same index is obtained on smooth endpoint-fixed fields, on all endpoint-fixed energy fields, and on normal fields for the length Hessian. For a constant geodesic its energy index form has index, nullity and maximal nonpositive dimension zero.</p>
+<p><strong>Proof.</strong> First work on normal fields, in the frame (B.1). Write <span class="math" data-tex="\(i(r)=i(I_{[0,r]})\)">\(i(r)=i(I_{[0,r]})\)</span>. Extension by zero from a shorter interval embeds its endpoint-fixed fields into the fields on every longer interval and preserves the form. Thus <span class="math" data-tex="\(i(r)\)">\(i(r)\)</span> is nondecreasing. By C.1 it is zero for sufficiently small positive <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>Choose an integer <span class="math" data-tex="\(N\)">\(N\)</span> large enough that <span class="math" data-tex="\(C(b/N)^2/2&lt;1\)">\(C(b/N)^2/2&lt;1\)</span>. For each <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>, use the moving nodes
+<span class="math math-display" data-tex="\[
+t_j(r)=jr/N,\qquad 0\leq j\leq N.
+\tag{D.2}
+\]">\[
+t_j(r)=jr/N,\qquad 0\leq j\leq N.
+\tag{D.2}
+\]</span>
+On the fixed coordinate space <span class="math" data-tex="\((\mathbb R^d)^{N-1}\)">\((\mathbb R^d)^{N-1}\)</span>, let <span class="math" data-tex="\(Q(r)\)">\(Q(r)\)</span> be the form on the interpolants with those node values. C.1 makes the interpolants smooth in <span class="math" data-tex="\(r\)">\(r\)</span> after each interval is parametrized by a fixed unit interval. Differentiation under a compact integral, <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>, shows that all entries of <span class="math" data-tex="\(Q(r)\)">\(Q(r)\)</span> are smooth for <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>. C.3 and B.1 identify
+<span class="math math-display" data-tex="\[
+i(Q(r))=i(r),\qquad \dim\ker Q(r)=\mu(r).
+\tag{D.3}
+\]">\[
+i(Q(r))=i(r),\qquad \dim\ker Q(r)=\mu(r).
+\tag{D.3}
+\]</span>
+C.2 therefore makes <span class="math" data-tex="\(i(r)\)">\(i(r)\)</span> locally constant at nonconjugate times.</p>
+<p>There are only finitely many conjugate times by C.4. At one such time <span class="math" data-tex="\(\tau\)">\(\tau\)</span>, put <span class="math" data-tex="\(p=i(\tau)\)">\(p=i(\tau)\)</span>, <span class="math" data-tex="\(k=\mu(\tau)\)">\(k=\mu(\tau)\)</span>. C.2 bounds all nearby indices between <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(p+k\)">\(p+k\)</span>. On the left, monotonicity gives <span class="math" data-tex="\(i(r)\leq p\)">\(i(r)\leq p\)</span>, so <span class="math" data-tex="\(i(r)=p\)">\(i(r)=p\)</span>. On the right, C.5 gives <span class="math" data-tex="\(i(r)\geq p+k\)">\(i(r)\geq p+k\)</span>, so <span class="math" data-tex="\(i(r)=p+k\)">\(i(r)=p+k\)</span>. This right-hand statement is used only when <span class="math" data-tex="\(\tau&lt;b\)">\(\tau&lt;b\)</span>. Beginning with zero on a short interval and passing through the finite list proves that <span class="math" data-tex="\(i(b)\)">\(i(b)\)</span> is the sum of the multiplicities strictly before <span class="math" data-tex="\(b\)">\(b\)</span>. A conjugate endpoint contributes its nullity but has not yet increased the index. B.1 gives <span class="math" data-tex="\(n(I)=\mu(b)\)">\(n(I)=\mu(b)\)</span>, and C.3 gives <span class="math" data-tex="\(a(I)=i(I)+n(I)\)">\(a(I)=i(I)+n(I)\)</span>. These are (D.1).</p>
+<p>The form splits orthogonally into its normal part and the positive tangential form
+<span class="math" data-tex="\(\int(f')^2\)">\(\int(f')^2\)</span> by A.4. Thus adding tangential endpoint-fixed fields changes none of these three numbers, by the same projection argument as C.3. The length Hessian on normal fields is a positive scalar multiple of <span class="math" data-tex="\(I\)">\(I\)</span>, so has the same index.</p>
+<p>It remains to justify using smooth fields only. Take a basis of a maximal negative subspace, which C.3 supplies. Apply A.2 to its finitely many fields. Uniform convergence and squared-integral convergence of derivatives imply convergence of every Gram matrix entry of <span class="math" data-tex="\(I\)">\(I\)</span>, by Cauchy–Schwarz and boundedness of <span class="math" data-tex="\(B\)">\(B\)</span>. For example
+<span class="math math-display" data-tex="\[
+\left|\int(v_\varepsilon'\cdot w_\varepsilon'-v'\cdot w')\right|
+ \leq\|v_\varepsilon'-v'\|_2\|w_\varepsilon'\|_2
+   +\|v'\|_2\|w_\varepsilon'-w'\|_2,
+\]">\[
+\left|\int(v_\varepsilon'\cdot w_\varepsilon'-v'\cdot w')\right|
+ \leq\|v_\varepsilon'-v'\|_2\|w_\varepsilon'\|_2
+   +\|v'\|_2\|w_\varepsilon'-w'\|_2,
+\]</span>
+where <span class="math" data-tex="\(\|f\|_2=(\int|f|^2)^{1/2}\)">\(\|f\|_2=(\int|f|^2)^{1/2}\)</span>; all integrands are piecewise continuous. C.2 preserves negative definiteness for sufficiently small errors. The approximated fields are linearly independent, since a dependence would give zero square to a nonzero coefficient vector in this negative Gram matrix. Their span gives the same index with smooth fields; the reverse inequality follows from inclusion. The radical fields already are smooth by B.1. Finally a constant geodesic has <span class="math" data-tex="\(T=0\)">\(T=0\)</span> and <span class="math" data-tex="\(I(V,V)=\int|V'|^2\)">\(I(V,V)=\int|V'|^2\)</span>, positive for every nonzero endpoint-fixed field. All three stated numbers then vanish. □</p>
+<p id="theorem-d-2"><strong>Theorem D.2 (the Jacobi interpolation inequality).</strong> Suppose there are no conjugate times in <span class="math" data-tex="\((0,b]\)">\((0,b]\)</span>. For every normal piecewise smooth <span class="math" data-tex="\(V\)">\(V\)</span> with <span class="math" data-tex="\(V(0)=0\)">\(V(0)=0\)</span>, there is exactly one normal Jacobi field <span class="math" data-tex="\(J\)">\(J\)</span> with <span class="math" data-tex="\(J(0)=0,J(b)=V(b)\)">\(J(0)=0,J(b)=V(b)\)</span>, and
+<span class="math math-display" data-tex="\[
+I(V,V)\geq I(J,J),
+\tag{D.4}
+\]">\[
+I(V,V)\geq I(J,J),
+\tag{D.4}
+\]</span>
+with equality exactly when <span class="math" data-tex="\(V=J\)">\(V=J\)</span>. In particular <span class="math" data-tex="\(I\)">\(I\)</span> is positive definite on <span class="math" data-tex="\(\mathcal V_0\)">\(\mathcal V_0\)</span>.</p>
+<p><strong>Proof.</strong> The map taking initial normal derivative to final value has equal domain and codomain dimension <span class="math" data-tex="\(d\)">\(d\)</span>, by A.1. Its kernel has dimension <span class="math" data-tex="\(\mu(b)=0\)">\(\mu(b)=0\)</span>, so it is invertible. This proves existence and uniqueness of <span class="math" data-tex="\(J\)">\(J\)</span>. D.1 gives index and nullity zero for endpoint-fixed normal fields. Index zero means <span class="math" data-tex="\(I(W,W)\geq0\)">\(I(W,W)\geq0\)</span> for every such <span class="math" data-tex="\(W\)">\(W\)</span>; otherwise its one-dimensional span would be negative. If a nonzero <span class="math" data-tex="\(W\)">\(W\)</span> had square zero, then for every <span class="math" data-tex="\(Z\)">\(Z\)</span> and every real <span class="math" data-tex="\(s\)">\(s\)</span>,
+<span class="math math-display" data-tex="\[
+0\leq I(W+sZ,W+sZ)=2sI(W,Z)+s^2I(Z,Z).
+\]">\[
+0\leq I(W+sZ,W+sZ)=2sI(W,Z)+s^2I(Z,Z).
+\]</span>
+Both signs of sufficiently small <span class="math" data-tex="\(s\)">\(s\)</span> force <span class="math" data-tex="\(I(W,Z)=0\)">\(I(W,Z)=0\)</span>. Thus <span class="math" data-tex="\(W\)">\(W\)</span> would lie in the zero radical, a contradiction. This proves positivity. Now <span class="math" data-tex="\(W=V-J\)">\(W=V-J\)</span> vanishes at both endpoints, and B.1 gives <span class="math" data-tex="\(I(J,W)=0\)">\(I(J,W)=0\)</span>. Therefore
+<span class="math" data-tex="\(I(V,V)-I(J,J)=I(W,W)\)">\(I(V,V)-I(J,J)=I(W,W)\)</span>, with equality precisely when <span class="math" data-tex="\(W=0\)">\(W=0\)</span>. □</p>
+<h2 id="part-e">E. Negative eigenvalues without an infinite-dimensional spectral theorem</h2>
+<p>For a smooth symmetric <span class="math" data-tex="\(B:[0,b]\to\operatorname{Sym}(d,\mathbb R)\)">\(B:[0,b]\to\operatorname{Sym}(d,\mathbb R)\)</span>, the Dirichlet problem is
+<span class="math math-display" data-tex="\[
+\mathcal Lv=-v''-Bv=\lambda v,\qquad v(0)=v(b)=0.
+\tag{E.1}
+\]">\[
+\mathcal Lv=-v''-Bv=\lambda v,\qquad v(0)=v(b)=0.
+\tag{E.1}
+\]</span>
+A real <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is an eigenvalue when a nonzero smooth solution exists; its multiplicity is the dimension of that solution space. Define
+<span class="math math-display" data-tex="\[
+I_\lambda(v,w)=I_B(v,w)-\lambda\int_0^b v\cdot w\,dt.
+\tag{E.2}
+\]">\[
+I_\lambda(v,w)=I_B(v,w)-\lambda\int_0^b v\cdot w\,dt.
+\tag{E.2}
+\]</span>
+Integration by parts identifies the radical of <span class="math" data-tex="\(I_\lambda\)">\(I_\lambda\)</span> with the solution space in (E.1), by the proof of B.1 applied to <span class="math" data-tex="\(B+\lambda I_d\)">\(B+\lambda I_d\)</span>.</p>
+<p id="lemma-e-1"><strong>Lemma E.1 (uniform lower bound and a finite matrix family).</strong> If <span class="math" data-tex="\(\|B(t)\|\leq C\)">\(\|B(t)\|\leq C\)</span>, every eigenvalue on any interval <span class="math" data-tex="\([0,r]\)">\([0,r]\)</span>, <span class="math" data-tex="\(0&lt;r\leq b\)">\(0&lt;r\leq b\)</span>, satisfies <span class="math" data-tex="\(\lambda&gt;-C\)">\(\lambda&gt;-C\)</span>. For every fixed compact interval of parameters <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, there is a single subdivision of <span class="math" data-tex="\([0,b]\)">\([0,b]\)</span> on which the broken-solution reduction of C.3 applies to all <span class="math" data-tex="\(I_\lambda\)">\(I_\lambda\)</span>, producing a smooth family of finite symmetric matrices <span class="math" data-tex="\(Q(\lambda)\)">\(Q(\lambda)\)</span>.</p>
+<p><strong>Proof.</strong> Multiply (E.1) by <span class="math" data-tex="\(v\)">\(v\)</span> and integrate. The endpoint conditions give
+<span class="math math-display" data-tex="\[
+\lambda\int_0^r|v|^2
+ =\int_0^r|v'|^2-\int_0^rBv\cdot v
+ \geq\int_0^r|v'|^2-C\int_0^r|v|^2.
+\tag{E.3}
+\]">\[
+\lambda\int_0^r|v|^2
+ =\int_0^r|v'|^2-\int_0^rBv\cdot v
+ \geq\int_0^r|v'|^2-C\int_0^r|v|^2.
+\tag{E.3}
+\]</span>
+For a nonzero endpoint-fixed solution both <span class="math" data-tex="\(\int|v|^2\)">\(\int|v|^2\)</span> and <span class="math" data-tex="\(\int|v'|^2\)">\(\int|v'|^2\)</span> are positive; the latter could vanish only for a constant vector, then zero by its endpoint. Division proves the strict bound, independent of <span class="math" data-tex="\(r\)">\(r\)</span>.</p>
+<p>On a compact parameter interval enlarge <span class="math" data-tex="\(\|B+\lambda I_d\|\)">\(\|B+\lambda I_d\|\)</span>'s uniform bound slightly so it also holds in an open neighbourhood of that interval. Choose all subdivision lengths to satisfy C.1 for this bound. The solution of
+<span class="math" data-tex="\(j''+(B+\lambda I_d)j=0\)">\(j''+(B+\lambda I_d)j=0\)</span> interpolating each pair of node values depends smoothly on <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, by the parameter version of <a href="local-tools-for-bundles-and-transport.html#2-differential-equations-and-their-parameters">Local tools 2.1</a> and the invertible endpoint matrix in C.1. Integrating its quadratic form on each fixed interval gives a smooth matrix <span class="math" data-tex="\(Q(\lambda)\)">\(Q(\lambda)\)</span>, by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>. C.3 gives
+<span class="math math-display" data-tex="\[
+i(Q(\lambda))=i(I_\lambda),\qquad
+\dim\ker Q(\lambda)=\dim\ker(\mathcal L-\lambda I).
+\tag{E.4}
+\]">\[
+i(Q(\lambda))=i(I_\lambda),\qquad
+\dim\ker Q(\lambda)=\dim\ker(\mathcal L-\lambda I).
+\tag{E.4}
+\]</span>
+No basis of eigenfunctions is needed for this construction. □</p>
+<p id="lemma-e-2"><strong>Lemma E.2 (a definite crossing of symmetric forms).</strong> Let <span class="math" data-tex="\(Q(s)\)">\(Q(s)\)</span> be a smooth finite symmetric matrix family near <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, with nonzero kernel <span class="math" data-tex="\(K\)">\(K\)</span> at <span class="math" data-tex="\(s_0\)">\(s_0\)</span>. If <span class="math" data-tex="\(Q'(s_0)|_K\)">\(Q'(s_0)|_K\)</span> is negative definite, then <span class="math" data-tex="\(s_0\)">\(s_0\)</span> is an isolated singular parameter. If <span class="math" data-tex="\(p=i(Q(s_0))\)">\(p=i(Q(s_0))\)</span>, <span class="math" data-tex="\(k=\dim K\)">\(k=\dim K\)</span>, then its index is <span class="math" data-tex="\(p\)">\(p\)</span> just before <span class="math" data-tex="\(s_0\)">\(s_0\)</span> and <span class="math" data-tex="\(p+k\)">\(p+k\)</span> just after it.</p>
+<p><strong>Proof.</strong> Choose the Euclidean orthogonal complement <span class="math" data-tex="\(H=K^\perp\)">\(H=K^\perp\)</span>. By C.2, <span class="math" data-tex="\(Q(s_0)|_H\)">\(Q(s_0)|_H\)</span> is invertible. In <span class="math" data-tex="\(H\oplus K\)">\(H\oplus K\)</span> write
+<span class="math math-display" data-tex="\[
+Q(s)=
+\begin{pmatrix}A(s)&amp;D(s)\\D(s)^{\mathsf T}&amp;E(s)\end{pmatrix}.
+\]">\[
+Q(s)=
+\begin{pmatrix}A(s)&amp;D(s)\\D(s)^{\mathsf T}&amp;E(s)\end{pmatrix}.
+\]</span>
+At <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, <span class="math" data-tex="\(D=0\)">\(D=0\)</span>, <span class="math" data-tex="\(E=0\)">\(E=0\)</span>, and <span class="math" data-tex="\(A\)">\(A\)</span> is invertible. It remains invertible nearby by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.4</a>. Completing the square by the invertible change <span class="math" data-tex="\(x\mapsto x+A^{-1}Dy\)">\(x\mapsto x+A^{-1}Dy\)</span> decomposes the form into <span class="math" data-tex="\(A(s)\)">\(A(s)\)</span> and
+<span class="math math-display" data-tex="\[
+S(s)=E(s)-D(s)^{\mathsf T}A(s)^{-1}D(s).
+\tag{E.5}
+\]">\[
+S(s)=E(s)-D(s)^{\mathsf T}A(s)^{-1}D(s).
+\tag{E.5}
+\]</span>
+An invertible coordinate change preserves the dimensions of negative spaces and of the kernel, by mapping those subspaces bijectively. Now <span class="math" data-tex="\(S(s_0)=0\)">\(S(s_0)=0\)</span> and <span class="math" data-tex="\(S'(s_0)=E'(s_0)=Q'(s_0)|_K\)">\(S'(s_0)=E'(s_0)=Q'(s_0)|_K\)</span>. The fundamental theorem of calculus entry by entry gives
+<span class="math math-display" data-tex="\[
+S(s)=(s-s_0)\bigl(S'(s_0)+R(s)\bigr),\qquad \|R(s)\|\longrightarrow0.
+\]">\[
+S(s)=(s-s_0)\bigl(S'(s_0)+R(s)\bigr),\qquad \|R(s)\|\longrightarrow0.
+\]</span>
+Negative definiteness has a strict uniform bound on the unit sphere, so <span class="math" data-tex="\(S(s)\)">\(S(s)\)</span> is positive definite just before <span class="math" data-tex="\(s_0\)">\(s_0\)</span> and negative definite just after. Meanwhile <span class="math" data-tex="\(A(s)\)">\(A(s)\)</span> has constant index <span class="math" data-tex="\(p\)">\(p\)</span> by C.2. The square completion proves the asserted indices and makes both blocks invertible whenever <span class="math" data-tex="\(s\ne s_0\)">\(s\ne s_0\)</span> is sufficiently close. Hence the singularity is isolated. □</p>
+<p id="theorem-e-3"><strong>Theorem E.3 (spectral index formula).</strong> There are finitely many negative Dirichlet eigenvalues in (E.1), each of finite multiplicity, and
+<span class="math math-display" data-tex="\[
+i(I_B)=\sum_{\lambda&lt;0}\dim\ker(\mathcal L-\lambda I).
+\tag{E.6}
+\]">\[
+i(I_B)=\sum_{\lambda&lt;0}\dim\ker(\mathcal L-\lambda I).
+\tag{E.6}
+\]</span>
+The zero eigenspace is the space of endpoint Jacobi fields. For the normal operator of a Riemannian geodesic it has dimension <span class="math" data-tex="\(\mu(b)\)">\(\mu(b)\)</span>. The same negative-eigenvalue count holds for the full energy operator.</p>
+<p><strong>Proof.</strong> Set <span class="math" data-tex="\(\lambda_0=-C-1\)">\(\lambda_0=-C-1\)</span>. For nonzero endpoint-fixed <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+I_{\lambda_0}(v,v)\geq\int_0^b(|v'|^2+|v|^2)\,dt&gt;0.
+\]">\[
+I_{\lambda_0}(v,v)\geq\int_0^b(|v'|^2+|v|^2)\,dt&gt;0.
+\]</span>
+There are no eigenvalues at or below <span class="math" data-tex="\(\lambda_0\)">\(\lambda_0\)</span>, by E.1. Form its single smooth finite family <span class="math" data-tex="\(Q(\lambda)\)">\(Q(\lambda)\)</span> on an open neighbourhood of <span class="math" data-tex="\([\lambda_0,0]\)">\([\lambda_0,0]\)</span>.</p>
+<p>We compute its derivative on a kernel. Fix a node-coordinate vector <span class="math" data-tex="\(x\in\ker Q(\lambda_*)\)">\(x\in\ker Q(\lambda_*)\)</span>, and let <span class="math" data-tex="\(j_\lambda(x)\)">\(j_\lambda(x)\)</span> be its interpolating broken solution. At <span class="math" data-tex="\(\lambda_*\)">\(\lambda_*\)</span>, C.3 and B.1 imply that <span class="math" data-tex="\(j=j_{\lambda_*}(x)\)">\(j=j_{\lambda_*}(x)\)</span> is a global solution of (E.1). Its parameter derivative <span class="math" data-tex="\(z=\partial_\lambda j_\lambda(x)|_{\lambda_*}\)">\(z=\partial_\lambda j_\lambda(x)|_{\lambda_*}\)</span> is continuous and piecewise smooth, with zero values at all fixed nodes, including the endpoints. Differentiating the integral yields
+<span class="math math-display" data-tex="\[
+\frac{d}{d\lambda}\bigg|_{\lambda_*}
+ Q(\lambda)(x,x)
+ =2I_{\lambda_*}(j,z)-\int_0^b|j|^2\,dt
+ =-\int_0^b|j|^2\,dt.
+\tag{E.7}
+\]">\[
+\frac{d}{d\lambda}\bigg|_{\lambda_*}
+ Q(\lambda)(x,x)
+ =2I_{\lambda_*}(j,z)-\int_0^b|j|^2\,dt
+ =-\int_0^b|j|^2\,dt.
+\tag{E.7}
+\]</span>
+The middle pairing is zero because <span class="math" data-tex="\(j\)">\(j\)</span> is in the radical on all endpoint-fixed fields. Node interpolation is injective, so <span class="math" data-tex="\(x\ne0\)">\(x\ne0\)</span> implies <span class="math" data-tex="\(j\ne0\)">\(j\ne0\)</span>. Thus (E.7) is negative definite on the kernel. Polarization supplies the corresponding bilinear identity.</p>
+<p>E.2 makes every singular parameter isolated. The singular set in <span class="math" data-tex="\([\lambda_0,0]\)">\([\lambda_0,0]\)</span> is closed, since it is the zero set of the continuous determinant, and hence compact by <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.1</a>. The neighbourhoods isolating its individual points form an open cover; a finite subcover shows that the singular set is finite. Each multiplicity is finite because an endpoint-zero solution is determined by its initial derivative in <span class="math" data-tex="\(\mathbb R^d\)">\(\mathbb R^d\)</span>, by A.1.</p>
+<p>The initial index is zero. It is constant between singular parameters by C.2, and increases at each interior singular parameter by exactly its kernel dimension, by E.2. At a possible final singular parameter <span class="math" data-tex="\(0\)">\(0\)</span>, its value equals the preceding index; that endpoint contributes nullity, not negative index. Combining this count with (E.4) at zero proves (E.6). Integration by parts gives the asserted identification of the zero eigenspace, and B.2 identifies its geometric multiplicity. For the full energy operator the tangential scalar equation is <span class="math" data-tex="\(-f''=\lambda f\)">\(-f''=\lambda f\)</span> with zero endpoints. Its integrated identity
+<span class="math" data-tex="\(\lambda\int f^2=\int(f')^2\)">\(\lambda\int f^2=\int(f')^2\)</span> excludes negative and zero eigenvalues, so it changes neither the negative count nor nullity. □</p>
+<h2 id="part-f">F. What conjugate points say about minimization</h2>
+<p id="theorem-f-1"><strong>Theorem F.1 (the first conjugate obstruction).</strong> If a nonconstant geodesic on <span class="math" data-tex="\([0,b]\)">\([0,b]\)</span> has a conjugate time in <span class="math" data-tex="\((0,b)\)">\((0,b)\)</span>, it admits arbitrarily small smooth endpoint-fixed variations with smaller energy and smaller length. A minimizing geodesic has no interior conjugate time. At a first conjugate endpoint the index is zero and the nullity is positive; such a segment can still minimize.</p>
+<p><strong>Proof.</strong> C.5 constructs a negative endpoint-fixed normal field on the longer interval as soon as there is a nonzero endpoint Jacobi field on a strictly shorter interval. Smooth it by A.2. The form converges under this approximation by the estimates in D.1, so a smooth approximation still has negative square. Realize it by (A.5). Its first energy and length variations vanish by A.3, and A.4 gives strictly negative second variations for both, since the speed is constant and positive. The fundamental theorem of calculus twice, or its integral Taylor formula from <a href="local-tools-for-bundles-and-transport.html#0-analytic-and-linear-foundations">Local tools 0.3</a>, makes both values strictly smaller for every sufficiently small nonzero variation parameter. The family converges smoothly to the central curve as the parameter tends to zero, giving arbitrary smallness. Thus an interior conjugate point is incompatible with minimization.</p>
+<p>If the final endpoint is the first conjugate time, D.1 gives index zero and nullity <span class="math" data-tex="\(\mu(b)&gt;0\)">\(\mu(b)&gt;0\)</span>. This situation can occur on a minimizing segment: the unit-sphere meridian from a point to its antipode has first conjugate time <span class="math" data-tex="\(\pi\)">\(\pi\)</span> by B.3 and is minimizing by <a href="riemannian-connections-and-convex-neighbourhoods.html#theorem-e-1">Riemannian connections E.1</a>, which proves the exact spherical distance and its minimizing arcs. □</p>
+<p id="theorem-f-2"><strong>Theorem F.2 (a Ricci bound forces a conjugate time).</strong> Let a unit-speed geodesic in dimension <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span> be defined on
+<span class="math" data-tex="\([0,\pi/\sqrt{k}]\)">\([0,\pi/\sqrt{k}]\)</span>, where <span class="math" data-tex="\(k&gt;0\)">\(k&gt;0\)</span>. If
+<span class="math math-display" data-tex="\[
+\operatorname{Ric}(T,T)\geq(n-1)k
+\tag{F.1}
+\]">\[
+\operatorname{Ric}(T,T)\geq(n-1)k
+\tag{F.1}
+\]</span>
+throughout that interval, some time in <span class="math" data-tex="\((0,\pi/\sqrt{k}]\)">\((0,\pi/\sqrt{k}]\)</span> is conjugate to zero. In particular the conclusion holds if every sectional curvature of a plane containing <span class="math" data-tex="\(T\)">\(T\)</span> is at least <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(L=\pi/\sqrt{k}\)">\(L=\pi/\sqrt{k}\)</span>, and choose a parallel orthonormal normal frame <span class="math" data-tex="\(E_1,\ldots,E_{n-1}\)">\(E_1,\ldots,E_{n-1}\)</span>. If there were no conjugate time in the stated closed interval, D.2 would make <span class="math" data-tex="\(I\)">\(I\)</span> positive on every nonzero endpoint-fixed normal field. Apply it to
+<span class="math" data-tex="\(V_j(t)=\sin(\sqrt{k}t)E_j(t)\)">\(V_j(t)=\sin(\sqrt{k}t)E_j(t)\)</span>.
+These fields are nonzero because the sine is positive in the interval interior, by <a href="sectional-curvature-and-space-forms.html#lemma-b-2">Sectional curvature B.2</a>. Tracing the curvature term gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{j=1}^{n-1}I(V_j,V_j)
+&amp;=\int_0^L\bigl((n-1)k\cos^2(\sqrt{k}t)
+ -\operatorname{Ric}(T,T)\sin^2(\sqrt{k}t)\bigr)\,dt\\
+&amp;\leq(n-1)k\int_0^L
+       \bigl(\cos^2(\sqrt{k}t)-\sin^2(\sqrt{k}t)\bigr)\,dt=0.
+\end{aligned}
+\tag{F.2}
+\]">\[
+\begin{aligned}
+\sum_{j=1}^{n-1}I(V_j,V_j)
+&amp;=\int_0^L\bigl((n-1)k\cos^2(\sqrt{k}t)
+ -\operatorname{Ric}(T,T)\sin^2(\sqrt{k}t)\bigr)\,dt\\
+&amp;\leq(n-1)k\int_0^L
+       \bigl(\cos^2(\sqrt{k}t)-\sin^2(\sqrt{k}t)\bigr)\,dt=0.
+\end{aligned}
+\tag{F.2}
+\]</span>
+The final equality follows by integrating the derivative of
+<span class="math" data-tex="\(\sin(\sqrt{k}t)\cos(\sqrt{k}t)/\sqrt{k}\)">\(\sin(\sqrt{k}t)\cos(\sqrt{k}t)/\sqrt{k}\)</span>; the endpoint values are zero. This contradicts positivity of all <span class="math" data-tex="\(n-1\)">\(n-1\)</span> summands. By the Ricci trace formula in <a href="sectional-curvature-and-space-forms.html#theorem-a-1">Sectional curvature A.1</a>, a lower sectional bound on the <span class="math" data-tex="\(n-1\)">\(n-1\)</span> planes spanned by <span class="math" data-tex="\(T,E_j\)">\(T,E_j\)</span> implies (F.1). □</p>
+<p id="corollary-f-3"><strong>Corollary F.3 (nonpositive curvature has no conjugate points).</strong> If every sectional curvature of a plane containing the velocity of a nonconstant geodesic is nonpositive, then it has no conjugate times and its endpoint index form is positive definite on every compact segment.</p>
+<p><strong>Proof.</strong> For a normal field,
+<span class="math" data-tex="\(\langle R(V,T)T,V\rangle\leq0\)">\(\langle R(V,T)T,V\rangle\leq0\)</span>, with the zero-vector case immediate and the nonzero case given by the definition of sectional curvature. Consequently
+<span class="math" data-tex="\(I(V,V)\geq\int|V'|^2&gt;0\)">\(I(V,V)\geq\int|V'|^2&gt;0\)</span> for every nonzero endpoint-fixed normal field. A nonzero endpoint Jacobi field would have square zero by B.1, a contradiction. Tangential endpoint-fixed fields add the positive derivative-square form of A.4, so positivity holds for all such fields too. □</p>
+<p id="example-f-4"><strong>Example F.4 (endpoint degeneracy and global minimization are different).</strong> On the unit <span class="math" data-tex="\(S^n\)">\(S^n\)</span>, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, every great semicircle minimizes between its antipodal endpoints despite having nullity <span class="math" data-tex="\(n-1\)">\(n-1\)</span>. On the flat circle, a geodesic can have no conjugate times and nevertheless fail to minimize globally.</p>
+<p><strong>Proof.</strong> <a href="sectional-curvature-and-space-forms.html#theorem-c-2">Sectional curvature C.2</a> gives the complete round metric and its unit-speed geodesics
+<span class="math" data-tex="\(\gamma(t)=\cos t\,p+\sin t\,v\)">\(\gamma(t)=\cos t\,p+\sin t\,v\)</span>, where <span class="math" data-tex="\(p,v\)">\(p,v\)</span> are orthonormal ambient vectors. <a href="completeness-and-the-hopf-rinow-theorem.html#theorem-b-2">Hopf–Rinow B.2</a> supplies a minimizing unit-speed geodesic between <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(-p\)">\(-p\)</span>. Its length <span class="math" data-tex="\(L&gt;0\)">\(L&gt;0\)</span> must satisfy <span class="math" data-tex="\(\cos L=-1,\sin L=0\)">\(\cos L=-1,\sin L=0\)</span>, so <span class="math" data-tex="\(L\)">\(L\)</span> is an odd positive multiple of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, by <a href="connections-and-parallel-transport.html#lemma-e-1">Connections E.1</a>. The explicit semicircle of length <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is a competitor, forcing <span class="math" data-tex="\(L=\pi\)">\(L=\pi\)</span>. Every such semicircle therefore minimizes. B.3 and D.1 give its nullity <span class="math" data-tex="\(n-1\)">\(n-1\)</span> and index zero.</p>
+<p>For the other assertion, form the Euclidean quotient <span class="math" data-tex="\(\mathbb R/(2\pi\mathbb Z)\)">\(\mathbb R/(2\pi\mathbb Z)\)</span> with its descended metric, as in <a href="sectional-curvature-and-space-forms.html#theorem-g-3">Sectional curvature G.3</a>. Its connection is ordinary differentiation in the covering coordinate. Every endpoint-fixed field has energy square <span class="math" data-tex="\(\int|V'|^2&gt;0\)">\(\int|V'|^2&gt;0\)</span> unless zero. Its Jacobi equation is <span class="math" data-tex="\(V''=0\)">\(V''=0\)</span>, whose two zero endpoint values force the solution to vanish. Thus there are no conjugate times. But on <span class="math" data-tex="\(0\leq t\leq3\pi/2\)">\(0\leq t\leq3\pi/2\)</span>, the geodesic <span class="math" data-tex="\([t]\)">\([t]\)</span> has length <span class="math" data-tex="\(3\pi/2\)">\(3\pi/2\)</span>, whereas the path <span class="math" data-tex="\([-t/3]\)">\([-t/3]\)</span> has the same endpoints and length <span class="math" data-tex="\(\pi/2\)">\(\pi/2\)</span>. This explicitly disproves global minimization for that arc. □</p>
+<h2 id="part-g">G. Exercises with complete solutions</h2>
+<p id="exercise-g-1"><strong>Exercise G.1 (round-sphere fields and meridians).</strong> On the unit sphere take
+<span class="math" data-tex="\(\gamma(t)=(\sin t,0,\cos t)\)">\(\gamma(t)=(\sin t,0,\cos t)\)</span>. Find all Jacobi fields, realize one vanishing at <span class="math" data-tex="\(0,\pi\)">\(0,\pi\)</span> through a variation of meridians, and determine its conjugate multiplicities.</p>
+<p><strong>Solution.</strong> Let
+<span class="math math-display" data-tex="\[
+T(t)=(\cos t,0,-\sin t),\qquad E(t)=(0,1,0).
+\]">\[
+T(t)=(\cos t,0,-\sin t),\qquad E(t)=(0,1,0).
+\]</span>
+These form an orthonormal tangent frame along <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. The ambient derivative of <span class="math" data-tex="\(E\)">\(E\)</span> is zero and that of <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(-\gamma\)">\(-\gamma\)</span>, purely normal to the sphere. The quadric connection formula in <a href="sectional-curvature-and-space-forms.html#theorem-c-1">Sectional curvature C.1</a> thus makes both fields parallel along the curve. B.3, with <span class="math" data-tex="\(k=1\)">\(k=1\)</span>, gives precisely
+<span class="math math-display" data-tex="\[
+J(t)=(a+bt)T(t)+(c\cos t+d\sin t)E(t),
+\qquad a,b,c,d\in\mathbb R.
+\tag{G.1}
+\]">\[
+J(t)=(a+bt)T(t)+(c\cos t+d\sin t)E(t),
+\qquad a,b,c,d\in\mathbb R.
+\tag{G.1}
+\]</span>
+The family
+<span class="math math-display" data-tex="\[
+F(s,t)=(\sin t\cos s,\sin t\sin s,\cos t)
+\tag{G.2}
+\]">\[
+F(s,t)=(\sin t\cos s,\sin t\sin s,\cos t)
+\tag{G.2}
+\]</span>
+lies on the sphere and traces unit-speed great circles, hence geodesics by <a href="sectional-curvature-and-space-forms.html#theorem-c-2">Sectional curvature C.2</a>. Its variation field at <span class="math" data-tex="\(s=0\)">\(s=0\)</span> is <span class="math" data-tex="\(\sin t\,E(t)\)">\(\sin t\,E(t)\)</span>, zero at <span class="math" data-tex="\(0,\pi\)">\(0,\pi\)</span>. Every Jacobi field vanishing at zero has <span class="math" data-tex="\(a=c=0\)">\(a=c=0\)</span>. Requiring a further zero at positive <span class="math" data-tex="\(t\)">\(t\)</span> forces <span class="math" data-tex="\(b=0\)">\(b=0\)</span> and <span class="math" data-tex="\(d\sin t=0\)">\(d\sin t=0\)</span>. Thus the conjugate times are the positive integer multiples of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, each of multiplicity one. By D.1, at <span class="math" data-tex="\(b=\pi,2\pi,3\pi\)">\(b=\pi,2\pi,3\pi\)</span> the indices are respectively <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>, with nullity one at each endpoint. Between <span class="math" data-tex="\(q\pi\)">\(q\pi\)</span> and <span class="math" data-tex="\((q+1)\pi\)">\((q+1)\pi\)</span> the index is <span class="math" data-tex="\(q\)">\(q\)</span> and nullity zero. Exercise G.4 will also obtain this count directly from a finite matrix. □</p>
+<p id="exercise-g-2"><strong>Exercise G.2 (moving endpoints).</strong> Suppose <span class="math" data-tex="\(F\)">\(F\)</span> varies a unit-speed geodesic on <span class="math" data-tex="\([0,b]\)">\([0,b]\)</span>, with endpoint curves <span class="math" data-tex="\(p(s)=F(s,0)\)">\(p(s)=F(s,0)\)</span>, <span class="math" data-tex="\(q(s)=F(s,b)\)">\(q(s)=F(s,b)\)</span>. Retain their accelerations in the energy and length second variations, and explain the endpoint-fixed tangential case.</p>
+<p><strong>Solution.</strong> Set <span class="math" data-tex="\(a_p=\nabla_s p'(s)|_0\)">\(a_p=\nabla_s p'(s)|_0\)</span>, <span class="math" data-tex="\(a_q=\nabla_s q'(s)|_0\)">\(a_q=\nabla_s q'(s)|_0\)</span>. These are exactly <span class="math" data-tex="\(A(0),A(b)\)">\(A(0),A(b)\)</span> in A.4, since restriction to a parameter edge commutes with the pullback derivative, <a href="linear-and-affine-connections.html#theorem-b-2">Linear connections B.2</a>. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E''(0)&amp;=I(V,V)+\langle a_q,T(b)\rangle-\langle a_p,T(0)\rangle,\\
+L''(0)&amp;=I(V^\perp,V^\perp)
+       +\langle a_q,T(b)\rangle-\langle a_p,T(0)\rangle.
+\end{aligned}
+\tag{G.3}
+\]">\[
+\begin{aligned}
+E''(0)&amp;=I(V,V)+\langle a_q,T(b)\rangle-\langle a_p,T(0)\rangle,\\
+L''(0)&amp;=I(V^\perp,V^\perp)
+       +\langle a_q,T(b)\rangle-\langle a_p,T(0)\rangle.
+\end{aligned}
+\tag{G.3}
+\]</span>
+These accelerations depend on the endpoint curves, not just on their initial velocities. If the endpoints are fixed, both are zero. For an endpoint-fixed tangential field <span class="math" data-tex="\(V=fT\)">\(V=fT\)</span>, <span class="math" data-tex="\(f(0)=f(b)=0\)">\(f(0)=f(b)=0\)</span>, A.4 then gives
+<span class="math math-display" data-tex="\[
+E''(0)=\int_0^b(f')^2\,dt,\qquad L''(0)=0.
+\]">\[
+E''(0)=\int_0^b(f')^2\,dt,\qquad L''(0)=0.
+\]</span>
+The energy value is strictly positive unless the field vanishes. More generally, if endpoints are free, even a tangential field can have a nonzero length second variation because the acceleration term in (G.3) remains. This accounts for every term in both formulas. □</p>
+<p id="exercise-g-3"><strong>Exercise G.3 (extend past a conjugate point).</strong> Without using the Morse index-counting formula, prove that a geodesic extending strictly past a conjugate time is not minimizing. Give an explicit negative direction for a unit-sphere arc of length <span class="math" data-tex="\(b&gt;\pi\)">\(b&gt;\pi\)</span>.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-tex="\(J\ne0\)">\(J\ne0\)</span> vanish at <span class="math" data-tex="\(0,\tau\)">\(0,\tau\)</span>, where <span class="math" data-tex="\(0&lt;\tau&lt;b\)">\(0&lt;\tau&lt;b\)</span>, and extend it by zero to <span class="math" data-tex="\([0,b]\)">\([0,b]\)</span>. It is normal by B.2. Choose a smooth normal <span class="math" data-tex="\(W\)">\(W\)</span>, zero at <span class="math" data-tex="\(0,b\)">\(0,b\)</span>, with <span class="math" data-tex="\(W(\tau)=-J'(\tau)\)">\(W(\tau)=-J'(\tau)\)</span>, using a cutoff in a parallel frame. B.1 gives
+<span class="math math-display" data-tex="\[
+I(J,J)=0,\qquad I(J,W)=-|J'(\tau)|^2&lt;0.
+\]">\[
+I(J,J)=0,\qquad I(J,W)=-|J'(\tau)|^2&lt;0.
+\]</span>
+The strict inequality follows because <span class="math" data-tex="\(J(\tau)=J'(\tau)=0\)">\(J(\tau)=J'(\tau)=0\)</span> would force <span class="math" data-tex="\(J=0\)">\(J=0\)</span> by A.1. Hence
+<span class="math math-display" data-tex="\[
+I(J+\varepsilon W,J+\varepsilon W)
+ =-2\varepsilon|J'(\tau)|^2+\varepsilon^2 I(W,W)&lt;0
+\]">\[
+I(J+\varepsilon W,J+\varepsilon W)
+ =-2\varepsilon|J'(\tau)|^2+\varepsilon^2 I(W,W)&lt;0
+\]</span>
+for sufficiently small positive <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. A.2 smooths this field while preserving its negative square, by the integral estimates used in D.1; those estimates use no index formula. A.3–A.4 applied to its exponential variation give smaller length and energy. This proves the obstruction directly.</p>
+<p>For the sphere take a parallel unit normal <span class="math" data-tex="\(E\)">\(E\)</span> and the smooth field
+<span class="math" data-tex="\(V(t)=\sin(\pi t/b)E(t)\)">\(V(t)=\sin(\pi t/b)E(t)\)</span>. Since the unit sphere has curvature one,
+<span class="math math-display" data-tex="\[
+I(V,V)=\int_0^b\left((\pi/b)^2\cos^2(\pi t/b)
+                         -\sin^2(\pi t/b)\right)\,dt
+       =\frac{\pi^2-b^2}{2b}&lt;0.
+\tag{G.4}
+\]">\[
+I(V,V)=\int_0^b\left((\pi/b)^2\cos^2(\pi t/b)
+                         -\sin^2(\pi t/b)\right)\,dt
+       =\frac{\pi^2-b^2}{2b}&lt;0.
+\tag{G.4}
+\]</span>
+The two integrals of squared sine and cosine are <span class="math" data-tex="\(b/2\)">\(b/2\)</span>, by their addition identities and integration over a half-period, as follows from <a href="connections-and-parallel-transport.html#lemma-e-1">Connections E.1</a>. The field is endpoint-fixed, so it gives the required explicit decreasing direction. □</p>
+<p id="exercise-g-4"><strong>Exercise G.4 (moving-node crossings and the sphere matrix).</strong> Prove the Morse index formula using the moving-node family (D.2) by computing its derivative on each kernel and applying E.2. Then calculate the complete broken-Jacobi matrix for a unit-sphere arc with equally spaced sufficiently short nodes, and determine its index and nullity directly.</p>
+<p><strong>Solution.</strong> Work in a parallel orthonormal normal frame and fix <span class="math" data-tex="\(r_0&gt;0\)">\(r_0&gt;0\)</span>. Write <span class="math" data-tex="\(j_r\)">\(j_r\)</span> for the interpolant of a fixed node vector <span class="math" data-tex="\(x\)">\(x\)</span> in the family (D.2). Suppose <span class="math" data-tex="\(x\in\ker Q(r_0)\)">\(x\in\ker Q(r_0)\)</span>. Then <span class="math" data-tex="\(j=j_{r_0}\)">\(j=j_{r_0}\)</span> is a global Jacobi field, by C.3 and B.1. On each moving subinterval let <span class="math" data-tex="\(z=\partial_rj_r|_{r_0}\)">\(z=\partial_rj_r|_{r_0}\)</span>, differentiating at fixed <span class="math" data-tex="\(t\)">\(t\)</span>. Since the value at node <span class="math" data-tex="\(t_i(r)\)">\(t_i(r)\)</span> is fixed,
+<span class="math math-display" data-tex="\[
+z(t_i(r_0))+j'(t_i(r_0))\,t_i'(r_0)=0.
+\tag{G.5}
+\]">\[
+z(t_i(r_0))+j'(t_i(r_0))\,t_i'(r_0)=0.
+\tag{G.5}
+\]</span>
+The global field <span class="math" data-tex="\(j\)">\(j\)</span> has matching one-sided derivatives. Hence the two values of <span class="math" data-tex="\(z\)">\(z\)</span> agree at an interior node. At the endpoints (G.5) gives <span class="math" data-tex="\(z(0)=0\)">\(z(0)=0\)</span> and <span class="math" data-tex="\(z(r_0)=-j'(r_0)\)">\(z(r_0)=-j'(r_0)\)</span>.</p>
+<p>Differentiate the form, piece by piece, with its moving limits. At internal nodes the limit terms cancel: the integrand
+<span class="math" data-tex="\(|j'|^2-Bj\cdot j\)">\(|j'|^2-Bj\cdot j\)</span> has equal values on both sides. The upper endpoint contributes <span class="math" data-tex="\(|j'(r_0)|^2\)">\(|j'(r_0)|^2\)</span>, since <span class="math" data-tex="\(j(r_0)=0\)">\(j(r_0)=0\)</span>. The remaining terms are twice the index pairing with <span class="math" data-tex="\(z\)">\(z\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q'(r_0)(x,x)
+ &amp;=|j'(r_0)|^2
+   +2\int_0^{r_0}(j'\cdot z'-Bj\cdot z)\,dt\\
+ &amp;=|j'(r_0)|^2+2[j'\cdot z]_0^{r_0}
+ =-|j'(r_0)|^2.
+\end{aligned}
+\tag{G.6}
+\]">\[
+\begin{aligned}
+Q'(r_0)(x,x)
+ &amp;=|j'(r_0)|^2
+   +2\int_0^{r_0}(j'\cdot z'-Bj\cdot z)\,dt\\
+ &amp;=|j'(r_0)|^2+2[j'\cdot z]_0^{r_0}
+ =-|j'(r_0)|^2.
+\end{aligned}
+\tag{G.6}
+\]</span>
+The second equality uses the Jacobi equation and continuity of <span class="math" data-tex="\(z\)">\(z\)</span>. Final-data uniqueness makes <span class="math" data-tex="\(j\mapsto j'(r_0)\)">\(j\mapsto j'(r_0)\)</span> injective on the endpoint kernel. Thus this derivative is negative definite there. E.2 says that the finite index increases by exactly the conjugate multiplicity at every crossing and takes the lower value at the crossing itself. It begins at zero by C.1. C.4 supplies finitely many crossings, and C.2 makes the index constant between them. This proves the sum over <span class="math" data-tex="\(0&lt;t&lt;b\)">\(0&lt;t&lt;b\)</span> directly, without using D.1; B.1 and C.3 give its nullity and maximal nonpositive dimension as well.</p>
+<p>Now let <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> be a unit-speed arc on the unit <span class="math" data-tex="\(n\)">\(n\)</span>-sphere, <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>. Take <span class="math" data-tex="\(N\geq2\)">\(N\geq2\)</span> equally spaced pieces of length
+<span class="math" data-tex="\(\delta=b/N&lt;\min\{\sqrt2,\pi\}\)">\(\delta=b/N&lt;\min\{\sqrt2,\pi\}\)</span>. The normal curvature matrix is <span class="math" data-tex="\(I_{n-1}\)">\(I_{n-1}\)</span>, by <a href="sectional-curvature-and-space-forms.html#theorem-a-1">Sectional curvature A.1</a> and C.1. In one normal coordinate the solution with values <span class="math" data-tex="\(x,y\)">\(x,y\)</span> at the ends of a piece is
+<span class="math math-display" data-tex="\[
+j(t)=\frac{\sin(\delta-t)}{\sin\delta}\,x
+       +\frac{\sin t}{\sin\delta}\,y,\qquad 0\leq t\leq\delta.
+\]">\[
+j(t)=\frac{\sin(\delta-t)}{\sin\delta}\,x
+       +\frac{\sin t}{\sin\delta}\,y,\qquad 0\leq t\leq\delta.
+\]</span>
+Direct differentiation gives <span class="math" data-tex="\(j''+j=0\)">\(j''+j=0\)</span> and the two endpoint values, so C.1 identifies it with the unique interpolant. Its contribution to the form is
+<span class="math math-display" data-tex="\[
+[j'j]_0^\delta
+ =\frac{\cos\delta(x^2+y^2)-2xy}{\sin\delta}.
+\tag{G.7}
+\]">\[
+[j'j]_0^\delta
+ =\frac{\cos\delta(x^2+y^2)-2xy}{\sin\delta}.
+\tag{G.7}
+\]</span>
+For normal node values <span class="math" data-tex="\(x_0=x_N=0\)">\(x_0=x_N=0\)</span>, <span class="math" data-tex="\(x_1,\ldots,x_{N-1}\)">\(x_1,\ldots,x_{N-1}\)</span>, the complete matrix in each normal direction is therefore
+<span class="math math-display" data-tex="\[
+H_\delta=\frac1{\sin\delta}
+\begin{pmatrix}
+2\cos\delta&amp;-1&amp;0&amp;\cdots&amp;0\\
+-1&amp;2\cos\delta&amp;-1&amp;\ddots&amp;\vdots\\
+0&amp;-1&amp;2\cos\delta&amp;\ddots&amp;0\\
+\vdots&amp;\ddots&amp;\ddots&amp;\ddots&amp;-1\\
+0&amp;\cdots&amp;0&amp;-1&amp;2\cos\delta
+\end{pmatrix}.
+\tag{G.8}
+\]">\[
+H_\delta=\frac1{\sin\delta}
+\begin{pmatrix}
+2\cos\delta&amp;-1&amp;0&amp;\cdots&amp;0\\
+-1&amp;2\cos\delta&amp;-1&amp;\ddots&amp;\vdots\\
+0&amp;-1&amp;2\cos\delta&amp;\ddots&amp;0\\
+\vdots&amp;\ddots&amp;\ddots&amp;\ddots&amp;-1\\
+0&amp;\cdots&amp;0&amp;-1&amp;2\cos\delta
+\end{pmatrix}.
+\tag{G.8}
+\]</span>
+For <span class="math" data-tex="\(N=2\)">\(N=2\)</span> this means the single entry <span class="math" data-tex="\(2\cot\delta\)">\(2\cot\delta\)</span>. The full normal matrix is the direct sum of <span class="math" data-tex="\(n-1\)">\(n-1\)</span> copies of (G.8).</p>
+<p>For each <span class="math" data-tex="\(k=1,\ldots,N-1\)">\(k=1,\ldots,N-1\)</span>, the vector with components
+<span class="math" data-tex="\(x_j=\sin(jk\pi/N)\)">\(x_j=\sin(jk\pi/N)\)</span> is an eigenvector, with eigenvalue
+<span class="math math-display" data-tex="\[
+\lambda_k=\frac{2\cos\delta-2\cos(k\pi/N)}{\sin\delta}.
+\tag{G.9}
+\]">\[
+\lambda_k=\frac{2\cos\delta-2\cos(k\pi/N)}{\sin\delta}.
+\tag{G.9}
+\]</span>
+Indeed insert it in each row, using
+<span class="math" data-tex="\(\sin((j-1)\theta)+\sin((j+1)\theta)=2\cos\theta\sin(j\theta)\)">\(\sin((j-1)\theta)+\sin((j+1)\theta)=2\cos\theta\sin(j\theta)\)</span>
+and its zero boundary components at <span class="math" data-tex="\(j=0,N\)">\(j=0,N\)</span>. These identities follow from the circle multiplication in <a href="connections-and-parallel-transport.html#lemma-e-1">Connections E.1</a>. Each vector is nonzero because its first component is positive. Cosine is strictly decreasing on <span class="math" data-tex="\((0,\pi)\)">\((0,\pi)\)</span>, by <a href="sectional-curvature-and-space-forms.html#lemma-b-2">Sectional curvature B.2</a>, so the <span class="math" data-tex="\(N-1\)">\(N-1\)</span> eigenvalues are distinct. Eigenvectors of a symmetric matrix with distinct eigenvalues are orthogonal: taking their mutual inner product in the two eigenvalue equations proves this. They therefore form a basis.</p>
+<p>Since <span class="math" data-tex="\(\sin\delta&gt;0\)">\(\sin\delta&gt;0\)</span>, (G.9) is negative exactly when <span class="math" data-tex="\(k\pi&lt;b\)">\(k\pi&lt;b\)</span>, and zero exactly when <span class="math" data-tex="\(k\pi=b\)">\(k\pi=b\)</span>. Our choice <span class="math" data-tex="\(b&lt;N\pi\)">\(b&lt;N\pi\)</span> ensures that all positive integers satisfying either condition already lie in <span class="math" data-tex="\(1,\ldots,N-1\)">\(1,\ldots,N-1\)</span>. Thus the normal index is
+<span class="math math-display" data-tex="\[
+(n-1)\#\{k\in\mathbb Z_{&gt;0}:k\pi&lt;b\},
+\]">\[
+(n-1)\#\{k\in\mathbb Z_{&gt;0}:k\pi&lt;b\},
+\]</span>
+and its nullity is <span class="math" data-tex="\(n-1\)">\(n-1\)</span> when <span class="math" data-tex="\(b\)">\(b\)</span> is a positive integer multiple of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, and zero otherwise.</p>
+<p>If tangential node coordinates are also included, their interpolants are linear. A piece contributes <span class="math" data-tex="\((y-x)^2/\delta\)">\((y-x)^2/\delta\)</span>, so their complete matrix has diagonal <span class="math" data-tex="\(2/\delta\)">\(2/\delta\)</span> and adjacent off-diagonal entries <span class="math" data-tex="\(-1/\delta\)">\(-1/\delta\)</span>. The same sine vectors have eigenvalues
+<span class="math" data-tex="\((2-2\cos(k\pi/N))/\delta&gt;0\)">\((2-2\cos(k\pi/N))/\delta&gt;0\)</span>.
+This supplies the entire matrix for all energy fields and confirms that the tangential block adds no index or nullity. In particular on <span class="math" data-tex="\(S^2\)">\(S^2\)</span> the values at <span class="math" data-tex="\(b=\pi,2\pi,3\pi\)">\(b=\pi,2\pi,3\pi\)</span> are exactly <span class="math" data-tex="\(0,1,2\)">\(0,1,2\)</span>, with endpoint nullity one, in agreement with G.1. □</p>
+<h2 id="further-reading">Further reading</h2>
+<ul>
+<li>Urs Lang, <a href="https://metaphor.ethz.ch/x/2020/fs/401-3532-08L/sc/DG2_16June2020.pdf"><em>Lecture Notes on Riemannian Geometry</em>, ETH Zürich, 16 June 2020</a>, Theorem 1.15 and §§3.1, 3.4–3.16, for variations, Jacobi fields, conjugacy, the index form and curvature consequences.</li>
+<li>Eduardo V. Sodré, <a href="https://arxiv.org/pdf/2307.00655v1"><em>Revisiting Arnold's topological proof of the Morse index theorem</em>, arXiv:2307.00655v1, 2 July 2023</a>, §2 and the definite-crossing calculation in §5, for the Jacobi operator, the uniform spectral lower bound and index-counting geometry.</li>
+</ul>
+</article><footer><p><a href="src/jacobi-fields-conjugate-points-and-the-morse-index-theorem.md">Chapter source</a> · <span class="unlinked">Course contents</span></p><p>New exposition: CC0 1.0.</p><p><a href="assets/mathjax/LICENSE">MathJax licence</a> · <a href="assets/mathjax/FONT-LICENSES.txt">Font notices</a></p></footer></main></body></html>

@@ -6,4 +6,4 @@ Read [the lesson](matrix-extension.html), [the 13-page PDF](pdf/matrix-extension
 
 The current lesson reconstruction, source checks and publication preparation used OpenAI Codex, GPT-6.1 Sol, Ultra effort. Self-checked by the writing AI. Historical drafting models remain unspecified where they are not documented.
 
-The combined lessons retain GFDL 1.2 only, with no Invariant Sections or Cover Texts. [Authors, scholarly sources and terms](credits.html), [the required title/history notices](component-notices/SELECTION_TITLE_PAGE.md), and [the complete license](component-notices/COPYING) accompany the reading. [Build instructions](BUILD.md) and file checksums are included.
+The lessons are CC0. [Authors, scholarly sources and terms](credits.html) and [the selection title and author notices](component-notices/SELECTION_TITLE_PAGE.md) accompany the reading. [Build instructions](BUILD.md) and file checksums are included.

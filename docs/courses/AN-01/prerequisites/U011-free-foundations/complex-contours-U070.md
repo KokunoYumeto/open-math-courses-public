@@ -1,6 +1,6 @@
 # Cauchy integrals, zeros and contour indices
 
-*Selected AN-03 programme proof; CC0 1.0. Original ownership is retained. See [licence](https://creativecommons.org/publicdomain/zero/1.0/), [rights](notices/RIGHTS.md), and [selection history](notices/U070_SELECTION_HISTORY.md).*
+*Selected AN-03 programme proof; CC0 1.0. Original ownership is retained. See [licence](https://creativecommons.org/publicdomain/zero/1.0/), [rights](notices/RIGHTS.md), and selection history.*
 
 The [scalar calculus and topology](metric-foundation-bridges.md), §§12–13, [finite algebra](stable-prerequisite-bridges.md), §§10.1–10.6, and [integration proofs](banach-foundation-bridges.md), §§15.0–15.1 and 16, supply the stated foundational inputs.
 

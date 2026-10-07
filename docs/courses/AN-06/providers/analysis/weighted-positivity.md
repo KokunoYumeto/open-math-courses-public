@@ -104,7 +104,7 @@ Here is the normalization check. With $z=(x+y)/2$, $h=x-y$, the two packet facto
 The Fourier transform in $\theta$ of $\pi^{-n}e^{-r^2|\theta|^2}$ is
 $(\pi r^2)^{-n/2}e^{-|h|^2/(4r^2)}$. Substitution in the kernel of (P7) gives exactly the Weyl kernel with symbol $p*G_r$. For bounded symbols the identity is first checked with cutoffs and then paired with Schwartz tests; the packet isometry and the Gaussian majorants justify the limit.
 
-The Gaussian (P8) has mass one, zero first moments, second position moments $r^2/2$, and second frequency moments $1/(2r^2)$ in each coordinate. Apply Taylor's formula with its integral second-order remainder separately to convolution in position and in frequency. Convolution does not increase a supremum norm. For every fixed pair of multi-indices this proves
+The Gaussian (P8) has mass one, zero first moments, second position moments $r^2/2$, and second frequency moments $1/(2r^2)$ in each coordinate. The mass follows by the Gaussian integral in each variable, and oddness gives the first moments. For the second moments, integration of $\partial_{t_j}(t_j e^{-|t|^2/r^2})$ over the whole space gives $\int t_j^2e^{-|t|^2/r^2}\,dt=(r^2/2)\int e^{-|t|^2/r^2}\,dt$; the boundary term vanishes by Gaussian decay. Applying the same calculation with $r$ replaced by $r^{-1}$ proves the frequency moment. Apply Taylor's formula with its integral second-order remainder separately to convolution in position and in frequency. Convolution does not increase a supremum norm. For every fixed pair of multi-indices this proves
 \[
  \|\partial_x^\alpha\partial_\xi^\beta(p*G_r-p)\|_\infty
  \le C_{\alpha\beta}
@@ -132,6 +132,8 @@ All its derivatives required by Lemma 2 are bounded by $CR^{-2}$, by (P6), unifo
 $\|\operatorname{Op}_L(p)-\operatorname{Op}_W(p)\|\le CR^{-2}$.
 The identity is also justified by frequency cutoffs: their extra differentiated terms contain a factor tending to zero and have the same bounded-amplitude estimates, while the remaining pairings converge as in Lemma 2. Combining (P7), (P9) and (P10) proves the lemma. $\square$
 
+<a id="weighted-spatial-localization"></a>
+
 ## A square partition and the localization error
 
 Choose smooth nonnegative functions $\rho_j$, $j\ge0$, with
@@ -140,7 +142,7 @@ Choose smooth nonnegative functions $\rho_j$, $j\ge0$, with
  |\partial^\alpha\rho_j|\le C_\alpha R_j^{-|\alpha|},\qquad R_j=2^j,
  \tag{P11}
 \]
-whose supports have $X$ comparable to $R_j$, with a fixed overlap bound. One explicit construction starts with a radial smooth function $\theta$, equal to one on the unit ball, zero outside the ball of radius two, and nonincreasing on radial lines. Set $\psi_0=\theta$, $\psi_j(x)=\theta(x/2^j)-\theta(x/2^{j-1})$ for $j\ge1$. These functions sum to one and have fixed finite overlap. Divide each by $(\sum_k\psi_k^2)^{1/2}$. The denominator is bounded below by the reciprocal square root of the overlap bound, so differentiation gives (P11). A smooth step used to construct $\theta$ is obtained from $e^{-1/t}$ for $t>0$, extended by zero for $t\le0$; repeated differentiation proves flatness at zero. Choose $\chi_j\ge0$ equal to one on $\operatorname{supp}\rho_j$, with slightly larger comparable annular support and the same derivative bounds.
+whose supports have $X$ comparable to $R_j$, with a fixed overlap bound. One explicit construction starts with a radial smooth function $\theta$, equal to one on the unit ball, zero outside the ball of radius two, and nonincreasing on radial lines. Set $\psi_0=\theta$, $\psi_j(x)=\theta(x/2^j)-\theta(x/2^{j-1})$ for $j\ge1$. These functions sum to one and have fixed finite overlap. Divide each by $(\sum_k\psi_k^2)^{1/2}$. The denominator is bounded below by the reciprocal square root of the overlap bound, so differentiation gives (P11). The [smooth cutoff construction](elementary-functions-and-cutoffs.md#smooth-flat-cutoffs) supplies $\theta$ with these properties. Choose $\chi_j\ge0$ equal to one on $\operatorname{supp}\rho_j$, with slightly larger comparable annular support and the same derivative bounds.
 
 The symbols $p_j=\chi_j a$ satisfy (P6), by (P1) and $\langle\xi\rangle^{-|\beta|}\le1$. Since multiplication on the output is exact in left quantization,
 \[
@@ -151,7 +153,7 @@ The symbols $p_j=\chi_j a$ satisfy (P6), by (P1) and $\langle\xi\rangle^{-|\beta
 \]
 by Lemma 3. Summing the error magnitudes gives at most $C\|X^{-1}u\|_2^2$.
 
-It remains to justify the localization with this same weighted error. Let $K_a(x,y)$ denote the off-diagonal left kernel. For $h=x-y\ne0$, frequency decomposition into a smooth dyadic partition gives
+It remains to justify the localization with this same weighted error. Let $K_a(x,y)$ denote the off-diagonal left kernel. For $h=x-y\ne0$, apply the same radial telescoping construction as in (P11) to the frequency variable, using the functions $\psi_k$ before square normalization. This frequency partition gives
 \[
  |K_a(x,y)|\le C X^{-1}
  \begin{cases}
@@ -232,6 +234,8 @@ The input second position derivatives are bounded by (P17), and the second frequ
 
 For the last assertion, the ordinary order-zero bound is $|\partial_x^\alpha\partial_\xi^\beta a|\le C_{\alpha\beta}\langle\xi\rangle^{-|\beta|}$. On the nonzero derivative supports, $|\xi|\ge R$; all derivatives vanish on the open ball and by continuity have the same bound on its boundary. Thus (P17) holds. Increasing the constant if necessary, $C/R\le\sqrt{C^2/R}$ for $R\ge1$, proving the stated square-root version. All constants use finite derivative lists; in particular only $M$ needs to be independent of a separately fixed coefficient approximation. $\square$
 
-## Source and proof correspondence
+## Why the two packet scales differ
 
-Lerner's freely accessible Proposition 2.4.3 supplies the positive-packet construction and Gaussian-convolution comparison. Equations (P7)–(P10) derive them afresh with the course normalization and the scale $r=R^{1/2}$. Lemma 2 and (P11)–(P15) provide the bounded-amplitude and weighted localization arguments needed for the full class (P1). Theorem 4 uses the same directly derived packet construction at the different scale $r=R^{-1/2}$ to prove the complex-symbol norm bound. The general admissible-metric theorem in Lerner's Section 2.5.2 is a broader comparison; it is not a prerequisite for either proof. This reading supplies no general metric composition theorem, which must be proved separately wherever used.
+In Lemma 3 the position and frequency errors in (P9) are $r^2R^{-3}$ and $r^{-2}R^{-1}$. Equating them gives $r^2=R$ and error $R^{-2}$, which matches the weighted lower bound after spatial localization. In Theorem 4 the corresponding errors are $r^2$ and $r^{-2}R^{-2}$. Their balance gives $r^2=R^{-1}$ and error $R^{-1}$.
+
+In both cases the positive packet operator is controlled directly by the isometry. For real nonnegative symbols this gives the sign; for complex symbols it preserves coefficient one in front of the supremum $M$. The two-position amplitude bound then controls the Gaussian-convolution error and the exact change from Weyl to left quantization at the appropriate scale.

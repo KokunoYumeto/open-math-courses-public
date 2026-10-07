@@ -1,6 +1,6 @@
 # Restricted products and profinite completions
 
-*Original independently authored material written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026, and dedicated under [CC0](https://creativecommons.org/publicdomain/zero/1.0/). Source adaptations are credited below. Self-checked by the writing AI. This revised lesson as a whole is licensed under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/); the prior CC0 dedication of its original components remains in force.*
+*Original independently authored material written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; the section on unrestricted products by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original text: [CC0](https://creativecommons.org/publicdomain/zero/1.0/).*
 
 A finite adèle records one number in each field \(\mathbb Q_p\), with an integrality condition at all but finitely many primes. Its topology must allow those finitely many exceptions while retaining a compact neighbourhood. Restricted products provide exactly this construction. They also explain how local integrals and local characters combine into global ones.
 
@@ -10,11 +10,23 @@ The restricted-product construction can be compared with [Getz–Hahn, §2.3] an
 
 ## Why an unrestricted product can fail to be locally compact
 
-Let \(G_v\) be a family of locally compact Hausdorff groups, and consider the full product \(\prod_v G_v\), with its product topology. Suppose infinitely many factors \(G_v\) are noncompact. If the product had a compact neighbourhood \(C\) of the identity, then \(C\) would contain a basic product neighbourhood \(U\). Such a neighbourhood restricts only finitely many coordinates. At every remaining coordinate \(v\), its projection is all of \(G_v\). Since \(U\subseteq C\), the projection of \(C\) is also all of \(G_v\). A continuous image of a compact space is compact, so all factors outside that finite set would be compact, a contradiction.
+Let \((G_v)_{v\in V}\) be locally compact Hausdorff groups, and write \(1\) for the identity of each of them. Their full product \(\prod_vG_v\), with coordinatewise operations and the product topology, is locally compact precisely when \(G_v\) is compact for all but finitely many \(v\). In fact, a single compact neighbourhood of the identity already forces all but finitely many factors to be compact.
 
-The restricted product avoids this obstruction by requiring membership in a compact open subgroup \(K_v\) outside a finite set. Its open stages then have compact tails. Proposition 1.1 supplies the full construction and proof.
+To prove this, let \(C\) be a compact neighbourhood of \(1\) in \(\prod_vG_v\). It contains a basic open set \(\prod_{v\in F}U_v\times\prod_{v\notin F}G_v\) containing \(1\), where \(F\subseteq V\) is finite and each \(U_v\) is open in \(G_v\). That basic set, and therefore \(C\), contains the subgroup
+\[
+T_F=\Bigl\{x\in\prod_vG_v:x_v=1\text{ for every }v\in F\Bigr\}.
+\]
+Points are closed in the Hausdorff groups \(G_v\), and the coordinate maps are continuous. Hence \(T_F\) is closed, as the intersection of the finitely many closed sets \(\{x:x_v=1\}\) with \(v\in F\) (the whole product when \(F\) is empty). A closed subset of the compact set \(C\) is compact, so \(T_F\) is compact. For \(w\notin F\), each \(g\in G_w\) is the \(w\)-coordinate of the element of \(T_F\) with \(g\) at \(w\) and \(1\) elsewhere. Thus \(G_w\) is the image of \(T_F\) under the continuous coordinate map, and it is compact for every \(w\) outside the finite set \(F\).
 
-This motivation adapts Andrew V. Sutherland’s [MIT 18.785 Lecture 25, §25.1, p.1](https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec25/) (29 November 2021), provided by MIT OpenCourseWare under [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/). GPT-6.1 Sol (OpenAI), Ultra, adapted the argument to topological groups and this lesson’s notation. The source’s attribution, noncommercial and ShareAlike conditions apply to this revised lesson as a whole.
+Conversely, suppose that \(G_v\) is compact for every \(v\) outside a finite set \(F\). Given \(x\in\prod_vG_v\), choose a compact neighbourhood \(C_v\) of \(x_v\) for each \(v\in F\). The set
+\[
+\prod_{v\in F}C_v\times\prod_{v\notin F}G_v
+\]
+is compact by the compact-product theorem. It contains the basic open set with the interiors of the \(C_v\) at \(v\in F\) and all of \(G_v\) elsewhere, and this basic set contains \(x\). So it is a compact neighbourhood of \(x\).
+
+The finite adèles involve the fields \(\mathbb Q_p\), and none of them is compact. The open additive subgroups \(p^{-k}\mathbb Z_p\), \(k\geq0\), increase with \(k\), and they cover \(\mathbb Q_p\) because every nonzero element has an integer valuation. A finite subfamily has union \(p^{-m}\mathbb Z_p\) for its largest index \(m\). This union misses \(p^{-m-1}\), since every element of \(p^{-m}\mathbb Z_p\) has valuation at least \(-m\). By the criterion, \(\prod_p\mathbb Q_p\) is not locally compact, even though its subgroup \(\prod_p\mathbb Z_p\) is compact by the compact-product theorem. That compact subgroup is not a neighbourhood of \(0\) either. As in the argument above, every neighbourhood of \(0\) contains a subgroup \(T_F\), written additively, and \(T_F\) contains the tuple with coordinate \(p^{-1}\) at one prime \(p\notin F\) and \(0\) at all other primes, which lies outside \(\prod_p\mathbb Z_p\).
+
+A restricted product keeps every factor \(G_v\) but shrinks the tails of its basic neighbourhoods. Outside a finite set \(S\), each coordinate ranges over a compact open subgroup \(K_v\) instead of all of \(G_v\). A basic neighbourhood of the identity then contains the compact subgroup \(\{1\}^S\times\prod_{v\notin S}K_v\), whereas in the full product every identity neighbourhood contains one of the subgroups \(T_F\). Proposition 1.1 proves that the restricted product is locally compact. In the finite adèles defined below, \(\prod_p\mathbb Z_p\) is a compact open subgroup. [Sutherland 25, §25.1] discusses the same obstruction for the product of the fields \(\mathbb Q_p\).
 
 ## A topology with finitely many exceptional coordinates
 
@@ -381,5 +393,5 @@ The self-duality of \(\mathbb Q_p\) and of the adèles, the diagonal lattice in 
 
 - [Getz–Hahn] J. R. Getz and H. Hahn, *An Introduction to Automorphic Representations: With a View toward Trace Formulae*, [author-hosted draft dated 22 April 2022](https://sites.duke.edu/jgetz/files/2022/04/Graduate_Text.pdf), §2.3, pp.46–48. These locators refer to that draft.
 - [Bost–Connes] J.-B. Bost and A. Connes, *Hecke algebras, type III factors and phase transitions with spontaneous symmetry breaking in number theory*, Selecta Mathematica (N.S.) 1 (1995), 411–457, §3, pp.422–423, the finite-adèle definition (a)–(c). [Author-hosted scan](https://alainconnes.org/wp-content/uploads/bostconnesscan.pdf).
-- **[Sutherland 25]** A. V. Sutherland, *The ring of adeles, strong approximation*, MIT 18.785, Lecture 25 (29 November 2021), [MIT OpenCourseWare notes](https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec25/), §§25.1–25.4, pp.1–10. The local-compactness motivation explicitly credited above is adapted under CC BY-NC-SA 4.0.
+- [Sutherland 25] A. V. Sutherland, *The ring of adeles, strong approximation*, MIT 18.785, Lecture 25 (29 November 2021), [MIT OpenCourseWare notes](https://ocw.mit.edu/courses/18-785-number-theory-i-fall-2021/resources/mit18_785f21_lec25/), §§25.1–25.4, pp.1–10.
 - [Lenstra] H. Lenstra, *Profinite Groups*, [Leiden-hosted notes](https://websites.math.leidenuniv.nl/algebra/Lenstra-Profinite.pdf), §2, Example 2.2, p.3, for the inverse-limit, prime-product and factorial presentations of \(\widehat{\mathbb Z}\). The residue and character proofs used here are given above.

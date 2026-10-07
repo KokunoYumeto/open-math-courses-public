@@ -1,6 +1,6 @@
 # Ordinary Hilbert C*-module foundations
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Independently written exposition; Self-checked by the writing AI. Public domain (CC0). The separately linked source retains its author's copyright and terms.*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0). The separately linked source retains its author's copyright and terms.*
 
 This receiving companion proves the ordinary module facts needed before the compact-operator and interior tensor constructions. Coefficient algebras may be nonunital, nonseparable and not sigma-unital; modules need not be full or countably generated. Inner products are linear in the second variable. Grading and coefficient semilinearity are added in the graded lesson after these ordinary constructions.
 

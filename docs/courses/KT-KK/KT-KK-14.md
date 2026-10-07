@@ -1,8 +1,8 @@
 # Exact sequences in KK and the universal coefficient theorem
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
-A quotient need not give an exact sequence in KK. A mapping cone always records the homotopy obstruction to lifting a class. For a semisplit quotient, its ideal and its mapping cone are KK-equivalent, so the obstruction becomes the extension class. This is the mechanism behind the six-term sequences.
+A quotient need not give an exact sequence in KK. A mapping cone always records the homotopy obstruction to lifting a class. For a semisplit extension with separable extension algebra, its ideal and its mapping cone are KK-equivalent, so the obstruction becomes the extension class. Sigma-unital extensions also have covariant exactness for separable test sources, but a global boundary-product class can fail to exist. Section 8A proves this distinction by an explicit example.
 
 We use the homotopy and product results in *Homotopy, associativity, the index pairing and KK-equivalence*, the quasicentral approximate identities in *Kasparov's technical theorem*, and the positive suspension classes in *Bott periodicity in KK: the Bott and Dirac elements*. Our cones vanish at the right endpoint. Every algebra map preserves grading. Write \(SA=C_0((0,1),A)\), and identify its interval with any increasing real coordinate.
 
@@ -101,7 +101,7 @@ For the compact assertion, approximate the operator on \(E\) by finite sums of r
 
 The same argument glues over two closed half-intervals with their common fibre. It also shows that localized Kasparov defects glue to compact operators. No complement for an essential submodule is being asserted.
 
-**Lemma 2.2 (exactness at the original algebra).** For every graded \(f:A\to B\), the following sequences are exact in the middle:
+**Lemma 2.2 (exactness at the original algebra).** For every graded \(f:A\to B\), the first sequence below is exact in the middle for every graded test algebra \(D\). If \(A,B\) are separable, the second is exact in the middle for every graded coefficient algebra \(D\):
 \[
 \begin{gathered}
 KK(D,C_f)\xrightarrow{p_*}KK(D,A)
@@ -111,7 +111,7 @@ KK(B,D)\xrightarrow{f^*}KK(A,D)
 \end{gathered}
 \tag{2.2}
 \]
-The second assertion uses the simultaneous suspension isomorphism. For separable \(A,B\), and arbitrary coefficient \(D\), the exact required scope is Proposition 8.1 of the preceding Bott lesson, applied to its fixed inverse cycles. The general-source version of this lemma retains the separate completion obligation recorded below; it is not an input to Theorems 4.1–4.2 or the separable Toeplitz proof.
+The second assertion uses the proved simultaneous suspension isomorphism for the separable sources \(A,B\) and arbitrary coefficient \(D\): Proposition 8.1 of the preceding Bott lesson, applied to its fixed inverse cycles. The first assertion is proved directly by gluing and requires no suspension inverse.
 
 *Proof.* The composite \(fp\) factors through the contractible algebra \(CB\), so both composites in (2.2) vanish.
 
@@ -145,7 +145,7 @@ The two source inclusions are homotopic. Extend a suspension function by zero ou
 \]
 in \(KK(SA,SD)\), with increasing coordinates on all three intervals. By the simultaneous suspension isomorphism, \(w=\tau_S(y)\) for some \(y\in KK(B,D)\). Naturality and injectivity of \(\tau_S\) imply \(z=f^*y\). \(\square\)
 
-**Theorem 2.3 (Puppe exactness).** The sequences
+**Theorem 2.3 (Puppe exactness).** For every graded \(f:A\to B\), the first sequence below is exact for every graded test algebra \(D\). For separable \(A,B\), the second is exact for every graded coefficient algebra \(D\):
 \[
 \begin{gathered}
 KK(D,SA)\xrightarrow{(Sf)_*}KK(D,SB)
@@ -158,7 +158,7 @@ KK(B,D)\xrightarrow{f^*}KK(A,D)
 \end{gathered}
 \tag{2.7}
 \]
-are exact. Repeated suspension and periodicity continue them indefinitely.
+Repeated cone rotation continues these Puppe sequences. The periodic covariant continuation uses the proved coefficient periodicity when \(D\) is separable; the periodic contravariant continuation uses the proved first-variable periodicity for the stated separable sources.
 
 *Proof.* Lemma 2.2 gives exactness at \(A\). Apply it to \(p:C_f\to A\). Lemma 1.1 identifies \(C_p\) with \(SB\) and its projection with \(i\), so it gives exactness at \(C_f\) in both sequences. Apply it to \(i:SB\to C_f\); the same lemma identifies \(C_i\) with \(SA\) and its projection with \(Sf\), giving exactness at \(SB\). These arguments can be repeated after suspension. \(\square\)
 
@@ -510,7 +510,229 @@ We verify compatibility of their boundaries before taking that colimit. For an i
 
 Theorem 4.2 gives exactness at every stage. Filtered-colimit exactness, proved in the final paragraph of Theorem 7.1, gives (8.1). This defines the boundary on each class, with no dependence on its chosen coefficient descent. \(\square\)
 
-This argument supplies full covariant exactness. Identifying its natural boundary with product by a single global \(KK^1(B,J)\)-cycle when \(B\) is nonseparable is a separate representation issue; the separable-quotient statement and the explicit global Toeplitz cycle above do not themselves settle that issue.
+This proves covariant exactness under the stated sigma-unital hypotheses. A global boundary-product class need not exist for a nonseparable quotient under the countably generated convention. The next subsection proves this failure without changing any of the hypotheses of Proposition 8.1.
+
+### 8A. Why a global boundary class can fail
+
+The sigma-unital covariant exact sequence (8.1) need not be represented by one global class in \(KK^1(B,J)\). Here is a counterexample under the countably generated module convention of this course. It includes an explicit unitary on which the covariant boundary is nonzero.
+
+Let \(H=\ell^2(\mathbb N_0)\), let \(L=\ell^2(\mathcal U\times\mathcal U)\), where \(\mathcal U=\{0,1\}^{\mathbb N}\), and set \(M=H\oplus L\). Write \(P,Q\) for the two orthogonal summand projections. Define the trivially graded unital C*-algebra
+\[
+ B=\left\{
+ \begin{pmatrix}a&k\\ l&d\end{pmatrix}:
+ a\in\mathcal B(H),\ d\in\mathcal B(L),\
+ k:L\to H,\ l:H\to L\text{ compact}
+ \right\}.
+ \tag{BC.1}
+\]
+It is norm closed and closed under adjoints. The off-diagonal block of a product is a sum of products of bounded and compact operators, hence compact; this proves closure under multiplication. It contains \(\mathcal K(M)\) and both full diagonal corners.
+
+Compression followed by the Calkin quotient gives a unital homomorphism
+\[
+ \tau:B\longrightarrow\mathcal Q(H),\qquad
+ \tau\begin{pmatrix}a&k\\l&d\end{pmatrix}=q_H(a).
+ \tag{BC.2}
+\]
+Indeed the error in multiplying upper-left compressions is the compact product \(kl'\). Form its pullback extension
+\[
+ \begin{gathered}
+ E=\{(T,b)\in\mathcal B(H)\oplus B:q_H(T)=\tau(b)\},\\
+ 0\longrightarrow J=\mathcal K(H)
+ \xrightarrow{j\mapsto(j,0)}E
+ \xrightarrow{(T,b)\mapsto b}B\longrightarrow0.
+ \end{gathered}
+ \tag{BC.3}
+\]
+It is semisplit: the section \(b\mapsto(PbP|_H,b)\) is unital, completely positive and contractive. At every matrix level compression is compression by an isometry and therefore preserves positivity; the other component is the identity. The norm in the direct sum is the maximum of the two component norms, giving contractivity. Positivity is inherited by the closed pullback subalgebra: the componentwise positive square roots still satisfy its quotient equation, by functional calculus, and so belong to the pullback. Both \(E,B\) are unital and \(J\) has its countable finite-coordinate approximate identity. Thus every algebra in (BC.3) is sigma-unital.
+
+**Lemma 8A.1.** Every representation of \(B\) on a separable Hilbert space is zero, including degenerate representations.
+
+**Proof.** First any such representation \(\rho\) kills \(\mathcal K(M)\). Its matrix units span the finite-rank operators densely in the compact algebra. If some matrix unit has nonzero image, its initial rank-one projection also has nonzero image. All rank-one basis projections are equivalent by rank-one partial isometries, so all their images would be nonzero. There are uncountably many pairwise orthogonal basis projections in \(M\); their images would give uncountably many orthogonal nonzero subspaces in a separable Hilbert space. This is impossible. Indeed choose a unit vector from each: their mutual distances are \(\sqrt2\), and disjoint balls of radius \(1/3\) must contain different members of a countable dense set. Hence such a family is countable.
+
+The restriction to \(P\mathcal B(H)P\) now kills \(\mathcal K(H)\), and thus factors through \(\mathcal Q(H)\). That algebra has no nonzero representation on a separable Hilbert space. Here is a proof without a simplicity theorem. Code the finite binary strings by natural numbers. For each infinite binary sequence \(s\), let \(A_s\) be the infinite set of codes of its nonempty initial strings, and let \(p_s\) project onto \(\ell^2(A_s)\subset H\). Distinct \(A_s,A_t\) have finite intersection, so \(q_H(p_s)q_H(p_t)=0\). An enumeration of \(A_s\) gives an isometry \(v_s\) with \(v_s^*v_s=1_H\), \(v_sv_s^*=p_s\). Thus every \(q_H(p_s)\) is equivalent to the unit. A representation with nonzero unit image would send all these projections to nonzero orthogonal projections, again impossible on a separable Hilbert space. A representation with zero unit image is zero. This proves \(\rho(P)=0\).
+
+For the lower corner, let \(r_s\in\mathcal B(L)\) project onto the basis slice indexed by \(\{s\}\times\mathcal U\). These are uncountably many orthogonal projections. Interleaving the even and odd coordinates gives an explicit bijection \(\mathcal U\times\mathcal U\cong\mathcal U\). Each slice consequently has the same cardinality as the full basis, and a basis bijection gives an isometry \(w_s:L\to L\) with \(w_s^*w_s=1_L\), \(w_sw_s^*=r_s\). A representation of this corner with nonzero unit image would therefore give another uncountable orthogonal family of nonzero projections on the separable target. Thus \(\rho(Q)=0\). Since \(P+Q=1_B\), it follows that \(\rho(1_B)=0\) and \(\rho=0\). \(\square\)
+
+**Lemma 8A.2.** Both \(KK(B,J)\) and \(KK^1(B,J)\) are zero.
+
+**Proof.** Suppose a coefficient algebra \(D\) has a faithful representation on a separable Hilbert space \(N\), and let \(X\) be a countably generated Hilbert \(D\)-module. Then \(X\otimes_DN\) is separable. If \(\xi_n\) generate \(X\) and \(\eta_m\) form a countable dense family in \(N\), the \(\xi_n\otimes\eta_m\) span densely: generating combinations \(\xi_nd\) tensor to \(\xi_n\otimes d\eta\), and the second vector can be approximated by the \(\eta_m\). The action of \(\mathcal L_D(X)\) on this tensor Hilbert space is faithful. If \(T\otimes1=0\), then
+\[
+ 0=\|T\xi\otimes\eta\|^2
+   =\langle\eta,\langle T\xi,T\xi\rangle_D\eta\rangle_N
+ \quad(\xi\in X,\ \eta\in N).
+ \tag{BC.4}
+\]
+Faithfulness of the coefficient representation implies \(\langle T\xi,T\xi\rangle_D=0\), hence \(T\xi=0\), so \(T=0\).
+
+Any source homomorphism \(B\to\mathcal L_D(X)\) therefore induces, and is detected by, a representation on this separable Hilbert space. Lemma8A.1 makes it zero. Apply this to \(D=J\), faithfully acting on \(H\). Every cycle then has zero source action and is degenerate, proving \(KK(B,J)=0\).
+
+For \(KK^1(B,J)\), use \(D=J\widehat\otimes Cl_1\). Its underlying algebra has a faithful representation on \(H\otimes\mathbb C^2\): the coefficient acts on \(H\) and the Clifford generator is the self-adjoint off-diagonal matrix with entries one. Its two eigenvalues give the faithful representation of the ungraded algebra \(Cl_1\cong\mathbb C\oplus\mathbb C\). Since \(J\) has trivial grading, the underlying tensor is the ordinary spatial tensor. Forgetting the module grading for this representation test retains the same source homomorphism. It is zero by the preceding argument, so every odd cycle is degenerate as well. \(\square\)
+
+Choose a closed separable subspace \(L_0\subset L\) with orthonormal basis \(f_n\), and set \(W=L_0^\perp\). Let \(S\) be the unilateral shift on \(H\) with basis \(e_n\), and let \(S_0\) be its counterpart on \(L_0\). Define
+\[
+ T=S_0^*\oplus1_W,\qquad
+ Rf_0=e_0,\quad R|_{f_0^\perp}=0,\qquad
+ U=\begin{pmatrix}S&R\\0&T\end{pmatrix}.
+ \tag{BC.5}
+\]
+The rank-one operator \(R\) ensures \(U\in B\). Put \(p_e=[e_0]\), \(p_f=[f_0]\) for the two rank-one projections. The identities
+\[
+ \begin{gathered}
+ S^*S=1,\quad SS^*=1-p_e,\quad
+ T^*T=1-p_f,\quad TT^*=1,\\
+ R^*R=p_f,\quad RR^*=p_e,\quad
+ S^*R=0,\quad RT^*=0
+ \end{gathered}
+ \tag{BC.6}
+\]
+give \(U^*U=UU^*=1\) by block multiplication. Thus \(U\) is an actual unitary, and \(\tau(U)=q_H(S)\).
+
+The element \(v=(S,U)\in E\) is an isometry lifting \(U\), with
+\[
+ 1-v^*v=0,\qquad 1-vv^*=(p_e,0)\in J.
+ \tag{BC.7}
+\]
+The kernel-minus-cokernel boundary convention therefore gives
+\[
+ \delta_1([U])=[1-v^*v]-[1-vv^*]
+             =-[p_e]=-1\ne0\quad\text{in }K_0(J).
+ \tag{BC.8}
+\]
+This is the ordinary finite-matrix boundary, proved for general extensions in Lesson07, Lemma3.1a, equations (E.1) and (E.4), with its finite-matrix antecedent in [Lemma2.0a](KT-KK-07.html#2-the-even-scalar-fredholm-picture). To see the formula in this very extension, the matrix
+\[
+ Z=\begin{pmatrix}v&1-vv^*\\1-v^*v&-v^*\end{pmatrix}
+ \tag{BC.9}
+\]
+is unitary by the partial-isometry identities, and lifts \(\operatorname{diag}(U,-U^*)\). Multiplication by \(\operatorname{diag}(1,-1)\) gives a lift of \(\operatorname{diag}(U,U^*)\). Its conjugation of the first coordinate projection is \(\operatorname{diag}(vv^*,1-v^*v)\), whose difference from that reference projection is exactly (BC.8). The rank-one class is nonzero by the finite-rank scalar index calculation of Lesson07, Section2 and Solution10.1.
+
+**Theorem 8A.3.** The covariant boundary of (BC.3) cannot be right product by any global class in \(KK^1(B,J)\).
+
+**Proof.** Such a global class would be zero by Lemma8A.2, so every product with it would be zero. In particular it would give zero on \(KK^1(\mathbb C,B)\). These products are within the proved product-existence scope: the first source \(\mathbb C\) is separable and the intermediate algebra \(B\) is unital.
+
+The scalar comparisons [Lesson10, Corollary2.4](KT-KK-10.html#2-homotopy-and-operator-homotopy), based on its full-homotopy Theorem2.3 and the actual scalar indices of Lesson07, identify \(KK^1(\mathbb C,B)\) with \(K_1(B)\) and \(KK(\mathbb C,J)\) with \(K_0(J)\). The boundary from Proposition8.1 agrees with (BC.8). Indeed the unitary and its lift occur in a separable subextension preserved by the section, by the closure construction in that proposition. At that stage Theorem4.2 gives the boundary product; Lesson10, Theorem6.2 identifies the odd product with the compression index; and Lesson04, Theorem4.1 identifies that compression with the ordinary finite-matrix K-boundary. Naturality preserves it on inclusion into (BC.3). Its value on the class of \(U\) is nonzero. It therefore cannot be represented by product with the zero global class. \(\square\)
+
+![A semisplit covariant boundary can exist even when its possible global KK group is zero.](figures/KT-KK-14-global-boundary.png)
+
+*Figure 8A.* The algebras, module convention and maps are those of (BC.1)–(BC.3). Countably generated modules over \(J\widehat\otimes Cl_1\) give separable Hilbert-space representations by (BC.4), so Lemma8A.1 forces their source action to vanish. The explicit unitary (BC.5) still has covariant boundary \(-[p_e]\), by (BC.7)–(BC.9). The lower arrow is the natural connecting map of Proposition8.1. All three extension algebras are sigma-unital.
+
+This example proves that separable descent of covariant exactness does not imply a global boundary-product formula. The formula in Theorem4.2 retains its separable extension hypothesis. The extension (BC.3) is not required to be essential; the construction and theorem in Section3 explicitly include nonessential extensions. All arguments in this counterexample are given above, with their ordinary K-theory and scalar KK inputs at the exact earlier programme proofs.
+
+## 8B. A contravariant semisplit counterexample
+
+Retain exactly the algebras of Section 8A. Let \(H=\ell^2(\mathbb N_0)\), let \(L\) have the uncountable basis indexed there, put \(M=H\oplus L\), and let
+\[
+ B=\left\{\begin{pmatrix}a&k\\l&d\end{pmatrix}:
+ a\in\mathcal B(H),\ d\in\mathcal B(L),\
+ k\in\mathcal K(L,H),\ l\in\mathcal K(H,L)\right\}.
+\]
+With \(\tau(b)=q_H(a)\), put
+\[
+ J=\mathcal K(H),\qquad
+ E=\{(t,b)\in\mathcal B(H)\oplus B:q_H(t)=\tau(b)\},\qquad
+ \pi(t,b)=b .
+ \tag{CC.1}
+\]
+The inclusion of \(J\) is \(k\mapsto(k,0)\). Section 8A proves that this is a unital semisplit extension, with completely positive contractive section
+\[
+ b\longmapsto(P_HbP_H,b),
+\]
+and that all three algebras are sigma-unital. Its complete proof of Lemma8A.1 shows that every representation of \(B\) on a separable Hilbert space is zero, including degenerate representations. No new extension or stronger hypothesis is introduced.
+
+**Theorem 8B.1.** For the countably generated-module, whole interval-module relation,
+\[
+ KK_h(E,\mathbb C)=0,\qquad KK_h(B,\mathbb C)=0,\qquad
+ KK_h(B,Cl_1)=0,\qquad KK_h(J,\mathbb C)\ne0 .
+ \tag{CC.2}
+\]
+Consequently no contravariant six-term sequence for this extension and scalar coefficient can be exact. If \(C_\pi\) is its ordinary mapping cone, then
+\[
+ KK_h(C_\pi,\mathbb C)=0,
+ \tag{CC.3}
+\]
+so the actual canonical inclusion \(J\to C_\pi\) does not induce an isomorphism in this contravariant test. This refutes the unrestricted ideal/cone equivalence assertion with its usual contravariant meaning. It preserves the proved separable-extension theorem and the covariant results of Lesson14.
+
+**Proof of the middle algebra's zero group.** Take an arbitrary even \((E,\mathbb C)\)-cycle. Its Hilbert module is a separable graded Hilbert space. By Lesson06 Theorem3.2 normalize \(F\) to an odd self-adjoint contraction. The represented unit \(P=\phi(1_E)\) has compact commutator with \(F\). Remove the globally compact off-diagonal blocks at \(P\) by the actual compact perturbation path of Lesson06 Proposition3.1. Its zero-source complement is degenerate. Thus it suffices to consider a unital representation \(\phi\) on a separable graded space \(N\), with \(F^2-1_N\) compact.
+
+The Hilbert subspace \(N_J=\overline{\phi(J)N}\) is reducing for \(\phi(E)\). On its orthogonal complement the representation factors through \(E/J=B\), so is zero by the already proved absence of separable representations of \(B\). Since \(\phi\) is unital, that complement is zero. Therefore its actual \(J\)-representation is nondegenerate on all of \(N\).
+
+There is an actual corner homomorphism
+\[
+ \iota:\mathcal B(H)\longrightarrow E,\qquad
+ \iota(a)=\left(a,\begin{pmatrix}a&0\\0&0\end{pmatrix}\right).
+ \tag{CC.4}
+\]
+The defining equality in (CC.1), products and adjoints verify this formula. Its corner unit \(p=\iota(1_H)\) acts as the identity on \(J\), hence \(\phi(p)=1_N\) by the nondegeneracy just proved. Thus \(\phi\iota\) is a unital representation of \(\mathcal B(H)\) on a separable Hilbert space. The actual matrix-unit argument of Lesson12 Lemma8A.3 gives
+\[
+ N=K\otimes H,\qquad
+ \phi(\iota(a))=1_K\otimes a,\qquad
+ \Gamma_N=\Gamma_K\otimes1_H,
+ \tag{CC.5}
+\]
+with separable graded \(K\). Its compact restriction is the actual \(J\)-action, because \(\iota(k)-(k,0)\) has quotient supported in the upper compact corner and this difference annihilates \(J\); any element annihilating \(J\) acts as zero on the dense \(\phi(J)N\).
+
+More directly, for every \(e=(t,b)\in E\) and \(k\in J\),
+\[
+ e(k,0)=(tk,0).
+\]
+Both \(\phi(e)\) and \(1_K\otimes t\) therefore act identically on the dense represented \(J\)-span. Consequently
+\[
+ \phi(t,b)=1_K\otimes t
+ \quad\hbox{on }N .
+ \tag{CC.6}
+\]
+This identifies the entire source action, not just the corner action.
+
+The compact commutators with all \(\iota(a)\), and Lesson12's fully proved essential-commutant Lemma8A.2, give
+\[
+ F=T\otimes1_H+C,\qquad C\in\mathcal K(N).
+ \tag{CC.7}
+\]
+The lemma's diagonal-block norm-limit construction preserves self-adjointness, oddness and the contraction bound, so \(T\) is an odd self-adjoint contraction on \(K\). Since \(F^2-1\) is compact, \((T^2-1)\otimes1_H\) is compact. A nonzero operator amplified by the infinite identity cannot be compact: test a fixed vector with nonzero image tensored with the mutually orthogonal basis vectors of \(H\). Therefore \(T^2=1_K\).
+
+The globally compact perturbation path \(F_s=(1-s)F+s(T\otimes1_H)\) remains a cycle for the unchanged source representation; all localized defects remain continuous compact fields by expansion of its squares and commutators. On the actual countably generated whole interval module \(C([0,1],N)\), it is a full cycle homotopy. Its endpoint commutes with (CC.6), and has zero square and adjoint defects. Hence it is degenerate. This proves \(KK_h(E,\mathbb C)=0\) on every allowed representative.
+
+**Proof of the quotient's zero groups.** Scalar-coefficient cycles use separable Hilbert spaces, so every \(B\)-action is zero by Lemma 8A.1. A countably generated Hilbert \(Cl_1\)-module is separable as a complex Hilbert space after its faithful finite-dimensional coefficient representation. The induced representation of its adjointables is faithful, by the norm-square tensor proof of Lemma 8A.2. Its \(B\)-action is again zero. All three localized defects of a zero-source cycle vanish identically, so every such cycle is degenerate. This proves the two quotient zero groups in (CC.2).
+
+**A nonzero ideal class.** Give \(H\) pure even grading and take
+\[
+ z=[(H,\lambda,0)]\in KK_h(\mathcal K(H),\mathbb C),
+ \qquad \lambda(k)\xi=k\xi.
+ \tag{CC.8}
+\]
+The commutator and adjoint defect are zero; its square defect at \(k\) is \(-k\), compact. The module is countably generated, so this is an allowed cycle. Pull back through \(\mathbb C\to J\), \(c\mapsto cp_0\), where \(p_0\) projects onto one basis vector. The represented unit is now \(p_0\). Its one-dimensional source summand has operator zero and index \(+1\); the zero-source complement is degenerate. Nonvanishing of this scalar class for the full interval relation is the even scalar index of Lesson07 Theorem2.2 transferred by Lesson10 Corollary2.4. Source pullback preserves every full witnessing interval module. Thus \(z\ne0\).
+
+The asserted contravariant extension sequence would contain
+\[
+ KK_h(E,\mathbb C)\xrightarrow{\,j^*\,}KK_h(J,\mathbb C)
+ \xrightarrow{\,\delta\,}KK_h^1(B,\mathbb C)
+ =KK_h(B,Cl_1).
+ \tag{CC.9}
+\]
+By (CC.2) its outer groups are zero and its middle group contains \(z\ne0\). Every possible map to its zero right group has the whole middle group as kernel, while the image of its zero left group is zero. Therefore (CC.9) cannot be exact, regardless of any proposed boundary formula.
+
+**The cone comparison.** First every representation of \(SB\) on a separable Hilbert space is zero. Given \(\rho:SB\to\mathcal B(V)\), let \(V_S\) be the closed essential subspace for the scalar action \(\rho(S\otimes1_B)\). It is a reducing separable Hilbert subspace. For a scalar approximate identity \(u_n\), the bounded strong limits of \(\rho(u_n\otimes b)\) on \(V_S\) are determined on its dense vectors by
+\[
+ \Phi(b)\rho(g\otimes1_B)\xi=\rho(g\otimes b)\xi.
+ \tag{CC.10}
+\]
+Norm bounds and the analogous adjoint limits give an operator on the whole \(V_S\); the formula on the dense span proves multiplicativity, adjoints and \(\Phi(1_B)=1_{V_S}\). The absence of separable \(B\)-representations forces \(V_S=0\). All \(\rho(g\otimes b)\) have image in \(V_S\), by the same scalar approximate identity, so \(\rho=0\).
+
+The mapping cone has the exact sequence
+\[
+ 0\longrightarrow SB\longrightarrow C_\pi
+ \xrightarrow{\mathrm{ev}_0}E\longrightarrow0,\qquad
+ C_\pi=\{(e,g):g\in C_0([0,1),B),\ g(0)=\pi(e)\}.
+ \tag{CC.11}
+\]
+Evaluation is onto: for each \(e\), \(g(t)=(1-t)\pi(e)\) supplies an element above it. Its kernel is \(C_0((0,1),B)\cong SB\). Any scalar-coefficient \(C_\pi\)-cycle acts on a separable Hilbert space; its restriction to this kernel is zero by (CC.10). Its source representation therefore factors through the actual quotient \(E\). All \(E\)-cycle conditions hold because each \(e\) has a preimage in \(C_\pi\). The null homotopy (CC.7), pulled back through evaluation, contracts this original \(C_\pi\)-cycle on the same countably generated interval module. This proves (CC.3).
+
+The canonical inclusion is \(k\mapsto((k,0),0)\). Its source pullback takes a zero group in (CC.3) to the nonzero group detected by (CC.8), so cannot be an isomorphism. No assertion about a generally defined nonseparable internal product is required for this comparison. \(\square\)
+
+The finite covariant Puppe sequence, proved separable contravariant sequence, explicit separable extension cycles and the positive Toeplitz/PV comparisons remain unchanged. This is not a proof or disproof of unrestricted simultaneous suspension. It refutes the unrestricted semisplit contravariant exactness and ideal/cone comparison by actual allowed cycle groups.
+
+![The nonexact contravariant scalar segment and failed cone pullback.](figures/KT-KK-14-contravariant-counterexample.png)
+
+*Figure 8B.1.* The same extension (CC.1) has sigma-unital ideal and unital middle and quotient algebras. The actual zero groups in (CC.2), the class (CC.8) with rank-one scalar readback +1, and the cone zero group (CC.3) are the complete obstructions. The arrows in (CC.9) cannot be exact for any proposed boundary map. This result does not assert failure of simultaneous suspension.
 
 ## 9. Telescopes, including noninjective systems
 
@@ -985,17 +1207,13 @@ Restriction along \(j\) cancels their identical tails and leaves \(1_A\). After 
 
 The corner \(h(a)=j(a)(1-ss^*)\) is represented as \(a e_{00}\) in the first representation and \(\alpha^{-1}(a)e_{11}\) in the second. Thus \(hx=1_A-[\alpha^{-1}]\). Apply the two semisplit exact sequences to (6.3) and use the corner and \(j\)-equivalences. The quotient map becomes the original coefficient inclusion into \(B\). Finally change the ideal equivalence by \(-[\alpha]\); (7.5) gives \(1-\alpha\) and (7.6) gives its boundary. This is exactly the coefficient convention requested, with the clockwise covariance \(uau^*=\alpha(a)\) kept throughout.
 
-## Work still in progress
+## Scope of the exact sequences
 
-The global-cycle representation of the nonseparable-quotient boundary in Section 8 remains to be checked. Sections 9–10 give the telescope and UCT argument, including the Ext arrow, splitting assertions and KK-equivalence consequence; its remaining prerequisite is identified below. The generalized Toeplitz equivalence, full stated Pimsner–Voiculescu scope and covariant exactness with nonseparable coefficients have the local proofs above.
-
-The preceding Bott lesson proves the suspension equivalences for separable sources and arbitrary coefficients. Its additional arbitrary-source simultaneous suspension assertion remains an open obligation of that existing lesson, owned by this same whole-course writer. The general-source statement of Lemma 2.2 and Theorem 2.3 uses exactly that assertion; the covariant exactness argument itself does not use it. The separable-source uses in Sections 3–4 have the proved prerequisite scope.
-
-The scalar suspension, extension-cycle and Toeplitz inputs used by the later descent lesson have complete local or earlier proofs in Sections 1–4 and 6–7 here and in the preceding Bott lesson. Lemma 10.11 uses the complete earlier [Compact placement and support homotopy, Lemmas 4.3–4.4](supporting/compact-placement/compact-support.html#compact-placement). Those UCT inputs include arbitrary unitary placement and the interval-module support homotopy without a complemented submodule. The broader prerequisite and scope obligations are stated separately. They are not inputs to the semisplit or Pimsner–Voiculescu proofs.
+The finite covariant Puppe sequence in Section 2 is proved without source separability. Its contravariant counterpart has separable source algebras. Proposition 8.1 gives covariant semisplit exactness for separable test sources and sigma-unital coefficients; Theorem 8A.3 proves that its general nonseparable quotient need not have a global boundary-product class. Theorem 8B.1 also proves that the same sigma-unital semisplit extension need not have a contravariant exact sequence or a canonical ideal/cone pullback isomorphism. The separable extension-product formulas in Sections 3–4 and the explicitly constructed Toeplitz classes in Sections 6–7 retain their stated hypotheses and proofs.
 
 ## What this lesson uses
 
-The null-homotopy, product and external-sign arguments are those in *Homotopy, associativity, the index pairing and KK-equivalence*. Essential replacement without a complemented submodule is Proposition 5.1 of *Connections and the existence of the Kasparov product*. The scalar cone, Clifford transfer and both inverse suspension identities are the local Proposition 7.1 and Theorem 7.3 of *Bott periodicity in KK: the Bott and Dirac elements*. Section 3 here proves the extension cycle and its dilation rotation; Section 6 defines the Toeplitz quasihomomorphism cycle explicitly. These used inputs do not require the unfinished scalar or extension picture of Lesson 07. The Bott equivalences and separable-source coefficient descent are Theorem 4.1 and Proposition 8.1 of *Bott periodicity in KK: the Bott and Dirac elements*. Quasicentral approximate identities are proved in *Kasparov's technical theorem*.
+The null-homotopy, product and external-sign arguments are those in *Homotopy, associativity, the index pairing and KK-equivalence*. Essential replacement without a complemented submodule is Proposition 5.1 of *Connections and the existence of the Kasparov product*. The scalar cone, Clifford transfer and both inverse suspension identities are the local Proposition 7.1 and Theorem 7.3 of *Bott periodicity in KK: the Bott and Dirac elements*. Section 3 here proves the extension cycle and its dilation rotation; Section 6 defines the Toeplitz quasihomomorphism cycle explicitly. The scalar indices used in Section 8A are Lesson07, Theorems2.2 and3.2; Lesson10, Theorem2.3 and Corollary2.4, proves their transfer to full interval homotopy. The Bott equivalences and separable-source coefficient descent are Theorem 4.1 and Proposition 8.1 of *Bott periodicity in KK: the Bott and Dirac elements*. Quasicentral approximate identities are proved in *Kasparov's technical theorem*.
 
 The nuclear lifting and permanence prerequisites are proved in *Positive maps and finite-dimensional approximation*: *Lifting completely positive maps*, Theorem 5.1; *Tensor positivity and nuclearity*, Theorem 3.1; *Completely positive finite models*, Propositions 5.3–5.4; and *Nuclear biduals and extensions*, Theorem 4.2. They apply to the separable nuclear quotients and countable inductive limits used here. Averaging a completely positive section with its graded conjugate gives a graded section when needed.
 
@@ -1004,3 +1222,5 @@ Ordinary K-theory continuity, including noninjective connecting maps, is Theorem
 ## References and source credit
 
 - B. Blackadar, *K-Theory for Operator Algebras*, [actual freely readable corrected author edition](https://www.bruceblackadar.com/Mathematics/book6.pdf), Sections 19.4–19.7 and Exercises 19.9.1–19.9.2, gives the free comparison account for the cone, semisplit and Toeplitz/PV arguments. The nonunital representation, both Toeplitz inverse homotopies, ideal arrow and full stated PV scopes are proved above. Definition 22.3.4 and Sections 21.3, 23.1–23.2, 23.5 and 23.8–23.11 give the free comparison account for the telescope and UCT constructions in Sections 9–10. Naturality and the noncanonical splitting require the local proofs, not a reference to the book's abbreviated naturality argument. The [author's publications page](https://www.bruceblackadar.com/mathpubs.html) retains the author's copyright and permits use under Creative Commons rules with attribution, without naming a particular licence or version; no more specific licence is asserted here.
+
+- F. Arici and B. Mesland, *Toeplitz extensions in noncommutative topology and mathematical physics*, [freely accessible preprint](https://arxiv.org/abs/1911.05823), Theorems14–15, gives a comparison of the countably generated dilation and extension-cycle constructions with their separable-source hypotheses. The counterexample and all its representation and index calculations are proved in Section 8A above.

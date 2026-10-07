@@ -2,9 +2,9 @@
 
 The partial Legendre transformation exchanges some position coordinates with ratios of covector coordinates. Its kernel is supported on a smooth incidence equation. We will derive both the contact map and the shift that makes its right adjoint carry one coordinate subspace to a hypersurface. Calculating the right adjoint is essential: the unshifted transposed kernel and the relative dual kernel initially have different degrees.
 
-Use When a kernel quantizes a contact transformation and Dual kernels and an unchanged parameter. Their closed-submanifold, constructible-duality and localized adjunction prerequisites remain the inputs to the sheaf argument. The geometry and fibre calculation below are explicit.
+Use the contact-kernel criterion and its identity condition and the relative-dual adjunction comparison. We verify the criterion on the full regions in (1)–(2), identify its actual identity map, and retain the orientation line and evaluation map in the right adjoint. The closed-submanifold Hom comparison, supported-coefficient microlocalization, and closed-embedding orientation formula are used in their stated ranges. Their deeper sheaf-operation prerequisites remain in force.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 ## The coordinate transformation and its inverse
 
@@ -77,9 +77,11 @@ Its physical components are
 
 The input convention for a kernel on \(X\times Y\) is \(\eta=-\zeta\). For \(b\ne0\), (5) is exactly (1), including \(\eta_j=-x_j\xi_n\). The equation \(h=0\) supplies its last base coordinate. Conversely (1) satisfies (4) and (5) with \(a_k=\xi_k\), \(b=\xi_n\). Therefore the selected conormal relation is the graph of \(\chi\), viewed as a correspondence whose forward kernel direction is from \(Y\) to \(X\). The transformation of \(\Phi_K\) is \(\chi^{-1}\); the transformation of \(\Psi_K\) is \(\chi\).
 
-One selected component is present if and only if \(b\ne0\), if and only if the other selected component is present. This verifies the union of the selected regions. The two relation projections are diffeomorphisms by (1)–(2), and hence proper homeomorphisms on that relation.
+Let \(\Lambda\) be the part of \(T_S^*P\) with \(b\ne0\). In (5), \(\xi_n=b\) and the twisted input component is \(\eta_n=b\). Hence selecting either \(\Omega_X\) or \(\Omega_Y\) selects exactly this same \(\Lambda\); all covectors with \(b=0\), including those with nonzero \(a_k\), miss both regions. This proves the required union condition, rather than only its restriction to a product of selected regions. The set \(\Lambda\) is relatively closed in that product, as the graph of the continuous map (1). Its two projections are diffeomorphisms by (1)–(2) and therefore proper homeomorphisms. Explicitly, above a compact set in either cotangent region the denominator \(|\xi_n|=|\eta_n|\) is bounded away from zero, and the relevant inverse formulas bound every other base and covector coordinate. This compactness is on the selected cotangent relation; the ordinary projection of the entire support \(S\) need not be proper.
 
-For any integer \(d\), let \(K_d=k_S[d]\). Here \(k\) is a commutative ring with identity and finite global dimension, and all input complexes are bounded. The smooth closed-submanifold model makes \(K_d\) cohomologically constructible and places its microsupport in \(T_S^*P\). The submanifold microlocal Hom formula and the zero-section Fourier computation give
+For any integer \(d\), let \(K_d=k_S[d]\). Here \(k\) is a commutative ring with identity and finite global dimension, and all input complexes are bounded. We check the precise cohomological constructibility required by the criterion. In an adapted product chart, \(S\) is a coordinate subspace. A cofinal family of small product balls has ordinary coefficient cohomology \(k[d]\) on its intersection with \(S\), and compact-support cohomology \(k[d-\dim S]\) after a local orientation choice. The coordinate-ball calculation and its support maps identify the actual restriction and extension maps with the corresponding identity maps. Thus the formal ordinary and compact-support systems are represented by these perfect complexes, with the required stalk and costalk comparisons. Off \(S\) both systems are zero. The constructibility condition is imposed on this rank-one kernel, not on the arbitrary objects to which it is applied. The smooth-submanifold support calculation also gives \(\operatorname{SS}(K_d)\subset T_S^*P\).
+
+To compute its endomorphisms, the submanifold Hom comparison identifies \(\mu\operatorname{hom}(k_S,k_S)\) on the conormal with \(\mu_S(k_S)\). In normal deformation coordinates the support of the positive lift is the zero normal vector at every positive parameter. Its specialization is therefore the constant coefficient on the zero section of \(N_SP\). In the negative Fourier kernel, pairing with that vector is zero for every dual normal covector, and the supported projection has a single point as fibre. The supported-coefficient calculation consequently gives the constant coefficient on all of \(T_S^*P\), with no fibre dimension shift. Shifting both Hom arguments by \(d\) cancels the shifts. Hence
 
 \[
 \mu\operatorname{hom}(k_S[d],k_S[d])|_{T_S^*P}
@@ -87,7 +89,9 @@ For any integer \(d\), let \(K_d=k_S[d]\). Here \(k\) is a commutative ring with
 \qquad\text{(6)}
 \]
 
-The two shifts cancel in Hom. Under (6) the actual identity-induced map sends \(1\) to \(\operatorname{id}_k\), and is invertible. The local identity normalizations glue, without an orientation choice. The contact-kernel theorem therefore proves, for every \(d\), inverse equivalences
+The object calculation alone does not verify the contact criterion. Its microlocal unit is the microlocalization of the diagonal Hom-kernel morphism adjoint to \(\operatorname{id}_{K_d}\). Under closed-embedding Hom adjunction in the preceding comparison, this identity becomes the identity of the constant coefficient on \(S\). Specialization keeps that identity on the zero normal section, and the single-point Fourier projection keeps its value \(1\). Thus the actual map \(e_{K_d}\) is identified in (6) with \(1\mapsto\operatorname{id}_{k[d]}\), and is an isomorphism. The projection orientation and its inverse have already cancelled in the submanifold Hom comparison. The local maps therefore agree on overlaps without a choice of normal orientation.
+
+We have checked cohomological constructibility, both selected-region containments, properness on the same graph, and the identity-induced map. The contact-kernel theorem now applies for every \(d\). Its kernel-unit proof identifies the actual adjunction unit with this identity section; constructible duality gives the other fully faithful adjoint and the invertible counit. Consequently these are inverse equivalences through their adjunction maps:
 
 \[
 \Phi_{K_d}:\mathcal D_Y(\Omega_Y)\rightleftarrows
@@ -127,14 +131,31 @@ Q_d=\mathrm tR\mathcal Hom_P(k_S[d],q_Y^{-1}\omega_Y)
 \qquad\text{(10)}
 \]
 
-This uses exceptional degree \(-(p+1)\) for the closed embedding, degree \(n\) for \(\omega_Y\), and degree \(-d\) for dualizing the kernel shift. The total is \(r-d\). We retain the intrinsic line in (10) before choosing its trivialization. The ordered defining functions in (4) trivialize the normal orientation system, and the standard coordinates orient \(Y\). Fix these choices. They give
+Here is the closed-support comparison in (10). For \(i:S\hookrightarrow P\) and the locally constant invertible complex \(W=q_Y^{-1}\omega_Y\), internal adjunction gives
+
+\[
+R\mathcal Hom_P(i_*k_S,W)=i_*i^!W.
+\]
+
+Locally trivializing \(W\), the normal local-cohomology formula computes \(i^!W=i^{-1}W\otimes\operatorname{or}_{S/P}[-(p+1)]\). The comparison is induced by coefficient multiplication with the normal support class; its transition maps glue as the displayed orientation line. This assertion uses the locally constant target \(W\), rather than asserting that exceptional restriction has this form for every sheaf. Since \(\omega_Y=\operatorname{or}_Y[n]\), dualizing the shift \([d]\) gives the total degree \(n-(p+1)-d=r-d\). Transposing the two base factors is ordinary pullback by a diffeomorphism and introduces no further cohomological degree.
+
+We retain the intrinsic tensor of orientation lines in (10) before choosing generators. The ordered defining functions \((x_1-y_1,\ldots,x_p-y_p,h)\) globally trivialize the normal orientation, and the standard coordinates orient \(Y\). Fix these choices. Reversing one choice changes the resulting line trivialization by its determinant sign, while the intrinsic kernel and its adjunction remain the same. These choices give
 
 \[
 Q_d\simeq k_{S^{\mathsf t}}[r-d].
 \qquad\text{(11)}
 \]
 
-The exact constructible dual-kernel theorem identifies \(\Psi_{K_d}\) with convolution by \(Q_d\) on the selected cotangent regions. This is its adjunction comparison, not an identification inferred just from the support of a kernel.
+We identify the actual adjunction comparison. Write \(q_X:P\to X\), put \(Q'_d=R\mathcal Hom_P(K_d,W)\), so that \(Q_d=\mathrm tQ'_d\), and let \(F\in D^b(k_X)\) be arbitrary. The submersion orientation formula gives \(q_X^!F=q_X^{-1}F\otimes W\). Evaluation \(Q'_d\otimes^LK_d\to W\), with the derived tensor symmetry, gives the map
+
+\[
+Q'_d\otimes^Lq_X^{-1}F
+\longrightarrow R\mathcal Hom_P(K_d,q_X^!F).
+\]
+
+Apply \(Rq_{Y*}\) and precede it by the forget-support map from \(Rq_{Y!}\) of the left side. This is the natural arrow from convolution by \(Q_d\) to the ordinary right-adjoint formula for \(K_d\). The relative-dual theorem and Corollary 2 prove that this arrow is invertible on \(\Omega_Y\) under the constructibility and reverse-admissibility hypotheses already checked.
+
+Its compactness mechanism can be checked directly here. The evaluation comparison can fail only on the escaping sum of \(\operatorname{SS}(q_X^{-1}F)\) and \(\operatorname{SS}(K_d)^a\). The first summand has zero \(Y\)-covector. If their sum converges over \(\Omega_Y\), the \(Y\)-covector of the second summand converges there too. The reciprocal graph, whose coordinates are (1)–(2), bounds its entire covector over a compact \(Y\)-cotangent neighborhood. The convergent sum then bounds the first summand. Neither can escape. The comparison cone therefore has no microsupport over that selected region, and the dual-kernel theorem's proper/ordinary image comparison kills its image there. The same graph admissibility makes the forget-support map invertible there. These are the evaluation and support-forgetting maps used by the adjunction, with their orientation factors retained. Only the kernel's constructibility enters; \(F\) may have arbitrary bounded coefficient modules.
 
 Let \(A\) be any bounded complex of \(k\)-modules. We calculate this convolution on \(A_M\), the constant coefficient complex supported on \(M\). The tensor support is \(S\cap(M\times Y)\). Its equations reduce to
 
@@ -143,7 +164,15 @@ x_k=y_k\ (k\in I),\qquad x_J=x_n=0,\qquad y_n=0.
 \qquad\text{(12)}
 \]
 
-The projection of (12) to \(Y\) is an isomorphism onto \(N\): every \(y\in N\) has the unique preimage \(x=(y_I,0,\ldots,0)\). This projection is proper on the support. The tensor of the two closed constant support sheaves is the constant sheaf on their intersection; this statement follows on stalks from the flat coefficients \(0\) and \(k\). Tensoring further with a flat resolution of \(A\) gives the same statement for arbitrary bounded derived coefficients. Proper pushforward along the displayed isomorphism has no fibre degree or additional orientation factor. Consequently (11) yields
+Call the closed set in (12) \(C\), and let \(j:C\hookrightarrow P\). Restriction followed by multiplication defines \(k_S\otimes k_{M\times Y}\to k_C\). On \(C\) its stalk is the identity of \(k\); off \(C\) both stalks vanish. Both factors are flat sheaves because their stalks are \(0\) or \(k\), so this is also their derived tensor comparison. For arbitrary bounded \(A\), choose a bounded flat coefficient resolution, possible over a ring of finite global dimension, with no finite-generation requirement on its terms. The same comparison in each degree gives the actual natural isomorphism
+
+\[
+k_S\otimes^Lq_X^{-1}A_M\simeq j_*A_C.
+\]
+
+The coefficient differentials are retained. This calculation uses flat support factors; it does not impose a transversality or perfection condition on \(A\).
+
+The projection \(q_Y|_C:C\to N\) has inverse \(y\mapsto((y_I,0,\ldots,0),y)\), so it is a diffeomorphism. Since \(N\) is closed in \(Y\), this projection is proper on the whole support \(C\). Proper direct-image composition sends \(j_*A_C\) to \(A_N\) by this actual inverse identification. The fibres are points, so there is no compact-support degree or additional orientation line to insert. The line already present in \(Q'_d\) is trivialized by the fixed choices preceding (11). Consequently (11) yields
 
 \[
 Q_d\circ_X A_M\simeq A_N[r-d],\qquad
@@ -162,9 +191,34 @@ The required normalization is therefore
 \qquad\text{(14)}
 \]
 
-For a nonzero ring \(k\), this degree is forced already by \(A=k\): at any selected conormal point of \(N\), the exact submanifold test detects \(k[r-d]\). A nonzero module concentrated in degree zero cannot be isomorphic to its nonzero shift. When the coefficient complex is zero, the normalization assertion is of course vacuous for that object.
+For \(k\ne0\), this degree is forced already by \(A=k\). Choose \(v\in T_N^*Y\cap\Omega_Y\), which is nonempty even when \(n=1\). Applying the submanifold Hom comparison and the supported-coefficient microlocalization used in (6) gives
 
-The equivalence (7) then also gives \(\Phi_{k_S[r]}(A_N)\simeq A_M\) on \(\Omega_X\). It gives this by the invertible counit. An ordinary forward fibre calculation can have contributions away from \(M\); the localization in this last assertion is essential.
+\[
+\mu\operatorname{hom}(k_N,k_N[r-d])_v=k[r-d],\qquad
+\mu\operatorname{hom}(k_N,k_N)_v=k.
+\]
+
+The microlocal-Hom support bound makes this probe invert denominators at \(v\), so an isomorphism in the localized category would identify these two complexes. Their nonzero cohomology lies in degrees \(d-r\) and zero, respectively; hence \(d=r\). The zero coefficient complex imposes no normalization by itself. If the coefficient ring is the zero ring, all its coefficient objects are zero and this uniqueness assertion is likewise vacuous.
+
+The equivalence (7) then gives \(\Phi_{k_S[r]}(A_N)\simeq A_M\) on \(\Omega_X\). The map is the composite of \(\Phi_{k_S[r]}\) applied to the inverse of the adjoint identification in (13), followed by the invertible counit \(\Phi_{k_S[r]}\Psi_{k_S[r]}(A_M)\to A_M\).
+
+Here is the ordinary forward fibre calculation for comparison. Put \(H=Rq_{X!}(k_S[r]\otimes^Lq_Y^{-1}A_N)\). Its fibre over \(x\) has \(y_I=x_I\), \(y_n=0\), and
+
+\[
+\sum_{j\in J}x_jy_j=-x_n.
+\]
+
+For \(r\geq1\), proper-support fibre comparison and the compact-support coefficient calculation give the following ordinary stalks, with affine orientation lines locally trivialized:
+
+| Base point | Fibre in the \(y_J\) coordinates | Stalk \(H_x\) |
+| --- | --- | --- |
+| \(x_J\ne0\) | An affine \(\mathbb R^{r-1}\) | \(A[1]\) |
+| \(x_J=0,\ x_n=0\) | \(\mathbb R^r\) | \(A\) |
+| \(x_J=0,\ x_n\ne0\) | Empty | \(0\) |
+
+On a patch where one coordinate \(x_j\ne0\), solve the displayed equation for \(y_j\); the remaining \(r-1\) coordinates give an explicit affine-bundle trivialization. Thus the first contribution is locally constant there, with its orientation line, and its microsupport on that patch lies in the zero section. It misses \(\xi_n\ne0\), despite its nonzero ordinary stalk when \(A\ne0\). Near the remaining base points the global localized conclusion is supplied by the same counit, whose cone is invisible throughout \(\Omega_X\). A pointwise stalk list alone would not establish that microlocal assertion.
+
+For \(r=0\), including \(n=1,p=0\), the exchange block is empty and (4) defines the diagonal. Its ordinary projection formula gives \(\Phi_{K_d}(F)=F[d]\), and diagonal Hom adjunction gives \(\Psi_{K_d}(F)=F[-d]\), for every bounded \(F\). Here \(M=N\) in the two copies, \(d=r=0\), and both operators are the identity even before localization. Thus no positive-dimensional affine-fibre formula is being used in the empty-block case.
 
 ## Exercises with complete solutions
 
@@ -207,3 +261,11 @@ Assume \(r\geq1\) and \(k\ne0\). At \(x\) with \(x_J\ne0\), compute the fibre of
 Let \(A=[A^{-1}\to A^0]\) be a bounded coefficient complex whose modules need not be projective or finitely generated. Explain why (13) still applies, and why this does not weaken the constructibility hypothesis on the kernel in (7).
 
 **Solution.** Resolve \(A\) by a bounded flat complex, possible because the coefficient ring has finite global dimension. The two constant support factors have stalks \(0\) or the flat module \(k\), so their tensor produces exactly the intersection support. The support projection (12) is an isomorphism onto \(N\), and its pushforward carries each coefficient differential to the same differential. Thus the result is \(A_N[r-d]\), with the stated orientation choices. The contact criterion is imposed on \(K_d=k_S[d]\), whose coefficients are locally rank-one perfect, not on the arbitrary input \(A_M\). Its identity map in (6) remains \(1\mapsto\operatorname{id}_k\); allowing arbitrary bounded inputs neither changes that map nor replaces the kernel's constructibility requirement.
+
+## References
+
+Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Theorem 6.3.4, printed pp. 111–113 (PDF pp. 114–116), is the general contact-kernel equivalence used here. Theorem 6.3.9 and Corollary 6.3.11, printed pp. 115–117 (PDF pp. 118–120), identify the actual microlocal-Hom comparison. Corollary 7.4.2, printed p. 139 (PDF p. 142), explains transport of conormal models by a simple contact kernel, with its degree determined by the kernel type and the specified index.
+
+The source's \(Y\)-to-\(X\) operator is an ordinary-image Hom action, with its physical antipode on \(X\). In this lesson \(\Phi\) is a proper-support tensor action, the input antipode is on \(Y\), and \(\Psi\) is its right adjoint. Thus the general source statement is applied through the convention-fixed programme criterion and its relative-dual comparison, not by identifying the two notations for \(\Phi\).
+
+The coordinate relation (1), support (4), physical conormal (5), and conormal test (12) are derived above. The calculation of the right kernel keeps the intrinsic normal and target orientation lines, then fixes their ordered generators. Closed-support tensor multiplication and projection along an isomorphism give the actual coefficient map with degree \(r-d\). This direct computation determines the normalization for arbitrary bounded coefficient complexes. The source's general conormal transport principle does not replace that degree calculation. The ordinary forward fibres and empty exchange block separately explain the range of the localized conclusion.

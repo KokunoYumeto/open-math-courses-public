@@ -6,10 +6,10 @@ The exact earlier programme proofs used below are:
 
 - [L2 completeness and compact smooth density, M6–M8](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md), [Fourier extension, L1–L3](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md), and [dyadic endpoints, B1–B6](../20261004-free-intrinsic-graph/prerequisites/dyadic-endpoint.md).
 - [Ordinary operator calculus, O0–O6](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md), [coordinate and frame transport, T0–T3 and W1–W5](../20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md), and [matrix parametrices and intrinsic localization, K0–K7](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md).
-- The restored [phase-space lesson](../20261005-restored-phase-space/phase-space-and-generating-families.md) and [oscillatory-distribution lesson](../20261005-restored-oscillatory/oscillatory-distributions-and-order.md), together with [frequency coordinates, C0–C5](../20261004-free-intrinsic-graph/prerequisites/conic-frequency-coordinates.md), and the fully proved [frequency-graph criterion](../20261004-free-intrinsic-graph/intrinsic-frequency-graphs.md).
+- The restored [phase-space lesson](../20261005-restored-phase-space/phase-space-and-generating-families.md) and oscillatory-distribution lesson, together with [frequency coordinates, C0–C5](../20261004-free-intrinsic-graph/prerequisites/conic-frequency-coordinates.md), and the fully proved [frequency-graph criterion](../20261004-free-intrinsic-graph/intrinsic-frequency-graphs.md).
 - [Prescribed-phase reconstruction, F0–F6](../20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md), [homogeneous symbol transport, H2 and H5–H6](../20261004-free-canonical-composition/homogeneous-symbol-transport.md), and [Sobolev localization and refinement, S0–S5](../20261004-free-intrinsic-graph/prerequisites/sobolev-order-refinement.md).
 
-The [proof map](proof-map.json) binds each use to its exact source and full dependency chain. These complete programme proofs replace the earlier broad AN-03 references. The primary mathematical source is Hörmander IV, Section 25.1 read in the exact approved purchased reprint of the corrected second printing (1994). The exposition below, its additional explanations and its exercises are independently written. The reference does not replace any programme proof.
+The [proof map](proof-map.json) binds each use to its exact source and full dependency chain. These complete programme proofs replace the earlier broad AN-03 references. The primary mathematical source is Hörmander IV, Section 25.1 read in the exact reprint of the corrected second printing (1994). The exposition below, its additional explanations and its exercises are independently written. The reference does not replace any programme proof.
 
 Throughout, \(D=-i\partial\), \(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\), and inverse Fourier transformation has factor \((2\pi)^{-n}\). Symbols are ordinary \(S^r=S^r_{1,0}\); a homogeneous expansion is required only when stated.
 
@@ -404,6 +404,6 @@ Suppose the endpoint membership held microlocally at \((0,e_1)\). The full-symbo
 
 ## References
 
-- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing, Springer, 1994, §25.1. The exact approved purchased reprint was read for this restoration.
+- [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing, Springer, 1994, §25.1.
 
 *Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Self-checked by the writing AI. Original text: public domain (CC0).*

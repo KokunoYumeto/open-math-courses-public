@@ -5,17 +5,11 @@ finite-dimensional facts used by the selected metric and multiplier proofs.
 
 This is a separate modified selection from the earlier AN-03 programme.
 Original principal author and publisher: AN-03 course-writing task /
-AN-03 local course project. Copyright © 2026 AN-03 course project
-contributors. Earlier modification: AN-03 course-writing task and
+AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and
 OpenAI Codex. Selection and the identified connecting proofs: GPT-6 Astra
 (OpenAI), Ultra, 4 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this component under
-the GNU Free Documentation License, Version 1.2 only, with no Invariant
-Sections, no Front-Cover Texts and no Back-Cover Texts. The
-[licence](operator-notices/COPYING), [title information](operator-notices/TITLE_PAGE.md),
-[history](operator-notices/HISTORY.md) and [rights notice](operator-notices/RIGHTS.md)
-accompany it.
+Original text: CC0.
 
 ## 0. Exact earlier inputs
 

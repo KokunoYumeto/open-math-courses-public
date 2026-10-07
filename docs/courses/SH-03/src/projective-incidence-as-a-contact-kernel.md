@@ -2,9 +2,9 @@
 
 A point of a projective space is a line. A point of its dual projective space is a hyperplane. Incidence between them defines a sheaf kernel. We will calculate its cotangent relation, including the input sign, and prove that it gives an equivalence after localization away from the zero covectors. We will also calculate its inverse kernel without discarding the real orientation line.
 
-Use When a kernel quantizes a contact transformation and Dual kernels and an unchanged parameter. Their exact prerequisites include the closed-submanifold microsupport and microlocal Hom formulas and constructible relative duality. Here the projective geometry is calculated directly.
+We apply the contact-kernel criterion, including its identity-induced morphism, and the relative-dual comparison. The application below verifies the required formal local constructibility, both selected microsupport conditions, and the actual identity section. The submanifold microlocal Hom formula and relative orientation formula specify the two different orientation calculations. The projective relation and its orientation monodromy are calculated directly.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 ## Lines, hyperplanes and cotangent vectors
 
@@ -19,7 +19,7 @@ Z=\{(\ell,m):m(\ell)=0\}\subset X\times Y.
 Here \(m\) is a line of covectors; the notation \(m(\ell)=0\) means that every member of \(m\) vanishes on \(\ell\). In the real case these are ordinary projective lines, with no choice of a positive ray. Let
 \(\Omega_X=\dot T^*X\) and \(\Omega_Y=\dot T^*Y\), where a dot removes the zero section.
 
-The coefficient ring \(k\) is commutative with identity and finite global dimension. All sheaf objects are bounded derived complexes of \(k\)-modules. Complex manifolds are regarded as real manifolds for these operations. We identify a complex cotangent vector with a real covector by taking the real part of its pairing; using this convention on both factors preserves the formulas below.
+The coefficient ring \(k\) is commutative with identity and finite global dimension. All sheaf objects are bounded derived complexes of \(k\)-modules. Complex manifolds are regarded as real manifolds for these operations. We identify a complex cotangent vector with a real covector by taking the real part of its pairing; using this convention on both factors preserves the formulas below. For a complex vector space, every real covector is uniquely the real part of a complex-linear covector. The real-part trace pairing is nondegenerate, so (2) identifies the entire real cotangent fibre in the complex case; no conjugate transpose or extra factor of two is inserted.
 
 The omitted smaller vector-space dimensions are vacuous for this selected-region assertion. If \(N=0\), both projective spaces are empty. If \(N=1\), both are points, their punctured cotangent spaces are empty, and incidence is empty. The localized categories on an empty cotangent region are zero: every object is null there. All graph and identity conditions on that region hold vacuously. We calculate the nonempty correspondence for \(N\geq2\).
 
@@ -31,7 +31,7 @@ T_\ell^*X=\operatorname{Hom}_{\mathbb F}(V/\ell,\ell).
 \qquad\text{(2)}
 \]
 
-The second identification uses the trace pairing with the first. Regard a covector in (2) as an endomorphism \(A\) of \(V\). It has image in \(\ell\) and kills \(\ell\). A nonzero such endomorphism has rank one, image exactly \(\ell\), and \(A^2=0\). Conversely a nonzero rank-one square-zero endomorphism determines its base line by its image. Thus
+The second identification uses the trace pairing: a map \(A:V/\ell\to\ell\) acts on a tangent map \(u:\ell\to V/\ell\) by \(\operatorname{tr}_\ell(Au)\), or its real part over \(\mathbb C\). Regard \(A\) as an endomorphism of \(V\) by composing the quotient and inclusion maps. It has image in \(\ell\) and kills \(\ell\). A nonzero such endomorphism has rank one, image exactly \(\ell\), and \(A^2=0\). Conversely, if a nonzero rank-one endomorphism has square zero, its image line lies in its kernel; it therefore factors uniquely through \(V/\operatorname{im}A\to\operatorname{im}A\). Thus
 
 \[
 \dot T^*X=\{A\in\operatorname{End}_{\mathbb F}(V):
@@ -43,10 +43,11 @@ This description includes the base point; it does not forget it. There is a corr
 
 ## The conormal relation and its minus sign
 
-Choose nonzero \(v\in\ell\) and \(\lambda\in m\) at an incident pair, so \(\lambda(v)=0\). In local projective charts, the equation of \(Z\) is \(f(v,\lambda)=\lambda(v)=0\). Its derivative in the \(v\) direction is nonzero: \(\lambda\) induces a nonzero functional on \(V/\ell\). Its derivative in the \(\lambda\) direction is nonzero for the same reason, with \(v\) and \(\lambda\) exchanged. Consequently \(Z\) is a closed smooth submanifold of real codimension
-\(c=1\) for \(\mathbb F=\mathbb R\), and \(c=2\) for \(\mathbb F=\mathbb C\).
+The equation of incidence is intrinsically the zero section of the line bundle \(\ell^*\otimes m^*\) evaluated by \((v,\lambda)\mapsto\lambda(v)\). Choose nonzero local representatives \(v\in\ell\) and \(\lambda\in m\) near an incident pair. In these local frames the equation is the scalar function \(f(v,\lambda)=\lambda(v)=0\). Its derivative in the \(v\) direction is nonzero because \(\lambda\) induces a nonzero functional on \(V/\ell\); the derivative in the \(\lambda\) direction is nonzero for the same reason with the two spaces exchanged. Over \(\mathbb C\) these are nonzero complex-linear maps to \(\mathbb C\), hence surjective as real maps. The zero set is closed, since it is the zero set of this global section, and is smooth of real codimension \(c=1\) over \(\mathbb R\) or \(c=2\) over \(\mathbb C\).
 
-For a nonzero conormal parameter \(t\in\mathbb F\), the two **physical** cotangent components of \(t\,df\) are
+Both incidence projections are submersions. For example, after specifying a tangent variation of \(\ell\), surjectivity of the derivative in \(m\) supplies a variation of \(m\) that cancels it in \(df\). This lifts every tangent vector of \(X\) to \(T Z\); the other projection is treated symmetrically. Their relative real dimension is \(D-c\), where \(D=\dim_{\mathbb R}X=\dim_{\mathbb R}Y\).
+
+For tangent variations represented by \(\delta v\) and \(\delta\lambda\), the derivative is \(\lambda(\delta v)+\delta\lambda(v)\). Replacing either variation by a multiple of its original representative does not change this value at incidence. The trace pairings in (2) identify these two terms with the endomorphisms \(v\otimes\lambda\) and \(\lambda\otimes v\). Thus, for a nonzero conormal parameter \(t\in\mathbb F\), the two **physical** cotangent components of \(t\,df\) are
 
 \[
 A=t\,v\otimes\lambda,\qquad B_{\mathrm{physical}}=t\,\lambda\otimes v.
@@ -85,12 +86,19 @@ Formula (6) commutes with positive cotangent dilation. It is a homogeneous sympl
 
 ## Verifying the sheaf criterion
 
-Let \(K=k_Z\), extended by zero to \(X\times Y\). Its smooth closed support and locally perfect constant coefficients give cohomological constructibility in the sense required by the contact-kernel theorem. This also follows locally from the closed-submanifold model: its stalks and costalks are finite shifts of rank-one free modules, with the intrinsic normal orientation line retained.
+Let \(K=k_Z\), extended by zero to \(P=X\times Y\). We check the formal local constructibility condition, including the neighborhood transition maps. Put \(d=\dim_{\mathbb R}Z=2D-c\). At \(z\in Z\), take a cofinal family of adapted product balls \(U_\epsilon=B_\epsilon^d\times B_\epsilon^c\) with \(Z\cap U_\epsilon=B_\epsilon^d\times\{0\}\). Closed extension and the ordinary and compact-support coefficient calculations, (M5)–(M6), give
 
-The exact closed-submanifold prerequisite gives
-\(\operatorname{SS}(k_Z)\subset T_Z^*(X\times Y)\). In (4), one cotangent component is nonzero if and only if \(t\ne0\), if and only if the other component is nonzero. Hence the union of the two selected cotangent regions meets this microsupport only in the graph calculated above. This checks the theorem's union condition, rather than checking only the intersection of the regions.
+\[
+R\Gamma(U_\epsilon;k_Z)\simeq k,
+\qquad R\Gamma_c(U_\epsilon;k_Z)
+\simeq\operatorname{or}_{T_zZ}[-d].
+\]
 
-The remaining condition concerns the actual identity. The exact submanifold microlocal Hom formula gives
+The ordinary identifications are the constant-section units and commute with restriction. For compact supports, the local orientation generator and open-extension trace identify every map from a smaller ball with the same generator in the larger ball. The comparison from the point costalk is the support-forgetting isomorphism (M5), applied within \(Z\). Hence the formal ordinary and compact-support systems themselves are represented by the displayed stalk and costalk complexes. Both are perfect: locally they are one copy of \(k\) with an integral shift. Off \(Z\), a cofinal family misses the closed support and both systems are zero. This proves the criterion's cohomological constructibility, over the stated ring, without imposing any finiteness condition on the sheaves later transformed.
+
+The closed-submanifold microsupport formula, (S16) gives \(\operatorname{SS}(k_Z)\subset T_Z^*P\). For the zero ring this inclusion follows directly from \(K=0\); for a nonzero ring the provider gives equality. In (4), one cotangent component is nonzero if and only if \(t\ne0\), if and only if the other component is nonzero. Thus the union \(p_1^{-1}\Omega_X\cup(p_2^a)^{-1}\Omega_Y\) meets this microsupport only in the selected graph. This is the union condition of the contact criterion. The graph is relatively closed in \(\Omega_X\times\Omega_Y^a\), since it is the graph of a continuous map between Hausdorff spaces. Both graph projections are the proper homeomorphisms already proved, giving forward and reverse admissibility.
+
+The remaining condition is the identity-induced microlocal unit, (MH32). The closed-submanifold Hom comparison, with the conormal extension understood, gives
 
 \[
 \mu\operatorname{hom}(k_Z,k_Z)
@@ -98,9 +106,11 @@ The remaining condition concerns the actual identity. The exact submanifold micr
 \qquad\text{(8)}
 \]
 
-For the second comparison, specialization of a sheaf supported on \(Z\) is the constant coefficient sheaf on the zero section of its normal bundle. Negative Fourier transformation of this zero-supported sheaf is constant on the whole dual normal bundle: the fibre integral is over a single point. It has no codimension shift. In each local coefficient chart the identity-induced map sends \(1\) to \(\operatorname{id}_k\), hence to \(1\) in (8). Changing a chart conjugates this endomorphism and fixes its identity. These comparisons glue; no choice of a normal orientation generator enters (8). Thus the identity-induced map is an isomorphism on the selected graph.
+To compute the second comparison, use normal coordinates \((z,u)\) with \(Z=\{u=0\}\). In the deformation defining specialization, the map to \(P\) is \((z,v,s)\mapsto(z,sv)\), \(s>0\). The pulled-back coefficient is supported on \(v=0\). At a central point with \(v\ne0\) it vanishes on a small neighborhood; at \(v=0\) the ordinary direct image has the constant-section generator on the interval \(0<s<\epsilon\). Its specialization is consequently the constant sheaf on the zero section of the normal bundle, with that same generator. The negative Fourier calculation for a zero-supported coefficient then gives the constant sheaf on the whole dual normal bundle: the support inequality is automatic, and the integration map on this support is an isomorphism onto that bundle. There is no fibre dimension to integrate and no codimension shift.
 
-All three conditions of the contact-kernel theorem now hold. We obtain inverse localized equivalences
+The microlocal unit is obtained from \(\operatorname{id}_K\) by exceptional diagonal adjunction before specialization. In a coefficient chart its section is \(1\mapsto\operatorname{id}_k\). The preceding specialization unit and zero-section Fourier map carry it to the section \(1\) in (8), as in the submanifold identity calculation. These constructions use restriction, adjunction and evaluation, so their local comparisons agree on overlaps. A coordinate change conjugates a coefficient endomorphism and fixes its identity; a change of normal orientation contributes no choice to the zero-section Fourier map. Thus the identity-induced map, rather than merely some abstract isomorphism of its source and target, is invertible on the selected graph.
+
+All three conditions of the contact-kernel theorem now hold. Its adjunction unit is the kernel map constructed from the identity section just checked; its inverse comparison and counit are those of the same adjunction. We obtain inverse localized equivalences
 
 \[
 \Phi_{k_Z}:\mathcal D_Y(\dot T^*Y)\rightleftarrows
@@ -121,7 +131,7 @@ The support \(Z\) is compact, so its ordinary support projections are proper too
 
 ## The inverse kernel retains an orientation line
 
-Write \(P=X\times Y\), let \(q_Y:P\to Y\), and let \(\mathrm t\) exchange the two factors. Put \(D=\dim_{\mathbb R}Y\). Closed-embedding duality gives
+Write \(P=X\times Y\), let \(q_X,q_Y\) be its two projections, and let \(\mathrm t\) exchange the factors. Put \(D=\dim_{\mathbb R}Y\) and write \(i:Z\hookrightarrow P\). Closed-embedding adjunction identifies \(R\mathcal Hom_P(i_*k_Z,k_P)\) with \(i_*i^!k_P\). The relative orientation formula, (M16)–(M17), gives \(i^!k_P=\operatorname{or}_{Z/P}[-c]\). Equivalently, normal local cohomology is the relative complex of a \(c\)-ball and its punctured ball, whose generator has degree \(c\) and changes by the normal determinant sign. Thus
 
 \[
 R\mathcal Hom_P(k_Z,k_P)
@@ -137,15 +147,37 @@ K_R=\mathrm t\bigl(k_Z\otimes\operatorname{or}_{Z/P}
 \qquad\text{(12)}
 \]
 
-Convolution with (12) realizes \(\Psi_{k_Z}\) in (9). The dual-kernel theorem identifies the operators by its specified adjunction comparison, so this inverse is normalized by that adjunction.
+Here is the actual comparison for an arbitrary bounded \(F\) on \(X\). Put \(W_Y=q_Y^{-1}\omega_Y\), so the submersion formula gives \(q_X^!F=W_Y\otimes^Lq_X^{-1}F\). Evaluation and tensor–Hom adjunction give a natural arrow on \(P\):
 
-In the complex case both orientation systems are canonically trivial. Since \(D=2N-2\) and \(c=2\), the inverse is
-\(k_{Z^{\mathsf t}}[2N-4]\).
-In the real case its degree is \(N-2\), but its line need not be trivial. To see the line precisely, let \(O_\ell\) and \(O_m\) denote the sign orientation systems of the tautological real lines on the two projective factors. The normal equation is a section of \(\ell^*\otimes m^*\), so
-\(\operatorname{or}_{Z/P}=O_\ell\otimes O_m\).
-Also (2) gives
-\(\det TY\simeq\det V^*\otimes m^{-N}\).
-Thus the line before transposition in (12) is
+\[
+\bigl(R\mathcal Hom(K,k_P)\otimes^LW_Y\bigr)
+ \otimes^Lq_X^{-1}F
+\longrightarrow R\mathcal Hom(K,q_X^!F).
+\]
+
+For this incidence kernel the arrow can be checked directly. Set \(f=q_X\) and \(g=i\). Both \(f\) and \(fg=q_X|_Z\) are submersions, of relative dimensions \(D\) and \(D-c\). The submersion composition comparison, (M18), therefore identifies
+
+\[
+i^!q_X^{-1}F\simeq
+(q_X|_Z)^{-1}F\otimes\operatorname{or}_{Z/P}[-c].
+\]
+
+Under closed-embedding Hom adjunction, the displayed evaluation arrow is this normal-support comparison, tensored with \(i^{-1}W_Y\) and extended by \(i_*\). In local coordinates for the submersion pair, the normal ball contributes its oriented relative generator and the comparison is the identity on the pulled-back \(F\); (M18) glues these comparisons by exceptional composition and orientation cancellation. Hence the arrow is an isomorphism for every bounded \(F\).
+
+Apply \(Rq_{Y!}\) and the canonical forget-support map to \(Rq_{Y*}\). Both complexes are supported on the compact set \(Z\), so this latter map is an isomorphism. The source is convolution by (12), and the target is the right operator \(\Psi_{k_Z}(F)\). This proves its identification with the right adjoint, with the evaluation normalization used by the dual-kernel theorem, Corollary 2. After localization it is the inverse in (9). No perfectness of \(F\) is used in this comparison.
+
+In the complex case the normal bundle and \(TY\) are complex vector bundles, so their underlying real orientation systems have the canonical complex orientations. Since \(D=2N-2\) and \(c=2\), the inverse is \(k_{Z^{\mathsf t}}[2N-4]\). This uses real dimensions, consistently with the real-part cotangent convention in (4).
+
+In the real case the degree is \(N-2\). Let \(O_\ell\) and \(O_m\) be the integral-sign orientation systems of the tautological real lines, with coefficients extended to \(k\). The normal derivative of the transverse incidence section identifies its normal bundle with \(\ell^*\otimes m^*\). Taking determinant signs gives \(\operatorname{or}_{Z/P}=O_\ell\otimes O_m\); dualizing a real line does not change its sign character.
+
+For \(Y=\mathbb P(V^*)\), the tangent formula (2) gives \(TY=m^*\otimes(V^*/m)\). The determinant of a tensor product with a line and the exact sequence \(0\to m\to V^*\to V^*/m\to0\) give
+
+\[
+\det TY=(m^*)^{\otimes(N-1)}\otimes\det(V^*/m)
+\simeq\det V^*\otimes m^{-N}.
+\]
+
+Taking sign systems and multiplying the normal line by \(q_Y^{-1}\operatorname{or}_Y\) gives the line before transposition in (12):
 
 \[
 \operatorname{or}_{V^*}\otimes O_\ell\otimes O_m^{\otimes(N+1)}
@@ -154,6 +186,10 @@ Thus the line before transposition in (12) is
 \]
 
 The orientation of the fixed vector space \(V^*\) is a constant line. Orientation sign systems are their own inverses, which explains why the negative tensor powers from the determinant formula give the positive powers in (13). A coordinate choice can trivialize a constant line; it cannot erase nontrivial monodromy in \(O_\ell\) or \(O_m\).
+
+These sign systems have their canonical square pairing; the assertion is stronger than saying that they have rank one. Along a loop in \(Z\) on which \(\ell\) and \(m\) return with signs \(\epsilon_\ell,\epsilon_m\), the line (13) has monodromy \(\epsilon_\ell\epsilon_m^{N+1}\). The constant factor \(\operatorname{or}_{V^*}\) has no monodromy. For \(N\geq3\), a projective-line loop in a fibre of \(Z\to Y\) has \(\epsilon_\ell=-1\), \(\epsilon_m=1\), so this line cannot be discarded when \(-1\ne1\) in the coefficient ring.
+
+For \(N=2\), incidence is the graph of the annihilator diffeomorphism \(Y\to X\), over either field, and \(D=c\). In the real case the exact sequence \(0\to\ell\to V\to m^*\to0\) on incidence gives \(\operatorname{or}_V=O_\ell\otimes O_m\). Its dual has the same sign orientation, so (13) reduces canonically to \(O_\ell^{\otimes2}\otimes O_m^{\otimes4}\simeq k_Z\). The right kernel is therefore the unshifted transposed graph, agreeing with ordinary graph adjunction. In the complex case its two complex orientations give the same degree-zero conclusion. The dimensions \(N=0,1\) remain the empty-selected-region cases described above; these normal-bundle calculations are used for \(N\geq2\).
 
 ## Exercises with complete solutions
 
@@ -196,3 +232,11 @@ Assume \(N\geq3\). Show directly that the conormal relation does not have a grap
 Let \(V=\mathbb R^3\) and take \(k\) to be a field of characteristic different from two. Fix \(m\in Y\). Determine the monodromy of the inverse line along the fibre \(\{\ell\subset\ker m\}\simeq\mathbb R\mathbb P^1\) of \(Z\to Y\).
 
 **Solution.** In (13), \(N+1=4\), so the fourth tensor power of \(O_m\) is trivial. On the specified fibre it is constant in any case. The fixed line \(\operatorname{or}_{V^*}\) is also constant. The remaining factor is \(O_\ell\), the tautological sign system on \(\mathbb R\mathbb P^1\). A lift of one circuit in the projective line changes a unit vector representing \(\ell\) to its negative; transport on this orientation line is multiplication by \(-1\). It is nontrivial over the stated field. The inverse degree is one, but replacing (12) by \(k_{Z^{\mathsf t}}[1]\) would lose this monodromy. In characteristic two this particular sign obstruction disappears, which is why the coefficient hypothesis matters for the example.
+
+## References
+
+Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Theorem 6.3.4, printed pp. 111–113 (PDF pp. 114–116), proves the contact-kernel equivalence from cohomological constructibility, the selected union-of-regions microsupport condition, and the identity-induced endomorphism isomorphism. Theorem 6.3.9 and Corollary 6.3.11, printed pp. 115–117 (PDF pp. 118–120), give the natural transport of microlocal Hom. Their transformed arguments are not both required to be constructible.
+
+The source uses an ordinary-image Hom operator from \(Y\) to \(X\), and places the antipode on the \(X\) covector of its physical kernel. Here \(\Phi\) is the proper-support tensor operator from \(Y\) to \(X\), with the antipode on the input \(Y\) covector. The linked criterion and relative-dual theorem state this convention explicitly. Equations (4)–(5) derive the physical signs before the operator is applied, and the evaluation map above fixes which adjoint is the inverse.
+
+The rank-one square-zero description, incidence submersions, determinant characters and real orientation monodromy are calculated in this lesson. The cited general theorem supplies the contact argument; it is not being cited as a source for these particular projective calculations. The coefficient and supported-specialization proofs check its hypotheses, including the actual identity section. The real and complex small-dimensional cases and the worked exercises retain the normalizations from those calculations.

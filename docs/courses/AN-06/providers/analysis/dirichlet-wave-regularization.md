@@ -6,7 +6,9 @@
 
 This reading constructs the spectral Dirichlet wave for compactly supported interior data of every finite negative Sobolev order. An inverse power gives a wave of arbitrarily high prescribed finite regularity, preserves the wave equation and Dirichlet condition, and preserves its interior wavefront set. The regularized initial data are smooth near the boundary, with every iterated Dirichlet compatibility condition. Thus their nonlocality introduces no artificial singular boundary data. This proves a reduction to finite-energy propagation; it does not prove that propagation theorem.
 
-Read [Smooth Dirichlet regularity, power domains, and projector growth](smooth-dirichlet-powers.md), especially its local boundary estimates and Theorems 4.1 and 5.1; [Compact positive inverses and diagonal domains](compact-spectrum-domains.md); the [finite scalar calculus and elliptic parametrix](classical-scalar-calculus.md#elliptic-parametrix-domains); and the [Fourier definition and cutoff estimates for wavefront sets](phase-geometry-and-stationary-phase.md#phase-wavefront). The compact spectral comparison is Gerald Teschl's free [*Mathematical Methods in Quantum Mechanics*, second author edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf), Section 6.2, Theorem 6.6. The second-order boundary comparison is John K. Hunter's free [*Notes on Partial Differential Equations*, revised 18 June 2014](https://www.math.ucdavis.edu/~hunter/pdes/pde_notes.pdf), Theorem 4.30, printed pp. 115–116. The preceding programme readings give their own complete proofs, including the higher boundary induction not supplied by those source locators. The additional reduction and wavefront argument are proved here.
+Read [Smooth Dirichlet regularity, power domains, and projector growth](smooth-dirichlet-powers.md#smooth-dirichlet-powers), especially its local boundary estimates and Theorems 4.1 and 5.1; [Compact positive inverses and diagonal domains](compact-spectrum-domains.md#all-diagonal-multipliers-and-ordered-domains); the [finite scalar calculus and elliptic parametrix](classical-scalar-calculus.md#elliptic-parametrix-domains); and the [Fourier definition and cutoff estimates for wavefront sets](phase-geometry-and-stationary-phase.md#phase-wavefront). The compact spectral comparison is Gerald Teschl's free [*Mathematical Methods in Quantum Mechanics*, second author edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf), Section 6.2, Theorem 6.6. The second-order boundary comparison is John K. Hunter's free [*Notes on Partial Differential Equations*, revised 18 June 2014](https://www.math.ucdavis.edu/~hunter/pdes/pde_notes.pdf), Theorem 4.30, printed pp. 115–116. The higher boundary induction is in [Smooth Dirichlet regularity, Section 3](smooth-dirichlet-powers.md#smooth-dirichlet-induction). The reduction and wavefront argument below use that induction together with the exact power domains.
+
+<a id="dirichlet-negative-spectral-spaces"></a>
 
 ## 1. The exact spectral spaces and interior distributions
 
@@ -70,6 +72,8 @@ The coefficient distribution (W4) is the original $f$. Indeed the finite eigenfu
 
 The fixed-support negative spaces in the lesson are covered for every $M$. More generally each compactly supported distribution belongs to one such space: its finite-order test estimate gives a polynomial Fourier bound after a coordinate cutoff, and a sufficiently negative squared Sobolev weight makes that polynomial integrable. A finite interior chart partition proves the assertion on $X$.
 
+<a id="dirichlet-exact-wave-regularization"></a>
+
 ## 2. The wave and exact regularization
 
 Take $f,g$ as in Section 1, increasing $M$ if their orders differ. Define
@@ -121,7 +125,7 @@ All operators here are diagonal on the same original Dirichlet realization. For 
 
 Indeed (W8)–(W9) put the $k$th derivative, $0\leq k\leq2$, in $\mathcal H_D^{2N-2M-k}$, whose exponent is at least $2q$. Its continuous inclusion into $D(A^q)$ is immediate from the weights. The graph-domain description supplies zero Dirichlet value at every time. Taking $q=1$ gives more than finite energy; taking larger $q$ supplies any fixed finite number of spatial derivatives needed in an estimate. A fixed $N$ is not asserted to make arbitrary rough data infinitely smooth.
 
-The unregularized solution also has a precise distributional homogeneous boundary condition. If $\vartheta\in C_c^\infty(\mathbb R_t)$, repeated scalar integration by parts shows that its integrals against each cosine or sine multiplier decrease faster than every inverse power of $\sqrt{\lambda_j}$. Thus
+The unregularized solution also has a precise distributional homogeneous boundary condition. If $\vartheta\in C_c^\infty(\mathbb R_t)$, let $h_\lambda(t)$ be either $\cos(t\sqrt\lambda)$ or $\sin(t\sqrt\lambda)/\sqrt\lambda$. Since $h_\lambda''=-\lambda h_\lambda$, integration by parts $2L$ times gives $\int\vartheta h_\lambda=(-1)^L\lambda^{-L}\int\vartheta^{(2L)}h_\lambda$. No endpoint terms remain because the test is compactly supported. For $\lambda\geq1$, the absolute value is at most $\lambda^{-L}\|\vartheta^{(2L)}\|_{L^1}$ for either multiplier. For $0<\lambda<1$, use $|\cos(t\sqrt\lambda)|\leq1$ and $|\sin(t\sqrt\lambda)|/\sqrt\lambda\leq|t|$ on the fixed test support. Together these give arbitrary inverse powers of $1+\lambda$, bounded by finitely many test seminorms. Thus
 
 \[
  u_\vartheta:=\int\vartheta(t)u(t)\,dt
@@ -130,6 +134,8 @@ The unregularized solution also has a precise distributional homogeneous boundar
 \]
 
 For each target $m$, (W6) and sufficiently many integrations by parts give its graph-norm bound by a fixed finite number of seminorms of $\vartheta$. The power-domain proof makes $u_\vartheta$ smooth up to the boundary and gives $u_\vartheta|_{\partial X}=0$. This continuously defines the zero boundary distribution after time testing. It does not manufacture a pointwise-in-time trace for the original negative-order solution.
+
+<a id="dirichlet-interior-data-decomposition"></a>
 
 ## 3. A compact interior decomposition of the rough datum
 
@@ -157,7 +163,7 @@ The last term is smooth: the differentiated cutoff is separated from $K$, so the
 
 For a general $K$, choose a finite smooth partition $\rho_\ell$ whose sum is one near $K$, with each $K_\ell=K\cap\operatorname{supp}\rho_\ell$ compactly inside one interior chart. Apply the construction just given to $f_\ell=\rho_\ell f$, with a separate cutoff $\eta_\ell$ equal to one near $K_\ell$. Extend its compactly supported $b_\ell,c_\ell$ by zero and put $b=\sum_\ell b_\ell$, $c=\sum_\ell c_\ell$. The identities $f_\ell=A^Mb_\ell+c_\ell$ sum to (W13). There is no commutation of $A^M$ past $\rho_\ell$: that partition was applied to the datum before inversion. Smooth multiplication bounds the finitely many input norms, so the same estimates hold. This proves (W13) without a chart-edge error.
 
-Integration by parts against an eigenfunction is legitimate in (W13) because both $b$ and $c$ are supported in the interior. Thus the equality also holds in coefficient form, $f_j=a_j^Mb_j+c_j$. Multiplying by $a_j^{-N}$ gives, for $N>M$,
+In the coefficient pairing, choose the cutoff to equal one near the union of the supports of $f$, $b$ and $c$; this does not change $f_j$. Integration by parts in (W13) moves $A^M$ onto this cutoff eigenfunction. Derivatives of the cutoff vanish near the support of $b$, leaving $a_j^Mb_j$. Thus the equality also holds in coefficient form, $f_j=a_j^Mb_j+c_j$. Multiplying by $a_j^{-N}$ gives, for $N>M$,
 
 \[
  A^{-N}f=A^{-(N-M)}b+A^{-N}c.
@@ -165,6 +171,8 @@ Integration by parts against an eigenfunction is legitimate in (W13) because bot
 \]
 
 Both terms on the right are positive inverse powers of the original Dirichlet realization applied to interior-supported $L^2$ data.
+
+<a id="dirichlet-compatible-collar-data"></a>
 
 ## 4. No artificial boundary singularities
 
@@ -199,9 +207,11 @@ When an exponent on the right is negative, (W16) makes that term smooth with zer
 
 Apply the same proof to $g$. The regularized initial data may be nonzero away from their original supports, but they are smooth near the boundary and satisfy all these boundary compatibility conditions. No new singular initial covector has appeared at the wall.
 
+<a id="dirichlet-interior-wavefront-equality"></a>
+
 ## 5. The interior microlocal equality
 
-We spell out the elliptic wavefront fact needed here. For a properly supported scalar pseudodifferential operator $B$ with compact local position support, its left symbol obeys
+Use the Fourier convention $\widehat z(\xi)=\int e^{-ix\cdot\xi}z(x)\,dx$, with inverse factor $(2\pi)^{-n}$, and the same convention for the symbol in its position variable. We first prove the elliptic wavefront fact needed here. For a properly supported scalar pseudodifferential operator $B$ with compact local position support, its left symbol obeys
 
 \[
  \begin{gathered}
@@ -248,8 +258,12 @@ In interior spacetime, (W8) and (W10), followed by the same parametrix argument 
 
 At pure-time covectors with $\xi=0$, the wave operator is elliptic, so both wavefront sets are absent; those covectors have not been incorrectly treated as elliptic for $A_x^N$.
 
+<a id="dirichlet-regularization-transfer"></a>
+
 ## 6. Exact use in the boundary lesson
 
-For every fixed-support $H^{-2M}$ datum used in the cosine-kernel argument, take $g=0$ and $N\geq M+2$. The spectral wave becomes a finite-energy Dirichlet wave $v$, with the same interior initial wavefront by (W21), no singular boundary initial data by Section 4, and the same interior spacetime wavefront by (W22). The [Cauchy-data propagation for Dirichlet waves](diffractive-phase-neighborhoods.md#dirichlet-cauchy-endpoints) in Sections 71–75 of the phase-neighborhood reading now applies to this regularized wave and transfers through (W21)–(W22) to the original negative-order spectral solution. The transfer needs no change to the allowed boundary contacts and loses no wavefront directions.
+For every fixed-support $H^{-2M}$ datum used in the cosine-kernel argument, take $g=0$ and $N\geq M+2$. Equations (W8)–(W11) give a finite-energy Dirichlet wave $v$. Its interior initial wavefront equals that of $f$ by (W21); Section 4 gives smooth, fully compatible collar data; and (W22) identifies its interior spacetime wavefront with that of the original spectral wave $u$.
 
-This proves the regularization and transfer step only. In particular the localized strict-diffraction estimate does not by itself establish the finite-energy propagation premise. The subsequent [incoming-phase reading](diffractive-phase-neighborhoods.md#separated-cutoff-forcing) now proves the actual incoming-edge bound, the complete shifted bulk estimate and two-multiplier local energy control. Its Sections 19–21 apply those estimates directly to the fixed wave supplied by (W11), retaining and estimating the spatial-cutoff forcing. Sections 22–26 construct a tangential Sobolev-regularized Dirichlet family, prove its exact first-order commutator and uniform norm bounds, and verify its cutoff-forcing and incoming-edge estimates. Sections 27–31 control all three regularizer commutator energy pairings with uniform lower-norm remainders. Sections 32–35 recover the full local energy uniformly in the regularizer and prove a half-order Sobolev gain from the explicit larger-weight hypothesis. Section 36 gives the fixed-neighborhood induction criterion. Sections 37–40 prove the tangentially elliptic boundary input by positive normal energy and a full-order Sobolev induction on one fixed open set. Sections 41–47 prove local reflection at separated normal roots and interior propagation for the actual wave, including exact mode coupling, transported cutoffs and fixed-neighborhood regularity. Sections 48–50 prove a two-root reachable region, continuity through tangency, the regularity of its incoming and transversely reflected legs, and containment of the entire larger diffraction weights. Sections 51–54 prove finite-order outgoing transport, simultaneous induction on the fixed two-root region, and normal smoothness from the actual equation. This establishes strict-diffraction regularity for the fixed H² Dirichlet wave. Sections 55–62 prove a local cone-regularity estimate at arbitrary glancing contacts, using nested phase tubes, the actual Sobolev regularizer and a two-component energy recovery. Sections 63–70 construct a curve in the closed compressed singular set and prove that it satisfies the exact inward-reaction relation (G1)–(G23), including all glancing orders and accumulating reflections. This proves the singular-curve theorem for the actual H² wave on homogeneous time intervals. Sections 71–75 prove the Cauchy-data endpoint argument, including smoothness near the initial wall from compatible collar data, and transfer propagation to every compact interior distributional datum in the spectral Dirichlet realization. The curved spectral remainder is proved separately in the spectral reading, Sections 31–38. [Existence and compactness of generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves) proves the geometric existence and continuation through arbitrary contacts. Sections 63–75 of the phase-neighborhood reading establish the analytic propagation theorem for that precise relation and the compact interior data used here. 
+Consequently, a finite-energy propagation theorem with these initial-data hypotheses transfers to the original negative-order spectral solution: apply that theorem to $v$, replace its initial and spacetime wavefront sets by the equal sets in (W21)–(W22), and retain the same generalized reflected curves and all permitted endpoint lifts. This deduction loses no wavefront directions and places no additional restriction on glancing contact.
+
+For the finite-energy theorem, see [Cauchy-data propagation for Dirichlet waves](diffractive-phase-neighborhoods.md#dirichlet-cauchy-endpoints), Sections 71–75, and its [singular-curve construction](diffractive-phase-neighborhoods.md#singular-generalized-curves), Sections 63–70. That analytic argument includes the incoming-edge bounds, the spatial-cutoff forcing, the regularizer commutators, the local energy recovery and the induction through arbitrary glancing contacts. The geometric relation, its existence and continuation are proved in [Generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves). The present reading supplies the negative-order reduction used by those propagation arguments; curved spectral asymptotics also require the separate local wave comparison.

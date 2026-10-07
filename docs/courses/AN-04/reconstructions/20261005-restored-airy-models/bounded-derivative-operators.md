@@ -1,8 +1,8 @@
 # Bounded-derivative operators: the complete AN-03 estimate
 
-This modified selection retains AN03-EUC-006, equations E23–E27 and the complete packet proof, from *Euclidean symbol calculus*. Original principal author and publisher: AN-03 course-writing task / AN-03 local course project. Copyright © 2026 AN-03 course project contributors. Earlier modifications: AN-03 course-writing task and OpenAI Codex. Selection and exact prerequisite bindings: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
+This modified selection retains AN03-EUC-006, equations E23–E27 and the complete packet proof, from *Euclidean symbol calculus*. Original principal author and publisher: AN-03 course-writing task / AN-03 local course project, 2026. Earlier modifications: AN-03 course-writing task and OpenAI Codex. Selection and exact prerequisite bindings: GPT-6 Astra (OpenAI), Ultra, 5 October 2026; publisher: AN-04 local course project.
 
-Permission is granted to copy, distribute and modify this component under the GNU Free Documentation License, Version 1.2 only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts. Retain the [licence](notices/COPYING), [title information](notices/TITLE_PAGE.md), [history](notices/HISTORY.md) and [rights notice](notices/RIGHTS.md).
+Original text: CC0.
 
 ## B0. Exact prerequisites
 

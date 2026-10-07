@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Poisson extension and subharmonic comparison</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{width:100%;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L131.html">Previous lesson</a> · <a href="#complete-proof">Complete proof</a> · <a href="#proof-S1">Four comparison criteria</a> · <a href="#exercises-with-complete-solutions">Exercises and solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="poisson-extension-and-subharmonic-comparison">Poisson extension and subharmonic comparison</h1>
+<p><em>Original exposition and illustrations by GPT-6.1 Sol (OpenAI). CC0 1.0.</em></p>
+<p>A boundary average can solve a differential equation. The Poisson kernel tells us which boundary points to weight; those weights concentrate near a point as we approach it from inside the ball. The same construction converts an inequality against globally defined harmonic functions into a spherical mean inequality. This gives four equivalent ways to recognize a subharmonic function and explains when a supremum of such functions remains subharmonic.</p>
+<p>The central distinction is between the boundary comparison itself and the function used to test it. A harmonic function on a ball need not be globally defined. We will construct global harmonic <strong>polynomials</strong> approximating its Poisson extension, with a uniform error on the closed ball. This approximation is part of the proof.</p>
+<h2 id="conventions-and-the-integration-inputs">Conventions and the integration inputs</h2>
+<p>First let <span class="math" data-index="0" data-tex="\(n\geq2\)">\(n\geq2\)</span>, let <span class="math" data-index="1" data-tex="\(S^{n-1}=\{\omega\in\mathbb R^n:|\omega|=1\}\)">\(S^{n-1}=\{\omega\in\mathbb R^n:|\omega|=1\}\)</span>, and let <span class="math" data-index="2" data-tex="\(dS\)">\(dS\)</span> be Euclidean surface measure. Write <span class="math" data-index="3" data-tex="\(\sigma=\int_{S^{n-1}}dS\)">\(\sigma=\int_{S^{n-1}}dS\)</span>. A harmonic function is a real <span class="math" data-index="4" data-tex="\(C^2\)">\(C^2\)</span> function with <span class="math" data-index="5" data-tex="\(\Delta h=0\)">\(\Delta h=0\)</span>. Complex boundary data can be treated by their real and imaginary parts. The one-dimensional case is given below.</p>
+<p>We use ordinary finite-measure integration, including monotone convergence and Tonelli after making an integrand nonnegative. The corresponding proofs are in <a href="prerequisites/banach-foundation-bridges.html">Banach estimates, quotient spaces and compact parameter arguments</a>, §§15.0–15.1 and §16.4. For the mean-value calculation we use the already written flux identity in <a href="prerequisites/boundary-flux-and-weak-identities.html#the-derivative-of-a-region-is-its-oriented-surface-measure">Boundary flux and weak identities</a>, Theorem 2.1, formula (2.3). Applied to a cutoff equal to one near a closed ball, that identity is the usual divergence theorem on the ball. The scalar Cauchy coefficient formula and bound used below are in <a href="prerequisites/cauchy-kernels-and-boundary-limits.html#weak-cauchyriemann-solutions-are-holomorphic">Cauchy kernels and distributional boundary limits</a>, Corollary 2.2, formulas (2.3)–(2.4); <a href="AN02-L045.html#cauchy-estimates-and-parameter-contours">Cauchy bounds, root counts and analytic extensions</a>, Lemmas 1.1–1.2, gives the compact parameter version.</p>
+<p>If <span class="math" data-index="6" data-tex="\(u:X\to[-\infty,\infty)\)">\(u:X\to[-\infty,\infty)\)</span> is upper semicontinuous, then it is Borel measurable and bounded above on every compact subset of the open set <span class="math" data-index="7" data-tex="\(X\)">\(X\)</span>. Indeed each point has a neighborhood with a finite upper bound, including a point where <span class="math" data-index="8" data-tex="\(u=-\infty\)">\(u=-\infty\)</span>; take a finite cover of the compact set. Integrals of <span class="math" data-index="9" data-tex="\(u\)">\(u\)</span> on spheres therefore have a well-defined value in <span class="math" data-index="10" data-tex="\([-\infty,\infty)\)">\([-\infty,\infty)\)</span>.</p>
+<p>For <span class="math" data-index="11" data-tex="\(\overline B(a,R)\subset X\)">\(\overline B(a,R)\subset X\)</span>, put
+<a id="eq-P1"></a></p>
+<span class="math math-display" data-index="12" data-tex="\[
+ M_tu(a)=\frac1\sigma\int_{S^{n-1}}u(a+t\omega)\,dS(\omega),
+ \quad 0&lt;t\leq R;\qquad M_0u(a)=u(a).
+ \tag{P1}
+\]">\[
+ M_tu(a)=\frac1\sigma\int_{S^{n-1}}u(a+t\omega)\,dS(\omega),
+ \quad 0&lt;t\leq R;\qquad M_0u(a)=u(a).
+ \tag{P1}
+\]</span>
+<p>In this lesson <strong>subharmonic</strong> means upper semicontinuous, valued in <span class="math" data-index="13" data-tex="\([-\infty,\infty)\)">\([-\infty,\infty)\)</span>, and satisfying <span class="math" data-index="14" data-tex="\(u(a)\leq M_Ru(a)\)">\(u(a)\leq M_Ru(a)\)</span> for every such closed ball. Identically <span class="math" data-index="15" data-tex="\(-\infty\)">\(-\infty\)</span> functions are allowed. This mean definition fixes the pointwise representative; no distributional representative theorem is needed for the results below.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="mean-values-and-the-maximum-principle">Mean values and the maximum principle</h2>
+<p><a id="proof-P1"></a></p>
+<p><strong>Lemma P1.</strong> If <span class="math" data-index="16" data-tex="\(h\)">\(h\)</span> is harmonic near <span class="math" data-index="17" data-tex="\(\overline B(a,R)\)">\(\overline B(a,R)\)</span>, then <span class="math" data-index="18" data-tex="\(M_th(a)=h(a)\)">\(M_th(a)=h(a)\)</span> for <span class="math" data-index="19" data-tex="\(0\leq t\leq R\)">\(0\leq t\leq R\)</span>. The same holds at <span class="math" data-index="20" data-tex="\(t=R\)">\(t=R\)</span> if <span class="math" data-index="21" data-tex="\(h\)">\(h\)</span> is only continuous on the closed ball and harmonic in its interior.</p>
+<p><strong>Proof.</strong> For <span class="math" data-index="22" data-tex="\(0&lt;t&lt;R\)">\(0&lt;t&lt;R\)</span>, differentiation under the compact sphere integral and the flux identity give
+<a id="eq-P2"></a></p>
+<span class="math math-display" data-index="23" data-tex="\[
+ \frac{d}{dt}M_th(a)
+ =\frac1\sigma\int_{S^{n-1}}\nabla h(a+t\omega)\cdot\omega\,dS
+ =\frac{t^{1-n}}\sigma\int_{B(a,t)}\Delta h\,dx=0.
+ \tag{P2}
+\]">\[
+ \frac{d}{dt}M_th(a)
+ =\frac1\sigma\int_{S^{n-1}}\nabla h(a+t\omega)\cdot\omega\,dS
+ =\frac{t^{1-n}}\sigma\int_{B(a,t)}\Delta h\,dx=0.
+ \tag{P2}
+\]</span>
+<p>Continuity at <span class="math" data-index="24" data-tex="\(t=0\)">\(t=0\)</span> makes this constant <span class="math" data-index="25" data-tex="\(h(a)\)">\(h(a)\)</span>. If the function is merely continuous on the closed ball, uniform continuity passes the identity to <span class="math" data-index="26" data-tex="\(t=R\)">\(t=R\)</span>. <span class="math" data-index="27" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="proof-P2"></a></p>
+<p><strong>Lemma P2.</strong> Let <span class="math" data-index="28" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span> be nonempty and compact. If <span class="math" data-index="29" data-tex="\(h\in C(K;\mathbb R)\)">\(h\in C(K;\mathbb R)\)</span> is harmonic in <span class="math" data-index="30" data-tex="\(K^\circ\)">\(K^\circ\)</span>, then <span class="math" data-index="31" data-tex="\(\max_Kh\leq\max_{\partial K}h\)">\(\max_Kh\leq\max_{\partial K}h\)</span>. No regularity of <span class="math" data-index="32" data-tex="\(\partial K\)">\(\partial K\)</span> is required.</p>
+<p><strong>Proof.</strong> If <span class="math" data-index="33" data-tex="\(K^\circ\)">\(K^\circ\)</span> is empty, then <span class="math" data-index="34" data-tex="\(K=\partial K\)">\(K=\partial K\)</span>. Otherwise, suppose the maximum exceeds the boundary maximum by a positive amount. For sufficiently small <span class="math" data-index="35" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the continuous function <span class="math" data-index="36" data-tex="\(h(x)+\varepsilon|x|^2\)">\(h(x)+\varepsilon|x|^2\)</span> still attains its maximum in <span class="math" data-index="37" data-tex="\(K^\circ\)">\(K^\circ\)</span>: the perturbation is uniformly small on the compact set. At an interior maximum its Hessian is negative semidefinite, so its Laplacian is nonpositive. But its Laplacian is <span class="math" data-index="38" data-tex="\(2n\varepsilon&gt;0\)">\(2n\varepsilon&gt;0\)</span>, a contradiction. <span class="math" data-index="39" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-unit-ball-poisson-operator">The unit-ball Poisson operator</h2>
+<p>For <span class="math" data-index="40" data-tex="\(|x|&lt;1\)">\(|x|&lt;1\)</span> and <span class="math" data-index="41" data-tex="\(\omega\in S^{n-1}\)">\(\omega\in S^{n-1}\)</span>, define
+<a id="eq-P3"></a></p>
+<span class="math math-display" data-index="42" data-tex="\[
+ P(x,\omega)=\frac{1-|x|^2}{\sigma|x-\omega|^n}.
+ \tag{P3}
+\]">\[
+ P(x,\omega)=\frac{1-|x|^2}{\sigma|x-\omega|^n}.
+ \tag{P3}
+\]</span>
+<p><a id="proof-P3"></a></p>
+<p><strong>Theorem P3.</strong> For <span class="math" data-index="43" data-tex="\(g\in C(S^{n-1};\mathbb R)\)">\(g\in C(S^{n-1};\mathbb R)\)</span>, the function
+<a id="eq-P4"></a></p>
+<span class="math math-display" data-index="44" data-tex="\[
+ H(x)=\int_{S^{n-1}}P(x,\omega)g(\omega)\,dS(\omega)
+ \quad(|x|&lt;1),\qquad H(y)=g(y)\quad(|y|=1)
+ \tag{P4}
+\]">\[
+ H(x)=\int_{S^{n-1}}P(x,\omega)g(\omega)\,dS(\omega)
+ \quad(|x|&lt;1),\qquad H(y)=g(y)\quad(|y|=1)
+ \tag{P4}
+\]</span>
+<p>is continuous on the closed unit ball, smooth and harmonic in its interior, and is its unique continuous harmonic solution with these boundary values. The operator is linear, preserves order, and satisfies <span class="math" data-index="45" data-tex="\(\|H\|_{C(\overline B)}\leq\|g\|_{C(S)}\)">\(\|H\|_{C(\overline B)}\leq\|g\|_{C(S)}\)</span>.</p>
+<p><strong>Proof: harmonicity.</strong> The kernel is positive. Put <span class="math" data-index="46" data-tex="\(d=x-\omega\)">\(d=x-\omega\)</span> and <span class="math" data-index="47" data-tex="\(q=1-|x|^2\)">\(q=1-|x|^2\)</span>. Direct differentiation gives</p>
+<span class="math math-display" data-index="48" data-tex="\[
+ \Delta|d|^{-n}=2n|d|^{-n-2},\quad
+ \nabla|d|^{-n}=-n d|d|^{-n-2},\quad
+ \nabla q=-2x,\quad\Delta q=-2n.
+\]">\[
+ \Delta|d|^{-n}=2n|d|^{-n-2},\quad
+ \nabla|d|^{-n}=-n d|d|^{-n-2},\quad
+ \nabla q=-2x,\quad\Delta q=-2n.
+\]</span>
+<p>Consequently
+<a id="eq-P5"></a></p>
+<span class="math math-display" data-index="49" data-tex="\[
+ \Delta(q|d|^{-n})
+ =2n|d|^{-n-2}\bigl(-|d|^2+2x\cdot d+1-|x|^2\bigr)=0,
+ \tag{P5}
+\]">\[
+ \Delta(q|d|^{-n})
+ =2n|d|^{-n-2}\bigl(-|d|^2+2x\cdot d+1-|x|^2\bigr)=0,
+ \tag{P5}
+\]</span>
+<p>because <span class="math" data-index="50" data-tex="\(|\omega|=1\)">\(|\omega|=1\)</span>. On every smaller closed ball the denominator stays away from zero; every fixed kernel derivative is uniformly bounded on its product with the sphere. Differentiation under the integral is therefore valid, proving smoothness and harmonicity of <span class="math" data-index="51" data-tex="\(H\)">\(H\)</span>.</p>
+<p><strong>Proof: total mass.</strong> Set <span class="math" data-index="52" data-tex="\(A(x)=\int_S P(x,\omega)\,dS\)">\(A(x)=\int_S P(x,\omega)\,dS\)</span>. It is a smooth harmonic function. Orthogonal invariance of the formula and of <span class="math" data-index="53" data-tex="\(dS\)">\(dS\)</span> makes <span class="math" data-index="54" data-tex="\(A(x)=a(|x|)\)">\(A(x)=a(|x|)\)</span> radial. For <span class="math" data-index="55" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, the elementary radial Laplacian formula gives</p>
+<span class="math math-display" data-index="56" data-tex="\[
+ a&#x27;&#x27;(t)+(n-1)t^{-1}a&#x27;(t)=0,
+ \quad\text{so}\quad t^{n-1}a&#x27;(t)=c.
+\]">\[
+ a&#x27;&#x27;(t)+(n-1)t^{-1}a&#x27;(t)=0,
+ \quad\text{so}\quad t^{n-1}a&#x27;(t)=c.
+\]</span>
+<p>If <span class="math" data-index="57" data-tex="\(c\ne0\)">\(c\ne0\)</span>, the derivative is unbounded as <span class="math" data-index="58" data-tex="\(t\downarrow0\)">\(t\downarrow0\)</span>; this contradicts smoothness at zero. Thus <span class="math" data-index="59" data-tex="\(A\)">\(A\)</span> is constant. Since <span class="math" data-index="60" data-tex="\(P(0,\omega)=1/\sigma\)">\(P(0,\omega)=1/\sigma\)</span>,
+<a id="eq-P6"></a></p>
+<span class="math math-display" data-index="61" data-tex="\[
+ \int_S P(x,\omega)\,dS=1.
+ \tag{P6}
+\]">\[
+ \int_S P(x,\omega)\,dS=1.
+ \tag{P6}
+\]</span>
+<p><strong>Proof: concentration and boundary continuity.</strong> For <span class="math" data-index="62" data-tex="\(y,\omega\in S\)">\(y,\omega\in S\)</span> and <span class="math" data-index="63" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>,</p>
+<span class="math math-display" data-index="64" data-tex="\[
+ |ty-\omega|^2=(1-t)^2+t|y-\omega|^2.
+\]">\[
+ |ty-\omega|^2=(1-t)^2+t|y-\omega|^2.
+\]</span>
+<p>For any chord radius <span class="math" data-index="65" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, this implies
+<a id="eq-P7"></a></p>
+<span class="math math-display" data-index="66" data-tex="\[
+ \int_{|y-\omega|\geq\delta}P(ty,\omega)\,dS
+ \leq\frac{1-t^2}{t^{n/2}\delta^n}\longrightarrow0
+ \quad(t\uparrow1),
+ \tag{P7}
+\]">\[
+ \int_{|y-\omega|\geq\delta}P(ty,\omega)\,dS
+ \leq\frac{1-t^2}{t^{n/2}\delta^n}\longrightarrow0
+ \quad(t\uparrow1),
+ \tag{P7}
+\]</span>
+<p>uniformly in <span class="math" data-index="67" data-tex="\(y\)">\(y\)</span>. Let <span class="math" data-index="68" data-tex="\(\omega_g(\delta)\)">\(\omega_g(\delta)\)</span> be the supremum of <span class="math" data-index="69" data-tex="\(|g(\omega)-g(y)|\)">\(|g(\omega)-g(y)|\)</span> for <span class="math" data-index="70" data-tex="\(|\omega-y|\leq\delta\)">\(|\omega-y|\leq\delta\)</span>. Positivity and total mass give
+<a id="eq-P8"></a></p>
+<span class="math math-display" data-index="71" data-tex="\[
+ |H(ty)-g(y)|
+ \leq\omega_g(\delta)
+       +2\|g\|_\infty\frac{1-t^2}{t^{n/2}\delta^n}.
+ \tag{P8}
+\]">\[
+ |H(ty)-g(y)|
+ \leq\omega_g(\delta)
+       +2\|g\|_\infty\frac{1-t^2}{t^{n/2}\delta^n}.
+ \tag{P8}
+\]</span>
+<p>Choose <span class="math" data-index="72" data-tex="\(\delta\)">\(\delta\)</span> small by uniform continuity, then choose <span class="math" data-index="73" data-tex="\(t\)">\(t\)</span> close to one. This proves uniform radial convergence. For an arbitrary approach <span class="math" data-index="74" data-tex="\(x\to y_0\in S\)">\(x\to y_0\in S\)</span>, write <span class="math" data-index="75" data-tex="\(x=t y\)">\(x=t y\)</span>; then <span class="math" data-index="76" data-tex="\(t\to1\)">\(t\to1\)</span>, <span class="math" data-index="77" data-tex="\(y\to y_0\)">\(y\to y_0\)</span>, and (P8), followed by continuity of <span class="math" data-index="78" data-tex="\(g\)">\(g\)</span>, gives <span class="math" data-index="79" data-tex="\(H(x)\to g(y_0)\)">\(H(x)\to g(y_0)\)</span>.</p>
+<p>Linearity, order preservation and the norm bound follow from positivity and (P6). If two continuous harmonic solutions have the same boundary values, apply Lemma P2 to their difference and its negative. Both vanish. <span class="math" data-index="80" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Translation and scaling give the same result on <span class="math" data-index="81" data-tex="\(\overline B(a,R)\)">\(\overline B(a,R)\)</span>: use <span class="math" data-index="82" data-tex="\(x=(z-a)/R\)">\(x=(z-a)/R\)</span> and boundary data <span class="math" data-index="83" data-tex="\(g(\omega)=h(a+R\omega)\)">\(g(\omega)=h(a+R\omega)\)</span>. In particular the extension's value at the center is the ordinary spherical average of its boundary data.</p>
+<figure><img class="course-figure" width="2040" height="918" src="reproduce/L132/figures/poisson-concentration.png" alt="Poisson densities concentrating at the boundary point with angle zero" /><figcaption class="native"><a href="reproduce/L132/figures/poisson-concentration.png">Open full-size PNG</a> · <a href="reproduce/L132/figures/poisson-concentration.svg">Open SVG</a> · <a href="reproduce/L132/figures/poisson-concentration.pdf">Open PDF</a></figcaption></figure>
+<p><strong>Figure P-A.</strong> This is the exact two-dimensional kernel at <span class="math" data-index="84" data-tex="\(x=(t,0)\)">\(x=(t,0)\)</span>, with boundary point <span class="math" data-index="85" data-tex="\((\cos\theta,\sin\theta)\)">\((\cos\theta,\sin\theta)\)</span>:</p>
+<span class="math math-display" data-index="86" data-tex="\[
+ p_t(\theta)=\frac{1-t^2}{2\pi(1-2t\cos\theta+t^2)}.
+\]">\[
+ p_t(\theta)=\frac{1-t^2}{2\pi(1-2t\cos\theta+t^2)}.
+\]</span>
+<p>The curves use <span class="math" data-index="87" data-tex="\(t=0,0.6,0.9,0.98\)">\(t=0,0.6,0.9,0.98\)</span>; the second panel magnifies angles near zero. Both panels plot numerical samples of this exact density, with integral one proved in (P6). Concentration is the uniform estimate (P7), rather than a claim obtained from the samples. The density at zero is exactly <span class="math" data-index="88" data-tex="\((1+t)/(2\pi(1-t))\)">\((1+t)/(2\pi(1-t))\)</span>.</p>
+<h2 id="global-harmonic-polynomials-approximate-poisson-solutions">Global harmonic polynomials approximate Poisson solutions</h2>
+<p><a id="proof-P4"></a></p>
+<p><strong>Theorem P4.</strong> Every function <span class="math" data-index="89" data-tex="\(H\)">\(H\)</span> in Theorem P3 is a uniform limit on the closed unit ball of real harmonic polynomials defined on all of <span class="math" data-index="90" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>. The same statement holds on every translated and scaled closed ball.</p>
+<p><strong>Proof.</strong> Fix real <span class="math" data-index="91" data-tex="\(|x|\leq1\)">\(|x|\leq1\)</span> and <span class="math" data-index="92" data-tex="\(\omega\in S\)">\(\omega\in S\)</span>. For real <span class="math" data-index="93" data-tex="\(|r|&lt;1\)">\(|r|&lt;1\)</span>,
+<a id="eq-P9"></a></p>
+<span class="math math-display" data-index="94" data-tex="\[
+ P(rx,\omega)
+ =\frac{1-r^2|x|^2}{\sigma(1-2r x\cdot\omega+r^2|x|^2)^{n/2}}.
+ \tag{P9}
+\]">\[
+ P(rx,\omega)
+ =\frac{1-r^2|x|^2}{\sigma(1-2r x\cdot\omega+r^2|x|^2)^{n/2}}.
+ \tag{P9}
+\]</span>
+<p>Regard the right side as a function of the <strong>complex scalar</strong> <span class="math" data-index="95" data-tex="\(r\)">\(r\)</span>; no complex norm is substituted for the quadratic expression. Write</p>
+<span class="math math-display" data-index="96" data-tex="\[
+ \lambda_\pm=x\cdot\omega\pm i\sqrt{|x|^2-(x\cdot\omega)^2}.
+\]">\[
+ \lambda_\pm=x\cdot\omega\pm i\sqrt{|x|^2-(x\cdot\omega)^2}.
+\]</span>
+<p>Their moduli are <span class="math" data-index="97" data-tex="\(|x|\leq1\)">\(|x|\leq1\)</span>, and the denominator's quadratic factor is <span class="math" data-index="98" data-tex="\((1-r\lambda_+)(1-r\lambda_-)\)">\((1-r\lambda_+)(1-r\lambda_-)\)</span>. Each factor has an analytic logarithm for <span class="math" data-index="99" data-tex="\(|r|&lt;1\)">\(|r|&lt;1\)</span>, given by its convergent series <span class="math" data-index="100" data-tex="\(-\sum_{j\geq1}(r\lambda_\pm)^j/j\)">\(-\sum_{j\geq1}(r\lambda_\pm)^j/j\)</span>. Differentiating this series shows that its exponential divided by <span class="math" data-index="101" data-tex="\(1-r\lambda_\pm\)">\(1-r\lambda_\pm\)</span> has derivative zero and value one at zero; thus it is the claimed logarithm. Use their sum to define the power in (P9), normalized to one at zero. For real <span class="math" data-index="102" data-tex="\(r\)">\(r\)</span> the factors and logarithms are conjugate, so this power agrees with the positive real denominator in the kernel. This gives a holomorphic function of <span class="math" data-index="103" data-tex="\(r\)">\(r\)</span> in the unit disk. On <span class="math" data-index="104" data-tex="\(|r|=q&lt;1\)">\(|r|=q&lt;1\)</span>, each factor has modulus at least <span class="math" data-index="105" data-tex="\(1-q\)">\(1-q\)</span>, while the numerator has modulus at most <span class="math" data-index="106" data-tex="\(1+q^2\)">\(1+q^2\)</span>. Its modulus is therefore bounded by
+<a id="eq-P10"></a></p>
+<span class="math math-display" data-index="107" data-tex="\[
+ C_q=\frac{1+q^2}{\sigma(1-q)^n},
+ \tag{P10}
+\]">\[
+ C_q=\frac{1+q^2}{\sigma(1-q)^n},
+ \tag{P10}
+\]</span>
+<p>uniformly in real <span class="math" data-index="108" data-tex="\(x,\omega\)">\(x,\omega\)</span>. The Cauchy coefficient formula therefore gives
+<a id="eq-P11"></a></p>
+<span class="math math-display" data-index="109" data-tex="\[
+ P(rx,\omega)=\sum_{m=0}^\infty r^m A_m(x,\omega),
+ \qquad |A_m(x,\omega)|\leq C_q q^{-m}.
+ \tag{P11}
+\]">\[
+ P(rx,\omega)=\sum_{m=0}^\infty r^m A_m(x,\omega),
+ \qquad |A_m(x,\omega)|\leq C_q q^{-m}.
+ \tag{P11}
+\]</span>
+<p>Each <span class="math" data-index="110" data-tex="\(A_m\)">\(A_m\)</span> is a homogeneous polynomial of degree <span class="math" data-index="111" data-tex="\(m\)">\(m\)</span> in the real coordinates of <span class="math" data-index="112" data-tex="\(x\)">\(x\)</span>. To verify this, expand the analytic function <span class="math" data-index="113" data-tex="\((1+s)^{-n/2}\)">\((1+s)^{-n/2}\)</span> at zero and substitute <span class="math" data-index="114" data-tex="\(s=-2r x\cdot\omega+r^2|x|^2\)">\(s=-2r x\cdot\omega+r^2|x|^2\)</span>. The coefficient of <span class="math" data-index="115" data-tex="\(r^m\)">\(r^m\)</span> is a finite sum: the linear expression carries degree one and the quadratic expression degree two. Multiplication by <span class="math" data-index="116" data-tex="\(1-r^2|x|^2\)">\(1-r^2|x|^2\)</span> preserves this matching of degree and scalar power.</p>
+<p>These polynomials are harmonic. Near <span class="math" data-index="117" data-tex="\(r=0\)">\(r=0\)</span>, the expression is jointly smooth in real <span class="math" data-index="118" data-tex="\(r,x\)">\(r,x\)</span>; its <span class="math" data-index="119" data-tex="\(m\)">\(m\)</span>-th scalar derivative at zero is <span class="math" data-index="120" data-tex="\(m! A_m\)">\(m! A_m\)</span>. Equation (P5) gives <span class="math" data-index="121" data-tex="\(\Delta_xP(rx,\omega)=0\)">\(\Delta_xP(rx,\omega)=0\)</span> for real <span class="math" data-index="122" data-tex="\(r\)">\(r\)</span> sufficiently small on any fixed neighborhood of a real <span class="math" data-index="123" data-tex="\(x\)">\(x\)</span>. Commuting finitely many smooth derivatives yields <span class="math" data-index="124" data-tex="\(\Delta_x A_m=0\)">\(\Delta_x A_m=0\)</span>. This holds at every real <span class="math" data-index="125" data-tex="\(x\)">\(x\)</span>, so it is a global polynomial identity.</p>
+<p>Integrate the coefficients against the continuous boundary data and put</p>
+<span class="math math-display" data-index="126" data-tex="\[
+ a_m(x)=\int_S A_m(x,\omega)g(\omega)\,dS.
+\]">\[
+ a_m(x)=\int_S A_m(x,\omega)g(\omega)\,dS.
+\]</span>
+<p>The result is again a homogeneous harmonic polynomial. For fixed <span class="math" data-index="127" data-tex="\(0&lt;t&lt;q&lt;1\)">\(0&lt;t&lt;q&lt;1\)</span>, the bounds (P10)–(P11) give uniform convergence on <span class="math" data-index="128" data-tex="\(|x|\leq1\)">\(|x|\leq1\)</span>, so that</p>
+<span class="math math-display" data-index="129" data-tex="\[
+ H(tx)=\sum_{m=0}^\infty t^m a_m(x),
+\]">\[
+ H(tx)=\sum_{m=0}^\infty t^m a_m(x),
+\]</span>
+<p>and the tail after degree <span class="math" data-index="130" data-tex="\(N\)">\(N\)</span> is at most
+<a id="eq-P12"></a></p>
+<span class="math math-display" data-index="131" data-tex="\[
+ \|g\|_\infty\frac{1+q^2}{(1-q)^n}
+ \frac{(t/q)^{N+1}}{1-t/q}.
+ \tag{P12}
+\]">\[
+ \|g\|_\infty\frac{1+q^2}{(1-q)^n}
+ \frac{(t/q)^{N+1}}{1-t/q}.
+ \tag{P12}
+\]</span>
+<p>Thus <span class="math" data-index="132" data-tex="\(H(t\,\cdot)\)">\(H(t\,\cdot)\)</span> is uniformly approximated by global harmonic polynomials. Finally, continuity of <span class="math" data-index="133" data-tex="\(H\)">\(H\)</span> on the closed ball implies <span class="math" data-index="134" data-tex="\(H(t\,\cdot)\to H\)">\(H(t\,\cdot)\to H\)</span> uniformly as <span class="math" data-index="135" data-tex="\(t\uparrow1\)">\(t\uparrow1\)</span>. First choose <span class="math" data-index="136" data-tex="\(t\)">\(t\)</span>, then truncate. Translation and scaling of the polynomials prove the other-ball assertion. <span class="math" data-index="137" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="continuous-upper-majorants-for-an-upper-semicontinuous-boundary">Continuous upper majorants for an upper semicontinuous boundary</h2>
+<p><a id="proof-P5"></a></p>
+<p><strong>Lemma P5.</strong> Let <span class="math" data-index="138" data-tex="\(v:S\to[-\infty,\infty)\)">\(v:S\to[-\infty,\infty)\)</span> be upper semicontinuous. There are continuous functions <span class="math" data-index="139" data-tex="\(g_j\)">\(g_j\)</span> decreasing pointwise to <span class="math" data-index="140" data-tex="\(v\)">\(v\)</span>, and their integrals decrease to the extended integral of <span class="math" data-index="141" data-tex="\(v\)">\(v\)</span>.</p>
+<p><strong>Proof.</strong> With the Euclidean distance on the compact sphere, define
+<a id="eq-P13"></a></p>
+<span class="math math-display" data-index="142" data-tex="\[
+ g_j(\omega)=\sup_{\eta\in S}
+     \bigl(\max(v(\eta),-j)-j|\omega-\eta|\bigr),
+ \quad j=1,2,\ldots.
+ \tag{P13}
+\]">\[
+ g_j(\omega)=\sup_{\eta\in S}
+     \bigl(\max(v(\eta),-j)-j|\omega-\eta|\bigr),
+ \quad j=1,2,\ldots.
+ \tag{P13}
+\]</span>
+<p>The truncated function is upper semicontinuous, bounded and finite, so its displayed supremum is finite. The triangle inequality proves <span class="math" data-index="143" data-tex="\(|g_j(\omega)-g_j(\omega&#x27;)|\leq j|\omega-\omega&#x27;|\)">\(|g_j(\omega)-g_j(\omega&#x27;)|\leq j|\omega-\omega&#x27;|\)</span>. Each <span class="math" data-index="144" data-tex="\(g_j\)">\(g_j\)</span> is continuous, majorizes <span class="math" data-index="145" data-tex="\(v\)">\(v\)</span>, and decreases with <span class="math" data-index="146" data-tex="\(j\)">\(j\)</span>, because both the truncation level and the negative distance term decrease.</p>
+<p>To prove convergence at <span class="math" data-index="147" data-tex="\(\omega\)">\(\omega\)</span>, choose a common finite upper bound <span class="math" data-index="148" data-tex="\(C\geq0\)">\(C\geq0\)</span> for <span class="math" data-index="149" data-tex="\(v\)">\(v\)</span>. If <span class="math" data-index="150" data-tex="\(v(\omega)\)">\(v(\omega)\)</span> is finite, a maximizing <span class="math" data-index="151" data-tex="\(\eta_j\)">\(\eta_j\)</span> exists by upper semicontinuity and compactness, and</p>
+<span class="math math-display" data-index="152" data-tex="\[
+ j|\omega-\eta_j|\leq C-v(\omega).
+\]">\[
+ j|\omega-\eta_j|\leq C-v(\omega).
+\]</span>
+<p>Thus <span class="math" data-index="153" data-tex="\(\eta_j\to\omega\)">\(\eta_j\to\omega\)</span>, and upper semicontinuity, together with <span class="math" data-index="154" data-tex="\(-j\to-\infty\)">\(-j\to-\infty\)</span>, gives <span class="math" data-index="155" data-tex="\(\limsup_jg_j(\omega)\leq v(\omega)\)">\(\limsup_jg_j(\omega)\leq v(\omega)\)</span>. The reverse bound was already proved. If <span class="math" data-index="156" data-tex="\(v(\omega)=-\infty\)">\(v(\omega)=-\infty\)</span>, fix any finite <span class="math" data-index="157" data-tex="\(A\)">\(A\)</span>. On some neighborhood of <span class="math" data-index="158" data-tex="\(\omega\)">\(\omega\)</span>, <span class="math" data-index="159" data-tex="\(v&lt;A\)">\(v&lt;A\)</span>. For large <span class="math" data-index="160" data-tex="\(j\)">\(j\)</span>, also <span class="math" data-index="161" data-tex="\(-j&lt;A\)">\(-j&lt;A\)</span>, while outside that neighborhood <span class="math" data-index="162" data-tex="\(C-j|\omega-\eta|&lt;A\)">\(C-j|\omega-\eta|&lt;A\)</span>. Hence <span class="math" data-index="163" data-tex="\(g_j(\omega)\leq A\)">\(g_j(\omega)\leq A\)</span>, proving convergence to <span class="math" data-index="164" data-tex="\(-\infty\)">\(-\infty\)</span>.</p>
+<p>All <span class="math" data-index="165" data-tex="\(g_j\leq C\)">\(g_j\leq C\)</span>. Apply monotone convergence to the nonnegative increasing sequence <span class="math" data-index="166" data-tex="\(C-g_j\)">\(C-g_j\)</span>. This proves the integral assertion even when the limit integral is <span class="math" data-index="167" data-tex="\(-\infty\)">\(-\infty\)</span>. If a strictly larger continuous majorant is wanted, use <span class="math" data-index="168" data-tex="\(g_j+\varepsilon\)">\(g_j+\varepsilon\)</span>, <span class="math" data-index="169" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. <span class="math" data-index="170" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="four-equivalent-criteria">Four equivalent criteria</h2>
+<p><a id="proof-S1"></a></p>
+<p><strong>Theorem S1.</strong> Let <span class="math" data-index="171" data-tex="\(X\subset\mathbb R^n\)">\(X\subset\mathbb R^n\)</span> be open and <span class="math" data-index="172" data-tex="\(u:X\to[-\infty,\infty)\)">\(u:X\to[-\infty,\infty)\)</span> upper semicontinuous. The following four conditions are equivalent; each characterizes subharmonicity under the mean definition above.</p>
+<ol>
+<li>
+<p>For every <span class="math" data-index="173" data-tex="\(\overline B(a,R)\subset X\)">\(\overline B(a,R)\subset X\)</span>, <span class="math" data-index="174" data-tex="\(u(a)\leq M_Ru(a)\)">\(u(a)\leq M_Ru(a)\)</span>.</p>
+</li>
+<li>
+<p>For every such ball there is a <strong>positive finite Borel measure</strong> <span class="math" data-index="175" data-tex="\(\nu\)">\(\nu\)</span> on <span class="math" data-index="176" data-tex="\([0,R]\)">\([0,R]\)</span>, with <span class="math" data-index="177" data-tex="\(\nu((0,R])&gt;0\)">\(\nu((0,R])&gt;0\)</span>, such that
+<a id="eq-S1"></a></p>
+<span class="math math-display" data-index="178" data-tex="\[
+   u(a)\nu([0,R])\leq\int_{[0,R]}M_tu(a)\,d\nu(t).
+   \tag{S1}
+   \]">\[
+   u(a)\nu([0,R])\leq\int_{[0,R]}M_tu(a)\,d\nu(t).
+   \tag{S1}
+   \]</span>
+</li>
+<li>
+<p>For every compact <span class="math" data-index="179" data-tex="\(K\subset X\)">\(K\subset X\)</span> and every <span class="math" data-index="180" data-tex="\(h\in C(K;\mathbb R)\)">\(h\in C(K;\mathbb R)\)</span> harmonic in <span class="math" data-index="181" data-tex="\(K^\circ\)">\(K^\circ\)</span>, the boundary inequality <span class="math" data-index="182" data-tex="\(u\leq h\)">\(u\leq h\)</span> on <span class="math" data-index="183" data-tex="\(\partial K\)">\(\partial K\)</span> implies <span class="math" data-index="184" data-tex="\(u\leq h\)">\(u\leq h\)</span> on <span class="math" data-index="185" data-tex="\(K\)">\(K\)</span>.</p>
+</li>
+<li>
+<p>For every closed ball <span class="math" data-index="186" data-tex="\(B\subset X\)">\(B\subset X\)</span> and every harmonic <span class="math" data-index="187" data-tex="\(h\)">\(h\)</span> on <strong>all of <span class="math" data-index="188" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span></strong>, the inequality <span class="math" data-index="189" data-tex="\(u\leq h\)">\(u\leq h\)</span> on <span class="math" data-index="190" data-tex="\(\partial B\)">\(\partial B\)</span> implies <span class="math" data-index="191" data-tex="\(u\leq h\)">\(u\leq h\)</span> on <span class="math" data-index="192" data-tex="\(B\)">\(B\)</span>.</p>
+</li>
+</ol>
+<p>Normalizing <span class="math" data-index="193" data-tex="\(\nu\)">\(\nu\)</span> by its positive total mass makes it a probability measure without changing condition 2. A measure concentrated only at zero is excluded.</p>
+<p><strong>Proof, 1 implies 2.</strong> Take <span class="math" data-index="194" data-tex="\(\nu=\delta_R\)">\(\nu=\delta_R\)</span>. More generally every positive finite radius measure gives (S1) by integrating the mean inequalities. If <span class="math" data-index="195" data-tex="\(u(a)=-\infty\)">\(u(a)=-\infty\)</span>, the inequality is automatic; if it is finite, the means have that finite lower bound and a common finite upper bound, so this integration is unambiguous.</p>
+<p><strong>Proof, 2 implies 3.</strong> Suppose the boundary comparison holds but <span class="math" data-index="196" data-tex="\(v=u-h\)">\(v=u-h\)</span> has a positive maximum <span class="math" data-index="197" data-tex="\(M\)">\(M\)</span> on <span class="math" data-index="198" data-tex="\(K\)">\(K\)</span>. This finite maximum exists by upper semicontinuity. The set</p>
+<span class="math math-display" data-index="199" data-tex="\[
+ F=\{z\in K:v(z)=M\}
+\]">\[
+ F=\{z\in K:v(z)=M\}
+\]</span>
+<p>is nonempty and compact and misses <span class="math" data-index="200" data-tex="\(\partial K\)">\(\partial K\)</span>. It therefore has a positive minimum distance <span class="math" data-index="201" data-tex="\(\delta\)">\(\delta\)</span> to <span class="math" data-index="202" data-tex="\(\partial K\)">\(\partial K\)</span>. Choose <span class="math" data-index="203" data-tex="\(a\in F\)">\(a\in F\)</span> attaining it, and a closest point <span class="math" data-index="204" data-tex="\(b\in\partial K\)">\(b\in\partial K\)</span>. The open ball of radius <span class="math" data-index="205" data-tex="\(\delta\)">\(\delta\)</span> lies in <span class="math" data-index="206" data-tex="\(K^\circ\)">\(K^\circ\)</span>: a segment from <span class="math" data-index="207" data-tex="\(a\)">\(a\)</span> to a point outside <span class="math" data-index="208" data-tex="\(K\)">\(K\)</span> at distance less than <span class="math" data-index="209" data-tex="\(\delta\)">\(\delta\)</span> would meet its boundary sooner, contradicting that distance. Closedness of <span class="math" data-index="210" data-tex="\(K\)">\(K\)</span> adds the radius-<span class="math" data-index="211" data-tex="\(\delta\)">\(\delta\)</span> sphere. Thus <span class="math" data-index="212" data-tex="\(\overline B(a,\delta)\)">\(\overline B(a,\delta)\)</span> lies in <span class="math" data-index="213" data-tex="\(K\)">\(K\)</span>, hence compactly in <span class="math" data-index="214" data-tex="\(X\)">\(X\)</span>. For every <span class="math" data-index="215" data-tex="\(0&lt;t\leq\delta\)">\(0&lt;t\leq\delta\)</span>, the point
+<a id="eq-S2"></a></p>
+<span class="math math-display" data-index="216" data-tex="\[
+ z_t=a+\frac t\delta(b-a)
+ \tag{S2}
+\]">\[
+ z_t=a+\frac t\delta(b-a)
+ \tag{S2}
+\]</span>
+<p>is on its radius-<span class="math" data-index="217" data-tex="\(t\)">\(t\)</span> sphere and has distance to <span class="math" data-index="218" data-tex="\(\partial K\)">\(\partial K\)</span> at most <span class="math" data-index="219" data-tex="\(\delta-t&lt;\delta\)">\(\delta-t&lt;\delta\)</span>. Thus it is outside <span class="math" data-index="220" data-tex="\(F\)">\(F\)</span> and <span class="math" data-index="221" data-tex="\(v(z_t)&lt;M\)">\(v(z_t)&lt;M\)</span>. Upper semicontinuity gives a spherical cap of positive surface measure on which <span class="math" data-index="222" data-tex="\(v\leq M-\varepsilon_t\)">\(v\leq M-\varepsilon_t\)</span>, for some <span class="math" data-index="223" data-tex="\(\varepsilon_t&gt;0\)">\(\varepsilon_t&gt;0\)</span>. Everywhere else on that sphere <span class="math" data-index="224" data-tex="\(v\leq M\)">\(v\leq M\)</span>. It follows that
+<a id="eq-S3"></a></p>
+<span class="math math-display" data-index="225" data-tex="\[
+ D(t):=M-M_tv(a)&gt;0\quad(0&lt;t\leq\delta),
+ \qquad D(0)=0.
+ \tag{S3}
+\]">\[
+ D(t):=M-M_tv(a)&gt;0\quad(0&lt;t\leq\delta),
+ \qquad D(0)=0.
+ \tag{S3}
+\]</span>
+<p>The deficit may be infinite. It is measurable: apply Tonelli to the nonnegative Borel function <span class="math" data-index="226" data-tex="\(M-v(a+t\omega)\)">\(M-v(a+t\omega)\)</span>. The measure provided by condition 2 for radius <span class="math" data-index="227" data-tex="\(\delta\)">\(\delta\)</span> has positive mass on <span class="math" data-index="228" data-tex="\((0,\delta]\)">\((0,\delta]\)</span>, so <span class="math" data-index="229" data-tex="\(\int D\,d\nu&gt;0\)">\(\int D\,d\nu&gt;0\)</span>. Indeed that set is the countable union of <span class="math" data-index="230" data-tex="\(\{D\geq1/j\}\)">\(\{D\geq1/j\}\)</span>, and some such set has positive mass.</p>
+<p>Lemma P1 gives <span class="math" data-index="231" data-tex="\(M_th(a)=h(a)\)">\(M_th(a)=h(a)\)</span> for <span class="math" data-index="232" data-tex="\(t&lt;\delta\)">\(t&lt;\delta\)</span>, and continuity on <span class="math" data-index="233" data-tex="\(K\)">\(K\)</span> gives the same equality at <span class="math" data-index="234" data-tex="\(t=\delta\)">\(t=\delta\)</span>. Subtracting this finite harmonic mean from (S1) yields</p>
+<span class="math math-display" data-index="235" data-tex="\[
+ M\nu([0,\delta])\leq\int M_tv(a)\,d\nu(t)
+ =M\nu([0,\delta])-\int D\,d\nu
+ &lt;M\nu([0,\delta]),
+\]">\[
+ M\nu([0,\delta])\leq\int M_tv(a)\,d\nu(t)
+ =M\nu([0,\delta])-\int D\,d\nu
+ &lt;M\nu([0,\delta]),
+\]</span>
+<p>a contradiction. This proves condition 3 even for an irregular compact set or one with empty interior.</p>
+<p><strong>Proof, 3 implies 4.</strong> Restrict the global harmonic function to the chosen closed ball and apply condition 3.</p>
+<p><strong>Proof, 4 implies 1.</strong> Fix <span class="math" data-index="236" data-tex="\(\overline B(a,R)\subset X\)">\(\overline B(a,R)\subset X\)</span>. Lemma P5 gives continuous majorants <span class="math" data-index="237" data-tex="\(g_j\downarrow u\)">\(g_j\downarrow u\)</span> on its boundary, expressed in sphere coordinates. Let <span class="math" data-index="238" data-tex="\(H_j\)">\(H_j\)</span> be their Poisson extensions. By Theorem P4, for every <span class="math" data-index="239" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is a globally harmonic polynomial <span class="math" data-index="240" data-tex="\(Q\)">\(Q\)</span> with <span class="math" data-index="241" data-tex="\(\sup_B|Q-H_j|&lt;\varepsilon\)">\(\sup_B|Q-H_j|&lt;\varepsilon\)</span>. On the boundary, <span class="math" data-index="242" data-tex="\(Q+\varepsilon\geq H_j=g_j\geq u\)">\(Q+\varepsilon\geq H_j=g_j\geq u\)</span>. Condition 4 therefore gives</p>
+<span class="math math-display" data-index="243" data-tex="\[
+ u(a)\leq Q(a)+\varepsilon\leq H_j(a)+2\varepsilon.
+\]">\[
+ u(a)\leq Q(a)+\varepsilon\leq H_j(a)+2\varepsilon.
+\]</span>
+<p>Let <span class="math" data-index="244" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. At the center, the Poisson kernel is the constant normalized density, so</p>
+<span class="math math-display" data-index="245" data-tex="\[
+ u(a)\leq H_j(a)=\frac1\sigma\int_Sg_j\,dS.
+\]">\[
+ u(a)\leq H_j(a)=\frac1\sigma\int_Sg_j\,dS.
+\]</span>
+<p>Let <span class="math" data-index="246" data-tex="\(j\to\infty\)">\(j\to\infty\)</span> using Lemma P5. The result is <span class="math" data-index="247" data-tex="\(u(a)\leq M_Ru(a)\)">\(u(a)\leq M_Ru(a)\)</span>, including an extended value <span class="math" data-index="248" data-tex="\(-\infty\)">\(-\infty\)</span> on the right. All implications are now proved. <span class="math" data-index="249" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="supremum-closure-and-two-consequences">Supremum closure and two consequences</h2>
+<p><a id="proof-S2"></a></p>
+<p><strong>Theorem S2.</strong> Let <span class="math" data-index="250" data-tex="\(\{u_\ell:\ell\in L\}\)">\(\{u_\ell:\ell\in L\}\)</span> be any family of subharmonic functions on <span class="math" data-index="251" data-tex="\(X\)">\(X\)</span>. If <span class="math" data-index="252" data-tex="\(u=\sup_\ell u_\ell\)">\(u=\sup_\ell u_\ell\)</span> is upper semicontinuous and <span class="math" data-index="253" data-tex="\(u(x)&lt;+\infty\)">\(u(x)&lt;+\infty\)</span> everywhere, then <span class="math" data-index="254" data-tex="\(u\)">\(u\)</span> is subharmonic. The empty supremum is <span class="math" data-index="255" data-tex="\(-\infty\)">\(-\infty\)</span>. In particular the maximum of finitely many subharmonic functions is subharmonic.</p>
+<p><strong>Proof.</strong> For the compact comparison in Theorem S1(3), if <span class="math" data-index="256" data-tex="\(u\leq h\)">\(u\leq h\)</span> on <span class="math" data-index="257" data-tex="\(\partial K\)">\(\partial K\)</span>, then every <span class="math" data-index="258" data-tex="\(u_\ell\leq h\)">\(u_\ell\leq h\)</span> there. Apply comparison to each member and take their supremum on <span class="math" data-index="259" data-tex="\(K\)">\(K\)</span>. This proves the same comparison for <span class="math" data-index="260" data-tex="\(u\)">\(u\)</span>, so Theorem S1 applies. A finite maximum is upper semicontinuous because the intersection of finitely many sets <span class="math" data-index="261" data-tex="\(\{u_\ell&lt;c\}\)">\(\{u_\ell&lt;c\}\)</span> is open; it is finite above because each member is. <span class="math" data-index="262" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="proof-S3"></a></p>
+<p><strong>Corollary S3 (increasing spherical means).</strong> If <span class="math" data-index="263" data-tex="\(u\)">\(u\)</span> is subharmonic and <span class="math" data-index="264" data-tex="\(\overline B(a,R)\subset X\)">\(\overline B(a,R)\subset X\)</span>, then <span class="math" data-index="265" data-tex="\(M_\rho u(a)\leq M_Ru(a)\)">\(M_\rho u(a)\leq M_Ru(a)\)</span> for <span class="math" data-index="266" data-tex="\(0\leq\rho&lt;R\)">\(0\leq\rho&lt;R\)</span>.</p>
+<p><strong>Proof.</strong> Take decreasing continuous majorants <span class="math" data-index="267" data-tex="\(g_j\)">\(g_j\)</span> of <span class="math" data-index="268" data-tex="\(u\)">\(u\)</span> on the outer sphere and their Poisson extensions <span class="math" data-index="269" data-tex="\(H_j\)">\(H_j\)</span>. Compact comparison gives <span class="math" data-index="270" data-tex="\(u\leq H_j\)">\(u\leq H_j\)</span> throughout the closed ball. For an inner sphere, Lemma P1 gives</p>
+<span class="math math-display" data-index="271" data-tex="\[
+ M_\rho u(a)\leq M_\rho H_j(a)=H_j(a)=\frac1\sigma\int_Sg_j\,dS.
+\]">\[
+ M_\rho u(a)\leq M_\rho H_j(a)=H_j(a)=\frac1\sigma\int_Sg_j\,dS.
+\]</span>
+<p>The same inequality at <span class="math" data-index="272" data-tex="\(\rho=0\)">\(\rho=0\)</span> is pointwise comparison. Let <span class="math" data-index="273" data-tex="\(j\to\infty\)">\(j\to\infty\)</span> by Lemma P5. This derives monotonicity from comparison rather than assuming it while proving the equivalences. <span class="math" data-index="274" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="proof-S4"></a></p>
+<p><strong>Corollary S4 (the smooth criterion).</strong> For real <span class="math" data-index="275" data-tex="\(f\in C^2(X)\)">\(f\in C^2(X)\)</span>, subharmonicity is equivalent to <span class="math" data-index="276" data-tex="\(\Delta f\geq0\)">\(\Delta f\geq0\)</span>.</p>
+<p><strong>Proof.</strong> If <span class="math" data-index="277" data-tex="\(\Delta f\geq0\)">\(\Delta f\geq0\)</span>, compare <span class="math" data-index="278" data-tex="\(f\)">\(f\)</span> with any <span class="math" data-index="279" data-tex="\(h\)">\(h\)</span> in Theorem S1(3). A positive interior maximum of <span class="math" data-index="280" data-tex="\(f-h\)">\(f-h\)</span> is excluded by adding <span class="math" data-index="281" data-tex="\(\varepsilon|x|^2\)">\(\varepsilon|x|^2\)</span>, exactly as in Lemma P2: the perturbed Laplacian is strictly positive. Thus comparison holds. Conversely Taylor's formula uniformly in <span class="math" data-index="282" data-tex="\(\omega\)">\(\omega\)</span>, the identities <span class="math" data-index="283" data-tex="\(\int\omega_i\,dS=0\)">\(\int\omega_i\,dS=0\)</span> and <span class="math" data-index="284" data-tex="\(\sigma^{-1}\int\omega_i\omega_j\,dS=\delta_{ij}/n\)">\(\sigma^{-1}\int\omega_i\omega_j\,dS=\delta_{ij}/n\)</span>, and the mean inequality give</p>
+<span class="math math-display" data-index="285" data-tex="\[
+ 0\leq M_rf(a)-f(a)
+ =\frac{r^2}{2n}\Delta f(a)+o(r^2).
+\]">\[
+ 0\leq M_rf(a)-f(a)
+ =\frac{r^2}{2n}\Delta f(a)+o(r^2).
+\]</span>
+<p>The moment identities follow by coordinate reflections, coordinate permutations and <span class="math" data-index="286" data-tex="\(\sum_i\omega_i^2=1\)">\(\sum_i\omega_i^2=1\)</span>. Divide by <span class="math" data-index="287" data-tex="\(r^2\)">\(r^2\)</span> and let <span class="math" data-index="288" data-tex="\(r\downarrow0\)">\(r\downarrow0\)</span>. <span class="math" data-index="289" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="three-worked-examples">Three worked examples</h2>
+<p><strong>1. Polynomial boundary data.</strong> On <span class="math" data-index="290" data-tex="\(S^{n-1}\)">\(S^{n-1}\)</span>, take <span class="math" data-index="291" data-tex="\(g(\omega)=1+2\omega_1+\omega_1^2-\omega_2^2\)">\(g(\omega)=1+2\omega_1+\omega_1^2-\omega_2^2\)</span>. The polynomial <span class="math" data-index="292" data-tex="\(H(x)=1+2x_1+x_1^2-x_2^2\)">\(H(x)=1+2x_1+x_1^2-x_2^2\)</span> has Laplacian <span class="math" data-index="293" data-tex="\(2-2=0\)">\(2-2=0\)</span> and exactly these boundary values. Uniqueness identifies it with the Poisson integral. Its center value is one, also obtained by averaging the boundary data. The extension is already a global harmonic polynomial.</p>
+<p><strong>2. Why radius mass away from zero matters.</strong> On <span class="math" data-index="294" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, take <span class="math" data-index="295" data-tex="\(u(x)=-|x|^2\)">\(u(x)=-|x|^2\)</span>. It is smooth, but <span class="math" data-index="296" data-tex="\(M_ru(0)=-r^2&lt;0=u(0)\)">\(M_ru(0)=-r^2&lt;0=u(0)\)</span>. It is not subharmonic. If the radius measure were allowed to be <span class="math" data-index="297" data-tex="\(\delta_0\)">\(\delta_0\)</span>, condition 2 would be the identity <span class="math" data-index="298" data-tex="\(u(a)\leq u(a)\)">\(u(a)\leq u(a)\)</span> for this function and every other upper semicontinuous function. For every finite positive <span class="math" data-index="299" data-tex="\(\nu\)">\(\nu\)</span> with <span class="math" data-index="300" data-tex="\(\nu((0,R])&gt;0\)">\(\nu((0,R])&gt;0\)</span>, the tested average at zero is <span class="math" data-index="301" data-tex="\(-\int t^2d\nu&lt;0\)">\(-\int t^2d\nu&lt;0\)</span>. The strict radius premise is essential.</p>
+<p><strong>3. An increasing family whose raw supremum is not upper semicontinuous.</strong> On the open unit disk <span class="math" data-index="302" data-tex="\(D\subset\mathbb R^2\)">\(D\subset\mathbb R^2\)</span>, let
+<a id="eq-S4"></a></p>
+<span class="math math-display" data-index="303" data-tex="\[
+ u_k(x)=\max\bigl(k^{-1}\log|x|,-1\bigr),\qquad k=1,2,\ldots,
+ \quad\log0=-\infty.
+ \tag{S4}
+\]">\[
+ u_k(x)=\max\bigl(k^{-1}\log|x|,-1\bigr),\qquad k=1,2,\ldots,
+ \quad\log0=-\infty.
+ \tag{S4}
+\]</span>
+<p>Here <span class="math" data-index="304" data-tex="\(\log|x|\)">\(\log|x|\)</span> is subharmonic on the whole disk. For completeness, it is harmonic away from zero by the radial formula <span class="math" data-index="305" data-tex="\(f&#x27;&#x27;+f&#x27;/r\)">\(f&#x27;&#x27;+f&#x27;/r\)</span>, and its value <span class="math" data-index="306" data-tex="\(-\infty\)">\(-\infty\)</span> at zero is upper semicontinuous. To verify compact comparison, if zero is outside <span class="math" data-index="307" data-tex="\(K\)">\(K\)</span>, apply Lemma P2 to <span class="math" data-index="308" data-tex="\(\log|x|-h\)">\(\log|x|-h\)</span>. If zero belongs to <span class="math" data-index="309" data-tex="\(K\)">\(K\)</span>, choose <span class="math" data-index="310" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> with <span class="math" data-index="311" data-tex="\(\log\varepsilon&lt;\min_Kh\)">\(\log\varepsilon&lt;\min_Kh\)</span>, and apply Lemma P2 on <span class="math" data-index="312" data-tex="\(K\setminus B(0,\varepsilon)\)">\(K\setminus B(0,\varepsilon)\)</span>. Its boundary lies in <span class="math" data-index="313" data-tex="\(\partial K\)">\(\partial K\)</span> or the radius-<span class="math" data-index="314" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> circle; the required boundary inequalities hold on both. Let <span class="math" data-index="315" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. Comparison follows at every nonzero point, and at zero it is automatic. Theorem S1 proves the claim without a potential representation.</p>
+<p>Positive scaling preserves the mean inequality, and the constant <span class="math" data-index="316" data-tex="\(-1\)">\(-1\)</span> is harmonic. Theorem S2 therefore proves each <span class="math" data-index="317" data-tex="\(u_k\)">\(u_k\)</span> subharmonic. Each is continuous: it equals <span class="math" data-index="318" data-tex="\(-1\)">\(-1\)</span> on <span class="math" data-index="319" data-tex="\(|x|\leq e^{-k}\)">\(|x|\leq e^{-k}\)</span>, including zero. Because <span class="math" data-index="320" data-tex="\(\log|x|&lt;0\)">\(\log|x|&lt;0\)</span> in the punctured disk, the sequence increases with <span class="math" data-index="321" data-tex="\(k\)">\(k\)</span>. Its pointwise supremum is
+<a id="eq-S5"></a></p>
+<span class="math math-display" data-index="322" data-tex="\[
+ u(x)=\begin{cases}0,&amp;0&lt;|x|&lt;1,\\-1,&amp;x=0.\end{cases}
+ \tag{S5}
+\]">\[
+ u(x)=\begin{cases}0,&amp;0&lt;|x|&lt;1,\\-1,&amp;x=0.\end{cases}
+ \tag{S5}
+\]</span>
+<p>It is finite above but fails upper semicontinuity at zero. The closure theorem does not apply to this raw supremum. Its upper semicontinuous regularization in this example, <span class="math" data-index="323" data-tex="\(u^*(x)=\limsup_{y\to x}u(y)\)">\(u^*(x)=\limsup_{y\to x}u(y)\)</span>, is the constant zero and is harmonic.</p>
+<figure><img class="course-figure" width="2448" height="867" src="reproduce/L132/figures/usc-supremum.png" alt="Radial sections of the increasing disk family and the raw supremum at its center" /><figcaption class="native"><a href="reproduce/L132/figures/usc-supremum.png">Open full-size PNG</a> · <a href="reproduce/L132/figures/usc-supremum.svg">Open SVG</a> · <a href="reproduce/L132/figures/usc-supremum.pdf">Open PDF</a></figcaption></figure>
+<p><strong>Figure P-B.</strong> These are radial sections of (S4), not whole-disk pictures. The curves use <span class="math" data-index="324" data-tex="\(k=1,2,5,10\)">\(k=1,2,5,10\)</span>, and their constant regions end at exactly <span class="math" data-index="325" data-tex="\(e^{-k}\)">\(e^{-k}\)</span>. The second panel separates the raw supremum's filled point <span class="math" data-index="326" data-tex="\((0,-1)\)">\((0,-1)\)</span> from its punctured limit, marked by the open point <span class="math" data-index="327" data-tex="\((0,0)\)">\((0,0)\)</span>. The third panel shows the regularization filling <span class="math" data-index="328" data-tex="\((0,0)\)">\((0,0)\)</span>. Values at radius one are displayed as boundary limits; the theorem's domain is the open disk. The argument above proves subharmonicity and the supremum formula; plotted samples are illustrations.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> In the disk, compute the kernel density at angles zero and <span class="math" data-index="329" data-tex="\(\pi\)">\(\pi\)</span> for <span class="math" data-index="330" data-tex="\(t=3/4\)">\(t=3/4\)</span>. Verify that the peak-to-opposite-point ratio is 49.</p>
+<p><strong>Solution.</strong> The values are <span class="math" data-index="331" data-tex="\((1+t)/(2\pi(1-t))=7/(2\pi)\)">\((1+t)/(2\pi(1-t))=7/(2\pi)\)</span> and <span class="math" data-index="332" data-tex="\((1-t)/(2\pi(1+t))=1/(14\pi)\)">\((1-t)/(2\pi(1+t))=1/(14\pi)\)</span>. Their quotient is 49. These are pointwise density values, not masses of singleton boundary points.</p>
+<p><strong>Exercise 2.</strong> For <span class="math" data-index="333" data-tex="\(g(\omega)=\omega_1\)">\(g(\omega)=\omega_1\)</span>, identify its Poisson extension and its value at the center of a ball of radius <span class="math" data-index="334" data-tex="\(R\)">\(R\)</span> centered at <span class="math" data-index="335" data-tex="\(a\)">\(a\)</span>, when the physical boundary data are <span class="math" data-index="336" data-tex="\((z_1-a_1)/R\)">\((z_1-a_1)/R\)</span>.</p>
+<p><strong>Solution.</strong> On the unit ball the harmonic polynomial <span class="math" data-index="337" data-tex="\(x_1\)">\(x_1\)</span> has the stated boundary values, so uniqueness gives <span class="math" data-index="338" data-tex="\(H(x)=x_1\)">\(H(x)=x_1\)</span>. After translation and scaling the extension is <span class="math" data-index="339" data-tex="\((z_1-a_1)/R\)">\((z_1-a_1)/R\)</span>; its center value is zero. The formula concerns the specified boundary data and makes no claim that all linear data have zero center value.</p>
+<p><strong>Exercise 3.</strong> Let <span class="math" data-index="340" data-tex="\(u(x)=|x|^2\)">\(u(x)=|x|^2\)</span>. Compute every spherical mean about <span class="math" data-index="341" data-tex="\(a\)">\(a\)</span>, and verify condition 2 for any finite positive radius measure.</p>
+<p><strong>Solution.</strong> Expanding <span class="math" data-index="342" data-tex="\(|a+t\omega|^2\)">\(|a+t\omega|^2\)</span> and averaging the odd term gives <span class="math" data-index="343" data-tex="\(M_tu(a)=|a|^2+t^2\)">\(M_tu(a)=|a|^2+t^2\)</span>. Thus the difference between the right and left sides of (S1) is <span class="math" data-index="344" data-tex="\(\int t^2d\nu\geq0\)">\(\int t^2d\nu\geq0\)</span>, strictly positive if the measure has positive mass away from zero. Also <span class="math" data-index="345" data-tex="\(\Delta u=2n&gt;0\)">\(\Delta u=2n&gt;0\)</span>, agreeing with Corollary S4.</p>
+<p><strong>Exercise 4.</strong> Suppose <span class="math" data-index="346" data-tex="\(\|g\|_\infty\leq1\)">\(\|g\|_\infty\leq1\)</span>, <span class="math" data-index="347" data-tex="\(n=2\)">\(n=2\)</span>, <span class="math" data-index="348" data-tex="\(t=1/2\)">\(t=1/2\)</span> and <span class="math" data-index="349" data-tex="\(q=3/4\)">\(q=3/4\)</span>. Give an explicit error bound for truncating the polynomial series of <span class="math" data-index="350" data-tex="\(H(t x)\)">\(H(t x)\)</span> after degree <span class="math" data-index="351" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Solution.</strong> In (P12), <span class="math" data-index="352" data-tex="\((1+q^2)/(1-q)^2=25\)">\((1+q^2)/(1-q)^2=25\)</span> and <span class="math" data-index="353" data-tex="\(t/q=2/3\)">\(t/q=2/3\)</span>. The uniform error is at most <span class="math" data-index="354" data-tex="\(75(2/3)^{N+1}\)">\(75(2/3)^{N+1}\)</span>. Taking <span class="math" data-index="355" data-tex="\(N=22\)">\(N=22\)</span> makes this less than <span class="math" data-index="356" data-tex="\(10^{-2}\)">\(10^{-2}\)</span>. This bounds approximation of the contracted function <span class="math" data-index="357" data-tex="\(H(t\,\cdot)\)">\(H(t\,\cdot)\)</span>; approximating <span class="math" data-index="358" data-tex="\(H\)">\(H\)</span> itself also requires its uniform contraction error.</p>
+<p><strong>Exercise 5.</strong> A compact set <span class="math" data-index="359" data-tex="\(K\)">\(K\)</span> has empty interior. What does condition 3 say? Does the proof require a smooth boundary?</p>
+<p><strong>Solution.</strong> Since <span class="math" data-index="360" data-tex="\(K\)">\(K\)</span> is closed with empty interior, <span class="math" data-index="361" data-tex="\(\partial K=K\)">\(\partial K=K\)</span>. The premise already states the conclusion. In the nonempty-interior case the proof uses only compactness, a closest boundary point, upper semicontinuity and a ball contained in the interior. It imposes no smoothness on the boundary of <span class="math" data-index="362" data-tex="\(K\)">\(K\)</span>.</p>
+<p><strong>Exercise 6.</strong> For the disk family in (S4), find the switching radius and show that its raw supremum still satisfies every spherical mean inequality although it is not subharmonic under the stated definition.</p>
+<p><strong>Solution.</strong> Equality <span class="math" data-index="363" data-tex="\(k^{-1}\log r=-1\)">\(k^{-1}\log r=-1\)</span> gives <span class="math" data-index="364" data-tex="\(r=e^{-k}\)">\(r=e^{-k}\)</span>. At the origin the raw supremum is <span class="math" data-index="365" data-tex="\(-1\)">\(-1\)</span>, while every positive-radius circular mean is zero. At a nonzero center its value is zero; a circle can meet zero at at most one point, which has arc-length measure zero, so its mean is also zero. Thus all mean inequalities hold. Upper semicontinuity fails at the origin, and it is an independent premise of the definition and of Theorem S1. The example isolates exactly why finite-above pointwise bounds alone do not suffice.</p>
+<h2 id="the-one-dimensional-case">The one-dimensional case</h2>
+<p>For <span class="math" data-index="366" data-tex="\(n=1\)">\(n=1\)</span>, use the two-point sphere <span class="math" data-index="367" data-tex="\(S^0=\{-1,1\}\)">\(S^0=\{-1,1\}\)</span> with counting measure and <span class="math" data-index="368" data-tex="\(\sigma=2\)">\(\sigma=2\)</span>. The kernel formula becomes</p>
+<span class="math math-display" data-index="369" data-tex="\[
+ P(x,1)=\frac{1+x}{2},\qquad P(x,-1)=\frac{1-x}{2},\qquad -1&lt;x&lt;1.
+\]">\[
+ P(x,1)=\frac{1+x}{2},\qquad P(x,-1)=\frac{1-x}{2},\qquad -1&lt;x&lt;1.
+\]</span>
+<p>Their sum is one and they are affine, hence harmonic. The Poisson solution is the affine interpolation of the two boundary values, continuous at the endpoints and already globally harmonic. The mean identity is the average of two endpoints. The maximum principle follows from the same second-derivative perturbation. In the proof of condition 2 implies 3, the point toward the nearest boundary is one of the two sphere points and has positive counting measure; no continuous cap is needed. All four criteria and the supremum theorem therefore hold in dimension one as well. The logarithmic disk example and both figures concern dimension two.</p>
+<h2 id="source-credit">Source credit</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em> (1983; second revised printing 1990; reprint 2005), §16.1, Lemma 16.1.3, Proposition 16.1.4 and Corollary 16.1.5, printed pp. 306–307, supplies the Poisson and comparison targets. The kernel's normalization is the preceding formula (16.1.3). The arguments, examples and figures here are original. The scalar-kernel expansion in Theorem P4 supplies the global harmonic approximation used in the comparison proof. The integration, flux and scalar Cauchy inputs have the exact internal proof locations linked above.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/poisson-extension-and-subharmonic-comparison.md" download>Download the complete editable lesson</a>. Original proof exposition, examples, solutions and figures use CC0 1.0.</p><ul><li><a href="reproduce/L132/README.md" download>README.md</a></li>
+<li><a href="reproduce/L132/LICENSE.txt" download>LICENSE.txt</a></li>
+<li><a href="reproduce/L132/figures/render_figures.py" download>figures/render_figures.py</a></li>
+<li><a href="reproduce/L132/figures/geometry.json" download>figures/geometry.json</a></li>
+<li><a href="reproduce/L132/figures/poisson-concentration.png" download>figures/poisson-concentration.png</a></li>
+<li><a href="reproduce/L132/figures/poisson-concentration.svg" download>figures/poisson-concentration.svg</a></li>
+<li><a href="reproduce/L132/figures/poisson-concentration.pdf" download>figures/poisson-concentration.pdf</a></li>
+<li><a href="reproduce/L132/figures/usc-supremum.png" download>figures/usc-supremum.png</a></li>
+<li><a href="reproduce/L132/figures/usc-supremum.svg" download>figures/usc-supremum.svg</a></li>
+<li><a href="reproduce/L132/figures/usc-supremum.pdf" download>figures/usc-supremum.pdf</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a> · <a href="index.html">Course contents</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

@@ -2,11 +2,11 @@
 
 A Lagrangian cycle combines an \(n\)-dimensional cycle in a \(2n\)-dimensional cotangent bundle with the orientation of the cotangent fibres. The coefficient is essential on a nonorientable base. Singular carriers are allowed, but their regular pieces must satisfy the cycle conservation law. A cotangent direct image then uses properness on an incidence set, which can hold even when the base map is nonproper.
 
-*Original text by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Source-scope and reader repairs by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the revising AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Use Subanalytic chains and closed cycle supports, Supports, products and proper images of chains and The dualizing resolution by subanalytic chains for singular dualizing bounds, finite-rank coefficient supports and the cycle complex. Conic subanalytic images and isotropic dimension and Isotropic cotangent transport and discrete critical values supply the geometric bounds and image theorem. The exact current SH-02 imports are the submersion/relative dualizing formula, closed support, proper-support base change and normalized trace.
+Subanalytic chains and closed cycle supports constructs the cycle complex and its supported dualizing description. Supports, products and proper images of chains proves its finite locally free coefficient and pure-support comparisons, and The dualizing resolution by subanalytic chains identifies the complex with the dualizing object. The geometric input is the singular one-form calculus and proper cotangent transport. We give the dimension, support, product and direct-image application arguments below, using the actual relative-dualizing, base-change and trace maps at their indicated proof locations.
 
-This lesson defines Lagrangian cycles and their proper cotangent direct images, in the framework of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1–3. The pullback coefficient map and the section-intersection comparison are treated in Pulling back Lagrangian cycles through a graph and Continuous sections and supported cycle intersections.
+The twisted conormal coefficient and Lagrangian-chain framework are due to M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.5–2.3, pp. 196–197. The construction here proves the carrier, product and proper direct-image operations through their supported sheaf maps. The pullback coefficient map and the section-intersection comparison are treated in Pulling back Lagrangian cycles through a graph and Continuous sections and supported cycle intersections.
 
 ## The orientation coefficient fixes the dimension
 
@@ -29,7 +29,7 @@ The submersion formula and exceptional composition give
  \qquad\text{(2)}
 \]
 
-The second map cancels the shifted invertible first factor of the first map, with the canonical integral square pairing \(B_X\otimes B_X\simeq A\). The displayed ordering and the usual symmetry of shifted complexes specify the cancellation. This is the actual relative dualizing identification; a choice of unrelated orientation trivializations would not specify the same map.
+The first isomorphism is the submersion tensor comparison (M11) for \(\pi_X\), followed by exceptional composition. Put \(L=B_X[n]\); its tensor inverse is \(L^{-1}=B_X[-n]\), using the integral orientation square \(B_X\otimes B_X\simeq A\). To specify the second isomorphism, start from \((L\otimes E_X)\otimes L^{-1}\), move \(L^{-1}\) past \(E_X\) with the graded symmetry, and evaluate the adjacent inverse pair. This is the ordered cancellation convention (M16)–(M19). All shift signs are part of that symmetry and evaluation. In a local integral orientation frame the square pairing sends \(e\otimes e\) to \(1\); replacing \(e\) by \(-e\) leaves it unchanged. Thus the map glues on a nonorientable base, without choosing unrelated orientation trivializations of its factors.
 
 For a closed subanalytic \(\Lambda\subset T^*X\) of dimension at most \(n\), exceptional composition and finite local freeness give
 
@@ -40,14 +40,15 @@ For a closed subanalytic \(\Lambda\subset T^*X\) of dimension at most \(n\), exc
  \qquad\text{(3)}
 \]
 
-These are sheaves on \(T^*X\). The first term uses the sheaf support operation; the last is its actual closed-support subsheaf of cycles. The shift in (2) turns degree \(-n\) into supported degree zero. It does not turn the geometric dimension into \(2n\).
+These are sheaves on \(T^*X\). Indeed, for the closed inclusion \(j_\Lambda\), the closed-support adjunction and exceptional composition give \(R\Gamma_\Lambda\omega_{T^*X}=j_{\Lambda*}\omega_\Lambda\). Tensoring with the locally free line \(B_X\) commutes with this supported internal-Hom operation: locally it is tensor with \(A\), and evaluation makes these local identifications compatible with orientation changes. Apply (2) to obtain \(R\Gamma_\Lambda E_X\simeq j_{\Lambda*}(\omega_\Lambda\otimes B_X|_\Lambda)[-n]\). The singular dualizing bound \(\omega_\Lambda\in D^{\geq-n}\) makes this object lie in \(D^{\geq0}\). Its degree-zero sheaf is exactly the middle term of (3), and the closed-cycle support identity gives the last term. These are the natural support and coefficient maps; the shift changes supported degree \(-n\) to zero while leaving the geometric cycle dimension \(n\).
 
 ## Closed isotropic carriers form a directed system
 
-All conicity is with respect to strictly positive cotangent scaling. Let \(\mathscr I_X\) be the family of closed, conic, subanalytic isotropic subsets of \(T^*X\). The canonical-form criterion gives
-\(\dim\Lambda\leq n\) for every such subset.
+All conicity means invariance under every strictly positive cotangent scaling. We use symplectic isotropy on the regular locus of a subanalytic set. For a conic set this is equivalent to vanishing there of the canonical one-form \(\alpha_X\). To check the equivalence, scaling preserves the regular locus, so the radial vector field \(R=\sum\xi_i\partial_{\xi_i}\) is tangent to it. With \(\alpha_X=\sum\xi_i dx_i\), we have \(\iota_Rd\alpha_X=\alpha_X\). Thus symplectic isotropy implies one-form vanishing on a conic regular piece. Conversely, differentiating the pulled-back one-form proves vanishing of the two-form. At a zero covector the one-form itself is zero. This is the conic convention in the singular-form theorem; without conicity, a nonzero pulled-back one-form does not disprove symplectic isotropy.
 
-Finite unions remain closed, conic and subanalytic. They remain isotropic because vanishing of the canonical one-form on a finite union follows from the point-normal cone test. Thus \(\mathscr I_X\) is directed by inclusion.
+Let \(\mathscr I_X\) be the family of closed, conic, subanalytic isotropic subsets. Each regular tangent space \(V\) is symplectically isotropic in dimension \(2n\), so \(V\subset V^\perp\) and \(\dim V^\perp=2n-\dim V\) give \(\dim V\leq n\). Taking the maximum of the regular dimensions yields \(\dim\Lambda\leq n\) for every \(\Lambda\in\mathscr I_X\).
+
+Finite unions remain closed, conic and subanalytic. They also remain isotropic at their singular intersections. In a chart, the singular-form test says that vanishing of an analytic one-form on a subanalytic set is equivalent to its annihilating every point normal cone. A sequence approaching a point through a finite union has a subsequence in one member, so its point-cone vector belongs to one member's cone. The canonical form therefore kills every cone of the union. The same test gives vanishing on its regular locus, hence isotropy. Thus \(\mathscr I_X\) is directed by inclusion.
 
 Define
 
@@ -65,7 +66,7 @@ The notation \(\mathcal L_X\) names the sheaf of Lagrangian cycles. Its allowed 
 
 We will also use a closure fact. If a conic subanalytic isotropic \(\Lambda\) is locally closed, then its closure is still conic, subanalytic and isotropic, with the same dimension bound.
 
-**Proof.** Closure preserves subanalyticity and dimension, and commutes with positive scaling. For each ambient point \(z\), the point normal cones of \(\Lambda\) and \(\overline\Lambda\) coincide. Indeed, approximate a sequence \(z_j\in\overline\Lambda\), with scales \(c_j\to\infty\), by points \(w_j\in\Lambda\) within \(1/(jc_j)\) in a fixed chart. The scaled differences have the same limit. The reverse inclusion is immediate. The canonical one-form kills those cones for \(\Lambda\), so the cone criterion makes it vanish on \(\overline\Lambda\). \(\square\)
+**Proof.** Closure preserves subanalyticity and dimension. Every positive dilation is a homeomorphism, so it preserves \(\overline\Lambda\) as well. The point-cone form test also proves the required one-form statement at new boundary points. Fix an ambient point \(z\). Given \(z_j\in\overline\Lambda\) tending to \(z\), and \(c_j\to\infty\) with \(c_j(z_j-z)\) convergent, choose \(w_j\in\Lambda\) within \(1/(jc_j)\) of \(z_j\) in the same chart. Then \(w_j\to z\) and the scaled differences have the same limit. This proves equality of the point cones of \(\Lambda\) and \(\overline\Lambda\); the reverse containment is immediate. The canonical one-form annihilates these cones, including those based outside the original set, so it vanishes on the closure. Its dimension is still at most \(n\). \(\square\)
 
 ## Locally closed support retains boundary germs
 
@@ -84,9 +85,9 @@ For a locally closed conic subanalytic isotropic \(\Lambda\), the more general f
 
 Here \(H^0_\Lambda F=H^0R\mathcal Hom(A_\Lambda,F)\), with the locally closed constant coefficient extended by zero. For a closed \(\Lambda\) it means the supported subsheaf. For a locally closed one it involves ordinary direct image from an open neighborhood in which \(\Lambda\) is closed. It need not be a subsheaf embedded into \(F\) on the full ambient space.
 
-**Proof.** For a closed \(\Lambda\), any cycle supported there is already one of the allowed terms in (4), by (3). This proves the two cycle-sheaf support identifications. The exceptional support formula \(R\Gamma_\Lambda\omega_{T^*X}=j_{\Lambda*}\omega_\Lambda\), together with (2), gives the middle description and the actual maps.
+**Proof.** For a closed \(\Lambda\), (3) identifies all cycles supported there with one of the allowed terms in (4). The colimit maps are inclusions, so taking the supported subsheaf of \(\mathcal L_X\) gives precisely that term. This proves both cycle-sheaf support identifications. The supported complex calculated after (3) gives the middle description and fixes its maps.
 
-For a locally closed \(\Lambda\), choose an open \(O\) in which it is closed. Its closure \(\overline\Lambda\) is an allowed carrier. On \(O\), the supported lowest sheaf on \(\overline\Lambda\) restricts to that on \(\Lambda\), by open restriction of the dualizing object. Thus these same cycle germs occur in \(\mathcal L_X|_O\). Conversely \(\mathcal L_X\subset\mathcal Z_n(B_X)\), whose supported lowest-degree identity is already proved. The closed-case argument on \(O\), followed by ordinary direct image, proves (5) on the original ambient space. All dualizing support objects involved start in degree \(-n\), so taking their lowest degree is exactly taking the degree-zero support of their lowest sheaf. \(\square\)
+For locally closed \(\Lambda\), choose an open inclusion \(j:O\hookrightarrow T^*X\) with \(\Lambda\) closed in \(O\); then \(\overline\Lambda\cap O=\Lambda\). The closure is an allowed global carrier, so its term in (4), restricted to \(O\), contains all the cycle germs supported on \(\Lambda\). Conversely the inclusion \(\mathcal L_X\subset\mathcal Z_n(B_X)\) bounds its supported germs by precisely those cycles. Thus the closed-case equality holds on \(O\), even if \(O\) is not conic. For any coefficient object \(F\), the locally closed support formula is \(R\Gamma_\Lambda F=Rj_*R\Gamma_\Lambda^O(F|_O)\). The internal-Hom description in (5) makes this independent of \(O\). Apply ordinary direct image to the supported lowest sheaf just identified on \(O\). The complexes on that support start in degree zero, so their degree-zero derived ordinary image is the ordinary image of their degree-zero sheaf. This proves (5) on the full cotangent space, including its approach germs at the frontier. It does not embed that ordinary image back into \(\mathcal L_X\). \(\square\)
 
 If \(\Lambda\) is smooth of dimension \(n\), restriction to \(\Lambda\) yields
 
@@ -108,11 +109,13 @@ Its actual support is closed in \(U\), subanalytic there and, if nonempty, pure 
 
 **Proof.** The coefficient \(B_X\) is locally free of rank one, so the finite-rank chain support theorem applies to the inclusion (4). A local finite compatible cell refinement describes its nonzero coefficients on \(n\)-pieces; their closures give its closed subanalytic pure support. A germ has an allowed carrier \(\Lambda\), so its support near that germ is a subanalytic subset of \(\Lambda\). The one-form subset rule proves isotropy.
 
-For dilation, a carrier and its regular locus are preserved by the positive analytic scaling maps. Away from the zero section, their regular \(n\)-pieces contain the radial direction, and their orientation coefficients are locally constant along it. The fibre sign line transports by positive scaling with sign plus. The cycle is determined by the coefficients on these regular pieces: its difference from another such description cannot be supported solely on a lower-dimensional frontier. Hence the cycle germs, and their vanishing, transport along a sufficiently small radial interval. Chaining those intervals proves support invariance along each connected portion of an orbit contained in \(U\). Zero-section orbits are fixed points. If \(U\) is invariant under the action, each positive orbit in it is connected, giving full conicity. \(\square\)
+For the dilation assertion, work near a point where the section is represented on one closed conic carrier \(\Lambda\). Choose a smaller neighborhood whose closure lies in that representative neighborhood. For all dilations sufficiently close to the identity, the whole short scaling path of this smaller neighborhood stays in the representative neighborhood. Scaling preserves \(\Lambda\) and its regular locus. On each regular \(n\)-piece, it transports the orientation continuously from the identity, and its action on the fibre sign line is positive. The coefficient of a cycle in this local orientation line is locally constant. It therefore agrees with its transported coefficient along the short scaling path.
+
+This agreement on regular \(n\)-pieces is agreement of the full cycle germs: their difference is a cycle with locally free coefficient \(B_X\) supported in the complement of the top regular pieces, a subanalytic set of dimension less than \(n\). The pure-support theorem forces that difference to vanish. The argument thus applies at singular points as well. Chaining the short intervals shows that the vanishing or nonvanishing of the section propagates along each connected portion of a dilation orbit contained in \(U\). Zero-section points are fixed by scaling. If \(U\) is conic, every positive orbit lies entirely in \(U\) and is connected, so the actual support is fully conic. \(\square\)
 
 On a general open \(U\), disjoint portions of the same dilation orbit can have independent coefficients. This is the local interpretation of conicity for such a restricted sheaf; Exercise 4 makes the distinction explicit.
 
-The cycle-support theorem proves pure isotropic support and local dilation invariance. Generalized involutivity requires a separate argument beyond the properties established here.
+These conclusions give pure isotropic support and local dilation invariance. For a section on the full cotangent bundle its actual support is therefore itself a closed conic subanalytic isotropic carrier. Applying (5) to that carrier represents the section by its own supported dualizing class, without commuting global sections with the sheaf colimit (4).
 
 ## External products use the ordered dualizing comparison
 
@@ -139,7 +142,9 @@ The last map is inverse image of the actual ordered manifold product
 \(\omega_X\boxtimes^L\omega_Y\simeq\omega_{X\times Y}\).
 It is fixed as the mate of the two factor compact traces, integrated in factor order. All shifts and their graded symmetries stay in this comparison. We do not replace it by separately chosen unshifted orientation bases.
 
-Both supported factor objects begin in degree zero, by (3). Their degree-zero classes therefore have the indicated natural product into degree zero of the derived tensor; no flatness of those lowest support modules is required. The supported-evaluation construction keeps the product carrier. Taking common upper carriers in (4) makes (7) well defined and yields
+Here is the supported map and its degree-zero passage. Put \(K_X=R\Gamma_{\Lambda_X}E_X\) and \(K_Y=R\Gamma_{\Lambda_Y}E_Y\). The closed constant sheaves \(A_{\Lambda_X},A_{\Lambda_Y}\) are flat, with stalks \(A\) or zero, and their external tensor is \(A_{\Lambda_X\times\Lambda_Y}\). Tensor the evaluations defining \(K_X,K_Y\), place each constant argument next to its factor using the graded symmetry, and curry. This gives \(K_X\boxtimes^L K_Y\to R\Gamma_{\Lambda_X\times\Lambda_Y}(E_X\boxtimes^LE_Y)\), the external version of the supported evaluation product.
+
+The supported complexes \(K_X,K_Y\) lie in \(D^{\geq0}\), by (3). Their canonical truncation maps \(H^0K_X\to K_X\), \(H^0K_Y\to K_Y\) give, after derived external tensor and degree-zero cohomology, the first arrow of (7): its source is \(H^0(H^0K_X\boxtimes^L H^0K_Y)=H^0K_X\boxtimes H^0K_Y\). This uses no flatness of the lowest support modules; lower Tor groups may exist and are not being declared zero. Naturality of evaluation makes this product commute with enlargement of each carrier and with restriction to an open set. It therefore passes to common upper carriers in (4), giving
 
 \[
  \mathcal L_X\boxtimes_A\mathcal L_Y
@@ -147,7 +152,7 @@ Both supported factor objects begin in degree zero, by (3). Their degree-zero cl
  \qquad\text{(8)}
 \]
 
-Its associativity follows from the associativity of evaluation, proper-support projection and the ordered traces that define the dualizing comparison. A zero-dimensional factor multiplies coefficients with its point trace. The product support can be smaller than the product of two nonzero supports when coefficients multiply to zero; Exercise 6 checks this.
+For three factors, both parenthesizations tensor the same three evaluations in the same order and transpose the same ordered three compact traces. Associativity of proper-support projection and exceptional composition identifies these maps. Thus (8) is associative as a specified operation, including its shifted orientation comparisons. A zero-dimensional factor uses the identity point trace and multiplies coefficients. Product support is only required to lie in the product carrier: it can shrink when coefficients multiply to zero, as Exercise 6 shows.
 
 ## A direct image has a cotangent incidence domain
 
@@ -170,11 +175,7 @@ The required direct-image hypothesis is
  \qquad\text{(10)}
 \]
 
-The geometric transport theorem proves that
-\(\Lambda_X'=f_\pi(A_f)\) is closed, conic, subanalytic and isotropic.
-The canonical-form equality
-\(f_d^*\alpha_Y=f_\pi^*\alpha_X\) has no antipode or minus sign.
-Properness in (10) controls the actual incidence, including its zero covectors.
+The incidence \(A_f\) is closed and subanalytic because \(f_d\) is analytic and \(\Lambda_Y\) is closed subanalytic; it is conic because \(f_d\) commutes with scaling. Properness of \(f_\pi|_{A_f}\) makes its image closed, and proper subanalytic image calculus makes it subanalytic. In local coordinates, evaluating either pulled-back canonical form on a tangent vector gives \(\sum_i\xi_i\,df_i\), so \(f_d^*\alpha_Y=f_\pi^*\alpha_X\), with no antipode or minus sign. The singular-form pullback and surjective-detection arguments imply first that this form vanishes on \(A_f\), and then that \(\alpha_X\) vanishes on its now-known subanalytic image. The image is conic as well, hence is an allowed carrier \(\Lambda_X'=f_\pi(A_f)\). This is the proper direct-transport theorem applied to the actual incidence, including zero covectors. No rank or noncharacteristic assumption on \(df\) is used.
 
 We construct the operation by the full typed chain
 
@@ -188,9 +189,9 @@ We construct the operation by the full typed chain
  \qquad\text{(11)}
 \]
 
-The first arrow is supported inverse-image evaluation under \(f_d\);
-\(f_d^{-1}E_Y=\pi^{-1}\omega_Y\).
-For the second, sections supported on the closed \(A_f\) have proper support over \(T^*X\), by (10). On objects supported on \(A_f\), proper and ordinary direct image agree. Thus supported global sections give the displayed map through \(Rf_{\pi!}\), with the closed output support \(\Lambda_X'\) retained. This argument applies to derived supported sections, using the closed inclusion of \(A_f\).
+Represent an input class by a derived morphism \(u:A_{\Lambda_Y}\to E_Y\) on \(T^*Y\), where the constant sheaf is extended by the closed inclusion. This represents precisely \(H^0_{\Lambda_Y}(T^*Y;E_Y)\) by supported internal-Hom adjunction. Ordinary inverse image is exact and identifies \(f_d^{-1}A_{\Lambda_Y}=A_{A_f}\) and \(f_d^{-1}E_Y=\pi^{-1}\omega_Y\). Hence \(v=f_d^{-1}u:A_{A_f}\to\pi^{-1}\omega_Y\) is the first supported class in (11). This is ordinary supported inverse image, not an exceptional inverse image requiring an extra dimension shift.
+
+Write \(q=f_\pi\) and \(D=\Lambda_X'\). Closed-constant restriction gives \(q^{-1}A_D\to A_{A_f}\). Its ordinary adjoint is \(A_D\to Rq_*A_{A_f}\). Because \(q\) is proper on the closed \(A_f\), the natural comparison \(Rq_!A_{A_f}\to Rq_*A_{A_f}\) is an isomorphism: factor the coefficient object through its closed inclusion and use the proper restricted map. Invert this comparison and apply \(Rq_!v\). The composite \(A_D\to Rq_*A_{A_f}\simeq Rq_!A_{A_f}\to Rq_!\pi^{-1}\omega_Y\) is exactly the second supported class in (11). This constructs that arrow in the derived category, retains its closed output support, and does not treat the ambient map \(q\) as proper.
 
 The square with horizontal maps \(f_\pi,f\) and vertical maps
 \(\pi,\pi_X\) is Cartesian. Proper-support base change and the actual trace for \(f\) give the coefficient map
@@ -203,12 +204,13 @@ The square with horizontal maps \(f_\pi,f\) and vertical maps
  \qquad\text{(12)}
 \]
 
-Here \(f^!\omega_X=\omega_Y\) by exceptional composition. The trace is defined for the map even when it is not globally proper; the support condition governs the sections to which it is applied. The finite-dimensional proper-support base-change prerequisite applies to this actual Cartesian square and this bounded dualizing input.
+Exceptional composition identifies \(f^!\omega_X\) with \(\omega_Y\), so the last arrow of (12) is the actual counit \(Rf_!f^!\omega_X\to\omega_X\), pulled back by \(\pi_X\). The first arrow is the inverse of the proper-support base-change isomorphism for the displayed Cartesian square. Its proof pulls properly supported sections back to the same fibres and uses a fibrewise acyclic resolution; it does not require \(f\) to be globally proper. Here the fibres of \(f\) are closed subsets of the finite-dimensional manifold \(Y\), so the required integral cohomological dimension bound holds, and \(\omega_Y\) is bounded. Base change preserves the normalized trace by its defining transpose. Thus (12) introduces precisely the coefficient and shift maps already fixed by exceptional composition, with no new orientation choice.
 
-The output of (11) belongs to \(\mathcal L_X\), by its allowed carrier. This defines the direct image \(f_*\) of a Lagrangian cycle under (10). For \(f=\operatorname{id}\), both cotangent maps, the support comparisons and the trace are identities, so this is the identity operation. Enlarging a carrier compatibly leaves the result unchanged whenever the properness condition remains valid.
+Composing the supported morphism just constructed with (12) gives \(A_D\to E_X\), hence a class in \(H^0_D(T^*X;E_X)\). Since \(D\) is an allowed carrier, (3)–(4) identify it with a global section of \(\mathcal L_X\). For a global input cycle one may use its actual support as \(\Lambda_Y\), by the preceding pure-support and dilation argument; whenever (10) holds on that incidence, (11) defines \(f_*\) of the cycle.
 
-The inverse cycle operation instead assumes properness of \(f_d\) on
-\(f_\pi^{-1}(\Lambda_X)\) and needs a different coefficient map. Its proof cannot be obtained merely by reversing (11). We retain that task for the next lesson.
+The construction commutes with enlargement of an allowed carrier: closed-constant restriction, ordinary unit, proper comparison and trace are all natural for its inclusion. If two allowed carriers give the same cycle and both satisfy (10), their union also does: its incidence is the union of the two closed incidences, and the inverse image of a compact target set is a union of two compact sets. Comparing both maps through that common upper carrier proves independence. For \(f=\mathrm{id}\), all these cotangent maps, units, proper comparisons and traces are identities, so the resulting operation is exactly the identity.
+
+The inverse cycle operation instead assumes properness of \(f_d\) on \(f_\pi^{-1}(\Lambda_X)\) and uses a different coefficient map. Pulling back Lagrangian cycles through a graph constructs that map with its graph and relative-dualizing normalization; reversing the arrows in (11) would not produce it.
 
 ## Exercises with complete solutions
 
@@ -331,3 +333,9 @@ Compute the Lagrangian cycle sheaf for a point and its external product with \(\
 There is no nonzero degree to permute in the point factor.
 
 The product ring has finite global dimension one: its modules decompose by its two idempotents into pairs of \(\mathbb Z\)-modules, and projective resolutions and their length are computed in those two components. Thus it satisfies the standing coefficient condition. The two displayed weights are nonzero, but \(ab=(0,0)\). The external product of the two point cycles is zero and has empty support. Its support is contained in the product carrier as (7) requires; equality with the product of the input supports is not asserted. The pure-support theorem allows this zero case.
+
+## Mathematical sources
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.5–1.6 and 2.1–2.3, pp. 196–197, describes coefficient-valued chains, the canonical cotangent orientation, and the orientation pairing that gives a conormal its twisted fundamental chain. Its characteristic-cycle discussion in §3 then fixes a field. The finite-global-dimension coefficient ring here is retained through the programme's proved chain and dualizing constructions.
+
+P. Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=95), edition dated 01/08/2026, Corollary 4.6.2, Propositions 4.6.4, 4.6.6–4.6.7, §4.7 and Proposition 5.1.9, pp. 95–98 and 107–108, treats the exceptional composition, support, tensor and submersion identities. The linked programme proofs fix the actual counits and orientation comparisons. The present argument constructs the sheaf of allowed cycles, proves its local dilation and support properties, and defines direct transport by a supported ordinary unit followed by proper comparison and trace. Its examples test singular conservation, nonorientable coefficients, open-frontier germs, nonproper base maps and zero divisors. The human sources retain their authorship and their own terms.

@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Plurisubharmonic envelopes and support functions</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L137.html">Earlier lesson</a> · <a href="#psh-envelope-theorem">The statement</a> · <a href="#finite-horizontal-slices">Complete proof</a> · <a href="#psh-liouville">Liouville theorem</a> · <a href="#exercises-with-complete-solutions">Exercises and solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="plurisubharmonic-envelopes-and-support-functions">Plurisubharmonic envelopes and support functions</h1>
+<p><em>Original exposition and illustrations by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>A plurisubharmonic function may have singular points, and its largest value on a real horizontal slice need not be attained. A uniform linear bound in the imaginary variables nevertheless forces a finite convex envelope. Its growth at infinity is the support function of a compact convex set. We prove the slice finiteness, the convex limit and the construction of that set, then prove that an entire plurisubharmonic function bounded above is constant.</p>
+<p>Throughout <span class="math" data-index="0" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and <span class="math" data-index="1" data-tex="\(z=x+iy\)">\(z=x+iy\)</span> with <span class="math" data-index="2" data-tex="\(x,y\in\mathbb R^n\)">\(x,y\in\mathbb R^n\)</span>. Norms and dot products are Euclidean. We use the following definition: a <strong>plurisubharmonic</strong> (PSH) function is an upper semicontinuous map <span class="math" data-index="3" data-tex="\(v:\mathbb C^n\to[-\infty,\infty)\)">\(v:\mathbb C^n\to[-\infty,\infty)\)</span> whose restriction to each nonconstant complex affine line is subharmonic or identically <span class="math" data-index="4" data-tex="\(-\infty\)">\(-\infty\)</span>. Subharmonicity on a line uses the planar circle-mean inequality. The identically minus-infinite case is allowed. A constant affine parametrization causes no difficulty: its pullback is a finite constant or identically <span class="math" data-index="5" data-tex="\(-\infty\)">\(-\infty\)</span>, and in either case satisfies that inequality.</p>
+<h2 id="the-assertions-and-their-written-inputs">The assertions and their written inputs</h2>
+<p><a id="psh-envelope-theorem"></a></p>
+<p><a id="proof-E1"></a></p>
+<p><strong>Theorem E1.</strong> Suppose <span class="math" data-index="6" data-tex="\(v\not\equiv-\infty\)">\(v\not\equiv-\infty\)</span> is PSH on all of <span class="math" data-index="7" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, and real constants <span class="math" data-index="8" data-tex="\(C_0,C_1\)">\(C_0,C_1\)</span> satisfy
+<a id="eq-E1"></a></p>
+<span class="math math-display" data-index="9" data-tex="\[
+v(x+iy)\le C_0+C_1|y|\qquad(x,y\in\mathbb R^n).
+\tag{E1}
+\]">\[
+v(x+iy)\le C_0+C_1|y|\qquad(x,y\in\mathbb R^n).
+\tag{E1}
+\]</span>
+<p>Then the envelope
+<a id="eq-E2"></a></p>
+<span class="math math-display" data-index="10" data-tex="\[
+M(y)=\sup_{x\in\mathbb R^n}v(x+iy)
+\tag{E2}
+\]">\[
+M(y)=\sup_{x\in\mathbb R^n}v(x+iy)
+\tag{E2}
+\]</span>
+<p>is finite and convex everywhere. The limit
+<a id="eq-E3"></a></p>
+<span class="math math-display" data-index="11" data-tex="\[
+H(y)=\lim_{t\to\infty}\frac{M(ty)}t
+\tag{E3}
+\]">\[
+H(y)=\lim_{t\to\infty}\frac{M(ty)}t
+\tag{E3}
+\]</span>
+<p>is a finite continuous sublinear function: <span class="math" data-index="12" data-tex="\(H(\lambda y)=\lambda H(y)\)">\(H(\lambda y)=\lambda H(y)\)</span> for <span class="math" data-index="13" data-tex="\(\lambda\ge0\)">\(\lambda\ge0\)</span>, and <span class="math" data-index="14" data-tex="\(H(y+w)\le H(y)+H(w)\)">\(H(y+w)\le H(y)+H(w)\)</span>. Necessarily <span class="math" data-index="15" data-tex="\(C_1\ge0\)">\(C_1\ge0\)</span>, and
+<a id="eq-E4"></a></p>
+<span class="math math-display" data-index="16" data-tex="\[
+|H(y)-H(w)|\le C_1|y-w|,
+\qquad M(y+w)\le M(y)+H(w).
+\tag{E4}
+\]">\[
+|H(y)-H(w)|\le C_1|y-w|,
+\qquad M(y+w)\le M(y)+H(w).
+\tag{E4}
+\]</span>
+<p>In particular <span class="math" data-index="17" data-tex="\(M\)">\(M\)</span> is also globally <span class="math" data-index="18" data-tex="\(C_1\)">\(C_1\)</span>-Lipschitz. The set
+<a id="eq-E5"></a></p>
+<span class="math math-display" data-index="19" data-tex="\[
+K_H=\{\xi\in\mathbb R^n:\xi\cdot y\le H(y)
+                  \text{ for every }y\in\mathbb R^n\}
+\tag{E5}
+\]">\[
+K_H=\{\xi\in\mathbb R^n:\xi\cdot y\le H(y)
+                  \text{ for every }y\in\mathbb R^n\}
+\tag{E5}
+\]</span>
+<p>is nonempty, compact and convex, lies in the radius-<span class="math" data-index="20" data-tex="\(C_1\)">\(C_1\)</span> ball, and has support function <span class="math" data-index="21" data-tex="\(H\)">\(H\)</span>:
+<a id="eq-E6"></a></p>
+<span class="math math-display" data-index="22" data-tex="\[
+H(y)=\max_{\xi\in K_H}\xi\cdot y.
+\tag{E6}
+\]">\[
+H(y)=\max_{\xi\in K_H}\xi\cdot y.
+\tag{E6}
+\]</span>
+<p><a id="proof-C2"></a></p>
+<p><strong>Theorem C2 (PSH Liouville).</strong> A PSH function on all of <span class="math" data-index="23" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> which is bounded above by a finite real constant is constant, with its constant allowed to be <span class="math" data-index="24" data-tex="\(-\infty\)">\(-\infty\)</span>.</p>
+<p>We use <a href="AN02-L133.html#theorem-S">the scalar slab-envelope theorem</a>, Theorem S and its “Finiteness and convexity” proof, only in real dimension two. It says that a subharmonic function on an upper half-plane, bounded by a constant plus a linear function of height uniformly in its horizontal coordinate, is either identically <span class="math" data-index="25" data-tex="\(-\infty\)">\(-\infty\)</span>, or has a finite convex horizontal supremum at every positive height. Its complete proof includes the quadratic slab barrier and the propagation of a minus-infinite slice. We also use <a href="AN02-L132.html#proof-S1">compact harmonic comparison</a>, Theorem S1, criterion (3), in the plane. The finite-dimensional Euclidean facts are the ordinary coordinate, compactness and calculus inputs of <a href="prerequisites/metric-foundation-bridges.html">the metric foundations</a>. The dominated linear extension needed for (E6) is proved explicitly below.</p>
+<p>For the examples with analytic functions, <a href="AN02-L059.html#the-local-subharmonic-facts-used-here">Analytic norms and propagation on complex balls</a>, its scalar logarithm proof and Lemma 1, gives that the logarithm of the modulus of a holomorphic function and the logarithm of the norm of a holomorphic vector are PSH, with logarithm zero interpreted as <span class="math" data-index="26" data-tex="\(-\infty\)">\(-\infty\)</span>. These are written example inputs; neither is needed to prove Theorem E1 or C2.</p>
+<h2 id="1-complex-lines-exclude-a-missing-horizontal-slice">1. Complex lines exclude a missing horizontal slice</h2>
+<p><a id="finite-horizontal-slices"></a></p>
+<p>Choose <span class="math" data-index="27" data-tex="\(B=\max(C_1,0)\)">\(B=\max(C_1,0)\)</span>; then (E1) also holds with <span class="math" data-index="28" data-tex="\(B\)">\(B\)</span> in place of <span class="math" data-index="29" data-tex="\(C_1\)">\(C_1\)</span>. Fix real vectors <span class="math" data-index="30" data-tex="\(p,q,\eta\)">\(p,q,\eta\)</span>, and consider the scalar pullback
+<a id="eq-E7"></a></p>
+<span class="math math-display" data-index="31" data-tex="\[
+f(w)=v(p+iq+w\eta),\qquad w=s+it.
+\tag{E7}
+\]">\[
+f(w)=v(p+iq+w\eta),\qquad w=s+it.
+\tag{E7}
+\]</span>
+<p>For <span class="math" data-index="32" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span>, this is a nonconstant complex affine line, so <span class="math" data-index="33" data-tex="\(f\)">\(f\)</span> is subharmonic or identically <span class="math" data-index="34" data-tex="\(-\infty\)">\(-\infty\)</span>. Its imaginary vector is <span class="math" data-index="35" data-tex="\(q+t\eta\)">\(q+t\eta\)</span>, and
+<a id="eq-E8"></a></p>
+<span class="math math-display" data-index="36" data-tex="\[
+f(s+it)\le C_0+B|q+t\eta|.
+\tag{E8}
+\]">\[
+f(s+it)\le C_0+B|q+t\eta|.
+\tag{E8}
+\]</span>
+<p>Crucially this bound is uniform in <span class="math" data-index="37" data-tex="\(s\)">\(s\)</span>.</p>
+<p>If <span class="math" data-index="38" data-tex="\(f\)">\(f\)</span> has a finite value at one point of height <span class="math" data-index="39" data-tex="\(t_*\)">\(t_*\)</span>, take any lower height <span class="math" data-index="40" data-tex="\(\ell&lt;t_*\)">\(\ell&lt;t_*\)</span> and write <span class="math" data-index="41" data-tex="\(w=u+i(\ell+\tau)\)">\(w=u+i(\ell+\tau)\)</span>, with <span class="math" data-index="42" data-tex="\(\tau&gt;0\)">\(\tau&gt;0\)</span>. The shifted upper-half-plane function satisfies
+<a id="eq-E9"></a></p>
+<span class="math math-display" data-index="43" data-tex="\[
+f(u+i(\ell+\tau))
+\le C_0+B|q+\ell\eta|+B|\eta|\tau.
+\tag{E9}
+\]">\[
+f(u+i(\ell+\tau))
+\le C_0+B|q+\ell\eta|+B|\eta|\tau.
+\tag{E9}
+\]</span>
+<p>It is not identically <span class="math" data-index="44" data-tex="\(-\infty\)">\(-\infty\)</span> there, because it includes the finite point. The scalar slab theorem therefore makes
+<a id="eq-E10"></a></p>
+<span class="math math-display" data-index="45" data-tex="\[
+g(t)=\sup_{s\in\mathbb R}f(s+it)
+\tag{E10}
+\]">\[
+g(t)=\sup_{s\in\mathbb R}f(s+it)
+\tag{E10}
+\]</span>
+<p>finite and convex for <span class="math" data-index="46" data-tex="\(t&gt;\ell\)">\(t&gt;\ell\)</span>. By taking <span class="math" data-index="47" data-tex="\(\ell\)">\(\ell\)</span> below any prescribed finite collection of heights and below <span class="math" data-index="48" data-tex="\(t_*\)">\(t_*\)</span>, we conclude that <span class="math" data-index="49" data-tex="\(g\)">\(g\)</span> is finite and convex on all of <span class="math" data-index="50" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. If <span class="math" data-index="51" data-tex="\(f\equiv-\infty\)">\(f\equiv-\infty\)</span> on the entire line instead, then <span class="math" data-index="52" data-tex="\(g\equiv-\infty\)">\(g\equiv-\infty\)</span>. Thus these are the only two possibilities. In the degenerate case <span class="math" data-index="53" data-tex="\(\eta=0\)">\(\eta=0\)</span>, <span class="math" data-index="54" data-tex="\(g\)">\(g\)</span> is the constant <span class="math" data-index="55" data-tex="\(v(p+iq)\)">\(v(p+iq)\)</span>, so it has the same finite-or-minus-infinite alternatives.</p>
+<p>We now prove every value of <span class="math" data-index="56" data-tex="\(M\)">\(M\)</span> is finite. Since <span class="math" data-index="57" data-tex="\(v\not\equiv-\infty\)">\(v\not\equiv-\infty\)</span>, choose <span class="math" data-index="58" data-tex="\(z_*=p_*+iq_*\)">\(z_*=p_*+iq_*\)</span> with <span class="math" data-index="59" data-tex="\(v(z_*)\)">\(v(z_*)\)</span> finite. For an arbitrary target imaginary vector <span class="math" data-index="60" data-tex="\(y\)">\(y\)</span>, set <span class="math" data-index="61" data-tex="\(\eta=y-q_*\)">\(\eta=y-q_*\)</span>. If <span class="math" data-index="62" data-tex="\(\eta=0\)">\(\eta=0\)</span>, the point <span class="math" data-index="63" data-tex="\(z_*\)">\(z_*\)</span> already makes <span class="math" data-index="64" data-tex="\(M(y)&gt;-\infty\)">\(M(y)&gt;-\infty\)</span>. Otherwise the line (E7) with <span class="math" data-index="65" data-tex="\(p=p_*\)">\(p=p_*\)</span>, <span class="math" data-index="66" data-tex="\(q=q_*\)">\(q=q_*\)</span> has a finite value at <span class="math" data-index="67" data-tex="\(w=0\)">\(w=0\)</span>, so (E10) is finite at <span class="math" data-index="68" data-tex="\(t=1\)">\(t=1\)</span>. Some value on that horizontal line must then be finite: if every value were <span class="math" data-index="69" data-tex="\(-\infty\)">\(-\infty\)</span>, their supremum would be <span class="math" data-index="70" data-tex="\(-\infty\)">\(-\infty\)</span>. Such a value has imaginary vector <span class="math" data-index="71" data-tex="\(q_*+\eta=y\)">\(q_*+\eta=y\)</span>, proving again that <span class="math" data-index="72" data-tex="\(M(y)&gt;-\infty\)">\(M(y)&gt;-\infty\)</span>. The original bound (E1) gives <span class="math" data-index="73" data-tex="\(M(y)&lt;+\infty\)">\(M(y)&lt;+\infty\)</span>. No maximizer is selected.</p>
+<h2 id="2-taking-the-supremum-preserves-convexity">2. Taking the supremum preserves convexity</h2>
+<p><a id="convex-envelope"></a></p>
+<p>Fix a base vector <span class="math" data-index="74" data-tex="\(q\)">\(q\)</span> and a direction <span class="math" data-index="75" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span>. Apply the preceding line argument separately to
+<span class="math" data-index="76" data-tex="\(f_p(w)=v(p+iq+w\eta)\)">\(f_p(w)=v(p+iq+w\eta)\)</span> for every <span class="math" data-index="77" data-tex="\(p\in\mathbb R^n\)">\(p\in\mathbb R^n\)</span>. Each horizontal supremum <span class="math" data-index="78" data-tex="\(g_p(t)\)">\(g_p(t)\)</span> is either a finite convex function on <span class="math" data-index="79" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or identically <span class="math" data-index="80" data-tex="\(-\infty\)">\(-\infty\)</span>. Moreover
+<a id="eq-E11"></a></p>
+<span class="math math-display" data-index="81" data-tex="\[
+M(q+t\eta)=\sup_p g_p(t).
+\tag{E11}
+\]">\[
+M(q+t\eta)=\sup_p g_p(t).
+\tag{E11}
+\]</span>
+<p>To verify equality, <span class="math" data-index="82" data-tex="\(p+s\eta\)">\(p+s\eta\)</span> is a real vector, giving the inequality from right to left; conversely taking <span class="math" data-index="83" data-tex="\(s=0\)">\(s=0\)</span> includes every real part appearing in the left side. For <span class="math" data-index="84" data-tex="\(0&lt;\theta&lt;1\)">\(0&lt;\theta&lt;1\)</span>, convexity of each finite <span class="math" data-index="85" data-tex="\(g_p\)">\(g_p\)</span>, followed by its bound by <span class="math" data-index="86" data-tex="\(M\)">\(M\)</span> at the two endpoints, gives
+<a id="eq-E12"></a></p>
+<span class="math math-display" data-index="87" data-tex="\[
+g_p((1-\theta)t_0+\theta t_1)
+\le(1-\theta)M(q+t_0\eta)+\theta M(q+t_1\eta).
+\tag{E12}
+\]">\[
+g_p((1-\theta)t_0+\theta t_1)
+\le(1-\theta)M(q+t_0\eta)+\theta M(q+t_1\eta).
+\tag{E12}
+\]</span>
+<p>The identically minus-infinite members also satisfy this inequality. Taking their supremum and using (E11) proves convexity on the real line. A zero direction is constant, and every segment in <span class="math" data-index="88" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span> has this form. Thus <span class="math" data-index="89" data-tex="\(M\)">\(M\)</span> is convex everywhere. Its finiteness, already proved, ensures no indeterminate infinite sums occur in (E12).</p>
+<p>One can also check continuity at this stage without invoking a general convex-function theorem. For <span class="math" data-index="90" data-tex="\(|y|\le R\)">\(|y|\le R\)</span>, convexity at the midpoint of <span class="math" data-index="91" data-tex="\(y,-y\)">\(y,-y\)</span> and the upper bound give
+<a id="eq-E13"></a></p>
+<span class="math math-display" data-index="92" data-tex="\[
+2M(0)-C_0-BR\le M(y)\le C_0+BR.
+\tag{E13}
+\]">\[
+2M(0)-C_0-BR\le M(y)\le C_0+BR.
+\tag{E13}
+\]</span>
+<p>On the radius-<span class="math" data-index="93" data-tex="\(r\)">\(r\)</span> ball, compare the secant from <span class="math" data-index="94" data-tex="\(u\)">\(u\)</span> to <span class="math" data-index="95" data-tex="\(w\)">\(w\)</span> with the next secant of length one in the same direction, ending at <span class="math" data-index="96" data-tex="\(w+(w-u)/|w-u|\)">\(w+(w-u)/|w-u|\)</span>. All three points are in the radius-<span class="math" data-index="97" data-tex="\(r+1\)">\(r+1\)</span> ball. The usual three-point rearrangement of convexity bounds
+<span class="math" data-index="98" data-tex="\((M(w)-M(u))/|w-u|\)">\((M(w)-M(u))/|w-u|\)</span> by the difference between the upper and lower bounds in (E13) for <span class="math" data-index="99" data-tex="\(R=r+1\)">\(R=r+1\)</span>. Reversing <span class="math" data-index="100" data-tex="\(u,w\)">\(u,w\)</span> gives a bound for its negative. This proves local Lipschitz continuity. A sharper global bound follows from (E4) below.</p>
+<h2 id="3-the-recession-limit-and-the-exact-increment-bound">3. The recession limit and the exact increment bound</h2>
+<p><a id="recession-support-function"></a></p>
+<p>For each fixed <span class="math" data-index="101" data-tex="\(y\)">\(y\)</span>, convexity makes the secant quotient
+<a id="eq-E14"></a></p>
+<span class="math math-display" data-index="102" data-tex="\[
+Q_y(t)=\frac{M(ty)-M(0)}t,\qquad t&gt;0,
+\tag{E14}
+\]">\[
+Q_y(t)=\frac{M(ty)-M(0)}t,\qquad t&gt;0,
+\tag{E14}
+\]</span>
+<p>nondecreasing: if <span class="math" data-index="103" data-tex="\(0&lt;s&lt;t\)">\(0&lt;s&lt;t\)</span>, express <span class="math" data-index="104" data-tex="\(sy\)">\(sy\)</span> as the convex combination <span class="math" data-index="105" data-tex="\((s/t)ty+(1-s/t)0\)">\((s/t)ty+(1-s/t)0\)</span>. For <span class="math" data-index="106" data-tex="\(t\ge1\)">\(t\ge1\)</span>, the quotient has the finite lower bound <span class="math" data-index="107" data-tex="\(Q_y(1)\)">\(Q_y(1)\)</span>. It also satisfies
+<a id="eq-E15"></a></p>
+<span class="math math-display" data-index="108" data-tex="\[
+Q_y(t)\le C_1|y|+\frac{C_0-M(0)}t.
+\tag{E15}
+\]">\[
+Q_y(t)\le C_1|y|+\frac{C_0-M(0)}t.
+\tag{E15}
+\]</span>
+<p>It therefore has a finite real limit. The difference between <span class="math" data-index="109" data-tex="\(Q_y(t)\)">\(Q_y(t)\)</span> and <span class="math" data-index="110" data-tex="\(M(ty)/t\)">\(M(ty)/t\)</span> is <span class="math" data-index="111" data-tex="\(-M(0)/t\)">\(-M(0)/t\)</span>, proving existence of (E3). In particular <span class="math" data-index="112" data-tex="\(H(0)=0\)">\(H(0)=0\)</span> and <span class="math" data-index="113" data-tex="\(H(y)\le C_1|y|\)">\(H(y)\le C_1|y|\)</span>.</p>
+<p>For <span class="math" data-index="114" data-tex="\(\lambda&gt;0\)">\(\lambda&gt;0\)</span>, a change of scale in (E3) proves positive homogeneity; the case <span class="math" data-index="115" data-tex="\(\lambda=0\)">\(\lambda=0\)</span> uses <span class="math" data-index="116" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>. Passing to the limit in the convexity inequality for <span class="math" data-index="117" data-tex="\(M\)">\(M\)</span>, divided by <span class="math" data-index="118" data-tex="\(t\)">\(t\)</span>, proves convexity of <span class="math" data-index="119" data-tex="\(H\)">\(H\)</span>. Homogeneity and convexity at a midpoint give subadditivity. In particular
+<a id="eq-E16"></a></p>
+<span class="math math-display" data-index="120" data-tex="\[
+0=H(0)\le H(y)+H(-y)\le2C_1|y|.
+\tag{E16}
+\]">\[
+0=H(0)\le H(y)+H(-y)\le2C_1|y|.
+\tag{E16}
+\]</span>
+<p>There is a nonzero <span class="math" data-index="121" data-tex="\(y\)">\(y\)</span>, since <span class="math" data-index="122" data-tex="\(n\ge1\)">\(n\ge1\)</span>, so <span class="math" data-index="123" data-tex="\(C_1\ge0\)">\(C_1\ge0\)</span> is forced. Also <span class="math" data-index="124" data-tex="\(H(y)\ge-H(-y)\ge-C_1|y|\)">\(H(y)\ge-H(-y)\ge-C_1|y|\)</span>. Subadditivity gives
+<span class="math" data-index="125" data-tex="\(H(y)-H(w)\le H(y-w)\le C_1|y-w|\)">\(H(y)-H(w)\le H(y-w)\le C_1|y-w|\)</span>; interchanging <span class="math" data-index="126" data-tex="\(y,w\)">\(y,w\)</span> proves the Lipschitz estimate in (E4). The support function can have negative values in some directions; this does not conflict with (E16).</p>
+<p>The quotient monotonicity at <span class="math" data-index="127" data-tex="\(t=1\)">\(t=1\)</span> gives
+<a id="eq-E17"></a></p>
+<span class="math math-display" data-index="128" data-tex="\[
+M(u)\le M(0)+H(u)\qquad(u\in\mathbb R^n).
+\tag{E17}
+\]">\[
+M(u)\le M(0)+H(u)\qquad(u\in\mathbb R^n).
+\tag{E17}
+\]</span>
+<p>At any base point <span class="math" data-index="129" data-tex="\(y\)">\(y\)</span>, convexity along <span class="math" data-index="130" data-tex="\(y+t w\)">\(y+t w\)</span> implies, for <span class="math" data-index="131" data-tex="\(t&gt;1\)">\(t&gt;1\)</span>,
+<a id="eq-E18"></a></p>
+<span class="math math-display" data-index="132" data-tex="\[
+M(y+w)-M(y)\le\frac{M(y+t w)-M(y)}t.
+\tag{E18}
+\]">\[
+M(y+w)-M(y)\le\frac{M(y+t w)-M(y)}t.
+\tag{E18}
+\]</span>
+<p>Using (E17) and then subadditivity on its right side gives
+<a id="eq-E19"></a></p>
+<span class="math math-display" data-index="133" data-tex="\[
+\frac{M(y+t w)-M(y)}t
+\le H(w)+\frac{M(0)+H(y)-M(y)}t.
+\tag{E19}
+\]">\[
+\frac{M(y+t w)-M(y)}t
+\le H(w)+\frac{M(0)+H(y)-M(y)}t.
+\tag{E19}
+\]</span>
+<p>Letting <span class="math" data-index="134" data-tex="\(t\to\infty\)">\(t\to\infty\)</span> proves the increment inequality in (E4). Apply it in the reverse direction as well, and use <span class="math" data-index="135" data-tex="\(H(\pm w)\le C_1|w|\)">\(H(\pm w)\le C_1|w|\)</span>; this proves the global Lipschitz bound for <span class="math" data-index="136" data-tex="\(M\)">\(M\)</span>.</p>
+<p>The recession limit is consequently independent of base point: the inequalities just obtained bound <span class="math" data-index="137" data-tex="\(|M(y+t w)-M(t w)|\)">\(|M(y+t w)-M(t w)|\)</span> by <span class="math" data-index="138" data-tex="\(C_1|y|\)">\(C_1|y|\)</span>. Dividing by <span class="math" data-index="139" data-tex="\(t\)">\(t\)</span> shows
+<a id="eq-E20"></a></p>
+<span class="math math-display" data-index="140" data-tex="\[
+\lim_{t\to\infty}\frac{M(y+t w)-M(y)}t=H(w).
+\tag{E20}
+\]">\[
+\lim_{t\to\infty}\frac{M(y+t w)-M(y)}t=H(w).
+\tag{E20}
+\]</span>
+<p>This statement concerns an asymptotic slope, not a derivative of <span class="math" data-index="141" data-tex="\(M\)">\(M\)</span>.</p>
+<h2 id="4-constructing-the-compact-convex-set">4. Constructing the compact convex set</h2>
+<p><a id="dominated-linear-extension"></a></p>
+<p>We prove the finite-dimensional support-function converse needed for (E6). Let <span class="math" data-index="142" data-tex="\(h:\mathbb R^n\to\mathbb R\)">\(h:\mathbb R^n\to\mathbb R\)</span> be any finite sublinear function, with <span class="math" data-index="143" data-tex="\(h(0)=0\)">\(h(0)=0\)</span>. For a chosen <span class="math" data-index="144" data-tex="\(y_0\ne0\)">\(y_0\ne0\)</span>, define a linear functional on <span class="math" data-index="145" data-tex="\(V=\operatorname{span}\{y_0\}\)">\(V=\operatorname{span}\{y_0\}\)</span> by
+<a id="eq-E21"></a></p>
+<span class="math math-display" data-index="146" data-tex="\[
+\ell(t y_0)=t h(y_0),\qquad t\in\mathbb R.
+\tag{E21}
+\]">\[
+\ell(t y_0)=t h(y_0),\qquad t\in\mathbb R.
+\tag{E21}
+\]</span>
+<p>For <span class="math" data-index="147" data-tex="\(t\ge0\)">\(t\ge0\)</span> it equals <span class="math" data-index="148" data-tex="\(h(t y_0)\)">\(h(t y_0)\)</span>. For <span class="math" data-index="149" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>, the inequality <span class="math" data-index="150" data-tex="\(-h(y_0)\le h(-y_0)\)">\(-h(y_0)\le h(-y_0)\)</span>, which follows from subadditivity, proves <span class="math" data-index="151" data-tex="\(\ell(t y_0)\le h(t y_0)\)">\(\ell(t y_0)\le h(t y_0)\)</span>. Thus <span class="math" data-index="152" data-tex="\(\ell\le h\)">\(\ell\le h\)</span> on <span class="math" data-index="153" data-tex="\(V\)">\(V\)</span>.</p>
+<p>Here is a complete one-dimension extension step. If a linear <span class="math" data-index="154" data-tex="\(\ell\)">\(\ell\)</span> on a subspace <span class="math" data-index="155" data-tex="\(V\)">\(V\)</span> is dominated by <span class="math" data-index="156" data-tex="\(h\)">\(h\)</span> there, and <span class="math" data-index="157" data-tex="\(q\notin V\)">\(q\notin V\)</span>, set
+<a id="eq-E22"></a></p>
+<span class="math math-display" data-index="158" data-tex="\[
+A=\sup_{u\in V}\{\ell(u)-h(u-q)\},
+\qquad
+B=\inf_{w\in V}\{h(w+q)-\ell(w)\}.
+\tag{E22}
+\]">\[
+A=\sup_{u\in V}\{\ell(u)-h(u-q)\},
+\qquad
+B=\inf_{w\in V}\{h(w+q)-\ell(w)\}.
+\tag{E22}
+\]</span>
+<p>For every <span class="math" data-index="159" data-tex="\(u,w\in V\)">\(u,w\in V\)</span>,
+<a id="eq-E23"></a></p>
+<span class="math math-display" data-index="160" data-tex="\[
+\ell(u)+\ell(w)=\ell(u+w)
+\le h(u+w)\le h(u-q)+h(w+q).
+\tag{E23}
+\]">\[
+\ell(u)+\ell(w)=\ell(u+w)
+\le h(u+w)\le h(u-q)+h(w+q).
+\tag{E23}
+\]</span>
+<p>It follows that each quantity in the supremum for <span class="math" data-index="161" data-tex="\(A\)">\(A\)</span> is at most each quantity in the infimum for <span class="math" data-index="162" data-tex="\(B\)">\(B\)</span>. Taking <span class="math" data-index="163" data-tex="\(u=0\)">\(u=0\)</span> and <span class="math" data-index="164" data-tex="\(w=0\)">\(w=0\)</span> also proves
+<span class="math" data-index="165" data-tex="\(-h(-q)\le A\le B\le h(q)\)">\(-h(-q)\le A\le B\le h(q)\)</span>.
+Thus <span class="math" data-index="166" data-tex="\(A,B\)">\(A,B\)</span> are finite, and we may choose a real <span class="math" data-index="167" data-tex="\(\alpha\in[A,B]\)">\(\alpha\in[A,B]\)</span>. Define
+<a id="eq-E24"></a></p>
+<span class="math math-display" data-index="168" data-tex="\[
+\ell&#x27;(u+tq)=\ell(u)+t\alpha\qquad(u\in V,\ t\in\mathbb R).
+\tag{E24}
+\]">\[
+\ell&#x27;(u+tq)=\ell(u)+t\alpha\qquad(u\in V,\ t\in\mathbb R).
+\tag{E24}
+\]</span>
+<p>The decomposition is unique because <span class="math" data-index="169" data-tex="\(q\notin V\)">\(q\notin V\)</span>, so this is linear and extends <span class="math" data-index="170" data-tex="\(\ell\)">\(\ell\)</span>. For <span class="math" data-index="171" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, write <span class="math" data-index="172" data-tex="\(u=tw\)">\(u=tw\)</span>; the upper bound for <span class="math" data-index="173" data-tex="\(\alpha\)">\(\alpha\)</span> gives
+<span class="math" data-index="174" data-tex="\(\ell&#x27;(u+tq)=t(\ell(w)+\alpha)\le t h(w+q)=h(u+tq)\)">\(\ell&#x27;(u+tq)=t(\ell(w)+\alpha)\le t h(w+q)=h(u+tq)\)</span>.
+For <span class="math" data-index="175" data-tex="\(t=-s&lt;0\)">\(t=-s&lt;0\)</span>, write <span class="math" data-index="176" data-tex="\(u=sw\)">\(u=sw\)</span>; the lower bound for <span class="math" data-index="177" data-tex="\(\alpha\)">\(\alpha\)</span> gives
+<span class="math" data-index="178" data-tex="\(\ell&#x27;(u-sq)=s(\ell(w)-\alpha)\le s h(w-q)=h(u-sq)\)">\(\ell&#x27;(u-sq)=s(\ell(w)-\alpha)\le s h(w-q)=h(u-sq)\)</span>.
+For <span class="math" data-index="179" data-tex="\(t=0\)">\(t=0\)</span> use the original domination. This proves the extension step.</p>
+<p>Successively adjoining vectors from a finite basis extends (E21) to a linear functional on all of <span class="math" data-index="180" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, still dominated by <span class="math" data-index="181" data-tex="\(h\)">\(h\)</span> and still equal to <span class="math" data-index="182" data-tex="\(h(y_0)\)">\(h(y_0)\)</span> at <span class="math" data-index="183" data-tex="\(y_0\)">\(y_0\)</span>. In standard coordinates it is <span class="math" data-index="184" data-tex="\(\ell(y)=\xi\cdot y\)">\(\ell(y)=\xi\cdot y\)</span> for some vector <span class="math" data-index="185" data-tex="\(\xi\)">\(\xi\)</span>. If no particular nonzero <span class="math" data-index="186" data-tex="\(y_0\)">\(y_0\)</span> is prescribed, start instead on the zero subspace with its zero functional and apply the same steps. This also proves existence of a dominated linear functional.</p>
+<p>Apply this construction to <span class="math" data-index="187" data-tex="\(h=H\)">\(h=H\)</span>. It gives an element of <span class="math" data-index="188" data-tex="\(K_H\)">\(K_H\)</span>, proving nonemptiness, and for each nonzero <span class="math" data-index="189" data-tex="\(y_0\)">\(y_0\)</span> gives an element satisfying <span class="math" data-index="190" data-tex="\(\xi\cdot y_0=H(y_0)\)">\(\xi\cdot y_0=H(y_0)\)</span>. At <span class="math" data-index="191" data-tex="\(y_0=0\)">\(y_0=0\)</span> every such vector gives equality. By definition every element of <span class="math" data-index="192" data-tex="\(K_H\)">\(K_H\)</span> gives the reverse inequality, proving (E6).</p>
+<p>Each constraint in (E5) is a closed half-space, so their intersection is closed and convex. If <span class="math" data-index="193" data-tex="\(\xi\in K_H\)">\(\xi\in K_H\)</span>, choosing <span class="math" data-index="194" data-tex="\(y=\xi\)">\(y=\xi\)</span> gives
+<a id="eq-E25"></a></p>
+<span class="math math-display" data-index="195" data-tex="\[
+|\xi|^2\le H(\xi)\le C_1|\xi|.
+\tag{E25}
+\]">\[
+|\xi|^2\le H(\xi)\le C_1|\xi|.
+\tag{E25}
+\]</span>
+<p>Thus <span class="math" data-index="196" data-tex="\(|\xi|\le C_1\)">\(|\xi|\le C_1\)</span>, including <span class="math" data-index="197" data-tex="\(\xi=0\)">\(\xi=0\)</span>. Finite-dimensional closed bounded sets are compact, so the maxima in (E6) are indeed attained. No infinite-dimensional extension theorem was invoked.</p>
+<h2 id="5-liouville-by-an-expanding-annulus">5. Liouville by an expanding annulus</h2>
+<p><a id="planar-annulus-liouville"></a></p>
+<p><a id="proof-C1"></a></p>
+<p><strong>Lemma C1.</strong> A subharmonic function <span class="math" data-index="198" data-tex="\(u\)">\(u\)</span> on the whole complex plane, allowing <span class="math" data-index="199" data-tex="\(u\equiv-\infty\)">\(u\equiv-\infty\)</span>, which satisfies <span class="math" data-index="200" data-tex="\(u\le C\)">\(u\le C\)</span> for a finite constant <span class="math" data-index="201" data-tex="\(C\)">\(C\)</span>, is constant in <span class="math" data-index="202" data-tex="\([-\infty,C]\)">\([-\infty,C]\)</span>.</p>
+<p><strong>Proof.</strong> Fix a center <span class="math" data-index="203" data-tex="\(c\)">\(c\)</span> and a real number <span class="math" data-index="204" data-tex="\(\alpha&gt;u(c)\)">\(\alpha&gt;u(c)\)</span>. If <span class="math" data-index="205" data-tex="\(u(c)=-\infty\)">\(u(c)=-\infty\)</span>, any real <span class="math" data-index="206" data-tex="\(\alpha\)">\(\alpha\)</span> is permitted. Upper semicontinuity gives <span class="math" data-index="207" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> for which <span class="math" data-index="208" data-tex="\(u\le\alpha\)">\(u\le\alpha\)</span> on the closed radius-<span class="math" data-index="209" data-tex="\(\delta\)">\(\delta\)</span> disk about <span class="math" data-index="210" data-tex="\(c\)">\(c\)</span>; shrink the radius inside the open neighborhood supplied by upper semicontinuity.</p>
+<p>For any <span class="math" data-index="211" data-tex="\(R&gt;\delta\)">\(R&gt;\delta\)</span>, the function
+<a id="eq-E26"></a></p>
+<span class="math math-display" data-index="212" data-tex="\[
+B_R(z)=\alpha+(C-\alpha)
+        \frac{\log(|z-c|/\delta)}{\log(R/\delta)}
+\tag{E26}
+\]">\[
+B_R(z)=\alpha+(C-\alpha)
+        \frac{\log(|z-c|/\delta)}{\log(R/\delta)}
+\tag{E26}
+\]</span>
+<p>is harmonic on the closed annulus's interior and continuous on its boundary. Harmonicity follows from the radial formula <span class="math" data-index="213" data-tex="\((\log r)&#x27;&#x27;+r^{-1}(\log r)&#x27;=0\)">\((\log r)&#x27;&#x27;+r^{-1}(\log r)&#x27;=0\)</span>. It equals <span class="math" data-index="214" data-tex="\(\alpha\)">\(\alpha\)</span> on the inner circle and <span class="math" data-index="215" data-tex="\(C\)">\(C\)</span> on the outer circle. The compact harmonic comparison in Theorem S1(3) therefore gives <span class="math" data-index="216" data-tex="\(u(z)\le B_R(z)\)">\(u(z)\le B_R(z)\)</span> for <span class="math" data-index="217" data-tex="\(\delta\le|z-c|\le R\)">\(\delta\le|z-c|\le R\)</span>. This also holds for the identically minus-infinite function.</p>
+<p>Fix a point <span class="math" data-index="218" data-tex="\(z\ne c\)">\(z\ne c\)</span>, and choose the inner radius smaller than <span class="math" data-index="219" data-tex="\(|z-c|\)">\(|z-c|\)</span>. Let <span class="math" data-index="220" data-tex="\(R\to\infty\)">\(R\to\infty\)</span> with that point fixed. Formula (E26) tends to <span class="math" data-index="221" data-tex="\(\alpha\)">\(\alpha\)</span>, so <span class="math" data-index="222" data-tex="\(u(z)\le\alpha\)">\(u(z)\le\alpha\)</span>. The same inequality at <span class="math" data-index="223" data-tex="\(c\)">\(c\)</span> holds by the choice of <span class="math" data-index="224" data-tex="\(\alpha\)">\(\alpha\)</span>. If <span class="math" data-index="225" data-tex="\(u(c)\)">\(u(c)\)</span> is finite, let <span class="math" data-index="226" data-tex="\(\alpha\downarrow u(c)\)">\(\alpha\downarrow u(c)\)</span>; otherwise let <span class="math" data-index="227" data-tex="\(\alpha\to-\infty\)">\(\alpha\to-\infty\)</span>. In either case <span class="math" data-index="228" data-tex="\(u(z)\le u(c)\)">\(u(z)\le u(c)\)</span> for every <span class="math" data-index="229" data-tex="\(z\)">\(z\)</span>. Because the center was arbitrary, interchanging two points gives equality of their values. Thus <span class="math" data-index="230" data-tex="\(u\)">\(u\)</span> is constant, also in the extended case. <span class="math" data-index="231" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="psh-liouville"></a></p>
+<p><strong>Proof of Theorem C2.</strong> Two distinct points <span class="math" data-index="232" data-tex="\(p,q\in\mathbb C^n\)">\(p,q\in\mathbb C^n\)</span> lie on the nonconstant complex line <span class="math" data-index="233" data-tex="\(p+w(q-p)\)">\(p+w(q-p)\)</span>. The pullback of <span class="math" data-index="234" data-tex="\(v\)">\(v\)</span> is subharmonic or identically <span class="math" data-index="235" data-tex="\(-\infty\)">\(-\infty\)</span> and is bounded above by the same <span class="math" data-index="236" data-tex="\(C\)">\(C\)</span>. Lemma C1 makes it constant, so its values at <span class="math" data-index="237" data-tex="\(w=0,1\)">\(w=0,1\)</span> are equal: <span class="math" data-index="238" data-tex="\(v(p)=v(q)\)">\(v(p)=v(q)\)</span>. The identical-point case is immediate. All values of <span class="math" data-index="239" data-tex="\(v\)">\(v\)</span> are therefore the same. The conclusion does not require the linear imaginary-growth assumption (E1). <span class="math" data-index="240" data-tex="\(\square\)">\(\square\)</span></p>
+<figure><img class="course-figure" width="2516" height="1190" src="reproduce/L139/figures/support-set-and-envelope.png" alt="A triangle support set and the horizontal envelope of three exponentials" /><figcaption class="native"><a href="reproduce/L139/figures/support-set-and-envelope.png">Open full-size PNG</a> · <a href="reproduce/L139/figures/support-set-and-envelope.svg">Open SVG</a> · <a href="reproduce/L139/figures/support-set-and-envelope.pdf">Open PDF</a></figcaption></figure>
+<p><strong>Figure E-A.</strong> The support set in Example C is the triangle with vertices <span class="math" data-index="241" data-tex="\((-1,0),(1,0),(0,2)\)">\((-1,0),(1,0),(0,2)\)</span>. For <span class="math" data-index="242" data-tex="\(\eta=(1,1)\)">\(\eta=(1,1)\)</span>, the support value is <span class="math" data-index="243" data-tex="\(H(\eta)=2\)">\(H(\eta)=2\)</span>, and the line <span class="math" data-index="244" data-tex="\(\xi_1+\xi_2=2\)">\(\xi_1+\xi_2=2\)</span> touches its top vertex. The left panel uses the same Euclidean scale in both coordinates. The right panel samples the exact envelope on <span class="math" data-index="245" data-tex="\(y=t\eta\)">\(y=t\eta\)</span>, alongside its recession profile and the proved bound <span class="math" data-index="246" data-tex="\(0\le M(y)-H(y)\le\tfrac12\log3\)">\(0\le M(y)-H(y)\le\tfrac12\log3\)</span>. The plot illustrates this example; §§1–4 prove the general theorem and the existence of its support set.</p>
+<figure><img class="course-figure" width="2380" height="1105" src="reproduce/L139/figures/annulus-liouville.png" alt="The logarithmic annulus comparison tends to the inner bound at a fixed point" /><figcaption class="native"><a href="reproduce/L139/figures/annulus-liouville.png">Open full-size PNG</a> · <a href="reproduce/L139/figures/annulus-liouville.svg">Open SVG</a> · <a href="reproduce/L139/figures/annulus-liouville.pdf">Open PDF</a></figcaption></figure>
+<p><strong>Figure E-B.</strong> This is the comparison barrier (E26), rather than a sample of an unspecified subharmonic function. Its constants are <span class="math" data-index="247" data-tex="\(c=0\)">\(c=0\)</span>, <span class="math" data-index="248" data-tex="\(\delta=1\)">\(\delta=1\)</span>, <span class="math" data-index="249" data-tex="\(\alpha=-1/2\)">\(\alpha=-1/2\)</span>, <span class="math" data-index="250" data-tex="\(C=1\)">\(C=1\)</span>, and its observation radius is <span class="math" data-index="251" data-tex="\(\rho=3\)">\(\rho=3\)</span>. The left panel shows the Euclidean annulus for <span class="math" data-index="252" data-tex="\(R=6\)">\(R=6\)</span>. The right panel evaluates the exact upper bound <span class="math" data-index="253" data-tex="\(-1/2+(3/2)\log3/\log R\)">\(-1/2+(3/2)\log3/\log R\)</span> at that fixed radius, with a logarithmic horizontal axis. The observation point is kept fixed as the outer radius grows; Lemma C1 proves the limit <span class="math" data-index="254" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<h2 id="four-worked-examples">Four worked examples</h2>
+<h3 id="a-one-affine-slope-with-negative-support-values">A. One affine slope, with negative support values</h3>
+<p>For <span class="math" data-index="255" data-tex="\(\xi\in\mathbb R^n\)">\(\xi\in\mathbb R^n\)</span> and <span class="math" data-index="256" data-tex="\(c\in\mathbb R\)">\(c\in\mathbb R\)</span>, set <span class="math" data-index="257" data-tex="\(v(x+iy)=c+\xi\cdot y\)">\(v(x+iy)=c+\xi\cdot y\)</span>. On any complex affine line this is real affine in its two real parameters, hence harmonic; it is PSH. It satisfies (E1) with <span class="math" data-index="258" data-tex="\(C_0=c\)">\(C_0=c\)</span>, <span class="math" data-index="259" data-tex="\(C_1=|\xi|\)">\(C_1=|\xi|\)</span>. Its envelope is <span class="math" data-index="260" data-tex="\(M(y)=c+\xi\cdot y\)">\(M(y)=c+\xi\cdot y\)</span>, so <span class="math" data-index="261" data-tex="\(H(y)=\xi\cdot y\)">\(H(y)=\xi\cdot y\)</span> and <span class="math" data-index="262" data-tex="\(K_H=\{\xi\}\)">\(K_H=\{\xi\}\)</span>. When <span class="math" data-index="263" data-tex="\(\xi\ne0\)">\(\xi\ne0\)</span>, the support value in direction <span class="math" data-index="264" data-tex="\(-\xi\)">\(-\xi\)</span> is negative. For <span class="math" data-index="265" data-tex="\(\xi=0\)">\(\xi=0\)</span>, this is a finite constant function and its support set is <span class="math" data-index="266" data-tex="\(\{0\}\)">\(\{0\}\)</span>.</p>
+<h3 id="b-a-maximum-of-finitely-many-affine-functions">B. A maximum of finitely many affine functions</h3>
+<p>Choose real constants <span class="math" data-index="267" data-tex="\(c_j\)">\(c_j\)</span> and real vectors <span class="math" data-index="268" data-tex="\(\xi_j\)">\(\xi_j\)</span>, <span class="math" data-index="269" data-tex="\(1\le j\le m\)">\(1\le j\le m\)</span>, with <span class="math" data-index="270" data-tex="\(m\ge1\)">\(m\ge1\)</span>. Then
+<a id="eq-E27"></a></p>
+<span class="math math-display" data-index="271" data-tex="\[
+v(x+iy)=\max_{1\le j\le m}(c_j+\xi_j\cdot y)
+\tag{E27}
+\]">\[
+v(x+iy)=\max_{1\le j\le m}(c_j+\xi_j\cdot y)
+\tag{E27}
+\]</span>
+<p>is continuous and PSH. On a complex line each member is harmonic; choose one attaining the maximum at the circle center, use its exact mean, and bound its circle values by the maximum. This proves the circle inequality for the finite maximum, including degenerate parametrizations. Here <span class="math" data-index="272" data-tex="\(M=v\)">\(M=v\)</span> as a function of <span class="math" data-index="273" data-tex="\(y\)">\(y\)</span>, and
+<a id="eq-E28"></a></p>
+<span class="math math-display" data-index="274" data-tex="\[
+H(y)=\max_j\xi_j\cdot y,
+\qquad K_H=\operatorname{conv}\{\xi_1,\ldots,\xi_m\}.
+\tag{E28}
+\]">\[
+H(y)=\max_j\xi_j\cdot y,
+\qquad K_H=\operatorname{conv}\{\xi_1,\ldots,\xi_m\}.
+\tag{E28}
+\]</span>
+<p>Indeed <span class="math" data-index="275" data-tex="\(\max_j|c_j|/t\)">\(\max_j|c_j|/t\)</span> bounds the difference between <span class="math" data-index="276" data-tex="\(M(ty)/t\)">\(M(ty)/t\)</span> and the displayed maximum. A convex combination of the <span class="math" data-index="277" data-tex="\(\xi_j\)">\(\xi_j\)</span> pairs with <span class="math" data-index="278" data-tex="\(y\)">\(y\)</span> at most that maximum, and a maximizing vertex attains it. Equality of the resulting compact convex set with (E5) also follows from the separation argument in Exercise 5 below.</p>
+<h3 id="c-a-smooth-logarithmic-envelope-of-exponentials">C. A smooth logarithmic envelope of exponentials</h3>
+<p>For the same data define the entire vector
+<span class="math" data-index="279" data-tex="\(G(z)=(e^{c_1}e^{-i\xi_1\cdot z},\ldots,e^{c_m}e^{-i\xi_m\cdot z})\)">\(G(z)=(e^{c_1}e^{-i\xi_1\cdot z},\ldots,e^{c_m}e^{-i\xi_m\cdot z})\)</span>
+with its Euclidean norm. The written logarithmic norm Lemma 1 in L059 gives a PSH function
+<a id="eq-E29"></a></p>
+<span class="math math-display" data-index="280" data-tex="\[
+v(z)=\log\|G(z)\|_2
+ =\frac12\log\sum_{j=1}^m e^{2(c_j+\xi_j\cdot y)}.
+\tag{E29}
+\]">\[
+v(z)=\log\|G(z)\|_2
+ =\frac12\log\sum_{j=1}^m e^{2(c_j+\xi_j\cdot y)}.
+\tag{E29}
+\]</span>
+<p>Each component is nonzero, so this function is finite and smooth. It is independent of <span class="math" data-index="281" data-tex="\(x\)">\(x\)</span>, hence equals its own horizontal envelope. Writing <span class="math" data-index="282" data-tex="\(P(y)=\max_j(c_j+\xi_j\cdot y)\)">\(P(y)=\max_j(c_j+\xi_j\cdot y)\)</span> gives the elementary bounds
+<a id="eq-E30"></a></p>
+<span class="math math-display" data-index="283" data-tex="\[
+P(y)\le M(y)\le P(y)+\frac12\log m.
+\tag{E30}
+\]">\[
+P(y)\le M(y)\le P(y)+\frac12\log m.
+\tag{E30}
+\]</span>
+<p>Factor <span class="math" data-index="284" data-tex="\(e^{2P(y)}\)">\(e^{2P(y)}\)</span> from the sum: the remaining sum is between 1 and <span class="math" data-index="285" data-tex="\(m\)">\(m\)</span>. Consequently this smooth example has the same recession function and support set (E28), regardless of its constants <span class="math" data-index="286" data-tex="\(c_j\)">\(c_j\)</span>. One valid growth bound uses <span class="math" data-index="287" data-tex="\(C_0=\max_jc_j+\tfrac12\log m\)">\(C_0=\max_jc_j+\tfrac12\log m\)</span>, <span class="math" data-index="288" data-tex="\(C_1=\max_j|\xi_j|\)">\(C_1=\max_j|\xi_j|\)</span>.</p>
+<p>Figure E-A sets all <span class="math" data-index="289" data-tex="\(c_j=0\)">\(c_j=0\)</span> and takes <span class="math" data-index="290" data-tex="\(\xi_1=(-1,0)\)">\(\xi_1=(-1,0)\)</span>, <span class="math" data-index="291" data-tex="\(\xi_2=(1,0)\)">\(\xi_2=(1,0)\)</span>, <span class="math" data-index="292" data-tex="\(\xi_3=(0,2)\)">\(\xi_3=(0,2)\)</span>. On <span class="math" data-index="293" data-tex="\(y=t(1,1)\)">\(y=t(1,1)\)</span>, its exact envelope is <span class="math" data-index="294" data-tex="\(\tfrac12\log(e^{-2t}+e^{2t}+e^{4t})\)">\(\tfrac12\log(e^{-2t}+e^{2t}+e^{4t})\)</span>. Its recession profile on this real line is <span class="math" data-index="295" data-tex="\(\max(-t,t,2t)\)">\(\max(-t,t,2t)\)</span>. At zero the gap is exactly <span class="math" data-index="296" data-tex="\(\tfrac12\log3\)">\(\tfrac12\log3\)</span>, illustrating that the envelope and its recession function need not coincide.</p>
+<h3 id="d-singularities-on-a-slice-do-not-destroy-its-envelope">D. Singularities on a slice do not destroy its envelope</h3>
+<p>In one complex dimension let <span class="math" data-index="297" data-tex="\(v(z)=\log|\sin z|\)">\(v(z)=\log|\sin z|\)</span>, with <span class="math" data-index="298" data-tex="\(-\infty\)">\(-\infty\)</span> at the zeros. The scalar logarithm proof in L059 makes it subharmonic and hence PSH. Direct calculation gives
+<a id="eq-E31"></a></p>
+<span class="math math-display" data-index="299" data-tex="\[
+|\sin(x+iy)|^2=\sin^2x+\sinh^2y,
+\quad M(y)=\log\cosh y,
+\quad H(y)=|y|,
+\quad K_H=[-1,1].
+\tag{E31}
+\]">\[
+|\sin(x+iy)|^2=\sin^2x+\sinh^2y,
+\quad M(y)=\log\cosh y,
+\quad H(y)=|y|,
+\quad K_H=[-1,1].
+\tag{E31}
+\]</span>
+<p>The bound <span class="math" data-index="300" data-tex="\(\cosh y\le e^{|y|}\)">\(\cosh y\le e^{|y|}\)</span> verifies (E1) with <span class="math" data-index="301" data-tex="\(C_0=0,C_1=1\)">\(C_0=0,C_1=1\)</span>. Its real slice contains infinitely many minus-infinite values, at <span class="math" data-index="302" data-tex="\(x\in\pi\mathbb Z\)">\(x\in\pi\mathbb Z\)</span>, but its horizontal supremum at height zero is the finite value 0. The finite-slice proof in §1 excludes an entirely minus-infinite slice, rather than excluding individual singularities.</p>
+<h2 id="the-identically-minus-infinite-convention">The identically minus-infinite convention</h2>
+<p>The finite conclusion of Theorem E1 requires <span class="math" data-index="303" data-tex="\(v\not\equiv-\infty\)">\(v\not\equiv-\infty\)</span>. If <span class="math" data-index="304" data-tex="\(v\equiv-\infty\)">\(v\equiv-\infty\)</span>, take <span class="math" data-index="305" data-tex="\(M\equiv-\infty\)">\(M\equiv-\infty\)</span> and define its support function to be <span class="math" data-index="306" data-tex="\(H\equiv-\infty\)">\(H\equiv-\infty\)</span>, the support function of the empty set under <span class="math" data-index="307" data-tex="\(\sup\varnothing=-\infty\)">\(\sup\varnothing=-\infty\)</span>. In this case even <span class="math" data-index="308" data-tex="\(H(0)=-\infty\)">\(H(0)=-\infty\)</span>; it is not a finite sublinear function covered by §§3–4.</p>
+<p>For the zero function <span class="math" data-index="309" data-tex="\(v\equiv0\)">\(v\equiv0\)</span>, on the other hand, <span class="math" data-index="310" data-tex="\(M\equiv0\)">\(M\equiv0\)</span>, <span class="math" data-index="311" data-tex="\(H\equiv0\)">\(H\equiv0\)</span>, and <span class="math" data-index="312" data-tex="\(K_H=\{0\}\)">\(K_H=\{0\}\)</span>. More generally every finite constant has that same recession function and nonempty support set. The empty-set convention belongs to the identically minus-infinite function.</p>
+<h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> In §1, why is a shifted lower height essential? Show explicitly how a finite value at height zero implies a finite envelope at a negative height.</p>
+<p><strong>Solution.</strong> The scalar theorem only asserts finiteness at positive heights of its upper-half-plane domain. For a desired negative height <span class="math" data-index="313" data-tex="\(t\)">\(t\)</span>, choose <span class="math" data-index="314" data-tex="\(\ell&lt;\min(t,0)\)">\(\ell&lt;\min(t,0)\)</span>. After shifting by <span class="math" data-index="315" data-tex="\(i\ell\)">\(i\ell\)</span>, both the original finite point at height zero and the target height lie at positive heights, namely <span class="math" data-index="316" data-tex="\(-\ell\)">\(-\ell\)</span> and <span class="math" data-index="317" data-tex="\(t-\ell\)">\(t-\ell\)</span>. Bound (E9) is uniform in the horizontal coordinate. Thus the theorem applies to a nondegenerate function and makes the envelope finite at the target. Applying only the half-plane above zero would give no information there.</p>
+<p><strong>Exercise 2.</strong> Prove directly that a negative <span class="math" data-index="318" data-tex="\(C_1\)">\(C_1\)</span> in (E1) is impossible for a nontrivial function when <span class="math" data-index="319" data-tex="\(n\ge1\)">\(n\ge1\)</span>, once finite convexity of <span class="math" data-index="320" data-tex="\(M\)">\(M\)</span> is known.</p>
+<p><strong>Solution.</strong> Take a unit vector <span class="math" data-index="321" data-tex="\(e\)">\(e\)</span> and use convexity at the midpoint of <span class="math" data-index="322" data-tex="\(te\)">\(te\)</span> and <span class="math" data-index="323" data-tex="\(-te\)">\(-te\)</span>. Then <span class="math" data-index="324" data-tex="\(2M(0)\le M(te)+M(-te)\le2C_0+2C_1t\)">\(2M(0)\le M(te)+M(-te)\le2C_0+2C_1t\)</span>. If <span class="math" data-index="325" data-tex="\(C_1&lt;0\)">\(C_1&lt;0\)</span>, the right side tends to <span class="math" data-index="326" data-tex="\(-\infty\)">\(-\infty\)</span>, contradicting finite <span class="math" data-index="327" data-tex="\(M(0)\)">\(M(0)\)</span>. This proof is also an independent check of (E16).</p>
+<p><strong>Exercise 3.</strong> Verify the two bounds on the extension interval in (E22), and check domination when the coefficient of the new vector is negative.</p>
+<p><strong>Solution.</strong> Setting <span class="math" data-index="328" data-tex="\(u=0\)">\(u=0\)</span> in the lower candidates gives <span class="math" data-index="329" data-tex="\(A\ge-h(-q)\)">\(A\ge-h(-q)\)</span>; setting <span class="math" data-index="330" data-tex="\(w=0\)">\(w=0\)</span> in the upper candidates gives <span class="math" data-index="331" data-tex="\(B\le h(q)\)">\(B\le h(q)\)</span>. Equation (E23) compares every lower candidate with every upper candidate, so <span class="math" data-index="332" data-tex="\(A\le B\)">\(A\le B\)</span>, and in particular both are finite. For <span class="math" data-index="333" data-tex="\(t=-s&lt;0\)">\(t=-s&lt;0\)</span>, write <span class="math" data-index="334" data-tex="\(u=sw\)">\(u=sw\)</span>. The chosen <span class="math" data-index="335" data-tex="\(\alpha\ge\ell(w)-h(w-q)\)">\(\alpha\ge\ell(w)-h(w-q)\)</span> gives <span class="math" data-index="336" data-tex="\(\ell(u)-s\alpha=s(\ell(w)-\alpha)\le s h(w-q)=h(u-sq)\)">\(\ell(u)-s\alpha=s(\ell(w)-\alpha)\le s h(w-q)=h(u-sq)\)</span>. This is precisely the negative-coefficient case, which cannot be deduced from positive homogeneity alone.</p>
+<p><strong>Exercise 4.</strong> For <span class="math" data-index="337" data-tex="\(v\equiv c\)">\(v\equiv c\)</span>, compute <span class="math" data-index="338" data-tex="\(M,H,K_H\)">\(M,H,K_H\)</span> when <span class="math" data-index="339" data-tex="\(c\)">\(c\)</span> is finite. What changes for <span class="math" data-index="340" data-tex="\(c=-\infty\)">\(c=-\infty\)</span>?</p>
+<p><strong>Solution.</strong> For finite <span class="math" data-index="341" data-tex="\(c\)">\(c\)</span>, <span class="math" data-index="342" data-tex="\(M(y)=c\)">\(M(y)=c\)</span> and <span class="math" data-index="343" data-tex="\(M(ty)/t\to0\)">\(M(ty)/t\to0\)</span> at every <span class="math" data-index="344" data-tex="\(y\)">\(y\)</span>. A vector dominated by <span class="math" data-index="345" data-tex="\(H=0\)">\(H=0\)</span> must obey <span class="math" data-index="346" data-tex="\(\xi\cdot\xi\le0\)">\(\xi\cdot\xi\le0\)</span>, hence <span class="math" data-index="347" data-tex="\(\xi=0\)">\(\xi=0\)</span>, so <span class="math" data-index="348" data-tex="\(K_H=\{0\}\)">\(K_H=\{0\}\)</span>. For <span class="math" data-index="349" data-tex="\(c=-\infty\)">\(c=-\infty\)</span>, every supremum is <span class="math" data-index="350" data-tex="\(-\infty\)">\(-\infty\)</span>; the declared extended support function is that of the empty set and is <span class="math" data-index="351" data-tex="\(-\infty\)">\(-\infty\)</span> even at zero. One cannot use <span class="math" data-index="352" data-tex="\(H(0)=0\)">\(H(0)=0\)</span> or the dominated finite-linear extension in this case.</p>
+<p><strong>Exercise 5.</strong> Show that a nonempty compact convex set is determined by its support function. Use this to justify the convex hull identity in Examples B–C.</p>
+<p><strong>Solution.</strong> Let <span class="math" data-index="353" data-tex="\(D\)">\(D\)</span> be such a set, and define <span class="math" data-index="354" data-tex="\(K\)">\(K\)</span> by <span class="math" data-index="355" data-tex="\(\xi\cdot y\le h_D(y)\)">\(\xi\cdot y\le h_D(y)\)</span> in every direction. Clearly <span class="math" data-index="356" data-tex="\(D\subset K\)">\(D\subset K\)</span>. If <span class="math" data-index="357" data-tex="\(q\notin D\)">\(q\notin D\)</span>, choose <span class="math" data-index="358" data-tex="\(p\in D\)">\(p\in D\)</span> minimizing <span class="math" data-index="359" data-tex="\(|q-p|\)">\(|q-p|\)</span>, which exists by compactness. For any <span class="math" data-index="360" data-tex="\(d\in D\)">\(d\in D\)</span>, differentiate the squared distance along <span class="math" data-index="361" data-tex="\(p+t(d-p)\)">\(p+t(d-p)\)</span>, <span class="math" data-index="362" data-tex="\(0\le t\le1\)">\(0\le t\le1\)</span>, at its minimum. It gives <span class="math" data-index="363" data-tex="\((q-p)\cdot(d-p)\le0\)">\((q-p)\cdot(d-p)\le0\)</span>. Thus, for <span class="math" data-index="364" data-tex="\(\eta=q-p\ne0\)">\(\eta=q-p\ne0\)</span>, <span class="math" data-index="365" data-tex="\(h_D(\eta)=p\cdot\eta&lt;q\cdot\eta\)">\(h_D(\eta)=p\cdot\eta&lt;q\cdot\eta\)</span>, excluding <span class="math" data-index="366" data-tex="\(q\)">\(q\)</span> from <span class="math" data-index="367" data-tex="\(K\)">\(K\)</span>. Hence <span class="math" data-index="368" data-tex="\(K=D\)">\(K=D\)</span>. A finite convex hull is the continuous image of the compact coefficient simplex, so it is compact; its support function is the maximum of its vertex pairings, as computed in (E28). The identity follows.</p>
+<p><strong>Exercise 6.</strong> In Lemma C1, why must the observation point stay fixed as <span class="math" data-index="369" data-tex="\(R\to\infty\)">\(R\to\infty\)</span>? Explain how the proof handles a center where <span class="math" data-index="370" data-tex="\(u(c)=-\infty\)">\(u(c)=-\infty\)</span>.</p>
+<p><strong>Solution.</strong> For a fixed radius <span class="math" data-index="371" data-tex="\(\rho=|z-c|\)">\(\rho=|z-c|\)</span> and fixed <span class="math" data-index="372" data-tex="\(\delta\)">\(\delta\)</span>, the numerator <span class="math" data-index="373" data-tex="\(\log(\rho/\delta)\)">\(\log(\rho/\delta)\)</span> is constant while <span class="math" data-index="374" data-tex="\(\log(R/\delta)\to\infty\)">\(\log(R/\delta)\to\infty\)</span>, so the barrier tends to <span class="math" data-index="375" data-tex="\(\alpha\)">\(\alpha\)</span>. If instead <span class="math" data-index="376" data-tex="\(\rho\)">\(\rho\)</span> grew proportionally to <span class="math" data-index="377" data-tex="\(R\)">\(R\)</span>, that quotient could tend to 1, giving only the original outer bound <span class="math" data-index="378" data-tex="\(C\)">\(C\)</span>. At a minus-infinite center, upper semicontinuity gives an inner disk below any finite <span class="math" data-index="379" data-tex="\(\alpha\)">\(\alpha\)</span>. Repeat the same fixed-point argument for each such <span class="math" data-index="380" data-tex="\(\alpha\)">\(\alpha\)</span>, then send <span class="math" data-index="381" data-tex="\(\alpha\to-\infty\)">\(\alpha\to-\infty\)</span>. It forces every point to have value <span class="math" data-index="382" data-tex="\(-\infty\)">\(-\infty\)</span>, so the nontrivial bounded-above case has no singular points.</p>
+<h2 id="source-credit-and-reproducible-illustrations">Source credit and reproducible illustrations</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em> (1983; second revised printing 1990; reprint 2005), §16.2, Lemmas 16.2.1–16.2.2, printed pp. 314–315, supplies the two mathematical targets. The proofs, examples, exercise solutions and illustrations here are original. The linked scalar slab and compact comparison proofs supply the exact earlier potential-theory steps; no later PSH scaling theorem is used.</p>
+<p>The <a href="reproduce/L139/figures/render_figures.py">figure program</a> and <a href="reproduce/L139/figures/geometry.json">exact geometry and sampling specifications</a> reproduce the support-set/envelope and annulus illustrations. PNG, SVG and original one-page vector PDF versions accompany the figures under CC0 1.0.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/plurisubharmonic-envelopes-and-support-functions.md" download>Download the complete editable lesson</a>. Original proof exposition, examples, solutions and figures use CC0 1.0.</p><ul><li><a href="reproduce/L139/README.md" download>README.md</a></li>
+<li><a href="reproduce/L139/LICENSE.txt" download>LICENSE.txt</a></li>
+<li><a href="reproduce/L139/figures/render_figures.py" download>figures/render_figures.py</a></li>
+<li><a href="reproduce/L139/figures/geometry.json" download>figures/geometry.json</a></li>
+<li><a href="reproduce/L139/figures/support-set-and-envelope.png" download>figures/support-set-and-envelope.png</a></li>
+<li><a href="reproduce/L139/figures/support-set-and-envelope.svg" download>figures/support-set-and-envelope.svg</a></li>
+<li><a href="reproduce/L139/figures/support-set-and-envelope.pdf" download>figures/support-set-and-envelope.pdf</a></li>
+<li><a href="reproduce/L139/figures/annulus-liouville.png" download>figures/annulus-liouville.png</a></li>
+<li><a href="reproduce/L139/figures/annulus-liouville.svg" download>figures/annulus-liouville.svg</a></li>
+<li><a href="reproduce/L139/figures/annulus-liouville.pdf" download>figures/annulus-liouville.pdf</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a> · <a href="index.html">Course contents</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

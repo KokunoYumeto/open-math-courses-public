@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Directional averages and additivity of growth indicators</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L140.html">Previous lesson</a> · <a href="#directional-asymptotic-theorem">The statement</a> · <a href="#d2-a-psh-family-of-directional-averages">Complete proof</a> · <a href="#indicator-additivity-theorem">Indicator additivity</a> · <a href="#d8-exercises-with-complete-solutions">Exercises and solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="directional-averages-and-additivity-of-growth-indicators">Directional averages and additivity of growth indicators</h1>
+<p><em>Original exposition and illustrations by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>A horizontal envelope records the largest value over all real translations. A single complex line can miss that largest growth, particularly when the function is identically minus infinity on that line. The upper-envelope theorem makes the line growth independent of the translation almost everywhere. We identify that growth, prove convergence of absolute errors on fixed observation windows, and quantify what remains true when the translation window grows. These averages also prove that growth indicators add even when finite-height envelopes do not.</p>
+<p>All norms, balls and volumes use the Euclidean metric on <span class="math" data-index="0" data-tex="\(\mathbb C^n=\mathbb R^{2n}\)">\(\mathbb C^n=\mathbb R^{2n}\)</span>. Planar area in the parameter <span class="math" data-index="1" data-tex="\(w\)">\(w\)</span> is <span class="math" data-index="2" data-tex="\(dA(w)\)">\(dA(w)\)</span>; translation volume is <span class="math" data-index="3" data-tex="\(dV(\zeta)\)">\(dV(\zeta)\)</span>. Write <span class="math" data-index="4" data-tex="\(m(K)\)">\(m(K)\)</span> for the area of a compact planar set and <span class="math" data-index="5" data-tex="\(|B|\)">\(|B|\)</span> for the volume of a ball. The direction <span class="math" data-index="6" data-tex="\(y\)">\(y\)</span> is a fixed real vector. Exceptional sets may depend on that direction.</p>
+<h2 id="d1-statements-and-the-exact-earlier-proofs">D1. Statements and the exact earlier proofs</h2>
+<p>Suppose <span class="math" data-index="7" data-tex="\(v\not\equiv-\infty\)">\(v\not\equiv-\infty\)</span> is plurisubharmonic on all of <span class="math" data-index="8" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, <span class="math" data-index="9" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and</p>
+<p><a id="eq-D1"></a></p>
+<span class="math math-display" data-index="10" data-tex="\[
+v(x+i\eta)\le C_0+C_1|\eta|.
+\tag{D1}
+\]">\[
+v(x+i\eta)\le C_0+C_1|\eta|.
+\tag{D1}
+\]</span>
+<p>The <a href="AN02-L139.html#psh-envelope-theorem">envelope theorem</a>, Theorem E1, gives the finite continuous convex function <span class="math" data-index="11" data-tex="\(M\)">\(M\)</span> and its finite continuous sublinear recession function <span class="math" data-index="12" data-tex="\(H\)">\(H\)</span>:</p>
+<p><a id="eq-D2"></a></p>
+<span class="math math-display" data-index="13" data-tex="\[
+M(\eta)=\sup_xv(x+i\eta),\qquad
+H(\eta)=\lim_{t\to\infty}M(t\eta)/t.
+\tag{D2}
+\]">\[
+M(\eta)=\sup_xv(x+i\eta),\qquad
+H(\eta)=\lim_{t\to\infty}M(t\eta)/t.
+\tag{D2}
+\]</span>
+<p>Its <a href="AN02-L139.html#recession-support-function">recession proof</a>, equations (E16)–(E20), supplies</p>
+<p><a id="eq-D3"></a></p>
+<span class="math math-display" data-index="14" data-tex="\[
+M(a+b)\le M(a)+H(b),\qquad
+|H(a)-H(b)|\le C_1|a-b|,\qquad
+M(a)\le M(0)+H(a).
+\tag{D3}
+\]">\[
+M(a+b)\le M(a)+H(b),\qquad
+|H(a)-H(b)|\le C_1|a-b|,\qquad
+M(a)\le M(0)+H(a).
+\tag{D3}
+\]</span>
+<p>In particular <span class="math" data-index="15" data-tex="\(C_1\ge0\)">\(C_1\ge0\)</span>, and <span class="math" data-index="16" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>. For real <span class="math" data-index="17" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, set</p>
+<p><a id="eq-D4"></a></p>
+<span class="math math-display" data-index="18" data-tex="\[
+e_t(\zeta,w)=t^{-1}v(\zeta+twy)-H((\operatorname{Im}w)y).
+\tag{D4}
+\]">\[
+e_t(\zeta,w)=t^{-1}v(\zeta+twy)-H((\operatorname{Im}w)y).
+\tag{D4}
+\]</span>
+<p>Values minus infinity are allowed at singular points. The integrals below use the given locally integrable representative; no value at a singular point is replaced by a finite value.</p>
+<p><a id="directional-asymptotic-theorem"></a></p>
+<p><a id="proof-D1"></a></p>
+<p><strong>Theorem D1 (directional asymptotics).</strong> For every fixed <span class="math" data-index="19" data-tex="\(y\in\mathbb R^n\)">\(y\in\mathbb R^n\)</span> there is a null set <span class="math" data-index="20" data-tex="\(N_y\subset\mathbb C^n\)">\(N_y\subset\mathbb C^n\)</span> such that, for every <span class="math" data-index="21" data-tex="\(\zeta\notin N_y\)">\(\zeta\notin N_y\)</span> and every compact <span class="math" data-index="22" data-tex="\(K\subset\mathbb C\)">\(K\subset\mathbb C\)</span>,</p>
+<p><a id="eq-D5"></a></p>
+<span class="math math-display" data-index="23" data-tex="\[
+\lim_{t\to+\infty}\int_K|e_t(\zeta,w)|\,dA(w)=0.
+\tag{D5}
+\]">\[
+\lim_{t\to+\infty}\int_K|e_t(\zeta,w)|\,dA(w)=0.
+\tag{D5}
+\]</span>
+<p>The same exceptional set works for all compact parameter windows, once the direction is fixed. No assertion of convergence at every translation is made.</p>
+<p><a id="fixed-ball-average-theorem"></a></p>
+<p><a id="proof-D2"></a></p>
+<p><strong>Theorem D2 (fixed balls).</strong> For every fixed ball <span class="math" data-index="24" data-tex="\(B\subset\mathbb C^n\)">\(B\subset\mathbb C^n\)</span> of positive radius and every compact <span class="math" data-index="25" data-tex="\(K\subset\mathbb C\)">\(K\subset\mathbb C\)</span>,</p>
+<p><a id="eq-D6"></a></p>
+<span class="math math-display" data-index="26" data-tex="\[
+\lim_{t\to\infty}\int_B\int_K|e_t(\zeta,w)|\,dA(w)\,dV(\zeta)=0.
+\tag{D6}
+\]">\[
+\lim_{t\to\infty}\int_B\int_K|e_t(\zeta,w)|\,dA(w)\,dV(\zeta)=0.
+\tag{D6}
+\]</span>
+<p><a id="growing-ball-average-theorem"></a></p>
+<p><a id="proof-D3"></a></p>
+<p><strong>Theorem D3 (growing balls).</strong> Let <span class="math" data-index="27" data-tex="\(B_t=B(c,r_t)\)">\(B_t=B(c,r_t)\)</span> have a fixed center, with <span class="math" data-index="28" data-tex="\(r_t\ge r_0&gt;0\)">\(r_t\ge r_0&gt;0\)</span> for all sufficiently large <span class="math" data-index="29" data-tex="\(t\)">\(t\)</span>. Define</p>
+<p><a id="eq-D7"></a></p>
+<span class="math math-display" data-index="30" data-tex="\[
+S_t=|B_t|^{-1}\int_{B_t}\int_K e_t\,dA\,dV,\qquad
+A_t=|B_t|^{-1}\int_{B_t}\int_K |e_t|\,dA\,dV.
+\tag{D7}
+\]">\[
+S_t=|B_t|^{-1}\int_{B_t}\int_K e_t\,dA\,dV,\qquad
+A_t=|B_t|^{-1}\int_{B_t}\int_K |e_t|\,dA\,dV.
+\tag{D7}
+\]</span>
+<p>Then</p>
+<p><a id="eq-D8"></a></p>
+<span class="math math-display" data-index="31" data-tex="\[
+\liminf_{t\to\infty}S_t\ge0,
+\qquad
+\limsup_{t\to\infty}A_t
+\le2\limsup_{t\to\infty}
+\frac1{t|B_t|}\int_{B_t}\int_K|H(\operatorname{Im}\zeta)|\,dA\,dV.
+\tag{D8}
+\]">\[
+\liminf_{t\to\infty}S_t\ge0,
+\qquad
+\limsup_{t\to\infty}A_t
+\le2\limsup_{t\to\infty}
+\frac1{t|B_t|}\int_{B_t}\int_K|H(\operatorname{Im}\zeta)|\,dA\,dV.
+\tag{D8}
+\]</span>
+<p>The right side may be infinite. If <span class="math" data-index="32" data-tex="\(r_t=o(t)\)">\(r_t=o(t)\)</span>, it is zero, so <span class="math" data-index="33" data-tex="\(A_t\to0\)">\(A_t\to0\)</span> and <span class="math" data-index="34" data-tex="\(S_t\to0\)">\(S_t\to0\)</span>. With unrestricted radii, the first conclusion is a signed lower-limit inequality; it is not a general assertion of limit zero.</p>
+<p><a id="indicator-additivity-theorem"></a></p>
+<p><a id="proof-D4"></a></p>
+<p><strong>Theorem D4 (indicator additivity).</strong> Suppose <span class="math" data-index="35" data-tex="\(v_1,v_2,v_3\)">\(v_1,v_2,v_3\)</span> are global PSH functions, <span class="math" data-index="36" data-tex="\(v_3=v_1+v_2\)">\(v_3=v_1+v_2\)</span>, and each has a linear imaginary-growth upper bound as in (D1). If they are nontrivial, their support functions satisfy</p>
+<p><a id="eq-D9"></a></p>
+<span class="math math-display" data-index="37" data-tex="\[
+H_3(y)=H_1(y)+H_2(y)\qquad(y\in\mathbb R^n).
+\tag{D9}
+\]">\[
+H_3(y)=H_1(y)+H_2(y)\qquad(y\in\mathbb R^n).
+\tag{D9}
+\]</span>
+<p>For an identically minus-infinite function use the extended convention <span class="math" data-index="38" data-tex="\(H\equiv-\infty\)">\(H\equiv-\infty\)</span>, the support function of the empty set. With this convention (D9) also covers those cases. For nonempty support sets, the corresponding compact convex set is the Minkowski sum.</p>
+<p>Our other exact inputs are <a href="AN02-L136.html#asymptotic-profile">the one-variable dilation theorem</a>, Theorem A1/(A6), and <a href="AN02-L140.html#UE6">the real-parameter upper-envelope theorem</a>, UE6/(UE20)–(UE21). A1 proves volume <span class="math" data-index="39" data-tex="\(L^1\)">\(L^1\)</span> convergence on every compact subset of the closed upper half-plane for a nontrivial subharmonic function with a linear upper height bound. Its height slope is the scalar envelope slope in <a href="AN02-L133.html#theorem-S">L133, Theorem S</a>, including the increment bound. The upper-envelope proof's <a href="AN02-L140.html#UE2">UE2</a> establishes real subharmonicity, local integrability, ball means, and positive translation averages of PSH functions; <a href="AN02-L140.html#UE3">UE3–UE5</a> supply the complete regularization argument. Finite-measure integration and Tonelli use the <a href="prerequisites/banach-foundation-bridges.html">written integration foundations</a>, §§15.0–15.1 and §16.4. We prove the lower estimates and all passages to absolute errors here.</p>
+<h2 id="d2-a-psh-family-of-directional-averages">D2. A PSH family of directional averages</h2>
+<p>Assume first <span class="math" data-index="40" data-tex="\(y\ne0\)">\(y\ne0\)</span>. Use the fixed rectangle</p>
+<p><a id="eq-D10"></a></p>
+<span class="math math-display" data-index="41" data-tex="\[
+Q=\{u+is:-1\le u\le1,\ 0\le s\le1\},\qquad
+m(Q)=2,\quad I=\int_Q\operatorname{Im}w\,dA(w)=1.
+\tag{D10}
+\]">\[
+Q=\{u+is:-1\le u\le1,\ 0\le s\le1\},\qquad
+m(Q)=2,\quad I=\int_Q\operatorname{Im}w\,dA(w)=1.
+\tag{D10}
+\]</span>
+<p>For <span class="math" data-index="42" data-tex="\(t\ge1\)">\(t\ge1\)</span>, define</p>
+<p><a id="eq-D11"></a></p>
+<span class="math math-display" data-index="43" data-tex="\[
+F_t(\zeta)=t^{-1}\int_Qv(\zeta+twy)\,dA(w).
+\tag{D11}
+\]">\[
+F_t(\zeta)=t^{-1}\int_Qv(\zeta+twy)\,dA(w).
+\tag{D11}
+\]</span>
+<p>The positive translation measure is the pushforward of <span class="math" data-index="44" data-tex="\(t^{-1}\mathbf1_QdA\)">\(t^{-1}\mathbf1_QdA\)</span> under <span class="math" data-index="45" data-tex="\(w\mapsto twy\)">\(w\mapsto twy\)</span>. UE2 proves that <span class="math" data-index="46" data-tex="\(F_t\)">\(F_t\)</span> is PSH and locally integrable. To see why no singular fiber invalidates this claim, for a bounded observation region <span class="math" data-index="47" data-tex="\(B\)">\(B\)</span> the translated sets <span class="math" data-index="48" data-tex="\(B+tw y\)">\(B+tw y\)</span>, <span class="math" data-index="49" data-tex="\(w\in Q\)">\(w\in Q\)</span>, lie in one compact region <span class="math" data-index="50" data-tex="\(C\)">\(C\)</span> at each fixed <span class="math" data-index="51" data-tex="\(t\)">\(t\)</span>. Translation preserves volume, so</p>
+<p><a id="eq-D12"></a></p>
+<span class="math math-display" data-index="52" data-tex="\[
+\int_B\int_Q|v(\zeta+twy)|\,dA(w)\,dV(\zeta)
+\le m(Q)\int_C|v(a)|\,dV(a)&lt;\infty.
+\tag{D12}
+\]">\[
+\int_B\int_Q|v(\zeta+twy)|\,dA(w)\,dV(\zeta)
+\le m(Q)\int_C|v(a)|\,dV(a)&lt;\infty.
+\tag{D12}
+\]</span>
+<p>Thus the average is finite almost everywhere as a function of its translation. At a translation where the entire line is singular it may still be minus infinity. UE2's reverse-Fatou and integrated circle inequalities preserve the correct upper semicontinuous values at all translations.</p>
+<p>By (D3) and positive homogeneity,</p>
+<p><a id="eq-D13"></a></p>
+<span class="math math-display" data-index="53" data-tex="\[
+v(\zeta+twy)\le M(\operatorname{Im}\zeta)+tH((\operatorname{Im}w)y).
+\tag{D13}
+\]">\[
+v(\zeta+twy)\le M(\operatorname{Im}\zeta)+tH((\operatorname{Im}w)y).
+\tag{D13}
+\]</span>
+<p>Since <span class="math" data-index="54" data-tex="\(\operatorname{Im}w\ge0\)">\(\operatorname{Im}w\ge0\)</span> on <span class="math" data-index="55" data-tex="\(Q\)">\(Q\)</span>, integration gives</p>
+<p><a id="eq-D14"></a></p>
+<span class="math math-display" data-index="56" data-tex="\[
+F_t(\zeta)\le I H(y)+\frac{m(Q)}tM(\operatorname{Im}\zeta).
+\tag{D14}
+\]">\[
+F_t(\zeta)\le I H(y)+\frac{m(Q)}tM(\operatorname{Im}\zeta).
+\tag{D14}
+\]</span>
+<p>Continuity of <span class="math" data-index="57" data-tex="\(M\)">\(M\)</span> makes the family locally uniformly bounded above for all <span class="math" data-index="58" data-tex="\(t\ge1\)">\(t\ge1\)</span>. Its pointwise upper limit is globally at most <span class="math" data-index="59" data-tex="\(I H(y)\)">\(I H(y)\)</span>. The real-parameter envelope theorem therefore gives a constant <span class="math" data-index="60" data-tex="\(A\in[-\infty,I H(y)]\)">\(A\in[-\infty,I H(y)]\)</span> such that</p>
+<p><a id="eq-D15"></a></p>
+<span class="math math-display" data-index="61" data-tex="\[
+\limsup_{t\to\infty}F_t(\zeta)=A\quad\text{almost everywhere},
+\qquad \limsup_{t\to\infty}F_t(\zeta)\le A\quad\text{everywhere}.
+\tag{D15}
+\]">\[
+\limsup_{t\to\infty}F_t(\zeta)=A\quad\text{almost everywhere},
+\qquad \limsup_{t\to\infty}F_t(\zeta)\le A\quad\text{everywhere}.
+\tag{D15}
+\]</span>
+<p>The everywhere inequality is essential for identifying the constant. An almost-everywhere equality alone would not permit the later supremum over all real translations.</p>
+<h2 id="d3-identifying-the-constant-through-all-line-slopes">D3. Identifying the constant through all line slopes</h2>
+<p>For each translation, let</p>
+<p><a id="eq-D16"></a></p>
+<span class="math math-display" data-index="62" data-tex="\[
+q_\zeta(w)=v(\zeta+wy).
+\tag{D16}
+\]">\[
+q_\zeta(w)=v(\zeta+wy).
+\tag{D16}
+\]</span>
+<p>This is a subharmonic function on the whole plane or is identically minus infinity. If it is nontrivial, it is locally integrable on the plane by UE2 in dimension one and NP2; it cannot be identically minus infinity on the open upper half-plane, which has positive area. There it has the uniform height bound, from (D13),</p>
+<p><a id="eq-D17"></a></p>
+<span class="math math-display" data-index="63" data-tex="\[
+q_\zeta(u+is)\le M(\operatorname{Im}\zeta)+sH(y),\qquad s&gt;0.
+\tag{D17}
+\]">\[
+q_\zeta(u+is)\le M(\operatorname{Im}\zeta)+sH(y),\qquad s&gt;0.
+\tag{D17}
+\]</span>
+<p>The scalar envelope theorem gives a finite slope</p>
+<p><a id="eq-D18"></a></p>
+<span class="math math-display" data-index="64" data-tex="\[
+\gamma(\zeta)=\lim_{s\to\infty}
+\frac{\sup_u q_\zeta(u+is)}s\le H(y).
+\tag{D18}
+\]">\[
+\gamma(\zeta)=\lim_{s\to\infty}
+\frac{\sup_u q_\zeta(u+is)}s\le H(y).
+\tag{D18}
+\]</span>
+<p>Apply A1 to this upper-half-plane function. Since its dilation is exactly <span class="math" data-index="65" data-tex="\(q_\zeta(tw)=v(\zeta+twy)\)">\(q_\zeta(tw)=v(\zeta+twy)\)</span>, A1 gives absolute integral convergence to <span class="math" data-index="66" data-tex="\(\gamma(\zeta)\operatorname{Im}w\)">\(\gamma(\zeta)\operatorname{Im}w\)</span> on <span class="math" data-index="67" data-tex="\(Q\)">\(Q\)</span>. In particular</p>
+<p><a id="eq-D19"></a></p>
+<span class="math math-display" data-index="68" data-tex="\[
+F_t(\zeta)\longrightarrow I\gamma(\zeta)
+\quad\text{on every nontrivial line}.
+\tag{D19}
+\]">\[
+F_t(\zeta)\longrightarrow I\gamma(\zeta)
+\quad\text{on every nontrivial line}.
+\tag{D19}
+\]</span>
+<p>There exists such a line: choose a point where <span class="math" data-index="69" data-tex="\(v\)">\(v\)</span> is finite and use it as the translation. Equations (D15) and (D19) then imply <span class="math" data-index="70" data-tex="\(A&gt; -\infty\)">\(A&gt; -\infty\)</span>. Set <span class="math" data-index="71" data-tex="\(\gamma=A/I\)">\(\gamma=A/I\)</span>. For every nontrivial line (D15) gives <span class="math" data-index="72" data-tex="\(\gamma(\zeta)\le\gamma\)">\(\gamma(\zeta)\le\gamma\)</span>, while almost everywhere (D15) and (D19) give <span class="math" data-index="73" data-tex="\(\gamma(\zeta)=\gamma\)">\(\gamma(\zeta)=\gamma\)</span>. An identically minus-infinite line has <span class="math" data-index="74" data-tex="\(F_t=-\infty\)">\(F_t=-\infty\)</span>, so it cannot belong to that finite, full-measure equality set. Also <span class="math" data-index="75" data-tex="\(\gamma\le H(y)\)">\(\gamma\le H(y)\)</span>.</p>
+<p>We now prove the reverse inequality without assuming it at any particular real translate. Write <span class="math" data-index="76" data-tex="\(m_\zeta(s)=\sup_u q_\zeta(u+is)\)">\(m_\zeta(s)=\sup_u q_\zeta(u+is)\)</span> on a nontrivial line. The scalar increment estimate says, for <span class="math" data-index="77" data-tex="\(0&lt;a&lt;r\)">\(0&lt;a&lt;r\)</span>,</p>
+<p><a id="eq-D20"></a></p>
+<span class="math math-display" data-index="78" data-tex="\[
+q_\zeta(ir)\le m_\zeta(r)
+\le m_\zeta(a)+\gamma(\zeta)(r-a)
+\le M(\operatorname{Im}\zeta+a y)+\gamma(\zeta)(r-a).
+\tag{D20}
+\]">\[
+q_\zeta(ir)\le m_\zeta(r)
+\le m_\zeta(a)+\gamma(\zeta)(r-a)
+\le M(\operatorname{Im}\zeta+a y)+\gamma(\zeta)(r-a).
+\tag{D20}
+\]</span>
+<p>Here the last envelope includes the entire real line direction, and thus dominates its smaller supremum. Let <span class="math" data-index="79" data-tex="\(a\downarrow0\)">\(a\downarrow0\)</span>, using the continuity of <span class="math" data-index="80" data-tex="\(M\)">\(M\)</span>. Because <span class="math" data-index="81" data-tex="\(r&gt;0\)">\(r&gt;0\)</span> and <span class="math" data-index="82" data-tex="\(\gamma(\zeta)\le\gamma\)">\(\gamma(\zeta)\le\gamma\)</span>,</p>
+<p><a id="eq-D21"></a></p>
+<span class="math math-display" data-index="83" data-tex="\[
+v(\zeta+i r y)\le M(\operatorname{Im}\zeta)+\gamma r.
+\tag{D21}
+\]">\[
+v(\zeta+i r y)\le M(\operatorname{Im}\zeta)+\gamma r.
+\tag{D21}
+\]</span>
+<p>The same inequality holds on a wholly singular line, with left side minus infinity. Thus (D21) holds for every translation. Take <span class="math" data-index="84" data-tex="\(\zeta=x\in\mathbb R^n\)">\(\zeta=x\in\mathbb R^n\)</span> and then the supremum over all <span class="math" data-index="85" data-tex="\(x\)">\(x\)</span>:</p>
+<p><a id="eq-D22"></a></p>
+<span class="math math-display" data-index="86" data-tex="\[
+M(r y)\le M(0)+\gamma r.
+\tag{D22}
+\]">\[
+M(r y)\le M(0)+\gamma r.
+\tag{D22}
+\]</span>
+<p>Dividing by <span class="math" data-index="87" data-tex="\(r\)">\(r\)</span> and letting it tend to infinity proves <span class="math" data-index="88" data-tex="\(H(y)\le\gamma\)">\(H(y)\le\gamma\)</span>. Therefore <span class="math" data-index="89" data-tex="\(\gamma=H(y)\)">\(\gamma=H(y)\)</span>, and (D18) has this exact value for almost every translation.</p>
+<p>Choose the full-measure set just obtained for <span class="math" data-index="90" data-tex="\(y\)">\(y\)</span>, and intersect it with the corresponding set for <span class="math" data-index="91" data-tex="\(-y\)">\(-y\)</span>. For each translation in this intersection, A1 gives (D5) on every compact portion of the closed upper half-plane. Apply A1 for direction <span class="math" data-index="92" data-tex="\(-y\)">\(-y\)</span> with parameter <span class="math" data-index="93" data-tex="\(-w\)">\(-w\)</span> to obtain the lower-half-plane conclusion. On its lower half,</p>
+<p><a id="eq-D23"></a></p>
+<span class="math math-display" data-index="94" data-tex="\[
+H((\operatorname{Im}w)y)=(-\operatorname{Im}w)H(-y).
+\tag{D23}
+\]">\[
+H((\operatorname{Im}w)y)=(-\operatorname{Im}w)H(-y).
+\tag{D23}
+\]</span>
+<p>Split an arbitrary compact <span class="math" data-index="95" data-tex="\(K\)">\(K\)</span> into those two halves. Their common real boundary has planar area zero, so adding the two absolute integrals proves (D5). The exceptional set was selected using <span class="math" data-index="96" data-tex="\(Q\)">\(Q\)</span> and the two slopes, not using <span class="math" data-index="97" data-tex="\(K\)">\(K\)</span>; A1 then applies to every compact window at once.</p>
+<p>If <span class="math" data-index="98" data-tex="\(y=0\)">\(y=0\)</span>, the function <span class="math" data-index="99" data-tex="\(v(\zeta)\)">\(v(\zeta)\)</span> is finite for almost every translation by local integrability. At each such translation the absolute integral is <span class="math" data-index="100" data-tex="\(m(K)|v(\zeta)|/t\)">\(m(K)|v(\zeta)|/t\)</span>, because <span class="math" data-index="101" data-tex="\(H(0)=0\)">\(H(0)=0\)</span>, and tends to zero. This completes Theorem D1, including the degenerate direction. A compact set of area zero always has integral zero under the usual Lebesgue integral convention.</p>
+<h2 id="d4-fixed-balls-controlling-the-negative-error">D4. Fixed balls: controlling the negative error</h2>
+<p>For each fixed <span class="math" data-index="102" data-tex="\(t\)">\(t\)</span> the error is absolutely integrable on <span class="math" data-index="103" data-tex="\(B\times K\)">\(B\times K\)</span>, by the same translation estimate as (D12). From (D13), for every <span class="math" data-index="104" data-tex="\(w\)">\(w\)</span> of either sign,</p>
+<p><a id="eq-D24"></a></p>
+<span class="math math-display" data-index="105" data-tex="\[
+e_t(\zeta,w)\le M(\operatorname{Im}\zeta)/t.
+\tag{D24}
+\]">\[
+e_t(\zeta,w)\le M(\operatorname{Im}\zeta)/t.
+\tag{D24}
+\]</span>
+<p>On a fixed ball let <span class="math" data-index="106" data-tex="\(D_B=\max(0,\sup_{\zeta\in\overline B}M(\operatorname{Im}\zeta))\)">\(D_B=\max(0,\sup_{\zeta\in\overline B}M(\operatorname{Im}\zeta))\)</span>, which is finite. The positive part satisfies</p>
+<p><a id="eq-D25"></a></p>
+<span class="math math-display" data-index="107" data-tex="\[
+\int_B\int_K(e_t)_+\,dA\,dV
+\le |B|m(K)D_B/t\longrightarrow0.
+\tag{D25}
+\]">\[
+\int_B\int_K(e_t)_+\,dA\,dV
+\le |B|m(K)D_B/t\longrightarrow0.
+\tag{D25}
+\]</span>
+<p>It remains to control negative wells, for which a one-sided upper bound is insufficient. Choose a translation <span class="math" data-index="108" data-tex="\(\zeta_0\)">\(\zeta_0\)</span> satisfying Theorem D1, and a fixed ball <span class="math" data-index="109" data-tex="\(B&#x27;\)">\(B&#x27;\)</span> centered at <span class="math" data-index="110" data-tex="\(\zeta_0\)">\(\zeta_0\)</span> containing <span class="math" data-index="111" data-tex="\(B\)">\(B\)</span>. Real subharmonicity and the volume submean inequality, proved in UE2, give at each <span class="math" data-index="112" data-tex="\(w\)">\(w\)</span></p>
+<p><a id="eq-D26"></a></p>
+<span class="math math-display" data-index="113" data-tex="\[
+\frac1{|B&#x27;|}\int_{B&#x27;}e_t(\zeta,w)\,dV(\zeta)
+\ge e_t(\zeta_0,w).
+\tag{D26}
+\]">\[
+\frac1{|B&#x27;|}\int_{B&#x27;}e_t(\zeta,w)\,dV(\zeta)
+\ge e_t(\zeta_0,w).
+\tag{D26}
+\]</span>
+<p>Indeed translate the ball by <span class="math" data-index="114" data-tex="\(twy\)">\(twy\)</span>, apply the mean inequality to <span class="math" data-index="115" data-tex="\(v\)">\(v\)</span> at <span class="math" data-index="116" data-tex="\(\zeta_0+twy\)">\(\zeta_0+twy\)</span>, divide by positive <span class="math" data-index="117" data-tex="\(t\)">\(t\)</span>, and subtract the term independent of <span class="math" data-index="118" data-tex="\(\zeta\)">\(\zeta\)</span>. The integrals are well defined; the center restriction on a good line is locally integrable, and Tonelli/Fubini is justified by (D12). Integrating over <span class="math" data-index="119" data-tex="\(K\)">\(K\)</span>, the right side tends to zero by (D5). The signed integral over <span class="math" data-index="120" data-tex="\(B&#x27;\times K\)">\(B&#x27;\times K\)</span> thus has lower limit at least zero. Its upper limit is at most zero by (D24) on this fixed ball. Hence that signed integral tends to zero. For a real integrable error, use the exact identity</p>
+<p><a id="eq-D27"></a></p>
+<span class="math math-display" data-index="121" data-tex="\[
+|e_t|=2(e_t)_+-e_t.
+\tag{D27}
+\]">\[
+|e_t|=2(e_t)_+-e_t.
+\tag{D27}
+\]</span>
+<p>Equation (D25) and the signed limit prove absolute convergence to zero over <span class="math" data-index="122" data-tex="\(B&#x27;\times K\)">\(B&#x27;\times K\)</span>. Restriction to <span class="math" data-index="123" data-tex="\(B\times K\)">\(B\times K\)</span> proves Theorem D2. The enlarged ball need not preserve the original center, because its nonnegative absolute integral bounds that of the original observation ball.</p>
+<h2 id="d5-balls-whose-radii-vary">D5. Balls whose radii vary</h2>
+<p>We first justify the monotonicity being used. For a smooth subharmonic function in real dimension <span class="math" data-index="124" data-tex="\(d=2n\)">\(d=2n\)</span>, its sphere average <span class="math" data-index="125" data-tex="\(a(r)\)">\(a(r)\)</span> satisfies</p>
+<p><a id="eq-D28"></a></p>
+<span class="math math-display" data-index="126" data-tex="\[
+a&#x27;(r)=\frac1{|S^{d-1}|r^{d-1}}
+          \int_{B(c,r)}\Delta v\,dV\ge0.
+\tag{D28}
+\]">\[
+a&#x27;(r)=\frac1{|S^{d-1}|r^{d-1}}
+          \int_{B(c,r)}\Delta v\,dV\ge0.
+\tag{D28}
+\]</span>
+<p>This follows by differentiating the sphere mean and the divergence theorem. Its normalized ball mean is <span class="math" data-index="127" data-tex="\(d r^{-d}\int_0^r a(s)s^{d-1}ds\)">\(d r^{-d}\int_0^r a(s)s^{d-1}ds\)</span>, whose derivative is <span class="math" data-index="128" data-tex="\(d/r\)">\(d/r\)</span> times the difference between the sphere and ball means, also nonnegative. For a general subharmonic function, convolve locally with the smooth nonnegative radial kernels of UE2. These convolutions are smooth subharmonic. Their local <span class="math" data-index="129" data-tex="\(L^1\)">\(L^1\)</span> convergence, proved in <a href="AN02-L131.html#NP2">NP2</a>, passes the inequalities between any two fixed-radius volume means to the original function. Thus normalized ball means increase with radius in the general case. At each fixed <span class="math" data-index="130" data-tex="\(t,w\)">\(t,w\)</span> the same is true for the translated function of <span class="math" data-index="131" data-tex="\(\zeta\)">\(\zeta\)</span>, and subtracting a constant and dividing by <span class="math" data-index="132" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> preserves it.</p>
+<p>Consequently, for all large <span class="math" data-index="133" data-tex="\(t\)">\(t\)</span> and <span class="math" data-index="134" data-tex="\(r_t\ge r_0\)">\(r_t\ge r_0\)</span>,</p>
+<p><a id="eq-D29"></a></p>
+<span class="math math-display" data-index="135" data-tex="\[
+S_t\ge |B(c,r_0)|^{-1}\int_{B(c,r_0)}\int_K e_t\,dA\,dV.
+\tag{D29}
+\]">\[
+S_t\ge |B(c,r_0)|^{-1}\int_{B(c,r_0)}\int_K e_t\,dA\,dV.
+\tag{D29}
+\]</span>
+<p>The right side tends to zero by Theorem D2, proving the first inequality in (D8). No common upper bound on the radii was used.</p>
+<p>From (D3) and (D24), a nonnegative bound for the positive part is</p>
+<p><a id="eq-D30"></a></p>
+<span class="math math-display" data-index="136" data-tex="\[
+(e_t)_+\le\frac{|M(0)|+|H(\operatorname{Im}\zeta)|}{t}.
+\tag{D30}
+\]">\[
+(e_t)_+\le\frac{|M(0)|+|H(\operatorname{Im}\zeta)|}{t}.
+\tag{D30}
+\]</span>
+<p>Applying (D27), normalizing and integrating gives</p>
+<p><a id="eq-D31"></a></p>
+<span class="math math-display" data-index="137" data-tex="\[
+A_t\le\frac{2m(K)|M(0)|}{t}
+ +\frac2{t|B_t|}\int_{B_t}\int_K|H(\operatorname{Im}\zeta)|\,dA\,dV-S_t.
+\tag{D31}
+\]">\[
+A_t\le\frac{2m(K)|M(0)|}{t}
+ +\frac2{t|B_t|}\int_{B_t}\int_K|H(\operatorname{Im}\zeta)|\,dA\,dV-S_t.
+\tag{D31}
+\]</span>
+<p>Take upper limits and use <span class="math" data-index="138" data-tex="\(\liminf S_t\ge0\)">\(\liminf S_t\ge0\)</span>. If the right upper limit is finite, this is the elementary inequality for upper/lower limits; if it is infinite, the desired upper bound is automatic. This proves the second part of (D8).</p>
+<p>Finally, <span class="math" data-index="139" data-tex="\(|H(\eta)|\le C_1|\eta|\)">\(|H(\eta)|\le C_1|\eta|\)</span>, and every point of <span class="math" data-index="140" data-tex="\(B(c,r_t)\)">\(B(c,r_t)\)</span> obeys <span class="math" data-index="141" data-tex="\(|\operatorname{Im}\zeta|\le|\operatorname{Im}c|+r_t\)">\(|\operatorname{Im}\zeta|\le|\operatorname{Im}c|+r_t\)</span>. Therefore</p>
+<p><a id="eq-D32"></a></p>
+<span class="math math-display" data-index="142" data-tex="\[
+\frac1{t|B_t|}\int_{B_t}\int_K|H(\operatorname{Im}\zeta)|\,dA\,dV
+\le m(K)C_1\frac{|\operatorname{Im}c|+r_t}{t}.
+\tag{D32}
+\]">\[
+\frac1{t|B_t|}\int_{B_t}\int_K|H(\operatorname{Im}\zeta)|\,dA\,dV
+\le m(K)C_1\frac{|\operatorname{Im}c|+r_t}{t}.
+\tag{D32}
+\]</span>
+<p>For radii <span class="math" data-index="143" data-tex="\(o(t)\)">\(o(t)\)</span> this tends to zero. Since <span class="math" data-index="144" data-tex="\(A_t\ge0\)">\(A_t\ge0\)</span> and <span class="math" data-index="145" data-tex="\(|S_t|\le A_t\)">\(|S_t|\le A_t\)</span>, both claimed limits follow. Theorem D3 is proved with precisely the stated lower-limit qualification.</p>
+<h2 id="d6-indicator-additivity-from-an-integral-identity">D6. Indicator additivity from an integral identity</h2>
+<p>Suppose first that <span class="math" data-index="146" data-tex="\(v_1,v_2\)">\(v_1,v_2\)</span> are nontrivial. They are finite almost everywhere by UE2, so their sum is finite almost everywhere and is nontrivial. Finite sums are PSH: upper semicontinuity and the line submean inequalities add, with only negative infinite values possible. On each fixed ball/window at each fixed <span class="math" data-index="147" data-tex="\(t\)">\(t\)</span>, all three errors are integrable, so their a.e. sum identity may be integrated.</p>
+<p>Fix any <span class="math" data-index="148" data-tex="\(y\)">\(y\)</span>, the rectangle <span class="math" data-index="149" data-tex="\(Q\)">\(Q\)</span> from (D10), and any ball <span class="math" data-index="150" data-tex="\(B\)">\(B\)</span> of positive volume. On <span class="math" data-index="151" data-tex="\(Q\)">\(Q\)</span>, positive homogeneity says <span class="math" data-index="152" data-tex="\(H_j((\operatorname{Im}w)y)=(\operatorname{Im}w)H_j(y)\)">\(H_j((\operatorname{Im}w)y)=(\operatorname{Im}w)H_j(y)\)</span>. The equality <span class="math" data-index="153" data-tex="\(v_3=v_1+v_2\)">\(v_3=v_1+v_2\)</span> thus gives almost everywhere</p>
+<p><a id="eq-D33"></a></p>
+<span class="math math-display" data-index="154" data-tex="\[
+(\operatorname{Im}w)(H_3(y)-H_1(y)-H_2(y))
+=-e_{3,t}(\zeta,w)+e_{1,t}(\zeta,w)+e_{2,t}(\zeta,w).
+\tag{D33}
+\]">\[
+(\operatorname{Im}w)(H_3(y)-H_1(y)-H_2(y))
+=-e_{3,t}(\zeta,w)+e_{1,t}(\zeta,w)+e_{2,t}(\zeta,w).
+\tag{D33}
+\]</span>
+<p>Integrate over <span class="math" data-index="155" data-tex="\(B\times Q\)">\(B\times Q\)</span>. The integral of the left side is <span class="math" data-index="156" data-tex="\(|B|I\)">\(|B|I\)</span> times the difference of the three indicators. The absolute value of the right integral is at most the sum of the three absolute error integrals, each tending to zero by Theorem D2. Since <span class="math" data-index="157" data-tex="\(|B|I&gt;0\)">\(|B|I&gt;0\)</span>, the difference is zero. The direction was arbitrary, so (D9) holds everywhere.</p>
+<p>If one summand is identically minus infinity, the sum is identically minus infinity. Its indicator and the extended sum of indicators are both minus infinity. Conversely, two nontrivial summands cannot have an identically minus-infinite sum, by their common full-measure finite set. This handles all extended cases without subtracting infinite quantities in (D33).</p>
+<p>Let <span class="math" data-index="158" data-tex="\(K_j\)">\(K_j\)</span> be the nonempty compact convex support sets from Theorem E1. The sum <span class="math" data-index="159" data-tex="\(K_1+K_2\)">\(K_1+K_2\)</span> is compact as the image of their compact product under addition, and is convex. Its support in direction <span class="math" data-index="160" data-tex="\(y\)">\(y\)</span> is the sum of the two separate maxima, because a maximizing vector may be selected in each compact set. Its support function is therefore <span class="math" data-index="161" data-tex="\(H_1+H_2=H_3\)">\(H_1+H_2=H_3\)</span>. <a href="AN02-L139.html">L139, Exercise 5</a> proves that a nonempty compact convex set is determined by its support function, so <span class="math" data-index="162" data-tex="\(K_3=K_1+K_2\)">\(K_3=K_1+K_2\)</span>. With an empty summand the Minkowski sum is empty, in agreement with the extended case.</p>
+<h2 id="d7-four-worked-examples">D7. Four worked examples</h2>
+<p><strong>Example A: an exceptional complex fiber.</strong> In <span class="math" data-index="163" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, set <span class="math" data-index="164" data-tex="\(v(z)=\log|\sin z_1|\)">\(v(z)=\log|\sin z_1|\)</span> and <span class="math" data-index="165" data-tex="\(y=(0,1)\)">\(y=(0,1)\)</span>. The <a href="AN02-L137.html#logarithmic-zero-measure">logarithm proof</a> makes this PSH on each complex line, including lines on which it is identically minus infinity. The identity <span class="math" data-index="166" data-tex="\(|\sin(x+i\eta)|^2=\sin^2x+\sinh^2\eta\)">\(|\sin(x+i\eta)|^2=\sin^2x+\sinh^2\eta\)</span> gives <span class="math" data-index="167" data-tex="\(M(\eta_1,\eta_2)=\log\cosh\eta_1\)">\(M(\eta_1,\eta_2)=\log\cosh\eta_1\)</span>, hence <span class="math" data-index="168" data-tex="\(H(\eta)=|\eta_1|\)">\(H(\eta)=|\eta_1|\)</span>, and verifies (D1) with <span class="math" data-index="169" data-tex="\(C_0=0,C_1=1\)">\(C_0=0,C_1=1\)</span>. Along this direction <span class="math" data-index="170" data-tex="\(H((\operatorname{Im}w)y)=0\)">\(H((\operatorname{Im}w)y)=0\)</span>. For <span class="math" data-index="171" data-tex="\(\sin\zeta_1\ne0\)">\(\sin\zeta_1\ne0\)</span>, the entire fiber value is the finite constant <span class="math" data-index="172" data-tex="\(\log|\sin\zeta_1|\)">\(\log|\sin\zeta_1|\)</span>, and its absolute error integral is exactly <span class="math" data-index="173" data-tex="\(m(K)|\log|\sin\zeta_1||/t\)">\(m(K)|\log|\sin\zeta_1||/t\)</span>. For <span class="math" data-index="174" data-tex="\(\zeta_1\in\pi\mathbb Z\)">\(\zeta_1\in\pi\mathbb Z\)</span>, the whole fiber has value minus infinity, and any positive-area window has infinite absolute error. The exceptional set is a countable union of complex hyperplanes, with real codimension two and volume zero. This shows why “almost every translation” cannot be strengthened to every translation.</p>
+<p><strong>Example B: a growing ball can retain positive error.</strong> In <span class="math" data-index="175" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> take <span class="math" data-index="176" data-tex="\(v(z)=|\operatorname{Im}z_1|\)">\(v(z)=|\operatorname{Im}z_1|\)</span>, <span class="math" data-index="177" data-tex="\(y=(0,1)\)">\(y=(0,1)\)</span>, <span class="math" data-index="178" data-tex="\(B_t=B(0,r_t)\)">\(B_t=B(0,r_t)\)</span>. A maximum of the two affine harmonic functions is PSH. Its envelope and indicator are both <span class="math" data-index="179" data-tex="\(|\eta_1|\)">\(|\eta_1|\)</span>. The directional profile is zero and <span class="math" data-index="180" data-tex="\(e_t=|\operatorname{Im}\zeta_1|/t\ge0\)">\(e_t=|\operatorname{Im}\zeta_1|/t\ge0\)</span>. For the unit ball in <span class="math" data-index="181" data-tex="\(\mathbb R^4\)">\(\mathbb R^4\)</span>, slicing at its first coordinate gives</p>
+<p><a id="eq-D34"></a></p>
+<span class="math math-display" data-index="182" data-tex="\[
+\frac1{|B_4|}\int_{B_4}|a_1|\,da
+=\frac{2|B_3|}{|B_4|}\int_0^1s(1-s^2)^{3/2}\,ds
+=\frac{16}{15\pi}.
+\tag{D34}
+\]">\[
+\frac1{|B_4|}\int_{B_4}|a_1|\,da
+=\frac{2|B_3|}{|B_4|}\int_0^1s(1-s^2)^{3/2}\,ds
+=\frac{16}{15\pi}.
+\tag{D34}
+\]</span>
+<p>Indeed <span class="math" data-index="183" data-tex="\(|B_3|=4\pi/3\)">\(|B_3|=4\pi/3\)</span>, <span class="math" data-index="184" data-tex="\(|B_4|=\pi^2/2\)">\(|B_4|=\pi^2/2\)</span>, and the last one-dimensional integral is <span class="math" data-index="185" data-tex="\(1/5\)">\(1/5\)</span>. Scaling the ball and using rotational symmetry yields the exact normalized errors</p>
+<p><a id="eq-D35"></a></p>
+<span class="math math-display" data-index="186" data-tex="\[
+S_t=A_t=m(K)\frac{16}{15\pi}\frac{r_t}{t}.
+\tag{D35}
+\]">\[
+S_t=A_t=m(K)\frac{16}{15\pi}\frac{r_t}{t}.
+\tag{D35}
+\]</span>
+<p>If <span class="math" data-index="187" data-tex="\(r_t=1\)">\(r_t=1\)</span> or <span class="math" data-index="188" data-tex="\(\sqrt t\)">\(\sqrt t\)</span>, these tend to zero. If <span class="math" data-index="189" data-tex="\(r_t=t\)">\(r_t=t\)</span>, the limit is the strictly positive constant <span class="math" data-index="190" data-tex="\(m(K)16/(15\pi)\)">\(m(K)16/(15\pi)\)</span>. This satisfies the signed lower-limit inequality and disproves a general limit-zero assertion for unrestricted radii.</p>
+<p><strong>Example C: envelopes need not add at finite height.</strong> In one dimension let <span class="math" data-index="191" data-tex="\(v_1=\log|\sin z|\)">\(v_1=\log|\sin z|\)</span>, <span class="math" data-index="192" data-tex="\(v_2=\log|\cos z|\)">\(v_2=\log|\cos z|\)</span>, and <span class="math" data-index="193" data-tex="\(v_3=\log|\sin z\cos z|\)">\(v_3=\log|\sin z\cos z|\)</span>. All are subharmonic, with the sum identity including their logarithmic zeros. Their exact envelopes are</p>
+<p><a id="eq-D36"></a></p>
+<span class="math math-display" data-index="194" data-tex="\[
+M_1(s)=M_2(s)=\log\cosh s,\qquad
+M_3(s)=\log\cosh(2s)-\log2.
+\tag{D36}
+\]">\[
+M_1(s)=M_2(s)=\log\cosh s,\qquad
+M_3(s)=\log\cosh(2s)-\log2.
+\tag{D36}
+\]</span>
+<p>Use <span class="math" data-index="195" data-tex="\(\sin z\cos z=\tfrac12\sin(2z)\)">\(\sin z\cos z=\tfrac12\sin(2z)\)</span> and maximize the sine modulus over real parts. At zero, <span class="math" data-index="196" data-tex="\(M_3(0)=-\log2\)">\(M_3(0)=-\log2\)</span> while <span class="math" data-index="197" data-tex="\(M_1(0)+M_2(0)=0\)">\(M_1(0)+M_2(0)=0\)</span>: their maxima occur at different real parts. Nevertheless</p>
+<p><a id="eq-D37"></a></p>
+<span class="math math-display" data-index="198" data-tex="\[
+H_1(s)=H_2(s)=|s|,\qquad H_3(s)=2|s|,
+\tag{D37}
+\]">\[
+H_1(s)=H_2(s)=|s|,\qquad H_3(s)=2|s|,
+\tag{D37}
+\]</span>
+<p>exactly as Theorem D4 proves. Their support intervals <span class="math" data-index="199" data-tex="\([-1,1]\)">\([-1,1]\)</span> add to <span class="math" data-index="200" data-tex="\([-2,2]\)">\([-2,2]\)</span>.</p>
+<p><strong>Example D: affine growth and a negative support value.</strong> Let <span class="math" data-index="201" data-tex="\(v_j(z)=c_j+\xi_j\cdot\operatorname{Im}z\)">\(v_j(z)=c_j+\xi_j\cdot\operatorname{Im}z\)</span>, <span class="math" data-index="202" data-tex="\(j=1,2\)">\(j=1,2\)</span>. These are pluriharmonic. Then <span class="math" data-index="203" data-tex="\(H_j(\eta)=\xi_j\cdot\eta\)">\(H_j(\eta)=\xi_j\cdot\eta\)</span>, and their sum has slope vector <span class="math" data-index="204" data-tex="\(\xi_1+\xi_2\)">\(\xi_1+\xi_2\)</span>. For each one,</p>
+<p><a id="eq-D38"></a></p>
+<span class="math math-display" data-index="205" data-tex="\[
+e_{j,t}(\zeta,w)=\frac{c_j+\xi_j\cdot\operatorname{Im}\zeta}{t},
+\tag{D38}
+\]">\[
+e_{j,t}(\zeta,w)=\frac{c_j+\xi_j\cdot\operatorname{Im}\zeta}{t},
+\tag{D38}
+\]</span>
+<p>independent of <span class="math" data-index="206" data-tex="\(w\)">\(w\)</span>. The fixed-window conclusion is immediate; a negative indicator in some direction causes no sign error, since positive homogeneity is used separately on the two half-planes. Finite constants correspond to <span class="math" data-index="207" data-tex="\(\xi_j=0\)">\(\xi_j=0\)</span> and support set <span class="math" data-index="208" data-tex="\(\{0\}\)">\(\{0\}\)</span>, rather than the empty set.</p>
+<figure><img class="course-figure" width="2814" height="933" src="reproduce/L141/figures/fibers-and-indicators.png" alt="Exceptional fibers and the exact finite-height envelopes in the additive example." /><figcaption class="native"><a href="reproduce/L141/figures/fibers-and-indicators.png">Open full-size PNG</a> · <a href="reproduce/L141/figures/fibers-and-indicators.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure D-A.</em> The first panel is the projection to the first complex coordinate of Example A. Its marked values <span class="math" data-index="209" data-tex="\(-\pi,0,\pi\)">\(-\pi,0,\pi\)</span> are the exceptional fibers <span class="math" data-index="210" data-tex="\(\zeta_1\in\pi\mathbb Z\)">\(\zeta_1\in\pi\mathbb Z\)</span>; each marked point represents an entire complex second-coordinate fiber, not an isolated point in <span class="math" data-index="211" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>. The second panel samples the exact normalized value <span class="math" data-index="212" data-tex="\(-\log2/t\)">\(-\log2/t\)</span> for <span class="math" data-index="213" data-tex="\(\zeta_1=\pi/6\)">\(\zeta_1=\pi/6\)</span> and zero for <span class="math" data-index="214" data-tex="\(\zeta_1=\pi/2\)">\(\zeta_1=\pi/2\)</span>; the singular fiber retains minus infinity, with no finite plot value. The final panel compares the exact envelopes (D36) with the common recession sum <span class="math" data-index="215" data-tex="\(2|s|\)">\(2|s|\)</span>. Theorem D1 and Example A establish the exceptional-set qualification; Theorem D4 and Example C establish indicator additivity.</p>
+<figure><img class="course-figure" width="1549" height="922" src="reproduce/L141/figures/moving-ball-errors.png" alt="Exact averaged errors for fixed, sublinear and linear ball radii." /><figcaption class="native"><a href="reproduce/L141/figures/moving-ball-errors.png">Open full-size PNG</a> · <a href="reproduce/L141/figures/moving-ball-errors.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure D-B.</em> This plots the exact normalized error (D35), with <span class="math" data-index="216" data-tex="\(m(K)=2\)">\(m(K)=2\)</span>, in the four-dimensional observation ball of Example B. The radius choices are <span class="math" data-index="217" data-tex="\(1,\sqrt t,t\)">\(1,\sqrt t,t\)</span> for <span class="math" data-index="218" data-tex="\(1\le t\le100\)">\(1\le t\le100\)</span>. The horizontal axis is logarithmic; each plotted value is an exact formula sample. The linear radius retains the value <span class="math" data-index="219" data-tex="\(32/(15\pi)\)">\(32/(15\pi)\)</span>; the other radii give vanishing errors. No drawing of a planar disk is being substituted for the four-dimensional ball. Theorem D3 proves the general bounds, and slicing calculation (D34) proves these example values.</p>
+<h2 id="d8-exercises-with-complete-solutions">D8. Exercises with complete solutions</h2>
+<p><strong>Exercise 1.</strong> In (D15), explain why its everywhere inequality is needed in addition to its almost-everywhere equality. Where does the proof take a supremum over translations that may be exceptional?</p>
+<p><strong>Solution.</strong> The everywhere inequality bounds every finite line slope by <span class="math" data-index="220" data-tex="\(A/I\)">\(A/I\)</span>, using its actual limit (D19). This yields (D21) even for translations whose slope might differ from the almost-everywhere slope. Setting <span class="math" data-index="221" data-tex="\(\zeta=x\)">\(\zeta=x\)</span> and taking <span class="math" data-index="222" data-tex="\(\sup_{x\in\mathbb R^n}\)">\(\sup_{x\in\mathbb R^n}\)</span> gives (D22). The real slice is a null set in <span class="math" data-index="223" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, so almost-everywhere information in full complex volume would give no assertion at all on that slice. The upper-envelope theorem's everywhere bound supplies the needed control; singular fibers satisfy the inequality automatically.</p>
+<p><strong>Exercise 2.</strong> Why does a single upper-half-plane result not supply the correct profile for negative <span class="math" data-index="224" data-tex="\(\operatorname{Im}w\)">\(\operatorname{Im}w\)</span>? State the profile there in terms of <span class="math" data-index="225" data-tex="\(H(-y)\)">\(H(-y)\)</span>.</p>
+<p><strong>Solution.</strong> A sublinear support function is homogeneous for nonnegative scalars, but need not be odd. For <span class="math" data-index="226" data-tex="\(\operatorname{Im}w&lt;0\)">\(\operatorname{Im}w&lt;0\)</span>, write <span class="math" data-index="227" data-tex="\((\operatorname{Im}w)y=(-\operatorname{Im}w)(-y)\)">\((\operatorname{Im}w)y=(-\operatorname{Im}w)(-y)\)</span>. Its support value is <span class="math" data-index="228" data-tex="\((-\operatorname{Im}w)H(-y)\)">\((-\operatorname{Im}w)H(-y)\)</span>, which is (D23). Apply the positive-height theorem for direction <span class="math" data-index="229" data-tex="\(-y\)">\(-y\)</span> with parameter <span class="math" data-index="230" data-tex="\(-w\)">\(-w\)</span> and intersect the two full-measure sets. For <span class="math" data-index="231" data-tex="\(H(s)=|s|\)">\(H(s)=|s|\)</span> the two half-plane profiles are both nonnegative, illustrating that using <span class="math" data-index="232" data-tex="\((\operatorname{Im}w)H(y)\)">\((\operatorname{Im}w)H(y)\)</span> on the lower half-plane would have the wrong sign.</p>
+<p><strong>Exercise 3.</strong> Derive the absolute error conclusion on a fixed ball from its positive-part upper bound and signed lower bound. Why is an upper bound alone insufficient?</p>
+<p><strong>Solution.</strong> Equation (D25) makes the positive-part integral tend to zero. Submean at a good center gives a lower limit of at least zero for the signed integral on an enlarged ball, while (D24) gives an upper limit at most zero. The signed integral thus tends to zero. Integrating <span class="math" data-index="233" data-tex="\(|e|=2e_+-e\)">\(|e|=2e_+-e\)</span> makes its absolute integral tend to zero. Negative wells can be arbitrarily deep under an upper bound, so upper control alone would not justify this identity's negative contribution. The center submean inequality supplies that contribution.</p>
+<p><strong>Exercise 4.</strong> Evaluate the normalized error in Example B for <span class="math" data-index="234" data-tex="\(m(K)=2\)">\(m(K)=2\)</span>, <span class="math" data-index="235" data-tex="\(t=16\)">\(t=16\)</span>, and radii <span class="math" data-index="236" data-tex="\(1,4,16\)">\(1,4,16\)</span>. Which radius family satisfies the vanishing criterion?</p>
+<p><strong>Solution.</strong> The common prefactor is <span class="math" data-index="237" data-tex="\(32/(15\pi)\)">\(32/(15\pi)\)</span>. Multiplying by <span class="math" data-index="238" data-tex="\(r/t\)">\(r/t\)</span> gives respectively <span class="math" data-index="239" data-tex="\(2/(15\pi)\)">\(2/(15\pi)\)</span>, <span class="math" data-index="240" data-tex="\(8/(15\pi)\)">\(8/(15\pi)\)</span>, and <span class="math" data-index="241" data-tex="\(32/(15\pi)\)">\(32/(15\pi)\)</span>. The families <span class="math" data-index="242" data-tex="\(r_t=1\)">\(r_t=1\)</span> and <span class="math" data-index="243" data-tex="\(r_t=\sqrt t\)">\(r_t=\sqrt t\)</span> have <span class="math" data-index="244" data-tex="\(r_t/t\to0\)">\(r_t/t\to0\)</span>. The linear family has ratio one, so its nonzero limit is allowed by Theorem D3 and shows why its signed assertion is only a lower-limit inequality.</p>
+<p><strong>Exercise 5.</strong> Show that the Minkowski sum of the support sets in Example D is the support set of their summed function, including a direction in which one support value is negative.</p>
+<p><strong>Solution.</strong> Each support set is a singleton <span class="math" data-index="245" data-tex="\(\{\xi_j\}\)">\(\{\xi_j\}\)</span>; their Minkowski sum is <span class="math" data-index="246" data-tex="\(\{\xi_1+\xi_2\}\)">\(\{\xi_1+\xi_2\}\)</span>. Its pairing with a direction <span class="math" data-index="247" data-tex="\(\eta\)">\(\eta\)</span> is <span class="math" data-index="248" data-tex="\((\xi_1+\xi_2)\cdot\eta=H_1(\eta)+H_2(\eta)\)">\((\xi_1+\xi_2)\cdot\eta=H_1(\eta)+H_2(\eta)\)</span>. This equality is linear and does not require either summand to be nonnegative. For example <span class="math" data-index="249" data-tex="\(\xi_1=1\)">\(\xi_1=1\)</span>, <span class="math" data-index="250" data-tex="\(\xi_2=-2\)">\(\xi_2=-2\)</span>, <span class="math" data-index="251" data-tex="\(\eta=1\)">\(\eta=1\)</span> in one dimension gives values <span class="math" data-index="252" data-tex="\(1,-2,-1\)">\(1,-2,-1\)</span>. These are finite singleton support values, not empty-set indicators.</p>
+<p><strong>Exercise 6.</strong> Verify the strict finite-height envelope inequality at zero in Example C, and explain why it is compatible with exact indicator additivity.</p>
+<p><strong>Solution.</strong> On the real axis the individual maxima of <span class="math" data-index="253" data-tex="\(|\sin x|\)">\(|\sin x|\)</span> and <span class="math" data-index="254" data-tex="\(|\cos x|\)">\(|\cos x|\)</span> are one, so <span class="math" data-index="255" data-tex="\(M_1(0)=M_2(0)=0\)">\(M_1(0)=M_2(0)=0\)</span>. Their product has largest modulus <span class="math" data-index="256" data-tex="\(1/2\)">\(1/2\)</span>, attained at <span class="math" data-index="257" data-tex="\(x=\pi/4\)">\(x=\pi/4\)</span> modulo <span class="math" data-index="258" data-tex="\(\pi/2\)">\(\pi/2\)</span>; hence <span class="math" data-index="259" data-tex="\(M_3(0)=-\log2\)">\(M_3(0)=-\log2\)</span>. Recession functions divide each envelope at height <span class="math" data-index="260" data-tex="\(ts\)">\(ts\)</span> by <span class="math" data-index="261" data-tex="\(t\)">\(t\)</span> before taking a limit. The finite logarithmic constants disappear, and <span class="math" data-index="262" data-tex="\(\log\cosh(ts)/t\to|s|\)">\(\log\cosh(ts)/t\to|s|\)</span>, yielding <span class="math" data-index="263" data-tex="\(H_3=2|s|=H_1+H_2\)">\(H_3=2|s|=H_1+H_2\)</span>. Additivity applies to those exact limiting functions, not to the finite-height suprema.</p>
+<p><strong>Exercise 7.</strong> What depends on the direction in Theorem D1? Does it assert one full-measure set valid simultaneously for every real direction?</p>
+<p><strong>Solution.</strong> The rectangle averages, scalar line restrictions and two envelope applications are performed for a fixed <span class="math" data-index="264" data-tex="\(y\)">\(y\)</span> and <span class="math" data-index="265" data-tex="\(-y\)">\(-y\)</span>. Their exceptional sets may depend on that pair of directions. Once those slopes have been identified, A1 gives all compact parameter windows for each good translation, so the set need not depend on <span class="math" data-index="266" data-tex="\(K\)">\(K\)</span>. The theorem makes no assertion that the uncountable union of exceptional sets over all directions is null. For finitely or countably many chosen directions one may intersect their full-measure sets, because a countable union of null sets is null.</p>
+<h2 id="source-credit-and-reproducible-figures">Source credit and reproducible figures</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em> (1983 edition; second revised printing 1990; reprint 2005), §16.2, Theorem 16.2.4, Corollaries 16.2.5–16.2.6 and Theorem 16.2.7, printed pp. 316–318 (PDF pp. 329–331), supplies the directional, ball-average and additivity targets. The complete arguments, examples, exercises and illustrations here are original. The exact earlier proofs are linked at D1; in particular the identification of the averaged constant in D3 supplements, rather than assumes, the upper-envelope result.</p>
+<p>The <a href="reproduce/L141/make_figures136.py">figure program</a> and <a href="reproduce/L141/figures/geometry.json">exact geometry</a> reproduce both PNG/SVG figures. The observation-ball dimension, coordinate projections, singular values, radius families and limiting constants are retained in those sources.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/directional-averages-and-indicator-additivity.md" download>Download the complete editable lesson</a>. Original exposition, proofs, examples, solutions and figures use CC0 1.0; the figure font notice retains its terms.</p><ul><li><a href="reproduce/L141/directional-averages-and-indicator-additivity.md" download>directional-averages-and-indicator-additivity.md</a></li>
+<li><a href="reproduce/L141/make_figures136.py" download>make_figures136.py</a></li>
+<li><a href="reproduce/L141/README-reproduce.md" download>README-reproduce.md</a></li>
+<li><a href="reproduce/L141/LICENSE.txt" download>LICENSE.txt</a></li>
+<li><a href="reproduce/L141/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li>
+<li><a href="reproduce/L141/figures/geometry.json" download>figures/geometry.json</a></li>
+<li><a href="reproduce/L141/figures/fibers-and-indicators.png" download>figures/fibers-and-indicators.png</a></li>
+<li><a href="reproduce/L141/figures/fibers-and-indicators.svg" download>figures/fibers-and-indicators.svg</a></li>
+<li><a href="reproduce/L141/figures/moving-ball-errors.png" download>figures/moving-ball-errors.png</a></li>
+<li><a href="reproduce/L141/figures/moving-ball-errors.svg" download>figures/moving-ball-errors.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a> · <a href="index.html">Course contents</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

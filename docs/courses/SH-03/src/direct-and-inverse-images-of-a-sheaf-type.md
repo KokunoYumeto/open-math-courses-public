@@ -4,7 +4,7 @@ For a smooth map of manifolds, a selected covector has two associated cotangent 
 
 Use The type and shift of a transverse kernel composition for the graph-kernel degree formula. The formal operations, their representation and their relative dualizing comparison use the exact programme proofs linked below. Those arguments retain their stated geometric and sheaf-operation prerequisites. Coefficients are arbitrary bounded complexes over a commutative finite-global-dimension ring \(k\). Manifolds are smooth, finite dimensional, real, Hausdorff and second countable.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra; revised by GPT-6 Astra (OpenAI), Ultra, 6 October 2026. Self-checked by the writing AI. Original programme text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources are credited below.*
 
 ## Two cotangent maps with different fibres
 
@@ -18,6 +18,29 @@ f_d(y;\xi)=(y;d f_y^t\xi).
 \]
 
 Fix \(p\in P\), with \(p_X=f_\pi(p)\) and \(p_Y=f_d(p)\). No nonzero-covector assumption is added. The differentials of these maps are understood at \(p\) whenever tangent Lagrangian planes are propagated below.
+
+A graph calculation will keep both the cotangent point and the second derivative visible. Write \(p=(y_0;\xi_0)\) and \(x_0=f(y_0)\). Choose coordinates near these bases, set \(J=df_{y_0}\), and let \(H:T_{y_0}Y\to T_{y_0}^*Y\) be the symmetric form
+
+\[
+H(u,v)=\langle\xi_0,d^2f_{y_0}(u,v)\rangle.
+\]
+
+For a tangent vector \((u,\beta)\in T_pP\), the derivatives are
+
+\[
+d f_\pi(u,\beta)=(Ju,\beta),\qquad
+d f_d(u,\beta)=(u,J^t\beta+Hu).
+\]
+
+Here the second cotangent coordinates use the coordinate splittings of the tangent bundles. Symmetry of \(H\) gives
+
+\[
+\omega_Y\bigl(d f_d(u,\beta),d f_d(v,\gamma)\bigr)
+=\langle\beta,Jv\rangle-\langle\gamma,Ju\rangle
+=\omega_X\bigl(d f_\pi(u,\beta),d f_\pi(v,\gamma)\bigr).
+\]
+
+This is the tangent graph's symplectic identity in the convention \(\omega=d\theta\). The formulas require no constant-rank assumption on \(f\); when \(\xi_0=0\), their Hessian term is simply zero.
 
 For direct image assume \(\operatorname{SS}(G)\subset\Lambda_Y\) near \(p_Y\), where \(\Lambda_Y\) is a smooth conic Lagrangian germ through \(p_Y\), and require \(f_d\) transverse to \(\Lambda_Y\). The incidence
 
@@ -37,7 +60,20 @@ I_X=f_\pi^{-1}\Lambda_X
 
 has dimension \(\dim Y\), and \(f_d\) identifies a small neighborhood in it with a locally embedded Lagrangian \(\Lambda_Y\).
 
-These assertions include local injectivity, not a global injectivity claim. To verify them, identify \(P\) with the conormal of the graph of \(f\), using its twisted kernel convention. For (2) compose that Lagrangian relation with \(\Lambda_Y\), considered as a kernel to a point. For (3) use the transposed graph and compose with \(\Lambda_X\). The middle transversality is exactly the respective assumption above. The tangent argument for transverse composition gives the stated dimensions, zero kernel of the output differential, and a Lagrangian image. Its constant-rank conclusion gives the local embedding. The smooth incidence thus contains only the selected point over the fixed output covector after shrinking.
+The following tangent check proves the stated local injectivity without assuming that \(f\) has constant rank. Put \(m=\dim Y\), \(n=\dim X\). The derivative formulas imply
+
+\[
+(\operatorname{im}d f_d)^{\omega_Y}
+ =d f_d(\ker d f_\pi),\qquad
+(\operatorname{im}d f_\pi)^{\omega_X}
+ =d f_\pi(\ker d f_d).
+\]
+
+For example the first orthogonal consists of \((u,Hu)\) with \(Ju=0\), and the second consists of \((0,\beta)\) with \(J^t\beta=0\). Also \(d f_d\) is injective on \(\ker d f_\pi\), and \(d f_\pi\) is injective on \(\ker d f_d\), by those same formulas.
+
+In the direct case, transversality says \(\operatorname{im}d f_d+T\Lambda_Y=E_Y\). Taking symplectic orthogonals, and using that \(T\Lambda_Y\) is Lagrangian, gives \(T\Lambda_Y\cap d f_d(\ker d f_\pi)=0\). Thus a vector in \(T I_Y=(d f_d)^{-1}T\Lambda_Y\) killed by \(d f_\pi\) must vanish. The transverse preimage has dimension \(m+n-m=n\). Its image is isotropic by the preceding symplectic identity, hence is Lagrangian of dimension \(n\). The inverse case interchanges the two cotangent maps: transversality to \(\Lambda_X\) gives dimension \(m\) and zero kernel for \(d f_d|_{T I_X}\), and its image is Lagrangian in \(E_Y\).
+
+The immersion theorem now identifies a sufficiently small neighborhood in either incidence with an embedded Lagrangian image. In particular its fibre over the selected output covector is just the chosen lift after shrinking. No global injectivity is asserted.
 
 ## Formal images and their canonical comparisons
 
@@ -82,7 +118,13 @@ r_Y=\tau_{E_Y}(V_Y,A_Y,B_Y).
 \qquad\text{(6)}
 \]
 
-Linear Lagrangian relation composition makes \(B_Y\) Lagrangian. Then the represented direct image (4) has type \(L\) and normalized shift
+The graph derivative identifies this plane explicitly:
+
+\[
+B_Y=\{(u,J^t\beta+Hu):Ju=0,\ \beta\in T_{x_0}^*X\}.
+\]
+
+It has dimension \(\dim\ker J+\operatorname{rank}J=m\), because its base projection has image \(\ker J\) and its vertical fibre is \(\operatorname{im}J^t\). The graph symplectic identity makes it isotropic: both vectors have zero target base component. Thus \(B_Y\) is Lagrangian, without requiring \(J\) to be injective or surjective. The Hessian term must be retained; it is responsible for the nonzero fold index below. Then the represented direct image (4) has type \(L\) and normalized shift
 
 \[
 d_{\mathrm{dir}}
@@ -90,7 +132,25 @@ d_{\mathrm{dir}}
 \qquad\text{(7)}
 \]
 
-**Proof.** Let \(\Gamma_f\subset X\times Y\) be the graph. Its codimension is \(\dim X\), so \(k_{\Gamma_f}\) is simple with normalized shift \(\dim X/2\). Ordinary convolution with this kernel is \(Rf_!\). The selected formal convolution agrees with (4): use the closed-graph projection formula for ordinary representatives, then the isolated-image comparison on the joint denominator and neighborhood system. A denominator cone at the selected graph point or at \(p_Y\) has no retained incidence after common refinements. This identifies their output-germ morphism colimits; it does not assert pre-image cofinality of base restrictions among arbitrary denominators.
+**Proof.** Let \(\Gamma_f\subset X\times Y\) be the graph and \(\delta_f(y)=(f(y),y)\). Its codimension is \(\dim X\), so its constant kernel \(k_{\Gamma_f}\) is simple with normalized shift \(\dim X/2\), including at the zero conormal. The ordinary closed-graph projection formula is
+
+\[
+k_{\Gamma_f}\otimes^Lq_Y^{-1}G\simeq\delta_{f*}G,
+\qquad Rq_{X!}\delta_{f*}G\simeq Rf_!G.
+\]
+
+Closed direct image introduces no exceptional orientation factor here.
+
+We can identify the formal systems using the bounded-composition comparison, formula (8). Its two fixed-base conditions hold for this graph before any kernel replacement. With the output covector fixed at \(p_X\), the graph forces the sole middle covector \(p_Y=df_{y_0}^t\xi_0\), which is condition (4) of that provider. A zero output covector forces a zero middle covector, excluding its nonzero cancellation in condition (5). Local composability follows from the incidence immersion already proved. Thus its canonical comparison is
+
+\[
+k_{\Gamma_f}\circ_\mu G
+\simeq\text{“}\!\lim_{U\ni y_0}\!\text{”}\,
+ (k_{\Gamma_f})_{X\times U}\circ G
+\simeq\text{“}\!\lim_{U\ni y_0}\!\text{”}\,Rf_!(G_U).
+\]
+
+The second map is the same closed-graph calculation on each ordinary term, and commutes with restriction and denominator transitions. The direct-germ theorem MC.25 identifies the last system with (4). This proves the required graph comparison as a formal morphism comparison, without declaring base restrictions cofinal among all kernel denominators before convolution.
 
 The graph's twisted middle map is \(f_d\). Its transversality to \(\Lambda_Y\) is precisely the hypothesis for general kernel composition. The first propagated plane is \(B_Y\), and the second is \(A_Y\), because the last manifold is a point. The general relation index is consequently the ordered source-space index (6). Substitution into the composition theorem gives
 \(\dim X/2+d-(\dim Y+r_Y)/2\), which is (7), with coefficient \(k\otimes^L L=L\). The represented output has exactly the Lagrangian bound already established in (2). \(\square\)
@@ -106,14 +166,46 @@ f_{\mu,p}^{-1}F\text{ has type }L\text{ with shift }d.
 \qquad\text{(8)}
 \]
 
-**Proof.** Use \(\Gamma_f\subset Y\times X\) as the transposed graph kernel. Its codimension is again \(\dim X\), so its normalized shift is \(\dim X/2\). Its ordinary transform is \(f^{-1}\): the projection of the graph onto \(Y\) is an isomorphism, and restricting the second factor to \(x=f(y)\) gives the ordinary pullback. The incoming denominator system and the isolated inverse-image comparison identify its represented microlocal transform with the first object of (5).
+**Proof.** Use \(\Gamma_f\subset Y\times X\) as the transposed graph kernel. Its codimension remains \(\dim X\), hence its normalized shift is \(\dim X/2\). For every ordinary representative \(F'\), projection of this graph to \(Y\) is the identity, and the closed-graph tensor calculation gives \(k_{\Gamma_f}\circ F'=f^{-1}F'\), with no orientation or exceptional-inverse factor.
 
-Its middle space is now \(E_X\). Propagating \(V_Y\) backward through the graph gives **all** of \(V_X\): a vertical source variation has zero base variation \(\delta y\), while its lift \(\delta\xi\) can be any target vertical covector. The first propagated middle plane is therefore \(V_X\); the second is \(T_{p_X}\Lambda_X\). The relation index is \(\tau(V_X,T_{p_X}\Lambda_X,V_X)=0\). The degree formula gives
-\(\dim X/2+d-\dim X/2=d\), proving (8). \(\square\)
+To pass to the selected germ, use the good incoming representatives \(F'\to F\) constructed in the proof of MC.14–MC.18. They are cofinal among incoming denominators; each is noncharacteristic near \(y_0\) and its entire fixed-base incidence over \(p_Y\) contains only \(p_X\). For the pair \((k_{\Gamma_f},F')\), the latter property is the fixed-base condition (4) of the bounded-composition comparison. Noncharacteristicity excludes a nonzero \(\xi\in\operatorname{SS}(F')_{x_0}\) with \(df_{y_0}^t\xi=0\), which is exactly its cancellation condition (5).
+
+Its formula (8) therefore expresses the graph action by the formal system
+
+\[
+\text{“}\!\lim_{V\ni x_0}\!\text{”}\,
+ (k_{\Gamma_f})_{Y\times V}\circ F'
+\simeq\text{“}\!\lim_{V\ni x_0}\!\text{”}\,
+ (f^{-1}F')_{f^{-1}V}.
+\]
+
+Every \(f^{-1}V\) is a neighborhood of \(y_0\). The displayed extension comparisons are isomorphisms at \(p_Y\), so this formal system is represented by \(f^{-1}F'\). MC.18 identifies that object with \(f_{\mu,p}^{-1}F'\); invariance under the denominator identifies it with \(f_{\mu,p}^{-1}F\). All comparisons are natural under common refinements of the good representatives. Thus the graph action is the first object of (5), not merely an object with the same microsupport.
+
+Its middle space is now \(E_X\). The first propagated middle plane is
+
+\[
+(d f_\pi)\bigl((d f_d)^{-1}V_Y\bigr)
+=\{d f_\pi(0,\beta):\beta\in T_{x_0}^*X\}
+=V_X.
+\]
+
+Indeed \(d f_d(u,\beta)\) is vertical exactly when \(u=0\); then its Hessian term vanishes and \(d f_\pi(0,\beta)=(0,\beta)\), with no restriction on \(\beta\). The second middle plane is \(T_{p_X}\Lambda_X\). Therefore the relation index is \(\tau(V_X,T_{p_X}\Lambda_X,V_X)=0\). Directly, its quadratic form is \(\omega(v_0-v_1,a)\), since \(v_0,v_1\in V_X\); replacing \(a\) by \(-a\) negates the form, so its positive and negative indices agree, even when it is degenerate. The degree formula gives
+
+\[
+\dim X/2+d-\dim X/2=d,
+\]
+
+proving (8). No injectivity or surjectivity of \(df_{y_0}\), and no nonzero-covector division, entered this cancellation. \(\square\)
 
 By (5), the exceptional inverse has coefficient type
 \(L\otimes_k\operatorname{or}_{Y/X,y_0}\) and normalized shift
 \(d+\dim Y-\dim X\). Locally the orientation line can be trivialized to name the type as \(L\), but (5) retains its actual canonical line and map. Ordinary and exceptional inverse images therefore have different degree normalizations when the relative dimension is nonzero.
+
+More intrinsically, \(\operatorname{or}_{Y/X}=\operatorname{or}_Y\otimes f^{-1}\operatorname{or}_X^\vee\). This invertible local system is concentrated in degree zero, while \(\omega_{Y/X}\) includes the cohomological shift \([\dim Y-\dim X]\). Tensoring by that line and shifting commute with the coefficient normalization; neither operation requires \(L\) to be perfect or finitely generated. The map remains the particular comparison MC.13: the good incoming and outgoing representatives identify it with the ordinary noncharacteristic map \(\omega_{Y/X}\otimes f^{-1}F'\to f^!F'\), whose naturality passes it through the denominator refinements.
+
+The zero-covector cases require no extra hypothesis. Under the inverse assumptions, \(p_X\ne0\) and \(p_Y=0\) cannot occur on \(\Lambda_X\): its conic radial tangent gives a nonzero vector in \(T I_X\) killed by \(d f_d\), contradicting the proved immersion. If \(p_X=0\), then \(p_Y=0\); the zero-covector part of MC.14–MC.18 uses scaling and closedness to obtain the same good noncharacteristic representatives. If the input germ is zero, all the formal images are zero. Direct image is different: a zero source covector with a nonzero target covector is permitted, as the fold below demonstrates.
+
+These arguments concern represented selected germs. To identify a direct image with the original global \(Rf_!G\) or \(Rf_*G\), MC.28 still needs proper support and isolation on the entire output fibre. To identify an inverse image with the original \(f^{-1}F\) or \(f^!F\), MC.17–MC.18 still require the original representative to be noncharacteristic and its entire incidence fibre to be isolated. The graph calculation does not remove either distinction.
 
 ## A fold checks the direct degree and the index space
 
@@ -213,8 +305,8 @@ Suppose the local transverse direct-image hypotheses hold at one \(p\), but anot
 
 ## References
 
-The direct- and inverse-image degree formulas above apply the programme’s transverse kernel-composition theorem to the graph kernel. Its ordered middle-plane convention gives (6), and its coefficient and degree formula gives (7)–(8). That theorem retains its explicit geometric and sheaf-operation prerequisites.
+Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), Theorem 7.3.1, printed pp. 129–131 (PDF pp. 132–134), gives the direct-image shift for a pure module type. Its index is taken in the source cotangent space, in the order used in (6). The theorem assumes properness on the sheaf support, transverse cotangent incidence, an embedded output Lagrangian and isolation over the full output cotangent fibre. Its proof compares directional tests using proper direct image and the linear relation identity of Lemma 7.3.2, printed pp. 131–132.
 
-The exact formal providers are isolated inverse-image representation, direct-image germ neighborhoods, and isolated direct-image representation. They specify the canonical maps and distinguish local representation from identification with an original global image. The common comparison-map construction fixes the relative orientation complex and the direction of each arrow. These written arguments retain their own lower foundational dependencies.
+Theorem 7.3.3, printed pp. 132–135 (PDF pp. 135–138), states that ordinary inverse image preserves the normalized pure shift. It assumes noncharacteristic pullback as well as transverse, embedded and isolated incidence. The direct and inverse statements above concern represented germs at one selected lift; identifying them with the original global images requires the separate full-fibre and support hypotheses explained after (5).
 
-For context on pure sheaves and their relation to perversity, see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*, Astérisque 128 (1985), §9.5, pp.170–172](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf). The source passage discusses microlocal purity through the regular Riemann–Hilbert correspondence. The graph-kernel and representation arguments identified above supply this lesson’s formulas.
+The linked programme proofs of isolated inverse-image representation, direct-image germ neighborhoods, and isolated direct-image representation construct those selected operations. The comparison-map construction supplies the relative orientation complex and canonical arrow. The graph calculations above apply the transverse composition formula to arbitrary bounded coefficient complexes. The fold computes the actual stalk maps and support tests, checking both the source-space index and the two half-integer degrees.

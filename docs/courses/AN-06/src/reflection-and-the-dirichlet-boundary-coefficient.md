@@ -6,17 +6,20 @@
 
 A Dirichlet wall removes part of the free spectral density. The method of images gives that missing part exactly for a flat wall. Its integral in the normal direction is one quarter of the tangential phase volume. This explains both the sign and the coefficient of the boundary term in spectral counting.
 
-We first compute the flat spectral projector, then control its oscillatory normal profile without a stationary-phase theorem. We carry the calculation through a curved collar and give a precise condition under which a spectral remainder permits the same boundary coefficient. That condition remains the hypothesis of the transfer theorem below; the linked programme wave proof now establishes it for the general curved Dirichlet operator.
+We first compute the flat spectral projector, then control its oscillatory normal profile without a stationary-phase theorem. We carry the calculation through a curved collar and give a precise condition under which a spectral remainder permits the same boundary coefficient. The transfer theorem keeps that explicit hypothesis. [Corollary 4.3](#reflection-curved-projector) applies it to the general curved Dirichlet operator using the complete programme wave proof.
 
-The freely readable references are Ivrii's survey [I], his author monograph [M], and Frank–Geisinger's first-Riesz-mean proof [FG]. Ivrii's open lectures [A] give the transverse reflection picture. The flat projector, profile estimates and transfer implication are proved below from Fourier and form arguments; their construction does not require a restricted book. The exact bounded smooth Euclidean domain and compact inverse are proved in [The smooth Dirichlet domain and its compact inverse](../providers/analysis/dirichlet-domain-and-compactness.md#dirichlet-domain-compact-resolvent). The generic Hilbert eigenbasis and moment domains are in [Compact positive inverses and diagonal domains](../providers/analysis/compact-spectrum-domains.md#compact-inverse-domains). The curved spectral remainder is proved for the actual Dirichlet density in the linked spectral reading; the transfer theorem below also applies to any family satisfying its explicit hypotheses. [Return times and spectral counting](return-times-and-spectral-counting.md) explains how positivity turns wave information into a count. Our Fourier convention is
+Ivrii's survey [I] and monograph [M] discuss the boundary spectral remainder. Frank–Geisinger [FG] study the first Riesz mean, and Ivrii's lectures [A] explain transverse reflection. We prove the flat projector, profile estimates and transfer implication from Fourier and form arguments. The exact bounded smooth Euclidean domain and compact inverse are proved in [The smooth Dirichlet domain and its compact inverse](../providers/analysis/dirichlet-domain-and-compactness.md#dirichlet-domain-compact-resolvent). The generic Hilbert eigenbasis and moment domains are in [Compact positive inverses and diagonal domains](../providers/analysis/compact-spectrum-domains.md#compact-inverse-domains). The curved spectral remainder is proved for the actual Dirichlet density in the linked spectral reading; the transfer theorem below also applies to any family satisfying its explicit hypotheses. [Return times and spectral counting](return-times-and-spectral-counting.md) explains how positivity turns wave information into a count. Our Fourier convention is
 \[
 \widehat f(\xi)=\int_{\mathbb R^n}e^{-ix\cdot\xi}f(x)\,dx,
 \qquad
 f(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}\widehat f(\xi)\,d\xi.
 \tag{1}
 \]
+The elementary derivatives, cutoffs and trigonometric identities used below are proved in [Elementary functions, angular coordinates and smooth cutoffs](../providers/analysis/elementary-functions-and-cutoffs.md). Product integration is proved in [A finite-derivative bound for left quantization](../providers/analysis/finite-derivative-l2.md#general-tonelli-fubini), and polar integration in [Coordinate inverses and integration](../providers/analysis/coordinate-inverses-and-integration.md#polar-substitution).
+
 Write \(\omega_j\) for the volume of the Euclidean unit ball in \(\mathbb R^j\), with \(\omega_0=1\). The collar estimates in Sections 3 and 4 assume \(n\geq2\).
 
+<a id="reflection-half-space-domain"></a>
 ## 1. A flat wall and an odd extension
 
 Put \(H=\{(x',d):d>0\}\). Let \(r(x',d)=(x',-d)\). The map
@@ -50,6 +53,7 @@ K_k(z)=(2\pi)^{-n}\int_{|\xi|\leq k}e^{iz\cdot\xi}\,d\xi.
 \]
 The integral is over a bounded set, so all derivatives of \(K_k\) exist by differentiation under the integral.
 
+<a id="reflection-image-projector"></a>
 **Proposition 1.1 (the image projector).** The Dirichlet spectral projector has kernel
 \[
 E_D(x,y;k^2)=K_k(x-y)-K_k(x-r(y)).
@@ -90,6 +94,7 @@ W_n(s)=(2\pi)^{-n}\omega_{n-1}
 \tag{9}
 \]
 
+<a id="reflection-endpoint-decay"></a>
 **Lemma 2.1 (endpoint decay).** For \(n\geq2\),
 \[
 |W_n(s)|\leq C_n(1+|s|)^{-(n+1)/2}.
@@ -106,7 +111,7 @@ b(t)=t^\alpha c(t),\qquad t\geq0,
 where \(c\) is smooth, compactly supported in a small interval, and all its derivatives are bounded. Hence
 \(|b^{(j)}(t)|\leq C_jt^{\alpha-j}\) there.
 
-For \(S=|s|\geq1\), first use a smooth cutoff supported where \(t\leq2/S\). Its integral is bounded absolutely by \(CS^{-\alpha-1}\). Partition the rest into smooth dyadic pieces of widths comparable to \(r_j=2^j/S\), \(j\geq0\). Such a piece is supported away from \(t=0\); its derivatives of order \(\ell\) are \(O(r_j^{-\ell})\). Integrating by parts \(M>\alpha+1\) times gives
+For \(S=|s|\geq1\), first use a smooth cutoff supported where \(t\leq2/S\). Its integral is bounded absolutely by \(CS^{-\alpha-1}\). For an explicit partition, choose a smooth \(\chi\) on the positive line, equal to one on \([0,1]\) and zero on \([2,\infty)\). Use \(\chi(St)\) for that first piece and put \(r_j=2^j/S\), \(\theta_j(t)=\chi(t/(2r_j))-\chi(t/r_j)\), \(j\geq0\). The sum telescopes to \(1-\chi(St)\) for each \(t>0\). Each \(\theta_j\) is supported where \(r_j\leq t\leq4r_j\), and its derivative of order \(\ell\) is bounded by \(C_\ell r_j^{-\ell}\). Integrating by parts \(M>\alpha+1\) times gives
 \[
 \left|\int e^{\pm iSt}b(t)\theta_j(t)\,dt\right|
  \leq C_MS^{-M}r_j^{\alpha+1-M}.
@@ -116,6 +121,7 @@ There are only finitely many nonzero pieces. Their bounds sum to
 \(CS^{-\alpha-1}\), since \(\sum_{j\geq0}2^{j(\alpha+1-M)}<\infty\).
 The endpoint \(z=-1\) has the identical estimate. For \(S\leq1\), the integral in (9) is bounded by its absolute integral. This proves (10). ∎
 
+<a id="reflection-normal-mass"></a>
 In particular \(W_n\) is integrable on \(\mathbb R\) when \(n\geq2\). Its normal mass is
 \[
 \kappa_{n-1}:=\int_0^\infty W_n(2s)\,ds
@@ -136,7 +142,8 @@ The nonnegative kernel on the right has total mass tending to \(\pi/2\), and its
 
 The factor \(1/4\) has two parts: the argument of the reflected profile is \(2d\), and we integrate over one half of the normal line.
 
-### A precise source-use qualification
+<a id="reflection-omitted-boundary-term"></a>
+### Why the local formula needs a boundary term
 
 In the original-author [arXiv version 1608.03963v2 of [I]](https://arxiv.org/abs/1608.03963v2), Theorem 2.2.3, displayed equation (2.2.22), prints a bulk term with an \(o(h^{1-n})\) remainder and no boundary term. For a weight nonzero at a Dirichlet wall, that particular formula is false as printed. The same version correctly states the negative quarter boundary term earlier, in (1.1.2). This qualification concerns (2.2.22) in that precise version, rather than the general two-term theorem or other editions.
 
@@ -175,6 +182,7 @@ m_k(y,d)=k^n\bigl[W_n(0)-W_n(2kd)\bigr].
 \]
 Equation (16) is a frozen normal model. It is not an assertion that the actual spectral density on a curved manifold equals that expression.
 
+<a id="reflection-collar-coefficient"></a>
 **Theorem 3.1 (the collar coefficient).** Let \(n\geq2\), and let \(\psi\) be a fixed \(C^1\) function supported in the collar and zero near its outer end \(d=c\). Then
 \[
 \begin{aligned}
@@ -219,6 +227,7 @@ In particular the variation of the collar Jacobian changes no boundary coefficie
 
 The absolute-value bound (19) loses cancellation. Under the same fixed \(C^1\) assumptions, the normalized model error is actually \(O(k^{-1})\) in every \(n\geq2\), including dimensions two and three. We prove the exact additional coefficient without assuming absolute integrability of \(sW_n(2s)\).
 
+<a id="reflection-integrated-profile"></a>
 **Lemma 3.2 (the integrated normal profile).** For \(n\geq2\), put
 \[
  T_n(s)=\int_s^\infty W_n(2u)\,du,\qquad s\geq0.
@@ -288,6 +297,7 @@ No special-function evaluation is needed. Integrating the derivative of \(z(1-z^
 \]
 The derivative is integrable since \(\alpha>0\), so the identity follows by first integrating on compact subintervals and passing to the limit. The slicing identity for ball volume gives \(\omega_{n-1}\int_{-1}^1(1-z^2)^\alpha dz=\omega_n\). Since \(2\alpha+1=n\), this proves \(M_n=n(2\pi)^{-n}\omega_n/4\). In particular \(M_2=1/(8\pi)\) and \(M_3=1/(8\pi^2)\). Every factor retains the reflected argument \(2s\). ∎
 
+<a id="reflection-model-next-coefficient"></a>
 **Corollary 3.3 (fixed-weight model expansion).** Under precisely the hypotheses of Theorem 3.1,
 \[
  \begin{aligned}
@@ -313,12 +323,13 @@ Thus the remainder after the first two terms, divided by \(k^{n-1}\), is \(O(k^{
 The boundary contribution at infinity vanishes. Bounded \(\partial_d b\) and \(\int|T_n|<\infty\) give the \(O(k^{-1})\) bound for the normalized reflected mass. Dominated convergence in \((y,s)\), using compactness of the boundary, replaces the remaining integral by \(M_n\partial_d b(y,0)+o(1)\) after integration in \(y\). Subtract this reflected mass times \(k^{n-1}\) from the direct term in (18). This proves the expansion, including its signs, also for complex weights. ∎
 
 The derivative is in the original inward normal coordinate:
-\(\partial_d(\psi a)(y,0)=\partial_d\psi(y,0)+\psi(y,0)\partial_d a(y,0)\). This is the next coefficient of the explicit frozen density (16). The remainder hypotheses in Theorem 4.1 still do not imply that coefficient for an actual curved spectral density. No historical novelty is asserted.
+\(\partial_d(\psi a)(y,0)=\partial_d\psi(y,0)+\psi(y,0)\partial_d a(y,0)\). This is the next coefficient of the explicit frozen density (16). The remainder hypotheses in Theorem 4.1 still do not imply that coefficient for an actual curved spectral density.
 
 ### The first Riesz mean has a different profile
 
-The mapped Frank–Geisinger proof concerns the sum of negative eigenvalues of \(h^2A_D-1\), rather than its counting function. We can identify the corresponding flat profile without a Bessel-function estimate.
+The Frank–Geisinger proof concerns the sum of negative eigenvalues of \(h^2A_D-1\), rather than its counting function. We can identify the corresponding flat profile without a Bessel-function estimate.
 
+<a id="reflection-riesz-profile"></a>
 **Lemma 3.4 (the flat first-Riesz-mean coefficient).** Put
 \[
  \begin{aligned}
@@ -360,7 +371,7 @@ For \(m=n-1\), slicing at \(\xi_n=z\) gives
    &=\frac{2\omega_{n-1}}{n+1}(1-z^2)^{(n+1)/2}.
  \end{aligned}
 \]
-The volume identity \(\omega_{n+1}=2\pi\omega_{n-1}/(n+1)\), obtained by integrating two extra coordinates in a ball, now makes this slice exactly \(4\pi\) times the slice defining \(W_{n+2}\). Lemma 2.1 and (13), in dimension \(n+2\), give
+To verify the volume identity, put \(m=n-1\). Above a point \(x\) in the unit \(m\)-ball, the two extra coordinates fill a disk of area \(\pi(1-|x|^2)\). Product integration and polar coordinates therefore give \(\omega_{m+2}=\pi m\omega_m\int_0^1(1-r^2)r^{m-1}\,dr=2\pi\omega_m/(m+2)\). Thus \(\omega_{n+1}=2\pi\omega_{n-1}/(n+1)\). This identity makes this slice exactly \(4\pi\) times the slice defining \(W_{n+2}\). Lemma 2.1 and (13), in dimension \(n+2\), give
 \[
  |V_n(s)|\leq C_n(1+|s|)^{-(n+3)/2},\qquad
  \int_0^\infty V_n(2s)\,ds=4\pi\kappa_{n+1}
@@ -373,6 +384,7 @@ There is an exact relation to the unsmoothed density: the scalar identity
 
 There is one further distinction in localization: taking the negative part of a localized operator is different from localizing its negative part. The following estimate controls that difference in the flat model.
 
+<a id="reflection-localized-form"></a>
 **Lemma 3.5 (localization of the flat negative part).** Let \(\phi\) be a real compactly supported smooth function on the closed half-space and put \(H_h=h^2A_D-1\). Define \(T_\phi=\phi H_h\phi\) by the closed form
 \[
  q_\phi(f)=h^2\|\nabla(\phi f)\|_2^2-\|\phi f\|_2^2,
@@ -427,6 +439,7 @@ Every vector in their closed span belongs to \(\mathcal D\). Indeed for finite s
 \]
 allowing an infinite trace at this stage. This argument also covers an empty negative subspace.
 
+<a id="reflection-negative-variational-principle"></a>
 **The variational identity.** For a positive finite-rank contraction \(\gamma\) with range in \(\mathcal D\), diagonalize it by the proved finite spectral theorem and define \(\operatorname{Tr}_q\gamma\) as the weighted sum of those \(q_\phi\) values. The preceding decomposition gives
 \[
  -\operatorname{Tr}_q\gamma
@@ -435,6 +448,7 @@ allowing an infinite trace at this stage. This argument also covers an empty neg
 \]
 Finite projections onto the first negative eigenvectors attain the partial sums. Hence the sum is exactly the supremum of \(-\operatorname{Tr}_q\gamma\) over these finite contractions. The finite trace calculation also shows that a representation \(\gamma=\sum_r w_r v_r\otimes v_r^*\), with \(w_r\ge0\), has form trace \(\sum_r w_rq_\phi(v_r)\), independently of orthogonalizing that finite family.
 
+<a id="reflection-localized-fourier-trace"></a>
 **The localized Fourier operators.** For \(|\xi|\le1\), put
 \[
  u_\xi(x',d)=\sqrt2(2\pi h)^{-n/2}
@@ -472,13 +486,14 @@ If \(\phi\) is supported in a ball of radius \(l\), with bounded amplitude and \
 
 In [FG], Lemma 2.2 controls boundary straightening, Lemma 2.3 gives the localized half-space Riesz mean, and Proposition 1.1 with Section 3 controls localization. Their Theorem 1.1 applies to bounded Euclidean domains with \(C^{1,\alpha}\) boundary, \(0<\alpha\leq1\), without a nonperiodicity hypothesis. Those results are useful for this averaged quantity. Lemma 3.4 proves its model coefficient here with our explicitly integrated normalization \(L_n\), while keeping the raw-projector transfer theorem separate.
 
-The full curved estimate is now proved in [Short-time reduction of the curved Dirichlet remainder](../providers/analysis/curved-boundary-spectral-reduction.md#scaled-reflected-parametrix), Sections 31–38, equations (B112)–(B139). The proof constructs a finite reflected wave expansion, proves its actual smooth error with all lower-order coefficients retained, and joins it to the [uniform no-return kernel estimate](../providers/analysis/diffractive-phase-neighborhoods.md#uniform-rough-dirichlet-columns). Coarse temporal Fourier estimates control the complete short-time cosine distribution; the positive unsmoothing argument in Sections 1–4 then gives both simultaneous remainder bounds and both spectral endpoint conventions. The metric-volume normalization is explicit. The earlier near-normal and complementary frozen proofs remain available as alternatives. The spectral reading cites Hörmander, volume III, for the corresponding construction. Thus (21) below applies to the actual spectral density of the general scalar, smooth, formally self-adjoint, strictly positive Dirichlet operator. Theorem 4.1 remains a transfer theorem for any measurable density family satisfying those bounds.
+For the actual curved spectral density, [Short-time reduction of the curved Dirichlet remainder](../providers/analysis/curved-boundary-spectral-reduction.md#curved-spectral-estimate) proves both bounds in (21), with metric-volume normalization and either spectral endpoint convention. Corollary 4.3 makes the application explicit.
 
 
 ## 4. When a pointwise estimate is enough
 
 We now specify exactly what is needed to transfer the model coefficient to another density. This is an analytic implication, with explicit hypotheses.
 
+<a id="reflection-remainder-transfer"></a>
 **Theorem 4.1 (integrated remainder transfer).** Let \(n\geq2\). Suppose a family of measurable densities \(q_k\), written as scalar functions relative to \(dV_g\), satisfies in the collar, for \(k\geq2\),
 \[
 q_k=m_k+R_k,
@@ -554,6 +569,12 @@ No bound uniform in the \(C^1\) norm of these cutoffs was asserted or needed. �
 
 Thus one first takes the high-energy limit with a fixed cutoff, then shrinks the collar. An energy-dependent cutoff can give a different coefficient, as Exercise 6.5 shows.
 
+<a id="reflection-curved-projector"></a>
+**Corollary 4.3 (the actual curved Dirichlet density).** Let \(P\) be a scalar formally self-adjoint second-order elliptic differential operator on half densities on a compact smooth manifold \(X\) of dimension \(n\geq2\), with smooth boundary and no corners. Assume its Dirichlet realization is strictly positive, and let \(g\) be the metric defined by its positive principal symbol. Retain all smooth lower-order terms. Then \(q_k(x)=e_P(x,x;k^2)\), as a scalar density relative to \(dV_g\), satisfies (21) in a fixed boundary collar, uniformly for \(k\geq2\). The conclusion holds for either the strict or the closed spectral endpoint convention. At the wall \(q_k\), \(m_k\) and \(R_k\) are zero. Consequently Theorem 4.1 and Corollary 4.2 hold for this actual spectral density.
+
+**Proof.** The [curved spectral estimate](../providers/analysis/curved-boundary-spectral-reduction.md#curved-spectral-estimate), equation (B138), has precisely these operator and boundary hypotheses. Its spectral parameter is \(k^2\), its normal variable is inward metric distance, and its diagonal is normalized relative to \(dV_g\). Its reflected model is therefore exactly \(m_k=k^n[W_n(0)-W_n(2kd)]\) from Theorem 3.1. Its two simultaneous remainder bounds are (21), with constants independent of the point and of \(k\); its positive-measure proof covers both endpoint conventions. Smooth Dirichlet eigenfunctions vanish at the wall, while \(W_n(0)-W_n(0)=0\), which gives the asserted wall values. Theorem 4.1 now applies to each fixed admissible weight. Applying Corollary 4.2 afterward gives the shrinking-collar conclusion in its stated order of limits. ∎
+
+<a id="reflection-exponential-window"></a>
 ## 5. An exponential observation window
 
 The flat model allows an exact example. Work in dimension two, and let
@@ -606,12 +627,13 @@ The constant term in (30) agrees with Corollary 3.3: the inward derivative is \(
 
 ![The integrated reflected profile and its next frozen-model coefficient](../figures/collar-primitive-and-moment.png)
 
-The diagram shows the exact primitive identity, the inward normal derivative, and the proved constants in Lemma 3.2 and Corollary 3.3. The curve samples the exact two-dimensional expression (30) with fixed \(a=G=1\), after subtracting its bulk and wall terms; the dashed line is the proved limit \(1/(8\pi)\). The table retains the reflected argument \(2s\) and the original volume convention. The displayed third contribution belongs to the frozen model, and Theorem 4.1 keeps its separate remainder hypotheses. [Vector figure](../figures/collar-primitive-and-moment.svg). Original CC0 figure; no historical novelty claim.
+The diagram shows the exact primitive identity, the inward normal derivative, and the proved constants in Lemma 3.2 and Corollary 3.3. The curve samples the exact two-dimensional expression (30) with fixed \(a=G=1\), after subtracting its bulk and wall terms; the dashed line is the proved limit \(1/(8\pi)\). The table retains the reflected argument \(2s\) and the original volume convention. The displayed third contribution belongs to the frozen model, and Theorem 4.1 keeps its separate remainder hypotheses. [Vector figure](../figures/collar-primitive-and-moment.svg). Original CC0 figure.
 
 ### Use the conclusion
 
 Compare the fixed exponential window with the moving-window exercise. In transferring the model through a curved collar, state the required remainder estimate explicitly; a flat calculation does not prove that estimate.
 
+<a id="reflection-solutions"></a>
 ## 6. Exercises and complete solutions
 
 **Exercise 6.1 (a constant anisotropic metric; intermediate).** On \(H\), take the metric
@@ -717,7 +739,7 @@ rather than \(\kappa_1=1/(4\pi)\). In the rescaled normal variable the weight re
 
 ## References
 
-- [I] Victor Ivrii, *100 years of Weyl's law*, Bulletin of Mathematical Sciences **6** (2016), 379–452. [Open author version](https://arxiv.org/abs/1608.03963).
+- [I] Victor Ivrii, *100 years of Weyl's law*, Bulletin of Mathematical Sciences **6** (2016), 379–452. [Open author version, v2](https://arxiv.org/abs/1608.03963v2).
 - [M] Victor Ivrii, *Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, freely readable [author monograph](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), July 9, 2023 version. Sections 3.2.1 and 8.1.1–8.1.2 give the generalized-ray and pointwise boundary routes and their prerequisite estimates.
 - [FG] Rupert L. Frank and Leander Geisinger, *Two-term spectral asymptotics for the Dirichlet Laplacian on a bounded domain*, [arXiv:1105.5182v1](https://arxiv.org/abs/1105.5182v1), Theorem 1.1, Sections 2.2–2.3 and 3. Its spectral sum is the first Riesz mean.
 - [A] Victor Ivrii, *Asymptotic and Perturbation Methods*, [Geometric optics and reflection](https://www.math.utoronto.ca/ivrii/APM-textbook/Chapter5/L5.4.html), open lectures.

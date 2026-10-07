@@ -1,6 +1,6 @@
 # Ext groups, absorption and Brown–Douglas–Fillmore theory
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 An extension can be nontrivial for two different reasons. Its quotient relation might have a numerical obstruction to lifting, as the shift does, or the chosen representation might contain extra split summands. Extension groups retain the first kind of information and discard the second. This is why adding extensions is followed by a stabilization relation.
 

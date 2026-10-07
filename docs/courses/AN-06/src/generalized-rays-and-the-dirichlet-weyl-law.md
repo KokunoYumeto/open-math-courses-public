@@ -3,12 +3,13 @@
 *Written by GPT-6.1 Sol (OpenAI) and GPT-6 Astra (OpenAI). Self-checked by the writing AI. Original exposition: CC0.*
 
 
-**Working question: Does a reflecting ray's position return imply a wave-trace return?** On the flat cylinder a reflected ray can revisit its position with reversed normal momentum. The full return requires both displacement components to match the periods and the same covector. Independently, the complete separated spectrum permits a direct lattice count: subtract the exact zero-normal row before dividing by two. Comparing these arguments separates the general propagation inputs from the fully proved fixed-cylinder model.
+**Working question: Does a reflecting ray's position return imply a wave-trace return?** On the flat cylinder a reflected ray can revisit its position with reversed normal momentum. A full return requires the same position and covector. We use this distinction to prove a general Dirichlet remainder bound, then compare it with a direct cylinder count that subtracts the exact zero-normal row before dividing by two.
 
 A reflecting ray may return to its starting point with a different direction. A wave trace sees a stronger event: the ray must return with the same covector. This distinction gives a useful bound for the spectral remainder. Near the boundary, the local reflected wave contributes a second term, with a negative quarter of the tangential phase volume.
 
-The generalized-ray and spectral arguments are classical. The freely readable source route is Victor Ivrii's survey and author monograph [I, M]; the earlier wave-trace work of Johannes Duistermaat and Victor Guillemin gives the historical context. The conditional deductions and the exact cylinder calculation below are independently proved, with each general boundary input stated explicitly.
+Ivrii's survey and author monograph [I, M] discuss generalized rays and boundary spectral asymptotics. Duistermaat and Guillemin's work explains the earlier wave-trace setting on manifolds without boundary. Here the linked programme proofs provide the boundary propagation and curved spectral estimates; the arguments below derive the global remainder and the two-term law, and give a separate exact cylinder calculation.
 
+<a id="weyl-operator-and-inputs"></a>
 ## 1. The operator and the precise prerequisites
 
 Let \(X\) be a compact smooth manifold of dimension \(n\geq2\), with smooth boundary and no corners. Let \(P\) be a scalar formally self-adjoint elliptic differential operator of order two on half densities. Its Dirichlet realization is self-adjoint and strictly positive. Write its quadratic principal symbol as \(p(x,\xi)>0\) for \(\xi\ne0\). This symbol determines a Riemannian metric \(g\). The counting function is
@@ -44,15 +45,15 @@ Second, generalized curves for this fixed operator have the compactness property
 
 Third, a distributional homogeneous Dirichlet wave has the following propagation property: any interior singularity can be continued along a generalized characteristic back to its singular Cauchy data. This applies to the solutions obtained from compactly supported interior data of any fixed negative Sobolev order. For (2), \(\tau\ne0\) on a nonzero characteristic and \(H_qt=2\tau\); hence an arc cannot stop at a radial point instead of reaching the initial time. The compactness and continuation assertion includes all the boundary contact types just described.
 
-The first two geometric inputs are now proved in [Existence and compactness of generalized reflected curves](../providers/analysis/generalized-reflected-curves.md#generalized-reflected-curves), Sections 1–5. Use the energy-preserving normal-reaction relation defined there: its tangential variables satisfy the exact Hamilton equations, its normal reaction is inward and supported on the wall, and its two one-sided transverse lifts are retained. The reading constructs curves through every normalized point, proves compactness and continuation without a finite-contact-order assumption, and excludes residence at strict diffraction. Its equation (G22) is exactly (4). This geometry alone is not propagation. The H² singular-curve theorem on homogeneous time intervals is now supplied in Sections 63–70 of the phase-neighborhood reading below. Sections 71–75 of that reading now prove the third input for every compact-interior-data spectral solution used here, including all finite negative Sobolev orders.
+The first two inputs follow from [the normal-reaction relation](../providers/analysis/generalized-reflected-curves.md#generalized-reflected-curves), including [compactness](../providers/analysis/generalized-reflected-curves.md#reflected-compactness) and continuation. Its tangential equations (G22) give (4), and it retains both transverse lifts. The third input is the [Dirichlet Cauchy endpoint theorem](../providers/analysis/diffractive-phase-neighborhoods.md#dirichlet-cauchy-endpoints), which applies to every compact interior distributional datum, with arbitrary glancing contact and accumulating reflections.
 
-The freely readable [M], Definition 3.2.2 and Theorem 3.2.4, gives a broad cone-based propagation construction. As the introduction to Chapter 3, printed p. 196, explains, that result alone does not exclude creeping rays. The refined single-quadratic-block relation in (3.4.57)–(3.4.58) is the relevant comparison for the new geometric proof. The complete analytic proof for the spectral Dirichlet solutions used here is in Sections 63–75 of the programme reading, including the initial-data endpoint and negative-order transfer. The more general boundary-problem treatment in *Boundary transitions and caustics* remains a separate Fourier-integral-operator course responsibility.
+In [M], Definition 3.2.2 and Theorem 3.2.4 give a broad cone-based construction; Chapter 3, printed p. 196, explains that this alone does not exclude creeping rays. The refined quadratic-block relation (3.4.57)–(3.4.58) is the relevant geometric comparison. The programme [singular-curve proof](../providers/analysis/diffractive-phase-neighborhoods.md#singular-generalized-curves) establishes the inward normal-reaction relation for the actual wave, including arbitrary contact order.
 
-One finite input to that energy method is now proved in [Boundary traces near a real normal root](../providers/analysis/real-normal-root-trace.md#real-normal-root-trace). Its polynomial averaging argument proves the small-constant trace bound for every finite nilpotent normal block, including Hilbert-valued inputs, bounded perturbations and the exact semiclassical scaling. [Sections 6–10](../providers/analysis/real-normal-root-trace.md#tangential-normal-trace) apply it to the actual variable tangential wave operator: they prove the cutoff norm and frequency-tail estimates, the differential commutator bound, and the existence of localized traces for weak inputs. All lower-order wave terms and localization forcing are retained.
+The analytic prerequisites retain the full scalar operator and actual localization forcing: [real-normal-root traces](../providers/analysis/real-normal-root-trace.md#tangential-normal-trace), the [Dirichlet commutator estimate](../providers/analysis/dirichlet-commutator-and-diffraction.md#strict-diffraction-estimate), [quadratic normal division](../providers/analysis/quadratic-normal-cutoffs.md#quadratic-normal-cutoffs), and the [glancing estimate](../providers/analysis/glancing-commutator-estimate.md#glancing-commutator-estimate).
 
-The next reading, [Dirichlet commutators and a local diffraction estimate](../providers/analysis/dirichlet-commutator-and-diffraction.md#dirichlet-commutator), proves the exact normal gauge and boundary commutator identity. Its [estimate (D17)](../providers/analysis/dirichlet-commutator-and-diffraction.md#strict-diffraction-estimate) controls the localized wave, its normal derivative and its normal boundary trace near strict diffraction, with the actual cutoff forcing retained. [Dirichlet wave regularization at every negative order](../providers/analysis/dirichlet-wave-regularization.md#dirichlet-wave-regularization) proves the reduction of compact interior negative-order data to finite-energy waves: it preserves their interior wavefront sets and creates no singular initial data at the wall.
+The [complete propagation proof](../providers/analysis/diffractive-phase-neighborhoods.md#dirichlet-cauchy-endpoints) combines fixed-neighborhood Sobolev estimates, separated-root reflection, strict diffraction, general glancing and the Cauchy endpoint argument. [Dirichlet wave regularization](../providers/analysis/dirichlet-wave-regularization.md#dirichlet-wave-regularization) preserves the interior wavefront set at every negative order and supplies smooth compatible initial data near the wall.
 
-[Quadratic normal division and Dirichlet phase cutoffs](../providers/analysis/quadratic-normal-cutoffs.md#quadratic-normal-cutoffs) supplies the smooth division used to handle cutoffs depending on normal frequency, including the merging roots and the elliptic side. It constructs a multiplier with an exactly nonnegative Dirichlet boundary form. [A localized glancing commutator estimate](../providers/analysis/glancing-commutator-estimate.md#glancing-commutator-estimate) now proves its interior lower bound and a quantitative half-step gain. Its estimate (L22) retains the actual equation forcing, phase-edge errors, normal-cutoff errors and the localized lower-regularity norm. The subsequent [Incoming phase neighborhoods for Dirichlet waves](../providers/analysis/diffractive-phase-neighborhoods.md#diffractive-phase-neighborhoods) constructs the phase for either orientation, proves its real-root boundary sign, and puts the principal cutoff error in a prescribed regular interior neighborhood. It proves rapid bounds for that full-phase edge operator. Its Sections 5–7 prove smooth square roots at the divided weight’s zeros, a nonnegative elliptic extension and the exactly nonnegative boundary form over the whole cutoff. Its Sections 8–11 prove a bulk square estimate on that entire neighborhood, retaining the actual full-phase edge, equation term and an unlocalized energy remainder. Sections 12–13 confine the elliptic completion to the nonvanishing shifted weight and bound its operator errors by that weight. Sections 14–18 prove the complete shifted bulk estimate with the actual full-phase edge and recover the full local energy using two multipliers. Sections 19–21 control the forcing created by spatial localization of the fixed spectral wave reduction and prove a conditional semiclassical half-step gain. Sections 22–26 construct a tangential Sobolev-regularized Dirichlet family, prove its exact first-order commutator and uniform norm bounds, and verify its cutoff-forcing and incoming-edge estimates. Sections 27–31 control all three regularizer commutator energy pairings with uniform lower-norm remainders. Sections 32–35 recover the full local energy uniformly in the regularizer and prove a half-order Sobolev gain from the explicit larger-weight hypothesis. Section 36 gives the fixed-neighborhood induction criterion. Sections 37–40 prove the tangentially elliptic boundary input by positive normal energy and a full-order Sobolev induction on one fixed open set. Sections 41–47 prove local reflection at separated normal roots and interior propagation for the actual wave, including exact mode coupling, transported cutoffs and fixed-neighborhood regularity. Sections 48–50 prove a two-root reachable region, continuity through tangency, the regularity of its incoming and transversely reflected legs, and containment of the entire larger diffraction weights. Sections 51–54 prove finite-order outgoing transport, simultaneous induction on the fixed two-root region, and normal smoothness from the actual equation. This establishes strict-diffraction regularity for the fixed H² Dirichlet wave. Sections 55–62 prove a local cone-regularity estimate at arbitrary glancing contacts, using nested phase tubes, the actual Sobolev regularizer and a two-component energy recovery. Sections 63–70 construct a curve in the closed compressed singular set and prove that it satisfies the exact inward-reaction relation (G1)–(G23), including all glancing orders and accumulating reflections. This proves the singular-curve theorem for the actual H² wave on homogeneous time intervals. Sections 71–75 prove the Cauchy-data endpoint argument, including smoothness near the initial wall from compatible collar data, and transfer propagation to every compact interior distributional datum in the spectral Dirichlet realization. The curved spectral remainder is proved in the spectral reading below. The larger inner-cutoff error in (L22) is not automatically regular. These proved inputs do not restrict the lesson's full intended scope or close those remaining obligations.
+
 
 The spectral prerequisite in the elliptic course is the curved Dirichlet diagonal estimate: relative to \(dV_g\), in a fixed boundary collar the actual spectral density \(e_P(x,x;k^2)\) has the form
 \[
@@ -68,9 +69,9 @@ with uniform constants, where
 W_n(s)=(2\pi)^{-n}\int_{|\eta|<1}\cos(s\eta_n)\,d\eta.
 \tag{6}
 \]
-The full curved estimate is now proved in [Short-time reduction of the curved Dirichlet remainder](../providers/analysis/curved-boundary-spectral-reduction.md#scaled-reflected-parametrix), Sections 31–38, equations (B112)–(B139). The proof constructs a finite reflected wave expansion, proves its actual smooth error with all lower-order coefficients retained, and joins it to the [uniform no-return kernel estimate](../providers/analysis/diffractive-phase-neighborhoods.md#uniform-rough-dirichlet-columns). Coarse temporal Fourier estimates control the complete short-time cosine distribution; the positive unsmoothing argument in Sections 1–4 then gives both simultaneous remainder bounds and both spectral endpoint conventions. The metric-volume normalization is explicit. The earlier near-normal and complementary frozen proofs remain available as alternatives. The spectral reading cites Hörmander, volume III, for the corresponding construction. Equation (5) has exactly that full operator scope. Boundary propagation to all required compact interior distributional inputs is also proved in the linked programme reading.
+The [curved spectral estimate](../providers/analysis/curved-boundary-spectral-reduction.md#curved-spectral-estimate), equation (B138), proves (5) for precisely this full operator scope and either spectral endpoint convention. Its finite reflected wave construction controls the reflected arrival; the [joint no-return kernel theorem](../providers/analysis/diffractive-phase-neighborhoods.md#joint-kernel-parameters) controls later times. Positive unsmoothing then gives both simultaneous bounds. [Reflection and the Dirichlet boundary coefficient, Corollary 4.3](reflection-and-the-dirichlet-boundary-coefficient.md#reflection-curved-projector) verifies the metric-volume normalization and the actual-density application.
 
-For comparison, [I], Sections 2.2.2, 2.2.5 and 2.2.6 in the published version, describe the boundary spectral route and its dynamical refinement. Published Theorem 2.21, equation (2.83), omits the wall coefficient when the weight meets a Dirichlet boundary. The exact half-space counterexample in the reflection lesson identifies this printing problem, including its arXiv numbering. We therefore do not use that formula to bypass (5). Remark 2.22 is the generalized-billiard source pointer, rather than a complete construction proof.
+For comparison, published [I], Sections 2.2.2, 2.2.5 and 2.2.6, describe the boundary spectral route and its dynamical refinement. The literal weighted formula (2.83) in Theorem 2.21 omits the wall coefficient for a weight meeting a Dirichlet boundary. The [half-space counterexample](reflection-and-the-dirichlet-boundary-coefficient.md#reflection-omitted-boundary-term) isolates that formula, with its arXiv numbering; it does not contradict the survey’s global quarter-coefficient formula. Remark 2.22 points to generalized billiards.
 
 The applications of those inputs are proved below. [Reflection and the Dirichlet boundary coefficient](reflection-and-the-dirichlet-boundary-coefficient.md), Theorems 3.1 and 4.1, already proves the collar integral and remainder transfer from (5). [Return times and spectral counting](return-times-and-spectral-counting.md), Lemma 1.1 and Lemma 4.1, proves positive Tauberian unsmoothing and positive microlocal partitions. [Local spectral density and the subprincipal correction](local-spectral-density-and-subprincipal-correction.md), Theorem 5.1 and its trace calculation, supplies the interior short-time coefficients. Scalar symbols, conic localization and wavefront pullbacks are the precisely linked prerequisites of [Wave evolution and cotangent flow](wave-evolution-and-cotangent-flow.md).
 
@@ -98,6 +99,7 @@ C=\{(t,x,y,\tau,\xi,\eta):\;&\tau^2=p(x,\xi)=p(y,\eta)>0,\\
 \]
 The input covector \(\eta\) here is the positive, untwisted input covector. For a distribution kernel, its actual covector in the \(y\) variable will be \(-\eta\). Interior endpoints retain their ordinary full covectors. At a transverse boundary contact we include both one-sided endpoint lifts; at glancing the normal covector is zero. This gives the closed lifted relation in the full cotangent bundle over \(X\). In particular the zero-time boundary relation includes the pair of opposite transverse normal lifts at an instantaneous reflection. This convention is needed for closedness as interior endpoints approach a wall hit.
 
+<a id="weyl-closed-relation-and-short-returns"></a>
 **Lemma 2.1 (closed relations and short returns).** The lifted relation \(C\) is closed in the nonzero cotangent space. Its nonzero-time full diagonal return part
 \[
 C_\Delta=\{(t,x,x,\tau,\xi,\xi)\in C:t\ne0\}
@@ -149,6 +151,7 @@ Define the least full return time by
 \]
 with \(\inf\varnothing=\infty\). The two time-covector signs give the same positive return set by reversal of a closed curve.
 
+<a id="weyl-reciprocal-period"></a>
 **Corollary 2.2.** The function \(\ell_*\) is lower semicontinuous, is homogeneous of degree zero in \(\xi\), and satisfies \(\ell_*\geq t_*\). Hence
 \[
 f(x,\xi)=\ell_*(x,\xi)^{-1},\qquad \infty^{-1}=0,
@@ -169,6 +172,7 @@ Let \(F(t,x,y)\) be the distribution kernel of \(\cos(t\sqrt P)\), restricted to
 
 The following elementary kernel observation makes the uniformity in the propagation argument explicit.
 
+<a id="weyl-negative-order-kernel"></a>
 **Lemma 3.1 (negative Sobolev bounds give a smooth kernel).** Suppose a distribution kernel \(K(z,y)\) has fixed compact input support in a coordinate chart. If its operator \(S\) extends continuously from \(H^{-2N}\) with that support to \(C^\infty\) locally in \(z\), for every integer \(N\geq0\), then \(K\) is jointly smooth in \((z,y)\).
 
 **Proof.** Put the input chart inside a torus and insert a smooth input cutoff equal to one on the support of \(K\). Let \(e_m(y)\), \(m\in\mathbb Z^n\), be its normalized Fourier modes. Smooth multiplication and the Fourier formula for the Sobolev norm give
@@ -185,7 +189,8 @@ For any compact output set and any number \(a\) of output derivatives, continuit
 \]
 The kernel Fourier series has terms \(S(\chi e_m)(z)e_{-m}(y)\). Applying \(b\) input derivatives costs at most \(C_b(1+|m|)^b\). Choose \(2N>n+b\). Formula (16) then gives absolute uniform convergence of every prescribed mixed derivative series on the compact output set. The series agrees with \(K\) as a distribution, since it has the same input Fourier coefficients. It is therefore a smooth representative of \(K\). A finite chart partition treats the general compact input support. ∎
 
-**Proposition 3.2 (the generalized wave relation).** With the precise boundary propagation and compactness inputs of Section 1,
+<a id="weyl-wavefront-relation"></a>
+**Proposition 3.2 (the generalized wave relation).** The cosine kernel of the operator in Section 1 satisfies
 \[
 \operatorname{WF}'(F)\subset C.
 \tag{17}
@@ -244,6 +249,7 @@ The use of all negative Sobolev orders is essential in Lemma 3.1. Smoothness of 
 
 ## 4. Positive localization and the even frequency measure
 
+<a id="weyl-positive-localization"></a>
 Choose a fixed smooth cutoff \(w\), zero near the boundary and one outside a small boundary collar, with \(0\leq w\leq1\). Put
 \[
 \psi=1-w^2.
@@ -282,6 +288,7 @@ The standard elliptic spectral bound gives \(N(k^2)=O(k^n)\), and boundedness of
 
 The trace of \(\cos(t\sqrt P)B_j\) is smooth for \(0<|t|\leq L_j\). Indeed, compose (17) with the pseudodifferential relation of \(B_j\), restrict the two spatial variables to the diagonal, and integrate over their compact interior support. The restriction is defined since \(\tau\ne0\). In the resulting spatial integration, a surviving wavefront covector must have \(\xi-\eta=0\), as proved by the compact fiber-integration rule in the wave lesson. Such a point would be a full covector return in \(\Gamma_j\), which (23) excludes. Full returns, rather than mere position returns, are exactly what this trace can retain.
 
+<a id="weyl-local-finite-propagation"></a>
 Near \(t=0\), the localized cosine kernel agrees with that of a closed interior extension of \(P\). Here is the local finite-propagation proof for the actual variable-coefficient operator, including its lower-order terms. In an interior half-density chart, write its wave equation as
 \[
  u_{tt}-\partial_i(a^{ij}(x)\partial_j u)
@@ -321,6 +328,7 @@ h=\sqrt p,
 \]
 where \(p_s\) is the subprincipal symbol of the differential operator \(P\). Its construction is the scalar symbol recursion for \(Q^2=P\), and lower-order smoothing errors do not change the zero-time singularity.
 
+<a id="weyl-local-frequency-symbol"></a>
 Let \(A_j(k)\), normalized by \(A_j(0)=0\), be the real primitive of the full small-time frequency symbol supplied by the local coefficient lesson for the positive branch \(e^{-itQ}B_j\). Its derivative decreases rapidly as \(k\to-\infty\), and
 \[
 \begin{split}
@@ -334,6 +342,7 @@ A_j(k)=(2\pi)^{-n}\bigg[
 \]
 This uses the full symbol, not just the two displayed terms. Thus its Fourier transform matches the whole zero-time singularity. In dimension two the omitted primitive can have logarithmic growth, which is still \(o(k)\). The integrated bracket is zero: \(H_h\) is divergence free, is tangent to \(h=k\), and the base supports lie away from the wall. The trace and its even real time cutoff make the frequency symbol real.
 
+<a id="weyl-cosine-unsmoothing"></a>
 **Lemma 4.1 (cosine normalization and unsmoothing).** For each nonzero partition member,
 \[
 \limsup_{k\to\infty}k^{1-n}|M_j(k)-A_j(k)|
@@ -380,6 +389,7 @@ The Fourier transforms of (30) and (31) have the same complete singularity at ze
 \]
 is Schwartz, in particular bounded and integrable. The positive Tauberian lemma of the return-time lesson now bounds the normalized difference of the primitives by \(C_n n\alpha_j/(2L_j)\). Multiply by two and use (32). The bounded error disappears after division by \(s^{n-1}\). Absorbing the dimensional factors into \(C_n\) gives (29). The factors \(1/2\) on the positive cosine measure and its comparison cancel; no extra factor remains in the counting coefficient. ∎
 
+<a id="weyl-subprincipal-cancellation"></a>
 We next compute the sum of (28). A scalar formally self-adjoint second-order differential operator on half densities can be written locally, with \(D_j=-i\partial_j\), as
 \[
 P=\sum_{i,j}D_i a^{ij}D_j
@@ -403,6 +413,7 @@ Thus \(p_s\) is odd in \(\xi\), while \(h=\sqrt p\) is even. Formula (27) makes 
 \]
 This proves the absence of an interior second counting term for the present differential operator. Lower-order coefficients were retained and their actual contribution was integrated; they were not discarded.
 
+<a id="weyl-smoothing-trace"></a>
 Finally the smoothing operator in (24) contributes \(O(1)\) to the count. For any large integer \(m\), compact interior support and smoothing make \(RP^m\) bounded. Against an eigenfunction,
 \[
 |\langle R\phi_\ell,\phi_\ell\rangle|
@@ -422,7 +433,8 @@ The polynomial spectral bound makes this summable when \(m>n/2\), by dyadic shel
 
 ## 5. The global bound and the two-term law
 
-**Theorem 5.1 (a remainder controlled by generalized periods).** With the exact owned prerequisites of Section 1,
+<a id="weyl-generalized-period-bound"></a>
+**Theorem 5.1 (a remainder controlled by generalized periods).** For the operator and full lifted return time of Sections 1–2,
 \[
 \begin{split}
 \limsup_{\lambda\to\infty}\lambda^{(1-n)/2}
@@ -436,6 +448,7 @@ The polynomial spectral bound makes this summable when \(m>n/2\), by dyadic shel
 \]
 The constant \(C_n\) depends only on dimension. In particular the boundary term in \(N\) has a negative sign.
 
+<a id="weyl-reciprocal-majorants"></a>
 **Proof.** We first improve (39) to its exact return-time integral for each fixed \(\psi\). Put \(f=\ell_*^{-1}\). Choose a compact normalized cotangent set \(Z\) over an interior compact neighborhood of \(\operatorname{supp}w\), and give it a metric \(d_Z\). By Corollary 2.2, \(f\) is bounded and upper semicontinuous. For an integer \(m\geq1\), set
 \[
 f_m(z)=\sup_{v\in Z}\bigl(f(v)-m d_Z(z,v)\bigr).
@@ -483,6 +496,7 @@ where \(\kappa_{n-1}=\tfrac14(2\pi)^{1-n}\omega_{n-1}\). The constant \(C'\) may
 
 Add (44) and (45). Their counts add exactly to \(N(k^2)\). Now choose successive fixed collar cutoffs \(\psi_\delta=1-w_\delta^2\) with support in \(d<\delta\), and let \(\delta\downarrow0\) only after taking each energy limsup. The smooth metric collar gives \(\int_X\psi_\delta\,dV_g=O(\delta)\). The bounded reciprocal period gives dominated convergence of the interior phase integral to \(\int_{p<1}f\,dz\). The collar error vanishes, leaving (40) after \(k=\sqrt\lambda\). No derivative bound uniform in \(\delta\) was assumed. ∎
 
+<a id="weyl-two-term-law"></a>
 **Corollary 5.2 (periodic rays of measure zero).** If the set of interior covectors admitting a closed generalized ray has symplectic measure zero, then
 \[
 \begin{split}
@@ -498,6 +512,7 @@ N(\lambda)={}&(2\pi)^{-n}\omega_n\operatorname{Vol}_g(X)\lambda^{n/2}\\
 
 Strict positivity is only a convenient spectral normalization. If the Dirichlet realization is lower bounded, choose \(c\) so that \(P+c>0\), apply the result to \(P+c\), and use \(N_{P+c}(\lambda+c)=N_P(\lambda)\). The principal metric and generalized relation are unchanged. Expanding the volume power adds \(O(\lambda^{n/2-1})=o(\lambda^{(n-1)/2})\); expanding the boundary power adds a still smaller term. The same two coefficients and remainder bound follow.
 
+<a id="weyl-metric-scaling"></a>
 ## 6. A check of dimensions and limits
 
 Rescale the operator to \(P_a=a^{-2}P\), with \(a>0\). Its metric is \(g_a=a^2g\), its frequencies are divided by \(a\), and its physical return times are multiplied by \(a\). Consequently
@@ -521,6 +536,7 @@ There are three distinct limits in the proof. For a fixed collar and a fixed fin
 
 The cylinder in Exercise 7.5 admits an independent proof of its two coefficients. We keep its original lengths, metric, operator and multiplicities. The classical smoothing and Poisson method gives a stronger remainder and uses neither the general boundary propagation input nor the curved diagonal estimate (5).
 
+<a id="weyl-cylinder-spectrum"></a>
 **Theorem 6.1 (the fixed flat cylinder).** Fix \(a,L>0\), and let \(P=-\partial_x^2-\partial_s^2\) on \([0,a]\times(\mathbb R/L\mathbb Z)\), with Dirichlet conditions at \(x=0,a\). For the closed counting convention,
 \[
  N_P(\lambda)=\frac{aL}{4\pi}\lambda
@@ -545,8 +561,7 @@ Here \(\{u\}=u-\lfloor u\rfloor\). The constants are for each fixed cylinder; no
  m\geq1,\qquad\ell\in\mathbb Z
  \end{gathered}
 \]
-is an orthonormal family with the indicated eigenvalues and zero endpoint values. Here is also a completeness and domain justification. On a circle, the Fejer kernels are nonnegative trigonometric polynomials of integral one. Their normalized expression is proportional to
-\((M+1)^{-1}[\sin((M+1)t/2)/\sin(t/2)]^2\); outside any fixed neighborhood of zero its integral tends to zero. Splitting a convolution into that neighborhood and its complement, uniform continuity proves convergence to every continuous periodic function uniformly. Continuous piecewise linear approximations to interval step functions give density in \(L^2\). The periodic exponentials are therefore complete. Odd extension from \((0,a)\) to the circle of length \(2a\) identifies its odd Fourier subspace with the sine family. Products are complete on the cylinder: products of interval step functions are dense, and each factor has just been approximated in its complete one-dimensional system.
+is an orthonormal family with the indicated eigenvalues and zero endpoint values. Here is also a completeness and domain justification. On the circle of length \(2\pi\), take \(F_M(t)=[2\pi(M+1)]^{-1}|\sum_{j=0}^M e^{ijt}|^2\). Expanding the finite square shows that this is a nonnegative trigonometric polynomial; integrating \(e^{i(j-l)t}\) gives integral one. The finite geometric-sum formula gives \(F_M(t)=[2\pi(M+1)]^{-1}[\sin((M+1)t/2)/\sin(t/2)]^2\), with the continuous value at zero. Outside any fixed neighborhood of zero its integral tends to zero. Rescaling gives the same assertions on a circle of any fixed length. Splitting a convolution into that neighborhood and its complement, uniform continuity proves convergence to every continuous periodic function uniformly. Continuous piecewise linear approximations to interval step functions give density in \(L^2\). The periodic exponentials are therefore complete. Odd extension from \((0,a)\) to the circle of length \(2a\) identifies its odd Fourier subspace with the sine family. Products are complete on the cylinder: products of interval step functions are dense, and each factor has just been approximated in its complete one-dimensional system.
 
 The closed Dirichlet form is the closure of
 \(\int(|\partial_xu|^2+|\partial_su|^2)\) on smooth periodic functions supported away from the two ends. For a finite sum of the displayed modes, Parseval and differentiation give
@@ -573,6 +588,7 @@ Reflection pairs each positive normal index with its negative. The zero-normal r
 \]
 Substitution already gives the exact fractional-part formula in the theorem. It remains to bound \(E_{a,L}\).
 
+<a id="weyl-disk-decay"></a>
 **The disk transform with its constants.** Use
 \(\widehat f(z)=\int_{\mathbb R^2}f(\xi)e^{-iz\cdot\xi}\,d\xi\). For the unit disk, rotate \(z\) onto the first axis and integrate the other coordinate:
 \[
@@ -600,6 +616,7 @@ Thus the two boundary terms and the integral are bounded by
 In the notation (6), the exact identity is
 \(\widehat{{\bf1}_{B_s}}(z)=(2\pi)^2s^2W_2(s|z|)\). No general stationary-phase theorem is needed for this disk bound.
 
+<a id="weyl-cylinder-poisson"></a>
 **Smoothing in the original frequency coordinates.** Choose an even nonnegative \(\rho\in C_c^\infty(B_1)\) of integral one, and put \(\rho_\delta(\xi)=\delta^{-2}\rho(\xi/\delta)\). For \(k>\delta>0\), the triangle inequality gives
 \[
  \begin{gathered}
@@ -634,6 +651,7 @@ The convolution \({\bf1}_{B_s}*\rho_\delta\) is smooth with compact support. Dir
 \]
 The smoothing factor contains \(\delta z_j\), with no inverse dilation. Both the frequency lattice \(D\mathbb Z^2\) and its dual \((2a\mathbb Z)\times(L\mathbb Z)\) are retained.
 
+<a id="weyl-cylinder-remainder"></a>
 **The absolute shell sum and the remainder.** Put \(b=\min(2a,L)>0\), the shortest nonzero dual-lattice length. For \(R\geq b\), the number of dual points of length at most \(R\) is at most
 \[
  (2\lfloor R/(2a)\rfloor+1)(2\lfloor R/L\rfloor+1)
@@ -655,7 +673,7 @@ Apply it to the two radii \(s=k\pm\delta\) in the sandwich, with \(\delta\leq k/
 \]
 For all sufficiently large \(k\), choose \(\delta=k^{-1/3}\). The two dominant terms are \(k^{2/3}\), and all stated constraints hold for the fixed lengths. If a frequency unit is displayed, fix \(\kappa_0=\max(\pi/a,2\pi/L)\) and use \(\delta=\kappa_0^{4/3}k^{-1/3}\); the same conclusion holds with its fixed factors. This changes the smoothing radius, and does not change the cylinder. The exact row subtraction now proves both statements of the theorem. ∎
 
-For strict endpoints, use open disks in the same sandwich and count \(|2\pi\ell/L|<k\). With \(u=Lk/(2\pi)>0\), this row has \(2\lceil u\rceil-1\) points. The bounded fractional-part term becomes \(u-\lceil u\rceil+1/2\), and the corresponding strict full-lattice error obeys the same \(O_{a,L}(k^{2/3})\) bound. Both conventions therefore imply (57), independently of the unfinished general inputs. The periods (55)–(56) and every eigenvalue in (58) are unchanged.
+For strict endpoints, use open disks in the same sandwich and count \(|2\pi\ell/L|<k\). With \(u=Lk/(2\pi)>0\), this row has \(2\lceil u\rceil-1\) points. The bounded fractional-part term becomes \(u-\lceil u\rceil+1/2\), and the corresponding strict full-lattice error obeys the same \(O_{a,L}(k^{2/3})\) bound. Both conventions therefore imply (57) by this direct lattice calculation. The periods (55)–(56) and every eigenvalue in (58) are unchanged.
 
 ![The exact cylinder frequency lattice, excluded row and smoothing balance](../figures/cylinder-lattice-and-remainder.png)
 
@@ -668,6 +686,7 @@ The classical circle estimate and smoothing method are discussed by Nicholas F. 
 
 Use Theorem 6.1 to check both endpoint conventions and every multiplicity in the cylinder example. For the general Dirichlet law, retain the precise generalized-ray and curved-projector prerequisites in Section 1 and the fixed-collar order of limits.
 
+<a id="weyl-solutions"></a>
 ## 7. Exercises and complete solutions
 
 **Exercise 7.1 (a short position return; introductory).** In the Euclidean half-space \(d\geq0\), take a unit-frequency ray starting at \((x'_0,d_0)\), with \(d_0>0\). Give the conditions for a positive-time position return. Compute its time and final covector. Explain why base return times may tend to zero near the boundary without contradicting Lemma 2.1.
@@ -704,8 +723,8 @@ This symbol is odd, but the chosen \(b\) is not even. At the stated point,
 =\frac{a\varepsilon\omega_n}{n}.
 \tag{52}
 \]
-The odd term without \(\varepsilon\) integrates to zero. The last equality follows by rotational symmetry: the \(n\) coordinate integrals are equal and their sum is \(\omega_n\). Homogeneity makes the same integral over \(|\xi|<k\) equal to \(k^n\) times (52). Its differentiated contribution in (28) is therefore
-\(- (2\pi)^{-n}a\varepsilon\omega_n k^{n-1}\), which need not vanish. The integrated bracket is zero for compact spatial support; the prescribed zero weight subprincipal symbol adds no second term. Such a positive principal weight can be realized with zero subprincipal symbol by taking \(C\) with real principal symbol \(\sqrt b\) and zero subprincipal symbol, and using \(CC^*\).
+The odd term without \(\varepsilon\) integrates to zero. The last equality follows by rotational symmetry: the \(n\) coordinate integrals are equal and their sum is \(\omega_n\). Homogeneity makes the same integral over \(|\xi|<k\) equal to \(k^n\) times (52). Its differentiated contribution to the coefficient density in (28), at that base point and per unit coordinate volume, is therefore
+\(- (2\pi)^{-n}a\varepsilon\omega_n k^{n-1}\), which need not vanish. The integrated bracket is zero for compact spatial support; the prescribed zero weight subprincipal symbol adds no second term. Such a positive principal weight can be realized with zero subprincipal symbol by taking \(C\) with real principal symbol \(\sqrt b\) and zero subprincipal symbol, and using \(CC^*\). To obtain an integrated example, take \(A=a e_1\) on a coordinate neighborhood with \(a\ne0\), choose a nonzero real smooth cutoff \(\chi\) supported there, and give \(C\) real principal symbol \(\chi\sqrt b\) and zero subprincipal symbol. Then \(CC^*\) has principal symbol \(\chi^2b\) and zero subprincipal symbol: the two real subprincipal terms and \(\{\chi\sqrt b,\chi\sqrt b\}\) vanish. The integrated second coefficient is the displayed density multiplied by \(\int\chi^2\,dx>0\), so it is nonzero. The scalar subprincipal calculus in the [local coefficient lesson](local-spectral-density-and-subprincipal-correction.md) gives these identities.
 
 For the full partition, \(\sum b_j=1-\psi(x)\) is even in \(\xi\) and \(\sum b_{j,s}=0\). These two identities, together with oddness of \(h_s\), make the sum vanish. Oddness alone does not justify deleting the second coefficient of each localized count.
 
@@ -762,12 +781,12 @@ Separation of variables gives exactly
 \qquad m\geq1,\quad\ell\in\mathbb Z.
 \tag{58}
 \]
-The leading phase-space area of this half-plane lattice is \(aLk^2/(4\pi)\). The excluded zero-normal row has \(\#\{\ell:|2\pi\ell/L|\leq k\}=Lk/\pi+O(1)\) points. Reflecting positive normal indices to negative ones shows that half of this row is subtracted from the full-plane count, giving the boundary coefficient \(-Lk/(2\pi)\). Theorem 6.1 independently proves the lattice remainder \(O_{a,L}(k^{2/3})=o(k)\), for both endpoint conventions. The periodic-null-set calculation also checks the dynamical hypothesis of the conditional general Corollary 5.2; it does not supply its missing general boundary inputs.
+The leading phase-space area of this half-plane lattice is \(aLk^2/(4\pi)\). The excluded zero-normal row has \(\#\{\ell:|2\pi\ell/L|\leq k\}=Lk/\pi+O(1)\) points. Reflecting positive normal indices to negative ones shows that half of this row is subtracted from the full-plane count, giving the boundary coefficient \(-Lk/(2\pi)\). Theorem 6.1 independently proves the lattice remainder \(O_{a,L}(k^{2/3})=o(k)\), for both endpoint conventions. The periodic-null-set calculation also verifies the dynamical hypothesis of Corollary 5.2, giving a second route to the same two coefficients.
 
 ## References
 
 - [I] Victor Ivrii, *100 years of Weyl's law*, Bulletin of Mathematical Sciences **6** (2016), 379–452. [Published article](https://link.springer.com/article/10.1007/s13373-016-0089-y) and [arXiv:1608.03963v2](https://arxiv.org/abs/1608.03963v2). Published Sections 2.2.2, 2.2.5–2.2.6 and Theorem 2.21/Remark 2.22 have the distinct roles explained in Section 1.
-- [M] Victor Ivrii, *Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, freely readable [author monograph](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), July 9, 2023 version. Chapter 3 introduction, printed p. 196, records the limits of Theorem 3.2.4. Proposition 3.1.14 and its proof, printed pp. 218–219 and 223–225, motivate the independently proved normal trace input. Definition 3.2.2, Theorems 3.1.7 and 3.2.4, and Section 8.1.2 supply further construction routes whose exact applicability and programme proofs remain open here.
+- [M] Victor Ivrii, *Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, freely readable [author monograph](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), July 9, 2023 version. Chapter 3 introduction, printed p. 196, records the limits of Theorem 3.2.4. Proposition 3.1.14 and its proof, printed pp. 218–219 and 223–225, motivate the independently proved normal trace input. Definition 3.2.2, Theorems 3.1.7 and 3.2.4, and Section 8.1.2 discuss the propagation and spectral constructions compared with the programme proofs above.
 - Nicholas F. Marshall, *Stretching convex domains to capture many lattice points*, [arXiv:1707.00682v4](https://arxiv.org/abs/1707.00682v4), motivation and Step 3.1. The direct cylinder proof retains its own determinant, Fourier convention and fixed-length constants.
 - Johannes J. Duistermaat and Victor W. Guillemin, *The spectrum of positive elliptic operators and periodic bicharacteristics*, Inventiones Mathematicae **29** (1975), 39–79. [Verified freely readable full article](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0029/LOG_0010.pdf). The introduction, pp. 39–40, concerns boundaryless manifolds and identifies the wave-trace and clean-composition setting; it does not prove the all-contact boundary propagation required here.
 - [T] Gerald Teschl, *Mathematical Methods in Quantum Mechanics*, second edition, 2014. [Free author edition](https://www.mat.univie.ac.at/~gerald/ftp/book-schroe/schroe2.pdf), Theorem 0.42, printed p. 38. The nested-ball category proof is written in the earlier programme lesson linked in Section 3.

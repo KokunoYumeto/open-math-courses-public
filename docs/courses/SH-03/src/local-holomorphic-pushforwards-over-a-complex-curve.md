@@ -4,9 +4,11 @@ Over a complex curve, the relative cutoff condition can be arranged near any com
 
 Let \(k\) be a commutative ring of finite global dimension. All manifolds are Hausdorff, countable at infinity and of uniformly bounded finite dimension; all sheaf complexes are globally bounded. Let \(f:Y\to X\) be holomorphic with \(\dim_{\mathbb C}X=1\). Fix \(x_0\in X\), a nonempty compact \(K\subset f^{-1}(x_0)\), and a weakly complex constructible \(G\). Perfect complex constructibility means, additionally, that every stalk is perfect. The empty \(K\) case is immediate by taking an empty source neighborhood.
 
-The local statement treated here belongs to the theory of direct images of \(\mathbb C\)-constructible sheaves under non-proper maps; see M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §8.6. We prove the compact-fibre neighbourhood statement and the unbounded-covector lemma in detail. The exhaustion in the bounded neighbourhood is reparameterized to satisfy every closed-level properness hypothesis. A ball intersected with a small inverse-image base neighbourhood has the stated property; the same statement for a whole centred ball fails, as the example below shows.
+The theorem includes the zero coefficient ring, when every sheaf and microsupport is zero. In the coefficient examples identifying a nonempty microsupport or a nonconstant stalk, take \(k\neq0\).
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+Kashiwara and Schapira prove the local complex-curve direct-image theorem in [*Microlocal study of sheaves*, Astérisque 128 (1985)](https://www.numdam.org/item/AST_1985__128__1_0/), Proposition 8.6.2, printed pp. 154–155. Their Lemmas 8.6.3 and 8.6.4, printed pp. 155–156, provide the central cotangent equality and the discrete-critical-value argument. We develop these mechanisms using a finite reciprocal covector chart, then construct the needed exhaustion directly near the compact set. The final reciprocal reparameterization makes every finite closed cutoff level proper.
+
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
 ## The neighborhood theorem and its cotangent bound
 
@@ -46,7 +48,7 @@ Y\xrightarrow{\gamma} Z\times X\xrightarrow{p}X,
 \qquad\text{(4)}
 \]
 
-The graph is closed because the manifolds are Hausdorff. Put \(\widetilde G=R\gamma_*G\). The closed embedding is proper, so Holomorphic operations and complex Fourier symmetries gives bounded weak complex constructibility, and perfect stalks in the perfect case. Its actual microsupport is
+The graph is closed because the manifolds are Hausdorff. Put \(\widetilde G=R\gamma_*G\). The closed embedding is proper, so the holomorphic proper-image theorem gives bounded weak complex constructibility, and its perfect-coefficient argument gives perfect stalks when \(G\) has them. Its actual microsupport is
 
 \[
 \widetilde\Lambda
@@ -55,7 +57,7 @@ The graph is closed because the manifolds are Hausdorff. Put \(\widetilde G=R\ga
 \qquad\text{(5)}
 \]
 
-This is the closed-embedding microsupport equality, including all conormal directions and zeros. Thus a horizontal covector \((0,\xi)\) of the product belongs to \(\widetilde\Lambda\) exactly when \((df_y)^t\xi\in\operatorname{SS}(G)\).
+The closed-embedding equality in MO8 proves (5): a local support test for the graph coefficient is the same test on the graph, and restriction of the product covector \((\zeta,\xi)\) to its tangent is \(\zeta+(df_y)^t\xi\). This includes all conormal directions and zero covectors, without a noncharacteristic assumption. A horizontal covector \((0,\xi)\) belongs to \(\widetilde\Lambda\) exactly when \((df_y)^t\xi\in\operatorname{SS}(G)\).
 
 It suffices to construct a product neighborhood \(W\subset Z\times U\) of \(\gamma(K)\). Its graph inverse image \(V=\gamma^{-1}(W)\) is a neighborhood of \(K\) in \(f^{-1}(U)\), and the two images of \(\widetilde G|_W\) under \(p\) identify with the images of \(G|_V\) under \(f_V\). Formula (5) will translate the product bound back to (2). We now write \(G,\Lambda,f\) for this product coefficient, its actual microsupport, and the projection \(Z\times X\to X\).
 
@@ -67,7 +69,7 @@ j:Z\simeq Z\times\{x_0\}\hookrightarrow Z\times X,
 \qquad\text{(6)}
 \]
 
-The full sharp inverse is closed subanalytic isotropic and complex-conic; the holomorphic graph-normal model also makes it analytic. We use these existing geometric results, not ordinary cotangent restriction in place of the sharp inverse.
+The graph-conormal slice proof, (18)–(23), makes the full \(j^\sharp\Lambda\) closed, subanalytic and real-isotropic, including unbounded witnesses. Its holomorphic version also makes it complex analytic and complex-conic: complex scaling preserves the sharp sequence criterion, and the normal-cone model is a holomorphic inverse image of a complex analytic normal cone. The actual microsupport \(\Lambda\) of the weakly complex constructible input is closed complex analytic by the four equivalent geometric tests. These conclusions need no perfect-stalk hypothesis.
 
 ## Closed horizontal saturation equals the full central sharp inverse
 
@@ -119,7 +121,7 @@ It is the holomorphic inverse image of the closed analytic \(\Lambda\). The bad 
 \qquad\text{(11)}
 \]
 
-Real analytic curve selection gives a real analytic curve through \(q\) lying in (11) for small positive real parameters. Extend its finite coordinate functions holomorphically to a complex disc. The identity theorem preserves the equations of \(\mathcal A\); it does not need to preserve the real inequality at complex parameters. The positive real branch retains that inequality. The function \(u(t)\) is holomorphic, vanishes at zero and is not identically zero. Shrinking the disc leaves it nonzero for every nonzero parameter. Consequently
+The analytic curve-selection construction, applied to the real semianalytic set (11) in this finite chart, gives a real analytic curve through \(q\) lying in (11) for all small positive real parameters. Here \(u\neq0\) is the real analytic inequality \(|u|^2>0\); the squared-norm inequality is essential and stays part of the selected set. Extend the finite coordinate functions holomorphically to a complex disc. Local holomorphic equations of \(\mathcal A\) vanish on the positive real branch, so the identity theorem makes them vanish on that disc. The real inequality is used only on the positive real branch. The holomorphic function \(u(t)\) vanishes at zero and is not identically zero. Its zero has finite order, so after shrinking it is nonzero at every nonzero parameter. Undoing the complex cotangent scaling consequently gives
 
 \[
 \xi(t)=1/u(t),\qquad
@@ -130,7 +132,7 @@ Real analytic curve selection gives a real analytic curve through \(q\) lying in
 
 is a meromorphic cotangent arc with finite holomorphic \(z,x,\zeta\). This supplies the required compactification argument. A holomorphic arc chosen without retaining the bad inequality would not prove the assertion for an arbitrary bad sequence.
 
-For a closed complex-conic isotropic analytic set, the complex canonical one-form vanishes on it. The singular-set pullback criterion in Subanalytic sets and limiting tangent directions applies to every analytic arc in the set, even one contained in its singular locus. Apply it to both real and imaginary parts of the complex canonical form. Pulling back along (12) yields
+Write \(\theta=\sum_i\zeta_i\,dz_i+\xi\,dx\). At a regular point of the complex-conic isotropic analytic set \(\Lambda\), the radial covector vector field \(R\) is tangent and \(\iota_R d\theta=\theta\). Isotropy thus gives \(\theta|_{\Lambda_{\mathrm{reg}}}=0\). This vanishing also tests singular arcs. The point-cone form test and singular pullback proof, (C1)–(C4), show that both \(\operatorname{Re}\theta\) and \(\operatorname{Im}\theta\) kill every limiting tangent direction to \(\Lambda\), including at singular points. At every nonzero parameter the derivative of (12) is such a tangent direction, even if the entire arc lies in the singular locus. Pulling back therefore yields
 
 \[
 \sum_i\zeta_i(t)z_i'(t)+\xi(t)x'(t)=0.
@@ -156,9 +158,15 @@ Along positive real parameters this contradicts (11). Thus (9) holds for every s
 
 ## A compact band with a uniform relative exclusion
 
-For a general product source we use the real analytic exhaustion prerequisite appearing in the source proof: choose a positive proper real analytic \(\varphi:Z\to\mathbb R\). Existence of such an exhaustion on the chosen real analytic manifold is an explicit geometry contract; it is not deduced from holomorphic properness of \(f\). Regard \(\varphi\) as independent of \(x\) on the product.
+Only a neighborhood of the compact projection \(K_Z\subset Z\) of \(\gamma(K)\) is needed. Choose finitely many holomorphic coordinate charts \(\kappa_i\) and Euclidean balls \(\{|\kappa_i-c_i|<R_i\}\) covering \(K_Z\), with each closed ball compactly contained in its chart. On that chart put \(b_i=(R_i^2-|\kappa_i-c_i|^2)_+^3\), and extend \(b_i\) by zero to \(Z\). Here \(a_+=\max(a,0)\). The value and first two derivatives of \(a_+^3\) agree at \(a=0\), so each \(b_i\) is \(C^2\); its support is compactly inside the chart, which makes extension across the chart boundary harmless. Put \(b=\sum_i b_i\), \(N=\{b>0\}\), and \(\varphi=1/b\) on \(N\).
 
-The closed isotropic \(A_0\) in (6) has closed base projection because it includes its zero covectors. Properness of \(\varphi\) therefore implies properness on \(\pi A_0\). The microlocal discrete-critical-value theorem in Isotropic cotangent transport and discrete critical values says that
+The open set \(N\) contains \(K_Z\) and has compact closure. The graphs of \(b\), \(db\), \(\varphi\), and \(d\varphi=-b^{-2}db\) are locally subanalytic: near any point, partition by the finitely many signs of \(R_i^2-|\kappa_i-c_i|^2\); on each piece all these functions have analytic formulas, and the formulas agree to the stated differentiability order. For \(c>0\), the sublevel \(\{\varphi\leq c\}=\{b\geq1/c\}\) is a closed subset of the finite union of compact ball supports and lies inside \(N\). For \(c\leq0\) it is empty. Thus \(\varphi\) is positive, \(C^2\), locally subanalytic, and proper, with every finite sublevel compact. This is the finite version of the coordinate-ball cutoff construction.
+
+Restrict the product and its coefficient to \(N\times X\), and continue to write \(Z,G,\Lambda,A_0\) for these restrictions. The sharp inverse and ordinary closure identity are local, so (6)–(7) remain valid. Regard \(\varphi\) as independent of \(x\) on the product. The cutoff argument below uses its stated \(C^2\) subanalytic regularity; no global analytic exhaustion is needed.
+
+The set \(\pi A_0\) is closed: positive conicity and closedness give \(\pi A_0=\{z:(z,0)\in A_0\}\). The chosen \(\varphi\) is therefore proper on \(\pi A_0\). The critical-set proof using analytic curves extends to our function as follows. Set \(E=\{z:(z,d\varphi_z)\in A_0\}\). It is closed and subanalytic, since the derivative graph just constructed is subanalytic. If \(\varphi|_E\) were not locally constant at \(z_0\in E\), curve selection would give a real analytic \(\gamma\) through \(z_0\), entering \(E\setminus\{\varphi=\varphi(z_0)\}\) for positive parameter.
+
+The lifted curve \(\ell(t)=(\gamma(t),d\varphi_{\gamma(t)})\) is \(C^1\) and lies in \(A_0\). For each positive parameter, its derivative is in the point cone of \(A_0\): use the difference quotients \((\ell(t+h)-\ell(t))/h\) with \(h>0\). The form test (C1)–(C3) therefore gives \(\alpha(\ell'(t))=d\varphi_{\gamma(t)}\gamma'(t)=0\). The ordinary chain rule, mean value theorem and continuity at zero imply \(\varphi(\gamma(t))=\varphi(z_0)\), a contradiction. Thus \(\varphi|_E\) is locally constant. For a compact interval \(J\), the closed set \(E\cap\varphi^{-1}(J)\) is compact. Finitely many of these constant-value neighborhoods cover it, so its image is finite. Consequently
 
 \[
 \{\varphi(z):d\varphi_z\in A_0\}
@@ -214,7 +222,13 @@ d\psi=(s_2-\varphi)^{-2}d\varphi,
 \qquad\text{(21)}
 \]
 
-The coefficient in the differential is positive. On this part of \(W\), (18) and positive conicity give the relative exclusion for \(\psi\); complex minus stability gives its negative version. Nonproper holomorphic pushforwards through cutoffs now applies to the projection of \(W\), with the genuine all-level hypothesis. It proves both bounded weak complex outputs and their perfect stalks when the input is perfect.
+The coefficient in the differential is positive. On this part of \(W\), (18) and positive conicity give the relative exclusion for \(\psi\); complex cotangent conicity gives its negative version as well. The function \(\psi\) is \(C^2\), with locally subanalytic function and derivative graphs. We can therefore use the subanalytic \(C^2\) form of Nonproper holomorphic pushforwards through cutoffs, with the all-level properness just proved.
+
+Here is the coefficient argument at this regularity. The real relative-cutoff theorem, MO24–MO27, assumes a \(C^1\) function and supplies the actual restriction and supported counit maps. At a closed level \(t\geq t_0\), put \(H=G|_W\), \(Z_t=\{\psi\leq t\}\), \(P_t=H\otimes k_{Z_t}\), and \(Q_t=R\Gamma_{Z_t}H=R\mathcal Hom(k_{Z_t},H)\). Its isomorphisms are \(R(f|_W)_*H\longrightarrow R(f|_W)_*P_t\) and \(R(f|_W)_*Q_t=R(f|_W)_!Q_t\longrightarrow R(f|_W)_!H\). Their one-sided continuation proof requires only the \(C^1\) differential tests.
+
+The closed subanalytic cutoff coefficient \(k_{Z_t}\) has perfect stalks. The weak tensor and internal-Hom theorem makes \(P_t,Q_t\) bounded weakly real constructible, including for infinite input stalks; the perfect cutoff theorem gives perfect stalks if \(H\) has them. Their closed supports lie in \(\operatorname{supp}(H)\cap Z_t\), on which the original holomorphic projection is proper. Apply its proper weak real image theorem and the compact-fibre perfection theorem. This proves global boundedness, weak real constructibility and the separate perfect-stalk assertion. It never requires the auxiliary map \((f,\psi)\) to be analytic.
+
+For the complex geometry, MO27 bounds both output microsupports by \(D_0=(f|_W)_\pi(f|_W)_d^{-1}\bigl(\Lambda|_W\cap\pi^{-1}Z_{t_0}\bigr)\). The set inside this direct transport is closed, subanalytic, complex-conic and real-isotropic: the base cutoff preserves complex fibre scaling, and the point-cone form test passes isotropy to a subanalytic subset. Over a compact downstairs cotangent set \(C\), the correspondence inverse lies in the product of \(C\) with the compact set \(\operatorname{supp}(H)\cap Z_{t_0}\cap f^{-1}(\pi C)\); it is closed there. Thus the actual correspondence projection is proper. The proper isotropic transport theorem makes \(D_0\) closed, subanalytic and real-isotropic. Complex linearity of the transpose differential also makes \(D_0\) complex-conic. The complex constructibility criterion, condition 2, now gives both weak complex outputs. Together with the preceding perfect-stalk argument this proves the perfect assertion.
 
 Its sharp threshold bound only uses points with \(\psi\leq t_0\), equivalently \(\varphi\leq s_1\), which lie inside \(W\). Thus it uses the original \(\Lambda\), with no new boundary covectors. Return through (4)–(5). A threshold witness for the product bound has \(\zeta=0\) and \((df_y)^t\xi\in\operatorname{SS}(G)\). It lies in the graph neighborhood \(V\). This proves (1)–(2) for the original map.
 
@@ -228,7 +242,7 @@ The literal assertion that \(V\) can always be the whole \(B_r\), with \(V\subse
 
 ## More than one complex base coordinate
 
-For several base coordinates, (13) becomes \(\sum\zeta_i z_i'+\sum\xi_j x_j'=0\). Unbounded products in different coordinates can cancel, so the one-variable Laurent bound does not follow. In fact the exact equality (7) fails, as Exercise 6 shows with a smooth complex hypersurface and its conormal. The printed higher-base-dimension warning concerns the wider neighborhood phenomenon. Our explicit example proves failure of the crucial cotangent lemma, and the whole-ball calculation proves failure of that stronger neighborhood choice; neither is presented as a proof that no possible source neighborhood exists in a higher-dimensional base.
+For several base coordinates, (13) becomes \(\sum\zeta_i z_i'+\sum\xi_j x_j'=0\). Unbounded products in different coordinates can cancel, so the one-variable Laurent bound does not follow. The exact equality (7) fails for the smooth complex hypersurface and conormal of Exercise 6. That example isolates the geometric obstruction to this proof. The whole-ball example separately excludes that stronger choice of neighborhood, even over a curve. Neither example proves that every possible source neighborhood fails the existential conclusion in a higher-dimensional base.
 
 ## Exercises
 
@@ -275,7 +289,7 @@ The final threshold region is \(\psi\leq1/5\), equivalent to \(\varphi\leq4\). T
 ### 5. An entire ball creates a real target boundary
 *Difficulty: Advanced.*
 
-Assume \(k\neq0\). Let \(Y=\mathbb C^2\), \(f(z_1,z_2)=z_1\), \(L=\{z_2=z_1\}\), and \(G=k_L\). Take \(K=\{0\}\). Prove that no entire centered ball \(V=B_r(0)\), \(r>0\), can satisfy the printed whole-ball assertion on an open \(U\) with \(V\subset f^{-1}(U)\). Then explain how (3) repairs the local statement.
+Assume \(k\neq0\). Let \(Y=\mathbb C^2\), \(f(z_1,z_2)=z_1\), \(L=\{z_2=z_1\}\), and \(G=k_L\). Take \(K=\{0\}\). Prove that no entire centered ball \(V=B_r(0)\), \(r>0\), can satisfy the whole-ball strengthening on an open \(U\) with \(V\subset f^{-1}(U)\). Then explain how (3) repairs the local statement.
 
 **Solution.** The sheaf \(k_L\) is perfect complex constructible on the smooth closed complex line. The image of the entire source ball under \(f\) is the disc \(D_r=\{|w|<r\}\), since every \((w,0)\) with \(|w|<r\) belongs to the ball. Thus any allowed \(U\) must contain \(D_r\). On the line, a point is \((w,w)\), with squared norm \(2|w|^2\). The support inside the ball projects isomorphically onto \(D_a\), where \(a=r/\sqrt2\). Closed direct image of the line in \(V\), followed by this open embedding \(j:D_a\hookrightarrow U\), gives
 
@@ -316,8 +330,12 @@ Take \(f(z)=z^m\) on \(\mathbb C\), with \(m\geq2\), \(G=k\), \(K=\{0\}\). Choos
 
 The original microsupport is the zero section. For a downstairs covector \(\xi\), its transpose is \(m z^{m-1}\xi\). Away from zero this vanishes only for \(\xi=0\); at zero it vanishes for every \(\xi\). Thus (2) bounds the output by the zero section together with the full cotangent fibre at the branch point. The stalk jump makes the output nonconstant at that point, while complex cotangent conicity gives the expected full nonzero fibre there. Complex constructibility allows this analytic singular stratum; it does not require local constancy across a branch value.
 
-## Exact dependencies and source comparisons
+## The geometry of the local construction
 
-The lesson proves the compact-fibre neighborhood application, full one-dimensional central sharp equality, meromorphic witness through a finite reciprocal chart, Laurent estimate, uniform compact band, all-level reciprocal repair and the ball-with-base-restriction version.
+Three controls work together. The finite reciprocal cotangent chart retains a hypothetical bad inequality, so the canonical one-form forces the full sharp product to vanish. A finite coordinate-ball construction gives compact level sets around the prescribed compact part of the fibre, and the singular-form argument makes the selected critical values discrete. Finally the reciprocal of the distance to the outer level makes every finite closed level proper after the source is restricted.
 
-The printed bounded-source exhaustion is repaired to enforce every closed level. The literal whole-ball strengthening is replaced by (3), with a complete complex-constructible counterexample supplied. The wider printed higher-base-dimension warning is distinguished from the exact failure of the central cotangent equality proved here. General complex realization nonequivalence remains a separate teaching target. The following course material develops nearby and vanishing cycles with their actual covering maps and coefficient shifts.
+The resulting neighborhood is a neighborhood of the chosen compact set, with no assertion of properness on the entire original source. Its microsupport bound uses only the original input over the inner closed threshold. In a Euclidean source the same construction with squared norm gives the ball intersected with the inverse image of a smaller target neighborhood. This retains complex constructibility without introducing the real target boundary created by an entire ball.
+
+## References
+
+M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985): Proposition 8.6.2, printed pp. 154–155, gives the local direct-image theorem over a complex curve; Lemma 8.6.3, printed pp. 155–156, supplies the central cotangent equality and scalar pole-order argument; Lemma 8.6.4, printed p. 156, gives the discrete-critical-value mechanism. The finite coordinate-ball exhaustion, its \(C^2\) subanalytic critical-value argument, and the reciprocal cutoff are given explicitly above. The examples distinguish the full neighbourhood theorem from stronger ball and higher-dimensional cotangent claims.

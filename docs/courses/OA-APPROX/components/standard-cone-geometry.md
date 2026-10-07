@@ -4,7 +4,7 @@
 
 Normal positive functionals need not be faithful, and a von Neumann algebra need not admit a faithful normal state. We first control cone vectors and their support projections, then reduce each functional to its own supported corner. The realization theorem needed in that corner is the cyclic theorem stated below.
 
-## Objects and the two modular inputs
+## Constructing the cone and representing functionals
 
 The inner product is linear in its second variable. Thus
 \[
@@ -32,11 +32,13 @@ The commutant has the same geometric data \((H,J,P)\). Indeed \(JM'J=M\), its ce
 \]
 The two factors commute, so this operator preserves \(P\) by MC3. The cyclic-core output MC4 already applies to every cyclic separating representation. Thus the arguments below apply to the commutant with this same cone.
 
-MC includes existence and self-duality of the cone; they are not proved by the geometric lemmas below. The free bounded modular route [RC–GP–RS–IK–MC–MP](https://kokunoyumeto.github.io/open-math-courses-public/courses/OA-MOD/notes/real-coercivity/bounded-modular-polar.html) supplies the commutant and polar-operator part, with its exact graph domains. The additional natural-cone construction is the part of Araki's Theorems 1–4 and Haagerup's Theorem 1.6 used as a conditional input here; the endpoint cone-duality proof is a separate dependency from the commutant theorem. The separate analytic input **CR** is:
+The construction of MC is proved in Constructing the natural cone from bounded multiplication: use the faithful normal semifinite weight chosen in NC01, whose representation, original involution graph and fullness are constructed in NC01b. NC00 specifies the earlier operator constructions, NC02–NC03 prove positive form extension and endpoint duality, NC04–NC06 construct the self-dual preserved cone, and NC07–NC08 prove the central and universal cyclic identities. The bounded modular route [RC–GP–RS–IK–MC–MP](../../OA-MOD/notes/real-coercivity/bounded-modular-polar.html) supplies the commutant and original polar-operator graph used in NC00.
+
+The cyclic realization statement, denoted **CR**, is:
 
 > In the natural cone of a cyclic separating vector, every bounded normal positive functional has a representing vector in that cone.
 
-Araki's Theorem 6, printed pages 335–339, supplies CR subject to its analytic antecedents. The geometry below proves uniqueness without CR, and proves the full passage from CR to arbitrary, possibly nonfaithful functionals. Only that last passage uses CR. Bounded continuous functional calculus, the bicommutant characterization, and Hilbert-space completeness are the elementary operator prerequisites.
+Normal positive functionals in a cyclic natural cone proves CR. Its positive Fourier correction, supported-corner domain calculation, residual bound by a factor of \(1/4\), and real separation proof give the representing vector as an actual norm limit. The geometry below proves uniqueness before using CR, and then passes from cyclic corners to arbitrary, possibly nonfaithful functionals. Bounded continuous functional calculus, the bicommutant characterization, and Hilbert-space completeness are the elementary operator prerequisites.
 
 ## CG01. Normal supports without a representing vector
 

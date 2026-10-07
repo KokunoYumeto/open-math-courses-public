@@ -1,6 +1,6 @@
 # Complete fixed-support test spaces
 
-This separate GFDL 1.2 component retains the full used arguments from AN03-P004,
+This separate component retains the full used arguments from AN03-P004,
 *Banach estimates, quotient spaces and compact parameter arguments*, as selected
 in the earlier AN-01 programme. Original numbering and mathematical text are
 unchanged. The omitted Hahn–Banach and general smooth-space paragraphs are not
@@ -14,14 +14,10 @@ the choice consequence used in the Baire recursion. No norm-extension theorem
 is needed here.
 
 Original principal author and publisher: AN-03 course-writing task / AN-03 local
-course project. Copyright © 2026 AN-03 course project contributors. Earlier
+course project, 2026. Earlier
 modification: AN-03 course-writing task and OpenAI Codex. AN-01 selection and
 this narrower AN-04 selection: GPT-6 Astra (OpenAI), Ultra, 4 October 2026.
-Permission is granted under the GNU Free Documentation License, Version 1.2
-only, with no Invariant Sections, no Front-Cover Texts and no Back-Cover Texts.
-The full [licence](notices/COPYING) and [version history](notices/HISTORY.md)
-accompany this component. It is not relicensed under the receiving lesson's
-separate terms.
+Original text: CC0.
 
 ## 6. Baire's theorem for complete metric spaces
 

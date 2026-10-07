@@ -8,7 +8,7 @@ The selected runtime packages retain their complete component-specific licence a
 - software-notices/fonttools/licenses/LICENSE.external
 - [software-notices/kiwisolver/licenses/LICENSE](software-notices/kiwisolver/licenses/LICENSE)
 - [software-notices/matplotlib/LICENSE](software-notices/matplotlib/LICENSE)
-- [software-notices/numpy/licenses/LICENSE.txt](software-notices/numpy/licenses/LICENSE.txt)
+- software-notices/numpy/licenses/LICENSE.txt
 - [software-notices/numpy/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt](software-notices/numpy/licenses/numpy/_core/include/numpy/libdivide/LICENSE.txt)
 - [software-notices/numpy/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING](software-notices/numpy/licenses/numpy/_core/src/common/pythoncapi-compat/COPYING)
 - [software-notices/numpy/licenses/numpy/_core/src/highway/LICENSE](software-notices/numpy/licenses/numpy/_core/src/highway/LICENSE)

@@ -1,8 +1,6 @@
 # The Killing form and Cartan's criteria
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
-
-*KT–KK receiving revision, 5 October 2026: the proofs used by Lesson 18 are rewritten from the checked free author editions and bound to the local companion. Original authorship and CC0 remain as stated above. The proof/source audit distinguishes this used chain from retained comparisons and unused later dependencies.*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 The trace of a product can detect a structural property that no single bracket reveals. Cartan's first criterion turns vanishing traces into solvability. His second identifies semisimple algebras by a nondegenerate bilinear form. With that form available, orthogonal complements become ideals, decompositions become canonical, and derivations become inner.
 

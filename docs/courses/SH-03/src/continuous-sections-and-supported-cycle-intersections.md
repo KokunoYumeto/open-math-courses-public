@@ -2,11 +2,11 @@
 
 A section of a cotangent bundle has a canonical supported class even when the section is only continuous. Intersecting that class with a Lagrangian cycle gives a dualizing class on their actual intersection. A proper trace carries it to the base. The resulting class agrees with an ordinary descent of the cycle, with both output supports retained.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Use Intersections of supported subanalytic cycles for the evaluated supported cup, compact integration and excess intersections. Lagrangian cycles and proper cotangent images and Pulling back Lagrangian cycles through a graph supply the cycle coefficient and normalized point, zero-section and closed conormal cycles. The exact current SH-02 imports are exceptional composition, closed support, tensor projection and normalized trace, together with the actual ordinary unit for a vector-bundle projection.
+Use Intersections of supported subanalytic cycles for the evaluated supported cup, compact integration and excess intersections. Lagrangian cycles and proper cotangent images and Pulling back Lagrangian cycles through a graph supply the cycle coefficient and normalized point, zero-section and closed conormal cycles. The sheaf operations used below are the trace-preserving exceptional composition, closed-support adjunction, internal adjunction, and normalized tensor comparison. The relative dualizing formula, compact-coordinate generator, and submersion trace fix their coefficients and normalization. We prove the required ordinary bundle-unit identity explicitly below; the general version is descent along acyclic submersions.
 
-This lesson treats intersections of Lagrangian cycles with continuous sections of the cotangent bundle, in the framework of subanalytic chains of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985). The normalized transverse conormal formula is proved in Transverse pullback of normalized conormal cycles.
+M. Kashiwara's [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.5–2.3, pp. 196–197, supplies the coefficient-chain and conormal framework. The supported comparison below is proved from the ordinary section unit, exceptional tensor map and trace; it applies to continuous sections without an analytic graph hypothesis. The normalized transverse conormal formula is proved in Transverse pullback of normalized conormal cycles.
 
 ## A continuous section supplies a supported unit
 
@@ -18,10 +18,14 @@ Let \(A\) be a commutative ring of finite global dimension and \(X\) a real anal
  \qquad\text{(1)}
 \]
 
-Exceptional operations below also apply to the continuous maps in their finite-dimensional topological setting.
+These operations apply to the continuous maps used here. The bundle projection is a topological submersion with \(n\)-dimensional fibres; its proper direct image has cohomological dimension at most \(n\), by the submersion proof. A closed embedding has exact proper direct image and bound zero. The finite-dimensional, locally compact hypotheses therefore give the exceptional adjoints and their composition comparisons for both maps. No analytic regularity of the section is required.
 Let \(\sigma:X\to M\) be a continuous section, so \(\pi\sigma=\operatorname{id}_X\), and write \(G=\sigma(X)\). This is a closed subset: in a bundle chart its fibre coordinate is the graph of a continuous function into a Hausdorff vector space. The map \(\sigma\) is a homeomorphism onto that closed graph and hence a proper closed embedding.
 
-Closed support and exceptional composition give the actual identifications
+For a closed subset \(S\), our convention is
+
+\(H^0_S(M;F)=H^0R\Gamma(M;R\mathcal Hom(A_S,F))=\operatorname{Hom}_{D(A_M)}(A_S,F)\).
+
+The last equality uses global derived Hom. It does not assert that taking sections commutes with tensor products. Since \(A_G=\sigma_*A_X\), closed-support adjunction and exceptional composition give the actual identifications
 
 \[
  H^0_G(M;P)
@@ -128,8 +132,9 @@ The ordinary adjunction unit
  \qquad\text{(10)}
 \]
 
-is an isomorphism for every bounded coefficient complex \(H\) on \(X\). Here is the prerequisite proof applied to this bundle. Its fibre is \(\mathbb R^n\); the compact trace of its relative dualizing coefficient is the unit, by the oriented compact-coordinate calculation. Submersion base change therefore makes
-\(R\pi_!\omega_\pi\to A_X\) an isomorphism. Exceptional internal duality and the invertibility of \(\omega_\pi\) identify
+is an isomorphism for every bounded coefficient complex \(H\) on \(X\). To prove this for the specified arrow, recall \(P=\omega_\pi=\pi^!A_X\) and put \(C=R\pi_!P\). On a fibre the relative coefficient is \(\omega_{\mathbb R^n}\). Its compact trace is \(R\Gamma_c(\mathbb R^n;\omega_{\mathbb R^n})\to A\): the ordered interval generator and its orientation dual identify this map with \(+1\). Proper-support base change and the submersion comparison identify each stalk of \(\operatorname{tr}_\pi:C\to A_X\) with that fibre trace. Thus this trace is an isomorphism, including over nonorientable \(X\); no global orientation has been chosen.
+
+The submersion tensor map \(q_H:P\otimes^L\pi^{-1}H\to\pi^!H\) is an isomorphism. The shifted orientation line \(P\) is invertible, so currying \(q_H\) identifies \(\pi^{-1}H\) with \(R\mathcal Hom(P,\pi^!H)\). Internal adjunction then gives
 
 \[
  R\pi_*\pi^{-1}H
@@ -138,7 +143,11 @@ is an isomorphism for every bounded coefficient complex \(H\) on \(X\). Here is 
  \qquad\text{(11)}
 \]
 
-The composite of (10) with (11) is precomposition with that actual compact trace, hence the identity. This proves that the arrow (10) is the isomorphism, without using ordinary base change for a nonproper projection.
+It remains to identify the image of the actual unit \(\eta_H\) in \(R\mathcal Hom(C,H)\). Uncurry it with the factor \(C\) first. The evaluated internal adjunction sends it to
+
+\(C\otimes^LH\simeq R\pi_!(P\otimes^L\pi^{-1}H)\xrightarrow{R\pi_!q_H}R\pi_!\pi^!H\xrightarrow{\varepsilon_\pi}H\).
+
+Indeed the ordinary counit in that evaluation cancels the pulled-back ordinary unit by the adjunction triangle identity. By the defining transpose of the exceptional tensor map, this displayed composite is \(\operatorname{tr}_\pi\otimes1_H:C\otimes^LH\to H\). Thus under (11), \(\eta_H\) corresponds to precomposition with \(\operatorname{tr}_\pi\). Since that trace is invertible, the map is the identity after identifying \(C\) with \(A_X\). This proves that (10), rather than an unspecified isomorphism between its endpoints, is invertible. Only proper-support fibre base change has been used.
 
 For \(\lambda:A_\Lambda\to E\), ordinary descent is
 
@@ -173,7 +182,7 @@ The sets \(J,K,D\) are closed. Projection identifies \(K\) homeomorphically with
 
 where \(\iota_{J,D}\) enlarges the closed support from \(J\) to \(D\). In terms of morphisms, that map precomposes \(A_J\to\omega_X\) with the restriction \(A_D\to A_J\).
 
-We prove every comparison route. The two main steps of the source's diagram are the ordinary section restriction and the exceptional section counit; the evaluated cup links them.
+We compare two explicit representatives of the class. Ordinary restriction to the graph calculates the descent map. Transposing the supported cup along the graph and composing its trace calculates proper transport. Both calculations retain the map from the closed output support.
 
 **The ordinary right cell.** The embedding unit \(u_\sigma:E\to\sigma_*\sigma^{-1}E\) gives
 
@@ -223,7 +232,7 @@ This identification already includes the output support; it is stronger than equ
  \qquad\text{(18)}
 \]
 
-Naturality of the closed embedding counit, together with the exceptional tensor map, moves the second factor through this comparison. The tensor map on \(\sigma^!\) is invertible here because \(E\) is a bounded invertible orientation complex. The \(\sigma\)-adjoint of the cup is therefore
+The projection isomorphism in (18) followed by the closed embedding counit is the transpose that defines the exceptional tensor map. Applying its naturality to \(\lambda\) therefore makes the \(\sigma\)-adjoint of the cup equal to the following composite. The tensor map is invertible here as well: locally \(E\) is the tensor unit with a shift, and the normalized comparison for that unit is the identity; these local isomorphisms glue. Thus neither a flatness assumption on \(\lambda\) nor a differentiability assumption on \(\sigma\) is being inserted:
 
 \[
  \begin{aligned}
@@ -236,9 +245,9 @@ Naturality of the closed embedding counit, together with the exceptional tensor 
  \qquad\text{(19)}
 \]
 
-The first map is the unit \(1\) of the section class tensored with \(\sigma^{-1}\lambda\). Exceptional composition identifies
-\(\sigma^!\pi^!A_X=A_X\) and
-\(\sigma^!\pi^!\omega_X=\omega_X\). Under these actual identifications the coefficient comparison in (19) is the tensor map for \((\pi\sigma)^!=\operatorname{id}\). Hence (19) is exactly \(\sigma^{-1}\lambda\), with no exchange of the two input factors.
+The first map is the unit \(1\) of the section class tensored with \(\sigma^{-1}\lambda\). Here is why the remaining coefficient comparison has the required normalization. Transpose successively along \(\sigma\) and \(\pi\). The definition of each tensor map replaces it by the corresponding projection formula followed by its exceptional counit, tensored with the last factor. Projection and composition associativity identify the result with \(\varepsilon_\pi R\pi_!(\varepsilon_\sigma)\otimes1_{\omega_X}\). The composition identification is defined by this very composite counit; for \(\pi\sigma=\operatorname{id}\) it is the identity. Adjunction is bijective on morphisms, so equality of these transposes proves equality of the original coefficient maps.
+
+Consequently the identifications \(\sigma^!\pi^!A_X=A_X\) and \(\sigma^!\pi^!\omega_X=\omega_X\) turn that coefficient comparison into the tensor map for the identity functor. Its unit compatibility makes (19) exactly \(\sigma^{-1}\lambda\). Throughout, the order is the section coefficient followed by the cycle coefficient; no factor exchange and no extra sign has occurred.
 
 Let \(c=[\sigma]\cap\lambda:A_K=\sigma_*A_J\to\omega_M\). Transpose (19) back, then apply \(R\pi_!\) and the \(\pi\)-trace. Composition of exceptional counits gives
 
@@ -250,7 +259,7 @@ Let \(c=[\sigma]\cap\lambda:A_K=\sigma_*A_J\to\omega_M\). Transpose (19) back, t
 
 Moreover \(R\pi_!A_K=A_J\), with its canonical graph identification. Thus (8) applied to \(c\) is the morphism \(A_J\xrightarrow{\sigma^{-1}\lambda}\omega_X\). This proves the exceptional lower cell and the cup-to-section cell with their actual tensor and counit maps. Precomposing with \(A_D\to A_J\) gives (17), proving (14).
 
-Equations (15)–(20) account for the full ordinary unit, graph restriction, supported cup, tensor projection, exceptional composition and final support-enlargement cells of the source's diagram. In particular the result does not follow merely from the existence of isomorphic objects at its corners.
+This argument in fact works for every class \(\lambda\in H^0_\Lambda(M;E)\) on a closed carrier whose image \(D\) is closed. Conicity supplies that closed-image property in the stated theorem; the Lagrangian hypotheses supply its cycle class. The equality retains the intermediate support \(J\), the ordinary unit, and the chosen exceptional counits, so it also covers excess intersections and a nondifferentiable section.
 
 If \(K\) is compact, its proper trace produces a class with compact support \(J\). The equality after support enlargement still holds on \(D\), which may be noncompact. The number is obtained by integrating that compactly supported class on \(J\); composition of traces makes it equal to (7). An unrestricted class merely supported on a noncompact \(D\) is not automatically given an integral.
 
@@ -264,7 +273,7 @@ For \(X=\mathbb R\), take \(\sigma(x)=(x;|x|\,dx)\). Construct its supported cla
 
 **Solution.** The fibre coordinate is continuous, so the graph is closed and the projection from it to \(\mathbb R\) is a homeomorphism. The section is a proper closed embedding, and \(\sigma^!\pi^!A=A\). Formula (3) sends \(1\) through this identification and the closed embedding counit, producing \([\sigma]\in H^0_G(M;P)\). No tangent or derivative of the graph enters this construction.
 
-This graph is not conic: a point with \(x\ne0\) has fibre value \(|x|\), and multiplying that fibre value by two leaves the graph. On its smooth pieces the canonical form restricts to \(|x|\,dx\), which is nonzero away from zero. Thus it is not isotropic either. The supported section class exists, but its construction does not put this graph among the closed conic isotropic carriers defining \(\mathcal L_X\). Intersections in (6) permit this first input.
+This graph is not conic: a point with \(x\ne0\) has fibre value \(|x|\), and multiplying that fibre value by two leaves the graph. Its regular graph arcs are symplectically isotropic, because every two-form restricts to zero on a one-dimensional manifold. The canonical one-form restricts to \(|x|\,dx\), which is nonzero away from zero. This does not contradict symplectic isotropy: equivalence with vanishing of the canonical one-form uses the conic hypothesis, as proved in isotropic cotangent transport. Nonconicity excludes this graph from the closed conic isotropic carriers defining \(\mathcal L_X\). Its supported section class still exists, and intersections in (6) permit this first input.
 
 ### Every section meets a full point conormal with number one
 
@@ -341,3 +350,9 @@ Choose an orientation \(\varepsilon\) of \(M\) and rewrite \([\sigma]\) as an \(
  \qquad\text{(24)}
 \]
 It too changes sign, because the inverse of \(-\theta_\varepsilon\) is \(-\theta_\varepsilon^{-1}\). Consequently its evaluation on the negated first input is unchanged: the two factors of \(-1\) multiply to \(+1\). The intrinsic class (6), which uses \(P\) for the first input, and every defined scalar (7) are independent of this auxiliary rewriting. In characteristic two both signs already act as the identity, and the conclusion is the same. Reversing the auxiliary orientation while keeping the rewritten coefficient map fixed would omit one of the two required changes.
+
+## Mathematical sources
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.5–2.3, pp. 196–197, supplies the coefficient-chain and conormal framework. The supported intersection construction used here is proved in the preceding programme lesson. The continuous section contributes a counit-normalized supported class independently of whether its graph is conic or Lagrangian.
+
+P. Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=95), edition dated 01/08/2026, Corollary 4.6.2, Propositions 4.6.4, 4.6.6–4.6.7, §4.7, Proposition 5.1.5(a)–(c) and Proposition 5.1.9, pp. 95–98 and 107–108, treats the exceptional and orientation operations. The proof above evaluates the ordinary bundle unit against the compact fibre trace, then compares graph restriction with the adjoint of the supported cup. It keeps both output supports and proves the identity for the actual maps. The exercises distinguish conicity from symplectic isotropy, local numbers from compact totals, and intrinsic coefficients from an auxiliary orientation. The human sources retain their authorship and their own terms.

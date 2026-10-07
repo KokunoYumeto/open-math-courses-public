@@ -1,6 +1,6 @@
 # Equivariant KK-theory and the Green–Julg theorem
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A symmetry can leave two identical ordinary Fredholm indices with different equivariant labels: the finite-dimensional kernel may carry the trivial representation or a sign representation. We will follow those labels from a two-element action into invariant operator matrices, then through stabilization to the Green–Julg isomorphism. The same matrix calculation also exposes the Haar normalization that a crossed-product formula must preserve.
 

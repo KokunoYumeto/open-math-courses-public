@@ -1,6 +1,6 @@
 # Local tree differential obstruction
 
-This figure illustrates Proposition 11F.2 and Theorems 11F.3–4 of [K-theory of the leaf space](../../k-theory-of-the-leaf-space.html#section-11f), equations LD.1–LD.18. The plaque locations are schematic; the physical dimensions, determinant winding and normalized Gaussian are exact.
+This figure illustrates Proposition 11F.2 and Theorems 11F.3–4 of K-theory of the leaf space, equations LD.1–LD.18. The plaque locations are schematic; the physical dimensions, determinant winding and normalized Gaussian are exact.
 
 From this directory, with Python and the packages in requirements.txt, run:
 

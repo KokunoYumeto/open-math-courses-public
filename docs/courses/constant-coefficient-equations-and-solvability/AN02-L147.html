@@ -1,0 +1,699 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Entire logarithms and the approximation of plurisubharmonic functions</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L146.html">Previous lesson</a> · <a href="#1-the-density-statement-uses-local-integral-norm">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#6-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="entire-logarithms-convergence-correction-and-interpolation">Entire logarithms: convergence, correction and interpolation</h1>
+<p><em>Original learner exposition, examples and solutions by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>An entire function may have zeros, so its logarithmic modulus may have deep negative holes. Nevertheless, normalized logarithms of entire scalar functions approximate every proper plurisubharmonic function in local integral norm. This lesson builds the approximation rather than assuming that complex analyticity follows from a favorable norm estimate. A weighted solution removes the Cauchy–Riemann error of finitely many local seeds; a second estimate makes its correction small at the selected centers.</p>
+<p>Read the <a href="#complete-proof">complete original proof</a>. Its actual preceding inputs are <a href="AN02-L143.html#HC1">L143, full local compactness</a>, <a href="AN02-L131.html#NP4">L131, the signed Newtonian kernel</a>, <a href="AN02-L140.html#UE2">L140, positive PSH smoothing</a>, and <a href="AN02-L144.html#strict-weighted-existence">L144, strict weighted existence</a>. Every new convergence and interpolation step is written in the companion.</p>
+<h2 id="1-the-density-statement-uses-local-integral-norm">1. The density statement uses local integral norm</h2>
+<p>For a positive integer <span class="math" data-index="0" data-tex="\(N\)">\(N\)</span> and an entire function <span class="math" data-index="1" data-tex="\(f\not\equiv0\)">\(f\not\equiv0\)</span>, form <span class="math" data-index="2" data-tex="\(N^{-1}\log|f|\)">\(N^{-1}\log|f|\)</span>, with <span class="math" data-index="3" data-tex="\(\log0=-\infty\)">\(\log0=-\infty\)</span>. <a href="#entire-logarithm-density-theorem">Theorem GD1</a> states that these functions are dense among proper PSH local-integral classes:</p>
+<span class="math math-display" id="eq-L147.1" data-index="4" data-tex="\[
+\int_K\left|N_j^{-1}\log|f_j|-\phi\right|dV\longrightarrow0
+\quad\text{for every compact }K\subset\mathbb C^n.
+\tag{L147.1}
+\]">\[
+\int_K\left|N_j^{-1}\log|f_j|-\phi\right|dV\longrightarrow0
+\quad\text{for every compact }K\subset\mathbb C^n.
+\tag{L147.1}
+\]</span>
+<p>The functions are scalar entire functions, not a growing vector of holomorphic components. Zeros are allowed. A proper PSH function can have singular minus-infinite values and is still locally integrable; the everywhere minus-infinite function is not a class in this ambient space. The conclusion is not pointwise convergence at every point.</p>
+<h2 id="2-two-lemmas-perform-different-jobs">2. Two lemmas perform different jobs</h2>
+<p>The <a href="#dense-set-convergence-lemma">dense-set lemma</a> takes a finite continuous subharmonic comparison <span class="math" data-index="5" data-tex="\(\phi\)">\(\phi\)</span>, a sequence below it, and convergence at every point of a dense set. It gives full local <span class="math" data-index="6" data-tex="\(L^1\)">\(L^1\)</span> convergence. The bound is <span class="math" data-index="7" data-tex="\(\phi_j\leq\phi\)">\(\phi_j\leq\phi\)</span>; it is not a requirement that all the functions be nonpositive.</p>
+<p>The <a href="#bounded-dbar-point-estimate">local Cauchy–Riemann estimate</a> takes <span class="math" data-index="8" data-tex="\(u\in L^2(B_r)\)">\(u\in L^2(B_r)\)</span> and a distributional coefficient vector <span class="math" data-index="9" data-tex="\(\bar\partial u\in L^\infty(B_r)\)">\(\bar\partial u\in L^\infty(B_r)\)</span>. It supplies a unique continuous representative and</p>
+<span class="math math-display" id="eq-L147.2" data-index="10" data-tex="\[
+|u(0)|\leq C_n\left(
+r\|\bar\partial u\|_\infty+r^{-n}\|u\|_2\right).
+\tag{L147.2}
+\]">\[
+|u(0)|\leq C_n\left(
+r\|\bar\partial u\|_\infty+r^{-n}\|u\|_2\right).
+\tag{L147.2}
+\]</span>
+<p>The derivative data are bounded, rather than just square integrable. The exponent <span class="math" data-index="11" data-tex="\(-n\)">\(-n\)</span> comes from taking a square root of the real-volume scaling <span class="math" data-index="12" data-tex="\(r^{2n}\)">\(r^{2n}\)</span>. The estimate concerns the continuous representative; a changed value at an isolated point of an <span class="math" data-index="13" data-tex="\(L^2\)">\(L^2\)</span> representative does not acquire a point estimate.</p>
+<p>The proof uses <span class="math" data-index="14" data-tex="\(\Delta E=\delta_0\)">\(\Delta E=\delta_0\)</span>. Its two pieces are a locally integrable kernel against bounded data, and a smooth kernel against square-integrable data supported away from the evaluation point. Those pieces explain both continuity and the two terms of (L147.2).</p>
+<h2 id="3-how-the-entire-functions-are-built">3. How the entire functions are built</h2>
+<p>First make the target smooth and strictly PSH with a global Levi lower bound <span class="math" data-index="15" data-tex="\(\kappa_0&gt;0\)">\(\kappa_0&gt;0\)</span>. At a chosen center <span class="math" data-index="16" data-tex="\(a\)">\(a\)</span>, subtract a holomorphic quadratic Taylor polynomial <span class="math" data-index="17" data-tex="\(P_a\)">\(P_a\)</span>. Its real part captures the pure holomorphic and antiholomorphic Taylor terms, leaving the positive mixed Levi term:</p>
+<span class="math math-display" id="eq-L147.3" data-index="18" data-tex="\[
+\phi(z)-\operatorname{Re}P_a(z)
+\geq\tfrac12\kappa_0|z-a|^2
+\quad\text{near }a.
+\tag{L147.3}
+\]">\[
+\phi(z)-\operatorname{Re}P_a(z)
+\geq\tfrac12\kappa_0|z-a|^2
+\quad\text{near }a.
+\tag{L147.3}
+\]</span>
+<p>At stage <span class="math" data-index="19" data-tex="\(j\)">\(j\)</span>, take the first <span class="math" data-index="20" data-tex="\(j\)">\(j\)</span> distinct points of a dense set. Choose disjoint cutoff balls and cutoffs <span class="math" data-index="21" data-tex="\(\chi_\nu\)">\(\chi_\nu\)</span> equal to one near those points. The preliminary sum</p>
+<span class="math math-display" id="eq-L147.4" data-index="22" data-tex="\[
+A_{j,N}=\sum_{\nu\leq j}\chi_\nu e^{NP_{a_\nu}}
+\tag{L147.4}
+\]">\[
+A_{j,N}=\sum_{\nu\leq j}\chi_\nu e^{NP_{a_\nu}}
+\tag{L147.4}
+\]</span>
+<p>has the desired values at the centers but is not generally holomorphic. Its closed <span class="math" data-index="23" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> error lives on the cutoff annuli, where the positive gap makes its weighted modulus exponentially small in <span class="math" data-index="24" data-tex="\(N\)">\(N\)</span>. Apply the actual weighted existence theorem with weight <span class="math" data-index="25" data-tex="\(2N\phi\)">\(2N\phi\)</span> to obtain a correction <span class="math" data-index="26" data-tex="\(v\)">\(v\)</span>, then use (L147.2) and small weight oscillation on fixed small balls to prove</p>
+<span class="math math-display" id="eq-L147.5" data-index="27" data-tex="\[
+\bar\partial v=\bar\partial A_{j,N},\qquad
+|v(z)|\leq Q_j e^{-c_jN/2}e^{N\phi(z)}
+\quad(|z|\leq j).
+\tag{L147.5}
+\]">\[
+\bar\partial v=\bar\partial A_{j,N},\qquad
+|v(z)|\leq Q_j e^{-c_jN/2}e^{N\phi(z)}
+\quad(|z|\leq j).
+\tag{L147.5}
+\]</span>
+<p>Both positive <span class="math" data-index="28" data-tex="\(c_j\)">\(c_j\)</span> and finite <span class="math" data-index="29" data-tex="\(Q_j\)">\(Q_j\)</span> depend on the stage but are fixed while <span class="math" data-index="30" data-tex="\(N\)">\(N\)</span> grows. Choose an integer <span class="math" data-index="31" data-tex="\(N_j\)">\(N_j\)</span> with the coefficient in this bound strictly less than <span class="math" data-index="32" data-tex="\(1/3\)">\(1/3\)</span>, and set <span class="math" data-index="33" data-tex="\(f_j=(3/4)(A_{j,N_j}-v)\)">\(f_j=(3/4)(A_{j,N_j}-v)\)</span>. The correction is continuous and the difference has zero <span class="math" data-index="34" data-tex="\(\bar\partial\)">\(\bar\partial\)</span>, so the proved joint regularity step makes it an entire function with those same pointwise values. Disjointness and the margins give</p>
+<span class="math math-display" id="eq-L147.6" data-index="35" data-tex="\[
+|f_j(z)|\leq e^{N_j\phi(z)}\quad(|z|&lt;j),
+\qquad |f_j(a_\nu)|&gt;\tfrac12e^{N_j\phi(a_\nu)}
+\quad(\nu\leq j).
+\tag{L147.6}
+\]">\[
+|f_j(z)|\leq e^{N_j\phi(z)}\quad(|z|&lt;j),
+\qquad |f_j(a_\nu)|&gt;\tfrac12e^{N_j\phi(a_\nu)}
+\quad(\nu\leq j).
+\tag{L147.6}
+\]</span>
+<p>The entire function is nonzero. Its normalized log is below the target on each eventually reached observation ball and converges to the target at every fixed dense center. The dense-set lemma completes this part. Radial smoothing plus <span class="math" data-index="36" data-tex="\(\varepsilon|z|^2\)">\(\varepsilon|z|^2\)</span>, followed by a second diagonal selection, handles any proper PSH target. The full proof also establishes that the closure cannot contain any other local-integral classes.</p>
+<h2 id="4-four-worked-examples">4. Four worked examples</h2>
+<h3 id="worked-example-1-a-pluriharmonic-target-already-is-an-entire-logarithm">Worked example 1. A pluriharmonic target already is an entire logarithm</h3>
+<p>Let <span class="math" data-index="37" data-tex="\(q\)">\(q\)</span> be entire and <span class="math" data-index="38" data-tex="\(\phi=\operatorname{Re}q\)">\(\phi=\operatorname{Re}q\)</span>. For every positive integer <span class="math" data-index="39" data-tex="\(N\)">\(N\)</span>, take <span class="math" data-index="40" data-tex="\(f_N=e^{Nq}\)">\(f_N=e^{Nq}\)</span>. It is entire and zero-free, and</p>
+<span class="math math-display" id="eq-L147.7" data-index="41" data-tex="\[
+N^{-1}\log|f_N|=\operatorname{Re}q=\phi
+\quad\text{everywhere}.
+\tag{L147.7}
+\]">\[
+N^{-1}\log|f_N|=\operatorname{Re}q=\phi
+\quad\text{everywhere}.
+\tag{L147.7}
+\]</span>
+<p>For example <span class="math" data-index="42" data-tex="\(q(z)=z^2-2z\)">\(q(z)=z^2-2z\)</span> gives <span class="math" data-index="43" data-tex="\(\phi(x+iy)=x^2-y^2-2x\)">\(\phi(x+iy)=x^2-y^2-2x\)</span>, which can be negative. Its Levi matrix is zero. Thus the density theorem does not require the original target to be strictly PSH; strictness is a device in the general construction, introduced after smoothing.</p>
+<h3 id="worked-example-2-moving-zeros-and-an-exact-error">Worked example 2. Moving zeros and an exact error</h3>
+<p>In one variable choose</p>
+<span class="math math-display" id="eq-L147.8" data-index="44" data-tex="\[
+\phi(z)=\max(0,\log|z|),\quad
+f_N(z)=\frac{1+z^N}{2},\quad
+w_N=N^{-1}\log|f_N|.
+\tag{L147.8}
+\]">\[
+\phi(z)=\max(0,\log|z|),\quad
+f_N(z)=\frac{1+z^N}{2},\quad
+w_N=N^{-1}\log|f_N|.
+\tag{L147.8}
+\]</span>
+<p>The target is continuous and PSH. The triangle inequality gives <span class="math" data-index="45" data-tex="\(w_N\leq\phi\)">\(w_N\leq\phi\)</span>. On <span class="math" data-index="46" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>, <span class="math" data-index="47" data-tex="\(z^N\to0\)">\(z^N\to0\)</span>, so <span class="math" data-index="48" data-tex="\(w_N\to0\)">\(w_N\to0\)</span>; on <span class="math" data-index="49" data-tex="\(|z|&gt;1\)">\(|z|&gt;1\)</span>, factor <span class="math" data-index="50" data-tex="\(z^N\)">\(z^N\)</span> to obtain <span class="math" data-index="51" data-tex="\(w_N\to\log|z|\)">\(w_N\to\log|z|\)</span>. This proves dense-set convergence, and the lemma gives local <span class="math" data-index="52" data-tex="\(L^1\)">\(L^1\)</span> convergence.</p>
+<p>The circle average can be calculated. For <span class="math" data-index="53" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>, expand <span class="math" data-index="54" data-tex="\(\log(1+r^Ne^{iN\theta})\)">\(\log(1+r^Ne^{iN\theta})\)</span> as its uniformly convergent analytic series. Every term has zero average. For <span class="math" data-index="55" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>, factor the leading term and use the same series with <span class="math" data-index="56" data-tex="\(r^{-N}\)">\(r^{-N}\)</span>. Thus for <span class="math" data-index="57" data-tex="\(r\ne1\)">\(r\ne1\)</span>,</p>
+<span class="math math-display" id="eq-L147.9" data-index="58" data-tex="\[
+\frac1{2\pi}\int_0^{2\pi}w_N(re^{i\theta})d\theta
+=\max(0,\log r)-\frac{\log2}{N}.
+\tag{L147.9}
+\]">\[
+\frac1{2\pi}\int_0^{2\pi}w_N(re^{i\theta})d\theta
+=\max(0,\log r)-\frac{\log2}{N}.
+\tag{L147.9}
+\]</span>
+<p>Since the error is nonnegative, polar integration and Tonelli give the <strong>exact</strong> disk error</p>
+<span class="math math-display" id="eq-L147.10" data-index="59" data-tex="\[
+\int_{|z|&lt;R}|w_N-\phi|dA
+=\frac{\pi R^2\log2}{N}.
+\tag{L147.10}
+\]">\[
+\int_{|z|&lt;R}|w_N-\phi|dA
+=\frac{\pi R^2\log2}{N}.
+\tag{L147.10}
+\]</span>
+<p>The radius <span class="math" data-index="60" data-tex="\(r=1\)">\(r=1\)</span> has zero radial measure, so its singular angles do not affect this computation. Local integrability of the proper logarithms is proved in GD4. Yet at the fixed point <span class="math" data-index="61" data-tex="\(-1\)">\(-1\)</span>, odd <span class="math" data-index="62" data-tex="\(N\)">\(N\)</span> gives <span class="math" data-index="63" data-tex="\(w_N(-1)=-\infty\)">\(w_N(-1)=-\infty\)</span>, while even <span class="math" data-index="64" data-tex="\(N\)">\(N\)</span> gives zero. Pointwise convergence fails there. For <span class="math" data-index="65" data-tex="\(N=13\)">\(N=13\)</span> the 13 simple zeros are <span class="math" data-index="66" data-tex="\(e^{(2k+1)\pi i/13}\)">\(e^{(2k+1)\pi i/13}\)</span>, and one is exactly <span class="math" data-index="67" data-tex="\(-1\)">\(-1\)</span>.</p>
+<figure><img class="course-figure" width="2040" height="1105" src="reproduce/L147/figures/circle-zeros-and-integral-convergence.png" alt="Polynomial zeros and the exact local integral error" /><figcaption class="native"><a href="reproduce/L147/figures/circle-zeros-and-integral-convergence.png">Open full-size PNG</a> · <a href="reproduce/L147/figures/circle-zeros-and-integral-convergence.svg">Open SVG</a></figcaption></figure>
+<p>The error curve is a volume-integral quantity. It does not claim that values at the plotted zeros converge. This explicit family proves the general lesson's distinction between integral and pointwise convergence.</p>
+<h3 id="worked-example-3-the-scaling-and-the-need-for-derivative-data">Worked example 3. The scaling and the need for derivative data</h3>
+<p>In complex dimension one take <span class="math" data-index="68" data-tex="\(u(z)=A+B\overline z\)">\(u(z)=A+B\overline z\)</span> on <span class="math" data-index="69" data-tex="\(B_r\)">\(B_r\)</span>. Then <span class="math" data-index="70" data-tex="\(\bar\partial u=B\)">\(\bar\partial u=B\)</span>, <span class="math" data-index="71" data-tex="\(u(0)=A\)">\(u(0)=A\)</span>, and integrating the circle cross term gives</p>
+<span class="math math-display" id="eq-L147.11" data-index="72" data-tex="\[
+\|u\|_{L^2(B_r)}^2
+=\pi r^2|A|^2+\tfrac\pi2r^4|B|^2.
+\tag{L147.11}
+\]">\[
+\|u\|_{L^2(B_r)}^2
+=\pi r^2|A|^2+\tfrac\pi2r^4|B|^2.
+\tag{L147.11}
+\]</span>
+<p>Hence the norm term in (L147.2) is <span class="math" data-index="73" data-tex="\(\sqrt\pi\sqrt{|A|^2+r^2|B|^2/2}\)">\(\sqrt\pi\sqrt{|A|^2+r^2|B|^2/2}\)</span>, while the derivative term is <span class="math" data-index="74" data-tex="\(r|B|\)">\(r|B|\)</span>. Both have the dimensions of the point value. Already the constant function <span class="math" data-index="75" data-tex="\(A\)">\(A\)</span> shows that any valid dimension-one constant is at least <span class="math" data-index="76" data-tex="\(1/\sqrt\pi\)">\(1/\sqrt\pi\)</span>.</p>
+<p>An <span class="math" data-index="77" data-tex="\(L^2\)">\(L^2\)</span> norm alone cannot control a point value for this class of functions. Take a fixed smooth bump <span class="math" data-index="78" data-tex="\(\beta\)">\(\beta\)</span> supported in <span class="math" data-index="79" data-tex="\(B_1\)">\(B_1\)</span>, with <span class="math" data-index="80" data-tex="\(\beta(0)=1\)">\(\beta(0)=1\)</span>, and let <span class="math" data-index="81" data-tex="\(u_\varepsilon(z)=\beta(z/\varepsilon)\)">\(u_\varepsilon(z)=\beta(z/\varepsilon)\)</span> in <span class="math" data-index="82" data-tex="\(B_1\)">\(B_1\)</span>, <span class="math" data-index="83" data-tex="\(0&lt;\varepsilon&lt;1\)">\(0&lt;\varepsilon&lt;1\)</span>. Then</p>
+<span class="math math-display" id="eq-L147.12" data-index="84" data-tex="\[
+u_\varepsilon(0)=1,\quad
+\|u_\varepsilon\|_2=\varepsilon^n\|\beta\|_2,
+\quad \|\bar\partial u_\varepsilon\|_\infty
+=\varepsilon^{-1}\|\bar\partial\beta\|_\infty.
+\tag{L147.12}
+\]">\[
+u_\varepsilon(0)=1,\quad
+\|u_\varepsilon\|_2=\varepsilon^n\|\beta\|_2,
+\quad \|\bar\partial u_\varepsilon\|_\infty
+=\varepsilon^{-1}\|\bar\partial\beta\|_\infty.
+\tag{L147.12}
+\]</span>
+<p>Every member has bounded derivative data, but those bounds are not uniform as the bump shrinks. The derivative term in the lemma records precisely this missing control.</p>
+<h3 id="worked-example-4-two-actual-quadratic-seeds-and-their-closed-error">Worked example 4. Two actual quadratic seeds and their closed error</h3>
+<p>Use <span class="math" data-index="85" data-tex="\(\phi(z)=|z|^2\)">\(\phi(z)=|z|^2\)</span>, with <span class="math" data-index="86" data-tex="\(\kappa_0=1\)">\(\kappa_0=1\)</span>, and centers <span class="math" data-index="87" data-tex="\(a=-1/2,1/2\)">\(a=-1/2,1/2\)</span>. The Taylor polynomial and gap are exactly</p>
+<span class="math math-display" id="eq-L147.13" data-index="88" data-tex="\[
+P_a(z)=2\overline a z-|a|^2,
+\qquad \phi(z)-\operatorname{Re}P_a(z)=|z-a|^2.
+\tag{L147.13}
+\]">\[
+P_a(z)=2\overline a z-|a|^2,
+\qquad \phi(z)-\operatorname{Re}P_a(z)=|z-a|^2.
+\tag{L147.13}
+\]</span>
+<p>Choose radius <span class="math" data-index="89" data-tex="\(\rho=1/4\)">\(\rho=1/4\)</span>, so the two center balls are disjoint. A smooth radial cutoff <span class="math" data-index="90" data-tex="\(\chi_a\)">\(\chi_a\)</span> equals one for distance at most <span class="math" data-index="91" data-tex="\(1/12\)">\(1/12\)</span>, and zero for distance at least <span class="math" data-index="92" data-tex="\(1/6\)">\(1/6\)</span>. Writing <span class="math" data-index="93" data-tex="\(s=|z-a|\)">\(s=|z-a|\)</span>, the normalized seed modulus and actual weighted error modulus are</p>
+<span class="math math-display" id="eq-L147.14" data-index="94" data-tex="\[
+|e^{NP_a}|e^{-N\phi}=e^{-Ns^2},\qquad
+|\bar\partial\chi_a\,e^{NP_a}|e^{-N\phi}
+=\tfrac12|\chi&#x27;(s)|e^{-Ns^2}.
+\tag{L147.14}
+\]">\[
+|e^{NP_a}|e^{-N\phi}=e^{-Ns^2},\qquad
+|\bar\partial\chi_a\,e^{NP_a}|e^{-N\phi}
+=\tfrac12|\chi&#x27;(s)|e^{-Ns^2}.
+\tag{L147.14}
+\]</span>
+<p>Only the annulus between <span class="math" data-index="95" data-tex="\(1/12\)">\(1/12\)</span> and <span class="math" data-index="96" data-tex="\(1/6\)">\(1/6\)</span> contributes to the error. There is no joining-circle derivative atom because the chosen cutoff is smooth and flat at both joins. The two contributions have disjoint supports. Their total weighted squared error norm is</p>
+<span class="math math-display" id="eq-L147.15" data-index="97" data-tex="\[
+I_N=\pi\int_{1/12}^{1/6}s\,|\chi&#x27;(s)|^2e^{-2Ns^2}\,ds.
+\tag{L147.15}
+\]">\[
+I_N=\pi\int_{1/12}^{1/6}s\,|\chi&#x27;(s)|^2e^{-2Ns^2}\,ds.
+\tag{L147.15}
+\]</span>
+<p>The factor combines two centers, angular measure <span class="math" data-index="98" data-tex="\(2\pi\)">\(2\pi\)</span>, and the squared coefficient factor <span class="math" data-index="99" data-tex="\(1/4\)">\(1/4\)</span>. The strict theorem with weight <span class="math" data-index="100" data-tex="\(2N|z|^2\)">\(2N|z|^2\)</span> gives an actual correction whose weighted squared norm is at most <span class="math" data-index="101" data-tex="\(I_N/(2N)\)">\(I_N/(2N)\)</span>. This is a bound on an existing correction, not a formula for its values or a claim that the bound is attained.</p>
+<figure><img class="course-figure" width="2040" height="1105" src="reproduce/L147/figures/quadratic-seeds-and-closed-error.png" alt="The exact seed geometry and actual weighted cutoff error" /><figcaption class="native"><a href="reproduce/L147/figures/quadratic-seeds-and-closed-error.png">Open full-size PNG</a> · <a href="reproduce/L147/figures/quadratic-seeds-and-closed-error.svg">Open SVG</a></figcaption></figure>
+<p>The plot uses the displayed radial smooth cutoff and the actual error formula (L147.14). The entire interpolation theorem additionally needs the point estimate and the one-third margin; an error-norm plot does not replace them.</p>
+<h2 id="5-ten-graded-exercises">5. Ten graded exercises</h2>
+<ol>
+<li><strong>Foundational: scaling.</strong> For <span class="math" data-index="102" data-tex="\(U(w)=u(rw)\)">\(U(w)=u(rw)\)</span>, derive both norm transformations used in (L147.2), including the real-volume factor.</li>
+<li><strong>Foundational: the exact kernel identity.</strong> Derive (GD10) in distributions and explain why changing the fundamental-solution sign without changing the identity would be wrong.</li>
+<li><strong>Intermediate: continuity.</strong> Prove why the convolution with bounded compact data is continuous and why the cutoff-derivative contribution is smooth near the center, even if the original <span class="math" data-index="103" data-tex="\(u\)">\(u\)</span> is only in <span class="math" data-index="104" data-tex="\(L^2\)">\(L^2\)</span>.</li>
+<li><strong>Intermediate: dense-set convergence.</strong> Explain how a dense finite seed excludes compact collapse and how the remaining limit is identified everywhere, rather than only on the dense set.</li>
+<li><strong>Intermediate: the Taylor coefficients.</strong> For <span class="math" data-index="105" data-tex="\(\phi(z)=|z|^2+\operatorname{Re}(z^2)\)">\(\phi(z)=|z|^2+\operatorname{Re}(z^2)\)</span> and a real center <span class="math" data-index="106" data-tex="\(a\)">\(a\)</span>, compute <span class="math" data-index="107" data-tex="\(P_a\)">\(P_a\)</span>, its gap and the least Levi eigenvalue. Verify the factors in the general formula.</li>
+<li><strong>Intermediate: cutoff disjointness.</strong> Explain exactly where disjoint supports are used to obtain the one-sided seed bound and the center values. State what bound the triangle inequality would give for unrestricted overlap.</li>
+<li><strong>Advanced: scaled curvature.</strong> Starting from the weighted error bound <span class="math" data-index="108" data-tex="\(\|g e^{-N\phi}\|_2\leq B e^{-cN}\)">\(\|g e^{-N\phi}\|_2\leq B e^{-cN}\)</span>, derive the correction estimate using the weight <span class="math" data-index="109" data-tex="\(2N\phi\)">\(2N\phi\)</span>, retaining the exact curvature factor. Explain why no factor <span class="math" data-index="110" data-tex="\(N\)">\(N\)</span> appears in the cutoff error itself.</li>
+<li><strong>Advanced: an exact integral.</strong> Prove (L147.10) for every <span class="math" data-index="111" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>, including radii larger than one, and explain the failure of pointwise convergence at <span class="math" data-index="112" data-tex="\(-1\)">\(-1\)</span>.</li>
+<li><strong>Advanced: the reverse inclusion.</strong> Prove that a local <span class="math" data-index="113" data-tex="\(L^1\)">\(L^1\)</span> limit of proper PSH functions has locally uniform upper bounds along its approximating sequence and a proper PSH representative. Exclude compact collapse using the same norm evidence.</li>
+<li><strong>Advanced: the second diagonal.</strong> Give a precise expanding-ball choice of smooth strict weights and normalized entire logarithms that approximates a proper singular PSH target. Explain why the normalization integers can be made increasing.</li>
+</ol>
+<h2 id="6-complete-solutions">6. Complete solutions</h2>
+<h3 id="solution-1">Solution 1</h3>
+<p>The chain rule, also valid in distributions by changing variables in a compact test, gives <span class="math" data-index="114" data-tex="\(\bar\partial_w U=r(\bar\partial_z u)(rw)\)">\(\bar\partial_w U=r(\bar\partial_z u)(rw)\)</span>. Its coefficient-vector supremum is <span class="math" data-index="115" data-tex="\(r\|\bar\partial u\|_\infty\)">\(r\|\bar\partial u\|_\infty\)</span>. The real Jacobian in complex dimension <span class="math" data-index="116" data-tex="\(n\)">\(n\)</span> is <span class="math" data-index="117" data-tex="\(r^{2n}\)">\(r^{2n}\)</span>, so</p>
+<span class="math math-display" id="eq-L147.16" data-index="118" data-tex="\[
+\|U\|_{L^2(B_1)}^2=r^{-2n}\|u\|_{L^2(B_r)}^2,
+\qquad \|U\|_2=r^{-n}\|u\|_2.
+\tag{L147.16}
+\]">\[
+\|U\|_{L^2(B_1)}^2=r^{-2n}\|u\|_{L^2(B_r)}^2,
+\qquad \|U\|_2=r^{-n}\|u\|_2.
+\tag{L147.16}
+\]</span>
+<p>Applying the unit-ball point estimate to <span class="math" data-index="119" data-tex="\(U(0)=u(0)\)">\(U(0)=u(0)\)</span> gives the two terms of (L147.2). Replacing <span class="math" data-index="120" data-tex="\(r^{-n}\)">\(r^{-n}\)</span> by <span class="math" data-index="121" data-tex="\(r^{-2n}\)">\(r^{-2n}\)</span> would forget the square root in the norm.</p>
+<h3 id="solution-2">Solution 2</h3>
+<p>The compact distribution <span class="math" data-index="122" data-tex="\(\chi u\)">\(\chi u\)</span> obeys <span class="math" data-index="123" data-tex="\(E*\Delta(\chi u)=(\Delta E)*(\chi u)=\delta_0*(\chi u)=\chi u\)">\(E*\Delta(\chi u)=(\Delta E)*(\chi u)=\delta_0*(\chi u)=\chi u\)</span>. The complex derivative identity is <span class="math" data-index="124" data-tex="\(\Delta=4\sum_j\partial_j\bar\partial_j\)">\(\Delta=4\sum_j\partial_j\bar\partial_j\)</span>. The product rule gives <span class="math" data-index="125" data-tex="\(\bar\partial_j(\chi u)=\chi f_j+u\bar\partial_j\chi\)">\(\bar\partial_j(\chi u)=\chi f_j+u\bar\partial_j\chi\)</span>. Move <span class="math" data-index="126" data-tex="\(\partial_j\)">\(\partial_j\)</span> onto the kernel in the convolution to obtain (GD10), with a plus sign and factor 4. For a kernel satisfying <span class="math" data-index="127" data-tex="\(-\Delta E=\delta_0\)">\(-\Delta E=\delta_0\)</span>, the first displayed recovery would instead have a minus sign. The actual NP4 convention is <span class="math" data-index="128" data-tex="\(\Delta E=\delta_0\)">\(\Delta E=\delta_0\)</span>.</p>
+<h3 id="solution-3">Solution 3</h3>
+<p>The kernel vector has size proportional to <span class="math" data-index="129" data-tex="\(|x|^{1-2n}\)">\(|x|^{1-2n}\)</span>, which is locally integrable because its polar integral is proportional to <span class="math" data-index="130" data-tex="\(\int_0^R1\,ds\)">\(\int_0^R1\,ds\)</span>. For compact bounded coefficient data, the difference of two convolution values is bounded by the data supremum times the local <span class="math" data-index="131" data-tex="\(L^1\)">\(L^1\)</span> translation difference of this kernel. Translation continuity follows by approximating the kernel on a slightly larger ball by a continuous integrable function, applying uniform translation continuity to the approximation, and bounding the two approximation errors in <span class="math" data-index="132" data-tex="\(L^1\)">\(L^1\)</span>.</p>
+<p>For <span class="math" data-index="133" data-tex="\(u\bar\partial\chi\)">\(u\bar\partial\chi\)</span>, its support is away from the center ball and its <span class="math" data-index="134" data-tex="\(L^2\)">\(L^2\)</span> norm is finite. It is also <span class="math" data-index="135" data-tex="\(L^1\)">\(L^1\)</span> on that compact support by Cauchy–Schwarz. The kernel and every derivative stay bounded there for centers in a smaller ball. Differentiation under the integral therefore gives a smooth function on that smaller ball. These pieces provide a continuous representative of the distributional identity; recentered balls and agreement on overlaps give continuity throughout the original open ball.</p>
+<h3 id="solution-4">Solution 4</h3>
+<p>Choose one dense-set point in a connected component. Its sequence values converge to a finite target value, so a subsequence collapsing to minus infinity uniformly on compact sets would contradict that fixed value. Compactness gives a further local <span class="math" data-index="136" data-tex="\(L^1\)">\(L^1\)</span> limit <span class="math" data-index="137" data-tex="\(\psi\)">\(\psi\)</span>. The upper-limit comparison gives <span class="math" data-index="138" data-tex="\(\phi\leq\psi\)">\(\phi\leq\psi\)</span> at the dense points. The bound on the approximating sequence gives <span class="math" data-index="139" data-tex="\(\psi\leq\phi\)">\(\psi\leq\phi\)</span> almost everywhere and then everywhere by its submean inequality and continuity of <span class="math" data-index="140" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p>For the remaining direction, <span class="math" data-index="141" data-tex="\(\phi(x)\leq\)">\(\phi(x)\leq\)</span> the ball average of <span class="math" data-index="142" data-tex="\(\psi\)">\(\psi\)</span> at dense centers. That average is continuous as the center moves, by translation continuity in local <span class="math" data-index="143" data-tex="\(L^1\)">\(L^1\)</span>. Extend the inequality to every center, then shrink the ball; the canonical subharmonic values are recovered by submeans and upper semicontinuity. Thus <span class="math" data-index="144" data-tex="\(\phi\leq\psi\)">\(\phi\leq\psi\)</span> everywhere. All subsequential limits equal <span class="math" data-index="145" data-tex="\(\phi\)">\(\phi\)</span>, giving full local <span class="math" data-index="146" data-tex="\(L^1\)">\(L^1\)</span> convergence. Finite component covers handle compact sets in a disconnected open domain.</p>
+<h3 id="solution-5">Solution 5</h3>
+<p>Here <span class="math" data-index="147" data-tex="\(\phi_z=\overline z+z\)">\(\phi_z=\overline z+z\)</span>, <span class="math" data-index="148" data-tex="\(\phi_{zz}=1\)">\(\phi_{zz}=1\)</span>, and <span class="math" data-index="149" data-tex="\(\phi_{z\bar z}=1\)">\(\phi_{z\bar z}=1\)</span>. For real <span class="math" data-index="150" data-tex="\(a\)">\(a\)</span>, its value is <span class="math" data-index="151" data-tex="\(2a^2\)">\(2a^2\)</span>, so</p>
+<span class="math math-display" id="eq-L147.17" data-index="152" data-tex="\[
+P_a(z)=2a^2+4a(z-a)+(z-a)^2
+=z^2+2az-a^2.
+\tag{L147.17}
+\]">\[
+P_a(z)=2a^2+4a(z-a)+(z-a)^2
+=z^2+2az-a^2.
+\tag{L147.17}
+\]</span>
+<p>Subtracting its real part from <span class="math" data-index="153" data-tex="\(|z|^2+\operatorname{Re}z^2\)">\(|z|^2+\operatorname{Re}z^2\)</span> gives <span class="math" data-index="154" data-tex="\(|z-a|^2\)">\(|z-a|^2\)</span>. The least Levi eigenvalue is 1. The mixed quadratic term is not included in the holomorphic seed; it is the positive gap. The factor 2 in the general linear term and the pure quadratic coefficient both give the formula above.</p>
+<h3 id="solution-6">Solution 6</h3>
+<p>At any point, disjoint supports allow at most one nonzero term. That term has cutoff at most one and exponential modulus at most the reference <span class="math" data-index="155" data-tex="\(e^{N\phi}\)">\(e^{N\phi}\)</span>, giving <span class="math" data-index="156" data-tex="\(|A_{j,N}|\leq e^{N\phi}\)">\(|A_{j,N}|\leq e^{N\phi}\)</span>. At a selected center, its own cutoff equals one and every other cutoff vanishes, giving exactly <span class="math" data-index="157" data-tex="\(e^{N\phi(a_\nu)}\)">\(e^{N\phi(a_\nu)}\)</span> before correction. With unrestricted overlap, the triangle inequality gives only <span class="math" data-index="158" data-tex="\(j e^{N\phi}\)">\(j e^{N\phi}\)</span>, and other seeds might interfere with a center value. The fixed factor <span class="math" data-index="159" data-tex="\(3/4\)">\(3/4\)</span> and the stated margins cannot be justified by that weaker estimate. The construction chooses disjoint balls to obtain precisely the two facts it uses.</p>
+<h3 id="solution-7">Solution 7</h3>
+<p>The least Levi eigenvalue of <span class="math" data-index="160" data-tex="\(2N\phi\)">\(2N\phi\)</span> is <span class="math" data-index="161" data-tex="\(2N\kappa_\phi\geq2N\kappa_0\)">\(2N\kappa_\phi\geq2N\kappa_0\)</span>. The strict weighted theorem therefore gives</p>
+<span class="math math-display" id="eq-L147.18" data-index="162" data-tex="\[
+\int|v|^2e^{-2N\phi}
+\leq\frac1{2N\kappa_0}\int|g|^2e^{-2N\phi}
+\leq\frac{B^2}{2N\kappa_0}e^{-2cN}.
+\tag{L147.18}
+\]">\[
+\int|v|^2e^{-2N\phi}
+\leq\frac1{2N\kappa_0}\int|g|^2e^{-2N\phi}
+\leq\frac{B^2}{2N\kappa_0}e^{-2cN}.
+\tag{L147.18}
+\]</span>
+<p>Taking square roots yields <span class="math" data-index="163" data-tex="\(\|v e^{-N\phi}\|_2\leq B(2N\kappa_0)^{-1/2}e^{-cN}\)">\(\|v e^{-N\phi}\|_2\leq B(2N\kappa_0)^{-1/2}e^{-cN}\)</span>. The data are closed and their required curvature-weighted norm is finite, so every actual theorem hypothesis is met. The cutoff error is <span class="math" data-index="164" data-tex="\((\bar\partial\chi)e^{NP}\)">\((\bar\partial\chi)e^{NP}\)</span>; the other product-rule term is zero because <span class="math" data-index="165" data-tex="\(P\)">\(P\)</span> and <span class="math" data-index="166" data-tex="\(e^{NP}\)">\(e^{NP}\)</span> are holomorphic. Differentiating in <span class="math" data-index="167" data-tex="\(\bar z\)">\(\bar z\)</span> does not create an <span class="math" data-index="168" data-tex="\(N\)">\(N\)</span> factor here.</p>
+<h3 id="solution-8">Solution 8</h3>
+<p>For <span class="math" data-index="169" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>, the analytic logarithm series of <span class="math" data-index="170" data-tex="\(1+r^N e^{iN\theta}\)">\(1+r^N e^{iN\theta}\)</span> converges uniformly, and every term has zero circle average. For <span class="math" data-index="171" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>, factor the leading power and apply that argument to <span class="math" data-index="172" data-tex="\(r^{-N}\)">\(r^{-N}\)</span>, adding <span class="math" data-index="173" data-tex="\(N\log r\)">\(N\log r\)</span> before normalization. Dividing by 2 subtracts <span class="math" data-index="174" data-tex="\(\log2/N\)">\(\log2/N\)</span>. This proves (L147.9) for all radii except one. The pointwise inequality <span class="math" data-index="175" data-tex="\(w_N\leq\phi\)">\(w_N\leq\phi\)</span> makes the absolute error equal <span class="math" data-index="176" data-tex="\(\phi-w_N\)">\(\phi-w_N\)</span>, a nonnegative integrable function. Tonelli and polar coordinates therefore give</p>
+<span class="math math-display" id="eq-L147.19" data-index="177" data-tex="\[
+\int_0^R 2\pi r\,\frac{\log2}{N}\,dr
+=\frac{\pi R^2\log2}{N}.
+\tag{L147.19}
+\]">\[
+\int_0^R 2\pi r\,\frac{\log2}{N}\,dr
+=\frac{\pi R^2\log2}{N}.
+\tag{L147.19}
+\]</span>
+<p>The omitted radius is a set of radial measure zero. The same formula holds beyond that radius, so there is no restriction <span class="math" data-index="178" data-tex="\(R&lt;1\)">\(R&lt;1\)</span>. At <span class="math" data-index="179" data-tex="\(-1\)">\(-1\)</span>, odd <span class="math" data-index="180" data-tex="\(N\)">\(N\)</span> makes <span class="math" data-index="181" data-tex="\(f_N=0\)">\(f_N=0\)</span> and even <span class="math" data-index="182" data-tex="\(N\)">\(N\)</span> makes <span class="math" data-index="183" data-tex="\(f_N=1\)">\(f_N=1\)</span>. Thus the normalized log alternates between minus infinity and zero there, despite the vanishing integral error.</p>
+<h3 id="solution-9">Solution 9</h3>
+<p>For any compact <span class="math" data-index="184" data-tex="\(K\)">\(K\)</span>, choose a fixed small radius <span class="math" data-index="185" data-tex="\(s\)">\(s\)</span> so that all its center balls lie in a common compact neighborhood <span class="math" data-index="186" data-tex="\(K_s\)">\(K_s\)</span>. Submeans give <span class="math" data-index="187" data-tex="\(w_j(x)\leq |B_s|^{-1}\int_{K_s}|w_j|\)">\(w_j(x)\leq |B_s|^{-1}\int_{K_s}|w_j|\)</span>. Local <span class="math" data-index="188" data-tex="\(L^1\)">\(L^1\)</span> convergence bounds the right side uniformly in <span class="math" data-index="189" data-tex="\(j\)">\(j\)</span>, so the approximants have the required local upper bounds. Compact collapse would make their integrals on a fixed positive-volume ball tend to minus infinity, while their local absolute integrals are bounded; it is excluded. Actual PSH compactness supplies a proper PSH subsequential limit, and its PSH closure and strong-convergence assertions apply. That subsequential limit is the original local <span class="math" data-index="190" data-tex="\(L^1\)">\(L^1\)</span> limit almost everywhere by uniqueness of the integral-norm limit. Hence the original class has that proper representative. A sequence of constants tending to minus infinity does not contradict the assertion, because it has no finite local <span class="math" data-index="191" data-tex="\(L^1\)">\(L^1\)</span> limit.</p>
+<h3 id="solution-10">Solution 10</h3>
+<p>Smooth the proper locally integrable PSH target with a positive compact radial kernel and add <span class="math" data-index="192" data-tex="\(\varepsilon|z|^2\)">\(\varepsilon|z|^2\)</span>. The resulting <span class="math" data-index="193" data-tex="\(\phi_\varepsilon\)">\(\phi_\varepsilon\)</span> is smooth PSH with least Levi eigenvalue at least <span class="math" data-index="194" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> everywhere, and tends to <span class="math" data-index="195" data-tex="\(\phi\)">\(\phi\)</span> in local <span class="math" data-index="196" data-tex="\(L^1\)">\(L^1\)</span>. At stage <span class="math" data-index="197" data-tex="\(j\)">\(j\)</span>, choose <span class="math" data-index="198" data-tex="\(\varepsilon_j\)">\(\varepsilon_j\)</span> so its integral error on <span class="math" data-index="199" data-tex="\(B_j\)">\(B_j\)</span> is below <span class="math" data-index="200" data-tex="\(1/(2j)\)">\(1/(2j)\)</span>. The smooth strict construction gives a sequence of normalized nonzero entire logarithms converging to that <span class="math" data-index="201" data-tex="\(\phi_{\varepsilon_j}\)">\(\phi_{\varepsilon_j}\)</span>. Choose one whose error on <span class="math" data-index="202" data-tex="\(B_j\)">\(B_j\)</span> is below <span class="math" data-index="203" data-tex="\(1/(2j)\)">\(1/(2j)\)</span>, and whose positive normalization integer exceeds the preceding selected integer; this is possible because those construction integers tend to infinity. The selected logarithm has error below <span class="math" data-index="204" data-tex="\(1/j\)">\(1/j\)</span> against <span class="math" data-index="205" data-tex="\(\phi\)">\(\phi\)</span> on <span class="math" data-index="206" data-tex="\(B_j\)">\(B_j\)</span>. Every compact set lies in these balls eventually, proving the required local convergence with increasing integers. This argument works even where the target has minus-infinite singular values, since all comparisons use its locally integrable class.</p>
+<h2 id="7-exact-source-and-scope">7. Exact source and scope</h2>
+<p>Human scholarly source: Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.1, Theorem 15.1.6 and Lemmas 15.1.7–15.1.8, printed pp. 277–278. The formal companion compares the actual hypotheses and proof inputs. The source's remark that the density theorem is unused later does not remove it from the assigned target list. All examples, solutions, derivations and figures are original. Protected native pages stay private. The remaining assigned weighted Fourier and division targets, topology, and other course coverage still require completion.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p><em>Original proof exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>Every proper plurisubharmonic function on complex Euclidean space can be approximated in local integral norm by normalized logarithms of nonzero entire scalar functions. We prove the full density statement, including the dense-set convergence lemma and the bounded Cauchy–Riemann estimate that turns a weighted correction norm into pointwise interpolation. The logarithms may have zeros and minus-infinite values; convergence is in local volume integral norm, not at every point.</p>
+<p>Write <span class="math" data-index="207" data-tex="\(z_j=x_j+iy_j\)">\(z_j=x_j+iy_j\)</span>, <span class="math" data-index="208" data-tex="\(\partial_j=(\partial_{x_j}-i\partial_{y_j})/2\)">\(\partial_j=(\partial_{x_j}-i\partial_{y_j})/2\)</span>, <span class="math" data-index="209" data-tex="\(\bar\partial_j=(\partial_{x_j}+i\partial_{y_j})/2\)">\(\bar\partial_j=(\partial_{x_j}+i\partial_{y_j})/2\)</span>, and <span class="math" data-index="210" data-tex="\(dV=dx\,dy\)">\(dV=dx\,dy\)</span>. The norm of a <span class="math" data-index="211" data-tex="\((0,1)\)">\((0,1)\)</span> form is the Euclidean norm of its coefficient vector. A proper PSH function is not identically minus infinity. All <span class="math" data-index="212" data-tex="\(L^1_{\mathrm{loc}}\)">\(L^1_{\mathrm{loc}}\)</span> statements identify functions that agree almost everywhere.</p>
+<p>The actual earlier inputs are <a href="AN02-L143.html#HC1">L143 HC1–HC9, full subharmonic compactness, upper-limit comparison and PSH closure</a>, including its real dimension-one supplement; <a href="AN02-L131.html#NP4">L131 NP2 and NP4, local integrability and the fundamental solution for <span class="math" data-index="213" data-tex="\(\Delta\)">\(\Delta\)</span></a>; <a href="AN02-L140.html#UE2">L140 UE2, real subharmonicity and positive smoothing of PSH functions</a>; and <a href="AN02-L144.html#strict-weighted-existence">L144 W1, strict weighted Cauchy–Riemann existence</a>. The last theorem assumes only its curvature-weighted data norm. <a href="AN02-L145.html#distributional-holomorphic-regularity">L145 E3</a> supplies the proved passage from distributional zero <span class="math" data-index="214" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> to a joint entire representative. We prove every new convergence, cutoff, continuity, interpolation and diagonal-selection step below.</p>
+<p><a id="entire-logarithm-density-theorem"></a></p>
+<h2 id="gd1-three-exact-statements">GD1. Three exact statements</h2>
+<p>For <span class="math" data-index="215" data-tex="\(n\geq1\)">\(n\geq1\)</span>, let</p>
+<span class="math math-display" id="eq-GD1" data-index="216" data-tex="\[
+\mathcal P_{\mathcal A}=
+\{N^{-1}\log|f|:
+N\in\mathbb N_{&gt;0},\ f\text{ entire on }\mathbb C^n,
+\ f\not\equiv0\}.
+\tag{GD1}
+\]">\[
+\mathcal P_{\mathcal A}=
+\{N^{-1}\log|f|:
+N\in\mathbb N_{&gt;0},\ f\text{ entire on }\mathbb C^n,
+\ f\not\equiv0\}.
+\tag{GD1}
+\]</span>
+<p>Use <span class="math" data-index="217" data-tex="\(\log0=-\infty\)">\(\log0=-\infty\)</span>. The scalar functions <span class="math" data-index="218" data-tex="\(f\)">\(f\)</span> need not be zero-free.</p>
+<p><strong>Theorem GD1 (entire-logarithm density).</strong> The closure of <span class="math" data-index="219" data-tex="\(\mathcal P_{\mathcal A}\)">\(\mathcal P_{\mathcal A}\)</span> in <span class="math" data-index="220" data-tex="\(L^1_{\mathrm{loc}}(\mathbb C^n)\)">\(L^1_{\mathrm{loc}}(\mathbb C^n)\)</span> consists exactly of the classes with a proper PSH representative. In particular, for every such representative <span class="math" data-index="221" data-tex="\(\phi\)">\(\phi\)</span>, there are positive integers <span class="math" data-index="222" data-tex="\(N_j\)">\(N_j\)</span> and nonzero entire functions <span class="math" data-index="223" data-tex="\(f_j\)">\(f_j\)</span> with</p>
+<span class="math math-display" id="eq-GD2" data-index="224" data-tex="\[
+\int_K\left|N_j^{-1}\log|f_j|-\phi\right|dV\longrightarrow0
+\quad\text{for every compact }K\subset\mathbb C^n.
+\tag{GD2}
+\]">\[
+\int_K\left|N_j^{-1}\log|f_j|-\phi\right|dV\longrightarrow0
+\quad\text{for every compact }K\subset\mathbb C^n.
+\tag{GD2}
+\]</span>
+<p>The identically minus-infinite function is not an element of the ambient <span class="math" data-index="225" data-tex="\(L^1_{\mathrm{loc}}\)">\(L^1_{\mathrm{loc}}\)</span> space. The theorem does include proper PSH functions that equal minus infinity on a null singular set. The topology is metrized on almost-everywhere classes by <span class="math" data-index="226" data-tex="\(d(h,k)=\sum_{m\geq1}2^{-m}\min(1,\|h-k\|_{L^1(B_m)})\)">\(d(h,k)=\sum_{m\geq1}2^{-m}\min(1,\|h-k\|_{L^1(B_m)})\)</span>. The triangle inequality follows from that of each integral norm and <span class="math" data-index="227" data-tex="\(\min(1,a+b)\leq\min(1,a)+\min(1,b)\)">\(\min(1,a+b)\leq\min(1,a)+\min(1,b)\)</span>; vanishing distance means equality on all balls almost everywhere. Convergence of this metric implies convergence of each fixed ball norm; the converse follows by first bounding a finite initial sum and then its geometric tail. A point in the closure has approximants at distances below <span class="math" data-index="228" data-tex="\(1/j\)">\(1/j\)</span>, so sequential closure equals the closure in the statement.</p>
+<p><a id="dense-set-convergence-lemma"></a></p>
+<p><strong>Lemma GD2 (dense-set convergence).</strong> Let <span class="math" data-index="229" data-tex="\(X\subset\mathbb R^d\)">\(X\subset\mathbb R^d\)</span>, <span class="math" data-index="230" data-tex="\(d\geq1\)">\(d\geq1\)</span>, be open, and let <span class="math" data-index="231" data-tex="\(\phi\)">\(\phi\)</span> be finite, continuous and subharmonic on <span class="math" data-index="232" data-tex="\(X\)">\(X\)</span>. If <span class="math" data-index="233" data-tex="\(\phi_j\)">\(\phi_j\)</span> are subharmonic, satisfy <span class="math" data-index="234" data-tex="\(\phi_j\leq\phi\)">\(\phi_j\leq\phi\)</span>, and</p>
+<span class="math math-display" id="eq-GD3" data-index="235" data-tex="\[
+\phi_j(a)\longrightarrow\phi(a)
+\quad(a\in E),\qquad E\subset X\text{ dense},
+\tag{GD3}
+\]">\[
+\phi_j(a)\longrightarrow\phi(a)
+\quad(a\in E),\qquad E\subset X\text{ dense},
+\tag{GD3}
+\]</span>
+<p>then <span class="math" data-index="236" data-tex="\(\phi_j\to\phi\)">\(\phi_j\to\phi\)</span> in local <span class="math" data-index="237" data-tex="\(L^1\)">\(L^1\)</span>. If minus-infinite components are permitted in the subharmonic convention, dense-set convergence excludes them eventually on each component under consideration; the conclusion concerns the eventually integrable tails on every compact set. It also suffices that the upper bound be eventually valid on each relatively compact observation domain.</p>
+<p><a id="bounded-dbar-point-estimate"></a></p>
+<p><strong>Lemma GD3 (bounded-<span class="math" data-index="238" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> point estimate).</strong> On the complex ball <span class="math" data-index="239" data-tex="\(B_r\subset\mathbb C^n\)">\(B_r\subset\mathbb C^n\)</span>, suppose <span class="math" data-index="240" data-tex="\(u\in L^2(B_r)\)">\(u\in L^2(B_r)\)</span> and <span class="math" data-index="241" data-tex="\(f=\bar\partial u\in L^\infty(B_r)\)">\(f=\bar\partial u\in L^\infty(B_r)\)</span> in distributions. The class <span class="math" data-index="242" data-tex="\(u\)">\(u\)</span> has a unique continuous representative on <span class="math" data-index="243" data-tex="\(B_r\)">\(B_r\)</span>, and</p>
+<span class="math math-display" id="eq-GD4" data-index="244" data-tex="\[
+|u(0)|\leq C_n
+\bigl(r\|\bar\partial u\|_{L^\infty(B_r)}
+       +r^{-n}\|u\|_{L^2(B_r)}\bigr),
+\tag{GD4}
+\]">\[
+|u(0)|\leq C_n
+\bigl(r\|\bar\partial u\|_{L^\infty(B_r)}
+       +r^{-n}\|u\|_{L^2(B_r)}\bigr),
+\tag{GD4}
+\]</span>
+<p>where <span class="math" data-index="245" data-tex="\(C_n\)">\(C_n\)</span> depends only on the dimension and a fixed cutoff. Values of an arbitrary representative on a null set are not asserted to obey this point estimate.</p>
+<h2 id="gd4-scalar-holomorphic-logarithms-are-proper-psh-and-locally-integrable">GD4. Scalar holomorphic logarithms are proper PSH and locally integrable</h2>
+<p>We record this entry step explicitly, including its values at zeros. For an entire nonzero scalar <span class="math" data-index="246" data-tex="\(f\)">\(f\)</span> and <span class="math" data-index="247" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, set</p>
+<span class="math math-display" id="eq-GD5" data-index="248" data-tex="\[
+q_\delta=\tfrac12\log(|f|^2+\delta^2),\qquad
+(q_\delta)_{j\bar k}
+=\frac{\delta^2(\partial_jf)\overline{\partial_kf}}
+       {2(|f|^2+\delta^2)^2}.
+\tag{GD5}
+\]">\[
+q_\delta=\tfrac12\log(|f|^2+\delta^2),\qquad
+(q_\delta)_{j\bar k}
+=\frac{\delta^2(\partial_jf)\overline{\partial_kf}}
+       {2(|f|^2+\delta^2)^2}.
+\tag{GD5}
+\]</span>
+<p>The differentiation uses <span class="math" data-index="249" data-tex="\(\bar\partial f=0\)">\(\bar\partial f=0\)</span>, and the displayed Levi matrix is positive semidefinite. Restricting to any complex line gives a smooth function with nonnegative ordinary Laplacian. Its circle mean has nonnegative radial derivative: the divergence theorem gives that derivative as the disk integral of the Laplacian divided by the circle length. Consequently the line restriction is subharmonic. The same argument with <span class="math" data-index="250" data-tex="\(\Delta=4\sum_j\partial_j\bar\partial_j\)">\(\Delta=4\sum_j\partial_j\bar\partial_j\)</span> shows real subharmonicity in dimension <span class="math" data-index="251" data-tex="\(2n\)">\(2n\)</span>.</p>
+<p>As <span class="math" data-index="252" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>, <span class="math" data-index="253" data-tex="\(q_\delta\)">\(q_\delta\)</span> decreases to <span class="math" data-index="254" data-tex="\(\log|f|\)">\(\log|f|\)</span>. These functions have a common finite upper bound on any compact neighborhood when <span class="math" data-index="255" data-tex="\(\delta\leq1\)">\(\delta\leq1\)</span>. Subtracting the functions from that bound and using monotone convergence in each mean inequality proves the complex-line and real submean inequalities for the limit, also at zeros. The limit is upper semicontinuous, since <span class="math" data-index="256" data-tex="\(f\)">\(f\)</span> is continuous and its modulus approaches zero at a zero. It is proper because <span class="math" data-index="257" data-tex="\(f\not\equiv0\)">\(f\not\equiv0\)</span>. The local-integrability proof NP2 for proper real subharmonic functions therefore applies. Positive multiplication by <span class="math" data-index="258" data-tex="\(N^{-1}\)">\(N^{-1}\)</span> preserves these properties. Thus every element of (GD1) is a legitimate proper PSH local-integral class.</p>
+<h2 id="gd5-full-proof-of-the-dense-set-lemma">GD5. Full proof of the dense-set lemma</h2>
+<p>First restrict to a connected component <span class="math" data-index="259" data-tex="\(\Omega\)">\(\Omega\)</span> of <span class="math" data-index="260" data-tex="\(X\)">\(X\)</span>. Choose <span class="math" data-index="261" data-tex="\(a\in E\cap\Omega\)">\(a\in E\cap\Omega\)</span>. Its values converge to the finite number <span class="math" data-index="262" data-tex="\(\phi(a)\)">\(\phi(a)\)</span>, so they are bounded below for all sufficiently large indices. Such members cannot be identically minus infinite on <span class="math" data-index="263" data-tex="\(\Omega\)">\(\Omega\)</span>, and they are locally integrable there. Their local upper bounds come from the continuous function <span class="math" data-index="264" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<p>Apply the real compactness alternative of HC9 to any subsequence of this tail. Compact collapse to minus infinity is impossible at the fixed point <span class="math" data-index="265" data-tex="\(a\)">\(a\)</span>. A further subsequence therefore converges locally in <span class="math" data-index="266" data-tex="\(L^1\)">\(L^1\)</span> to a proper subharmonic representative <span class="math" data-index="267" data-tex="\(\psi\)">\(\psi\)</span>. In real dimension one the convex supplement of HC9 gives the same conclusion, with local uniform convergence. The everywhere upper-limit assertion gives</p>
+<span class="math math-display" id="eq-GD6" data-index="268" data-tex="\[
+\phi(b)=\lim\phi_j(b)\leq\psi(b)
+\quad(b\in E\cap\Omega).
+\tag{GD6}
+\]">\[
+\phi(b)=\lim\phi_j(b)\leq\psi(b)
+\quad(b\in E\cap\Omega).
+\tag{GD6}
+\]</span>
+<p>Also <span class="math" data-index="269" data-tex="\(\psi\leq\phi\)">\(\psi\leq\phi\)</span> almost everywhere: local <span class="math" data-index="270" data-tex="\(L^1\)">\(L^1\)</span> convergence has a further almost-everywhere convergent subsequence, and every member is bounded above by <span class="math" data-index="271" data-tex="\(\phi\)">\(\phi\)</span>. The pointwise inequality follows from submeans. For every sufficiently small ball,</p>
+<span class="math math-display" id="eq-GD7" data-index="272" data-tex="\[
+\psi(x)\leq\frac1{|B_s|}\int_{B(x,s)}\psi
+\leq\frac1{|B_s|}\int_{B(x,s)}\phi
+\longrightarrow\phi(x)
+\quad(s\downarrow0).
+\tag{GD7}
+\]">\[
+\psi(x)\leq\frac1{|B_s|}\int_{B(x,s)}\psi
+\leq\frac1{|B_s|}\int_{B(x,s)}\phi
+\longrightarrow\phi(x)
+\quad(s\downarrow0).
+\tag{GD7}
+\]</span>
+<p>To prove the opposite inequality everywhere, fix <span class="math" data-index="273" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> and let the center vary where the closed ball is contained in <span class="math" data-index="274" data-tex="\(\Omega\)">\(\Omega\)</span>. The function</p>
+<span class="math math-display" id="eq-GD8" data-index="275" data-tex="\[
+x\longmapsto |B_s|^{-1}\int_{B(x,s)}\psi
+\tag{GD8}
+\]">\[
+x\longmapsto |B_s|^{-1}\int_{B(x,s)}\psi
+\tag{GD8}
+\]</span>
+<p>is continuous. Indeed, on a common compact neighborhood it is a convolution with an indicator; translation continuity in local <span class="math" data-index="276" data-tex="\(L^1\)">\(L^1\)</span>, proved in NP2, bounds the change of its integral. At every dense-set center, (GD6) and the submean inequality give <span class="math" data-index="277" data-tex="\(\phi(x)\leq\)">\(\phi(x)\leq\)</span> (GD8). Both sides are continuous in the center, so this holds at every admissible center. Let <span class="math" data-index="278" data-tex="\(s\downarrow0\)">\(s\downarrow0\)</span>. The ball averages of the given subharmonic representative recover its value: submeans give the lower bound, and upper semicontinuity gives the limiting upper bound, including a minus-infinite value. Hence <span class="math" data-index="279" data-tex="\(\phi\leq\psi\)">\(\phi\leq\psi\)</span> everywhere. Together with (GD7), <span class="math" data-index="280" data-tex="\(\psi=\phi\)">\(\psi=\phi\)</span>.</p>
+<p>We have proved that every subsequence has a further subsequence converging locally in <span class="math" data-index="281" data-tex="\(L^1\)">\(L^1\)</span> to <span class="math" data-index="282" data-tex="\(\phi\)">\(\phi\)</span>. If convergence on a compact set failed, one could select a subsequence whose integral error stayed above a fixed positive number, contradicting that further convergence. This proves full convergence on <span class="math" data-index="283" data-tex="\(\Omega\)">\(\Omega\)</span>. Every compact subset of <span class="math" data-index="284" data-tex="\(X\)">\(X\)</span> has a finite cover by balls contained in <span class="math" data-index="285" data-tex="\(X\)">\(X\)</span>, each lying in one component, so finitely many component arguments prove the conclusion on that compact set.</p>
+<p>For the eventual-bound variant, fix a relatively compact connected observation domain and discard the finitely many indices before its upper bound holds. Its dense-set values still converge, and the preceding argument applies. Exhausting the domain by such observation sets proves the stated variant. <span class="math" data-index="286" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="gd6-the-point-estimate-exact-kernel-sign-and-the-cutoff-identity">GD6. The point estimate: exact kernel sign and the cutoff identity</h2>
+<p>We first work on <span class="math" data-index="287" data-tex="\(B_1\)">\(B_1\)</span> and put <span class="math" data-index="288" data-tex="\(d=2n\)">\(d=2n\)</span>. Write <span class="math" data-index="289" data-tex="\(b_d=|B_1|\)">\(b_d=|B_1|\)</span> and <span class="math" data-index="290" data-tex="\(s_d=|S^{d-1}|\)">\(s_d=|S^{d-1}|\)</span>. Choose once and for all a real smooth cutoff <span class="math" data-index="291" data-tex="\(\chi\)">\(\chi\)</span>, with <span class="math" data-index="292" data-tex="\(0\leq\chi\leq1\)">\(0\leq\chi\leq1\)</span>, equal to one on <span class="math" data-index="293" data-tex="\(B_{1/2}\)">\(B_{1/2}\)</span>, and supported in <span class="math" data-index="294" data-tex="\(B_{3/4}\)">\(B_{3/4}\)</span>. Let <span class="math" data-index="295" data-tex="\(D=\sup|\nabla\chi|&lt;\infty\)">\(D=\sup|\nabla\chi|&lt;\infty\)</span>. A radial cutoff constant near zero is smooth there. For example, the usual smooth step built from <span class="math" data-index="296" data-tex="\(e^{-1/t}\)">\(e^{-1/t}\)</span> for <span class="math" data-index="297" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, zero for <span class="math" data-index="298" data-tex="\(t\leq0\)">\(t\leq0\)</span>, gives this cutoff on the transition from radius <span class="math" data-index="299" data-tex="\(1/2\)">\(1/2\)</span> to <span class="math" data-index="300" data-tex="\(3/4\)">\(3/4\)</span>.</p>
+<p>Use the actual fundamental solution for <span class="math" data-index="301" data-tex="\(\Delta\)">\(\Delta\)</span>, with its sign:</p>
+<span class="math math-display" id="eq-GD9" data-index="302" data-tex="\[
+E_d(w)=
+\begin{cases}
+-|w|^{2-d}/((d-2)s_d),&amp;d&gt;2,\\
+(2\pi)^{-1}\log|w|,&amp;d=2.
+\end{cases}
+\quad \Delta E_d=\delta_0,
+\qquad |\nabla E_d(w)|=s_d^{-1}|w|^{1-d}.
+\tag{GD9}
+\]">\[
+E_d(w)=
+\begin{cases}
+-|w|^{2-d}/((d-2)s_d),&amp;d&gt;2,\\
+(2\pi)^{-1}\log|w|,&amp;d=2.
+\end{cases}
+\quad \Delta E_d=\delta_0,
+\qquad |\nabla E_d(w)|=s_d^{-1}|w|^{1-d}.
+\tag{GD9}
+\]</span>
+<p>NP4 proves this distributional identity, including the flux at zero. For the compactly supported distribution <span class="math" data-index="303" data-tex="\(\chi u\)">\(\chi u\)</span>, convolution commutes with derivatives and gives</p>
+<span class="math math-display" id="eq-GD10" data-index="304" data-tex="\[
+\chi u=E_d*\Delta(\chi u)
+=4\sum_{j=1}^n (\partial_jE_d)*
+\bigl(\chi f_j+u\bar\partial_j\chi\bigr).
+\tag{GD10}
+\]">\[
+\chi u=E_d*\Delta(\chi u)
+=4\sum_{j=1}^n (\partial_jE_d)*
+\bigl(\chi f_j+u\bar\partial_j\chi\bigr).
+\tag{GD10}
+\]</span>
+<p>The first equality is <span class="math" data-index="305" data-tex="\((\Delta E_d)*(\chi u)=\chi u\)">\((\Delta E_d)*(\chi u)=\chi u\)</span>; the second uses <span class="math" data-index="306" data-tex="\(\Delta=4\sum\partial_j\bar\partial_j\)">\(\Delta=4\sum\partial_j\bar\partial_j\)</span> and the distributional product rule. There is no assumption that <span class="math" data-index="307" data-tex="\(u\)">\(u\)</span> has a separately controlled full real gradient. Since <span class="math" data-index="308" data-tex="\(E_d\)">\(E_d\)</span> is real-valued, its complex derivative vector <span class="math" data-index="309" data-tex="\(K=(\partial_jE_d)_j\)">\(K=(\partial_jE_d)_j\)</span> satisfies</p>
+<span class="math math-display" id="eq-GD11" data-index="310" data-tex="\[
+|K(w)|=\frac1{2s_d}|w|^{1-d},\qquad
+|\bar\partial\chi|=\tfrac12|\nabla\chi|.
+\tag{GD11}
+\]">\[
+|K(w)|=\frac1{2s_d}|w|^{1-d},\qquad
+|\bar\partial\chi|=\tfrac12|\nabla\chi|.
+\tag{GD11}
+\]</span>
+<p>The coefficient <span class="math" data-index="311" data-tex="\(\chi f\)">\(\chi f\)</span> is bounded and compactly supported. Its convolution with the locally integrable vector kernel <span class="math" data-index="312" data-tex="\(K\)">\(K\)</span> is continuous: for nearby centers, its change is bounded by <span class="math" data-index="313" data-tex="\(\|\chi f\|_\infty\)">\(\|\chi f\|_\infty\)</span> times the local <span class="math" data-index="314" data-tex="\(L^1\)">\(L^1\)</span> translation difference of <span class="math" data-index="315" data-tex="\(K\)">\(K\)</span> on a fixed larger ball. This tends to zero by the same translation-continuity argument as in NP2.</p>
+<p>The other coefficient <span class="math" data-index="316" data-tex="\(u\bar\partial\chi\)">\(u\bar\partial\chi\)</span> is in <span class="math" data-index="317" data-tex="\(L^2\)">\(L^2\)</span>, is compactly supported, and vanishes on <span class="math" data-index="318" data-tex="\(B_{1/2}\)">\(B_{1/2}\)</span>. For centers inside that ball the kernel stays away from zero on this coefficient's support. All its derivatives are bounded on every smaller compact set of centers, so differentiation under the absolutely integrable pairing makes this contribution smooth. The right side of (GD10) is therefore continuous on <span class="math" data-index="319" data-tex="\(B_{1/2}\)">\(B_{1/2}\)</span>, represents <span class="math" data-index="320" data-tex="\(u\)">\(u\)</span> almost everywhere there, and supplies its point value at zero.</p>
+<p>At zero, coefficient-vector Cauchy–Schwarz and polar integration give</p>
+<span class="math math-display" id="eq-GD12" data-index="321" data-tex="\[
+4\int |K(-w)|\,\chi(w)|f(w)|\,dV(w)
+\leq \frac2{s_d}\|f\|_\infty
+\int_{B_1}|w|^{1-d}dV(w)
+=2\|f\|_\infty.
+\tag{GD12}
+\]">\[
+4\int |K(-w)|\,\chi(w)|f(w)|\,dV(w)
+\leq \frac2{s_d}\|f\|_\infty
+\int_{B_1}|w|^{1-d}dV(w)
+=2\|f\|_\infty.
+\tag{GD12}
+\]</span>
+<p>For the other term, <span class="math" data-index="322" data-tex="\(|w|\geq1/2\)">\(|w|\geq1/2\)</span> on its support. Bounding its kernel and cutoff factor, and then using <span class="math" data-index="323" data-tex="\(L^2\)">\(L^2\)</span> Cauchy–Schwarz on a set of volume at most <span class="math" data-index="324" data-tex="\(b_d\)">\(b_d\)</span>, gives</p>
+<span class="math math-display" id="eq-GD13" data-index="325" data-tex="\[
+4\left|\sum_j\int(\partial_jE_d)(-w)
+u(w)\bar\partial_j\chi(w)dV(w)\right|
+\leq \frac{D\,2^{d-1}\sqrt{b_d}}{s_d}\|u\|_2.
+\tag{GD13}
+\]">\[
+4\left|\sum_j\int(\partial_jE_d)(-w)
+u(w)\bar\partial_j\chi(w)dV(w)\right|
+\leq \frac{D\,2^{d-1}\sqrt{b_d}}{s_d}\|u\|_2.
+\tag{GD13}
+\]</span>
+<p>Indeed the product of the two vector norms is at most <span class="math" data-index="326" data-tex="\(D2^{d-3}/s_d\)">\(D2^{d-3}/s_d\)</span>, and multiplication by 4 gives the stated factor before the volume bound. A valid choice is</p>
+<span class="math math-display" id="eq-GD14" data-index="327" data-tex="\[
+C_n=\max\left(2,\frac{D\,2^{2n-1}\sqrt{b_{2n}}}{s_{2n}}\right).
+\tag{GD14}
+\]">\[
+C_n=\max\left(2,\frac{D\,2^{2n-1}\sqrt{b_{2n}}}{s_{2n}}\right).
+\tag{GD14}
+\]</span>
+<p>Now set <span class="math" data-index="328" data-tex="\(U(w)=u(rw)\)">\(U(w)=u(rw)\)</span>. Its distributional <span class="math" data-index="329" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> is <span class="math" data-index="330" data-tex="\(r f(rw)\)">\(r f(rw)\)</span>, while its <span class="math" data-index="331" data-tex="\(L^2(B_1)\)">\(L^2(B_1)\)</span> norm is <span class="math" data-index="332" data-tex="\(r^{-n}\|u\|_{L^2(B_r)}\)">\(r^{-n}\|u\|_{L^2(B_r)}\)</span>, because the real volume scales by <span class="math" data-index="333" data-tex="\(r^{2n}\)">\(r^{2n}\)</span>. The unit-ball estimate yields (GD4). Applying the construction on a smaller ball centered at each point of <span class="math" data-index="334" data-tex="\(B_r\)">\(B_r\)</span> gives local continuous representatives throughout it. They agree on overlaps: continuous functions agreeing almost everywhere on an open set agree everywhere, since a nonzero difference would persist on a ball of positive volume. This proves the unique continuous representative and Lemma GD3. <span class="math" data-index="335" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="strict-psh-entire-interpolation"></a></p>
+<h2 id="gd7-quadratic-holomorphic-seeds-below-a-strict-weight">GD7. Quadratic holomorphic seeds below a strict weight</h2>
+<p>First suppose <span class="math" data-index="336" data-tex="\(\phi\in C^\infty(\mathbb C^n;\mathbb R)\)">\(\phi\in C^\infty(\mathbb C^n;\mathbb R)\)</span> and its least Levi eigenvalue has the global lower bound <span class="math" data-index="337" data-tex="\(\kappa_\phi\geq\kappa_0&gt;0\)">\(\kappa_\phi\geq\kappa_0&gt;0\)</span>. Choose distinct points <span class="math" data-index="338" data-tex="\(a_1,a_2,\ldots\)">\(a_1,a_2,\ldots\)</span> dense in <span class="math" data-index="339" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, with <span class="math" data-index="340" data-tex="\(|a_\nu|&lt;\nu\)">\(|a_\nu|&lt;\nu\)</span>. Such a sequence can be obtained from an enumerated rational dense set: at stage <span class="math" data-index="341" data-tex="\(\nu\)">\(\nu\)</span>, select the first unselected rational point lying in <span class="math" data-index="342" data-tex="\(B_\nu\)">\(B_\nu\)</span>. Every fixed rational point is eventually eligible and is eventually selected after its finitely many predecessors.</p>
+<p>At a center <span class="math" data-index="343" data-tex="\(a\)">\(a\)</span>, let</p>
+<span class="math math-display" id="eq-GD15" data-index="344" data-tex="\[
+P_a(z)=\phi(a)+2\sum_k\phi_k(a)(z_k-a_k)
+ +\sum_{k,\ell}\phi_{k\ell}(a)(z_k-a_k)(z_\ell-a_\ell).
+\tag{GD15}
+\]">\[
+P_a(z)=\phi(a)+2\sum_k\phi_k(a)(z_k-a_k)
+ +\sum_{k,\ell}\phi_{k\ell}(a)(z_k-a_k)(z_\ell-a_\ell).
+\tag{GD15}
+\]</span>
+<p>This is a holomorphic polynomial. The real Taylor expansion, with the mixed terms kept separate, gives</p>
+<span class="math math-display" id="eq-GD16" data-index="345" data-tex="\[
+\phi(a+w)-\operatorname{Re}P_a(a+w)
+=\sum_{k,\ell}\phi_{k\bar\ell}(a)w_k\overline{w_\ell}
+ +O(|w|^3)
+\geq\tfrac12\kappa_0|w|^2
+\tag{GD16}
+\]">\[
+\phi(a+w)-\operatorname{Re}P_a(a+w)
+=\sum_{k,\ell}\phi_{k\bar\ell}(a)w_k\overline{w_\ell}
+ +O(|w|^3)
+\geq\tfrac12\kappa_0|w|^2
+\tag{GD16}
+\]</span>
+<p>for all sufficiently small <span class="math" data-index="346" data-tex="\(|w|\)">\(|w|\)</span>. The factor 2 in the linear term and the pure quadratic term in (GD15) are required by the complex derivative convention.</p>
+<p>For a fixed stage <span class="math" data-index="347" data-tex="\(j\)">\(j\)</span>, choose radii <span class="math" data-index="348" data-tex="\(\rho_\nu&gt;0\)">\(\rho_\nu&gt;0\)</span>, <span class="math" data-index="349" data-tex="\(1\leq\nu\leq j\)">\(1\leq\nu\leq j\)</span>, such that the closed balls around these centers are pairwise disjoint, lie inside <span class="math" data-index="350" data-tex="\(B_j\)">\(B_j\)</span>, and satisfy (GD16). Choose smooth real cutoffs <span class="math" data-index="351" data-tex="\(\chi_\nu\)">\(\chi_\nu\)</span>, between zero and one, equal to one for distance at most <span class="math" data-index="352" data-tex="\(\rho_\nu/3\)">\(\rho_\nu/3\)</span>, and zero for distance at least <span class="math" data-index="353" data-tex="\(2\rho_\nu/3\)">\(2\rho_\nu/3\)</span>. On the support of each derivative the gap is bounded below by a common positive number</p>
+<span class="math math-display" id="eq-GD17" data-index="354" data-tex="\[
+\phi-\operatorname{Re}P_{a_\nu}\geq c_j,
+\qquad c_j=\frac{\kappa_0}{18}\min_{\nu\leq j}\rho_\nu^2&gt;0.
+\tag{GD17}
+\]">\[
+\phi-\operatorname{Re}P_{a_\nu}\geq c_j,
+\qquad c_j=\frac{\kappa_0}{18}\min_{\nu\leq j}\rho_\nu^2&gt;0.
+\tag{GD17}
+\]</span>
+<p>The number <span class="math" data-index="355" data-tex="\(c_j\)">\(c_j\)</span>, the cutoffs and all their derivative bounds can depend on the fixed stage <span class="math" data-index="356" data-tex="\(j\)">\(j\)</span>; none depends on the later integer <span class="math" data-index="357" data-tex="\(N\)">\(N\)</span>.</p>
+<h2 id="gd8-solve-the-closed-exponentially-small-error">GD8. Solve the closed exponentially small error</h2>
+<p>For a positive integer <span class="math" data-index="358" data-tex="\(N\)">\(N\)</span>, define the compact smooth seed sum and its error by</p>
+<span class="math math-display" id="eq-GD18" data-index="359" data-tex="\[
+A_{j,N}=\sum_{\nu=1}^j\chi_\nu e^{NP_{a_\nu}},
+\qquad g_{j,N}=\bar\partial A_{j,N}
+=\sum_{\nu=1}^j(\bar\partial\chi_\nu)e^{NP_{a_\nu}}.
+\tag{GD18}
+\]">\[
+A_{j,N}=\sum_{\nu=1}^j\chi_\nu e^{NP_{a_\nu}},
+\qquad g_{j,N}=\bar\partial A_{j,N}
+=\sum_{\nu=1}^j(\bar\partial\chi_\nu)e^{NP_{a_\nu}}.
+\tag{GD18}
+\]</span>
+<p>The exponential factors are holomorphic, so there is no additional factor <span class="math" data-index="360" data-tex="\(N\)">\(N\)</span> in this <span class="math" data-index="361" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> error. It is distributionally closed, since mixed <span class="math" data-index="362" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> derivatives commute. By the gap on the derivative supports, there are constants <span class="math" data-index="363" data-tex="\(D_j,B_j&lt;\infty\)">\(D_j,B_j&lt;\infty\)</span>, independent of <span class="math" data-index="364" data-tex="\(N\)">\(N\)</span>, with</p>
+<span class="math math-display" id="eq-GD19" data-index="365" data-tex="\[
+|g_{j,N}(z)|e^{-N\phi(z)}\leq D_j e^{-c_jN},
+\qquad
+\int|g_{j,N}|^2e^{-2N\phi}dV\leq B_j^2e^{-2c_jN}.
+\tag{GD19}
+\]">\[
+|g_{j,N}(z)|e^{-N\phi(z)}\leq D_j e^{-c_jN},
+\qquad
+\int|g_{j,N}|^2e^{-2N\phi}dV\leq B_j^2e^{-2c_jN}.
+\tag{GD19}
+\]</span>
+<p>The second estimate follows from the first and the finite volume of the fixed derivative supports; disjointness can also be used to sum their squared integrals exactly.</p>
+<p>Use L144 W1 with weight <span class="math" data-index="366" data-tex="\(2N\phi\)">\(2N\phi\)</span>, whose least Levi eigenvalue is at least <span class="math" data-index="367" data-tex="\(2N\kappa_0\)">\(2N\kappa_0\)</span>. Its actual data condition is satisfied by (GD19). It supplies a distributional solution <span class="math" data-index="368" data-tex="\(v_{j,N}\)">\(v_{j,N}\)</span> with</p>
+<span class="math math-display" id="eq-GD20" data-index="369" data-tex="\[
+\bar\partial v_{j,N}=g_{j,N},\qquad
+\|v_{j,N}e^{-N\phi}\|_2
+\leq\frac{B_j}{\sqrt{2N\kappa_0}}e^{-c_jN}.
+\tag{GD20}
+\]">\[
+\bar\partial v_{j,N}=g_{j,N},\qquad
+\|v_{j,N}e^{-N\phi}\|_2
+\leq\frac{B_j}{\sqrt{2N\kappa_0}}e^{-c_jN}.
+\tag{GD20}
+\]</span>
+<p>This weighted norm implies local <span class="math" data-index="370" data-tex="\(L^2\)">\(L^2\)</span>, since the weight is positive and smooth on every compact set. The smooth error is bounded on every compact ball. Lemma GD3 therefore supplies a continuous representative of <span class="math" data-index="371" data-tex="\(v_{j,N}\)">\(v_{j,N}\)</span> everywhere.</p>
+<p>Choose <span class="math" data-index="372" data-tex="\(0&lt;r_j&lt;1\)">\(0&lt;r_j&lt;1\)</span> so that</p>
+<span class="math math-display" id="eq-GD21" data-index="373" data-tex="\[
+|\phi(w)-\phi(z)|&lt;c_j/2
+\quad(|z|\leq j,\ |w-z|&lt;r_j).
+\tag{GD21}
+\]">\[
+|\phi(w)-\phi(z)|&lt;c_j/2
+\quad(|z|\leq j,\ |w-z|&lt;r_j).
+\tag{GD21}
+\]</span>
+<p>Uniform continuity on <span class="math" data-index="374" data-tex="\(\overline B_{j+1}\)">\(\overline B_{j+1}\)</span> provides this one radius for the entire current ball. On <span class="math" data-index="375" data-tex="\(B(z,r_j)\)">\(B(z,r_j)\)</span>, (GD19) bounds the unweighted error by <span class="math" data-index="376" data-tex="\(D_j e^{-c_jN/2}e^{N\phi(z)}\)">\(D_j e^{-c_jN/2}e^{N\phi(z)}\)</span>. Equation (GD20) bounds the local unweighted solution norm by</p>
+<span class="math math-display" id="eq-GD22" data-index="377" data-tex="\[
+\|v_{j,N}\|_{L^2(B(z,r_j))}
+\leq \frac{B_j}{\sqrt{2N\kappa_0}}
+e^{-c_jN/2}e^{N\phi(z)}.
+\tag{GD22}
+\]">\[
+\|v_{j,N}\|_{L^2(B(z,r_j))}
+\leq \frac{B_j}{\sqrt{2N\kappa_0}}
+e^{-c_jN/2}e^{N\phi(z)}.
+\tag{GD22}
+\]</span>
+<p>Apply (GD4) on that recentered ball. Since <span class="math" data-index="378" data-tex="\(N\geq1\)">\(N\geq1\)</span>, the favorable factor <span class="math" data-index="379" data-tex="\(N^{-1/2}\)">\(N^{-1/2}\)</span> can be discarded to obtain a fixed finite stage constant</p>
+<span class="math math-display" id="eq-GD23" data-index="380" data-tex="\[
+|v_{j,N}(z)|\leq Q_j e^{-c_jN/2}e^{N\phi(z)}
+\quad(|z|\leq j),\qquad
+Q_j=C_n\left(r_jD_j+
+\frac{r_j^{-n}B_j}{\sqrt{2\kappa_0}}\right).
+\tag{GD23}
+\]">\[
+|v_{j,N}(z)|\leq Q_j e^{-c_jN/2}e^{N\phi(z)}
+\quad(|z|\leq j),\qquad
+Q_j=C_n\left(r_jD_j+
+\frac{r_j^{-n}B_j}{\sqrt{2\kappa_0}}\right).
+\tag{GD23}
+\]</span>
+<p>This is a bound for the returned correction; it does not specify its actual values or a unique correction. The constants do not secretly increase with <span class="math" data-index="381" data-tex="\(N\)">\(N\)</span>.</p>
+<h2 id="gd9-the-exact-interpolation-margins-give-local-integral-convergence">GD9. The exact interpolation margins give local integral convergence</h2>
+<p>Choose strictly increasing positive integers <span class="math" data-index="382" data-tex="\(N_j\)">\(N_j\)</span>, with <span class="math" data-index="383" data-tex="\(N_j\geq j\)">\(N_j\geq j\)</span>, so large that <span class="math" data-index="384" data-tex="\(Q_j e^{-c_jN_j/2}&lt;1/3\)">\(Q_j e^{-c_jN_j/2}&lt;1/3\)</span>. Define</p>
+<span class="math math-display" id="eq-GD24" data-index="385" data-tex="\[
+f_j=\tfrac34(A_{j,N_j}-v_{j,N_j}).
+\tag{GD24}
+\]">\[
+f_j=\tfrac34(A_{j,N_j}-v_{j,N_j}).
+\tag{GD24}
+\]</span>
+<p>The difference has zero <span class="math" data-index="386" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> in distributions and is locally <span class="math" data-index="387" data-tex="\(L^2\)">\(L^2\)</span>. L145 E3 gives an entire representative. The displayed difference is continuous, so it agrees everywhere with that representative. In particular, the pointwise estimates below really hold for the entire function.</p>
+<p>At most one cutoff is nonzero at any point. By (GD16), its seed modulus is at most <span class="math" data-index="388" data-tex="\(e^{N_j\phi}\)">\(e^{N_j\phi}\)</span>. Thus <span class="math" data-index="389" data-tex="\(|A_{j,N_j}|\leq e^{N_j\phi}\)">\(|A_{j,N_j}|\leq e^{N_j\phi}\)</span> globally, and (GD23) gives</p>
+<span class="math math-display" id="eq-GD25" data-index="390" data-tex="\[
+|f_j(z)|\leq e^{N_j\phi(z)}\quad(|z|&lt;j).
+\tag{GD25}
+\]">\[
+|f_j(z)|\leq e^{N_j\phi(z)}\quad(|z|&lt;j).
+\tag{GD25}
+\]</span>
+<p>At each <span class="math" data-index="391" data-tex="\(a_\nu\)">\(a_\nu\)</span>, <span class="math" data-index="392" data-tex="\(\nu\leq j\)">\(\nu\leq j\)</span>, just its own cutoff equals one, and <span class="math" data-index="393" data-tex="\(P_{a_\nu}(a_\nu)=\phi(a_\nu)\)">\(P_{a_\nu}(a_\nu)=\phi(a_\nu)\)</span> is real. The strict one-third correction bound gives</p>
+<span class="math math-display" id="eq-GD26" data-index="394" data-tex="\[
+|f_j(a_\nu)|&gt;\tfrac12 e^{N_j\phi(a_\nu)}.
+\tag{GD26}
+\]">\[
+|f_j(a_\nu)|&gt;\tfrac12 e^{N_j\phi(a_\nu)}.
+\tag{GD26}
+\]</span>
+<p>So <span class="math" data-index="395" data-tex="\(f_j\not\equiv0\)">\(f_j\not\equiv0\)</span>. Set <span class="math" data-index="396" data-tex="\(w_j=N_j^{-1}\log|f_j|\)">\(w_j=N_j^{-1}\log|f_j|\)</span>. By the logarithm step in section GD4 these are proper PSH, hence real subharmonic, and</p>
+<span class="math math-display" id="eq-GD27" data-index="397" data-tex="\[
+w_j\leq\phi\text{ on }B_j,\qquad
+\phi(a_\nu)-\frac{\log2}{N_j}&lt;w_j(a_\nu)\leq\phi(a_\nu)
+\quad(\nu\leq j).
+\tag{GD27}
+\]">\[
+w_j\leq\phi\text{ on }B_j,\qquad
+\phi(a_\nu)-\frac{\log2}{N_j}&lt;w_j(a_\nu)\leq\phi(a_\nu)
+\quad(\nu\leq j).
+\tag{GD27}
+\]</span>
+<p>For each fixed observation ball the upper bound holds for all sufficiently large indices, and the dense center values converge. Apply Lemma GD2 on that observation ball. This proves local <span class="math" data-index="398" data-tex="\(L^1\)">\(L^1\)</span> approximation for the smooth strict weight. No global bound <span class="math" data-index="399" data-tex="\(w_j\leq\phi\)">\(w_j\leq\phi\)</span> for every index was used or claimed.</p>
+<figure><img class="course-figure" width="2040" height="1105" src="reproduce/L147/figures/quadratic-seeds-and-closed-error.png" alt="Quadratic seeds, disjoint cutoffs and their actual weighted error" /><figcaption class="native"><a href="reproduce/L147/figures/quadratic-seeds-and-closed-error.png">Open full-size PNG</a> · <a href="reproduce/L147/figures/quadratic-seeds-and-closed-error.svg">Open SVG</a></figcaption></figure>
+<p>This explicit one-variable example uses <span class="math" data-index="400" data-tex="\(\phi(z)=|z|^2\)">\(\phi(z)=|z|^2\)</span>. Its exact seed gap is <span class="math" data-index="401" data-tex="\(|z-a|^2\)">\(|z-a|^2\)</span>. The plotted weighted <span class="math" data-index="402" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> error includes the derivative of the specified radial cutoff. It is not the correction produced by the weighted existence theorem.</p>
+<p><a id="smoothing-and-final-density"></a></p>
+<h2 id="gd10-proper-singular-weights-and-the-second-diagonal-selection">GD10. Proper singular weights and the second diagonal selection</h2>
+<p>Let <span class="math" data-index="403" data-tex="\(\phi\)">\(\phi\)</span> be any proper PSH function on <span class="math" data-index="404" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>. UE2 gives local integrability, smooth PSH radial convolutions, and their convergence in local <span class="math" data-index="405" data-tex="\(L^1\)">\(L^1\)</span>. For a fixed nonnegative smooth compact radial kernel of integral one, put</p>
+<span class="math math-display" id="eq-GD28" data-index="406" data-tex="\[
+\phi_\varepsilon=\phi*\rho_\varepsilon+\varepsilon|z|^2,
+\qquad \kappa_{\phi_\varepsilon}\geq\varepsilon&gt;0.
+\tag{GD28}
+\]">\[
+\phi_\varepsilon=\phi*\rho_\varepsilon+\varepsilon|z|^2,
+\qquad \kappa_{\phi_\varepsilon}\geq\varepsilon&gt;0.
+\tag{GD28}
+\]</span>
+<p>These are finite smooth global weights. The nonnegative Levi contribution of the smoothed PSH term and the identity Levi matrix of <span class="math" data-index="407" data-tex="\(|z|^2\)">\(|z|^2\)</span> give the asserted global curvature bound. They converge to <span class="math" data-index="408" data-tex="\(\phi\)">\(\phi\)</span> in local <span class="math" data-index="409" data-tex="\(L^1\)">\(L^1\)</span>: the convolution does, and the added polynomial tends to zero uniformly on compact sets.</p>
+<p>For each integer <span class="math" data-index="410" data-tex="\(j\)">\(j\)</span>, choose <span class="math" data-index="411" data-tex="\(\varepsilon_j&gt;0\)">\(\varepsilon_j&gt;0\)</span> with <span class="math" data-index="412" data-tex="\(\|\phi_{\varepsilon_j}-\phi\|_{L^1(B_j)}&lt;1/(2j)\)">\(\|\phi_{\varepsilon_j}-\phi\|_{L^1(B_j)}&lt;1/(2j)\)</span>. Apply the smooth strict construction to that weight, then select one of its sufficiently late nonzero entire logarithms <span class="math" data-index="413" data-tex="\(w_j\)">\(w_j\)</span> such that</p>
+<span class="math math-display" id="eq-GD29" data-index="414" data-tex="\[
+\|w_j-\phi_{\varepsilon_j}\|_{L^1(B_j)}&lt;1/(2j),
+\qquad \|w_j-\phi\|_{L^1(B_j)}&lt;1/j.
+\tag{GD29}
+\]">\[
+\|w_j-\phi_{\varepsilon_j}\|_{L^1(B_j)}&lt;1/(2j),
+\qquad \|w_j-\phi\|_{L^1(B_j)}&lt;1/j.
+\tag{GD29}
+\]</span>
+<p>Every fixed compact set lies in <span class="math" data-index="415" data-tex="\(B_j\)">\(B_j\)</span> for all sufficiently large <span class="math" data-index="416" data-tex="\(j\)">\(j\)</span>, proving (GD2). The normalization integers can also be required to increase in this second selection, since the integers in each smooth construction tend to infinity.</p>
+<p>For the reverse inclusion, suppose a sequence <span class="math" data-index="417" data-tex="\(w_j\in\mathcal P_{\mathcal A}\)">\(w_j\in\mathcal P_{\mathcal A}\)</span> converges to <span class="math" data-index="418" data-tex="\(h\in L^1_{\mathrm{loc}}\)">\(h\in L^1_{\mathrm{loc}}\)</span>. Fix a compact set <span class="math" data-index="419" data-tex="\(K\)">\(K\)</span> and a radius <span class="math" data-index="420" data-tex="\(s&gt;0\)">\(s&gt;0\)</span> whose closed neighborhood of <span class="math" data-index="421" data-tex="\(K\)">\(K\)</span> is compact in the domain. The real submean inequality gives</p>
+<span class="math math-display" id="eq-GD30" data-index="422" data-tex="\[
+w_j(x)\leq |B_s|^{-1}\int_{B(x,s)}w_j
+\leq |B_s|^{-1}\int_{K_s}|w_j|
+\quad(x\in K).
+\tag{GD30}
+\]">\[
+w_j(x)\leq |B_s|^{-1}\int_{B(x,s)}w_j
+\leq |B_s|^{-1}\int_{K_s}|w_j|
+\quad(x\in K).
+\tag{GD30}
+\]</span>
+<p>The last integrals are uniformly bounded by local <span class="math" data-index="423" data-tex="\(L^1\)">\(L^1\)</span> convergence. Hence these proper PSH functions have locally uniform upper bounds. HC1 supplies a proper PSH subsequential limit: its compact-collapse alternative would force their integrals on a fixed positive-volume ball to tend to minus infinity, contrary to their bounded local <span class="math" data-index="424" data-tex="\(L^1\)">\(L^1\)</span> norms. HC6 and HC7 give the proper PSH representative and strong local convergence. That limit represents the same local-integral class as <span class="math" data-index="425" data-tex="\(h\)">\(h\)</span>, since the original sequence already converges to <span class="math" data-index="426" data-tex="\(h\)">\(h\)</span>. Thus the closure has no other classes. This completes Theorem GD1. <span class="math" data-index="427" data-tex="\(\square\)">\(\square\)</span></p>
+<p><a id="explicit-circle-zero-approximation"></a></p>
+<h2 id="gd11-an-explicit-approximation-with-an-exact-integral-error">GD11. An explicit approximation with an exact integral error</h2>
+<p>In one complex variable take</p>
+<span class="math math-display" id="eq-GD31" data-index="428" data-tex="\[
+\phi(z)=\max(0,\log|z|),\qquad
+f_N(z)=\frac{1+z^N}{2},\qquad
+w_N(z)=N^{-1}\log|f_N(z)|.
+\tag{GD31}
+\]">\[
+\phi(z)=\max(0,\log|z|),\qquad
+f_N(z)=\frac{1+z^N}{2},\qquad
+w_N(z)=N^{-1}\log|f_N(z)|.
+\tag{GD31}
+\]</span>
+<p>The target is continuous and PSH, using the finite-maximum property in UE2. The elementary bound <span class="math" data-index="429" data-tex="\(|1+z^N|/2\leq\max(1,|z|^N)\)">\(|1+z^N|/2\leq\max(1,|z|^N)\)</span> gives <span class="math" data-index="430" data-tex="\(w_N\leq\phi\)">\(w_N\leq\phi\)</span> everywhere. For <span class="math" data-index="431" data-tex="\(|z|&lt;1\)">\(|z|&lt;1\)</span>, the logarithm of <span class="math" data-index="432" data-tex="\(|1+z^N|\)">\(|1+z^N|\)</span> tends to zero; for <span class="math" data-index="433" data-tex="\(|z|&gt;1\)">\(|z|&gt;1\)</span>, factor <span class="math" data-index="434" data-tex="\(z^N\)">\(z^N\)</span> to see that <span class="math" data-index="435" data-tex="\(w_N\to\log|z|\)">\(w_N\to\log|z|\)</span>. This is convergence on a dense set, so GD2 proves local <span class="math" data-index="436" data-tex="\(L^1\)">\(L^1\)</span> convergence.</p>
+<p>There is an exact error formula as well. For a radius <span class="math" data-index="437" data-tex="\(r&lt;1\)">\(r&lt;1\)</span>, the uniformly convergent analytic series of <span class="math" data-index="438" data-tex="\(\log(1+r^N e^{iN\theta})\)">\(\log(1+r^N e^{iN\theta})\)</span> has only nonconstant Fourier terms, so its real circle average is zero. For <span class="math" data-index="439" data-tex="\(r&gt;1\)">\(r&gt;1\)</span>, factor <span class="math" data-index="440" data-tex="\(r^N e^{iN\theta}\)">\(r^N e^{iN\theta}\)</span> and apply the same argument with <span class="math" data-index="441" data-tex="\(r^{-N}\)">\(r^{-N}\)</span>. Consequently, for <span class="math" data-index="442" data-tex="\(r\ne1\)">\(r\ne1\)</span>,</p>
+<span class="math math-display" id="eq-GD32" data-index="443" data-tex="\[
+\frac1{2\pi}\int_0^{2\pi}w_N(re^{i\theta})d\theta
+=\max(0,\log r)-\frac{\log2}{N}.
+\tag{GD32}
+\]">\[
+\frac1{2\pi}\int_0^{2\pi}w_N(re^{i\theta})d\theta
+=\max(0,\log r)-\frac{\log2}{N}.
+\tag{GD32}
+\]</span>
+<p>Proper-log integrability was proved in GD4. The nonnegative error <span class="math" data-index="444" data-tex="\(\phi-w_N\)">\(\phi-w_N\)</span>, polar coordinates and Tonelli allow integration of (GD32) over radii. The single exceptional radius <span class="math" data-index="445" data-tex="\(r=1\)">\(r=1\)</span> has zero radial measure. For every <span class="math" data-index="446" data-tex="\(R&gt;0\)">\(R&gt;0\)</span>,</p>
+<span class="math math-display" id="eq-GD33" data-index="447" data-tex="\[
+\int_{|z|&lt;R}|w_N-\phi|dA
+=\frac{\pi R^2\log2}{N}.
+\tag{GD33}
+\]">\[
+\int_{|z|&lt;R}|w_N-\phi|dA
+=\frac{\pi R^2\log2}{N}.
+\tag{GD33}
+\]</span>
+<p>Nevertheless <span class="math" data-index="448" data-tex="\(w_N(-1)=-\infty\)">\(w_N(-1)=-\infty\)</span> for odd <span class="math" data-index="449" data-tex="\(N\)">\(N\)</span>, and <span class="math" data-index="450" data-tex="\(w_N(-1)=0\)">\(w_N(-1)=0\)</span> for even <span class="math" data-index="451" data-tex="\(N\)">\(N\)</span>. Full local <span class="math" data-index="452" data-tex="\(L^1\)">\(L^1\)</span> convergence therefore does not imply pointwise convergence everywhere. The zeros are exactly the distinct points <span class="math" data-index="453" data-tex="\(e^{(2k+1)\pi i/N}\)">\(e^{(2k+1)\pi i/N}\)</span>, <span class="math" data-index="454" data-tex="\(0\leq k&lt;N\)">\(0\leq k&lt;N\)</span>, all on the unit circle; their simplicity follows from the nonzero derivative <span class="math" data-index="455" data-tex="\(Nz^{N-1}\)">\(Nz^{N-1}\)</span> there.</p>
+<figure><img class="course-figure" width="2040" height="1105" src="reproduce/L147/figures/circle-zeros-and-integral-convergence.png" alt="The exact polynomial zeros and the exact disk integral error" /><figcaption class="native"><a href="reproduce/L147/figures/circle-zeros-and-integral-convergence.png">Open full-size PNG</a> · <a href="reproduce/L147/figures/circle-zeros-and-integral-convergence.svg">Open SVG</a></figcaption></figure>
+<p>The error curve is the exact value (GD33), not a pointwise convergence curve. The marked zero at <span class="math" data-index="456" data-tex="\(-1\)">\(-1\)</span> uses the odd degree <span class="math" data-index="457" data-tex="\(N=13\)">\(N=13\)</span>. The weighted-correction construction above is the proof for arbitrary PSH targets; this polynomial family is one explicitly solvable target.</p>
+<h2 id="gd12-source-comparison-and-remaining-scope">GD12. Source comparison and remaining scope</h2>
+<p>Theorem GD1, Lemma GD2 and Lemma GD3 match Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.1, Theorem 15.1.6 and Lemmas 15.1.7–15.1.8, printed pp. 277–278; 1983 edition, second revised printing 1990, reprint 2005. The source describes the density theorem as unused in its later arguments; it is nevertheless an assigned course target and is proved here. The dense-set upper comparison is the continuous function <span class="math" data-index="458" data-tex="\(\phi\)">\(\phi\)</span>, not the number zero.</p>
+<p>The earlier compactness proof realizes the source input I, Theorem 4.1.9. The Newtonian proof realizes I, Theorem 3.3.2 in the sign <span class="math" data-index="459" data-tex="\(\Delta E=\delta\)">\(\Delta E=\delta\)</span>. The weighted existence proof realizes II, Theorem 15.1.1, and the joint holomorphic regularity step was fully written in L145. We supply the pointwise representative issue, global stage-independent-in-<span class="math" data-index="460" data-tex="\(N\)">\(N\)</span> correction estimate, expanding-ball qualification, both diagonal selections, closure direction and explicit counterexample to pointwise convergence. All exposition, examples and artwork are original; protected native book pages stay private. The remaining weighted Fourier, division, topology and other assigned course targets are not completed by this lesson.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/entire-logarithms-and-the-approximation-of-plurisubharmonic-functions.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L147/entire-logarithm-density-formal.md" download>entire-logarithm-density-formal.md</a></li><li><a href="reproduce/L147/entire-logarithm-density-learner.md" download>entire-logarithm-density-learner.md</a></li><li><a href="reproduce/L147/make_figures154.py" download>make_figures154.py</a></li><li><a href="reproduce/L147/check_examples154.py" download>check_examples154.py</a></li><li><a href="reproduce/L147/independent-example-checks154.json" download>independent-example-checks154.json</a></li><li><a href="reproduce/L147/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L147/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L147/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L147/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L147/figures/quadratic-seeds-and-closed-error.png" download>figures/quadratic-seeds-and-closed-error.png</a></li><li><a href="reproduce/L147/figures/quadratic-seeds-and-closed-error.svg" download>figures/quadratic-seeds-and-closed-error.svg</a></li><li><a href="reproduce/L147/figures/circle-zeros-and-integral-convergence.png" download>figures/circle-zeros-and-integral-convergence.png</a></li><li><a href="reproduce/L147/figures/circle-zeros-and-integral-convergence.svg" download>figures/circle-zeros-and-integral-convergence.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

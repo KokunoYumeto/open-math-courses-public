@@ -1,6 +1,6 @@
 # Contour deformation and the complex Gaussian branch
 
-These proofs supply the finite algebra and integration steps in the [complex stationary-phase companion](complex-stationary-contract.md). The [main lesson](positive-lagrangian-ideals-and-distributions.md) proves complex graph division and its uniform flat errors before invoking that companion. The [proof map](proof-map.json) records this order and the exact earlier calculus, integration and Gaussian providers.
+These proofs supply the finite algebra and integration steps in the [complex stationary-phase companion](complex-stationary-contract.md). The main lesson proves complex graph division and its uniform flat errors before invoking that companion. The [proof map](proof-map.json) records this order and the exact earlier calculus, integration and Gaussian providers.
 
 ## A0. Complex transversals and actual cotangent coordinates
 

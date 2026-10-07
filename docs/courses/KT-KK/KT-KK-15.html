@@ -1,0 +1,979 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dirac classes and the cotangent Dolbeault element · Kasparov’s KK-theory</title>
+<meta name="description" content="A lesson of the course Kasparov&#x27;s KK-theory. In English.">
+<meta name="color-scheme" content="light dark">
+<link rel="stylesheet" href="assets/site.css">
+<script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
+<script id="MathJax-script" defer src="assets/mathjax/tex-chtml-full.js"></script>
+</head>
+<body class="no-math">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner">
+<a class="brand" href="../../">Open Courses</a>
+<nav class="primary-nav" aria-label="Main">
+<a href="../../">Courses</a>
+<span class="unlinked">Licensing</span>
+<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
+</nav>
+<p class="lang-note">English only for now</p>
+</div></header>
+<main id="main">
+<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Kasparov&#x27;s KK-theory</a> <span aria-hidden="true">›</span> <span>Lesson 15 of 23</span></nav>
+<aside class="notice" aria-label="About this lesson"><p>English · Original text: CC0 1.0. Linked works retain their stated terms.</p></aside>
+
+<article class="lesson">
+<h1 id="dirac-classes-and-the-cotangent-dolbeault-element">Dirac classes and the cotangent Dolbeault element</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p>Fix the Fourier convention in which the principal symbol of <span class="math" data-tex="\(-i\partial_j\)">\(-i\partial_j\)</span> is <span class="math" data-tex="\(\xi_j\)">\(\xi_j\)</span>. Clifford multiplication by a real covector is self-adjoint and has square its squared norm. The compactly supported smooth sections of a finite-rank Hermitian bundle are denoted <span class="math" data-tex="\(C_c^\infty\)">\(C_c^\infty\)</span>. All manifolds here are smooth and second countable.</p>
+<h2 id="1-a-local-domain-argument-and-the-exhaustion-argument">1. A local domain argument and the exhaustion argument</h2>
+<p><strong>Lemma CI.1.</strong> Let <span class="math" data-tex="\(Y\)">\(Y\)</span> be a Riemannian manifold, <span class="math" data-tex="\(W\to Y\)">\(W\to Y\)</span> a finite-rank Hermitian bundle, and <span class="math" data-tex="\(P\)">\(P\)</span> a smooth formally symmetric first-order operator on <span class="math" data-tex="\(C_c^\infty(Y,W)\)">\(C_c^\infty(Y,W)\)</span>. Suppose its principal symbol satisfies</p>
+<span class="math math-display" data-tex="\[
+\|\sigma_P(y,\zeta)\|\leq c\|\zeta\|
+\tag{CI.1}
+\]">\[
+\|\sigma_P(y,\zeta)\|\leq c\|\zeta\|
+\tag{CI.1}
+\]</span>
+<p>with one constant <span class="math" data-tex="\(c\)">\(c\)</span>. Suppose either <span class="math" data-tex="\(Y\)">\(Y\)</span> is compact or there is a smooth proper function <span class="math" data-tex="\(r:Y\to[1,\infty)\)">\(r:Y\to[1,\infty)\)</span> with <span class="math" data-tex="\(\|dr\|\leq c_r\)">\(\|dr\|\leq c_r\)</span>. Then <span class="math" data-tex="\(P\)">\(P\)</span> is essentially self-adjoint on <span class="math" data-tex="\(C_c^\infty\)">\(C_c^\infty\)</span>. If <span class="math" data-tex="\(P\)">\(P\)</span> is elliptic, its self-adjoint closure <span class="math" data-tex="\(D\)">\(D\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+f(D\pm i)^{-1}\in\mathcal K(L^2(Y,W))
+\quad(f\in C_0(Y)).
+\tag{CI.2}
+\]">\[
+f(D\pm i)^{-1}\in\mathcal K(L^2(Y,W))
+\quad(f\in C_0(Y)).
+\tag{CI.2}
+\]</span>
+<p><strong>Proof: compactly supported vectors in the maximal domain.</strong> The adjoint domain is the maximal distributional domain <span class="math" data-tex="\(\{u\in L^2:Pu\in L^2\}\)">\(\{u\in L^2:Pu\in L^2\}\)</span>. Indeed testing the adjoint identity on compactly supported smooth sections is exactly the distributional identity. Work in a relatively compact coordinate chart and trivialize the bundle; a smooth change of density and fiber metric gives the same graph convergence problem in ordinary Euclidean <span class="math" data-tex="\(L^2\)">\(L^2\)</span>. In this trivialization write</p>
+<span class="math math-display" data-tex="\[
+P=\sum_j a_j(x)\partial_j+b(x).
+\]">\[
+P=\sum_j a_j(x)\partial_j+b(x).
+\]</span>
+<p>Let <span class="math" data-tex="\(J_\varepsilon\)">\(J_\varepsilon\)</span> be convolution with a smooth compactly supported approximate identity. For a vector supported inside the chart, distributional integration by parts gives</p>
+<span class="math math-display" data-tex="\[
+\begin{split}
+(PJ_\varepsilon-J_\varepsilon P)u(x)
+={}&amp;\sum_j\int\big(a_j(x)-a_j(y)\big)
+\partial_j k_\varepsilon(x-y)u(y)\,dy\\
+&amp;+\sum_j\int k_\varepsilon(x-y)(\partial_j a_j)(y)u(y)\,dy\\
+&amp;+\int k_\varepsilon(x-y)\big(b(x)-b(y)\big)u(y)\,dy.
+\end{split}
+\tag{CI.3}
+\]">\[
+\begin{split}
+(PJ_\varepsilon-J_\varepsilon P)u(x)
+={}&amp;\sum_j\int\big(a_j(x)-a_j(y)\big)
+\partial_j k_\varepsilon(x-y)u(y)\,dy\\
+&amp;+\sum_j\int k_\varepsilon(x-y)(\partial_j a_j)(y)u(y)\,dy\\
+&amp;+\int k_\varepsilon(x-y)\big(b(x)-b(y)\big)u(y)\,dy.
+\end{split}
+\tag{CI.3}
+\]</span>
+<p>The first two lines are uniformly bounded on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>: on the selected compact neighborhood the coefficients are Lipschitz, and
+<span class="math" data-tex="\(\int |z|\,|\partial_jk_\varepsilon(z)|\,dz\)">\(\int |z|\,|\partial_jk_\varepsilon(z)|\,dz\)</span> is independent of <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The last line is uniformly bounded and tends to zero in operator norm by uniform continuity of <span class="math" data-tex="\(b\)">\(b\)</span>. On a smooth compactly supported vector the entire commutator tends to zero, since both terms before subtraction converge to <span class="math" data-tex="\(Pu\)">\(Pu\)</span>. Smooth vectors are dense in <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and the uniform bound therefore proves convergence to zero for every <span class="math" data-tex="\(L^2\)">\(L^2\)</span> vector. If additionally <span class="math" data-tex="\(Pu\in L^2\)">\(Pu\in L^2\)</span>, (CI.3) proves</p>
+<span class="math math-display" data-tex="\[
+J_\varepsilon u\longrightarrow u,\qquad
+PJ_\varepsilon u\longrightarrow Pu
+\quad\text{in }L^2.
+\tag{CI.4}
+\]">\[
+J_\varepsilon u\longrightarrow u,\qquad
+PJ_\varepsilon u\longrightarrow Pu
+\quad\text{in }L^2.
+\tag{CI.4}
+\]</span>
+<p>For a general compactly supported maximal-domain vector take a finite smooth partition in such charts. Multiplication by a partition function preserves the maximal domain, because
+<span class="math" data-tex="\(P(\alpha u)=\alpha Pu+[P,\alpha]u\)">\(P(\alpha u)=\alpha Pu+[P,\alpha]u\)</span>, and the commutator is a bounded multiplication operator on its compact support. Mollify the finitely many pieces and sum. Thus every compactly supported maximal-domain vector belongs to the minimal closed domain. No ellipticity was needed for this step.</p>
+<p><strong>Proof: the deficiency spaces.</strong> Choose a real smooth function <span class="math" data-tex="\(\rho\)">\(\rho\)</span> equal to one on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, zero on <span class="math" data-tex="\([2,\infty)\)">\([2,\infty)\)</span>, and between zero and one. Set <span class="math" data-tex="\(\chi_R=\rho(r/R)\)">\(\chi_R=\rho(r/R)\)</span> in the noncompact case. It has compact support, tends pointwise to one, and</p>
+<span class="math math-display" data-tex="\[
+\|[P,\chi_R]\|\leq cc_r\|\rho&#x27;\|_\infty/R.
+\tag{CI.5}
+\]">\[
+\|[P,\chi_R]\|\leq cc_r\|\rho&#x27;\|_\infty/R.
+\tag{CI.5}
+\]</span>
+<p>Let <span class="math" data-tex="\(u\in\ker(P^*\mp i)\)">\(u\in\ker(P^*\mp i)\)</span>. The preceding local argument places <span class="math" data-tex="\(\chi_Ru\)">\(\chi_Ru\)</span> in the minimal domain. The imaginary part of its symmetry identity gives</p>
+<span class="math math-display" data-tex="\[
+\|\chi_Ru\|^2
+\leq \|[P,\chi_R]u\|\,\|\chi_Ru\|.
+\tag{CI.6}
+\]">\[
+\|\chi_Ru\|^2
+\leq \|[P,\chi_R]u\|\,\|\chi_Ru\|.
+\tag{CI.6}
+\]</span>
+<p>Indeed <span class="math" data-tex="\(P(\chi_Ru)=\pm i\chi_Ru+[P,\chi_R]u\)">\(P(\chi_Ru)=\pm i\chi_Ru+[P,\chi_R]u\)</span>, while <span class="math" data-tex="\(\langle P(\chi_Ru),\chi_Ru\rangle\)">\(\langle P(\chi_Ru),\chi_Ru\rangle\)</span> is real. Equations (CI.5)–(CI.6) and dominated convergence imply <span class="math" data-tex="\(u=0\)">\(u=0\)</span>. On a compact manifold use <span class="math" data-tex="\(\chi_R=1\)">\(\chi_R=1\)</span> and the same argument immediately. The two ranges of the minimal closure minus and plus <span class="math" data-tex="\(i\)">\(i\)</span> are dense because their orthogonal complements are these deficiency spaces. They are closed because, for a symmetric operator,</p>
+<span class="math math-display" data-tex="\[
+\|(P\pm i)v\|^2=\|Pv\|^2+\|v\|^2.
+\]">\[
+\|(P\pm i)v\|^2=\|Pv\|^2+\|v\|^2.
+\]</span>
+<p>They are therefore the whole Hilbert space. Their inverse resolvents are adjoints of one another, and the closed operator is self-adjoint. This proves essential self-adjointness and identifies its domain with the maximal distributional domain.</p>
+<p><strong>Proof: localized compactness.</strong> For a compactly supported smooth <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, local ellipticity gives</p>
+<span class="math math-display" data-tex="\[
+\|\chi u\|_{H^1}\leq C_\chi(\|Du\|_{L^2}+\|u\|_{L^2}).
+\tag{CI.7}
+\]">\[
+\|\chi u\|_{H^1}\leq C_\chi(\|Du\|_{L^2}+\|u\|_{L^2}).
+\tag{CI.7}
+\]</span>
+<p>Here the local symbol and Sobolev arguments are the actual proofs in <a href="KT-KK-11.html#4-spectral-triples-and-the-circle"><em>Unbounded Kasparov modules and spectral triples</em>, Lemmas 4.2a–4.2b</a>. In a chart, invert the first-order principal symbol for large frequency, multiply that inverse by a cutoff equal to one near <span class="math" data-tex="\(\operatorname{supp}\chi\)">\(\operatorname{supp}\chi\)</span>, and quantize it. The proved composition expansion gives the identity near that support modulo an operator of order minus one. Both the inverse and this remainder map <span class="math" data-tex="\(L^2\)">\(L^2\)</span> to <span class="math" data-tex="\(H^1\)">\(H^1\)</span>. Insert a second cutoff equal to one near the first; its commutator with <span class="math" data-tex="\(P\)">\(P\)</span> is order zero. The Sobolev bounds in that lemma give (CI.7). A finite chart partition gives the displayed estimate for the entire support. It applies to maximal-domain vectors by the compactly supported graph approximation already established, or by the same distributional parametrix identity.</p>
+<p>Apply (CI.7) to <span class="math" data-tex="\(u=(D\pm i)^{-1}v\)">\(u=(D\pm i)^{-1}v\)</span>. The inverse resolvent has norm at most one, and <span class="math" data-tex="\(D(D\pm i)^{-1}\)">\(D(D\pm i)^{-1}\)</span> is bounded, so bounded subsets of <span class="math" data-tex="\(L^2\)">\(L^2\)</span> are carried by <span class="math" data-tex="\(\chi(D\pm i)^{-1}\)">\(\chi(D\pm i)^{-1}\)</span> into a bounded <span class="math" data-tex="\(H^1\)">\(H^1\)</span> set with fixed compact support. The compact Sobolev inclusion, proved by the finite chart/Fourier-truncation argument in the same earlier lemma, makes this operator compact. Approximate an arbitrary <span class="math" data-tex="\(f\in C_0(Y)\)">\(f\in C_0(Y)\)</span> uniformly by compactly supported smooth functions; such approximation follows by scalar truncation, a finite chart partition and ordinary convolution in each chart. The uniform resolvent bound passes compactness to the limit and proves (CI.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-closed-spin-c-dirac-classes">2. Closed spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> Dirac classes</h2>
+<p><strong>Proposition CI.2.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be a closed Riemannian spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> manifold. The spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> Dirac operator defines</p>
+<span class="math math-display" data-tex="\[
+[D_M]\in KK^{\dim M}(C(M),\mathbb C).
+\tag{CI.8}
+\]">\[
+[D_M]\in KK^{\dim M}(C(M),\mathbb C).
+\tag{CI.8}
+\]</span>
+<p><strong>Proof.</strong> In even dimension let <span class="math" data-tex="\(S=S^+\oplus S^-\)">\(S=S^+\oplus S^-\)</span> be the spinor bundle and let <span class="math" data-tex="\(\nabla\)">\(\nabla\)</span> be its Hermitian Clifford connection. For an orthonormal frame put</p>
+<span class="math math-display" data-tex="\[
+D_M=-i\sum_j c(e_j^\flat)\nabla_{e_j}.
+\tag{CI.9}
+\]">\[
+D_M=-i\sum_j c(e_j^\flat)\nabla_{e_j}.
+\tag{CI.9}
+\]</span>
+<p>The connection's change-of-frame rule makes this a global operator. Its principal symbol is <span class="math" data-tex="\(c(\xi)\)">\(c(\xi)\)</span>, hence its square is <span class="math" data-tex="\(\|\xi\|^2\)">\(\|\xi\|^2\)</span> and it is elliptic. Metric compatibility and integration by parts show formal symmetry: the additional divergence terms cancel the connection derivatives of the frame, since
+<span class="math" data-tex="\(\sum_j\nabla_{e_j}e_j+\sum_j(\operatorname{div}e_j)e_j=0\)">\(\sum_j\nabla_{e_j}e_j+\sum_j(\operatorname{div}e_j)e_j=0\)</span>. It is odd for the spinor chirality. Lemma CI.1 gives its self-adjoint closure and compact inverse resolvents. Its closed domain is <span class="math" data-tex="\(H^1(M,S)\)">\(H^1(M,S)\)</span>, by the exact elliptic-domain proof in the earlier Lemma 4.2b.</p>
+<p>Smooth scalar multiplication preserves this domain and</p>
+<span class="math math-display" data-tex="\[
+[D_M,f]=-i\,c(df),\qquad f\in C^\infty(M).
+\tag{CI.10}
+\]">\[
+[D_M,f]=-i\,c(df),\qquad f\in C^\infty(M).
+\tag{CI.10}
+\]</span>
+<p>This commutator is bounded. Smooth functions are uniformly dense in <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span>, by the finite chart convolution argument. The Hilbert space <span class="math" data-tex="\(L^2(M,S)\)">\(L^2(M,S)\)</span> is separable, by finite bundle charts and the countable Fourier dense families in their coordinate boxes, so it is a countably generated Hilbert <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>-module. <a href="KT-KK-11.html#2-the-bounded-transform">The Baaj–Julg bounded-transform proof, Theorem 2.2 of the earlier lesson</a>, now proves that</p>
+<span class="math math-display" data-tex="\[
+\big(L^2(M,S),\text{multiplication},
+D_M(1+D_M^2)^{-1/2}\big)
+\tag{CI.11}
+\]">\[
+\big(L^2(M,S),\text{multiplication},
+D_M(1+D_M^2)^{-1/2}\big)
+\tag{CI.11}
+\]</span>
+<p>is the required even cycle. This constructs the class; no index theorem is needed to obtain it.</p>
+<p>In odd dimension use the ungraded spinor space and the same self-adjoint operator, then the right-Clifford convention: tensor the Hilbert space with <span class="math" data-tex="\(Cl_1\)">\(Cl_1\)</span>, grade by that final factor, and replace <span class="math" data-tex="\(D_M\)">\(D_M\)</span> by <span class="math" data-tex="\(D_M\otimes\epsilon\)">\(D_M\otimes\epsilon\)</span>. Its square, inverse-resolvent formula, compactness and commutator checks are the same ones tensored with a finite-dimensional algebra. The right module is countably generated. Its bounded transform is an even cycle with coefficient <span class="math" data-tex="\(Cl_1\)">\(Cl_1\)</span>, which is exactly the definition of the odd group in (CI.8). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-j_-cotangent-dolbeault-element-in-every-base-dimension">3. The <span class="math" data-tex="\(J_+\)">\(J_+\)</span> cotangent Dolbeault element in every base dimension</h2>
+<p>The following construction needs neither an orientation nor a spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure on the base manifold. Its explicit almost complex convention is denoted <span class="math" data-tex="\(J_+\)">\(J_+\)</span>; Section 5 compares it with the convention compatible with the outward Thom elements. Let <span class="math" data-tex="\(M\)">\(M\)</span> be any closed Riemannian manifold and <span class="math" data-tex="\(Q=T^*M\)">\(Q=T^*M\)</span>. The Levi-Civita connection splits</p>
+<span class="math math-display" data-tex="\[
+T_{(x,\xi)}Q\cong T_xM\oplus T_x^*M.
+\]">\[
+T_{(x,\xi)}Q\cong T_xM\oplus T_x^*M.
+\]</span>
+<p>With the horizontal metric <span class="math" data-tex="\(g\)">\(g\)</span> and vertical metric <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span>, define the orthogonal almost complex structure</p>
+<span class="math math-display" data-tex="\[
+J(v,\eta)=(-g^{-1}\eta,gv).
+\tag{CI.12}
+\]">\[
+J(v,\eta)=(-g^{-1}\eta,gv).
+\tag{CI.12}
+\]</span>
+<p>Thus <span class="math" data-tex="\(J^2=-1\)">\(J^2=-1\)</span>; in a flat orthonormal coordinate system it gives the complex coordinates <span class="math" data-tex="\(x_j+i\xi_j\)">\(x_j+i\xi_j\)</span>. Its spinor bundle is <span class="math" data-tex="\(\Lambda^{0,*}T^*Q\)">\(\Lambda^{0,*}T^*Q\)</span>, graded by degree. The elementary complex exterior spinor construction and determinant convention are the earlier <a href="KT-KK-13.html#6-complex-bundles-and-relative-symbols"><em>Thom isomorphisms and K-orientations in KK</em>, Section 6</a>; the Hermitian metric identifies that model with the anti-holomorphic cotangent model here.</p>
+<p>For a compactly supported <span class="math" data-tex="\((0,q)\)">\((0,q)\)</span>-form let <span class="math" data-tex="\(\bar\partial_J\)">\(\bar\partial_J\)</span> be the <span class="math" data-tex="\((0,q+1)\)">\((0,q+1)\)</span>-part of its exterior derivative, and take its formal adjoint for this metric and density. Define</p>
+<span class="math math-display" data-tex="\[
+P_Q=\sqrt2\,(\bar\partial_J+\bar\partial_J^*).
+\tag{CI.13}
+\]">\[
+P_Q=\sqrt2\,(\bar\partial_J+\bar\partial_J^*).
+\tag{CI.13}
+\]</span>
+<p>Integrability of <span class="math" data-tex="\(J\)">\(J\)</span> is unnecessary: (CI.13) is an odd formally symmetric first-order operator even when <span class="math" data-tex="\(\bar\partial_J^2\ne0\)">\(\bar\partial_J^2\ne0\)</span>. For a real covector <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span>, its principal symbol is</p>
+<span class="math math-display" data-tex="\[
+\gamma_J(\zeta)
+=i\sqrt2\big(\varepsilon(\zeta^{0,1})
+-\varepsilon(\zeta^{0,1})^*\big).
+\tag{CI.14}
+\]">\[
+\gamma_J(\zeta)
+=i\sqrt2\big(\varepsilon(\zeta^{0,1})
+-\varepsilon(\zeta^{0,1})^*\big).
+\tag{CI.14}
+\]</span>
+<p>The wedge/contraction relations give <span class="math" data-tex="\(\gamma_J(\zeta)^2=\|\zeta\|^2\)">\(\gamma_J(\zeta)^2=\|\zeta\|^2\)</span>; the symbol is self-adjoint and has norm <span class="math" data-tex="\(\|\zeta\|\)">\(\|\zeta\|\)</span>. This verifies ellipticity and (CI.1) directly. The factor <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> compensates for <span class="math" data-tex="\(\|\zeta^{0,1}\|^2=\|\zeta\|^2/2\)">\(\|\zeta^{0,1}\|^2=\|\zeta\|^2/2\)</span>.</p>
+<p>The function</p>
+<span class="math math-display" data-tex="\[
+r(x,\xi)=\sqrt{1+\|\xi\|^2}
+\tag{CI.15}
+\]">\[
+r(x,\xi)=\sqrt{1+\|\xi\|^2}
+\tag{CI.15}
+\]</span>
+<p>is smooth and proper because the base is compact and bounded closed ball bundles are compact. Parallel transport preserves <span class="math" data-tex="\(\|\xi\|\)">\(\|\xi\|\)</span>, so its horizontal derivative is zero. Its vertical gradient has norm <span class="math" data-tex="\(\|\xi\|/\sqrt{1+\|\xi\|^2}\leq1\)">\(\|\xi\|/\sqrt{1+\|\xi\|^2}\leq1\)</span>. Thus Lemma CI.1 applies, proving essential self-adjointness and localized compactness for the closure <span class="math" data-tex="\(D_Q\)">\(D_Q\)</span>. For <span class="math" data-tex="\(f\in C_c^\infty(Q)\)">\(f\in C_c^\infty(Q)\)</span>, its commutator is multiplication by the symbol at <span class="math" data-tex="\(df\)">\(df\)</span>, up to the fixed factor <span class="math" data-tex="\(-i\)">\(-i\)</span>; it is bounded and preserves the closed domain. The earlier bounded-transform theorem consequently constructs</p>
+<span class="math math-display" data-tex="\[
+[\bar\partial_{M,+}]
+=\big[L^2(Q,\Lambda^{0,*}T^*Q),\text{multiplication},
+D_Q(1+D_Q^2)^{-1/2}\big]
+\in KK(C_0(T^*M),\mathbb C).
+\tag{CI.16}
+\]">\[
+[\bar\partial_{M,+}]
+=\big[L^2(Q,\Lambda^{0,*}T^*Q),\text{multiplication},
+D_Q(1+D_Q^2)^{-1/2}\big]
+\in KK(C_0(T^*M),\mathbb C).
+\tag{CI.16}
+\]</span>
+<p>Separable countable generation follows from the countable bundle chart cover and compactly supported coordinate dense families, as before. This proof applies when <span class="math" data-tex="\(\dim M\)">\(\dim M\)</span> is odd and when <span class="math" data-tex="\(M\)">\(M\)</span> is nonorientable; <span class="math" data-tex="\(Q\)">\(Q\)</span> itself has the displayed almost complex structure and even real dimension.</p>
+<p>The normalization in (CI.13) has no effect on the class: positive scalar rescaling gives the norm-continuous bounded-transform homotopy proved in the earlier product-recognition section. These formulas construct the analytic elements needed for the index comparison. Their construction alone does not identify a symbol product or the embedding topological index.</p>
+<h2 id="4-dependence-on-the-geometric-choices">4. Dependence on the geometric choices</h2>
+<p><strong>Lemma CI.4 (a smooth family is a cycle homotopy).</strong> Suppose a family <span class="math" data-tex="\(P_s\)">\(P_s\)</span>, <span class="math" data-tex="\(0\leq s\leq1\)">\(0\leq s\leq1\)</span>, satisfies Lemma CI.1, is elliptic, and has smooth coefficients depending smoothly on <span class="math" data-tex="\(s\)">\(s\)</span>. Identify its Hermitian bundle and density spaces with one fixed graded <span class="math" data-tex="\(L^2\)">\(L^2\)</span> space by smooth even pointwise unitary maps. Suppose the localized elliptic estimates (CI.7) hold uniformly on compact sets and the scalar multiplication source is fixed under these maps. Then the bounded-transform cycles form a Hilbert-module homotopy. Norm continuity of the unlocalized bounded transforms is not an additional hypothesis.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(D_s\)">\(D_s\)</span> for the self-adjoint closures. Every compactly supported smooth vector is in every domain, and <span class="math" data-tex="\(s\mapsto D_su\)">\(s\mapsto D_su\)</span> is norm-continuous for such a vector. The inverse resolvents <span class="math" data-tex="\(R_s^\pm=(D_s\pm i)^{-1}\)">\(R_s^\pm=(D_s\pm i)^{-1}\)</span> are strongly continuous. To prove this at <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, first take <span class="math" data-tex="\(v=(D_{s_0}\pm i)u\)">\(v=(D_{s_0}\pm i)u\)</span> with <span class="math" data-tex="\(u\)">\(u\)</span> compactly supported and smooth. The resolvent identity on this common core gives</p>
+<span class="math math-display" data-tex="\[
+R_s^\pm v-u=R_s^\pm(D_{s_0}-D_s)u\longrightarrow0.
+\tag{CI.17}
+\]">\[
+R_s^\pm v-u=R_s^\pm(D_{s_0}-D_s)u\longrightarrow0.
+\tag{CI.17}
+\]</span>
+<p>Such <span class="math" data-tex="\(v\)">\(v\)</span> are dense, by the core and surjectivity already proved. The uniform bound <span class="math" data-tex="\(\|R_s^\pm\|\leq1\)">\(\|R_s^\pm\|\leq1\)</span> extends continuity to every vector. The same argument for the opposite sign gives strong continuity of the adjoints.</p>
+<p>These fields therefore act adjointably on <span class="math" data-tex="\(\mathcal H=C([0,1],L^2(Y,W))\)">\(\mathcal H=C([0,1],L^2(Y,W))\)</span>. Their pointwise resolvent identities define a self-adjoint regular operator <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, with domain consisting of sections whose values lie in <span class="math" data-tex="\(\operatorname{Dom}D_s\)">\(\operatorname{Dom}D_s\)</span> and whose images under <span class="math" data-tex="\(D_s\)">\(D_s\)</span> are continuous. For clarity, finite sums of smooth compactly supported vectors with continuous scalar parameter coefficients are a graph core. Given a continuous target section <span class="math" data-tex="\(v(s)\)">\(v(s)\)</span>, select at each of finitely many parameters a smooth vector <span class="math" data-tex="\(u_j\)">\(u_j\)</span> approximating <span class="math" data-tex="\(R_{s_j}^\pm v(s_j)\)">\(R_{s_j}^\pm v(s_j)\)</span> in its graph norm. Continuity of <span class="math" data-tex="\((D_s\pm i)u_j\)">\((D_s\pm i)u_j\)</span> and of <span class="math" data-tex="\(v(s)\)">\(v(s)\)</span> gives the same approximation on a neighborhood. A finite parameter partition of unity yields a section whose image under <span class="math" data-tex="\(\mathcal D\pm i\)">\(\mathcal D\pm i\)</span> approximates <span class="math" data-tex="\(v\)">\(v\)</span> uniformly. Applying the bounded inverse resolvent proves graph convergence. This verifies the claimed closure and the dense domain; the same resolvents prove regularity by the earlier resolvent lemma.</p>
+<p>For a compactly supported smooth <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, the uniform estimate (CI.7) makes the family <span class="math" data-tex="\(\chi R_s^\pm\)">\(\chi R_s^\pm\)</span> collectively compact: its images of unit balls lie in a uniformly bounded <span class="math" data-tex="\(H^1\)">\(H^1\)</span> set with fixed compact support. Compact inclusion permits a finite-dimensional orthogonal projection <span class="math" data-tex="\(p\)">\(p\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\sup_s\|(1-p)\chi R_s^\pm\|&lt;\varepsilon.
+\]">\[
+\sup_s\|(1-p)\chi R_s^\pm\|&lt;\varepsilon.
+\]</span>
+<p>The operators <span class="math" data-tex="\(p\chi R_s^\pm\)">\(p\chi R_s^\pm\)</span> vary in norm, since their adjoints are the strongly continuous operators <span class="math" data-tex="\(R_s^\mp\chi^*p\)">\(R_s^\mp\chi^*p\)</span> restricted to the finite-dimensional range of <span class="math" data-tex="\(p\)">\(p\)</span>. Uniform finite-rank approximation proves that <span class="math" data-tex="\(s\mapsto\chi R_s^\pm\)">\(s\mapsto\chi R_s^\pm\)</span> is a norm-continuous compact field. Uniform approximation of <span class="math" data-tex="\(f\in C_0(Y)\)">\(f\in C_0(Y)\)</span> by these smooth cutoffs proves the same for <span class="math" data-tex="\(fR_s^\pm\)">\(fR_s^\pm\)</span>.</p>
+<p>The smooth compactly supported source algebra preserves the core and has bounded parameter-continuous commutators with <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. The module <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> is countably generated, using constant vectors from a countable Hilbert basis. Its localized inverse resolvents are the compact fields just proved. Apply the earlier Hilbert-module bounded-transform theorem to <span class="math" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>. Evaluation at either endpoint gives the original bounded-transform cycle by its resolvent functional calculus. This is the required homotopy. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a fixed spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure, metrics are joined by their convex positive-definite interpolation and Hermitian Clifford connections by the affine interpolation of compatible connections, using the smooth identification of the metric orthonormal frame bundles by the positive square root of the relative metric matrix. The resulting spinor spaces are identified evenly and pointwise. On a closed base all elliptic estimates are uniform on the compact parameter interval. Lemma CI.4 proves independence of these metric and connection choices in (CI.8). In odd dimension apply its resolvent and compact-field arguments after the finite right-Clifford transfer: the inverse of <span class="math" data-tex="\(D_s\otimes\epsilon\pm i\)">\(D_s\otimes\epsilon\pm i\)</span> is <span class="math" data-tex="\((D_s\otimes\epsilon\mp i)(1+D_s^2)^{-1}\)">\((D_s\otimes\epsilon\mp i)(1+D_s^2)^{-1}\)</span>, so the same continuity and compactness follow from the scalar resolvents and the fixed finite Clifford factors.</p>
+<p>For (CI.16), interpolate the base metrics. Their Levi-Civita connections, the splittings (CI.12), and the exterior spinor bundles vary smoothly on <span class="math" data-tex="\(T^*M\times[0,1]\)">\(T^*M\times[0,1]\)</span>. An even Hermitian connection on this parameter bundle identifies the fibers by parameter-direction parallel transport; multiplication by base functions is preserved. Each parameter has the proper radial function (CI.15), so essential self-adjointness follows individually from CI.1. On any selected compact support the parameter-dependent coefficients and ellipticity constants are uniformly controlled, giving exactly the uniform local estimates required in CI.4. It follows that the cotangent Dolbeault element is independent of the chosen base metric. This argument does not require a uniform global bound on the change between two Sasaki metrics.</p>
+<h2 id="5-the-clifford-inverse-and-the-two-cotangent-conventions">5. The Clifford inverse and the two cotangent conventions</h2>
+<p>Put <span class="math" data-tex="\(V=T^*M\)">\(V=T^*M\)</span>, <span class="math" data-tex="\(R=C(M)\)">\(R=C(M)\)</span>, <span class="math" data-tex="\(B=C_0(V)\)">\(B=C_0(V)\)</span>, <span class="math" data-tex="\(C=\Gamma(\operatorname{Cl}(V))\)">\(C=\Gamma(\operatorname{Cl}(V))\)</span>, and <span class="math" data-tex="\(n=\dim M\)">\(n=\dim M\)</span>; components of different dimensions are treated separately. Write
+<span class="math math-display" data-tex="\[
+ \epsilon_n=(-1)^{n(n-1)/2}.
+ \tag{CI.18}
+\]">\[
+ \epsilon_n=(-1)^{n(n-1)/2}.
+ \tag{CI.18}
+\]</span>
+On <span class="math" data-tex="\(\Lambda^*V_{\mathbb C}\)">\(\Lambda^*V_{\mathbb C}\)</span>, use
+<span class="math math-display" data-tex="\[
+ c_j=\varepsilon_j+\iota_j,\qquad
+ f_j=i(\varepsilon_j-\iota_j),\qquad
+ \Gamma_0=(-1)^N.
+ \tag{CI.19}
+\]">\[
+ c_j=\varepsilon_j+\iota_j,\qquad
+ f_j=i(\varepsilon_j-\iota_j),\qquad
+ \Gamma_0=(-1)^N.
+ \tag{CI.19}
+\]</span>
+The Clifford Thom equivalence of <em>Thom isomorphisms and K-orientations in KK</em>, Theorem 4.2, has the concrete forward module
+<span class="math math-display" data-tex="\[
+ \mathcal X=C_0(V,\pi^*\Lambda^*V_{\mathbb C}),\quad
+ \Gamma_{\mathcal X}=\epsilon_n\Gamma_0,\quad
+ e_j\longmapsto f_j,\quad X=c(\xi).
+ \tag{CI.20}
+\]">\[
+ \mathcal X=C_0(V,\pi^*\Lambda^*V_{\mathbb C}),\quad
+ \Gamma_{\mathcal X}=\epsilon_n\Gamma_0,\quad
+ e_j\longmapsto f_j,\quad X=c(\xi).
+ \tag{CI.20}
+\]</span>
+Its bounded transform represents <span class="math" data-tex="\(x_V\in KK_R(C,B)\)">\(x_V\in KK_R(C,B)\)</span>. The representation of a varying Clifford section is pointwise at the base point. All algebras in this section are separable and the intermediates are <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-unital: <span class="math" data-tex="\(M\)">\(M\)</span> is compact and second countable, <span class="math" data-tex="\(C\)">\(C\)</span> is finite-dimensional over <span class="math" data-tex="\(R\)">\(R\)</span>, and radial cutoffs give a countable approximate identity of <span class="math" data-tex="\(B\)">\(B\)</span>. Thus the actual preceding product theorems apply.</p>
+<p><strong>Lemma CI.5 (an explicit inverse with its grading).</strong> The inverse <span class="math" data-tex="\(y_V\in KK_R(B,C)\)">\(y_V\in KK_R(B,C)\)</span> is represented on the Hilbert <span class="math" data-tex="\(C\)">\(C\)</span>-module
+<span class="math math-display" data-tex="\[
+ \mathcal Y=\Gamma\bigl(x\longmapsto L^2(V_x)\widehat\otimes
+                    \operatorname{Cl}(V_x)\bigr),\qquad
+ \Gamma_{\mathcal Y}=\epsilon_n\Gamma_{\operatorname{Cl}},
+ \qquad
+ D_{\mathcal Y}=i\epsilon_n\sum_j e_j\partial_{\xi_j}.
+ \tag{CI.21}
+\]">\[
+ \mathcal Y=\Gamma\bigl(x\longmapsto L^2(V_x)\widehat\otimes
+                    \operatorname{Cl}(V_x)\bigr),\qquad
+ \Gamma_{\mathcal Y}=\epsilon_n\Gamma_{\operatorname{Cl}},
+ \qquad
+ D_{\mathcal Y}=i\epsilon_n\sum_j e_j\partial_{\xi_j}.
+ \tag{CI.21}
+\]</span>
+Here <span class="math" data-tex="\(e_j\)">\(e_j\)</span> acts by <strong>left</strong> multiplication on the coefficient Clifford algebra. The right action is the ordinary right Clifford action. The source <span class="math" data-tex="\(B\)">\(B\)</span> acts by scalar multiplication. Neither orientation nor a spinor bundle is needed.</p>
+<p><strong>Proof: the operator and its module.</strong> Orthogonal changes of frame act by the change of variable on <span class="math" data-tex="\(L^2(V_x)\)">\(L^2(V_x)\)</span> and by the Clifford algebra isomorphism. They preserve (CI.21), its grading and the fiber Lebesgue measure. In a frame, Fourier transformation turns its symbol into <span class="math" data-tex="\(-\epsilon_n\sum e_j\zeta_j\)">\(-\epsilon_n\sum e_j\zeta_j\)</span>, whose square is <span class="math" data-tex="\(|\zeta|^2\)">\(|\zeta|^2\)</span>. The inverse resolvents are the Fourier multipliers
+<span class="math math-display" data-tex="\[
+ \frac{D_{\mathcal Y}\mp i}{1+D_{\mathcal Y}^2}.
+\]">\[
+ \frac{D_{\mathcal Y}\mp i}{1+D_{\mathcal Y}^2}.
+\]</span>
+Their norms are at most one, their adjoints are the opposite resolvents, and their ranges are the first vertical Sobolev domain. This is exactly the Fourier/domain argument in the Bott lesson's Lemma 3.1, with a finite Clifford coefficient. The resolvents glue under the frame unitaries; their ranges contain the sections smooth and compactly supported in the fiber in a chart. A finite partition proves density and hence self-adjoint regularity by the resolvent lemma.</p>
+<p>A finite cover and countably many smooth compactly supported fiber vectors, times the finitely many coefficient Clifford frame vectors, give countably many module generators. For a compactly supported source in a chart, the localized resolvents are compact by the Bott lesson's frequency cutoff and square-integrable-kernel argument. Tensoring with the finite coefficient matrices and multiplying chart partitions on both sides gives global finite-rank approximations. Summing over the finite cover, then approximating an arbitrary <span class="math" data-tex="\(B\)">\(B\)</span>-source by fiber cutoffs, proves local compactness. The smooth compactly supported source has bounded commutators <span class="math" data-tex="\(i\epsilon_n c(d_{\mathrm{vert}}b)\)">\(i\epsilon_n c(d_{\mathrm{vert}}b)\)</span> and preserves the Sobolev domain. The bounded-transform theorem supplies the cycle.</p>
+<p><strong>Proof: the inverse identification.</strong> On <span class="math" data-tex="\(\mathcal X\widehat\otimes_B\mathcal Y\)">\(\mathcal X\widehat\otimes_B\mathcal Y\)</span>, the proposed product is the fiber operator
+<span class="math math-display" data-tex="\[
+ Q=c(\xi)+i\Gamma_0\sum_j L_{e_j}\partial_{\xi_j},
+ \qquad
+ \Gamma_{\mathcal X\otimes\mathcal Y}
+       =\Gamma_0\widehat\otimes\Gamma_{\operatorname{Cl}} .
+ \tag{CI.22}
+\]">\[
+ Q=c(\xi)+i\Gamma_0\sum_j L_{e_j}\partial_{\xi_j},
+ \qquad
+ \Gamma_{\mathcal X\otimes\mathcal Y}
+       =\Gamma_0\widehat\otimes\Gamma_{\operatorname{Cl}} .
+ \tag{CI.22}
+\]</span>
+The two occurrences of <span class="math" data-tex="\(\epsilon_n\)">\(\epsilon_n\)</span> cancel in these expressions. Its domain is the weighted vertical Sobolev domain. Squaring on smooth compactly supported vectors gives the scalar harmonic oscillator plus the <span class="math" data-tex="\(n\)">\(n\)</span> commuting self-adjoint involutions
+<span class="math math-display" data-tex="\[
+ K_j=-i c_j\Gamma_0 L_{e_j}.
+ \tag{CI.23}
+\]">\[
+ K_j=-i c_j\Gamma_0 L_{e_j}.
+ \tag{CI.23}
+\]</span>
+The Clifford anticommutation relations give <span class="math" data-tex="\(K_j^2=1\)">\(K_j^2=1\)</span> and <span class="math" data-tex="\(K_jK_k=K_kK_j\)">\(K_jK_k=K_kK_j\)</span>. The scalar oscillator is bounded below by <span class="math" data-tex="\(n\)">\(n\)</span>; its ground vector is <span class="math" data-tex="\(g(\xi)=\pi^{-n/4}e^{-|\xi|^2/2}\)">\(g(\xi)=\pi^{-n/4}e^{-|\xi|^2/2}\)</span>, and its other Hermite levels are at least <span class="math" data-tex="\(n+2\)">\(n+2\)</span>. These exact assertions, with the complete graph domain and compact inclusion, are proved in the Bott lesson's Lemma 4.0. Diagonalizing the finitely many matrices <span class="math" data-tex="\(K_j\)">\(K_j\)</span> gives the bounded inverse of <span class="math" data-tex="\(1+Q^2\)">\(1+Q^2\)</span> in the Hermite decomposition. The operators <span class="math" data-tex="\((Q\mp i)(1+Q^2)^{-1}\)">\((Q\mp i)(1+Q^2)^{-1}\)</span> are mutually adjoint bounded inverse resolvents of <span class="math" data-tex="\(Q\pm i\)">\(Q\pm i\)</span>, with ranges the weighted graph domain: the identity <span class="math" data-tex="\(\|Qu\|^2=\langle u,(-\Delta+|\xi|^2+\sum K_j)u\rangle\)">\(\|Qu\|^2=\langle u,(-\Delta+|\xi|^2+\sum K_j)u\rangle\)</span> identifies its graph norm with that weighted norm, and the smooth Hermite core is dense for it. The resolvent argument proves self-adjoint regularity, compact fiber resolvents and a gap at least <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span> off the kernel. No unbounded-domain conclusion is inferred merely from formal squaring.</p>
+<p>The common <span class="math" data-tex="\(-1\)">\(-1\)</span> eigenspace in (CI.23) is the right coefficient module generated by
+<span class="math math-display" data-tex="\[
+ w=2^{-n/2}\sum_{I=(i_1&lt;\cdots&lt;i_k)}
+       (e_{i_1}\wedge\cdots\wedge e_{i_k})
+             \otimes i^k e_{i_k}\cdots e_{i_1}.
+ \tag{CI.24}
+\]">\[
+ w=2^{-n/2}\sum_{I=(i_1&lt;\cdots&lt;i_k)}
+       (e_{i_1}\wedge\cdots\wedge e_{i_k})
+             \otimes i^k e_{i_k}\cdots e_{i_1}.
+ \tag{CI.24}
+\]</span>
+Indeed exterior creation and contraction, with the sign from moving a generator through the ordered word, give
+<span class="math math-display" data-tex="\[
+ (c_j-i\Gamma_0L_{e_j})w=0,\qquad
+ f_jw=w e_j,\qquad
+ \langle w,w\rangle=1_C.
+ \tag{CI.25}
+\]">\[
+ (c_j-i\Gamma_0L_{e_j})w=0,\qquad
+ f_jw=w e_j,\qquad
+ \langle w,w\rangle=1_C.
+ \tag{CI.25}
+\]</span>
+For the last identity each of the <span class="math" data-tex="\(2^n\)">\(2^n\)</span> coefficient words is unitary. For completeness, the first identity determines every coefficient recursively from the vacuum coefficient: its degree-<span class="math" data-tex="\(k\)">\(k\)</span> coefficient is <span class="math" data-tex="\(i^ke_{i_k}\cdots e_{i_1}\)">\(i^ke_{i_k}\cdots e_{i_1}\)</span>. Thus it describes the whole simultaneous eigenspace, not just one vector in it. The generator <span class="math" data-tex="\(w\)">\(w\)</span> is even, because its form degree and coefficient degree agree. Its formula is orthogonally invariant: alternating Clifford multiplication and the exterior inner product are invariant; reversal of the Clifford word is invariant as well. Hence <span class="math" data-tex="\(gw\)">\(gw\)</span> is a global even unit section. Equations (CI.25) identify its source and coefficient actions with the identity <span class="math" data-tex="\(C\)">\(C\)</span>-<span class="math" data-tex="\(C\)">\(C\)</span> correspondence.</p>
+<p>The oscillator resolvents are compact on the global <span class="math" data-tex="\(C\)">\(C\)</span>-module, rather than merely fiberwise: the compact resolvent field is norm-continuous under the strongly continuous transition unitaries, first for rank ones and then by approximation. A finite chart partition gives global finite-rank approximations, as in the actual proof of the parametrized Bott theorem. Creations from smooth compactly supported sections of <span class="math" data-tex="\(\mathcal X\)">\(\mathcal X\)</span> have bounded errors relative to <span class="math" data-tex="\(D_{\mathcal Y}\)">\(D_{\mathcal Y}\)</span>: the errors are multiplication by their position and vertical derivative, both bounded on the selected support. The adjoint error follows by vertical integration by parts; it gives the required adjoint domain inclusion. Moreover <span class="math" data-tex="\(\operatorname{Dom}Q\subset\operatorname{Dom}X\)">\(\operatorname{Dom}Q\subset\operatorname{Dom}X\)</span>, and
+<span class="math math-display" data-tex="\[
+ 2\operatorname{Re}\langle Q u,Xu\rangle
+       \geq-n\langle u,u\rangle
+\]">\[
+ 2\operatorname{Re}\langle Q u,Xu\rangle
+       \geq-n\langle u,u\rangle
+\]</span>
+on the graph domain, by the bounded matrix term in (CI.23). The proved unbounded product criterion identifies (CI.22) with <span class="math" data-tex="\(x_V\otimes_B[\mathcal Y]\)">\(x_V\otimes_B[\mathcal Y]\)</span>. Deforming the complementary oscillator bounded transform to its sign leaves <span class="math" data-tex="\(C\)">\(C\)</span> on the even Gaussian summand and an exactly degenerate complement: the source action is fiberwise Clifford multiplication and intertwines (CI.25), and it graded commutes with <span class="math" data-tex="\(Q\)">\(Q\)</span>. Thus <span class="math" data-tex="\(x_V\otimes_B[\mathcal Y]=1_C\)">\(x_V\otimes_B[\mathcal Y]=1_C\)</span>. The already proved inverse pair of Theorem 4.2 now implies
+<span class="math math-display" data-tex="\[
+ [\mathcal Y]
+  =(y_V\otimes_C x_V)\otimes_B[\mathcal Y]=y_V .
+\]">\[
+ [\mathcal Y]
+  =(y_V\otimes_C x_V)\otimes_B[\mathcal Y]=y_V .
+\]</span>
+This identifies the actual inverse, including every sign in (CI.21). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define the Clifford Dirac class by the closure of
+<span class="math math-display" data-tex="\[
+ \mathscr D_M=-i\sum_j c_j\nabla_{e_j}
+ \quad\hbox{on }\ L^2(M,\Lambda^*V_{\mathbb C}),\qquad
+ \Gamma_M=\epsilon_n\Gamma_0,\qquad C\ni e_j\longmapsto f_j.
+ \tag{CI.26}
+\]">\[
+ \mathscr D_M=-i\sum_j c_j\nabla_{e_j}
+ \quad\hbox{on }\ L^2(M,\Lambda^*V_{\mathbb C}),\qquad
+ \Gamma_M=\epsilon_n\Gamma_0,\qquad C\ni e_j\longmapsto f_j.
+ \tag{CI.26}
+\]</span>
+The exterior connection is the metric connection. Clifford families <span class="math" data-tex="\(c\)">\(c\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> graded commute. Consequently the graded commutator with a smooth Clifford section is multiplication by its covariant derivative contracted with <span class="math" data-tex="\(c\)">\(c\)</span>, hence bounded. The scalar elliptic symbol is <span class="math" data-tex="\(c(\zeta)\)">\(c(\zeta)\)</span>. Lemma CI.1 and the closed-manifold elliptic domain proof give self-adjointness, the domain <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, compact resolvents and the bounded-transform cycle
+<span class="math math-display" data-tex="\[
+ [\mathscr D_M]\in KK(C,\mathbb C).
+ \tag{CI.27}
+\]">\[
+ [\mathscr D_M]\in KK(C,\mathbb C).
+ \tag{CI.27}
+\]</span>
+The formal symmetry verification is the same frame/divergence cancellation as in CI.2. This construction applies in every dimension and on nonorientable <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>Set
+<span class="math math-display" data-tex="\[
+ J_-(v,\eta)=(g^{-1}\eta,-gv).
+ \tag{CI.28}
+\]">\[
+ J_-(v,\eta)=(g^{-1}\eta,-gv).
+ \tag{CI.28}
+\]</span>
+Construct <span class="math" data-tex="\([\bar\partial_{M,-}]\)">\([\bar\partial_{M,-}]\)</span> by Section 3 with <span class="math" data-tex="\(J_-\)">\(J_-\)</span> in place of <span class="math" data-tex="\(J_+\)">\(J_+\)</span>. Its proper radial function and ellipticity are unchanged. In a local orthonormal identification of its anti-holomorphic forms with <span class="math" data-tex="\(\Lambda^*V_{\mathbb C}\)">\(\Lambda^*V_{\mathbb C}\)</span>, its horizontal and vertical symbols are respectively <span class="math" data-tex="\(f_j\)">\(f_j\)</span> and <span class="math" data-tex="\(c_j\)">\(c_j\)</span>.</p>
+<p><strong>Theorem CI.6 (the full Clifford Thom–Dolbeault identities).</strong> For every closed manifold, including odd-dimensional and nonorientable manifolds,
+<span class="math math-display" data-tex="\[
+ y_V\otimes_C[\mathscr D_M]=[\bar\partial_{M,-}],
+ \qquad
+ x_V\otimes_B[\bar\partial_{M,-}]=[\mathscr D_M].
+ \tag{CI.29}
+\]">\[
+ y_V\otimes_C[\mathscr D_M]=[\bar\partial_{M,-}],
+ \qquad
+ x_V\otimes_B[\bar\partial_{M,-}]=[\mathscr D_M].
+ \tag{CI.29}
+\]</span></p>
+<p><strong>Proof.</strong> Give the fiber Hilbert bundle in (CI.21) its metric parallel-transport connection. This transports the fiber Lebesgue measure, Clifford multiplication and vertical derivative together, and therefore preserves <span class="math" data-tex="\(D_{\mathcal Y}\)">\(D_{\mathcal Y}\)</span>. The tensor evaluation identifies
+<span class="math math-display" data-tex="\[
+ \mathcal Y\widehat\otimes_C L^2(M,\Lambda^*V_{\mathbb C})
+       \cong L^2(V,\pi^*\Lambda^*V_{\mathbb C})
+\]">\[
+ \mathcal Y\widehat\otimes_C L^2(M,\Lambda^*V_{\mathbb C})
+       \cong L^2(V,\pi^*\Lambda^*V_{\mathbb C})
+\]</span>
+with grading <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span>, because the two factors <span class="math" data-tex="\(\epsilon_n\)">\(\epsilon_n\)</span> cancel. On a smooth core the connection tensor sum is
+<span class="math math-display" data-tex="\[
+ L=\epsilon_n\left(-i\sum_jc_j\nabla_{H_j}
+                         -\sum_j\widehat c_j\partial_{\xi_j}\right),
+ \qquad \widehat c_j=\varepsilon_j-\iota_j .
+ \tag{CI.30}
+\]">\[
+ L=\epsilon_n\left(-i\sum_jc_j\nabla_{H_j}
+                         -\sum_j\widehat c_j\partial_{\xi_j}\right),
+ \qquad \widehat c_j=\varepsilon_j-\iota_j .
+ \tag{CI.30}
+\]</span>
+The horizontal lift <span class="math" data-tex="\(H_j\)">\(H_j\)</span> includes the variation of the fiber coordinate under the connection; it is not a derivative at a fixed arbitrary coordinate trivialization. Parallel transport preserves the vertical operator, so its derivative along <span class="math" data-tex="\(H_j\)">\(H_j\)</span> is zero. In addition <span class="math" data-tex="\(c_j\)">\(c_j\)</span> anticommutes with every <span class="math" data-tex="\(f_k=i\widehat c_k\)">\(f_k=i\widehat c_k\)</span>. These two identities give exact anticommutation between the horizontal and vertical summands of (CI.30). The horizontal summand is formally symmetric: the fiber transport has zero infinitesimal divergence, and the remaining frame/divergence cancellation is the one on <span class="math" data-tex="\(M\)">\(M\)</span>. Thus, on the core,
+<span class="math math-display" data-tex="\[
+ \|Lu\|^2=\|D_{\mathrm{vert}}u\|^2+\|D_{\mathrm{hor}}u\|^2,\qquad
+ 2\operatorname{Re}\langle Lu,D_{\mathrm{vert}}u\rangle
+          =2\|D_{\mathrm{vert}}u\|^2\geq0.
+ \tag{CI.31}
+\]">\[
+ \|Lu\|^2=\|D_{\mathrm{vert}}u\|^2+\|D_{\mathrm{hor}}u\|^2,\qquad
+ 2\operatorname{Re}\langle Lu,D_{\mathrm{vert}}u\rangle
+          =2\|D_{\mathrm{vert}}u\|^2\geq0.
+ \tag{CI.31}
+\]</span></p>
+<p>The principal symbol of <span class="math" data-tex="\(L\)">\(L\)</span> is an orthogonal Clifford symbol for the connection metric. The proper function (CI.15) has bounded gradient for it. Lemma CI.1 therefore proves essential self-adjointness and localized compactness on the full cotangent space, with smooth compactly supported sections as a graph core. The vertical summand is the self-adjoint regular tensor extension of <span class="math" data-tex="\(D_{\mathcal Y}\)">\(D_{\mathcal Y}\)</span>. Applying (CI.31) to graph approximants proves <span class="math" data-tex="\(\operatorname{Dom}L\subset\operatorname{Dom}D_{\mathrm{vert}}\)">\(\operatorname{Dom}L\subset\operatorname{Dom}D_{\mathrm{vert}}\)</span> and the displayed positivity on that domain. This is a global domain estimate; no bounded-curvature assertion is required.</p>
+<p>For a smooth section of <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span> with compact fiber support, the creation error for <span class="math" data-tex="\(L\)">\(L\)</span> and <span class="math" data-tex="\(\mathscr D_M\)">\(\mathscr D_M\)</span> is the column formed by its vertical derivative and its horizontal covariant derivative. It is bounded: its fiber <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm is a continuous function on the compact base, and finitely many charts bound its supremum. Such sections form a dense homogeneous subspace of <span class="math" data-tex="\(\mathcal Y\)">\(\mathcal Y\)</span>. Integration by parts in the fiber and the base gives the adjoint creation error. In particular, the distributional identity expresses <span class="math" data-tex="\(\mathscr D_MT_\xi^*u\)">\(\mathscr D_MT_\xi^*u\)</span> as <span class="math" data-tex="\(T_\xi^*Lu\)">\(T_\xi^*Lu\)</span> plus that bounded error; the maximal-domain characterization of <span class="math" data-tex="\(\mathscr D_M\)">\(\mathscr D_M\)</span> gives the adjoint domain inclusion. The first creation domain inclusion follows directly from the same product rule. The product criterion, with (CI.31), now identifies the class of <span class="math" data-tex="\(L\)">\(L\)</span> with <span class="math" data-tex="\(y_V\otimes_C[\mathscr D_M]\)">\(y_V\otimes_C[\mathscr D_M]\)</span>.</p>
+<p>The even globally defined form-degree phase <span class="math" data-tex="\(U=i^N\)">\(U=i^N\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ Uc_jU^*=f_j,\qquad Uf_jU^*=-c_j.
+\]">\[
+ Uc_jU^*=f_j,\qquad Uf_jU^*=-c_j.
+\]</span>
+It turns the principal symbol of (CI.30) into <span class="math" data-tex="\(\epsilon_n\)">\(\epsilon_n\)</span> times the <span class="math" data-tex="\(J_-\)">\(J_-\)</span> Dolbeault symbol. Both operators are odd and formally symmetric. Their difference is a smooth zero-order endomorphism. Interpolating that difference preserves the principal symbol, the bounded-gradient exhaustion and all uniform localized elliptic estimates. Lemma CI.4 consequently identifies their bounded-transform classes even if that endomorphism is unbounded at fiber infinity. Multiplication of an odd operator by <span class="math" data-tex="\(-1\)">\(-1\)</span> gives the same even cycle here by conjugation with <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span>, which commutes with the scalar source. Thus the factor <span class="math" data-tex="\(\epsilon_n\)">\(\epsilon_n\)</span> has no effect. This proves the first identity of (CI.29); multiplying by <span class="math" data-tex="\(x_V\)">\(x_V\)</span> and using its proved inverse gives the second. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition CI.7 (the orientation line distinguishes <span class="math" data-tex="\(J_+\)">\(J_+\)</span> and <span class="math" data-tex="\(J_-\)">\(J_-\)</span>).</strong> Let <span class="math" data-tex="\(\lambda=\det(V_{\mathbb C})\)">\(\lambda=\det(V_{\mathbb C})\)</span> and write <span class="math" data-tex="\(\lambda_Q=\pi^*\lambda\)">\(\lambda_Q=\pi^*\lambda\)</span>. Then
+<span class="math math-display" data-tex="\[
+ [\bar\partial_{M,-}]
+   =(-1)^n[\![\lambda_Q]\!]\otimes_B[\bar\partial_{M,+}].
+ \tag{CI.32}
+\]">\[
+ [\bar\partial_{M,-}]
+   =(-1)^n[\![\lambda_Q]\!]\otimes_B[\bar\partial_{M,+}].
+ \tag{CI.32}
+\]</span>
+The bundle cycle <span class="math" data-tex="\([\![\lambda_Q]\!]\in KK(B,B)\)">\([\![\lambda_Q]\!]\in KK(B,B)\)</span> is multiplication on its section module, with operator zero and its usual even grading. For oriented <span class="math" data-tex="\(M\)">\(M\)</span>, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is trivial, so the difference is precisely <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>.</p>
+<p><strong>Proof.</strong> In a frame put <span class="math" data-tex="\(F_0=f_1\cdots f_n\)">\(F_0=f_1\cdots f_n\)</span> and
+<span class="math math-display" data-tex="\[
+ U_0=F_0\Gamma_0^{\,n+1}.
+\]">\[
+ U_0=F_0\Gamma_0^{\,n+1}.
+\]</span>
+The Clifford relations give
+<span class="math math-display" data-tex="\[
+ U_0 f_jU_0^*=f_j,\qquad U_0c_jU_0^*=-c_j.
+\]">\[
+ U_0 f_jU_0^*=f_j,\qquad U_0c_jU_0^*=-c_j.
+\]</span>
+Indeed for odd <span class="math" data-tex="\(n\)">\(n\)</span> the first product commutes with every <span class="math" data-tex="\(f_j\)">\(f_j\)</span> and anticommutes with every <span class="math" data-tex="\(c_j\)">\(c_j\)</span>; for even <span class="math" data-tex="\(n\)">\(n\)</span> its two signs are reversed and the extra <span class="math" data-tex="\(\Gamma_0\)">\(\Gamma_0\)</span> reverses both. It is a unitary of degree <span class="math" data-tex="\(n\)">\(n\)</span> modulo two. Under an orthogonal frame change it is multiplied by the determinant of that change. Thus it is a global degree-<span class="math" data-tex="\(n\)">\(n\)</span> unitary between one spinor bundle and the other tensored with <span class="math" data-tex="\(\lambda_Q\)">\(\lambda_Q\)</span>; the real determinant transitions also show <span class="math" data-tex="\(\lambda_Q^{\otimes2}\cong\mathbf1\)">\(\lambda_Q^{\otimes2}\cong\mathbf1\)</span>.</p>
+<p>The <span class="math" data-tex="\(J_+\)">\(J_+\)</span> symbols are <span class="math" data-tex="\(f_j,-c_j\)">\(f_j,-c_j\)</span> and the <span class="math" data-tex="\(J_-\)">\(J_-\)</span> symbols are <span class="math" data-tex="\(f_j,c_j\)">\(f_j,c_j\)</span>, so this unitary intertwines their principal symbols. Choose a Hermitian connection on the line. The two transformed first-order operators have the same principal symbol and differ by a smooth symmetric zero-order term; CI.4 identifies their classes by interpolation, with no global bound on that term needed. A degree-<span class="math" data-tex="\(n\)">\(n\)</span> unitary reverses the grading when <span class="math" data-tex="\(n\)">\(n\)</span> is odd, giving <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>. Here is the line-tensor product check on the nonunital coefficient. Realize <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> by a smooth base projection <span class="math" data-tex="\(p\in M_N(R)\)">\(p\in M_N(R)\)</span>; a finite local-frame embedding and its Hermitian orthogonal projection give such a projection. Its represented commutator with the cotangent Dirac is bounded, since <span class="math" data-tex="\(p\)">\(p\)</span> depends only on the compact base. Remove the bounded off-diagonal blocks of the amplified Dirac. The large-imaginary-parameter Neumann inverse proves self-adjointness and regularity of its <span class="math" data-tex="\(p\)">\(p\)</span>-compression, exactly as in the finite-projective connection proof. Localized compactness follows from the resolvent identity: for <span class="math" data-tex="\(b\in C_c^\infty(V)\)">\(b\in C_c^\infty(V)\)</span>, the correction is a bounded multiplication endomorphism commuting with <span class="math" data-tex="\(b\)">\(b\)</span>, so its resolvent correction has the original compact <span class="math" data-tex="\(b\)">\(b\)</span>-localized resolvent as its first factor. Norm approximation gives every <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>. The first operator on <span class="math" data-tex="\(pB^N\)">\(pB^N\)</span> is zero; smooth compactly supported column creations have bounded errors and adjoint errors. Domain inclusion and positivity relative to that zero operator are automatic. The product criterion identifies the compressed connection Dirac with the line-tensor product. Adding the bounded represented connection endomorphism gives the chosen line connection and the same class. This verifies the tensor assertion and proves (CI.32). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The convention compatible with (CI.20) is consequently <span class="math" data-tex="\([\bar\partial_{M,-}]\)">\([\bar\partial_{M,-}]\)</span>. The <span class="math" data-tex="\(J_+\)">\(J_+\)</span> construction remains a valid analytic class, but replacing it by that compatible class without the line and parity correction would be false on odd or nonorientable bases.</p>
+<p><img src="assets/KT-KK-15/cotangent-conventions-AAFD905A4C636FABD5BAE757B3C44A5646A8D8804A9C70BBC5EA076E89F399CF.png" alt="The two cotangent conventions and the Clifford inverse" class="course-figure" width="1280" height="820" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="cotangent-conventions" data-asset-sha256="AAFD905A4C636FABD5BAE757B3C44A5646A8D8804A9C70BBC5EA076E89F399CF"></p>
+<p><em>Figure CI.1.</em> The coordinate panels show the one-dimensional horizontal/vertical model, with <span class="math" data-tex="\(x\)">\(x\)</span> to the right and <span class="math" data-tex="\(\xi\)">\(\xi\)</span> upward. The two choices send the horizontal unit vector to opposite vertical unit vectors. The displayed Clifford symbols are exactly (CI.14) and (CI.28); the lower diagram is the all-dimensional identity (CI.29). The rank-one Gaussian is the specialization of (CI.24), and its even grading and source action are (CI.25). Formula (CI.32) gives the full parity and determinant-line correction; the metric identifies <span class="math" data-tex="\(\det(TM_{\mathbb C})\)">\(\det(TM_{\mathbb C})\)</span> in the figure with <span class="math" data-tex="\(\det(T^*M_{\mathbb C})\)">\(\det(T^*M_{\mathbb C})\)</span> in the proof.</p>
+<h2 id="6-spin-c-thom-identities-and-the-odd-gaussian">6. Spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> Thom identities and the odd Gaussian</h2>
+<p><strong>Theorem CI.8.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> be closed and spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span>, in any dimension. Use the outward Thom class <span class="math" data-tex="\(\tau_V\)">\(\tau_V\)</span> and its inverse <span class="math" data-tex="\(\eta_V\)">\(\eta_V\)</span> from <em>Thom isomorphisms and K-orientations in KK</em>, including its ordered right-Clifford convention in odd dimension. Then
+<span class="math math-display" data-tex="\[
+ \tau_V\otimes_B[\bar\partial_{M,-}]=[D_M],\qquad
+ \eta_V\otimes_R[D_M]=[\bar\partial_{M,-}].
+ \tag{CI.33}
+\]">\[
+ \tau_V\otimes_B[\bar\partial_{M,-}]=[D_M],\qquad
+ \eta_V\otimes_R[D_M]=[\bar\partial_{M,-}].
+ \tag{CI.33}
+\]</span>
+These are degree-<span class="math" data-tex="\(n\)">\(n\)</span> products. In even dimension the same formulas hold with <span class="math" data-tex="\(J_+\)">\(J_+\)</span>. In odd dimension, for the oriented base, replacing <span class="math" data-tex="\(J_-\)">\(J_-\)</span> by <span class="math" data-tex="\(J_+\)">\(J_+\)</span> changes the right side of the first equation to <span class="math" data-tex="\(-[D_M]\)">\(-[D_M]\)</span>.</p>
+<p><strong>Proof in even dimension.</strong> Put <span class="math" data-tex="\(N=S\otimes L^{-1}\)">\(N=S\otimes L^{-1}\)</span>, where <span class="math" data-tex="\(L\)">\(L\)</span> is the determinant line of the fixed spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure. The actual bundle and grading calculation in that lesson's Lemma 5.2 gives <span class="math" data-tex="\(\tau_V=[N^*]\otimes_C x_V\)">\(\tau_V=[N^*]\otimes_C x_V\)</span>. Its doubled exterior module decomposes under the source Clifford action as the source spinor <span class="math" data-tex="\(N\)">\(N\)</span> and the positive position spinor <span class="math" data-tex="\(S\)">\(S\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ N^*\widehat\otimes_C\Lambda^*V_{\mathbb C}\cong S
+\]">\[
+ N^*\widehat\otimes_C\Lambda^*V_{\mathbb C}\cong S
+\]</span>
+evenly, intertwining the position Clifford action. The transition calculation includes both scalar characters: <span class="math" data-tex="\(N\)">\(N\)</span> has character <span class="math" data-tex="\(\lambda^{-1}\)">\(\lambda^{-1}\)</span>, so removing it leaves character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>. This is why replacing <span class="math" data-tex="\(N\)">\(N\)</span> by <span class="math" data-tex="\(S\)">\(S\)</span> would introduce the determinant twist.</p>
+<p>Choose compatible connections in this decomposition. Contracting the <span class="math" data-tex="\(N^*\)">\(N^*\)</span> connection with the exterior connection leaves the spinor connection on <span class="math" data-tex="\(S\)">\(S\)</span>. Creations from smooth <span class="math" data-tex="\(N^*\)">\(N^*\)</span>-sections have bounded errors, as do their adjoints; all bundles and their derivatives are bounded on the compact base. The first operator is zero, so its domain and positivity conditions are automatic. The product criterion identifies <span class="math" data-tex="\([N^*]\otimes_C[\mathscr D_M]\)">\([N^*]\otimes_C[\mathscr D_M]\)</span> with the spinor Dirac cycle. A different compatible connection adds a bounded odd endomorphism and gives the already proved CI.4 homotopy. Now (CI.29) gives the first equation of (CI.33).</p>
+<p><strong>The odd grading calculation.</strong> Write <span class="math" data-tex="\(n=2r+1\)">\(n=2r+1\)</span>. In a positive orthonormal spin frame let <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> be the ungraded positive-volume spinor,
+<span class="math math-display" data-tex="\[
+ (-i)^r c_\Delta(e_1)\cdots c_\Delta(e_n)=1.
+\]">\[
+ (-i)^r c_\Delta(e_1)\cdots c_\Delta(e_n)=1.
+\]</span>
+The outward Thom module is <span class="math" data-tex="\(\pi^*\Delta\widehat\otimes Cl_1\)">\(\pi^*\Delta\widehat\otimes Cl_1\)</span>, with its last-factor grading and position operator <span class="math" data-tex="\(c_\Delta(\xi)\otimes\epsilon\)">\(c_\Delta(\xi)\otimes\epsilon\)</span>, exactly as in the preceding Thom lesson. After right-dilating the <span class="math" data-tex="\(J_-\)">\(J_-\)</span> Dolbeault cycle and tensoring, the vertical position and derivative matrices on the product module are
+<span class="math math-display" data-tex="\[
+ A_j=c_\Delta(e_j)\otimes\Gamma_0\otimes\epsilon,\qquad
+ B_j=1\otimes c_j\otimes1.
+ \tag{CI.34}
+\]">\[
+ A_j=c_\Delta(e_j)\otimes\Gamma_0\otimes\epsilon,\qquad
+ B_j=1\otimes c_j\otimes1.
+ \tag{CI.34}
+\]</span>
+The horizontal symbols are <span class="math" data-tex="\(H_j=1\otimes f_j\otimes1\)">\(H_j=1\otimes f_j\otimes1\)</span>. The position term is <span class="math" data-tex="\(A_j\xi_j\)">\(A_j\xi_j\)</span>, and the vertical differential term is <span class="math" data-tex="\(B_j(-i\partial_{\xi_j})\)">\(B_j(-i\partial_{\xi_j})\)</span>. All <span class="math" data-tex="\(A_j,B_j\)">\(A_j,B_j\)</span> are self-adjoint; distinct matrices within each family anticommute, and the two families anticommute. The vertical oscillator kernel consists precisely of the Gaussian times the simultaneous <span class="math" data-tex="\(-1\)">\(-1\)</span> eigenspace of <span class="math" data-tex="\(iA_jB_j\)">\(iA_jB_j\)</span>. It is a right <span class="math" data-tex="\(Cl_1\)">\(Cl_1\)</span>-module of rank <span class="math" data-tex="\(2^r\)">\(2^r\)</span>, since each of the <span class="math" data-tex="\(n\)">\(n\)</span> independent commuting constraints halves the matrix rank. Independence follows either by tracing their products, which have zero trace for every nonempty product, or by the creation/contraction recursion used in (CI.24). Its even and odd subspaces have equal dimension, exchanged by the right generator.</p>
+<p>This kernel has the <strong>positive</strong> odd spinor convention. To verify the branch, the constraints give <span class="math" data-tex="\(A_jv=-iB_jv\)">\(A_jv=-iB_jv\)</span>. Moving the <span class="math" data-tex="\(B\)">\(B\)</span>'s through the remaining <span class="math" data-tex="\(A\)">\(A\)</span>'s gives, for a constrained vector,
+<span class="math math-display" data-tex="\[
+ \prod_jA_j\,v=(-i)^n\prod_jB_j\,v.
+\]">\[
+ \prod_jA_j\,v=(-i)^n\prod_jB_j\,v.
+\]</span>
+The exterior Clifford identity <span class="math" data-tex="\(\prod_j f_j=i^n(\prod_jc_j)\Gamma_0\)">\(\prod_j f_j=i^n(\prod_jc_j)\Gamma_0\)</span>, applied with the opposite constraints on <span class="math" data-tex="\(\Gamma_0v\)">\(\Gamma_0v\)</span>, consequently gives
+<span class="math math-display" data-tex="\[
+ \prod_jH_j\,v
+   =\left(\prod_jc_\Delta(e_j)\right)\epsilon v,\qquad
+ (-i)^r\prod_jH_j\,v=\epsilon v.
+ \tag{CI.35}
+\]">\[
+ \prod_jH_j\,v
+   =\left(\prod_jc_\Delta(e_j)\right)\epsilon v,\qquad
+ (-i)^r\prod_jH_j\,v=\epsilon v.
+ \tag{CI.35}
+\]</span>
+This is precisely the right-Clifford positive-volume representation on <span class="math" data-tex="\(\Delta\otimes Cl_1\)">\(\Delta\otimes Cl_1\)</span>. It permits an even fiber unitary identifying the kernel with that module.</p>
+<p>The fiber unitary also respects the spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> transitions. For a plane rotation in the <span class="math" data-tex="\(j,k\)">\(j,k\)</span> plane, the infinitesimal action on the product module is
+<span class="math math-display" data-tex="\[
+ \tfrac12(c_\Delta(e_j)c_\Delta(e_k)+B_jB_k+H_jH_k).
+\]">\[
+ \tfrac12(c_\Delta(e_j)c_\Delta(e_k)+B_jB_k+H_jH_k).
+\]</span>
+On the kernel <span class="math" data-tex="\(B_jB_k=-A_jA_k=-c_\Delta(e_j)c_\Delta(e_k)\)">\(B_jB_k=-A_jA_k=-c_\Delta(e_j)c_\Delta(e_k)\)</span>; hence this action is <span class="math" data-tex="\(H_jH_k/2\)">\(H_jH_k/2\)</span>, exactly the spin action in (CI.35). Plane rotations generate the connected spin group; in rank one its two elements act by the prescribed central sign. The scalar spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> character acts only on the original <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, so it is the original scalar character, with no additional line twist. The Gaussian is radial. These observations prove the global kernel-bundle identification. Its horizontal connection is the original spinor connection, up to a bounded zero-order connection change on the compact base.</p>
+<p><strong>Product recognition and removal of the complement.</strong> The preceding finite matrices also give the complete vertical oscillator domain and gap, by the scalar oscillator proof. Parallel transport preserves this oscillator and its Gaussian projection <span class="math" data-tex="\(P\)">\(P\)</span>. Use the tensor-compatible horizontal connection. Its odd horizontal operator <span class="math" data-tex="\(H\)">\(H\)</span> anticommutes exactly with the vertical oscillator <span class="math" data-tex="\(O\)">\(O\)</span>; this is the same transport and Clifford argument as (CI.31). Use, for the second <span class="math" data-tex="\(B\)">\(B\)</span>-source cycle, the connection-compatible horizontal/vertical Dirac. Its principal symbol is the chosen <span class="math" data-tex="\(J_-\)">\(J_-\)</span> symbol, so CI.4's local zero-order interpolation identifies it with the geometrically defined cotangent Dolbeault cycle. This interpolation uses the source <span class="math" data-tex="\(B=C_0(V)\)">\(B=C_0(V)\)</span>; it makes no claim of global compactness before the position potential is added. Creations with compact fiber support give bounded errors against either representative. The full product candidate <span class="math" data-tex="\(O+H\)">\(O+H\)</span> is formally symmetric and elliptic for the connection metric. The proper radial exhaustion proves its essential self-adjointness by CI.1, including its unbounded position potential. On its smooth core,
+<span class="math math-display" data-tex="\[
+ (O+H)^2=O^2+H^2,\qquad
+ \|\,|\xi|u\|^2\leq C(\|(O+H)u\|^2+\|u\|^2).
+ \tag{CI.36}
+\]">\[
+ (O+H)^2=O^2+H^2,\qquad
+ \|\,|\xi|u\|^2\leq C(\|(O+H)u\|^2+\|u\|^2).
+ \tag{CI.36}
+\]</span>
+The last estimate follows from <span class="math" data-tex="\(O^2=-\Delta_\xi+|\xi|^2\)">\(O^2=-\Delta_\xi+|\xi|^2\)</span> plus the bounded Clifford matrix term. Graph approximation extends it to the closed domain, proving the position-operator domain inclusion. Its anticommutator with the position term is <span class="math" data-tex="\(2|\xi|^2\)">\(2|\xi|^2\)</span> plus a matrix of norm at most <span class="math" data-tex="\(n\)">\(n\)</span>; the horizontal part contributes zero. Thus the product positivity form is bounded below by <span class="math" data-tex="\(-n\)">\(-n\)</span>.</p>
+<p>Smooth compactly supported Thom sections have bounded creation errors and adjoint errors by the vertical product rule and their horizontal covariant derivatives. The graph core and maximal-domain argument in CI.6 justify the adjoint domain inclusion. The product criterion therefore identifies this candidate with <span class="math" data-tex="\(\tau_V\otimes_B[\bar\partial_{M,-}]\)">\(\tau_V\otimes_B[\bar\partial_{M,-}]\)</span>.</p>
+<p>Its resolvents are globally compact. Localized graph compactness is CI.1. The last estimate in (CI.36) bounds the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> mass outside <span class="math" data-tex="\(|\xi|\leq R\)">\(|\xi|\leq R\)</span> by <span class="math" data-tex="\(C/R\)">\(C/R\)</span> times the graph norm. Inside that ball a fixed compactly supported cutoff has compact graph inclusion. Combining the tail estimate with these compact local inclusions proves global compact graph inclusion.</p>
+<p>It remains to remove the horizontal operator on the complementary oscillator summand; a norm limit of the entire bounded transform must <strong>not</strong> be assumed. Put <span class="math" data-tex="\(Q_s=sO+H\)">\(Q_s=sO+H\)</span>, <span class="math" data-tex="\(s\geq1\)">\(s\geq1\)</span>. The same domain, compactness and recognition checks hold. On a finite positive <span class="math" data-tex="\(s\)">\(s\)</span>-interval the confining tail bound in (CI.36) is uniform, so the resolvents are collectively compact globally: combine that tail with the uniform localized Sobolev compactness of CI.4. The strong-resolvent proof in that lemma then gives norm-continuous global compact resolvent fields. Base smooth functions have uniformly bounded parameter-continuous commutators. The Hilbert-module bounded-transform theorem consequently gives a homotopy with the unital source <span class="math" data-tex="\(R\)">\(R\)</span>, rather than only a vanishing-at-infinity source assertion. On <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(Q_s\)">\(Q_s\)</span> is the original odd spinor Dirac. On <span class="math" data-tex="\(1-P\)">\(1-P\)</span>, the gap gives <span class="math" data-tex="\(|Q_s|\geq s\sqrt2\)">\(|Q_s|\geq s\sqrt2\)</span>, by (CI.36). For a smooth base function <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(P\)">\(P\)</span> commutes with <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\([O,a]=0\)">\([O,a]=0\)</span>, and <span class="math" data-tex="\([Q_s,a]=[H,a]\)">\([Q_s,a]=[H,a]\)</span> is uniformly bounded. On this complement the sign-resolvent integral gives
+<span class="math math-display" data-tex="\[
+ \|[\operatorname{sign}Q_s,a]\|
+       \leq C\|[H,a]\|/s,\qquad
+ \|F_{Q_s}-\operatorname{sign}Q_s\|\leq C/s^2.
+ \tag{CI.37}
+\]">\[
+ \|[\operatorname{sign}Q_s,a]\|
+       \leq C\|[H,a]\|/s,\qquad
+ \|F_{Q_s}-\operatorname{sign}Q_s\|\leq C/s^2.
+ \tag{CI.37}
+\]</span>
+To check the first bound directly, use
+<span class="math" data-tex="\(\operatorname{sign}Q_s=\pi^{-1}\int_0^\infty((Q_s-it)^{-1}+(Q_s+it)^{-1})\,dt\)">\(\operatorname{sign}Q_s=\pi^{-1}\int_0^\infty((Q_s-it)^{-1}+(Q_s+it)^{-1})\,dt\)</span>
+in the strong sense. The commutator of each resolvent is the product of two resolvents and <span class="math" data-tex="\([H,a]\)">\([H,a]\)</span>, with norm at most <span class="math" data-tex="\(\|[H,a]\|/(2s^2+t^2)\)">\(\|[H,a]\|/(2s^2+t^2)\)</span>; its norm integral is at most <span class="math" data-tex="\(C\|[H,a]\|/s\)">\(C\|[H,a]\|/s\)</span>. The second inequality is the scalar supremum of <span class="math" data-tex="\(|t/\sqrt{1+t^2}-\operatorname{sgn}t|\)">\(|t/\sqrt{1+t^2}-\operatorname{sgn}t|\)</span> on <span class="math" data-tex="\(|t|\geq s\sqrt2\)">\(|t|\geq s\sqrt2\)</span>. Also <span class="math" data-tex="\(\|1-F_{Q_s}^2\|\leq(1+2s^2)^{-1}\)">\(\|1-F_{Q_s}^2\|\leq(1+2s^2)^{-1}\)</span> there. These bounds extend the compact defect fields in norm to zero at <span class="math" data-tex="\(s=\infty\)">\(s=\infty\)</span>.</p>
+<p>The bounded transforms converge <strong>strongly</strong> on the complement to <span class="math" data-tex="\(\operatorname{sign}O\)">\(\operatorname{sign}O\)</span>. Here is a domain justification. The eigenspaces of <span class="math" data-tex="\(O^2\)">\(O^2\)</span> are finite-rank Hermite bundles preserved by the horizontal connection and <span class="math" data-tex="\(H\)">\(H\)</span>. Their smooth base sections form a dense subspace. On a positive level <span class="math" data-tex="\(O^2=\lambda\)">\(O^2=\lambda\)</span>, <span class="math" data-tex="\(\lambda\geq2\)">\(\lambda\geq2\)</span>, <span class="math" data-tex="\(H\)">\(H\)</span> is self-adjoint on the closed base, and
+<span class="math math-display" data-tex="\[
+ F_{Q_s}=(sO+H)(1+s^2\lambda+H^2)^{-1/2}.
+\]">\[
+ F_{Q_s}=(sO+H)(1+s^2\lambda+H^2)^{-1/2}.
+\]</span>
+Scalar functional calculus of <span class="math" data-tex="\(H\)">\(H\)</span> on this level proves convergence on its domain: the horizontal term is bounded on a vector by <span class="math" data-tex="\(\|Hu\|/(s\sqrt\lambda)\)">\(\|Hu\|/(s\sqrt\lambda)\)</span>, and the vertical term converges to <span class="math" data-tex="\(\operatorname{sign}O\)">\(\operatorname{sign}O\)</span> by dominated convergence in the scalar spectral calculus. Uniform bounds extend convergence to the dense sum of levels, then to every vector. Finite-parameter strong continuity follows from the common smooth core and resolvent identity, with a scalar functional-calculus cutoff controlled on that core; the transforms are self-adjoint, so their adjoints have the same continuity. Thus <span class="math" data-tex="\(r=1/s\)">\(r=1/s\)</span> gives adjointable fields on the constant interval Hilbert module.</p>
+<p>Together with (CI.37), this is an actual cycle homotopy to the Gaussian spinor Dirac plus the complementary <span class="math" data-tex="\(\operatorname{sign}O\)">\(\operatorname{sign}O\)</span>. The latter is an odd self-adjoint involution commuting with every base scalar, hence exactly degenerate. The Gaussian calculation (CI.35) leaves CI.2's positive odd Dirac, not its negative. This proves the first equation of (CI.33) in odd dimension. The second follows by the actual inverse pair <span class="math" data-tex="\(\eta_V\tau_V=1_B\)">\(\eta_V\tau_V=1_B\)</span>. Finally use (CI.32) and the orientation supplied by the spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure for the stated comparison with <span class="math" data-tex="\(J_+\)">\(J_+\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-elliptic-cycles-and-quantization-of-the-relative-symbol">7. Elliptic cycles and quantization of the relative symbol</h2>
+<p><strong>Proposition CI.9 (the full source action and symbol homotopies).</strong> Let <span class="math" data-tex="\(P:E^+\to E^-\)">\(P:E^+\to E^-\)</span> be a classical elliptic pseudodifferential operator of order zero on a closed manifold. Using the composition, adjoint, Sobolev and parametrix proofs in <a href="KT-KK-11.html#4-spectral-triples-and-the-circle"><em>Unbounded Kasparov modules and spectral triples</em>, Lemmas 4.2a–4.2b</a>, its normalized symbol defines
+<span class="math math-display" data-tex="\[
+ [P]\in KK(C(M),\mathbb C),\qquad
+ [\![\sigma_P]\!]\in KK(C(M),C_0(T^*M)).
+ \tag{CI.38}
+\]">\[
+ [P]\in KK(C(M),\mathbb C),\qquad
+ [\![\sigma_P]\!]\in KK(C(M),C_0(T^*M)).
+ \tag{CI.38}
+\]</span>
+Both classes depend only on the stable homotopy class of the relative principal symbol. Forgetting the base action gives <span class="math" data-tex="\([\sigma_P]\in K_0(C_0(T^*M))\)">\([\sigma_P]\in K_0(C_0(T^*M))\)</span>; this scalar-source class cannot replace <span class="math" data-tex="\([\![\sigma_P]\!]\)">\([\![\sigma_P]\!]\)</span> in an identity with source <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span>. The scalar index pairing of <span class="math" data-tex="\([P]\)">\([P]\)</span> is the Fredholm index of <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(p(x,\widehat\xi)\)">\(p(x,\widehat\xi)\)</span> for the invertible principal symbol on the compact cosphere, and put <span class="math" data-tex="\(u=p(p^*p)^{-1/2}\)">\(u=p(p^*p)^{-1/2}\)</span>. Smooth functional calculus for the finite positive matrix is given by its inverse-resolvent integral, so <span class="math" data-tex="\(u\)">\(u\)</span> is smooth. The path <span class="math" data-tex="\(p_s=(1-s)p+su\)">\(p_s=(1-s)p+su\)</span> stays invertible: it is <span class="math" data-tex="\(p((1-s)1+s(p^*p)^{-1/2})\)">\(p((1-s)1+s(p^*p)^{-1/2})\)</span>. Its inverse and derivatives are uniformly controlled on the compact cosphere and parameter interval. Choose an order-zero quantization <span class="math" data-tex="\(T\)">\(T\)</span> of <span class="math" data-tex="\(u\)">\(u\)</span>. On <span class="math" data-tex="\(L^2(M,E^+)\oplus L^2(M,E^-)\)">\(L^2(M,E^+)\oplus L^2(M,E^-)\)</span>, with the first summand even, use
+<span class="math math-display" data-tex="\[
+ F=\begin{pmatrix}0&amp;T^*\\T&amp;0\end{pmatrix}.
+\]">\[
+ F=\begin{pmatrix}0&amp;T^*\\T&amp;0\end{pmatrix}.
+\]</span>
+Its principal square is one, so <span class="math" data-tex="\(F^2-1\)">\(F^2-1\)</span> has order minus one. Its commutator with a smooth scalar also has order minus one, by the cited complete composition proof. Such operators map <span class="math" data-tex="\(L^2\)">\(L^2\)</span> boundedly into <span class="math" data-tex="\(H^1\)">\(H^1\)</span>, whose compact inclusion is proved there by finite chart/Fourier truncation. These are therefore compact defects. The adjoint defect is zero. Uniform approximation of continuous functions by finite chart convolution extends the commutator condition to <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span>. This defines <span class="math" data-tex="\([P]\)">\([P]\)</span>.</p>
+<p>Two quantizations of the same principal symbol differ by an order-minus-one compact operator. Their linear interpolation has the same principal symbol, hence gives a cycle homotopy. A smooth path of unitary principal symbols gives a norm-continuous cycle homotopy by the finite-seminorm operator bound in Lemma 4.2a. The polar path above is a Fredholm path from <span class="math" data-tex="\(P\)">\(P\)</span> to <span class="math" data-tex="\(T\)">\(T\)</span>: quantize <span class="math" data-tex="\(p_s\)">\(p_s\)</span>, and at its first endpoint correct by the compact difference from <span class="math" data-tex="\(P\)">\(P\)</span>. The uniform parametrix identity gives Fredholmness throughout.</p>
+<p>Here is the elementary index constancy used for this path. For a Fredholm map <span class="math" data-tex="\(A:H_+\to H_-\)">\(A:H_+\to H_-\)</span>, decompose the spaces as <span class="math" data-tex="\(\ker A\oplus(\ker A)^\perp\)">\(\ker A\oplus(\ker A)^\perp\)</span> and <span class="math" data-tex="\((\operatorname{ran}A)^\perp\oplus\operatorname{ran}A\)">\((\operatorname{ran}A)^\perp\oplus\operatorname{ran}A\)</span>. Its last block is a bounded isomorphism. A sufficiently small perturbation retains an invertible last block. Multiplication by invertible triangular block operators removes its other off-diagonal blocks and leaves a map between the two finite-dimensional defect spaces. The index of that finite map is their dimension difference, independently of its rank. Thus the index is locally constant on the Fredholm operators, and compactness of the path interval makes it constant along the path. The index-pairing proof identifies the scalar pairing of the displayed off-diagonal cycle with <span class="math" data-tex="\(\operatorname{index}T=\operatorname{index}P\)">\(\operatorname{index}T=\operatorname{index}P\)</span>.</p>
+<p>The symbol is the relative triple <span class="math" data-tex="\((\pi^*E^+,\pi^*E^-,u)\)">\((\pi^*E^+,\pi^*E^-,u)\)</span> on the disc/sphere pair. The two inverse bundle constructions and homotopy rules are proved in <a href="supporting/relative-k-foundations/relative-k-foundations.html#rk-source-scope"><em>Relative difference bundles, radial pairs and the planar normalization</em>, Theorems RK.3–RK.4</a>. Their multiplication-cycle representative over <span class="math" data-tex="\(C_0(T^*M)\)">\(C_0(T^*M)\)</span> retains the action of <span class="math" data-tex="\(f\in C(M)\)">\(f\in C(M)\)</span> by <span class="math" data-tex="\(f\circ\pi\)">\(f\circ\pi\)</span>. This action commutes with the odd comparison, whose square defect has compact support. It gives <span class="math" data-tex="\([\![\sigma_P]\!]\)">\([\![\sigma_P]\!]\)</span> with the asserted full source. An everywhere invertible trivial comparison gives a degenerate cycle and a multiplication-unitary analytic summand, so both constructions respect stable addition.</p>
+<p>For a continuous relative homotopy, use finitely many bundle charts on the compact parameterized disc/sphere pair. Approximate its projection and comparison matrices uniformly by smooth matrices using chart convolution and a finite partition. Retract an approximate projection by its spectral gap, and an approximate invertible comparison by polar normalization; the compact sphere's positive invertibility bound keeps these operations defined. Small interpolation preserves the endpoints up to relative homotopy. A smooth connection, patched from local connections, identifies the disc bundles with pullbacks of their zero-section bundles by radial parallel transport. Hence every stabilized relative homotopy can be quantized as the smooth path already considered. This proves the claimed invariance and additivity. No order-changing or nonclassical radial theorem is a premise. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a smooth finite-rank graded Clifford coefficient bundle in <strong>even</strong> dimension, its connection Dirac has symbol equal to its coefficient tensor with (CI.20). Product recognition for that finite coefficient uses the zero first operator, bounded connection errors on the compact base, and the elliptic domain just proved. Equations (CI.29) therefore prove the symbol identity for these Clifford-Dirac symbols and their finite stable homotopies. The distinction between this conclusion and an unrestricted generation assertion matters.</p>
+<h2 id="8-examples-and-solved-local-calculations">8. Examples and solved local calculations</h2>
+<p><strong>The circle.</strong> Give <span class="math" data-tex="\(\mathbb R/2\pi\mathbb Z\)">\(\mathbb R/2\pi\mathbb Z\)</span> its positive coordinate and the periodic spin structure. CI.2's odd Dirac is <span class="math" data-tex="\(-i\,d/d\theta\)">\(-i\,d/d\theta\)</span>. Its Fourier domain is <span class="math" data-tex="\(\{(a_m):\sum m^2|a_m|^2&lt;\infty\}\)">\(\{(a_m):\sum m^2|a_m|^2&lt;\infty\}\)</span>. The bounded transform differs compactly from <span class="math" data-tex="\(2P_{\geq0}-1\)">\(2P_{\geq0}-1\)</span>. Compressing <span class="math" data-tex="\(z=e^{i\theta}\)">\(z=e^{i\theta}\)</span> gives the unilateral shift; its kernel is zero and cokernel is the constant mode. The proved KK index pairing is therefore
+<span class="math math-display" data-tex="\[
+ \langle[z],[D_{S^1}]\rangle=-1.
+ \tag{CI.39}
+\]">\[
+ \langle[z],[D_{S^1}]\rangle=-1.
+ \tag{CI.39}
+\]</span>
+This also solves the basic exercise and fixes the odd sign. With <span class="math" data-tex="\(J_-\)">\(J_-\)</span>, the outward odd Thom–Dolbeault product is this Dirac. With <span class="math" data-tex="\(J_+\)">\(J_+\)</span>, it is its negative, by CI.32–CI.33.</p>
+<p><strong>Local duality on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>.</strong> Use the Bott algebra <span class="math" data-tex="\(D_2=C_0(\mathbb R^2)\widehat\otimes Cl_2\)">\(D_2=C_0(\mathbb R^2)\widehat\otimes Cl_2\)</span>, its position cycle and its Euclidean derivative inverse. The actual scalar Bott lesson proves their first product by the even Gaussian and their reverse product by simultaneous coordinate/Clifford rotation and the invertible-idempotent argument. Tensoring its explicit <span class="math" data-tex="\(Cl_2\)">\(Cl_2\)</span>-matrix Morita correspondence and its inverse gives the outward spinor pair <span class="math" data-tex="\(\tau_{\mathbb R^2},\eta_{\mathbb R^2}\)">\(\tau_{\mathbb R^2},\eta_{\mathbb R^2}\)</span>. Their two products are the identity classes on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> and <span class="math" data-tex="\(C_0(\mathbb R^2)\)">\(C_0(\mathbb R^2)\)</span>. Hence multiplication by one and by the other are inverse on K-theory and K-homology in the local degree shift. The outward symbol is <span class="math" data-tex="\(x+iy\)">\(x+iy\)</span>; two ordered positive right-odd line symbols give <span class="math" data-tex="\(x-iy\)">\(x-iy\)</span> and the opposite class, as proved in the Thom lesson's Proposition 7.2. This solves the local-duality exercise with its exact orientation.</p>
+<p><strong>The flat torus and its Thom identities.</strong> On <span class="math" data-tex="\(M=\mathbb T^2\)">\(M=\mathbb T^2\)</span>, use periodic spinors with chirality <span class="math" data-tex="\(\sigma_3\)">\(\sigma_3\)</span> and
+<span class="math math-display" data-tex="\[
+ D_M=-i(\sigma_1\partial_x+\sigma_2\partial_y).
+ \tag{CI.40}
+\]">\[
+ D_M=-i(\sigma_1\partial_x+\sigma_2\partial_y).
+ \tag{CI.40}
+\]</span>
+On Fourier mode <span class="math" data-tex="\((k,l)\)">\((k,l)\)</span>, its square is <span class="math" data-tex="\(k^2+l^2\)">\(k^2+l^2\)</span>; its domain is the corresponding weighted <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> space. Every nonzero mode is invertible, while the zero mode has one vector of each parity. Its scalar index is zero. The ordered product of the two positive circle Diracs has <span class="math" data-tex="\(k\sigma_1-l\sigma_2\)">\(k\sigma_1-l\sigma_2\)</span>, as proved in the preceding two-circle product calculation; conjugation by <span class="math" data-tex="\(\sigma_1\)">\(\sigma_1\)</span> changes this to (CI.40) while reversing the grading. Thus that ordered product is the negative of the outward torus Dirac, although both scalar indices are zero.</p>
+<p>The cotangent bundle is the trivial bundle <span class="math" data-tex="\(\mathbb T^2\times\mathbb R^2\)">\(\mathbb T^2\times\mathbb R^2\)</span>. Here (CI.21) is a constant vertical Fourier operator and all connection terms are zero. Its tensor sum (CI.30) has mutually anticommuting constant horizontal and vertical matrices. The sum-square Fourier identity proves its global domain inclusion and positivity exactly as in (CI.31); compactly supported fiber creations give the two bounded connection errors. The even phase <span class="math" data-tex="\(i^N\)">\(i^N\)</span> identifies its symbol with <span class="math" data-tex="\(J_-\)">\(J_-\)</span>. CI.29 proves both Clifford identities. The determinant is trivial, and <span class="math" data-tex="\(n=2\)">\(n=2\)</span>, so CI.32 identifies <span class="math" data-tex="\(J_-\)">\(J_-\)</span> and <span class="math" data-tex="\(J_+\)">\(J_+\)</span> as classes. The spinor reduction in the even proof of CI.8 gives
+<span class="math math-display" data-tex="\[
+ \tau_{T^*\mathbb T^2}[\bar\partial_{\mathbb T^2}]
+       =[D_{\mathbb T^2}],\qquad
+ \eta_{T^*\mathbb T^2}[D_{\mathbb T^2}]
+       =[\bar\partial_{\mathbb T^2}].
+\]">\[
+ \tau_{T^*\mathbb T^2}[\bar\partial_{\mathbb T^2}]
+       =[D_{\mathbb T^2}],\qquad
+ \eta_{T^*\mathbb T^2}[D_{\mathbb T^2}]
+       =[\bar\partial_{\mathbb T^2}].
+\]</span>
+This solves the torus inverse-Thom exercise, with actual domain, connection and orientation checks rather than fiberwise index equality.</p>
+<p><strong>The projective line.</strong> Give <span class="math" data-tex="\(\mathbb {CP}^1\)">\(\mathbb {CP}^1\)</span> its complex orientation and canonical spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure. Its anti-holomorphic form spinor is <span class="math" data-tex="\(\Lambda^{0,*}T^*\mathbb {CP}^1\)">\(\Lambda^{0,*}T^*\mathbb {CP}^1\)</span>, with determinant <span class="math" data-tex="\(T^{1,0}\mathbb {CP}^1=\mathcal O(2)\)">\(T^{1,0}\mathbb {CP}^1=\mathcal O(2)\)</span>. The Hermitian metric identifies the odd spinor line with <span class="math" data-tex="\(T^{1,0}\)">\(T^{1,0}\)</span>; thus this is exactly the exterior positive spinor convention of the complex Thom theorem. The Dolbeault operator has the same principal Clifford symbol as the spinor Dirac after an even constant form-degree phase. Their lower-order difference is smooth and bounded on the closed base. CI.4 identifies their classes, and a finite-projective connection tensor identifies a twist by <span class="math" data-tex="\(\mathcal O(k)\)">\(\mathcal O(k)\)</span> with <span class="math" data-tex="\([\mathcal O(k)]\otimes[D]\)">\([\mathcal O(k)]\otimes[D]\)</span>.</p>
+<p>Here are direct analytic normalizations, without an index theorem. On the affine chart <span class="math" data-tex="\(z\in\mathbb C\)">\(z\in\mathbb C\)</span>, a holomorphic section of <span class="math" data-tex="\(\mathcal O(k)\)">\(\mathcal O(k)\)</span> is an entire function <span class="math" data-tex="\(h(z)\)">\(h(z)\)</span>; on the other chart <span class="math" data-tex="\(w=1/z\)">\(w=1/z\)</span> its coefficient is <span class="math" data-tex="\(w^kh(1/w)\)">\(w^kh(1/w)\)</span>. Holomorphicity at <span class="math" data-tex="\(w=0\)">\(w=0\)</span> means <span class="math" data-tex="\(h\)">\(h\)</span> is a polynomial of degree at most <span class="math" data-tex="\(k\)">\(k\)</span> if <span class="math" data-tex="\(k\geq0\)">\(k\geq0\)</span>, and means <span class="math" data-tex="\(h=0\)">\(h=0\)</span> if <span class="math" data-tex="\(k&lt;0\)">\(k&lt;0\)</span>. To justify the polynomial conclusion, its Laurent coefficients at infinity with degrees above <span class="math" data-tex="\(k\)">\(k\)</span> vanish; the usual Cauchy integral coefficient formula follows by integrating the geometric series on a circle and gives zero higher Taylor coefficients. Thus
+<span class="math math-display" data-tex="\[
+ \dim\ker\bar\partial_{\mathcal O(k)}=\max(k+1,0).
+\]">\[
+ \dim\ker\bar\partial_{\mathcal O(k)}=\max(k+1,0).
+\]</span>
+Here is the complex-analytic input in the preceding coefficient argument. For a smooth function with <span class="math" data-tex="\(\partial_{\bar z}h=0\)">\(\partial_{\bar z}h=0\)</span>, integration of the two real derivatives over a rectangle, by the one-variable fundamental theorem of calculus and Fubini, proves the planar Stokes formula. Subdivision and approximation by rectangles prove it for a disk with a smaller disk removed. Applied to <span class="math" data-tex="\(h(z)/(z-a)\)">\(h(z)/(z-a)\)</span>, it identifies its outer-circle integral with the inner-circle integral, which tends to <span class="math" data-tex="\(2\pi i h(a)\)">\(2\pi i h(a)\)</span> by continuity. This proves Cauchy's formula. On a circle with <span class="math" data-tex="\(|a|\)">\(|a|\)</span> smaller than its radius the uniformly convergent geometric expansion of <span class="math" data-tex="\((z-a)^{-1}\)">\((z-a)^{-1}\)</span> can be integrated term by term. It gives the Taylor coefficient formula and the convergent Taylor series. Equivalently the same argument in the other coordinate gives the Laurent coefficients at infinity. Thus regularity of <span class="math" data-tex="\(w^kh(1/w)\)">\(w^kh(1/w)\)</span> at zero makes every Taylor coefficient of <span class="math" data-tex="\(h\)">\(h\)</span> above degree <span class="math" data-tex="\(k\)">\(k\)</span> vanish; when <span class="math" data-tex="\(k&lt;0\)">\(k&lt;0\)</span> it makes all of them vanish. This supplies the analytic coefficient and Cauchy input rather than presuming a formula-only reference.</p>
+<p>The adjoint equation identifies its cokernel with holomorphic sections of <span class="math" data-tex="\(\mathcal O(-k-2)\)">\(\mathcal O(-k-2)\)</span>. Locally write a <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>-form as <span class="math" data-tex="\(a\,d\bar z\)">\(a\,d\bar z\)</span> times a bundle frame of metric squared norm <span class="math" data-tex="\(h\)">\(h\)</span>. Integration by parts against a test function gives the adjoint equation <span class="math" data-tex="\(\partial_z(ha)=0\)">\(\partial_z(ha)=0\)</span>. Therefore <span class="math" data-tex="\(\overline{ha}\,dz\)">\(\overline{ha}\,dz\)</span> is holomorphic. Its transformation on overlap is the dual line transformation times that of <span class="math" data-tex="\(dz\)">\(dz\)</span>, which is exactly <span class="math" data-tex="\(\mathcal O(-k)\otimes K=\mathcal O(-k-2)\)">\(\mathcal O(-k)\otimes K=\mathcal O(-k-2)\)</span>. Conversely this formula constructs every smooth adjoint-kernel form. Density and elliptic regularity identify the closed-operator kernels with these smooth solutions. Hence
+<span class="math math-display" data-tex="\[
+ \operatorname{ind}\bar\partial_{\mathcal O(k)}
+ =\max(k+1,0)-\max(-k-1,0)=k+1.
+ \tag{CI.41}
+\]">\[
+ \operatorname{ind}\bar\partial_{\mathcal O(k)}
+ =\max(k+1,0)-\max(-k-1,0)=k+1.
+ \tag{CI.41}
+\]</span></p>
+<p>For this Dirac twist the symbol identity is already proved: its lower-left principal symbol is the outward Thom symbol up to an even constant phase, so <span class="math" data-tex="\([\![\sigma_{\bar\partial_{\mathcal O(k)}}]\!]=[\![\mathcal O(k)]\!]\otimes_R\tau_V\)">\([\![\sigma_{\bar\partial_{\mathcal O(k)}}]\!]=[\![\mathcal O(k)]\!]\otimes_R\tau_V\)</span>. The finite-projective connection product and CI.33 give
+<span class="math math-display" data-tex="\[
+ [\bar\partial_{\mathcal O(k)}]
+ =[\![\sigma_{\bar\partial_{\mathcal O(k)}}]\!]\otimes_B
+                                    [\bar\partial_{M,-}].
+\]">\[
+ [\bar\partial_{\mathcal O(k)}]
+ =[\![\sigma_{\bar\partial_{\mathcal O(k)}}]\!]\otimes_B
+                                    [\bar\partial_{M,-}].
+\]</span>
+Thus the following derives from the proved KK symbol identity in this case, without assuming the unrestricted theorem. The KK calculation needs only two of the preceding analytic normalizations. The proved relative-bundle calculations give
+<span class="math math-display" data-tex="\[
+ K^0(\mathbb {CP}^1)=\mathbb Z[1]\oplus\mathbb Zu,\qquad
+ u=1-[\mathcal O(-1)],\quad u^2=0.
+\]">\[
+ K^0(\mathbb {CP}^1)=\mathbb Z[1]\oplus\mathbb Zu,\qquad
+ u=1-[\mathcal O(-1)],\quad u^2=0.
+\]</span>
+Thus <span class="math" data-tex="\([\mathcal O(k)]=1+ku\)">\([\mathcal O(k)]=1+ku\)</span> for every integer <span class="math" data-tex="\(k\)">\(k\)</span>: the inverse of <span class="math" data-tex="\(1-u\)">\(1-u\)</span> is <span class="math" data-tex="\(1+u\)">\(1+u\)</span>, and integer powers truncate after the linear term. The two analytic values at <span class="math" data-tex="\(k=0,-1\)">\(k=0,-1\)</span> give <span class="math" data-tex="\(\langle1,[D]\rangle=1\)">\(\langle1,[D]\rangle=1\)</span> and <span class="math" data-tex="\(\langle u,[D]\rangle=1\)">\(\langle u,[D]\rangle=1\)</span>. Bilinearity and the actual index-pairing product yield <span class="math" data-tex="\(\langle[\mathcal O(k)],[D]\rangle=k+1\)">\(\langle[\mathcal O(k)],[D]\rangle=k+1\)</span>. Equivalently this is <span class="math" data-tex="\(\int_{\mathbb {CP}^1}e^{kh}(1+h)=k+1\)">\(\int_{\mathbb {CP}^1}e^{kh}(1+h)=k+1\)</span>, with <span class="math" data-tex="\(\int h=1\)">\(\int h=1\)</span>. This proves the line-bundle Riemann–Roch formula and its KK pairing interpretation. The embedding comparison proved below identifies that same number with the embedding-defined topological index.</p>
+<h2 id="9-a-universal-quantization-morphism">9. A universal quantization morphism</h2>
+<p>The unrestricted identity is
+<span class="math math-display" data-tex="\[
+ [P]=[\![\sigma_P]\!]\otimes_{C_0(T^*M)}
+                    [\bar\partial_{M,-}]
+ \tag{CI.42}
+\]">\[
+ [P]=[\![\sigma_P]\!]\otimes_{C_0(T^*M)}
+                    [\bar\partial_{M,-}]
+ \tag{CI.42}
+\]</span>
+for every classical elliptic order-zero pseudodifferential operator on every closed manifold. We prove it by constructing one quantization morphism. This avoids any assertion that finite Clifford modules with zero operator generate all graded K-classes.</p>
+<p>It would indeed be false to assert that <span class="math" data-tex="\(K_0(\Gamma(\operatorname{Cl}(T^*M)))\)">\(K_0(\Gamma(\operatorname{Cl}(T^*M)))\)</span> is always generated by finite projective Clifford modules with operator zero. Already for <span class="math" data-tex="\(M=S^1\)">\(M=S^1\)</span>, its trivial Clifford algebra is <span class="math" data-tex="\(C(S^1)\widehat\otimes Cl_1\)">\(C(S^1)\widehat\otimes Cl_1\)</span>, whose graded <span class="math" data-tex="\(K_0\)">\(K_0\)</span> is <span class="math" data-tex="\(K_1(C(S^1))=\mathbb Z\)">\(K_1(C(S^1))=\mathbb Z\)</span>. On a finite projective graded module over this trivial algebra right multiplication by the odd Clifford generator is an odd self-adjoint involution that is also right-module-linear, since that generator is central in the underlying ungraded algebra; every finite compact cycle contracts its operator to zero, and that zero cycle contracts to this degenerate involution. Thus these particular compact zero-operator modules contribute zero. The argument below acts on the original KK classes, including their nonzero operators, and never makes this reduction.</p>
+<p>Put <span class="math" data-tex="\(H=L^2(M)\)">\(H=L^2(M)\)</span>, using half-densities. For <span class="math" data-tex="\(a\in C_c^\infty(T^*M)\)">\(a\in C_c^\infty(T^*M)\)</span>, let <span class="math" data-tex="\(Q_t(a)\)">\(Q_t(a)\)</span>, <span class="math" data-tex="\(0&lt;t\leq1\)">\(0&lt;t\leq1\)</span>, be its semiclassical quantization, with phase
+<span class="math" data-tex="\(e^{i(x-y)\xi/t}\)">\(e^{i(x-y)\xi/t}\)</span> and factor <span class="math" data-tex="\((2\pi t)^{-n}\)">\((2\pi t)^{-n}\)</span>. Use a finite atlas, real functions <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> with <span class="math" data-tex="\(\sum\chi_j^2=1\)">\(\sum\chi_j^2=1\)</span>, two-sided chart cutoffs and positive half-density identifications. At <span class="math" data-tex="\(t=0\)">\(t=0\)</span> its value is <span class="math" data-tex="\(a\)">\(a\)</span>. Add every norm-continuous compact-operator field supported away from zero. Complete the algebra they generate in
+<span class="math math-display" data-tex="\[
+ \|A\|=\max\bigl(\|A_0\|_\infty,
+                         \sup_{0&lt;t\leq1}\|A_t\|\bigr).
+ \tag{CI.43}
+\]">\[
+ \|A\|=\max\bigl(\|A_0\|_\infty,
+                         \sup_{0&lt;t\leq1}\|A_t\|\bigr).
+ \tag{CI.43}
+\]</span>
+Call this algebra <span class="math" data-tex="\(\mathcal A_M\)">\(\mathcal A_M\)</span>.</p>
+<p><strong>Lemma CI.10 (the semiclassical algebra and its resolvents).</strong> This construction gives a separable C<span class="math" data-tex="\(^*\)">\(^*\)</span>-algebra and a semisplit exact sequence
+<span class="math math-display" data-tex="\[
+ 0\longrightarrow C_0((0,1],\mathcal K(H))
+ \longrightarrow\mathcal A_M\xrightarrow{e_0}B\longrightarrow0.
+ \tag{CI.44}
+\]">\[
+ 0\longrightarrow C_0((0,1],\mathcal K(H))
+ \longrightarrow\mathcal A_M\xrightarrow{e_0}B\longrightarrow0.
+ \tag{CI.44}
+\]</span>
+Evaluation <span class="math" data-tex="\(e_1\)">\(e_1\)</span> takes values in <span class="math" data-tex="\(\mathcal K(H)\)">\(\mathcal K(H)\)</span>. Smooth bundle endomorphisms acting by multiplication are multipliers of this algebra. For a smooth self-adjoint matrix symbol <span class="math" data-tex="\(a(x,\xi)\)">\(a(x,\xi)\)</span> of order one, elliptic outside a fixed ball, its symmetric semiclassical quantizations on a finite bundle define a regular self-adjoint operator on the associated finite projective <span class="math" data-tex="\(\mathcal A_M\)">\(\mathcal A_M\)</span>-module. Its value at zero is multiplication by <span class="math" data-tex="\(a\)">\(a\)</span>; its values at <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> are the elliptic closed operators. Its inverse resolvents belong to the module compact algebra. The same assertion applies to <span class="math" data-tex="\(t\mathscr D_M\)">\(t\mathscr D_M\)</span>, with its Clifford source and grading in (CI.26).</p>
+<p><strong>Proof of the algebra assertions.</strong> Here are the estimates that justify the completion and prevent an implicit appeal to a groupoid index theorem. In a chart, substitute <span class="math" data-tex="\(y=x-tv\)">\(y=x-tv\)</span> in the Fourier kernel. Taylor's formula with integral remainder in the two base variables, followed by the integrations by parts in the complete composition proof of Lemma 4.2a of the unbounded lesson, gives
+<span class="math math-display" data-tex="\[
+ \|Q_t(a)Q_t(b)-Q_t(ab)\|\leq C_{a,b}t,
+ \quad \|Q_t(a)^*-Q_t(a^*)\|\leq C_at.
+ \tag{CI.45}
+\]">\[
+ \|Q_t(a)Q_t(b)-Q_t(ab)\|\leq C_{a,b}t,
+ \quad \|Q_t(a)^*-Q_t(a^*)\|\leq C_at.
+ \tag{CI.45}
+\]</span>
+The constants use finitely many derivatives on fixed compact base and frequency sets. Each first remainder contains a factor <span class="math" data-tex="\(tv_j\)">\(tv_j\)</span>; moving <span class="math" data-tex="\(v_j\)">\(v_j\)</span> onto a frequency derivative extracts that factor <span class="math" data-tex="\(t\)">\(t\)</span>. Further integrations by parts make both Schur kernel integrals finite, precisely as in that lemma. Terms with separated chart cutoffs have norm <span class="math" data-tex="\(O(t^N)\)">\(O(t^N)\)</span> for every prescribed <span class="math" data-tex="\(N\)">\(N\)</span>, by repeated frequency integration. Under coordinate change Taylor expansion of the new phase gives the cotangent transformation as its leading term; its remainder has the same <span class="math" data-tex="\(t\)">\(t\)</span> estimate. Thus finite chart sums satisfy (CI.45). Those proofs also give a uniform bound by finitely many symbol derivatives for symbols of order zero, not only those of compact frequency support.</p>
+<p>In fact
+<span class="math math-display" data-tex="\[
+ \lim_{t\downarrow0}\|Q_t(a)\|=\|a\|_\infty.
+ \tag{CI.46}
+\]">\[
+ \lim_{t\downarrow0}\|Q_t(a)\|=\|a\|_\infty.
+ \tag{CI.46}
+\]</span>
+For the upper bound apply (CI.45) repeatedly to
+<span class="math" data-tex="\((Q_t(a)^*Q_t(a))^k\)">\((Q_t(a)^*Q_t(a))^k\)</span>. Its limit superior is bounded by the finite-seminorm bound for <span class="math" data-tex="\(|a|^{2k}\)">\(|a|^{2k}\)</span>. If <span class="math" data-tex="\(L\)">\(L\)</span> is the fixed number of derivatives in that bound and <span class="math" data-tex="\(r=\|a\|_\infty&gt;0\)">\(r=\|a\|_\infty&gt;0\)</span>, Leibniz's rule bounds it by <span class="math" data-tex="\(C k^L r^{2k-L}\)">\(C k^L r^{2k-L}\)</span> times a fixed polynomial in the first <span class="math" data-tex="\(L\)">\(L\)</span> derivatives of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(r\)">\(r\)</span>. Taking the <span class="math" data-tex="\(2k\)">\(2k\)</span>-th root and then letting <span class="math" data-tex="\(k\to\infty\)">\(k\to\infty\)</span> proves the upper bound <span class="math" data-tex="\(r\)">\(r\)</span>. The zero case is immediate. For the lower bound use a unit wave packet in a protected chart,
+<span class="math" data-tex="\(t^{-n/4}g((x-x_0)/\sqrt t)e^{i\xi_0(x-x_0)/t}\)">\(t^{-n/4}g((x-x_0)/\sqrt t)e^{i\xi_0(x-x_0)/t}\)</span>, cut off in that chart. Substitution in the kernel and Taylor expansion show that <span class="math" data-tex="\((Q_t(a)-a(x_0,\xi_0))\)">\((Q_t(a)-a(x_0,\xi_0))\)</span> applied to it tends to zero in norm. The errors are bounded by <span class="math" data-tex="\(C\sqrt t\)">\(C\sqrt t\)</span> times finitely many Gaussian moments; its cutoff error tends to zero faster than any fixed power. The elementary Fourier/Gaussian proof in the Bott lesson supplies these integrals. Matrix-valued symbols are treated by adding a unit vector in their finite fibre; the corresponding norm bound is the supremum of the matrix norms. Taking points and vectors approaching the supremum proves (CI.46).</p>
+<p>At <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, compact frequency support makes the kernel smooth on the closed manifold, hence compact by finite-rank approximation of a smooth kernel. Dependence on a positive compact parameter interval is norm continuous by the same kernel estimate. Equations (CI.45)–(CI.46) show that every algebraic word in the generators differs, near zero in operator norm, from the quantization of its zero-value symbol. If that value is zero the field has norm tending to zero. Uniform approximation proves the same statement for the completed kernel of <span class="math" data-tex="\(e_0\)">\(e_0\)</span>. This kernel is exactly <span class="math" data-tex="\(C_0((0,1],\mathcal K(H))\)">\(C_0((0,1],\mathcal K(H))\)</span>, because all such fields were included and compact fields away from zero are dense in it. The image of <span class="math" data-tex="\(e_0\)">\(e_0\)</span> contains the compactly supported smooth symbols and is closed, so is <span class="math" data-tex="\(B\)">\(B\)</span>. Countably many dense smooth symbols together with countably many compact fields generate a dense subalgebra. This proves separability and exactness, without a full-versus-reduced groupoid assumption.</p>
+<p>For completeness the section in (CI.44) can be made explicitly completely positive. In each chart extend half-densities by zero to Euclidean space and use the Gaussian coherent vectors <span class="math" data-tex="\(g_{z,\xi,t}\)">\(g_{z,\xi,t}\)</span>. They satisfy the exact resolution
+<span class="math" data-tex="\(\int|g_{z,\xi,t}\rangle\langle g_{z,\xi,t}|\,dz\,d\xi/(2\pi t)^n=1\)">\(\int|g_{z,\xi,t}\rangle\langle g_{z,\xi,t}|\,dz\,d\xi/(2\pi t)^n=1\)</span>: integrate first in <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by Fourier unitarity, then in <span class="math" data-tex="\(z\)">\(z\)</span> by the normalized Gaussian integral. Compress this resolution with the chart multiplication <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span>. The positive quantization
+<span class="math math-display" data-tex="\[
+ S_t(a)=\sum_j\int a_j(z,\xi)
+ |\chi_jg_{z,\xi,t}\rangle\langle\chi_jg_{z,\xi,t}|
+                         \frac{dz\,d\xi}{(2\pi t)^n}
+\]">\[
+ S_t(a)=\sum_j\int a_j(z,\xi)
+ |\chi_jg_{z,\xi,t}\rangle\langle\chi_jg_{z,\xi,t}|
+                         \frac{dz\,d\xi}{(2\pi t)^n}
+\]</span>
+uses the cotangent-coordinate expression of <span class="math" data-tex="\(a\)">\(a\)</span> inside the chart and zero outside it. It is completely positive at every matrix level and contractive, since the sum of the compressed resolutions is <span class="math" data-tex="\(\sum\chi_j^2=1\)">\(\sum\chi_j^2=1\)</span>; using zero outside the chart can only decrease that resolution. Choose the <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> supported strictly inside their charts. On their supports the missing chart tails are exponentially small. Gaussian convolution and Taylor's integral formula give
+<span class="math" data-tex="\(\|S_t(a)-Q_t(a)\|\leq C_a\sqrt t\)">\(\|S_t(a)-Q_t(a)\|\leq C_a\sqrt t\)</span> for compactly supported smooth <span class="math" data-tex="\(a\)">\(a\)</span>; separated-chart tails are estimated as above. The bound follows by inserting the first derivatives in the same finite-seminorm kernel estimate, with the first Gaussian moment <span class="math" data-tex="\(O(\sqrt t)\)">\(O(\sqrt t)\)</span>. Thus <span class="math" data-tex="\((a,S_t(a))\)">\((a,S_t(a))\)</span> belongs to <span class="math" data-tex="\(\mathcal A_M\)">\(\mathcal A_M\)</span>. Contractivity extends this section to every <span class="math" data-tex="\(a\in B\)">\(a\in B\)</span>, and matrix positivity extends by norm closure. Its zero-value is <span class="math" data-tex="\(a\)">\(a\)</span>. This proves semisplitting. No nuclear lifting theorem is needed here.</p>
+<p><strong>Proof of the multiplier and operator assertions.</strong> Multiplication on either side of <span class="math" data-tex="\(Q_t(a)\)">\(Q_t(a)\)</span> has leading symbol the product by the base endomorphism, and its remaining norm is <span class="math" data-tex="\(O(t)\)">\(O(t)\)</span> by (CI.45). This constructs the multipliers and their adjoints. Represent a finite bundle by a smooth projection <span class="math" data-tex="\(p\in M_N(C(M))\)">\(p\in M_N(C(M))\)</span>, obtained by a finite local-frame embedding. Its module is <span class="math" data-tex="\(p\mathcal A_M^N\)">\(p\mathcal A_M^N\)</span>; evaluation gives <span class="math" data-tex="\(\pi^*E\)">\(\pi^*E\)</span> at zero and <span class="math" data-tex="\(p\mathcal K(H)^N\)">\(p\mathcal K(H)^N\)</span> at positive times.</p>
+<p>Symmetric quantization of <span class="math" data-tex="\(a\)">\(a\)</span> is self-adjoint on <span class="math" data-tex="\(H^1\)">\(H^1\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, by the full elliptic maximal-domain and adjoint proof of Lemma 4.2b. Its symbol bounds may depend on the fixed positive <span class="math" data-tex="\(t\)">\(t\)</span>; that suffices away from zero. Near zero put <span class="math" data-tex="\(r_\pm=(a\pm i)^{-1}\)">\(r_\pm=(a\pm i)^{-1}\)</span>. These are symbols of order minus one with uniform estimates, since the matrix is self-adjoint and is elliptic at large frequency. The same composition calculation gives
+<span class="math" data-tex="\((Q_t(a)\pm i)Q_t(r_\pm)=1+tR_t\)">\((Q_t(a)\pm i)Q_t(r_\pm)=1+tR_t\)</span>, with <span class="math" data-tex="\(\sup\|R_t\|&lt;\infty\)">\(\sup\|R_t\|&lt;\infty\)</span>. It gives the analogous identity on the other side. For small <span class="math" data-tex="\(t\)">\(t\)</span> invert <span class="math" data-tex="\(1+tR_t\)">\(1+tR_t\)</span> by its norm-convergent Neumann series. The true inverse resolvent then differs in norm by <span class="math" data-tex="\(O(t)\)">\(O(t)\)</span> from <span class="math" data-tex="\(Q_t(r_\pm)\)">\(Q_t(r_\pm)\)</span>. Frequency truncation of <span class="math" data-tex="\(r_\pm\)">\(r_\pm\)</span> changes its operator norm by <span class="math" data-tex="\(O(R^{-1})\)">\(O(R^{-1})\)</span>, uniformly in small <span class="math" data-tex="\(t\)">\(t\)</span>, using the order-minus-one seminorm bounds. Hence this resolvent field belongs to <span class="math" data-tex="\(pM_N(\mathcal A_M)p\)">\(pM_N(\mathcal A_M)p\)</span>, with zero-value <span class="math" data-tex="\(r_\pm\)">\(r_\pm\)</span>. At positive times the graph/resolvent identity proves norm continuity; it is compact there by the closed Sobolev inclusion. Patching the small and positive parameter intervals gives both module inverse resolvents.</p>
+<p>Their ranges are dense in the projective module. Smooth compact-frequency quantized columns, together with compact-field columns away from zero, form a dense set. Applying <span class="math" data-tex="\(Q_t(a)\pm i\)">\(Q_t(a)\pm i\)</span> to such a column again belongs to the module: the composition leading symbol is <span class="math" data-tex="\((a\pm i)b\)">\((a\pm i)b\)</span>, still of compact frequency support, and the remainder is a compact field with norm tending to zero. Smooth columns away from zero are dense by the closed elliptic graph core. Thus each dense generating column is in the resolvent range. Their mutually adjoint inverse identities prove regular self-adjointness by the earlier resolvent lemma. This argument proves the assertion for bundle matrices as well, since chart connections change only bounded lower-order terms with their semiclassical factor <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>For <span class="math" data-tex="\(t\mathscr D_M\)">\(t\mathscr D_M\)</span> the zero symbol is exactly <span class="math" data-tex="\(c(\xi)\)">\(c(\xi)\)</span>, its grading is <span class="math" data-tex="\(\epsilon_n\Gamma_0\)">\(\epsilon_n\Gamma_0\)</span>, and its source is <span class="math" data-tex="\(f\)">\(f\)</span>. The graded commutator with a smooth Clifford section is <span class="math" data-tex="\(t\)">\(t\)</span> times its bounded covariant-derivative multiplier. It therefore defines a bounded adjointable field, including value zero at <span class="math" data-tex="\(t=0\)">\(t=0\)</span>. The projective module compact inverse resolvents just proved give a cycle with the full Clifford source. For a general scalar-source matrix symbol, its scalar commutator is <span class="math" data-tex="\(t\)">\(t\)</span> times an order-zero semiclassical operator, uniformly bounded by the proved estimate, and hence a multiplier. All source algebras used here are separable and all projective modules countably generated. Their coefficient actions are nondegenerate because radial compact-frequency cutoffs approximate every module element; the displayed scalar-base and Clifford source units act as identity, so these geometric source representations are essential. No essentiality condition is imposed on the arbitrary original cycles tested in (CI.49). This finishes the lemma. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In dimension zero the manifold is a finite set. The same algebra has a diagonal boundary fibre and a full finite-matrix positive fibre; its diagonal section is completely positive. There is no cosphere to normalize. Finite bundle zero-operator cycles and their constant semiclassical lifts give the assertions directly; the order-one condition outside a fibre ball is vacuous. This includes arbitrary finite-dimensional elliptic index defects. If the manifold is empty, every relevant symbol, operator and index class is zero, and the assertions hold directly; assume it nonempty whenever the Hilbert-space Morita equivalence is used below.</p>
+<p>The ideal in (CI.44) is a cone, whose identity is zero by the actual cone contraction of Lesson 10 Proposition 7.2. The semisplit six-term proof in Lesson 14 Theorems 4.1–4.2 therefore makes <span class="math" data-tex="\([e_0]\)">\([e_0]\)</span> invertible in KK. Explicitly, covariant exactness with source <span class="math" data-tex="\(B\)">\(B\)</span> gives <span class="math" data-tex="\(z\in KK(B,\mathcal A_M)\)">\(z\in KK(B,\mathcal A_M)\)</span> with <span class="math" data-tex="\(z[e_0]=1_B\)">\(z[e_0]=1_B\)</span>; exactness with source <span class="math" data-tex="\(\mathcal A_M\)">\(\mathcal A_M\)</span> then gives <span class="math" data-tex="\([e_0]z=1_{\mathcal A_M}\)">\([e_0]z=1_{\mathcal A_M}\)</span>, since its difference from the identity becomes zero after multiplication by <span class="math" data-tex="\([e_0]\)">\([e_0]\)</span>. These are separable instances of the already proved sequence. Let <span class="math" data-tex="\(m_H\in KK(\mathcal K(H),\mathbb C)\)">\(m_H\in KK(\mathcal K(H),\mathbb C)\)</span> be the explicit Hilbert-space Morita class and define
+<span class="math math-display" data-tex="\[
+ \mathfrak a_M=z\otimes_{\mathcal A_M}[e_1]
+                       \otimes_{\mathcal K(H)}m_H\in KK(B,\mathbb C).
+ \tag{CI.47}
+\]">\[
+ \mathfrak a_M=z\otimes_{\mathcal A_M}[e_1]
+                       \otimes_{\mathcal K(H)}m_H\in KK(B,\mathbb C).
+ \tag{CI.47}
+\]</span></p>
+<p><strong>Theorem CI.11 (all symbols, including the odd Clifford classes).</strong> The quantization morphism (CI.47) is <span class="math" data-tex="\([\bar\partial_{M,-}]\)">\([\bar\partial_{M,-}]\)</span>, and (CI.42) holds with its full <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span> source.</p>
+<p><strong>Proof.</strong> The Clifford-source family <span class="math" data-tex="\(t\mathscr D_M\)">\(t\mathscr D_M\)</span> in CI.10 is a class <span class="math" data-tex="\(d\in KK(C,\mathcal A_M)\)">\(d\in KK(C,\mathcal A_M)\)</span>. Its two evaluations are exactly
+<span class="math math-display" data-tex="\[
+ d[e_0]=x_V,
+ \qquad d[e_1]m_H=[\mathscr D_M].
+\]">\[
+ d[e_0]=x_V,
+ \qquad d[e_1]m_H=[\mathscr D_M].
+\]</span>
+The first equality includes the grading and source matrices of(CI.20), not merely its scalar index. Multiplying by <span class="math" data-tex="\(z\)">\(z\)</span> shows <span class="math" data-tex="\(d=x_Vz\)">\(d=x_Vz\)</span>. Consequently <span class="math" data-tex="\(x_V\mathfrak a_M=[\mathscr D_M]\)">\(x_V\mathfrak a_M=[\mathscr D_M]\)</span>. The actual inverse <span class="math" data-tex="\(y_V\)">\(y_V\)</span> gives
+<span class="math math-display" data-tex="\[
+ \mathfrak a_M=y_V[\mathscr D_M]
+                     =[\bar\partial_{M,-}]
+ \tag{CI.48}
+\]">\[
+ \mathfrak a_M=y_V[\mathscr D_M]
+                     =[\bar\partial_{M,-}]
+ \tag{CI.48}
+\]</span>
+by CI.6. This is an equality of KK morphisms, so it is tested against every graded Clifford class at once.</p>
+<p>For the arbitrary elliptic symbol of CI.9, smooth its radial extension near zero and let <span class="math" data-tex="\(a\)">\(a\)</span> be an odd self-adjoint order-one matrix on <span class="math" data-tex="\(E^+\oplus E^-\)">\(E^+\oplus E^-\)</span>, with lower-left part <span class="math" data-tex="\(r u(x,\widehat\xi)\)">\(r u(x,\widehat\xi)\)</span> above radius two, where <span class="math" data-tex="\(r=|\xi|\)">\(r=|\xi|\)</span>. Choose it zero near zero. Lemma CI.10 supplies its bounded-transform class <span class="math" data-tex="\(k\in KK(R,\mathcal A_M)\)">\(k\in KK(R,\mathcal A_M)\)</span>. At zero it is the relative symbol cycle: its sphere comparison is <span class="math" data-tex="\(u\)">\(u\)</span>, and its radial normalization is the relative construction in RK.3–RK.4. Thus <span class="math" data-tex="\(k[e_0]=[\![\sigma_P]\!]\)">\(k[e_0]=[\![\sigma_P]\!]\)</span>. At one its elliptic principal comparison is <span class="math" data-tex="\(u\)">\(u\)</span>, so CI.9 identifies <span class="math" data-tex="\(k[e_1]m_H=[P]\)">\(k[e_1]m_H=[P]\)</span>. Invertibility of <span class="math" data-tex="\([e_0]\)">\([e_0]\)</span> gives <span class="math" data-tex="\(k=[\![\sigma_P]\!]z\)">\(k=[\![\sigma_P]\!]z\)</span>. Multiplication by <span class="math" data-tex="\([e_1]m_H\)">\([e_1]m_H\)</span> and (CI.48) proves (CI.42).</p>
+<p>More explicitly, for <em>any</em> <span class="math" data-tex="\(v\in K_0(C)\)">\(v\in K_0(C)\)</span>, represented by its actual graded Kasparov cycle, its Thom image is <span class="math" data-tex="\(vx_V\)">\(vx_V\)</span>, and the proof gives
+<span class="math math-display" data-tex="\[
+ \operatorname{Quant}(vx_V)=v[\mathscr D_M].
+ \tag{CI.49}
+\]">\[
+ \operatorname{Quant}(vx_V)=v[\mathscr D_M].
+ \tag{CI.49}
+\]</span>
+The relative-bundle construction of Theorems RK.3–RK.4 represents <span class="math" data-tex="\(vx_V\in K_0(B)\)">\(vx_V\in K_0(B)\)</span> by some stabilized elliptic sphere symbol; CI.9 and the preceding family prove that its quantization is independent of that choice. No assertion about a finite-projective representative of <span class="math" data-tex="\(v\)">\(v\)</span> is made or required. The same equality holds in degree one by retaining one right <span class="math" data-tex="\(Cl_1\)">\(Cl_1\)</span> factor throughout: tensor the algebra, both evaluations, their inverse and every projective resolvent construction with that finite-dimensional graded factor. Their inverse-product identities are the literal dilations of the displayed identities, with the preceding lesson's fixed right-factor order. This proves compatibility in both graded K-degrees without a suspension-generation shortcut. In particular on an odd spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> base take an actual unitary <span class="math" data-tex="\(u\in M_k(R)\)">\(u\in M_k(R)\)</span> and its positive-boundary odd class. Associativity and CI.33 give
+<span class="math" data-tex="\(\operatorname{Quant}([u]\tau_V)=[u][D_M]\)">\(\operatorname{Quant}([u]\tau_V)=[u][D_M]\)</span>.
+The complete odd-product proof of Lesson 10 Theorem 6.2 identifies the latter with the Fredholm compression
+<span class="math" data-tex="\(\operatorname{index}(P\pi(u)P)\)">\(\operatorname{index}(P\pi(u)P)\)</span>, <span class="math" data-tex="\(P=(1+\operatorname{sign}D_M)/2\)">\(P=(1+\operatorname{sign}D_M)/2\)</span>, with the finite kernel assigned to one spectral half as in that theorem, so that its involution representative and projection have the stated sign. This applies to every stabilized unitary homotopy, not only Clifford coefficient bundles with zero operator. The unitary <span class="math" data-tex="\(z\)">\(z\)</span> on the circle gives <span class="math" data-tex="\(-1\)">\(-1\)</span> as in (CI.39). For non-spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> and nonorientable bases(CI.49), as an equality on all original graded cycles, supplies exactly the same universal compatibility. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="10-tubular-extension-and-the-embedding-index">10. Tubular extension and the embedding index</h2>
+<p>We first supply the precise excision needed for a compactly supported index. It does not presume the general open restriction theorem stated at the end of the lesson.</p>
+<p><strong>Lemma CI.12 (compactly supported pairing and local Dirac comparison).</strong> Let two symmetric elliptic Dirac-type operators on complete manifolds be identified on an open set <span class="math" data-tex="\(U\)">\(U\)</span>, with the same principal Clifford symbol there. Their lower-order difference may be any smooth symmetric endomorphism. Their bounded-transform cycles restricted to <span class="math" data-tex="\(C_0(U)\)">\(C_0(U)\)</span> have the same class after identifying the spinors on <span class="math" data-tex="\(U\)">\(U\)</span>. Consequently their pairings with a finite relative symbol supported compactly inside <span class="math" data-tex="\(U\)">\(U\)</span> agree. It suffices that the operators have the complete exhaustion and localized resolvent properties of CI.1. Completeness and a global bound for the lower-order difference are not required outside the comparison region.</p>
+<p><strong>Proof.</strong> Compress a bounded transform <span class="math" data-tex="\(F\)">\(F\)</span> to <span class="math" data-tex="\(L^2(U)\)">\(L^2(U)\)</span>, using the orthogonal measurable projection <span class="math" data-tex="\(P_U\)">\(P_U\)</span>. For <span class="math" data-tex="\(j\in C_c^\infty(U)\)">\(j\in C_c^\infty(U)\)</span>, choose <span class="math" data-tex="\(\chi\in C_c^\infty(U)\)">\(\chi\in C_c^\infty(U)\)</span>, equal to one on its support. Since <span class="math" data-tex="\(\chi(1-P_U)=0\)">\(\chi(1-P_U)=0\)</span>,
+<span class="math" data-tex="\(jF(1-P_U)=-j[F,\chi](1-P_U)\)">\(jF(1-P_U)=-j[F,\chi](1-P_U)\)</span> is compact. Thus the compressed transform is a cycle: its localized square defect is the original compact defect plus <span class="math" data-tex="\(jP_UF(1-P_U)FP_U\)">\(jP_UF(1-P_U)FP_U\)</span>; its commutators are the compressed compact commutators. The off-diagonal blocks in the decomposition <span class="math" data-tex="\(L^2(U)\oplus L^2(U^c)\)">\(L^2(U)\oplus L^2(U^c)\)</span> are source-locally compact by the same calculation. Removing them is the proved locally compact perturbation rule; the second block has zero source and is degenerate. Hence compression gives exactly the restriction class, not a choice of boundary condition for an incomplete differential operator.</p>
+<p>For a protected compactly supported <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, regarded as a map between the two Hilbert spaces, put <span class="math" data-tex="\(E=D_1\chi-\chi D_2\)">\(E=D_1\chi-\chi D_2\)</span>. Equality of principal symbols makes <span class="math" data-tex="\(E\)">\(E\)</span> a bounded compactly supported zero-order map. The maximal domains and the local product rule give
+<span class="math math-display" data-tex="\[
+ (D_1-z)^{-1}\chi-\chi(D_2-z)^{-1}
+       =-(D_1-z)^{-1}E(D_2-z)^{-1}.
+ \tag{CI.50}
+\]">\[
+ (D_1-z)^{-1}\chi-\chi(D_2-z)^{-1}
+       =-(D_1-z)^{-1}E(D_2-z)^{-1}.
+ \tag{CI.50}
+\]</span>
+This identity holds initially on the graph cores and extends by boundedness. For <span class="math" data-tex="\(z=\pm i\rho\)">\(z=\pm i\rho\)</span> its norm is at most <span class="math" data-tex="\(\|E\|/\rho^2\)">\(\|E\|/\rho^2\)</span>; it is compact by the compact-support inverse-resolvent property on the support of <span class="math" data-tex="\(E\)">\(E\)</span>. Express <span class="math" data-tex="\(D(D^2+\rho^2)^{-1}\)">\(D(D^2+\rho^2)^{-1}\)</span> as half the sum of the two inverse resolvents. Integrating (CI.50) with <span class="math" data-tex="\(\rho=\sqrt{1+s^2}\)">\(\rho=\sqrt{1+s^2}\)</span> in the actual bounded-transform integral proves
+<span class="math" data-tex="\(F_1\chi-\chi F_2\)">\(F_1\chi-\chi F_2\)</span> compact: the compact error integral converges in norm by <span class="math" data-tex="\(\|E\|/(1+s^2)\)">\(\|E\|/(1+s^2)\)</span>, while the uncommuted integrals converge strongly as proved earlier. Moving a compactly supported <span class="math" data-tex="\(j\)">\(j\)</span> past a further cutoff proves that the two compressed transforms differ by a two-sided <span class="math" data-tex="\(C_0(U)\)">\(C_0(U)\)</span>-locally compact operator. The perturbation rule proves equality of their classes.</p>
+<p>Here is the support assertion for the first factor. A relative symbol is represented by a finite section module with an odd multiplication operator <span class="math" data-tex="\(G\)">\(G\)</span>, whose square is exactly one outside a compact set <span class="math" data-tex="\(K\)">\(K\)</span>. Choose <span class="math" data-tex="\(U&#x27;\Subset U\)">\(U&#x27;\Subset U\)</span> containing <span class="math" data-tex="\(K\)">\(K\)</span>. The open interval support module on
+<span class="math" data-tex="\(([0,1]\times U&#x27;)\cup((0,1]\times X)\)">\(([0,1]\times U&#x27;)\cup((0,1]\times X)\)</span>
+joins its restricted cycle to the original cycle over <span class="math" data-tex="\(C_0(X)\)">\(C_0(X)\)</span>. Complete compactly supported section vectors for the coefficient-valued inner product. Finite charts prove continuity of their inner products; a countable chart/cutoff family gives countable generation. The multiplication operator preserves this module, and its defects stay inside <span class="math" data-tex="\([0,1]\times K\)">\([0,1]\times K\)</span>, so finite bundle charts give compact module defects. Evaluation is dense at both endpoints by interval cutoffs. This is the multiplication case of the explicit support homotopy in the zero-section comparison, with its proof included here. The restricted cycle is a class over <span class="math" data-tex="\(C_0(U&#x27;)\)">\(C_0(U&#x27;)\)</span>, followed by extension by zero. Associativity now reduces its two pairings to the equal restriction classes just proved. No complemented Hilbert-module support is used. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We shall also use the following geometric consequence of CI.4. On a second-countable manifold, two complete Dirac-type constructions whose Clifford spinor structures are connected by a smooth homotopy give the same scalar-source class, provided their gradings and determinant lift are transported along that homotopy. To justify the required global control, use the complete reference connection metric and its proper bounded-gradient function <span class="math" data-tex="\(h\)">\(h\)</span> already constructed on the cotangent or normal bundle in question. For a compact parameter family of smooth principal symbols choose a smooth positive multiplier <span class="math" data-tex="\(w\leq1\)">\(w\leq1\)</span> making all their symbol norms relative to that metric uniformly bounded. On successive compact shells take the reciprocal of an upper bound for the finitely many symbols, and combine smaller positive bounds by a locally finite partition. Thus <span class="math" data-tex="\([\frac12(wD_s+D_sw),h]\)">\([\frac12(wD_s+D_sw),h]\)</span> is bounded uniformly in <span class="math" data-tex="\(s\)">\(s\)</span>. Formal symmetry is retained. CI.1 proves essential self-adjointness, with the common compactly supported graph core; CI.4's proof, using the uniform exhaustion and elliptic estimates on each compact set, gives a genuine interval-module homotopy. Its proof uses only local bounds for the zero-order coefficients. Rescaling an endpoint to this <span class="math" data-tex="\(w\)">\(w\)</span> is handled by the positive path <span class="math" data-tex="\(w_s=(1-s)+sw\)">\(w_s=(1-s)+sw\)</span>; if that endpoint has a bounded-gradient exhaustion, the commutator with it remains uniformly bounded since <span class="math" data-tex="\(w_s\leq1\)">\(w_s\leq1\)</span>. Therefore the rescaling does not change its class. If prescribed agreement is needed near one compact set, take <span class="math" data-tex="\(w=1\)">\(w=1\)</span> there and use a larger uniform bound on that set. This proves the consequence; it is not an assertion that all almost complex structures are homotopic.</p>
+<p>Every closed manifold has an embedding into some finite Euclidean space, by the following elementary construction. Choose a finite coordinate cover <span class="math" data-tex="\(\psi_j:U_j\to\mathbb R^n\)">\(\psi_j:U_j\to\mathbb R^n\)</span> and smooth nonnegative cutoffs <span class="math" data-tex="\(\chi_j\)">\(\chi_j\)</span> supported inside the charts, with at least one <span class="math" data-tex="\(\chi_j(x)&gt;0\)">\(\chi_j(x)&gt;0\)</span> at every point. The map <span class="math" data-tex="\(x\mapsto(\chi_j(x),\chi_j(x)\psi_j(x))_j\)">\(x\mapsto(\chi_j(x),\chi_j(x)\psi_j(x))_j\)</span> is smooth after zero extension. Equality of two images, using an index with positive cutoff, recovers the same chart coordinates by division, so implies equality of the points. A vector in its differential kernel has both <span class="math" data-tex="\(d\chi_j=0\)">\(d\chi_j=0\)</span> and <span class="math" data-tex="\(\chi_jd\psi_j=0\)">\(\chi_jd\psi_j=0\)</span> for that index, so is zero. Compactness makes this injective immersion a homeomorphism onto its image, and the same chart ratios give its local smooth inverse. It is therefore an embedding, without a separate embedding theorem premise. Fix any <span class="math" data-tex="\(i:M\hookrightarrow\mathbb R^N\)">\(i:M\hookrightarrow\mathbb R^N\)</span> and let <span class="math" data-tex="\(\nu\)">\(\nu\)</span> be its real Euclidean normal bundle, of rank <span class="math" data-tex="\(q=N-n\)">\(q=N-n\)</span>. Its cotangent embedding sends <span class="math" data-tex="\((x,\xi)\)">\((x,\xi)\)</span> to the covector extending <span class="math" data-tex="\(\xi\)">\(\xi\)</span> by zero on <span class="math" data-tex="\(\nu_x\)">\(\nu_x\)</span>. The normal bundle of this embedding is
+<span class="math math-display" data-tex="\[
+ E=\pi^*(\nu\oplus\nu^*)\longrightarrow V=T^*M.
+ \tag{CI.51}
+\]">\[
+ E=\pi^*(\nu\oplus\nu^*)\longrightarrow V=T^*M.
+ \tag{CI.51}
+\]</span>
+Use the metric identification of <span class="math" data-tex="\(\nu^*\)">\(\nu^*\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, and give this doubled normal the complex coordinate <span class="math" data-tex="\(u+i\eta\)">\(u+i\eta\)</span>. Its positive exterior spinor is <span class="math" data-tex="\(\Lambda\nu_{\mathbb C}\)">\(\Lambda\nu_{\mathbb C}\)</span>, with grading form parity and Clifford position
+<span class="math" data-tex="\(c(u)+f(\eta)\)">\(c(u)+f(\eta)\)</span>. Its determinant is <span class="math" data-tex="\(\det\nu_{\mathbb C}\)">\(\det\nu_{\mathbb C}\)</span>, which can be nontrivial. The bundle and spinor exist under every <span class="math" data-tex="\(O(q)\)">\(O(q)\)</span> transition. We retain the outward complex Thom class <span class="math" data-tex="\(\tau_E\)">\(\tau_E\)</span>. The rank-normalized right-product class is <span class="math" data-tex="\(\epsilon_{2q}\tau_E=(-1)^q\tau_E\)">\(\epsilon_{2q}\tau_E=(-1)^q\tau_E\)</span>, and would require the corresponding explicit conversion. The scalar normal complex coordinate is specified independently of the <span class="math" data-tex="\(J_-\)">\(J_-\)</span> cotangent Dirac symbol, which in the corresponding normal directions is <span class="math" data-tex="\(f(du)+c(d\eta)\)">\(f(du)+c(d\eta)\)</span>. That distinction is necessary for the even Gaussian below.</p>
+<p>Define <span class="math" data-tex="\(i_*^{\rm cot}\)">\(i_*^{\rm cot}\)</span> by this Thom class followed by a tubular identification and extension by zero into <span class="math" data-tex="\(W=T^*\mathbb R^N\)">\(W=T^*\mathbb R^N\)</span>. The normal Thom cycle over the noncompact base <span class="math" data-tex="\(V\)">\(V\)</span> is legitimate: the defect after multiplication by <span class="math" data-tex="\(b\in C_0(V)\)">\(b\in C_0(V)\)</span> is <span class="math" data-tex="\(-b/(1+|u|^2+|\eta|^2)\)">\(-b/(1+|u|^2+|\eta|^2)\)</span>, a finite bundle endomorphism vanishing at infinity on <span class="math" data-tex="\(E\)">\(E\)</span>. The exact two inverse resolvents of the position multiplier and compactly supported section vectors prove its regularity and countability. No compact-base Thom theorem is silently extended.</p>
+<p>We give explicit tubular and determinant checks. A metric normal tubular map <span class="math" data-tex="\(\nu\supset\{|u|&lt;\rho(x)\}\to\mathbb R^N\)">\(\nu\supset\{|u|&lt;\rho(x)\}\to\mathbb R^N\)</span> exists by the inverse function theorem applied to <span class="math" data-tex="\(i(x)+u\)">\(i(x)+u\)</span>; compactness of <span class="math" data-tex="\(M\)">\(M\)</span> supplies a uniform smaller radius and injectivity. Indeed failure of injectivity at arbitrarily small radii would have a subsequence limiting to a zero-section point, contradicting its local inverse; separated limiting base points contradict injectivity of <span class="math" data-tex="\(i\)">\(i\)</span>. A metric connection identifies
+<span class="math" data-tex="\(T^*\nu\)">\(T^*\nu\)</span> with <span class="math" data-tex="\(\pi^*T^*M\oplus\nu\oplus\nu^*\)">\(\pi^*T^*M\oplus\nu\oplus\nu^*\)</span>, hence with <span class="math" data-tex="\(E\)">\(E\)</span> as a manifold. The cotangent lift of the tubular map is a diffeomorphism onto <span class="math" data-tex="\(T^*U\subset W\)">\(T^*U\subset W\)</span>. Replacing its normal disk by all of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> via
+<span class="math" data-tex="\(u\mapsto\rho u/\sqrt{1+|u|^2}\)">\(u\mapsto\rho u/\sqrt{1+|u|^2}\)</span>
+gives a global diffeomorphism <span class="math" data-tex="\(T^*\nu\to T^*U\)">\(T^*\nu\to T^*U\)</span>; its cotangent lift also transports <span class="math" data-tex="\(\eta\)">\(\eta\)</span> by the inverse transpose. The absolute half-density Jacobian is positive and introduces no orientation character. Near the zero section its normal derivative is a positive radial rescaling, homotopic to the identity. Thus its relative Thom class is the displayed outward one. Changing the radius or connection gives the corresponding smooth positive radial and affine-connection paths, with compact supports carried inside a fixed smaller tubular region for each compactly supported class. The support homotopy of CI.12 proves equality after extension. The graph, tubular and support comparisons in <a href="KT-KK-16.html#3-graph-symbols-and-bounded-families"><em>Wrong-way maps for K-oriented maps</em>, Sections 2–4</a> give the same outward class for a direct cutoff definition; its outward diagonal spinor is <span class="math" data-tex="\(c(\xi)+i\widehat c(\eta)\)">\(c(\xi)+i\widehat c(\eta)\)</span> with displacement <span class="math" data-tex="\(\eta=-u\)">\(\eta=-u\)</span>. Its explicitly different literal diagonal reading requires the proved parity and <span class="math" data-tex="\(\det(TM_{\mathbb C})\)">\(\det(TM_{\mathbb C})\)</span> correction. That alternative is not used in this definition.</p>
+<p><strong>Lemma CI.13 (the doubled-real-normal Gaussian).</strong> Give <span class="math" data-tex="\(E\)">\(E\)</span> the split <span class="math" data-tex="\(J_-\)">\(J_-\)</span> Clifford spinor <span class="math" data-tex="\(\pi_E^*S_V\widehat\otimes\Lambda\nu_{\mathbb C}\)">\(\pi_E^*S_V\widehat\otimes\Lambda\nu_{\mathbb C}\)</span>, where <span class="math" data-tex="\(S_V=\Lambda^{0,*}T^*V\)">\(S_V=\Lambda^{0,*}T^*V\)</span>. Choose compatible base and normal connections and the complete connection metric. Its Dirac-type class <span class="math" data-tex="\(d_E\)">\(d_E\)</span> satisfies
+<span class="math math-display" data-tex="\[
+ \tau_E\otimes_{C_0(E)}d_E=[\bar\partial_{M,-}]
+                               \quad\hbox{in }KK(B,\mathbb C).
+ \tag{CI.52}
+\]">\[
+ \tau_E\otimes_{C_0(E)}d_E=[\bar\partial_{M,-}]
+                               \quad\hbox{in }KK(B,\mathbb C).
+ \tag{CI.52}
+\]</span>
+This includes the full noncompact <span class="math" data-tex="\(B\)">\(B\)</span> source and a trivial even Gaussian line, even when <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is nonorientable.</p>
+<p><strong>Proof.</strong> Reorder the even-dimensional base spinor to the first tensor position by the actual graded tensor permutation. In each normal frame define the operator on the two normal spinors by
+<span class="math math-display" data-tex="\[
+ O_\nu=c_\tau(u)+f_\tau(\eta)
+       -i\Gamma_\tau\bigl(f_D\partial_u+c_D\partial_\eta\bigr).
+ \tag{CI.53}
+\]">\[
+ O_\nu=c_\tau(u)+f_\tau(\eta)
+       -i\Gamma_\tau\bigl(f_D\partial_u+c_D\partial_\eta\bigr).
+ \tag{CI.53}
+\]</span>
+The global vertical term is <span class="math" data-tex="\(O=\Gamma_V\otimes O_\nu\)">\(O=\Gamma_V\otimes O_\nu\)</span>, the first position term is <span class="math" data-tex="\(X_E=\Gamma_V\otimes(c_\tau(u)+f_\tau(\eta))\)">\(X_E=\Gamma_V\otimes(c_\tau(u)+f_\tau(\eta))\)</span>, and the horizontal term <span class="math" data-tex="\(H\)">\(H\)</span> is the base Dolbeault connection operator. The grading is <span class="math" data-tex="\(\Gamma_V\otimes\Gamma_\tau\otimes\Gamma_D\)">\(\Gamma_V\otimes\Gamma_\tau\otimes\Gamma_D\)</span>. These base grading operators are essential: writing the vertical term as an ordinary tensor with identity would make it commute with the horizontal Clifford matrices. All subsequent <span class="math" data-tex="\(sO+H\)">\(sO+H\)</span> formulas use this global <span class="math" data-tex="\(O\)">\(O\)</span>. The two normal spinor factors both have their actual exterior gradings. On the scalar Gaussian in the <span class="math" data-tex="\(2q\)">\(2q\)</span> real variables, the matrix constraints are
+<span class="math" data-tex="\((c_{\tau,j}+i\Gamma_\tau f_{D,j})w=0\)">\((c_{\tau,j}+i\Gamma_\tau f_{D,j})w=0\)</span> and
+<span class="math" data-tex="\((f_{\tau,j}+i\Gamma_\tau c_{D,j})w=0\)">\((f_{\tau,j}+i\Gamma_\tau c_{D,j})w=0\)</span>. Their solution is the unit vector
+<span class="math math-display" data-tex="\[
+ w=2^{-q/2}\sum_{I}
+       (-1)^{|I|(|I|-1)/2}e_I\otimes e_I .
+ \tag{CI.54}
+\]">\[
+ w=2^{-q/2}\sum_{I}
+       (-1)^{|I|(|I|-1)/2}e_I\otimes e_I .
+ \tag{CI.54}
+\]</span>
+Creation/contraction determines its coefficients recursively from the vacuum coefficient: adjoining the <span class="math" data-tex="\(k\)">\(k\)</span>-th ordered index introduces <span class="math" data-tex="\((-1)^{k-1}\)">\((-1)^{k-1}\)</span>. It proves both constraints and that there is no other solution. Alternatively squaring gives the scalar <span class="math" data-tex="\(2q\)">\(2q\)</span>-oscillator plus <span class="math" data-tex="\(2q\)">\(2q\)</span> commuting Clifford involutions; every nonempty product has trace zero, so their simultaneous lowest eigenspace is one-dimensional. The scalar ground function is <span class="math" data-tex="\(\pi^{-q/2}\exp[-(|u|^2+|\eta|^2)/2]\)">\(\pi^{-q/2}\exp[-(|u|^2+|\eta|^2)/2]\)</span>; the higher Hermite levels have gap at least two. The complete weighted domain and compact fibre inclusion follow by the finite matrix diagonalization and actual oscillator proof used in CI.5. In (CI.54) both factors have the same exterior degree, so the Gaussian is even. Each degree's sum <span class="math" data-tex="\(\sum_{|I|=k}e_I\otimes e_I\)">\(\sum_{|I|=k}e_I\otimes e_I\)</span> is the metric's canonical exterior tensor and is <span class="math" data-tex="\(O(q)\)">\(O(q)\)</span>-invariant. This proves the actual global trivial line, including orientation-reversing transitions. In particular the normal determinant character has not been dropped or replaced by an orientation assumption.</p>
+<p>When <span class="math" data-tex="\(q=0\)">\(q=0\)</span>, the normal spinor and Gaussian are the even scalar line, <span class="math" data-tex="\(O=0\)">\(O=0\)</span>, and the kernel complement is absent; (CI.52) is the identity product. Otherwise the gap just proved is uniform. Parallel transport preserves <span class="math" data-tex="\(O\)">\(O\)</span>, its matrices and its radial Gaussian. Horizontal Clifford matrices anticommute with it. Therefore on the smooth compact core
+<span class="math math-display" data-tex="\[
+ \| (sO+H)v\|^2=s^2\|Ov\|^2+\|Hv\|^2,
+                   \qquad s\geq1.
+ \tag{CI.55}
+\]">\[
+ \| (sO+H)v\|^2=s^2\|Ov\|^2+\|Hv\|^2,
+                   \qquad s\geq1.
+ \tag{CI.55}
+\]</span>
+The complete connection metric has a proper bounded-gradient exhaustion, obtained by adding the proper base exhaustion in CI.3 to <span class="math" data-tex="\(\sqrt{1+|u|^2+|\eta|^2}\)">\(\sqrt{1+|u|^2+|\eta|^2}\)</span>. Normal parallel transport preserves the latter. CI.1 proves essential self-adjointness and a common graph core for these symmetric Dirac-plus-potential operators. Formula (CI.55) and the weighted normal oscillator estimate imply the required domain inclusion for the first normal position operator. Its product positivity is
+<span class="math" data-tex="\(2\operatorname{Re}\langle(O+H)v,X_Ev\rangle\geq-2q\|v\|^2\)">\(2\operatorname{Re}\langle(O+H)v,X_Ev\rangle\geq-2q\|v\|^2\)</span>: the horizontal term anticommutes with position and the vertical oscillator bracket is <span class="math" data-tex="\(2|z|^2\)">\(2|z|^2\)</span> plus the bounded Clifford matrix. Compactly supported smooth normal-spinor creations have bounded position and covariant-derivative errors, and integration by parts gives their adjoint errors and maximal-domain inclusions. These are a dense creation domain. Thus the actual unbounded product criterion identifies <span class="math" data-tex="\(O+H\)">\(O+H\)</span> as the product in (CI.52).</p>
+<p>For every compact base support its graph unit ball has a small normal tail, by the <span class="math" data-tex="\(|z|^2\)">\(|z|^2\)</span> oscillator bound in (CI.55); on bounded normal balls the local elliptic estimate and finite Fourier truncations give compactness. Inserting a compact base cutoff in the resolvent first, and then this two-stage truncation, proves source-localized compactness of inverse resolvents. Approximating arbitrary <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> by such cutoffs gives every cycle defect. This is full Hilbert-space compactness after source localization, not fibrewise compactness alone.</p>
+<p>To remove the complement use the strict endpoint proof of CI.8 with the same estimates, now localized by <span class="math" data-tex="\(b\in C_c^\infty(V)\)">\(b\in C_c^\infty(V)\)</span>. Since <span class="math" data-tex="\([O,b]=0\)">\([O,b]=0\)</span> and <span class="math" data-tex="\([H,b]\)">\([H,b]\)</span> is bounded, the resolvent integral on the complementary oscillator gap gives
+<span class="math" data-tex="\(\|[\operatorname{sign}(sO+H),b]\|\leq C_b/s\)">\(\|[\operatorname{sign}(sO+H),b]\|\leq C_b/s\)</span> and the bounded-transform/sign difference at most <span class="math" data-tex="\(C/s^2\)">\(C/s^2\)</span>. Compact defects therefore tend to zero in norm after localization. On positive compact parameter intervals the localized graph balls have the uniform base/normal compactness just proved; strong resolvent continuity on the common core and finite-rank approximation give norm-continuous compact fields. On each finite Hermite level the horizontal operator is a finite-bundle Dirac on the complete base <span class="math" data-tex="\(V\)">\(V\)</span>; CI.1 proves its maximal self-adjoint domain, with no curvature bound required. Its scalar spectral calculus proves strong convergence of the complementary transform to <span class="math" data-tex="\(\operatorname{sign}O\)">\(\operatorname{sign}O\)</span>, as in CI.8. Density of those levels and uniform bounds extend it to the whole Hilbert space and to the adjoints. Thus <span class="math" data-tex="\(s=1/r\)">\(s=1/r\)</span> gives an actual constant interval Hilbert module, with norm-continuous localized compact defects at <span class="math" data-tex="\(r=0\)">\(r=0\)</span>. The complementary endpoint is degenerate, since <span class="math" data-tex="\(\operatorname{sign}O\)">\(\operatorname{sign}O\)</span> is an odd involution commuting with the base source. On the even invariant Gaussian the horizontal operator is exactly the original base Dolbeault operator; its normal connection vanishes on(CI.54). This proves (CI.52). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We check that the ambient cotangent structure is the one in this lemma up to a genuine spinor homotopy, rather than assuming a product complex structure under a tubular map. The connection coordinates on <span class="math" data-tex="\(T^*\nu=E\)">\(T^*\nu=E\)</span> have canonical one-form
+<span class="math" data-tex="\(\xi\,dx+\eta\,\nabla u\)">\(\xi\,dx+\eta\,\nabla u\)</span>. Its exterior derivative differs from the split base-plus-normal symplectic form by the horizontal two-form <span class="math" data-tex="\(\langle\eta,R_\nu u\rangle\)">\(\langle\eta,R_\nu u\rangle\)</span>, and by the connection changes already present in those coordinates. The curvature two-form has only two horizontal base arguments. Addition of any multiple of it preserves nondegeneracy: the <span class="math" data-tex="\(dx\)">\(dx\)</span>-<span class="math" data-tex="\(d\xi\)">\(d\xi\)</span> and <span class="math" data-tex="\(du\)">\(du\)</span>-<span class="math" data-tex="\(d\eta\)">\(d\eta\)</span> pairings still force a vector in its nullspace to have all four components zero. Writing this horizontal two-form as <span class="math" data-tex="\(A\)">\(A\)</span>, the shear <span class="math" data-tex="\(T_s\)">\(T_s\)</span> adds to the cotangent-vertical component of a horizontal vector <span class="math" data-tex="\(X\)">\(X\)</span> the covector <span class="math" data-tex="\(a_X(Y)=sA(X,Y)/2\)">\(a_X(Y)=sA(X,Y)/2\)</span>, leaving its other components fixed. Thus <span class="math" data-tex="\(T_s^*\omega_0=\omega_0+sA\)">\(T_s^*\omega_0=\omega_0+sA\)</span>, since the two new cross terms are <span class="math" data-tex="\(a_X(Y)-a_Y(X)=sA(X,Y)\)">\(a_X(Y)-a_Y(X)=sA(X,Y)\)</span>. The transported complex structure is <span class="math" data-tex="\(T_s^{-1}J_-T_s\)">\(T_s^{-1}J_-T_s\)</span>. It is triangular with diagonal identity, so its determinant is one and it introduces no line or grading reversal. Transporting the split <span class="math" data-tex="\(J_-\)">\(J_-\)</span> by these shears gives a compatible almost complex homotopy to one compatible with the canonical cotangent form. Two compatible almost complex choices are connected without an existence theorem: interpolate their positive metrics and put
+<span class="math" data-tex="\(J=A(-A^2)^{-1/2}\)">\(J=A(-A^2)^{-1/2}\)</span>, <span class="math" data-tex="\(A=g^{-1}\omega\)">\(A=g^{-1}\omega\)</span>, choosing the sign of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> consistent with <span class="math" data-tex="\(J_-\)">\(J_-\)</span>. The positive square root exists smoothly because <span class="math" data-tex="\(-A^2\)">\(-A^2\)</span> is positive and invertible in the metric, as follows by diagonalizing its finite skew-adjoint matrix. This produces the desired compatible path.</p>
+<p>The cotangent lift of a diffeomorphism preserves the canonical one-form by its definition as the inverse-transpose action on covectors. Thus the tubular pullback of the ambient <span class="math" data-tex="\(J_-\)">\(J_-\)</span> has just this compatible homotopy. Exterior spinors transported along it have the same determinant lift and grading. For an explicit transport first use positive square-root metric identifications on the complexified cotangent bundle and let <span class="math" data-tex="\(p_s\)">\(p_s\)</span> be the orthogonal projection onto the anti-holomorphic subspace. The pointwise equation <span class="math" data-tex="\(\dot U_s=[\dot p_s,p_s]U_s\)">\(\dot U_s=[\dot p_s,p_s]U_s\)</span>, <span class="math" data-tex="\(U_0=1\)">\(U_0=1\)</span>, has a smooth unitary solution: its coefficient is skew-adjoint, and differentiating <span class="math" data-tex="\(U_s^*p_sU_s\)">\(U_s^*p_sU_s\)</span> gives zero by differentiating <span class="math" data-tex="\(p_s^2=p_s\)">\(p_s^2=p_s\)</span>. On each relatively compact chart this is the uniformly convergent ordinary matrix integral iteration; uniqueness glues the solutions. Its exterior powers are even unitary spinor identifications. Their determinants transport the actual line, rather than discarding it. Positive metric/shear identifications likewise do not reverse parity. The geometric homotopy consequence after CI.12 makes their complete Dirac-type classes equal. For comparison with the incomplete open ambient region only its germ near a given compact support is needed: retain its pulled-back metric and connection near that compact set, replace them outside a larger compact set by complete split choices, and interpolate. Choose a compactly supported cutoff equal to one on that protected set and evaluate the preceding almost complex path at this cutoff; it is the pulled-back structure there and the split structure outside a larger compact set. Interpolate positive metrics there and make them Hermitian by <span class="math" data-tex="\(g\mapsto(g+g(J\cdot,J\cdot))/2\)">\(g\mapsto(g+g(J\cdot,J\cdot))/2\)</span>. The latter operation is bounded below by <span class="math" data-tex="\(g/2\)">\(g/2\)</span>. This constructs the smooth metric and Clifford-compatible connection choices; their metric is bounded below by a positive multiple of the complete split metric, since the altered region is compact. Consequently they have the required exhaustion. CI.12 identifies their restricted bounded-transform classes with the ambient one. This proves the needed tubular comparison including the connection, domains and determinant line.</p>
+<p>To see explicitly that this comparison applies to <em>every</em> compactly supported input, let <span class="math" data-tex="\(a\in K_0(B)\)">\(a\in K_0(B)\)</span> be represented by a finite relative multiplication cycle <span class="math" data-tex="\(F_a\)">\(F_a\)</span>, a self-adjoint contraction exactly unitary outside a compact base set. Represent the normal Thom cycle by <span class="math" data-tex="\(F_E\)">\(F_E\)</span> exactly unitary outside a fixed normal ball; use a smooth radial cutoff angle. On their finite tensor section module the multiplication operator
+<span class="math math-display" data-tex="\[
+ G=F_a\sqrt{1-F_E^2}+\Gamma_a F_E
+ \tag{CI.56}
+\]">\[
+ G=F_a\sqrt{1-F_E^2}+\Gamma_a F_E
+ \tag{CI.56}
+\]</span>
+has defect <span class="math" data-tex="\((F_a^2-1)(1-F_E^2)\)">\((F_a^2-1)(1-F_E^2)\)</span>, supported in a compact subset of <span class="math" data-tex="\(E\)">\(E\)</span>. It is the actual product: its creation error relative to <span class="math" data-tex="\(F_E\)">\(F_E\)</span> is multiplication by a matrix vanishing at normal infinity and multiplied by a base section vanishing at base infinity, hence is module compact; the adjoint condition is the same. Its anticommutator with the first operator is <span class="math" data-tex="\(2\sqrt{1-F_E^2}F_a^2\geq0\)">\(2\sqrt{1-F_E^2}F_a^2\geq0\)</span>. The bounded product criterion therefore identifies it with <span class="math" data-tex="\(a\tau_E\)">\(a\tau_E\)</span>. This also proves proper support, instead of deducing it from pointwise Gaussian indices. CI.12 restricts(CI.56) to a protected compact tubular region, where the ambient and complete pulled-back cycles agree. The spinor homotopy and (CI.52) give
+<span class="math math-display" data-tex="\[
+ \bigl\langle i_*^{\rm cot}(a),[\bar\partial_{\mathbb R^N,-}]\bigr\rangle
+       =\langle a,[\bar\partial_{M,-}]\rangle
+                         \quad\text{for every }a\in K_0(B).
+ \tag{CI.57}
+\]">\[
+ \bigl\langle i_*^{\rm cot}(a),[\bar\partial_{\mathbb R^N,-}]\bigr\rangle
+       =\langle a,[\bar\partial_{M,-}]\rangle
+                         \quad\text{for every }a\in K_0(B).
+ \tag{CI.57}
+\]</span>
+This is the required doubled-normal Thom/tubular/extension pairing equality. It is proved on all relative K-classes, and makes no finite Clifford zero-operator generation claim.</p>
+<p>Finally let <span class="math" data-tex="\(\beta_N\in K_0(C_0(\mathbb R^N\oplus(\mathbb R^N)^*))\)">\(\beta_N\in K_0(C_0(\mathbb R^N\oplus(\mathbb R^N)^*))\)</span> be the outward complex Bott position cycle with coordinate <span class="math" data-tex="\(x+i\xi\)">\(x+i\xi\)</span>, exterior-degree grading and symbol <span class="math" data-tex="\(c(x)+f(\xi)\)">\(c(x)+f(\xi)\)</span>. Its inverse <span class="math" data-tex="\(\eta_N\)">\(\eta_N\)</span> is the actual outward inverse of the preceding Thom theorem. Taking the base to be a point in the matrix/domain proof (CI.53)–(CI.54) gives
+<span class="math" data-tex="\(\beta_N[\bar\partial_{\mathbb R^N,-}]=1\)">\(\beta_N[\bar\partial_{\mathbb R^N,-}]=1\)</span>: the single Gaussian is even and the complementary sign is degenerate. Inverse uniqueness therefore gives
+<span class="math" data-tex="\([\bar\partial_{\mathbb R^N,-}]=\eta_N\)">\([\bar\partial_{\mathbb R^N,-}]=\eta_N\)</span>.
+No ordered right-odd product has replaced <span class="math" data-tex="\(\beta_N\)">\(\beta_N\)</span>; using <span class="math" data-tex="\(\epsilon_{2N}\beta_N=(-1)^N\beta_N\)">\(\epsilon_{2N}\beta_N=(-1)^N\beta_N\)</span> would require the same change of the inverse and would define a different unconverted normalization.</p>
+<p><strong>Theorem CI.14 (the embedding-defined index).</strong> With these explicit outward doubled-normal and Euclidean conventions, set
+<span class="math math-display" data-tex="\[
+ \operatorname{ind}_{\rm top}(a)
+           =i_*^{\rm cot}(a)\otimes_{C_0(W)}\eta_N.
+ \tag{CI.58}
+\]">\[
+ \operatorname{ind}_{\rm top}(a)
+           =i_*^{\rm cot}(a)\otimes_{C_0(W)}\eta_N.
+ \tag{CI.58}
+\]</span>
+For every elliptic <span class="math" data-tex="\(P\)">\(P\)</span> in CI.9 on every closed manifold,
+<span class="math math-display" data-tex="\[
+ \operatorname{index}P
+       =\operatorname{ind}_{\rm top}([\sigma_P]).
+ \tag{CI.59}
+\]">\[
+ \operatorname{index}P
+       =\operatorname{ind}_{\rm top}([\sigma_P]).
+ \tag{CI.59}
+\]</span>
+<strong>Proof.</strong> Forget the full source action in (CI.42), use the proved scalar index/product identification, then (CI.57) and the actual Euclidean inverse just identified. This gives
+<span class="math" data-tex="\([\sigma_P][\bar\partial_{M,-}]
+ =i_*^{\rm cot}([\sigma_P])[\bar\partial_{\mathbb R^N,-}]
+ =i_*^{\rm cot}([\sigma_P])\eta_N\)">\([\sigma_P][\bar\partial_{M,-}]
+ =i_*^{\rm cot}([\sigma_P])[\bar\partial_{\mathbb R^N,-}]
+ =i_*^{\rm cot}([\sigma_P])\eta_N\)</span>, exactly(CI.59). It also proves independence of every tubular choice and every embedding in the definition(CI.58), since its value is the intrinsic analytic pairing for every compactly supported relative symbol. Non-spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> and odd-dimensional bases are included throughout: only their doubled <em>real</em> normal bundle used the specified exterior spinor, and its invariant Gaussian was proved under all <span class="math" data-tex="\(O(q)\)">\(O(q)\)</span> transitions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><img src="assets/KT-KK-15/index-comparison-0A0768AD4260B9903A1F9813FAD7BBDD0972FBB0453BB81A1F7EF13AAF3A7043.png" alt="The universal quantization morphism and the doubled-normal embedding pairing" class="course-figure" width="1400" height="940" loading="lazy" decoding="async" style="max-width:100%;height:auto" data-asset-id="index-comparison" data-asset-sha256="0A0768AD4260B9903A1F9813FAD7BBDD0972FBB0453BB81A1F7EF13AAF3A7043"></p>
+<p><em>Figure CI.2.</em> The upper arrows are the actual KK morphisms(CI.47)–(CI.49), with <span class="math" data-tex="\(C=\mathbb C\)">\(C=\mathbb C\)</span>; the inverse of evaluation at zero comes from the explicitly semisplit cone-kernel extension(CI.44). The lower square is the all-relative-class pairing identity(CI.57) and its Euclidean inverse(CI.58), where <span class="math" data-tex="\(Z\)">\(Z\)</span> denotes the integer group. The coordinate panel fixes the real-normal rank-one specialization of(CI.53)–(CI.54); <span class="math" data-tex="\(00\)">\(00\)</span> and <span class="math" data-tex="\(11\)">\(11\)</span> are the two displayed exterior-factor states, both of even total degree. The proof gives the exact all-rank tensor, support, domain and determinant calculations. Free comparison sources are Connes's author edition, Chapter II, Section 5, and Connes–Skandalis SectionIII, linked below.</p>
+<h2 id="11-duality-open-subsets-and-boundaries-stated-results">11. Duality, open subsets and boundaries: stated results</h2>
+<p>The following full results are stated here. They are not proof premises in CI.1–CI.14.</p>
+<p>For a closed spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> <span class="math" data-tex="\(n\)">\(n\)</span>-manifold <span class="math" data-tex="\(M\)">\(M\)</span>, cap product with its positive physical Dirac gives isomorphisms
+<span class="math math-display" data-tex="\[
+ K^j(M)\longrightarrow K_{j+n}(M),\qquad
+ a\longmapsto[\![a]\!]\otimes_{C(M)}[D_M],\qquad j\in\mathbb Z/2.
+\]">\[
+ K^j(M)\longrightarrow K_{j+n}(M),\qquad
+ a\longmapsto[\![a]\!]\otimes_{C(M)}[D_M],\qquad j\in\mathbb Z/2.
+\]</span>
+Here <span class="math" data-tex="\([\![a]\!]\)">\([\![a]\!]\)</span> is the diagonal <span class="math" data-tex="\(C(M)\)">\(C(M)\)</span>-source K-class; in even degree it is the actual bundle-tensor endomorphism cycle, and in odd degree it retains the original unitary/right-Clifford class. The full bivariant version uses <span class="math" data-tex="\(\Delta_M=m^*[D_M]\)">\(\Delta_M=m^*[D_M]\)</span>, with <span class="math" data-tex="\(m:C(M)\otimes C(M)\to C(M)\)">\(m:C(M)\otimes C(M)\to C(M)\)</span> multiplication, and gives natural isomorphisms
+<span class="math math-display" data-tex="\[
+ KK^j(A,C(M)\otimes B)\cong KK^{j+n}(A\otimes C(M),B)
+\]">\[
+ KK^j(A,C(M)\otimes B)\cong KK^{j+n}(A\otimes C(M),B)
+\]</span>
+by this cap product for separable <span class="math" data-tex="\(A\)">\(A\)</span> and sigma-unital <span class="math" data-tex="\(B\)">\(B\)</span>. Connes–Skandalis Corollary 3.7 and its Clifford translation in Remark 3.9 are free primary locators. Their full duality argument is not reproduced here. The local <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> inverse calculation in Section8 is proved, but is not substituted for this global theorem.</p>
+<p>For an open spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> subset <span class="math" data-tex="\(U\subset M\)">\(U\subset M\)</span>, with <span class="math" data-tex="\(j:C_0(U)\to C_0(M)\)">\(j:C_0(U)\to C_0(M)\)</span> extension by zero, the open restriction theorem states
+<span class="math" data-tex="\(j^*[D_M]=[D_U]\)">\(j^*[D_M]=[D_U]\)</span>. A complete representative on <span class="math" data-tex="\(U\)">\(U\)</span> uses its induced Clifford/spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> structure and a compatible complete metric; it does not assign self-adjointness to the generally incomplete raw restricted differential operator. CI.12 proves the compact-support local comparison required for this lesson's index argument; the full open theorem is left stated.</p>
+<p>For a compact spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> <span class="math" data-tex="\(n\)">\(n\)</span>-manifold <span class="math" data-tex="\(Z\)">\(Z\)</span> with boundary, let <span class="math" data-tex="\(\delta_Z\in KK^1(C(\partial Z),C_0(Z^\circ))\)">\(\delta_Z\in KK^1(C(\partial Z),C_0(Z^\circ))\)</span> be the extension class of
+<span class="math" data-tex="\(0\to C_0(Z^\circ)\to C(Z)\to C(\partial Z)\to0\)">\(0\to C_0(Z^\circ)\to C(Z)\to C(\partial Z)\to0\)</span>. Give the boundary its outward-normal-first spin<span class="math" data-tex="\(^{c}\)">\(^{c}\)</span> orientation. In the fixed right-Clifford product and degree-two removal convention, the boundary theorem is
+<span class="math math-display" data-tex="\[
+ \delta_Z\otimes_{C_0(Z^\circ)}[D_{Z^\circ}]
+          =(-1)^n[D_{\partial Z}].
+\]">\[
+ \delta_Z\otimes_{C_0(Z^\circ)}[D_{Z^\circ}]
+          =(-1)^n[D_{\partial Z}].
+\]</span>
+The integer degree on the left is <span class="math" data-tex="\(n+1\)">\(n+1\)</span>, identified with <span class="math" data-tex="\(n-1\)">\(n-1\)</span> by the fixed periodicity convention. Equivalently the outward geometric boundary map is <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span> times that ordinary right-product map and sends the interior fundamental class to the positive boundary class. The sign has a local normalization: on an increasing outward collar coordinate the right-end cone class is the positive <span class="math" data-tex="\(x\)">\(x\)</span> of the Bott lesson, whereas the positive physical <span class="math" data-tex="\(-i\partial_t\)">\(-i\partial_t\)</span> is <span class="math" data-tex="\(-y\)">\(-y\)</span> by its coisometry calculation. Their product is <span class="math" data-tex="\(-1\)">\(-1\)</span>. For the interval with its increasing coordinate, the two endpoint extension classes are <span class="math" data-tex="\(-x,x\)">\(-x,x\)</span>; their products with the physical Dirac are <span class="math" data-tex="\(1,-1\)">\(1,-1\)</span>, the negative of the outward oriented endpoint classes <span class="math" data-tex="\(-1,1\)">\(-1,1\)</span>. In general the right product of a positive normal line Dirac and the boundary Dirac is <span class="math" data-tex="\((-1)^{n-1}\)">\((-1)^{n-1}\)</span> times their physical outward direct sum; the explicit two odd Clifford matrices give the same grading reversal as in the Thom direct-sum calculation, with coordinates replaced by commuting derivative operators. The two factors give <span class="math" data-tex="\((-1)^n\)">\((-1)^n\)</span>. This collar normalization does not prove the general geometric boundary theorem. Connes–Skandalis Proposition 3.6 supplies the free primary extension/normal-sphere comparison; the full boundary result remains stated here. No APS boundary-value index or boundary condition is asserted.</p>
+<p>These three full theorems, beyond the compact-support comparison actually proved, are what this lesson does not prove.</p>
+<h2 id="free-mathematical-reading">Free mathematical reading</h2>
+<p>A. Connes and G. Skandalis, <a href="https://ems.press/content/serial-article-files/42241"><em>The longitudinal index theorem for foliations</em>, freely readable original article</a>, Section I, Definitions 1.3/1.6 and Proposition 1.4/Theorem 1.10, and Section III, Remark 3.9 and Proposition 3.10. Their symbol product and index comparison provide free comparison material; the full quantization and embedding arguments are proved above, rather than imported from those sketches.</p>
+<p>B. Blackadar, <a href="https://www.bruceblackadar.com/Mathematics/book6.pdf"><em>K-Theory for Operator Algebras</em>, author-posted corrected second edition</a>, Example 17.1.2(e)–(f) and Section 24.5. The analytic domain, exhaustion and local compactness proofs above are supplied here or in the exact earlier lesson proofs cited where used.</p>
+<p>A. Connes, <a href="https://alainconnes.org/wp-content/uploads/book94bigpdf.pdf"><em>Noncommutative Geometry</em>, freely posted author edition</a>, Chapter II, Section 5, pp.107–110, for the tangent-deformation viewpoint. CI.10 supplies its own algebra, semisplitting and operator proof; the source's groupoid exactness and index lemmas are not proof premises here.</p>
+</article>
+<p class="small source-link"><a href="KT-KK-15.md">Markdown source</a> · <a href="KT-KK-15.tex">LaTeX source</a></p>
+</main>
+<footer class="site-footer"><p>Course text, solutions and original figures: CC0 1.0.</p></footer>
+</body>
+</html>

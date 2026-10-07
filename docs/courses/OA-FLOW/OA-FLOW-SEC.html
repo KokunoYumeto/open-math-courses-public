@@ -1,0 +1,1306 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Integrating graded sections · Open Mathematics Courses</title><style>body{margin:0;background:#edf0f4;color:#14202d;font:18px/1.65 Georgia,serif}
+main{max-width:930px;margin:36px auto;padding:48px;background:white}a{color:#195ea1}
+h1{line-height:1.2}h2{line-height:1.35;margin-top:2em}nav{display:flex;gap:1em;flex-wrap:wrap}
+table{border-collapse:collapse;max-width:100%}td,th{border:1px solid #ddd;padding:8px}
+.notice{border-left:4px solid #456;padding:1em;background:#f3f5f7}
+.math{display:inline-block;max-width:100%;vertical-align:middle;overflow-x:auto}
+.math-display{display:block;overflow-y:hidden}pre{overflow-x:auto}
+@media(max-width:900px){main{box-sizing:border-box;margin:0;padding:24px;max-width:100%;overflow-wrap:anywhere}
+table{display:block;overflow-x:auto}mjx-container{max-width:100%;overflow-x:auto;overflow-y:hidden}}</style><script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-GRD.html">Previous lesson</a><a href="OA-FLOW-HLB.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-SEC.md">Lesson source</a></nav><h1 id="OA-FLOW.SEC.SETTING">Integrating graded sections</h1>
+<p><em>Self-checked by the writing AI. Original exposition and illustration sources: CC0-1.0; earlier and font components retain their recorded terms.</em></p>
+<p>An operator-valued function can vary continuously on every Hilbert-space vector while its values remain a fixed distance apart in operator norm. Such functions occur naturally when the degree of a graded operator varies. We build an integration theory that includes them: normal functionals determine the operator integral, vector integrals control continuity, and scalar norm estimates make the resulting convolution algebra complete.</p>
+<p><a id="sec-setting"></a></p>
+<h2 id="the-graded-spaces-and-the-measure">The graded spaces and the measure</h2>
+<p>Let <span class="math" data-tex="\(M\)">\(M\)</span> be an arbitrary von Neumann algebra with predual <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. No factor, countability, separability or faithful-state assumption is imposed. The <a href="OA-FLOW-GRD.html#grd-2">graded fibers</a> are denoted by <span class="math" data-tex="\(M(t)\)">\(M(t)\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>. Choose a faithful normal semifinite weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>; such weights exist by <a href="OA-FLOW-FR.html#oa-flow.fr.1">FR1</a>. Its coordinate map writes every element of <span class="math" data-tex="\(M(t)\)">\(M(t)\)</span> uniquely as <span class="math" data-tex="\(a\varphi^{it}\)">\(a\varphi^{it}\)</span>, with <span class="math" data-tex="\(a\in M\)">\(a\in M\)</span>, and is a normal Banach-space isometry. These are degree-labelled symbols, with operations proved in <a href="OA-FLOW-GRD.html#grd-3">GRD3</a>:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+ (a\varphi^{is})(b\varphi^{it})
+       =a\sigma_s^\varphi(b)\varphi^{i(s+t)},\\
+ (a\varphi^{it})^*
+       =\sigma_{-t}^\varphi(a^*)\varphi^{-it}.
+\end{gathered}
+\tag{SEC0.a}
+\]">\[
+\begin{gathered}
+ (a\varphi^{is})(b\varphi^{it})
+       =a\sigma_s^\varphi(b)\varphi^{i(s+t)},\\
+ (a\varphi^{it})^*
+       =\sigma_{-t}^\varphi(a^*)\varphi^{-it}.
+\end{gathered}
+\tag{SEC0.a}
+\]</span>
+On the total space <span class="math" data-tex="\(\bigsqcup_tM(t)\)">\(\bigsqcup_tM(t)\)</span> use the topology from the Mackey topology <span class="math" data-tex="\(\tau(M,M_*)\)">\(\tau(M,M_*)\)</span> on coefficients and the usual topology on degrees. <a href="OA-FLOW-GRD.html#grd-5">GRD4–5</a> proves that this topology is chart independent and that on norm-bounded subsets it agrees with the intrinsic sigma-strong-star topology, hence with the strong-star topology in every faithful normal representation.</p>
+<p>All integrals in the degree variable use completed Lebesgue measure <span class="math" data-tex="\(dt\)">\(dt\)</span>. We use <a href="OA-FLOW-SC.html#sc-02">its construction and affine substitutions</a>, <a href="OA-FLOW-SC.html#sc-04">monotone convergence and scalar null-set estimates</a>, <a href="OA-FLOW-SC.html#sc-05">dominated convergence</a>, and <a href="OA-FLOW-FF.html#oa-flow.ff.2">regularity and scalar translations</a>. The <a href="OA-FLOW-FF.html#scalar-interchange">scalar interchange theorem</a> applies to Borel representatives; completing the measure changes functions only on subsets of Borel null sets. Its nonnegative case shows that these changes have null sections outside a scalar null set, giving the completed version used below. All integral identities are consequently statements about almost-everywhere classes. For <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, all fibers and the resulting algebra are zero; the arguments below also apply with every coefficient zero.</p>
+<p><span id="OA-FLOW.SEC.1"></span><a id="sec-1"></a></p>
+<h2 id="1-compact-carriers-for-operator-sections">1. Compact carriers for operator sections</h2>
+<p>A section <span class="math" data-tex="\(x\)">\(x\)</span> assigns <span class="math" data-tex="\(x(t)\in M(t)\)">\(x(t)\in M(t)\)</span> to every <span class="math" data-tex="\(t\)">\(t\)</span>. Write <span class="math" data-tex="\(x(t)=a(t)\varphi^{it}\)">\(x(t)=a(t)\varphi^{it}\)</span>. We call it <strong>locally Lusin</strong> if, for every bounded closed interval <span class="math" data-tex="\(I\)">\(I\)</span> and every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, there is a compact <span class="math" data-tex="\(K\subset I\)">\(K\subset I\)</span> such that
+<span class="math math-display" data-tex="\[
+ |I\setminus K|&lt;\varepsilon,
+ \qquad a|_K:K\longrightarrow(M,\tau(M,M_*))
+       \text{ is continuous}.
+\tag{SEC1.a}
+\]">\[
+ |I\setminus K|&lt;\varepsilon,
+ \qquad a|_K:K\longrightarrow(M,\tau(M,M_*))
+       \text{ is continuous}.
+\tag{SEC1.a}
+\]</span>
+The degree map is already continuous, and the chart homeomorphisms from <a href="OA-FLOW-GRD.html#grd-5">GRD5</a> make this an intrinsic condition on <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+<p><strong>Proposition 1.1.</strong> A locally Lusin coefficient has a Mackey-Borel representative equal to it almost everywhere. Its norm and all its normal scalar pairings are Lebesgue measurable. Its image on every compact set where it is Mackey continuous is norm bounded.</p>
+<p><strong>Proof.</strong> For each pair <span class="math" data-tex="\(n,m\ge1\)">\(n,m\ge1\)</span>, choose a compact <span class="math" data-tex="\(K_{n,m}\subset[-n,n]\)">\(K_{n,m}\subset[-n,n]\)</span> as in (SEC1.a) with loss less than <span class="math" data-tex="\(2^{-m}\)">\(2^{-m}\)</span>. The Borel set
+<span class="math math-display" data-tex="\[
+ S=\bigcup_{n,m\ge1}K_{n,m}
+\tag{SEC1.b}
+\]">\[
+ S=\bigcup_{n,m\ge1}K_{n,m}
+\tag{SEC1.b}
+\]</span>
+is conull: the complement of <span class="math" data-tex="\(\bigcup_mK_{n,m}\)">\(\bigcup_mK_{n,m}\)</span> in <span class="math" data-tex="\([-n,n]\)">\([-n,n]\)</span> has measure at most <span class="math" data-tex="\(2^{-m}\)">\(2^{-m}\)</span> for every <span class="math" data-tex="\(m\)">\(m\)</span>. Replace <span class="math" data-tex="\(a\)">\(a\)</span> by zero off <span class="math" data-tex="\(S\)">\(S\)</span>. For any Mackey-open set <span class="math" data-tex="\(U\)">\(U\)</span>, its inverse image in each <span class="math" data-tex="\(K_{n,m}\)">\(K_{n,m}\)</span> is relatively open, hence Borel in <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. The inverse image for the modified coefficient is their countable union, together with <span class="math" data-tex="\(\mathbb R\setminus S\)">\(\mathbb R\setminus S\)</span> when <span class="math" data-tex="\(0\in U\)">\(0\in U\)</span>. This proves the Borel assertion without any countable-base assumption on <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p>By <a href="OA-FLOW-CP.html#oa-flow.cp.6">the isometric predual duality</a>,
+<span class="math math-display" data-tex="\[
+ \|b\|=\sup_{\omega\in M_*,\ \|\omega\|\le1}|\omega(b)|.
+\tag{SEC1.c}
+\]">\[
+ \|b\|=\sup_{\omega\in M_*,\ \|\omega\|\le1}|\omega(b)|.
+\tag{SEC1.c}
+\]</span>
+Thus the norm is weak-star lower semicontinuous, and also Mackey lower semicontinuous: its strict superlevel sets are unions of open sets. It is Borel measurable. Normal pairings are Mackey continuous. Composing with the Borel representative and then using completeness of Lebesgue measure proves the assertions for the original coefficient.</p>
+<p>Let <span class="math" data-tex="\(a|_K\)">\(a|_K\)</span> be continuous on compact <span class="math" data-tex="\(K\)">\(K\)</span>. For each <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>, the values <span class="math" data-tex="\(|\omega(a(t))|\)">\(|\omega(a(t))|\)</span>, <span class="math" data-tex="\(t\in K\)">\(t\in K\)</span>, are bounded. The closed sets
+<span class="math math-display" data-tex="\[
+ B_j=\{\omega\in M_*:\sup_{t\in K}|\omega(a(t))|\le j\}
+\tag{SEC1.d}
+\]">\[
+ B_j=\{\omega\in M_*:\sup_{t\in K}|\omega(a(t))|\le j\}
+\tag{SEC1.d}
+\]</span>
+cover the Banach space <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. The <a href="OA-FLOW-L34.html#oa-flow.l34.3">complete-metric Baire argument in Lemma 3.2</a> implies that some <span class="math" data-tex="\(B_j\)">\(B_j\)</span> contains an open ball <span class="math" data-tex="\(B(\omega_0,r)\)">\(B(\omega_0,r)\)</span>. Both <span class="math" data-tex="\(\omega_0\)">\(\omega_0\)</span> and <span class="math" data-tex="\(\omega_0+\eta\)">\(\omega_0+\eta\)</span> lie in <span class="math" data-tex="\(B_j\)">\(B_j\)</span> when <span class="math" data-tex="\(\|\eta\|&lt;r\)">\(\|\eta\|&lt;r\)</span>, so <span class="math" data-tex="\(|\eta(a(t))|\le2j\)">\(|\eta(a(t))|\le2j\)</span> uniformly on <span class="math" data-tex="\(K\)">\(K\)</span>. Scale <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and use (SEC1.c), then let its norm tend to <span class="math" data-tex="\(r\)">\(r\)</span>, to obtain
+<span class="math math-display" data-tex="\[
+ \sup_{t\in K}\|a(t)\|\le 2j/r.
+\tag{SEC1.e}
+\]">\[
+ \sup_{t\in K}\|a(t)\|\le 2j/r.
+\tag{SEC1.e}
+\]</span>
+The zero predual gives the same conclusion directly. On these bounded images, Mackey continuity can now be tested by the strong-star vector seminorms, by <a href="OA-FLOW-GRD.html#grd-4">GRD4–5</a>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2.</strong> Sums, constant scalar multiples and changes on null sets preserve the locally Lusin condition. So does multiplication by a bounded Lebesgue-measurable scalar function. Uniform norm limits of Mackey-continuous maps on a fixed compact set are Mackey continuous.</p>
+<p><strong>Proof.</strong> For finitely many coefficients intersect their Lusin compacts, assigning each a fraction of the allowed measure loss. Addition and scalar multiplication are continuous in a locally convex topology. For a null modification, remove an open set of arbitrarily small measure containing the exceptional null set; the difference of a compact set and this open set is compact, and the functions agree there.</p>
+<p>For a measurable set <span class="math" data-tex="\(E\subset I\)">\(E\subset I\)</span>, regularity gives disjoint compact sets <span class="math" data-tex="\(K_1\subset E\)">\(K_1\subset E\)</span> and <span class="math" data-tex="\(K_0\subset I\setminus E\)">\(K_0\subset I\setminus E\)</span> whose union loses arbitrarily small measure. The indicator of <span class="math" data-tex="\(E\)">\(E\)</span> is continuous on <span class="math" data-tex="\(K_0\cup K_1\)">\(K_0\cup K_1\)</span>: the two disjoint compact pieces are relatively open as well as closed. Intersect this union with a compact for <span class="math" data-tex="\(a\)">\(a\)</span>. Thus <span class="math" data-tex="\(1_Ea\)">\(1_Ea\)</span> is locally Lusin. Finite linear combinations give finite-valued measurable scalar multipliers.</p>
+<p>For a bounded measurable complex function <span class="math" data-tex="\(f\)">\(f\)</span>, use finite square grids in its bounded range to obtain finite-valued measurable <span class="math" data-tex="\(f_j\)">\(f_j\)</span> converging uniformly to <span class="math" data-tex="\(f\)">\(f\)</span>. For every <span class="math" data-tex="\(j\)">\(j\)</span>, take a compact on which <span class="math" data-tex="\(f_ja\)">\(f_ja\)</span> is continuous, with losses forming a summable series smaller than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. Intersect these compacts and also a Lusin compact for <span class="math" data-tex="\(a\)">\(a\)</span> losing less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. The intersection is compact; (SEC1.e) bounds <span class="math" data-tex="\(a\)">\(a\)</span> on it. Hence <span class="math" data-tex="\(f_ja\to fa\)">\(f_ja\to fa\)</span> uniformly in norm there.</p>
+<p>To justify the final step, a Mackey seminorm has the form
+<span class="math math-display" data-tex="\[
+ p_C(b)=\sup_{\omega\in C}|\omega(b)|
+       \le B_C\|b\|,
+ \qquad B_C=\sup_{\omega\in C}\|\omega\|&lt;\infty,
+\tag{SEC1.f}
+\]">\[
+ p_C(b)=\sup_{\omega\in C}|\omega(b)|
+       \le B_C\|b\|,
+ \qquad B_C=\sup_{\omega\in C}\|\omega\|&lt;\infty,
+\tag{SEC1.f}
+\]</span>
+where <span class="math" data-tex="\(C\)">\(C\)</span> is an absolutely convex weakly compact subset of <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. Its norm boundedness is among the compact-set facts proved in <a href="OA-FLOW-GRD.html#grd-5">GRD5</a>. Uniform norm convergence is therefore uniform convergence for every <span class="math" data-tex="\(p_C\)">\(p_C\)</span>. Given a point and a finite family of seminorm tolerances, choose one approximating map with error below one third of every tolerance, then use its continuity for the middle difference. This proves continuity of the limit. It also finishes the multiplier assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define <span class="math" data-tex="\(\mathcal L^1(M(\cdot))\)">\(\mathcal L^1(M(\cdot))\)</span> to be the locally Lusin sections with finite norm integral, modulo equality outside one Lebesgue null set:
+<span class="math math-display" data-tex="\[
+ \|x\|_1=\int_{\mathbb R}\|x(t)\|\,dt
+         =\int_{\mathbb R}\|a(t)\|\,dt&lt;\infty.
+\tag{SEC1.g}
+\]">\[
+ \|x\|_1=\int_{\mathbb R}\|x(t)\|\,dt
+         =\int_{\mathbb R}\|a(t)\|\,dt&lt;\infty.
+\tag{SEC1.g}
+\]</span>
+The fiber norm is intrinsic. Normal coordinate changes preserve it pointwise, so the condition and this quantity are chart independent. Propositions 1.1–1.2 give a vector space of sections and a seminorm on representatives. If the seminorm is zero, (SEC1.c) is not needed to choose exceptional sets: the single scalar function <span class="math" data-tex="\(\|a(t)\|\)">\(\|a(t)\|\)</span> vanishes almost everywhere by <a href="OA-FLOW-SC.html#sc-04">SC-04</a>. Hence the section itself is zero outside one null set. The quotient is consequently a normed vector space.</p>
+<p><strong>Corollary 1.3 (bounded support and bounded values).</strong> Every member is an integral-norm limit of locally Lusin coefficients with bounded values and compact support.</p>
+<p><strong>Proof.</strong> Put
+<span class="math math-display" data-tex="\[
+ a_n(t)=1_{[-n,n]}(t)1_{\{\|a(t)\|\le n\}}a(t).
+\tag{SEC1.h}
+\]">\[
+ a_n(t)=1_{[-n,n]}(t)1_{\{\|a(t)\|\le n\}}a(t).
+\tag{SEC1.h}
+\]</span>
+The scalar mask is measurable by Proposition 1.1, and Proposition 1.2 makes <span class="math" data-tex="\(a_n\)">\(a_n\)</span> locally Lusin. It has norm at most <span class="math" data-tex="\(n\)">\(n\)</span> and support in <span class="math" data-tex="\([-n,n]\)">\([-n,n]\)</span>. At each fixed <span class="math" data-tex="\(t\)">\(t\)</span>, it eventually equals <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span>, and <span class="math" data-tex="\(\|a-a_n\|\le\|a\|\)">\(\|a-a_n\|\le\|a\|\)</span>. Dominated convergence gives <span class="math" data-tex="\(\|a-a_n\|_1\to0\)">\(\|a-a_n\|_1\to0\)</span>. The approximants remain operator-valued functions; no finite-valued approximation in the norm of <span class="math" data-tex="\(M\)">\(M\)</span> has been asserted. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="OA-FLOW.SEC.2"></span><a id="sec-2"></a></p>
+<h2 id="2-completeness-from-scalar-tails">2. Completeness from scalar tails</h2>
+<p>The compact-set condition in Section 1 must survive a norm limit of sections. The following scalar estimate will also be used to prove convolution closure.</p>
+<p><strong>Lemma 2.1 (compact uniform control).</strong> Suppose <span class="math" data-tex="\(D_j\)">\(D_j\)</span> are nonnegative measurable functions on a bounded interval <span class="math" data-tex="\(I\)">\(I\)</span>, decreasing to zero almost everywhere, with <span class="math" data-tex="\(\int_I D_j\to0\)">\(\int_I D_j\to0\)</span>. Given <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and a prescribed null set <span class="math" data-tex="\(N\)">\(N\)</span>, there is a compact <span class="math" data-tex="\(K\subset I\setminus N\)">\(K\subset I\setminus N\)</span> with <span class="math" data-tex="\(|I\setminus K|&lt;\varepsilon\)">\(|I\setminus K|&lt;\varepsilon\)</span> on which <span class="math" data-tex="\(D_j\to0\)">\(D_j\to0\)</span> uniformly.</p>
+<p><strong>Proof.</strong> Enlarge <span class="math" data-tex="\(N\)">\(N\)</span> by the null sets where monotonicity or convergence fails. Choose increasing indices <span class="math" data-tex="\(j_m\)">\(j_m\)</span> such that
+<span class="math math-display" data-tex="\[
+ \int_I D_{j_m}&lt;\frac{\varepsilon\,2^{-m-3}}{m},
+ \qquad m\ge1.
+\tag{SEC2.a}
+\]">\[
+ \int_I D_{j_m}&lt;\frac{\varepsilon\,2^{-m-3}}{m},
+ \qquad m\ge1.
+\tag{SEC2.a}
+\]</span>
+The scalar bound <span class="math" data-tex="\(|\{D_{j_m}&gt;1/m\}\cap I|\le m\int_I D_{j_m}\)">\(|\{D_{j_m}&gt;1/m\}\cap I|\le m\int_I D_{j_m}\)</span> shows that the union <span class="math" data-tex="\(E\)">\(E\)</span> of these bad sets has measure less than <span class="math" data-tex="\(\varepsilon/8\)">\(\varepsilon/8\)</span>. On <span class="math" data-tex="\(I\setminus(E\cup N)\)">\(I\setminus(E\cup N)\)</span>, one has <span class="math" data-tex="\(D_j\le1/m\)">\(D_j\le1/m\)</span> whenever <span class="math" data-tex="\(j\ge j_m\)">\(j\ge j_m\)</span>. By compact inner regularity choose a compact subset of this measurable set losing less than another <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span> of measure. Its total loss is less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and the displayed bounds prove uniform convergence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.2.</strong> The normed space <span class="math" data-tex="\(\mathcal L^1(M(\cdot))\)">\(\mathcal L^1(M(\cdot))\)</span> is complete.</p>
+<p><strong>Proof.</strong> Take a Cauchy sequence of sections. In one fixed weight chart, choose a subsequence of coefficients <span class="math" data-tex="\(b_j\)">\(b_j\)</span> for which
+<span class="math math-display" data-tex="\[
+ \sum_{j\ge1}\|b_{j+1}-b_j\|_1&lt;\infty.
+\tag{SEC2.b}
+\]">\[
+ \sum_{j\ge1}\|b_{j+1}-b_j\|_1&lt;\infty.
+\tag{SEC2.b}
+\]</span>
+Each scalar difference norm is measurable by Section 1. Monotone convergence shows that
+<span class="math math-display" data-tex="\[
+ D_j(t)=\sum_{k\ge j}\|b_{k+1}(t)-b_k(t)\|
+\tag{SEC2.c}
+\]">\[
+ D_j(t)=\sum_{k\ge j}\|b_{k+1}(t)-b_k(t)\|
+\tag{SEC2.c}
+\]</span>
+is finite outside a single null set <span class="math" data-tex="\(N\)">\(N\)</span>, and <span class="math" data-tex="\(\int D_j\to0\)">\(\int D_j\to0\)</span>. Outside <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(b_j(t)\)">\(b_j(t)\)</span> is a norm-Cauchy sequence in the Banach space <span class="math" data-tex="\(M\)">\(M\)</span>. Define its norm limit to be <span class="math" data-tex="\(b(t)\)">\(b(t)\)</span>, and put <span class="math" data-tex="\(b(t)=0\)">\(b(t)=0\)</span> on <span class="math" data-tex="\(N\)">\(N\)</span>. Pointwise outside <span class="math" data-tex="\(N\)">\(N\)</span>,
+<span class="math math-display" data-tex="\[
+ \|b(t)-b_j(t)\|\le D_j(t).
+\tag{SEC2.d}
+\]">\[
+ \|b(t)-b_j(t)\|\le D_j(t).
+\tag{SEC2.d}
+\]</span></p>
+<p>We first prove the locally Lusin condition for <span class="math" data-tex="\(b\)">\(b\)</span>, before appealing to measurability of its norm. Fix <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. For every <span class="math" data-tex="\(j\)">\(j\)</span>, choose a Lusin compact for <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, with the total of all losses less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. Their intersection <span class="math" data-tex="\(K_0\)">\(K_0\)</span> is compact and has loss less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>. Apply Lemma 2.1 to <span class="math" data-tex="\(D_j\)">\(D_j\)</span> with loss less than <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>, excluding <span class="math" data-tex="\(N\)">\(N\)</span>, and call the resulting compact <span class="math" data-tex="\(K_1\)">\(K_1\)</span>. On <span class="math" data-tex="\(K_0\cap K_1\)">\(K_0\cap K_1\)</span>, all <span class="math" data-tex="\(b_j\)">\(b_j\)</span> are Mackey continuous and (SEC2.d) gives uniform convergence in operator norm. Proposition 1.2 proves that <span class="math" data-tex="\(b\)">\(b\)</span> is Mackey continuous there. The intersection has loss less than <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, proving the required condition.</p>
+<p>Now <span class="math" data-tex="\(\|b\|\)">\(\|b\|\)</span> and <span class="math" data-tex="\(\|b-b_j\|\)">\(\|b-b_j\|\)</span> are measurable. Integrating (SEC2.d) gives
+<span class="math math-display" data-tex="\[
+ \|b-b_j\|_1\le\int D_j\longrightarrow0,
+ \qquad
+ \|b\|_1\le\|b_1\|_1+\int D_1&lt;\infty.
+\tag{SEC2.e}
+\]">\[
+ \|b-b_j\|_1\le\int D_j\longrightarrow0,
+ \qquad
+ \|b\|_1\le\|b_1\|_1+\int D_1&lt;\infty.
+\tag{SEC2.e}
+\]</span>
+Thus the subsequence converges to the section <span class="math" data-tex="\(b(t)\varphi^{it}\)">\(b(t)\varphi^{it}\)</span> in <span class="math" data-tex="\(\mathcal L^1\)">\(\mathcal L^1\)</span>. Given <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, the original Cauchy sequence is eventually within <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span> of any sufficiently late member, and one such subsequence member is within <span class="math" data-tex="\(\delta/2\)">\(\delta/2\)</span> of <span class="math" data-tex="\(b\)">\(b\)</span>. The triangle inequality proves convergence of the entire sequence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The proof gives a useful additional principle. If Mackey-continuous coefficients <span class="math" data-tex="\(c_j\)">\(c_j\)</span> approximate a coefficient <span class="math" data-tex="\(c\)">\(c\)</span> pointwise off a scalar null set with
+<span class="math math-display" data-tex="\[
+ \|c(t)-c_j(t)\|\le e_j(t),
+ \quad e_j\ge0\text{ measurable},
+ \quad \sum_j\int e_j&lt;\infty,
+\tag{SEC2.f}
+\]">\[
+ \|c(t)-c_j(t)\|\le e_j(t),
+ \quad e_j\ge0\text{ measurable},
+ \quad \sum_j\int e_j&lt;\infty,
+\tag{SEC2.f}
+\]</span>
+then <span class="math" data-tex="\(c\)">\(c\)</span> is locally Lusin. Indeed use <span class="math" data-tex="\(D_j=\sum_{k\ge j}e_k\)">\(D_j=\sum_{k\ge j}e_k\)</span> in Lemma 2.1 and the uniform norm limit argument. This conclusion does not assume beforehand that <span class="math" data-tex="\(\|c-c_j\|\)">\(\|c-c_j\|\)</span> is measurable; the scalar majorants supply all measure estimates.</p>
+<p><span id="OA-FLOW.SEC.3"></span><a id="sec-3"></a></p>
+<h2 id="3-integrate-through-the-predual-then-compare-on-vectors">3. Integrate through the predual, then compare on vectors</h2>
+<p>The coefficients of a locally Lusin section need not be measurable for the operator-norm topology of <span class="math" data-tex="\(M\)">\(M\)</span>. Their scalar norm and normal functional evaluations are measurable by Section 1. These are the inputs for the operator integral. Genuine Banach-valued integrals will be used after proving strong measurability of the vector functions involved.</p>
+<p><strong>The integral in a fixed fiber.</strong> Fix a degree <span class="math" data-tex="\(t\)">\(t\)</span> and put <span class="math" data-tex="\(E=M(t)\)">\(E=M(t)\)</span>, with the canonical predual <span class="math" data-tex="\(E_*\)">\(E_*\)</span> constructed in <a href="OA-FLOW-GRD.html#grd-2">GRD2</a>. More generally the following argument applies to any specified dual Banach space <span class="math" data-tex="\(E=(E_*)^*\)">\(E=(E_*)^*\)</span>. Let <span class="math" data-tex="\(k:S\to E\)">\(k:S\to E\)</span>, where <span class="math" data-tex="\(S\)">\(S\)</span> is <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> or a finite Cartesian power with completed Lebesgue measure. Suppose that every function <span class="math" data-tex="\(s\mapsto\ell(k(s))\)">\(s\mapsto\ell(k(s))\)</span>, <span class="math" data-tex="\(\ell\in E_*\)">\(\ell\in E_*\)</span>, is measurable, and that
+<span class="math math-display" data-tex="\[
+ \|k(s)\|\le g(s)\quad\text{almost everywhere},\qquad
+ 0\le g\in L^1(S).
+ \tag{SEC3.a}
+\]">\[
+ \|k(s)\|\le g(s)\quad\text{almost everywhere},\qquad
+ 0\le g\in L^1(S).
+ \tag{SEC3.a}
+\]</span>
+Every such scalar function is integrable. The rule
+<span class="math math-display" data-tex="\[
+ \ell\longmapsto\int_S\ell(k(s))\,ds
+ \tag{SEC3.b}
+\]">\[
+ \ell\longmapsto\int_S\ell(k(s))\,ds
+ \tag{SEC3.b}
+\]</span>
+is complex linear and bounded on <span class="math" data-tex="\(E_*\)">\(E_*\)</span>, with norm at most <span class="math" data-tex="\(\int_Sg\)">\(\int_Sg\)</span>. Duality therefore gives a unique element, denoted <span class="math" data-tex="\(\int_S k(s)\,ds\)">\(\int_S k(s)\,ds\)</span>, such that
+<span class="math math-display" data-tex="\[
+ \ell\!\left(\int_S k(s)\,ds\right)
+   =\int_S\ell(k(s))\,ds
+       \quad(\ell\in E_*).
+ \tag{SEC3.c}
+\]">\[
+ \ell\!\left(\int_S k(s)\,ds\right)
+   =\int_S\ell(k(s))\,ds
+       \quad(\ell\in E_*).
+ \tag{SEC3.c}
+\]</span>
+This is the weak-star integral. In particular, for a locally Lusin fixed-fiber function with integrable norm,
+<span class="math math-display" data-tex="\[
+ \left\|\int_S k(s)\,ds\right\|
+     \le\int_S\|k(s)\|\,ds.
+ \tag{SEC3.d}
+\]">\[
+ \left\|\int_S k(s)\,ds\right\|
+     \le\int_S\|k(s)\|\,ds.
+ \tag{SEC3.d}
+\]</span>
+For <span class="math" data-tex="\(M\)">\(M\)</span> the duality used here is proved in <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a>; for <span class="math" data-tex="\(M(t)\)">\(M(t)\)</span> it is transported by the normal isometric coefficient chart. The integration variable <span class="math" data-tex="\(s\)">\(s\)</span> does not change the output degree <span class="math" data-tex="\(t\)">\(t\)</span>. No addition of elements from different fibers is involved.</p>
+<p>Scalar integration and separation by <span class="math" data-tex="\(E_*\)">\(E_*\)</span> prove linearity, invariance under almost-everywhere changes, and additivity over measurable pieces. They also prove dominated weak-star convergence: if <span class="math" data-tex="\(\ell(k_n(s))\to\ell(k(s))\)">\(\ell(k_n(s))\to\ell(k(s))\)</span> almost everywhere for each <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, with a common integrable bound for <span class="math" data-tex="\(\|k_n(s)\|\)">\(\|k_n(s)\|\)</span> and <span class="math" data-tex="\(\|k(s)\|\)">\(\|k(s)\|\)</span>, then the integrals converge weak-star. For this conclusion the scalar null set may depend on the fixed functional being tested.</p>
+<p><strong>Normal linear and conjugate-linear transport.</strong> A weak-star continuous complex-linear functional on <span class="math" data-tex="\(E=(E_*)^*\)">\(E=(E_*)^*\)</span> belongs to <span class="math" data-tex="\(E_*\)">\(E_*\)</span>: continuity controls it by finitely many predual tests, so it vanishes on their common kernel. It factors through their finite-dimensional image and is consequently a linear combination of those tests. This is the same finite-test argument used in CP6.</p>
+<p>Let <span class="math" data-tex="\(A:E\to F\)">\(A:E\to F\)</span> be a bounded weak-star continuous complex-linear map between specified dual Banach spaces. Its preadjoint is <span class="math" data-tex="\(A_*\lambda=\lambda\circ A\)">\(A_*\lambda=\lambda\circ A\)</span>, so (SEC3.c) gives
+<span class="math math-display" data-tex="\[
+ A\!\left(\int_S k(s)\,ds\right)
+       =\int_S A(k(s))\,ds.
+ \tag{SEC3.e}
+\]">\[
+ A\!\left(\int_S k(s)\,ds\right)
+       =\int_S A(k(s))\,ds.
+ \tag{SEC3.e}
+\]</span>
+Here the right side exists by the bound <span class="math" data-tex="\(\|A(k(s))\|\le\|A\|g(s)\)">\(\|A(k(s))\|\le\|A\|g(s)\)</span>.</p>
+<p>The same identity holds when <span class="math" data-tex="\(A\)">\(A\)</span> is bounded, conjugate linear and weak-star continuous. To prove it, define
+<span class="math math-display" data-tex="\[
+ (A^\natural\lambda)(x)=\overline{\lambda(Ax)}
+       \quad(\lambda\in F_*,\ x\in E).
+ \tag{SEC3.f}
+\]">\[
+ (A^\natural\lambda)(x)=\overline{\lambda(Ax)}
+       \quad(\lambda\in F_*,\ x\in E).
+ \tag{SEC3.f}
+\]</span>
+This is a complex-linear weak-star continuous functional of <span class="math" data-tex="\(x\)">\(x\)</span>, hence belongs to <span class="math" data-tex="\(E_*\)">\(E_*\)</span>. Applying (SEC3.c) to it and then conjugating the scalar integral gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \lambda\!\left(A\!\left(\int_S k(s)\,ds\right)\right)
+ &amp;=\overline{(A^\natural\lambda)
+                    \!\left(\int_S k(s)\,ds\right)}\\
+ &amp;=\int_S\lambda(A(k(s)))\,ds.
+ \end{aligned}
+ \tag{SEC3.g}
+\]">\[
+ \begin{aligned}
+ \lambda\!\left(A\!\left(\int_S k(s)\,ds\right)\right)
+ &amp;=\overline{(A^\natural\lambda)
+                    \!\left(\int_S k(s)\,ds\right)}\\
+ &amp;=\int_S\lambda(A(k(s)))\,ds.
+ \end{aligned}
+ \tag{SEC3.g}
+\]</span>
+All <span class="math" data-tex="\(\lambda\in F_*\)">\(\lambda\in F_*\)</span> separate the points of <span class="math" data-tex="\(F\)">\(F\)</span>, proving (SEC3.e) in this case as well. The map <span class="math" data-tex="\(A^\natural\)">\(A^\natural\)</span> is conjugate linear in <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>; it is not being called a complex-linear preadjoint.</p>
+<p>These maps also preserve local Mackey–Lusin measurability. Indeed, if <span class="math" data-tex="\(K\subset F_*\)">\(K\subset F_*\)</span> is absolutely convex and weakly compact, its image under <span class="math" data-tex="\(A_*\)">\(A_*\)</span>, or under <span class="math" data-tex="\(A^\natural\)">\(A^\natural\)</span>, is absolutely convex and weakly compact in <span class="math" data-tex="\(E_*\)">\(E_*\)</span>. Weak continuity follows by testing at each fixed <span class="math" data-tex="\(x\)">\(x\)</span>; conjugation in (SEC3.f) preserves continuity. The seminorm identity
+<span class="math math-display" data-tex="\[
+ p_K(Ax)=p_{A_*K}(x)
+ \quad\text{or}\quad
+ p_K(Ax)=p_{A^\natural K}(x)
+ \tag{SEC3.h}
+\]">\[
+ p_K(Ax)=p_{A_*K}(x)
+ \quad\text{or}\quad
+ p_K(Ax)=p_{A^\natural K}(x)
+ \tag{SEC3.h}
+\]</span>
+proves Mackey continuity on the entire space. Compose on each Lusin compact set to get the stated measurability assertion.</p>
+<p>The graded adjoint <span class="math" data-tex="\(M(t)\to M(-t)\)">\(M(t)\to M(-t)\)</span> is a bounded normal conjugate-linear isometry: in a faithful chart it is <span class="math" data-tex="\(x\mapsto\sigma_{-t}^\varphi(x^*)\)">\(x\mapsto\sigma_{-t}^\varphi(x^*)\)</span>, by <a href="OA-FLOW-GRD.html#grd-3">GRD3</a>; the adjoint is ultraweakly continuous by CP6's vector-series formula, and the automorphism is normal. Therefore
+<span class="math math-display" data-tex="\[
+ \left(\int_S k(s)\,ds\right)^*
+       =\int_S k(s)^*\,ds
+       \quad\text{in }M(-t).
+ \tag{SEC3.i}
+\]">\[
+ \left(\int_S k(s)\,ds\right)^*
+       =\int_S k(s)^*\,ds
+       \quad\text{in }M(-t).
+ \tag{SEC3.i}
+\]</span>
+Fixed coefficient charts, fixed left or right multipliers, and each fixed modular automorphism satisfy the linear transport formula for the same reason. For example a normal functional evaluated at <span class="math" data-tex="\(axb\)">\(axb\)</span> is again a square-summable vector series, with its vectors changed by the fixed bounded operators <span class="math" data-tex="\(a,b\)">\(a,b\)</span>.</p>
+<p><strong>Strong measurability on an arbitrary Hilbert space.</strong> Represent <span class="math" data-tex="\(M\)">\(M\)</span> faithfully and normally on <span class="math" data-tex="\(H\)">\(H\)</span>; no separability of <span class="math" data-tex="\(H\)">\(H\)</span> is assumed. Let <span class="math" data-tex="\(k:\mathbb R\to M\)">\(k:\mathbb R\to M\)</span> be locally Lusin. The countable compact-cover construction of Section 1 supplies compact sets <span class="math" data-tex="\(K_j\)">\(K_j\)</span> whose union is conull, such that <span class="math" data-tex="\(k|_{K_j}\)">\(k|_{K_j}\)</span> is Mackey continuous. The compact-image norm bound of that section and <a href="OA-FLOW-GRD.html#grd-5">GRD4–5</a> make each restriction strong-star continuous in this representation. Thus, for every fixed <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, the two maps
+<span class="math math-display" data-tex="\[
+ s\longmapsto k(s)\xi,\qquad
+ s\longmapsto k(s)^*\xi
+ \tag{SEC3.j}
+\]">\[
+ s\longmapsto k(s)\xi,\qquad
+ s\longmapsto k(s)^*\xi
+ \tag{SEC3.j}
+\]</span>
+are continuous on each <span class="math" data-tex="\(K_j\)">\(K_j\)</span>.</p>
+<p>Each of their compact images in the metric space <span class="math" data-tex="\(H\)">\(H\)</span> is separable: choose a finite <span class="math" data-tex="\(1/n\)">\(1/n\)</span>-net for every positive integer <span class="math" data-tex="\(n\)">\(n\)</span>. The closed linear span of the resulting countable union of sets is separable. Outside the null complement of <span class="math" data-tex="\(\bigcup_jK_j\)">\(\bigcup_jK_j\)</span>, it contains the entire vector range. The maps are norm-Borel measurable after setting them to zero on that complement: the inverse image of an open subset of <span class="math" data-tex="\(H\)">\(H\)</span> is a countable union of relatively open subsets of the compact <span class="math" data-tex="\(K_j\)">\(K_j\)</span>, with the Borel complement added if needed. With the original null values restored they are measurable for completed Lebesgue measure.</p>
+<p>The strong-measurability proof in <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24, Section 4</a> now applies. In a separable essential range, measurable first-nearby-point choices from a countable dense set, followed by finite truncations, give finite-valued measurable approximants almost everywhere. Hence both functions in (SEC3.j) are strongly measurable even when <span class="math" data-tex="\(H\)">\(H\)</span> itself is not separable.</p>
+<p>If <span class="math" data-tex="\(\int\|k(s)\|\,ds&lt;\infty\)">\(\int\|k(s)\|\,ds&lt;\infty\)</span>, they have integrable vector norms. L24's Bochner integral is therefore available, and
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \left(\int k(s)\,ds\right)\xi
+      &amp;=\int k(s)\xi\,ds,\\
+ \left(\int k(s)\,ds\right)^*\xi
+      &amp;=\int k(s)^*\xi\,ds.
+ \end{aligned}
+ \tag{SEC3.k}
+\]">\[
+ \begin{aligned}
+ \left(\int k(s)\,ds\right)\xi
+      &amp;=\int k(s)\xi\,ds,\\
+ \left(\int k(s)\,ds\right)^*\xi
+      &amp;=\int k(s)^*\xi\,ds.
+ \end{aligned}
+ \tag{SEC3.k}
+\]</span>
+For the first identity, test against each <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span>; the vector functional belongs to <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, so its two scalar integrals agree by (SEC3.c). Hilbert-space separation proves equality. The second follows in the same way, or from (SEC3.i). For a fixed graded fiber first apply its coefficient chart; equivalently use its normal embedding into the core and a faithful normal representation of the core. Thus the comparison respects the canonical fiber integral.</p>
+<p>The argument also handles products with the implementing unitaries needed below. The <a href="OA-FLOW-MW.html#oa-flow.mw.4">faithful-weight implementation theorem</a> gives a faithful normal GNS representation with
+<span class="math" data-tex="\(\sigma_s^\varphi(x)=W_sxW_s^*\)">\(\sigma_s^\varphi(x)=W_sxW_s^*\)</span>, where <span class="math" data-tex="\(W_s\)">\(W_s\)</span> is strongly continuous. If <span class="math" data-tex="\(v(s)\)">\(v(s)\)</span> is continuous on a compact restriction, then
+<span class="math math-display" data-tex="\[
+ \|W_sv(s)-W_{s_0}v(s_0)\|
+ \le\|v(s)-v(s_0)\|+\|(W_s-W_{s_0})v(s_0)\|
+ \longrightarrow0.
+ \tag{SEC3.l}
+\]">\[
+ \|W_sv(s)-W_{s_0}v(s_0)\|
+ \le\|v(s)-v(s_0)\|+\|(W_s-W_{s_0})v(s_0)\|
+ \longrightarrow0.
+ \tag{SEC3.l}
+\]</span>
+The same holds for <span class="math" data-tex="\(W_s^*\)">\(W_s^*\)</span>. Apply this to (SEC3.j) on its compact restrictions. Their countable compact images again prove strong measurability of fields such as <span class="math" data-tex="\(W_s^*k(s)^*\xi\)">\(W_s^*k(s)^*\xi\)</span>. A bound for <span class="math" data-tex="\(\|k(s)\|\)">\(\|k(s)\|\)</span> supplies the corresponding integrable majorant whenever required.</p>
+<p><strong>Vector translation continuity.</strong> For every strongly measurable <span class="math" data-tex="\(F:\mathbb R\to H\)">\(F:\mathbb R\to H\)</span> with integrable norm,
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}\|F(r+h)-F(r)\|\,dr\longrightarrow0
+       \quad(h\to0).
+ \tag{SEC3.m}
+\]">\[
+ \int_{\mathbb R}\|F(r+h)-F(r)\|\,dr\longrightarrow0
+       \quad(h\to0).
+ \tag{SEC3.m}
+\]</span>
+For a finite sum <span class="math" data-tex="\(S=\sum_{j=1}^m1_{A_j}\xi_j\)">\(S=\sum_{j=1}^m1_{A_j}\xi_j\)</span>, with the <span class="math" data-tex="\(A_j\)">\(A_j\)</span> of finite measure, the left side is at most
+<span class="math" data-tex="\(\sum_j\|\xi_j\|\,|(A_j-h)\mathbin{\triangle}A_j|\)">\(\sum_j\|\xi_j\|\,|(A_j-h)\mathbin{\triangle}A_j|\)</span>.
+Each term tends to zero by the <a href="OA-FLOW-FF.html#oa-flow.ff.2">scalar translation proof</a>. That proof obtains finite-measure indicator approximation from Lebesgue regularity and bounded intervals. L24 supplies such finite-valued approximants <span class="math" data-tex="\(S\)">\(S\)</span> in integral norm for every <span class="math" data-tex="\(F\)">\(F\)</span>. Translation preserves that norm, so
+<span class="math math-display" data-tex="\[
+ \|F(\,\cdot+h)-F\|_{L^1(H)}
+ \le2\|F-S\|_{L^1(H)}
+       +\|S(\,\cdot+h)-S\|_{L^1(H)}.
+ \tag{SEC3.n}
+\]">\[
+ \|F(\,\cdot+h)-F\|_{L^1(H)}
+ \le2\|F-S\|_{L^1(H)}
+       +\|S(\,\cdot+h)-S\|_{L^1(H)}.
+ \tag{SEC3.n}
+\]</span>
+First choose <span class="math" data-tex="\(S\)">\(S\)</span>, then decrease <span class="math" data-tex="\(h\)">\(h\)</span>. This proves (SEC3.m).</p>
+<p><strong>The Fubini hypotheses.</strong> We will use vector Fubini only for a strongly measurable function <span class="math" data-tex="\(F:\mathbb R^2\to H\)">\(F:\mathbb R^2\to H\)</span> with
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R^2}\|F(r,s)\|\,dr\,ds&lt;\infty.
+ \tag{SEC3.o}
+\]">\[
+ \int_{\mathbb R^2}\|F(r,s)\|\,dr\,ds&lt;\infty.
+ \tag{SEC3.o}
+\]</span>
+L24, Proposition 4.3 proves that its iterated Bochner integrals exist almost everywhere and equal its product integral. Its sigma compact carrier condition holds on <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>. The proof approximates in integral norm by finite-valued functions and uses scalar Fubini on a summable series of their norm differences, so it applies to arbitrary <span class="math" data-tex="\(H\)">\(H\)</span>.</p>
+<p>For operator identities there is a convenient sufficient hypothesis that also controls exceptional sets. Let <span class="math" data-tex="\(K:\mathbb R^2\to M(t)\)">\(K:\mathbb R^2\to M(t)\)</span> be locally Mackey–Lusin on bounded rectangles and suppose that <span class="math" data-tex="\(\|K(r,s)\|\le g(r,s)\)">\(\|K(r,s)\|\le g(r,s)\)</span> almost everywhere, for a measurable integrable scalar <span class="math" data-tex="\(g\)">\(g\)</span>. Countably many compact restrictions cover a conull Borel set, by the same decreasing-loss construction as in Section 1. After setting <span class="math" data-tex="\(K=0\)">\(K=0\)</span> off this set, each predual pairing is jointly Borel: its restriction to each compact is continuous, and a countable union of the corresponding Borel pieces gives every inverse image. The scalar norm is measurable as well. The <a href="OA-FLOW-FF.html#scalar-interchange">scalar Fubini proof</a> then gives
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R^2}K(r,s)\,dr\,ds
+ =\int_{\mathbb R}\left(\int_{\mathbb R}K(r,s)\,ds\right)dr
+ =\int_{\mathbb R}\left(\int_{\mathbb R}K(r,s)\,dr\right)ds,
+ \tag{SEC3.p}
+\]">\[
+ \int_{\mathbb R^2}K(r,s)\,dr\,ds
+ =\int_{\mathbb R}\left(\int_{\mathbb R}K(r,s)\,ds\right)dr
+ =\int_{\mathbb R}\left(\int_{\mathbb R}K(r,s)\,dr\right)ds,
+ \tag{SEC3.p}
+\]</span>
+with all three integrals understood weak-star.</p>
+<p>To justify the operator statement, the set where <span class="math" data-tex="\(\int g(r,s)\,ds\)">\(\int g(r,s)\,ds\)</span> is infinite is one scalar null set, independent of the normal functional. Off it every inner weak-star integral exists by (SEC3.a)–(SEC3.c), since the Borel representative has measurable scalar sections for every functional. Its scalar pairings are measurable functions of <span class="math" data-tex="\(r\)">\(r\)</span>, and its norm is bounded by <span class="math" data-tex="\(\int g(r,s)\,ds\)">\(\int g(r,s)\,ds\)</span>. The outer weak-star integral exists using that bound, even without a separate assertion of norm measurability of the inner integral. Testing each <span class="math" data-tex="\(\ell\in M(t)_*\)">\(\ell\in M(t)_*\)</span> and applying scalar Fubini proves the first equality; reverse <span class="math" data-tex="\(r,s\)">\(r,s\)</span> for the second. If the original field differs on a product-null set, scalar Fubini first removes the null set of rows or columns on which its section need not be null. This single set again does not depend on <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p>On each compact restriction, coefficient fields applied to a fixed vector, and their adjoints, are continuous with compact metric image. The argument for (SEC3.j) therefore also proves strong measurability of these joint vector fields. Bound (SEC3.o) follows from <span class="math" data-tex="\(g\|\xi\|\)">\(g\|\xi\|\)</span>, so (SEC3.p) agrees with the Bochner comparisons whenever they are used.</p>
+<p>These statements iterate to further real variables under an integrable scalar norm majorant. For an additional parameter <span class="math" data-tex="\(u\)">\(u\)</span>, if a scalar triple-integral bound makes <span class="math" data-tex="\(\int\!\int g_u(r,s)\,dr\,ds\)">\(\int\!\int g_u(r,s)\,dr\,ds\)</span> finite outside a null set of <span class="math" data-tex="\(u\)">\(u\)</span>, apply (SEC3.p) for each such <span class="math" data-tex="\(u\)">\(u\)</span> once local Lusin measurability of <span class="math" data-tex="\(K_u\)">\(K_u\)</span> has been proved. This supplies a common parameter exception chosen from the scalar majorant, rather than from an uncountable family of vector or functional tests.</p>
+<p><span id="OA-FLOW.SEC.4"></span><a id="sec-4"></a></p>
+<h2 id="4-convolution-stays-in-the-locally-lusin-space">4. Convolution stays in the locally Lusin space</h2>
+<p>Fix a faithful normal semifinite weight <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and write the two sections as <span class="math" data-tex="\(a(t)\varphi^{it}\)">\(a(t)\varphi^{it}\)</span> and <span class="math" data-tex="\(b(t)\varphi^{it}\)">\(b(t)\varphi^{it}\)</span>. Abbreviate <span class="math" data-tex="\(\sigma_t^\varphi\)">\(\sigma_t^\varphi\)</span> to <span class="math" data-tex="\(\sigma_t\)">\(\sigma_t\)</span>. All operator-valued integrals below are the weak-star integrals of <a href="OA-FLOW-SEC.html#sec-3">Section 3</a>, tested against <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. The coefficient of their proposed convolution is
+<span class="math math-display" data-tex="\[
+ c(t)=(a*b)(t)
+     =\int_{\mathbb R}a(s)\sigma_s(b(t-s))\,ds.
+ \tag{SEC4.a}
+\]">\[
+ c(t)=(a*b)(t)
+     =\int_{\mathbb R}a(s)\sigma_s(b(t-s))\,ds.
+ \tag{SEC4.a}
+\]</span>
+The modular factor is determined by the <a href="OA-FLOW-GRD.html#grd-3">ordered graded product</a>.</p>
+<p>We use the <a href="OA-FLOW-MW.html#oa-flow.mw.4">faithful normal modular implementation</a>: represent <span class="math" data-tex="\(M\)">\(M\)</span> faithfully normally on its weight GNS Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span>, and write
+<span class="math math-display" data-tex="\[
+ \sigma_s(x)=W_sxW_s^*,
+ \qquad W_sW_r=W_{s+r},
+ \tag{SEC4.b}
+\]">\[
+ \sigma_s(x)=W_sxW_s^*,
+ \qquad W_sW_r=W_{s+r},
+ \tag{SEC4.b}
+\]</span>
+where <span class="math" data-tex="\(W\)">\(W\)</span> is strongly continuous. The dimension of <span class="math" data-tex="\(H\)">\(H\)</span> is unrestricted. This representation preserves the norm and, on bounded sets, identifies the intrinsic sigma-strong-star topology with the concrete strong-star topology by <a href="OA-FLOW-ST12.html#oa-flow.st.2">ST2</a>. The latter agrees there with Mackey topology by <a href="OA-FLOW-GRD.html#grd-5">GRD5</a>.</p>
+<p><strong>Existence at almost every output time.</strong> Fix <span class="math" data-tex="\(t\)">\(t\)</span> and a bounded closed interval <span class="math" data-tex="\(I\)">\(I\)</span>. Choose Lusin compact restrictions <span class="math" data-tex="\(K_a\subset I\)">\(K_a\subset I\)</span> for <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(K_b\subset t-I\)">\(K_b\subset t-I\)</span> for <span class="math" data-tex="\(b\)">\(b\)</span>. Then
+<span class="math" data-tex="\(K=K_a\cap(t-K_b)\)">\(K=K_a\cap(t-K_b)\)</span> is compact, and the measure lost in <span class="math" data-tex="\(I\)">\(I\)</span> is at most the sum of the two losses. On <span class="math" data-tex="\(K\)">\(K\)</span>, both coefficient images are norm bounded by <a href="OA-FLOW-SEC.html#sec-1">Section 1</a>. The action is jointly strong-star continuous on bounded sets, either by (SEC4.b) or the <a href="OA-FLOW-AT.html#oa-flow.at.4">bounded action theorem</a>. Bounded products are jointly strong-star continuous as well: if <span class="math" data-tex="\(A_i\to A\)">\(A_i\to A\)</span> and <span class="math" data-tex="\(B_i\to B\)">\(B_i\to B\)</span> strongly-star, with <span class="math" data-tex="\(\|A_i\|\le R\)">\(\|A_i\|\le R\)</span>, then
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|(A_iB_i-AB)\xi\|
+ &amp;\le R\|(B_i-B)\xi\|\\
+ &amp;\quad+\|(A_i-A)B\xi\|\longrightarrow0,
+ \end{aligned}
+ \tag{SEC4.c}
+\]">\[
+ \begin{aligned}
+ \|(A_iB_i-AB)\xi\|
+ &amp;\le R\|(B_i-B)\xi\|\\
+ &amp;\quad+\|(A_i-A)B\xi\|\longrightarrow0,
+ \end{aligned}
+ \tag{SEC4.c}
+\]</span>
+and the same estimate for <span class="math" data-tex="\(B_i^*A_i^*\)">\(B_i^*A_i^*\)</span> handles adjoints. Thus
+<span class="math" data-tex="\(s\mapsto a(s)\sigma_s(b(t-s))\)">\(s\mapsto a(s)\sigma_s(b(t-s))\)</span> is Mackey continuous on <span class="math" data-tex="\(K\)">\(K\)</span>. Since the losses can be arbitrarily small, this integrand is locally Lusin.</p>
+<p>Put <span class="math" data-tex="\(A(s)=\|a(s)\|\)">\(A(s)=\|a(s)\|\)</span>, <span class="math" data-tex="\(B(s)=\|b(s)\|\)">\(B(s)=\|b(s)\|\)</span>. These scalar functions are measurable by Section 1. Its countable compact-cover construction permits Borel representatives after a null modification. The <a href="OA-FLOW-FF.html#scalar-interchange">scalar nonnegative Fubini theorem</a>, with <a href="OA-FLOW-SC.html#sc-02">translation and reflection of Lebesgue measure</a>, gives
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ (A*B)(t)=\int_{\mathbb R}A(s)B(t-s)\,ds,\\
+ \int_{\mathbb R}(A*B)(t)\,dt
+       =\left(\int_{\mathbb R}A\right)
+          \left(\int_{\mathbb R}B\right)
+       =\|a\|_1\|b\|_1.
+ \end{gathered}
+ \tag{SEC4.d}
+\]">\[
+ \begin{gathered}
+ (A*B)(t)=\int_{\mathbb R}A(s)B(t-s)\,ds,\\
+ \int_{\mathbb R}(A*B)(t)\,dt
+       =\left(\int_{\mathbb R}A\right)
+          \left(\int_{\mathbb R}B\right)
+       =\|a\|_1\|b\|_1.
+ \end{gathered}
+ \tag{SEC4.d}
+\]</span>
+These statements also hold for the original completed-measure representatives: on any bounded rectangle, the inverse image of a one-dimensional null set under <span class="math" data-tex="\(s\)">\(s\)</span> or <span class="math" data-tex="\(t-s\)">\(t-s\)</span> is null by the same scalar theorem.</p>
+<p>Consequently
+<span class="math math-display" data-tex="\[
+ N_{a,b}=\{t:(A*B)(t)=\infty\}
+ \quad\text{is null}.
+ \tag{SEC4.e}
+\]">\[
+ N_{a,b}=\{t:(A*B)(t)=\infty\}
+ \quad\text{is null}.
+ \tag{SEC4.e}
+\]</span>
+For <span class="math" data-tex="\(t\notin N_{a,b}\)">\(t\notin N_{a,b}\)</span>, the locally Lusin integrand in (SEC4.a) has integrable norm, so Section 3 defines its integral in <span class="math" data-tex="\(M\)">\(M\)</span>, with
+<span class="math" data-tex="\(\|c(t)\|\le(A*B)(t)\)">\(\|c(t)\|\le(A*B)(t)\)</span>. Set <span class="math" data-tex="\(c(t)=0\)">\(c(t)=0\)</span> on <span class="math" data-tex="\(N_{a,b}\)">\(N_{a,b}\)</span>. At this stage this is a pointwise construction and bound; measurability of <span class="math" data-tex="\(\|c(t)\|\)">\(\|c(t)\|\)</span> will follow from the closure proof below.</p>
+<p>Changing <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> on scalar null sets <span class="math" data-tex="\(N_a,N_b\)">\(N_a,N_b\)</span> changes the integrand for a fixed <span class="math" data-tex="\(t\)">\(t\)</span> only on <span class="math" data-tex="\(N_a\cup(t-N_b)\)">\(N_a\cup(t-N_b)\)</span>, which is null. Thus the integral, wherever it exists, is independent of those modifications. All exceptional sets used here come from scalar norm bounds.</p>
+<p><strong>Bounded coefficients with compact support.</strong> First suppose <span class="math" data-tex="\(\|a(s)\|\le P\)">\(\|a(s)\|\le P\)</span>, <span class="math" data-tex="\(\|b(s)\|\le Q\)">\(\|b(s)\|\le Q\)</span> for every <span class="math" data-tex="\(s\)">\(s\)</span>, and both coefficients vanish outside compact sets. Choose a compact interval <span class="math" data-tex="\(I\)">\(I\)</span> containing the support of <span class="math" data-tex="\(a\)">\(a\)</span>. Formula (SEC4.a) then exists for every <span class="math" data-tex="\(t\)">\(t\)</span>, and
+<span class="math math-display" data-tex="\[
+ \|c(t)\|\le Q\|a\|_1\qquad(t\in\mathbb R).
+ \tag{SEC4.f}
+\]">\[
+ \|c(t)\|\le Q\|a\|_1\qquad(t\in\mathbb R).
+ \tag{SEC4.f}
+\]</span>
+We prove its strong-star continuity at every <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p>For <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, the vector comparison in Section 3 and (SEC4.b) give
+<span class="math math-display" data-tex="\[
+ \|(c(t+h)-c(t))\xi\|
+ \le P\int_I
+    \|(b(t+h-s)-b(t-s))W_s^*\xi\|\,ds.
+ \tag{SEC4.g}
+\]">\[
+ \|(c(t+h)-c(t))\xi\|
+ \le P\int_I
+    \|(b(t+h-s)-b(t-s))W_s^*\xi\|\,ds.
+ \tag{SEC4.g}
+\]</span>
+The continuous path <span class="math" data-tex="\(s\mapsto W_s^*\xi\)">\(s\mapsto W_s^*\xi\)</span> has compact metric image on <span class="math" data-tex="\(I\)">\(I\)</span>. For <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, choose a finite-valued measurable function
+<span class="math" data-tex="\(\eta_\delta(s)=\sum_{j=1}^m1_{E_j}(s)\eta_j\)">\(\eta_\delta(s)=\sum_{j=1}^m1_{E_j}(s)\eta_j\)</span> with uniform error at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Such a function is obtained from a finite <span class="math" data-tex="\(\delta\)">\(\delta\)</span>-net of the compact image by assigning the first suitable net point; the resulting sets <span class="math" data-tex="\(E_j\)">\(E_j\)</span> are measurable. Replacing <span class="math" data-tex="\(W_s^*\xi\)">\(W_s^*\xi\)</span> by <span class="math" data-tex="\(\eta_\delta(s)\)">\(\eta_\delta(s)\)</span> in (SEC4.g) costs at most
+<span class="math math-display" data-tex="\[
+ 2PQ|I|\delta.
+ \tag{SEC4.h}
+\]">\[
+ 2PQ|I|\delta.
+ \tag{SEC4.h}
+\]</span>
+For each of its finitely many values, the remaining term is bounded by
+<span class="math math-display" data-tex="\[
+ P\int_{\mathbb R}
+       \|(b(r+h)-b(r))\eta_j\|\,dr\longrightarrow0.
+ \tag{SEC4.i}
+\]">\[
+ P\int_{\mathbb R}
+       \|(b(r+h)-b(r))\eta_j\|\,dr\longrightarrow0.
+ \tag{SEC4.i}
+\]</span>
+Indeed <span class="math" data-tex="\(r=t-s\)">\(r=t-s\)</span> changes the integral over <span class="math" data-tex="\(E_j\)">\(E_j\)</span> to one over a measurable subset of <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and we enlarge it to the whole line. The vector function <span class="math" data-tex="\(r\mapsto b(r)\eta_j\)">\(r\mapsto b(r)\eta_j\)</span> is strongly measurable and integrable on the arbitrary space <span class="math" data-tex="\(H\)">\(H\)</span>, by Section 3. Its integral-norm translation continuity is proved there from <a href="OA-FLOW-FF.html#oa-flow.ff.2">scalar translations</a> and <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">vector simple approximation</a>. Let <span class="math" data-tex="\(h\to0\)">\(h\to0\)</span>, then <span class="math" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. This proves strong continuity.</p>
+<p>The adjoints require a separate estimate. Commuting the adjoint with the weak-star integral as in Section 3 gives
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \|(c(t+h)^*-c(t)^*)\xi\|\\
+ \le\int_I
+     \|(b(t+h-s)^*-b(t-s)^*)\zeta(s)\|\,ds,\\
+ \zeta(s)=W_s^*a(s)^*\xi.
+ \end{gathered}
+ \tag{SEC4.j}
+\]">\[
+ \begin{gathered}
+ \|(c(t+h)^*-c(t)^*)\xi\|\\
+ \le\int_I
+     \|(b(t+h-s)^*-b(t-s)^*)\zeta(s)\|\,ds,\\
+ \zeta(s)=W_s^*a(s)^*\xi.
+ \end{gathered}
+ \tag{SEC4.j}
+\]</span>
+The function <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> is strongly measurable on <span class="math" data-tex="\(I\)">\(I\)</span>: on each of the countably many Lusin compact restrictions of <span class="math" data-tex="\(a\)">\(a\)</span>, it is a continuous <span class="math" data-tex="\(H\)">\(H\)</span>-valued function with compact metric image. These images lie in a separable closed subspace after taking their countable union, as proved in Section 3; no separability of <span class="math" data-tex="\(H\)">\(H\)</span> is required. Also <span class="math" data-tex="\(\|\zeta(s)\|\le P\|\xi\|\)">\(\|\zeta(s)\|\le P\|\xi\|\)</span>, so <span class="math" data-tex="\(\zeta\in L^1(I,H)\)">\(\zeta\in L^1(I,H)\)</span>.</p>
+<p>Approximate <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> in <span class="math" data-tex="\(L^1(I,H)\)">\(L^1(I,H)\)</span> by a finite-valued measurable function <span class="math" data-tex="\(\sum_j1_{E_j}\zeta_j\)">\(\sum_j1_{E_j}\zeta_j\)</span>. The error in (SEC4.j) is at most
+<span class="math" data-tex="\(2Q\|\zeta-\sum_j1_{E_j}\zeta_j\|_{L^1(I,H)}\)">\(2Q\|\zeta-\sum_j1_{E_j}\zeta_j\|_{L^1(I,H)}\)</span>.
+For each <span class="math" data-tex="\(\zeta_j\)">\(\zeta_j\)</span>, the remaining integral is bounded by
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}
+       \|(b(r+h)^*-b(r)^*)\zeta_j\|\,dr\longrightarrow0,
+ \tag{SEC4.k}
+\]">\[
+ \int_{\mathbb R}
+       \|(b(r+h)^*-b(r)^*)\zeta_j\|\,dr\longrightarrow0,
+ \tag{SEC4.k}
+\]</span>
+using translation continuity of <span class="math" data-tex="\(r\mapsto b(r)^*\zeta_j\)">\(r\mapsto b(r)^*\zeta_j\)</span>. First take <span class="math" data-tex="\(h\to0\)">\(h\to0\)</span>, then make the approximation error arbitrarily small. This proves adjoint continuity. The global norm bound (SEC4.f) now makes <span class="math" data-tex="\(c\)">\(c\)</span> Mackey continuous by GRD5. Thus the convolution of these bounded compactly supported coefficients is locally Lusin, with no assertion that either input is norm measurable as an <span class="math" data-tex="\(M\)">\(M\)</span>-valued function.</p>
+<p><strong>General coefficients.</strong> Take the bounded compactly supported truncations <span class="math" data-tex="\(a_n,b_n\)">\(a_n,b_n\)</span> from <a href="OA-FLOW-SEC.html#sec-1">Section 1</a>, and put <span class="math" data-tex="\(c_n=a_n*b_n\)">\(c_n=a_n*b_n\)</span>. Each <span class="math" data-tex="\(c_n\)">\(c_n\)</span> is everywhere Mackey continuous by the preceding argument. Let <span class="math" data-tex="\(c\)">\(c\)</span> be the pointwise weak-star convolution already constructed. For <span class="math" data-tex="\(t\notin N_{a,b}\)">\(t\notin N_{a,b}\)</span>, subtract the two integrals and split the difference to obtain
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \|c(t)-c_n(t)\|&amp;\le d_n(t),\\
+ d_n&amp;=\|a-a_n\|*\|b\|
+           +\|a_n\|*\|b-b_n\|.
+ \end{aligned}
+ \tag{SEC4.l}
+\]">\[
+ \begin{aligned}
+ \|c(t)-c_n(t)\|&amp;\le d_n(t),\\
+ d_n&amp;=\|a-a_n\|*\|b\|
+           +\|a_n\|*\|b-b_n\|.
+ \end{aligned}
+ \tag{SEC4.l}
+\]</span>
+All four functions on the right are already measurable scalar functions. In particular no measurability of the expression on the left has been used. Scalar Tonelli gives
+<span class="math math-display" data-tex="\[
+ \int d_n
+ =\|a-a_n\|_1\|b\|_1
+    +\|a_n\|_1\|b-b_n\|_1
+ \longrightarrow0.
+ \tag{SEC4.m}
+\]">\[
+ \int d_n
+ =\|a-a_n\|_1\|b\|_1
+    +\|a_n\|_1\|b-b_n\|_1
+ \longrightarrow0.
+ \tag{SEC4.m}
+\]</span>
+The truncations are scalar masks, so their norms and the difference norms are bounded pointwise by <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>, respectively. Hence every integral used in (SEC4.l) is finite outside the same <span class="math" data-tex="\(N_{a,b}\)">\(N_{a,b}\)</span>.</p>
+<p>Choose a subsequence <span class="math" data-tex="\(n_k\)">\(n_k\)</span> with <span class="math" data-tex="\(\sum_k\int d_{n_k}&lt;\infty\)">\(\sum_k\int d_{n_k}&lt;\infty\)</span>, and form the measurable scalar tails
+<span class="math math-display" data-tex="\[
+ D_j(t)=\sum_{k\ge j}d_{n_k}(t).
+ \tag{SEC4.n}
+\]">\[
+ D_j(t)=\sum_{k\ge j}d_{n_k}(t).
+ \tag{SEC4.n}
+\]</span>
+The <a href="OA-FLOW-SC.html#sc-04">nonnegative sum and convergence theorem</a> shows that <span class="math" data-tex="\(D_j\downarrow0\)">\(D_j\downarrow0\)</span> outside a scalar null set and that <span class="math" data-tex="\(\int D_j\to0\)">\(\int D_j\to0\)</span>. On any bounded closed interval <span class="math" data-tex="\(J\)">\(J\)</span>, the uniform-tail argument of <a href="OA-FLOW-SEC.html#sec-2">Section 2</a> applies to these scalar functions. More explicitly, choose increasing indices <span class="math" data-tex="\(j_m\)">\(j_m\)</span> with
+<span class="math math-display" data-tex="\[
+ |\{t\in J:D_{j_m}(t)&gt;1/m\}|&lt;\varepsilon2^{-m-3}.
+ \tag{SEC4.o}
+\]">\[
+ |\{t\in J:D_{j_m}(t)&gt;1/m\}|&lt;\varepsilon2^{-m-3}.
+ \tag{SEC4.o}
+\]</span>
+Outside the union of these sets, <span class="math" data-tex="\(D_j\to0\)">\(D_j\to0\)</span> uniformly. Remove also a small open neighborhood of <span class="math" data-tex="\(N_{a,b}\)">\(N_{a,b}\)</span> and of the null set where the tails fail. <a href="OA-FLOW-FF.html#oa-flow.ff.2">Lebesgue regularity</a> gives a compact subset <span class="math" data-tex="\(K\subset J\)">\(K\subset J\)</span> of the remaining set with <span class="math" data-tex="\(|J\setminus K|&lt;\varepsilon\)">\(|J\setminus K|&lt;\varepsilon\)</span>. On <span class="math" data-tex="\(K\)">\(K\)</span>, (SEC4.l) and <span class="math" data-tex="\(d_{n_k}\le D_k\)">\(d_{n_k}\le D_k\)</span> prove uniform convergence <span class="math" data-tex="\(c_{n_k}\to c\)">\(c_{n_k}\to c\)</span> in operator norm.</p>
+<p>For a weakly compact predual set <span class="math" data-tex="\(L\)">\(L\)</span>, its norm bound gives
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ p_L(c_{n_k}(t)-c(t))
+ \le\left(\sup_{\omega\in L}\|\omega\|\right)d_{n_k}(t),\\
+ \sup_{t\in K}d_{n_k}(t)\longrightarrow0.
+ \end{gathered}
+ \tag{SEC4.p}
+\]">\[
+ \begin{gathered}
+ p_L(c_{n_k}(t)-c(t))
+ \le\left(\sup_{\omega\in L}\|\omega\|\right)d_{n_k}(t),\\
+ \sup_{t\in K}d_{n_k}(t)\longrightarrow0.
+ \end{gathered}
+ \tag{SEC4.p}
+\]</span>
+Thus <span class="math" data-tex="\(c|_K\)">\(c|_K\)</span> is a uniform limit for every Mackey seminorm of continuous maps and is Mackey continuous. This proves the required local Lusin property of <span class="math" data-tex="\(c\)">\(c\)</span>. Only now use Section 1 to conclude measurability of its norm. The pointwise scalar bound and (SEC4.d) yield Young's inequality
+<span class="math math-display" data-tex="\[
+ \boxed{\ \|a*b\|_1\le\|a\|_1\|b\|_1.\ }
+ \tag{SEC4.q}
+\]">\[
+ \boxed{\ \|a*b\|_1\le\|a\|_1\|b\|_1.\ }
+ \tag{SEC4.q}
+\]</span>
+Convolution is bilinear on almost-everywhere classes, by linearity of the weak-star integral off the finite union of the relevant scalar exceptional sets. In particular it is a bounded bilinear operation on the Banach space of Section 2.</p>
+<p><span id="OA-FLOW.SEC.5"></span><a id="sec-5"></a></p>
+<h2 id="5-associativity-and-the-section-involution">5. Associativity and the section involution</h2>
+<p>Define the coefficient involution by
+<span class="math math-display" data-tex="\[
+ a^\sharp(t)=\sigma_t(a(-t)^*).
+ \tag{SEC5.a}
+\]">\[
+ a^\sharp(t)=\sigma_t(a(-t)^*).
+ \tag{SEC5.a}
+\]</span>
+Reflection carries Lusin compact sets to Lusin compact sets. On such a set the coefficient image is norm bounded, so adjoint continuity and the bounded joint action continuity used in Section 4 show that <span class="math" data-tex="\(a^\sharp\)">\(a^\sharp\)</span> is locally Mackey–Lusin. Automorphisms are isometric, and reflection preserves Lebesgue measure. Therefore
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \|a^\sharp(t)\|=\|a(-t)\|,\qquad
+ \|a^\sharp\|_1=\|a\|_1,\\
+ (a^\sharp)^\sharp(t)
+ =\sigma_t\!\left(\sigma_{-t}(a(t)^*)^*\right)
+ =a(t).
+ \end{gathered}
+ \tag{SEC5.b}
+\]">\[
+ \begin{gathered}
+ \|a^\sharp(t)\|=\|a(-t)\|,\qquad
+ \|a^\sharp\|_1=\|a\|_1,\\
+ (a^\sharp)^\sharp(t)
+ =\sigma_t\!\left(\sigma_{-t}(a(t)^*)^*\right)
+ =a(t).
+ \end{gathered}
+ \tag{SEC5.b}
+\]</span>
+This map is conjugate linear and respects almost-everywhere equality. Its modular factor is precisely the <a href="OA-FLOW-GRD.html#grd-3">graded adjoint formula</a>.</p>
+<p><strong>The joint field for three factors.</strong> Let <span class="math" data-tex="\(a,b,d\)">\(a,b,d\)</span> be three integrable coefficients, and set <span class="math" data-tex="\(A=\|a\|\)">\(A=\|a\|\)</span>, <span class="math" data-tex="\(B=\|b\|\)">\(B=\|b\|\)</span>, <span class="math" data-tex="\(D=\|d\|\)">\(D=\|d\|\)</span>. For a fixed output time <span class="math" data-tex="\(t\)">\(t\)</span>, the common operator field is
+<span class="math math-display" data-tex="\[
+ H_t(r,s)
+    =a(r)\sigma_r(b(s))
+             \sigma_{r+s}(d(t-r-s)).
+ \tag{SEC5.c}
+\]">\[
+ H_t(r,s)
+    =a(r)\sigma_r(b(s))
+             \sigma_{r+s}(d(t-r-s)).
+ \tag{SEC5.c}
+\]</span>
+We verify joint measurability at arbitrary Hilbert multiplicity before interchanging its integrals.</p>
+<p>Take a bounded rectangle <span class="math" data-tex="\(I\times J\)">\(I\times J\)</span>. Choose Lusin compacts <span class="math" data-tex="\(K_a\subset I\)">\(K_a\subset I\)</span>, <span class="math" data-tex="\(K_b\subset J\)">\(K_b\subset J\)</span>, and <span class="math" data-tex="\(K_d\subset t-I-J\)">\(K_d\subset t-I-J\)</span>. Their inverse images give the compact set
+<span class="math math-display" data-tex="\[
+ K=(I\times J)\cap
+   \{(r,s):r\in K_a,\ s\in K_b,\ t-r-s\in K_d\}.
+ \tag{SEC5.d}
+\]">\[
+ K=(I\times J)\cap
+   \{(r,s):r\in K_a,\ s\in K_b,\ t-r-s\in K_d\}.
+ \tag{SEC5.d}
+\]</span>
+If the respective one-dimensional measure losses are <span class="math" data-tex="\(\delta_a,\delta_b,\delta_d\)">\(\delta_a,\delta_b,\delta_d\)</span>, the discarded part of the rectangle has measure at most
+<span class="math math-display" data-tex="\[
+ |J|\delta_a+|I|\delta_b
+       +\min(|I|,|J|)\delta_d.
+ \tag{SEC5.e}
+\]">\[
+ |J|\delta_a+|I|\delta_b
+       +\min(|I|,|J|)\delta_d.
+ \tag{SEC5.e}
+\]</span>
+For the third strip, fix <span class="math" data-tex="\(r\)">\(r\)</span> and integrate over <span class="math" data-tex="\(s\)">\(s\)</span>: the excluded set is a translated reflection of a subset of <span class="math" data-tex="\((t-I-J)\setminus K_d\)">\((t-I-J)\setminus K_d\)</span>, of measure at most <span class="math" data-tex="\(\delta_d\)">\(\delta_d\)</span>. This gives <span class="math" data-tex="\(|I|\delta_d\)">\(|I|\delta_d\)</span>; interchanging the roles of <span class="math" data-tex="\(r,s\)">\(r,s\)</span> gives <span class="math" data-tex="\(|J|\delta_d\)">\(|J|\delta_d\)</span>. The first two bounds are rectangle measures. All uses of interchange are the <a href="OA-FLOW-FF.html#scalar-interchange">scalar theorem</a>. Thus the lost measure can be arbitrarily small.</p>
+<p>On <span class="math" data-tex="\(K\)">\(K\)</span>, all three coefficient images are bounded and continuous in the strong-star topology. The joint action and product estimates from Section 4 make <span class="math" data-tex="\(H_t|_K\)">\(H_t|_K\)</span> strong-star continuous and norm bounded, hence Mackey continuous. Choose such restrictions with successively smaller losses on each rectangle <span class="math" data-tex="\([-n,n]^2\)">\([-n,n]^2\)</span>. Their countable union covers <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> up to a scalar null set. This proves scalar measurability of every <span class="math" data-tex="\(\omega(H_t)\)">\(\omega(H_t)\)</span>, and of <span class="math" data-tex="\(\|H_t\|\)">\(\|H_t\|\)</span>, by the same compact-cover argument as Section 1.</p>
+<p>It also proves strong measurability of <span class="math" data-tex="\(H_t(r,s)\xi\)">\(H_t(r,s)\xi\)</span> and <span class="math" data-tex="\(H_t(r,s)^*\xi\)">\(H_t(r,s)^*\xi\)</span> for each fixed <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>. On every compact restriction they are continuous with compact metric image; the countable union of those images is contained in a separable closed linear subspace of <span class="math" data-tex="\(H\)">\(H\)</span>. Extending by zero across the scalar exceptional set gives the simple-function approximants of <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24, Section 4</a>. The subspace may depend on <span class="math" data-tex="\(\xi\)">\(\xi\)</span>; no countable basis or common separable representation of <span class="math" data-tex="\(M\)">\(M\)</span> is needed. A fixed-<span class="math" data-tex="\(r\)">\(r\)</span> or fixed-<span class="math" data-tex="\(s\)">\(s\)</span> slice is locally Lusin by the one-variable restriction argument of Section 4.</p>
+<p>Use <span class="math" data-tex="\(0\cdot\infty=0\)">\(0\cdot\infty=0\)</span> in nonnegative scalar products. The scalar majorant is
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \|H_t(r,s)\|\le A(r)B(s)D(t-r-s),\\
+ G(t)=\iint_{\mathbb R^2}A(r)B(s)D(t-r-s)\,ds\,dr,\\
+ \int_{\mathbb R}G(t)\,dt
+      =\|a\|_1\|b\|_1\|d\|_1&lt;\infty.
+ \end{gathered}
+ \tag{SEC5.f}
+\]">\[
+ \begin{gathered}
+ \|H_t(r,s)\|\le A(r)B(s)D(t-r-s),\\
+ G(t)=\iint_{\mathbb R^2}A(r)B(s)D(t-r-s)\,ds\,dr,\\
+ \int_{\mathbb R}G(t)\,dt
+      =\|a\|_1\|b\|_1\|d\|_1&lt;\infty.
+ \end{gathered}
+ \tag{SEC5.f}
+\]</span>
+Its joint measurability and the equality follow from scalar Borel representatives, nonnegative Fubini and translations, as in (SEC4.d), iterated once more. Fix <span class="math" data-tex="\(t\)">\(t\)</span> outside
+<span class="math math-display" data-tex="\[
+ N=\{t:G(t)=\infty\}.
+ \tag{SEC5.g}
+\]">\[
+ N=\{t:G(t)=\infty\}.
+ \tag{SEC5.g}
+\]</span>
+This is one scalar null set, chosen independently of every vector and normal functional. The weak-star integral of <span class="math" data-tex="\(H_t\)">\(H_t\)</span> over <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span> exists by its integrable norm bound and <span class="math" data-tex="\(M=(M_*)^*\)">\(M=(M_*)^*\)</span>, exactly as in Section 3. Its vector integrals exist by the strong measurability just proved and the same bound. <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">Vector Fubini</a> applies on the sigma-compact carrier <span class="math" data-tex="\(\mathbb R^2\)">\(\mathbb R^2\)</span>.</p>
+<p><strong>Both parenthesizations give this integral.</strong> Scalar Fubini first shows
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R} A(r)(B*D)(t-r)\,dr=G(t)&lt;\infty.
+ \tag{SEC5.h}
+\]">\[
+ \int_{\mathbb R} A(r)(B*D)(t-r)\,dr=G(t)&lt;\infty.
+ \tag{SEC5.h}
+\]</span>
+Outside the translated scalar null set where <span class="math" data-tex="\(b*d\)">\(b*d\)</span> was assigned its exceptional value, Section 4 gives
+<span class="math math-display" data-tex="\[
+ (b*d)(t-r)=\int b(s)\sigma_s(d(t-r-s))\,ds.
+\]">\[
+ (b*d)(t-r)=\int b(s)\sigma_s(d(t-r-s))\,ds.
+\]</span>
+For each such <span class="math" data-tex="\(r\)">\(r\)</span>, the fixed normal map <span class="math" data-tex="\(x\mapsto a(r)\sigma_r(x)\)">\(x\mapsto a(r)\sigma_r(x)\)</span> commutes with the weak-star integral by <a href="OA-FLOW-SEC.html#sec-3">Section 3</a>. Thus the coefficient of <span class="math" data-tex="\(a*(b*d)\)">\(a*(b*d)\)</span> is
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}\!\int_{\mathbb R}
+          H_t(r,s)\,ds\,dr.
+ \tag{SEC5.i}
+\]">\[
+ \int_{\mathbb R}\!\int_{\mathbb R}
+          H_t(r,s)\,ds\,dr.
+ \tag{SEC5.i}
+\]</span>
+The outer integral exists by (SEC5.h) and the norm estimate for <span class="math" data-tex="\(b*d\)">\(b*d\)</span>. Translates of its exceptional null set are null for this fixed <span class="math" data-tex="\(t\)">\(t\)</span>, so arbitrary chosen representatives give the same result.</p>
+<p>For <span class="math" data-tex="\((a*b)*d\)">\((a*b)*d\)</span>, use the variables <span class="math" data-tex="\(r,u\)">\(r,u\)</span> and the field
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \widetilde H_t(r,u)
+   &amp;=a(r)\sigma_r(b(u-r))\sigma_u(d(t-u))\\
+   &amp;=H_t(r,u-r).
+ \end{aligned}
+ \tag{SEC5.j}
+\]">\[
+ \begin{aligned}
+ \widetilde H_t(r,u)
+   &amp;=a(r)\sigma_r(b(u-r))\sigma_u(d(t-u))\\
+   &amp;=H_t(r,u-r).
+ \end{aligned}
+ \tag{SEC5.j}
+\]</span>
+The same compact-restriction proof applies to the three real coordinates <span class="math" data-tex="\(r,u-r,t-u\)">\(r,u-r,t-u\)</span> on any bounded rectangle. Each discarded strip has measure bounded by one side length times the one-dimensional loss, so <span class="math" data-tex="\(\widetilde H_t\)">\(\widetilde H_t\)</span> has the required joint scalar and vector measurability. For each fixed <span class="math" data-tex="\(r\)">\(r\)</span>, the substitution <span class="math" data-tex="\(u=r+s\)">\(u=r+s\)</span> is an ordinary translation. Nonnegative Fubini therefore gives
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ \iint\|\widetilde H_t(r,u)\|\,dr\,du\le G(t),\\
+ \int_{\mathbb R}(A*B)(u)D(t-u)\,du=G(t).
+ \end{gathered}
+ \tag{SEC5.k}
+\]">\[
+ \begin{gathered}
+ \iint\|\widetilde H_t(r,u)\|\,dr\,du\le G(t),\\
+ \int_{\mathbb R}(A*B)(u)D(t-u)\,du=G(t).
+ \end{gathered}
+ \tag{SEC5.k}
+\]</span>
+For <span class="math" data-tex="\(u\)">\(u\)</span> outside the scalar exceptional set of <span class="math" data-tex="\(a*b\)">\(a*b\)</span>, the fixed right multiplier
+<span class="math" data-tex="\(x\mapsto x\sigma_u(d(t-u))\)">\(x\mapsto x\sigma_u(d(t-u))\)</span> passes through its defining integral. Hence <span class="math" data-tex="\((a*b)*d\)">\((a*b)*d\)</span> is the integral of <span class="math" data-tex="\(\widetilde H_t\)">\(\widetilde H_t\)</span>, with <span class="math" data-tex="\(r\)">\(r\)</span> integrated first.</p>
+<p>For every <span class="math" data-tex="\(\omega\in M_*\)">\(\omega\in M_*\)</span>, its pairings with these two fields have the integrable bounds <span class="math" data-tex="\(\|\omega\|A(r)B(s)D(t-r-s)\)">\(\|\omega\|A(r)B(s)D(t-r-s)\)</span> and its translated version. Scalar Fubini and <span class="math" data-tex="\(u=r+s\)">\(u=r+s\)</span> therefore identify the two iterated integrals with the weak-star double integral in (SEC5.i). The equality holds for every <span class="math" data-tex="\(\omega\)">\(\omega\)</span> at the already fixed <span class="math" data-tex="\(t\notin N\)">\(t\notin N\)</span>: no union of functional-dependent exceptional sets is taken. Equivalently, the qualified vector Fubini theorem gives the same equality on each <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. The scalar slice-integrability exceptions and the intermediate convolution exceptions are independent of those tests. We conclude
+<span class="math math-display" data-tex="\[
+ (a*b)*d=a*(b*d)
+       \quad\text{as almost-everywhere classes}.
+ \tag{SEC5.l}
+\]">\[
+ (a*b)*d=a*(b*d)
+       \quad\text{as almost-everywhere classes}.
+ \tag{SEC5.l}
+\]</span></p>
+<p><strong>The adjoint reverses convolution.</strong> For almost every <span class="math" data-tex="\(t\)">\(t\)</span>, adjoint commutation and normal-map transport through the weak-star integral give
+<span class="math math-display" data-tex="\[
+ \begin{gathered}
+ (a*b)^\sharp(t)\\
+ =\int_{\mathbb R}
+       \sigma_{t+s}(b(-t-s)^*)\,
+       \sigma_t(a(s)^*)\,ds.
+ \end{gathered}
+ \tag{SEC5.m}
+\]">\[
+ \begin{gathered}
+ (a*b)^\sharp(t)\\
+ =\int_{\mathbb R}
+       \sigma_{t+s}(b(-t-s)^*)\,
+       \sigma_t(a(s)^*)\,ds.
+ \end{gathered}
+ \tag{SEC5.m}
+\]</span>
+The norm of the integrand is at most <span class="math" data-tex="\(A(s)B(-t-s)\)">\(A(s)B(-t-s)\)</span>, which is integrable outside the reflected scalar exceptional set from (SEC4.e). Put <span class="math" data-tex="\(r=t+s\)">\(r=t+s\)</span>. Then the first factor is <span class="math" data-tex="\(b^\sharp(r)\)">\(b^\sharp(r)\)</span>, and
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \sigma_t(a(s)^*)
+   &amp;=\sigma_r\!\left(\sigma_{t-r}(a(r-t)^*)\right)\\
+   &amp;=\sigma_r(a^\sharp(t-r)).
+ \end{aligned}
+ \tag{SEC5.n}
+\]">\[
+ \begin{aligned}
+ \sigma_t(a(s)^*)
+   &amp;=\sigma_r\!\left(\sigma_{t-r}(a(r-t)^*)\right)\\
+   &amp;=\sigma_r(a^\sharp(t-r)).
+ \end{aligned}
+ \tag{SEC5.n}
+\]</span>
+Translation of the weak-star integral, checked against normal functionals, now proves
+<span class="math math-display" data-tex="\[
+ (a*b)^\sharp=b^\sharp*a^\sharp.
+ \tag{SEC5.o}
+\]">\[
+ (a*b)^\sharp=b^\sharp*a^\sharp.
+ \tag{SEC5.o}
+\]</span>
+Conjugate linearity and the two distributive laws follow from scalar linearity of the predual pairings. Together with completeness from Section 2, (SEC4.q), (SEC5.b), (SEC5.l) and (SEC5.o) make <span class="math" data-tex="\(\mathcal L^1(M(\cdot))\)">\(\mathcal L^1(M(\cdot))\)</span> a Banach involutive algebra.</p>
+<p>These operations have the intrinsic formulas
+<span class="math math-display" data-tex="\[
+ (xy)(t)=\int_{\mathbb R}x(s)y(t-s)\,ds,\qquad
+ x^*(t)=x(-t)^*.
+ \tag{SEC5.p}
+\]">\[
+ (xy)(t)=\int_{\mathbb R}x(s)y(t-s)\,ds,\qquad
+ x^*(t)=x(-t)^*.
+ \tag{SEC5.p}
+\]</span>
+For each fixed output degree <span class="math" data-tex="\(t\)">\(t\)</span>, changing the weight chart is one fixed normal isometry of the fiber <span class="math" data-tex="\(M(t)\)">\(M(t)\)</span>, so it commutes with its weak-star integral by Section 3. The graded products and adjoints are chart independent by GRD3; the Lusin condition and integral norm are chart independent by Sections 1–2. Thus the constructed algebra does not depend on <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. For <span class="math" data-tex="\(M=0\)">\(M=0\)</span>, every coefficient and integral is zero, giving the zero Banach involutive algebra.</p>
+<p><span id="OA-FLOW.SEC.6"></span><a id="sec-6"></a></p>
+<h2 id="6-the-section-algebra-is-intrinsic-and-functorial">6. The section algebra is intrinsic and functorial</h2>
+<p>Sections 1–2 give the Banach space of integrable locally Lusin sections, modulo almost-everywhere equality. Sections 4–5 construct its convolution and involution in a faithful weight chart. We now show that these operations are independent of that chart, and that normal isomorphisms of algebras transport the entire Banach involutive algebra.</p>
+<p><strong>Changing the faithful weight.</strong> Let <span class="math" data-tex="\(\varphi,\psi\)">\(\varphi,\psi\)</span> be faithful normal semifinite weights on <span class="math" data-tex="\(M\)">\(M\)</span>, and put
+<span class="math" data-tex="\(u(t)=[D\varphi:D\psi]_t\)">\(u(t)=[D\varphi:D\psi]_t\)</span>.
+The same section has coefficients
+<span class="math math-display" data-tex="\[
+ a^\psi(t)=a^\varphi(t)u(t).
+ \tag{SEC6.a}
+\]">\[
+ a^\psi(t)=a^\varphi(t)u(t).
+ \tag{SEC6.a}
+\]</span>
+The <a href="OA-FLOW-GRD.html#grd-5">whole-space chart theorem</a> makes this a homeomorphism of the Mackey total spaces, preserving the degree and the coefficient norm. It therefore preserves local Lusin measurability, integrability and the integral norm. It preserves almost-everywhere equality, with inverse supplied by the adjoint cocycle at the same parameter. Thus it identifies the entire Banach spaces constructed in the two charts.</p>
+<p>Fix an output degree <span class="math" data-tex="\(t\)">\(t\)</span>. Right multiplication by <span class="math" data-tex="\(u(t)\)">\(u(t)\)</span> is now one fixed normal linear isometry on the coefficient algebra, so it commutes with the weak-star integral by Section 3. The <a href="OA-FLOW-GRD.html#grd-3">ordered graded product identity</a> says pointwise in <span class="math" data-tex="\(s\)">\(s\)</span> that
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ &amp;[a(s)u(s)]\,\sigma_s^\psi(b(t-s)u(t-s))\\
+ &amp;\qquad=a(s)\sigma_s^\varphi(b(t-s))
+                   u(s)\sigma_s^\psi(u(t-s))\\
+ &amp;\qquad=a(s)\sigma_s^\varphi(b(t-s))u(t).
+ \end{aligned}
+ \tag{SEC6.b}
+\]">\[
+ \begin{aligned}
+ &amp;[a(s)u(s)]\,\sigma_s^\psi(b(t-s)u(t-s))\\
+ &amp;\qquad=a(s)\sigma_s^\varphi(b(t-s))
+                   u(s)\sigma_s^\psi(u(t-s))\\
+ &amp;\qquad=a(s)\sigma_s^\varphi(b(t-s))u(t).
+ \end{aligned}
+ \tag{SEC6.b}
+\]</span>
+The last equality is the cocycle law with parameters <span class="math" data-tex="\(s,t-s\)">\(s,t-s\)</span>. Integrating in <span class="math" data-tex="\(s\)">\(s\)</span> gives
+<span class="math math-display" data-tex="\[
+ (a^\psi*_\psi b^\psi)(t)
+      =(a*_\varphi b)(t)u(t).
+ \tag{SEC6.c}
+\]">\[
+ (a^\psi*_\psi b^\psi)(t)
+      =(a*_\varphi b)(t)u(t).
+ \tag{SEC6.c}
+\]</span>
+The scalar majorant is the same in both charts, because the coefficient norms are unchanged:
+<span class="math" data-tex="\(\|a(s)u(s)\|\|b(t-s)u(t-s)\|=\|a(s)\|\|b(t-s)\|\)">\(\|a(s)u(s)\|\|b(t-s)u(t-s)\|=\|a(s)\|\|b(t-s)\|\)</span>.
+Hence the single null set where this majorant has infinite integral can be used for both constructions. Formula (SEC6.c) is an equality of the almost-everywhere section classes.</p>
+<p>For the involution, the cocycle law at <span class="math" data-tex="\(t,-t\)">\(t,-t\)</span> gives
+<span class="math" data-tex="\(\sigma_t^\psi(u(-t)^*)=u(t)\)">\(\sigma_t^\psi(u(-t)^*)=u(t)\)</span>. Modular implementation then gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (a^\psi)^{\sharp_\psi}(t)
+ &amp;=\sigma_t^\psi\bigl((a(-t)u(-t))^*\bigr)\\
+ &amp;=u(t)\sigma_t^\psi(a(-t)^*)\\
+ &amp;=\sigma_t^\varphi(a(-t)^*)u(t)
+   =a^{\sharp_\varphi}(t)u(t).
+ \end{aligned}
+ \tag{SEC6.d}
+\]">\[
+ \begin{aligned}
+ (a^\psi)^{\sharp_\psi}(t)
+ &amp;=\sigma_t^\psi\bigl((a(-t)u(-t))^*\bigr)\\
+ &amp;=u(t)\sigma_t^\psi(a(-t)^*)\\
+ &amp;=\sigma_t^\varphi(a(-t)^*)u(t)
+   =a^{\sharp_\varphi}(t)u(t).
+ \end{aligned}
+ \tag{SEC6.d}
+\]</span>
+Thus both operations agree under the coordinate transition. Their Banach-space and involution norms agree as well.</p>
+<p>Equivalently, in intrinsic notation their definitions are
+<span class="math math-display" data-tex="\[
+ (x*y)(t)=\int_{\mathbb R}^{M(t)}x(s)y(t-s)\,ds,
+ \qquad x^\sharp(t)=x(-t)^*.
+ \tag{SEC6.e}
+\]">\[
+ (x*y)(t)=\int_{\mathbb R}^{M(t)}x(s)y(t-s)\,ds,
+ \qquad x^\sharp(t)=x(-t)^*.
+ \tag{SEC6.e}
+\]</span>
+The superscript on the integral records its one fixed output fiber. The <a href="OA-FLOW-GRD.html#grd-2">canonical normal predual charts</a> commute with this integral, so it is precisely the coefficient integral already constructed. The ordered cocycle chain rule makes changes through an intermediate faithful weight equal the direct change. Consequently (SEC6.e), the norm and the almost-everywhere quotient define one intrinsic Banach involutive algebra, denoted <span class="math" data-tex="\(\Gamma^1(\mathcal F(M))\)">\(\Gamma^1(\mathcal F(M))\)</span>.</p>
+<p><strong>Transport under a normal isomorphism.</strong> Let <span class="math" data-tex="\(f:M\to N\)">\(f:M\to N\)</span> be a normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism with normal inverse. The <a href="OA-FLOW-GRD.html#grd-6">graded functor</a> gives, for every <span class="math" data-tex="\(t\)">\(t\)</span>, a normal onto linear isometry
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ F_t(f):M(t)&amp;\longrightarrow N(t),\\
+ x\varphi^{it}&amp;\longmapsto
+       f(x)(\varphi\circ f^{-1})^{it}.
+ \end{aligned}
+ \tag{SEC6.f}
+\]">\[
+ \begin{aligned}
+ F_t(f):M(t)&amp;\longrightarrow N(t),\\
+ x\varphi^{it}&amp;\longmapsto
+       f(x)(\varphi\circ f^{-1})^{it}.
+ \end{aligned}
+ \tag{SEC6.f}
+\]</span>
+It preserves graded products and adjoints, and its total map is a Mackey homeomorphism preserving degree. Define on sections
+<span class="math math-display" data-tex="\[
+ [\Gamma^1(f)x](t)=F_t(f)(x(t)).
+ \tag{SEC6.g}
+\]">\[
+ [\Gamma^1(f)x](t)=F_t(f)(x(t)).
+ \tag{SEC6.g}
+\]</span>
+A Lusin compact restriction for <span class="math" data-tex="\(x\)">\(x\)</span>, followed by this total homeomorphism, is a Lusin compact restriction for its image. The inverse has the same property. Pointwise fiber isometry gives
+<span class="math math-display" data-tex="\[
+ \|\Gamma^1(f)x\|_1=\|x\|_1.
+ \tag{SEC6.h}
+\]">\[
+ \|\Gamma^1(f)x\|_1=\|x\|_1.
+ \tag{SEC6.h}
+\]</span>
+The maps preserve almost-everywhere equality. Their pointwise inverse is <span class="math" data-tex="\(F_t(f^{-1})\)">\(F_t(f^{-1})\)</span>, so (SEC6.g) induces an onto linear isometry of the complete section spaces.</p>
+<p>For the product fix <span class="math" data-tex="\(t\)">\(t\)</span> outside the scalar norm-majorant exceptional set for <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. The same set works for their images, by (SEC6.h)'s pointwise norm equality. The output map <span class="math" data-tex="\(F_t(f)\)">\(F_t(f)\)</span> is fixed while the integration variable <span class="math" data-tex="\(s\)">\(s\)</span> varies; its normality therefore gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ [\Gamma^1(f)(x*y)](t)
+ &amp;=F_t(f)\!\left(\int^{M(t)}x(s)y(t-s)\,ds\right)\\
+ &amp;=\int^{N(t)}F_t(f)(x(s)y(t-s))\,ds\\
+ &amp;=\int^{N(t)}
+       F_s(f)(x(s))F_{t-s}(f)(y(t-s))\,ds\\
+ &amp;=[\Gamma^1(f)x*\Gamma^1(f)y](t).
+ \end{aligned}
+ \tag{SEC6.i}
+\]">\[
+ \begin{aligned}
+ [\Gamma^1(f)(x*y)](t)
+ &amp;=F_t(f)\!\left(\int^{M(t)}x(s)y(t-s)\,ds\right)\\
+ &amp;=\int^{N(t)}F_t(f)(x(s)y(t-s))\,ds\\
+ &amp;=\int^{N(t)}
+       F_s(f)(x(s))F_{t-s}(f)(y(t-s))\,ds\\
+ &amp;=[\Gamma^1(f)x*\Gamma^1(f)y](t).
+ \end{aligned}
+ \tag{SEC6.i}
+\]</span>
+The third equality is the graded product identity, not a passage of a varying family of maps through an integral. Similarly, the graded adjoint identity gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ [\Gamma^1(f)(x^\sharp)](t)
+ &amp;=F_t(f)(x(-t)^*)\\
+ &amp;=(F_{-t}(f)(x(-t)))^*
+   =[\Gamma^1(f)x]^\sharp(t).
+ \end{aligned}
+ \tag{SEC6.j}
+\]">\[
+ \begin{aligned}
+ [\Gamma^1(f)(x^\sharp)](t)
+ &amp;=F_t(f)(x(-t)^*)\\
+ &amp;=(F_{-t}(f)(x(-t)))^*
+   =[\Gamma^1(f)x]^\sharp(t).
+ \end{aligned}
+ \tag{SEC6.j}
+\]</span>
+Thus <span class="math" data-tex="\(\Gamma^1(f)\)">\(\Gamma^1(f)\)</span> is an isometric <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism of Banach involutive algebras. In the <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and <span class="math" data-tex="\(\varphi\circ f^{-1}\)">\(\varphi\circ f^{-1}\)</span> coefficient charts it is simply <span class="math" data-tex="\(a(t)\mapsto f(a(t))\)">\(a(t)\mapsto f(a(t))\)</span>. Chart independence of (SEC6.f) and of (SEC6.e) makes this description independent of the chosen faithful weight.</p>
+<p><strong>Exact identity and composition.</strong> If <span class="math" data-tex="\(g:N\to P\)">\(g:N\to P\)</span> is another normal isomorphism, GRD6 proves
+<span class="math" data-tex="\(F_t(g)F_t(f)=F_t(g\circ f)\)">\(F_t(g)F_t(f)=F_t(g\circ f)\)</span> for every degree. Applying this equality to each section value proves
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \Gamma^1(g)\Gamma^1(f)&amp;=\Gamma^1(g\circ f),\\
+ \Gamma^1(\operatorname{id}_M)
+      &amp;=\operatorname{id}_{\Gamma^1(\mathcal F(M))},\\
+ \Gamma^1(f)^{-1}&amp;=\Gamma^1(f^{-1}).
+ \end{aligned}
+ \tag{SEC6.k}
+\]">\[
+ \begin{aligned}
+ \Gamma^1(g)\Gamma^1(f)&amp;=\Gamma^1(g\circ f),\\
+ \Gamma^1(\operatorname{id}_M)
+      &amp;=\operatorname{id}_{\Gamma^1(\mathcal F(M))},\\
+ \Gamma^1(f)^{-1}&amp;=\Gamma^1(f^{-1}).
+ \end{aligned}
+ \tag{SEC6.k}
+\]</span>
+These are exact equalities on the almost-everywhere classes. They introduce no scalar choice: the transported weights satisfy
+<span class="math" data-tex="\((\varphi\circ f^{-1})\circ g^{-1}
+ =\varphi\circ(g\circ f)^{-1}\)">\((\varphi\circ f^{-1})\circ g^{-1}
+ =\varphi\circ(g\circ f)^{-1}\)</span>.
+For the zero algebra every section value is zero and <span class="math" data-tex="\(\Gamma^1(\mathcal F(0))=\{0\}\)">\(\Gamma^1(\mathcal F(0))=\{0\}\)</span>; the unique maps satisfy the same formulas. We obtain a functor from arbitrary von Neumann algebras and normal isomorphisms to Banach involutive algebras and isometric <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphisms.</p>
+<p><span id="OA-FLOW.SEC.7"></span><a id="sec-7"></a></p>
+<h2 id="7-projection-valued-sections-and-scalar-convolution">7. Projection-valued sections and scalar convolution</h2>
+<p><strong>An integrable operator section without a Bochner integral in the algebra.</strong> Let <span class="math" data-tex="\(M=L^\infty([0,1],dx)\)">\(M=L^\infty([0,1],dx)\)</span> act by multiplication on <span class="math" data-tex="\(H=L^2([0,1],dx)\)">\(H=L^2([0,1],dx)\)</span>. This is a faithful von Neumann representation. Indeed suppose <span class="math" data-tex="\(S\in B(H)\)">\(S\in B(H)\)</span> commutes with every multiplier and put <span class="math" data-tex="\(g=S1\)">\(g=S1\)</span>. For each measurable <span class="math" data-tex="\(E\subset[0,1]\)">\(E\subset[0,1]\)</span>,
+<span class="math" data-tex="\(S1_E=1_Eg\)">\(S1_E=1_Eg\)</span> and <span class="math" data-tex="\(\|1_Eg\|_2\le\|S\|\sqrt{|E|}\)">\(\|1_Eg\|_2\le\|S\|\sqrt{|E|}\)</span>.
+Applying this to <span class="math" data-tex="\(E=\{|g|&gt;\|S\|+\delta\}\)">\(E=\{|g|&gt;\|S\|+\delta\}\)</span>, for <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, proves <span class="math" data-tex="\(g\in L^\infty\)">\(g\in L^\infty\)</span> with <span class="math" data-tex="\(\|g\|_\infty\le\|S\|\)">\(\|g\|_\infty\le\|S\|\)</span>. Thus <span class="math" data-tex="\(S\)">\(S\)</span> agrees with multiplication by <span class="math" data-tex="\(g\)">\(g\)</span> on scalar simple functions, and their density in <span class="math" data-tex="\(L^2\)">\(L^2\)</span> gives equality everywhere. The multiplier algebra equals its commutant, and hence its bicommutant. Its representation is faithful because a multiplier annihilating <span class="math" data-tex="\(1\)">\(1\)</span> is zero almost everywhere.</p>
+<p>The functional <span class="math" data-tex="\(\varphi(b)=\int_0^1b(x)\,dx=\langle b1,1\rangle\)">\(\varphi(b)=\int_0^1b(x)\,dx=\langle b1,1\rangle\)</span> is normal by <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a>, faithful by positivity of the scalar integral, and finite with <span class="math" data-tex="\(\varphi(1)=1\)">\(\varphi(1)=1\)</span>. Commutativity makes it a trace; finiteness makes it semifinite. Its modular action is trivial by <a href="OA-FLOW-KT.html#oa-flow.kt.5">KT5</a>. Define the coefficient and its corresponding graded section by
+<span class="math math-display" data-tex="\[
+ a(t)(x)=
+ \begin{cases}
+  1_{[0,t]}(x),&amp;0&lt;t&lt;1,\\
+  0,&amp;t\notin(0,1),
+ \end{cases}
+ \qquad A(t)=a(t)\varphi^{it}.
+ \tag{SEC7.a}
+\]">\[
+ a(t)(x)=
+ \begin{cases}
+  1_{[0,t]}(x),&amp;0&lt;t&lt;1,\\
+  0,&amp;t\notin(0,1),
+ \end{cases}
+ \qquad A(t)=a(t)\varphi^{it}.
+ \tag{SEC7.a}
+\]</span>
+For <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span>, multiplication by <span class="math" data-tex="\(a(t)\)">\(a(t)\)</span> is the orthogonal projection onto <span class="math" data-tex="\(L^2([0,t])\)">\(L^2([0,t])\)</span>, extended by zero on <span class="math" data-tex="\((t,1]\)">\((t,1]\)</span>. Its operator norm is <span class="math" data-tex="\(1\)">\(1\)</span>. Thus
+<span class="math math-display" data-tex="\[
+ \|A\|_1=\int_{\mathbb R}\|a(t)\|\,dt=1.
+ \tag{SEC7.b}
+\]">\[
+ \|A\|_1=\int_{\mathbb R}\|a(t)\|\,dt=1.
+ \tag{SEC7.b}
+\]</span></p>
+<p>For any <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span> and <span class="math" data-tex="\(s,t\in(0,1)\)">\(s,t\in(0,1)\)</span>,
+<span class="math math-display" data-tex="\[
+ \|(a(t)-a(s))\xi\|_2^2
+   =\int_{\min(s,t)}^{\max(s,t)}|\xi(x)|^2\,dx
+      \longrightarrow0\quad(t\to s).
+ \tag{SEC7.c}
+\]">\[
+ \|(a(t)-a(s))\xi\|_2^2
+   =\int_{\min(s,t)}^{\max(s,t)}|\xi(x)|^2\,dx
+      \longrightarrow0\quad(t\to s).
+ \tag{SEC7.c}
+\]</span>
+Absolute continuity of the scalar integral proves this convergence for every vector. All the operators are self-adjoint, so the adjoint orbit has the same estimate. The orbit is also continuous at <span class="math" data-tex="\(0\)">\(0\)</span>, where the right-hand norm is <span class="math" data-tex="\((\int_0^t|\xi|^2)^{1/2}\)">\((\int_0^t|\xi|^2)^{1/2}\)</span>, and is zero outside <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>. At <span class="math" data-tex="\(1\)">\(1\)</span>, however, its left limit is <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and its assigned value is zero. It therefore has a jump for every nonzero <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. The correct assertion is norm continuity of every vector orbit on <span class="math" data-tex="\(\mathbb R\setminus\{1\}\)">\(\mathbb R\setminus\{1\}\)</span>, including the entire interval <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>.</p>
+<p>The same scalar estimate with any nonnegative <span class="math" data-tex="\(g\in L^1([0,1])\)">\(g\in L^1([0,1])\)</span> in place of <span class="math" data-tex="\(|\xi|^2\)">\(|\xi|^2\)</span> proves sigma-strong-star continuity on those intervals. On the unit ball this is the Mackey topology by <a href="OA-FLOW-GRD.html#grd-5">GRD5</a>. For a bounded closed interval <span class="math" data-tex="\(I\)">\(I\)</span> and <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, remove open neighborhoods of <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> of total length below <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The remainder <span class="math" data-tex="\(K\subset I\)">\(K\subset I\)</span> is compact, and the map <span class="math" data-tex="\(t\mapsto(a(t),t)\)">\(t\mapsto(a(t),t)\)</span> is continuous there for the Mackey product topology. Thus <span class="math" data-tex="\(A\)">\(A\)</span> is locally Lusin. This example belongs to the full sectional space of the lesson.</p>
+<p>Its coefficient cannot be treated as a Bochner-measurable <span class="math" data-tex="\(M\)">\(M\)</span>-valued function. If <span class="math" data-tex="\(s\ne t\)">\(s\ne t\)</span> are in <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, their interval difference has positive measure and
+<span class="math math-display" data-tex="\[
+ \|a(t)-a(s)\|_\infty=1.
+ \tag{SEC7.d}
+\]">\[
+ \|a(t)-a(s)\|_\infty=1.
+ \tag{SEC7.d}
+\]</span>
+A conull subset of <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span> is uncountable, so its image is an uncountable <span class="math" data-tex="\(1\)">\(1\)</span>-separated set. Such a set cannot lie in a separable metric space: assign to each point a member of a fixed countable dense set within distance <span class="math" data-tex="\(1/3\)">\(1/3\)</span>; distinct points would require distinct members. Hence no conull restriction of the range is norm separable. An almost-everywhere norm limit of finite-valued simple functions has separable essential range, by taking the closure of the countable union of their values. This is also the necessary condition in <a href="OA-FLOW-L24.html#oa-flow.grp.vectorintegration">L24, Section 4</a>. Consequently no change on a null set makes <span class="math" data-tex="\(a\)">\(a\)</span> strongly measurable in the norm of <span class="math" data-tex="\(M\)">\(M\)</span>, and it has no <span class="math" data-tex="\(M\)">\(M\)</span>-valued Bochner integral. Its scalar norm is nevertheless measurable and integrable, as (SEC7.b) shows.</p>
+<p><strong>The predual integral is explicit.</strong> The concrete predual is <span class="math" data-tex="\(L^1([0,1])\)">\(L^1([0,1])\)</span>, paired by <span class="math" data-tex="\(\langle b,g\rangle=\int_0^1b(x)g(x)\,dx\)">\(\langle b,g\rangle=\int_0^1b(x)g(x)\,dx\)</span>. To see that these are exactly the normal tests, <a href="OA-FLOW-CP.html#oa-flow.cp.6">CP6</a> writes each normal functional as a square-summable vector series. Here its coefficients sum in <span class="math" data-tex="\(L^1\)">\(L^1\)</span>, by Cauchy–Schwarz. Conversely every <span class="math" data-tex="\(g\in L^1\)">\(g\in L^1\)</span> factors as a product of two <span class="math" data-tex="\(L^2\)">\(L^2\)</span> functions, one conjugated, and hence defines a vector functional. The functional norm is <span class="math" data-tex="\(\|g\|_1\)">\(\|g\|_1\)</span>, by testing its measurable scalar phase.</p>
+<p>For every complex <span class="math" data-tex="\(g\in L^1([0,1])\)">\(g\in L^1([0,1])\)</span>, absolute integrability is bounded by <span class="math" data-tex="\(\|g\|_1\)">\(\|g\|_1\)</span>, so <a href="OA-FLOW-FF.html#scalar-interchange">scalar Fubini</a> gives
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ \int_{\mathbb R}\langle a(t),g\rangle\,dt
+ &amp;=\int_0^1\int_0^t g(x)\,dx\,dt\\
+ &amp;=\int_0^1(1-x)g(x)\,dx.
+ \end{aligned}
+ \tag{SEC7.e}
+\]">\[
+ \begin{aligned}
+ \int_{\mathbb R}\langle a(t),g\rangle\,dt
+ &amp;=\int_0^1\int_0^t g(x)\,dx\,dt\\
+ &amp;=\int_0^1(1-x)g(x)\,dx.
+ \end{aligned}
+ \tag{SEC7.e}
+\]</span>
+These tests identify the whole weak-star coefficient integral:
+<span class="math math-display" data-tex="\[
+ h=\int_{\mathbb R}^{\mathrm{w}^*}a(t)\,dt,
+ \qquad h(x)=1-x\quad\text{almost everywhere on }[0,1].
+ \tag{SEC7.f}
+\]">\[
+ h=\int_{\mathbb R}^{\mathrm{w}^*}a(t)\,dt,
+ \qquad h(x)=1-x\quad\text{almost everywhere on }[0,1].
+ \tag{SEC7.f}
+\]</span>
+This is the coefficient integral in the chosen chart. It does not add vectors from different degrees directly into one graded fiber. At a fixed <span class="math" data-tex="\(x\)">\(x\)</span>, the contributing parameters form the horizontal interval <span class="math" data-tex="\(x\le t&lt;1\)">\(x\le t&lt;1\)</span>, whose length is <span class="math" data-tex="\(1-x\)">\(1-x\)</span>. Testing with <span class="math" data-tex="\(g=1\)">\(g=1\)</span> gives
+<span class="math math-display" data-tex="\[
+ \int_0^1h(x)\,dx=\frac12,
+ \qquad \|h\|_\infty=1.
+ \tag{SEC7.g}
+\]">\[
+ \int_0^1h(x)\,dx=\frac12,
+ \qquad \|h\|_\infty=1.
+ \tag{SEC7.g}
+\]</span>
+The first number is the area of <span class="math" data-tex="\(\{(t,x):0&lt;x&lt;t&lt;1\}\)">\(\{(t,x):0&lt;x&lt;t&lt;1\}\)</span>; the second is its maximal horizontal section length in the essential-supremum sense.</p>
+<p>For each fixed <span class="math" data-tex="\(\xi\in H\)">\(\xi\in H\)</span>, the function <span class="math" data-tex="\(t\mapsto a(t)\xi\)">\(t\mapsto a(t)\xi\)</span> is strongly measurable as an <span class="math" data-tex="\(H\)">\(H\)</span>-valued function. Its restrictions to <span class="math" data-tex="\([1/n,1-1/n]\)">\([1/n,1-1/n]\)</span>, for <span class="math" data-tex="\(n\ge3\)">\(n\ge3\)</span>, are continuous with compact metric images; their countable union covers <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, and the function is zero elsewhere. Its range is therefore separable, and its norm is bounded by <span class="math" data-tex="\(1_{(0,1)}(t)\|\xi\|_2\)">\(1_{(0,1)}(t)\|\xi\|_2\)</span>. The genuine vector Bochner integral exists by L24. Testing it against <span class="math" data-tex="\(\eta\in H\)">\(\eta\in H\)</span>, with <span class="math" data-tex="\(g=\xi\overline\eta\)">\(g=\xi\overline\eta\)</span> in (SEC7.e), proves
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}a(t)\xi\,dt=h\xi,
+ \qquad (h\xi)(x)=(1-x)\xi(x).
+ \tag{SEC7.h}
+\]">\[
+ \int_{\mathbb R}a(t)\xi\,dt=h\xi,
+ \qquad (h\xi)(x)=(1-x)\xi(x).
+ \tag{SEC7.h}
+\]</span>
+Thus vector Bochner integration and the weak-star operator integral agree exactly, although Bochner integration in the operator norm of <span class="math" data-tex="\(M\)">\(M\)</span> is unavailable.</p>
+<p><strong>The scalar algebra and the rectangle-to-triangle calculation.</strong> For <span class="math" data-tex="\(M=\mathbb C\)">\(M=\mathbb C\)</span>, choose the unit weight <span class="math" data-tex="\(\varphi(z)=z\)">\(\varphi(z)=z\)</span> on positive scalars. A section has a scalar coefficient <span class="math" data-tex="\(f(t)\)">\(f(t)\)</span>, and its norm is <span class="math" data-tex="\(|f(t)|\)">\(|f(t)|\)</span>. The local Lusin condition is ordinary scalar measurability up to null sets. In one direction use a countable compact Lusin cover. In the other, first discard a small set on which a measurable function is unbounded, approximate the remaining bounded function uniformly by finite-valued measurable functions, and choose simultaneous compact restrictions with summably small losses by <a href="OA-FLOW-FF.html#oa-flow.ff.2">Lebesgue regularity</a>. Uniform convergence on their compact intersection proves the scalar Lusin condition. The resulting sectional Banach algebra is therefore exactly the ordinary <span class="math" data-tex="\(L^1(\mathbb R)\)">\(L^1(\mathbb R)\)</span>, with
+<span class="math math-display" data-tex="\[
+ (f*g)(t)=\int_{\mathbb R}f(s)g(t-s)\,ds,
+ \qquad f^\sharp(t)=\overline{f(-t)}.
+ \tag{SEC7.i}
+\]">\[
+ (f*g)(t)=\int_{\mathbb R}f(s)g(t-s)\,ds,
+ \qquad f^\sharp(t)=\overline{f(-t)}.
+ \tag{SEC7.i}
+\]</span>
+The absence of a modular factor here follows from the trivial modular action on <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, not from omitting the action in the general coefficient formula.</p>
+<p>Take <span class="math" data-tex="\(f=1_{[0,1]}\)">\(f=1_{[0,1]}\)</span>. The convolution is the length of the interval of possible <span class="math" data-tex="\(s\)">\(s\)</span>'s:
+<span class="math math-display" data-tex="\[
+ \begin{aligned}
+ (f*f)(t)&amp;=|[0,1]\cap[t-1,t]|\\
+ &amp;=\Lambda(t):=
+ \begin{cases}
+  t,&amp;0\le t\le1,\\
+  2-t,&amp;1\le t\le2,\\
+  0,&amp;t\notin[0,2].
+ \end{cases}
+ \end{aligned}
+ \tag{SEC7.j}
+\]">\[
+ \begin{aligned}
+ (f*f)(t)&amp;=|[0,1]\cap[t-1,t]|\\
+ &amp;=\Lambda(t):=
+ \begin{cases}
+  t,&amp;0\le t\le1,\\
+  2-t,&amp;1\le t\le2,\\
+  0,&amp;t\notin[0,2].
+ \end{cases}
+ \end{aligned}
+ \tag{SEC7.j}
+\]</span>
+The repeated endpoint <span class="math" data-tex="\(t=1\)">\(t=1\)</span> has the same value in both lines. Integrating the two linear pieces proves equality in Young's estimate:
+<span class="math math-display" data-tex="\[
+ \|f*f\|_1=\int_0^1t\,dt+\int_1^2(2-t)\,dt
+          =1=\|f\|_1^2.
+ \tag{SEC7.k}
+\]">\[
+ \|f*f\|_1=\int_0^1t\,dt+\int_1^2(2-t)\,dt
+          =1=\|f\|_1^2.
+ \tag{SEC7.k}
+\]</span>
+More generally nonnegative scalar <span class="math" data-tex="\(f,g\in L^1\)">\(f,g\in L^1\)</span> attain this equality by Tonelli, since their convolution has no cancellation. The scalar involution gives <span class="math" data-tex="\(f^\sharp=1_{[-1,0]}\)">\(f^\sharp=1_{[-1,0]}\)</span>, and
+<span class="math math-display" data-tex="\[
+ (f^\sharp*f)(t)=(1-|t|)_+,
+ \qquad (f*f)^\sharp(t)=\Lambda(-t).
+ \tag{SEC7.l}
+\]">\[
+ (f^\sharp*f)(t)=(1-|t|)_+,
+ \qquad (f*f)^\sharp(t)=\Lambda(-t).
+ \tag{SEC7.l}
+\]</span>
+These two functions have different supports and arise from different operations. The notation <span class="math" data-tex="\(r_+=\max(r,0)\)">\(r_+=\max(r,0)\)</span> is used in the first formula.</p>
+<p aria-label="Scrollable illustration" class="figure-scroll" role="region" style="overflow-x:auto" tabindex="0"><img alt="Projection slices, their weak-star integral, and the scalar convolution triangle" src="assets/integrable-graded-sections/projections-and-convolution.png" style="display:block;min-width:720px;width:100%;max-width:930px"/></p>
+<p><em>Figure 1.</em> Left: the shaded region is exactly <span class="math" data-tex="\(0\le x\le t\le1\)">\(0\le x\le t\le1\)</span>, with endpoints irrelevant to the integrals. Its vertical slice at <span class="math" data-tex="\(t=2/3\)">\(t=2/3\)</span> is the multiplier projection onto <span class="math" data-tex="\(L^2([0,2/3])\)">\(L^2([0,2/3])\)</span>. Its horizontal slice at <span class="math" data-tex="\(x=1/3\)">\(x=1/3\)</span> has length <span class="math" data-tex="\(2/3=h(1/3)\)">\(2/3=h(1/3)\)</span>. Middle: the weak-star integral is the exact multiplier <span class="math" data-tex="\(h(x)=1-x\)">\(h(x)=1-x\)</span>, with scalar integral <span class="math" data-tex="\(1/2\)">\(1/2\)</span>. Right: the indicator <span class="math" data-tex="\(1_{[0,1]}\)">\(1_{[0,1]}\)</span> convolves with itself to give <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, whose area is <span class="math" data-tex="\(1\)">\(1\)</span>. All graphs are exact straight-line and indicator formulas, with coordinates and integrals proved in (SEC7.c)–(SEC7.l). The operator-valued function is not being represented as an operator-norm Bochner integral. Human-source context for the sectional construction is the graded-space development in Masamichi Takesaki, <em>Theory of Operator Algebras II</em>, Chapter XII, Section 6; all integration assertions used here have their explicit proofs in this lesson and the indicated internal providers. Original <a href="assets/integrable-graded-sections/render.py">renderer</a>, <a href="assets/integrable-graded-sections/data.json">data</a>, <a href="assets/integrable-graded-sections/projections-and-convolution.svg">editable SVG</a>, and <a href="assets/integrable-graded-sections/TERMS.md">terms</a> are retained.</p>
+<p><span id="OA-FLOW.SEC.8"></span><a id="sec-8"></a></p>
+<h2 id="8-five-diagnostics-with-complete-solutions">8. Five diagnostics with complete solutions</h2>
+<p><strong>A. Which of the three norms and the scalar area are being integrated?</strong> In the projection example take <span class="math" data-tex="\(\xi(x)=1\)">\(\xi(x)=1\)</span>, and compare <span class="math" data-tex="\(\int\|a(t)\|\,dt\)">\(\int\|a(t)\|\,dt\)</span>, <span class="math" data-tex="\(\int\|a(t)\xi\|_2\,dt\)">\(\int\|a(t)\xi\|_2\,dt\)</span>, <span class="math" data-tex="\(\|h\xi\|_2\)">\(\|h\xi\|_2\)</span>, and the predual test <span class="math" data-tex="\(\langle h,1\rangle\)">\(\langle h,1\rangle\)</span>. Locate the endpoint discontinuity.</p>
+<p><strong>Solution.</strong> The first value is <span class="math" data-tex="\(1\)">\(1\)</span>. Since <span class="math" data-tex="\(\|a(t)\xi\|_2=\sqrt t\)">\(\|a(t)\xi\|_2=\sqrt t\)</span> on <span class="math" data-tex="\((0,1)\)">\((0,1)\)</span>, the vector norm integral and norm of the vector integral are
+<span class="math math-display" data-tex="\[
+ \int_{\mathbb R}\|a(t)\xi\|_2\,dt=\frac23,
+ \qquad
+ \left\|\int_{\mathbb R}a(t)\xi\,dt\right\|_2
+      =\left(\int_0^1(1-x)^2dx\right)^{1/2}
+      =\frac1{\sqrt3}.
+ \tag{SEC8.a}
+\]">\[
+ \int_{\mathbb R}\|a(t)\xi\|_2\,dt=\frac23,
+ \qquad
+ \left\|\int_{\mathbb R}a(t)\xi\,dt\right\|_2
+      =\left(\int_0^1(1-x)^2dx\right)^{1/2}
+      =\frac1{\sqrt3}.
+ \tag{SEC8.a}
+\]</span>
+The normal functional with density <span class="math" data-tex="\(1\)">\(1\)</span> instead gives <span class="math" data-tex="\(\langle h,1\rangle=1/2\)">\(\langle h,1\rangle=1/2\)</span>. These values concern distinct scalar operations and agree with the corresponding integral norm bounds. As <span class="math" data-tex="\(t\uparrow1\)">\(t\uparrow1\)</span>, <span class="math" data-tex="\(a(t)\xi\to\xi\)">\(a(t)\xi\to\xi\)</span>; its value at <span class="math" data-tex="\(1\)">\(1\)</span> is zero. Thus the orbit is not continuous at <span class="math" data-tex="\(1\)">\(1\)</span>. Removing arbitrarily small endpoint neighborhoods for Lusin restrictions, or changing a value at a single point for the almost-everywhere class, does not make the operator-norm measurability obstruction disappear.</p>
+<p><strong>B. Could measurable finite-valued operator approximants recover the projection section?</strong> Let <span class="math" data-tex="\(b:(0,1)\to M\)">\(b:(0,1)\to M\)</span> have countable range. How many parameters can satisfy <span class="math" data-tex="\(\|a(t)-b(t)\|&lt;1/2\)">\(\|a(t)-b(t)\|&lt;1/2\)</span>? Deduce that finite-valued simple functions cannot converge to <span class="math" data-tex="\(a\)">\(a\)</span> almost everywhere in operator norm.</p>
+<p><strong>Solution.</strong> For any fixed <span class="math" data-tex="\(v\in M\)">\(v\in M\)</span>, at most one parameter <span class="math" data-tex="\(t\in(0,1)\)">\(t\in(0,1)\)</span> can satisfy <span class="math" data-tex="\(\|a(t)-v\|&lt;1/2\)">\(\|a(t)-v\|&lt;1/2\)</span>. Otherwise two distinct projection values would have distance strictly below <span class="math" data-tex="\(1\)">\(1\)</span>, contrary to (SEC7.d). The parameters satisfying the inequality for a countable-range <span class="math" data-tex="\(b\)">\(b\)</span> therefore form a countable set. For a sequence <span class="math" data-tex="\(b_n\)">\(b_n\)</span> of finite-valued simple functions, the union of all these exceptional sets is still countable and hence null. Outside it,
+<span class="math math-display" data-tex="\[
+ \|a(t)-b_n(t)\|\ge\frac12\qquad\text{for every }n.
+ \tag{SEC8.b}
+\]">\[
+ \|a(t)-b_n(t)\|\ge\frac12\qquad\text{for every }n.
+ \tag{SEC8.b}
+\]</span>
+There is no almost-everywhere norm convergence. The obstruction concerns the operator-valued coefficients; it leaves intact their locally Mackey–Lusin property and every vector Bochner integral (SEC7.h).</p>
+<p><strong>C. What does Young equality look like for two unequal rectangles?</strong> Let <span class="math" data-tex="\(f=1_{[0,2]}\)">\(f=1_{[0,2]}\)</span> and <span class="math" data-tex="\(g=1_{[0,3]}\)">\(g=1_{[0,3]}\)</span>. Compute their convolution and its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm, and determine its involution.</p>
+<p><strong>Solution.</strong> The allowable integration interval is <span class="math" data-tex="\([0,2]\cap[t-3,t]\)">\([0,2]\cap[t-3,t]\)</span>, so
+<span class="math math-display" data-tex="\[
+ (f*g)(t)=
+ \begin{cases}
+  t,&amp;0\le t\le2,\\
+  2,&amp;2\le t\le3,\\
+  5-t,&amp;3\le t\le5,\\
+  0,&amp;t\notin[0,5].
+ \end{cases}
+ \tag{SEC8.c}
+\]">\[
+ (f*g)(t)=
+ \begin{cases}
+  t,&amp;0\le t\le2,\\
+  2,&amp;2\le t\le3,\\
+  5-t,&amp;3\le t\le5,\\
+  0,&amp;t\notin[0,5].
+ \end{cases}
+ \tag{SEC8.c}
+\]</span>
+At the shared endpoints the formulas agree. The two triangular areas are <span class="math" data-tex="\(2\)">\(2\)</span> each and the central rectangle has area <span class="math" data-tex="\(2\)">\(2\)</span>. Hence
+<span class="math" data-tex="\(\|f*g\|_1=6=\|f\|_1\|g\|_1\)">\(\|f*g\|_1=6=\|f\|_1\|g\|_1\)</span>. The involution is the reflected real trapezoid <span class="math" data-tex="\((f*g)^\sharp(t)=(f*g)(-t)\)">\((f*g)^\sharp(t)=(f*g)(-t)\)</span>, supported on <span class="math" data-tex="\([-5,0]\)">\([-5,0]\)</span>. It also equals <span class="math" data-tex="\(g^\sharp*f^\sharp\)">\(g^\sharp*f^\sharp\)</span>, as one sees either from the reflection substitution in (SEC7.i) or directly from the overlap of <span class="math" data-tex="\([-3,0]\)">\([-3,0]\)</span> and <span class="math" data-tex="\([t,t+2]\)">\([t,t+2]\)</span>.</p>
+<p><strong>D. How does a nontrivial modular action change a sectional convolution?</strong> Let <span class="math" data-tex="\(M=M_2\)">\(M=M_2\)</span>, <span class="math" data-tex="\(\varphi(x)=\operatorname{Tr}(Dx)\)">\(\varphi(x)=\operatorname{Tr}(Dx)\)</span> with <span class="math" data-tex="\(D=\operatorname{diag}(4,1)\)">\(D=\operatorname{diag}(4,1)\)</span>, and put <span class="math" data-tex="\(\omega=\log4\)">\(\omega=\log4\)</span>, <span class="math" data-tex="\(L=\pi/\omega\)">\(L=\pi/\omega\)</span>. In this weight chart take
+<span class="math math-display" data-tex="\[
+ a(s)=e_{12}1_{[0,L]}(s),\qquad
+ b(s)=e_{21}1_{[0,L]}(s).
+ \tag{SEC8.d}
+\]">\[
+ a(s)=e_{12}1_{[0,L]}(s),\qquad
+ b(s)=e_{21}1_{[0,L]}(s).
+ \tag{SEC8.d}
+\]</span>
+Compute <span class="math" data-tex="\(c=a*b\)">\(c=a*b\)</span>, its value at <span class="math" data-tex="\(L\)">\(L\)</span>, its norm, and <span class="math" data-tex="\(a^\sharp\)">\(a^\sharp\)</span>.</p>
+<p><strong>Solution.</strong> The exact matrix modular calculation in <a href="OA-FLOW-BC.html#oa-flow.bc.6">BC6</a>, also checked in <a href="OA-FLOW-GRD.html#grd-7">GRD7</a>, gives <span class="math" data-tex="\(\sigma_s^\varphi(e_{21})=e^{-i\omega s}e_{21}\)">\(\sigma_s^\varphi(e_{21})=e^{-i\omega s}e_{21}\)</span>. Thus <span class="math" data-tex="\(c(t)=0\)">\(c(t)=0\)</span> outside <span class="math" data-tex="\([0,2L]\)">\([0,2L]\)</span>; inside that interval put <span class="math" data-tex="\(\ell=\max(0,t-L)\)">\(\ell=\max(0,t-L)\)</span> and <span class="math" data-tex="\(u=\min(L,t)\)">\(u=\min(L,t)\)</span>. The coefficient convolution is
+<span class="math math-display" data-tex="\[
+ c(t)=e_{11}\int_\ell^u e^{-i\omega s}\,ds
+     =\frac{e^{-i\omega\ell}-e^{-i\omega u}}{i\omega}\,e_{11}.
+ \tag{SEC8.e}
+\]">\[
+ c(t)=e_{11}\int_\ell^u e^{-i\omega s}\,ds
+     =\frac{e^{-i\omega\ell}-e^{-i\omega u}}{i\omega}\,e_{11}.
+ \tag{SEC8.e}
+\]</span>
+In particular <span class="math" data-tex="\(c(L)=-2i e_{11}/\omega\)">\(c(L)=-2i e_{11}/\omega\)</span>. Omitting the modular action would instead give <span class="math" data-tex="\(L e_{11}=\pi e_{11}/\omega\)">\(L e_{11}=\pi e_{11}/\omega\)</span>. The phases change the integral, not just its notation. Since the interval length runs from <span class="math" data-tex="\(0\)">\(0\)</span> to <span class="math" data-tex="\(L\)">\(L\)</span> and back to <span class="math" data-tex="\(0\)">\(0\)</span>,
+<span class="math math-display" data-tex="\[
+ \|c\|_1
+   =2\int_0^L\frac{2\sin(\omega t/2)}{\omega}\,dt
+   =\frac8{\omega^2}
+   &lt;\frac{\pi^2}{\omega^2}=\|a\|_1\|b\|_1.
+ \tag{SEC8.f}
+\]">\[
+ \|c\|_1
+   =2\int_0^L\frac{2\sin(\omega t/2)}{\omega}\,dt
+   =\frac8{\omega^2}
+   &lt;\frac{\pi^2}{\omega^2}=\|a\|_1\|b\|_1.
+ \tag{SEC8.f}
+\]</span>
+This is a strict Young inequality caused by phase cancellation. Finally the sectional involution reflects the parameter before applying the graded adjoint:
+<span class="math math-display" data-tex="\[
+ a^\sharp(t)=\sigma_t^\varphi(a(-t)^*)
+            =e^{-i\omega t}e_{21}1_{[-L,0]}(t).
+ \tag{SEC8.g}
+\]">\[
+ a^\sharp(t)=\sigma_t^\varphi(a(-t)^*)
+            =e^{-i\omega t}e_{21}1_{[-L,0]}(t).
+ \tag{SEC8.g}
+\]</span>
+The action parameter is <span class="math" data-tex="\(+t\)">\(+t\)</span>, as required when taking the adjoint of an element originally of degree <span class="math" data-tex="\(-t\)">\(-t\)</span>. All these coefficient functions are bounded and piecewise norm continuous with compact support, so they satisfy the local Lusin and integrability hypotheses directly.</p>
+<p><strong>E. Is a section supported only at zero the convolution identity?</strong> In the scalar algebra let <span class="math" data-tex="\(d(t)=1_{\{0\}}(t)\)">\(d(t)=1_{\{0\}}(t)\)</span>. Compare it with <span class="math" data-tex="\(r_\varepsilon(t)=\varepsilon^{-1}1_{[0,\varepsilon]}(t)\)">\(r_\varepsilon(t)=\varepsilon^{-1}1_{[0,\varepsilon]}(t)\)</span>, where <span class="math" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>, by convolving each with <span class="math" data-tex="\(f=1_{[0,1]}\)">\(f=1_{[0,1]}\)</span>.</p>
+<p><strong>Solution.</strong> The point-supported function has integral norm zero, so it represents the zero element of <span class="math" data-tex="\(L^1(\mathbb R)\)">\(L^1(\mathbb R)\)</span>. Its convolution with <span class="math" data-tex="\(f\)">\(f\)</span> is zero: the integration variable is restricted to a singleton, which has Lebesgue measure zero. The same argument applies to any graded section supported at a single degree, whatever bounded value is assigned there. A Dirac measure is not that function and is not a nonzero member of the present sectional <span class="math" data-tex="\(L^1\)">\(L^1\)</span> space.</p>
+<p>In contrast <span class="math" data-tex="\(\|r_\varepsilon\|_1=1\)">\(\|r_\varepsilon\|_1=1\)</span>, and direct overlap lengths give
+<span class="math math-display" data-tex="\[
+ (r_\varepsilon*f)(t)=
+ \begin{cases}
+  t/\varepsilon,&amp;0\le t\le\varepsilon,\\
+  1,&amp;\varepsilon\le t\le1,\\
+  (1+\varepsilon-t)/\varepsilon,&amp;1\le t\le1+\varepsilon,\\
+  0,&amp;t\notin[0,1+\varepsilon].
+ \end{cases}
+ \tag{SEC8.h}
+\]">\[
+ (r_\varepsilon*f)(t)=
+ \begin{cases}
+  t/\varepsilon,&amp;0\le t\le\varepsilon,\\
+  1,&amp;\varepsilon\le t\le1,\\
+  (1+\varepsilon-t)/\varepsilon,&amp;1\le t\le1+\varepsilon,\\
+  0,&amp;t\notin[0,1+\varepsilon].
+ \end{cases}
+ \tag{SEC8.h}
+\]</span>
+The two error triangles each have area <span class="math" data-tex="\(\varepsilon/2\)">\(\varepsilon/2\)</span>, so
+<span class="math math-display" data-tex="\[
+ \|r_\varepsilon*f-f\|_1=\varepsilon\longrightarrow0.
+ \tag{SEC8.i}
+\]">\[
+ \|r_\varepsilon*f-f\|_1=\varepsilon\longrightarrow0.
+ \tag{SEC8.i}
+\]</span>
+This calculation verifies approximation for this <span class="math" data-tex="\(f\)">\(f\)</span>. The functions <span class="math" data-tex="\(r_\varepsilon\)">\(r_\varepsilon\)</span> themselves tend pointwise to zero away from zero, but their <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norms remain <span class="math" data-tex="\(1\)">\(1\)</span>; they do not converge in <span class="math" data-tex="\(L^1\)">\(L^1\)</span> to the point-supported function. Thus a concentrated family of genuine sections and a null section are different objects.</p>
+<p><span id="OA-FLOW.SEC.READING"></span><a id="sec-reading"></a></p>
+<h2 id="further-reading">Further reading</h2>
+<p>M. Takesaki, <em>Theory of Operator Algebras II</em>, Chapter XII, §6, Definition 6.5 and Lemma 6.6, printed pp. 440–441, introduces integrable sections of the graded bundle and their involutive algebra. The compact-carrier, vector-integral and scalar-tail arguments above give the complete proof used here. The next step is to construct graded Hilbert spaces and represent this algebra; that requires additional constructions beyond the sectional algebra theorem.</p>
+<nav aria-label="Lesson navigation"><a href="index.html">All lessons</a><a href="OA-FLOW-GRD.html">Previous lesson</a><a href="OA-FLOW-HLB.html">Next lesson</a><span class="unlinked">Prerequisite proofs</span><a href="src/OA-FLOW-SEC.md">Lesson source</a></nav></main></body></html>

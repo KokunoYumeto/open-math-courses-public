@@ -4,11 +4,13 @@
 
 <a id="generalized-reflected-curves"></a>
 
-This reading constructs an energy-preserving constrained Hamilton relation on a compact smooth manifold with boundary. It proves existence, continuation, compactness, the exact tangential equations, transverse reflection and the exclusion of boundary residence at strict diffraction. The construction allows gliding and arbitrary degenerate contact; it assumes neither finite contact order nor uniqueness. The [singular-curve construction for Dirichlet waves](diffractive-phase-neighborhoods.md#singular-generalized-curves), Sections 63–70, now proves that a suitable singular curve for the actual H² wave belongs to this precise relation on homogeneous time intervals. Its [Cauchy-data propagation for Dirichlet waves](diffractive-phase-neighborhoods.md#dirichlet-cauchy-endpoints) in Sections 71–75 also proves the initial-data endpoint argument and the transfer to every required negative order for compact interior spectral data.
+This reading constructs an energy-preserving constrained Hamilton relation on a compact smooth manifold with boundary. It proves existence, continuation, compactness, the exact tangential equations, transverse reflection and the exclusion of boundary residence at strict diffraction. The construction allows gliding and arbitrary degenerate contact; it assumes neither finite contact order nor uniqueness. The [singular-curve construction for Dirichlet waves](diffractive-phase-neighborhoods.md#singular-generalized-curves), Sections 63–70, proves that a suitable singular curve for the actual H² wave belongs to this precise relation on homogeneous time intervals. Its [Cauchy-data propagation for Dirichlet waves](diffractive-phase-neighborhoods.md#dirichlet-cauchy-endpoints) in Sections 71–75 also proves the initial-data endpoint argument and the transfer to every required negative order for compact interior spectral data.
 
-The freely accessible comparison is Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), Definition 3.2.2, printed pp. 228–229, and the refined single-quadratic-block relation (3.4.57)–(3.4.58), printed p. 266. The first locator describes the compressed topology; the second imposes the additional boundary direction restriction. We give the scalar geometric construction below instead of importing either a limiting-curve assertion or the source's propagation theorem.
+The freely accessible comparison is Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), Definition 3.2.2, printed pp. 228–229, and the refined single-quadratic-block relation (3.4.57)–(3.4.58) and Theorem 3.4.10, especially (3.4.57)*, printed p. 266. The first locator describes the compressed topology; the second imposes the additional boundary direction restriction. The construction below proves existence and compactness directly for the scalar relation defined in (G4).
 
 We use ordinary integration, change of variables, smooth coordinate cutoffs and the local inverse theorem already proved in [Coordinate inverses and integration](coordinate-inverses-and-integration.md), and the scalar integral estimates in [Hilbert-valued integration](hilbert-valued-integration.md). The finite-dimensional flow, compactness and collision-count arguments needed here are supplied explicitly.
+
+<a id="reflected-collar-and-relation"></a>
 
 ## 1. The relation and the normal reaction
 
@@ -64,6 +66,8 @@ Here is the precise class of curves used in this reading. In an interior chart t
 The function $M$ is nondecreasing and is constant on every open interval where $d>0$. Additive constants in $M$ are immaterial. Its increase is the inward normal reaction. Values of $s$ at a jump are represented by its two one-sided lifts; changing its value at the jump does not change (G4). This definition is invariant under the stated tangential changes of normal coordinates. It is also invariant under reversal of the trajectory together with reversal of all spatial covectors.
 
 No unspecified motion along a boundary cone is included. The exact tangential equations and energy are part of the definition, and the sign of the normal reaction will rule out artificial residence at a diffractive point. The definition does not assert that a wave propagates along these curves.
+
+<a id="reflected-reaction-and-contact"></a>
 
 ## 2. Uniform estimates and the contact laws
 
@@ -145,6 +149,8 @@ Hence $d-\kappa(\sigma-\sigma_*)^2$ is convex. Indeed its derivative is nondecre
 
 Consequently the curve lies in the interior on both punctured sides of a strict diffractive contact. There $M$ is constant; continuity of $s$ at the contact makes the two ordinary Hamiltonian legs the single smooth Hamilton trajectory through it, by the uniqueness argument in the next section. Boundary creeping has been excluded by a proof, rather than by a name for the curve. No finite-order assumption is imposed where $r_d=0$.
 
+<a id="reflected-ordinary-flow"></a>
+
 ## 3. Ordinary trajectories on a set of full volume
 
 We first construct enough genuine billiard trajectories to approximate every compressed initial point. Extend the metric smoothly across coordinate portions of the wall when solving the local ordinary equation. For a smooth bounded vector field $V$ with derivative bound $L$ on a ball, the map
@@ -159,6 +165,8 @@ preserves a smaller closed path ball for a short time and has contraction factor
 
 At a transverse wall hit, $d'=2s\ne0$. The already proved inverse theorem gives a smooth first hitting time locally. Reflect $s$ and retain $y,\eta$; this continues the trajectory uniquely. A trajectory with finitely many transverse hits therefore has smooth dependence in each fixed collision itinerary. There are countably many such local charts, since ordinary coordinate neighborhoods have a countable base.
 
+<a id="reflected-flux-and-collisions"></a>
+
 Here are the volume and collision-count details needed to exclude finite-time failure on a set of positive volume. In phase coordinates, the divergence of $H_p=(p_\xi,-p_x)$ is zero, by equality of mixed partial derivatives. Its flow derivative $J$ solves $J'=DV\,J$. The multilinear derivative formula for a determinant gives
 
 \[
@@ -166,7 +174,7 @@ Here are the volume and collision-count details needed to exclude finite-time fa
  \tag{G14}
 \]
 
-Thus the ordinary flow preserves $dx\,d\xi$ and $p$. On $p=E$ define the energy density by solving for any coordinate with nonzero derivative of $p$: it is the density for which the phase change of variables has the form $dx\,d\xi=dE\,d\nu_E$. Independence of the solved coordinate is precisely the change-of-variables formula. Since the flow preserves both the full density and $E$, its tangential Jacobian preserves $\nu_E$. This follows pointwise in $E$ by smoothness, rather than just almost everywhere. At $E=1$ the resulting positive density $\nu$ is finite on the compact energy shell.
+The chain rule also gives $(p\circ z)^\prime=\sum_i(p_{x_i}p_{\xi_i}-p_{\xi_i}p_{x_i})=0$. Thus the ordinary flow preserves $dx\,d\xi$ and $p$. On $p=E$ define the energy density by solving for any coordinate with nonzero derivative of $p$: it is the density for which the phase change of variables has the form $dx\,d\xi=dE\,d\nu_E$. Independence of the solved coordinate is precisely the change-of-variables formula. Since the flow preserves both the full density and $E$, its tangential Jacobian preserves $\nu_E$. This follows pointwise in $E$ by smoothness, rather than just almost everywhere. At $E=1$ the resulting positive density $\nu$ is finite on the compact energy shell.
 
 On the incoming wall section $s<0$, use coordinates $(y,\eta)$ with $r(0,y,\eta)<1$. The energy density in coordinates $(d,y,\eta)$ is $|2s|^{-1}\,dd\,dy\,d\eta$. Multiplication by the crossing speed $|d'|=2|s|$ gives the incoming flux
 
@@ -210,6 +218,8 @@ A first tangential collision, after finitely many transverse ones, also occurs f
 
 There is no other finite-time obstruction. After finitely many impacts, an interior trajectory in a compact energy set has a limit by the bounded smooth equations; it either continues in the interior or reaches the wall transversely or tangentially. Infinite impacts were treated by (G18). Taking all positive integer $T$ and both time directions proves that a full-volume, hence dense, set of interior energy points has a trajectory defined for all $\sigma\in\mathbb R$, with only finitely many transverse reflections on each bounded interval. Such trajectories satisfy (G4), with $M$ increasing by $2|s|$ at each reflection.
 
+<a id="reflected-compactness"></a>
+
 ## 4. Compactness without a finite-contact assumption
 
 Consider any sequence of curves satisfying (G4) on a common bounded interval, including curves already having gliding or degenerate contacts. The uniform compressed-coordinate bounds in Section 2 give a uniformly convergent subsequence. Here is the compactness proof: choose subsequences successively at a countable dense set of times, using compactness of the compressed energy space, and take the diagonal subsequence. Given $\epsilon>0$, equicontinuity provides a finite time mesh on which closeness implies closeness everywhere within $3\epsilon$. Convergence at that mesh proves the subsequence is uniformly Cauchy. Its limit is continuous and has the same Lipschitz bounds.
@@ -236,13 +246,19 @@ These functions are uniformly bounded and nondecreasing. Select a subsequence co
 
 Since $s_j$ are uniformly bounded, $s_j^2\to s^2$ in $L^1$ as well. Passing to the limit in $d_j'=2s_j$ and in energy proves both equalities in (G4). Where $d>0$, uniform convergence makes $d_j>0$ on every smaller compact interval, so each $M_j$ is constant there and so is $M$. This proves the support restriction on the reaction. Finally $d_js_j\to ds$ in $L^1$, so the already obtained uniform limit of the compressed normal coordinate is exactly $ds$. Interior intervals pass to the ordinary Hamilton equation directly. Finitely many local intervals and a diagonal selection cover the original interval. The limit is therefore an admissible curve at the full stated contact scope.
 
+The same compactness conclusion holds for varying symbols in common collar coordinates: let $r_j(d,y,\eta)=\eta^TG_j(d,y)\eta$, with $G_j$ converging in $C^1$ on the retained compact sets to a positive $G$. Uniform ellipticity bounds the tangential covectors, and the first coefficient bounds make (G5)–(G7) uniform. For a uniformly converging compressed subsequence, $r_j$, $(r_j)_d$, $(r_j)_y$ and $(r_j)_\eta$, evaluated along the curves, converge uniformly to their limiting expressions. The monotone selection in (G19) therefore again gives (G20), preserves energy, and leaves the reaction constant off the wall. On interior charts the same argument uses convergence of the Hamilton vector fields. A fixed finite atlas gives the global conclusion. When the collar charts themselves vary smoothly with the metric, the flow and inverse constructions in Sections 1 and 3 give convergent coordinate maps on smaller common charts; expressing the curves in those charts reduces to the preceding case.
+
 If full endpoint covectors also converge, their limits are permitted endpoint lifts. In the interior, (G3) recovers $s$ continuously. At a glancing endpoint, energy gives $|s_j|\to0$. At a transverse wall endpoint, energy gives the two limits $\pm\sqrt{1-r}$, both of which are exactly the one-sided lifts in (G9). This includes reflected opposite lifts when a time interval shrinks to zero.
+
+<a id="reflected-existence"></a>
 
 ## 5. Existence, continuation and physical time
 
 Every compressed normalized point is a limit of interior energy points. At a boundary glancing point, move slightly inward and, if necessary, reduce the tangential covector by a factor tending to one so that $r<1$; then choose either $s=\sqrt{1-r}$ or its negative. At a transverse point the same construction needs no reduction. Perturb these interior points within the dense full-volume set from Section 3. Their global billiard trajectories have a subsequence converging on $[-1,1]$, then on $[-2,2]$, and so on. The diagonal subsequence and Section 4 give a global admissible curve through the prescribed point. All glancing orders are allowed in this limiting argument.
 
 A given finite admissible curve can also continue, rather than merely being replaced by a different curve through its initial point. Its compressed endpoint has a limit by the Lipschitz bound. Attach the appropriate half of a global curve through that endpoint. At an interior endpoint the full covector agrees. At glancing both normal limits are zero. At a transverse endpoint the arriving normal lift is negative and the departing lift positive, by (G8); joining adds the permissible positive jump $2\sqrt{1-r}$ to $M$. The tangential derivatives agree because they are the same smooth functions of the limiting $(d,y,\eta)$. Thus the concatenation satisfies (G4) and preserves the given segment. The same argument extends backward. Compactness of the normalized phase space removes any finite-time escape obstruction.
+
+<a id="reflected-physical-time"></a>
 
 Return now to the wave symbol $q=\tau^2-p$, with $\tau\ne0$. For a spatial $H_p$ curve use
 

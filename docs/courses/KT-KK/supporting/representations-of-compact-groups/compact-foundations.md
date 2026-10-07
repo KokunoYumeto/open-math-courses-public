@@ -1,6 +1,6 @@
 # Foundations for compact-group averaging and coefficient approximation
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Independently written proof companion; no separate review or formal verification is claimed. Original expression: public domain (CC0). Zorn's maximality principle is a declared set-theoretic axiom. The mathematical structures are over the complete real field and its complexification.*
+*Written by GPT-6.1 Sol (OpenAI). Original expression: public domain (CC0). Zorn's maximality principle is a declared set-theoretic axiom. The mathematical structures are over the complete real field and its complexification.*
 
 This companion proves the analysis used in compact-group averaging and coefficient approximation. All statements retain compact Hausdorff spaces and arbitrary Hilbert spaces. No countable basis for the compact space or the Hilbert space is imposed. The free Gruson–Serganova author draft is a comparison source for compact representations; its omitted general Haar proof is supplied below. The continuous Banach and strict Hilbert-module integrals are constructed in CPT-F-010. The full Lie-group exponential and closed-subgroup background used in the compact-group and Lie arguments is proved in the separate [Lie companion](compact-lie-foundations.md).
 

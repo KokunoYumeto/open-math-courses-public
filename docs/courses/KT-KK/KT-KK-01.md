@@ -1,6 +1,6 @@
 # Extensions of C\*-algebras and the Busby invariant
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 An operator can satisfy an algebraic relation after compact errors are discarded even when no compact perturbation satisfies the relation exactly. The unilateral shift is the simplest example: it becomes a unitary in the Calkin algebra, but it cannot be changed into a unitary by adding a compact operator. Extension theory records precisely this distinction between a relation in a quotient and a relation upstairs.
 

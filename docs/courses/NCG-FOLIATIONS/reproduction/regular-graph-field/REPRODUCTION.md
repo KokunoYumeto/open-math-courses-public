@@ -1,0 +1,7 @@
+# Actual proper-cutoff graph coordinates
+
+*K-theory of the leaf space*, Section 11AH, proves the actual proper-covariant normalized field, its reduced norm and geometric graph-correspondence completion, then its regular-arrow realization by the cutoff and source-coefficient maps. The connection-preserving outer probability step is proved separately in that section. None of these results asserts a completed physical graph Dirac operator.
+
+Use Python 3.13.9 and Pillow 12.2.0. The unchanged font, complete font notice, full CC0 dedication and Python/Pillow software notices are in the adjacent labelled-geometric-kernel resources. Run `python -B draw_regular_graph.py --output-dir out`; `--resources` may select another copy of those public resources. Compare the PNG/SVG with `../../figures/` and FIGURE-CHECKS.json with this folder. No private inputs are read. The pinned public inputs reproduce all three outputs exactly.
+
+The four rational matrix checks use the stated C2 action, cutoff and fixed arrow/source-coefficient order. They verify V*V=1, LV=VU, the range projection diagonal and the squared cutoff orbit sum. They illustrate the general proofs RG.4–RG.13, rather than deriving a general index from the finite sample. The lower panel records the precise module and coefficient order; the normal connection on the final regularized product, geometric generator and closed graph domain still require proof.

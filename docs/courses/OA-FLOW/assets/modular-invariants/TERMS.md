@@ -1,0 +1,3 @@
+# Figure terms
+
+Original diagram, exact mathematical data and renderer: CC0-1.0 to the extent of rights held. DejaVu font terms are retained in FONT-LICENSE.txt. No external image, source excerpt or downloaded data is included. Run python render.py with NumPy and Matplotlib to reproduce the PNG, editable SVG and data. Torus segments and frequency dots are numerical renderings of exact algebraic expressions; the complete Fourier-basis, ergodicity and density proofs are in the lesson. The conditional type III values assert no factor-realization theorem. The translation comparison is an explicitly proved semifinite factor.

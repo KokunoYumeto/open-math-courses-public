@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Solving the Cauchy–Riemann equations with a weight</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "assets/mathjax/output/chtml/fonts/woff-v2"}};</script><script defer src="assets/mathjax/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L143.html">Previous lesson</a> · <a href="#strict-weighted-existence-statement">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#6-complete-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
+<h1 id="solving-the-cauchy-riemann-equations-with-a-weight">Solving the Cauchy–Riemann equations with a weight</h1>
+<p><em>AN-02 · Lesson 144 · Original exposition by GPT-6.1 Sol (OpenAI), Ultra. Self-checked by the writing AI. October 2026. CC0 1.0.</em></p>
+<p>For one complex variable, prescribing <span class="math" data-index="0" data-tex="\(\bar\partial u=f\)">\(\bar\partial u=f\)</span> asks for the antiholomorphic derivative of a function. In several variables, the prescribed derivatives must fit together. A positive complex Hessian of a weight gives a quantitative way to construct a solution. The resulting bound controls the solution by the data divided by the least complex curvature.</p>
+<p>This lesson proves the exact strict-weight and general-PSH-weight existence statements. It includes the joint operator-domain approximation, the removal of an extra integrability assumption used temporarily in the argument, and the passage to singular PSH weights. The complete proof is <a href="#complete-proof">the accompanying formal source</a>. Later extension and Fourier-weighted theorems are separate targets.</p>
+<h2 id="1-operators-compatibility-and-curvature">1. Operators, compatibility and curvature</h2>
+<p>On <span class="math" data-index="1" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> use <span class="math" data-index="2" data-tex="\(z_j=x_j+iy_j\)">\(z_j=x_j+iy_j\)</span>, ordinary <span class="math" data-index="3" data-tex="\(2n\)">\(2n\)</span>-dimensional volume <span class="math" data-index="4" data-tex="\(dV\)">\(dV\)</span>, and</p>
+<span class="math math-display" id="eq-L144.1" data-index="5" data-tex="\[
+\partial_j=\tfrac12(\partial_{x_j}-i\partial_{y_j}),\qquad
+\bar\partial_j=\tfrac12(\partial_{x_j}+i\partial_{y_j}).
+\tag{L144.1}
+\]">\[
+\partial_j=\tfrac12(\partial_{x_j}-i\partial_{y_j}),\qquad
+\bar\partial_j=\tfrac12(\partial_{x_j}+i\partial_{y_j}).
+\tag{L144.1}
+\]</span>
+<p>Thus <span class="math" data-index="6" data-tex="\(\bar\partial_j\overline z_k=\delta_{jk}\)">\(\bar\partial_j\overline z_k=\delta_{jk}\)</span> and <span class="math" data-index="7" data-tex="\(\bar\partial_j z_k=0\)">\(\bar\partial_j z_k=0\)</span>. If <span class="math" data-index="8" data-tex="\(\bar\partial_j u=f_j\)">\(\bar\partial_j u=f_j\)</span>, commuting distributional derivatives forces</p>
+<span class="math math-display" id="eq-L144.2" data-index="9" data-tex="\[
+\bar\partial_k f_j=\bar\partial_j f_k.
+\tag{L144.2}
+\]">\[
+\bar\partial_k f_j=\bar\partial_j f_k.
+\tag{L144.2}
+\]</span>
+<p>We call (L144.2) closedness. In dimension one it imposes no condition, because there is no pair of distinct indices. In dimension two the data <span class="math" data-index="10" data-tex="\(f_1=\overline z_2,f_2=0\)">\(f_1=\overline z_2,f_2=0\)</span> fail it: one side is 1, the other 0. No distributional solution exists for those data, regardless of any finite weighted norm.</p>
+<p>For a real twice continuously differentiable weight, the Levi form is the quadratic expression</p>
+<span class="math math-display" id="eq-L144.3" data-index="11" data-tex="\[
+\mathcal L_\phi(z;\xi)=\sum_{j,k}\partial_j\bar\partial_k\phi(z)
+                                  \xi_j\overline{\xi_k},\qquad
+\kappa_\phi(z)=\min_{|\xi|=1}\mathcal L_\phi(z;\xi).
+\tag{L144.3}
+\]">\[
+\mathcal L_\phi(z;\xi)=\sum_{j,k}\partial_j\bar\partial_k\phi(z)
+                                  \xi_j\overline{\xi_k},\qquad
+\kappa_\phi(z)=\min_{|\xi|=1}\mathcal L_\phi(z;\xi).
+\tag{L144.3}
+\]</span>
+<p>Strict PSH here means <span class="math" data-index="12" data-tex="\(\kappa_\phi&gt;0\)">\(\kappa_\phi&gt;0\)</span> at every point; a uniform positive lower bound over all space is not required. Weighted square norms integrate against <span class="math" data-index="13" data-tex="\(e^{-\phi}dV\)">\(e^{-\phi}dV\)</span>.</p>
+<p><a id="strict-weighted-existence-statement"></a></p>
+<p><strong>Strict weighted existence.</strong> If <span class="math" data-index="14" data-tex="\(\phi\in C^2\)">\(\phi\in C^2\)</span> is strictly PSH, the data are distributionally closed, and</p>
+<span class="math math-display" id="eq-L144.4" data-index="15" data-tex="\[
+B=\int_{\mathbb C^n}\frac{|f|^2}{\kappa_\phi}e^{-\phi}dV&lt;\infty,
+\tag{L144.4}
+\]">\[
+B=\int_{\mathbb C^n}\frac{|f|^2}{\kappa_\phi}e^{-\phi}dV&lt;\infty,
+\tag{L144.4}
+\]</span>
+<p>then there is a distributional solution satisfying</p>
+<span class="math math-display" id="eq-L144.5" data-index="16" data-tex="\[
+\bar\partial u=f,\qquad
+\int |u|^2e^{-\phi}dV\le B.
+\tag{L144.5}
+\]">\[
+\bar\partial u=f,\qquad
+\int |u|^2e^{-\phi}dV\le B.
+\tag{L144.5}
+\]</span>
+<p>Do not add <span class="math" data-index="17" data-tex="\(\int|f|^2e^{-\phi}&lt;\infty\)">\(\int|f|^2e^{-\phi}&lt;\infty\)</span> to the theorem. It is convenient for an intermediate Hilbert projection, and W7 removes it. Example 3 below shows that it can actually fail while (L144.4) holds. The stated data do belong to local ordinary <span class="math" data-index="18" data-tex="\(L^2\)">\(L^2\)</span>, since <span class="math" data-index="19" data-tex="\(e^{-\phi}/\kappa_\phi\)">\(e^{-\phi}/\kappa_\phi\)</span> has a positive lower bound on every compact set.</p>
+<p><a id="general-psh-weighted-existence-statement"></a></p>
+<p><strong>General PSH weighted existence.</strong> For any nontrivial global PSH <span class="math" data-index="20" data-tex="\(\phi\)">\(\phi\)</span>, including nonsmooth functions with singular values <span class="math" data-index="21" data-tex="\(-\infty\)">\(-\infty\)</span>, closed data with</p>
+<span class="math math-display" id="eq-L144.6" data-index="22" data-tex="\[
+B_0=\int |f|^2e^{-\phi}dV&lt;\infty
+\tag{L144.6}
+\]">\[
+B_0=\int |f|^2e^{-\phi}dV&lt;\infty
+\tag{L144.6}
+\]</span>
+<p>have a distributional solution with</p>
+<span class="math math-display" id="eq-L144.7" data-index="23" data-tex="\[
+2\int |u|^2 e^{-\phi}(1+|z|^2)^{-2}dV\le B_0.
+\tag{L144.7}
+\]">\[
+2\int |u|^2 e^{-\phi}(1+|z|^2)^{-2}dV\le B_0.
+\tag{L144.7}
+\]</span>
+<p>This is a global estimate with the exact factor 2 and the exact power 2. A nontrivial PSH function is locally integrable and locally bounded above. Its singular set has measure zero, and ordinary extended Lebesgue integrals give the meaning of its weight. The completely minus-infinite weight has only zero finite weighted data and the zero solution.</p>
+<h2 id="2-how-a-positive-hessian-produces-a-solution">2. How a positive Hessian produces a solution</h2>
+<p>Write <span class="math" data-index="24" data-tex="\(T u=(\bar\partial_j u)_j\)">\(T u=(\bar\partial_j u)_j\)</span> and <span class="math" data-index="25" data-tex="\((Sg)_{jk}=\bar\partial_k g_j-\bar\partial_j g_k\)">\((Sg)_{jk}=\bar\partial_k g_j-\bar\partial_j g_k\)</span> for <span class="math" data-index="26" data-tex="\(j&lt;k\)">\(j&lt;k\)</span>. The two-form norm sums over unordered pairs. For compact smooth coefficients, the weighted adjoint is</p>
+<span class="math math-display" id="eq-L144.8" data-index="27" data-tex="\[
+T^*g=-\sum_j(\partial_j-\phi_j)g_j.
+\tag{L144.8}
+\]">\[
+T^*g=-\sum_j(\partial_j-\phi_j)g_j.
+\tag{L144.8}
+\]</span>
+<p>W3 proves by integration by parts and cancellation of all cross terms that</p>
+<span class="math math-display" id="eq-L144.9" data-index="28" data-tex="\[
+\|T^*g\|_\phi^2+\|Sg\|_\phi^2
+=\sum_{j,k}\|\bar\partial_k g_j\|_\phi^2
+  +\int\mathcal L_\phi(z;g)e^{-\phi}dV.
+\tag{L144.9}
+\]">\[
+\|T^*g\|_\phi^2+\|Sg\|_\phi^2
+=\sum_{j,k}\|\bar\partial_k g_j\|_\phi^2
+  +\int\mathcal L_\phi(z;g)e^{-\phi}dV.
+\tag{L144.9}
+\]</span>
+<p>Discarding the nonnegative derivative term gives</p>
+<span class="math math-display" id="eq-L144.10" data-index="29" data-tex="\[
+\int\kappa_\phi|g|^2e^{-\phi}dV
+\le\|T^*g\|_\phi^2+\|Sg\|_\phi^2.
+\tag{L144.10}
+\]">\[
+\int\kappa_\phi|g|^2e^{-\phi}dV
+\le\|T^*g\|_\phi^2+\|Sg\|_\phi^2.
+\tag{L144.10}
+\]</span>
+<p>The projected test used next need not be smooth or compact. W4 therefore proves (L144.10) on the joint maximal domain <span class="math" data-index="30" data-tex="\(g,T^*g,Sg\)">\(g,T^*g,Sg\)</span> in their weighted square spaces. Cutoffs approximate all three graph norms. Convolution commutes with the constant-coefficient operator <span class="math" data-index="31" data-tex="\(S\)">\(S\)</span>. For the adjoint its only error is</p>
+<span class="math math-display" id="eq-L144.11" data-index="32" data-tex="\[
+\phi_j(g_j*\rho_\varepsilon)-(\phi_jg_j)*\rho_\varepsilon,
+\tag{L144.11}
+\]">\[
+\phi_j(g_j*\rho_\varepsilon)-(\phi_jg_j)*\rho_\varepsilon,
+\tag{L144.11}
+\]</span>
+<p>whose local square norm is bounded by the modulus of continuity of <span class="math" data-index="33" data-tex="\(\phi_j\)">\(\phi_j\)</span> times the square norm of <span class="math" data-index="34" data-tex="\(g_j\)">\(g_j\)</span>. The error tends to zero. This supplies the actual operator-domain estimate.</p>
+<p>Temporarily assume the data also lie in the weighted coefficient Hilbert space. Let <span class="math" data-index="35" data-tex="\(N\)">\(N\)</span> be the closed subspace of closed forms. Project a compact test <span class="math" data-index="36" data-tex="\(g\)">\(g\)</span> to <span class="math" data-index="37" data-tex="\(G\in N\)">\(G\in N\)</span>, leaving <span class="math" data-index="38" data-tex="\(J\perp N\)">\(J\perp N\)</span>. All forms <span class="math" data-index="39" data-tex="\(T\psi\)">\(T\psi\)</span> are closed, so orthogonality makes <span class="math" data-index="40" data-tex="\(T^*J=0\)">\(T^*J=0\)</span>. Consequently <span class="math" data-index="41" data-tex="\(T^*G=T^*g\)">\(T^*G=T^*g\)</span>, <span class="math" data-index="42" data-tex="\(SG=0\)">\(SG=0\)</span>, and (L144.10) controls <span class="math" data-index="43" data-tex="\(G\)">\(G\)</span> by <span class="math" data-index="44" data-tex="\(T^*g\)">\(T^*g\)</span>. Closedness of the data gives <span class="math" data-index="45" data-tex="\((f,g)_\phi=(f,G)_\phi\)">\((f,g)_\phi=(f,G)_\phi\)</span>. Weighted Cauchy–Schwarz now gives</p>
+<span class="math math-display" id="eq-L144.12" data-index="46" data-tex="\[
+|(f,g)_\phi|\le\sqrt B\,\|T^*g\|_\phi.
+\tag{L144.12}
+\]">\[
+|(f,g)_\phi|\le\sqrt B\,\|T^*g\|_\phi.
+\tag{L144.12}
+\]</span>
+<p>Inner products are linear in their first argument. Thus <span class="math" data-index="47" data-tex="\(T^*g\mapsto(g,f)_\phi\)">\(T^*g\mapsto(g,f)_\phi\)</span> is a well-defined bounded linear functional on the range of the adjoint tests. Extend it to the closure and use orthogonal projection to extend it to the whole scalar Hilbert space. <a href="AN02-L043.html#a-representing-vector-in-hilbert-space">L043 Lemma 1.1</a> supplies its representing vector <span class="math" data-index="48" data-tex="\(u\)">\(u\)</span>, of norm at most <span class="math" data-index="49" data-tex="\(\sqrt B\)">\(\sqrt B\)</span>. The representation says exactly</p>
+<span class="math math-display" id="eq-L144.13" data-index="50" data-tex="\[
+(u,T^*g)_\phi=(f,g)_\phi.
+\tag{L144.13}
+\]">\[
+(u,T^*g)_\phi=(f,g)_\phi.
+\tag{L144.13}
+\]</span>
+<p>W5 cancels the weight in compact <span class="math" data-index="51" data-tex="\(C^1\)">\(C^1\)</span> tests and obtains <span class="math" data-index="52" data-tex="\(\bar\partial u=f\)">\(\bar\partial u=f\)</span> as an ordinary distributional equation. Its proof treats the <span class="math" data-index="53" data-tex="\(C^2\)">\(C^2\)</span> weight honestly; it does not assume that <span class="math" data-index="54" data-tex="\(e^\phi\)">\(e^\phi\)</span> is smooth to every order.</p>
+<p>W7 removes the temporary extra data norm. It constructs a nonnegative smooth convex <span class="math" data-index="55" data-tex="\(\Phi\)">\(\Phi\)</span> such that <span class="math" data-index="56" data-tex="\(\kappa_\phi e^{-\varepsilon\Phi}\)">\(\kappa_\phi e^{-\varepsilon\Phi}\)</span> is globally bounded for each positive <span class="math" data-index="57" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The larger weight <span class="math" data-index="58" data-tex="\(\phi+\varepsilon\Phi\)">\(\phi+\varepsilon\Phi\)</span> then makes the data square integrable and keeps their curvature-weighted norm at most <span class="math" data-index="59" data-tex="\(B\)">\(B\)</span>. The resulting solutions have uniform local square bounds. W6 gives one subsequence converging weakly on every compact ball. Fix a positive <span class="math" data-index="60" data-tex="\(\delta\)">\(\delta\)</span>, first pass the estimate with the smaller weight <span class="math" data-index="61" data-tex="\(e^{-\phi-\delta\Phi}\)">\(e^{-\phi-\delta\Phi}\)</span> to the limit, then let <span class="math" data-index="62" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span> by monotone convergence. This recovers (L144.5) without an extra hypothesis.</p>
+<h2 id="3-where-the-factor-2-comes-from">3. Where the factor 2 comes from</h2>
+<p>For a smooth PSH <span class="math" data-index="63" data-tex="\(\phi\)">\(\phi\)</span>, add <span class="math" data-index="64" data-tex="\(2\log(1+|z|^2)\)">\(2\log(1+|z|^2)\)</span>. Direct differentiation gives</p>
+<span class="math math-display" id="eq-L144.14" data-index="65" data-tex="\[
+\partial_j\bar\partial_k\log(1+|z|^2)
+=\frac{\delta_{jk}}{1+|z|^2}
+ -\frac{\overline z_j z_k}{(1+|z|^2)^2}.
+\tag{L144.14}
+\]">\[
+\partial_j\bar\partial_k\log(1+|z|^2)
+=\frac{\delta_{jk}}{1+|z|^2}
+ -\frac{\overline z_j z_k}{(1+|z|^2)^2}.
+\tag{L144.14}
+\]</span>
+<p>The least eigenvalue of the added Hessian is <span class="math" data-index="66" data-tex="\(2(1+|z|^2)^{-2}\)">\(2(1+|z|^2)^{-2}\)</span>. At <span class="math" data-index="67" data-tex="\(z\ne0\)">\(z\ne0\)</span>, the complex line generated by <span class="math" data-index="68" data-tex="\(z\)">\(z\)</span> has that radial eigenvalue. Each complex orthogonal direction has eigenvalue <span class="math" data-index="69" data-tex="\(2(1+|z|^2)^{-1}\)">\(2(1+|z|^2)^{-1}\)</span>; there are no such directions when <span class="math" data-index="70" data-tex="\(n=1\)">\(n=1\)</span>. At the origin all eigenvalues are2. The division by the least curvature cancels the newly inserted square factor:</p>
+<span class="math math-display" id="eq-L144.15" data-index="71" data-tex="\[
+\frac{e^{-\phi}(1+|z|^2)^{-2}}
+ {2(1+|z|^2)^{-2}}=\tfrac12e^{-\phi}.
+\tag{L144.15}
+\]">\[
+\frac{e^{-\phi}(1+|z|^2)^{-2}}
+ {2(1+|z|^2)^{-2}}=\tfrac12e^{-\phi}.
+\tag{L144.15}
+\]</span>
+<p>Apply strict weighted existence to obtain (L144.7).</p>
+<figure><img class="course-figure" width="1972" height="918" src="reproduce/L144/figures/levi-curvature.png" alt="Exact radial and tangential Levi eigenvalues and a real test-vector section" /><figcaption class="native"><a href="reproduce/L144/figures/levi-curvature.png">Open full-size PNG</a> · <a href="reproduce/L144/figures/levi-curvature.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure1. The added weight is exactly <span class="math" data-index="72" data-tex="\(2\log(1+|z|^2)\)">\(2\log(1+|z|^2)\)</span>. The left panel shows its eigenvalues as functions of radius. The right panel is the real two-coordinate test-vector section of the level set <span class="math" data-index="73" data-tex="\(\mathcal L(\xi)=1\)">\(\mathcal L(\xi)=1\)</span> at <span class="math" data-index="74" data-tex="\(z=(2,0)\in\mathbb C^2\)">\(z=(2,0)\in\mathbb C^2\)</span>; it is not a picture of the entire complex unit sphere. Its radial and tangential semiaxes are <span class="math" data-index="75" data-tex="\(5/\sqrt2\)">\(5/\sqrt2\)</span> and <span class="math" data-index="76" data-tex="\(\sqrt{5/2}\)">\(\sqrt{5/2}\)</span>. The lower radial eigenvalue supplies (L144.15). Exact derivation: formal W25–W26. Human source: Hörmander II, Theorem 15.1.2, printed pp. 273–274.</em></p>
+<p>For nonsmooth PSH <span class="math" data-index="77" data-tex="\(\phi\)">\(\phi\)</span>, use a normalized decreasing radial convolution kernel. Its positive ball-mean decomposition, together with <a href="AN02-L141.html">the proved ball-mean monotonicity, L141 D5</a>, gives</p>
+<span class="math math-display" id="eq-L144.16" data-index="78" data-tex="\[
+\phi_\varepsilon\downarrow\phi\quad(\varepsilon\downarrow0)
+\quad\text{at every point}.
+\tag{L144.16}
+\]">\[
+\phi_\varepsilon\downarrow\phi\quad(\varepsilon\downarrow0)
+\quad\text{at every point}.
+\tag{L144.16}
+\]</span>
+<p>The smooth solutions have uniform local square bounds. For a fixed <span class="math" data-index="79" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, and all smaller <span class="math" data-index="80" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, the weight from <span class="math" data-index="81" data-tex="\(\phi_\delta\)">\(\phi_\delta\)</span> is smaller than that from <span class="math" data-index="82" data-tex="\(\phi_\varepsilon\)">\(\phi_\varepsilon\)</span>. Use that fixed continuous weight in the weak limit; only afterwards let <span class="math" data-index="83" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. W8 writes the full argument, including minus-infinite centers.</p>
+<h2 id="4-four-worked-examples">4. Four worked examples</h2>
+<h3 id="example-1-a-gaussian-and-the-sharp-strict-weight-constant">Example 1. A Gaussian and the sharp strict-weight constant</h3>
+<p>Take <span class="math" data-index="84" data-tex="\(\phi=a|z|^2\)">\(\phi=a|z|^2\)</span>, <span class="math" data-index="85" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, and constant closed data <span class="math" data-index="86" data-tex="\(f_j=c_j\)">\(f_j=c_j\)</span>. Then <span class="math" data-index="87" data-tex="\(\kappa_\phi=a\)">\(\kappa_\phi=a\)</span>, and</p>
+<span class="math math-display" id="eq-L144.17" data-index="88" data-tex="\[
+u(z)=\sum_j c_j\overline z_j,\qquad
+\int |u|^2e^{-a|z|^2}dV
+=\frac{|c|^2}{a}\left(\frac\pi a\right)^n
+=B.
+\tag{L144.17}
+\]">\[
+u(z)=\sum_j c_j\overline z_j,\qquad
+\int |u|^2e^{-a|z|^2}dV
+=\frac{|c|^2}{a}\left(\frac\pi a\right)^n
+=B.
+\tag{L144.17}
+\]</span>
+<p>Cross terms vanish by integration in an angular variable; each diagonal moment is <span class="math" data-index="89" data-tex="\(a^{-1}\)">\(a^{-1}\)</span> times the Gaussian volume. Exercise 3 computes these integrals directly.</p>
+<p>This solution has the smallest weighted norm. For any weighted-square-integrable <span class="math" data-index="90" data-tex="\(h\)">\(h\)</span> with <span class="math" data-index="91" data-tex="\(\bar\partial h=0\)">\(\bar\partial h=0\)</span>, use compact cutoffs <span class="math" data-index="92" data-tex="\(\chi_R\)">\(\chi_R\)</span> and <span class="math" data-index="93" data-tex="\(\partial_j e^{-a|z|^2}=-a\overline z_j e^{-a|z|^2}\)">\(\partial_j e^{-a|z|^2}=-a\overline z_j e^{-a|z|^2}\)</span>. Distributional integration by parts against <span class="math" data-index="94" data-tex="\(\chi_R e^{-a|z|^2}\)">\(\chi_R e^{-a|z|^2}\)</span> gives</p>
+<span class="math math-display" id="eq-L144.18" data-index="95" data-tex="\[
+\int\chi_R\overline z_j\overline h\,e^{-a|z|^2}dV
+=\frac1a\int(\partial_j\chi_R)\overline h\,e^{-a|z|^2}dV.
+\tag{L144.18}
+\]">\[
+\int\chi_R\overline z_j\overline h\,e^{-a|z|^2}dV
+=\frac1a\int(\partial_j\chi_R)\overline h\,e^{-a|z|^2}dV.
+\tag{L144.18}
+\]</span>
+<p>The right side tends to zero by weighted Cauchy–Schwarz, since <span class="math" data-index="96" data-tex="\(\|\partial_j\chi_R\|_\phi=O(R^{-1})\)">\(\|\partial_j\chi_R\|_\phi=O(R^{-1})\)</span>. The left side converges by the same inequality and the finite Gaussian moment. Thus <span class="math" data-index="97" data-tex="\((u,h)_\phi=0\)">\((u,h)_\phi=0\)</span>. Any other solution differs by such an <span class="math" data-index="98" data-tex="\(h\)">\(h\)</span>, and its squared norm is <span class="math" data-index="99" data-tex="\(\|u\|_\phi^2+\|h\|_\phi^2\)">\(\|u\|_\phi^2+\|h\|_\phi^2\)</span>. Equality in (L144.17) proves that the coefficient1 in strict weighted existence cannot be lowered uniformly.</p>
+<h3 id="example-2-compact-data-for-the-general-estimate">Example 2. Compact data for the general estimate</h3>
+<p>In <span class="math" data-index="100" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>, let <span class="math" data-index="101" data-tex="\(\phi=0\)">\(\phi=0\)</span>, <span class="math" data-index="102" data-tex="\(f=1_{\{|z|&lt;1\}}\)">\(f=1_{\{|z|&lt;1\}}\)</span>, and</p>
+<span class="math math-display" id="eq-L144.19" data-index="103" data-tex="\[
+u(z)=
+\begin{cases}\overline z,&amp;|z|\le1,\\1/z,&amp;|z|&gt;1.\end{cases}
+\tag{L144.19}
+\]">\[
+u(z)=
+\begin{cases}\overline z,&amp;|z|\le1,\\1/z,&amp;|z|&gt;1.\end{cases}
+\tag{L144.19}
+\]</span>
+<p>The two expressions agree on the unit circle. Integration by parts on its two sides therefore cancels the boundary terms. Inside, <span class="math" data-index="104" data-tex="\(\bar\partial\overline z=1\)">\(\bar\partial\overline z=1\)</span>; outside, <span class="math" data-index="105" data-tex="\(1/z\)">\(1/z\)</span> is holomorphic. Hence the distributional derivative is exactly <span class="math" data-index="106" data-tex="\(f\)">\(f\)</span>, without an additional circle-supported term. The origin uses the inside expression and supplies no pole.</p>
+<p>The data norm is <span class="math" data-index="107" data-tex="\(B_0=\pi\)">\(B_0=\pi\)</span>. Direct polar integration, detailed in Exercise 6, gives</p>
+<span class="math math-display" id="eq-L144.20" data-index="108" data-tex="\[
+I=\int\frac{|u|^2}{(1+|z|^2)^2}dA
+=2\pi(\log2-\tfrac12),\qquad
+\frac{2I}{B_0}=4\log2-2&lt;1.
+\tag{L144.20}
+\]">\[
+I=\int\frac{|u|^2}{(1+|z|^2)^2}dA
+=2\pi(\log2-\tfrac12),\qquad
+\frac{2I}{B_0}=4\log2-2&lt;1.
+\tag{L144.20}
+\]</span>
+<p>This explicit solution satisfies the stated general estimate. Neither a constant datum on all of <span class="math" data-index="109" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> nor the globally defined function <span class="math" data-index="110" data-tex="\(\overline z\)">\(\overline z\)</span> alone would be this finite-data example.</p>
+<figure><img class="course-figure" width="2159" height="901" src="reproduce/L144/figures/disk-solution-budget.png" alt="The disk solution and its weighted norm budget" /><figcaption class="native"><a href="reproduce/L144/figures/disk-solution-budget.png">Open full-size PNG</a> · <a href="reproduce/L144/figures/disk-solution-budget.svg">Open SVG</a></figcaption></figure>
+<p><em>Figure2. For the exact piecewise solution (L144.19), the panels show its modulus, its radial weighted norm density <span class="math" data-index="111" data-tex="\(2\pi r|u(r)|^2/(1+r^2)^2\)">\(2\pi r|u(r)|^2/(1+r^2)^2\)</span>, and the accumulated ratio <span class="math" data-index="112" data-tex="\(2I_R/\pi\)">\(2I_R/\pi\)</span>. The two sides contribute equal norm <span class="math" data-index="113" data-tex="\(\pi(\log2-1/2)\)">\(\pi(\log2-1/2)\)</span>. The final ratio is <span class="math" data-index="114" data-tex="\(4\log2-2\)">\(4\log2-2\)</span>, below the theorem's bound 1. The right panel approaches that exact value as the integration radius increases; the plotted finite radius is not the full integral. Derivation: Example 2 and Exercise 6. Human source for the existence estimate: Hörmander II, Theorem 15.1.2.</em></p>
+<h3 id="example-3-the-temporary-global-data-norm-really-can-fail">Example 3. The temporary global data norm really can fail</h3>
+<p>In one complex dimension choose</p>
+<span class="math math-display" id="eq-L144.21" data-index="115" data-tex="\[
+\phi(z)=e^{|z|^2},\qquad
+\kappa_\phi=(1+|z|^2)e^{|z|^2},\qquad
+f(z)=\exp\bigl(e^{|z|^2}/2\bigr).
+\tag{L144.21}
+\]">\[
+\phi(z)=e^{|z|^2},\qquad
+\kappa_\phi=(1+|z|^2)e^{|z|^2},\qquad
+f(z)=\exp\bigl(e^{|z|^2}/2\bigr).
+\tag{L144.21}
+\]</span>
+<p>There is no compatibility condition in one dimension. These smooth data satisfy</p>
+<span class="math math-display" id="eq-L144.22" data-index="116" data-tex="\[
+\int |f|^2e^{-\phi}dA=\int1\,dA=\infty,
+\quad
+B=\pi\int_0^\infty\frac{e^{-s}}{1+s}ds\le\pi&lt;\infty.
+\tag{L144.22}
+\]">\[
+\int |f|^2e^{-\phi}dA=\int1\,dA=\infty,
+\quad
+B=\pi\int_0^\infty\frac{e^{-s}}{1+s}ds\le\pi&lt;\infty.
+\tag{L144.22}
+\]</span>
+<p>Strict weighted existence applies with exactly these hypotheses. W7's auxiliary convex function makes the Hilbert argument available and then removes the auxiliary weight. The rapidly growing displayed datum is a mathematical example, not a request to evaluate its enormous values numerically.</p>
+<h3 id="example-4-a-singular-weight-and-data-away-from-its-singularity">Example 4. A singular weight and data away from its singularity</h3>
+<p>Let <span class="math" data-index="117" data-tex="\(\phi(z)=\alpha\log|z|\)">\(\phi(z)=\alpha\log|z|\)</span>, <span class="math" data-index="118" data-tex="\(\alpha\ge0\)">\(\alpha\ge0\)</span>, with the value <span class="math" data-index="119" data-tex="\(-\infty\)">\(-\infty\)</span> at 0 when <span class="math" data-index="120" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span>. In one complex variable this is PSH; its circle means follow from the logarithmic mean formula in L137 Z2. Set</p>
+<span class="math math-display" id="eq-L144.23" data-index="121" data-tex="\[
+\chi(s)=
+\begin{cases}
+\exp[-1/((s-1)(4-s))],&amp;1&lt;s&lt;4,\\
+0,&amp;\text{otherwise},
+\end{cases}
+\quad u_0(z)=\chi(|z|^2),\quad f(z)=z\chi&#x27;(|z|^2).
+\tag{L144.23}
+\]">\[
+\chi(s)=
+\begin{cases}
+\exp[-1/((s-1)(4-s))],&amp;1&lt;s&lt;4,\\
+0,&amp;\text{otherwise},
+\end{cases}
+\quad u_0(z)=\chi(|z|^2),\quad f(z)=z\chi&#x27;(|z|^2).
+\tag{L144.23}
+\]</span>
+<p>Endpoint flatness makes these functions smooth. The datum is supported in the annulus <span class="math" data-index="122" data-tex="\(1\le|z|\le2\)">\(1\le|z|\le2\)</span>, is closed automatically, and has finite <span class="math" data-index="123" data-tex="\(B_0\)">\(B_0\)</span> for every fixed <span class="math" data-index="124" data-tex="\(\alpha\)">\(\alpha\)</span>. We already have one compactly supported solution <span class="math" data-index="125" data-tex="\(u_0\)">\(u_0\)</span>. General weighted existence additionally selects a solution with (L144.7); this observation does not assert that the particular <span class="math" data-index="126" data-tex="\(u_0\)">\(u_0\)</span> is the solution of smallest weighted norm.</p>
+<p>The singularity has a genuine effect on admissible solutions. For a nonnegative integer <span class="math" data-index="127" data-tex="\(m\)">\(m\)</span>, a function equal to <span class="math" data-index="128" data-tex="\(z^m\)">\(z^m\)</span> near 0 has finite local weighted square norm precisely when</p>
+<span class="math math-display" id="eq-L144.24" data-index="129" data-tex="\[
+\int_0^\eta r^{2m-\alpha+1}dr&lt;\infty
+\quad\Longleftrightarrow\quad \alpha&lt;2m+2.
+\tag{L144.24}
+\]">\[
+\int_0^\eta r^{2m-\alpha+1}dr&lt;\infty
+\quad\Longleftrightarrow\quad \alpha&lt;2m+2.
+\tag{L144.24}
+\]</span>
+<p>At equality the divergence is logarithmic. The harmless factor <span class="math" data-index="130" data-tex="\((1+r^2)^{-2}\)">\((1+r^2)^{-2}\)</span> does not alter this local threshold.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<ol>
+<li><strong>Basic.</strong> Compute <span class="math" data-index="131" data-tex="\(\bar\partial_j z_k\)">\(\bar\partial_j z_k\)</span>, <span class="math" data-index="132" data-tex="\(\bar\partial_j\overline z_k\)">\(\bar\partial_j\overline z_k\)</span>, the weighted adjoint of <span class="math" data-index="133" data-tex="\(\bar\partial_j\)">\(\bar\partial_j\)</span>, and <span class="math" data-index="134" data-tex="\([\partial_j-\phi_j,\bar\partial_k]\)">\([\partial_j-\phi_j,\bar\partial_k]\)</span>. Keep track of both conjugation and the sign.</li>
+<li><strong>Basic.</strong> Explain why the Gaussian-square-integrable datum <span class="math" data-index="135" data-tex="\((\overline z_2,0)\)">\((\overline z_2,0)\)</span> in <span class="math" data-index="136" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span> has no distributional solution. Why is any locally square-integrable datum closed in <span class="math" data-index="137" data-tex="\(\mathbb C\)">\(\mathbb C\)</span>?</li>
+<li><strong>Intermediate.</strong> Compute the Gaussian volume and second moments used in Example 1. In <span class="math" data-index="138" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, take <span class="math" data-index="139" data-tex="\(\phi=a|z_1|^2+b|z_2|^2\)">\(\phi=a|z_1|^2+b|z_2|^2\)</span>, <span class="math" data-index="140" data-tex="\(0&lt;a&lt;b\)">\(0&lt;a&lt;b\)</span>, and <span class="math" data-index="141" data-tex="\(f=(0,c)\)">\(f=(0,c)\)</span>. Compare the norm of <span class="math" data-index="142" data-tex="\(c\overline z_2\)">\(c\overline z_2\)</span> with the least-curvature bound.</li>
+<li><strong>Intermediate.</strong> Verify every formula in Example 3 and explain why an argument restricted to globally square-integrable data does not prove the stated strict theorem.</li>
+<li><strong>Intermediate.</strong> Derive the radial and tangential eigenvalues of the Hessian of <span class="math" data-index="143" data-tex="\(2\log(1+|z|^2)\)">\(2\log(1+|z|^2)\)</span>. Explain why the factor 2 and the square power in (L144.7) occur together.</li>
+<li><strong>Intermediate.</strong> Verify the distributional equation and both polar integrals in Example 2. Prove <span class="math" data-index="144" data-tex="\(4\log2-2&lt;1\)">\(4\log2-2&lt;1\)</span> without relying on a decimal approximation.</li>
+<li><strong>Intermediate.</strong> Differentiate the annular cutoff in Example 4, verify finite weighted data, and prove the threshold (L144.24), including equality.</li>
+<li><strong>Advanced.</strong> In W4, bound the variable-coefficient convolution error using a modulus of continuity. Explain why the compact-graph estimate alone cannot be applied immediately to the orthogonal projection <span class="math" data-index="145" data-tex="\(G\)">\(G\)</span>.</li>
+<li><strong>Advanced.</strong> Explain the order of the weak-limit argument for general PSH weights. Write the comparison for a fixed <span class="math" data-index="146" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, justify passage to the weak limit, and identify the final monotone limit. Explain why pointwise convergence of the weights alone would be insufficient.</li>
+</ol>
+<h2 id="6-complete-solutions">6. Complete solutions</h2>
+<p><strong>1.</strong> Apply (L144.1) to the real and imaginary coordinate functions. The results are <span class="math" data-index="147" data-tex="\(\bar\partial_j z_k=0\)">\(\bar\partial_j z_k=0\)</span> and <span class="math" data-index="148" data-tex="\(\bar\partial_j\overline z_k=\delta_{jk}\)">\(\bar\partial_j\overline z_k=\delta_{jk}\)</span>. For compact smooth <span class="math" data-index="149" data-tex="\(a,b\)">\(a,b\)</span>, real integration by parts gives</p>
+<span class="math math-display" id="eq-L144.25" data-index="150" data-tex="\[
+\int(\bar\partial_j a)\overline b e^{-\phi}dV
+=-\int a\,\overline{(\partial_j-\phi_j)b}\,e^{-\phi}dV.
+\tag{L144.25}
+\]">\[
+\int(\bar\partial_j a)\overline b e^{-\phi}dV
+=-\int a\,\overline{(\partial_j-\phi_j)b}\,e^{-\phi}dV.
+\tag{L144.25}
+\]</span>
+<p>Thus the adjoint is <span class="math" data-index="151" data-tex="\(-\partial_j+\phi_j\)">\(-\partial_j+\phi_j\)</span>. Apply the commutator to a test <span class="math" data-index="152" data-tex="\(h\)">\(h\)</span>: mixed derivatives cancel, while differentiating the coefficient <span class="math" data-index="153" data-tex="\(-\phi_j h\)">\(-\phi_j h\)</span> leaves <span class="math" data-index="154" data-tex="\((\bar\partial_k\phi_j)h=\phi_{j\bar k}h\)">\((\bar\partial_k\phi_j)h=\phi_{j\bar k}h\)</span>. The commutator is multiplication by the Levi coefficient with a positive sign. Reversing its order reverses that sign.</p>
+<p><strong>2.</strong> If a distributional <span class="math" data-index="155" data-tex="\(u\)">\(u\)</span> solved the two equations, then <span class="math" data-index="156" data-tex="\(\bar\partial_2\bar\partial_1u=\bar\partial_1\bar\partial_2u\)">\(\bar\partial_2\bar\partial_1u=\bar\partial_1\bar\partial_2u\)</span>. The proposed right sides yield 1 and 0, a contradiction. Multiplication by a Gaussian makes their square integral finite, but does not repair that compatibility failure. In dimension one there are no two different coefficient indices, so the closedness equation is the tautology <span class="math" data-index="157" data-tex="\(\bar\partial_1f_1=\bar\partial_1f_1\)">\(\bar\partial_1f_1=\bar\partial_1f_1\)</span>.</p>
+<p><strong>3.</strong> Polar integration in one complex coordinate gives</p>
+<span class="math math-display" id="eq-L144.26" data-index="158" data-tex="\[
+\int_\mathbb C e^{-a|z|^2}dA=2\pi\int_0^\infty re^{-ar^2}dr=\pi/a,
+\quad
+\int_\mathbb C |z|^2e^{-a|z|^2}dA
+=2\pi\int_0^\infty r^3e^{-ar^2}dr=\pi/a^2.
+\tag{L144.26}
+\]">\[
+\int_\mathbb C e^{-a|z|^2}dA=2\pi\int_0^\infty re^{-ar^2}dr=\pi/a,
+\quad
+\int_\mathbb C |z|^2e^{-a|z|^2}dA
+=2\pi\int_0^\infty r^3e^{-ar^2}dr=\pi/a^2.
+\tag{L144.26}
+\]</span>
+<p>Use <span class="math" data-index="159" data-tex="\(s=ar^2\)">\(s=ar^2\)</span>; <span class="math" data-index="160" data-tex="\(\int_0^\infty e^{-s}ds=1\)">\(\int_0^\infty e^{-s}ds=1\)</span> and <span class="math" data-index="161" data-tex="\(\int_0^\infty se^{-s}ds=1\)">\(\int_0^\infty se^{-s}ds=1\)</span>, the latter by integration by parts. Fubini multiplies the coordinate integrals. For <span class="math" data-index="162" data-tex="\(j\ne k\)">\(j\ne k\)</span>, angular integration of <span class="math" data-index="163" data-tex="\(\overline z_j z_k\)">\(\overline z_j z_k\)</span> gives zero. These computations prove (L144.17). For the anisotropic weight, <span class="math" data-index="164" data-tex="\(Z=\pi^2/(ab)\)">\(Z=\pi^2/(ab)\)</span>, <span class="math" data-index="165" data-tex="\(\kappa=a\)">\(\kappa=a\)</span>, and</p>
+<span class="math math-display" id="eq-L144.27" data-index="166" data-tex="\[
+\|c\overline z_2\|_\phi^2=|c|^2 Z/b,
+\qquad B=|c|^2 Z/a,
+\qquad \|c\overline z_2\|_\phi^2/B=a/b&lt;1.
+\tag{L144.27}
+\]">\[
+\|c\overline z_2\|_\phi^2=|c|^2 Z/b,
+\qquad B=|c|^2 Z/a,
+\qquad \|c\overline z_2\|_\phi^2/B=a/b&lt;1.
+\tag{L144.27}
+\]</span>
+<p>The weakest eigenvalue gives one bound for every direction. Data in a stronger direction can have a smaller solution norm. The isotropic example realizes equality and, by its orthogonality argument, proves the uniform coefficient sharp.</p>
+<p><strong>4.</strong> With <span class="math" data-index="167" data-tex="\(s=|z|^2\)">\(s=|z|^2\)</span>, <span class="math" data-index="168" data-tex="\(\partial s=\overline z\)">\(\partial s=\overline z\)</span> and <span class="math" data-index="169" data-tex="\(\bar\partial s=z\)">\(\bar\partial s=z\)</span>. Differentiate <span class="math" data-index="170" data-tex="\(e^s\)">\(e^s\)</span> twice: <span class="math" data-index="171" data-tex="\(\partial\bar\partial e^s=(1+s)e^s&gt;0\)">\(\partial\bar\partial e^s=(1+s)e^s&gt;0\)</span>. The chosen datum satisfies <span class="math" data-index="172" data-tex="\(|f|^2=e^{e^s}=e^\phi\)">\(|f|^2=e^{e^s}=e^\phi\)</span>. The uncorrected data norm is the infinite area of the plane. After division by curvature the integrand is <span class="math" data-index="173" data-tex="\(e^{-s}/(1+s)\)">\(e^{-s}/(1+s)\)</span>. Since <span class="math" data-index="174" data-tex="\(dA=\pi ds\)">\(dA=\pi ds\)</span> for radial integration, its integral is at most <span class="math" data-index="175" data-tex="\(\pi\)">\(\pi\)</span>. Closedness imposes no further condition in one dimension. An argument using a projection of <span class="math" data-index="176" data-tex="\(f\)">\(f\)</span> in the coefficient Hilbert space cannot start with this <span class="math" data-index="177" data-tex="\(f\)">\(f\)</span>. W7 first enlarges the weight to give that Hilbert membership, solves with a uniform curvature bound, and then takes a local weak limit to the original weight.</p>
+<p><strong>5.</strong> Differentiate <span class="math" data-index="178" data-tex="\(\log(1+s)\)">\(\log(1+s)\)</span> to obtain (L144.14). The rank-one term contributes <span class="math" data-index="179" data-tex="\(|\sum_j\overline z_j\xi_j|^2/(1+s)^2\)">\(|\sum_j\overline z_j\xi_j|^2/(1+s)^2\)</span>. For <span class="math" data-index="180" data-tex="\(\xi\)">\(\xi\)</span> on the complex line generated by <span class="math" data-index="181" data-tex="\(z\)">\(z\)</span>, this is <span class="math" data-index="182" data-tex="\(s|\xi|^2/(1+s)^2\)">\(s|\xi|^2/(1+s)^2\)</span>, leaving <span class="math" data-index="183" data-tex="\(|\xi|^2/(1+s)^2\)">\(|\xi|^2/(1+s)^2\)</span>. For <span class="math" data-index="184" data-tex="\(\xi\)">\(\xi\)</span> orthogonal to <span class="math" data-index="185" data-tex="\(z\)">\(z\)</span>, the rank-one term vanishes, leaving <span class="math" data-index="186" data-tex="\(|\xi|^2/(1+s)\)">\(|\xi|^2/(1+s)\)</span>. Multiplying the weight by2 multiplies these eigenvalues by2. At <span class="math" data-index="187" data-tex="\(z=0\)">\(z=0\)</span>, the matrix is2 times the identity. Adding this PSH weight to any smooth PSH <span class="math" data-index="188" data-tex="\(\phi\)">\(\phi\)</span> gives least curvature at least <span class="math" data-index="189" data-tex="\(2(1+s)^{-2}\)">\(2(1+s)^{-2}\)</span>, and multiplies <span class="math" data-index="190" data-tex="\(e^{-\phi}\)">\(e^{-\phi}\)</span> by <span class="math" data-index="191" data-tex="\((1+s)^{-2}\)">\((1+s)^{-2}\)</span>. Dividing the latter by the former leaves at most <span class="math" data-index="192" data-tex="\(e^{-\phi}/2\)">\(e^{-\phi}/2\)</span>. This proves the exact constant and power relationship. Dimension one has the radial eigenvalue alone.</p>
+<p><strong>6.</strong> On the unit circle, <span class="math" data-index="193" data-tex="\(\overline z=1/z\)">\(\overline z=1/z\)</span>. To test the distributional derivative, integrate each classical derivative against a compact smooth test in the inner disk and its outer complement. The outward normals on the common circle have opposite signs, and the identical boundary values cancel their boundary contributions. The classical derivatives are1 and0. A small circle around the origin is unnecessary, because the inner function is smooth there. Thus <span class="math" data-index="194" data-tex="\(\bar\partial u=1_{\{|z|&lt;1\}}\)">\(\bar\partial u=1_{\{|z|&lt;1\}}\)</span>. For the norm, put <span class="math" data-index="195" data-tex="\(s=r^2\)">\(s=r^2\)</span>:</p>
+<span class="math math-display" id="eq-L144.28" data-index="196" data-tex="\[
+\begin{aligned}
+I_{\rm in}&amp;=2\pi\int_0^1\frac{r^3}{(1+r^2)^2}dr
+=\pi\int_0^1\frac{s}{(1+s)^2}ds
+=\pi(\log2-\tfrac12),\\
+I_{\rm out}&amp;=2\pi\int_1^\infty\frac{1}{r(1+r^2)^2}dr
+=\pi\int_1^\infty\frac{1}{s(1+s)^2}ds
+=\pi(\log2-\tfrac12).
+\end{aligned}
+\tag{L144.28}
+\]">\[
+\begin{aligned}
+I_{\rm in}&amp;=2\pi\int_0^1\frac{r^3}{(1+r^2)^2}dr
+=\pi\int_0^1\frac{s}{(1+s)^2}ds
+=\pi(\log2-\tfrac12),\\
+I_{\rm out}&amp;=2\pi\int_1^\infty\frac{1}{r(1+r^2)^2}dr
+=\pi\int_1^\infty\frac{1}{s(1+s)^2}ds
+=\pi(\log2-\tfrac12).
+\end{aligned}
+\tag{L144.28}
+\]</span>
+<p>For the first antiderivative use <span class="math" data-index="197" data-tex="\(\log(1+s)+(1+s)^{-1}\)">\(\log(1+s)+(1+s)^{-1}\)</span>. For the second use <span class="math" data-index="198" data-tex="\(\log s-\log(1+s)+(1+s)^{-1}\)">\(\log s-\log(1+s)+(1+s)^{-1}\)</span>. The second tends to0 at infinity. Their sum proves (L144.20). For <span class="math" data-index="199" data-tex="\(1&lt;t&lt;2\)">\(1&lt;t&lt;2\)</span>,</p>
+<span class="math math-display" id="eq-L144.29" data-index="200" data-tex="\[
+1/t&lt;(3-t)/2,
+\quad\text{because }(t-1)(2-t)&gt;0.
+\tag{L144.29}
+\]">\[
+1/t&lt;(3-t)/2,
+\quad\text{because }(t-1)(2-t)&gt;0.
+\tag{L144.29}
+\]</span>
+<p>Integrating gives <span class="math" data-index="201" data-tex="\(\log2&lt;3/4\)">\(\log2&lt;3/4\)</span>, and hence <span class="math" data-index="202" data-tex="\(4\log2-2&lt;1\)">\(4\log2-2&lt;1\)</span>. The inequality is strict on a set of positive length.</p>
+<p><strong>7.</strong> For <span class="math" data-index="203" data-tex="\(1&lt;s&lt;4\)">\(1&lt;s&lt;4\)</span>, let <span class="math" data-index="204" data-tex="\(h(s)=(s-1)(4-s)\)">\(h(s)=(s-1)(4-s)\)</span>, so <span class="math" data-index="205" data-tex="\(h&#x27;(s)=5-2s\)">\(h&#x27;(s)=5-2s\)</span>. Direct differentiation gives</p>
+<span class="math math-display" id="eq-L144.30" data-index="206" data-tex="\[
+\chi&#x27;(s)=\chi(s)\frac{5-2s}{(s-1)^2(4-s)^2},\qquad
+\bar\partial\chi(|z|^2)=z\chi&#x27;(|z|^2).
+\tag{L144.30}
+\]">\[
+\chi&#x27;(s)=\chi(s)\frac{5-2s}{(s-1)^2(4-s)^2},\qquad
+\bar\partial\chi(|z|^2)=z\chi&#x27;(|z|^2).
+\tag{L144.30}
+\]</span>
+<p>At an endpoint, the exponential of the negative reciprocal dominates every inverse power, so the function and all its derivatives extend by zero. The support of <span class="math" data-index="207" data-tex="\(f\)">\(f\)</span> stays away from0 and infinity; the weight <span class="math" data-index="208" data-tex="\(|z|^{-\alpha}\)">\(|z|^{-\alpha}\)</span> is bounded above and below there for fixed <span class="math" data-index="209" data-tex="\(\alpha\)">\(\alpha\)</span>. Smooth compact data therefore have finite weighted norm. For <span class="math" data-index="210" data-tex="\(u=z^m\)">\(u=z^m\)</span> near 0, polar integration gives a fixed positive constant times <span class="math" data-index="211" data-tex="\(\int_0^\eta r^{2m-\alpha+1}dr\)">\(\int_0^\eta r^{2m-\alpha+1}dr\)</span>. For a power <span class="math" data-index="212" data-tex="\(r^p\)">\(r^p\)</span>, this integral is finite exactly when <span class="math" data-index="213" data-tex="\(p&gt;-1\)">\(p&gt;-1\)</span>, by its antiderivative <span class="math" data-index="214" data-tex="\(r^{p+1}/(p+1)\)">\(r^{p+1}/(p+1)\)</span>. At <span class="math" data-index="215" data-tex="\(p=-1\)">\(p=-1\)</span> it is <span class="math" data-index="216" data-tex="\(\int dr/r\)">\(\int dr/r\)</span>, which diverges. Thus <span class="math" data-index="217" data-tex="\(\alpha&lt;2m+2\)">\(\alpha&lt;2m+2\)</span> is exact. The factor <span class="math" data-index="218" data-tex="\((1+r^2)^{-2}\)">\((1+r^2)^{-2}\)</span> is bounded above and below near 0 and leaves this threshold unchanged.</p>
+<p><strong>8.</strong> The error for a continuous coefficient <span class="math" data-index="219" data-tex="\(a\)">\(a\)</span> is</p>
+<span class="math math-display" id="eq-L144.31" data-index="220" data-tex="\[
+\int [a(z)-a(z-h)]g(z-h)\rho_\varepsilon(h)dh.
+\tag{L144.31}
+\]">\[
+\int [a(z)-a(z-h)]g(z-h)\rho_\varepsilon(h)dh.
+\tag{L144.31}
+\]</span>
+<p>On a common compact neighborhood, its coefficient difference is at most <span class="math" data-index="221" data-tex="\(\omega_a(\varepsilon)\)">\(\omega_a(\varepsilon)\)</span>. The integral triangle inequality in <span class="math" data-index="222" data-tex="\(L^2\)">\(L^2\)</span>, followed by translation invariance and <span class="math" data-index="223" data-tex="\(\int\rho_\varepsilon=1\)">\(\int\rho_\varepsilon=1\)</span>, bounds the norm by <span class="math" data-index="224" data-tex="\(\omega_a(\varepsilon)\|g\|_2\)">\(\omega_a(\varepsilon)\|g\|_2\)</span>. This tends to zero. Bounded positive upper and lower values of the weight on that compact set transfer the bound to its weighted square norm. The projection <span class="math" data-index="225" data-tex="\(G\)">\(G\)</span> is an abstract Hilbert-space vector; projection preserves neither compact support nor smoothness. It does satisfy <span class="math" data-index="226" data-tex="\(SG=0\)">\(SG=0\)</span> and <span class="math" data-index="227" data-tex="\(T^*G=T^*g\)">\(T^*G=T^*g\)</span>, placing it in the joint maximal domain. The cutoff/convolution approximation and compact curvature limits in W4 make (L144.10) valid on that domain. Without this extension, applying the compact smooth estimate to <span class="math" data-index="228" data-tex="\(G\)">\(G\)</span> would be a gap.</p>
+<p><strong>9.</strong> Ball means of a subharmonic function are nondecreasing with radius. The decreasing radial kernel has a positive ball-mean decomposition with weights of total one, so <span class="math" data-index="229" data-tex="\(\phi_\varepsilon\)">\(\phi_\varepsilon\)</span> is nondecreasing with <span class="math" data-index="230" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and decreases to the original upper semicontinuous <span class="math" data-index="231" data-tex="\(\phi\)">\(\phi\)</span> as <span class="math" data-index="232" data-tex="\(\varepsilon\downarrow0\)">\(\varepsilon\downarrow0\)</span>. The solutions satisfy</p>
+<span class="math math-display" id="eq-L144.32" data-index="233" data-tex="\[
+2\int|u_\varepsilon|^2e^{-\phi_\varepsilon}(1+|z|^2)^{-2}dV\le B_0.
+\tag{L144.32}
+\]">\[
+2\int|u_\varepsilon|^2e^{-\phi_\varepsilon}(1+|z|^2)^{-2}dV\le B_0.
+\tag{L144.32}
+\]</span>
+<p>For fixed <span class="math" data-index="234" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and <span class="math" data-index="235" data-tex="\(\varepsilon\le\delta\)">\(\varepsilon\le\delta\)</span>, we have <span class="math" data-index="236" data-tex="\(\phi_\varepsilon\le\phi_\delta\)">\(\phi_\varepsilon\le\phi_\delta\)</span>, hence <span class="math" data-index="237" data-tex="\(e^{-\phi_\delta}\le e^{-\phi_\varepsilon}\)">\(e^{-\phi_\delta}\le e^{-\phi_\varepsilon}\)</span>. On each fixed ball the weight <span class="math" data-index="238" data-tex="\(e^{-\phi_\delta}(1+|z|^2)^{-2}\)">\(e^{-\phi_\delta}(1+|z|^2)^{-2}\)</span> is a bounded continuous positive multiplier. Multiplying by its square root preserves weak <span class="math" data-index="239" data-tex="\(L^2\)">\(L^2\)</span> convergence. The Hilbert norm is weakly lower semicontinuous, yielding the same bound for <span class="math" data-index="240" data-tex="\(u\)">\(u\)</span> on that ball. Enlarge the balls by monotone convergence. Finally let <span class="math" data-index="241" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>; the fixed weights increase to <span class="math" data-index="242" data-tex="\(e^{-\phi}(1+|z|^2)^{-2}\)">\(e^{-\phi}(1+|z|^2)^{-2}\)</span>, including its extended values at singular points. A second monotone convergence gives (L144.7). Weak local convergence also passes the distributional equation to the limit by smooth derivative tests. Pointwise convergence of the weights alone gives no convergence of the changing functions <span class="math" data-index="243" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> or their norms; the fixed-weight weak argument is essential.</p>
+<h2 id="7-reading-and-reproduction">7. Reading and reproduction</h2>
+<p>The formal proof gives W1–W28, including all graph-domain and limiting steps. Earlier inputs are the actual Hilbert representation proof in L043, the written Lebesgue foundations, L140 UE2 on PSH smoothing, and L141 D5 on ball-mean monotonicity. Exercise solutions and the two illustrated examples above are complete. The figure script and exact constants are in the accompanying reproduction folder; numerical integration checks complement the displayed exact arguments.</p>
+<p>Human source: Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em>, §15.1, Theorems 15.1.1–15.1.2, printed pp. 271–274 (1983 edition, second revised printing 1990, reprint 2005). These proof expositions, examples, solutions and illustrations are original; no protected book pages or media accompany the lesson. This lesson does not claim downstream extension theorems or the whole AN-02 course are complete.</p>
+<p><a id="complete-proof"></a></p>
+<h2 id="complete-proof-2">Complete proof</h2>
+<p><em>Original proof exposition by GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0 1.0.</em></p>
+<p>Positive complex curvature supplies an estimate for an adjoint equation. Orthogonal projection removes the part of a test form that cannot pair with a closed right-hand side. Hilbert representation then turns that estimate into an actual solution. We prove the operator-domain approximation and the limiting arguments, including the case where the data have only the curvature-weighted norm required by the theorem.</p>
+<p>Write <span class="math" data-index="244" data-tex="\(z_j=x_j+iy_j\)">\(z_j=x_j+iy_j\)</span>, <span class="math" data-index="245" data-tex="\(\partial_j=(\partial_{x_j}-i\partial_{y_j})/2\)">\(\partial_j=(\partial_{x_j}-i\partial_{y_j})/2\)</span>, <span class="math" data-index="246" data-tex="\(\bar\partial_j=(\partial_{x_j}+i\partial_{y_j})/2\)">\(\bar\partial_j=(\partial_{x_j}+i\partial_{y_j})/2\)</span>, and <span class="math" data-index="247" data-tex="\(dV=dx\,dy\)">\(dV=dx\,dy\)</span> on <span class="math" data-index="248" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span>, <span class="math" data-index="249" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Inner products are linear in the first entry. For a real <span class="math" data-index="250" data-tex="\(C^2\)">\(C^2\)</span> weight <span class="math" data-index="251" data-tex="\(\phi\)">\(\phi\)</span>, put</p>
+<span class="math math-display" id="eq-W1" data-index="252" data-tex="\[
+(a,b)_\phi=\int a\overline b\,e^{-\phi}dV,\qquad
+\kappa_\phi(z)=\min_{|\xi|=1}\sum_{j,k}\phi_{j\bar k}(z)\xi_j\overline{\xi_k}.
+\tag{W1}
+\]">\[
+(a,b)_\phi=\int a\overline b\,e^{-\phi}dV,\qquad
+\kappa_\phi(z)=\min_{|\xi|=1}\sum_{j,k}\phi_{j\bar k}(z)\xi_j\overline{\xi_k}.
+\tag{W1}
+\]</span>
+<p>For vectors sum the coefficient inner products. For antisymmetric two-forms use the sum over <span class="math" data-index="253" data-tex="\(j&lt;k\)">\(j&lt;k\)</span>; in dimension one that space is zero. The Levi matrix convention is <span class="math" data-index="254" data-tex="\(\phi_{j\bar k}=\partial_j\bar\partial_k\phi\)">\(\phi_{j\bar k}=\partial_j\bar\partial_k\phi\)</span>.</p>
+<p><a id="strict-weighted-existence"></a></p>
+<p><strong>Theorem W1.</strong> Suppose <span class="math" data-index="255" data-tex="\(\phi\in C^2(\mathbb C^n;\mathbb R)\)">\(\phi\in C^2(\mathbb C^n;\mathbb R)\)</span> and <span class="math" data-index="256" data-tex="\(\kappa_\phi(z)&gt;0\)">\(\kappa_\phi(z)&gt;0\)</span> everywhere. Let <span class="math" data-index="257" data-tex="\(f=(f_1,\ldots,f_n)\)">\(f=(f_1,\ldots,f_n)\)</span> be measurable with</p>
+<span class="math math-display" id="eq-W2" data-index="258" data-tex="\[
+B=\int |f|^2e^{-\phi}\kappa_\phi^{-1}dV&lt;\infty,
+\qquad \bar\partial_k f_j=\bar\partial_j f_k
+\quad\text{as distributions}.
+\tag{W2}
+\]">\[
+B=\int |f|^2e^{-\phi}\kappa_\phi^{-1}dV&lt;\infty,
+\qquad \bar\partial_k f_j=\bar\partial_j f_k
+\quad\text{as distributions}.
+\tag{W2}
+\]</span>
+<p>Then there is <span class="math" data-index="259" data-tex="\(u\in L^2(e^{-\phi}dV)\)">\(u\in L^2(e^{-\phi}dV)\)</span> such that</p>
+<span class="math math-display" id="eq-W3" data-index="260" data-tex="\[
+\bar\partial_j u=f_j\quad(1\le j\le n),\qquad
+\int |u|^2e^{-\phi}dV\le B.
+\tag{W3}
+\]">\[
+\bar\partial_j u=f_j\quad(1\le j\le n),\qquad
+\int |u|^2e^{-\phi}dV\le B.
+\tag{W3}
+\]</span>
+<p>No global unweighted-in-curvature norm <span class="math" data-index="261" data-tex="\(\int|f|^2e^{-\phi}\)">\(\int|f|^2e^{-\phi}\)</span> is assumed. The hypothesis does imply <span class="math" data-index="262" data-tex="\(f\in L^2_{\rm loc}\)">\(f\in L^2_{\rm loc}\)</span>, since the continuous positive weight <span class="math" data-index="263" data-tex="\(e^{-\phi}/\kappa_\phi\)">\(e^{-\phi}/\kappa_\phi\)</span> has a positive lower bound on every compact set.</p>
+<p><a id="general-psh-weighted-existence"></a></p>
+<p><strong>Theorem W2.</strong> Let <span class="math" data-index="264" data-tex="\(\phi\)">\(\phi\)</span> be a nontrivial global PSH function, possibly nonsmooth or minus infinite at some points. If <span class="math" data-index="265" data-tex="\(f\)">\(f\)</span> is distributionally closed as in (W2) and</p>
+<span class="math math-display" id="eq-W4" data-index="266" data-tex="\[
+B_0=\int |f|^2e^{-\phi}dV&lt;\infty,
+\tag{W4}
+\]">\[
+B_0=\int |f|^2e^{-\phi}dV&lt;\infty,
+\tag{W4}
+\]</span>
+<p>there is a distributional solution with</p>
+<span class="math math-display" id="eq-W5" data-index="267" data-tex="\[
+2\int |u|^2e^{-\phi}(1+|z|^2)^{-2}dV\le B_0.
+\tag{W5}
+\]">\[
+2\int |u|^2e^{-\phi}(1+|z|^2)^{-2}dV\le B_0.
+\tag{W5}
+\]</span>
+<p>Weights use their ordinary extended Lebesgue integrals; a null singular set does not change them. If <span class="math" data-index="268" data-tex="\(\phi\equiv-\infty\)">\(\phi\equiv-\infty\)</span>, finite weighted data must be zero almost everywhere and the zero solution gives the immediate extended case.</p>
+<p>The exact Hilbert input is <a href="AN02-L043.html#a-representing-vector-in-hilbert-space">L043, Lemma 1.1</a>: every continuous linear functional on a complex Hilbert space is an inner product with a unique representing vector of the same norm. Its full parallelogram/projection argument was read. The integration/completeness input is <a href="prerequisites/banach-foundation-bridges.html">the written Lebesgue foundations</a>, §§15.0–15.3 and §16.4. The <a href="AN02-L140.html#UE2">local PSH smoothing argument, L140 UE2</a>, proves that positive radial convolutions are smooth PSH functions, recover the actual upper semicontinuous values, and converge in local integral norm. We prove the needed monotonicity, weak extraction and differential-operator estimates below.</p>
+<h2 id="w3-the-weighted-identity-on-compact-smooth-forms">W3. The weighted identity on compact smooth forms</h2>
+<p>Let <span class="math" data-index="269" data-tex="\(H_0=L^2(e^{-\phi}dV)\)">\(H_0=L^2(e^{-\phi}dV)\)</span>, <span class="math" data-index="270" data-tex="\(H_1=H_0^n\)">\(H_1=H_0^n\)</span>, and <span class="math" data-index="271" data-tex="\(H_2=H_0^{\binom n2}\)">\(H_2=H_0^{\binom n2}\)</span>. Formally set</p>
+<span class="math math-display" id="eq-W6" data-index="272" data-tex="\[
+Ta=(\bar\partial_j a)_j,\qquad
+(Sg)_{jk}=\bar\partial_k g_j-\bar\partial_j g_k\quad(j&lt;k),
+\qquad T^*g=-\sum_j\delta_jg_j,
+\quad\delta_j=\partial_j-\phi_j.
+\tag{W6}
+\]">\[
+Ta=(\bar\partial_j a)_j,\qquad
+(Sg)_{jk}=\bar\partial_k g_j-\bar\partial_j g_k\quad(j&lt;k),
+\qquad T^*g=-\sum_j\delta_jg_j,
+\quad\delta_j=\partial_j-\phi_j.
+\tag{W6}
+\]</span>
+<p>The stars here agree with the weighted integration-by-parts adjoint: for compactly supported smooth coefficients,</p>
+<span class="math math-display" id="eq-W7" data-index="273" data-tex="\[
+(\bar\partial_j a,b)_\phi=-(a,\delta_jb)_\phi.
+\tag{W7}
+\]">\[
+(\bar\partial_j a,b)_\phi=-(a,\delta_jb)_\phi.
+\tag{W7}
+\]</span>
+<p>The real weight and the two conjugate Wirtinger operators account for the displayed sign. Mixed derivatives commute and</p>
+<span class="math math-display" id="eq-W8" data-index="274" data-tex="\[
+[\delta_j,\bar\partial_k]=\phi_{j\bar k}.
+\tag{W8}
+\]">\[
+[\delta_j,\bar\partial_k]=\phi_{j\bar k}.
+\tag{W8}
+\]</span>
+<p>For <span class="math" data-index="275" data-tex="\(g\in C_c^\infty(\mathbb C^n)^n\)">\(g\in C_c^\infty(\mathbb C^n)^n\)</span>, expansion gives the exact identity</p>
+<span class="math math-display" id="eq-W9" data-index="276" data-tex="\[
+\|T^*g\|_\phi^2+\|Sg\|_\phi^2
+=\sum_{j,k}\|\bar\partial_k g_j\|_\phi^2
+ +\int\sum_{j,k}\phi_{j\bar k}g_j\overline{g_k}\,e^{-\phi}dV.
+\tag{W9}
+\]">\[
+\|T^*g\|_\phi^2+\|Sg\|_\phi^2
+=\sum_{j,k}\|\bar\partial_k g_j\|_\phi^2
+ +\int\sum_{j,k}\phi_{j\bar k}g_j\overline{g_k}\,e^{-\phi}dV.
+\tag{W9}
+\]</span>
+<p>Here are the cross-term details. Summing both orientations in the square of each antisymmetric coefficient gives</p>
+<span class="math math-display" id="eq-W10" data-index="277" data-tex="\[
+\|Sg\|_\phi^2
+=\sum_{j,k}\|\bar\partial_k g_j\|_\phi^2
+ -\sum_{j,k}(\bar\partial_k g_j,\bar\partial_j g_k)_\phi.
+\tag{W10}
+\]">\[
+\|Sg\|_\phi^2
+=\sum_{j,k}\|\bar\partial_k g_j\|_\phi^2
+ -\sum_{j,k}(\bar\partial_k g_j,\bar\partial_j g_k)_\phi.
+\tag{W10}
+\]</span>
+<p>The last sum is real: swapping <span class="math" data-index="278" data-tex="\(j,k\)">\(j,k\)</span> conjugates each term. On the other hand,</p>
+<span class="math math-display" id="eq-W11" data-index="279" data-tex="\[
+\begin{aligned}
+\sum_{j,k}(\delta_jg_j,\delta_kg_k)_\phi
+&amp;=-\sum_{j,k}(\bar\partial_k\delta_jg_j,g_k)_\phi\\
+&amp;=\sum_{j,k}(\bar\partial_k g_j,\bar\partial_j g_k)_\phi
+  +\sum_{j,k}(\phi_{j\bar k}g_j,g_k)_\phi.
+\end{aligned}
+\tag{W11}
+\]">\[
+\begin{aligned}
+\sum_{j,k}(\delta_jg_j,\delta_kg_k)_\phi
+&amp;=-\sum_{j,k}(\bar\partial_k\delta_jg_j,g_k)_\phi\\
+&amp;=\sum_{j,k}(\bar\partial_k g_j,\bar\partial_j g_k)_\phi
+  +\sum_{j,k}(\phi_{j\bar k}g_j,g_k)_\phi.
+\end{aligned}
+\tag{W11}
+\]</span>
+<p>The first equality uses (W7) with the adjoint of <span class="math" data-index="280" data-tex="\(\delta_k\)">\(\delta_k\)</span>; the second uses (W8) and then (W7) again. Adding (W10) cancels the cross terms and proves (W9). Positivity of the Levi matrix now gives</p>
+<span class="math math-display" id="eq-W12" data-index="281" data-tex="\[
+\int\kappa_\phi|g|^2e^{-\phi}dV
+\le\|T^*g\|_\phi^2+\|Sg\|_\phi^2.
+\tag{W12}
+\]">\[
+\int\kappa_\phi|g|^2e^{-\phi}dV
+\le\|T^*g\|_\phi^2+\|Sg\|_\phi^2.
+\tag{W12}
+\]</span>
+<p>The factor for two-form coefficients is exactly one over unordered pairs, or one-half over all ordered pairs. This convention keeps the sharp constant in (W3).</p>
+<p><a id="joint-graph-domain-approximation"></a></p>
+<h2 id="w4-passing-the-estimate-to-the-joint-graph-domain">W4. Passing the estimate to the joint graph domain</h2>
+<p>Use the maximal distributional domains</p>
+<span class="math math-display" id="eq-W13" data-index="282" data-tex="\[
+\mathcal D=\{g\in H_1:T^*g\in H_0,\ Sg\in H_2\}.
+\tag{W13}
+\]">\[
+\mathcal D=\{g\in H_1:T^*g\in H_0,\ Sg\in H_2\}.
+\tag{W13}
+\]</span>
+<p>Multiplication by the continuous coefficients of <span class="math" data-index="283" data-tex="\(\delta_j\)">\(\delta_j\)</span> and differentiation make sense in distributions, because weighted square-integrable functions are locally square integrable. We prove that every <span class="math" data-index="284" data-tex="\(g\in\mathcal D\)">\(g\in\mathcal D\)</span> is approximated by compactly supported smooth forms in the three norms <span class="math" data-index="285" data-tex="\(\|g\|_\phi,\|T^*g\|_\phi,\|Sg\|_\phi\)">\(\|g\|_\phi,\|T^*g\|_\phi,\|Sg\|_\phi\)</span>.</p>
+<p>First choose a smooth real cutoff <span class="math" data-index="286" data-tex="\(\chi\)">\(\chi\)</span>, equal to one near the origin, zero outside a fixed ball, and bounded by one, and set <span class="math" data-index="287" data-tex="\(\chi_R(z)=\chi(z/R)\)">\(\chi_R(z)=\chi(z/R)\)</span>. Products obey</p>
+<span class="math math-display" id="eq-W14" data-index="288" data-tex="\[
+T^*(\chi_Rg)=\chi_RT^*g-\sum_j(\partial_j\chi_R)g_j,
+\quad
+S(\chi_Rg)=\chi_RSg+(\bar\partial_k\chi_R)g_j-(\bar\partial_j\chi_R)g_k.
+\tag{W14}
+\]">\[
+T^*(\chi_Rg)=\chi_RT^*g-\sum_j(\partial_j\chi_R)g_j,
+\quad
+S(\chi_Rg)=\chi_RSg+(\bar\partial_k\chi_R)g_j-(\bar\partial_j\chi_R)g_k.
+\tag{W14}
+\]</span>
+<p>The new coefficient derivatives have sup norm <span class="math" data-index="289" data-tex="\(O(R^{-1})\)">\(O(R^{-1})\)</span>. Their weighted <span class="math" data-index="290" data-tex="\(L^2\)">\(L^2\)</span> norms are thus at most <span class="math" data-index="291" data-tex="\(O(R^{-1})\|g\|_\phi\)">\(O(R^{-1})\|g\|_\phi\)</span>, with constants depending only on the fixed cutoff and dimension. Dominated convergence handles the terms multiplied by <span class="math" data-index="292" data-tex="\(\chi_R\)">\(\chi_R\)</span>. Consequently <span class="math" data-index="293" data-tex="\(\chi_Rg\to g\)">\(\chi_Rg\to g\)</span> in the three graph norms.</p>
+<p>Next take a compactly supported member <span class="math" data-index="294" data-tex="\(g\)">\(g\)</span> of <span class="math" data-index="295" data-tex="\(\mathcal D\)">\(\mathcal D\)</span>, and a nonnegative smooth convolution kernel <span class="math" data-index="296" data-tex="\(\rho_\varepsilon\)">\(\rho_\varepsilon\)</span> of integral one and radius <span class="math" data-index="297" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. All supports stay in one fixed compact neighborhood. The weight is bounded above and below there by positive constants. Ordinary local <span class="math" data-index="298" data-tex="\(L^2\)">\(L^2\)</span> convolution convergence therefore gives weighted convergence of <span class="math" data-index="299" data-tex="\(g*\rho_\varepsilon\)">\(g*\rho_\varepsilon\)</span> to <span class="math" data-index="300" data-tex="\(g\)">\(g\)</span>. The constant-coefficient operator <span class="math" data-index="301" data-tex="\(S\)">\(S\)</span> commutes with convolution, so its convergence is identical. For the variable-coefficient adjoint,</p>
+<span class="math math-display" id="eq-W15" data-index="302" data-tex="\[
+T^*(g*\rho_\varepsilon)
+=(T^*g)*\rho_\varepsilon
+ +\sum_j\left[\phi_j(g_j*\rho_\varepsilon)
+                    -(\phi_jg_j)*\rho_\varepsilon\right].
+\tag{W15}
+\]">\[
+T^*(g*\rho_\varepsilon)
+=(T^*g)*\rho_\varepsilon
+ +\sum_j\left[\phi_j(g_j*\rho_\varepsilon)
+                    -(\phi_jg_j)*\rho_\varepsilon\right].
+\tag{W15}
+\]</span>
+<p>For a continuous coefficient <span class="math" data-index="303" data-tex="\(a\)">\(a\)</span>, the bracket at <span class="math" data-index="304" data-tex="\(z\)">\(z\)</span> is the integral of <span class="math" data-index="305" data-tex="\((a(z)-a(z-h))g(z-h)\rho_\varepsilon(h)\)">\((a(z)-a(z-h))g(z-h)\rho_\varepsilon(h)\)</span>. On the common compact neighborhood its <span class="math" data-index="306" data-tex="\(L^2\)">\(L^2\)</span> norm is at most <span class="math" data-index="307" data-tex="\(\omega_a(\varepsilon)\|g\|_2\)">\(\omega_a(\varepsilon)\|g\|_2\)</span>, by the integral triangle inequality and translation invariance; <span class="math" data-index="308" data-tex="\(\omega_a\)">\(\omega_a\)</span> is its modulus of continuity there. This tends to zero. Weighted convergence follows from compact comparability. Each approximant is smooth with compact support, and the three graph convergences are proved. Taking a diagonal choice after the cutoff step gives the stated approximation for general <span class="math" data-index="309" data-tex="\(g\)">\(g\)</span>.</p>
+<p>Apply (W12) to those approximants. On each compact set, the continuous factor <span class="math" data-index="310" data-tex="\(\kappa_\phi\)">\(\kappa_\phi\)</span> is bounded, and local strong <span class="math" data-index="311" data-tex="\(L^2\)">\(L^2\)</span> convergence passes its integral to the limit. The graph-norm right sides converge globally. Enlarge the compact sets and use monotone convergence to obtain (W12) for every <span class="math" data-index="312" data-tex="\(g\in\mathcal D\)">\(g\in\mathcal D\)</span>, even if its curvature-weighted norm was not known finite beforehand. This proves the actual joint-domain estimate, not only its formal compact-support version.</p>
+<h2 id="w5-remove-the-orthogonal-test-component-and-represent-the-functional">W5. Remove the orthogonal test component and represent the functional</h2>
+<p>For this step assume additionally <span class="math" data-index="313" data-tex="\(f\in H_1\)">\(f\in H_1\)</span>. Let</p>
+<span class="math math-display" id="eq-W16" data-index="314" data-tex="\[
+N=\{g\in H_1:Sg=0\text{ distributionally}\}.
+\tag{W16}
+\]">\[
+N=\{g\in H_1:Sg=0\text{ distributionally}\}.
+\tag{W16}
+\]</span>
+<p>It is closed: convergence in <span class="math" data-index="315" data-tex="\(H_1\)">\(H_1\)</span> gives local square convergence, hence distributional convergence of each tested derivative. The data lie in <span class="math" data-index="316" data-tex="\(N\)">\(N\)</span>. A closed subspace of a Hilbert space has an orthogonal projection. To justify it at exactly the used generality, minimize the distance from a vector to that subspace. The parallelogram calculation in L043 Lemma 1.1 makes every minimizing sequence Cauchy; completeness and closedness give the minimizing vector. Varying it by real and imaginary multiples of any subspace vector proves orthogonality. This gives the unique decomposition and a projection of norm at most one.</p>
+<p>Take a compactly supported smooth test form <span class="math" data-index="317" data-tex="\(g\)">\(g\)</span>, and write <span class="math" data-index="318" data-tex="\(g=G+J\)">\(g=G+J\)</span>, with <span class="math" data-index="319" data-tex="\(G\in N\)">\(G\in N\)</span>, <span class="math" data-index="320" data-tex="\(J\in N^\perp\)">\(J\in N^\perp\)</span>. For every smooth compact scalar <span class="math" data-index="321" data-tex="\(\psi\)">\(\psi\)</span>, the form <span class="math" data-index="322" data-tex="\(T\psi\)">\(T\psi\)</span> lies in <span class="math" data-index="323" data-tex="\(N\)">\(N\)</span>, since mixed Wirtinger derivatives commute. Orthogonality gives <span class="math" data-index="324" data-tex="\((J,T\psi)_\phi=0\)">\((J,T\psi)_\phi=0\)</span>, hence <span class="math" data-index="325" data-tex="\(T^*J=0\)">\(T^*J=0\)</span> as a distribution. To justify this statement in ordinary distributional tests when the weight is only <span class="math" data-index="326" data-tex="\(C^2\)">\(C^2\)</span>, first extend these compact scalar tests to <span class="math" data-index="327" data-tex="\(C^1\)">\(C^1\)</span> by local convolution convergence. For a smooth ordinary test <span class="math" data-index="328" data-tex="\(\eta\)">\(\eta\)</span>, use <span class="math" data-index="329" data-tex="\(\psi=e^\phi\eta\)">\(\psi=e^\phi\eta\)</span>, which is compactly supported <span class="math" data-index="330" data-tex="\(C^2\)">\(C^2\)</span>. Weighted integration by parts cancels <span class="math" data-index="331" data-tex="\(e^\phi\)">\(e^\phi\)</span>, giving the ordinary test for <span class="math" data-index="332" data-tex="\(-\sum_j\partial_jJ_j+\phi_jJ_j\)">\(-\sum_j\partial_jJ_j+\phi_jJ_j\)</span>. Thus the asserted distribution really vanishes. Thus <span class="math" data-index="333" data-tex="\(T^*G=T^*g\in H_0\)">\(T^*G=T^*g\in H_0\)</span> and <span class="math" data-index="334" data-tex="\(SG=0\)">\(SG=0\)</span>; in particular <span class="math" data-index="335" data-tex="\(G\in\mathcal D\)">\(G\in\mathcal D\)</span>. The extended estimate gives</p>
+<span class="math math-display" id="eq-W17" data-index="336" data-tex="\[
+\int\kappa_\phi|G|^2e^{-\phi}dV\le\|T^*g\|_\phi^2.
+\tag{W17}
+\]">\[
+\int\kappa_\phi|G|^2e^{-\phi}dV\le\|T^*g\|_\phi^2.
+\tag{W17}
+\]</span>
+<p>Since <span class="math" data-index="337" data-tex="\(f\in N\)">\(f\in N\)</span>, <span class="math" data-index="338" data-tex="\((f,g)_\phi=(f,G)_\phi\)">\((f,g)_\phi=(f,G)_\phi\)</span>. Weighted Cauchy–Schwarz using (W2) and (W17) yields</p>
+<span class="math math-display" id="eq-W18" data-index="339" data-tex="\[
+|(f,g)_\phi|^2\le B\|T^*g\|_\phi^2.
+\tag{W18}
+\]">\[
+|(f,g)_\phi|^2\le B\|T^*g\|_\phi^2.
+\tag{W18}
+\]</span>
+<p>Define a linear functional on the range of these adjoint tests by</p>
+<span class="math math-display" id="eq-W19" data-index="340" data-tex="\[
+\Lambda(T^*g)=(g,f)_\phi.
+\tag{W19}
+\]">\[
+\Lambda(T^*g)=(g,f)_\phi.
+\tag{W19}
+\]</span>
+<p>If two tests have the same adjoint image, (W18) makes their difference's pairing zero, so the definition is independent of the chosen test. Its norm is at most <span class="math" data-index="341" data-tex="\(\sqrt B\)">\(\sqrt B\)</span>. Extend it by continuity to the closure of this range, and then to <span class="math" data-index="342" data-tex="\(H_0\)">\(H_0\)</span> by its orthogonal projection, just constructed. The norm bound is retained. L043 Lemma 1.1 gives <span class="math" data-index="343" data-tex="\(u\in H_0\)">\(u\in H_0\)</span> with <span class="math" data-index="344" data-tex="\(\Lambda(h)=(h,u)_\phi\)">\(\Lambda(h)=(h,u)_\phi\)</span>, <span class="math" data-index="345" data-tex="\(\|u\|_\phi\le\sqrt B\)">\(\|u\|_\phi\le\sqrt B\)</span>. Conjugating (W19) gives</p>
+<span class="math math-display" id="eq-W20" data-index="346" data-tex="\[
+(f,g)_\phi=(u,T^*g)_\phi.
+\tag{W20}
+\]">\[
+(f,g)_\phi=(u,T^*g)_\phi.
+\tag{W20}
+\]</span>
+<p>This is exactly the weak equation <span class="math" data-index="347" data-tex="\(Tu=f\)">\(Tu=f\)</span>. To recover ordinary distributional tests despite only <span class="math" data-index="348" data-tex="\(C^2\)">\(C^2\)</span> regularity of the weight, extend (W20) to compact <span class="math" data-index="349" data-tex="\(C^1\)">\(C^1\)</span> coefficient tests by convolution convergence on a fixed compact set. For any ordinary smooth test <span class="math" data-index="350" data-tex="\(\eta\)">\(\eta\)</span>, select the single coefficient <span class="math" data-index="351" data-tex="\(g_j=e^\phi\eta\)">\(g_j=e^\phi\eta\)</span>, which is compactly supported <span class="math" data-index="352" data-tex="\(C^2\)">\(C^2\)</span>. Its weighted pairing cancels <span class="math" data-index="353" data-tex="\(e^\phi\)">\(e^\phi\)</span>; the adjoint expression is <span class="math" data-index="354" data-tex="\(-\partial_j(e^\phi\eta)+\phi_j e^\phi\eta=-e^\phi\partial_j\eta\)">\(-\partial_j(e^\phi\eta)+\phi_j e^\phi\eta=-e^\phi\partial_j\eta\)</span>. Thus (W20) states the distributional derivative equation with the correct conjugate Wirtinger operator. All other coefficients are zero. This proves (W3) under the temporary extra assumption <span class="math" data-index="355" data-tex="\(f\in H_1\)">\(f\in H_1\)</span>.</p>
+<p><a id="local-weak-extraction"></a></p>
+<h2 id="w6-a-precise-local-weak-limit-construction">W6. A precise local weak-limit construction</h2>
+<p>We will use the following elementary Hilbert consequence. If <span class="math" data-index="356" data-tex="\(u_m\)">\(u_m\)</span> has uniformly bounded ordinary <span class="math" data-index="357" data-tex="\(L^2\)">\(L^2\)</span> norms on every fixed ball, there is a subsequence converging weakly in <span class="math" data-index="358" data-tex="\(L^2\)">\(L^2\)</span> on every fixed ball to one <span class="math" data-index="359" data-tex="\(u\in L^2_{\rm loc}\)">\(u\in L^2_{\rm loc}\)</span>. Here is a proof. On a ball choose a countable dense set of finite-grid step functions on rational rectangles, restricted to the ball. Density follows by approximating measurable sets in measure by finite unions of rectangles, then truncating and rounding real and imaginary values; these are the ordinary Lebesgue approximation facts in the linked foundations. Take the pairings <span class="math" data-index="360" data-tex="\((h,u_m)\)">\((h,u_m)\)</span>, linear in the test <span class="math" data-index="361" data-tex="\(h\)">\(h\)</span> under our convention. Each is bounded. Successive subsequences and a diagonal selection make all these pairings converge. The common norm bound and density extend their limits uniquely to a bounded linear functional on that ball's Hilbert space. L043 Lemma 1.1 represents it by a vector, giving weak convergence against every <span class="math" data-index="362" data-tex="\(L^2\)">\(L^2\)</span> test. Repeat on nested integer-radius balls and diagonalize once more. Pairings on their overlaps coincide, so their representing functions agree almost everywhere and define one local function.</p>
+<p>Weak convergence makes the norm lower semicontinuous. Indeed for a unit vector <span class="math" data-index="363" data-tex="\(h\)">\(h\)</span>, <span class="math" data-index="364" data-tex="\(|(u,h)|=\lim|(u_m,h)|\le\liminf\|u_m\|\)">\(|(u,h)|=\lim|(u_m,h)|\le\liminf\|u_m\|\)</span>; take the supremum over unit vectors, using <span class="math" data-index="365" data-tex="\(h=u/\|u\|\)">\(h=u/\|u\|\)</span> when <span class="math" data-index="366" data-tex="\(u\ne0\)">\(u\ne0\)</span>. The same conclusion applies to a bounded continuous nonnegative weight on a fixed ball: multiplication by its square root preserves weak convergence, because its adjoint is the same bounded multiplication. Finally, the weak local limit passes distributional first derivatives to the limit by pairing with compactly supported smooth derivative tests. These facts provide every weak-limit step used below.</p>
+<h2 id="w7-the-data-need-only-the-stated-curvature-weight">W7. The data need only the stated curvature weight</h2>
+<p>We construct a nonnegative smooth convex <span class="math" data-index="367" data-tex="\(\Phi\)">\(\Phi\)</span> growing quickly enough that <span class="math" data-index="368" data-tex="\(\kappa_\phi e^{-\varepsilon\Phi}\)">\(\kappa_\phi e^{-\varepsilon\Phi}\)</span> is bounded for every <span class="math" data-index="369" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. Let</p>
+<span class="math math-display" id="eq-W21" data-index="370" data-tex="\[
+L_m=\max_{|z|\le m+1}\log^+\kappa_\phi(z),\qquad
+Q_m=m(1+L_m)\quad(m=1,2,\ldots).
+\tag{W21}
+\]">\[
+L_m=\max_{|z|\le m+1}\log^+\kappa_\phi(z),\qquad
+Q_m=m(1+L_m)\quad(m=1,2,\ldots).
+\tag{W21}
+\]</span>
+<p>These finite nondecreasing numbers use continuity and strict positivity of <span class="math" data-index="371" data-tex="\(\kappa_\phi\)">\(\kappa_\phi\)</span>. Choose a smooth nonnegative convex increasing function <span class="math" data-index="372" data-tex="\(b\)">\(b\)</span> on <span class="math" data-index="373" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, zero on <span class="math" data-index="374" data-tex="\(( -\infty,0]\)">\(( -\infty,0]\)</span>, with <span class="math" data-index="375" data-tex="\(b(1)=1\)">\(b(1)=1\)</span>. For an explicit construction integrate twice a nonnegative smooth function supported in <span class="math" data-index="376" data-tex="\((0,1)\)">\((0,1)\)</span>, and divide by its value at 1; its second derivative is nonnegative, and it is affine beyond 1. Define, for <span class="math" data-index="377" data-tex="\(s\ge0\)">\(s\ge0\)</span>,</p>
+<span class="math math-display" id="eq-W22" data-index="378" data-tex="\[
+P(s)=Q_1+\sum_{m\ge1}Q_m b(s-(m-1)),\qquad
+\Phi(z)=P(1+|z|^2).
+\tag{W22}
+\]">\[
+P(s)=Q_1+\sum_{m\ge1}Q_m b(s-(m-1)),\qquad
+\Phi(z)=P(1+|z|^2).
+\tag{W22}
+\]</span>
+<p>On each bounded interval only finitely many nonzero summands occur. The endpoint flatness of <span class="math" data-index="379" data-tex="\(b\)">\(b\)</span> makes <span class="math" data-index="380" data-tex="\(P\)">\(P\)</span> smooth. It is nonnegative, increasing and convex. Its composition with <span class="math" data-index="381" data-tex="\(1+|z|^2\)">\(1+|z|^2\)</span> is smooth convex on real space, and its Levi form is nonnegative, as follows by differentiating. If <span class="math" data-index="382" data-tex="\(m\le|z|\le m+1\)">\(m\le|z|\le m+1\)</span>, then <span class="math" data-index="383" data-tex="\(1+|z|^2-(m-1)\ge1\)">\(1+|z|^2-(m-1)\ge1\)</span>, so <span class="math" data-index="384" data-tex="\(\Phi(z)\ge Q_m\ge mL_m\)">\(\Phi(z)\ge Q_m\ge mL_m\)</span>. For any fixed <span class="math" data-index="385" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and all <span class="math" data-index="386" data-tex="\(m\ge1/\varepsilon\)">\(m\ge1/\varepsilon\)</span>,</p>
+<span class="math math-display" id="eq-W23" data-index="387" data-tex="\[
+\log\kappa_\phi(z)-\varepsilon\Phi(z)\le L_m-\varepsilon mL_m\le0.
+\tag{W23}
+\]">\[
+\log\kappa_\phi(z)-\varepsilon\Phi(z)\le L_m-\varepsilon mL_m\le0.
+\tag{W23}
+\]</span>
+<p>The remaining bounded ball supplies a finite bound by continuity. Thus the asserted boundedness holds globally. Set <span class="math" data-index="388" data-tex="\(\phi_\varepsilon=\phi+\varepsilon\Phi\)">\(\phi_\varepsilon=\phi+\varepsilon\Phi\)</span>, so its least Levi eigenvalue <span class="math" data-index="389" data-tex="\(\kappa_\varepsilon\ge\kappa_\phi\)">\(\kappa_\varepsilon\ge\kappa_\phi\)</span>. We have</p>
+<span class="math math-display" id="eq-W24" data-index="390" data-tex="\[
+\int|f|^2e^{-\phi_\varepsilon}dV
+\le\sup_z(\kappa_\phi e^{-\varepsilon\Phi})\,B&lt;\infty,
+\qquad
+\int |f|^2e^{-\phi_\varepsilon}\kappa_\varepsilon^{-1}dV\le B.
+\tag{W24}
+\]">\[
+\int|f|^2e^{-\phi_\varepsilon}dV
+\le\sup_z(\kappa_\phi e^{-\varepsilon\Phi})\,B&lt;\infty,
+\qquad
+\int |f|^2e^{-\phi_\varepsilon}\kappa_\varepsilon^{-1}dV\le B.
+\tag{W24}
+\]</span>
+<p>The already proved case supplies <span class="math" data-index="391" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> with the same equations and <span class="math" data-index="392" data-tex="\(\int|u_\varepsilon|^2e^{-\phi-\varepsilon\Phi}\le B\)">\(\int|u_\varepsilon|^2e^{-\phi-\varepsilon\Phi}\le B\)</span>. For <span class="math" data-index="393" data-tex="\(0&lt;\varepsilon\le1\)">\(0&lt;\varepsilon\le1\)</span>, the continuous weight <span class="math" data-index="394" data-tex="\(e^{-\phi-\Phi}\)">\(e^{-\phi-\Phi}\)</span> has a positive lower bound on any fixed ball. The solutions are therefore locally uniformly bounded in ordinary <span class="math" data-index="395" data-tex="\(L^2\)">\(L^2\)</span>. Use W6 along <span class="math" data-index="396" data-tex="\(\varepsilon=1/m\)">\(\varepsilon=1/m\)</span> to obtain a weak local limit <span class="math" data-index="397" data-tex="\(u\)">\(u\)</span>, with <span class="math" data-index="398" data-tex="\(Tu=f\)">\(Tu=f\)</span>.</p>
+<p>For fixed <span class="math" data-index="399" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, eventually <span class="math" data-index="400" data-tex="\(\varepsilon\le\delta\)">\(\varepsilon\le\delta\)</span>, and nonnegativity of <span class="math" data-index="401" data-tex="\(\Phi\)">\(\Phi\)</span> gives <span class="math" data-index="402" data-tex="\(e^{-\phi-\delta\Phi}\le e^{-\phi-\varepsilon\Phi}\)">\(e^{-\phi-\delta\Phi}\le e^{-\phi-\varepsilon\Phi}\)</span>. Weighted weak lower semicontinuity on each ball gives the same bound <span class="math" data-index="403" data-tex="\(B\)">\(B\)</span> for its <span class="math" data-index="404" data-tex="\(u\)">\(u\)</span> integral. Enlarge the balls to all space, then let <span class="math" data-index="405" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>. Monotone convergence gives <span class="math" data-index="406" data-tex="\(\int|u|^2e^{-\phi}\le B\)">\(\int|u|^2e^{-\phi}\le B\)</span>. This proves Theorem W1 with exactly its stated hypotheses.</p>
+<p><a id="psh-weight-regularization"></a></p>
+<h2 id="w8-general-psh-weights-and-the-exact-factor-two">W8. General PSH weights and the exact factor two</h2>
+<p>First let <span class="math" data-index="407" data-tex="\(\phi\)">\(\phi\)</span> be smooth PSH. Direct Wirtinger differentiation gives, with <span class="math" data-index="408" data-tex="\(r^2=|z|^2\)">\(r^2=|z|^2\)</span>,</p>
+<span class="math math-display" id="eq-W25" data-index="409" data-tex="\[
+\partial_j\bar\partial_k\log(1+r^2)
+=\frac{\delta_{jk}}{1+r^2}-\frac{\overline z_j z_k}{(1+r^2)^2},
+\qquad
+\sum_{j,k}\partial_j\bar\partial_k\log(1+r^2)\xi_j\overline{\xi_k}
+\ge\frac{|\xi|^2}{(1+r^2)^2}.
+\tag{W25}
+\]">\[
+\partial_j\bar\partial_k\log(1+r^2)
+=\frac{\delta_{jk}}{1+r^2}-\frac{\overline z_j z_k}{(1+r^2)^2},
+\qquad
+\sum_{j,k}\partial_j\bar\partial_k\log(1+r^2)\xi_j\overline{\xi_k}
+\ge\frac{|\xi|^2}{(1+r^2)^2}.
+\tag{W25}
+\]</span>
+<p>The final inequality is Cauchy–Schwarz applied to the rank-one term. The weight <span class="math" data-index="410" data-tex="\(\psi=\phi+2\log(1+r^2)\)">\(\psi=\phi+2\log(1+r^2)\)</span> is strictly PSH with least Levi eigenvalue at least <span class="math" data-index="411" data-tex="\(2(1+r^2)^{-2}\)">\(2(1+r^2)^{-2}\)</span>. Theorem W1 therefore solves the equation and gives (W5), since</p>
+<span class="math math-display" id="eq-W26" data-index="412" data-tex="\[
+e^{-\psi}\kappa_\psi^{-1}
+\le\tfrac12 e^{-\phi},\qquad
+e^{-\psi}=e^{-\phi}(1+r^2)^{-2}.
+\tag{W26}
+\]">\[
+e^{-\psi}\kappa_\psi^{-1}
+\le\tfrac12 e^{-\phi},\qquad
+e^{-\psi}=e^{-\phi}(1+r^2)^{-2}.
+\tag{W26}
+\]</span>
+<p>Now let <span class="math" data-index="413" data-tex="\(\phi\)">\(\phi\)</span> be an arbitrary nontrivial global PSH function. UE2 makes it real subharmonic and locally integrable. Choose a smooth nonnegative normalized radial kernel and set <span class="math" data-index="414" data-tex="\(\phi_\varepsilon=\phi*\rho_\varepsilon\)">\(\phi_\varepsilon=\phi*\rho_\varepsilon\)</span>. UE2 proves smoothness and PSH. We use a decreasing radial kernel expressed as positive ball averages; ball-mean monotonicity and the passage between two fixed ball radii by local <span class="math" data-index="415" data-tex="\(L^1\)">\(L^1\)</span> approximation are proved in <a href="AN02-L141.html">L141 D5</a>. Choose a normalized <span class="math" data-index="416" data-tex="\(\exp(-1/(1-|a|^2))\)">\(\exp(-1/(1-|a|^2))\)</span> on <span class="math" data-index="417" data-tex="\(|a|&lt;1\)">\(|a|&lt;1\)</span>, zero outside. If its radial density is <span class="math" data-index="418" data-tex="\(q(r)\)">\(q(r)\)</span>, then <span class="math" data-index="419" data-tex="\(q(s)=\int_s^1[-q&#x27;(r)]dr\)">\(q(s)=\int_s^1[-q&#x27;(r)]dr\)</span>; multiplying by the ball volume shows that convolution is the average of normalized ball means with positive weights <span class="math" data-index="420" data-tex="\([-q&#x27;(r)]|B(0,r)|dr\)">\([-q&#x27;(r)]|B(0,r)|dr\)</span> of total one. Thus <span class="math" data-index="421" data-tex="\(\phi_\varepsilon\)">\(\phi_\varepsilon\)</span> is nondecreasing with <span class="math" data-index="422" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, and <span class="math" data-index="423" data-tex="\(\phi_\varepsilon\ge\phi\)">\(\phi_\varepsilon\ge\phi\)</span>. Upper semicontinuity at the center and the ball-mean inequality show</p>
+<span class="math math-display" id="eq-W27" data-index="424" data-tex="\[
+\phi_\varepsilon\downarrow\phi\quad(\varepsilon\downarrow0)
+\quad\text{at every point, including values }-\infty.
+\tag{W27}
+\]">\[
+\phi_\varepsilon\downarrow\phi\quad(\varepsilon\downarrow0)
+\quad\text{at every point, including values }-\infty.
+\tag{W27}
+\]</span>
+<p>For example, at a minus-infinite center all nearby values are below any given finite bound once the neighborhood is small, which gives the required upper limit for the convolution. The mean inequality supplies the lower bound at a finite center.</p>
+<p>The smooth case gives solutions <span class="math" data-index="425" data-tex="\(u_\varepsilon\)">\(u_\varepsilon\)</span> with</p>
+<span class="math math-display" id="eq-W28" data-index="426" data-tex="\[
+2\int |u_\varepsilon|^2e^{-\phi_\varepsilon}(1+r^2)^{-2}dV
+\le\int|f|^2e^{-\phi_\varepsilon}dV\le B_0.
+\tag{W28}
+\]">\[
+2\int |u_\varepsilon|^2e^{-\phi_\varepsilon}(1+r^2)^{-2}dV
+\le\int|f|^2e^{-\phi_\varepsilon}dV\le B_0.
+\tag{W28}
+\]</span>
+<p>For <span class="math" data-index="427" data-tex="\(\varepsilon\le1\)">\(\varepsilon\le1\)</span>, <span class="math" data-index="428" data-tex="\(\phi_\varepsilon\le\phi_1\)">\(\phi_\varepsilon\le\phi_1\)</span>, whose finite continuous values give positive lower bounds for the left weight on compact sets. Thus W6 supplies a weak local <span class="math" data-index="429" data-tex="\(L^2\)">\(L^2\)</span> limit <span class="math" data-index="430" data-tex="\(u\)">\(u\)</span> along a decreasing sequence of radii, with <span class="math" data-index="431" data-tex="\(Tu=f\)">\(Tu=f\)</span>. Fix <span class="math" data-index="432" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, compare the estimate with the continuous smaller weight <span class="math" data-index="433" data-tex="\(e^{-\phi_\delta}(1+r^2)^{-2}\)">\(e^{-\phi_\delta}(1+r^2)^{-2}\)</span>, pass by weighted weak lower semicontinuity on balls, and then enlarge the balls. Finally (W27) and monotone convergence let <span class="math" data-index="434" data-tex="\(\delta\downarrow0\)">\(\delta\downarrow0\)</span>, proving (W5). This proves Theorem W2 without smoothness, strictness, or an unmentioned finite-value assumption on <span class="math" data-index="435" data-tex="\(\phi\)">\(\phi\)</span>.</p>
+<h2 id="source-credit-and-current-scope">Source credit and current scope</h2>
+<p>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II</em> (1983 edition; second revised printing 1990; reprint 2005), §15.1, Theorems 15.1.1–15.1.2, printed pp. 271–274 (PDF pp.284–287), supplies these weighted existence targets. The proofs here are original. The operator-domain approximation, explicit auxiliary convex function and local weak-limit construction are written in full. The exact earlier Hilbert/integration/PSH inputs are linked at the beginning. Further learner examples, complete exercises and original illustrations accompany the completed lesson packet; this formal source does not claim the whole course or all downstream proofs are complete.</p>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/solving-the-cauchy-riemann-equations-with-a-weight.md" download>Download the complete lesson source</a>. Original proofs,examples,solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L144/weighted-dbar-existence-formal.md" download>weighted-dbar-existence-formal.md</a></li><li><a href="reproduce/L144/weighted-dbar-existence-learner.md" download>weighted-dbar-existence-learner.md</a></li><li><a href="reproduce/L144/make_figures144.py" download>make_figures144.py</a></li><li><a href="reproduce/L144/check_examples144.py" download>check_examples144.py</a></li><li><a href="reproduce/L144/independent-example-checks144.json" download>independent-example-checks144.json</a></li><li><a href="reproduce/L144/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L144/LICENSE.txt" download>LICENSE.txt</a></li><li><a href="reproduce/L144/DejaVu-font-license.txt" download>DejaVu-font-license.txt</a></li><li><a href="reproduce/L144/figures/geometry.json" download>figures/geometry.json</a></li><li><a href="reproduce/L144/figures/levi-curvature.png" download>figures/levi-curvature.png</a></li><li><a href="reproduce/L144/figures/levi-curvature.svg" download>figures/levi-curvature.svg</a></li><li><a href="reproduce/L144/figures/disk-solution-budget.png" download>figures/disk-solution-budget.png</a></li><li><a href="reproduce/L144/figures/disk-solution-budget.svg" download>figures/disk-solution-budget.svg</a></li></ul><p><a href="assets/mathjax/LICENSE">MathJax license</a> · <a href="sources.html">Course sources and terms</a></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

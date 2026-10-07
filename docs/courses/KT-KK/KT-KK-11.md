@@ -1,6 +1,6 @@
 # Unbounded Kasparov modules and spectral triples
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 An elliptic differential operator carries geometric information that its bounded transform largely forgets. The unbounded picture retains its domain, principal symbol and commutators, while still giving a class in KK-theory. We prove the passage to bounded cycles and the converse existence theorem. We then derive the connection and positivity estimates used to recognize unbounded products.
 

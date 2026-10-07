@@ -1,6 +1,6 @@
 # Graded C\*-algebras, Clifford algebras and graded Hilbert modules
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 Grading records which operators change parity. Two odd operators acquire a minus sign when exchanged, and this sign determines the tensor product used in KK-theory. Clifford algebras supply finite-dimensional models of this rule. Graded stabilization then places every countably generated coefficient module inside one standard graded module.
 

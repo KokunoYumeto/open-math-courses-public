@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-The coefficient \(q+1\) in the simplest spherical Hecke product counts intermediate lattices. In the sheaf calculation it comes from the two cohomology groups of a projective line. Passing between these descriptions requires retaining both the perverse shift and the Frobenius action on the top cohomology group. This lesson calculates that passage explicitly, then explains the precise statements of the weight-polynomial and Whittaker variants.
+The coefficient \(q+1\) in the simplest spherical Hecke product counts intermediate lattices. In the sheaf calculation it comes from the two cohomology groups of a projective line. Passing between these descriptions requires retaining both the perverse shift and the Frobenius action on the top cohomology group. This lesson calculates the point counts and proper-fibre traces explicitly, derives the corresponding IC identifications under a stated purity hypothesis, and proves the general Hall–Littlewood character transition. The remaining IC stalk and Whittaker comparisons are then stated with their hypotheses.
 
 ## 1. Frobenius, shifts and half twists
 
@@ -60,22 +60,27 @@ It vanishes outside \(\mathrm{Gr}^{\leq\lambda}\). Consequently, whenever these 
 
 ## 2. The quadratic cone in étale coefficients
 
-The small Schubert surfaces for \(SL_2\) and \(GL_2\) have the same singularity. Their two-stratum geometry, coordinates and resolution are proved in Orbits and Schubert varieties, §§4–5. We now check the IC calculation in étale coefficients, including characteristic two.
+The small Schubert surfaces for \(SL_2\) and \(GL_2\) have the same singularity. Their two-stratum geometry, coordinates and resolution are proved in Orbits and Schubert varieties, §§4–5. We now give the IC deduction in étale coefficients under explicit supported-purity comparisons, including the characteristic-two quotient geometry.
 
-The elementary étale inputs are exact finite pushforward and its geometric stalk formula, proved in Pushforward, pullback and finite morphisms, Theorem 4.1, and topological invariance, proved in its Theorem 6.2. The needed purity calculation can be made in two coordinates. Poincaré duality for curves, Lemma 4.2 computes
+The exact finite pushforward and geometric stalk formula are proved in Pushforward, pullback and finite morphisms, Theorem 4.1. Its Theorem 6.2 proves topological invariance. The additional purity comparisons used for the IC and exceptional-curve calculations are the following premise, at finite coefficients \(\Lambda_m=\mathbf Z/\ell^m\):
 
+**Purity premise (P12).** The plane origin has supported orientation
+\[
+i_{(0,0)}^!\Lambda_{m,\mathbf A^2}
+ =\Lambda_m(-2)[-4],
+\]
+given by the composite of the two coordinate Kummer orientations. For the exceptional curve \(D\) in the smooth cone resolution of §4,
+\[
+i_D^!\Lambda_m=\Lambda_{m,D}(-1)[-2],
+\]
+with forget-support map restricting to \(c_1(\mathcal O_D(-2))\). These identifications and their orientation maps commute with reduction in \(m\) and, for the split models, with geometric Frobenius. Their rational realization respects these supported triangles and closed restriction.
+
+The curve calculation in Poincaré duality for curves, Lemma 4.2 gives
 \[
 i_0^!E_{\mathbf A^1}=E(-1)[-2]
 \tag{2.0}
 \]
-
-from the punctured strict trait and the Kummer localization boundary. Pull that localization triangle back along \(\mathbf A^2\to\mathbf A^1\). Smooth base change and local acyclicity, Theorem 1.1 identifies the complementary open direct image, so the pulled-back triangle gives the same purity formula for a coordinate line in the plane. Compose exceptional restriction to that line with (2.0) on the line. Closed exceptional restrictions compose because sections supported on the point are sections supported on the line and then on the point; equivalently their adjunctions compose. This gives
-
-\[
-i_{(0,0)}^!E_{\mathbf A^2}=E(-2)[-4].
-\]
-
-The orientations come from compatible \(\mathbf Z/\ell^n\)-Kummer classes. In these calculations their cohomology groups are free of rank one with surjective transition maps. The inverse limits are therefore exact: compatible lifts can be chosen successively through those surjections, which kills the derived inverse-limit obstruction. Tensoring the resulting \(\mathbf Z_\ell\)-lines with \(E\) gives the displayed rational formulas. This bounded passage needs no general constructibility theorem or higher-dimensional duality theorem.
+from the punctured strict trait and its Kummer boundary. To pull that localization triangle along \(\mathbf A^2\to\mathbf A^1\), one must additionally compare the complementary open direct image. The curve calculation alone does not establish that comparison, or the line-bundle version used for \(D\). Those comparisons are included in (P12), whose general ground-field proof remains an input. Under (P12), the orientation lines are the reductions of free \(\mathbf Z_\ell\)-lines with surjective transitions, so inverse limit and tensoring with \(E\) give the displayed rational formulas without a derived-limit obstruction.
 
 Let
 
@@ -89,14 +94,14 @@ C=\operatorname{Spec}k[x,y,z]/(xy-z^2),
 
 where \(k\) is algebraically closed of any characteristic different from \(\ell\). The map is finite: its source algebra is generated by the integral elements \(u,v\), satisfying the displayed square equations. The complement of the vertex in \(C\) is smooth. If \(\operatorname{char}k\ne2\), this follows from the derivatives \(y,x,-2z\). If \(\operatorname{char}k=2\), the only point with \(x=y=0\) is the vertex, because \(z^2=xy\).
 
-**Proposition 2.1.** For rational étale coefficients,
+**Proposition 2.1 (conditional cone calculation).** Under the plane-origin part of (P12), for rational étale coefficients,
 
 \[
 \mathrm{IC}_C=E_C[2].
 \tag{2.2}
 \]
 
-With the constant Weil structure, this equality holds over \(\mathbf F_q\) for every \(q\).
+Under its Frobenius-compatible form, the equality also respects the constant Weil structure over \(\mathbf F_q\).
 
 **Proof.** First suppose the characteristic is odd. The involution \(\sigma(u,v)=(-u,-v)\) has quotient (2.1). To see the invariant algebra directly, a monomial \(u^iv^j\) is invariant exactly when \(i+j\) is even. If both exponents are even it is a monomial in \(x,y\); if both are odd, factor out \(z\). The sole relation is \(z^2=xy\), as the resulting even and odd monomial lists are linearly independent in \(k[u,v]\).
 
@@ -126,7 +131,7 @@ Here \(\pi_0\) is the finite map of the fibres at the origin, whose étale site 
 
 Yoneda proves the comparison, including its equivariance.
 
-The two-coordinate calculation gives \(i'^!E=E(-2)[-4]\). The involution acts as the identity on this one-dimensional orientation space. One can check this without a degree convention: the origin's orientation is the composite of the two supported Kummer orientations of the coordinate divisors. Replacing a coordinate \(u\) by \(-u\) changes its Kummer class by that of the constant \(-1\); the latter has an \(\ell^n\)-th root in \(k\) and hence zero Kummer class. Each orientation, and therefore their composite, is fixed. Taking the summand in (2.3) and (2.4) gives
+The plane-origin hypothesis gives \(i'^!E=E(-2)[-4]\). The involution acts as the identity on this one-dimensional orientation space. One can check this without a degree convention: the origin's orientation is the composite of the two supported Kummer orientations of the coordinate divisors. Replacing a coordinate \(u\) by \(-u\) changes its Kummer class by that of the constant \(-1\); the latter has an \(\ell^n\)-th root in \(k\) and hence zero Kummer class. Each orientation, and therefore their composite, is fixed. Taking the summand in (2.3) and (2.4) gives
 
 \[
 i^*E_C=E,
@@ -141,6 +146,8 @@ Now put \(K=E_C[2]\). On the smooth open surface it is perverse. At the vertex i
 This proof uses characteristic-zero coefficients even when the ground field has characteristic two. With coefficients of characteristic two, the averaging projector in the odd-characteristic quotient calculation is unavailable; the assertion is not an integral IC calculation.
 
 ## 3. Point counts and the two smallest IC functions
+
+The point counts in this section are unconditional. The quadratic-cone IC function uses Proposition 2.1 under (P12). The minuscule projective-line and central-point functions need only the curve and point calculations.
 
 For \(SL_2\), the quasi-minuscule Schubert variety has one vertex and an open stratum which is an affine-line bundle over \(\mathbf P^1\). An affine-line bundle over an \(\mathbf F_q\)-point has \(q\) rational points: its fibre is an affine line, since the one-dimensional vector space and its translation torsor over a field are trivial. Thus
 
@@ -226,7 +233,7 @@ t_{\mathcal I_{10}*\mathcal I_{10}}
 
 It also proves trace compatibility with function convolution here. The trace on the source object is constantly \(q^{-1}\). Summing it over the unique rational intermediate lattice in the first case or the \(q+1\) rational lines in the second case gives exactly the two stalk traces just calculated. The chain model is the function convolution model because every right \(K\)-coset has measure one, as proved in Lesson 1.
 
-There is a corresponding sheaf decomposition, whose Frobenius normalization matters:
+Under the exceptional-curve part of (P12), there is a corresponding sheaf decomposition, whose Frobenius normalization matters:
 
 \[
 \mathrm{IC}^{\mathrm{raw}}_{10}*
@@ -236,7 +243,7 @@ There is a corresponding sheaf decomposition, whose Frobenius normalization matt
 \tag{4.5}
 \]
 
-To verify (4.5) without a general decomposition theorem, use the exceptional curve \(D\). Its normal line bundle in the cone resolution is \(\mathcal O_{\mathbf P^1}(-2)\), computed from the lattice-chain charts in Convolution and rigidity, §10. A smooth local coordinate for \(D\) and the same pullback of (2.0) give \(i_D^!E=E_D(-1)[-2]\). Pushing the exceptional-support localization triangle along \(m\), which is an isomorphism off \(D\), gives, for \(A=Rm_*E[2]\) and the vertex inclusion \(i\),
+To verify (4.5) without a general decomposition theorem, use the exceptional curve \(D\). Its normal line bundle in the cone resolution is \(\mathcal O_{\mathbf P^1}(-2)\), computed from the lattice-chain charts in Convolution and rigidity, §10. The exceptional-curve hypothesis in (P12) supplies \(i_D^!E=E_D(-1)[-2]\) with its specified orientation. Pushing the exceptional-support localization triangle along \(m\), which is an isomorphism off \(D\), gives, for \(A=Rm_*E[2]\) and the vertex inclusion \(i\),
 
 \[
 i^*A=R\Gamma(D,E)[2],
@@ -246,7 +253,7 @@ i^*A=R\Gamma(D,E)[2],
 
 The first comparison is proper base change. For the second, the pushed localization triangle is the localization triangle at the vertex: the open terms agree because \(m\) is an isomorphism there, and composition of direct image identifies their maps. The closed term is therefore the stated supported complex.
 
-Let \(P=E_{(1,1)}(-1)\). The inclusion of the degree-zero group in \(i^!A\) and the projection to the degree-zero group of \(i^*A\) define adjunction maps \(v:P\to A\) and \(u:A\to P\). Their composite is multiplication by \(-2\). To check it, the supported divisor orientation restricts to the Kummer class of its normal line bundle. In local divisor parameters the ratios of the parameters on overlaps are the transition functions of \(\mathcal O(D)\); their Kummer boundary is exactly that Chern class. Restricting to \(D\) gives \(c_1(\mathcal O(-2))\). The projective-line trace sends \(c_1(\mathcal O(1))\) to \(+1\), so it sends this class to \(-2\). This is the divisor normalization also proved in Smooth traces, duality and Gysin maps, Lemma 12.2.
+Let \(P=E_{(1,1)}(-1)\). The inclusion of the degree-zero group in \(i^!A\) and the projection to the degree-zero group of \(i^*A\) define adjunction maps \(v:P\to A\) and \(u:A\to P\). Their composite is multiplication by \(-2\). To check it, the supported divisor orientation restricts to the Kummer class of its normal line bundle. In local divisor parameters the ratios of the parameters on overlaps are the transition functions of \(\mathcal O(D)\); their Kummer boundary is exactly that Chern class. Restricting to \(D\) gives \(c_1(\mathcal O(-2))\). The projective-line trace sends \(c_1(\mathcal O(1))\) to \(+1\), so it sends this class to \(-2\). This checks the scalar from the orientation specified in (P12); the supported purity comparison is still its hypothesis.
 
 Replace \(u\) by \(-u/2\) to get a retraction. Its complement agrees with \(E[2]\) on the open orbit. Equations (4.3) and (4.8) show that \(i^*A\) has groups \(E\) in degree \(-2\) and \(E(-1)\) in degree zero; \(i^!A\) has groups \(E(-1)\) in degree zero and \(E(-2)\) in degree two. The nonzero composite removes exactly the degree-zero group on each side. The complementary stalk and costalk therefore have only degrees \(-2\) and \(2\), respectively. The strict boundary inequalities make the complement perverse and exclude a subobject or quotient on the closed point. It is \(\mathrm{IC}^{\mathrm{raw}}_{20}\), by intermediate extension. This proves (4.5). All coordinates, orientations, trace maps and the scalar \(-2\) are defined over \(\mathbf F_q\), so the decomposition is Frobenius compatible. The two half twists then give the total twist \((1)\).
 
@@ -343,7 +350,139 @@ m^\mu_\lambda(u)
 
 Here \(i_\mu\) is the geometric point \(t^\mu\); the sum uses stalk cohomological degrees, not the global IC degrees. The theorem also asserts the relevant parity and vanishing, so the right side is a polynomial with nonnegative exponents. Equation (6.3) is stated, with a free source locator given below; its general proof is not used in this lesson's calculations.
 
-Equivalently the right side is \(\sum_{r\geq0}\dim\mathcal H^{-h_\mu-2r}(i_\mu^*\mathrm{IC}^{\mathrm{raw}}_\lambda)u^r\): set \(r=\langle\rho,\lambda-\mu\rangle-j\). The integer prefactor in (6.3) is integral because \(\lambda-\mu\) is a sum of coroots. George Lusztig's freely accessible [author copy of Singularities, character formulas, and a q-analogue of weight multiplicities](https://math.mit.edu/~gyuri/papers/ast.pdf), equations (9.3)–(9.4) and §11(c), printed pp. 225–227, gives the polynomial and IC conventions. The equation in (9.4) is presented there as a conjecture, followed by the note that Kato proved it. Dmitri Panyushev's free [On Lusztig's q-analogues of all weight multiplicities of a representation, §1, equation (1.1)](https://arxiv.org/abs/1406.1453), gives (6.1)–(6.2) with the positive powers used here. These are statement locators; neither replaces a proof of (6.3).
+Equivalently the right side is \(\sum_{r\geq0}\dim\mathcal H^{-h_\mu-2r}(i_\mu^*\mathrm{IC}^{\mathrm{raw}}_\lambda)u^r\): set \(r=\langle\rho,\lambda-\mu\rangle-j\). The integer prefactor in (6.3) is integral because \(\lambda-\mu\) is a sum of coroots. George Lusztig's freely accessible [author copy of Singularities, character formulas, and a q-analogue of weight multiplicities](https://math.mit.edu/~gyuri/papers/ast.pdf), equations (9.3)–(9.4) and §11(c), printed pp. 225–227, gives the polynomial and IC conventions. The equation in (9.4) is presented there as a conjecture, followed by the note that Kato proved it. Dmitri Panyushev's free [On Lusztig's q-analogues of all weight multiplicities of a representation, §1, equation (1.1)](https://arxiv.org/abs/1406.1453), gives (6.1)–(6.2) with the positive powers used here. These specify the stalk conventions. The algebraic transition is proved below; the general geometric equality (6.3) remains unproved here.
+
+
+### 6.1. A finite Hall–Littlewood polynomial
+
+We now prove an algebraic interpretation of (6.2). Keep the dual positive roots \(\widehat\Phi^+\), the coweight lattice \(L\), and its Weyl group \(W\). Thus the roots in this calculation are the coroots of \(G\). The lattice can contain nonprimitive roots, and \(\widehat\rho\) need not belong to it. Central directions, on which \(W\) is trivial, are retained.
+
+Work over \(F=\mathbf Q(u)\). Set
+\[
+Q_u=\prod_{\beta\in\widehat\Phi^+}
+       \frac{1-e^{-\beta}}{1-u e^{-\beta}},\qquad
+W_\nu(u)=\sum_{w\nu=\nu}u^{\ell(w)},
+\]
+and, for dominant \(\nu\), define initially in the fraction field
+\[
+H_\nu(u)=\frac1{W_\nu(u)}
+       \sum_{w\in W}w\left(\frac{e^\nu}{Q_u}\right).
+\tag{6.5}
+\]
+The stabilizer polynomial has constant term one, so is nonzero. We shall prove that \(H_\nu(u)\) is a finite \(W\)-invariant Laurent polynomial, supported in weights at most \(\nu\), with coefficient one on its top orbit. These are the Hall–Littlewood polynomials in the normalization (6.5).
+
+The root and chamber arguments are proved in Root systems and their Weyl groups. The finite highest-weight characters and their support are proved in Weights, Verma modules and the theorem of the highest weight. We use the complete Weyl character proof in Weyl's character formula and the multiplicity formulas, Theorem 2.1 and Corollary 2.2.
+
+Temporarily enlarge \(L\) to \(L'=L+\mathbf Z\widehat\rho\). It is a \(W\)-stable free lattice, because \(w\widehat\rho-\widehat\rho\) is in the root lattice. Put
+\[
+D=e^{\widehat\rho}\prod_{\beta>0}(1-e^{-\beta}),\qquad
+A_\eta=\sum_w(-1)^{\ell(w)}e^{w\eta}.
+\]
+For a simple reflection, its changed root factor and changed \(\widehat\rho\) monomial give \(wD=(-1)^{\ell(w)}D\). Consequently
+\[
+W_\nu(u)D H_\nu(u)
+ =\sum_{S\subset\widehat\Phi^+}(-u)^{|S|}
+       A_{\nu+\widehat\rho-\beta_S},
+\qquad \beta_S=\sum_{\beta\in S}\beta.
+\tag{6.6}
+\]
+This is a finite expansion.
+
+Each alternant divided by \(D\) is a Laurent polynomial in the original lattice. If \(\eta\) lies on a reflection wall, pair \(w\) with \(ws\), where \(s\eta=\eta\); their signs cancel, so \(A_\eta=0\). Otherwise choose \(v\) taking \(\eta\) into the open dominant chamber, with image \(\eta^+\). Its simple-coroot pairings are positive integers. Thus \(\eta^+-\widehat\rho\) is dominant integral and
+\[
+\eta^+-\widehat\rho
+ =v\nu+(v\widehat\rho-\widehat\rho)-v\beta_S\in L.
+\]
+The proved Weyl character formula gives
+\[
+\frac{A_\eta}{D}
+ =(-1)^{\ell(v)}\operatorname{ch}
+       V_{\eta^+-\widehat\rho}.
+\tag{6.7}
+\]
+For a reductive lattice, apply that formula to the semisimple restriction and retain the central monomial. All weight differences are in the root lattice, so its character remains in \(\mathbf Z[L]\). Equation (6.6) now proves \(H_\nu(u)\in F[L]^W\). In particular no divisibility argument requiring a primitive root in \(L\) is needed.
+
+To prove triangular support, expand downward, in translates of the negative cone generated by the simple dual roots. A fixed coefficient of any expansion has finitely many terms, because positive height bounds all root exponents. If \(w\) sends a root to a positive root, its factor in \(w(Q_u^{-1})\) is a downward geometric series. If it sends it to \(-\beta\), the factor is
+\[
+\frac{1-u e^{\beta}}{1-e^{\beta}}
+ =u+(u-1)\frac{e^{-\beta}}{1-e^{-\beta}}.
+\tag{6.8}
+\]
+Thus each \(w\)-summand is supported in \(w\nu-\widehat Q^+\), where \(\widehat Q^+\) is the nonnegative integral simple-root cone. For dominant \(\nu\), the reduced-word calculation gives \(\nu-w\nu\in\widehat Q^+\): telescope along a reduced expression for \(w\); the resulting inversion roots are positive and their coefficients are the nonnegative pairings of \(\nu\) with simple coroots. It follows that every weight of \(H_\nu\) is at most \(\nu\). Its dominant orbit representative also has this property, by \(W\)-invariance.
+
+### 6.2. The exact dual coefficient
+
+For dominant \(\mu\) and a \(W\)-invariant Laurent polynomial \(f\), define
+\
+\mathfrak l_\mu(f)=[e^\mu.
+\]
+The product is read in the downward completion just specified. We prove
+\[
+\mathfrak l_\mu(H_\nu)=\delta_{\mu\nu}.
+\tag{6.9}
+\]
+
+Let \(N(w)=\{\beta>0:w^{-1}\beta<0\}\). Factors that remain positive cancel in \(Q_u/wQ_u\). A changed factor, with \(x=e^{-\beta}\), is \((u-x)/(1-ux)\). Hence
+\[
+\frac{Q_u}{wQ_u}
+ =\prod_{\beta\in N(w)}
+      \frac{u-e^{-\beta}}{1-u e^{-\beta}}.
+\tag{6.10}
+\]
+It is a downward series with constant term \(u^{\ell(w)}\). A contribution of the \(w\)-summand of \(H_\nu Q_u\) at \(\mu\) can therefore occur only if
+\[
+\mu=w\nu-\sum_{\beta\in N(w)}n_\beta\beta,
+\qquad n_\beta\ge0.
+\]
+Applying \(w^{-1}\) gives
+\[
+w^{-1}\mu=\nu+
+       \sum_{\beta\in N(w)}n_\beta(-w^{-1}\beta)\ge\nu.
+\]
+Dominance of \(\mu\) also gives \(\mu\ge w^{-1}\mu\). On the other hand, polynomial triangularity from §6.1 and the negative support of \(Q_u\) imply \(\mu\le\nu\) for every nonzero coefficient of their product. The simple-root cone is pointed. Thus \(\mu=\nu\), and every \(n_\beta\) is zero. The remaining terms have \(w\nu=\nu\), and their constant terms sum to \(W_\nu(u)\). Division by that sum proves (6.9). Using the triangularity of the sum here is legitimate: its polynomiality was established first, so a nonzero coefficient has that bound irrespective of cancellations between summands.
+
+Only the coefficient of \(e^\nu\) in \(H_\nu\) can contribute to the coefficient of \(e^\nu\) in \(H_\nu Q_u\). Equation (6.9) therefore proves that this coefficient is one. Weyl invariance proves the same statement on the entire top orbit.
+
+### 6.3. The character transition formula
+
+**Theorem 6.1.** For every dominant coweight \(\lambda\),
+\[
+\operatorname{ch}V_\lambda
+ =\sum_{\substack{\mu\text{ dominant}\\\mu\le\lambda}}
+       m^\mu_\lambda(u)H_\mu(u).
+\tag{6.11}
+\]
+This is a finite algebraic identity. Its coefficients are exactly the polynomials (6.2), for every reduced root datum and its coweight lattice.
+
+**Proof.** There are finitely many dominant \(\mu\le\lambda\). Their central components are fixed. On the root span take a positive definite \(W\)-invariant inner product. Dominance gives
+\[
+\|\lambda\|^2-\|\mu\|^2
+ =(\lambda+\mu,\lambda-\mu)\ge0,
+\]
+since \(\lambda-\mu\) is a nonnegative integral sum of simple roots, each having nonnegative inner product with \(\lambda+\mu\). Thus their root components lie in a bounded ball of a discrete lattice, which has finitely many points: bound their integer coordinates in any lattice basis.
+
+The orbit sums \(\sum_{\eta\in W\mu}e^\eta\) are a basis of the invariant Laurent polynomials supported on these orbits. The proved triangularity and top coefficient one show that the \(H_\mu\) are another basis. Indeed, order this finite set by a linear extension of dominance; its change matrix is triangular with diagonal one and can be inverted by finitely many subtractions. Equation (6.9) supplies the exact dual basis. The highest-weight support theorem places \(\operatorname{ch}V_\lambda\) in this space, so its coefficient at \(H_\mu\) is \(\mathfrak l_\mu(\operatorname{ch}V_\lambda)\).
+
+Multiply the proved Weyl character formula by \(Q_u\). It gives
+\[
+\operatorname{ch}V_\lambda Q_u
+ =\sum_{w\in W}(-1)^{\ell(w)}
+     e^{w(\lambda+\widehat\rho)-\widehat\rho}
+     \prod_{\beta>0}(1-u e^{-\beta})^{-1}.
+\tag{6.12}
+\]
+The negative-exponent version of (6.1) has coefficient \(P_u(\gamma)\) at \(e^{-\gamma}\), by the same finite partition count. Extraction of \(e^\mu\) in (6.12) is therefore exactly (6.2). This proves (6.11), including its finite support. Although the \(H_\mu\) were defined over \(\mathbf Q(u)\), every transition coefficient is in \(\mathbf Z[u]\). \(\square\)
+
+At \(u=1\), \(Q_u=1\) and \(W_\mu(1)\) is the size of the stabilizer, so \(H_\mu(1)\) is its orbit sum. Thus (6.11) recovers the ordinary weight multiplicities. At \(u=0\), the alternant calculation makes \(H_\mu(0)=\operatorname{ch}V_\mu\). These specializations are defined: the only denominator in the finite polynomial expression is \(W_\mu(u)\), which is nonzero at both values.
+
+Theorem 6.1 proves the algebraic transition underlying the weight polynomial. The full stalk formula (6.3) additionally needs the all-root spherical-Hecke comparison
+\[
+\mathcal S(c_\mu)=q^{\langle\rho,\mu\rangle}H_\mu(q^{-1})
+\tag{6.13}
+\]
+and the graded IC stalk comparison. Those general comparisons remain unproved here. The variable in (6.13) is \(q^{-1}\), whereas the positive-power stalk polynomial in (6.3) uses \(u=q\); the shifts and grading account for the difference. No IC stalk identity follows solely from the character transition.
+
+### 6.4. The rank-one check
 
 For \(SL_2\), let \(\beta=\alpha^\vee\), the positive root of its dual \(PGL_2\). Then \(\widehat\rho=\beta/2\). Since the positive root system consists of \(\beta\),
 
@@ -358,6 +497,13 @@ For \(\lambda=\beta\) and \(\mu=0\), the identity Weyl element contributes \(P_u
 m^0_{\alpha^\vee}(u)=u.
 \tag{6.4}
 \]
+
+In the same rank-one lattice,
+\[
+H_\beta(u)=e^\beta+e^{-\beta}+1-u,\qquad H_0(u)=1.
+\tag{6.14}
+\]
+Indeed put \(x=e^{-\beta}\) in (6.5). Its two summands are \(x^{-1}(1-ux)/(1-x)\) and \(x(x-u)/(x-1)\); their sum is \(x^{-1}+x+1-u\). For label zero their sum is \(1+u\), which is divided by \(W_0(u)=1+u\). Hence \(\operatorname{ch}V_\beta=H_\beta+uH_0\). The explicit \(SL_2\) Satake calculation in The Satake isomorphism and spherical representations, §6 verifies (6.13) in this example: multiplying (6.14) at \(u=q^{-1}\) by \(q\) gives \(q(e^\beta+e^{-\beta})+q-1\).
 
 The cone calculation proves the same value directly: \(d_\lambda=2\), \(\langle\rho,\lambda\rangle=1\), and the stalk of \(E[2]\) has only \(\mathcal H^{-2}=E\). Hence the sum in (6.3) is \(1\), but its required prefactor is \(u\). At \(u=1\) the multiplicity is one; at \(u=q\) the polynomial is \(q\). These are different questions.
 
@@ -496,7 +642,7 @@ For \(\mathbf G_m\) the underlying operation is explicit even without a derived 
 
 **Solution.** The minuscule closure is \(\mathbf P^1\), and \(\mathcal I_{10}=E1\). Its sole stalk group is in degree \(-1\), with Frobenius \(a^{-1}\). Thus \(t_{\mathcal I_{10}}=-a^{-1}c_{10}\). Since \(\mathcal S(c_{10})=a(x_1+x_2)\), its transform is \(-(x_1+x_2)\). Replacing the half-twist eigenvalue by \((-a)^{-1}\) multiplies this trace by \(-1\), and the transform becomes \(x_1+x_2\).
 
-**Exercise 12.3 (medium).** Recover \(c_{10}*c_{10}=c_{20}+(q+1)c_{11}\) from the normalized IC convolution. Give the raw central summand and its Frobenius eigenvalue.
+**Exercise 12.3 (medium).** Under (P12), recover \(c_{10}*c_{10}=c_{20}+(q+1)c_{11}\) from the normalized IC convolution. Give the raw central summand and its Frobenius eigenvalue.
 
 **Solution.** The normalized decomposition is \(\mathcal I_{10}*\mathcal I_{10}=\mathcal I_{20}\oplus\mathcal I_{11}\). Here \(t_{\mathcal I_{10}}=-a^{-1}c_{10}\), \(t_{\mathcal I_{20}}=q^{-1}(c_{20}+c_{11})\), and \(t_{\mathcal I_{11}}=c_{11}\). Trace compatibility for this map was proved by the point and projective-line fibre calculations in §4. Hence
 
@@ -506,9 +652,9 @@ q^{-1}c_{10}*c_{10}=q^{-1}c_{20}+(q^{-1}+1)c_{11}.
 
 Multiply by \(q\). Before half twists, the central summand is \(E_{(1,1)}(-1)\), with eigenvalue \(q\), supplied by \(H^2(\mathbf P^1,E)\). The total twist \((1)\) cancels that \((-1)\), giving eigenvalue one in the normalized decomposition.
 
-**Exercise 12.4 (medium).** Compute \(m^0_{\alpha^\vee}(u)\) for \(SL_2\) both from (6.2) and from the IC stalk. Explain why the stalk's dimension is not itself the polynomial.
+**Exercise 12.4 (medium).** Using the complex-topological IC calculation, or (P12) for the étale one, compute \(m^0_{\alpha^\vee}(u)\) for \(SL_2\) from (6.2), the transition (6.11), and the IC stalk. Explain why the stalk's dimension is not itself the polynomial.
 
-**Solution.** The dual positive root is \(\beta=\alpha^\vee\), and \(\widehat\rho=\beta/2\). The identity term in (6.2) is \(P_u(\beta)=u\); the reflection term has argument \(-2\beta\) and is zero. Therefore \(m^0_\beta(u)=u\). The raw IC stalk at the cone vertex is \(E[2]\), with only its degree \(-2\) group nonzero. In (6.3) it contributes \(1\) to the sum, multiplied by \(u^{\langle\rho,\beta\rangle}=u\). Its dimension and the ordinary weight multiplicity are one, the value at \(u=1\); its cohomological position gives the polynomial \(u\).
+**Solution.** The dual positive root is \(\beta=\alpha^\vee\), and \(\widehat\rho=\beta/2\). The identity term in (6.2) is \(P_u(\beta)=u\); the reflection term has argument \(-2\beta\) and is zero. Therefore \(m^0_\beta(u)=u\). Equation (6.14) gives \(\operatorname{ch}V_\beta=e^\beta+1+e^{-\beta}=H_\beta+uH_0\), so Theorem 6.1 gives the same coefficient. The raw IC stalk at the cone vertex is \(E[2]\), with only its degree \(-2\) group nonzero. In (6.3) it contributes \(1\) to the sum, multiplied by \(u^{\langle\rho,\beta\rangle}=u\). Its dimension and the ordinary weight multiplicity are one, the value at \(u=1\); its cohomological position gives the polynomial \(u\).
 
 **Exercise 12.5 (hard).** State the character and support needed for (7.2), and prove the cohomology formula and the perverse Whittaker equivalence for \(\mathbf G_m\).
 
@@ -526,9 +672,9 @@ because a morphism between two one-dimensional weight representations is zero un
 
 ## 11. What this lesson does not prove
 
-The general finite-field IC parity, split Tate structure and scalar-Frobenius assertion needed for Proposition 5.1 are not proved here. That proposition proves the implication from its three specified premises. The \(GL_2\) product is proved by the bounded fibre calculation, and the torus case is proved directly. The étale examples use the curve-point purity, smooth-base-change, finite-pushforward and proper-base-change proofs identified in §§2–4, with the explicit finite free coefficient passage given there. They do not require a general decomposition or higher-dimensional trace theorem.
+The general finite-field IC parity, split Tate structure and scalar-Frobenius assertion needed for Proposition 5.1 are not proved here. That proposition proves the implication from its three specified premises. The \(GL_2\) indicator product is proved by lattice-chain counts and the bounded proper-fibre trace calculation, and the torus case is proved directly. The identification of the quadratic-cone étale IC with a shifted constant sheaf, and the exceptional-curve IC splitting, remain conditional on (P12). In particular the trait Kummer calculation does not by itself prove plane or relative-divisor purity. The all-ground-field proof of those supported comparisons and their rational finite-system compatibility remains unfinished.
 
-The general stalk identity (6.3), the general Whittaker cohomology theorem (7.2), the derived D-module factorization equivalence (7.4), and the arithmetic Fargues–Scholze equivalence are stated with their hypotheses and free locators. They are not used in the proofs of the rank-one or torus calculations. A full Ran-category construction and a six-functor theory on \(\mathrm{Bun}_G\) also lie beyond this lesson.
+The algebraic character transition (6.11) is proved for every dual root datum and lattice in §§6.1–6.3. The general stalk identity (6.3), the general Whittaker cohomology theorem (7.2), the derived D-module factorization equivalence (7.4), and the arithmetic Fargues–Scholze equivalence are stated with their hypotheses and free locators. They are not used in the proofs of the rank-one or torus calculations. A full Ran-category construction and a six-functor theory on \(\mathrm{Bun}_G\) also remain unfinished.
 
 ## References
 

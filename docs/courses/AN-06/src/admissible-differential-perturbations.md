@@ -6,7 +6,7 @@
 
 A differential perturbation can change the highest derivatives, contain unbounded lower-order coefficients, and still become small far from the origin. The appropriate size of a lower-order coefficient depends on the number of derivatives available to multiply it. A long-range splitting introduces a second issue: real coefficients give a real classical symbol, whereas symmetry of the differential operator depends on its ordering.
 
-This lesson gives the coefficient conditions, proves their global mapping consequences, and constructs both the real-symbol and symmetric splittings. Read [Polynomial localizations and rough coefficients](polynomial-localizations-and-rough-coefficients.md) for the exact Sobolev estimates, and [Regularizing long-range coefficients](long-range-coefficient-calculus.md) for the smoothing theorem. The free primary coefficient-smoothing proof is Hörmander [HW], Lemma 3.3. The expression-level adjoint calculation is proved below. [Approximation, convolution and integer Sobolev density](../providers/analysis/euclidean-approximation-and-convolution.md) supplies the exact Hölder, density, convolution and translation facts used with those proofs; its Proposition 5.1 proves the oscillatory-integral limit in Solution 6.3.
+This lesson gives the coefficient conditions, proves their global mapping consequences, and constructs both the real-symbol and symmetric splittings. Read [Polynomial localizations and rough coefficients](polynomial-localizations-and-rough-coefficients.md) for the exact Sobolev estimates, and [Regularizing long-range coefficients](long-range-coefficient-calculus.md) for the smoothing theorem. The free primary coefficient-smoothing proof is Hörmander [HW], Lemma 3.3. The expression-level adjoint calculation is proved below. [Approximation, convolution and integer Sobolev density](../providers/analysis/euclidean-approximation-and-convolution.md) supplies the exact Hölder, density, convolution and translation facts used with those proofs; its [Proposition 5.1](../providers/analysis/euclidean-approximation-and-convolution.md#oscillatory-integrals-and-averages) proves the oscillatory-integral limit in Solution 6.3.
 
 Throughout, \(n,m\geq1\) are integers,
 \(D_j=-i\partial_j\), and \(\langle x\rangle=(1+|x|^2)^{1/2}\).
@@ -45,6 +45,7 @@ The corresponding exponent for the differentiated function is
 
 Different critical terms may use different fixed exponents. An essentially bounded coefficient satisfies every finite local exponent on a unit ball.
 
+<a id="admissible-local-multiplier"></a>
 **Lemma 1.1.** For every measurable \(a\), every \(y\in\mathbb R^n\), and every \(u\in C_c^\infty(B(y,1))\),
 
 \[
@@ -56,7 +57,7 @@ Different critical terms may use different fixed exponents. An essentially bound
 
 The constant is independent of \(a,y,u\). An infinite coefficient norm makes the assertion vacuous.
 
-**Proof.** Apply equation (13) of [Polynomial localizations and rough coefficients](polynomial-localizations-and-rough-coefficients.md) to \(D^\alpha u\), with derivative gap \(k\). Translation leaves its constant unchanged. The Fourier inequality
+**Proof.** Apply equation (13) of [Polynomial localizations and rough coefficients](polynomial-localizations-and-rough-coefficients.md#localization-sobolev) to \(D^\alpha u\), with derivative gap \(k\). Translation leaves its constant unchanged. The Fourier inequality
 \(|\xi^\alpha|\langle\xi\rangle^k\leq\langle\xi\rangle^m\) gives
 
 \[
@@ -96,6 +97,7 @@ Define the translated coefficient size by
 
 For the first row we assume continuity. Thus its supremum agrees with its essential supremum.
 
+<a id="admissible-global-mapping"></a>
 **Proposition 2.1.** Suppose
 \(V=\sum_{|\alpha|\leq m}a_\alpha D^\alpha\), the highest-order coefficients are continuous, the lower-order coefficients have the local integrability in (1), and every \(A_\alpha\) is bounded. Then \(V\) extends uniquely to a bounded map \(H^m\to L^2\), and
 
@@ -149,6 +151,7 @@ The useful extra information in (8) is smallness of the **output** at infinity. 
 
 Let \(P_0(D)\) be a scalar, formally self-adjoint, constant-coefficient elliptic operator of order \(m\). Its polynomial \(P_0(\xi)\) is real for real \(\xi\).
 
+<a id="admissible-coefficient-class"></a>
 **Definition 3.1.** A differential operator
 
 \[
@@ -212,6 +215,7 @@ A highest-order short-range coefficient can also alter the local principal symbo
 
 The regularization theorem allows all derivatives of the long-range coefficients to be used, with a precise loss at high orders.
 
+<a id="admissible-regularization"></a>
 **Theorem 4.1.** Suppose \(V\) is \(K\)-admissible and has the splitting above. After replacing \(\varepsilon\), if necessary, by a smaller number in \((0,1)\), choose \(0<b<\varepsilon\). Then
 
 \[
@@ -240,7 +244,7 @@ where \(\widetilde V_S\) has coefficient short range,
 One may take the new short-range decay exponent
 \(\min(\delta,\varepsilon-b)>0\).
 
-**Proof.** Apply Theorem 2.1 of [Regularizing long-range coefficients](long-range-coefficient-calculus.md) separately to each real \(\ell_\alpha\). It supplies real smooth \(\widetilde\ell_\alpha\) with (16), and
+**Proof.** Apply Theorem 2.1 of [Regularizing long-range coefficients](long-range-coefficient-calculus.md#coefficient-dyadic-regularization) separately to each real \(\ell_\alpha\). It supplies real smooth \(\widetilde\ell_\alpha\) with (16), and
 
 \[
  |\ell_\alpha(x)-\widetilde\ell_\alpha(x)|
@@ -258,7 +262,8 @@ The real polynomial
 
 ## 5. A symmetric splitting with the same decay budget
 
-For smooth coefficients, integration by parts on compact tests gives
+<a id="admissible-formal-adjoint"></a>
+For smooth coefficients, integration by parts on compact tests gives the following identities, where the star denotes the formal adjoint
 
 \[
  \left(\sum_\alpha \widetilde\ell_\alpha D^\alpha\right)^*
@@ -271,6 +276,7 @@ For smooth coefficients, integration by parts on compact tests gives
 
 In the middle expression \(D^\alpha\overline{\widetilde\ell_\alpha}\) denotes operator composition with multiplication; the last expression is its coefficient expansion.
 
+<a id="admissible-symmetric-split"></a>
 **Theorem 5.1.** With the real smooth splitting of Theorem 4.1, put
 
 \[
@@ -324,6 +330,7 @@ For a concrete ordering correction in one dimension,
 
 when \(f\) is real and smooth. The imaginary zeroth-order term ensures symmetry. Its extra derivative supplies the short-range decay.
 
+<a id="admissible-weyl-split"></a>
 **Theorem 5.2 (the Weyl alternative).** Let
 \(\ell(x,\xi)=\sum_{|\alpha|\leq m}\widetilde\ell_\alpha(x)\xi^\alpha\)
 be the real smooth polynomial from Theorem 4.1. Its Weyl operator \(L_w=\operatorname{Op}_{1/2}(\ell)\) is a differential operator, with exact expression
@@ -375,6 +382,7 @@ For the order-two example in Solution 6.5, Weyl quantization gives
 
 The symmetric-average splitting there instead has remainder \(f''/2\). Both remainders are short range; their different constants record the two ordering choices.
 
+<a id="admissible-exterior-ellipticity"></a>
 **Corollary 5.3 (an elliptic smooth part outside a large ball).** In the splitting of Theorem 4.1, the smooth long-range part can first be made zero on a large ball and then symmetrized so that \(P_0+L_{\mathrm{ext}}\) is uniformly elliptic. All coefficient bounds (16) remain valid, and
 
 \[
@@ -391,7 +399,7 @@ still has symmetric summands, with coefficient-short-range \(S_{\mathrm{ext}}\).
  \quad(|\gamma|\geq1).
 \]
 
-**Proof.** Choose a real smooth \(\vartheta_R\), zero on \(|x|\leq R\), one on \(|x|\geq2R\), and with derivatives of order \(j\) bounded by \(C_jR^{-j}\), for \(R\geq1\). Put \(L_R=\vartheta_R\widetilde L\). The coefficient difference \(\widetilde L-L_R\) is smooth and compactly supported, hence coefficient short range with any fixed positive exponent, with constants allowed to depend on \(R\).
+**Proof.** Choose a real smooth \(\vartheta_R\) with \(0\leq\vartheta_R\leq1\), zero on \(|x|\leq R\), one on \(|x|\geq2R\), and with derivatives of order \(j\) bounded by \(C_jR^{-j}\), for \(R\geq1\). Put \(L_R=\vartheta_R\widetilde L\). The coefficient difference \(\widetilde L-L_R\) is smooth and compactly supported, hence coefficient short range with any fixed positive exponent, with constants allowed to depend on \(R\).
 
 The product coefficients retain every bound (16). A term with \(j>0\) derivatives on the cutoff is supported in \(R\leq|x|\leq2R\) and has decay exponent \(j+M(q-j)\) at total derivative order \(q\). Both slopes of \(M\) lie between zero and one, so \(M(q)-M(q-j)\leq j\). Thus \(j+M(q-j)\geq M(q)\). Terms with no cutoff derivative use (16) directly. These estimates may be chosen uniformly for \(R\geq1\).
 
@@ -412,6 +420,7 @@ No positivity or fixed sign of \(p_m\) is required. Finally for \(K=1\), formula
 
 Check the top-derivative recovery and the joining regularity threshold, then verify the symmetric long-range/short-range decomposition. Retain the local exponent and every allowed differential order in the operator-domain application.
 
+<a id="admissible-exercises"></a>
 ## 6. Exercises
 
 **Exercise 6.1 (foundation).** For \(n=3,m=2\), give the coefficient and function exponents for zeroth- and first-order terms. Let \(\chi\) be smooth, equal to one near zero and supported in \(B(0,1/2)\). For \(s>0\), determine when \(\chi(x)|x|^{-s}\) belongs to each required coefficient space. At \(s=3/p\), determine the condition on \(\gamma>0\) for
@@ -452,6 +461,7 @@ Give its real-coefficient long-range splitting and check ellipticity of \(P_0+V\
 **Exercise 6.5 (advanced).** With the same \(f\), now take
 \(P_0=D^2\), \(V=D f D\), and the real left-ordered long-range part \(L=fD^2\). Compute \(L^*\), its symmetric average, and the remaining short-range operator \(V-(L+L^*)/2\). Verify the signs and decay of every coefficient. For the general budget (16) with \(K=2,b=1/3\), give the first five values of \(M\) and the decay available for a correction involving three derivatives.
 
+<a id="admissible-solutions"></a>
 ## 7. Complete solutions
 
 **Solution 6.1.** A zeroth-order term has gap two. Since \(3<4\), its pair is
@@ -482,6 +492,7 @@ This bounds the norm on that unit ball. If the ball meets no support, the norm i
 
 Multiplication by the real \(a\) is symmetric on compact tests. It leaves the principal symbol \(|\xi|^2\) unchanged. Take \(V_S=a\) and \(L=0\); all long-range derivative conditions hold for every \(K\). Proposition 2.1 also proves the map \(H^2\to L^2\) is bounded despite the growing peaks.
 
+<a id="admissible-high-frequency-obstruction"></a>
 **Solution 6.3.** Differentiating (25) \(r\leq m\) times produces a finite sum with factors \(N^{j-m}\), \(j\leq r\). The other factors are fixed derivatives of \(\phi\) times a unit-modulus exponential. Every such norm is bounded, proving the \(H^m\) bound. More precisely,
 
 \[
@@ -546,4 +557,4 @@ Thus \(M(0),\ldots,M(4)\) are
 [AT] Shmuel Agmon, notes by Karl Gustafson, reworked by Michael Taylor, [*Limiting Absorption Principle for Long Range Potentials*](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2020/08/AGMON.pdf), §1, conditions (1.1)–(1.4), sets out a smooth differential long-range model. The finite local integrability and restricted leading-coefficient regularity allowed here require the multiplication and approximation proofs above; they are not inferred from those smooth assumptions.
 
 
-- [Y] Dmitri Yafaev, *Lectures on scattering theory*, 2004. [Author's paper](https://arxiv.org/abs/math/0403213).
+- [Y] Dmitri Yafaev, notes prepared by Andrew Hassell, *Lectures on scattering theory*, 2004. [Author's paper](https://arxiv.org/abs/math/0403213).

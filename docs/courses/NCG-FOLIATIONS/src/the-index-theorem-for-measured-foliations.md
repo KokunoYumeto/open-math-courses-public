@@ -2721,7 +2721,7 @@ In particular, for a virtual bundle \(W\),
 
 The inverse in (23) is a finite formal power series in positive-degree forms. Its constant term is one.
 
-**Proof of the isomorphism.** We use stable Bott periodicity from Bott periodicity, Theorem 4.1 and Corollary 6.1; extension exactness, two-parity Mayer–Vietoris and relative excision from Six-term exact sequence and exponential map, Theorems 2.1, 4.1 and 6.1; and the bundle-triple identification from Topological K-theory of spaces, pairs and vector bundles, Theorem 2.1 and Section 3. These apply to the nonunital coefficient algebras \(C_0(U)\) of the trivializing open sets. Their positive loop, index and exponential conventions are the ones specified in the [K-theory lesson](k-theory-of-the-leaf-space.md#suspension-bott-periodicity-and-extension-boundaries). The vector-bundle reduction below is part of the proof; no KK product is invoked.
+**Proof of the isomorphism.** We use stable Bott periodicity from Bott periodicity, Theorem 4.1 and Corollary 6.1; extension exactness, two-parity Mayer–Vietoris and relative excision from Six-term exact sequence and exponential map, Theorems 2.1, 4.1 and 6.1; and the bundle-triple identification from Topological K-theory of spaces, pairs and vector bundles, Theorem 2.1 and Section 3. These apply to the nonunital coefficient algebras \(C_0(U)\) of the trivializing open sets. Their positive loop, index and exponential conventions are the ones specified in the K-theory lesson. The vector-bundle reduction below is part of the proof; no KK product is invoked.
 
 On an oriented two-plane, put \(z=x+iy\). A spinor basis with positive chirality first gives
 

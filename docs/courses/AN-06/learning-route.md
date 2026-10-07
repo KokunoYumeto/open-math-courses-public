@@ -6,7 +6,7 @@ A spectrum can be observed in several ways. A resolvent probes an energy with a 
 
 The course follows five questions. Each part begins with a comparison that can be calculated directly and then follows the estimates needed for its general form. Return to the comparison when a proof introduces a domain, a weight or an exceptional energy: it tells you what that condition is protecting. The lessons retain their own precise prerequisites. Hilbert spaces, Fourier inversion, elementary measure theory and basic differential equations are entry knowledge; the manifold and symbol arguments also use the linked programme courses named in their lessons.
 
-The lesson order is a route through complete proofs, not a promise that every example has all of the hypotheses of every theorem. In particular, the explicitly solved transport and cylinder models have their own proofs. The general curved Dirichlet argument still depends on the generalized-ray propagation and projector estimates stated in its first section. Those programme inputs retain their written or planned status. The local round-sphere proof supplies its exact model spectrum without asserting that an unfinished general prerequisite has been supplied.
+The explicitly solved transport and cylinder models have their own proofs. The general Dirichlet Weyl law uses generalized-ray propagation, the curved spectral-projector estimate, the closed-graph argument and the scalar square-root calculus. Read it after Polynomial localizations and rough coefficients and Positive real powers and spectral rescaling, so these inputs precede their use. The local round-sphere argument gives a separate proof of its exact model spectrum.
 
 ## What can a spectral measurement tell us?
 
@@ -45,7 +45,6 @@ The proof route for this question is:
 - [Local spectral density and the subprincipal correction](src/local-spectral-density-and-subprincipal-correction.md) — What does the next local density coefficient measure?
 - [Return times and spectral counting](src/return-times-and-spectral-counting.md) — How much information is lost by smoothing a counting staircase?
 - [Reflection and the Dirichlet boundary coefficient](src/reflection-and-the-dirichlet-boundary-coefficient.md) — Why does a wall change the count by a quarter of tangential phase volume?
-- [Generalized rays and the Dirichlet Weyl law](src/generalized-rays-and-the-dirichlet-weyl-law.md) — Does a reflecting ray's position return imply a wave-trace return?
 
 ## How does escape select a real-energy solution?
 
@@ -169,6 +168,7 @@ The proof route for this question is:
 - [One-dimensional scattering and phase shifts](src/one-dimensional-scattering-and-phase-shifts.md) — Which of the two momenta is incoming on each end of the line?
 - [Compressed spectral measures and symbol distributions](src/compressed-spectral-measures-and-symbol-distributions.md) — Does an observable's mean determine its spectral distribution?
 - [Positive real powers and spectral rescaling](src/positive-real-powers-and-spectral-rescaling.md) — Which time scale belongs to an operator of order greater than one?
+- [Generalized rays and the Dirichlet Weyl law](src/generalized-rays-and-the-dirichlet-weyl-law.md) — Does a reflecting ray's position return imply a wave-trace return?
 - [Arithmetic spectral clusters and their distributions](src/arithmetic-spectral-clusters-and-their-distributions.md) — What can the integrality of cluster multiplicities force?
 - [Averaging a perturbation around closed trajectories](src/averaging-a-perturbation-around-closed-trajectories.md) — What survives averaging a perturbation along a closed trajectory?
 

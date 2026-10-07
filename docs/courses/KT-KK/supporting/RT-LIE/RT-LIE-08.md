@@ -1,8 +1,6 @@
 # Root systems and their Weyl groups
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
-
-*KT–KK receiving revision, 5 October 2026: the proofs used by Lesson 18 are rewritten from the checked free author editions and bound to the local companion. Original authorship and CC0 remain as stated above. The proof/source audit distinguishes this used chain from retained comparisons and unused later dependencies.*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A root system encodes reflections together with an arithmetic constraint. The arithmetic produces a basis of simple roots. That basis describes the chambers, and the signs of roots track the length of a product of reflections. We will use those signs to prove exchange, then use two-dimensional subgroups to prove that the Coxeter relations are a complete presentation.
 
@@ -267,7 +265,7 @@ Any rank-two root system has, after the indicated scaling and possible interchan
 
 ![The twelve G2 roots and their perpendicular reflecting walls, with the thirty-degree positive chamber shaded](assets/RT-LIE-08/rank2-g2.png)
 
-**Figure 6.1.** Each arrow ends at an exact root from the coordinate table; the rendering uses numerical values of those coordinates. Orange arrows mark the chosen simple roots. Dashed lines are the perpendicular reflecting hyperplanes, and the shaded sector is \((x,\alpha)>0,(x,\beta)>0\), truncated at a drawing radius. It contains no wall in its interior. The axes describe root coordinates, not Cartan integers. The diagrams depict the models just proved and do not assert that the unbounded chamber ends at that arc. [Reproducible figure source](figures/rt_lie_08_figures.py).
+**Figure 6.1.** Each arrow ends at an exact root from the coordinate table; the rendering uses numerical values of those coordinates. Orange arrows mark the chosen simple roots. Dashed lines are the perpendicular reflecting hyperplanes, and the shaded sector is \((x,\alpha)>0,(x,\beta)>0\), truncated at a drawing radius. It contains no wall in its interior. The axes describe root coordinates, not Cartan integers. The diagrams depict the models just proved and do not assert that the unbounded chamber ends at that arc. Reproducible figure source.
 
 Let \(s=s_\alpha,t=s_\beta,R=st\). Since \(R\) has order \(m\) and \(sRs=R^{-1}\), every word is of the form \(R^a\) or \(R^a s\). The \(m\) rotations are distinct, and the \(m\) reflections are distinct from them by determinant. Hence the group has exactly \(2m\) elements. This proves the orders in the table, with dihedral convention \(D_m\) meaning order \(2m\).
 

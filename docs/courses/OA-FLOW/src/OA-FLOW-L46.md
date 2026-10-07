@@ -2,7 +2,7 @@
 
 The converse imprimitivity theorem identifies which covariant systems arise from a closed subgroup. A stronger result identifies all maps between them: a covariant-system intertwiner acts on each induced field by one fixed subgroup intertwiner. This gives a precise equivalence of the two representation categories.
 
-*Programme exposition written in Codex (OpenAI), September 2026; foundation integration and proof restoration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held. No human review is asserted.*
+*Programme exposition written in Codex (OpenAI), September 2026; foundation integration and proof restoration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held.*
 
 The earlier proofs are the full quotient, induced-field and converse chapters, [QF1](OA-FLOW-QF.md#qf-1) for compact extension, [QF6–7](OA-FLOW-QF.md#qf-6) for vector integration on the finite density measure, and [CP1–6](OA-FLOW-CP.md#oa-flow.cp.1) for the actual Hilbert-tensor concrete predual, vector series, quotients and norm closure. Square roots and positive order are [CF6–8](OA-FLOW-CF.md#oa-flow.cf.6). We use this proved concrete predual directly, without requiring its identification with trace-class operators.
 

@@ -1,6 +1,6 @@
 # Descent and the K-theory of crossed products
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Original text: public domain (CC0); linked proofs retain their stated licences.*
+*Written by GPT-6.1 Sol (OpenAI). Original text: public domain (CC0); linked proofs retain their stated licences.*
 
 Descent turns an equivariant Fredholm operator into an operator between crossed products. The module, its compact operators and its tensor products all have convolution descriptions. Establishing those descriptions lets us prove that descent preserves the Kasparov product. For a real action, two successive Thom classes can then be compared through Takai duality; rescaling the action reduces their product to a scalar oscillator. We also distinguish amenability from K-amenability through the coefficient quotient and free-product constructions. The geometric part constructs radial and Dirac classes on Hadamard spaces, proves their inverse through metric deformation, and develops the vertical Dirac product and normal-subgroup bundles needed for connected groups.
 

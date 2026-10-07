@@ -329,7 +329,7 @@ KK(V_1/F_1,V_2/F_2)
 =KK(C_r^*(V_1,F_1),C_r^*(V_2,F_2)).
 \]
 
-The Kasparov group and its product require the Hilbert-module prerequisites developed in [Hilbert modules and fields on the leaf space](hilbert-modules-and-fields-on-the-leaf-space.md) and [K-theory of the leaf space](k-theory-of-the-leaf-space.md). These are definitions of the notation here, rather than a construction of Kasparov's product.
+The Kasparov group and its product require the Hilbert-module prerequisites developed in [Hilbert modules and fields on the leaf space](hilbert-modules-and-fields-on-the-leaf-space.md) and K-theory of the leaf space. These are definitions of the notation here, rather than a construction of Kasparov's product.
 
 For a foliation coming from a locally trivial submersion with connected fibres, the holonomy groupoid is the fibre-pair groupoid. Its algebra is the compact endomorphism algebra of the continuous Hilbert field \(L^2\) of the fibres. The local calculation is Proposition 4.2. Identifying the global field with a trivial infinite-dimensional Hilbert field is an additional assertion about that field; the local calculation alone does not supply a global trivialization. Morita equivalence with \(C_0\) of the base is the appropriate statement without a chosen trivialization.
 

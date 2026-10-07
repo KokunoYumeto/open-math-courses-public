@@ -2,11 +2,11 @@
 
 An intersection starts as a cup product with support. Its degree measures codimension, its coefficient carries an orientation twist, and its support is the actual intersection of the two closed carriers. A dimension bound turns this class into a literal cycle. A different condition, compactness, permits its integration to a scalar.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, 1 October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
-Use Subanalytic chains and closed cycle supports, Supports, products and proper images of chains and The dualizing resolution by subanalytic chains for the supported-cycle identity, product signs, proper traces and coefficient resolution. The finite filtered reconstruction in The dualizing complex from oriented simplices will also identify the reverse trace map. The exact current SH-02 prerequisites are closed support as internal Hom, exceptional composition, compact-convex constant acyclicity, the integral orientation-square pairing and normalized trace.
+Use Subanalytic chains and closed cycle supports, Supports, products and proper images of chains and The dualizing resolution by subanalytic chains for the supported-cycle identity, product signs, proper traces and coefficient resolution. The finite filtered reconstruction in The dualizing complex from oriented simplices will also identify the reverse trace map. The support operation and its maps are proved in closed-support adjunction and exceptional composition. We also use constant-complex acyclicity on convex sets, the integral orientation-square pairing and the counit defining trace. Each application below keeps its support and coefficient hypotheses.
 
-This lesson treats intersections of supported subanalytic cycles, in the framework of subanalytic chains of M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §1.
+The chain framework comes from M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.3–1.6. The orientation and dualizing identities are treated by P. Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=106), §§4.6–4.7 and §5.1. The construction below derives the supported cup, its coefficient twist and exchange sign, and the precise trace comparison from these operations and the preceding programme proofs.
 
 ## Put the input classes in codimension degrees
 
@@ -47,7 +47,7 @@ Indeed an integral local orientation generator \(e\) gives
 
 ## The actual cup product retains both supports
 
-We specify the supported product rather than choosing an unspecified bilinear map between its endpoint groups. For closed \(S\), let \(A_S\) be the constant sheaf on \(S\), extended by the closed inclusion. The exceptional-support prerequisite gives
+We specify the supported product rather than choosing an unspecified bilinear map between its endpoint groups. For closed \(S\), let \(A_S\) be the constant sheaf on \(S\), extended by the closed inclusion. The closed-support adjunction, with its counit to the unrestricted sheaf, gives
 
 \[
  R\Gamma_S E=R\mathcal Hom(A_S,E).
@@ -67,7 +67,16 @@ Tensor the two evaluation maps, keeping their displayed order, and curry. This c
 
 For ordinary sections its evaluation sends the pair of supported homomorphisms to
 \((a_1\otimes a_2)\mapsto u_1(a_1)\otimes u_2(a_2)\).
-Derived evaluation gives the same map with the Koszul symmetry needed to place each argument next to its homomorphism. Tensoring the global-section evaluation maps and applying (6) gives the global supported cup product. Flat resolutions compute the tensors, injective resolutions compute internal Hom and sections, and boundedness with finite global dimension keeps these operations in the stated derived categories. These constructions commute with restriction and enlargement of closed supports.
+Derived evaluation gives the same map with the Koszul symmetry needed to place each argument next to its homomorphism. To define the global product without commuting global sections with a tensor, represent a class of degree \(q_j\) by a morphism
+
+\[
+ A_X[-q_j]\longrightarrow R\Gamma_{S_j}E_j
+ \quad\text{in }D(A_X).
+\]
+
+Indeed \(R\operatorname{Hom}(A_X,-)=R\Gamma(X;-)\). Tensor the two representing morphisms, identify their source with \(A_X[-q_1-q_2]\) using multiplication of the constant unit, and apply (6). This gives the required class of degree \(q_1+q_2\) with support \(K\), independently of the representatives in the derived category. It is bilinear because tensor and composition are additive.
+
+Flat resolutions compute the tensors, injective resolutions compute internal Hom and sections, and the bounded inputs with finite global dimension keep the tensor operations in the stated range. For \(S\subset T\) closed, the restriction \(A_T\to A_S\) induces \(R\mathcal Hom(A_S,E)\to R\mathcal Hom(A_T,E)\), the enlargement of support. Naturality of evaluation shows that (6) commutes with these maps. Restriction to an open set has the same compatibility. No isomorphism between a tensor of global sections and global sections of a tensor is asserted.
 
 Apply (6) to \(E_j=o\otimes L_j\). Their local freeness identifies derived and ordinary coefficient tensor. Using (4), and then reintroducing the dualizing shift, gives
 
@@ -102,7 +111,7 @@ The symmetry in a tensor complex sends homogeneous degrees \(q_1,q_2\) to their 
  \qquad\text{(8)}
 \]
 
-For untwisted inputs, the flip leaves the common output coefficient \(o\) unchanged. This is the source's exchange formula.
+For untwisted inputs, the flip leaves the common output coefficient \(o\) unchanged. The sign in (8) is fixed by the degrees of the supported cohomology classes and the symmetry used in (6).
 
 This sign differs from the external-product chain sign
 \((-1)^{p_1p_2}\). For example two surface cycles in a three-manifold have odd codimension, so intersection changes sign, although swapping their two-dimensional chain factors has sign plus.
@@ -137,7 +146,15 @@ Thus (7) defines an actual supported cycle intersection
  \qquad\text{(11)}
 \]
 
-**Why the dimension matters.** Exceptional composition for the closed inclusion of \(K\) gives the first equality in (10). If \(\dim K\leq d\), its dualizing complex has no cohomology below degree \(-d\). The lowest global cohomology therefore consists of sections of the lowest cohomology sheaf, which the closed-cycle theorem identifies with supported \(d\)-cycles. This proves the second equality, rather than commuting global sections with a chain colimit.
+**Why the dimension matters.** Write \(i:K\hookrightarrow X\). The closed-support adjunction gives \(R\Gamma_K=i_*i^!\), and exceptional composition gives \(i^!\omega_X=\omega_K\). Tensor with \(L\) commutes with this calculation: on every trivializing neighborhood it is a finite direct sum of the same maps, and change-of-basis matrices commute with them. Thus \(i^!(\omega_X\otimes L)=\omega_K\otimes i^{-1}L\), giving the first equality in (10).
+
+Let \(D=\omega_K\otimes i^{-1}L\). The dimension bound puts \(D\) in degrees at least \(-d\). Its truncation map \(H^{-d}(D)[d]\to D\) has cone in degrees at least \(-d+1\). Since the right-derived section functor preserves this lower bound, the map induces
+
+\[
+ H^{-d}R\Gamma(K;D)=\Gamma(K;H^{-d}D).
+\]
+
+The closed-cycle identification, with finite locally free coefficients, identifies this last sheaf of sections with \(\Gamma_K(X;\mathcal Z_d(L))\). This proves the second equality in (10) through an actual truncation map. It does not interchange global sections and the colimit of chain carriers.
 
 If \(\dim K<d\), the dualizing bound is stronger and the group in (10) is zero. Equivalently a nonzero pure \(d\)-cycle cannot have smaller-dimensional support. If \(d<0\), the dimension condition \(\dim K\leq d\) forces \(K\) to be empty and the product is zero.
 
@@ -197,7 +214,7 @@ Let \(\phi:\omega_X\to\mathcal C\) be the canonical map proved to be an isomorph
  \qquad\text{(16)}
 \]
 
-The source states the reverse comparison up to sign. In this exposition all cell-incidence maps and traces use the same localization triangles, terminal-minus-initial interval boundary and positive-interval trace. Equation (16) fixes the comparison in these coherent conventions.
+We prove equality with the counit, including its sign. Cell-incidence maps and traces use the localization triangles, terminal-minus-initial interval boundary and positive-interval trace of the earlier chain constructions. The following argument carries these maps through a finite filtration, then fixes the degree-zero map by trace at a point.
 
 **Proof of (16).** First work on a coordinate open set \(U\), with a compatible locally finite subanalytic triangulation of dimension at most \(n\). The pure-layer construction of the cellular dualizing lesson gives a complex
 
@@ -220,7 +237,7 @@ We now keep trace through this reconstruction. Use the finite decreasing skeleto
  \qquad\text{(18)}
 \]
 
-Every \(P^kI^j\) is injective: closed-support inclusion and its right adjoint preserve injectives under the exact closed-embedding functors. Its inclusion \(P^{k+1}I^j\hookrightarrow P^kI^j\) splits as a sheaf map because the subobject is injective. Thus the quotient terms are also injective, and compact sections preserve these degreewise exact sequences.
+For a closed inclusion \(i_k:U_k\hookrightarrow U\), the functor \(i_k^!\) preserves injectives because its left adjoint \(i_{k*}\) is exact. The functor \(i_{k*}\) also preserves injectives because its left adjoint \(i_k^{-1}\) is exact. Consequently \(P^kI^j=i_{k*}i_k^!I^j\) is injective. Injectivity of the subobject \(P^{k+1}I^j\) splits its inclusion into \(P^kI^j\); hence \(Q^{k,j}\) is a direct summand of an injective and is injective. Applying compact sections therefore leaves these degreewise split short exact sequences exact. The splittings need not commute with the differential and are not used to split the filtered complex.
 
 The layer \(Q^k\), for \(r=-k\), is quasi-isomorphic to
 \(\bigoplus_{\dim\sigma=r}(A_{\overline\sigma}\otimes o_\sigma)[r]\).
@@ -232,7 +249,7 @@ Each closed simplex is compact and contractible; the constant-convex acyclicity 
  \qquad\text{(19)}
 \]
 
-Apply the same finite pure-filtration reconstruction to the complex
+Apply the finite pure-filtration reconstruction to the complex
 \(\Gamma_c I\). Its pure complex is \(\Gamma_c B\), with the same incidence differential. This computes \(R\Gamma_c(U;\omega_U)\), including the reconstruction map: the construction uses
 \(G^k=P^kI^k\cap d^{-1}P^{k+1}I^{k+1}\) and the roofs
 \(I\leftarrow G\to B\). Compact sections preserve this intersection. The lowest layer edge maps identify the compact classes in (19) with \(\Gamma_c B^k\); the finite lifting proof then makes both compact-section arrows quasi-isomorphisms. Each \(B^k\) is compact-section acyclic by the closed-simplex calculation, so these are also the derived compact-section comparisons.
@@ -252,9 +269,18 @@ In every negative degree it is zero. Naturality of the reconstruction shows that
 This proves the first equality of (16) on \(U\).
 
 Adjunction sends \(\operatorname{tr}_{a_U}\) to
-\(\operatorname{id}_{\omega_U}\); thus it gives the second equality there. Open extension of compact supports and the normalized trace composition show that \(\psi,\phi\) restrict to these same local maps. They agree on every coordinate neighborhood, so the second equality holds globally. Since \(\phi\) is an isomorphism, \(\psi=\phi^{-1}\), and its global adjoint gives the first equality as well. \(\square\)
+\(\operatorname{id}_{\omega_U}\); thus it gives the second equality there. Open extension of compact supports and the normalized trace composition show that \(\psi,\phi\) restrict to these same local maps. To pass to the global equality, use the specific object \(\omega_X=o[n]\):
+
+\[
+ \operatorname{Hom}_{D(A_X)}(o[n],o[n])
+       =\operatorname{Hom}_{A_X}(o,o).
+\]
+
+Thus \(\psi\phi\) is determined by an ordinary morphism of the orientation sheaf. Its restriction is the identity on every coordinate neighborhood, and sheaf morphisms with those restrictions are equal. The second equality in (16) therefore holds globally. This reasoning uses the single nonzero cohomology sheaf of \(\omega_X\); it is not a general assertion that equality of arbitrary derived morphisms can be checked locally. Since \(\phi\) is an isomorphism, \(\psi=\phi^{-1}\), and its global adjoint gives the first equality as well. \(\square\)
 
 This argument uses the actual finite filtered roofs and the vertex trace. It applies directly over the standing ring \(A\), without a comparison through differential forms or an unproved change-of-coefficients sign rule.
+
+The same normalization determines the transverse coordinate computations below. In an ordered normal coordinate line the local degree-one generator is the endpoint-difference class. External products of these generators give the ordered normal class. Pairing that class with a tangent orientation is positive precisely when the normal coordinates followed by the tangent coordinates give the ambient orientation. The ordered compact-support generator and trace composition prove this rule one coordinate at a time. The orientation-square factors have degree zero, so the only exchange sign comes from the normal cohomological degrees. At a zero-dimensional intersection the remaining trace is the identity on its coefficient. These rules interpret the wedge notation in the exercises over every standing coefficient ring.
 
 ## Exercises with complete solutions
 
@@ -366,8 +392,14 @@ For a compact \(p\)-chain \(\alpha\), compute
 \]
 Check properness and the chain-homotopy equation. Then explain which step in (17)–(20) identifies augmentation with the actual dualizing trace, rather than merely proving both are nonzero.
 
-**Solution.** The closed carrier
-\(\operatorname{supp}(\alpha)\times[0,1]\) is compact, and \(F\) maps it into \(U\), since \(U\) is star-shaped. The map is proper on this carrier, so the pushforward is valid. It produces a compact chain. There is no claim of properness on all \(U\times\mathbb R\).
+**Solution.** First give \(F\) its correct open domain:
+
+\[
+ \Omega=\{(x,t)\in U\times\mathbb R:(1-t)x\in U\},
+ \qquad F:\Omega\longrightarrow U.
+\]
+
+Continuity makes \(\Omega\) open, and the coordinate formula makes \(F\) analytic there. Star-shapedness ensures that \(U\times[0,1]\subset\Omega\). Restrict the product chain in (25) from \(U\times\mathbb R\) to \(\Omega\). Its entire closed carrier \(\operatorname{supp}(\alpha)\times[0,1]\) is compact and remains inside this domain, so the restriction discards no part of the chain or its boundary. The restriction of \(F\) to that carrier is proper and has compact image; the chain pushforward is therefore defined and compactly supported. In general the same formula does not define a map \(U\times\mathbb R\to U\), so that larger ambient domain cannot be used.
 
 With the \(U\)-factor first,
 \[
@@ -388,3 +420,9 @@ The other part cancels \(H_{p-1}(\partial\alpha)\), whose coefficient is \((-1)^
 For \(p>0\) the endpoint collapse has zero image by target dimension. For \(p=0\) it is the point chain with total input weight. Thus the compact chain complex has cohomology \(A\) in degree zero via augmentation and zero in all negative degrees. This remains true at the top degree: its purported compact cycle must be zero because its endpoint difference is the boundary of a degree-\((n+1)\) image, which the target cannot carry.
 
 This contraction alone would show augmentation is an isomorphism on a ball. It would leave a possible scalar ambiguity in its comparison with trace. The finite pure-filtration reconstruction resolves that ambiguity: trace is a filtered map, its induced zero-layer map is the identity trace on each vertex, and naturality of the actual reconstruction roofs identifies it with the sum-of-weights map (20). The canonical oriented-cell map to \(\mathcal C\) has the same top-cycle map as \(\phi\). These two facts give (16) and therefore \(\psi=\phi^{-1}\) in the stated conventions. A separately chosen scalar isomorphism or an unspecified quasi-isomorphism would not prove this conclusion.
+
+## Mathematical sources
+
+M. Kashiwara, [*Index theorem for constructible sheaves*](https://www.numdam.org/item/AST_1985__130__193_0/), Astérisque 130 (1985), §§1.3–1.6, pp. 195–196, supplies the chain framework and its coefficient resolution. P. Schapira, [*An Introduction to Sheaves on Grothendieck Topologies*](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf#page=95), edition dated 01/08/2026, Corollary 4.6.2, Proposition 4.6.7, §4.7, Lemma 5.1.3 and Proposition 5.1.5(a)–(c), pp. 95–98 and 106–107, supplies the exceptional-support and orientation identities used here.
+
+The supported cup is constructed in (5)–(7); its cycle interpretation uses the proved lowest-degree support calculation. The reverse comparison is normalized by the finite filtered roofs and point traces in (17)–(20). These arguments keep the general coefficient ring, including torsion, and distinguish a cohomology class, a literal cycle and an integrable compact output. The transverse examples, excess projective-line intersection and contraction provide separate checks of those distinctions. The cited works retain their authorship and their own terms.

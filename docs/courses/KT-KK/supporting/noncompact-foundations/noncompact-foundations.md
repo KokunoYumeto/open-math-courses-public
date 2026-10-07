@@ -1,6 +1,6 @@
 # Noncompact foundations for equivariant induction
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 This companion proves the topology and integration used for second countable locally compact Hausdorff groups and their closed subgroups. It does not assume that a subgroup is normal, that a quotient has local continuous sections, or that either group is unimodular. Compact Haar measure and compact vector integration remain the earlier [Foundations for compact-group averaging and coefficient approximation](../representations-of-compact-groups/compact-foundations.html), CPT-F-005 and CPT-F-010. Its CPT-F-002–CPT-F-004 also prove compact Hausdorff separation, finite Radon representation and finite scalar Fubini. The ordinary module facts are [Hilbert-module foundations](../hilbert-c-star-modules-and-morita-equivalence/hilbert-module-foundations.html), MF.1–MF.7.
 

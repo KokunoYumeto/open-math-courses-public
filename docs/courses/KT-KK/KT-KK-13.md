@@ -1,6 +1,6 @@
 # Thom isomorphisms and K-orientations in KK
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A Euclidean vector bundle has a Bott operator in every fibre. Orthogonal changes of frame preserve its Clifford formula, so these operators form a global cycle. The fibrewise Dirac operators form its inverse. A spinor bundle then removes the Clifford coefficient algebra and gives the Thom isomorphism. We prove the two inverse identities before making that Morita reduction; this separates the analytic theorem from the choice of K-orientation.
 

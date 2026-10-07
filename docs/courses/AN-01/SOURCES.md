@@ -71,6 +71,6 @@ Permission to read and cite does not permit reproducing protected expression or 
 - [Stationary concentration and point jets](src/stationary-concentration-and-point-jets.md) · [reader](reader/AN01-U067.html)
 - [Polynomial phases and Fourier tails](src/polynomial-phases-and-fourier-tails.md) · [reader](reader/AN01-U068.html)
 - [Hölder Gaussian bounds and operator remainders](src/holder-gaussian-bounds-and-operator-remainders.md) · [reader](reader/AN01-U069.html)
-- [Classical finite-order preparation and division](src/classical-finite-order-preparation-and-division.md) · [reader](reader/AN01-U070.html)
+- Classical finite-order preparation and division · reader
 - [Smooth complex equations and flat remainders](src/smooth-complex-equations-and-flat-remainders.md) · [reader](reader/AN01-U071.html)
 - [An oriented coordinate normal form for a real finite-order zero](src/oriented-coordinate-normal-form.md) · [reader](reader/AN01-U072.html)

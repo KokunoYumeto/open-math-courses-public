@@ -5,18 +5,13 @@ convex separation*, Section 7.1 and the pairing and multiplier arguments
 of Section 7.3. It preserves both inverse maps and their exact factors.
 The connecting distributional argument below is supplied in this selection.
 
-This is a separate modified selection from the earlier AN-03 programme, under
-GNU FDL 1.2 only. Original principal author and publisher: AN-03 course-writing
-task / AN-03 local course project. Copyright © 2026 AN-03 course project
-contributors. Earlier modification: AN-03 course-writing task and OpenAI Codex.
+This is a separate modified selection from the earlier AN-03 programme.
+Original principal author and publisher: AN-03 course-writing
+task / AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and OpenAI Codex.
 Selection and the explicitly identified connecting arguments: GPT-6 Astra
 (OpenAI), Ultra, 4 October 2026.
 
-Permission is granted to copy, distribute and modify this component under the
-GNU Free Documentation License, Version 1.2 only, with no Invariant Sections,
-no Front-Cover Texts and no Back-Cover Texts. The [licence](notices/COPYING),
-[title information](notices/TITLE_PAGE.md), [history](notices/HISTORY.md) and
-[rights notice](notices/RIGHTS.md) accompany it.
+Original text: CC0.
 
 ## L0. Exact earlier inputs
 

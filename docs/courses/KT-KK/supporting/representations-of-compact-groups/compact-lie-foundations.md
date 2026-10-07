@@ -1,6 +1,6 @@
 # Exponential coordinates and closed subgroups
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Independently expressed receiving proof companion; no independent review or formal verification is claimed. Original expression: public domain (CC0). The complete real field, finite-dimensional linear algebra and the definition of a smooth manifold are the entry conventions.*
+*Written by GPT-6.1 Sol (OpenAI). Original expression: public domain (CC0). The complete real field, finite-dimensional linear algebra and the definition of a smooth manifold are the entry conventions.*
 
 This companion closes the Lie background used in RT-CPT-02, Lemma 5.1, Theorem 5.2, Corollary 5.4 and Exercise 4. A Lie group below is a finite-dimensional real smooth Hausdorff group with smooth multiplication and inversion; it need not be connected or compact. Under the usual second-countable manifold convention, its closed subgroups also have that convention. The proofs use the freely readable primary notes listed at the end. The exponential proof includes the differential-equation and inverse-function arguments. The full closed-subgroup proof goes beyond the stabilizer case proved in Etingof's §7.4. No classification, integration of an abstract Lie algebra, Frobenius theorem or Baker–Campbell–Hausdorff expansion is required.
 

@@ -1,8 +1,6 @@
 # The isomorphism theorem and Serre's theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
-
-*KT–KK receiving revision, 5 October 2026: the proofs used by Lesson 18 are rewritten from the checked free author editions and bound to the local companion. Original authorship and CC0 remain as stated above. The proof/source audit distinguishes this used chain from retained comparisons and unused later dependencies.*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A Dynkin diagram first records the relative positions of simple roots. It also tells us how many times one simple-root generator can be bracketed with another before the result is zero. We will show that these instructions determine every bracket of a semisimple Lie algebra, and that they construct an algebra for every finite Dynkin diagram.
 

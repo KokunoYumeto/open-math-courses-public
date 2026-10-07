@@ -2,20 +2,13 @@
 
 This is a bounded modified selection from AN03-U012, Sections 2, 7–8
 and 18.1–18.3, with connecting arguments for the present intrinsic
-class. It retains the component's
-[GNU Free Documentation License 1.2](chart-notices/COPYING),
-[title and authorship record](chart-notices/TITLE_PAGE.md),
-[rights](chart-notices/RIGHTS.md) and
-[modification history](chart-notices/HISTORY.md).
+class.
 
 Original principal author and publisher: AN-03 course-writing task /
-AN-03 local course project. Copyright © 2026 AN-03 course project
-contributors. Earlier modification: AN-03 course-writing task and
+AN-03 local course project, 2026. Earlier modification: AN-03 course-writing task and
 OpenAI Codex. This selection and its connecting arguments: GPT-6 Astra
 (OpenAI), Ultra, 4 October 2026; publisher: AN-04 local course project.
-Permission is granted to copy, distribute and modify this component under
-the GNU Free Documentation License, Version 1.2 only, with no Invariant
-Sections, no Front-Cover Texts and no Back-Cover Texts.
+Original text: CC0.
 
 The free human sources are Gerd Grubb's author-hosted
 [Chapter 8, Section 8.1](https://web.math.ku.dk/~grubb/dist8n.pdf),

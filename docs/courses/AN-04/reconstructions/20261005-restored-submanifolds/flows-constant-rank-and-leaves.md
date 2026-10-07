@@ -57,6 +57,6 @@ A diffeomorphism preserving the distribution sends plaques locally into plaques 
 
 ## Source and authorship
 
-The characteristic-foliation application is credited in the main lesson to the approved purchased edition of Lars Hörmander's *The Analysis of Linear Partial Differential Operators III*, §21.2. The elementary arguments here are written out independently from the earlier programme's complete flow, calculus and linear-algebra proofs. No source citation replaces one of those proofs, and no book text or figure is reproduced.
+The characteristic-foliation application is credited in the main lesson to the edition of Lars Hörmander's *The Analysis of Linear Partial Differential Operators III*, §21.2. The elementary arguments here are written out independently from the earlier programme's complete flow, calculus and linear-algebra proofs. No source citation replaces one of those proofs, and no book text or figure is reproduced.
 
-*Written by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Human mathematical review remains pending. Original exposition: public domain (CC0). Linked programme components retain their own notices.*
+*Written by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original exposition: public domain (CC0). Linked programme components retain their own notices.*

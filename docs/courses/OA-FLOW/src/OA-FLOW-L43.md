@@ -2,7 +2,7 @@
 
 Inducing a representation from a closed subgroup requires a measure on the coset space. That measure is rarely invariant. The correction is governed by the ratio of the modular functions of the large group and the subgroup. We construct a quotient measure, prove its measure class is unique, and keep the two possible translation conventions separate.
 
-*Programme exposition written in Codex (OpenAI), September 2026; foundation integration and proof restoration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held. No human review is asserted.*
+*Programme exposition written in Codex (OpenAI), September 2026; foundation integration and proof restoration by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original programme expression is dedicated under CC0 to the extent of rights held.*
 
 <a id="oa-flow.qm.setting"></a>
 

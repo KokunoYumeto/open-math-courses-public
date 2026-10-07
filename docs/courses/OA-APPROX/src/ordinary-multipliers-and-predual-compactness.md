@@ -1,6 +1,6 @@
 # Ordinary multipliers and predual compactness
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Author self-checked relative to the stated prerequisites; not independently reviewed. New original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text: public domain (CC0).*
 
 Ordinary convergence gives a multiplier algebra that works for every free ultrafilter simultaneously. Its small-vector test must control both adjoints. Its predual counterpart is relative weak compactness of quadratic functional orbits; it does not assert preservation of every weakly-null sequence of functionals.
 
@@ -129,7 +129,7 @@ Finally, testing compact \(K\) suffices because the weak closure of a relatively
 
 The two positive orbit families encode the two adjoint directions that a nontracial multiplier requires. The last condition transfers relative compactness of a set of functionals, rather than specifying the limit of an individually moving functional.
 
-## 4. The missing adjoint in the printed scalar test
+## 4. A scalar test that omits the adjoint
 
 In \(M=B(\ell^2(\mathbb N_0))\), use the basis \(\xi_j\), \(p_j=|\xi_j\rangle\langle\xi_j|\), and
 \[
@@ -144,7 +144,7 @@ Let \(a_n=|\xi_0\rangle\langle\xi_n|\). For any contraction \(x\),
 \|xa_n\|_\varphi=\sqrt{\lambda_n}\|x\xi_0\|\le\sqrt{\lambda_n}.
 \tag{14}
 \]
-Thus the printed test \(\|a_nx\|_\varphi+\|xa_n\|_\varphi<\varepsilon\), with small \(\|x\|_\#\) and large \(n\), holds. But \(p_n\to0\) strong*, whereas
+Thus the test \(\|a_nx\|_\varphi+\|xa_n\|_\varphi<\varepsilon\), with small \(\|x\|_\#\) and large \(n\), holds. But \(p_n\to0\) strong*, whereas
 \[
 a_np_n=a_n,\qquad
 \|a_n\|_\#^2=(\lambda_n+\lambda_0)/2\ge1/4.
@@ -170,9 +170,9 @@ F_n(\psi_n)(1)=G_n(\psi_n)(1)
 =\frac12.
 \tag{17}
 \]
-Neither transformed sequence is weakly null. This disproves the implication from multiplier membership to the printed clause (ii) of Exercise XIV.4.8(b), even in a finite commutative algebra. It does not contradict Theorem 3.1: relative compactness permits nonzero weak cluster points.
+Neither transformed sequence is weakly null. Thus multiplier membership does not imply that every weakly null sequence of normal functionals remains weakly null under the two transformations, even in a finite commutative algebra. Theorem 3.1 asserts relative compactness, which permits nonzero weak cluster points.
 
-There is a separate closure issue in the printed clause (iii). For \(M=\mathbb C\), \(a_n=1/n\) and \(K=\{\varphi\}\), the orbit is
+The orbit union in the compactness criterion also needs its weak closure. For \(M=\mathbb C\), \(a_n=1/n\) and \(K=\{\varphi\}\), the orbit is
 \[
 \{\varphi/n^2:n\ge1\}.
 \tag{18}

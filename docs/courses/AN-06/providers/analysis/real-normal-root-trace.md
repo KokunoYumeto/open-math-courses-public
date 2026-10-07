@@ -6,9 +6,11 @@
 
 This reading proves the small-constant trace estimate for a normal first-order system near a real root, including arbitrary finite nilpotent blocks, Hilbert-valued inputs and small bounded operator perturbations. Sections 6–10 prove its tangentially localized form for matrix differential systems and the actual variable-coefficient scalar wave operator, with cutoff errors and weak traces included. It is one input to a boundary microlocal energy argument. It does not prove that energy argument, generalized propagation, or the curved spectral-projector remainder required in [Generalized rays and the Dirichlet Weyl law](../../src/generalized-rays-and-the-dirichlet-weyl-law.md).
 
-The freely accessible comparison is Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), Proposition 3.1.14, printed pp. 218–219, and its proof, pp. 223–225. We give the finite normal estimate by a polynomial averaging argument. The tangential operator bound uses the independently proved [Gaussian-packet norm estimate, Theorem 4](weighted-positivity.md#high-frequency-norm), whose free comparison is [Nicolas Lerner's author Chapter 2, Proposition 2.4.3](https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf), printed pp. 101–103. Read that theorem, its bounded-amplitude Lemma 2, and the [finite scalar product proof](classical-scalar-calculus.md#finite-scalar-calculus) before Sections 6–10. We write the specific semiclassical products and errors below; neither free citation replaces their proof.
+The freely accessible comparison is Victor Ivrii's [*Microlocal Analysis, Sharp Spectral Asymptotics and Applications*, author version of July 9, 2023](https://www.math.utoronto.ca/ivrii/Victor_Ivrii_Microlocal_Analysis,_Sharp_Spectral_Asymptotics_and_Applications.pdf), Proposition 3.1.14, printed pp. 218–219, and its proof, pp. 223–225. We give the finite normal estimate by a polynomial averaging argument. The tangential operator bound uses the [Gaussian-packet norm estimate, Theorem 4](weighted-positivity.md#high-frequency-norm), whose free comparison is [Nicolas Lerner's author Chapter 2, Proposition 2.4.3](https://webusers.imj-prg.fr/~nicolas.lerner/ch2booklerner.pdf), printed pp. 101–103. Read that theorem, its bounded-amplitude Lemma 2, and the [finite scalar product proof](classical-scalar-calculus.md#finite-scalar-calculus) before Sections 6–10. Sections 6–8 prove the specific semiclassical products and errors used in the localization.
 
-The vector integration, fundamental theorem and bounded-operator product rule are the written programme proofs in [Hilbert-valued integration](hilbert-valued-integration.md), Sections 1–4. Scalar integrals and Cauchy–Schwarz have the earlier proofs linked there. We take complex Hilbert spaces, with inner products linear in the first entry, and write $D_t=-i\partial_t$.
+The vector integration, fundamental theorem and bounded-operator product rule are proved in [Hilbert-valued integration](hilbert-valued-integration.md), Sections 1–4. Scalar integrals and Cauchy–Schwarz have the earlier proofs linked there. We take complex Hilbert spaces, with inner products linear in the first entry, and write $D_t=-i\partial_t$.
+
+<a id="real-root-polynomial-average"></a>
 
 ## 1. A polynomial average that recovers the initial value
 
@@ -53,6 +55,8 @@ Consequently, for every polynomial $p$ of degree less than $r$ with coefficients
 \]
 
 To verify the identity expand the finite sum for $p$, change variables $t=Rs$, and use (N3) term by term. The norm identity follows from the same change of variables. No positivity of $w_r$ is asserted or needed. For example, $w_1=1$, while $w_2(s)=4-6s$ and $c_2^2=4$.
+
+<a id="real-root-nilpotent-evolution"></a>
 
 ## 2. The exact nilpotent evolution and the finite-interval estimate
 
@@ -105,6 +109,8 @@ Write $\|v\|_R=\|v\|_{L^2(0,R;H)}$. Squaring with $(a+b)^2\leq2a^2+2b^2$ proves 
 
 There is no condition at $t=R$. The nilpotent evolution need not be unitary, and $N$ need not be normal or self-adjoint. Its polynomial growth is retained in $M_R$.
 
+<a id="real-root-small-perturbations"></a>
+
 ## 3. A small bounded perturbation and a real spectral shift
 
 Let $E(t)$ be a strongly measurable family of bounded operators on $H$, with $\|E(t)\|\leq\delta$ almost everywhere. Strong measurability here means that $t\mapsto E(t)a$ is strongly measurable for each fixed $a\in H$. Then $E(t)v(t)$ is strongly measurable: approximate the continuous $v$ uniformly by finite step functions on the compact interval and use the uniform bound on $E$. Define
@@ -152,6 +158,8 @@ Here is the exact finite-matrix scope of the nilpotence hypothesis. If an $r\tim
 $(zI-A)\operatorname{adj}(zI-A)=\det(zI-A)I$.
 The cofactor expansion proves this identity entry by entry. Compare coefficients, writing the adjugate as $\sum_{j=0}^{r-1}B_jz^j$. The top equation is $B_{r-1}=I$, and successive equations are $B_{j-1}-AB_j=p_jI$, where $p_j$ are the characteristic coefficients. These equations express every $B_j$ as a polynomial in $A$. The constant equation then telescopes to $p(A)=0$. With $p(z)=(z-\eta)^r$ this is the asserted nilpotence. Hence the estimate covers every finite normal block with one real characteristic root, including all Jordan multiplicities. No choice or regularity of Jordan bases is required.
 
+<a id="real-root-semiclassical-scaling"></a>
+
 ## 4. Semiclassical scaling and an explicit residual
 
 Let $h>0$ and let
@@ -179,6 +187,8 @@ One frequently has a localized equation $P_hv=F+g$, where $g$ is an error alread
 \]
 
 All norms on the right may be taken on the slab or on the larger interval. In particular an $O(h^M)$ bound for $g$ contributes $O(h^{2M})$ here. It must not be discarded before it has been proved. Since $H$ may itself be a tangential $L^2$ space, the estimate applies to a bounded tangential operator family whenever the stated norm bound is established.
+
+<a id="real-root-double-wave-block"></a>
 
 ## 5. The double real root of the scalar wave operator
 
@@ -221,9 +231,11 @@ Moreover $\|A(x)-N\|=|a(x)|$ in the Euclidean product norm. Thus, whenever $|a(x
 
 For this formula $u$ and $hD_xu$ have the primitive regularity of Section 2 and $Q_hu\in L^2$. All norms on the right are on $0<x<hR$. A homogeneous Dirichlet condition makes $u(0)=0$, so (N15) controls the normal derivative trace as well. The estimate remains valid when the first-order system has an additional bounded matrix term whose norm is absorbed into the same $\delta$; such a term is not silently dropped.
 
-Formula (N14) treats a frozen tangential covector. The remaining sections now supply the tangential operator and cutoff steps for the variable differential operator. The subsequent Dirichlet and glancing readings supply localized positive-commutator estimates, and [Existence and compactness of generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves) supplies the geometric curve construction. The boundary lesson still requires the full analytic propagation argument.
+Formula (N14) treats a frozen tangential covector. The remaining sections supply the tangential operator and cutoff steps for the variable differential operator. The subsequent Dirichlet and glancing readings supply localized positive-commutator estimates, and [Existence and compactness of generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves) supplies the geometric curve construction. The boundary lesson combines these estimates with the [analytic propagation argument](diffractive-phase-neighborhoods.md#singular-generalized-curves).
 
 <a id="tangential-normal-trace"></a>
+
+<a id="real-root-tangential-norms"></a>
 
 ## 6. Semiclassical tangential norms with the correct leading constant
 
@@ -256,9 +268,11 @@ $\|(Tv)_j\|\leq K\sum_k\|v_k\|$ and Cauchy–Schwarz gives $\|Tv\|\leq sK\|v\|$.
 
 The harmless factor $s$ is retained. It is not silently replaced by a sharp matrix norm. For a scalar cutoff $0\leq q\leq1$, acting on every component, (N17) gives $\|Q_h\|\leq2$ for all sufficiently small $h$, where $Q_h=\operatorname{Op}_h(q)I$.
 
+<a id="real-root-cutoff-products"></a>
+
 ## 7. Products with a compact phase cutoff
 
-Let $q(y,\eta)$ be compactly supported and smooth. Let $b(x,y,\eta;h)$ have at most polynomial growth in $\eta$, together with every derivative, uniformly for $x$ in a fixed compact normal interval and $0<h\leq1$. The symbols below have precisely this property: a polynomial in $\eta$ with smooth bounded coefficients minus a compactly supported symbol.
+Let $q(y,\eta)$ be compactly supported and smooth. Let $b(x,y,\eta;h)$ have at most polynomial growth in $\eta$, together with every derivative, uniformly in $y$, for $x$ in a fixed compact normal interval and $0<h\leq1$. The symbols below have precisely this property: a polynomial in $\eta$ with smooth bounded coefficients minus a compactly supported symbol.
 
 The left symbol of $\operatorname{Op}_h(b)\operatorname{Op}_h(q)$ is
 
@@ -304,6 +318,8 @@ In particular, if $b$ vanishes on a neighborhood of $\operatorname{supp}q$, then
 \]
 
 This includes the frequency tails. No unsupported replacement of a product by the product of its principal symbols has been made. Matrix symbols satisfy the same assertion entry by entry, with the product order retained.
+
+<a id="real-root-weak-localized-traces"></a>
 
 ## 8. The differential commutator and its extension to weak inputs
 
@@ -363,7 +379,9 @@ $(hD_x-A_h(x))W=F$ as distributions. Then $V=Q_hW$ has distributional derivative
  \tag{N24}
 \]
 
-It follows that $V$ has precisely the primitive representative required in Section 2, including a trace at zero. Here is the complete passage from the weak identity. Take the norm primitive $B(x)$ of its $L^2$ derivative, using the earlier vector integral theorem. The difference $V-B$ has zero distributional derivative. Fix a compactly supported smooth scalar $\rho$ of integral one. Every compactly supported smooth scalar $\phi$ with zero integral is the derivative of a compactly supported smooth function, so $\int(V-B)\phi=0$. Subtracting $\rho\int\phi$ in the general case shows that the distribution $V-B$ is the constant vector $\int(V-B)\rho$. This identifies it almost everywhere as that constant: convolution with scalar mollifiers gives the equality pointwise on smaller intervals, and the norm Lebesgue-point theorem in the vector integration reading recovers the original function almost everywhere. Its primitive therefore extends continuously to both endpoints. This argument uses no pre-existing trace of $W$.
+It follows that $V$ has precisely the primitive representative required in Section 2, including a trace at zero. Here is the complete passage from the weak identity. Take the norm primitive $B(x)$ of its $L^2$ derivative, using the [vector primitive theorem](hilbert-valued-integration.md#vector-primitives). The difference $V-B$ has zero distributional derivative. Fix a compactly supported smooth scalar $\rho$ of integral one. Every compactly supported smooth scalar $\phi$ with zero integral is the derivative of a compactly supported smooth function, so $\int(V-B)\phi=0$. Subtracting $\rho\int\phi$ in the general case shows that the distribution $V-B$ is the constant vector $\int(V-B)\rho$. This identifies it almost everywhere as that constant: convolution with scalar mollifiers gives the equality pointwise on smaller intervals, and the [norm Lebesgue-point theorem](hilbert-valued-integration.md#norm-lebesgue-points) recovers the original function almost everywhere. Its primitive therefore extends continuously to both endpoints. This argument uses no pre-existing trace of $W$.
+
+<a id="real-root-localized-estimate"></a>
 
 ## 9. The tangentially localized real-root trace theorem
 
@@ -430,6 +448,8 @@ Choose $h_0$ still smaller so $2C_0C_1^2h_0^2\leq\varepsilon/2$. Now $4\varepsil
 
 The result covers any finite matrix size and nilpotent index satisfying (N25), with every lower-order differential term retained. It does not assert the same real-root reduction for a matrix with several distinct normal roots; that requires separating those blocks.
 
+<a id="real-root-variable-wave"></a>
+
 ## 10. Application to the actual variable tangential wave operator
 
 In a boundary normal coordinate patch for the scalar wave operator, let $y=(t,y')$ and let $\eta=(\tau,\xi')$. After multiplying by the fixed sign that makes the normal second-order coefficient one, its semiclassical form on coordinate half-density coefficients is
@@ -477,4 +497,4 @@ At every glancing boundary tangential covector, $a_0(0,y_0,\eta_0)=0$, so its pr
 
 The norms on the right are over $(0,L)\times\mathbb R^d$. It suffices that $u,hD_xu,\mathcal Q_hu$ belong to $L^2$ distributionally; the localized pair on the left has its continuous trace by Section 8. For a function with the homogeneous Dirichlet trace, its localized first component is zero; its localized normal derivative remains controlled. For general weak functions this statement uses precisely the localized trace just constructed.
 
-For a coordinate-local use, extend the smooth coefficients with bounded derivatives outside a smaller chart and apply the theorem to the actual localized equation there. Multiplying the original wave by a position cutoff adds its explicit commutator to the forcing; that forcing is retained in $F$ or $\mathcal Q_hu$, rather than assumed zero. The estimates above apply to every such fixed extension and cutoff and are independent of $h$. They impose no condition on the order of tangency of a glancing characteristic. Subsequent readings now prove the [Dirichlet commutator and strict-diffraction estimate](dirichlet-commutator-and-diffraction.md#dirichlet-commutator), [negative-order spectral regularization](dirichlet-wave-regularization.md#dirichlet-wave-regularization), and [quadratic normal cutoff construction](quadratic-normal-cutoffs.md#quadratic-normal-cutoffs). These are specific inputs. [Existence and compactness of generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves) now supplies the geometric curve construction at full contact scope. Full wavefront propagation along that precise relation, its incoming cutoff estimates and its complete regularity iteration remain to be proved.
+For a coordinate-local use, extend the smooth coefficients with bounded derivatives outside a smaller chart and apply the theorem to the actual localized equation there. Multiplying the original wave by a position cutoff adds its explicit commutator to the forcing; that forcing is retained in $F$ or $\mathcal Q_hu$, rather than assumed zero. The estimates above apply to every such fixed extension and cutoff and are independent of $h$. They impose no condition on the order of tangency of a glancing characteristic. Continue with the [Dirichlet commutator and strict-diffraction estimate](dirichlet-commutator-and-diffraction.md#dirichlet-commutator), the [negative-order spectral regularization](dirichlet-wave-regularization.md#dirichlet-wave-regularization), and the [quadratic normal cutoff construction](quadratic-normal-cutoffs.md#quadratic-normal-cutoffs). These estimates enter the [singular-curve construction for Dirichlet waves](diffractive-phase-neighborhoods.md#singular-generalized-curves) and its [Cauchy-data propagation theorem](diffractive-phase-neighborhoods.md#dirichlet-cauchy-endpoints), where the incoming cutoff estimates and regularity iteration are developed. The geometric relation, including existence and continuation through arbitrary contacts, is defined and proved in [Generalized reflected curves](generalized-reflected-curves.md#generalized-reflected-curves).

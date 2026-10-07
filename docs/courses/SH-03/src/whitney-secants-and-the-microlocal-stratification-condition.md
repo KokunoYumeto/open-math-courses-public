@@ -1,12 +1,12 @@
 # Whitney secants and the microlocal stratification condition
 
-Tangent planes and secant lines answer different questions at a frontier. A limiting tangent plane records directions within the approaching stratum. A secant joins a point of that stratum to a moving point of the lower stratum. The μ-condition controls both: its allowance for large cancelling conormal covectors forces a quantitative estimate, and subanalytic curve selection converts that estimate into Whitney's secant condition. A polynomial surface will show exactly how this control can fail.
+Tangent planes and secant lines measure different approaches to a frontier. A limiting tangent plane records directions within the approaching stratum; a secant joins that stratum to a moving point of the lower one. We will compare three tests: cancellation of conormal covectors, a quantitative gap between tangent spaces, and containment of limiting secants. The first two are equivalent; subanalytic curve selection turns their common estimate into Whitney's secant condition. The precise chain is \(\mu\Longleftrightarrow(w)\Longrightarrow(b)\Longrightarrow(a)\). A polynomial surface will exhibit the scale at which cancellation defeats the metric estimate. The final application keeps one prescribed μ-stratification while passing between a bounded sheaf complex and its cohomology sheaves.
 
 Let \(M,N\subset\mathbb R^n\) be disjoint subanalytic smooth submanifolds of fixed dimensions, with \(N\subset\overline M\setminus M\). The manifold and subanalytic conventions are those of Microlocal stratifications by removing bad loci. Analytic strata satisfy these hypotheses. We use the Euclidean metric to identify covectors and vectors, but retain their different roles. All norms and distances below are Euclidean. No coefficient ring enters the geometric arguments.
 
-The subanalytic normal-cone operations and the analytic curve-selection theorem are proved in Subanalytic sets and limiting tangent directions. This lesson relates Whitney's secant condition to the microlocal stratification condition of M. Kashiwara and P. Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §8.1. The triangulation case is proved in Constructible sheaves on a triangulation.
+The subanalytic normal-cone operations and the analytic curve-selection theorem are proved in Subanalytic sets and limiting tangent directions. David J. A. Trotman proves the equivalence between the microlocal condition and Verdier's quantitative condition (w) in [*Une version microlocale de la condition (w) de Verdier*](https://www.numdam.org/item/10.5802/aif.1190.pdf), §1–2, pp. 826–828. We give the normalization argument and then prove its consequence for Whitney secants using analytic curve selection. The triangulation case is proved in Constructible sheaves on a triangulation.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Original lesson text and solutions: CC0 1.0 Universal. Human mathematical sources retain their named credit and their own terms.*
 
 ## Tangent planes, secant lines and the order of the pair
 
@@ -63,7 +63,17 @@ x_j\in M,\ y_j\in N,\quad x_j,y_j\to p,\\
 
 This is the coordinate form of
 \((T_M^*\mathbb R^n\widehat{+}T_N^*\mathbb R^n)\cap\pi^{-1}(N)\subset T_N^*\mathbb R^n\).
-The covectors in (4) may be unbounded. The first conormal belongs to the approaching stratum \(M\); the conclusion concerns the lower stratum \(N\).
+The covectors in (4) may be unbounded. Write \(d_j=|x_j-y_j|\) and \(\sigma_j=\xi_j+\eta_j\). Because \(\sigma_j\) converges, it is bounded, and
+
+\[
+d_j|\eta_j|\le d_j|\xi_j|+d_j|\sigma_j|\longrightarrow0.
+\]
+
+The reverse inequality interchanges the two covectors. Thus the weighted condition is equivalent to \(d_j(1+|\xi_j|+|\eta_j|)\to0\), as in the full limiting-sum definition. The sum is symmetric, but the ordered condition is not: its first base approaches through \(M\), and its output must annihilate \(T_pN\).
+
+Conormals over nonclosed strata need not be ambient closed. Formula (4) nevertheless tests their actual points. If a witness is first given in their closures, approximate each base and covector within \(\epsilon_j=1/[j(1+|\xi_j|+|\eta_j|)]\) by an actual conormal point. The sum changes by at most \(2\epsilon_j\), and the new weighted product is bounded by \((d_j+2\epsilon_j)(|\xi_j|+\epsilon_j)\), which still tends to zero. This is the closure-invariance argument (LG5)–(LG6), with its large-covector scale retained.
+
+The same scale explains coordinate invariance. For a \(C^2\) coordinate change \(h\), put \(A(z)=Dh(z)^{-T}\) on a smaller relatively compact chart. Its transformed sum is \(A(y_j)\sigma_j+(A(x_j)-A(y_j))\xi_j\). The second term has norm at most \(C d_j|\xi_j|\), since \(A\) is locally Lipschitz; the first tends to \(A(p)\sigma\). Local derivative bounds preserve the weighted product, and applying the inverse change gives the converse. These are the actual coordinate estimates (LG1)–(LG2); no fixed bound for the individual covectors is used.
 
 ## A quantitative estimate equivalent to μ
 
@@ -77,16 +87,16 @@ The covectors in (4) may be unbounded. The first conormal belongs to the approac
 \qquad\text{(5)}
 \]
 
-This is the quantitative tangent-gap condition usually called Verdier's (w)-condition, with the lower tangent space compared to the upper one. Here its exact content is (5).
+This is Verdier's quantitative \((w)\)-condition, with the lower tangent space compared to the upper one. The equivalence with μ is Trotman's metric theorem, with the ordered normalization and operator-norm proof given in the preceding programme lesson. Here (5) is the exact local assertion: a single constant controls both moving base points near \(p\). Its equivalence with (4) uses smooth tangent spaces and disjointness, while the later implication to secants uses subanalyticity.
 
-**Proof that μ gives (5).** If no such neighborhood and constant exist, choose \(x_j,y_j\) within distance \(1/j\) of \(p\), and unit conormals \(\zeta_j\in(T_{x_j}M)^\perp\), such that
+**Proof that μ gives (5).** Failure of (5) means failure for every neighborhood and every constant. Zero conormals cannot violate it; if the upper normal space or lower tangent space is zero, its left side is identically zero. In the remaining case, homogeneity permits a unit conormal. Choose \(x_j,y_j\) within distance \(1/j\) of \(p\), and unit conormals \(\zeta_j\in(T_{x_j}M)^\perp\), such that
 
 \[
 a_j:=|P_{y_j}\zeta_j|>j|x_j-y_j|.
 \qquad\text{(6)}
 \]
 
-In particular \(a_j>0\). Define
+Disjointness gives \(|x_j-y_j|>0\), so (6) gives \(a_j>0\). This is the only denominator we need. There is no assumed positive lower bound for \(a_j\), and the resulting covectors need not stay bounded. Define
 
 \[
 \xi_j=\frac{\zeta_j}{a_j},\qquad
@@ -112,9 +122,17 @@ Condition (4) would put this nonzero tangent vector in \((T_pN)^\perp\), a contr
 \le C|x_j-y_j|\,|\xi_j|\longrightarrow0.
 \]
 
-The sums converge and \(P_{y_j}\to P_p\), so \(P_p\sigma=0\). This is the desired conclusion. Neither direction of this equivalence uses subanalyticity. \(\square\)
+Only the sums need to be bounded when passing to the limit. Indeed,
 
-The adjoint operators \(P_yQ_x\) and \(Q_xP_y\) have the same norm. Estimate (5) therefore also says
+\[
+|P_p\sigma-P_{y_j}\sigma_j|
+\le |\sigma-\sigma_j|+\|P_p-P_{y_j}\|\,|\sigma_j|
+\longrightarrow0.
+\]
+
+Together with the preceding estimate this gives \(P_p\sigma=0\). Applying this projector difference to \(\xi_j\) alone would be unjustified, since that sequence may diverge. Neither direction of the equivalence uses subanalyticity. \(\square\)
+
+Here is the passage from normal covectors to tangent velocities. The supremum of \(|P_y\xi|\) on the unit ball in \((T_xM)^\perp\) is \(\|P_yQ_x\|\): projecting an arbitrary unit vector by \(Q_x\) cannot increase its norm, and every normal unit vector is already fixed by \(Q_x\). The adjoint is \(Q_xP_y\). For any linear operator, taking unit-ball suprema in \(\langle Av,w\rangle=\langle v,A^*w\rangle\) proves equality of its norm with its adjoint's. The second norm is the supremum of \(|Q_xv|\) on the unit ball in \(T_yN\). Unit balls, rather than unit spheres, include the zero-dimensional cases. Homogeneity therefore makes (5) equivalent to
 
 \[
 |Q_x v|\le C|x-y|\,|v|
@@ -128,10 +146,25 @@ This is the form we need for velocities of a curve in \(N\). Notice that the dis
 
 **Theorem.** For the subanalytic pair above, μ implies Whitney (b), and hence Whitney (a).
 
-**The subanalytic lifting used in the proof.** The graph of \(x\mapsto T_xM\), represented by orthogonal projectors, is subanalytic, even near a frontier point where it need not extend continuously. To see the needed assertion, the pair normal cone \(C(M,M)\), restricted to base points of the smooth \(M\), has fibre \(T_xM\). Indeed, in a smooth graph chart the difference of two nearby points has its leading direction tangent to that graph at the limiting point; every tangent vector is realized by two curves in the chart. Normal-cone subanalyticity thus gives the tangent bundle as a subanalytic set over \(M\).
+**The subanalytic lifting used in the proof.** We need curve selection on the moving tangent planes as well as the two bases. The pair normal cone (5)–(6) and its subanalyticity proof supply the tangent bundle of a smooth subanalytic \(M\):
 
-Choose an orthonormal \(\dim M\)-tuple in this tangent bundle. The conditions on the tuple are polynomial and all tuple entries lie on unit spheres. Add its projector \(\sum_i v_i v_i^{\mathsf t}\), then project away the frame variables. Their ambient factor is compact, so the local bounded-projection rule for subanalytic sets gives precisely the tangent-projector graph. The normalized secant
-\((x-y)/|x-y|\) is semialgebraic as a function of \(x\ne y\). Consequently the set
+\[
+C(M,M)\cap\pi_{T\mathbb R^n}^{-1}(M)=TM.
+\]
+
+To check the fibre at \(q\in M\), write \(M\) locally as the smooth graph of \(g\) on a small convex domain, using an affine orthogonal splitting. If two graph points with horizontal coordinates \(u_j,v_j\to u_0\) have a convergent scaled difference \(c_j(a_j-b_j)\), then \(c_j(u_j-v_j)\) is bounded. The integral mean-value formula gives
+
+\[
+g(u_j)-g(v_j)=Dg(u_0)(u_j-v_j)+r_j,
+\qquad |r_j|\le\varepsilon_j|u_j-v_j|,
+\quad\varepsilon_j\to0.
+\]
+
+Thus \(c_jr_j\to0\), and the limiting vector belongs to the graph of \(Dg(u_0)\), namely \(T_qM\). Conversely, a smooth curve in \(M\) through \(q\) with prescribed tangent \(v\) gives \(j(\gamma(1/j)-q)\to v\), including \(v=0\). This proves the fibre equality. Intersecting the subanalytic pair cone with the subanalytic condition that its base lies in \(M\) therefore proves subanalyticity of \(TM\), without assuming an arbitrary smooth Gauss map is analytic.
+
+Choose an orthonormal \(\dim M\)-tuple in this tangent bundle. The frame conditions are polynomial, and all frame vectors lie on unit spheres. Its tangent projector is \(\sum_i v_i v_i^{\mathsf t}\), so its normal projector is \(I-\sum_i v_i v_i^{\mathsf t}\). Projecting away the frame variables is proper on the closure over a compact base-and-projector set: all remaining variables lie in a compact frame space. The analytic image rule with properness on the selected closure gives exactly the graph of \(Q_x\), not its larger frontier closure. The empty frame for \(\dim M=0\) has tangent projector zero and normal projector the identity.
+
+The normalized secant also has a controlled subanalytic graph at the diagonal. Introduce \(\rho>0\) and a unit vector \(u\) subject to \(\rho^2=|x-y|^2\) and \(\rho u=x-y\). These conditions are polynomial apart from the strict inequality, and \(\rho\) is bounded when the two bases lie in bounded charts. Eliminating \(\rho\) is therefore a projection proper on the local closure; for \(x\ne y\) its image is precisely \(u=(x-y)/|x-y|\). Combining this graph with that of \(Q_x\) proves that the set
 
 \[
 \mathcal E=
@@ -140,9 +173,9 @@ x\in M,\ y\in N\right\}
 \qquad\text{(9)}
 \]
 
-is subanalytic locally in the product of the base charts, the compact space of orthogonal projectors, and the unit sphere. These are applications of the named normal-cone, bounded-projection and curve-selection prerequisites, rather than an assumption that an arbitrary smooth Gauss map is subanalytic.
+is subanalytic in the ambient product of the base charts, the compact space of orthogonal projectors and the unit sphere, including at its missing diagonal limit. This is the local subanalyticity required by the analytic curve-selection proof. That proof supplies a curve analytic across parameter zero; no global definability or analyticity of \(M\) and \(N\) is being added to the stated smooth subanalytic hypotheses.
 
-**Proof of the theorem.** If (b) fails, take sequences in (2) with \(L\not\subset T\). Pass to a subsequence so their unit secants converge to a unit vector \(u\in L\). Their lifted points in (9) converge to
+**Proof of the theorem.** If (b) fails, choose its point \(p\) and sequences in (2) with \(L\not\subset T\). Compactness of the unit sphere permits a subsequence of the actual oriented unit secants converging to \(u\). Their lines still converge to \(L\), so \(|u|=1\) and \(\mathbb Ru=L\). Convergence in the Grassmannian is convergence of the orthogonal projectors. Hence their lifted points in (9) converge to
 \((p,p,Q,u)\), where \(Q\) projects onto \(T^\perp\) and \(Qu\ne0\).
 
 Analytic curve selection in (9) supplies analytic curve germs extending to parameter zero,
@@ -174,8 +207,7 @@ Q(s)(x'(s)-y'(s))&=-Q(s)y'(s),\\
 \qquad\text{(12)}
 \]
 
-Differentiating (11), dividing (12) by \(s^{m-1}\), and taking the limit gives
-\(Q(mv)=0\). Thus \(Qu=0\), contrary to the chosen failed secant. This proves (b); (3) proves (a). \(\square\)
+Because the difference in (11) is analytic, differentiation gives \(x'(s)-y'(s)=m s^{m-1}v+O(s^m)\). Orthogonal projectors have norm at most one. Thus after dividing the first line of (12) by \(s^{m-1}\), its left side is \(mQ(s)v+O(s)\), while its right side has norm \(O(s)\) by the second line. Passing to the limit gives \(mQv=0\). Since \(m\ge1\) and \(u=v/|v|\), this contradicts \(Qu\ne0\). This proves (b) at the chosen point; (3) proves (a). \(\square\)
 
 The first nonzero Taylor order is essential. A selected curve can have zero first derivative at zero. The proof differentiates its full leading term and works for every \(m\ge1\).
 
@@ -255,12 +287,12 @@ The first is a scalar multiple of (14), whose value at \(a_j\) is
 
 The limiting sum \(dt\) does not annihilate \(T_0Z_2\). This is a genuine witness in the full limiting sum, with both base points specified and the position–covector product checked. It proves that the finite ordinary stratification (13) is not a μ-stratification.
 
-In (17), the limiting plane does contain \(T_0Z_2\). That particular tangent limit is compatible with Whitney (a). Its failing secant, and the cancellation in (18), exhibit the additional phenomenon that Exercise VIII.12 requires us to control. This observation about one limit does not verify Whitney's condition (a) for the pair.
+In (17), the limiting plane does contain \(T_0Z_2\). That particular tangent limit is compatible with Whitney (a). Its failing secant and the cancellation in (18) exhibit the additional information carried by a moving lower base and an unbounded pair of conormals. This observation about one limit does not verify Whitney's condition (a) for the pair.
 
 ## A cohomology criterion for a fixed μ-stratification
 
 Let \(X\) now be a real analytic manifold and \(\mathcal S=(S_\alpha)\) a locally finite μ-stratification. Let \(k\) be a commutative ring of finite global dimension and \(F\in D^b(k_X)\). Put
-\(\Lambda=\bigcup_\alpha T^*_{S_\alpha}X\), which is closed by the μ-condition. Then
+\(\Lambda=\bigcup_\alpha T^*_{S_\alpha}X\). The closedness proof for the total conormal set uses both ambient local finiteness and μ: a convergent sequence has a subsequence on one stratum. If the source and target strata agree, smooth conormal continuity applies. Otherwise the frontier rule makes them an incident ordered pair, and the bounded conormals form a witness in (4) with the second base fixed and second covector zero. Thus every finite cotangent limit lies in the conormal of its target stratum. Then
 
 \[
 \operatorname{SS}(F)\subset\Lambda
@@ -269,9 +301,11 @@ Let \(X\) now be a real analytic manifold and \(\mathcal S=(S_\alpha)\) a locall
 \qquad\text{(20)}
 \]
 
-**Proof.** The fixed-stratification theorem in Constructibility from microsupport and perfect stalks states, for this very \(\mathcal S\), that \(\operatorname{SS}(F)\subset\Lambda\) is equivalent to local constancy of all \(H^j(F)|_{S_\alpha}\). Applying that theorem to each degree-zero sheaf \(H^j(F)\) proves the forward implication of (20).
+**Proof.** The fixed-stratification theorem states, for this very \(\mathcal S\), that \(\operatorname{SS}(F)\subset\Lambda\) is equivalent to local constancy of all \(H^j(F)|_{S_\alpha}\). Its forward proof restricts to a stratum by tensoring with its constant extension; the full limiting tensor bound reduces every moving conormal witness to one upper stratum by local finiteness. The ordered μ-condition then removes all tangential covectors, including those left by cancellation of unbounded inputs. Exact closed-embedding microsupport and the zero-section criterion give intrinsic local constancy. Thus the relevant theorem keeps the prescribed strata, not merely some constructible partition.
 
-For the reverse implication, choose a finite interval containing all nonzero cohomology of \(F\). The canonical truncation triangles build \(F\) from the finitely many \(H^j(F)[-j]\). The microsupport triangle inequality and shift invariance put its microsupport in the union of their microsupports and hence in \(\Lambda\). This second argument needs boundedness and the triangle estimate, but does not itself need the μ-condition. \(\square\)
+Apply it first to \(F\), then apply its converse to each degree-zero sheaf \(H^j(F)\). The converse proof by closed-residual induction uses the actual missing-submanifold boundary estimate and the same full μ-condition. This proves the forward implication of (20), without assuming any individual \(\operatorname{SS}(H^j(F))\) is contained in \(\operatorname{SS}(F)\).
+
+For the reverse implication, choose a finite interval containing all nonzero cohomology of \(F\). The canonical truncation triangles build \(F\) from the finitely many \(H^j(F)[-j]\). The triangle inequality and shift invariance, (T21)–(T23), put its microsupport in the union of their microsupports and hence in \(\Lambda\). This second argument needs boundedness and the triangle estimate, but does not itself need the μ-condition. \(\square\)
 
 There is no perfect-stalk or finite-generation assumption in (20), and no splitting of the truncation triangles. The forward implication retains the prescribed stratification, rather than merely producing some unrelated constructible partition.
 
@@ -353,8 +387,14 @@ For a locally finite simplicial complex, let \(\sigma\le\tau\) mean that \(\sigm
 
 **Solution.** We have \(U_\tau\subset U_\sigma\), so ordinary restriction of sections goes from \(\Gamma(U_\sigma;F)\) to \(\Gamma(U_\tau;F)\), in the same direction as the face arrow \(\sigma\to\tau\). Composition of restrictions gives the diagram's composition law.
 
-For the sheaf constructed from \(A\), the open-star section theorem identifies \(\Gamma(U_\sigma;F)\) with \(A_\sigma\). A value in \(A_\sigma\) continues to each coface through the specified map \(A_\sigma\to A_\tau\); the composition law makes these continuations compatible. Conversely, a star section is determined by its value on \(\sigma^\circ\), as the local germ-continuation proof in that lesson shows. These identifications commute with restrictions and with morphisms of diagrams. Together with the sheaf reconstruction proved there, they are the natural inverse equivalences required in Exercise VIII.1. The argument works for arbitrary modules over the commutative ring; it uses local finiteness of the simplicial complex, not finite generation of the values.
+For the sheaf constructed from \(A\), the open-star section theorem identifies \(\Gamma(U_\sigma;F)\) with \(A_\sigma\). A value in \(A_\sigma\) continues to each coface through the specified map \(A_\sigma\to A_\tau\); the composition law makes these continuations compatible. Conversely, a star section is determined by its value on \(\sigma^\circ\), as the local germ-continuation proof in that lesson shows. These identifications commute with restrictions and with morphisms of diagrams. Together with the sheaf reconstruction theorem and its open-star section comparison, they give natural inverse equivalences between face diagrams and sheaves constant on each open simplex. The argument works for arbitrary modules over the commutative ring; it uses local finiteness of the simplicial complex, not finite generation of the values.
 
 ## What these exercises add to constructibility
 
 The polynomial example checks the frontier rule explicitly while exposing a moving secant that the tangent plane misses. Its unbounded normal witness explains the distance–covector product in μ. Conversely, the quantitative estimate and analytic curve-selection proof account for every failed secant, including curves whose first derivative at zero vanishes. The fixed-stratification cohomology criterion then lets us retain this same geometric control while passing between a bounded complex and its individual cohomology sheaves.
+
+## References
+
+David J. A. Trotman, [*Une version microlocale de la condition (w) de Verdier*](https://www.numdam.org/item/10.5802/aif.1190.pdf), Annales de l’Institut Fourier 39 (1989), no. 3, pp. 825–829, gives the limiting conormal sum in §1 and proves its equivalence with (w) in §2. The normalization in (6)–(7) is that classical mechanism, expressed here through moving orthogonal projectors.
+
+Masaki Kashiwara and Pierre Schapira, [*Microlocal study of sheaves*](https://webusers.imj-prg.fr/~pierre.schapira/BooksMono/Ast128.pdf), Astérisque 128 (1985), §8.1, pp. 141–143, treats Whitney stratifications and the closedness of their total conormal set. Its flatness condition in Definition 8.1.1 concerns the canonical form on a normal cone; it should be distinguished from the stronger metric condition (w) proved equivalent to μ here.

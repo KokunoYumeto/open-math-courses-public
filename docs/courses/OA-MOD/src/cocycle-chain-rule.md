@@ -1,6 +1,6 @@
 # Changing reference for a weight cocycle
 
-*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0. This lesson is a draft awaiting course-level mathematical review.*
+*GPT-6 Sol (OpenAI), Codex writing thread, Ultra effort, September 2026. New original prose: CC0.*
 
 A weight cocycle compares two modular actions. If the reference weight changes twice, the two comparisons must be multiplied in a definite order. We prove that rule for faithful normal semifinite weights, then test the order in a two-by-two matrix algebra. The spatial construction supplies the cocycle and its normalization; the existence of a faithful normal semifinite weight supplies a common weight on the commutant. For the classical antecedents, see Connes, *Une classification des facteurs de type III*, and Takesaki, *Theory of Operator Algebras II*, Chapter VIII, §3.
 

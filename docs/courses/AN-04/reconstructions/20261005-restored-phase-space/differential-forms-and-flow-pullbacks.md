@@ -105,4 +105,4 @@ Suppose the smooth nonautonomous field \(V_t(x)\) is defined on an open neighbor
 
 This applies to the field in Darboux's proof: the constant skew matrix of \(\omega_0\) is invertible. Since \(\omega-\omega_0\) tends to zero at the origin, continuity of the determinant gives a common small neighborhood on which \(\omega_0+t(\omega-\omega_0)\) is invertible for \(t\) in an open interval containing \([0,1]\). P2 proves that its inverse is smooth. Hence \(\iota_{V_t}\omega_t=-K(\omega-\omega_0)\) defines a smooth field with \(V_t(0)=0\), and the preceding argument applies. No completeness assumption is hidden in the time-one map.
 
-*Standard foundation proofs written by GPT-6 Astra (OpenAI), Ultra, 5 October 2026, for the AN-04 programme. Original companion text: CC0. The linked AN-03 flow proof is a separate GFDL 1.2 component. Human review remains pending.*
+*Standard foundation proofs written by GPT-6 Astra (OpenAI), Ultra, 5 October 2026, for the AN-04 programme. Original companion text: CC0. The linked AN-03 flow proof is a separate GFDL 1.2 component.*

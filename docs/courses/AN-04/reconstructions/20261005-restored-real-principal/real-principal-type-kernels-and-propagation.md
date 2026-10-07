@@ -8,7 +8,7 @@ The full Fourier cutoff and coordinate proofs are [T0 and W1–W4 in Coordinate 
 
 All these proofs and their transitive prerequisites are included; the [proof map](proof-map.json) identifies their exact locators. The tensor-wavefront companion is a retained AN-03 GFDL component. The receiving propagation proof and its examples remain independently written.
 
-The source antecedents are the approved purchased reprint of Hörmander IV, Theorem 26.1.1 and Propositions 26.1.2–26.1.3. The argument concerns ordinary symbols with the specified homogeneous principal part and arbitrary scalar lower terms. Sobolev propagation, prescribed singular rays, compact global tubes and the full propagation parametrix have their own later proofs.
+The source antecedents are the reprint of Hörmander IV, Theorem 26.1.1 and Propositions 26.1.2–26.1.3. The argument concerns ordinary symbols with the specified homogeneous principal part and arbitrary scalar lower terms. Sobolev propagation, prescribed singular rays, compact global tubes and the full propagation parametrix have their own later proofs.
 
 ## 1. The two fundamental solutions retain their signs
 
@@ -205,7 +205,7 @@ Consequently regularity and singularity propagate along every connected bicharac
 
 ## References
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, approved purchased reprint of the corrected second printing (1994), Springer eBook ISBN 978-3-642-00136-9 (2009), Section 26.1, Theorem 26.1.1 and Propositions 26.1.2–26.1.3. The signed fundamental kernels and canonical reduction are the mathematical antecedents; the full Fourier converse, distributional primitive, common-tube cutoff proof and worked exercises here are independently written.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the corrected second printing (1994), Springer eBook ISBN 978-3-642-00136-9 (2009), Section 26.1, Theorem 26.1.1 and Propositions 26.1.2–26.1.3. The signed fundamental kernels and canonical reduction are the mathematical antecedents; the full Fourier converse, distributional primitive, common-tube cutoff proof and worked exercises here are independently written.
 - The exact written programme proofs used above are identified by their lesson titles, sections and equations at the point of use. The AN-03 proof providers retain their GFDL 1.2 terms; their retained tensor-wavefront proof is supplied as a separate companion, with its complete notices.
 
 *Original lesson by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Restored source and proof review by GPT-6 Astra (OpenAI), Ultra, 5 October 2026. All three original solutions remain. Human review and the wider course remain unfinished.*

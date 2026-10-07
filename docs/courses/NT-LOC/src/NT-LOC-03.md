@@ -1,6 +1,6 @@
 # Hensel's lemma, squares and roots of unity in p-adic fields
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Independent full-lesson AI review is not yet recorded. Original text: CC0. The explicitly delimited Milne adaptation below: CC BY-NC-SA 4.0.*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026; Lemma 4.0 by Claude Opus 5.5 (Anthropic). Self-checked by the writing AI. Original text: CC0.*
 
 An approximate solution of a polynomial equation need not have a nearby exact solution. The derivative measures whether the error can be removed. In a complete nonarchimedean field, a sufficiently small error can be corrected repeatedly, with the new error bounded by the square of the old one. This gives a useful test for roots, and a parallel argument lifts polynomial factorizations.
 
@@ -198,21 +198,41 @@ Coprimality cannot be removed. The reduction of \(X^2-p\) is \(X\cdot X\), yet \
 
 ## 4. Residues lift multiplicatively
 
-**Begin component licensed CC BY-NC-SA 4.0.** Adapted and expanded from J. S. Milne, *Fields and Galois Theory*, version 5.00, June 2021, Exercise 1-3(a)–(e), p. 25, its solution, p. 129, and Proposition 4.19, p. 53. Native source: [FT500.zip](https://www.jmilne.org/math/CourseNotes/FT500.zip), FT.tex (version 5.00); readable edition: [FT500.pdf](https://www.jmilne.org/math/CourseNotes/FT500.pdf). Copyright ©1996–2021 J.S. Milne. Licence: https://creativecommons.org/licenses/by-nc-sa/4.0/. The source and this adaptation are offered under that licence, including its disclaimer of warranties. GPT-6.1 Sol (OpenAI), Ultra, expanded the exercise solution, replaced the imported finite-abelian-group structure theorem by the elementary order argument below, and added the finite-field consequence on 2026-10-04. This is an AI adaptation and self-check; no author endorsement or independent human review is asserted.
+We begin with the multiplicative group of a finite field. Its cyclicity gives the primitive element theorem over finite fields in *Extensions of complete valued fields*.
 
-**Lemma 4.0 (finite multiplicative groups are cyclic).** Every finite subgroup of the multiplicative group of a field is cyclic. Consequently, every finite extension of a finite field has one field generator.
+**Lemma 4.0 (finite multiplicative groups are cyclic).** Let \(F\) be a field. Every finite subgroup of \(F^\times\) is cyclic. Consequently, if \(F\) is finite and \(E/F\) is a finite extension, then \(E^\times\) is cyclic and \(E=F(\gamma)\) for every generator \(\gamma\) of \(E^\times\).
 
-**Proof.** First recall the polynomial root bound. If a polynomial \(P\in F[X]\) vanishes at \(a\in F\), division by \(X-a\) gives \(P=(X-a)Q\). Any other root of \(P\) is a root of \(Q\), because \(F\) has no zero divisors. Induction on the degree therefore proves that a nonzero polynomial of degree \(d\) has at most \(d\) distinct roots.
+**Proof.** We count the elements of each order, using three elementary facts.
 
-Let \(G\subset F^\times\) be finite. If \(G=\{1\}\), it is already cyclic. Otherwise let \(d\) be the least common multiple of the orders of its elements. For every prime \(\ell\) dividing \(d\), write \(\ell^{a_\ell}\) for the largest power of \(\ell\) occurring in those orders. Choose \(h_\ell\in G\) whose order is \(\ell^{a_\ell}b_\ell\), with \(\ell\nmid b_\ell\). Then \(g_\ell=h_\ell^{b_\ell}\) has order \(\ell^{a_\ell}\): the equality \(g_\ell^k=1\) is equivalent to \(\ell^{a_\ell}b_\ell\mid b_\ell k\).
+*Roots.* A nonzero \(P\in F[X]\) of degree \(d\) has at most \(d\) roots in \(F\). Let \(a_1,\ldots,a_m\in F\) be distinct roots of \(P\). We show by induction on \(m\) that \((X-a_1)\cdots(X-a_m)\) divides \(P\); comparing degrees then gives \(m\le d\). For \(m=0\) there is nothing to show. If \(P=(X-a_1)\cdots(X-a_{m-1})Q\), evaluation at \(a_m\) gives \((a_m-a_1)\cdots(a_m-a_{m-1})\,Q(a_m)=0\). The factors \(a_m-a_i\) are nonzero and \(F\) is a field, so \(Q(a_m)=0\). Division with remainder by \(X-a_m\) now gives \(Q=(X-a_m)Q_1\), and hence \(P=(X-a_1)\cdots(X-a_m)Q_1\).
 
-The elements \(g_\ell\) commute. Their product \(g=\prod_\ell g_\ell\) has order \(d=\prod_\ell\ell^{a_\ell}\). Indeed, \(g^d=1\). If \(g^k=1\), raising this equality to the power \(d/\ell^{a_\ell}\) kills every factor except \(g_\ell\), so \(\ell^{a_\ell}\mid k(d/\ell^{a_\ell})\). Since \(\gcd(\ell^{a_\ell},d/\ell^{a_\ell})=1\), it follows that \(\ell^{a_\ell}\mid k\). This holds for each prime, forcing \(d\mid k\).
+*Orders.* Let \(G\) be a finite abelian group with \(n\) elements, and let \(x\in G\). Since \(y\mapsto xy\) permutes \(G\),
 
-Every element of \(G\) is a root of \(X^d-1\). The root bound gives \(|G|\le d\), while the \(d\) different powers of \(g\) give \(d\le |G|\). Thus \(G=\langle g\rangle\).
+\[
+\prod_{y\in G}y=\prod_{y\in G}xy=x^n\prod_{y\in G}y,
+\]
 
-If \(E/F\) is a finite extension and \(F\) is a finite field, then \(E\) is finite. A generator \(g\) of \(E^\times\) has every nonzero element of \(E\) among its powers; therefore \(E=F(g)\). ∎
+so \(x^n=1\). The order of \(x\) is the least \(m\ge1\) with \(x^m=1\). Division with remainder shows that \(x^k=1\) exactly when \(m\mid k\); in particular \(m\mid n\). The powers \(x,x^2,\ldots,x^m\) are distinct: an equality \(x^i=x^j\) with \(1\le i<j\le m\) would give \(x^{j-i}=1\) with \(0<j-i<m\). For \(1\le j\le m\), put \(s=\gcd(j,m)\). Then \((x^j)^k=1\) means \(m\mid jk\), which is equivalent to \((m/s)\mid k\) because \(m/s\) and \(j/s\) are coprime. Hence \(x^j\) has order \(m/s\). Write \(\varphi(m)\) for the number of \(j\in\{1,\ldots,m\}\) with \(\gcd(j,m)=1\). Then exactly \(\varphi(m)\) of the powers of \(x\) have order \(m\).
 
-**End component NT-LOC-MILNE500-CYCLIC.**
+*Euler's sum.* For every \(n\ge1\),
+
+\[
+\sum_{d\mid n}\varphi(d)=n.
+\]
+
+Indeed, assign to \(k\in\{1,\ldots,n\}\) the pair \((d,j)\) with \(d=n/\gcd(k,n)\) and \(j=k/\gcd(k,n)\). Then \(d\mid n\), \(1\le j\le d\) and \(\gcd(j,d)=1\). Conversely, for every such pair, \(k=(n/d)j\) lies in \(\{1,\ldots,n\}\) and has \(\gcd(k,n)=(n/d)\gcd(j,d)=n/d\), so \(k\) is assigned to \((d,j)\); it is the only integer assigned to that pair, since the pair assigned to \(k\) determines \(k=\gcd(k,n)\,j=(n/d)j\). Thus the assignment is a bijection from \(\{1,\ldots,n\}\) onto the set of such pairs. For each \(d\mid n\) there are \(\varphi(d)\) pairs, which proves the formula.
+
+Now let \(G\subset F^\times\) be a finite subgroup with \(n\) elements; it is abelian because \(F\) is commutative. For \(d\mid n\), let \(N(d)\) be the number of elements of \(G\) of order \(d\). Every order divides \(n\), so
+
+\[
+\sum_{d\mid n}N(d)=n.
+\]
+
+Suppose \(N(d)\ne0\), and choose \(x\in G\) of order \(d\). Its \(d\) distinct powers satisfy \((x^i)^d=(x^d)^i=1\), so they are \(d\) roots of \(X^d-1\), and by the root bound there are no others in \(F\). Every element of \(G\) of order \(d\) is a root of \(X^d-1\), hence a power of \(x\), and exactly \(\varphi(d)\) of these powers have order \(d\). Therefore \(N(d)\) is either \(0\) or \(\varphi(d)\), and in both cases \(N(d)\le\varphi(d)\). Both sums over the divisors of \(n\) equal \(n\), so none of these inequalities is strict: \(N(d)=\varphi(d)\) for every \(d\mid n\). In particular \(N(n)=\varphi(n)\ge1\), as \(\gcd(1,n)=1\). An element of order \(n\) has \(n\) distinct powers, and so it generates \(G\).
+
+Finally, let \(F\) be finite and let \(E/F\) be a finite extension. Then \(E\) is a finite-dimensional vector space over the finite field \(F\), hence a finite field, and the first part applied to \(E\) shows that \(E^\times\) is cyclic. If \(\gamma\) generates \(E^\times\), the field \(F(\gamma)\) contains \(0\) and every power of \(\gamma\); hence \(F(\gamma)=E\). ∎
+
+The same lemma is treated in J. S. Milne, [*Fields and Galois Theory*](https://www.jmilne.org/math/CourseNotes/FT500.pdf), version 5.00, Exercise 1-3; the consequence for finite fields is Proposition 4.19 there.
 
 Assume now \(\kappa=\mathbb F_q\), where \(q=p^f\). The polynomial \(X^{q-1}-1\) has every nonzero residue as a simple root: its derivative is \((q-1)X^{q-2}\), a unit at those roots.
 
@@ -288,5 +308,5 @@ The general equivalence of henselian-local-ring criteria is cited from [Stacks, 
 ## References
 
 - J. S. Milne, [*Algebraic Number Theory*](https://www.jmilne.org/math/CourseNotes/ANT.pdf), version 3.08, 19 July 2020. Free author notes; the precise results used for comparison are identified above.
-- J. S. Milne, [*Fields and Galois Theory*](https://www.jmilne.org/math/CourseNotes/FT.pdf), version 5.10, for the field-theory comparisons identified above. The explicitly marked adaptation uses [version 5.00, June 2021](https://www.jmilne.org/math/CourseNotes/FT500.pdf), with its retained CC BY-NC-SA 4.0 attribution and change notice.
+- J. S. Milne, [*Fields and Galois Theory*](https://www.jmilne.org/math/CourseNotes/FT.pdf), version 5.10, for the field-theory comparisons identified above. Lemma 4.0 is also treated in [version 5.00, June 2021](https://www.jmilne.org/math/CourseNotes/FT500.pdf), Exercise 1-3 and Proposition 4.19.
 - [The Stacks project](https://stacks.math.columbia.edu/) and the separately identified [AI Integrated Stacks Project English edition](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/). The exact tags and scope of the comparisons are identified in the text.

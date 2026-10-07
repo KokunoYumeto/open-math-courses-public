@@ -1,6 +1,6 @@
 # Complete positivity: finite matrix tests and compression
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A positive map carries a positive matrix to a positive matrix. Complete positivity asks for the same property when the entries of a larger positive matrix are themselves matrices. Compression has this stronger property because its quadratic form can be tested before compression. Transpose preserves positivity of individual matrices, but reversing one of two matrix coordinates can produce a negative quadratic form.
 

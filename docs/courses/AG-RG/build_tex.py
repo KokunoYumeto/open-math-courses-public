@@ -84,8 +84,14 @@ def convert(text):
     if result.stderr:print(result.stderr.strip())
     # Keep a theorem's attribution paragraph with the start of its statement.
     # Section headings already prohibit a break before the attribution.
-    return re.sub(r'(\\emph\{Adapted from the Stacks project,[^\n]*\}\n)\n',
-                  lambda m:m[1]+r'\nopagebreak[4]'+'\n\n',result.stdout)
+    converted=re.sub(r'(\\emph\{Adapted from the Stacks project,[^\n]*\}\n)\n',
+                     lambda m:m[1]+r'\nopagebreak[4]'+'\n\n',result.stdout)
+    # This paragraph can acquire an invalid glyph offset from font expansion
+    # in the collected edition. Keep its exact text and use ordinary spacing.
+    converted=re.sub(r'^(For completeness, this list follows from the reflection axioms,[^\n]+)$',
+                     lambda m:r'\begingroup\microtypesetup{expansion=false,protrusion=false}'+'\n'+m[1]+'\n'+r'\par\endgroup',
+                     converted,flags=re.M)
+    return converted
 
 licence=(out/'assets/GFDL-1.2.txt').read_text(encoding='utf8')
 licence_appendix=r'''\appendix

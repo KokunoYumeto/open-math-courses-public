@@ -1,6 +1,6 @@
 # Connections and the existence of the Kasparov product
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A tensor product of represented Hilbert modules gives the right space for composing two cycles. It does not give an operator automatically. The second operator usually fails to respect the relation used to form the interior tensor product. A connection replaces that nonexistent operator by one that respects elementary tensors up to compact errors. Kasparov's technical theorem then combines this connection with the first operator.
 

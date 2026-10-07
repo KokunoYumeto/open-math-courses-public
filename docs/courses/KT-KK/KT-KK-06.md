@@ -1,6 +1,6 @@
 # Kasparov modules and the groups KK(A, B)
 
-*Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
 
 A Kasparov module replaces the Hilbert space of a Fredholm module by a Hilbert module over a second algebra. Its operator is an odd involution up to defects that become compact after the first algebra acts. This gives a bivariant group: the first algebra describes the represented geometry, and the second algebra contains the coefficient-valued index.
 

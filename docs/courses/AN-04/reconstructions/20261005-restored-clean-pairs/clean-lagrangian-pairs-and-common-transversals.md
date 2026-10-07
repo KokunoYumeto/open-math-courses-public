@@ -4,7 +4,7 @@ Two conic Lagrangians through the same nonzero covector always share a radial ta
 
 Our conventions are \(\omega=\sum_j dp_j\wedge dq_j\), \(\iota_{H_f}\omega=-df\), and \(\{f,g\}=H_fg\). The prerequisites are the full coordinate-extension, isotropic fiber and conormal-germ theorems in [Prescribed canonical coordinates and isotropic fibers](../20261005-restored-prescribed-coordinates/prescribed-canonical-coordinates-and-isotropic-fibers.md). The exact smooth-calculus proofs are [P2–P3, inverse and implicit functions](../20261004-free-stationary-phase/prerequisite-completions.md) and [F0–F1, tangent flows, transversality and commuting fields](../20261005-restored-submanifolds/flows-constant-rank-and-leaves.md), with the complete [finite-coordinate flow construction](../20261005-restored-phase-space/finite-coordinate-flows.md). The preceding lesson's Theorem 5.1 includes the full constant-rank map proof. The [differential-form foundation](../20261005-restored-phase-space/differential-forms-and-flow-pullbacks.md) proves exterior differentiation, pullback and the radial primitive formula. The [proof map](proof-map.json) binds every used programme proof and its earlier inputs. No pseudodifferential estimate or additional external course import is used.
 
-The primary source is the approved purchased reprint of Hörmander III, second edition (1994), Theorem 21.2.10 and Corollary 21.2.11, printed 288–289 / PDF 303–304. We supply the clean-pair coordinate construction, the common defining functions, the radial dimension counts, and an explicit change of the full homogeneous coordinate system. Every nonlinear normal-form assertion below is local, as an equality of germs near the marked point or ray.
+The primary source is the reprint of Hörmander III, second edition (1994), Theorem 21.2.10 and Corollary 21.2.11, printed 288–289 / PDF 303–304. We supply the clean-pair coordinate construction, the common defining functions, the radial dimension counts, and an explicit change of the full homogeneous coordinate system. Every nonlinear normal-form assertion below is local, as an equality of germs near the marked point or ray.
 
 ## 1. Clean intersection gives an actual simultaneous smooth chart
 
@@ -316,7 +316,7 @@ The preserved proof and its exact current programme dependencies were reviewed f
 
 ## Sources and restoration
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, approved purchased reprint of the second edition (1994), Theorem 21.2.10 and Corollary 21.2.11, printed 288–289 / PDF 303–304. Both full normal forms and the pointwise linear transversal statement are proved above with their precise ranges and germ qualifications.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the second edition (1994), Theorem 21.2.10 and Corollary 21.2.11, printed 288–289 / PDF 303–304. Both full normal forms and the pointwise linear transversal statement are proved above with their precise ranges and germ qualifications.
 - The [source and restoration record](source-provenance.json) identifies the edition, exact restored proof and reproducible finite checks.
 
 Original lesson, examples and ten solutions: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. No book file or text is included.
